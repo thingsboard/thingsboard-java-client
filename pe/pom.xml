@@ -27,13 +27,13 @@
         <version>4.4.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <main.dir>${basedir}/..</main.dir>
-    </properties>
-
     <artifactId>thingsboard-pe-client</artifactId>
     <packaging>jar</packaging>
 
     <name>ThingsBoard PE Client</name>
+
+    <properties>
+        <main.dir>${basedir}/..</main.dir>
+    </properties>
 
 </project>

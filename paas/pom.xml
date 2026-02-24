@@ -27,13 +27,13 @@
         <version>4.4.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <main.dir>${basedir}/..</main.dir>
-    </properties>
-
     <artifactId>thingsboard-paas-client</artifactId>
     <packaging>jar</packaging>
 
     <name>ThingsBoard PAAS Client</name>
+
+    <properties>
+        <main.dir>${basedir}/..</main.dir>
+    </properties>
 
 </project>
