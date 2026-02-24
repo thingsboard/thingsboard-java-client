@@ -1,7 +1,7 @@
 output/**
 *.class
 *.iml
-.idea/**
+/.idea/
 *.log
 *.log.[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]
 */.classpath
@@ -24,3 +24,4 @@ pom.xml.versionsBackup
 .run/**
 .run
 .claude/
+**/generated
