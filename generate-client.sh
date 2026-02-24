@@ -99,7 +99,7 @@ generate() {
     --global-property apiTests=false,modelTests=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
-    2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation"; fi
+    2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword"; fi
 
   # Strip generated OpenAPI comment block and collapse multiple blank lines
   find "$output_dir/src" -name "*.java" -exec perl -i -0pe 's{/\*\n \* ThingsBoard REST API.*?\*/\n+}{}s' {} +
