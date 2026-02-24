@@ -1,0 +1,242 @@
+/**
+ * Copyright © 2026-2026 ThingsBoard, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.thingsboard.client.model;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.StringJoiner;
+import java.util.Objects;
+import java.util.Map;
+import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.thingsboard.client.model.EntityLoadError;
+import org.thingsboard.client.model.EntityTypeLoadResult;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+
+import org.thingsboard.client.ApiClient;
+/**
+ * VersionLoadResult
+ */
+@JsonPropertyOrder({
+  VersionLoadResult.JSON_PROPERTY_RESULT,
+  VersionLoadResult.JSON_PROPERTY_ERROR,
+  VersionLoadResult.JSON_PROPERTY_DONE
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+public class VersionLoadResult {
+  public static final String JSON_PROPERTY_RESULT = "result";
+  @javax.annotation.Nullable
+  private List<EntityTypeLoadResult> result = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  @javax.annotation.Nullable
+  private EntityLoadError error;
+
+  public static final String JSON_PROPERTY_DONE = "done";
+  @javax.annotation.Nullable
+  private Boolean done;
+
+  public VersionLoadResult() { 
+  }
+
+  public VersionLoadResult result(@javax.annotation.Nullable List<EntityTypeLoadResult> result) {
+    this.result = result;
+    return this;
+  }
+
+  public VersionLoadResult addResultItem(EntityTypeLoadResult resultItem) {
+    if (this.result == null) {
+      this.result = new ArrayList<>();
+    }
+    this.result.add(resultItem);
+    return this;
+  }
+
+  /**
+   * Get result
+   * @return result
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_RESULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<EntityTypeLoadResult> getResult() {
+    return result;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_RESULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setResult(@javax.annotation.Nullable List<EntityTypeLoadResult> result) {
+    this.result = result;
+  }
+
+
+  public VersionLoadResult error(@javax.annotation.Nullable EntityLoadError error) {
+    this.error = error;
+    return this;
+  }
+
+  /**
+   * Get error
+   * @return error
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityLoadError getError() {
+    return error;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(@javax.annotation.Nullable EntityLoadError error) {
+    this.error = error;
+  }
+
+
+  public VersionLoadResult done(@javax.annotation.Nullable Boolean done) {
+    this.done = done;
+    return this;
+  }
+
+  /**
+   * Get done
+   * @return done
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getDone() {
+    return done;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDone(@javax.annotation.Nullable Boolean done) {
+    this.done = done;
+  }
+
+
+  /**
+   * Return true if this VersionLoadResult object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    VersionLoadResult versionLoadResult = (VersionLoadResult) o;
+    return Objects.equals(this.result, versionLoadResult.result) &&
+        Objects.equals(this.error, versionLoadResult.error) &&
+        Objects.equals(this.done, versionLoadResult.done);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(result, error, done);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class VersionLoadResult {\n");
+    sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    done: ").append(toIndentedString(done)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
+    }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `result` to the URL query string
+    if (getResult() != null) {
+      for (int i = 0; i < getResult().size(); i++) {
+        if (getResult().get(i) != null) {
+          joiner.add(getResult().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sresult%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `error` to the URL query string
+    if (getError() != null) {
+      joiner.add(getError().toUrlQueryString(prefix + "error" + suffix));
+    }
+
+    // add `done` to the URL query string
+    if (getDone() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDone()))));
+    }
+
+    return joiner.toString();
+  }
+}
+

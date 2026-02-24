@@ -1,0 +1,25 @@
+
+
+# Authority
+
+## Enum
+
+
+* `SYS_ADMIN` (value: `"SYS_ADMIN"`)
+
+* `TENANT_ADMIN` (value: `"TENANT_ADMIN"`)
+
+* `CUSTOMER_USER` (value: `"CUSTOMER_USER"`)
+
+* `BILLING_ADMIN` (value: `"BILLING_ADMIN"`)
+
+* `BILLING_SERVICE` (value: `"BILLING_SERVICE"`)
+
+* `REFRESH_TOKEN` (value: `"REFRESH_TOKEN"`)
+
+* `PRE_VERIFICATION_TOKEN` (value: `"PRE_VERIFICATION_TOKEN"`)
+
+* `MFA_CONFIGURATION_TOKEN` (value: `"MFA_CONFIGURATION_TOKEN"`)
+
+
+

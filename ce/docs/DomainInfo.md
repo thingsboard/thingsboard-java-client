@@ -1,0 +1,19 @@
+
+
+# DomainInfo
+
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**id** | [**DomainId**](DomainId.md) |  |  [optional] |
+|**createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch |  [optional] [readonly] |
+|**tenantId** | [**TenantId**](TenantId.md) | JSON object with Tenant Id |  [optional] |
+|**name** | **String** | Domain name. Cannot be empty |  |
+|**oauth2Enabled** | **Boolean** | Whether OAuth2 settings are enabled or not |  [optional] |
+|**propagateToEdge** | **Boolean** | Whether OAuth2 settings are enabled on Edge or not |  [optional] |
+|**oauth2ClientInfos** | [**List&lt;OAuth2ClientInfo&gt;**](OAuth2ClientInfo.md) | List of available oauth2 clients |  [optional] |
+
+
+

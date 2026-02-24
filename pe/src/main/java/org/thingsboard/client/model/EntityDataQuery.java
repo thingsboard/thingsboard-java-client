@@ -1,0 +1,342 @@
+/**
+ * Copyright © 2026-2026 ThingsBoard, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.thingsboard.client.model;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.StringJoiner;
+import java.util.Objects;
+import java.util.Map;
+import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.thingsboard.client.model.EntityDataPageLink;
+import org.thingsboard.client.model.EntityFilter;
+import org.thingsboard.client.model.EntityKey;
+import org.thingsboard.client.model.KeyFilter;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+
+import org.thingsboard.client.ApiClient;
+/**
+ * Entity data query to find entities. Page size is capped at 100.
+ */
+@JsonPropertyOrder({
+  EntityDataQuery.JSON_PROPERTY_ENTITY_FILTER,
+  EntityDataQuery.JSON_PROPERTY_KEY_FILTERS,
+  EntityDataQuery.JSON_PROPERTY_PAGE_LINK,
+  EntityDataQuery.JSON_PROPERTY_ENTITY_FIELDS,
+  EntityDataQuery.JSON_PROPERTY_LATEST_VALUES
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+public class EntityDataQuery {
+  public static final String JSON_PROPERTY_ENTITY_FILTER = "entityFilter";
+  @javax.annotation.Nullable
+  private EntityFilter entityFilter;
+
+  public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
+  @javax.annotation.Nullable
+  private List<KeyFilter> keyFilters = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_PAGE_LINK = "pageLink";
+  @javax.annotation.Nullable
+  private EntityDataPageLink pageLink;
+
+  public static final String JSON_PROPERTY_ENTITY_FIELDS = "entityFields";
+  @javax.annotation.Nullable
+  private List<EntityKey> entityFields = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_LATEST_VALUES = "latestValues";
+  @javax.annotation.Nullable
+  private List<EntityKey> latestValues = new ArrayList<>();
+
+  public EntityDataQuery() { 
+  }
+
+  public EntityDataQuery entityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+    this.entityFilter = entityFilter;
+    return this;
+  }
+
+  /**
+   * Get entityFilter
+   * @return entityFilter
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityFilter getEntityFilter() {
+    return entityFilter;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+    this.entityFilter = entityFilter;
+  }
+
+
+  public EntityDataQuery keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+    this.keyFilters = keyFilters;
+    return this;
+  }
+
+  public EntityDataQuery addKeyFiltersItem(KeyFilter keyFiltersItem) {
+    if (this.keyFilters == null) {
+      this.keyFilters = new ArrayList<>();
+    }
+    this.keyFilters.add(keyFiltersItem);
+    return this;
+  }
+
+  /**
+   * Get keyFilters
+   * @return keyFilters
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<KeyFilter> getKeyFilters() {
+    return keyFilters;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+    this.keyFilters = keyFilters;
+  }
+
+
+  public EntityDataQuery pageLink(@javax.annotation.Nullable EntityDataPageLink pageLink) {
+    this.pageLink = pageLink;
+    return this;
+  }
+
+  /**
+   * Get pageLink
+   * @return pageLink
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PAGE_LINK, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityDataPageLink getPageLink() {
+    return pageLink;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PAGE_LINK, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPageLink(@javax.annotation.Nullable EntityDataPageLink pageLink) {
+    this.pageLink = pageLink;
+  }
+
+
+  public EntityDataQuery entityFields(@javax.annotation.Nullable List<EntityKey> entityFields) {
+    this.entityFields = entityFields;
+    return this;
+  }
+
+  public EntityDataQuery addEntityFieldsItem(EntityKey entityFieldsItem) {
+    if (this.entityFields == null) {
+      this.entityFields = new ArrayList<>();
+    }
+    this.entityFields.add(entityFieldsItem);
+    return this;
+  }
+
+  /**
+   * Get entityFields
+   * @return entityFields
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_FIELDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<EntityKey> getEntityFields() {
+    return entityFields;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_FIELDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntityFields(@javax.annotation.Nullable List<EntityKey> entityFields) {
+    this.entityFields = entityFields;
+  }
+
+
+  public EntityDataQuery latestValues(@javax.annotation.Nullable List<EntityKey> latestValues) {
+    this.latestValues = latestValues;
+    return this;
+  }
+
+  public EntityDataQuery addLatestValuesItem(EntityKey latestValuesItem) {
+    if (this.latestValues == null) {
+      this.latestValues = new ArrayList<>();
+    }
+    this.latestValues.add(latestValuesItem);
+    return this;
+  }
+
+  /**
+   * Get latestValues
+   * @return latestValues
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LATEST_VALUES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<EntityKey> getLatestValues() {
+    return latestValues;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LATEST_VALUES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLatestValues(@javax.annotation.Nullable List<EntityKey> latestValues) {
+    this.latestValues = latestValues;
+  }
+
+
+  /**
+   * Return true if this EntityDataQuery object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    EntityDataQuery entityDataQuery = (EntityDataQuery) o;
+    return Objects.equals(this.entityFilter, entityDataQuery.entityFilter) &&
+        Objects.equals(this.keyFilters, entityDataQuery.keyFilters) &&
+        Objects.equals(this.pageLink, entityDataQuery.pageLink) &&
+        Objects.equals(this.entityFields, entityDataQuery.entityFields) &&
+        Objects.equals(this.latestValues, entityDataQuery.latestValues);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(entityFilter, keyFilters, pageLink, entityFields, latestValues);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class EntityDataQuery {\n");
+    sb.append("    entityFilter: ").append(toIndentedString(entityFilter)).append("\n");
+    sb.append("    keyFilters: ").append(toIndentedString(keyFilters)).append("\n");
+    sb.append("    pageLink: ").append(toIndentedString(pageLink)).append("\n");
+    sb.append("    entityFields: ").append(toIndentedString(entityFields)).append("\n");
+    sb.append("    latestValues: ").append(toIndentedString(latestValues)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
+    }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `entityFilter` to the URL query string
+    if (getEntityFilter() != null) {
+      joiner.add(getEntityFilter().toUrlQueryString(prefix + "entityFilter" + suffix));
+    }
+
+    // add `keyFilters` to the URL query string
+    if (getKeyFilters() != null) {
+      for (int i = 0; i < getKeyFilters().size(); i++) {
+        if (getKeyFilters().get(i) != null) {
+          joiner.add(getKeyFilters().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%skeyFilters%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `pageLink` to the URL query string
+    if (getPageLink() != null) {
+      joiner.add(getPageLink().toUrlQueryString(prefix + "pageLink" + suffix));
+    }
+
+    // add `entityFields` to the URL query string
+    if (getEntityFields() != null) {
+      for (int i = 0; i < getEntityFields().size(); i++) {
+        if (getEntityFields().get(i) != null) {
+          joiner.add(getEntityFields().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sentityFields%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `latestValues` to the URL query string
+    if (getLatestValues() != null) {
+      for (int i = 0; i < getLatestValues().size(); i++) {
+        if (getLatestValues().get(i) != null) {
+          joiner.add(getLatestValues().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%slatestValues%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
+  }
+}
+

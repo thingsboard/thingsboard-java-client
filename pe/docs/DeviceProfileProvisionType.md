@@ -1,0 +1,17 @@
+
+
+# DeviceProfileProvisionType
+
+## Enum
+
+
+* `DISABLED` (value: `"DISABLED"`)
+
+* `ALLOW_CREATE_NEW_DEVICES` (value: `"ALLOW_CREATE_NEW_DEVICES"`)
+
+* `CHECK_PRE_PROVISIONED_DEVICES` (value: `"CHECK_PRE_PROVISIONED_DEVICES"`)
+
+* `X509_CERTIFICATE_CHAIN` (value: `"X509_CERTIFICATE_CHAIN"`)
+
+
+
