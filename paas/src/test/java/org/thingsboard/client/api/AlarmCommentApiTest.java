@@ -1,0 +1,111 @@
+/**
+ * Copyright © 2026-2026 ThingsBoard, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.thingsboard.client.api;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.junit.jupiter.api.Test;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.model.Alarm;
+import org.thingsboard.client.model.AlarmComment;
+import org.thingsboard.client.model.AlarmCommentInfo;
+import org.thingsboard.client.model.AlarmSeverity;
+import org.thingsboard.client.model.Device;
+import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.EntityType;
+import org.thingsboard.client.model.PageDataAlarmCommentInfo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+
+public class AlarmCommentApiTest extends AbstractApiTest {
+
+    @Test
+    void testAlarmComments() throws ApiException {
+        long timestamp = System.currentTimeMillis();
+
+        // Create device for alarm
+        Device device = new Device();
+        device.setName("Device_For_Comments_" + timestamp);
+        device.setType("default");
+        Device createdDevice = tbApi.saveDevice(device, null, null, null, null, null, null);
+
+        // Create alarm
+        Alarm alarm = new Alarm();
+        alarm.setType("Temperature Alarm");
+        alarm.setSeverity(AlarmSeverity.CRITICAL);
+        EntityId originator = new EntityId();
+        originator.setEntityType(EntityType.DEVICE);
+        originator.setId(createdDevice.getId().getId());
+        alarm.setOriginator(originator);
+
+        Alarm createdAlarm = tbApi.saveAlarm(alarm);
+        String alarmId = createdAlarm.getId().getId().toString();
+
+        List<AlarmComment> createdComments = new ArrayList<>();
+
+        // Create multiple comments
+        for (int i = 0; i < 5; i++) {
+            AlarmComment alarmComment = new AlarmComment();
+            String message = "Test comment #" + i + " at " + timestamp;
+            ObjectNode comment = OBJECT_MAPPER.createObjectNode().put("message", message);
+            alarmComment.setComment(comment);
+
+            AlarmComment commentInfo = tbApi.saveAlarmComment(alarmId, alarmComment);
+
+            assertNotNull(commentInfo);
+            assertNotNull(commentInfo.getId());
+            JsonNode commentValue = commentInfo.getComment();
+            assertEquals(message, commentValue.get("message").asText());
+            assertNotNull(commentInfo.getCreatedTime());
+
+            createdComments.add(commentInfo);
+        }
+
+        // Get all comments for the alarm
+        PageDataAlarmCommentInfo allComments = tbApi.getAlarmComments(alarmId, 100, 0, null, null);
+        assertEquals(5, allComments.getData().size(), "Expected 5 comments");
+
+        // Update a comment
+        AlarmComment commentToUpdate = createdComments.get(2);
+        JsonNode comment = commentToUpdate.getComment();
+        ((ObjectNode) comment).put("message", "New comment");
+        commentToUpdate.setComment(comment);
+
+        AlarmComment updatedComment = tbApi.saveAlarmComment(alarmId, commentToUpdate);
+        assertEquals("New comment", updatedComment.getComment().get("message").asText());
+
+        // Delete a comment
+        UUID commentToDeleteId = createdComments.get(0).getId().getId();
+
+        tbApi.deleteAlarmComment(alarmId, commentToDeleteId.toString());
+
+        // Verify comment was updated to "deleted"
+        PageDataAlarmCommentInfo commentsAfterDelete = tbApi.getAlarmComments(alarmId, 100, 0, null, null);
+        List<AlarmCommentInfo> data = commentsAfterDelete.getData();
+        AlarmCommentInfo deletedComment = data.stream()
+                .filter(alarmCommentInfo -> alarmCommentInfo.getId().getId().equals(commentToDeleteId))
+                .findFirst()
+                .get();
+        assertEquals("User " + tenantAdmin.getEmail() + " deleted his comment", deletedComment.getComment().get("text").asText());
+    }
+
+}

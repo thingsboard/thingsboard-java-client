@@ -1,0 +1,138 @@
+/**
+ * Copyright © 2026-2026 ThingsBoard, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.thingsboard.client.api;
+
+import org.junit.jupiter.api.Test;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.model.MapperType;
+import org.thingsboard.client.model.OAuth2BasicMapperConfig;
+import org.thingsboard.client.model.OAuth2Client;
+import org.thingsboard.client.model.OAuth2ClientInfo;
+import org.thingsboard.client.model.OAuth2MapperConfig;
+import org.thingsboard.client.model.PageDataOAuth2ClientInfo;
+import org.thingsboard.client.model.PlatformType;
+import org.thingsboard.client.model.TenantNameStrategyType;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+
+public class Oauth2ApiTest extends AbstractApiTest {
+
+    private OAuth2Client createOAuth2Client(String title, String clientId, String clientSecret) {
+        OAuth2BasicMapperConfig basicConfig = new OAuth2BasicMapperConfig();
+        basicConfig.setEmailAttributeKey("email");
+        basicConfig.setFirstNameAttributeKey("given_name");
+        basicConfig.setLastNameAttributeKey("family_name");
+        basicConfig.setTenantNameStrategy(TenantNameStrategyType.DOMAIN);
+
+        OAuth2MapperConfig mapperConfig = new OAuth2MapperConfig();
+        mapperConfig.setType(MapperType.BASIC);
+        mapperConfig.setAllowUserCreation(true);
+        mapperConfig.setActivateUser(false);
+        mapperConfig.setBasic(basicConfig);
+
+        OAuth2Client client = new OAuth2Client();
+        client.setTitle(title);
+        client.setClientId(clientId);
+        client.setClientSecret(clientSecret);
+        client.setAuthorizationUri("https://accounts.google.com/o/oauth2/v2/auth");
+        client.setAccessTokenUri("https://oauth2.googleapis.com/token");
+        client.setScope(List.of("openid", "email", "profile"));
+        client.setUserInfoUri("https://openidconnect.googleapis.com/v1/userinfo");
+        client.setUserNameAttributeName("email");
+        client.setClientAuthenticationMethod("POST");
+        client.setLoginButtonLabel(title);
+        client.setMapperConfig(mapperConfig);
+        client.setPlatforms(List.of(PlatformType.WEB));
+
+        return client;
+    }
+
+    @Test
+    void testOAuth2ClientLifecycle() throws ApiException {
+        long timestamp = System.currentTimeMillis();
+        List<OAuth2Client> createdClients = new ArrayList<>();
+
+        // create 5 OAuth2 clients
+        for (int i = 0; i < 5; i++) {
+            String title = TEST_PREFIX + "OAuth2_" + timestamp + "_" + i;
+            OAuth2Client client = createOAuth2Client(title,
+                    "client_id_" + timestamp + "_" + i,
+                    "client_secret_" + timestamp + "_" + i);
+
+            OAuth2Client created = tbApi.saveOAuth2Client(client);
+            assertNotNull(created);
+            assertNotNull(created.getId());
+            assertEquals(title, created.getTitle());
+            assertEquals("POST", created.getClientAuthenticationMethod());
+            assertNotNull(created.getMapperConfig());
+            assertEquals(MapperType.BASIC, created.getMapperConfig().getType());
+
+            createdClients.add(created);
+        }
+
+        // list tenant OAuth2 client infos
+        PageDataOAuth2ClientInfo clientInfos = tbApi.findOAuth2ClientInfos(100, 0,
+                TEST_PREFIX + "OAuth2_" + timestamp, null, null);
+        assertNotNull(clientInfos);
+        assertEquals(5, clientInfos.getData().size());
+
+        // get OAuth2 client by id
+        OAuth2Client searchClient = createdClients.get(2);
+        OAuth2Client fetchedClient = tbApi.getOAuth2ClientById(searchClient.getId().getId());
+        assertEquals(searchClient.getTitle(), fetchedClient.getTitle());
+        assertEquals(searchClient.getClientId(), fetchedClient.getClientId());
+        assertEquals(searchClient.getAuthorizationUri(), fetchedClient.getAuthorizationUri());
+        assertEquals(3, fetchedClient.getScope().size());
+
+        // fetch client infos by ids
+        List<String> idsToFetch = List.of(
+                createdClients.get(0).getId().getId().toString(),
+                createdClients.get(1).getId().getId().toString()
+        );
+        List<OAuth2ClientInfo> fetchedInfos = tbApi.findTenantOAuth2ClientInfosByIdsV2(idsToFetch);
+        assertEquals(2, fetchedInfos.size());
+
+        // update OAuth2 client
+        OAuth2Client clientToUpdate = tbApi.getOAuth2ClientById(createdClients.get(3).getId().getId());
+        clientToUpdate.setTitle(clientToUpdate.getTitle() + "_updated");
+        clientToUpdate.setLoginButtonLabel("Updated Login");
+        clientToUpdate.setPlatforms(List.of(PlatformType.WEB, PlatformType.ANDROID));
+        OAuth2Client updatedClient = tbApi.saveOAuth2Client(clientToUpdate);
+        assertEquals(clientToUpdate.getTitle(), updatedClient.getTitle());
+        assertEquals("Updated Login", updatedClient.getLoginButtonLabel());
+        assertEquals(2, updatedClient.getPlatforms().size());
+
+        // delete OAuth2 client
+        UUID clientToDeleteId = createdClients.get(0).getId().getId();
+        tbApi.deleteOauth2Client(clientToDeleteId);
+
+        // verify deletion
+        assertReturns404(() ->
+                tbApi.getOAuth2ClientById(clientToDeleteId)
+        );
+
+        PageDataOAuth2ClientInfo clientsAfterDelete = tbApi.findOAuth2ClientInfos(100, 0,
+                TEST_PREFIX + "OAuth2_" + timestamp, null, null);
+        assertEquals(4, clientsAfterDelete.getData().size());
+    }
+
+}

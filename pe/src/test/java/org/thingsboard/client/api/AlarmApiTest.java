@@ -1,0 +1,167 @@
+/**
+ * Copyright © 2026-2026 ThingsBoard, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.thingsboard.client.api;
+
+import org.junit.jupiter.api.Test;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.model.Alarm;
+import org.thingsboard.client.model.AlarmInfo;
+import org.thingsboard.client.model.AlarmSeverity;
+import org.thingsboard.client.model.AlarmStatus;
+import org.thingsboard.client.model.Device;
+import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.EntitySubtype;
+import org.thingsboard.client.model.EntityType;
+import org.thingsboard.client.model.PageDataAlarmInfo;
+import org.thingsboard.client.model.PageDataEntitySubtype;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
+public class AlarmApiTest extends AbstractApiTest {
+
+    @Test
+    void testAlarmLifecycle() throws ApiException {
+        long timestamp = System.currentTimeMillis();
+        List<Alarm> createdAlarms = new ArrayList<>();
+
+        // First, create devices to attach alarms to
+        Device device1 = new Device();
+        device1.setName("Device_For_Alarm_" + timestamp + "_1");
+        device1.setType("default");
+        Device createdDevice1 = tbApi.saveDevice(device1, null, null, null, null, null, null);
+
+        Device device2 = new Device();
+        device2.setName("Device_For_Alarm_" + timestamp + "_2");
+        device2.setType("thermostat");
+        Device createdDevice2 = tbApi.saveDevice(device2, null, null, null, null, null, null);
+
+        // Create 2 alarms (1 for each device)
+        for (int i = 0; i < 2; i++) {
+            Alarm alarm = new Alarm();
+            alarm.setType(((i % 2 == 0) ? "Temperature Alarm" : "Connection Alarm"));
+            alarm.setSeverity(((i % 2 == 0) ? AlarmSeverity.CRITICAL : AlarmSeverity.WARNING));
+            EntityId originator = new EntityId();
+            originator.setEntityType(EntityType.DEVICE);
+            originator.setId((i % 2 == 0) ? createdDevice1.getId().getId() : createdDevice2.getId().getId());
+            alarm.setOriginator(originator);
+
+            Alarm createdAlarm = tbApi.saveAlarm(alarm);
+            assertNotNull(createdAlarm);
+            assertNotNull(createdAlarm.getId());
+            assertEquals(alarm.getType(), createdAlarm.getType());
+            assertEquals(alarm.getSeverity(), createdAlarm.getSeverity());
+
+            createdAlarms.add(createdAlarm);
+        }
+
+        // Get all alarms
+        PageDataAlarmInfo allAlarms = tbApi.getAllAlarms(100, 0, null, null, null, null, null, null, null, null, null);
+
+        assertNotNull(allAlarms);
+        assertNotNull(allAlarms.getData());
+        int initialSize = allAlarms.getData().size();
+        assertEquals(2, initialSize, "Expected at least 20 alarms, but got " + initialSize);
+
+        // Get alarms by entity (device1)
+        PageDataAlarmInfo device1Alarms = tbApi.getAlarmsV2(EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(), 100, 0, null, null, null, null, null, null, null, null, null);
+        assertNotNull(device1Alarms);
+        assertEquals(1, device1Alarms.getData().size(), "Expected 1 alarms for device1");
+
+        // Get alarm by id
+        Alarm searchAlarm = createdAlarms.get(0);
+        Alarm fetchedAlarm = tbApi.getAlarmById(searchAlarm.getId().getId().toString());
+        assertEquals(searchAlarm.getType(), fetchedAlarm.getType());
+        assertEquals(searchAlarm.getSeverity(), fetchedAlarm.getSeverity());
+
+        // Get alarm info
+        AlarmInfo alarmInfo = tbApi.getAlarmInfoById(searchAlarm.getId().getId().toString());
+        assertNotNull(alarmInfo);
+        assertEquals(searchAlarm.getId().getId(), alarmInfo.getId().getId());
+
+        // Acknowledge alarm
+        tbApi.ackAlarm(searchAlarm.getId().getId().toString());
+
+        // Verify alarm is acknowledged
+        Alarm ackedAlarm = tbApi.getAlarmById(searchAlarm.getId().getId().toString());
+        assertEquals(AlarmStatus.ACTIVE_ACK, ackedAlarm.getStatus());
+
+        // Clear alarm
+        tbApi.clearAlarm(searchAlarm.getId().getId().toString());
+
+        // Verify alarm is cleared
+        Alarm clearedAlarm = tbApi.getAlarmById(searchAlarm.getId().getId().toString());
+        assertEquals(AlarmStatus.CLEARED_ACK, clearedAlarm.getStatus());
+
+        // Get highest severity alarm for device
+        AlarmSeverity highestSeverity = tbApi.getHighestAlarmSeverity(EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(), null, null, null);
+        assertNotNull(highestSeverity);
+        assertEquals(AlarmSeverity.CRITICAL, highestSeverity);
+
+        // Assign alarm to customer
+        tbApi.assignAlarm(createdAlarms.get(0).getId().getId().toString(), tenantAdmin.getId().getId().toString());
+
+        // Verify assignment
+        Alarm assignedAlarm = tbApi.getAlarmById(createdAlarms.get(0).getId().getId().toString());
+        assertEquals(tenantAdmin.getId().getId(), assignedAlarm.getAssigneeId().getId());
+
+        // Unassign alarm
+        tbApi.unassignAlarm(createdAlarms.get(0).getId().getId().toString());
+
+        // Verify unassignment
+        Alarm unassignedAlarm = tbApi.getAlarmById(createdAlarms.get(0).getId().getId().toString());
+        assertNull(unassignedAlarm.getAssigneeId());
+
+        // Get alarm types
+        PageDataEntitySubtype pageDataEntitySubtype = tbApi.getAlarmTypes(100, 0, null, null);
+        assertEquals(2, pageDataEntitySubtype.getData().size());
+        List<String> alarmTypes = pageDataEntitySubtype.getData().stream()
+                .map(EntitySubtype::getType)
+                .collect(Collectors.toList());
+        assertTrue(alarmTypes.containsAll(List.of("Temperature Alarm", "Connection Alarm")));
+
+        // Get alarms V2 (alternative endpoint)
+        PageDataAlarmInfo alarmsV2 = tbApi.getAlarmsV2(EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(), 100, 0, null, null, null, null, null, null, null, null, null);
+        assertNotNull(alarmsV2);
+        assertEquals(1, alarmsV2.getData().size());
+
+        // Get all alarms V2
+        PageDataAlarmInfo allAlarmsV2 = tbApi.getAllAlarmsV2(100, 0, null, null, null, null, null, null, null, null, null);
+        assertEquals(2, allAlarmsV2.getData().size());
+
+        // Delete alarm
+        UUID alarmToDeleteId = createdAlarms.get(0).getId().getId();
+        tbApi.deleteAlarm(alarmToDeleteId.toString());
+
+        // Verify the alarm is deleted (should return 404)
+        assertReturns404(() ->
+                tbApi.getAlarmById(alarmToDeleteId.toString())
+        );
+
+        // Verify count after deletion
+        PageDataAlarmInfo alarmsAfterDelete = tbApi.getAllAlarms(100, 0, null, null, null, null, null, null, null, null, null);
+        assertEquals(initialSize - 1, alarmsAfterDelete.getData().size());
+    }
+
+}
