@@ -24,4 +24,3 @@ pom.xml.versionsBackup
 .run/**
 .run
 .claude/
-**/generated

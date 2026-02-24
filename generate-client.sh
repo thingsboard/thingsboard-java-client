@@ -21,8 +21,19 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 EDITIONS=("ce" "pe" "paas")
 BASE_PACKAGE="org.thingsboard.client"
 
+VERBOSE=false
+DRY_RUN=false
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --verbose) VERBOSE=true; shift ;;
+    --dry-run) DRY_RUN=true; shift ;;
+    -*) echo "Unknown option: $1"; exit 1 ;;
+    *) break ;;
+  esac
+done
+
 if [ $# -eq 0 ]; then
-  echo "Usage: $0 <edition> [base-url]"
+  echo "Usage: $0 [--verbose] [--dry-run] <edition> [base-url]"
   echo "  edition: ce | pe | paas | all"
   echo "  base-url: optional, fetches spec from <base-url>/v3/api-docs/thingsboard"
   exit 1
@@ -30,6 +41,10 @@ fi
 
 EDITION="$1"
 BASE_URL="${2:-}"
+LOG_FILE="$SCRIPT_DIR/generate-client.log"
+
+# Log everything to file and stdout
+exec > >(tee "$LOG_FILE") 2>&1
 
 # Initialize nvm if available
 NVM_DIR="$HOME/.nvm"
@@ -53,7 +68,7 @@ fi
 generate() {
   local edition="$1"
   local spec_file="$SCRIPT_DIR/$edition/spec/openapi.json"
-  local output_dir="$SCRIPT_DIR/$edition/generated"
+  local output_dir="$SCRIPT_DIR/$edition/target/generated"
   local module_dir="$SCRIPT_DIR/$edition"
 
   if [ -n "$BASE_URL" ]; then
@@ -83,15 +98,22 @@ generate() {
     --invoker-package "$BASE_PACKAGE" \
     --global-property apiTests=false,modelTests=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
-    --import-mappings  JsonNode="$JACKSON_JSON_NODE"
+    --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
+    2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation"; fi
 
-  # Copy generated sources and docs into the module
-  rm -rf "$module_dir/src/main/java" "$module_dir/docs"
-  mkdir -p "$module_dir/src/main/java"
-  cp -r "$output_dir/src/main/java/"* "$module_dir/src/main/java/"
-  cp -r "$output_dir/docs" "$module_dir/"
+  # Strip generated OpenAPI comment block and collapse multiple blank lines
+  find "$output_dir/src" -name "*.java" -exec perl -i -0pe 's{/\*\n \* ThingsBoard REST API.*?\*/\n+}{}s' {} +
 
-  echo "Copied src and docs to $module_dir"
+  if [ "$DRY_RUN" = true ]; then
+    echo "Dry run: generated output is in $output_dir"
+  else
+    # Copy generated sources and docs into the module
+    rm -rf "$module_dir/src/main/java" "$module_dir/docs"
+    mkdir -p "$module_dir/src/main/java"
+    cp -r "$output_dir/src/main/java/"* "$module_dir/src/main/java/"
+    cp -r "$output_dir/docs" "$module_dir/"
+    echo "Copied src and docs to $module_dir"
+  fi
 }
 
 if [ "$EDITION" = "all" ]; then
@@ -110,6 +132,12 @@ else
   generate "$EDITION"
 fi
 
-# Apply license headers and stage changes
-mvn -f "$SCRIPT_DIR/pom.xml" license:format
-git -C "$SCRIPT_DIR" add .
+if [ "$DRY_RUN" = false ]; then
+  # Apply license headers and stage changes
+  if [ "$VERBOSE" = true ]; then
+    mvn -f "$SCRIPT_DIR/pom.xml" license:format
+  else
+    mvn -f "$SCRIPT_DIR/pom.xml" license:format -q
+  fi
+  git -C "$SCRIPT_DIR" add .
+fi
