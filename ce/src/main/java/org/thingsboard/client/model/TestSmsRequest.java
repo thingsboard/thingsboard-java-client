@@ -40,7 +40,7 @@ import org.thingsboard.client.ApiClient;
   TestSmsRequest.JSON_PROPERTY_NUMBER_TO,
   TestSmsRequest.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TestSmsRequest {
   public static final String JSON_PROPERTY_PROVIDER_CONFIGURATION = "providerConfiguration";
   @javax.annotation.Nullable

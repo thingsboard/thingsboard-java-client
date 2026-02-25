@@ -40,7 +40,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   CustomMenuConfig.JSON_PROPERTY_ITEMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomMenuConfig {
   public static final String JSON_PROPERTY_ITEMS = "items";
   @javax.annotation.Nullable

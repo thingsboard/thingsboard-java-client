@@ -44,7 +44,7 @@ import org.thingsboard.client.ApiClient;
   History.JSON_PROPERTY_FIXED_TIMEWINDOW,
   History.JSON_PROPERTY_QUICK_INTERVAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class History {
   public static final String JSON_PROPERTY_HISTORY_TYPE = "historyType";
   @javax.annotation.Nullable

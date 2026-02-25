@@ -43,7 +43,7 @@ import org.thingsboard.client.ApiClient;
   SecuritySettings.JSON_PROPERTY_USER_ACTIVATION_TOKEN_TTL,
   SecuritySettings.JSON_PROPERTY_PASSWORD_RESET_TOKEN_TTL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SecuritySettings {
   public static final String JSON_PROPERTY_PASSWORD_POLICY = "passwordPolicy";
   @javax.annotation.Nullable

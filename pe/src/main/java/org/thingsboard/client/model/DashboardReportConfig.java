@@ -46,7 +46,7 @@ import org.thingsboard.client.ApiClient;
   DashboardReportConfig.JSON_PROPERTY_USE_CURRENT_USER_CREDENTIALS,
   DashboardReportConfig.JSON_PROPERTY_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DashboardReportConfig {
   public static final String JSON_PROPERTY_BASE_URL = "baseUrl";
   @javax.annotation.Nonnull

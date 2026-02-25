@@ -55,7 +55,7 @@ import org.thingsboard.client.ApiClient;
   AlarmDataPageLink.JSON_PROPERTY_SORT_ORDER,
   AlarmDataPageLink.JSON_PROPERTY_DYNAMIC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmDataPageLink {
   public static final String JSON_PROPERTY_START_TS = "startTs";
   @javax.annotation.Nullable

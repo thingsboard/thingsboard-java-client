@@ -38,7 +38,7 @@ import org.thingsboard.client.ApiClient;
   HomeDashboardParams.JSON_PROPERTY_ID,
   HomeDashboardParams.JSON_PROPERTY_HIDE_TOOLBAR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class HomeDashboardParams {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

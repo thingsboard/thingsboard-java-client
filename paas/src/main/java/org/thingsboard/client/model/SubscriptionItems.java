@@ -51,7 +51,7 @@ import org.thingsboard.client.ApiClient;
   SubscriptionItems.JSON_PROPERTY_TRENDZ_ENABLED,
   SubscriptionItems.JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SubscriptionItems {
   public static final String JSON_PROPERTY_EXTRA_DEVICE_PACK_COUNT = "extraDevicePackCount";
   @javax.annotation.Nullable

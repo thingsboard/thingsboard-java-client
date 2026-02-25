@@ -42,7 +42,7 @@ import org.thingsboard.client.ApiClient;
   EdgeSearchQuery.JSON_PROPERTY_RELATION_TYPE,
   EdgeSearchQuery.JSON_PROPERTY_EDGE_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdgeSearchQuery {
   public static final String JSON_PROPERTY_PARAMETERS = "parameters";
   @javax.annotation.Nullable

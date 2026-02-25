@@ -45,7 +45,7 @@ import org.thingsboard.client.ApiClient;
   ErrorComponentAllOfException.JSON_PROPERTY_SUPPRESSED,
   ErrorComponentAllOfException.JSON_PROPERTY_LOCALIZED_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ErrorComponentAllOfException {
   public static final String JSON_PROPERTY_CAUSE = "cause";
   @javax.annotation.Nullable

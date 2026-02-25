@@ -96,6 +96,7 @@ generate() {
     --api-package "$BASE_PACKAGE.api" \
     --model-package "$BASE_PACKAGE.model" \
     --invoker-package "$BASE_PACKAGE" \
+    --additional-properties hideGenerationTimestamp=true \
     --global-property apiTests=false,modelTests=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \

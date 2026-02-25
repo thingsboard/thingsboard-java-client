@@ -42,7 +42,7 @@ import org.thingsboard.client.ApiClient;
   AliasEntityId.JSON_PROPERTY_ID,
   AliasEntityId.JSON_PROPERTY_ENTITY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AliasEntityId {
   public static final String JSON_PROPERTY_ALIAS_ENTITY_TYPE = "aliasEntityType";
   @javax.annotation.Nullable

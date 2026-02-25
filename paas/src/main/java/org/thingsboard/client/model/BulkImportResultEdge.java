@@ -46,7 +46,7 @@ import org.thingsboard.client.ApiClient;
   BulkImportResultEdge.JSON_PROPERTY_ERRORS,
   BulkImportResultEdge.JSON_PROPERTY_ERRORS_LIST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportResultEdge {
   public static final String JSON_PROPERTY_CREATED = "created";
   private JsonNullable<Object> created = JsonNullable.<Object>of(null);

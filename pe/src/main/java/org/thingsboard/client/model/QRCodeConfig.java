@@ -42,7 +42,7 @@ import org.thingsboard.client.ApiClient;
   QRCodeConfig.JSON_PROPERTY_BADGE_POSITION,
   QRCodeConfig.JSON_PROPERTY_QR_CODE_LABEL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class QRCodeConfig {
   public static final String JSON_PROPERTY_SHOW_ON_HOME_PAGE = "showOnHomePage";
   @javax.annotation.Nullable

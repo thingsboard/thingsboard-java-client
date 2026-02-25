@@ -40,7 +40,7 @@ import org.thingsboard.client.ApiClient;
   FilterPredicateValueInteger.JSON_PROPERTY_USER_VALUE,
   FilterPredicateValueInteger.JSON_PROPERTY_DYNAMIC_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FilterPredicateValueInteger {
   public static final String JSON_PROPERTY_DEFAULT_VALUE = "defaultValue";
   @javax.annotation.Nullable

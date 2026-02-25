@@ -39,7 +39,7 @@ import org.thingsboard.client.ApiClient;
   OAuth2ClientLoginInfo.JSON_PROPERTY_ICON,
   OAuth2ClientLoginInfo.JSON_PROPERTY_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2ClientLoginInfo {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable

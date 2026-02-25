@@ -53,7 +53,7 @@ import org.thingsboard.client.ApiClient;
   AlarmCountQuery.JSON_PROPERTY_ENTITY_FILTER,
   AlarmCountQuery.JSON_PROPERTY_KEY_FILTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmCountQuery {
   public static final String JSON_PROPERTY_START_TS = "startTs";
   @javax.annotation.Nullable

@@ -42,7 +42,7 @@ import org.thingsboard.client.ApiClient;
   BulkImportRequest.JSON_PROPERTY_CUSTOMER_ID,
   BulkImportRequest.JSON_PROPERTY_ENTITY_GROUP_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportRequest {
   public static final String JSON_PROPERTY_FILE = "file";
   @javax.annotation.Nullable

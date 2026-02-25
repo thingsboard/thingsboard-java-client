@@ -39,7 +39,7 @@ import org.thingsboard.client.ApiClient;
   AlarmConditionFilterKey.JSON_PROPERTY_TYPE,
   AlarmConditionFilterKey.JSON_PROPERTY_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmConditionFilterKey {
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nullable

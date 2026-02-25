@@ -43,7 +43,7 @@ import org.thingsboard.client.ApiClient;
   AdminSettings.JSON_PROPERTY_KEY,
   AdminSettings.JSON_PROPERTY_JSON_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AdminSettings {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

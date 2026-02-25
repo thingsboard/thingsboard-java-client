@@ -48,7 +48,7 @@ import org.thingsboard.client.ApiClient;
   RepositorySettings.JSON_PROPERTY_SHOW_MERGE_COMMITS,
   RepositorySettings.JSON_PROPERTY_LOCAL_ONLY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RepositorySettings {
   public static final String JSON_PROPERTY_REPOSITORY_URI = "repositoryUri";
   @javax.annotation.Nullable

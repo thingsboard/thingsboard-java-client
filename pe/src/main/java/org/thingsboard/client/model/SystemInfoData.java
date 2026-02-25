@@ -44,7 +44,7 @@ import org.thingsboard.client.ApiClient;
   SystemInfoData.JSON_PROPERTY_DISC_USAGE,
   SystemInfoData.JSON_PROPERTY_TOTAL_DISC_SPACE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SystemInfoData {
   public static final String JSON_PROPERTY_SERVICE_ID = "serviceId";
   @javax.annotation.Nullable

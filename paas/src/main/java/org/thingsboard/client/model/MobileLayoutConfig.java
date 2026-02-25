@@ -40,7 +40,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   MobileLayoutConfig.JSON_PROPERTY_PAGES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MobileLayoutConfig {
   public static final String JSON_PROPERTY_PAGES = "pages";
   @javax.annotation.Nullable

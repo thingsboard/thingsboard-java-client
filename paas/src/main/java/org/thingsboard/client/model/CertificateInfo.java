@@ -46,7 +46,7 @@ import org.thingsboard.client.ApiClient;
   CertificateInfo.JSON_PROPERTY_ISSUED_AT,
   CertificateInfo.JSON_PROPERTY_ACME_CERTIFICATE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CertificateInfo {
   public static final String JSON_PROPERTY_STATUS = "status";
   @javax.annotation.Nullable

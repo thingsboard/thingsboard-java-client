@@ -50,7 +50,7 @@ import org.thingsboard.client.ApiClient;
   PlatformTwoFaSettings.JSON_PROPERTY_ENFORCE_TWO_FA,
   PlatformTwoFaSettings.JSON_PROPERTY_ENFORCED_USERS_FILTER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PlatformTwoFaSettings {
   public static final String JSON_PROPERTY_PROVIDERS = "providers";
   @javax.annotation.Nonnull

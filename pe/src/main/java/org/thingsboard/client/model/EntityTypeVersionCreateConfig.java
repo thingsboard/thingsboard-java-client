@@ -49,7 +49,7 @@ import org.thingsboard.client.ApiClient;
   EntityTypeVersionCreateConfig.JSON_PROPERTY_ENTITY_IDS,
   EntityTypeVersionCreateConfig.JSON_PROPERTY_ALL_ENTITIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityTypeVersionCreateConfig {
   public static final String JSON_PROPERTY_SAVE_RELATIONS = "saveRelations";
   @javax.annotation.Nullable

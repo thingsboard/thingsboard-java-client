@@ -48,7 +48,7 @@ import org.thingsboard.client.ApiClient;
   DomainInfo.JSON_PROPERTY_PROPAGATE_TO_EDGE,
   DomainInfo.JSON_PROPERTY_OAUTH2_CLIENT_INFOS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DomainInfo {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

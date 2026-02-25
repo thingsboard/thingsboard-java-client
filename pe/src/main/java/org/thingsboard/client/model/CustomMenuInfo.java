@@ -51,7 +51,7 @@ import org.thingsboard.client.ApiClient;
   CustomMenuInfo.JSON_PROPERTY_ASSIGNEE_TYPE,
   CustomMenuInfo.JSON_PROPERTY_USER_GROUP_NAMES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomMenuInfo {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

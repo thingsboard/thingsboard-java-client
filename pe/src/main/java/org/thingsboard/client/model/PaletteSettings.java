@@ -39,7 +39,7 @@ import org.thingsboard.client.ApiClient;
   PaletteSettings.JSON_PROPERTY_PRIMARY_PALETTE,
   PaletteSettings.JSON_PROPERTY_ACCENT_PALETTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PaletteSettings {
   public static final String JSON_PROPERTY_PRIMARY_PALETTE = "primaryPalette";
   @javax.annotation.Nonnull

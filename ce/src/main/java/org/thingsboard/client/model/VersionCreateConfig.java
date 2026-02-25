@@ -40,7 +40,7 @@ import org.thingsboard.client.ApiClient;
   VersionCreateConfig.JSON_PROPERTY_SAVE_CREDENTIALS,
   VersionCreateConfig.JSON_PROPERTY_SAVE_CALCULATED_FIELDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionCreateConfig {
   public static final String JSON_PROPERTY_SAVE_RELATIONS = "saveRelations";
   @javax.annotation.Nullable

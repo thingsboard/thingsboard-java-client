@@ -47,7 +47,7 @@ import org.thingsboard.client.ApiClient;
   Secret.JSON_PROPERTY_VALUE,
   Secret.JSON_PROPERTY_ENCRYPTED_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Secret {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable

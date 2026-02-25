@@ -53,7 +53,7 @@ import org.thingsboard.client.ApiClient;
   WhiteLabelingParams.JSON_PROPERTY_HIDE_CONNECTIVITY_DIALOG,
   WhiteLabelingParams.JSON_PROPERTY_OVERRIDE_TRENDZ_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WhiteLabelingParams {
   public static final String JSON_PROPERTY_LOGO_IMAGE_URL = "logoImageUrl";
   @javax.annotation.Nullable

@@ -57,7 +57,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.thingsboard.client.ApiClient;
 import org.thingsboard.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonDeserialize(using = ApiAuthLoginPost401Response.ApiAuthLoginPost401ResponseDeserializer.class)
 @JsonSerialize(using = ApiAuthLoginPost401Response.ApiAuthLoginPost401ResponseSerializer.class)
 public class ApiAuthLoginPost401Response extends AbstractOpenApiSchema {

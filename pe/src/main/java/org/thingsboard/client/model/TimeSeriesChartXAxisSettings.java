@@ -55,7 +55,7 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartXAxisSettings.JSON_PROPERTY_SPLIT_LINES_COLOR,
   TimeSeriesChartXAxisSettings.JSON_PROPERTY_TICKS_FORMAT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartXAxisSettings {
   public static final String JSON_PROPERTY_SHOW = "show";
   @javax.annotation.Nullable

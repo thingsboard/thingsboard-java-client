@@ -41,7 +41,7 @@ import org.thingsboard.client.ApiClient;
   SystemInfo.JSON_PROPERTY_SYSTEM_DATA,
   SystemInfo.JSON_PROPERTY_MONOLITH
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SystemInfo {
   public static final String JSON_PROPERTY_SYSTEM_DATA = "systemData";
   @javax.annotation.Nullable

@@ -50,7 +50,7 @@ import org.thingsboard.client.ApiClient;
   LwM2MServerSecurityConfigDefault.JSON_PROPERTY_SECURITY_HOST,
   LwM2MServerSecurityConfigDefault.JSON_PROPERTY_SECURITY_PORT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LwM2MServerSecurityConfigDefault {
   public static final String JSON_PROPERTY_SHORT_SERVER_ID = "shortServerId";
   @javax.annotation.Nullable

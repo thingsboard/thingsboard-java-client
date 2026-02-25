@@ -39,7 +39,7 @@ import org.thingsboard.client.ApiClient;
   NodeConnectionInfo.JSON_PROPERTY_TO_INDEX,
   NodeConnectionInfo.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NodeConnectionInfo {
   public static final String JSON_PROPERTY_FROM_INDEX = "fromIndex";
   @javax.annotation.Nonnull

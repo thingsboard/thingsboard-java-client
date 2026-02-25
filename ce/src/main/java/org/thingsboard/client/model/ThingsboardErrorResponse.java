@@ -41,7 +41,7 @@ import org.thingsboard.client.ApiClient;
   ThingsboardErrorResponse.JSON_PROPERTY_ERROR_CODE,
   ThingsboardErrorResponse.JSON_PROPERTY_TIMESTAMP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ThingsboardErrorResponse {
   public static final String JSON_PROPERTY_STATUS = "status";
   @javax.annotation.Nullable

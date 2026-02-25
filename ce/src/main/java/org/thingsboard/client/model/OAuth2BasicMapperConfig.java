@@ -45,7 +45,7 @@ import org.thingsboard.client.ApiClient;
   OAuth2BasicMapperConfig.JSON_PROPERTY_DEFAULT_DASHBOARD_NAME,
   OAuth2BasicMapperConfig.JSON_PROPERTY_ALWAYS_FULL_SCREEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2BasicMapperConfig {
   public static final String JSON_PROPERTY_EMAIL_ATTRIBUTE_KEY = "emailAttributeKey";
   @javax.annotation.Nullable

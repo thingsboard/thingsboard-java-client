@@ -45,7 +45,7 @@ import org.thingsboard.client.ApiClient;
   UserMobileInfo.JSON_PROPERTY_HOME_DASHBOARD_INFO,
   UserMobileInfo.JSON_PROPERTY_PAGES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UserMobileInfo {
   public static final String JSON_PROPERTY_USER = "user";
   @javax.annotation.Nullable

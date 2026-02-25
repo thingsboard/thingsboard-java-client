@@ -38,7 +38,7 @@ import org.thingsboard.client.ApiClient;
   ResetPasswordRequest.JSON_PROPERTY_RESET_TOKEN,
   ResetPasswordRequest.JSON_PROPERTY_PASSWORD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ResetPasswordRequest {
   public static final String JSON_PROPERTY_RESET_TOKEN = "resetToken";
   @javax.annotation.Nullable

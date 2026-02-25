@@ -41,7 +41,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   ApiAuthTokenPostRequest.JSON_PROPERTY_REFRESH_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:55.932789+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ApiAuthTokenPostRequest {
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
   private JsonNullable<Object> refreshToken = JsonNullable.<Object>of(null);

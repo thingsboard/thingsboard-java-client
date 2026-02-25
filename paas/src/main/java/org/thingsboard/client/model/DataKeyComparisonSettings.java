@@ -39,7 +39,7 @@ import org.thingsboard.client.ApiClient;
   DataKeyComparisonSettings.JSON_PROPERTY_COMPARISON_VALUES_LABEL,
   DataKeyComparisonSettings.JSON_PROPERTY_COLOR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:18:03.556877+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DataKeyComparisonSettings {
   public static final String JSON_PROPERTY_SHOW_VALUES_FOR_COMPARISON = "showValuesForComparison";
   @javax.annotation.Nullable

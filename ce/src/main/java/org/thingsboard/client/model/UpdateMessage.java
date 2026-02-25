@@ -42,7 +42,7 @@ import org.thingsboard.client.ApiClient;
   UpdateMessage.JSON_PROPERTY_CURRENT_VERSION_RELEASE_NOTES_URL,
   UpdateMessage.JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-24T16:17:50.774971+02:00[Europe/Kiev]", comments = "Generator version: 7.20.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UpdateMessage {
   public static final String JSON_PROPERTY_UPDATE_AVAILABLE = "updateAvailable";
   @javax.annotation.Nullable
