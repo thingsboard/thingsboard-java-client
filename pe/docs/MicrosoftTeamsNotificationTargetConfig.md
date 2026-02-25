@@ -10,8 +10,8 @@
 |**webhookUrl** | **String** |  |  |
 |**channelName** | **String** |  |  |
 |**useOldApi** | **Boolean** |  |  [optional] |
-|**title** | **String** |  |  [optional] |
 |**id** | **Object** |  |  [optional] |
+|**title** | **String** |  |  [optional] |
 |**email** | **String** |  |  [optional] |
 |**firstName** | **String** |  |  [optional] |
 |**lastName** | **String** |  |  [optional] |

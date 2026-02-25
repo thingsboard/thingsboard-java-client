@@ -8,8 +8,8 @@ Filter for various event types
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**notEmpty** | **Boolean** |  |  [optional] |
 |**eventType** | **EventType** | String value representing the event type |  |
+|**notEmpty** | **Boolean** |  |  [optional] |
 
 
 

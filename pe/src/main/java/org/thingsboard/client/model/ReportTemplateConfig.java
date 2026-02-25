@@ -45,9 +45,9 @@ import org.thingsboard.client.ApiClient;
  * ReportTemplateConfig
  */
 @JsonPropertyOrder({
+  ReportTemplateConfig.JSON_PROPERTY_FORMAT,
   ReportTemplateConfig.JSON_PROPERTY_ENTITY_ALIASES,
   ReportTemplateConfig.JSON_PROPERTY_FILTERS,
-  ReportTemplateConfig.JSON_PROPERTY_FORMAT,
   ReportTemplateConfig.JSON_PROPERTY_NAME_PATTERN,
   ReportTemplateConfig.JSON_PROPERTY_COMPONENTS,
   ReportTemplateConfig.JSON_PROPERTY_TIME_DATA_PATTERN
@@ -64,6 +64,10 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class ReportTemplateConfig {
+  public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nonnull
+  private TbReportFormat format;
+
   public static final String JSON_PROPERTY_ENTITY_ALIASES = "entityAliases";
   @javax.annotation.Nullable
   private List<EntityAlias> entityAliases = new ArrayList<>();
@@ -71,10 +75,6 @@ public class ReportTemplateConfig {
   public static final String JSON_PROPERTY_FILTERS = "filters";
   @javax.annotation.Nullable
   private List<Filter> filters = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_FORMAT = "format";
-  @javax.annotation.Nonnull
-  private TbReportFormat format;
 
   public static final String JSON_PROPERTY_NAME_PATTERN = "namePattern";
   @javax.annotation.Nullable
@@ -90,6 +90,30 @@ public class ReportTemplateConfig {
 
   public ReportTemplateConfig() { 
   }
+
+  public ReportTemplateConfig format(@javax.annotation.Nonnull TbReportFormat format) {
+    this.format = format;
+    return this;
+  }
+
+  /**
+   * Report format
+   * @return format
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public TbReportFormat getFormat() {
+    return format;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setFormat(@javax.annotation.Nonnull TbReportFormat format) {
+    this.format = format;
+  }
+
 
   public ReportTemplateConfig entityAliases(@javax.annotation.Nullable List<EntityAlias> entityAliases) {
     this.entityAliases = entityAliases;
@@ -152,30 +176,6 @@ public class ReportTemplateConfig {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFilters(@javax.annotation.Nullable List<Filter> filters) {
     this.filters = filters;
-  }
-
-
-  public ReportTemplateConfig format(@javax.annotation.Nonnull TbReportFormat format) {
-    this.format = format;
-    return this;
-  }
-
-  /**
-   * Report format
-   * @return format
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public TbReportFormat getFormat() {
-    return format;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFormat(@javax.annotation.Nonnull TbReportFormat format) {
-    this.format = format;
   }
 
 
@@ -271,9 +271,9 @@ public class ReportTemplateConfig {
       return false;
     }
     ReportTemplateConfig reportTemplateConfig = (ReportTemplateConfig) o;
-    return Objects.equals(this.entityAliases, reportTemplateConfig.entityAliases) &&
+    return Objects.equals(this.format, reportTemplateConfig.format) &&
+        Objects.equals(this.entityAliases, reportTemplateConfig.entityAliases) &&
         Objects.equals(this.filters, reportTemplateConfig.filters) &&
-        Objects.equals(this.format, reportTemplateConfig.format) &&
         Objects.equals(this.namePattern, reportTemplateConfig.namePattern) &&
         Objects.equals(this.components, reportTemplateConfig.components) &&
         Objects.equals(this.timeDataPattern, reportTemplateConfig.timeDataPattern);
@@ -281,16 +281,16 @@ public class ReportTemplateConfig {
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityAliases, filters, format, namePattern, components, timeDataPattern);
+    return Objects.hash(format, entityAliases, filters, namePattern, components, timeDataPattern);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportTemplateConfig {\n");
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    entityAliases: ").append(toIndentedString(entityAliases)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
-    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    namePattern: ").append(toIndentedString(namePattern)).append("\n");
     sb.append("    components: ").append(toIndentedString(components)).append("\n");
     sb.append("    timeDataPattern: ").append(toIndentedString(timeDataPattern)).append("\n");
@@ -341,6 +341,11 @@ public class ReportTemplateConfig {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFormat()))));
+    }
+
     // add `entityAliases` to the URL query string
     if (getEntityAliases() != null) {
       for (int i = 0; i < getEntityAliases().size(); i++) {
@@ -359,11 +364,6 @@ public class ReportTemplateConfig {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `format` to the URL query string
-    if (getFormat() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFormat()))));
     }
 
     // add `namePattern` to the URL query string

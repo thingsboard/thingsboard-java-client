@@ -2,7 +2,6 @@
 
 # AttributesOutputStrategy
 
-Configuration for calculated fields
 
 ## Properties
 

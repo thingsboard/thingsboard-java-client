@@ -1,6 +1,6 @@
 
 
-# ApiAuthTokenPostRequest
+# RefreshTokenRequest
 
 
 ## Properties

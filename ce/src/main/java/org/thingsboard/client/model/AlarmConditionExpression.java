@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * Base export container for ThingsBoard entities
+ * AlarmConditionExpression
  */
 @JsonPropertyOrder({
   AlarmConditionExpression.JSON_PROPERTY_TYPE

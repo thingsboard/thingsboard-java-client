@@ -41,8 +41,8 @@ import org.thingsboard.client.ApiClient;
   ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_METHOD_NAME,
   ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_FILE_NAME,
   ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_LINE_NUMBER,
-  ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_NATIVE_METHOD,
-  ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_CLASS_NAME
+  ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_CLASS_NAME,
+  ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_NATIVE_METHOD
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ErrorComponentAllOfExceptionCauseStackTrace {
@@ -70,13 +70,13 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
   @javax.annotation.Nullable
   private Integer lineNumber;
 
-  public static final String JSON_PROPERTY_NATIVE_METHOD = "nativeMethod";
-  @javax.annotation.Nullable
-  private Boolean nativeMethod;
-
   public static final String JSON_PROPERTY_CLASS_NAME = "className";
   @javax.annotation.Nullable
   private String className;
+
+  public static final String JSON_PROPERTY_NATIVE_METHOD = "nativeMethod";
+  @javax.annotation.Nullable
+  private Boolean nativeMethod;
 
   public ErrorComponentAllOfExceptionCauseStackTrace() { 
   }
@@ -225,30 +225,6 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace nativeMethod(@javax.annotation.Nullable Boolean nativeMethod) {
-    this.nativeMethod = nativeMethod;
-    return this;
-  }
-
-  /**
-   * Get nativeMethod
-   * @return nativeMethod
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NATIVE_METHOD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getNativeMethod() {
-    return nativeMethod;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_NATIVE_METHOD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNativeMethod(@javax.annotation.Nullable Boolean nativeMethod) {
-    this.nativeMethod = nativeMethod;
-  }
-
-
   public ErrorComponentAllOfExceptionCauseStackTrace className(@javax.annotation.Nullable String className) {
     this.className = className;
     return this;
@@ -273,6 +249,30 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
   }
 
 
+  public ErrorComponentAllOfExceptionCauseStackTrace nativeMethod(@javax.annotation.Nullable Boolean nativeMethod) {
+    this.nativeMethod = nativeMethod;
+    return this;
+  }
+
+  /**
+   * Get nativeMethod
+   * @return nativeMethod
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NATIVE_METHOD, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getNativeMethod() {
+    return nativeMethod;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NATIVE_METHOD, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNativeMethod(@javax.annotation.Nullable Boolean nativeMethod) {
+    this.nativeMethod = nativeMethod;
+  }
+
+
   /**
    * Return true if this ErrorComponent_allOf_exception_cause_stackTrace object is equal to o.
    */
@@ -291,13 +291,13 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
         Objects.equals(this.methodName, errorComponentAllOfExceptionCauseStackTrace.methodName) &&
         Objects.equals(this.fileName, errorComponentAllOfExceptionCauseStackTrace.fileName) &&
         Objects.equals(this.lineNumber, errorComponentAllOfExceptionCauseStackTrace.lineNumber) &&
-        Objects.equals(this.nativeMethod, errorComponentAllOfExceptionCauseStackTrace.nativeMethod) &&
-        Objects.equals(this.className, errorComponentAllOfExceptionCauseStackTrace.className);
+        Objects.equals(this.className, errorComponentAllOfExceptionCauseStackTrace.className) &&
+        Objects.equals(this.nativeMethod, errorComponentAllOfExceptionCauseStackTrace.nativeMethod);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(classLoaderName, moduleName, moduleVersion, methodName, fileName, lineNumber, nativeMethod, className);
+    return Objects.hash(classLoaderName, moduleName, moduleVersion, methodName, fileName, lineNumber, className, nativeMethod);
   }
 
   @Override
@@ -310,8 +310,8 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
     sb.append("    methodName: ").append(toIndentedString(methodName)).append("\n");
     sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
     sb.append("    lineNumber: ").append(toIndentedString(lineNumber)).append("\n");
-    sb.append("    nativeMethod: ").append(toIndentedString(nativeMethod)).append("\n");
     sb.append("    className: ").append(toIndentedString(className)).append("\n");
+    sb.append("    nativeMethod: ").append(toIndentedString(nativeMethod)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,14 +389,14 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
       joiner.add(String.format(java.util.Locale.ROOT, "%slineNumber%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLineNumber()))));
     }
 
-    // add `nativeMethod` to the URL query string
-    if (getNativeMethod() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%snativeMethod%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNativeMethod()))));
-    }
-
     // add `className` to the URL query string
     if (getClassName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sclassName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getClassName()))));
+    }
+
+    // add `nativeMethod` to the URL query string
+    if (getNativeMethod() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%snativeMethod%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNativeMethod()))));
     }
 
     return joiner.toString();

@@ -24,8 +24,8 @@ A JSON value representing the Resource.
 |**_public** | **Boolean** |  |  [optional] |
 |**publicLink** | **String** |  |  [optional] [readonly] |
 |**link** | **String** |  |  [optional] [readonly] |
-|**preview** | **String** |  |  [optional] |
 |**data** | **String** | Resource data. |  [optional] |
+|**preview** | **String** |  |  [optional] |
 
 
 

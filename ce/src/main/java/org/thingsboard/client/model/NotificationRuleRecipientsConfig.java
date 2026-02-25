@@ -50,6 +50,19 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "triggerType", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = EscalatedNotificationRuleRecipientsConfig.class, name = "ALARM"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "ALARM_ASSIGNMENT"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "ALARM_COMMENT"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "API_USAGE_LIMIT"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "DEVICE_ACTIVITY"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "EDGE_COMMUNICATION_FAILURE"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "EDGE_CONNECTION"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "ENTITIES_LIMIT"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "ENTITY_ACTION"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "NEW_PLATFORM_VERSION"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "RATE_LIMITS"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "RESOURCES_SHORTAGE"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "TASK_PROCESSING_FAILURE"),
 })
 
 public class NotificationRuleRecipientsConfig {
@@ -167,6 +180,19 @@ static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
   mappings.put("ALARM", EscalatedNotificationRuleRecipientsConfig.class);
+  mappings.put("ALARM_ASSIGNMENT", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("ALARM_COMMENT", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("API_USAGE_LIMIT", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("DEVICE_ACTIVITY", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("EDGE_COMMUNICATION_FAILURE", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("EDGE_CONNECTION", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("ENTITIES_LIMIT", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("ENTITY_ACTION", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("NEW_PLATFORM_VERSION", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("RATE_LIMITS", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("RESOURCES_SHORTAGE", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("TASK_PROCESSING_FAILURE", DefaultNotificationRuleRecipientsConfig.class);
   mappings.put("NotificationRuleRecipientsConfig", NotificationRuleRecipientsConfig.class);
   JSON.registerDiscriminator(NotificationRuleRecipientsConfig.class, "triggerType", mappings);
 }

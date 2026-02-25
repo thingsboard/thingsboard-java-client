@@ -50,6 +50,7 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartKeySettings.JSON_PROPERTY_LINE_SETTINGS,
   TimeSeriesChartKeySettings.JSON_PROPERTY_BAR_SETTINGS,
   TimeSeriesChartKeySettings.JSON_PROPERTY_COMPARISON_SETTINGS,
+  TimeSeriesChartKeySettings.JSON_PROPERTY_YAXIS_ID,
   TimeSeriesChartKeySettings.JSON_PROPERTY_Y_AXIS_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -79,6 +80,10 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
   public static final String JSON_PROPERTY_COMPARISON_SETTINGS = "comparisonSettings";
   @javax.annotation.Nullable
   private DataKeyComparisonSettings comparisonSettings;
+
+  public static final String JSON_PROPERTY_YAXIS_ID = "yaxisId";
+  @javax.annotation.Nullable
+  private String yaxisId;
 
   public static final String JSON_PROPERTY_Y_AXIS_ID = "yAxisId";
   @javax.annotation.Nullable
@@ -207,6 +212,30 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
   }
 
 
+  public TimeSeriesChartKeySettings yaxisId(@javax.annotation.Nullable String yaxisId) {
+    this.yaxisId = yaxisId;
+    return this;
+  }
+
+  /**
+   * Get yaxisId
+   * @return yaxisId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_YAXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getYaxisId() {
+    return yaxisId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_YAXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setYaxisId(@javax.annotation.Nullable String yaxisId) {
+    this.yaxisId = yaxisId;
+  }
+
+
   public TimeSeriesChartKeySettings yAxisId(@javax.annotation.Nullable String yAxisId) {
     this.yAxisId = yAxisId;
     return this;
@@ -254,13 +283,14 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
         Objects.equals(this.lineSettings, timeSeriesChartKeySettings.lineSettings) &&
         Objects.equals(this.barSettings, timeSeriesChartKeySettings.barSettings) &&
         Objects.equals(this.comparisonSettings, timeSeriesChartKeySettings.comparisonSettings) &&
+        Objects.equals(this.yaxisId, timeSeriesChartKeySettings.yaxisId) &&
         Objects.equals(this.yAxisId, timeSeriesChartKeySettings.yAxisId) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(showInLegend, seriesType, lineSettings, barSettings, comparisonSettings, yAxisId, super.hashCode());
+    return Objects.hash(showInLegend, seriesType, lineSettings, barSettings, comparisonSettings, yaxisId, yAxisId, super.hashCode());
   }
 
   @Override
@@ -273,6 +303,7 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
     sb.append("    lineSettings: ").append(toIndentedString(lineSettings)).append("\n");
     sb.append("    barSettings: ").append(toIndentedString(barSettings)).append("\n");
     sb.append("    comparisonSettings: ").append(toIndentedString(comparisonSettings)).append("\n");
+    sb.append("    yaxisId: ").append(toIndentedString(yaxisId)).append("\n");
     sb.append("    yAxisId: ").append(toIndentedString(yAxisId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -349,6 +380,11 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
     // add `comparisonSettings` to the URL query string
     if (getComparisonSettings() != null) {
       joiner.add(getComparisonSettings().toUrlQueryString(prefix + "comparisonSettings" + suffix));
+    }
+
+    // add `yaxisId` to the URL query string
+    if (getYaxisId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%syaxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getYaxisId()))));
     }
 
     // add `yAxisId` to the URL query string

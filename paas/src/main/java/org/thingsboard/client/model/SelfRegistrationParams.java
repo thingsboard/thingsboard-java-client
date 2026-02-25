@@ -57,12 +57,12 @@ import org.thingsboard.client.ApiClient;
   SelfRegistrationParams.JSON_PROPERTY_TITLE,
   SelfRegistrationParams.JSON_PROPERTY_ENABLED,
   SelfRegistrationParams.JSON_PROPERTY_HOME_DASHBOARD,
+  SelfRegistrationParams.JSON_PROPERTY_NOTIFICATION_RECIPIENT,
   SelfRegistrationParams.JSON_PROPERTY_SIGN_UP_FIELDS,
   SelfRegistrationParams.JSON_PROPERTY_DEFAULT_DASHBOARD,
   SelfRegistrationParams.JSON_PROPERTY_CUSTOMER_TITLE_PREFIX,
   SelfRegistrationParams.JSON_PROPERTY_CUSTOM_MENU_ID,
   SelfRegistrationParams.JSON_PROPERTY_CUSTOMER_GROUP_ID,
-  SelfRegistrationParams.JSON_PROPERTY_NOTIFICATION_RECIPIENT,
   SelfRegistrationParams.JSON_PROPERTY_CAPTCHA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -105,6 +105,10 @@ public class SelfRegistrationParams {
   @javax.annotation.Nullable
   private HomeDashboardParams homeDashboard;
 
+  public static final String JSON_PROPERTY_NOTIFICATION_RECIPIENT = "notificationRecipient";
+  @javax.annotation.Nullable
+  private NotificationTargetId notificationRecipient;
+
   public static final String JSON_PROPERTY_SIGN_UP_FIELDS = "signUpFields";
   @javax.annotation.Nullable
   private List<SignUpField> signUpFields = new ArrayList<>();
@@ -124,10 +128,6 @@ public class SelfRegistrationParams {
   public static final String JSON_PROPERTY_CUSTOMER_GROUP_ID = "customerGroupId";
   @javax.annotation.Nullable
   private EntityGroupId customerGroupId;
-
-  public static final String JSON_PROPERTY_NOTIFICATION_RECIPIENT = "notificationRecipient";
-  @javax.annotation.Nullable
-  private NotificationTargetId notificationRecipient;
 
   public static final String JSON_PROPERTY_CAPTCHA = "captcha";
   @javax.annotation.Nullable
@@ -312,6 +312,30 @@ public class SelfRegistrationParams {
   }
 
 
+  public SelfRegistrationParams notificationRecipient(@javax.annotation.Nullable NotificationTargetId notificationRecipient) {
+    this.notificationRecipient = notificationRecipient;
+    return this;
+  }
+
+  /**
+   * Get notificationRecipient
+   * @return notificationRecipient
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_RECIPIENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public NotificationTargetId getNotificationRecipient() {
+    return notificationRecipient;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_RECIPIENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNotificationRecipient(@javax.annotation.Nullable NotificationTargetId notificationRecipient) {
+    this.notificationRecipient = notificationRecipient;
+  }
+
+
   public SelfRegistrationParams signUpFields(@javax.annotation.Nullable List<SignUpField> signUpFields) {
     this.signUpFields = signUpFields;
     return this;
@@ -440,30 +464,6 @@ public class SelfRegistrationParams {
   }
 
 
-  public SelfRegistrationParams notificationRecipient(@javax.annotation.Nullable NotificationTargetId notificationRecipient) {
-    this.notificationRecipient = notificationRecipient;
-    return this;
-  }
-
-  /**
-   * Get notificationRecipient
-   * @return notificationRecipient
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_RECIPIENT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public NotificationTargetId getNotificationRecipient() {
-    return notificationRecipient;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_RECIPIENT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotificationRecipient(@javax.annotation.Nullable NotificationTargetId notificationRecipient) {
-    this.notificationRecipient = notificationRecipient;
-  }
-
-
   public SelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
     this.captcha = captcha;
     return this;
@@ -507,18 +507,18 @@ public class SelfRegistrationParams {
         Objects.equals(this.title, selfRegistrationParams.title) &&
         Objects.equals(this.enabled, selfRegistrationParams.enabled) &&
         Objects.equals(this.homeDashboard, selfRegistrationParams.homeDashboard) &&
+        Objects.equals(this.notificationRecipient, selfRegistrationParams.notificationRecipient) &&
         Objects.equals(this.signUpFields, selfRegistrationParams.signUpFields) &&
         Objects.equals(this.defaultDashboard, selfRegistrationParams.defaultDashboard) &&
         Objects.equals(this.customerTitlePrefix, selfRegistrationParams.customerTitlePrefix) &&
         Objects.equals(this.customMenuId, selfRegistrationParams.customMenuId) &&
         Objects.equals(this.customerGroupId, selfRegistrationParams.customerGroupId) &&
-        Objects.equals(this.notificationRecipient, selfRegistrationParams.notificationRecipient) &&
         Objects.equals(this.captcha, selfRegistrationParams.captcha);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(permissions, type, showPrivacyPolicy, showTermsOfUse, title, enabled, homeDashboard, signUpFields, defaultDashboard, customerTitlePrefix, customMenuId, customerGroupId, notificationRecipient, captcha);
+    return Objects.hash(permissions, type, showPrivacyPolicy, showTermsOfUse, title, enabled, homeDashboard, notificationRecipient, signUpFields, defaultDashboard, customerTitlePrefix, customMenuId, customerGroupId, captcha);
   }
 
   @Override
@@ -532,12 +532,12 @@ public class SelfRegistrationParams {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    homeDashboard: ").append(toIndentedString(homeDashboard)).append("\n");
+    sb.append("    notificationRecipient: ").append(toIndentedString(notificationRecipient)).append("\n");
     sb.append("    signUpFields: ").append(toIndentedString(signUpFields)).append("\n");
     sb.append("    defaultDashboard: ").append(toIndentedString(defaultDashboard)).append("\n");
     sb.append("    customerTitlePrefix: ").append(toIndentedString(customerTitlePrefix)).append("\n");
     sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
     sb.append("    customerGroupId: ").append(toIndentedString(customerGroupId)).append("\n");
-    sb.append("    notificationRecipient: ").append(toIndentedString(notificationRecipient)).append("\n");
     sb.append("    captcha: ").append(toIndentedString(captcha)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -626,6 +626,11 @@ public class SelfRegistrationParams {
       joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
+    // add `notificationRecipient` to the URL query string
+    if (getNotificationRecipient() != null) {
+      joiner.add(getNotificationRecipient().toUrlQueryString(prefix + "notificationRecipient" + suffix));
+    }
+
     // add `signUpFields` to the URL query string
     if (getSignUpFields() != null) {
       for (int i = 0; i < getSignUpFields().size(); i++) {
@@ -654,11 +659,6 @@ public class SelfRegistrationParams {
     // add `customerGroupId` to the URL query string
     if (getCustomerGroupId() != null) {
       joiner.add(getCustomerGroupId().toUrlQueryString(prefix + "customerGroupId" + suffix));
-    }
-
-    // add `notificationRecipient` to the URL query string
-    if (getNotificationRecipient() != null) {
-      joiner.add(getNotificationRecipient().toUrlQueryString(prefix + "notificationRecipient" + suffix));
     }
 
     // add `captcha` to the URL query string

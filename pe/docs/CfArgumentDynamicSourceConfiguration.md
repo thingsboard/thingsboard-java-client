@@ -2,7 +2,6 @@
 
 # CfArgumentDynamicSourceConfiguration
 
-Configuration for calculated fields
 
 ## Properties
 

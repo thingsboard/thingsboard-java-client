@@ -36,20 +36,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import org.thingsboard.client.ApiClient;
 /**
- * ApiAuthTokenPostRequest
+ * RefreshTokenRequest
  */
 @JsonPropertyOrder({
-  ApiAuthTokenPostRequest.JSON_PROPERTY_REFRESH_TOKEN
+  RefreshTokenRequest.JSON_PROPERTY_REFRESH_TOKEN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class ApiAuthTokenPostRequest {
+public class RefreshTokenRequest {
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
   private JsonNullable<Object> refreshToken = JsonNullable.<Object>of(null);
 
-  public ApiAuthTokenPostRequest() { 
+  public RefreshTokenRequest() { 
   }
 
-  public ApiAuthTokenPostRequest refreshToken(@javax.annotation.Nullable Object refreshToken) {
+  public RefreshTokenRequest refreshToken(@javax.annotation.Nullable Object refreshToken) {
     this.refreshToken = JsonNullable.<Object>of(refreshToken);
     return this;
   }
@@ -82,7 +82,7 @@ public class ApiAuthTokenPostRequest {
 
 
   /**
-   * Return true if this _api_auth_token_post_request object is equal to o.
+   * Return true if this refreshToken_request object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -92,8 +92,8 @@ public class ApiAuthTokenPostRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiAuthTokenPostRequest apiAuthTokenPostRequest = (ApiAuthTokenPostRequest) o;
-    return equalsNullable(this.refreshToken, apiAuthTokenPostRequest.refreshToken);
+    RefreshTokenRequest refreshTokenRequest = (RefreshTokenRequest) o;
+    return equalsNullable(this.refreshToken, refreshTokenRequest.refreshToken);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -115,7 +115,7 @@ public class ApiAuthTokenPostRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiAuthTokenPostRequest {\n");
+    sb.append("class RefreshTokenRequest {\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("}");
     return sb.toString();

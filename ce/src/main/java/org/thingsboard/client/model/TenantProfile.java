@@ -42,8 +42,8 @@ import org.thingsboard.client.ApiClient;
   TenantProfile.JSON_PROPERTY_NAME,
   TenantProfile.JSON_PROPERTY_DESCRIPTION,
   TenantProfile.JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE,
-  TenantProfile.JSON_PROPERTY_PROFILE_DATA,
-  TenantProfile.JSON_PROPERTY_DEFAULT
+  TenantProfile.JSON_PROPERTY_DEFAULT,
+  TenantProfile.JSON_PROPERTY_PROFILE_DATA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantProfile {
@@ -67,13 +67,13 @@ public class TenantProfile {
   @javax.annotation.Nullable
   private Boolean isolatedTbRuleEngine;
 
-  public static final String JSON_PROPERTY_PROFILE_DATA = "profileData";
-  @javax.annotation.Nullable
-  private TenantProfileData profileData;
-
   public static final String JSON_PROPERTY_DEFAULT = "default";
   @javax.annotation.Nullable
   private Boolean _default;
+
+  public static final String JSON_PROPERTY_PROFILE_DATA = "profileData";
+  @javax.annotation.Nullable
+  private TenantProfileData profileData;
 
   public TenantProfile() { 
   }
@@ -196,30 +196,6 @@ public class TenantProfile {
   }
 
 
-  public TenantProfile profileData(@javax.annotation.Nullable TenantProfileData profileData) {
-    this.profileData = profileData;
-    return this;
-  }
-
-  /**
-   * Get profileData
-   * @return profileData
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TenantProfileData getProfileData() {
-    return profileData;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfileData(@javax.annotation.Nullable TenantProfileData profileData) {
-    this.profileData = profileData;
-  }
-
-
   public TenantProfile _default(@javax.annotation.Nullable Boolean _default) {
     this._default = _default;
     return this;
@@ -244,6 +220,30 @@ public class TenantProfile {
   }
 
 
+  public TenantProfile profileData(@javax.annotation.Nullable TenantProfileData profileData) {
+    this.profileData = profileData;
+    return this;
+  }
+
+  /**
+   * Get profileData
+   * @return profileData
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TenantProfileData getProfileData() {
+    return profileData;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProfileData(@javax.annotation.Nullable TenantProfileData profileData) {
+    this.profileData = profileData;
+  }
+
+
   /**
    * Return true if this TenantProfile object is equal to o.
    */
@@ -261,13 +261,13 @@ public class TenantProfile {
         Objects.equals(this.name, tenantProfile.name) &&
         Objects.equals(this.description, tenantProfile.description) &&
         Objects.equals(this.isolatedTbRuleEngine, tenantProfile.isolatedTbRuleEngine) &&
-        Objects.equals(this.profileData, tenantProfile.profileData) &&
-        Objects.equals(this._default, tenantProfile._default);
+        Objects.equals(this._default, tenantProfile._default) &&
+        Objects.equals(this.profileData, tenantProfile.profileData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, name, description, isolatedTbRuleEngine, profileData, _default);
+    return Objects.hash(id, createdTime, name, description, isolatedTbRuleEngine, _default, profileData);
   }
 
   @Override
@@ -279,8 +279,8 @@ public class TenantProfile {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    isolatedTbRuleEngine: ").append(toIndentedString(isolatedTbRuleEngine)).append("\n");
-    sb.append("    profileData: ").append(toIndentedString(profileData)).append("\n");
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
+    sb.append("    profileData: ").append(toIndentedString(profileData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,14 +353,14 @@ public class TenantProfile {
       joiner.add(String.format(java.util.Locale.ROOT, "%sisolatedTbRuleEngine%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsolatedTbRuleEngine()))));
     }
 
-    // add `profileData` to the URL query string
-    if (getProfileData() != null) {
-      joiner.add(getProfileData().toUrlQueryString(prefix + "profileData" + suffix));
-    }
-
     // add `default` to the URL query string
     if (getDefault() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefault()))));
+    }
+
+    // add `profileData` to the URL query string
+    if (getProfileData() != null) {
+      joiner.add(getProfileData().toUrlQueryString(prefix + "profileData" + suffix));
     }
 
     return joiner.toString();

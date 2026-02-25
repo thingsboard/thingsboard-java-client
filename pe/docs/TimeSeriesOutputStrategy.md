@@ -2,7 +2,6 @@
 
 # TimeSeriesOutputStrategy
 
-Configuration for calculated fields
 
 ## Properties
 

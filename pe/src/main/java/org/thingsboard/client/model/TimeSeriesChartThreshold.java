@@ -62,6 +62,7 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartThreshold.JSON_PROPERTY_LABEL_COLOR,
   TimeSeriesChartThreshold.JSON_PROPERTY_ENABLE_LABEL_BACKGROUND,
   TimeSeriesChartThreshold.JSON_PROPERTY_LABEL_BACKGROUND,
+  TimeSeriesChartThreshold.JSON_PROPERTY_YAXIS_ID,
   TimeSeriesChartThreshold.JSON_PROPERTY_Y_AXIS_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -153,6 +154,10 @@ public class TimeSeriesChartThreshold {
   public static final String JSON_PROPERTY_LABEL_BACKGROUND = "labelBackground";
   @javax.annotation.Nullable
   private String labelBackground;
+
+  public static final String JSON_PROPERTY_YAXIS_ID = "yaxisId";
+  @javax.annotation.Nullable
+  private String yaxisId;
 
   public static final String JSON_PROPERTY_Y_AXIS_ID = "yAxisId";
   @javax.annotation.Nullable
@@ -689,6 +694,30 @@ public class TimeSeriesChartThreshold {
   }
 
 
+  public TimeSeriesChartThreshold yaxisId(@javax.annotation.Nullable String yaxisId) {
+    this.yaxisId = yaxisId;
+    return this;
+  }
+
+  /**
+   * Get yaxisId
+   * @return yaxisId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_YAXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getYaxisId() {
+    return yaxisId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_YAXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setYaxisId(@javax.annotation.Nullable String yaxisId) {
+    this.yaxisId = yaxisId;
+  }
+
+
   public TimeSeriesChartThreshold yAxisId(@javax.annotation.Nullable String yAxisId) {
     this.yAxisId = yAxisId;
     return this;
@@ -747,12 +776,13 @@ public class TimeSeriesChartThreshold {
         Objects.equals(this.labelColor, timeSeriesChartThreshold.labelColor) &&
         Objects.equals(this.enableLabelBackground, timeSeriesChartThreshold.enableLabelBackground) &&
         Objects.equals(this.labelBackground, timeSeriesChartThreshold.labelBackground) &&
+        Objects.equals(this.yaxisId, timeSeriesChartThreshold.yaxisId) &&
         Objects.equals(this.yAxisId, timeSeriesChartThreshold.yAxisId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, value, latestKeyType, latestKey, entityKeyType, entityAlias, entityKey, units, decimals, lineColor, lineType, lineWidth, startSymbol, startSymbolSize, endSymbol, endSymbolSize, showLabel, labelPosition, labelFont, labelColor, enableLabelBackground, labelBackground, yAxisId);
+    return Objects.hash(type, value, latestKeyType, latestKey, entityKeyType, entityAlias, entityKey, units, decimals, lineColor, lineType, lineWidth, startSymbol, startSymbolSize, endSymbol, endSymbolSize, showLabel, labelPosition, labelFont, labelColor, enableLabelBackground, labelBackground, yaxisId, yAxisId);
   }
 
   @Override
@@ -781,6 +811,7 @@ public class TimeSeriesChartThreshold {
     sb.append("    labelColor: ").append(toIndentedString(labelColor)).append("\n");
     sb.append("    enableLabelBackground: ").append(toIndentedString(enableLabelBackground)).append("\n");
     sb.append("    labelBackground: ").append(toIndentedString(labelBackground)).append("\n");
+    sb.append("    yaxisId: ").append(toIndentedString(yaxisId)).append("\n");
     sb.append("    yAxisId: ").append(toIndentedString(yAxisId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -937,6 +968,11 @@ public class TimeSeriesChartThreshold {
     // add `labelBackground` to the URL query string
     if (getLabelBackground() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slabelBackground%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLabelBackground()))));
+    }
+
+    // add `yaxisId` to the URL query string
+    if (getYaxisId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%syaxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getYaxisId()))));
     }
 
     // add `yAxisId` to the URL query string

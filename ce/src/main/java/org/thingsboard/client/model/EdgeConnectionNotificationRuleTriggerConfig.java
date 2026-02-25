@@ -134,12 +134,6 @@ public class EdgeConnectionNotificationRuleTriggerConfig extends NotificationRul
   }
 
 
-  @Override
-  public EdgeConnectionNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
-
   /**
    * Return true if this EdgeConnectionNotificationRuleTriggerConfig object is equal to o.
    */

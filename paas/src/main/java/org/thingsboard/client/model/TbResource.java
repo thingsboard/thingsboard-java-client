@@ -56,8 +56,8 @@ import org.thingsboard.client.ApiClient;
   TbResource.JSON_PROPERTY_PUBLIC,
   TbResource.JSON_PROPERTY_PUBLIC_LINK,
   TbResource.JSON_PROPERTY_LINK,
-  TbResource.JSON_PROPERTY_PREVIEW,
-  TbResource.JSON_PROPERTY_DATA
+  TbResource.JSON_PROPERTY_DATA,
+  TbResource.JSON_PROPERTY_PREVIEW
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TbResource {
@@ -125,13 +125,13 @@ public class TbResource {
   @javax.annotation.Nullable
   private String link;
 
-  public static final String JSON_PROPERTY_PREVIEW = "preview";
-  @javax.annotation.Nullable
-  private String preview;
-
   public static final String JSON_PROPERTY_DATA = "data";
   @javax.annotation.Nullable
   private String data;
+
+  public static final String JSON_PROPERTY_PREVIEW = "preview";
+  @javax.annotation.Nullable
+  private String preview;
 
   public TbResource() { 
   }
@@ -478,30 +478,6 @@ public class TbResource {
 
 
 
-  public TbResource preview(@javax.annotation.Nullable String preview) {
-    this.preview = preview;
-    return this;
-  }
-
-  /**
-   * Get preview
-   * @return preview
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PREVIEW, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPreview() {
-    return preview;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PREVIEW, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreview(@javax.annotation.Nullable String preview) {
-    this.preview = preview;
-  }
-
-
   public TbResource data(@javax.annotation.Nullable String data) {
     this.data = data;
     return this;
@@ -523,6 +499,30 @@ public class TbResource {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setData(@javax.annotation.Nullable String data) {
     this.data = data;
+  }
+
+
+  public TbResource preview(@javax.annotation.Nullable String preview) {
+    this.preview = preview;
+    return this;
+  }
+
+  /**
+   * Get preview
+   * @return preview
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PREVIEW, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getPreview() {
+    return preview;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PREVIEW, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPreview(@javax.annotation.Nullable String preview) {
+    this.preview = preview;
   }
 
 
@@ -554,13 +554,13 @@ public class TbResource {
         Objects.equals(this._public, tbResource._public) &&
         Objects.equals(this.publicLink, tbResource.publicLink) &&
         Objects.equals(this.link, tbResource.link) &&
-        Objects.equals(this.preview, tbResource.preview) &&
-        Objects.equals(this.data, tbResource.data);
+        Objects.equals(this.data, tbResource.data) &&
+        Objects.equals(this.preview, tbResource.preview);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, title, resourceType, resourceSubType, resourceKey, publicResourceKey, etag, fileName, descriptor, name, _public, publicLink, link, preview, data);
+    return Objects.hash(id, createdTime, tenantId, customerId, title, resourceType, resourceSubType, resourceKey, publicResourceKey, etag, fileName, descriptor, name, _public, publicLink, link, data, preview);
   }
 
   @Override
@@ -583,8 +583,8 @@ public class TbResource {
     sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("    publicLink: ").append(toIndentedString(publicLink)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
-    sb.append("    preview: ").append(toIndentedString(preview)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    preview: ").append(toIndentedString(preview)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -712,14 +712,14 @@ public class TbResource {
       joiner.add(String.format(java.util.Locale.ROOT, "%slink%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLink()))));
     }
 
-    // add `preview` to the URL query string
-    if (getPreview() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spreview%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPreview()))));
-    }
-
     // add `data` to the URL query string
     if (getData() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdata%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getData()))));
+    }
+
+    // add `preview` to the URL query string
+    if (getPreview() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spreview%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPreview()))));
     }
 
     return joiner.toString();

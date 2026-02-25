@@ -95,12 +95,6 @@ public class RateLimitsNotificationRuleTriggerConfig extends NotificationRuleTri
   }
 
 
-  @Override
-  public RateLimitsNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
-
   /**
    * Return true if this RateLimitsNotificationRuleTriggerConfig object is equal to o.
    */

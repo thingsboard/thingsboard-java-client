@@ -199,14 +199,14 @@ public class StatisticsEventFilter extends EventFilter {
 
 
   @Override
-  public StatisticsEventFilter notEmpty(@javax.annotation.Nullable Boolean notEmpty) {
-    this.setNotEmpty(notEmpty);
+  public StatisticsEventFilter eventType(@javax.annotation.Nonnull EventType eventType) {
+    this.setEventType(eventType);
     return this;
   }
 
   @Override
-  public StatisticsEventFilter eventType(@javax.annotation.Nonnull EventType eventType) {
-    this.setEventType(eventType);
+  public StatisticsEventFilter notEmpty(@javax.annotation.Nullable Boolean notEmpty) {
+    this.setNotEmpty(notEmpty);
     return this;
   }
 
@@ -292,14 +292,14 @@ public class StatisticsEventFilter extends EventFilter {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `notEmpty` to the URL query string
-    if (getNotEmpty() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%snotEmpty%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotEmpty()))));
-    }
-
     // add `eventType` to the URL query string
     if (getEventType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%seventType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEventType()))));
+    }
+
+    // add `notEmpty` to the URL query string
+    if (getNotEmpty() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%snotEmpty%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotEmpty()))));
     }
 
     // add `server` to the URL query string

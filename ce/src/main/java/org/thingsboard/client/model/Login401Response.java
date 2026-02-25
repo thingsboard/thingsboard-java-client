@@ -58,37 +58,37 @@ import org.thingsboard.client.ApiClient;
 import org.thingsboard.client.JSON;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-@JsonDeserialize(using = ApiAuthLoginPost401Response.ApiAuthLoginPost401ResponseDeserializer.class)
-@JsonSerialize(using = ApiAuthLoginPost401Response.ApiAuthLoginPost401ResponseSerializer.class)
-public class ApiAuthLoginPost401Response extends AbstractOpenApiSchema {
-    private static final Logger log = Logger.getLogger(ApiAuthLoginPost401Response.class.getName());
+@JsonDeserialize(using = Login401Response.Login401ResponseDeserializer.class)
+@JsonSerialize(using = Login401Response.Login401ResponseSerializer.class)
+public class Login401Response extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(Login401Response.class.getName());
 
-    public static class ApiAuthLoginPost401ResponseSerializer extends StdSerializer<ApiAuthLoginPost401Response> {
-        public ApiAuthLoginPost401ResponseSerializer(Class<ApiAuthLoginPost401Response> t) {
+    public static class Login401ResponseSerializer extends StdSerializer<Login401Response> {
+        public Login401ResponseSerializer(Class<Login401Response> t) {
             super(t);
         }
 
-        public ApiAuthLoginPost401ResponseSerializer() {
+        public Login401ResponseSerializer() {
             this(null);
         }
 
         @Override
-        public void serialize(ApiAuthLoginPost401Response value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
+        public void serialize(Login401Response value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
             jgen.writeObject(value.getActualInstance());
         }
     }
 
-    public static class ApiAuthLoginPost401ResponseDeserializer extends StdDeserializer<ApiAuthLoginPost401Response> {
-        public ApiAuthLoginPost401ResponseDeserializer() {
-            this(ApiAuthLoginPost401Response.class);
+    public static class Login401ResponseDeserializer extends StdDeserializer<Login401Response> {
+        public Login401ResponseDeserializer() {
+            this(Login401Response.class);
         }
 
-        public ApiAuthLoginPost401ResponseDeserializer(Class<?> vc) {
+        public Login401ResponseDeserializer(Class<?> vc) {
             super(vc);
         }
 
         @Override
-        public ApiAuthLoginPost401Response deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+        public Login401Response deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             JsonNode tree = jp.readValueAsTree();
             Object deserialized = null;
             boolean typeCoercion = ctxt.isEnabled(MapperFeature.ALLOW_COERCION_OF_SCALARS);
@@ -147,35 +147,35 @@ public class ApiAuthLoginPost401Response extends AbstractOpenApiSchema {
             }
 
             if (match == 1) {
-                ApiAuthLoginPost401Response ret = new ApiAuthLoginPost401Response();
+                Login401Response ret = new Login401Response();
                 ret.setActualInstance(deserialized);
                 return ret;
             }
-            throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for ApiAuthLoginPost401Response: %d classes match result, expected 1", match));
+            throw new IOException(String.format(java.util.Locale.ROOT, "Failed deserialization for Login401Response: %d classes match result, expected 1", match));
         }
 
         /**
          * Handle deserialization of the 'null' value.
          */
         @Override
-        public ApiAuthLoginPost401Response getNullValue(DeserializationContext ctxt) throws JsonMappingException {
-            throw new JsonMappingException(ctxt.getParser(), "ApiAuthLoginPost401Response cannot be null");
+        public Login401Response getNullValue(DeserializationContext ctxt) throws JsonMappingException {
+            throw new JsonMappingException(ctxt.getParser(), "Login401Response cannot be null");
         }
     }
 
     // store a list of schema names defined in oneOf
     public static final Map<String, Class<?>> schemas = new HashMap<>();
 
-    public ApiAuthLoginPost401Response() {
+    public Login401Response() {
         super("oneOf", Boolean.FALSE);
     }
 
-    public ApiAuthLoginPost401Response(ThingsboardCredentialsExpiredResponse o) {
+    public Login401Response(ThingsboardCredentialsExpiredResponse o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
 
-    public ApiAuthLoginPost401Response(ThingsboardErrorResponse o) {
+    public Login401Response(ThingsboardErrorResponse o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -183,12 +183,12 @@ public class ApiAuthLoginPost401Response extends AbstractOpenApiSchema {
     static {
         schemas.put("ThingsboardCredentialsExpiredResponse", ThingsboardCredentialsExpiredResponse.class);
         schemas.put("ThingsboardErrorResponse", ThingsboardErrorResponse.class);
-        JSON.registerDescendants(ApiAuthLoginPost401Response.class, Collections.unmodifiableMap(schemas));
+        JSON.registerDescendants(Login401Response.class, Collections.unmodifiableMap(schemas));
     }
 
     @Override
     public Map<String, Class<?>> getSchemas() {
-        return ApiAuthLoginPost401Response.schemas;
+        return Login401Response.schemas;
     }
 
     /**

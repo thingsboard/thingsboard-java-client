@@ -41,13 +41,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * Configuration for calculated fields
+ * Output
  */
 @JsonPropertyOrder({
-  Output.JSON_PROPERTY_DECIMALS_BY_DEFAULT,
   Output.JSON_PROPERTY_NAME,
-  Output.JSON_PROPERTY_STRATEGY,
   Output.JSON_PROPERTY_SCOPE,
+  Output.JSON_PROPERTY_DECIMALS_BY_DEFAULT,
+  Output.JSON_PROPERTY_STRATEGY,
   Output.JSON_PROPERTY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -62,20 +62,20 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class Output {
-  public static final String JSON_PROPERTY_DECIMALS_BY_DEFAULT = "decimalsByDefault";
-  @javax.annotation.Nullable
-  private Integer decimalsByDefault;
-
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
   private String name;
 
-  public static final String JSON_PROPERTY_STRATEGY = "strategy";
-  private JsonNullable<Object> strategy = JsonNullable.<Object>of(null);
-
   public static final String JSON_PROPERTY_SCOPE = "scope";
   @javax.annotation.Nullable
   private AttributeScope scope;
+
+  public static final String JSON_PROPERTY_DECIMALS_BY_DEFAULT = "decimalsByDefault";
+  @javax.annotation.Nullable
+  private Integer decimalsByDefault;
+
+  public static final String JSON_PROPERTY_STRATEGY = "strategy";
+  private JsonNullable<Object> strategy = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nonnull
@@ -83,30 +83,6 @@ public class Output {
 
   public Output() { 
   }
-
-  public Output decimalsByDefault(@javax.annotation.Nullable Integer decimalsByDefault) {
-    this.decimalsByDefault = decimalsByDefault;
-    return this;
-  }
-
-  /**
-   * Get decimalsByDefault
-   * @return decimalsByDefault
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DECIMALS_BY_DEFAULT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getDecimalsByDefault() {
-    return decimalsByDefault;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DECIMALS_BY_DEFAULT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDecimalsByDefault(@javax.annotation.Nullable Integer decimalsByDefault) {
-    this.decimalsByDefault = decimalsByDefault;
-  }
-
 
   public Output name(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -129,6 +105,54 @@ public class Output {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
+  }
+
+
+  public Output scope(@javax.annotation.Nullable AttributeScope scope) {
+    this.scope = scope;
+    return this;
+  }
+
+  /**
+   * Get scope
+   * @return scope
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AttributeScope getScope() {
+    return scope;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScope(@javax.annotation.Nullable AttributeScope scope) {
+    this.scope = scope;
+  }
+
+
+  public Output decimalsByDefault(@javax.annotation.Nullable Integer decimalsByDefault) {
+    this.decimalsByDefault = decimalsByDefault;
+    return this;
+  }
+
+  /**
+   * Get decimalsByDefault
+   * @return decimalsByDefault
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DECIMALS_BY_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getDecimalsByDefault() {
+    return decimalsByDefault;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DECIMALS_BY_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDecimalsByDefault(@javax.annotation.Nullable Integer decimalsByDefault) {
+    this.decimalsByDefault = decimalsByDefault;
   }
 
 
@@ -161,30 +185,6 @@ public class Output {
 
   public void setStrategy(@javax.annotation.Nullable Object strategy) {
     this.strategy = JsonNullable.<Object>of(strategy);
-  }
-
-
-  public Output scope(@javax.annotation.Nullable AttributeScope scope) {
-    this.scope = scope;
-    return this;
-  }
-
-  /**
-   * Get scope
-   * @return scope
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AttributeScope getScope() {
-    return scope;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(@javax.annotation.Nullable AttributeScope scope) {
-    this.scope = scope;
   }
 
 
@@ -224,10 +224,10 @@ public class Output {
       return false;
     }
     Output output = (Output) o;
-    return Objects.equals(this.decimalsByDefault, output.decimalsByDefault) &&
-        Objects.equals(this.name, output.name) &&
-        equalsNullable(this.strategy, output.strategy) &&
+    return Objects.equals(this.name, output.name) &&
         Objects.equals(this.scope, output.scope) &&
+        Objects.equals(this.decimalsByDefault, output.decimalsByDefault) &&
+        equalsNullable(this.strategy, output.strategy) &&
         Objects.equals(this.type, output.type);
   }
 
@@ -237,7 +237,7 @@ public class Output {
 
   @Override
   public int hashCode() {
-    return Objects.hash(decimalsByDefault, name, hashCodeNullable(strategy), scope, type);
+    return Objects.hash(name, scope, decimalsByDefault, hashCodeNullable(strategy), type);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -251,10 +251,10 @@ public class Output {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Output {\n");
-    sb.append("    decimalsByDefault: ").append(toIndentedString(decimalsByDefault)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    strategy: ").append(toIndentedString(strategy)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    decimalsByDefault: ").append(toIndentedString(decimalsByDefault)).append("\n");
+    sb.append("    strategy: ").append(toIndentedString(strategy)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -303,24 +303,24 @@ public class Output {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `decimalsByDefault` to the URL query string
-    if (getDecimalsByDefault() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdecimalsByDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDecimalsByDefault()))));
-    }
-
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
-    // add `strategy` to the URL query string
-    if (getStrategy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstrategy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStrategy()))));
-    }
-
     // add `scope` to the URL query string
     if (getScope() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScope()))));
+    }
+
+    // add `decimalsByDefault` to the URL query string
+    if (getDecimalsByDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdecimalsByDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDecimalsByDefault()))));
+    }
+
+    // add `strategy` to the URL query string
+    if (getStrategy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstrategy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStrategy()))));
     }
 
     // add `type` to the URL query string

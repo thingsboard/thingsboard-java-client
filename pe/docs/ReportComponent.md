@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**subType** | **ReportComponentSubType** |  |  |
 |**type** | **ReportComponentType** |  |  |
+|**subType** | **ReportComponentSubType** |  |  |
 
 
 

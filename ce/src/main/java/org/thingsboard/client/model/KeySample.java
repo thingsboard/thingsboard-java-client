@@ -27,62 +27,80 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.ApiClient;
 /**
- * ApiAuthTokenPostRequest
+ * Most recent value and its timestamp.
  */
 @JsonPropertyOrder({
-  ApiAuthTokenPostRequest.JSON_PROPERTY_REFRESH_TOKEN
+  KeySample.JSON_PROPERTY_TS,
+  KeySample.JSON_PROPERTY_VALUE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class ApiAuthTokenPostRequest {
-  public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
-  private JsonNullable<Object> refreshToken = JsonNullable.<Object>of(null);
+public class KeySample {
+  public static final String JSON_PROPERTY_TS = "ts";
+  @javax.annotation.Nonnull
+  private Long ts;
 
-  public ApiAuthTokenPostRequest() { 
+  public static final String JSON_PROPERTY_VALUE = "value";
+  @javax.annotation.Nullable
+  private Object value = null;
+
+  public KeySample() { 
   }
 
-  public ApiAuthTokenPostRequest refreshToken(@javax.annotation.Nullable Object refreshToken) {
-    this.refreshToken = JsonNullable.<Object>of(refreshToken);
+  public KeySample ts(@javax.annotation.Nonnull Long ts) {
+    this.ts = ts;
     return this;
   }
 
   /**
-   * Get refreshToken
-   * @return refreshToken
+   * Timestamp in milliseconds since epoch.
+   * @return ts
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Long getTs() {
+    return ts;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTs(@javax.annotation.Nonnull Long ts) {
+    this.ts = ts;
+  }
+
+
+  public KeySample value(@javax.annotation.Nullable Object value) {
+    this.value = value;
+    return this;
+  }
+
+  /**
+   * Get value
+   * @return value
    */
   @javax.annotation.Nullable
-  @JsonIgnore
-  public Object getRefreshToken() {
-        return refreshToken.orElse(null);
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Object getValue() {
+    return value;
   }
 
-  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<Object> getRefreshToken_JsonNullable() {
-    return refreshToken;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
-  public void setRefreshToken_JsonNullable(JsonNullable<Object> refreshToken) {
-    this.refreshToken = refreshToken;
-  }
-
-  public void setRefreshToken(@javax.annotation.Nullable Object refreshToken) {
-    this.refreshToken = JsonNullable.<Object>of(refreshToken);
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setValue(@javax.annotation.Nullable Object value) {
+    this.value = value;
   }
 
 
   /**
-   * Return true if this _api_auth_token_post_request object is equal to o.
+   * Return true if this KeySample object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -92,31 +110,22 @@ public class ApiAuthTokenPostRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiAuthTokenPostRequest apiAuthTokenPostRequest = (ApiAuthTokenPostRequest) o;
-    return equalsNullable(this.refreshToken, apiAuthTokenPostRequest.refreshToken);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    KeySample keySample = (KeySample) o;
+    return Objects.equals(this.ts, keySample.ts) &&
+        Objects.equals(this.value, keySample.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(refreshToken));
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(ts, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiAuthTokenPostRequest {\n");
-    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("class KeySample {\n");
+    sb.append("    ts: ").append(toIndentedString(ts)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -164,9 +173,14 @@ public class ApiAuthTokenPostRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `refreshToken` to the URL query string
-    if (getRefreshToken() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%srefreshToken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getRefreshToken()))));
+    // add `ts` to the URL query string
+    if (getTs() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sts%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTs()))));
+    }
+
+    // add `value` to the URL query string
+    if (getValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%svalue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getValue()))));
     }
 
     return joiner.toString();

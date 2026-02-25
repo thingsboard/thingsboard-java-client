@@ -13,8 +13,8 @@ A JSON value representing the tenant profile.
 |**name** | **String** | Name of the tenant profile |  [optional] |
 |**description** | **String** | Description of the tenant profile |  [optional] |
 |**isolatedTbRuleEngine** | **Boolean** | If enabled, will push all messages related to this tenant and processed by the rule engine into separate queue. Useful for complex microservices deployments, to isolate processing of the data for specific tenants |  [optional] |
-|**profileData** | [**TenantProfileData**](TenantProfileData.md) |  |  [optional] |
 |**_default** | **Boolean** | Default Tenant profile to be used. |  [optional] |
+|**profileData** | [**TenantProfileData**](TenantProfileData.md) |  |  [optional] |
 
 
 

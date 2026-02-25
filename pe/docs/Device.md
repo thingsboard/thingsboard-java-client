@@ -18,9 +18,9 @@
 |**firmwareId** | [**OtaPackageId**](OtaPackageId.md) | JSON object with Ota Package Id. |  [optional] |
 |**softwareId** | [**OtaPackageId**](OtaPackageId.md) | JSON object with Ota Package Id. |  [optional] |
 |**version** | **Long** |  |  [optional] |
+|**deviceData** | [**DeviceData**](DeviceData.md) | JSON object with content specific to type of transport in the device profile. |  [optional] |
 |**ownerId** | [**EntityId**](EntityId.md) | JSON object with Customer or Tenant Id |  [optional] [readonly] |
 |**additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device |  [optional] |
-|**deviceData** | [**DeviceData**](DeviceData.md) | JSON object with content specific to type of transport in the device profile. |  [optional] |
 
 
 

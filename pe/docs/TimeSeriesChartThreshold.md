@@ -29,6 +29,7 @@
 |**labelColor** | **String** |  |  [optional] |
 |**enableLabelBackground** | **Boolean** |  |  [optional] |
 |**labelBackground** | **String** |  |  [optional] |
+|**yaxisId** | **String** |  |  [optional] |
 |**yAxisId** | **String** |  |  [optional] |
 
 

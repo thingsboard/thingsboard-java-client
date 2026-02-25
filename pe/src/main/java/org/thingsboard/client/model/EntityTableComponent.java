@@ -359,14 +359,14 @@ public class EntityTableComponent extends ReportComponent {
 
 
   @Override
-  public EntityTableComponent subType(@javax.annotation.Nonnull ReportComponentSubType subType) {
-    this.setSubType(subType);
+  public EntityTableComponent type(@javax.annotation.Nonnull ReportComponentType type) {
+    this.setType(type);
     return this;
   }
 
   @Override
-  public EntityTableComponent type(@javax.annotation.Nonnull ReportComponentType type) {
-    this.setType(type);
+  public EntityTableComponent subType(@javax.annotation.Nonnull ReportComponentSubType subType) {
+    this.setSubType(subType);
     return this;
   }
 
@@ -462,14 +462,14 @@ public class EntityTableComponent extends ReportComponent {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `subType` to the URL query string
-    if (getSubType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%ssubType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubType()))));
-    }
-
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
+    // add `subType` to the URL query string
+    if (getSubType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssubType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubType()))));
     }
 
     // add `dataSources` to the URL query string

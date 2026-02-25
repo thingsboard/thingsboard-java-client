@@ -2,7 +2,6 @@
 
 # AggInterval
 
-Configuration for calculated fields
 
 ## Properties
 

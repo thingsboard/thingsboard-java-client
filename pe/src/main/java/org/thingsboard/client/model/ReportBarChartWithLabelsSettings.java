@@ -507,6 +507,18 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
   }
 
   @Override
+  public ReportBarChartWithLabelsSettings xaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
+    this.setXaxis(xaxis);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings yaxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yaxes) {
+    this.setYaxes(yaxes);
+    return this;
+  }
+
+  @Override
   public ReportBarChartWithLabelsSettings thresholds(@javax.annotation.Nullable List<TimeSeriesChartThreshold> thresholds) {
     this.setThresholds(thresholds);
     return this;
@@ -734,6 +746,21 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
     // add `legendValueColor` to the URL query string
     if (getLegendValueColor() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slegendValueColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendValueColor()))));
+    }
+
+    // add `xaxis` to the URL query string
+    if (getXaxis() != null) {
+      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
+    }
+
+    // add `yaxes` to the URL query string
+    if (getYaxes() != null) {
+      for (String _key : getYaxes().keySet()) {
+        if (getYaxes().get(_key) != null) {
+          joiner.add(getYaxes().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%syaxes%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
+      }
     }
 
     // add `thresholds` to the URL query string

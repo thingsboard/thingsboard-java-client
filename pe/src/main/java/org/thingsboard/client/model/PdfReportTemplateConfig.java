@@ -237,6 +237,12 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
 
 
   @Override
+  public PdfReportTemplateConfig format(@javax.annotation.Nonnull TbReportFormat format) {
+    this.setFormat(format);
+    return this;
+  }
+
+  @Override
   public PdfReportTemplateConfig entityAliases(@javax.annotation.Nullable List<EntityAlias> entityAliases) {
     this.setEntityAliases(entityAliases);
     return this;
@@ -245,12 +251,6 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   @Override
   public PdfReportTemplateConfig filters(@javax.annotation.Nullable List<Filter> filters) {
     this.setFilters(filters);
-    return this;
-  }
-
-  @Override
-  public PdfReportTemplateConfig format(@javax.annotation.Nonnull TbReportFormat format) {
-    this.setFormat(format);
     return this;
   }
 
@@ -356,6 +356,11 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFormat()))));
+    }
+
     // add `entityAliases` to the URL query string
     if (getEntityAliases() != null) {
       for (int i = 0; i < getEntityAliases().size(); i++) {
@@ -374,11 +379,6 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `format` to the URL query string
-    if (getFormat() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFormat()))));
     }
 
     // add `namePattern` to the URL query string

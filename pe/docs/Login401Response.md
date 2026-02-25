@@ -1,6 +1,6 @@
 
 
-# ApiAuthLoginPost401Response
+# Login401Response
 
 ## oneOf schemas
 * [ThingsboardCredentialsExpiredResponse](ThingsboardCredentialsExpiredResponse.md)
@@ -9,27 +9,27 @@
 ## Example
 ```java
 // Import classes:
-import org.thingsboard.client.model.ApiAuthLoginPost401Response;
+import org.thingsboard.client.model.Login401Response;
 import org.thingsboard.client.model.ThingsboardCredentialsExpiredResponse;
 import org.thingsboard.client.model.ThingsboardErrorResponse;
 
 public class Example {
     public static void main(String[] args) {
-        ApiAuthLoginPost401Response exampleApiAuthLoginPost401Response = new ApiAuthLoginPost401Response();
+        Login401Response exampleLogin401Response = new Login401Response();
 
         // create a new ThingsboardCredentialsExpiredResponse
         ThingsboardCredentialsExpiredResponse exampleThingsboardCredentialsExpiredResponse = new ThingsboardCredentialsExpiredResponse();
-        // set ApiAuthLoginPost401Response to ThingsboardCredentialsExpiredResponse
-        exampleApiAuthLoginPost401Response.setActualInstance(exampleThingsboardCredentialsExpiredResponse);
+        // set Login401Response to ThingsboardCredentialsExpiredResponse
+        exampleLogin401Response.setActualInstance(exampleThingsboardCredentialsExpiredResponse);
         // to get back the ThingsboardCredentialsExpiredResponse set earlier
-        ThingsboardCredentialsExpiredResponse testThingsboardCredentialsExpiredResponse = (ThingsboardCredentialsExpiredResponse) exampleApiAuthLoginPost401Response.getActualInstance();
+        ThingsboardCredentialsExpiredResponse testThingsboardCredentialsExpiredResponse = (ThingsboardCredentialsExpiredResponse) exampleLogin401Response.getActualInstance();
 
         // create a new ThingsboardErrorResponse
         ThingsboardErrorResponse exampleThingsboardErrorResponse = new ThingsboardErrorResponse();
-        // set ApiAuthLoginPost401Response to ThingsboardErrorResponse
-        exampleApiAuthLoginPost401Response.setActualInstance(exampleThingsboardErrorResponse);
+        // set Login401Response to ThingsboardErrorResponse
+        exampleLogin401Response.setActualInstance(exampleThingsboardErrorResponse);
         // to get back the ThingsboardErrorResponse set earlier
-        ThingsboardErrorResponse testThingsboardErrorResponse = (ThingsboardErrorResponse) exampleApiAuthLoginPost401Response.getActualInstance();
+        ThingsboardErrorResponse testThingsboardErrorResponse = (ThingsboardErrorResponse) exampleLogin401Response.getActualInstance();
     }
 }
 ```

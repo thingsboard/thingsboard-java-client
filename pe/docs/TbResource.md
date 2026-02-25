@@ -20,9 +20,9 @@ A JSON value representing the Resource.
 |**etag** | **String** | Resource etag. |  [optional] [readonly] |
 |**fileName** | **String** | Resource file name. |  [optional] |
 |**descriptor** | **com.fasterxml.jackson.databind.JsonNode** | Resource descriptor. |  [optional] |
-|**publicLink** | **String** |  |  [optional] [readonly] |
 |**name** | **String** |  |  [optional] [readonly] |
 |**_public** | **Boolean** |  |  [optional] |
+|**publicLink** | **String** |  |  [optional] [readonly] |
 |**link** | **String** |  |  [optional] [readonly] |
 |**data** | **String** | Resource data. |  [optional] |
 |**preview** | **String** |  |  [optional] |

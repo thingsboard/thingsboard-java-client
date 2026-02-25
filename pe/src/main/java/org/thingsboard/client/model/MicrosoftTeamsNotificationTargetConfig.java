@@ -47,8 +47,8 @@ import org.thingsboard.client.ApiClient;
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_WEBHOOK_URL,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_CHANNEL_NAME,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_USE_OLD_API,
-  MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_TITLE,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_ID,
+  MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_TITLE,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_EMAIL,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_FIRST_NAME,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_LAST_NAME
@@ -73,12 +73,12 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
   @javax.annotation.Nullable
   private Boolean useOldApi;
 
+  public static final String JSON_PROPERTY_ID = "id";
+  private JsonNullable<Object> id = JsonNullable.<Object>of(null);
+
   public static final String JSON_PROPERTY_TITLE = "title";
   @javax.annotation.Nullable
   private String title;
-
-  public static final String JSON_PROPERTY_ID = "id";
-  private JsonNullable<Object> id = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_EMAIL = "email";
   @javax.annotation.Nullable
@@ -167,30 +167,6 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
   }
 
 
-  public MicrosoftTeamsNotificationTargetConfig title(@javax.annotation.Nullable String title) {
-    this.title = title;
-    return this;
-  }
-
-  /**
-   * Get title
-   * @return title
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTitle() {
-    return title;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
-    this.title = title;
-  }
-
-
   public MicrosoftTeamsNotificationTargetConfig id(@javax.annotation.Nullable Object id) {
     this.id = JsonNullable.<Object>of(id);
     return this;
@@ -220,6 +196,30 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
 
   public void setId(@javax.annotation.Nullable Object id) {
     this.id = JsonNullable.<Object>of(id);
+  }
+
+
+  public MicrosoftTeamsNotificationTargetConfig title(@javax.annotation.Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * Get title
+   * @return title
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTitle() {
+    return title;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTitle(@javax.annotation.Nullable String title) {
+    this.title = title;
   }
 
 
@@ -322,8 +322,8 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
     return Objects.equals(this.webhookUrl, microsoftTeamsNotificationTargetConfig.webhookUrl) &&
         Objects.equals(this.channelName, microsoftTeamsNotificationTargetConfig.channelName) &&
         Objects.equals(this.useOldApi, microsoftTeamsNotificationTargetConfig.useOldApi) &&
-        Objects.equals(this.title, microsoftTeamsNotificationTargetConfig.title) &&
         equalsNullable(this.id, microsoftTeamsNotificationTargetConfig.id) &&
+        Objects.equals(this.title, microsoftTeamsNotificationTargetConfig.title) &&
         Objects.equals(this.email, microsoftTeamsNotificationTargetConfig.email) &&
         Objects.equals(this.firstName, microsoftTeamsNotificationTargetConfig.firstName) &&
         Objects.equals(this.lastName, microsoftTeamsNotificationTargetConfig.lastName) &&
@@ -336,7 +336,7 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhookUrl, channelName, useOldApi, title, hashCodeNullable(id), email, firstName, lastName, super.hashCode());
+    return Objects.hash(webhookUrl, channelName, useOldApi, hashCodeNullable(id), title, email, firstName, lastName, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -354,8 +354,8 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
     sb.append("    webhookUrl: ").append(toIndentedString(webhookUrl)).append("\n");
     sb.append("    channelName: ").append(toIndentedString(channelName)).append("\n");
     sb.append("    useOldApi: ").append(toIndentedString(useOldApi)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
@@ -431,14 +431,14 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
       joiner.add(String.format(java.util.Locale.ROOT, "%suseOldApi%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUseOldApi()))));
     }
 
-    // add `title` to the URL query string
-    if (getTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
-    }
-
     // add `id` to the URL query string
     if (getId() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
+    }
+
+    // add `title` to the URL query string
+    if (getTitle() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
     }
 
     // add `email` to the URL query string

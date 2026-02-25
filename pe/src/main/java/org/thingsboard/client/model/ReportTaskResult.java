@@ -41,8 +41,7 @@ import org.thingsboard.client.ApiClient;
  * ReportTaskResult
  */
 @JsonPropertyOrder({
-  ReportTaskResult.JSON_PROPERTY_REPORT,
-  ReportTaskResult.JSON_PROPERTY_ERROR
+  ReportTaskResult.JSON_PROPERTY_REPORT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -55,10 +54,6 @@ public class ReportTaskResult extends TaskResult {
   public static final String JSON_PROPERTY_REPORT = "report";
   @javax.annotation.Nullable
   private Report report;
-
-  public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
-  private String error;
 
   public ReportTaskResult() { 
   }
@@ -84,30 +79,6 @@ public class ReportTaskResult extends TaskResult {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setReport(@javax.annotation.Nullable Report report) {
     this.report = report;
-  }
-
-
-  public ReportTaskResult error(@javax.annotation.Nullable String error) {
-    this.error = error;
-    return this;
-  }
-
-  /**
-   * Get error
-   * @return error
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getError() {
-    return error;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable String error) {
-    this.error = error;
   }
 
 
@@ -148,13 +119,12 @@ public class ReportTaskResult extends TaskResult {
     }
     ReportTaskResult reportTaskResult = (ReportTaskResult) o;
     return Objects.equals(this.report, reportTaskResult.report) &&
-        Objects.equals(this.error, reportTaskResult.error) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(report, error, super.hashCode());
+    return Objects.hash(report, super.hashCode());
   }
 
   @Override
@@ -163,7 +133,6 @@ public class ReportTaskResult extends TaskResult {
     sb.append("class ReportTaskResult {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    report: ").append(toIndentedString(report)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -239,11 +208,6 @@ public class ReportTaskResult extends TaskResult {
     // add `report` to the URL query string
     if (getReport() != null) {
       joiner.add(getReport().toUrlQueryString(prefix + "report" + suffix));
-    }
-
-    // add `error` to the URL query string
-    if (getError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
     }
 
     return joiner.toString();

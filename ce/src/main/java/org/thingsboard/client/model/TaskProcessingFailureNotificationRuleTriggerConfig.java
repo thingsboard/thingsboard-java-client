@@ -53,12 +53,6 @@ public class TaskProcessingFailureNotificationRuleTriggerConfig extends Notifica
   public TaskProcessingFailureNotificationRuleTriggerConfig() { 
   }
 
-  @Override
-  public TaskProcessingFailureNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
-
   /**
    * Return true if this TaskProcessingFailureNotificationRuleTriggerConfig object is equal to o.
    */

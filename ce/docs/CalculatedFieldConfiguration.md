@@ -2,7 +2,6 @@
 
 # CalculatedFieldConfiguration
 
-Configuration for calculated fields
 
 ## Properties
 

@@ -10,10 +10,6 @@ All URIs are relative to *http://localhost:8080*
 | [**activateUserWithHttpInfo**](ThingsboardApi.md#activateUserWithHttpInfo) | **POST** /api/noauth/activate | Activate User |
 | [**addDashboardCustomers**](ThingsboardApi.md#addDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/add | Adds the Dashboard Customers (addDashboardCustomers) |
 | [**addDashboardCustomersWithHttpInfo**](ThingsboardApi.md#addDashboardCustomersWithHttpInfo) | **POST** /api/dashboard/{dashboardId}/customers/add | Adds the Dashboard Customers (addDashboardCustomers) |
-| [**apiAuthLoginPost**](ThingsboardApi.md#apiAuthLoginPost) | **POST** /api/auth/login | Login method to get user JWT token data |
-| [**apiAuthLoginPostWithHttpInfo**](ThingsboardApi.md#apiAuthLoginPostWithHttpInfo) | **POST** /api/auth/login | Login method to get user JWT token data |
-| [**apiAuthTokenPost**](ThingsboardApi.md#apiAuthTokenPost) | **POST** /api/auth/token | Refresh user JWT token data |
-| [**apiAuthTokenPostWithHttpInfo**](ThingsboardApi.md#apiAuthTokenPostWithHttpInfo) | **POST** /api/auth/token | Refresh user JWT token data |
 | [**assignAlarm**](ThingsboardApi.md#assignAlarm) | **POST** /api/alarm/{alarmId}/assign/{assigneeId} | Assign/Reassign Alarm (assignAlarm) |
 | [**assignAlarmWithHttpInfo**](ThingsboardApi.md#assignAlarmWithHttpInfo) | **POST** /api/alarm/{alarmId}/assign/{assigneeId} | Assign/Reassign Alarm (assignAlarm) |
 | [**assignAssetToCustomer**](ThingsboardApi.md#assignAssetToCustomer) | **POST** /api/customer/{customerId}/asset/{assetId} | Assign asset to customer (assignAssetToCustomer) |
@@ -210,8 +206,10 @@ All URIs are relative to *http://localhost:8080*
 | [**exportRuleChainsWithHttpInfo**](ThingsboardApi.md#exportRuleChainsWithHttpInfo) | **GET** /api/ruleChains/export | Export Rule Chains |
 | [**findAlarmDataByQuery**](ThingsboardApi.md#findAlarmDataByQuery) | **POST** /api/alarmsQuery/find | Find Alarms by Query |
 | [**findAlarmDataByQueryWithHttpInfo**](ThingsboardApi.md#findAlarmDataByQueryWithHttpInfo) | **POST** /api/alarmsQuery/find | Find Alarms by Query |
-| [**findAvailableEntityKeysByQuery**](ThingsboardApi.md#findAvailableEntityKeysByQuery) | **POST** /api/entitiesQuery/find/keys | Find Available Entity Keys by Query |
-| [**findAvailableEntityKeysByQueryWithHttpInfo**](ThingsboardApi.md#findAvailableEntityKeysByQueryWithHttpInfo) | **POST** /api/entitiesQuery/find/keys | Find Available Entity Keys by Query |
+| [**findAvailableEntityKeysByQuery**](ThingsboardApi.md#findAvailableEntityKeysByQuery) | **POST** /api/entitiesQuery/find/keys | Find Available Entity Keys by Query (deprecated) |
+| [**findAvailableEntityKeysByQueryWithHttpInfo**](ThingsboardApi.md#findAvailableEntityKeysByQueryWithHttpInfo) | **POST** /api/entitiesQuery/find/keys | Find Available Entity Keys by Query (deprecated) |
+| [**findAvailableEntityKeysByQueryV2**](ThingsboardApi.md#findAvailableEntityKeysByQueryV2) | **POST** /api/v2/entitiesQuery/find/keys | Find Available Entity Keys By Query |
+| [**findAvailableEntityKeysByQueryV2WithHttpInfo**](ThingsboardApi.md#findAvailableEntityKeysByQueryV2WithHttpInfo) | **POST** /api/v2/entitiesQuery/find/keys | Find Available Entity Keys By Query |
 | [**findByFromAndRelationType**](ThingsboardApi.md#findByFromAndRelationType) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findByFromAndRelationType) |
 | [**findByFromAndRelationTypeWithHttpInfo**](ThingsboardApi.md#findByFromAndRelationTypeWithHttpInfo) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findByFromAndRelationType) |
 | [**findByFromV2**](ThingsboardApi.md#findByFromV2) | **GET** /api/relations/from/{fromType}/{fromId} | Get List of Relations (findByFromV2) |
@@ -662,8 +660,8 @@ All URIs are relative to *http://localhost:8080*
 | [**getTenantProfileInfoByIdWithHttpInfo**](ThingsboardApi.md#getTenantProfileInfoByIdWithHttpInfo) | **GET** /api/tenantProfileInfo/{tenantProfileId} | Get Tenant Profile Info (getTenantProfileInfoById) |
 | [**getTenantProfileInfos**](ThingsboardApi.md#getTenantProfileInfos) | **GET** /api/tenantProfileInfos | Get Tenant Profiles Info (getTenantProfileInfos) |
 | [**getTenantProfileInfosWithHttpInfo**](ThingsboardApi.md#getTenantProfileInfosWithHttpInfo) | **GET** /api/tenantProfileInfos | Get Tenant Profiles Info (getTenantProfileInfos) |
-| [**getTenantProfileList**](ThingsboardApi.md#getTenantProfileList) | **GET** /api/tenantProfiles/list | getTenantProfileList |
-| [**getTenantProfileListWithHttpInfo**](ThingsboardApi.md#getTenantProfileListWithHttpInfo) | **GET** /api/tenantProfiles/list | getTenantProfileList |
+| [**getTenantProfileList**](ThingsboardApi.md#getTenantProfileList) | **GET** /api/tenantProfiles/list | Get Tenant Profile list (getTenantProfileList) |
+| [**getTenantProfileListWithHttpInfo**](ThingsboardApi.md#getTenantProfileListWithHttpInfo) | **GET** /api/tenantProfiles/list | Get Tenant Profile list (getTenantProfileList) |
 | [**getTenantProfiles**](ThingsboardApi.md#getTenantProfiles) | **GET** /api/tenantProfiles | Get Tenant Profiles (getTenantProfiles) |
 | [**getTenantProfilesWithHttpInfo**](ThingsboardApi.md#getTenantProfilesWithHttpInfo) | **GET** /api/tenantProfiles | Get Tenant Profiles (getTenantProfiles) |
 | [**getTenantQueueStats**](ThingsboardApi.md#getTenantQueueStats) | **GET** /api/queueStats | Get Queue Stats entities (getTenantQueueStats) |
@@ -676,8 +674,8 @@ All URIs are relative to *http://localhost:8080*
 | [**getTenantUsageInfoWithHttpInfo**](ThingsboardApi.md#getTenantUsageInfoWithHttpInfo) | **GET** /api/usage | getTenantUsageInfo |
 | [**getTenants**](ThingsboardApi.md#getTenants) | **GET** /api/tenants | Get Tenants (getTenants) |
 | [**getTenantsWithHttpInfo**](ThingsboardApi.md#getTenantsWithHttpInfo) | **GET** /api/tenants | Get Tenants (getTenants) |
-| [**getTenantsByIdsV2**](ThingsboardApi.md#getTenantsByIdsV2) | **GET** /api/tenants/list | getTenantsByIdsV2 |
-| [**getTenantsByIdsV2WithHttpInfo**](ThingsboardApi.md#getTenantsByIdsV2WithHttpInfo) | **GET** /api/tenants/list | getTenantsByIdsV2 |
+| [**getTenantsByIdsV2**](ThingsboardApi.md#getTenantsByIdsV2) | **GET** /api/tenants/list | Get Tenants list (getTenantsByIdsV2) |
+| [**getTenantsByIdsV2WithHttpInfo**](ThingsboardApi.md#getTenantsByIdsV2WithHttpInfo) | **GET** /api/tenants/list | Get Tenants list (getTenantsByIdsV2) |
 | [**getTimeseriesHistory**](ThingsboardApi.md#getTimeseriesHistory) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history | Get time series data (getTimeseriesHistory) |
 | [**getTimeseriesHistoryWithHttpInfo**](ThingsboardApi.md#getTimeseriesHistoryWithHttpInfo) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history | Get time series data (getTimeseriesHistory) |
 | [**getTimeseriesKeys**](ThingsboardApi.md#getTimeseriesKeys) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/timeseries | Get time series keys (getTimeseriesKeys) |
@@ -778,6 +776,8 @@ All URIs are relative to *http://localhost:8080*
 | [**listVersionsWithHttpInfo**](ThingsboardApi.md#listVersionsWithHttpInfo) | **GET** /api/entities/vc/version | List all versions (listVersions) |
 | [**loadEntitiesVersion**](ThingsboardApi.md#loadEntitiesVersion) | **POST** /api/entities/vc/entity | Load entities version (loadEntitiesVersion) |
 | [**loadEntitiesVersionWithHttpInfo**](ThingsboardApi.md#loadEntitiesVersionWithHttpInfo) | **POST** /api/entities/vc/entity | Load entities version (loadEntitiesVersion) |
+| [**login**](ThingsboardApi.md#login) | **POST** /api/auth/login | Login method to get user JWT token data |
+| [**loginWithHttpInfo**](ThingsboardApi.md#loginWithHttpInfo) | **POST** /api/auth/login | Login method to get user JWT token data |
 | [**logout**](ThingsboardApi.md#logout) | **POST** /api/auth/logout | Logout (logout) |
 | [**logoutWithHttpInfo**](ThingsboardApi.md#logoutWithHttpInfo) | **POST** /api/auth/logout | Logout (logout) |
 | [**markAllNotificationsAsRead**](ThingsboardApi.md#markAllNotificationsAsRead) | **PUT** /api/notifications/read | Mark all notifications as read (markAllNotificationsAsRead) |
@@ -806,6 +806,8 @@ All URIs are relative to *http://localhost:8080*
 | [**putUserSettingsWithHttpInfo**](ThingsboardApi.md#putUserSettingsWithHttpInfo) | **PUT** /api/user/settings/{type} | Update user settings (saveUserSettings) |
 | [**reClaimDevice**](ThingsboardApi.md#reClaimDevice) | **DELETE** /api/customer/device/{deviceName}/claim | Reclaim device (reClaimDevice) |
 | [**reClaimDeviceWithHttpInfo**](ThingsboardApi.md#reClaimDeviceWithHttpInfo) | **DELETE** /api/customer/device/{deviceName}/claim | Reclaim device (reClaimDevice) |
+| [**refreshToken**](ThingsboardApi.md#refreshToken) | **POST** /api/auth/token | Refresh user JWT token data |
+| [**refreshTokenWithHttpInfo**](ThingsboardApi.md#refreshTokenWithHttpInfo) | **POST** /api/auth/token | Refresh user JWT token data |
 | [**removeDashboardCustomers**](ThingsboardApi.md#removeDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/remove | Remove the Dashboard Customers (removeDashboardCustomers) |
 | [**removeDashboardCustomersWithHttpInfo**](ThingsboardApi.md#removeDashboardCustomersWithHttpInfo) | **POST** /api/dashboard/{dashboardId}/customers/remove | Remove the Dashboard Customers (removeDashboardCustomers) |
 | [**removeMobileSession**](ThingsboardApi.md#removeMobileSession) | **DELETE** /api/user/mobile/session | removeMobileSession |
@@ -1502,286 +1504,6 @@ ApiResponse<[**Dashboard**](Dashboard.md)>
 | **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
-## apiAuthLoginPost
-
-> LoginResponse apiAuthLoginPost(loginRequest)
-
-Login method to get user JWT token data
-
-Login method used to authenticate user and get JWT token data.  Value of the response **token** field can be used as **X-Authorization** header value:  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;.
-
-### Example
-
-```java
-// Import classes:
-import org.thingsboard.client.ApiClient;
-import org.thingsboard.client.ApiException;
-import org.thingsboard.client.Configuration;
-import org.thingsboard.client.models.*;
-import org.thingsboard.client.api.ThingsboardApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("http://localhost:8080");
-
-        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
-        LoginRequest loginRequest = new LoginRequest(); // LoginRequest | Login request
-        try {
-            LoginResponse result = apiInstance.apiAuthLoginPost(loginRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#apiAuthLoginPost");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login request | [optional] |
-
-### Return type
-
-[**LoginResponse**](LoginResponse.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-
-## apiAuthLoginPostWithHttpInfo
-
-> ApiResponse<LoginResponse> apiAuthLoginPost apiAuthLoginPostWithHttpInfo(loginRequest)
-
-Login method to get user JWT token data
-
-Login method used to authenticate user and get JWT token data.  Value of the response **token** field can be used as **X-Authorization** header value:  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;.
-
-### Example
-
-```java
-// Import classes:
-import org.thingsboard.client.ApiClient;
-import org.thingsboard.client.ApiException;
-import org.thingsboard.client.ApiResponse;
-import org.thingsboard.client.Configuration;
-import org.thingsboard.client.models.*;
-import org.thingsboard.client.api.ThingsboardApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("http://localhost:8080");
-
-        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
-        LoginRequest loginRequest = new LoginRequest(); // LoginRequest | Login request
-        try {
-            ApiResponse<LoginResponse> response = apiInstance.apiAuthLoginPostWithHttpInfo(loginRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#apiAuthLoginPost");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login request | [optional] |
-
-### Return type
-
-ApiResponse<[**LoginResponse**](LoginResponse.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-
-
-## apiAuthTokenPost
-
-> LoginResponse apiAuthTokenPost(apiAuthTokenPostRequest)
-
-Refresh user JWT token data
-
-Method to refresh JWT token. Provide a valid refresh token to get a new JWT token.  The response contains a new token that can be used for authorization.  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;
-
-### Example
-
-```java
-// Import classes:
-import org.thingsboard.client.ApiClient;
-import org.thingsboard.client.ApiException;
-import org.thingsboard.client.Configuration;
-import org.thingsboard.client.models.*;
-import org.thingsboard.client.api.ThingsboardApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("http://localhost:8080");
-
-        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
-        ApiAuthTokenPostRequest apiAuthTokenPostRequest = new ApiAuthTokenPostRequest(); // ApiAuthTokenPostRequest | Refresh token request
-        try {
-            LoginResponse result = apiInstance.apiAuthTokenPost(apiAuthTokenPostRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#apiAuthTokenPost");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Reason: " + e.getResponseBody());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **apiAuthTokenPostRequest** | [**ApiAuthTokenPostRequest**](ApiAuthTokenPostRequest.md)| Refresh token request | [optional] |
-
-### Return type
-
-[**LoginResponse**](LoginResponse.md)
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **400** | Bad Request |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-## apiAuthTokenPostWithHttpInfo
-
-> ApiResponse<LoginResponse> apiAuthTokenPost apiAuthTokenPostWithHttpInfo(apiAuthTokenPostRequest)
-
-Refresh user JWT token data
-
-Method to refresh JWT token. Provide a valid refresh token to get a new JWT token.  The response contains a new token that can be used for authorization.  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;
-
-### Example
-
-```java
-// Import classes:
-import org.thingsboard.client.ApiClient;
-import org.thingsboard.client.ApiException;
-import org.thingsboard.client.ApiResponse;
-import org.thingsboard.client.Configuration;
-import org.thingsboard.client.models.*;
-import org.thingsboard.client.api.ThingsboardApi;
-
-public class Example {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("http://localhost:8080");
-
-        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
-        ApiAuthTokenPostRequest apiAuthTokenPostRequest = new ApiAuthTokenPostRequest(); // ApiAuthTokenPostRequest | Refresh token request
-        try {
-            ApiResponse<LoginResponse> response = apiInstance.apiAuthTokenPostWithHttpInfo(apiAuthTokenPostRequest);
-            System.out.println("Status code: " + response.getStatusCode());
-            System.out.println("Response headers: " + response.getHeaders());
-            System.out.println("Response body: " + response.getData());
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#apiAuthTokenPost");
-            System.err.println("Status code: " + e.getCode());
-            System.err.println("Response headers: " + e.getResponseHeaders());
-            System.err.println("Reason: " + e.getResponseBody());
-            e.printStackTrace();
-        }
-    }
-}
-```
-
-### Parameters
-
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **apiAuthTokenPostRequest** | [**ApiAuthTokenPostRequest**](ApiAuthTokenPostRequest.md)| Refresh token request | [optional] |
-
-### Return type
-
-ApiResponse<[**LoginResponse**](LoginResponse.md)>
-
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **400** | Bad Request |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **429** | Too Many Requests |  -  |
@@ -17559,9 +17281,9 @@ ApiResponse<[**PageDataAlarmData**](PageDataAlarmData.md)>
 
 > AvailableEntityKeys findAvailableEntityKeysByQuery(timeseries, attributes, entityDataQuery, scope)
 
-Find Available Entity Keys by Query
+Find Available Entity Keys by Query (deprecated)
 
-Returns unique time series and/or attribute key names from entities matching the query.  Executes the Entity Data Query to find up to 100 entities, then fetches and aggregates all distinct key names.  Primarily used for UI features like autocomplete suggestions.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+**Deprecated.** Use the V2 endpoint (&#x60;POST /api/v2/entitiesQuery/find/keys&#x60;) instead.  Returns unique time series and/or attribute key names from entities matching the query.  Executes the Entity Data Query to find up to 100 entities, then fetches and aggregates all distinct key names.  Primarily used for UI features like autocomplete suggestions.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
 
 ### Example
 
@@ -17643,9 +17365,9 @@ public class Example {
 
 > ApiResponse<AvailableEntityKeys> findAvailableEntityKeysByQuery findAvailableEntityKeysByQueryWithHttpInfo(timeseries, attributes, entityDataQuery, scope)
 
-Find Available Entity Keys by Query
+Find Available Entity Keys by Query (deprecated)
 
-Returns unique time series and/or attribute key names from entities matching the query.  Executes the Entity Data Query to find up to 100 entities, then fetches and aggregates all distinct key names.  Primarily used for UI features like autocomplete suggestions.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+**Deprecated.** Use the V2 endpoint (&#x60;POST /api/v2/entitiesQuery/find/keys&#x60;) instead.  Returns unique time series and/or attribute key names from entities matching the query.  Executes the Entity Data Query to find up to 100 entities, then fetches and aggregates all distinct key names.  Primarily used for UI features like autocomplete suggestions.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
 
 ### Example
 
@@ -17705,6 +17427,182 @@ public class Example {
 ### Return type
 
 ApiResponse<[**AvailableEntityKeys**](AvailableEntityKeys.md)>
+
+
+### Authorization
+
+[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+
+
+## findAvailableEntityKeysByQueryV2
+
+> AvailableEntityKeysV2 findAvailableEntityKeysByQueryV2(entityDataQuery, includeTimeseries, includeAttributes, scopes, includeSamples)
+
+Find Available Entity Keys By Query
+
+Discovers unique time series and/or attribute key names available on entities that match the given query. Works in two steps: first, the request body (an Entity Data Query) is executed to find matching entities (page size is capped at 100); then, all distinct key names are collected from those entities.  Optionally, each key can include a sample — the most recent value (by timestamp) for that key across all matched entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.auth.*;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+        
+        // Configure API key authorization: api_key_form
+        ApiKeyAuth api_key_form = (ApiKeyAuth) defaultClient.getAuthentication("api_key_form");
+        api_key_form.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_form.setApiKeyPrefix("Token");
+
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        EntityDataQuery entityDataQuery = new EntityDataQuery(); // EntityDataQuery | 
+        Boolean includeTimeseries = true; // Boolean | When true, includes unique time series keys in the response. When false, the 'timeseries' field is omitted. At least one of 'includeTimeseries' or 'includeAttributes' must be true.
+        Boolean includeAttributes = true; // Boolean | When true, includes unique attribute keys in the response. When false, the 'attributes' field is omitted. At least one of 'includeTimeseries' or 'includeAttributes' must be true.
+        String scopes = "SERVER_SCOPE"; // String | Filters attribute keys by scope. Only applies when 'includeAttributes' is true. When not specified, scopes are auto-determined: all three scopes (server, client, shared) for device entities, server scope only for other entity types.
+        Boolean includeSamples = false; // Boolean | When true, each key entry includes a 'sample' object with the most recent value and timestamp. When false, only key names are returned (sample is omitted from JSON).
+        try {
+            AvailableEntityKeysV2 result = apiInstance.findAvailableEntityKeysByQueryV2(entityDataQuery, includeTimeseries, includeAttributes, scopes, includeSamples);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#findAvailableEntityKeysByQueryV2");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityDataQuery** | [**EntityDataQuery**](EntityDataQuery.md)|  | |
+| **includeTimeseries** | **Boolean**| When true, includes unique time series keys in the response. When false, the &#39;timeseries&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
+| **includeAttributes** | **Boolean**| When true, includes unique attribute keys in the response. When false, the &#39;attributes&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
+| **scopes** | **String**| Filters attribute keys by scope. Only applies when &#39;includeAttributes&#39; is true. When not specified, scopes are auto-determined: all three scopes (server, client, shared) for device entities, server scope only for other entity types. | [optional] [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
+| **includeSamples** | **Boolean**| When true, each key entry includes a &#39;sample&#39; object with the most recent value and timestamp. When false, only key names are returned (sample is omitted from JSON). | [optional] [default to false] |
+
+### Return type
+
+[**AvailableEntityKeysV2**](AvailableEntityKeysV2.md)
+
+
+### Authorization
+
+[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+
+## findAvailableEntityKeysByQueryV2WithHttpInfo
+
+> ApiResponse<AvailableEntityKeysV2> findAvailableEntityKeysByQueryV2 findAvailableEntityKeysByQueryV2WithHttpInfo(entityDataQuery, includeTimeseries, includeAttributes, scopes, includeSamples)
+
+Find Available Entity Keys By Query
+
+Discovers unique time series and/or attribute key names available on entities that match the given query. Works in two steps: first, the request body (an Entity Data Query) is executed to find matching entities (page size is capped at 100); then, all distinct key names are collected from those entities.  Optionally, each key can include a sample — the most recent value (by timestamp) for that key across all matched entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.ApiResponse;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.auth.*;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+        
+        // Configure API key authorization: api_key_form
+        ApiKeyAuth api_key_form = (ApiKeyAuth) defaultClient.getAuthentication("api_key_form");
+        api_key_form.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_form.setApiKeyPrefix("Token");
+
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        EntityDataQuery entityDataQuery = new EntityDataQuery(); // EntityDataQuery | 
+        Boolean includeTimeseries = true; // Boolean | When true, includes unique time series keys in the response. When false, the 'timeseries' field is omitted. At least one of 'includeTimeseries' or 'includeAttributes' must be true.
+        Boolean includeAttributes = true; // Boolean | When true, includes unique attribute keys in the response. When false, the 'attributes' field is omitted. At least one of 'includeTimeseries' or 'includeAttributes' must be true.
+        String scopes = "SERVER_SCOPE"; // String | Filters attribute keys by scope. Only applies when 'includeAttributes' is true. When not specified, scopes are auto-determined: all three scopes (server, client, shared) for device entities, server scope only for other entity types.
+        Boolean includeSamples = false; // Boolean | When true, each key entry includes a 'sample' object with the most recent value and timestamp. When false, only key names are returned (sample is omitted from JSON).
+        try {
+            ApiResponse<AvailableEntityKeysV2> response = apiInstance.findAvailableEntityKeysByQueryV2WithHttpInfo(entityDataQuery, includeTimeseries, includeAttributes, scopes, includeSamples);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#findAvailableEntityKeysByQueryV2");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityDataQuery** | [**EntityDataQuery**](EntityDataQuery.md)|  | |
+| **includeTimeseries** | **Boolean**| When true, includes unique time series keys in the response. When false, the &#39;timeseries&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
+| **includeAttributes** | **Boolean**| When true, includes unique attribute keys in the response. When false, the &#39;attributes&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
+| **scopes** | **String**| Filters attribute keys by scope. Only applies when &#39;includeAttributes&#39; is true. When not specified, scopes are auto-determined: all three scopes (server, client, shared) for device entities, server scope only for other entity types. | [optional] [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
+| **includeSamples** | **Boolean**| When true, each key entry includes a &#39;sample&#39; object with the most recent value and timestamp. When false, only key names are returned (sample is omitted from JSON). | [optional] [default to false] |
+
+### Return type
+
+ApiResponse<[**AvailableEntityKeysV2**](AvailableEntityKeysV2.md)>
 
 
 ### Authorization
@@ -55279,7 +55177,7 @@ ApiResponse<[**PageDataEntityInfo**](PageDataEntityInfo.md)>
 
 > List<TenantProfile> getTenantProfileList(ids)
 
-getTenantProfileList
+Get Tenant Profile list (getTenantProfileList)
 
 ### Example
 
@@ -55355,7 +55253,7 @@ public class Example {
 
 > ApiResponse<List<TenantProfile>> getTenantProfileList getTenantProfileListWithHttpInfo(ids)
 
-getTenantProfileList
+Get Tenant Profile list (getTenantProfileList)
 
 ### Example
 
@@ -56467,7 +56365,7 @@ ApiResponse<[**PageDataTenant**](PageDataTenant.md)>
 
 > List<Tenant> getTenantsByIdsV2(tenantIds)
 
-getTenantsByIdsV2
+Get Tenants list (getTenantsByIdsV2)
 
 ### Example
 
@@ -56543,7 +56441,7 @@ public class Example {
 
 > ApiResponse<List<Tenant>> getTenantsByIdsV2 getTenantsByIdsV2WithHttpInfo(tenantIds)
 
-getTenantsByIdsV2
+Get Tenants list (getTenantsByIdsV2)
 
 ### Example
 
@@ -64827,6 +64725,142 @@ ApiResponse<[**UUID**](UUID.md)>
 | **429** | Too Many Requests |  -  |
 
 
+## login
+
+> LoginResponse login(loginRequest)
+
+Login method to get user JWT token data
+
+Login method used to authenticate user and get JWT token data.  Value of the response **token** field can be used as **X-Authorization** header value:  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;.
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        LoginRequest loginRequest = new LoginRequest(); // LoginRequest | Login request
+        try {
+            LoginResponse result = apiInstance.login(loginRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#login");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login request | [optional] |
+
+### Return type
+
+[**LoginResponse**](LoginResponse.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+
+## loginWithHttpInfo
+
+> ApiResponse<LoginResponse> login loginWithHttpInfo(loginRequest)
+
+Login method to get user JWT token data
+
+Login method used to authenticate user and get JWT token data.  Value of the response **token** field can be used as **X-Authorization** header value:  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;.
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.ApiResponse;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        LoginRequest loginRequest = new LoginRequest(); // LoginRequest | Login request
+        try {
+            ApiResponse<LoginResponse> response = apiInstance.loginWithHttpInfo(loginRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#login");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login request | [optional] |
+
+### Return type
+
+ApiResponse<[**LoginResponse**](LoginResponse.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+
+
 ## logout
 
 > void logout()
@@ -66992,6 +67026,150 @@ ApiResponse<**String**>
 | **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+
+
+## refreshToken
+
+> LoginResponse refreshToken(refreshTokenRequest)
+
+Refresh user JWT token data
+
+Method to refresh JWT token. Provide a valid refresh token to get a new JWT token.  The response contains a new token that can be used for authorization.  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest(); // RefreshTokenRequest | Refresh token request
+        try {
+            LoginResponse result = apiInstance.refreshToken(refreshTokenRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#refreshToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **refreshTokenRequest** | [**RefreshTokenRequest**](RefreshTokenRequest.md)| Refresh token request | [optional] |
+
+### Return type
+
+[**LoginResponse**](LoginResponse.md)
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **400** | Bad Request |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+
+## refreshTokenWithHttpInfo
+
+> ApiResponse<LoginResponse> refreshToken refreshTokenWithHttpInfo(refreshTokenRequest)
+
+Refresh user JWT token data
+
+Method to refresh JWT token. Provide a valid refresh token to get a new JWT token.  The response contains a new token that can be used for authorization.  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.ApiResponse;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest(); // RefreshTokenRequest | Refresh token request
+        try {
+            ApiResponse<LoginResponse> response = apiInstance.refreshTokenWithHttpInfo(refreshTokenRequest);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#refreshToken");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **refreshTokenRequest** | [**RefreshTokenRequest**](RefreshTokenRequest.md)| Refresh token request | [optional] |
+
+### Return type
+
+ApiResponse<[**LoginResponse**](LoginResponse.md)>
+
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **401** | Unauthorized |  -  |
+| **400** | Bad Request |  -  |
 | **403** | Forbidden |  -  |
 | **404** | Not Found |  -  |
 | **429** | Too Many Requests |  -  |

@@ -40,8 +40,8 @@ import org.thingsboard.client.ApiClient;
  * Filter for various event types
  */
 @JsonPropertyOrder({
-  EventFilter.JSON_PROPERTY_NOT_EMPTY,
-  EventFilter.JSON_PROPERTY_EVENT_TYPE
+  EventFilter.JSON_PROPERTY_EVENT_TYPE,
+  EventFilter.JSON_PROPERTY_NOT_EMPTY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -59,40 +59,16 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class EventFilter {
-  public static final String JSON_PROPERTY_NOT_EMPTY = "notEmpty";
-  @javax.annotation.Nullable
-  private Boolean notEmpty;
-
   public static final String JSON_PROPERTY_EVENT_TYPE = "eventType";
   @javax.annotation.Nonnull
   private EventType eventType;
 
+  public static final String JSON_PROPERTY_NOT_EMPTY = "notEmpty";
+  @javax.annotation.Nullable
+  private Boolean notEmpty;
+
   public EventFilter() { 
   }
-
-  public EventFilter notEmpty(@javax.annotation.Nullable Boolean notEmpty) {
-    this.notEmpty = notEmpty;
-    return this;
-  }
-
-  /**
-   * Get notEmpty
-   * @return notEmpty
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NOT_EMPTY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getNotEmpty() {
-    return notEmpty;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_NOT_EMPTY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotEmpty(@javax.annotation.Nullable Boolean notEmpty) {
-    this.notEmpty = notEmpty;
-  }
-
 
   public EventFilter eventType(@javax.annotation.Nonnull EventType eventType) {
     this.eventType = eventType;
@@ -118,6 +94,30 @@ public class EventFilter {
   }
 
 
+  public EventFilter notEmpty(@javax.annotation.Nullable Boolean notEmpty) {
+    this.notEmpty = notEmpty;
+    return this;
+  }
+
+  /**
+   * Get notEmpty
+   * @return notEmpty
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NOT_EMPTY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getNotEmpty() {
+    return notEmpty;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NOT_EMPTY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNotEmpty(@javax.annotation.Nullable Boolean notEmpty) {
+    this.notEmpty = notEmpty;
+  }
+
+
   /**
    * Return true if this EventFilter object is equal to o.
    */
@@ -130,21 +130,21 @@ public class EventFilter {
       return false;
     }
     EventFilter eventFilter = (EventFilter) o;
-    return Objects.equals(this.notEmpty, eventFilter.notEmpty) &&
-        Objects.equals(this.eventType, eventFilter.eventType);
+    return Objects.equals(this.eventType, eventFilter.eventType) &&
+        Objects.equals(this.notEmpty, eventFilter.notEmpty);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(notEmpty, eventType);
+    return Objects.hash(eventType, notEmpty);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EventFilter {\n");
-    sb.append("    notEmpty: ").append(toIndentedString(notEmpty)).append("\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
+    sb.append("    notEmpty: ").append(toIndentedString(notEmpty)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,14 +192,14 @@ public class EventFilter {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `notEmpty` to the URL query string
-    if (getNotEmpty() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%snotEmpty%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotEmpty()))));
-    }
-
     // add `eventType` to the URL query string
     if (getEventType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%seventType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEventType()))));
+    }
+
+    // add `notEmpty` to the URL query string
+    if (getNotEmpty() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%snotEmpty%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotEmpty()))));
     }
 
     return joiner.toString();
