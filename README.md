@@ -26,34 +26,39 @@ Replace `thingsboard-ce-client` with `thingsboard-pe-client` or `thingsboard-paa
 
 ## Usage
 
+### JWT Authentication
+
 ```java
-import org.thingsboard.client.ApiClient;
-import org.thingsboard.client.api.ThingsboardApi;
-import org.thingsboard.client.model.LoginRequest;
-import org.thingsboard.client.model.LoginResponse;
+import org.thingsboard.client.ThingsboardClient;
 
-// 1. Create API client
-ApiClient apiClient = new ApiClient();
-apiClient.setHost("localhost");
-apiClient.setPort(8080);
+// Credentials — logs in automatically, refreshes tokens before expiry
+ThingsboardClient client = ThingsboardClient.builder()
+        .url("http://localhost:8080")
+        .credentials("tenant@thingsboard.org", "tenant")
+        .build();
 
-// 2. Create API instance and login
-ThingsboardApi api = new ThingsboardApi(apiClient);
+var devices = client.getTenantDevices(10, 0, null, null, null, null);
+```
 
-LoginRequest loginRequest = new LoginRequest()
-    .username("tenant@thingsboard.org")
-    .password("tenant");
-LoginResponse loginResponse = api.login(loginRequest);
+### API Key Authentication
 
-// 3. Set bearer token for subsequent requests
-String jwtToken = loginResponse.getToken();
-apiClient.setRequestInterceptor(builder ->
-    builder.header("X-Authorization", "Bearer " + jwtToken)
-);
+```java
+ThingsboardClient client = ThingsboardClient.builder()
+        .url("http://localhost:8080")
+        .apiKey("your-api-key")
+        .build();
 
-// 4. Make authenticated API calls
-var user = api.getUser();
-var devices = api.getTenantDevices(10, 0, null, null, null, null);
+var devices = client.getTenantDevices(10, 0, null, null, null, null);
+```
+
+### Deferred Login
+
+```java
+ThingsboardClient client = ThingsboardClient.builder()
+        .url("http://localhost:8080")
+        .build();
+
+client.login("tenant@thingsboard.org", "tenant");
 ```
 
 ## Project Structure
@@ -64,10 +69,13 @@ thingsboard-java-client/
 ├── generate-client.sh               # Client generation script
 ├── openapitools.json                # OpenAPI Generator version config
 ├── license-header-template.txt      # License header for generated files
+├── common/
+│   ├── pom.xml                      # Compiles against CE for IDE support
+│   └── src/main/java/               # Handwritten shared code (ThingsboardClient, etc.)
 ├── ce/
 │   ├── pom.xml
 │   ├── spec/openapi.json            # OpenAPI spec (committed)
-│   ├── src/main/java/               # Generated sources (committed)
+│   ├── src/main/java/               # Generated + common sources (committed)
 │   ├── docs/                        # Generated API docs (committed)
 │   └── target/generated/            # Raw generator output (gitignored)
 ├── pe/
@@ -75,6 +83,9 @@ thingsboard-java-client/
 └── paas/
     └── (same structure as ce)
 ```
+
+The `common/` module contains handwritten classes shared across all editions (e.g. `ThingsboardClient`).
+It is not a runtime dependency — `generate-client.sh` copies its sources into each edition during generation.
 
 ## Client Generation
 
@@ -120,7 +131,7 @@ Options:
 1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
 2. Runs `openapi-generator-cli` (Java native HTTP client)
 3. Strips auto-generated OpenAPI comment blocks from Java files
-4. Copies generated `src/main/java/` and `docs/` into the module (replaces previous)
+4. Copies generated `src/main/java/` and `docs/` into the module, then copies `common/` sources on top
 5. Applies Apache 2.0 license headers via `mvn license:format`
 6. Stages all changes with `git add`
 
@@ -129,6 +140,7 @@ Options:
 - `<edition>/pom.xml`
 - `<edition>/src/test/` (tests are never touched)
 - `<edition>/spec/openapi.json` (only updated when `base-url` is provided)
+- `common/` (handwritten shared sources, copied into editions)
 
 ### Replaced on regeneration
 
