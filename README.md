@@ -43,7 +43,7 @@ ThingsboardApi api = new ThingsboardApi(apiClient);
 LoginRequest loginRequest = new LoginRequest()
     .username("tenant@thingsboard.org")
     .password("tenant");
-LoginResponse loginResponse = api.apiAuthLoginPost(loginRequest);
+LoginResponse loginResponse = api.login(loginRequest);
 
 // 3. Set bearer token for subsequent requests
 String jwtToken = loginResponse.getToken();
