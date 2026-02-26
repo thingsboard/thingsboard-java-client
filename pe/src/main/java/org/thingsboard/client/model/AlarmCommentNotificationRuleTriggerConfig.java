@@ -50,8 +50,7 @@ import org.thingsboard.client.ApiClient;
   AlarmCommentNotificationRuleTriggerConfig.JSON_PROPERTY_ALARM_SEVERITIES,
   AlarmCommentNotificationRuleTriggerConfig.JSON_PROPERTY_ALARM_STATUSES,
   AlarmCommentNotificationRuleTriggerConfig.JSON_PROPERTY_ONLY_USER_COMMENTS,
-  AlarmCommentNotificationRuleTriggerConfig.JSON_PROPERTY_NOTIFY_ON_COMMENT_UPDATE,
-  AlarmCommentNotificationRuleTriggerConfig.JSON_PROPERTY_TRIGGER_TYPE
+  AlarmCommentNotificationRuleTriggerConfig.JSON_PROPERTY_NOTIFY_ON_COMMENT_UPDATE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -80,10 +79,6 @@ public class AlarmCommentNotificationRuleTriggerConfig extends NotificationRuleT
   public static final String JSON_PROPERTY_NOTIFY_ON_COMMENT_UPDATE = "notifyOnCommentUpdate";
   @javax.annotation.Nullable
   private Boolean notifyOnCommentUpdate;
-
-  public static final String JSON_PROPERTY_TRIGGER_TYPE = "triggerType";
-  @javax.annotation.Nullable
-  private NotificationRuleTriggerType triggerType = NotificationRuleTriggerType.ALARM_COMMENT;
 
   public AlarmCommentNotificationRuleTriggerConfig() { 
   }
@@ -235,29 +230,11 @@ public class AlarmCommentNotificationRuleTriggerConfig extends NotificationRuleT
   }
 
 
-  public AlarmCommentNotificationRuleTriggerConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
-    this.triggerType = triggerType;
+  @Override
+  public AlarmCommentNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
     return this;
   }
-
-  /**
-   * Type of the notification rule trigger
-   * @return triggerType
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public NotificationRuleTriggerType getTriggerType() {
-    return triggerType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTriggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
-    this.triggerType = triggerType;
-  }
-
 
   /**
    * Return true if this AlarmCommentNotificationRuleTriggerConfig object is equal to o.
@@ -276,13 +253,12 @@ public class AlarmCommentNotificationRuleTriggerConfig extends NotificationRuleT
         Objects.equals(this.alarmStatuses, alarmCommentNotificationRuleTriggerConfig.alarmStatuses) &&
         Objects.equals(this.onlyUserComments, alarmCommentNotificationRuleTriggerConfig.onlyUserComments) &&
         Objects.equals(this.notifyOnCommentUpdate, alarmCommentNotificationRuleTriggerConfig.notifyOnCommentUpdate) &&
-        Objects.equals(this.triggerType, alarmCommentNotificationRuleTriggerConfig.triggerType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alarmTypes, alarmSeverities, alarmStatuses, onlyUserComments, notifyOnCommentUpdate, triggerType, super.hashCode());
+    return Objects.hash(alarmTypes, alarmSeverities, alarmStatuses, onlyUserComments, notifyOnCommentUpdate, super.hashCode());
   }
 
   @Override
@@ -295,7 +271,6 @@ public class AlarmCommentNotificationRuleTriggerConfig extends NotificationRuleT
     sb.append("    alarmStatuses: ").append(toIndentedString(alarmStatuses)).append("\n");
     sb.append("    onlyUserComments: ").append(toIndentedString(onlyUserComments)).append("\n");
     sb.append("    notifyOnCommentUpdate: ").append(toIndentedString(notifyOnCommentUpdate)).append("\n");
-    sb.append("    triggerType: ").append(toIndentedString(triggerType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

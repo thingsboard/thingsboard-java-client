@@ -8,7 +8,7 @@ Configuration for alarm schedule
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **AlarmScheduleType** | Type of the alarm schedule |  |
+|**type** | **AlarmScheduleType** |  |  [optional] |
 |**dynamicValue** | [**DynamicValueString**](DynamicValueString.md) |  |  [optional] |
 
 

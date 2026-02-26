@@ -58,12 +58,12 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = EdgeConnectionNotificationRuleTriggerConfig.class, name = "EDGE_CONNECTION"),
   @JsonSubTypes.Type(value = EntitiesLimitNotificationRuleTriggerConfig.class, name = "ENTITIES_LIMIT"),
   @JsonSubTypes.Type(value = EntityActionNotificationRuleTriggerConfig.class, name = "ENTITY_ACTION"),
+  @JsonSubTypes.Type(value = IntegrationLifecycleEventNotificationRuleTriggerConfig.class, name = "INTEGRATION_LIFECYCLE_EVENT"),
   @JsonSubTypes.Type(value = NewPlatformVersionNotificationRuleTriggerConfig.class, name = "NEW_PLATFORM_VERSION"),
   @JsonSubTypes.Type(value = RateLimitsNotificationRuleTriggerConfig.class, name = "RATE_LIMITS"),
   @JsonSubTypes.Type(value = ResourcesShortageNotificationRuleTriggerConfig.class, name = "RESOURCES_SHORTAGE"),
   @JsonSubTypes.Type(value = RuleEngineComponentLifecycleEventNotificationRuleTriggerConfig.class, name = "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"),
   @JsonSubTypes.Type(value = TaskProcessingFailureNotificationRuleTriggerConfig.class, name = "TASK_PROCESSING_FAILURE"),
-  @JsonSubTypes.Type(value = IntegrationLifecycleEventNotificationRuleTriggerConfig.class, name = "IntegrationLifecycleEventNotificationRuleTriggerConfig"),
 })
 
 public class NotificationRuleTriggerConfig {
@@ -189,12 +189,12 @@ static {
   mappings.put("EDGE_CONNECTION", EdgeConnectionNotificationRuleTriggerConfig.class);
   mappings.put("ENTITIES_LIMIT", EntitiesLimitNotificationRuleTriggerConfig.class);
   mappings.put("ENTITY_ACTION", EntityActionNotificationRuleTriggerConfig.class);
+  mappings.put("INTEGRATION_LIFECYCLE_EVENT", IntegrationLifecycleEventNotificationRuleTriggerConfig.class);
   mappings.put("NEW_PLATFORM_VERSION", NewPlatformVersionNotificationRuleTriggerConfig.class);
   mappings.put("RATE_LIMITS", RateLimitsNotificationRuleTriggerConfig.class);
   mappings.put("RESOURCES_SHORTAGE", ResourcesShortageNotificationRuleTriggerConfig.class);
   mappings.put("RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", RuleEngineComponentLifecycleEventNotificationRuleTriggerConfig.class);
   mappings.put("TASK_PROCESSING_FAILURE", TaskProcessingFailureNotificationRuleTriggerConfig.class);
-  mappings.put("IntegrationLifecycleEventNotificationRuleTriggerConfig", IntegrationLifecycleEventNotificationRuleTriggerConfig.class);
   mappings.put("NotificationRuleTriggerConfig", NotificationRuleTriggerConfig.class);
   JSON.registerDiscriminator(NotificationRuleTriggerConfig.class, "triggerType", mappings);
 }

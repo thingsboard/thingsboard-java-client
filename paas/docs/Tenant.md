@@ -27,8 +27,8 @@ A JSON value representing the tenant.
 |**currentPeriodStartTs** | **Long** |  |  [optional] |
 |**edgeLicenseVersion** | **Integer** |  |  [optional] |
 |**name** | **String** | Name of the tenant. Read-only, duplicated from title for backward compatibility |  [optional] [readonly] |
-|**additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device |  [optional] |
 |**addonData** | [**TenantAddonData**](TenantAddonData.md) |  |  [optional] |
+|**additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device |  [optional] |
 
 
 

@@ -23,8 +23,8 @@
 |**legendLabelColor** | **String** |  |  [optional] |
 |**legendValueFont** | [**Font**](Font.md) |  |  [optional] |
 |**legendValueColor** | **String** |  |  [optional] |
-|**xaxis** | [**TimeSeriesChartXAxisSettings**](TimeSeriesChartXAxisSettings.md) |  |  [optional] |
 |**yaxes** | [**Map&lt;String, TimeSeriesChartYAxisSettings&gt;**](TimeSeriesChartYAxisSettings.md) |  |  [optional] |
+|**xaxis** | [**TimeSeriesChartXAxisSettings**](TimeSeriesChartXAxisSettings.md) |  |  [optional] |
 |**thresholds** | [**List&lt;TimeSeriesChartThreshold&gt;**](TimeSeriesChartThreshold.md) |  |  [optional] |
 |**grid** | [**TimeSeriesChartGridSettings**](TimeSeriesChartGridSettings.md) |  |  [optional] |
 |**yAxes** | [**Map&lt;String, TimeSeriesChartYAxisSettings&gt;**](TimeSeriesChartYAxisSettings.md) |  |  [optional] |

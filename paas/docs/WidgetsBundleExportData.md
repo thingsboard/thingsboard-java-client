@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**widgets** | **List&lt;Object&gt;** |  |  [optional] |
+|**widgets** | **List&lt;com.fasterxml.jackson.databind.JsonNode&gt;** |  |  [optional] |
 |**fqns** | **List&lt;String&gt;** |  |  [optional] |
 
 

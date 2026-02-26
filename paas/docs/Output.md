@@ -2,7 +2,6 @@
 
 # Output
 
-Configuration for calculated fields
 
 ## Properties
 

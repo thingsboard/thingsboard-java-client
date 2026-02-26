@@ -77,14 +77,14 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
-  public CsvReportTemplateConfig namePattern(@javax.annotation.Nullable String namePattern) {
-    this.setNamePattern(namePattern);
+  public CsvReportTemplateConfig components(@javax.annotation.Nonnull List<ReportComponent> components) {
+    this.setComponents(components);
     return this;
   }
 
   @Override
-  public CsvReportTemplateConfig components(@javax.annotation.Nonnull List<ReportComponent> components) {
-    this.setComponents(components);
+  public CsvReportTemplateConfig namePattern(@javax.annotation.Nullable String namePattern) {
+    this.setNamePattern(namePattern);
     return this;
   }
 
@@ -190,11 +190,6 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
       }
     }
 
-    // add `namePattern` to the URL query string
-    if (getNamePattern() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%snamePattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNamePattern()))));
-    }
-
     // add `components` to the URL query string
     if (getComponents() != null) {
       for (int i = 0; i < getComponents().size(); i++) {
@@ -203,6 +198,11 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `namePattern` to the URL query string
+    if (getNamePattern() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%snamePattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNamePattern()))));
     }
 
     // add `timeDataPattern` to the URL query string

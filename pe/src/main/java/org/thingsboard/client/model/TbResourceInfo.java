@@ -129,6 +129,7 @@ public class TbResourceInfo {
   @JsonCreator
   public TbResourceInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
+    @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_ETAG) String etag, 
     @JsonProperty(JSON_PROPERTY_NAME) String name, 
@@ -137,6 +138,7 @@ public class TbResourceInfo {
   ) {
   this();
     this.createdTime = createdTime;
+    this.tenantId = tenantId;
     this.customerId = customerId;
     this.etag = etag;
     this.name = name;
@@ -182,11 +184,6 @@ public class TbResourceInfo {
 
 
 
-  public TbResourceInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
-    return this;
-  }
-
   /**
    * JSON object with Tenant Id. Tenant Id of the resource can&#39;t be changed.
    * @return tenantId
@@ -199,11 +196,6 @@ public class TbResourceInfo {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
-  }
 
 
   /**

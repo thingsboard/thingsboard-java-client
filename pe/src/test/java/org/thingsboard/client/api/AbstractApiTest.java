@@ -128,33 +128,17 @@ public class AbstractApiTest {
 
     @AfterEach
     void tearDown() throws Exception {
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        authorizeAs( "sysadmin@thingsboard.org", "sysadmin");
         tbApi.deleteTenant(savedTenant.getId().getId().toString());
     }
 
-    protected void authorizeAs(String userName, String password) throws IOException, InterruptedException {
-        ObjectMapper mapper = apiClient.getObjectMapper();
-        HttpClient httpClient = apiClient.getHttpClient();
-
+    protected void authorizeAs(String userName, String password) throws ApiException {
         LoginRequest loginRequestBody = new LoginRequest();
         loginRequestBody.setUsername(userName);
         loginRequestBody.setPassword(password);
-        String jsonBody = mapper.writeValueAsString(loginRequestBody);
 
-        HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(apiClient.getBaseUri() + "/api/auth/login")) // Direct URI
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
-                .build();
-
-        HttpResponse<InputStream> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofInputStream());
-
-        if (response.statusCode() == 200) {
-            LoginResponse loginResponse = mapper.readValue(response.body(), LoginResponse.class);
-            tokenHolder.set(loginResponse.getToken());
-        } else {
-            throw new RuntimeException("Login failed! Status: " + response.statusCode());
-        }
+        LoginResponse loginResponse = tbApi.login(loginRequestBody);
+        tokenHolder.set(loginResponse.getToken());
     }
 
     protected void activateUserAndAuthorize(User tenantAdmin) throws ApiException {
@@ -173,43 +157,6 @@ public class AbstractApiTest {
         String activateTokenRegex = "/api/noauth/activate?activateToken=";
         String activationLink = tbApi.getActivationLink(userId.getId().toString());
         return activationLink.substring(activationLink.lastIndexOf(activateTokenRegex) + activateTokenRegex.length());
-    }
-
-    protected String getJwtToken(String username, String password) throws Exception {
-        HttpClient client = HttpClient.newHttpClient();
-
-        String loginPayload = String.format(
-                "{\"username\":\"%s\",\"password\":\"%s\"}",
-                username,
-                password
-        );
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:8080/api/auth/login"))
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(loginPayload))
-                .build();
-
-        HttpResponse<String> response = client.send(
-                request,
-                HttpResponse.BodyHandlers.ofString()
-        );
-
-        if (response.statusCode() != 200) {
-            throw new RuntimeException("Login failed with status: " +
-                                       response.statusCode() + ", body: " + response.body());
-        }
-
-        String responseBody = response.body();
-
-        int tokenStart = responseBody.indexOf("\"token\":\"") + 9;
-        int tokenEnd = responseBody.indexOf("\"", tokenStart);
-
-        if (tokenStart == -1 || tokenEnd == -1) {
-            throw new RuntimeException("Could not extract token from response: " + responseBody);
-        }
-
-        return responseBody.substring(tokenStart, tokenEnd);
     }
 
     protected void assertReturns404(Executable operation) {

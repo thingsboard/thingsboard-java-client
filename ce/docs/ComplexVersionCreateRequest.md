@@ -9,7 +9,6 @@
 |------------ | ------------- | ------------- | -------------|
 |**syncStrategy** | **SyncStrategy** |  |  [optional] |
 |**entityTypes** | [**Map&lt;String, EntityTypeVersionCreateConfig&gt;**](EntityTypeVersionCreateConfig.md) |  |  [optional] |
-|**type** | **VersionCreateRequestType** |  |  |
 
 
 

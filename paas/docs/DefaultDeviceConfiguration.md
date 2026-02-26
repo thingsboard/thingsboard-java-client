@@ -8,7 +8,6 @@ Default device configuration
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | **DeviceProfileType** |  |  |
 
 
 

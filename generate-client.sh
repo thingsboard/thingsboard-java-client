@@ -150,7 +150,7 @@ generate() {
     2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword"; fi
 
   # Strip generated OpenAPI comment block and collapse multiple blank lines
-  find "$output_dir/src" -name "*.java" -exec perl -i -0pe 's{/\*\n \* ThingsBoard REST API.*?\*/\n+}{}s' {} +
+  find "$output_dir/src" -name "*.java" -exec perl -i -0pe 's|/\*\n \* ThingsBoard REST API.*?\*/\n+||s' {} +
 
   if [ "$DRY_RUN" = true ]; then
     echo "Dry run: generated output is in $output_dir"

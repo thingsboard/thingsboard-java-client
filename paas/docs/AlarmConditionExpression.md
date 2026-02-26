@@ -2,7 +2,6 @@
 
 # AlarmConditionExpression
 
-Base export container for ThingsBoard entities
 
 ## Properties
 

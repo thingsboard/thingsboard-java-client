@@ -50,8 +50,7 @@ import org.thingsboard.client.ApiClient;
   AlarmAssignmentNotificationRuleTriggerConfig.JSON_PROPERTY_ALARM_TYPES,
   AlarmAssignmentNotificationRuleTriggerConfig.JSON_PROPERTY_ALARM_SEVERITIES,
   AlarmAssignmentNotificationRuleTriggerConfig.JSON_PROPERTY_ALARM_STATUSES,
-  AlarmAssignmentNotificationRuleTriggerConfig.JSON_PROPERTY_NOTIFY_ON,
-  AlarmAssignmentNotificationRuleTriggerConfig.JSON_PROPERTY_TRIGGER_TYPE
+  AlarmAssignmentNotificationRuleTriggerConfig.JSON_PROPERTY_NOTIFY_ON
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -76,10 +75,6 @@ public class AlarmAssignmentNotificationRuleTriggerConfig extends NotificationRu
   public static final String JSON_PROPERTY_NOTIFY_ON = "notifyOn";
   @javax.annotation.Nonnull
   private Set<Action> notifyOn = new LinkedHashSet<>();
-
-  public static final String JSON_PROPERTY_TRIGGER_TYPE = "triggerType";
-  @javax.annotation.Nullable
-  private NotificationRuleTriggerType triggerType = NotificationRuleTriggerType.ALARM_ASSIGNMENT;
 
   public AlarmAssignmentNotificationRuleTriggerConfig() { 
   }
@@ -216,29 +211,11 @@ public class AlarmAssignmentNotificationRuleTriggerConfig extends NotificationRu
   }
 
 
-  public AlarmAssignmentNotificationRuleTriggerConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
-    this.triggerType = triggerType;
+  @Override
+  public AlarmAssignmentNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
     return this;
   }
-
-  /**
-   * Type of the notification rule trigger
-   * @return triggerType
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public NotificationRuleTriggerType getTriggerType() {
-    return triggerType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTriggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
-    this.triggerType = triggerType;
-  }
-
 
   /**
    * Return true if this AlarmAssignmentNotificationRuleTriggerConfig object is equal to o.
@@ -256,13 +233,12 @@ public class AlarmAssignmentNotificationRuleTriggerConfig extends NotificationRu
         Objects.equals(this.alarmSeverities, alarmAssignmentNotificationRuleTriggerConfig.alarmSeverities) &&
         Objects.equals(this.alarmStatuses, alarmAssignmentNotificationRuleTriggerConfig.alarmStatuses) &&
         Objects.equals(this.notifyOn, alarmAssignmentNotificationRuleTriggerConfig.notifyOn) &&
-        Objects.equals(this.triggerType, alarmAssignmentNotificationRuleTriggerConfig.triggerType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alarmTypes, alarmSeverities, alarmStatuses, notifyOn, triggerType, super.hashCode());
+    return Objects.hash(alarmTypes, alarmSeverities, alarmStatuses, notifyOn, super.hashCode());
   }
 
   @Override
@@ -274,7 +250,6 @@ public class AlarmAssignmentNotificationRuleTriggerConfig extends NotificationRu
     sb.append("    alarmSeverities: ").append(toIndentedString(alarmSeverities)).append("\n");
     sb.append("    alarmStatuses: ").append(toIndentedString(alarmStatuses)).append("\n");
     sb.append("    notifyOn: ").append(toIndentedString(notifyOn)).append("\n");
-    sb.append("    triggerType: ").append(toIndentedString(triggerType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

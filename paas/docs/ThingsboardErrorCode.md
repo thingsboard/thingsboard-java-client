@@ -29,9 +29,13 @@
 
 * `NUMBER_40` (value: `new BigDecimal("40")`)
 
+* `NUMBER_41` (value: `new BigDecimal("41")`)
+
 * `NUMBER_45` (value: `new BigDecimal("45")`)
 
 * `NUMBER_46` (value: `new BigDecimal("46")`)
+
+* `NUMBER_50` (value: `new BigDecimal("50")`)
 
 
 

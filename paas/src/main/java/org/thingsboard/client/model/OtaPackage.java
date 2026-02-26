@@ -140,15 +140,25 @@ public class OtaPackage {
   @JsonCreator
   public OtaPackage(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
+    @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_TAG) String tag, 
     @JsonProperty(JSON_PROPERTY_HAS_DATA) Boolean hasData, 
+    @JsonProperty(JSON_PROPERTY_FILE_NAME) String fileName, 
+    @JsonProperty(JSON_PROPERTY_CONTENT_TYPE) String contentType, 
+    @JsonProperty(JSON_PROPERTY_CHECKSUM_ALGORITHM) ChecksumAlgorithm checksumAlgorithm, 
+    @JsonProperty(JSON_PROPERTY_CHECKSUM) String checksum, 
     @JsonProperty(JSON_PROPERTY_DATA_SIZE) Long dataSize, 
     @JsonProperty(JSON_PROPERTY_NAME) String name
   ) {
   this();
     this.createdTime = createdTime;
+    this.tenantId = tenantId;
     this.tag = tag;
     this.hasData = hasData;
+    this.fileName = fileName;
+    this.contentType = contentType;
+    this.checksumAlgorithm = checksumAlgorithm;
+    this.checksum = checksum;
     this.dataSize = dataSize;
     this.name = name;
   }
@@ -191,11 +201,6 @@ public class OtaPackage {
 
 
 
-  public OtaPackage tenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
-    return this;
-  }
-
   /**
    * JSON object with Tenant Id. Tenant Id of the ota package can&#39;t be changed.
    * @return tenantId
@@ -208,11 +213,6 @@ public class OtaPackage {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
-  }
 
 
   public OtaPackage deviceProfileId(@javax.annotation.Nullable DeviceProfileId deviceProfileId) {
@@ -363,11 +363,6 @@ public class OtaPackage {
 
 
 
-  public OtaPackage fileName(@javax.annotation.Nullable String fileName) {
-    this.fileName = fileName;
-    return this;
-  }
-
   /**
    * OTA Package file name.
    * @return fileName
@@ -380,17 +375,7 @@ public class OtaPackage {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFileName(@javax.annotation.Nullable String fileName) {
-    this.fileName = fileName;
-  }
 
-
-  public OtaPackage contentType(@javax.annotation.Nullable String contentType) {
-    this.contentType = contentType;
-    return this;
-  }
 
   /**
    * OTA Package content type.
@@ -404,17 +389,7 @@ public class OtaPackage {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONTENT_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContentType(@javax.annotation.Nullable String contentType) {
-    this.contentType = contentType;
-  }
 
-
-  public OtaPackage checksumAlgorithm(@javax.annotation.Nullable ChecksumAlgorithm checksumAlgorithm) {
-    this.checksumAlgorithm = checksumAlgorithm;
-    return this;
-  }
 
   /**
    * OTA Package checksum algorithm.
@@ -428,17 +403,7 @@ public class OtaPackage {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CHECKSUM_ALGORITHM, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChecksumAlgorithm(@javax.annotation.Nullable ChecksumAlgorithm checksumAlgorithm) {
-    this.checksumAlgorithm = checksumAlgorithm;
-  }
 
-
-  public OtaPackage checksum(@javax.annotation.Nullable String checksum) {
-    this.checksum = checksum;
-    return this;
-  }
 
   /**
    * OTA Package checksum.
@@ -452,11 +417,6 @@ public class OtaPackage {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CHECKSUM, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChecksum(@javax.annotation.Nullable String checksum) {
-    this.checksum = checksum;
-  }
 
 
   /**

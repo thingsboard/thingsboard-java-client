@@ -458,10 +458,12 @@ All URIs are relative to *http://localhost:8080*
 | [**getEntityViewTypesWithHttpInfo**](ThingsboardApi.md#getEntityViewTypesWithHttpInfo) | **GET** /api/entityView/types | Get Entity View Types (getEntityViewTypes) |
 | [**getEntityViewsByIdsV2**](ThingsboardApi.md#getEntityViewsByIdsV2) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIdsV2) |
 | [**getEntityViewsByIdsV2WithHttpInfo**](ThingsboardApi.md#getEntityViewsByIdsV2WithHttpInfo) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIdsV2) |
-| [**getEvents**](ThingsboardApi.md#getEvents) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEvents) |
-| [**getEventsWithHttpInfo**](ThingsboardApi.md#getEventsWithHttpInfo) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEvents) |
-| [**getEvents1**](ThingsboardApi.md#getEvents1) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEvents) |
-| [**getEvents1WithHttpInfo**](ThingsboardApi.md#getEvents1WithHttpInfo) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEvents) |
+| [**getEvents**](ThingsboardApi.md#getEvents) | **GET** /api/events/{entityType}/{entityId} | Get Events (Deprecated) |
+| [**getEventsWithHttpInfo**](ThingsboardApi.md#getEventsWithHttpInfo) | **GET** /api/events/{entityType}/{entityId} | Get Events (Deprecated) |
+| [**getEvents1**](ThingsboardApi.md#getEvents1) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEvents) |
+| [**getEvents1WithHttpInfo**](ThingsboardApi.md#getEvents1WithHttpInfo) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEvents) |
+| [**getEvents2**](ThingsboardApi.md#getEvents2) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEvents) |
+| [**getEvents2WithHttpInfo**](ThingsboardApi.md#getEvents2WithHttpInfo) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEvents) |
 | [**getFeaturesInfo**](ThingsboardApi.md#getFeaturesInfo) | **GET** /api/admin/featuresInfo | Get features info (getFeaturesInfo) |
 | [**getFeaturesInfoWithHttpInfo**](ThingsboardApi.md#getFeaturesInfoWithHttpInfo) | **GET** /api/admin/featuresInfo | Get features info (getFeaturesInfo) |
 | [**getFirmware**](ThingsboardApi.md#getFirmware) | **GET** /api/v1/{deviceToken}/firmware | Get Device Firmware (getFirmware) |
@@ -38441,7 +38443,203 @@ ApiResponse<[**List&lt;EntityView&gt;**](EntityView.md)>
 
 ## getEvents
 
-> PageDataEventInfo getEvents(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime)
+> PageDataEventInfo getEvents(entityType, entityId, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
+
+Get Events (Deprecated)
+
+Returns a page of events for specified entity. Deprecated and will be removed in next minor release. The call was deprecated to improve the performance of the system. Current implementation will return &#39;Lifecycle&#39; events only. Use &#39;Get events by type&#39; or &#39;Get events by filter&#39; instead. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. 
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.auth.*;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+        
+        // Configure API key authorization: api_key_form
+        ApiKeyAuth api_key_form = (ApiKeyAuth) defaultClient.getAuthentication("api_key_form");
+        api_key_form.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_form.setApiKeyPrefix("Token");
+
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        String entityType = "entityType_example"; // String | A string value representing the entity type. For example, 'DEVICE'
+        String entityId = "entityId_example"; // String | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'
+        String tenantId = "tenantId_example"; // String | A string value representing the tenant id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'
+        Integer pageSize = 56; // Integer | Maximum amount of entities in a one page
+        Integer page = 56; // Integer | Sequence number of page starting from 0
+        String textSearch = "textSearch_example"; // String | The value is not used in searching.
+        String sortProperty = "ts"; // String | Property of entity to sort by
+        String sortOrder = "ASC"; // String | Sort order. ASC (ASCENDING) or DESC (DESCENDING)
+        Long startTime = 56L; // Long | Timestamp. Events with creation time before it won't be queried.
+        Long endTime = 56L; // Long | Timestamp. Events with creation time after it won't be queried.
+        try {
+            PageDataEventInfo result = apiInstance.getEvents(entityType, entityId, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#getEvents");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantId** | **String**| A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
+| **page** | **Integer**| Sequence number of page starting from 0 | |
+| **textSearch** | **String**| The value is not used in searching. | [optional] |
+| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: ts, id] |
+| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long**| Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
+| **endTime** | **Long**| Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
+
+### Return type
+
+[**PageDataEventInfo**](PageDataEventInfo.md)
+
+
+### Authorization
+
+[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+
+## getEventsWithHttpInfo
+
+> ApiResponse<PageDataEventInfo> getEvents getEventsWithHttpInfo(entityType, entityId, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
+
+Get Events (Deprecated)
+
+Returns a page of events for specified entity. Deprecated and will be removed in next minor release. The call was deprecated to improve the performance of the system. Current implementation will return &#39;Lifecycle&#39; events only. Use &#39;Get events by type&#39; or &#39;Get events by filter&#39; instead. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. 
+
+### Example
+
+```java
+// Import classes:
+import org.thingsboard.client.ApiClient;
+import org.thingsboard.client.ApiException;
+import org.thingsboard.client.ApiResponse;
+import org.thingsboard.client.Configuration;
+import org.thingsboard.client.auth.*;
+import org.thingsboard.client.models.*;
+import org.thingsboard.client.api.ThingsboardApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("http://localhost:8080");
+        
+        // Configure API key authorization: api_key_form
+        ApiKeyAuth api_key_form = (ApiKeyAuth) defaultClient.getAuthentication("api_key_form");
+        api_key_form.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key_form.setApiKeyPrefix("Token");
+
+
+        ThingsboardApi apiInstance = new ThingsboardApi(defaultClient);
+        String entityType = "entityType_example"; // String | A string value representing the entity type. For example, 'DEVICE'
+        String entityId = "entityId_example"; // String | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'
+        String tenantId = "tenantId_example"; // String | A string value representing the tenant id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'
+        Integer pageSize = 56; // Integer | Maximum amount of entities in a one page
+        Integer page = 56; // Integer | Sequence number of page starting from 0
+        String textSearch = "textSearch_example"; // String | The value is not used in searching.
+        String sortProperty = "ts"; // String | Property of entity to sort by
+        String sortOrder = "ASC"; // String | Sort order. ASC (ASCENDING) or DESC (DESCENDING)
+        Long startTime = 56L; // Long | Timestamp. Events with creation time before it won't be queried.
+        Long endTime = 56L; // Long | Timestamp. Events with creation time after it won't be queried.
+        try {
+            ApiResponse<PageDataEventInfo> response = apiInstance.getEventsWithHttpInfo(entityType, entityId, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime);
+            System.out.println("Status code: " + response.getStatusCode());
+            System.out.println("Response headers: " + response.getHeaders());
+            System.out.println("Response body: " + response.getData());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ThingsboardApi#getEvents");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantId** | **String**| A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
+| **page** | **Integer**| Sequence number of page starting from 0 | |
+| **textSearch** | **String**| The value is not used in searching. | [optional] |
+| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: ts, id] |
+| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long**| Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
+| **endTime** | **Long**| Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
+
+### Return type
+
+ApiResponse<[**PageDataEventInfo**](PageDataEventInfo.md)>
+
+
+### Authorization
+
+[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Unauthorized |  -  |
+| **403** | Forbidden |  -  |
+| **404** | Not Found |  -  |
+| **429** | Too Many Requests |  -  |
+
+
+## getEvents1
+
+> PageDataEventInfo getEvents1(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime)
 
 Get Events by event filter (getEvents)
 
@@ -38483,10 +38681,10 @@ public class Example {
         Long startTime = 56L; // Long | Timestamp. Events with creation time before it won't be queried.
         Long endTime = 56L; // Long | Timestamp. Events with creation time after it won't be queried.
         try {
-            PageDataEventInfo result = apiInstance.getEvents(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime);
+            PageDataEventInfo result = apiInstance.getEvents1(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#getEvents");
+            System.err.println("Exception when calling ThingsboardApi#getEvents1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -38537,9 +38735,9 @@ public class Example {
 | **404** | Not Found |  -  |
 | **429** | Too Many Requests |  -  |
 
-## getEventsWithHttpInfo
+## getEvents1WithHttpInfo
 
-> ApiResponse<PageDataEventInfo> getEvents getEventsWithHttpInfo(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime)
+> ApiResponse<PageDataEventInfo> getEvents1 getEvents1WithHttpInfo(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime)
 
 Get Events by event filter (getEvents)
 
@@ -38582,12 +38780,12 @@ public class Example {
         Long startTime = 56L; // Long | Timestamp. Events with creation time before it won't be queried.
         Long endTime = 56L; // Long | Timestamp. Events with creation time after it won't be queried.
         try {
-            ApiResponse<PageDataEventInfo> response = apiInstance.getEventsWithHttpInfo(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime);
+            ApiResponse<PageDataEventInfo> response = apiInstance.getEvents1WithHttpInfo(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#getEvents");
+            System.err.println("Exception when calling ThingsboardApi#getEvents1");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());
@@ -38639,9 +38837,9 @@ ApiResponse<[**PageDataEventInfo**](PageDataEventInfo.md)>
 | **429** | Too Many Requests |  -  |
 
 
-## getEvents1
+## getEvents2
 
-> PageDataEventInfo getEvents1(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
+> PageDataEventInfo getEvents2(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
 
 Get Events by type (getEvents)
 
@@ -38683,10 +38881,10 @@ public class Example {
         Long startTime = 56L; // Long | Timestamp. Events with creation time before it won't be queried.
         Long endTime = 56L; // Long | Timestamp. Events with creation time after it won't be queried.
         try {
-            PageDataEventInfo result = apiInstance.getEvents1(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime);
+            PageDataEventInfo result = apiInstance.getEvents2(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#getEvents1");
+            System.err.println("Exception when calling ThingsboardApi#getEvents2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -38737,9 +38935,9 @@ public class Example {
 | **404** | Not Found |  -  |
 | **429** | Too Many Requests |  -  |
 
-## getEvents1WithHttpInfo
+## getEvents2WithHttpInfo
 
-> ApiResponse<PageDataEventInfo> getEvents1 getEvents1WithHttpInfo(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
+> ApiResponse<PageDataEventInfo> getEvents2 getEvents2WithHttpInfo(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
 
 Get Events by type (getEvents)
 
@@ -38782,12 +38980,12 @@ public class Example {
         Long startTime = 56L; // Long | Timestamp. Events with creation time before it won't be queried.
         Long endTime = 56L; // Long | Timestamp. Events with creation time after it won't be queried.
         try {
-            ApiResponse<PageDataEventInfo> response = apiInstance.getEvents1WithHttpInfo(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime);
+            ApiResponse<PageDataEventInfo> response = apiInstance.getEvents2WithHttpInfo(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime);
             System.out.println("Status code: " + response.getStatusCode());
             System.out.println("Response headers: " + response.getHeaders());
             System.out.println("Response body: " + response.getData());
         } catch (ApiException e) {
-            System.err.println("Exception when calling ThingsboardApi#getEvents1");
+            System.err.println("Exception when calling ThingsboardApi#getEvents2");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Response headers: " + e.getResponseHeaders());
             System.err.println("Reason: " + e.getResponseBody());

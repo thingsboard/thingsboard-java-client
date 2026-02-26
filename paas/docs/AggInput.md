@@ -2,7 +2,6 @@
 
 # AggInput
 
-Configuration for calculated fields
 
 ## Properties
 

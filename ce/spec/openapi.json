@@ -47484,7 +47484,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "kh43w15PMIwZTCCrsZHF8ILuEeeM3h"
+                      "resetToken": "W5A2SHXzH4uUsc1TUTppS7jwSkAo5G"
                     }
                   }
                 }
@@ -47594,7 +47594,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "kh43w15PMIwZTCCrsZHF8ILuEeeM3h"
+                      "resetToken": "W5A2SHXzH4uUsc1TUTppS7jwSkAo5G"
                     }
                   }
                 }
@@ -83257,7 +83257,8 @@
           }
         ],
         "required": [
-          "notifyOn"
+          "notifyOn",
+          "triggerType"
         ]
       },
       "AlarmCalculatedFieldConfiguration": {
@@ -83457,6 +83458,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "AlarmCommentType": {
@@ -84146,7 +84150,8 @@
           }
         ],
         "required": [
-          "notifyOn"
+          "notifyOn",
+          "triggerType"
         ]
       },
       "AlarmRule": {
@@ -85010,6 +85015,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "ApiUsageStateFilter": {
@@ -86855,6 +86863,7 @@
           }
         ],
         "required": [
+          "type",
           "visible"
         ]
       },
@@ -87212,6 +87221,7 @@
           }
         ],
         "required": [
+          "type",
           "visible"
         ]
       },
@@ -87349,6 +87359,7 @@
           }
         ],
         "required": [
+          "type",
           "visible"
         ]
       },
@@ -87878,7 +87889,8 @@
           }
         ],
         "required": [
-          "notifyOn"
+          "notifyOn",
+          "triggerType"
         ]
       },
       "DeviceConfiguration": {
@@ -88007,6 +88019,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "DeviceId": {
@@ -88938,6 +88953,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "EdgeConnectionNotificationRuleTriggerConfig": {
@@ -88965,6 +88983,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "EdgeConnectivityEvent": {
@@ -89413,6 +89434,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "EntityActionNotificationRuleTriggerConfig": {
@@ -89441,6 +89465,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "EntityAggregationCalculatedFieldConfiguration": {
@@ -89682,7 +89709,10 @@
               "$ref": "#/components/schemas/CalculatedField"
             }
           }
-        }
+        },
+        "required": [
+          "entityType"
+        ]
       },
       "EntityFilter": {
         "description": "Filter for selecting entities",
@@ -90571,12 +90601,6 @@
       "FeaturesInfo": {
         "type": "object",
         "properties": {
-          "smsEnabled": {
-            "type": "boolean"
-          },
-          "oauthEnabled": {
-            "type": "boolean"
-          },
           "notificationEnabled": {
             "type": "boolean"
           },
@@ -90584,6 +90608,12 @@
             "type": "boolean"
           },
           "emailEnabled": {
+            "type": "boolean"
+          },
+          "smsEnabled": {
+            "type": "boolean"
+          },
+          "oauthEnabled": {
             "type": "boolean"
           }
         }
@@ -92386,7 +92416,10 @@
           "visible": {
             "type": "boolean"
           }
-        }
+        },
+        "required": [
+          "type"
+        ]
       },
       "MobilePageType": {
         "type": "string",
@@ -92485,6 +92518,9 @@
           {
             "$ref": "#/components/schemas/NotificationRuleTriggerConfig"
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "NoSecLwM2MBootstrapServerCredential": {
@@ -93147,7 +93183,10 @@
           "triggerType": {
             "$ref": "#/components/schemas/NotificationRuleTriggerType"
           }
-        }
+        },
+        "required": [
+          "triggerType"
+        ]
       },
       "NotificationRuleTriggerType": {
         "type": "string",
@@ -94229,6 +94268,9 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "OtaPackageId": {
@@ -96603,6 +96645,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "ReferencedEntityKey": {
@@ -97005,6 +97050,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "Rpc": {
@@ -97256,6 +97304,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "RuleChainId": {
@@ -97436,6 +97487,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "RuleNode": {
@@ -98619,6 +98673,9 @@
           {
             "$ref": "#/components/schemas/NotificationRuleTriggerConfig"
           }
+        ],
+        "required": [
+          "triggerType"
         ]
       },
       "TaskResult": {
@@ -98798,11 +98855,11 @@
           "public": {
             "type": "boolean"
           },
-          "publicLink": {
+          "link": {
             "type": "string",
             "readOnly": true
           },
-          "link": {
+          "publicLink": {
             "type": "string",
             "readOnly": true
           }
@@ -98914,11 +98971,11 @@
           "public": {
             "type": "boolean"
           },
-          "publicLink": {
+          "link": {
             "type": "string",
             "readOnly": true
           },
-          "link": {
+          "publicLink": {
             "type": "string",
             "readOnly": true
           }
@@ -100535,6 +100592,7 @@
           }
         ],
         "required": [
+          "type",
           "visible"
         ]
       },
@@ -100724,6 +100782,9 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "WidgetTypeId": {
@@ -100909,6 +100970,9 @@
               }
             }
           }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "WidgetsBundleId": {

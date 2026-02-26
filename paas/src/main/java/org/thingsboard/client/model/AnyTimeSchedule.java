@@ -55,7 +55,7 @@ public class AnyTimeSchedule extends AlarmSchedule {
   }
 
   @Override
-  public AnyTimeSchedule type(@javax.annotation.Nonnull AlarmScheduleType type) {
+  public AnyTimeSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
     this.setType(type);
     return this;
   }

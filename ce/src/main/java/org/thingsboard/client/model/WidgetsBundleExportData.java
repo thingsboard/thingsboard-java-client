@@ -62,7 +62,7 @@ import org.thingsboard.client.ApiClient;
 public class WidgetsBundleExportData extends EntityExportData {
   public static final String JSON_PROPERTY_WIDGETS = "widgets";
   @javax.annotation.Nullable
-  private List<Object> widgets = new ArrayList<>();
+  private List<com.fasterxml.jackson.databind.JsonNode> widgets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_FQNS = "fqns";
   @javax.annotation.Nullable
@@ -71,12 +71,12 @@ public class WidgetsBundleExportData extends EntityExportData {
   public WidgetsBundleExportData() { 
   }
 
-  public WidgetsBundleExportData widgets(@javax.annotation.Nullable List<Object> widgets) {
+  public WidgetsBundleExportData widgets(@javax.annotation.Nullable List<com.fasterxml.jackson.databind.JsonNode> widgets) {
     this.widgets = widgets;
     return this;
   }
 
-  public WidgetsBundleExportData addWidgetsItem(Object widgetsItem) {
+  public WidgetsBundleExportData addWidgetsItem(com.fasterxml.jackson.databind.JsonNode widgetsItem) {
     if (this.widgets == null) {
       this.widgets = new ArrayList<>();
     }
@@ -91,14 +91,14 @@ public class WidgetsBundleExportData extends EntityExportData {
   @javax.annotation.Nullable
   @JsonProperty(value = JSON_PROPERTY_WIDGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<Object> getWidgets() {
+  public List<com.fasterxml.jackson.databind.JsonNode> getWidgets() {
     return widgets;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_WIDGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWidgets(@javax.annotation.Nullable List<Object> widgets) {
+  public void setWidgets(@javax.annotation.Nullable List<com.fasterxml.jackson.databind.JsonNode> widgets) {
     this.widgets = widgets;
   }
 
@@ -283,9 +283,11 @@ public class WidgetsBundleExportData extends EntityExportData {
     // add `widgets` to the URL query string
     if (getWidgets() != null) {
       for (int i = 0; i < getWidgets().size(); i++) {
-        joiner.add(String.format(java.util.Locale.ROOT, "%swidgets%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
-            ApiClient.urlEncode(ApiClient.valueToString(getWidgets().get(i)))));
+        if (getWidgets().get(i) != null) {
+          joiner.add(String.format(java.util.Locale.ROOT, "%swidgets%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+              ApiClient.urlEncode(ApiClient.valueToString(getWidgets().get(i)))));
+        }
       }
     }
 

@@ -45,8 +45,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   EntityTypeVersionLoadRequest.JSON_PROPERTY_ENTITY_TYPES,
-  EntityTypeVersionLoadRequest.JSON_PROPERTY_ROLLBACK_ON_ERROR,
-  EntityTypeVersionLoadRequest.JSON_PROPERTY_TYPE
+  EntityTypeVersionLoadRequest.JSON_PROPERTY_ROLLBACK_ON_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -63,10 +62,6 @@ public class EntityTypeVersionLoadRequest extends VersionLoadRequest {
   public static final String JSON_PROPERTY_ROLLBACK_ON_ERROR = "rollbackOnError";
   @javax.annotation.Nullable
   private Boolean rollbackOnError;
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
-  private VersionLoadRequestType type = VersionLoadRequestType.ENTITY_TYPE;
 
   public EntityTypeVersionLoadRequest() { 
   }
@@ -127,33 +122,15 @@ public class EntityTypeVersionLoadRequest extends VersionLoadRequest {
   }
 
 
-  public EntityTypeVersionLoadRequest type(@javax.annotation.Nonnull VersionLoadRequestType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public VersionLoadRequestType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull VersionLoadRequestType type) {
-    this.type = type;
-  }
-
-
   @Override
   public EntityTypeVersionLoadRequest versionId(@javax.annotation.Nullable String versionId) {
     this.setVersionId(versionId);
+    return this;
+  }
+
+  @Override
+  public EntityTypeVersionLoadRequest type(@javax.annotation.Nonnull VersionLoadRequestType type) {
+    this.setType(type);
     return this;
   }
 
@@ -171,13 +148,12 @@ public class EntityTypeVersionLoadRequest extends VersionLoadRequest {
     EntityTypeVersionLoadRequest entityTypeVersionLoadRequest = (EntityTypeVersionLoadRequest) o;
     return Objects.equals(this.entityTypes, entityTypeVersionLoadRequest.entityTypes) &&
         Objects.equals(this.rollbackOnError, entityTypeVersionLoadRequest.rollbackOnError) &&
-        Objects.equals(this.type, entityTypeVersionLoadRequest.type) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityTypes, rollbackOnError, type, super.hashCode());
+    return Objects.hash(entityTypes, rollbackOnError, super.hashCode());
   }
 
   @Override
@@ -187,7 +163,6 @@ public class EntityTypeVersionLoadRequest extends VersionLoadRequest {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
     sb.append("    rollbackOnError: ").append(toIndentedString(rollbackOnError)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

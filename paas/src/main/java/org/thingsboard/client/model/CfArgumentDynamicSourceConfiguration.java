@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * Configuration for calculated fields
+ * CfArgumentDynamicSourceConfiguration
  */
 @JsonPropertyOrder({
   CfArgumentDynamicSourceConfiguration.JSON_PROPERTY_TYPE

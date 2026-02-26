@@ -12,7 +12,6 @@
 |**alarmStatuses** | **Set&lt;AlarmSearchStatus&gt;** |  |  [optional] |
 |**onlyUserComments** | **Boolean** |  |  [optional] |
 |**notifyOnCommentUpdate** | **Boolean** |  |  [optional] |
-|**triggerType** | **NotificationRuleTriggerType** | Type of the notification rule trigger |  [optional] |
 
 
 

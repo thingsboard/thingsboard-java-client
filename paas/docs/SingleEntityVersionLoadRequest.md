@@ -10,7 +10,6 @@
 |**internalEntityId** | [**EntityId**](EntityId.md) |  |  [optional] |
 |**externalEntityId** | [**EntityId**](EntityId.md) |  |  [optional] |
 |**config** | [**VersionLoadConfig**](VersionLoadConfig.md) |  |  [optional] |
-|**type** | **VersionLoadRequestType** |  |  |
 
 
 
