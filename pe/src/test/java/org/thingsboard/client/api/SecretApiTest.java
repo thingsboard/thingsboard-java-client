@@ -42,7 +42,7 @@ public class SecretApiTest extends AbstractApiTest {
     }
 
     private SecretInfo createSecret(String name) throws ApiException {
-        return tbApi.saveSecret(buildSecret(name, "initial-value"));
+        return client.saveSecret(buildSecret(name, "initial-value"));
     }
 
     // -------------------------------------------------------------------------
@@ -64,32 +64,32 @@ public class SecretApiTest extends AbstractApiTest {
         UUID secretId = saved.getId().getId();
 
         // getSecretInfoById
-        SecretInfo byId = tbApi.getSecretInfoById(secretId);
+        SecretInfo byId = client.getSecretInfoById(secretId);
         assertNotNull(byId);
         assertEquals(secretId, byId.getId().getId());
         assertEquals(name, byId.getName());
 
         // getSecretInfoByName
-        SecretInfo byName = tbApi.getSecretInfoByName(name);
+        SecretInfo byName = client.getSecretInfoByName(name);
         assertNotNull(byName);
         assertEquals(secretId, byName.getId().getId());
         assertEquals(name, byName.getName());
 
         // updateSecretDescription
-        SecretInfo afterDescUpdate = tbApi.updateSecretDescription(secretId, "updated description");
+        SecretInfo afterDescUpdate = client.updateSecretDescription(secretId, "updated description");
         assertNotNull(afterDescUpdate);
         assertEquals("updated description", afterDescUpdate.getDescription());
 
         // updateSecretValue
-        SecretInfo afterValueUpdate = tbApi.updateSecretValue(secretId, "new-secret-value");
+        SecretInfo afterValueUpdate = client.updateSecretValue(secretId, "new-secret-value");
         assertNotNull(afterValueUpdate);
         assertEquals(secretId, afterValueUpdate.getId().getId());
 
         // deleteSecret
-        TbSecretDeleteResult result = tbApi.deleteSecret(secretId);
+        TbSecretDeleteResult result = client.deleteSecret(secretId);
         assertNotNull(result);
 
-        assertReturns404(() -> tbApi.getSecretInfoById(secretId));
+        assertReturns404(() -> client.getSecretInfoById(secretId));
     }
 
     // -------------------------------------------------------------------------
@@ -107,16 +107,16 @@ public class SecretApiTest extends AbstractApiTest {
         UUID id2 = s2.getId().getId();
         UUID id3 = s3.getId().getId();
 
-        PageDataSecretInfo page = tbApi.getSecretInfos(100, 0, TEST_PREFIX + ts, null, null);
+        PageDataSecretInfo page = client.getSecretInfos(100, 0, TEST_PREFIX + ts, null, null);
         assertNotNull(page);
         assertTrue(page.getTotalElements() >= 3);
         assertTrue(page.getData().stream().anyMatch(s -> s.getId().getId().equals(id1)));
         assertTrue(page.getData().stream().anyMatch(s -> s.getId().getId().equals(id2)));
         assertTrue(page.getData().stream().anyMatch(s -> s.getId().getId().equals(id3)));
 
-        tbApi.deleteSecret(id1);
-        tbApi.deleteSecret(id2);
-        tbApi.deleteSecret(id3);
+        client.deleteSecret(id1);
+        client.deleteSecret(id2);
+        client.deleteSecret(id3);
     }
 
     // -------------------------------------------------------------------------
@@ -131,11 +131,11 @@ public class SecretApiTest extends AbstractApiTest {
         SecretInfo saved = createSecret(name);
         UUID secretId = saved.getId().getId();
 
-        List<String> names = tbApi.getSecretNames();
+        List<String> names = client.getSecretNames();
         assertNotNull(names);
         assertTrue(names.contains(name));
 
-        tbApi.deleteSecret(secretId);
+        client.deleteSecret(secretId);
     }
 
     // -------------------------------------------------------------------------
@@ -144,7 +144,7 @@ public class SecretApiTest extends AbstractApiTest {
 
     @Test
     void testGetSecretInfoByIdNotFound() {
-        assertReturns404(() -> tbApi.getSecretInfoById(UUID.randomUUID()));
+        assertReturns404(() -> client.getSecretInfoById(UUID.randomUUID()));
     }
 
 }

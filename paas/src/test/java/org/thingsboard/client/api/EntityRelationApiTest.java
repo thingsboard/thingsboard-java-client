@@ -54,27 +54,27 @@ public class EntityRelationApiTest extends AbstractApiTest {
         Asset building = new Asset();
         building.setName(TEST_PREFIX + "Building_" + timestamp);
         building.setType("building");
-        building = tbApi.saveAsset(building, null, null, null, null, null);
+        building = client.saveAsset(building, null, null, null, null, null);
 
         Asset floor = new Asset();
         floor.setName(TEST_PREFIX + "Floor_" + timestamp);
         floor.setType("floor");
-        floor = tbApi.saveAsset(floor, null, null, null, null, null);
+        floor = client.saveAsset(floor, null, null, null, null, null);
 
         Device device1 = new Device();
         device1.setName(TEST_PREFIX + "Sensor_" + timestamp + "_1");
         device1.setType("sensor");
-        device1 = tbApi.saveDevice(device1, null, null, null, null, null, null);
+        device1 = client.saveDevice(device1, null, null, null, null, null, null);
 
         Device device2 = new Device();
         device2.setName(TEST_PREFIX + "Sensor_" + timestamp + "_2");
         device2.setType("sensor");
-        device2 = tbApi.saveDevice(device2, null, null, null, null, null, null);
+        device2 = client.saveDevice(device2, null, null, null, null, null, null);
 
         Device device3 = new Device();
         device3.setName(TEST_PREFIX + "Sensor_" + timestamp + "_3");
         device3.setType("sensor");
-        device3 = tbApi.saveDevice(device3, null, null, null, null, null, null);
+        device3 = client.saveDevice(device3, null, null, null, null, null, null);
 
         // create relations: building -> Contains -> floor, floor -> Contains -> device1/device2/device3
         EntityRelation buildingToFloor = new EntityRelation();
@@ -82,27 +82,27 @@ public class EntityRelationApiTest extends AbstractApiTest {
         buildingToFloor.setTo(entityId(floor));
         buildingToFloor.setType("Contains");
         buildingToFloor.setTypeGroup(RelationTypeGroup.COMMON);
-        EntityRelation savedRelation = tbApi.saveRelationV2(buildingToFloor);
+        EntityRelation savedRelation = client.saveRelationV2(buildingToFloor);
         assertNotNull(savedRelation);
         assertEquals("Contains", savedRelation.getType());
 
-        tbApi.saveRelationV2(new EntityRelation()
+        client.saveRelationV2(new EntityRelation()
                 .from(entityId(floor))
                 .to(entityId(device1))
                 .type("Contains")
                 .typeGroup(RelationTypeGroup.COMMON));
-        tbApi.saveRelationV2(new EntityRelation()
+        client.saveRelationV2(new EntityRelation()
                 .from(entityId(floor))
                 .to(entityId(device2))
                 .type("Contains").typeGroup(RelationTypeGroup.COMMON));
-        tbApi.saveRelationV2(new EntityRelation()
+        client.saveRelationV2(new EntityRelation()
                 .from(entityId(floor))
                 .to(entityId(device3))
                 .type("Manages")
                 .typeGroup(RelationTypeGroup.COMMON));
 
         // get specific relation
-        EntityRelation fetched = tbApi.getRelation(
+        EntityRelation fetched = client.getRelation(
                 building.getId().getId().toString(), "ASSET",
                 "Contains",
                 floor.getId().getId().toString(), "ASSET",
@@ -111,28 +111,28 @@ public class EntityRelationApiTest extends AbstractApiTest {
         assertEquals("Contains", fetched.getType());
 
         // find all relations from floor
-        List<EntityRelation> fromFloor = tbApi.findByFromV2("ASSET",
+        List<EntityRelation> fromFloor = client.findByFromV2("ASSET",
                 floor.getId().getId().toString(), RelationTypeGroup.COMMON.getValue());
         assertEquals(3, fromFloor.size());
 
         // find relations from floor with type filter "Contains"
-        List<EntityRelation> containsFromFloor = tbApi.findByFromAndRelationType("ASSET",
+        List<EntityRelation> containsFromFloor = client.findByFromAndRelationType("ASSET",
                 floor.getId().getId().toString(), "Contains", RelationTypeGroup.COMMON.getValue());
         assertEquals(2, containsFromFloor.size());
 
         // find relations to device1
-        List<EntityRelation> toDevice1 = tbApi.findByToV2("DEVICE",
+        List<EntityRelation> toDevice1 = client.findByToV2("DEVICE",
                 device1.getId().getId().toString(), RelationTypeGroup.COMMON.getValue());
         assertEquals(1, toDevice1.size());
         assertEquals("Contains", toDevice1.get(0).getType());
 
         // find relations to device3 with type filter "Manages"
-        List<EntityRelation> managesToDevice3 = tbApi.findByToAndRelationType("DEVICE",
+        List<EntityRelation> managesToDevice3 = client.findByToAndRelationType("DEVICE",
                 device3.getId().getId().toString(), "Manages", RelationTypeGroup.COMMON.getValue());
         assertEquals(1, managesToDevice3.size());
 
         // find info by from (includes entity names)
-        List<EntityRelationInfo> infoFromFloor = tbApi.findInfoByFromV2("ASSET",
+        List<EntityRelationInfo> infoFromFloor = client.findInfoByFromV2("ASSET",
                 floor.getId().getId().toString(), RelationTypeGroup.COMMON.getValue());
         assertEquals(3, infoFromFloor.size());
         Device finalDevice = device1;
@@ -140,7 +140,7 @@ public class EntityRelationApiTest extends AbstractApiTest {
                 finalDevice.getName().equals(info.getToName())));
 
         // find info by to
-        List<EntityRelationInfo> infoToDevice2 = tbApi.findInfoByToV2("DEVICE",
+        List<EntityRelationInfo> infoToDevice2 = client.findInfoByToV2("DEVICE",
                 device2.getId().getId().toString(), RelationTypeGroup.COMMON.getValue());
         assertEquals(1, infoToDevice2.size());
         assertEquals(floor.getName(), infoToDevice2.get(0).getFromName());
@@ -161,29 +161,29 @@ public class EntityRelationApiTest extends AbstractApiTest {
         query.setParameters(params);
         query.setFilters(List.of(filter));
 
-        List<EntityRelation> queryResult = tbApi.findByQuery(query);
+        List<EntityRelation> queryResult = client.findByQuery(query);
         assertTrue(queryResult.size() >= 3);
 
         // find info by query
-        List<EntityRelationInfo> infoQueryResult = tbApi.findInfoByQuery(query);
+        List<EntityRelationInfo> infoQueryResult = client.findInfoByQuery(query);
         assertTrue(infoQueryResult.size() >= 3);
 
         // delete single relation
-        tbApi.deleteRelation(
+        client.deleteRelation(
                 floor.getId().getId().toString(), "ASSET",
                 "Manages",
                 device3.getId().getId().toString(), "DEVICE",
                 RelationTypeGroup.COMMON.getValue());
 
         // verify deletion
-        List<EntityRelation> afterDelete = tbApi.findByFromV2("ASSET",
+        List<EntityRelation> afterDelete = client.findByFromV2("ASSET",
                 floor.getId().getId().toString(), RelationTypeGroup.COMMON.getValue());
         assertEquals(2, afterDelete.size());
 
         // delete all relations for building
-        tbApi.deleteRelations(building.getId().getId().toString(), "ASSET");
+        client.deleteRelations(building.getId().getId().toString(), "ASSET");
 
-        List<EntityRelation> afterDeleteAll = tbApi.findByFromV2("ASSET",
+        List<EntityRelation> afterDeleteAll = client.findByFromV2("ASSET",
                 building.getId().getId().toString(), RelationTypeGroup.COMMON.getValue());
         assertEquals(0, afterDeleteAll.size());
     }

@@ -51,7 +51,7 @@ public class TbResourceApiTest extends AbstractApiTest {
             String jsContent = "export default function test" + i + "() { return " + i + "; }";
             resource.setData(Base64.getEncoder().encodeToString(jsContent.getBytes()));
 
-            TbResourceInfo created = tbApi.saveResource(resource);
+            TbResourceInfo created = client.saveResource(resource);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(resource.getTitle(), created.getTitle());
@@ -61,36 +61,36 @@ public class TbResourceApiTest extends AbstractApiTest {
         }
 
         // get tenant resources, check count
-        PageDataTbResourceInfo tenantResources = tbApi.getTenantResources(100, 0, null, null, null);
+        PageDataTbResourceInfo tenantResources = client.getTenantResources(100, 0, null, null, null);
         assertNotNull(tenantResources);
         assertNotNull(tenantResources.getData());
         int initialSize = tenantResources.getData().size();
         assertTrue(initialSize >= 5, "Expected at least 5 resources, but got " + initialSize);
 
         // find with text search
-        PageDataTbResourceInfo filteredResources = tbApi.getTenantResources(100, 0,
+        PageDataTbResourceInfo filteredResources = client.getTenantResources(100, 0,
                 TEST_PREFIX + "Resource_" + timestamp, null, null);
         assertEquals(5, filteredResources.getData().size());
 
         // get resources with type filter
-        PageDataTbResourceInfo jsResources = tbApi.getResources(100, 0,
+        PageDataTbResourceInfo jsResources = client.getResources(100, 0,
                 ResourceType.JS_MODULE.getValue(), null, TEST_PREFIX + "Resource_" + timestamp, null, null);
         assertEquals(5, jsResources.getData().size());
 
         // get resource info by id
         TbResourceInfo searchResource = createdResources.get(2);
-        TbResourceInfo fetchedInfo = tbApi.getResourceInfoById(searchResource.getId().getId().toString());
+        TbResourceInfo fetchedInfo = client.getResourceInfoById(searchResource.getId().getId().toString());
         assertEquals(searchResource.getTitle(), fetchedInfo.getTitle());
         assertEquals(searchResource.getResourceKey(), fetchedInfo.getResourceKey());
 
         // get full resource by id (includes data)
-        TbResource fullResource = tbApi.getResourceById(searchResource.getId().getId().toString());
+        TbResource fullResource = client.getResourceById(searchResource.getId().getId().toString());
         assertNotNull(fullResource);
         assertEquals(searchResource.getTitle(), fullResource.getTitle());
         assertNotNull(fullResource.getData());
 
         // download resource
-        File downloadedFile = tbApi.downloadResource(searchResource.getId().getId().toString());
+        File downloadedFile = client.downloadResource(searchResource.getId().getId().toString());
         assertNotNull(downloadedFile);
         assertTrue(downloadedFile.exists());
         assertTrue(downloadedFile.length() > 0);
@@ -100,27 +100,27 @@ public class TbResourceApiTest extends AbstractApiTest {
                 createdResources.get(0).getId().getId().toString(),
                 createdResources.get(1).getId().getId().toString()
         );
-        List<TbResourceInfo> resourceList = tbApi.getSystemOrTenantResourcesByIdsV2(idsToFetch);
+        List<TbResourceInfo> resourceList = client.getSystemOrTenantResourcesByIdsV2(idsToFetch);
         assertEquals(2, resourceList.size());
 
         // update resource
-        TbResource resourceToUpdate = tbApi.getResourceById(createdResources.get(3).getId().getId().toString());
+        TbResource resourceToUpdate = client.getResourceById(createdResources.get(3).getId().getId().toString());
         resourceToUpdate.setTitle(resourceToUpdate.getTitle() + "_updated");
         String updatedContent = "export default function updated() { return 42; }";
         resourceToUpdate.setData(Base64.getEncoder().encodeToString(updatedContent.getBytes()));
-        TbResourceInfo updatedResource = tbApi.saveResource(resourceToUpdate);
+        TbResourceInfo updatedResource = client.saveResource(resourceToUpdate);
         assertEquals(resourceToUpdate.getTitle(), updatedResource.getTitle());
 
         // delete resource
         UUID resourceToDeleteId = createdResources.get(0).getId().getId();
-        tbApi.deleteResource(resourceToDeleteId.toString(), false);
+        client.deleteResource(resourceToDeleteId.toString(), false);
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getResourceInfoById(resourceToDeleteId.toString())
+                client.getResourceInfoById(resourceToDeleteId.toString())
         );
 
-        PageDataTbResourceInfo resourcesAfterDelete = tbApi.getTenantResources(100, 0,
+        PageDataTbResourceInfo resourcesAfterDelete = client.getTenantResources(100, 0,
                 TEST_PREFIX + "Resource_" + timestamp, null, null);
         assertEquals(4, resourcesAfterDelete.getData().size());
     }

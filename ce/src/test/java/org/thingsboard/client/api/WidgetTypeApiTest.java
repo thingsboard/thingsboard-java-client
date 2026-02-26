@@ -55,7 +55,7 @@ public class WidgetTypeApiTest extends AbstractApiTest {
         WidgetsBundle bundle = new WidgetsBundle(null, null, null,
                 TEST_PREFIX + "Bundle_" + timestamp, null, false,
                 "Test bundle description", null, null);
-        WidgetsBundle savedBundle = tbApi.saveWidgetsBundle(bundle);
+        WidgetsBundle savedBundle = client.saveWidgetsBundle(bundle);
         assertNotNull(savedBundle);
         assertNotNull(savedBundle.getId());
         assertEquals(bundle.getTitle(), savedBundle.getTitle());
@@ -70,7 +70,7 @@ public class WidgetTypeApiTest extends AbstractApiTest {
             widgetType.setDeprecated(false);
             widgetType.setTags(List.of("test", "automated"));
 
-            WidgetTypeDetails created = tbApi.saveWidgetType(widgetType, false);
+            WidgetTypeDetails created = client.saveWidgetType(widgetType, false);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(name, created.getName());
@@ -80,7 +80,7 @@ public class WidgetTypeApiTest extends AbstractApiTest {
         }
 
         // list widget types with text search (tenant only)
-        PageDataWidgetTypeInfo filteredTypes = tbApi.getWidgetTypes(100, 0,
+        PageDataWidgetTypeInfo filteredTypes = client.getWidgetTypes(100, 0,
                 TEST_PREFIX + "Widget_" + timestamp, null, null,
                 true, false, null, null, null);
         assertNotNull(filteredTypes);
@@ -88,14 +88,14 @@ public class WidgetTypeApiTest extends AbstractApiTest {
 
         // get widget type details by id
         WidgetTypeDetails searchWidget = createdWidgetTypes.get(2);
-        WidgetTypeDetails fetchedDetails = tbApi.getWidgetTypeById(
+        WidgetTypeDetails fetchedDetails = client.getWidgetTypeById(
                 searchWidget.getId().getId().toString(), true);
         assertEquals(searchWidget.getName(), fetchedDetails.getName());
         assertEquals(searchWidget.getFqn(), fetchedDetails.getFqn());
         assertEquals("Test widget 2", fetchedDetails.getDescription());
 
         // get widget type info by id
-        WidgetTypeInfo fetchedInfo = tbApi.getWidgetTypeInfoById(
+        WidgetTypeInfo fetchedInfo = client.getWidgetTypeInfoById(
                 searchWidget.getId().getId().toString());
         assertEquals(searchWidget.getName(), fetchedInfo.getName());
 
@@ -103,52 +103,52 @@ public class WidgetTypeApiTest extends AbstractApiTest {
         List<String> widgetTypeIds = createdWidgetTypes.stream()
                 .map(wt -> wt.getId().getId().toString())
                 .collect(Collectors.toList());
-        tbApi.updateWidgetsBundleWidgetTypes(savedBundle.getId().getId().toString(), widgetTypeIds);
+        client.updateWidgetsBundleWidgetTypes(savedBundle.getId().getId().toString(), widgetTypeIds);
 
         // get bundle widget type fqns
-        List<String> bundleFqns = tbApi.getBundleWidgetTypeFqns(savedBundle.getId().getId().toString());
+        List<String> bundleFqns = client.getBundleWidgetTypeFqns(savedBundle.getId().getId().toString());
         assertEquals(5, bundleFqns.size());
 
         // get bundle widget types details
-        List<WidgetTypeDetails> bundleDetails = tbApi.getBundleWidgetTypesDetails(
+        List<WidgetTypeDetails> bundleDetails = client.getBundleWidgetTypesDetails(
                 savedBundle.getId().getId().toString(), false);
         assertEquals(5, bundleDetails.size());
 
         // get bundle widget types infos (paginated)
-        PageDataWidgetTypeInfo bundleInfos = tbApi.getBundleWidgetTypesInfos(
+        PageDataWidgetTypeInfo bundleInfos = client.getBundleWidgetTypesInfos(
                 savedBundle.getId().getId().toString(), 100, 0,
                 null, null, null, null, null, null);
         assertEquals(5, bundleInfos.getData().size());
 
         // update widget type
-        WidgetTypeDetails widgetToUpdate = tbApi.getWidgetTypeById(
+        WidgetTypeDetails widgetToUpdate = client.getWidgetTypeById(
                 createdWidgetTypes.get(3).getId().getId().toString(), true);
         widgetToUpdate.setDescription("Updated description");
         widgetToUpdate.setDeprecated(true);
         widgetToUpdate.setTags(List.of("test", "updated"));
-        WidgetTypeDetails updatedWidget = tbApi.saveWidgetType(widgetToUpdate, false);
+        WidgetTypeDetails updatedWidget = client.saveWidgetType(widgetToUpdate, false);
         assertEquals("Updated description", updatedWidget.getDescription());
         assertEquals(true, updatedWidget.getDeprecated());
 
         // delete widget type
         String widgetToDeleteId = createdWidgetTypes.get(0).getId().getId().toString();
-        tbApi.deleteWidgetType(widgetToDeleteId);
+        client.deleteWidgetType(widgetToDeleteId);
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getWidgetTypeById(widgetToDeleteId, false)
+                client.getWidgetTypeById(widgetToDeleteId, false)
         );
 
-        PageDataWidgetTypeInfo typesAfterDelete = tbApi.getWidgetTypes(100, 0,
+        PageDataWidgetTypeInfo typesAfterDelete = client.getWidgetTypes(100, 0,
                 TEST_PREFIX + "Widget_" + timestamp, null, null,
                 true, false, null, null, null);
         assertEquals(4, typesAfterDelete.getData().size());
 
         // delete widgets bundle
-        tbApi.deleteWidgetsBundle(savedBundle.getId().getId().toString());
+        client.deleteWidgetsBundle(savedBundle.getId().getId().toString());
 
         assertReturns404(() ->
-                tbApi.getWidgetsBundleById(savedBundle.getId().getId().toString(), false)
+                client.getWidgetsBundleById(savedBundle.getId().getId().toString(), false)
         );
     }
 

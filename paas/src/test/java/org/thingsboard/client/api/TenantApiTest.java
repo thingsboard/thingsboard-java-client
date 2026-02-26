@@ -39,7 +39,7 @@ public class TenantApiTest extends AbstractApiTest {
         List<Tenant> createdTenants = new ArrayList<>();
 
         // authenticate as sysadmin for tenant management
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         // create 20 tenants
         for (int i = 0; i < 20; i++) {
@@ -50,7 +50,7 @@ public class TenantApiTest extends AbstractApiTest {
             tenant.setCountry("US");
             tenant.setCity("City" + i);
 
-            Tenant createdTenant = tbApi.saveTenant(tenant);
+            Tenant createdTenant = client.saveTenant(tenant);
             assertNotNull(createdTenant);
             assertNotNull(createdTenant.getId());
             assertEquals(tenantTitle, createdTenant.getTitle());
@@ -60,19 +60,19 @@ public class TenantApiTest extends AbstractApiTest {
 
         try {
             // find all with search text, check count
-            PageDataTenant filteredTenants = tbApi.getTenants(100, 0, TEST_PREFIX_2, null, null);
+            PageDataTenant filteredTenants = client.getTenants(100, 0, TEST_PREFIX_2, null, null);
             assertEquals(10, filteredTenants.getData().size(), "Expected exactly 10 tenants matching prefix");
 
             // find by id
             Tenant searchTenant = createdTenants.get(10);
-            Tenant fetchedTenant = tbApi.getTenantById(searchTenant.getId().getId().toString());
+            Tenant fetchedTenant = client.getTenantById(searchTenant.getId().getId().toString());
             assertEquals(searchTenant.getTitle(), fetchedTenant.getTitle());
             assertEquals(searchTenant.getEmail(), fetchedTenant.getEmail());
 
             // update tenant
             fetchedTenant.setCity("Updated City");
             fetchedTenant.setCountry("DE");
-            Tenant updatedTenant = tbApi.saveTenant(fetchedTenant);
+            Tenant updatedTenant = client.saveTenant(fetchedTenant);
             assertEquals("Updated City", updatedTenant.getCity());
             assertEquals("DE", updatedTenant.getCountry());
 
@@ -84,32 +84,32 @@ public class TenantApiTest extends AbstractApiTest {
             adminUser.setAuthority(Authority.TENANT_ADMIN);
             adminUser.setTenantId(tenantForAdmin.getId());
             adminUser.setFirstName("TestAdmin");
-            User savedAdmin = tbApi.saveUser(adminUser, "false", null, null);
+            User savedAdmin = client.saveUser(adminUser, "false", null, null);
             assertNotNull(savedAdmin);
 
-            PageDataUser tenantAdmins = tbApi.getTenantAdmins(
+            PageDataUser tenantAdmins = client.getTenantAdmins(
                     tenantForAdmin.getId().getId().toString(), 100, 0, null, null, null);
             assertEquals(1, tenantAdmins.getData().size());
             assertEquals(savedAdmin.getEmail(), tenantAdmins.getData().get(0).getEmail());
 
             // delete tenant
             UUID tenantToDeleteId = createdTenants.get(0).getId().getId();
-            tbApi.deleteTenant(tenantToDeleteId.toString());
+            client.deleteTenant(tenantToDeleteId.toString());
             createdTenants.remove(0);
 
             // verify deletion
-            PageDataTenant tenantsAfterDelete = tbApi.getTenants(100, 0, TEST_PREFIX_2, null, null);
+            PageDataTenant tenantsAfterDelete = client.getTenants(100, 0, TEST_PREFIX_2, null, null);
             assertEquals(10, tenantsAfterDelete.getData().size());
 
             assertReturns404(() ->
-                    tbApi.getTenantById(tenantToDeleteId.toString())
+                    client.getTenantById(tenantToDeleteId.toString())
             );
         } finally {
             // clean up all created tenants (deleting tenant cascades to users)
-            authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+            client.login("sysadmin@thingsboard.org", "sysadmin");
             for (Tenant tenant : createdTenants) {
                 try {
-                    tbApi.deleteTenant(tenant.getId().getId().toString());
+                    client.deleteTenant(tenant.getId().getId().toString());
                 } catch (ApiException ignored) {
                 }
             }

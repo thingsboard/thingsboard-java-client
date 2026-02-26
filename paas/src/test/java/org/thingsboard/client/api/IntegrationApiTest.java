@@ -47,7 +47,7 @@ public class IntegrationApiTest extends AbstractApiTest {
         converter.setName(name);
         converter.setType(ConverterType.UPLINK);
         converter.setConfiguration(ConverterApiTest.TEST_DECODER);
-        return tbApi.saveConverter(converter);
+        return client.saveConverter(converter);
     }
 
     private Integration buildIntegration(String name, String routingKey, String converterId) {
@@ -69,7 +69,7 @@ public class IntegrationApiTest extends AbstractApiTest {
         edge.setSecret("edgeSecret_" + routingKey);
         edge.setEdgeLicenseKey("edgeLicense_" + routingKey);
         edge.setCloudEndpoint("http://localhost:8080");
-        return tbApi.saveEdge(edge, null, null);
+        return client.saveEdge(edge, null, null);
     }
 
     // -------------------------------------------------------------------------
@@ -87,7 +87,7 @@ public class IntegrationApiTest extends AbstractApiTest {
         String routingKey = "rk_" + ts;
 
         // saveIntegration (create)
-        Integration saved = tbApi.saveIntegration(buildIntegration(TEST_PREFIX + ts, routingKey, converterId));
+        Integration saved = client.saveIntegration(buildIntegration(TEST_PREFIX + ts, routingKey, converterId));
         assertNotNull(saved);
         assertNotNull(saved.getId());
         assertEquals(TEST_PREFIX + ts, saved.getName());
@@ -96,26 +96,26 @@ public class IntegrationApiTest extends AbstractApiTest {
         String integrationId = saved.getId().getId().toString();
 
         // getIntegrationById
-        Integration fetched = tbApi.getIntegrationById(integrationId);
+        Integration fetched = client.getIntegrationById(integrationId);
         assertNotNull(fetched);
         assertEquals(integrationId, fetched.getId().getId().toString());
         assertEquals(TEST_PREFIX + ts, fetched.getName());
 
         // getIntegrationByRoutingKey
-        Integration byRoutingKey = tbApi.getIntegrationByRoutingKey(routingKey);
+        Integration byRoutingKey = client.getIntegrationByRoutingKey(routingKey);
         assertNotNull(byRoutingKey);
         assertEquals(integrationId, byRoutingKey.getId().getId().toString());
 
         // saveIntegration (update)
         fetched.setName(TEST_PREFIX + ts + "_updated");
-        Integration updated = tbApi.saveIntegration(fetched);
+        Integration updated = client.saveIntegration(fetched);
         assertEquals(TEST_PREFIX + ts + "_updated", updated.getName());
 
         // deleteIntegration
-        tbApi.deleteIntegration(integrationId);
-        assertReturns404(() -> tbApi.getIntegrationById(integrationId));
+        client.deleteIntegration(integrationId);
+        assertReturns404(() -> client.getIntegrationById(integrationId));
 
-        tbApi.deleteConverter(converterId);
+        client.deleteConverter(converterId);
     }
 
     // -------------------------------------------------------------------------
@@ -131,23 +131,23 @@ public class IntegrationApiTest extends AbstractApiTest {
 
         List<String> createdIds = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            Integration saved = tbApi.saveIntegration(
+            Integration saved = client.saveIntegration(
                     buildIntegration(TEST_PREFIX + ts + "_" + i, "rk_" + ts + "_" + i, converterId));
             createdIds.add(saved.getId().getId().toString());
         }
 
         // getIntegrations
-        PageDataIntegration page = tbApi.getIntegrations("100", "0", null, TEST_PREFIX + ts, null, null);
+        PageDataIntegration page = client.getIntegrations("100", "0", null, TEST_PREFIX + ts, null, null);
         assertNotNull(page);
         assertTrue(page.getTotalElements() >= 3);
 
         // getIntegrationInfos
-        PageDataIntegrationInfo infoPage = tbApi.getIntegrationInfos("100", "0", null, TEST_PREFIX + ts, null, null);
+        PageDataIntegrationInfo infoPage = client.getIntegrationInfos("100", "0", null, TEST_PREFIX + ts, null, null);
         assertNotNull(infoPage);
         assertTrue(infoPage.getTotalElements() >= 3);
 
-        for (String id : createdIds) tbApi.deleteIntegration(id);
-        tbApi.deleteConverter(converterId);
+        for (String id : createdIds) client.deleteIntegration(id);
+        client.deleteConverter(converterId);
     }
 
     // -------------------------------------------------------------------------
@@ -162,23 +162,23 @@ public class IntegrationApiTest extends AbstractApiTest {
         Converter converter = createConverter(TEST_PREFIX + ts + "_conv");
         String converterId = converter.getId().getId().toString();
 
-        Integration i1 = tbApi.saveIntegration(
+        Integration i1 = client.saveIntegration(
                 buildIntegration(TEST_PREFIX + ts + "_a", "rk_" + ts + "_a", converterId));
-        Integration i2 = tbApi.saveIntegration(
+        Integration i2 = client.saveIntegration(
                 buildIntegration(TEST_PREFIX + ts + "_b", "rk_" + ts + "_b", converterId));
         String id1 = i1.getId().getId().toString();
         String id2 = i2.getId().getId().toString();
 
         // getIntegrationsByIdsV2 (covers both getIntegrationsByIds and getIntegrationsByIdsV2)
-        List<Integration> result = tbApi.getIntegrationsByIdsV2(List.of(id1, id2));
+        List<Integration> result = client.getIntegrationsByIdsV2(List.of(id1, id2));
         assertNotNull(result);
         assertEquals(2, result.size());
         assertTrue(result.stream().anyMatch(i -> i.getId().getId().toString().equals(id1)));
         assertTrue(result.stream().anyMatch(i -> i.getId().getId().toString().equals(id2)));
 
-        tbApi.deleteIntegration(id1);
-        tbApi.deleteIntegration(id2);
-        tbApi.deleteConverter(converterId);
+        client.deleteIntegration(id1);
+        client.deleteIntegration(id2);
+        client.deleteConverter(converterId);
     }
 
     // -------------------------------------------------------------------------
@@ -192,7 +192,7 @@ public class IntegrationApiTest extends AbstractApiTest {
         Converter converter = createConverter(TEST_PREFIX + ts + "_conv");
         String converterId = converter.getId().getId().toString();
 
-        Integration saved = tbApi.saveIntegration(buildIntegration(TEST_PREFIX + ts, "rk_" + ts, converterId));
+        Integration saved = client.saveIntegration(buildIntegration(TEST_PREFIX + ts, "rk_" + ts, converterId));
         String integrationId = saved.getId().getId().toString();
 
         // checkIntegrationConnection verifies the API endpoint is reachable.
@@ -200,14 +200,14 @@ public class IntegrationApiTest extends AbstractApiTest {
         // the integration target may be unavailable; only 4xx indicates a
         // client-side error worth surfacing.
         try {
-            tbApi.checkIntegrationConnection(saved);
+            client.checkIntegrationConnection(saved);
         } catch (ApiException e) {
             assertTrue(e.getCode() >= 500,
                     "Unexpected client error from checkIntegrationConnection: HTTP " + e.getCode());
         }
 
-        tbApi.deleteIntegration(integrationId);
-        tbApi.deleteConverter(converterId);
+        client.deleteIntegration(integrationId);
+        client.deleteConverter(converterId);
     }
 
     // -------------------------------------------------------------------------
@@ -216,7 +216,7 @@ public class IntegrationApiTest extends AbstractApiTest {
 
     @Test
     void testGetIntegrationsConvertersInfo() throws ApiException {
-        Map<String, IntegrationConvertersInfo> info = tbApi.getIntegrationsConvertersInfo();
+        Map<String, IntegrationConvertersInfo> info = client.getIntegrationsConvertersInfo();
         assertNotNull(info);
         assertTrue(info.containsKey("HTTP"),
                 "Expected 'HTTP' key in integrations converters info map");
@@ -237,12 +237,12 @@ public class IntegrationApiTest extends AbstractApiTest {
         converter.setType(ConverterType.UPLINK);
         converter.setConfiguration(ConverterApiTest.TEST_DECODER);
         converter.setEdgeTemplate(true);
-        converter = tbApi.saveConverter(converter);
+        converter = client.saveConverter(converter);
         String converterId = converter.getId().getId().toString();
 
         Integration integration1 = buildIntegration(TEST_PREFIX + ts, "rk_" + ts, converterId);
         integration1.setEdgeTemplate(true);
-        Integration integration = tbApi.saveIntegration(
+        Integration integration = client.saveIntegration(
                 integration1);
         String integrationId = integration.getId().getId().toString();
 
@@ -250,34 +250,34 @@ public class IntegrationApiTest extends AbstractApiTest {
         String edgeId = edge.getId().getId().toString();
 
         // assignIntegrationToEdge
-        Integration assigned = tbApi.assignIntegrationToEdge(edgeId, integrationId);
+        Integration assigned = client.assignIntegrationToEdge(edgeId, integrationId);
         assertNotNull(assigned);
         assertEquals(integrationId, assigned.getId().getId().toString());
 
         // getEdgeIntegrations
-        PageDataIntegration edgeIntegrations = tbApi.getEdgeIntegrations(edgeId, 100, 0, null, null, null);
+        PageDataIntegration edgeIntegrations = client.getEdgeIntegrations(edgeId, 100, 0, null, null, null);
         assertNotNull(edgeIntegrations);
         assertTrue(edgeIntegrations.getData().stream()
                 .anyMatch(i -> i.getId().getId().toString().equals(integrationId)));
 
         // getEdgeIntegrationInfos
-        PageDataIntegrationInfo edgeIntegrationInfos = tbApi.getEdgeIntegrationInfos(edgeId, 100, 0, null, null, null);
+        PageDataIntegrationInfo edgeIntegrationInfos = client.getEdgeIntegrationInfos(edgeId, 100, 0, null, null, null);
         assertNotNull(edgeIntegrationInfos);
         assertTrue(edgeIntegrationInfos.getData().stream()
                 .anyMatch(i -> i.getId().getId().toString().equals(integrationId)));
 
         // unassignIntegrationFromEdge
-        Integration unassigned = tbApi.unassignIntegrationFromEdge(edgeId, integrationId);
+        Integration unassigned = client.unassignIntegrationFromEdge(edgeId, integrationId);
         assertNotNull(unassigned);
         assertEquals(integrationId, unassigned.getId().getId().toString());
 
-        PageDataIntegration afterUnassign = tbApi.getEdgeIntegrations(edgeId, 100, 0, null, null, null);
+        PageDataIntegration afterUnassign = client.getEdgeIntegrations(edgeId, 100, 0, null, null, null);
         assertTrue(afterUnassign.getData().stream()
                 .noneMatch(i -> i.getId().getId().toString().equals(integrationId)));
 
-        tbApi.deleteEdge(edgeId);
-        tbApi.deleteIntegration(integrationId);
-        tbApi.deleteConverter(converterId);
+        client.deleteEdge(edgeId);
+        client.deleteIntegration(integrationId);
+        client.deleteConverter(converterId);
     }
 
 }

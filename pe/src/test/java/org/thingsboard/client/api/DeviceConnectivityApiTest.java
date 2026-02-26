@@ -31,12 +31,12 @@ public class DeviceConnectivityApiTest extends AbstractApiTest {
         device.setName(TEST_PREFIX + System.currentTimeMillis());
         device.setType("default");
 
-        Device savedDevice = tbApi.saveDevice(device, null, null, null, null, null, null);
-        String token = tbApi.getDeviceCredentialsByDeviceId(savedDevice.getId().getId().toString()).getCredentialsId();
+        Device savedDevice = client.saveDevice(device, null, null, null, null, null, null);
+        String token = client.getDeviceCredentialsByDeviceId(savedDevice.getId().getId().toString()).getCredentialsId();
 
         String deviceId = savedDevice.getId().getId().toString();
 
-        JsonNode commands = tbApi.getDevicePublishTelemetryCommands(deviceId);
+        JsonNode commands = client.getDevicePublishTelemetryCommands(deviceId);
         assertEquals("curl -v -X POST http://localhost:8080/api/v1/" + token + "/telemetry --header Content-Type:application/json --data \"{temperature:25}\"", commands.get("http").get("http").asText());
         assertEquals("mosquitto_pub -d -q 1 -h localhost -p 1883 -t v1/devices/me/telemetry -u \"" + token + "\" -m \"{temperature:25}\"", commands.get("mqtt").get("mqtt").asText());
         assertEquals("coap-client -v 6 -m POST -t \"application/json\" -e \"{temperature:25}\" coap://localhost:5683/api/v1/" + token + "/telemetry", commands.get("coap").get("coap").asText());
@@ -45,7 +45,7 @@ public class DeviceConnectivityApiTest extends AbstractApiTest {
     @Test
     void testGetDevicePublishTelemetryCommands_nonExistentDevice() {
         String nonExistentId = UUID.randomUUID().toString();
-        assertReturns404(() -> tbApi.getDevicePublishTelemetryCommands(nonExistentId));
+        assertReturns404(() -> client.getDevicePublishTelemetryCommands(nonExistentId));
     }
 
 }

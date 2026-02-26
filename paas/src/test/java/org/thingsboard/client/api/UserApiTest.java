@@ -65,7 +65,7 @@ public class UserApiTest extends AbstractApiTest {
             user.setFirstName("First" + i);
             user.setLastName("Last" + i);
 
-            User createdUser = tbApi.saveUser(user, "false", null, null);
+            User createdUser = client.saveUser(user, "false", null, null);
             assertNotNull(createdUser);
             assertNotNull(createdUser.getId());
             assertEquals(email, createdUser.getEmail());
@@ -75,46 +75,46 @@ public class UserApiTest extends AbstractApiTest {
         }
 
         // find all tenant admins, check count (20 created + 1 from setup)
-        PageDataUser allUsers = tbApi.getUserUsers(100, 0, null, null, null);
+        PageDataUser allUsers = client.getUserUsers(100, 0, null, null, null);
         assertNotNull(allUsers);
         assertNotNull(allUsers.getData());
         int initialSize = allUsers.getData().size();
         assertEquals(6, initialSize, "Expected 6 users (3 created + 3 from setup), but got " + initialSize);
 
         // find with search text, check count
-        PageDataUser filteredUsers = tbApi.getUserUsers(100, 0, TEST_PREFIX_2, null, null);
+        PageDataUser filteredUsers = client.getUserUsers(100, 0, TEST_PREFIX_2, null, null);
         assertEquals(1, filteredUsers.getData().size(), "Expected exactly 1 users matching prefix");
 
         // find by id
         User searchUser = createdUsers.get(2);
-        User fetchedUser = tbApi.getUserById(searchUser.getId().getId().toString());
+        User fetchedUser = client.getUserById(searchUser.getId().getId().toString());
         assertEquals(searchUser.getEmail(), fetchedUser.getEmail());
         assertEquals(searchUser.getFirstName(), fetchedUser.getFirstName());
 
         // update user
         fetchedUser.setFirstName("UpdatedFirst");
         fetchedUser.setLastName("UpdatedLast");
-        User updatedUser = tbApi.saveUser(fetchedUser, "false", null, null);
+        User updatedUser = client.saveUser(fetchedUser, "false", null, null);
         assertEquals("UpdatedFirst", updatedUser.getFirstName());
         assertEquals("UpdatedLast", updatedUser.getLastName());
 
         // activate user and get token
         activateUser(createdUsers.get(0).getId(), "password123", false);
-        JwtPair userToken = tbApi.getUserToken(createdUsers.get(0).getId().getId().toString());
+        JwtPair userToken = client.getUserToken(createdUsers.get(0).getId().getId().toString());
         assertNotNull(userToken);
         assertNotNull(userToken.getToken());
 
         // disable user credentials
-        tbApi.setUserCredentialsEnabled(createdUsers.get(0).getId().getId().toString(), "false");
+        client.setUserCredentialsEnabled(createdUsers.get(0).getId().getId().toString(), "false");
 
         // re-enable user credentials
-        tbApi.setUserCredentialsEnabled(createdUsers.get(0).getId().getId().toString(), "true");
+        client.setUserCredentialsEnabled(createdUsers.get(0).getId().getId().toString(), "true");
 
         // create customer users and verify listing
         Customer customer2 = new Customer();
         customer2.setTitle("User test customer " + timestamp);
         customer2.setEmail("usertest_" + timestamp + "@test.com");
-        Customer savedCustomer2 = tbApi.saveCustomer(customer2, null, null, null, null, null);
+        Customer savedCustomer2 = client.saveCustomer(customer2, null, null, null, null, null);
 
         List<User> customerUsers = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
@@ -126,32 +126,32 @@ public class UserApiTest extends AbstractApiTest {
             customerUser.setFirstName("CustFirst" + i);
             customerUser.setLastName("CustLast" + i);
 
-            User created = tbApi.saveUser(customerUser, "false", null, null);
+            User created = client.saveUser(customerUser, "false", null, null);
             assertNotNull(created);
             customerUsers.add(created);
         }
 
         // list customer users
-        PageDataUser customerUserPage = tbApi.getCustomerUsers(
+        PageDataUser customerUserPage = client.getCustomerUsers(
                 savedCustomer2.getId().getId().toString(), 100, 0, null, null, null);
         assertEquals(3, customerUserPage.getData().size(), "Expected 5 customer users");
 
         // delete user
         UUID userToDeleteId = createdUsers.get(0).getId().getId();
-        tbApi.deleteUser(userToDeleteId.toString());
+        client.deleteUser(userToDeleteId.toString());
 
         // verify deletion
-        PageDataUser usersAfterDelete = tbApi.getUserUsers(100, 0, null, null, null);
+        PageDataUser usersAfterDelete = client.getUserUsers(100, 0, null, null, null);
         assertEquals(initialSize + 3 - 1, usersAfterDelete.getData().size());
 
         assertReturns404(() ->
-                tbApi.getUserById(userToDeleteId.toString())
+                client.getUserById(userToDeleteId.toString())
         );
     }
 
     @Test
     void testIsUserTokenAccessEnabled() throws Exception {
-        Boolean enabled = tbApi.isUserTokenAccessEnabled();
+        Boolean enabled = client.isUserTokenAccessEnabled();
         assertTrue(enabled);
     }
 
@@ -163,15 +163,15 @@ public class UserApiTest extends AbstractApiTest {
         user.setAuthority(Authority.TENANT_ADMIN);
         user.setTenantId(savedTenant.getId());
         user.setEmail("activation_" + ts + "@test.com");
-        User created = tbApi.saveUser(user, "false", null, null);
+        User created = client.saveUser(user, "false", null, null);
         String userId = created.getId().getId().toString();
 
         // getActivationLink returns the activation URL string
-        String link = tbApi.getActivationLink(userId);
+        String link = client.getActivationLink(userId);
         assertTrue(link.startsWith("http://localhost:8080/api/noauth/activate?activateToken="));
 
         // getActivationLinkInfo returns the link with TTL metadata
-        UserActivationLink linkInfo = tbApi.getActivationLinkInfo(userId);
+        UserActivationLink linkInfo = client.getActivationLinkInfo(userId);
         assertTrue(linkInfo.getValue().startsWith("http://localhost:8080/api/noauth/activate?activateToken="));
         assertNotNull(linkInfo.getValue());
     }
@@ -179,12 +179,12 @@ public class UserApiTest extends AbstractApiTest {
     @Test
     void testGetAllUserInfos() throws Exception {
         // setUp creates: tenantAdmin + savedCustomerUser + savedSubCustomerUser = 3
-        PageDataUserInfo allIncludingCustomers = tbApi.getAllUserInfos(100, 0, true, null, null, null);
+        PageDataUserInfo allIncludingCustomers = client.getAllUserInfos(100, 0, true, null, null, null);
         assertNotNull(allIncludingCustomers);
         assertEquals(3, allIncludingCustomers.getTotalElements().intValue());
 
         // without customer users, only tenant admins should be returned
-        PageDataUserInfo tenantAdminsOnly = tbApi.getAllUserInfos(100, 0, false, null, null, null);
+        PageDataUserInfo tenantAdminsOnly = client.getAllUserInfos(100, 0, false, null, null, null);
         assertNotNull(tenantAdminsOnly);
         assertEquals(1, tenantAdminsOnly.getTotalElements().intValue());
     }
@@ -192,13 +192,13 @@ public class UserApiTest extends AbstractApiTest {
     @Test
     void testGetCustomerUserInfos() throws Exception {
         // savedCustomer has one direct user: savedCustomerUser
-        PageDataUserInfo result = tbApi.getCustomerUserInfos(
+        PageDataUserInfo result = client.getCustomerUserInfos(
                 savedCustomer.getId().getId().toString(), 100, 0, false, null, null, null);
         assertNotNull(result);
         assertEquals(1, result.getTotalElements().intValue());
 
         // with includeCustomers=true the sub-customer user is also included
-        PageDataUserInfo withSubcustomers = tbApi.getCustomerUserInfos(
+        PageDataUserInfo withSubcustomers = client.getCustomerUserInfos(
                 savedCustomer.getId().getId().toString(), 100, 0, true, null, null, null);
         assertNotNull(withSubcustomers);
         assertEquals(2, withSubcustomers.getTotalElements().intValue());
@@ -212,9 +212,9 @@ public class UserApiTest extends AbstractApiTest {
         user.setAuthority(Authority.TENANT_ADMIN);
         user.setTenantId(savedTenant.getId());
         user.setEmail("byids_" + ts + "@test.com");
-        User created = tbApi.saveUser(user, "false", null, null);
+        User created = client.saveUser(user, "false", null, null);
 
-        List<User> result = tbApi.getUsersByIdsV2(List.of(created.getId().getId().toString()));
+        List<User> result = client.getUsersByIdsV2(List.of(created.getId().getId().toString()));
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals(created.getId().getId(), result.get(0).getId().getId());
@@ -224,18 +224,18 @@ public class UserApiTest extends AbstractApiTest {
     void testGetUsersForAssign() throws Exception {
         long ts = System.currentTimeMillis();
 
-        Device device = tbApi.saveDevice(
+        Device device = client.saveDevice(
                 new Device().name("alarmDev_" + ts).type("default"),
                 null, null, null, null, null, null);
 
-        Alarm alarm = tbApi.saveAlarm(new Alarm()
+        Alarm alarm = client.saveAlarm(new Alarm()
                 .type("TestAlarm")
                 .originator(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE))
                 .severity(AlarmSeverity.WARNING)
                 .acknowledged(false)
                 .cleared(false));
 
-        PageDataUserEmailInfo result = tbApi.getUsersForAssign(
+        PageDataUserEmailInfo result = client.getUsersForAssign(
                 alarm.getId().getId().toString(), 100, 0, null, null, null);
         assertNotNull(result);
         assertNotNull(result.getData());
@@ -248,18 +248,18 @@ public class UserApiTest extends AbstractApiTest {
         EntityGroup group = new EntityGroup();
         group.setType(EntityGroup.TypeEnum.USER);
         group.setName("Test User Group " + ts);
-        EntityGroupInfo savedGroup = tbApi.saveEntityGroup(group);
+        EntityGroupInfo savedGroup = client.saveEntityGroup(group);
 
         User user = new User();
         user.setAuthority(Authority.TENANT_ADMIN);
         user.setTenantId(savedTenant.getId());
         user.setEmail("ugtest_" + ts + "@test.com");
-        User created = tbApi.saveUser(user, "false", null, null);
-        tbApi.addEntitiesToEntityGroup(
+        User created = client.saveUser(user, "false", null, null);
+        client.addEntitiesToEntityGroup(
                 savedGroup.getId().getId().toString(),
                 List.of(created.getId().getId().toString()));
 
-        PageDataUser result = tbApi.getUsersByEntityGroupId(
+        PageDataUser result = client.getUsersByEntityGroupId(
                 savedGroup.getId().getId().toString(), 100, 0, null, null, null);
         assertNotNull(result);
         assertEquals(1, result.getData().size());
@@ -269,33 +269,33 @@ public class UserApiTest extends AbstractApiTest {
     @Test
     void testUserSettings() throws Exception {
         // saveUserSettings persists general settings and returns the saved map
-        JsonNode saved = tbApi.saveUserSettings(
+        JsonNode saved = client.saveUserSettings(
                 Map.<String, Object>of("settingKey", "settingValue"));
         assertNotNull(saved);
 
         // getGeneralUserSettings returns the previously saved general settings
-        JsonNode general = tbApi.getGeneralUserSettings();
+        JsonNode general = client.getGeneralUserSettings();
         assertNotNull(general);
         assertEquals("settingValue", general.get("settingKey").asText());
 
         // putGeneralUserSettings merges additional keys into general settings
-        tbApi.putGeneralUserSettings(Map.<String, Object>of("extraKey", "extraValue"));
-        JsonNode updatedGeneral = tbApi.getGeneralUserSettings();
+        client.putGeneralUserSettings(Map.<String, Object>of("extraKey", "extraValue"));
+        JsonNode updatedGeneral = client.getGeneralUserSettings();
         assertNotNull(updatedGeneral);
         assertEquals("extraValue", updatedGeneral.get("extraKey").asText());
 
         // putUserSettings + getUserSettings: typed settings
         String settingsType = "GETTING_STARTED";
-        tbApi.putUserSettings(settingsType, Map.<String, Object>of("x", "1", "y", "2"));
+        client.putUserSettings(settingsType, Map.<String, Object>of("x", "1", "y", "2"));
 
-        JsonNode typed = tbApi.getUserSettings(settingsType);
+        JsonNode typed = client.getUserSettings(settingsType);
         assertNotNull(typed);
         assertEquals("1", typed.get("x").asText());
         assertEquals("2", typed.get("y").asText());
 
         // deleteUserSettings removes a specific key from a typed settings section
-        tbApi.deleteUserSettings("x", settingsType);
-        JsonNode afterDelete = tbApi.getUserSettings(settingsType);
+        client.deleteUserSettings("x", settingsType);
+        JsonNode afterDelete = client.getUserSettings(settingsType);
         assertNotNull(afterDelete);
         assertFalse(afterDelete.has("x"));
         assertTrue(afterDelete.has("y"));
@@ -305,30 +305,30 @@ public class UserApiTest extends AbstractApiTest {
     void testDashboardTracking() throws Exception {
         long ts = System.currentTimeMillis();
 
-        Dashboard dashboard = tbApi.saveDashboard(
+        Dashboard dashboard = client.saveDashboard(
                 new Dashboard().title("Track_" + ts), null, null, null);
 
         // reportUserDashboardAction "visit" records the visit and returns current state
-        UserDashboardsInfo afterVisit = tbApi.reportUserDashboardAction(
+        UserDashboardsInfo afterVisit = client.reportUserDashboardAction(
                 dashboard.getId().getId().toString(), "visit");
         assertNotNull(afterVisit);
         assertNotNull(afterVisit.getLast());
         assertFalse(afterVisit.getLast().isEmpty());
 
         // getLastVisitedDashboards returns the same recently visited dashboards
-        UserDashboardsInfo lastVisited = tbApi.getLastVisitedDashboards();
+        UserDashboardsInfo lastVisited = client.getLastVisitedDashboards();
         assertNotNull(lastVisited);
         assertFalse(lastVisited.getLast().isEmpty());
 
         // "star" marks the dashboard as starred
-        UserDashboardsInfo afterStar = tbApi.reportUserDashboardAction(
+        UserDashboardsInfo afterStar = client.reportUserDashboardAction(
                 dashboard.getId().getId().toString(), "star");
         assertNotNull(afterStar);
         assertNotNull(afterStar.getStarred());
         assertFalse(afterStar.getStarred().isEmpty());
 
         // "unstar" removes the dashboard from starred list
-        UserDashboardsInfo afterUnstar = tbApi.reportUserDashboardAction(
+        UserDashboardsInfo afterUnstar = client.reportUserDashboardAction(
                 dashboard.getId().getId().toString(), "unstar");
         assertNotNull(afterUnstar);
         assertTrue(afterUnstar.getStarred().isEmpty());
@@ -341,16 +341,16 @@ public class UserApiTest extends AbstractApiTest {
         MobileSessionInfo session = new MobileSessionInfo().fcmTokenTimestamp(ts);
 
         // saveMobileSession stores a session keyed by the mobile token header
-        tbApi.saveMobileSession(mobileToken, session);
+        client.saveMobileSession(mobileToken, session);
 
         // getMobileSession retrieves the stored session
-        MobileSessionInfo retrieved = tbApi.getMobileSession(mobileToken);
+        MobileSessionInfo retrieved = client.getMobileSession(mobileToken);
         assertNotNull(retrieved);
         assertEquals(ts, retrieved.getFcmTokenTimestamp());
 
         // removeMobileSession deletes the session
-        tbApi.removeMobileSession(mobileToken);
-        MobileSessionInfo mobileSession = tbApi.getMobileSession(mobileToken);
+        client.removeMobileSession(mobileToken);
+        MobileSessionInfo mobileSession = client.getMobileSession(mobileToken);
         assertNull(mobileSession);
     }
 

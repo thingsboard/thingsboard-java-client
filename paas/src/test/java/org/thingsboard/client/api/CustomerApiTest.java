@@ -45,7 +45,7 @@ public class CustomerApiTest extends AbstractApiTest {
             customer.setTitle(customerTitle);
             customer.setEmail("customer_" + timestamp + "_" + i + "@test.com");
 
-            Customer createdCustomer = tbApi.saveCustomer(customer, null, null, null, null, null);
+            Customer createdCustomer = client.saveCustomer(customer, null, null, null, null, null);
             assertNotNull(createdCustomer);
             assertNotNull(createdCustomer.getId());
             assertEquals(customerTitle, createdCustomer.getTitle());
@@ -54,48 +54,48 @@ public class CustomerApiTest extends AbstractApiTest {
         }
 
         // find all, check count (includes savedCustomer from AbstractApiTest setup)
-        PageDataCustomer allCustomers = tbApi.getCustomers(100, 0, null, null, null);
+        PageDataCustomer allCustomers = client.getCustomers(100, 0, null, null, null);
         assertNotNull(allCustomers);
         assertNotNull(allCustomers.getData());
         int initialSize = allCustomers.getData().size();
         assertEquals(22, initialSize, "Expected 21 customers (20 created + 2 from setup), but got " + initialSize);
 
         // find all with search text, check count
-        PageDataCustomer filteredCustomers = tbApi.getCustomers(100, 0, TEST_PREFIX_2, null, null);
+        PageDataCustomer filteredCustomers = client.getCustomers(100, 0, TEST_PREFIX_2, null, null);
         assertEquals(10, filteredCustomers.getData().size(), "Expected exactly 10 customers matching prefix");
 
         // find by id
         Customer searchCustomer = createdCustomers.get(10);
-        Customer fetchedCustomer = tbApi.getCustomerById(searchCustomer.getId().getId().toString());
+        Customer fetchedCustomer = client.getCustomerById(searchCustomer.getId().getId().toString());
         assertEquals(searchCustomer.getTitle(), fetchedCustomer.getTitle());
 
         // find by title
-        Customer fetchedByTitle = tbApi.getTenantCustomer(searchCustomer.getTitle());
+        Customer fetchedByTitle = client.getTenantCustomer(searchCustomer.getTitle());
         assertEquals(searchCustomer.getId().getId(), fetchedByTitle.getId().getId());
 
         // update customer
         fetchedCustomer.setCity("New York");
         fetchedCustomer.setCountry("US");
-        Customer updatedCustomer = tbApi.saveCustomer(fetchedCustomer, null, null, null, null, null);
+        Customer updatedCustomer = client.saveCustomer(fetchedCustomer, null, null, null, null, null);
         assertEquals("New York", updatedCustomer.getCity());
         assertEquals("US", updatedCustomer.getCountry());
 
-        PageDataCustomer userCustomers = tbApi.getUserCustomers("100", "0", null, null, null);
+        PageDataCustomer userCustomers = client.getUserCustomers("100", "0", null, null, null);
         assertEquals(22, userCustomers.getTotalElements(), "Expected 21 customers (20 created + 2 from setup), but got " + initialSize);
 
-        PageDataCustomerInfo allCustomerInfos = tbApi.getAllCustomerInfos(100, 0, true, null, null, null);
+        PageDataCustomerInfo allCustomerInfos = client.getAllCustomerInfos(100, 0, true, null, null, null);
         assertEquals(22, allCustomerInfos.getTotalElements(), "Expected 21 customers (20 created + 2 from setup), but got " + initialSize);
 
         // delete customer
         UUID customerToDeleteId = createdCustomers.get(0).getId().getId();
-        tbApi.deleteCustomer(customerToDeleteId.toString());
+        client.deleteCustomer(customerToDeleteId.toString());
 
         // verify deletion
-        PageDataCustomer customersAfterDelete = tbApi.getCustomers(100, 0, null, null, null);
+        PageDataCustomer customersAfterDelete = client.getCustomers(100, 0, null, null, null);
         assertEquals(initialSize - 1, customersAfterDelete.getData().size());
 
         assertReturns404(() ->
-                tbApi.getCustomerById(customerToDeleteId.toString())
+                client.getCustomerById(customerToDeleteId.toString())
         );
     }
 
@@ -104,7 +104,7 @@ public class CustomerApiTest extends AbstractApiTest {
         String customerId = savedCustomer.getId().getId().toString();
 
         // Query sub-customer infos of savedCustomer (none created, expect empty page)
-        PageDataCustomerInfo result = tbApi.getCustomerCustomerInfos(customerId, 100, 0, true, null, null, null);
+        PageDataCustomerInfo result = client.getCustomerCustomerInfos(customerId, 100, 0, true, null, null, null);
 
         assertNotNull(result);
         assertNotNull(result.getData());
@@ -115,7 +115,7 @@ public class CustomerApiTest extends AbstractApiTest {
     void testGetCustomersByIdsV2() throws ApiException {
         String customerId = savedCustomer.getId().getId().toString();
 
-        List<Customer> result = tbApi.getCustomersByIdsV2(List.of(customerId));
+        List<Customer> result = client.getCustomersByIdsV2(List.of(customerId));
 
         assertNotNull(result);
         assertEquals(1, result.size(), "Expected exactly one customer returned");
@@ -128,7 +128,7 @@ public class CustomerApiTest extends AbstractApiTest {
         EntityGroup entityGroup = new EntityGroup();
         entityGroup.setType(EntityGroup.TypeEnum.CUSTOMER);
         entityGroup.setName("Test Customer Group");
-        EntityGroupInfo savedGroup = tbApi.saveEntityGroup(entityGroup);
+        EntityGroupInfo savedGroup = client.saveEntityGroup(entityGroup);
         assertNotNull(savedGroup);
         assertNotNull(savedGroup.getId());
 
@@ -136,10 +136,10 @@ public class CustomerApiTest extends AbstractApiTest {
         String customerId = savedCustomer.getId().getId().toString();
 
         // Add savedCustomer to the group
-        tbApi.addEntitiesToEntityGroup(groupId, List.of(customerId));
+        client.addEntitiesToEntityGroup(groupId, List.of(customerId));
 
         // Query customers in the group
-        PageDataCustomer result = tbApi.getCustomersByEntityGroupId(groupId, "100", "0", null, null, null);
+        PageDataCustomer result = client.getCustomersByEntityGroupId(groupId, "100", "0", null, null, null);
 
         assertNotNull(result);
         assertNotNull(result.getData());

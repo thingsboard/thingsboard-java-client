@@ -42,7 +42,7 @@ public class AssetApiTest extends AbstractApiTest {
             asset.setLabel("Test Asset " + i);
             asset.setType(((i % 2 == 0) ? "default" : "building"));
 
-            Asset createdAsset = tbApi.saveAsset(asset, null, null, null, null);
+            Asset createdAsset = client.saveAsset(asset, null, null, null, null);
             assertNotNull(createdAsset);
             assertNotNull(createdAsset.getId());
             assertEquals(assetName, createdAsset.getName());
@@ -51,7 +51,7 @@ public class AssetApiTest extends AbstractApiTest {
         }
 
         // find all, check count
-        PageDataAsset allAssets = tbApi.getTenantAssets(100, 0, null, null, null, null, null);
+        PageDataAsset allAssets = client.getTenantAssets(100, 0, null, null, null, null, null);
 
         assertNotNull(allAssets);
         assertNotNull(allAssets.getData());
@@ -59,24 +59,24 @@ public class AssetApiTest extends AbstractApiTest {
         assertEquals(20, initialSize, "Expected at least 20 assets, but got " + allAssets.getData().size());
 
         //find all with search text, check count
-        PageDataAsset allAssetsBySearchText = tbApi.getTenantAssets(100, 0, null, TEST_PREFIX_2, null, null, null);
+        PageDataAsset allAssetsBySearchText = client.getTenantAssets(100, 0, null, TEST_PREFIX_2, null, null, null);
         assertEquals(10, allAssetsBySearchText.getData().size(), "Expected exactly 10 test assets");
 
         // find by id
         Asset searchAsset = createdAssets.get(10);
-        Asset asset = tbApi.getAssetById(searchAsset.getId().getId().toString());
+        Asset asset = client.getAssetById(searchAsset.getId().getId().toString());
         assertEquals(searchAsset.getName(), asset.getName());
 
         // delete asset
         UUID assetToDeleteId = createdAssets.get(0).getId().getId();
-        tbApi.deleteAsset(assetToDeleteId.toString());
+        client.deleteAsset(assetToDeleteId.toString());
 
         // Verify the asset is deleted
-        PageDataAsset assetsAfterDelete = tbApi.getTenantAssets(100, 0, null, null, null, null, null);
+        PageDataAsset assetsAfterDelete = client.getTenantAssets(100, 0, null, null, null, null, null);
         assertEquals(initialSize - 1, assetsAfterDelete.getData().size());
 
         assertReturns404(() ->
-                tbApi.getAssetById(assetToDeleteId.toString())
+                client.getAssetById(assetToDeleteId.toString())
         );
     }
 

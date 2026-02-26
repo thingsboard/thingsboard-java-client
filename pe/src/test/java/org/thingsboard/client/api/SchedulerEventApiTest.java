@@ -55,7 +55,7 @@ public class SchedulerEventApiTest extends AbstractApiTest {
     }
 
     private SchedulerEvent createEvent(String name) throws ApiException {
-        return tbApi.saveSchedulerEvent(buildEvent(name));
+        return client.saveSchedulerEvent(buildEvent(name));
     }
 
     // -------------------------------------------------------------------------
@@ -78,34 +78,34 @@ public class SchedulerEventApiTest extends AbstractApiTest {
         String eventId = saved.getId().getId().toString();
 
         // getSchedulerEventById
-        SchedulerEvent fetched = tbApi.getSchedulerEventById(eventId);
+        SchedulerEvent fetched = client.getSchedulerEventById(eventId);
         assertNotNull(fetched);
         assertEquals(eventId, fetched.getId().getId().toString());
         assertEquals(name, fetched.getName());
 
         // getSchedulerEventInfoById
-        SchedulerEventWithCustomerInfo info = tbApi.getSchedulerEventInfoById(eventId);
+        SchedulerEventWithCustomerInfo info = client.getSchedulerEventInfoById(eventId);
         assertNotNull(info);
         assertEquals(eventId, info.getId().getId().toString());
         assertEquals(name, info.getName());
 
         // saveSchedulerEvent (update)
         fetched.setName(name + "_updated");
-        SchedulerEvent updated = tbApi.saveSchedulerEvent(fetched);
+        SchedulerEvent updated = client.saveSchedulerEvent(fetched);
         assertEquals(name + "_updated", updated.getName());
 
         // enableSchedulerEvent – toggle to disabled then re-enabled
-        SchedulerEvent disabled = tbApi.enableSchedulerEvent(eventId, false);
+        SchedulerEvent disabled = client.enableSchedulerEvent(eventId, false);
         assertNotNull(disabled);
         assertEquals(Boolean.FALSE, disabled.getEnabled());
 
-        SchedulerEvent enabled = tbApi.enableSchedulerEvent(eventId, true);
+        SchedulerEvent enabled = client.enableSchedulerEvent(eventId, true);
         assertNotNull(enabled);
         assertEquals(Boolean.TRUE, enabled.getEnabled());
 
         // deleteSchedulerEvent
-        tbApi.deleteSchedulerEvent(eventId);
-        assertReturns404(() -> tbApi.getSchedulerEventById(eventId));
+        client.deleteSchedulerEvent(eventId);
+        assertReturns404(() -> client.getSchedulerEventById(eventId));
     }
 
     // -------------------------------------------------------------------------
@@ -123,18 +123,18 @@ public class SchedulerEventApiTest extends AbstractApiTest {
         String id2 = e2.getId().getId().toString();
 
         // getAllSchedulerEventsV2 – no type filter
-        List<SchedulerEventWithCustomerInfo> all = tbApi.getAllSchedulerEventsV2(null);
+        List<SchedulerEventWithCustomerInfo> all = client.getAllSchedulerEventsV2(null);
         assertNotNull(all);
         assertTrue(all.stream().anyMatch(e -> e.getId().getId().toString().equals(id1)));
         assertTrue(all.stream().anyMatch(e -> e.getId().getId().toString().equals(id2)));
 
         // getAllSchedulerEventsV2 – with type filter
-        List<SchedulerEventWithCustomerInfo> filtered = tbApi.getAllSchedulerEventsV2(EVENT_TYPE);
+        List<SchedulerEventWithCustomerInfo> filtered = client.getAllSchedulerEventsV2(EVENT_TYPE);
         assertNotNull(filtered);
         assertTrue(filtered.stream().anyMatch(e -> e.getId().getId().toString().equals(id1)));
 
-        tbApi.deleteSchedulerEvent(id1);
-        tbApi.deleteSchedulerEvent(id2);
+        client.deleteSchedulerEvent(id1);
+        client.deleteSchedulerEvent(id2);
     }
 
     // -------------------------------------------------------------------------
@@ -153,7 +153,7 @@ public class SchedulerEventApiTest extends AbstractApiTest {
 
         // getSchedulerEvents – paged list
         PageDataSchedulerEventWithCustomerInfo page =
-                tbApi.getSchedulerEvents(100, 0, null, null, null, EVENT_TYPE, null);
+                client.getSchedulerEvents(100, 0, null, null, null, EVENT_TYPE, null);
         assertNotNull(page);
         assertTrue(page.getTotalElements() >= 3);
         for (String id : createdIds) {
@@ -161,7 +161,7 @@ public class SchedulerEventApiTest extends AbstractApiTest {
                     .anyMatch(e -> e.getId().getId().toString().equals(id)));
         }
 
-        for (String id : createdIds) tbApi.deleteSchedulerEvent(id);
+        for (String id : createdIds) client.deleteSchedulerEvent(id);
     }
 
     // -------------------------------------------------------------------------
@@ -177,11 +177,11 @@ public class SchedulerEventApiTest extends AbstractApiTest {
 
         // Use a wide time window to include the event regardless of its schedule.
         List<SchedulerEventWithCustomerInfo> range =
-                tbApi.getSchedulerEventsByRange(0L, ts + 2 * 86_400_000L, EVENT_TYPE, null, null);
+                client.getSchedulerEventsByRange(0L, ts + 2 * 86_400_000L, EVENT_TYPE, null, null);
         assertNotNull(range);
         assertTrue(range.stream().anyMatch(e -> e.getId().getId().toString().equals(eventId)));
 
-        tbApi.deleteSchedulerEvent(eventId);
+        client.deleteSchedulerEvent(eventId);
     }
 
     // -------------------------------------------------------------------------
@@ -192,7 +192,7 @@ public class SchedulerEventApiTest extends AbstractApiTest {
     void testGetScheduledReportEvents() throws ApiException {
         // Just verify the endpoint is reachable and returns a valid page object.
         PageDataScheduledReportInfo page =
-                tbApi.getScheduledReportEvents("100", "0", null, null, null, null, null, null);
+                client.getScheduledReportEvents("100", "0", null, null, null, null, null, null);
         assertNotNull(page);
         assertNotNull(page.getData());
     }
@@ -211,14 +211,14 @@ public class SchedulerEventApiTest extends AbstractApiTest {
         String id1 = e1.getId().getId().toString();
         String id2 = e2.getId().getId().toString();
 
-        List<SchedulerEventInfo> result = tbApi.getSchedulerEventsByIdsV2(List.of(id1, id2));
+        List<SchedulerEventInfo> result = client.getSchedulerEventsByIdsV2(List.of(id1, id2));
         assertNotNull(result);
         assertEquals(2, result.size());
         assertTrue(result.stream().anyMatch(e -> e.getId().getId().toString().equals(id1)));
         assertTrue(result.stream().anyMatch(e -> e.getId().getId().toString().equals(id2)));
 
-        tbApi.deleteSchedulerEvent(id1);
-        tbApi.deleteSchedulerEvent(id2);
+        client.deleteSchedulerEvent(id1);
+        client.deleteSchedulerEvent(id2);
     }
 
     // -------------------------------------------------------------------------
@@ -227,7 +227,7 @@ public class SchedulerEventApiTest extends AbstractApiTest {
 
     @Test
     void testGetSchedulerEventByIdNotFound() {
-        assertReturns404(() -> tbApi.getSchedulerEventById(UUID.randomUUID().toString()));
+        assertReturns404(() -> client.getSchedulerEventById(UUID.randomUUID().toString()));
     }
 
 }

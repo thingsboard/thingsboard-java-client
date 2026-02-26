@@ -42,14 +42,14 @@ public class GroupPermissionApiTest extends AbstractApiTest {
         Role role = new Role();
         role.setName(name);
         role.setType(RoleType.GROUP);
-        return tbApi.saveRole(role);
+        return client.saveRole(role);
     }
 
     private EntityGroupInfo createDeviceGroup(String name) throws ApiException {
         EntityGroup group = new EntityGroup();
         group.setName(name);
         group.setType(EntityGroup.TypeEnum.DEVICE);
-        return tbApi.saveEntityGroup(group);
+        return client.saveEntityGroup(group);
     }
 
     private GroupPermission buildPermission(String userGroupId, String roleId, String entityGroupId) {
@@ -62,7 +62,7 @@ public class GroupPermissionApiTest extends AbstractApiTest {
     }
 
     private String customerAdminGroupId() throws ApiException {
-        EntityInfo info = tbApi.getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(
+        EntityInfo info = client.getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(
                 "CUSTOMER", savedCustomer.getId().getId().toString(), "USER",
                 "1", "0", "Customer Administrators", null, null).getData().get(0);
         return info.getId().getId().toString();
@@ -86,13 +86,13 @@ public class GroupPermissionApiTest extends AbstractApiTest {
         String userGroupId = customerAdminGroupId();
 
         // saveGroupPermission (create)
-        GroupPermission saved = tbApi.saveGroupPermission(buildPermission(userGroupId, roleId, deviceGroupId));
+        GroupPermission saved = client.saveGroupPermission(buildPermission(userGroupId, roleId, deviceGroupId));
         assertNotNull(saved);
         assertNotNull(saved.getId());
         String permissionId = saved.getId().getId().toString();
 
         // getGroupPermissionById
-        GroupPermission fetched = tbApi.getGroupPermissionById(permissionId);
+        GroupPermission fetched = client.getGroupPermissionById(permissionId);
         assertNotNull(fetched);
         assertEquals(permissionId, fetched.getId().getId().toString());
         assertEquals(userGroupId, fetched.getUserGroupId().getId().toString());
@@ -100,24 +100,24 @@ public class GroupPermissionApiTest extends AbstractApiTest {
         assertEquals(deviceGroupId, fetched.getEntityGroupId().getId().toString());
 
         // getGroupPermissionInfoById — entity-group side (isUserGroup = false)
-        GroupPermissionInfo infoEntity = tbApi.getGroupPermissionInfoById(permissionId, false);
+        GroupPermissionInfo infoEntity = client.getGroupPermissionInfoById(permissionId, false);
         assertNotNull(infoEntity);
         assertEquals(permissionId, infoEntity.getId().getId().toString());
         assertNotNull(infoEntity.getRole());
         assertNotNull(infoEntity.getUserGroupName());
 
         // getGroupPermissionInfoById — user-group side (isUserGroup = true)
-        GroupPermissionInfo infoUser = tbApi.getGroupPermissionInfoById(permissionId, true);
+        GroupPermissionInfo infoUser = client.getGroupPermissionInfoById(permissionId, true);
         assertNotNull(infoUser);
         assertEquals(permissionId, infoUser.getId().getId().toString());
         assertNotNull(infoUser.getEntityGroupName());
 
         // deleteGroupPermission
-        tbApi.deleteGroupPermission(permissionId);
-        assertReturns404(() -> tbApi.getGroupPermissionById(permissionId));
+        client.deleteGroupPermission(permissionId);
+        assertReturns404(() -> client.getGroupPermissionById(permissionId));
 
-        tbApi.deleteEntityGroup(deviceGroupId);
-        tbApi.deleteRole(roleId);
+        client.deleteEntityGroup(deviceGroupId);
+        client.deleteRole(roleId);
     }
 
     // -------------------------------------------------------------------------
@@ -137,31 +137,31 @@ public class GroupPermissionApiTest extends AbstractApiTest {
 
         String userGroupId = customerAdminGroupId();
 
-        GroupPermission saved = tbApi.saveGroupPermission(buildPermission(userGroupId, roleId, deviceGroupId));
+        GroupPermission saved = client.saveGroupPermission(buildPermission(userGroupId, roleId, deviceGroupId));
         String permissionId = saved.getId().getId().toString();
 
         // getUserGroupPermissions
-        List<GroupPermissionInfo> userGroupPermissions = tbApi.getUserGroupPermissions(userGroupId);
+        List<GroupPermissionInfo> userGroupPermissions = client.getUserGroupPermissions(userGroupId);
         assertNotNull(userGroupPermissions);
         assertTrue(userGroupPermissions.stream()
                 .anyMatch(p -> p.getId().getId().toString().equals(permissionId)));
 
         // getEntityGroupPermissions
-        List<GroupPermissionInfo> entityGroupPermissions = tbApi.getEntityGroupPermissions(deviceGroupId);
+        List<GroupPermissionInfo> entityGroupPermissions = client.getEntityGroupPermissions(deviceGroupId);
         assertNotNull(entityGroupPermissions);
         assertTrue(entityGroupPermissions.stream()
                 .anyMatch(p -> p.getId().getId().toString().equals(permissionId)));
 
         // loadUserGroupPermissionInfos
-        List<GroupPermissionInfo> loaded = tbApi.loadUserGroupPermissionInfos(List.of(saved));
+        List<GroupPermissionInfo> loaded = client.loadUserGroupPermissionInfos(List.of(saved));
         assertNotNull(loaded);
         assertFalse(loaded.isEmpty());
         assertTrue(loaded.stream()
                 .anyMatch(p -> p.getId().getId().toString().equals(permissionId)));
 
-        tbApi.deleteGroupPermission(permissionId);
-        tbApi.deleteEntityGroup(deviceGroupId);
-        tbApi.deleteRole(roleId);
+        client.deleteGroupPermission(permissionId);
+        client.deleteEntityGroup(deviceGroupId);
+        client.deleteRole(roleId);
     }
 
     // -------------------------------------------------------------------------
@@ -170,7 +170,7 @@ public class GroupPermissionApiTest extends AbstractApiTest {
 
     @Test
     void testGetGroupPermissionByIdNotFound() {
-        assertReturns404(() -> tbApi.getGroupPermissionById(UUID.randomUUID().toString()));
+        assertReturns404(() -> client.getGroupPermissionById(UUID.randomUUID().toString()));
     }
 
 }

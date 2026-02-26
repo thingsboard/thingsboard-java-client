@@ -49,21 +49,21 @@ public class Oauth2ApiTest extends AbstractApiTest {
         mapperConfig.setActivateUser(false);
         mapperConfig.setBasic(basicConfig);
 
-        OAuth2Client client = new OAuth2Client();
-        client.setTitle(title);
-        client.setClientId(clientId);
-        client.setClientSecret(clientSecret);
-        client.setAuthorizationUri("https://accounts.google.com/o/oauth2/v2/auth");
-        client.setAccessTokenUri("https://oauth2.googleapis.com/token");
-        client.setScope(List.of("openid", "email", "profile"));
-        client.setUserInfoUri("https://openidconnect.googleapis.com/v1/userinfo");
-        client.setUserNameAttributeName("email");
-        client.setClientAuthenticationMethod("POST");
-        client.setLoginButtonLabel(title);
-        client.setMapperConfig(mapperConfig);
-        client.setPlatforms(List.of(PlatformType.WEB));
+        OAuth2Client oAuth2Client = new OAuth2Client();
+        oAuth2Client.setTitle(title);
+        oAuth2Client.setClientId(clientId);
+        oAuth2Client.setClientSecret(clientSecret);
+        oAuth2Client.setAuthorizationUri("https://accounts.google.com/o/oauth2/v2/auth");
+        oAuth2Client.setAccessTokenUri("https://oauth2.googleapis.com/token");
+        oAuth2Client.setScope(List.of("openid", "email", "profile"));
+        oAuth2Client.setUserInfoUri("https://openidconnect.googleapis.com/v1/userinfo");
+        oAuth2Client.setUserNameAttributeName("email");
+        oAuth2Client.setClientAuthenticationMethod("POST");
+        oAuth2Client.setLoginButtonLabel(title);
+        oAuth2Client.setMapperConfig(mapperConfig);
+        oAuth2Client.setPlatforms(List.of(PlatformType.WEB));
 
-        return client;
+        return oAuth2Client;
     }
 
     @Test
@@ -74,11 +74,11 @@ public class Oauth2ApiTest extends AbstractApiTest {
         // create 5 OAuth2 clients
         for (int i = 0; i < 5; i++) {
             String title = TEST_PREFIX + "OAuth2_" + timestamp + "_" + i;
-            OAuth2Client client = createOAuth2Client(title,
+            OAuth2Client oAuth2Client = createOAuth2Client(title,
                     "client_id_" + timestamp + "_" + i,
                     "client_secret_" + timestamp + "_" + i);
 
-            OAuth2Client created = tbApi.saveOAuth2Client(client);
+            OAuth2Client created = client.saveOAuth2Client(oAuth2Client);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(title, created.getTitle());
@@ -90,14 +90,14 @@ public class Oauth2ApiTest extends AbstractApiTest {
         }
 
         // list tenant OAuth2 client infos
-        PageDataOAuth2ClientInfo clientInfos = tbApi.findOAuth2ClientInfos(100, 0,
+        PageDataOAuth2ClientInfo clientInfos = client.findOAuth2ClientInfos(100, 0,
                 TEST_PREFIX + "OAuth2_" + timestamp, null, null);
         assertNotNull(clientInfos);
         assertEquals(5, clientInfos.getData().size());
 
         // get OAuth2 client by id
         OAuth2Client searchClient = createdClients.get(2);
-        OAuth2Client fetchedClient = tbApi.getOAuth2ClientById(searchClient.getId().getId());
+        OAuth2Client fetchedClient = client.getOAuth2ClientById(searchClient.getId().getId());
         assertEquals(searchClient.getTitle(), fetchedClient.getTitle());
         assertEquals(searchClient.getClientId(), fetchedClient.getClientId());
         assertEquals(searchClient.getAuthorizationUri(), fetchedClient.getAuthorizationUri());
@@ -108,29 +108,29 @@ public class Oauth2ApiTest extends AbstractApiTest {
                 createdClients.get(0).getId().getId().toString(),
                 createdClients.get(1).getId().getId().toString()
         );
-        List<OAuth2ClientInfo> fetchedInfos = tbApi.findTenantOAuth2ClientInfosByIdsV2(idsToFetch);
+        List<OAuth2ClientInfo> fetchedInfos = client.findTenantOAuth2ClientInfosByIdsV2(idsToFetch);
         assertEquals(2, fetchedInfos.size());
 
         // update OAuth2 client
-        OAuth2Client clientToUpdate = tbApi.getOAuth2ClientById(createdClients.get(3).getId().getId());
+        OAuth2Client clientToUpdate = client.getOAuth2ClientById(createdClients.get(3).getId().getId());
         clientToUpdate.setTitle(clientToUpdate.getTitle() + "_updated");
         clientToUpdate.setLoginButtonLabel("Updated Login");
         clientToUpdate.setPlatforms(List.of(PlatformType.WEB, PlatformType.ANDROID));
-        OAuth2Client updatedClient = tbApi.saveOAuth2Client(clientToUpdate);
+        OAuth2Client updatedClient = client.saveOAuth2Client(clientToUpdate);
         assertEquals(clientToUpdate.getTitle(), updatedClient.getTitle());
         assertEquals("Updated Login", updatedClient.getLoginButtonLabel());
         assertEquals(2, updatedClient.getPlatforms().size());
 
         // delete OAuth2 client
         UUID clientToDeleteId = createdClients.get(0).getId().getId();
-        tbApi.deleteOauth2Client(clientToDeleteId);
+        client.deleteOauth2Client(clientToDeleteId);
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getOAuth2ClientById(clientToDeleteId)
+                client.getOAuth2ClientById(clientToDeleteId)
         );
 
-        PageDataOAuth2ClientInfo clientsAfterDelete = tbApi.findOAuth2ClientInfos(100, 0,
+        PageDataOAuth2ClientInfo clientsAfterDelete = client.findOAuth2ClientInfos(100, 0,
                 TEST_PREFIX + "OAuth2_" + timestamp, null, null);
         assertEquals(4, clientsAfterDelete.getData().size());
     }

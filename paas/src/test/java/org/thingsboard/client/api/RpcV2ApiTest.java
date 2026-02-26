@@ -39,7 +39,7 @@ public class RpcV2ApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName(name);
         device.setType("default");
-        return tbApi.saveDevice(device, null, null, null, null, null, null);
+        return client.saveDevice(device, null, null, null, null, null, null);
     }
 
     /**
@@ -48,14 +48,13 @@ public class RpcV2ApiTest extends AbstractApiTest {
      * JSON object).  Returns the rpcId string from the {"rpcId":"..."} payload.
      */
     private String postPersistentRpcAndGetId(String deviceId) throws IOException, InterruptedException {
-        HttpClient http = apiClient.getHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(apiClient.getBaseUri() + "/api/plugins/rpc/oneway/" + deviceId))
+                .uri(URI.create("http://localhost:8080/api/plugins/rpc/oneway/" + deviceId))
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer " + tokenHolder.get())
+                .header("Authorization", "Bearer " + client.getToken())
                 .POST(HttpRequest.BodyPublishers.ofString(PERSISTENT_BODY))
                 .build();
-        HttpResponse<String> response = http.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         return OBJECT_MAPPER.readTree(response.body()).get("rpcId").asText();
     }
 
@@ -73,13 +72,13 @@ public class RpcV2ApiTest extends AbstractApiTest {
         // which the generated client (return type String) cannot deserialise →
         // IOException wrapped in ApiException with code 0.
         try {
-            tbApi.handleOneWayDeviceRPCRequest1(deviceId, PERSISTENT_BODY);
+            client.handleOneWayDeviceRPCRequest1(deviceId, PERSISTENT_BODY);
         } catch (ApiException e) {
             assertEquals(0, e.getCode(),
                     "handleOneWayDeviceRPCRequest1 got an unexpected HTTP error: " + e.getCode());
         }
 
-        tbApi.deleteDevice(deviceId);
+        client.deleteDevice(deviceId);
     }
 
     // -------------------------------------------------------------------------
@@ -94,13 +93,13 @@ public class RpcV2ApiTest extends AbstractApiTest {
 
         // Same behaviour as one-way with persistent=true.
         try {
-            tbApi.handleTwoWayDeviceRPCRequest1(deviceId, PERSISTENT_BODY);
+            client.handleTwoWayDeviceRPCRequest1(deviceId, PERSISTENT_BODY);
         } catch (ApiException e) {
             assertEquals(0, e.getCode(),
                     "handleTwoWayDeviceRPCRequest1 got an unexpected HTTP error: " + e.getCode());
         }
 
-        tbApi.deleteDevice(deviceId);
+        client.deleteDevice(deviceId);
     }
 
     // -------------------------------------------------------------------------
@@ -118,22 +117,22 @@ public class RpcV2ApiTest extends AbstractApiTest {
         assertNotNull(rpcId);
 
         // getPersistedRpc – should return the stored Rpc object.
-        Rpc rpc = tbApi.getPersistedRpc(rpcId);
+        Rpc rpc = client.getPersistedRpc(rpcId);
         assertNotNull(rpc);
         assertNotNull(rpc.getId());
 
         // deleteRpc – should succeed without exception.
-        tbApi.deleteRpc(rpcId);
+        client.deleteRpc(rpcId);
 
         // After deletion the record should no longer exist.
-        assertReturns404(() -> tbApi.getPersistedRpc(rpcId));
+        assertReturns404(() -> client.getPersistedRpc(rpcId));
 
-        tbApi.deleteDevice(deviceId);
+        client.deleteDevice(deviceId);
     }
 
     @Test
     void testGetPersistedRpcNotFound() {
-        assertReturns404(() -> tbApi.getPersistedRpc(UUID.randomUUID().toString()));
+        assertReturns404(() -> client.getPersistedRpc(UUID.randomUUID().toString()));
     }
 
     // -------------------------------------------------------------------------
@@ -152,13 +151,13 @@ public class RpcV2ApiTest extends AbstractApiTest {
         // getPersistedRpcByDevice declares String as the return type, but the
         // server returns a JSON page-data object → ApiException(code=0).
         try {
-            tbApi.getPersistedRpcByDevice(deviceId, 100, 0, null, null, null, null);
+            client.getPersistedRpcByDevice(deviceId, 100, 0, null, null, null, null);
         } catch (ApiException e) {
             assertEquals(0, e.getCode(),
                     "getPersistedRpcByDevice got an unexpected HTTP error: " + e.getCode());
         }
 
-        tbApi.deleteDevice(deviceId);
+        client.deleteDevice(deviceId);
     }
 
 }

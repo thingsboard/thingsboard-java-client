@@ -92,13 +92,13 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "temp_" + ts + "_" + i);
             d.setType(type1);
-            tbApi.saveDevice(d, null, null, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null, null, null, null);
         }
         for (int i = 0; i < 2; i++) {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "hum_" + ts + "_" + i);
             d.setType(type2);
-            tbApi.saveDevice(d, null, null, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null, null, null, null);
         }
 
         // filter by single device type
@@ -108,7 +108,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(singleTypeQuery);
+        PageDataEntityData result = client.findEntityDataByQuery(singleTypeQuery);
         assertNotNull(result);
         assertEquals(3, result.getTotalElements().intValue());
         for (EntityData entity : result.getData()) {
@@ -122,7 +122,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData multiResult = tbApi.findEntityDataByQuery(multiTypeQuery);
+        PageDataEntityData multiResult = client.findEntityDataByQuery(multiTypeQuery);
         assertNotNull(multiResult);
         assertEquals(5, multiResult.getTotalElements().intValue());
 
@@ -134,7 +134,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData nameResult = tbApi.findEntityDataByQuery(nameFilterQuery);
+        PageDataEntityData nameResult = client.findEntityDataByQuery(nameFilterQuery);
         assertNotNull(nameResult);
         assertEquals(3, nameResult.getTotalElements().intValue());
     }
@@ -148,7 +148,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Device d = new Device();
             d.setName(prefix + "_" + i);
             d.setType("default");
-            tbApi.saveDevice(d, null, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null, null, null);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -158,7 +158,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(4, result.getTotalElements().intValue());
         assertFalse(result.getHasNext());
@@ -168,9 +168,9 @@ public class EntityQueryApiTest extends AbstractApiTest {
     void testFindByEntityListFilter() throws Exception {
         long ts = System.currentTimeMillis();
 
-        Device d1 = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_1").type("default"), null, null, null, null, null, null);
-        Device d2 = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_2").type("default"), null, null, null, null, null, null);
-        tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_3").type("default"), null, null, null, null, null, null);
+        Device d1 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_1").type("default"), null, null, null, null, null, null);
+        Device d2 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_2").type("default"), null, null, null, null, null, null);
+        client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_3").type("default"), null, null, null, null, null, null);
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new EntityListFilter()
@@ -181,7 +181,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(2, result.getTotalElements().intValue());
 
@@ -195,7 +195,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
     @Test
     void testFindBySingleEntityFilter() throws Exception {
         long ts = System.currentTimeMillis();
-        Device device = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "single_" + ts).type("default"), null, null, null, null, null, null);
+        Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "single_" + ts).type("default"), null, null, null, null, null, null);
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new SingleEntityFilter()
@@ -205,7 +205,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(1, result.getTotalElements().intValue());
         assertEquals(device.getId().getId().toString(),
@@ -221,7 +221,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Asset a = new Asset();
             a.setName(QUERY_TEST_PREFIX + "asset_" + ts + "_" + i);
             a.setType(assetType);
-            tbApi.saveAsset(a, null, null, null, null, null);
+            client.saveAsset(a, null, null, null, null, null);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -230,7 +230,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(3, result.getTotalElements().intValue());
     }
@@ -241,8 +241,8 @@ public class EntityQueryApiTest extends AbstractApiTest {
         String matchName = QUERY_TEST_PREFIX + "kf_match_" + ts;
         String noMatchName = QUERY_TEST_PREFIX + "kf_other_" + ts;
 
-        tbApi.saveDevice(new Device().name(matchName).type("default"), null, null, null, null, null, null);
-        tbApi.saveDevice(new Device().name(noMatchName).type("default"), null, null, null, null, null, null);
+        client.saveDevice(new Device().name(matchName).type("default"), null, null, null, null, null, null);
+        client.saveDevice(new Device().name(noMatchName).type("default"), null, null, null, null, null, null);
 
         KeyFilter nameKeyFilter = new KeyFilter()
                 .key(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"))
@@ -260,7 +260,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(1, result.getTotalElements().intValue());
     }
@@ -273,7 +273,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "page_" + ts + "_" + i);
             d.setType("default");
-            tbApi.saveDevice(d, null, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null, null, null);
         }
 
         EntityDataPageLink smallPage = new EntityDataPageLink()
@@ -291,7 +291,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
         // first page
-        PageDataEntityData page1 = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData page1 = client.findEntityDataByQuery(query);
         assertNotNull(page1);
         assertEquals(5, page1.getTotalElements().intValue());
         assertEquals(3, page1.getTotalPages().intValue());
@@ -300,7 +300,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
 
         // last page
         smallPage.setPage(2);
-        PageDataEntityData lastPage = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData lastPage = client.findEntityDataByQuery(query);
         assertNotNull(lastPage);
         assertEquals(1, lastPage.getData().size());
         assertFalse(lastPage.getHasNext());
@@ -311,16 +311,16 @@ public class EntityQueryApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         String childType = "floor";
 
-        Asset root = tbApi.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "asqRoot_" + ts).type("building"), null, null, null, null, null);
+        Asset root = client.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "asqRoot_" + ts).type("building"), null, null, null, null, null);
 
         for (int i = 0; i < 3; i++) {
-            Asset child = tbApi.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "asqChild_" + ts + "_" + i).type(childType), null, null, null, null, null);
+            Asset child = client.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "asqChild_" + ts + "_" + i).type(childType), null, null, null, null, null);
             EntityRelation rel = new EntityRelation();
             rel.setFrom(new EntityId().id(root.getId().getId()).entityType(EntityType.ASSET));
             rel.setTo(new EntityId().id(child.getId().getId()).entityType(EntityType.ASSET));
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            tbApi.saveRelationV2(rel);
+            client.saveRelationV2(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -334,7 +334,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(3, result.getTotalElements().intValue());
     }
@@ -344,16 +344,16 @@ public class EntityQueryApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         String deviceType = "sensor";
 
-        Asset root = tbApi.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "dsqRoot_" + ts).type("hub"), null, null, null, null, null);
+        Asset root = client.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "dsqRoot_" + ts).type("hub"), null, null, null, null, null);
 
         for (int i = 0; i < 2; i++) {
-            Device device = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "dsqDev_" + ts + "_" + i).type(deviceType), null, null, null, null, null, null);
+            Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "dsqDev_" + ts + "_" + i).type(deviceType), null, null, null, null, null, null);
             EntityRelation rel = new EntityRelation();
             rel.setFrom(new EntityId().id(root.getId().getId()).entityType(EntityType.ASSET));
             rel.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            tbApi.saveRelationV2(rel);
+            client.saveRelationV2(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -367,7 +367,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(2, result.getTotalElements().intValue());
     }
@@ -377,7 +377,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
 
         for (int i = 0; i < 2; i++) {
-            tbApi.saveEdge(new Edge()
+            client.saveEdge(new Edge()
                     .name(QUERY_TEST_PREFIX + "edgeGw_" + ts + "_" + i)
                     .type("gateway")
                     .routingKey("rk_gw_" + ts + "_" + i)
@@ -385,7 +385,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                     .edgeLicenseKey("licenseKey")
                     .cloudEndpoint("http://localhost:8080"), null, null);
         }
-        tbApi.saveEdge(new Edge()
+        client.saveEdge(new Edge()
                 .name(QUERY_TEST_PREFIX + "edgeCloud_" + ts)
                 .type("cloud")
                 .routingKey("rk_cloud_" + ts)
@@ -399,7 +399,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(2, result.getTotalElements().intValue());
     }
@@ -408,10 +408,10 @@ public class EntityQueryApiTest extends AbstractApiTest {
     void testFindByEdgeSearchQueryFilter() throws Exception {
         long ts = System.currentTimeMillis();
 
-        Asset root = tbApi.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "esqRoot_" + ts).type("building"), null, null, null, null, null);
+        Asset root = client.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "esqRoot_" + ts).type("building"), null, null, null, null, null);
 
         for (int i = 0; i < 3; i++) {
-            Edge edge = tbApi.saveEdge(new Edge()
+            Edge edge = client.saveEdge(new Edge()
                     .name(QUERY_TEST_PREFIX + "esqEdge_" + ts + "_" + i)
                     .type("gateway")
                     .routingKey("rk_esq_" + ts + "_" + i)
@@ -423,7 +423,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             rel.setTo(new EntityId().id(edge.getId().getId()).entityType(EntityType.EDGE));
             rel.setType("Manages");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            tbApi.saveRelationV2(rel);
+            client.saveRelationV2(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -437,7 +437,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(3, result.getTotalElements().intValue());
     }
@@ -447,10 +447,10 @@ public class EntityQueryApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         String viewType = "temperatureView";
 
-        Device device = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "evtDev_" + ts).type("default"), null, null, null, null, null, null);
+        Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "evtDev_" + ts).type("default"), null, null, null, null, null, null);
 
         for (int i = 0; i < 3; i++) {
-            tbApi.saveEntityView(new EntityView()
+            client.saveEntityView(new EntityView()
                             .name(QUERY_TEST_PREFIX + "evt_" + ts + "_" + i)
                             .type(viewType)
                             .entityId(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE)),
@@ -463,7 +463,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(3, result.getTotalElements().intValue());
     }
@@ -473,10 +473,10 @@ public class EntityQueryApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         String viewType = "sensorView";
 
-        Device rootDevice = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "evsqDev_" + ts).type("default"), null, null, null, null, null, null);
+        Device rootDevice = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "evsqDev_" + ts).type("default"), null, null, null, null, null, null);
 
         for (int i = 0; i < 2; i++) {
-            EntityView ev = tbApi.saveEntityView(new EntityView()
+            EntityView ev = client.saveEntityView(new EntityView()
                             .name(QUERY_TEST_PREFIX + "evsq_" + ts + "_" + i)
                             .type(viewType)
                             .entityId(new EntityId().id(rootDevice.getId().getId()).entityType(EntityType.DEVICE)),
@@ -486,7 +486,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             rel.setTo(new EntityId().id(ev.getId().getId()).entityType(EntityType.ENTITY_VIEW));
             rel.setType("HasView");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            tbApi.saveRelationV2(rel);
+            client.saveRelationV2(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -500,7 +500,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(2, result.getTotalElements().intValue());
     }
@@ -509,16 +509,16 @@ public class EntityQueryApiTest extends AbstractApiTest {
     void testFindByRelationsQueryFilter() throws Exception {
         long ts = System.currentTimeMillis();
 
-        Asset root = tbApi.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "rqfRoot_" + ts).type("hub"), null, null, null, null, null);
+        Asset root = client.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "rqfRoot_" + ts).type("hub"), null, null, null, null, null);
 
         for (int i = 0; i < 2; i++) {
-            Device device = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "rqfDev_" + ts + "_" + i).type("sensor"), null, null, null, null, null, null);
+            Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "rqfDev_" + ts + "_" + i).type("sensor"), null, null, null, null, null, null);
             EntityRelation rel = new EntityRelation();
             rel.setFrom(new EntityId().id(root.getId().getId()).entityType(EntityType.ASSET));
             rel.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            tbApi.saveRelationV2(rel);
+            client.saveRelationV2(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -533,7 +533,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(2, result.getTotalElements().intValue());
     }
@@ -543,7 +543,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
 
         for (int i = 0; i < 3; i++) {
-            tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "etf_" + ts + "_" + i).type("default"), null, null, null, null, null, null);
+            client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "etf_" + ts + "_" + i).type("default"), null, null, null, null, null, null);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -551,7 +551,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(3, result.getTotalElements().intValue());
     }
@@ -563,12 +563,12 @@ public class EntityQueryApiTest extends AbstractApiTest {
         EntityGroup group = new EntityGroup();
         group.setType(EntityGroup.TypeEnum.DEVICE);
         group.setName(QUERY_TEST_PREFIX + "egfGroup_" + ts);
-        EntityGroupInfo savedGroup = tbApi.saveEntityGroup(group);
+        EntityGroupInfo savedGroup = client.saveEntityGroup(group);
         String groupId = savedGroup.getId().getId().toString();
 
-        Device d1 = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "egfDev1_" + ts).type("default"), null, null, null, null, null, null);
-        Device d2 = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "egfDev2_" + ts).type("default"), null, null, null, null, null, null);
-        tbApi.addEntitiesToEntityGroup(groupId, List.of(d1.getId().getId().toString(), d2.getId().getId().toString()));
+        Device d1 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "egfDev1_" + ts).type("default"), null, null, null, null, null, null);
+        Device d2 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "egfDev2_" + ts).type("default"), null, null, null, null, null, null);
+        client.addEntitiesToEntityGroup(groupId, List.of(d1.getId().getId().toString(), d2.getId().getId().toString()));
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new EntityGroupFilter()
@@ -577,7 +577,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(2, result.getTotalElements().intValue());
     }
@@ -589,17 +589,17 @@ public class EntityQueryApiTest extends AbstractApiTest {
         EntityGroup group1 = new EntityGroup();
         group1.setType(EntityGroup.TypeEnum.DEVICE);
         group1.setName(QUERY_TEST_PREFIX + "eglGroup1_" + ts);
-        EntityGroupInfo savedGroup1 = tbApi.saveEntityGroup(group1);
+        EntityGroupInfo savedGroup1 = client.saveEntityGroup(group1);
 
         EntityGroup group2 = new EntityGroup();
         group2.setType(EntityGroup.TypeEnum.DEVICE);
         group2.setName(QUERY_TEST_PREFIX + "eglGroup2_" + ts);
-        EntityGroupInfo savedGroup2 = tbApi.saveEntityGroup(group2);
+        EntityGroupInfo savedGroup2 = client.saveEntityGroup(group2);
 
-        Device d1 = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "eglDev1_" + ts).type("default"), null, null, null, null, null, null);
-        Device d2 = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "eglDev2_" + ts).type("default"), null, null, null, null, null, null);
-        tbApi.addEntitiesToEntityGroup(savedGroup1.getId().getId().toString(), List.of(d1.getId().getId().toString()));
-        tbApi.addEntitiesToEntityGroup(savedGroup2.getId().getId().toString(), List.of(d2.getId().getId().toString()));
+        Device d1 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "eglDev1_" + ts).type("default"), null, null, null, null, null, null);
+        Device d2 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "eglDev2_" + ts).type("default"), null, null, null, null, null, null);
+        client.addEntitiesToEntityGroup(savedGroup1.getId().getId().toString(), List.of(d1.getId().getId().toString()));
+        client.addEntitiesToEntityGroup(savedGroup2.getId().getId().toString(), List.of(d2.getId().getId().toString()));
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new EntityGroupListFilter()
@@ -610,7 +610,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(2, result.getTotalElements().intValue());
     }
@@ -623,7 +623,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
         EntityGroup group = new EntityGroup();
         group.setType(EntityGroup.TypeEnum.DEVICE);
         group.setName(groupName);
-        tbApi.saveEntityGroup(group);
+        client.saveEntityGroup(group);
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new EntityGroupNameFilter()
@@ -632,7 +632,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(1, result.getTotalElements().intValue());
     }
@@ -645,10 +645,10 @@ public class EntityQueryApiTest extends AbstractApiTest {
         EntityGroup group = new EntityGroup();
         group.setType(EntityGroup.TypeEnum.DEVICE);
         group.setName(groupName);
-        EntityGroupInfo savedGroup = tbApi.saveEntityGroup(group);
+        EntityGroupInfo savedGroup = client.saveEntityGroup(group);
 
-        Device device = tbApi.saveDevice(new Device().name(QUERY_TEST_PREFIX + "ebgn_" + ts).type("default"), null, null, null, null, null, null);
-        tbApi.addEntitiesToEntityGroup(savedGroup.getId().getId().toString(), List.of(device.getId().getId().toString()));
+        Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "ebgn_" + ts).type("default"), null, null, null, null, null, null);
+        client.addEntitiesToEntityGroup(savedGroup.getId().getId().toString(), List.of(device.getId().getId().toString()));
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new EntitiesByGroupNameFilter()
@@ -658,7 +658,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(1, result.getTotalElements().intValue());
     }
@@ -670,7 +670,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 
-        PageDataEntityData result = tbApi.findEntityDataByQuery(query);
+        PageDataEntityData result = client.findEntityDataByQuery(query);
         assertNotNull(result);
         assertEquals(1, result.getData().size());
     }

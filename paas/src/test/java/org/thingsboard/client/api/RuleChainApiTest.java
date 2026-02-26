@@ -47,7 +47,7 @@ public class RuleChainApiTest extends AbstractApiTest {
             ruleChain.setType(RuleChainType.CORE);
             ruleChain.setDebugMode(false);
 
-            RuleChain created = tbApi.saveRuleChain(ruleChain);
+            RuleChain created = client.saveRuleChain(ruleChain);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(ruleChain.getName(), created.getName());
@@ -57,19 +57,19 @@ public class RuleChainApiTest extends AbstractApiTest {
         }
 
         // list rule chains with text search
-        PageDataRuleChain filteredChains = tbApi.getRuleChains(100, 0, null,
+        PageDataRuleChain filteredChains = client.getRuleChains(100, 0, null,
                 TEST_PREFIX + "RuleChain_" + timestamp, null, null);
         assertNotNull(filteredChains);
         assertEquals(5, filteredChains.getData().size());
 
         // get rule chain by id
         RuleChain searchChain = createdChains.get(2);
-        RuleChain fetchedChain = tbApi.getRuleChainById(searchChain.getId().getId().toString());
+        RuleChain fetchedChain = client.getRuleChainById(searchChain.getId().getId().toString());
         assertEquals(searchChain.getName(), fetchedChain.getName());
         assertEquals(searchChain.getType(), fetchedChain.getType());
 
         // get metadata (initially has default node)
-        RuleChainMetaData metadata = tbApi.getRuleChainMetaData(searchChain.getId().getId().toString());
+        RuleChainMetaData metadata = client.getRuleChainMetaData(searchChain.getId().getId().toString());
         assertNotNull(metadata);
         assertEquals(searchChain.getId().getId(), metadata.getRuleChainId().getId());
 
@@ -122,13 +122,13 @@ public class RuleChainApiTest extends AbstractApiTest {
         newMetadata.setConnections(List.of(conn1, conn2));
         newMetadata.setRuleChainConnections(List.of());
 
-        RuleChainMetaData savedMetadata = tbApi.saveRuleChainMetaData(newMetadata, false);
+        RuleChainMetaData savedMetadata = client.saveRuleChainMetaData(newMetadata, false);
         assertNotNull(savedMetadata);
         assertEquals(3, savedMetadata.getNodes().size());
         assertEquals(2, savedMetadata.getConnections().size());
 
         // verify saved nodes
-        RuleChainMetaData fetchedMetadata = tbApi.getRuleChainMetaData(searchChain.getId().getId().toString());
+        RuleChainMetaData fetchedMetadata = client.getRuleChainMetaData(searchChain.getId().getId().toString());
         assertEquals(3, fetchedMetadata.getNodes().size());
         assertTrue(fetchedMetadata.getNodes().stream()
                 .anyMatch(node -> "Log Telemetry".equals(node.getName())));
@@ -136,26 +136,26 @@ public class RuleChainApiTest extends AbstractApiTest {
                 .anyMatch(node -> "Save Timeseries".equals(node.getName())));
 
         // get output labels
-        tbApi.getRuleChainOutputLabels(searchChain.getId().getId().toString());
+        client.getRuleChainOutputLabels(searchChain.getId().getId().toString());
 
         // update rule chain
         RuleChain chainToUpdate = createdChains.get(3);
         chainToUpdate.setName(chainToUpdate.getName() + "_updated");
         chainToUpdate.setDebugMode(true);
-        RuleChain updatedChain = tbApi.saveRuleChain(chainToUpdate);
+        RuleChain updatedChain = client.saveRuleChain(chainToUpdate);
         assertEquals(chainToUpdate.getName(), updatedChain.getName());
         assertEquals(true, updatedChain.getDebugMode());
 
         // delete rule chain
         UUID chainToDeleteId = createdChains.get(0).getId().getId();
-        tbApi.deleteRuleChain(chainToDeleteId.toString());
+        client.deleteRuleChain(chainToDeleteId.toString());
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getRuleChainById(chainToDeleteId.toString())
+                client.getRuleChainById(chainToDeleteId.toString())
         );
 
-        PageDataRuleChain chainsAfterDelete = tbApi.getRuleChains(100, 0, null,
+        PageDataRuleChain chainsAfterDelete = client.getRuleChains(100, 0, null,
                 TEST_PREFIX + "RuleChain_" + timestamp, null, null);
         assertEquals(4, chainsAfterDelete.getData().size());
     }

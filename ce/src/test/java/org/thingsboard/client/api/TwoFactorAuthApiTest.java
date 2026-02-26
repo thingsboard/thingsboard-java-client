@@ -39,7 +39,7 @@ public class TwoFactorAuthApiTest extends AbstractApiTest {
     @Test
     void testTwoFactorAuthLifecycle() throws ApiException, IOException, InterruptedException {
         // save original platform 2FA settings as sysadmin
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         // configure platform 2FA settings with TOTP provider
         TotpTwoFaProviderConfig totpProviderConfig = new TotpTwoFaProviderConfig();
@@ -51,7 +51,7 @@ public class TwoFactorAuthApiTest extends AbstractApiTest {
         newSettings.setTotalAllowedTimeForVerification(300);
         newSettings.setMaxVerificationFailuresBeforeUserLockout(5);
 
-        PlatformTwoFaSettings savedSettings = tbApi.savePlatformTwoFaSettings(newSettings);
+        PlatformTwoFaSettings savedSettings = client.savePlatformTwoFaSettings(newSettings);
         assertNotNull(savedSettings);
         assertNotNull(savedSettings.getProviders());
         assertFalse(savedSettings.getProviders().isEmpty());
@@ -59,16 +59,16 @@ public class TwoFactorAuthApiTest extends AbstractApiTest {
         assertEquals(300, savedSettings.getTotalAllowedTimeForVerification());
 
         // get available 2FA providers (should include TOTP)
-        List<TwoFaProviderType> providerTypes = tbApi.getAvailableTwoFaProviders1();
+        List<TwoFaProviderType> providerTypes = client.getAvailableTwoFaProviders1();
         assertNotNull(providerTypes);
         assertTrue(providerTypes.contains(TwoFaProviderType.TOTP));
 
         // get account 2FA settings (should be empty initially)
-        AccountTwoFaSettings accountSettings = tbApi.getAccountTwoFaSettings();
+        AccountTwoFaSettings accountSettings = client.getAccountTwoFaSettings();
         assertNull(accountSettings);
 
         // generate TOTP account config
-        TwoFaAccountConfig generatedConfig = tbApi.generateTwoFaAccountConfig(TwoFaProviderType.TOTP.getValue());
+        TwoFaAccountConfig generatedConfig = client.generateTwoFaAccountConfig(TwoFaProviderType.TOTP.getValue());
         assertNotNull(generatedConfig);
         TotpTwoFaAccountConfig totpConfig = (TotpTwoFaAccountConfig) generatedConfig;
         assertNotNull(totpConfig);

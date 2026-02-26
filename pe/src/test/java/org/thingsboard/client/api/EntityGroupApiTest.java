@@ -73,30 +73,30 @@ public class EntityGroupApiTest extends AbstractApiTest {
 
         // saveEntityGroup (create)
         EntityGroup entityGroup = buildGroup(name, DEVICE_TYPE);
-        EntityGroupInfo created = tbApi.saveEntityGroup(entityGroup);
+        EntityGroupInfo created = client.saveEntityGroup(entityGroup);
         assertNotNull(created);
         assertNotNull(created.getId());
         assertEquals(name, created.getName());
         String groupId = created.getId().getId().toString();
 
         // getEntityGroupById
-        EntityGroupInfo fetched = tbApi.getEntityGroupById(groupId);
+        EntityGroupInfo fetched = client.getEntityGroupById(groupId);
         assertEquals(groupId, fetched.getId().getId().toString());
         assertEquals(name, fetched.getName());
 
         // getEntityGroupEntityInfoById
-        EntityInfo entityInfo = tbApi.getEntityGroupEntityInfoById(groupId);
+        EntityInfo entityInfo = client.getEntityGroupEntityInfoById(groupId);
         assertNotNull(entityInfo);
         assertEquals(groupId, entityInfo.getId().getId().toString());
 
         // getEntityGroupByOwnerAndNameAndType
-        EntityGroupInfo byName = tbApi.getEntityGroupByOwnerAndNameAndType(
+        EntityGroupInfo byName = client.getEntityGroupByOwnerAndNameAndType(
                 "TENANT", tenantId(), DEVICE_TYPE, name);
         assertEquals(groupId, byName.getId().getId().toString());
 
         // deleteEntityGroup
-        tbApi.deleteEntityGroup(groupId);
-        assertReturns404(() -> tbApi.getEntityGroupById(groupId));
+        client.deleteEntityGroup(groupId);
+        assertReturns404(() -> client.getEntityGroupById(groupId));
     }
 
     // -------------------------------------------------------------------------
@@ -108,28 +108,28 @@ public class EntityGroupApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         List<String> ids = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            ids.add(tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_" + i, DEVICE_TYPE))
+            ids.add(client.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_" + i, DEVICE_TYPE))
                     .getId().getId().toString());
         }
 
         // getAllEntityGroupsByType
-        List<EntityGroupInfo> all = tbApi.getAllEntityGroupsByType(DEVICE_TYPE, null);
+        List<EntityGroupInfo> all = client.getAllEntityGroupsByType(DEVICE_TYPE, null);
         assertNotNull(all);
         assertTrue(all.size() >= 3);
 
         // getEntityGroupsByTypeAndPageLink
-        PageDataEntityGroupInfo page = tbApi.getEntityGroupsByTypeAndPageLink(
+        PageDataEntityGroupInfo page = client.getEntityGroupsByTypeAndPageLink(
                 DEVICE_TYPE, "100", "0", null, null, null, null);
         assertNotNull(page);
         assertTrue(page.getTotalElements() >= 3);
 
         // getEntityGroupEntityInfosByTypeAndPageLink
-        PageDataEntityInfo infoPage = tbApi.getEntityGroupEntityInfosByTypeAndPageLink(
+        PageDataEntityInfo infoPage = client.getEntityGroupEntityInfosByTypeAndPageLink(
                 DEVICE_TYPE, "100", "0", null, null, null, null);
         assertNotNull(infoPage);
         assertTrue(infoPage.getTotalElements() >= 3);
 
-        for (String id : ids) tbApi.deleteEntityGroup(id);
+        for (String id : ids) client.deleteEntityGroup(id);
     }
 
     // -------------------------------------------------------------------------
@@ -141,33 +141,33 @@ public class EntityGroupApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         List<String> ids = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
-            ids.add(tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_" + i, DEVICE_TYPE))
+            ids.add(client.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_" + i, DEVICE_TYPE))
                     .getId().getId().toString());
         }
 
         // getAllEntityGroupsByOwnerAndType
-        List<EntityGroupInfo> all = tbApi.getAllEntityGroupsByOwnerAndType("TENANT", tenantId(), DEVICE_TYPE);
+        List<EntityGroupInfo> all = client.getAllEntityGroupsByOwnerAndType("TENANT", tenantId(), DEVICE_TYPE);
         assertNotNull(all);
         assertTrue(all.size() >= 3);
 
         // getEntityGroupsByOwnerAndTypeAndPageLink
-        PageDataEntityGroupInfo page = tbApi.getEntityGroupsByOwnerAndTypeAndPageLink(
+        PageDataEntityGroupInfo page = client.getEntityGroupsByOwnerAndTypeAndPageLink(
                 "TENANT", tenantId(), DEVICE_TYPE, "100", "0", null, null, null);
         assertNotNull(page);
         assertTrue(page.getTotalElements() >= 3);
 
         // getEntityGroupEntityInfosByOwnerAndTypeAndPageLink
-        PageDataEntityInfo infoPage = tbApi.getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(
+        PageDataEntityInfo infoPage = client.getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(
                 "TENANT", tenantId(), DEVICE_TYPE, "100", "0", null, null, null);
         assertNotNull(infoPage);
         assertTrue(infoPage.getTotalElements() >= 3);
 
         // getEntityGroupAllByOwnerAndType — the auto-created "All" group
-        EntityGroupInfo allGroup = tbApi.getEntityGroupAllByOwnerAndType("TENANT", tenantId(), DEVICE_TYPE);
+        EntityGroupInfo allGroup = client.getEntityGroupAllByOwnerAndType("TENANT", tenantId(), DEVICE_TYPE);
         assertNotNull(allGroup);
         assertTrue(allGroup.getGroupAll(), "Expected the 'All' group to have groupAll=true");
 
-        for (String id : ids) tbApi.deleteEntityGroup(id);
+        for (String id : ids) client.deleteEntityGroup(id);
     }
 
     // -------------------------------------------------------------------------
@@ -177,25 +177,25 @@ public class EntityGroupApiTest extends AbstractApiTest {
     @Test
     void testGetEntityGroupsHierarchy() throws ApiException {
         long ts = System.currentTimeMillis();
-        EntityGroupInfo group = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts, DEVICE_TYPE));
+        EntityGroupInfo group = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts, DEVICE_TYPE));
         String groupId = group.getId().getId().toString();
 
         // getEntityGroupsHierarchyByOwnerAndTypeAndPageLink
-        PageDataEntityGroupInfo hierarchy = tbApi.getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(
+        PageDataEntityGroupInfo hierarchy = client.getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(
                 "TENANT", tenantId(), DEVICE_TYPE, "100", "0", null, null, null);
         assertNotNull(hierarchy);
         assertNotNull(hierarchy.getData());
         assertTrue(hierarchy.getData().stream().anyMatch(g -> g.getId().getId().toString().equals(groupId)));
 
         // getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink
-        PageDataEntityInfo infoHierarchy = tbApi.getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(
+        PageDataEntityInfo infoHierarchy = client.getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(
                 "TENANT", tenantId(), DEVICE_TYPE, "100", "0", null, null, null);
         assertNotNull(infoHierarchy);
         assertNotNull(infoHierarchy.getData());
         assertTrue(infoHierarchy.getData().stream()
                 .anyMatch(i -> i.getId().getId().toString().equals(groupId)));
 
-        tbApi.deleteEntityGroup(groupId);
+        client.deleteEntityGroup(groupId);
     }
 
     // -------------------------------------------------------------------------
@@ -207,35 +207,35 @@ public class EntityGroupApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
 
         // Use a CUSTOMER group so we can add savedCustomer as a member
-        EntityGroupInfo group = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts, CUSTOMER_TYPE));
+        EntityGroupInfo group = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts, CUSTOMER_TYPE));
         String groupId = group.getId().getId().toString();
         String memberCustomerId = customerId();
 
         // addEntitiesToEntityGroup
-        tbApi.addEntitiesToEntityGroup(groupId, List.of(memberCustomerId));
+        client.addEntitiesToEntityGroup(groupId, List.of(memberCustomerId));
 
         // getEntities — paginated list of members
-        PageDataShortEntityView members = tbApi.getEntities(groupId, "100", "0", null, null, null);
+        PageDataShortEntityView members = client.getEntities(groupId, "100", "0", null, null, null);
         assertNotNull(members);
         assertEquals(1, members.getData().size());
         assertEquals(memberCustomerId, members.getData().get(0).getId().getId().toString());
 
         // getGroupEntity — single member view
-        ShortEntityView member = tbApi.getGroupEntity(groupId, memberCustomerId);
+        ShortEntityView member = client.getGroupEntity(groupId, memberCustomerId);
         assertNotNull(member);
         assertEquals(memberCustomerId, member.getId().getId().toString());
 
         // getEntityGroupsForEntity — groups the customer belongs to
-        List<EntityGroupId> customerGroups = tbApi.getEntityGroupsForEntity("CUSTOMER", memberCustomerId);
+        List<EntityGroupId> customerGroups = client.getEntityGroupsForEntity("CUSTOMER", memberCustomerId);
         assertNotNull(customerGroups);
         assertTrue(customerGroups.stream().anyMatch(id -> id.getId().toString().equals(groupId)));
 
         // removeEntitiesFromEntityGroup
-        tbApi.removeEntitiesFromEntityGroup(groupId, List.of(memberCustomerId));
-        PageDataShortEntityView afterRemove = tbApi.getEntities(groupId, "100", "0", null, null, null);
+        client.removeEntitiesFromEntityGroup(groupId, List.of(memberCustomerId));
+        PageDataShortEntityView afterRemove = client.getEntities(groupId, "100", "0", null, null, null);
         assertEquals(0, afterRemove.getData().size());
 
-        tbApi.deleteEntityGroup(groupId);
+        client.deleteEntityGroup(groupId);
     }
 
     // -------------------------------------------------------------------------
@@ -245,25 +245,25 @@ public class EntityGroupApiTest extends AbstractApiTest {
     @Test
     void testGetEntityGroupsByIds() throws ApiException {
         long ts = System.currentTimeMillis();
-        EntityGroupInfo g1 = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_a", DEVICE_TYPE));
-        EntityGroupInfo g2 = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_b", DEVICE_TYPE));
+        EntityGroupInfo g1 = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_a", DEVICE_TYPE));
+        EntityGroupInfo g2 = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_b", DEVICE_TYPE));
         String id1 = g1.getId().getId().toString();
         String id2 = g2.getId().getId().toString();
 
         // getEntityGroupsByIdsV2
-        List<EntityGroupInfo> byIds = tbApi.getEntityGroupsByIdsV2(List.of(id1, id2));
+        List<EntityGroupInfo> byIds = client.getEntityGroupsByIdsV2(List.of(id1, id2));
         assertNotNull(byIds);
         assertEquals(2, byIds.size());
         assertTrue(byIds.stream().anyMatch(g -> g.getId().getId().toString().equals(id1)));
         assertTrue(byIds.stream().anyMatch(g -> g.getId().getId().toString().equals(id2)));
 
         // getEntityGroupEntityInfosByIds
-        List<EntityInfo> infosByIds = tbApi.getEntityGroupEntityInfosByIds(List.of(id1, id2));
+        List<EntityInfo> infosByIds = client.getEntityGroupEntityInfosByIds(List.of(id1, id2));
         assertNotNull(infosByIds);
         assertEquals(2, infosByIds.size());
 
-        tbApi.deleteEntityGroup(id1);
-        tbApi.deleteEntityGroup(id2);
+        client.deleteEntityGroup(id1);
+        client.deleteEntityGroup(id2);
     }
 
     // -------------------------------------------------------------------------
@@ -273,24 +273,24 @@ public class EntityGroupApiTest extends AbstractApiTest {
     @Test
     void testPublicAndSharedGroups() throws ApiException {
         long ts = System.currentTimeMillis();
-        EntityGroupInfo group = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts, DEVICE_TYPE));
+        EntityGroupInfo group = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts, DEVICE_TYPE));
         String groupId = group.getId().getId().toString();
 
         // makeEntityGroupPublic — group becomes visible as shared
-        tbApi.makeEntityGroupPublic(groupId);
+        client.makeEntityGroupPublic(groupId);
 
-        GroupPermissionInfo entityGroupPermissions = tbApi.getEntityGroupPermissions(groupId).get(0);
+        GroupPermissionInfo entityGroupPermissions = client.getEntityGroupPermissions(groupId).get(0);
         assertTrue(entityGroupPermissions.getPublic());
 
         // makeEntityGroupPrivate — reverts the public share
-        tbApi.makeEntityGroupPrivate(groupId);
-        List<EntityGroupInfo> afterPrivate = tbApi.getAllSharedEntityGroups(DEVICE_TYPE);
+        client.makeEntityGroupPrivate(groupId);
+        List<EntityGroupInfo> afterPrivate = client.getAllSharedEntityGroups(DEVICE_TYPE);
         assertTrue(afterPrivate.stream().noneMatch(g -> g.getId().getId().toString().equals(groupId)));
 
-        List<GroupPermissionInfo> entityGroupPermissions1 = tbApi.getEntityGroupPermissions(groupId);
+        List<GroupPermissionInfo> entityGroupPermissions1 = client.getEntityGroupPermissions(groupId);
         assertTrue(entityGroupPermissions1.isEmpty());
 
-        tbApi.deleteEntityGroup(groupId);
+        client.deleteEntityGroup(groupId);
     }
 
     // -------------------------------------------------------------------------
@@ -305,30 +305,30 @@ public class EntityGroupApiTest extends AbstractApiTest {
         Role role = new Role();
         role.setName(TEST_PREFIX + ts + "_role");
         role.setType(RoleType.GENERIC);
-        Role savedRole = tbApi.saveRole(role);
+        Role savedRole = client.saveRole(role);
         String roleId = savedRole.getId().getId().toString();
 
         // shareEntityGroup — broad share with allUserGroup=true
-        EntityGroupInfo broadGroup = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_broad", DEVICE_TYPE));
+        EntityGroupInfo broadGroup = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_broad", DEVICE_TYPE));
         String broadGroupId = broadGroup.getId().getId().toString();
         ShareGroupRequest shareRequest = new ShareGroupRequest();
         shareRequest.setAllUserGroup(true);
         shareRequest.setOwnerId(new EntityId().id(savedCustomer.getId().getId()).entityType(EntityType.CUSTOMER));
-        tbApi.shareEntityGroup(broadGroupId, shareRequest);
+        client.shareEntityGroup(broadGroupId, shareRequest);
 
         // shareEntityGroupToChildOwnerUserGroup — share with the customer admin group via role
-        EntityGroupInfo specificGroup = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_specific", DEVICE_TYPE));
+        EntityGroupInfo specificGroup = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts + "_specific", DEVICE_TYPE));
         String specificGroupId = specificGroup.getId().getId().toString();
-        EntityInfo customerAdminGroup = tbApi.getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(
+        EntityInfo customerAdminGroup = client.getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(
                 "CUSTOMER", customerId(), "USER", "1", "0", "Customer Administrators", null, null
         ).getData().get(0);
         String customerAdminGroupId = customerAdminGroup.getId().getId().toString();
-        tbApi.shareEntityGroupToChildOwnerUserGroup(specificGroupId, customerAdminGroupId, roleId);
+        client.shareEntityGroupToChildOwnerUserGroup(specificGroupId, customerAdminGroupId, roleId);
 
         // Cleanup
-        tbApi.deleteEntityGroup(broadGroupId);
-        tbApi.deleteEntityGroup(specificGroupId);
-        tbApi.deleteRole(roleId);
+        client.deleteEntityGroup(broadGroupId);
+        client.deleteEntityGroup(specificGroupId);
+        client.deleteRole(roleId);
     }
 
     // -------------------------------------------------------------------------
@@ -338,24 +338,24 @@ public class EntityGroupApiTest extends AbstractApiTest {
     @Test
     void testOwnerMethods() throws ApiException {
         // getOwners — list of tenants/customers visible to the tenant admin
-        PageDataContactBasedObject owners = tbApi.getOwners("100", "0", null, null, null);
+        PageDataContactBasedObject owners = client.getOwners("100", "0", null, null, null);
         assertNotNull(owners);
         assertNotNull(owners.getData());
         assertFalse(owners.getData().isEmpty());
 
         // getOwnerInfos — EntityInfo list of owners
-        PageDataEntityInfo ownerInfos = tbApi.getOwnerInfos("100", "0", null, null, null);
+        PageDataEntityInfo ownerInfos = client.getOwnerInfos("100", "0", null, null, null);
         assertNotNull(ownerInfos);
         assertNotNull(ownerInfos.getData());
         assertFalse(ownerInfos.getData().isEmpty());
 
         // getOwnerInfo — tenant
-        EntityInfo tenantInfo = tbApi.getOwnerInfo("TENANT", tenantId());
+        EntityInfo tenantInfo = client.getOwnerInfo("TENANT", tenantId());
         assertNotNull(tenantInfo);
         assertEquals(tenantId(), tenantInfo.getId().getId().toString());
 
         // getOwnerInfo — customer
-        EntityInfo customerInfo = tbApi.getOwnerInfo("CUSTOMER", customerId());
+        EntityInfo customerInfo = client.getOwnerInfo("CUSTOMER", customerId());
         assertNotNull(customerInfo);
         assertEquals(customerId(), customerInfo.getId().getId().toString());
     }
@@ -376,39 +376,39 @@ public class EntityGroupApiTest extends AbstractApiTest {
         edge.setEdgeLicenseKey("edgeLicenseKey");
         edge.setCloudEndpoint("http://localhost:8080");
         edge.setRoutingKey("routing");
-        Edge savedEdge = tbApi.saveEdge(edge, null, null);
+        Edge savedEdge = client.saveEdge(edge, null, null);
         assertNotNull(savedEdge);
         String edgeId = savedEdge.getId().getId().toString();
 
         // Create a DEVICE entity group
-        EntityGroupInfo group = tbApi.saveEntityGroup(buildGroup(TEST_PREFIX + ts, DEVICE_TYPE));
+        EntityGroupInfo group = client.saveEntityGroup(buildGroup(TEST_PREFIX + ts, DEVICE_TYPE));
         String groupId = group.getId().getId().toString();
 
         // assignEntityGroupToEdge
-        EntityGroup assigned = tbApi.assignEntityGroupToEdge(edgeId, DEVICE_TYPE, groupId);
+        EntityGroup assigned = client.assignEntityGroupToEdge(edgeId, DEVICE_TYPE, groupId);
         assertNotNull(assigned);
         assertEquals(groupId, assigned.getId().getId().toString());
 
         // getAllEdgeEntityGroups
-        List<EntityGroupInfo> allEdgeGroups = tbApi.getAllEdgeEntityGroups(edgeId, DEVICE_TYPE);
+        List<EntityGroupInfo> allEdgeGroups = client.getAllEdgeEntityGroups(edgeId, DEVICE_TYPE);
         assertNotNull(allEdgeGroups);
         assertTrue(allEdgeGroups.stream().anyMatch(g -> g.getId().getId().toString().equals(groupId)));
 
         // getEdgeEntityGroups — paginated
-        PageDataEntityGroupInfo edgeGroupsPage = tbApi.getEdgeEntityGroups(
+        PageDataEntityGroupInfo edgeGroupsPage = client.getEdgeEntityGroups(
                 edgeId, DEVICE_TYPE, "100", "0", null, null, null);
         assertNotNull(edgeGroupsPage);
         assertTrue(edgeGroupsPage.getData().stream().anyMatch(g -> g.getId().getId().toString().equals(groupId)));
 
         // unassignEntityGroupFromEdge
-        EntityGroup unassigned = tbApi.unassignEntityGroupFromEdge(edgeId, DEVICE_TYPE, groupId);
+        EntityGroup unassigned = client.unassignEntityGroupFromEdge(edgeId, DEVICE_TYPE, groupId);
         assertNotNull(unassigned);
-        List<EntityGroupInfo> afterUnassign = tbApi.getAllEdgeEntityGroups(edgeId, DEVICE_TYPE);
+        List<EntityGroupInfo> afterUnassign = client.getAllEdgeEntityGroups(edgeId, DEVICE_TYPE);
         assertTrue(afterUnassign.stream().noneMatch(g -> g.getId().getId().toString().equals(groupId)));
 
         // Cleanup
-        tbApi.deleteEntityGroup(groupId);
-        tbApi.deleteEdge(edgeId);
+        client.deleteEntityGroup(groupId);
+        client.deleteEdge(edgeId);
     }
 
 }

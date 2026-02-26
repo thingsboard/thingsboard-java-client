@@ -39,7 +39,7 @@ public class ApiKeyApiTest extends AbstractApiTest {
         request.setDescription("Test API key");
         request.setUserId(tenantAdmin.getId());
         request.setEnabled(true);
-        ApiKey created = tbApi.saveApiKey(request);
+        ApiKey created = client.saveApiKey(request);
 
         assertNotNull(created);
         assertNotNull(created.getId());
@@ -50,7 +50,7 @@ public class ApiKeyApiTest extends AbstractApiTest {
         UUID keyId = created.getId().getId();
 
         // List user API keys - should contain the newly created key
-        PageDataApiKeyInfo keysPage = tbApi.getUserApiKeys(userId, 100, 0, null, null, null);
+        PageDataApiKeyInfo keysPage = client.getUserApiKeys(userId, 100, 0, null, null, null);
         assertNotNull(keysPage);
         assertNotNull(keysPage.getData());
         assertTrue(keysPage.getData().stream()
@@ -58,10 +58,10 @@ public class ApiKeyApiTest extends AbstractApiTest {
                 "Newly created API key should appear in user's key list");
 
         // Delete API key
-        tbApi.deleteApiKey(keyId);
+        client.deleteApiKey(keyId);
 
         // Verify deletion
-        PageDataApiKeyInfo keysAfterDelete = tbApi.getUserApiKeys(userId, 100, 0, null, null, null);
+        PageDataApiKeyInfo keysAfterDelete = client.getUserApiKeys(userId, 100, 0, null, null, null);
         assertTrue(keysAfterDelete.getData().stream()
                         .noneMatch(k -> k.getId().getId().equals(keyId)),
                 "Deleted API key should not appear in user's key list");
@@ -73,30 +73,30 @@ public class ApiKeyApiTest extends AbstractApiTest {
         request.setDescription("Enable/disable test key");
         request.setUserId(tenantAdmin.getId());
         request.setEnabled(true);
-        ApiKey created = tbApi.saveApiKey(request);
+        ApiKey created = client.saveApiKey(request);
         assertNotNull(created);
 
         UUID keyId = created.getId().getId();
 
         // Disable the key
-        ApiKeyInfo disabled = tbApi.enableApiKey(keyId, false);
+        ApiKeyInfo disabled = client.enableApiKey(keyId, false);
         assertNotNull(disabled);
         assertEquals(Boolean.FALSE, disabled.getEnabled());
 
         // Re-enable the key
-        ApiKeyInfo enabled = tbApi.enableApiKey(keyId, true);
+        ApiKeyInfo enabled = client.enableApiKey(keyId, true);
         assertNotNull(enabled);
         assertEquals(Boolean.TRUE, enabled.getEnabled());
 
         // Cleanup
-        tbApi.deleteApiKey(keyId);
+        client.deleteApiKey(keyId);
     }
 
     @Test
     void testGetUserApiKeys() throws ApiException {
         String userId = tenantAdmin.getId().getId().toString();
 
-        int initialCount = tbApi.getUserApiKeys(userId, 100, 0, null, null, null)
+        int initialCount = client.getUserApiKeys(userId, 100, 0, null, null, null)
                 .getData().size();
 
         // Create 3 keys
@@ -105,22 +105,22 @@ public class ApiKeyApiTest extends AbstractApiTest {
             ApiKeyInfo request = new ApiKeyInfo();
             request.setDescription("Paging test key " + i);
             request.setUserId(tenantAdmin.getId());
-            createdIds[i] = tbApi.saveApiKey(request).getId().getId();
+            createdIds[i] = client.saveApiKey(request).getId().getId();
         }
 
         // All 3 new keys should appear
-        PageDataApiKeyInfo afterCreate = tbApi.getUserApiKeys(userId, 100, 0, null, null, null);
+        PageDataApiKeyInfo afterCreate = client.getUserApiKeys(userId, 100, 0, null, null, null);
         assertEquals(initialCount + 3, afterCreate.getData().size());
         assertEquals(Long.valueOf(initialCount + 3), afterCreate.getTotalElements());
 
         // Pagination: request page size 2 from offset 0
-        PageDataApiKeyInfo page1 = tbApi.getUserApiKeys(userId, 2, 0, null, null, null);
+        PageDataApiKeyInfo page1 = client.getUserApiKeys(userId, 2, 0, null, null, null);
         assertEquals(2, page1.getData().size());
         assertTrue(page1.getHasNext());
 
         // Cleanup
         for (UUID id : createdIds) {
-            tbApi.deleteApiKey(id);
+            client.deleteApiKey(id);
         }
     }
 

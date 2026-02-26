@@ -39,7 +39,7 @@ public class TelemetryApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName("TelemetryTestDevice_" + timestamp);
         device.setType("default");
-        Device createdDevice = tbApi.saveDevice(device, null, null, null, null);
+        Device createdDevice = client.saveDevice(device, null, null, null, null);
         assertNotNull(createdDevice);
 
         String entityType = "DEVICE";
@@ -47,29 +47,29 @@ public class TelemetryApiTest extends AbstractApiTest {
 
         // save server-side attributes
         String serverAttributes = "{\"serverAttr1\": \"value1\", \"serverAttr2\": 42}";
-        tbApi.saveEntityAttributesV2(entityType, entityId, "SERVER_SCOPE", serverAttributes);
+        client.saveEntityAttributesV2(entityType, entityId, "SERVER_SCOPE", serverAttributes);
 
         // save shared attributes
         String sharedAttributes = "{\"sharedAttr1\": \"sharedValue1\", \"sharedAttr2\": true}";
-        tbApi.saveEntityAttributesV2(entityType, entityId, "SHARED_SCOPE", sharedAttributes);
+        client.saveEntityAttributesV2(entityType, entityId, "SHARED_SCOPE", sharedAttributes);
 
         // get attribute keys
-        List<String> allKeys = tbApi.getAttributeKeys(entityType, entityId);
+        List<String> allKeys = client.getAttributeKeys(entityType, entityId);
         assertNotNull(allKeys);
         assertTrue(allKeys.containsAll(List.of("serverAttr1", "serverAttr2", "sharedAttr1", "sharedAttr2")));
 
         // get attribute keys by scope
-        List<String> serverKeys = tbApi.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
+        List<String> serverKeys = client.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
         assertEquals(2 + 1, serverKeys.size()); //active attribute is automatically added to server scope
         assertTrue(serverKeys.containsAll(List.of("serverAttr1", "serverAttr2", "active")));
 
         // get attributes by scope
-        List<AttributeData> serverAttrs = tbApi.getAttributesByScope(entityType, entityId, "SERVER_SCOPE", "serverAttr1,serverAttr2", null);
+        List<AttributeData> serverAttrs = client.getAttributesByScope(entityType, entityId, "SERVER_SCOPE", "serverAttr1,serverAttr2", null);
         assertNotNull(serverAttrs);
         assertEquals(2, serverAttrs.size());
 
         // get all attributes
-        List<AttributeData> allAttrs = tbApi.getAttributes(entityType, entityId, "serverAttr1,sharedAttr1", null);
+        List<AttributeData> allAttrs = client.getAttributes(entityType, entityId, "serverAttr1,sharedAttr1", null);
         assertEquals(2, allAttrs.size());
         assertEquals("value1", allAttrs.stream().filter(attr -> attr.getKey().equals("serverAttr1")).findFirst().orElseThrow().getValue().toString());
         assertEquals("sharedValue1", allAttrs.stream().filter(attr -> attr.getKey().equals("sharedAttr1")).findFirst().orElseThrow().getValue().toString());
@@ -79,29 +79,29 @@ public class TelemetryApiTest extends AbstractApiTest {
         long ts2 = timestamp - 30000;
         long ts3 = timestamp;
         String telemetryBody = "{\"ts\":" + ts1 + ",\"values\":{\"temperature\":25.5,\"humidity\":60}}";
-        tbApi.saveEntityTelemetry(entityType, entityId, "ANY", telemetryBody);
+        client.saveEntityTelemetry(entityType, entityId, "ANY", telemetryBody);
 
         String telemetryBody2 = "{\"ts\":" + ts2 + ",\"values\":{\"temperature\":26.0,\"humidity\":58}}";
-        tbApi.saveEntityTelemetry(entityType, entityId, "ANY", telemetryBody2);
+        client.saveEntityTelemetry(entityType, entityId, "ANY", telemetryBody2);
 
         String telemetryBody3 = "{\"ts\":" + ts3 + ",\"values\":{\"temperature\":27.1,\"humidity\":55}}";
-        tbApi.saveEntityTelemetry(entityType, entityId, "ANY", telemetryBody3);
+        client.saveEntityTelemetry(entityType, entityId, "ANY", telemetryBody3);
 
         // get timeseries keys
-        List<String> tsKeys = tbApi.getTimeseriesKeys(entityType, entityId);
+        List<String> tsKeys = client.getTimeseriesKeys(entityType, entityId);
         assertNotNull(tsKeys);
         assertEquals(2, tsKeys.size());
         assertTrue(tsKeys.containsAll(List.of("humidity", "temperature")));
 
         // get latest timeseries
-        Map<String, List<TsData>> latestData = tbApi.getLatestTimeseries(entityType, entityId, "temperature,humidity", false, null);
+        Map<String, List<TsData>> latestData = client.getLatestTimeseries(entityType, entityId, "temperature,humidity", false, null);
         assertNotNull(latestData);
         assertNotNull(latestData.get("temperature"));
         assertFalse(latestData.get("temperature").isEmpty());
         assertEquals("27.1", latestData.get("temperature").get(0).getValue().toString());
 
         // get timeseries history
-        Map<String, List<TsData>> historyData = tbApi.getTimeseriesHistory(
+        Map<String, List<TsData>> historyData = client.getTimeseriesHistory(
                 entityType, entityId,
                 ts1 - 1000, ts3 + 1000, "temperature",
                 null, null, null, null, "NONE", "ASC", false, null);
@@ -113,35 +113,35 @@ public class TelemetryApiTest extends AbstractApiTest {
         assertEquals("27.1", tempHistory.get(2).getValue().toString());
 
         // delete timeseries
-        tbApi.deleteEntityTimeseries(entityType, entityId, "humidity", true, null, null, true, false, null);
+        client.deleteEntityTimeseries(entityType, entityId, "humidity", true, null, null, true, false, null);
 
-        List<String> keysAfterDelete = tbApi.getTimeseriesKeys(entityType, entityId);
+        List<String> keysAfterDelete = client.getTimeseriesKeys(entityType, entityId);
         assertFalse(keysAfterDelete.contains("humidity"));
 
         // delete attributes
-        tbApi.deleteEntityAttributes(entityType, entityId, "SERVER_SCOPE", "serverAttr1", null);
+        client.deleteEntityAttributes(entityType, entityId, "SERVER_SCOPE", "serverAttr1", null);
 
-        List<String> serverKeysAfterDelete = tbApi.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
+        List<String> serverKeysAfterDelete = client.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
         assertFalse(serverKeysAfterDelete.contains("serverAttr1"));
         assertTrue(serverKeysAfterDelete.contains("serverAttr2"));
 
         // save device attributes using device-specific endpoint
-        tbApi.saveDeviceAttributes(entityId, "SERVER_SCOPE", "{\"deviceSpecificAttr\": \"test\"}");
+        client.saveDeviceAttributes(entityId, "SERVER_SCOPE", "{\"deviceSpecificAttr\": \"test\"}");
 
-        List<String> deviceKeys = tbApi.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
+        List<String> deviceKeys = client.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
         assertTrue(deviceKeys.contains("deviceSpecificAttr"));
 
         // delete device attributes
-        tbApi.deleteDeviceAttributes(entityId, "SERVER_SCOPE", "deviceSpecificAttr", null);
+        client.deleteDeviceAttributes(entityId, "SERVER_SCOPE", "deviceSpecificAttr", null);
 
-        List<String> deviceKeysAfterDelete = tbApi.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
+        List<String> deviceKeysAfterDelete = client.getAttributeKeysByScope(entityType, entityId, "SERVER_SCOPE");
         assertFalse(deviceKeysAfterDelete.contains("deviceSpecificAttr"));
 
         // save telemetry with TTL
         String ttlTelemetry = "{\"ts\":" + timestamp + ",\"values\":{\"shortLived\":99}}";
-        tbApi.saveEntityTelemetryWithTTL(entityType, entityId, "ANY", 86400L, ttlTelemetry);
+        client.saveEntityTelemetryWithTTL(entityType, entityId, "ANY", 86400L, ttlTelemetry);
 
-        Map<String, List<TsData>> latestWithTtl = tbApi.getLatestTimeseries(entityType, entityId, "shortLived", false, null);
+        Map<String, List<TsData>> latestWithTtl = client.getLatestTimeseries(entityType, entityId, "shortLived", false, null);
         assertNotNull(latestWithTtl.get("shortLived"));
         assertEquals("99", latestWithTtl.get("shortLived").get(0).getValue().toString());
     }

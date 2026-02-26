@@ -46,7 +46,7 @@ public class AlarmCommentApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName("Device_For_Comments_" + timestamp);
         device.setType("default");
-        Device createdDevice = tbApi.saveDevice(device, null, null, null, null, null, null);
+        Device createdDevice = client.saveDevice(device, null, null, null, null, null, null);
 
         // Create alarm
         Alarm alarm = new Alarm();
@@ -57,7 +57,7 @@ public class AlarmCommentApiTest extends AbstractApiTest {
         originator.setId(createdDevice.getId().getId());
         alarm.setOriginator(originator);
 
-        Alarm createdAlarm = tbApi.saveAlarm(alarm);
+        Alarm createdAlarm = client.saveAlarm(alarm);
         String alarmId = createdAlarm.getId().getId().toString();
 
         List<AlarmComment> createdComments = new ArrayList<>();
@@ -69,7 +69,7 @@ public class AlarmCommentApiTest extends AbstractApiTest {
             ObjectNode comment = OBJECT_MAPPER.createObjectNode().put("message", message);
             alarmComment.setComment(comment);
 
-            AlarmComment commentInfo = tbApi.saveAlarmComment(alarmId, alarmComment);
+            AlarmComment commentInfo = client.saveAlarmComment(alarmId, alarmComment);
 
             assertNotNull(commentInfo);
             assertNotNull(commentInfo.getId());
@@ -81,7 +81,7 @@ public class AlarmCommentApiTest extends AbstractApiTest {
         }
 
         // Get all comments for the alarm
-        PageDataAlarmCommentInfo allComments = tbApi.getAlarmComments(alarmId, 100, 0, null, null);
+        PageDataAlarmCommentInfo allComments = client.getAlarmComments(alarmId, 100, 0, null, null);
         assertEquals(5, allComments.getData().size(), "Expected 5 comments");
 
         // Update a comment
@@ -90,16 +90,16 @@ public class AlarmCommentApiTest extends AbstractApiTest {
         ((ObjectNode) comment).put("message", "New comment");
         commentToUpdate.setComment(comment);
 
-        AlarmComment updatedComment = tbApi.saveAlarmComment(alarmId, commentToUpdate);
+        AlarmComment updatedComment = client.saveAlarmComment(alarmId, commentToUpdate);
         assertEquals("New comment", updatedComment.getComment().get("message").asText());
 
         // Delete a comment
         UUID commentToDeleteId = createdComments.get(0).getId().getId();
 
-        tbApi.deleteAlarmComment(alarmId, commentToDeleteId.toString());
+        client.deleteAlarmComment(alarmId, commentToDeleteId.toString());
 
         // Verify comment was updated to "deleted"
-        PageDataAlarmCommentInfo commentsAfterDelete = tbApi.getAlarmComments(alarmId, 100, 0, null, null);
+        PageDataAlarmCommentInfo commentsAfterDelete = client.getAlarmComments(alarmId, 100, 0, null, null);
         List<AlarmCommentInfo> data = commentsAfterDelete.getData();
         AlarmCommentInfo deletedComment = data.stream()
                 .filter(alarmCommentInfo -> alarmCommentInfo.getId().getId().equals(commentToDeleteId))

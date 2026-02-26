@@ -37,7 +37,7 @@ public class TrendzApiTest extends AbstractApiTest {
         TrendzConfiguration config = new TrendzConfiguration();
         config.setTrendzUrl(FAKE_TRENDZ_URL);
         config.setTbUrl(FAKE_TB_URL);
-        return tbApi.saveTrendzConfig(config);
+        return client.saveTrendzConfig(config);
     }
 
     // -------------------------------------------------------------------------
@@ -46,7 +46,7 @@ public class TrendzApiTest extends AbstractApiTest {
 
     @Test
     void testTrendzConfigLifecycle() throws ApiException, IOException, InterruptedException {
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         // saveTrendzConfig (create / update)
         TrendzConfiguration saved = saveFakeConfig();
@@ -55,14 +55,14 @@ public class TrendzApiTest extends AbstractApiTest {
         assertEquals(FAKE_TB_URL, saved.getTbUrl());
 
         // getTrendzConfig
-        TrendzConfiguration fetched = tbApi.getTrendzConfig();
+        TrendzConfiguration fetched = client.getTrendzConfig();
         assertNotNull(fetched);
         assertEquals(FAKE_TRENDZ_URL, fetched.getTrendzUrl());
         assertEquals(FAKE_TB_URL, fetched.getTbUrl());
 
         // saveTrendzConfig (update)
         fetched.setTrendzUrl("http://trendz-updated.test:8888");
-        TrendzConfiguration updated = tbApi.saveTrendzConfig(fetched);
+        TrendzConfiguration updated = client.saveTrendzConfig(fetched);
         assertNotNull(updated);
         assertEquals("http://trendz-updated.test:8888", updated.getTrendzUrl());
     }
@@ -77,12 +77,12 @@ public class TrendzApiTest extends AbstractApiTest {
 
     @Test
     void testConnectToTrendz() throws ApiException, IOException, InterruptedException {
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         saveFakeConfig();
 
         try {
-            TrendzSynchronizationResult result = tbApi.connectToTrendz();
+            TrendzSynchronizationResult result = client.connectToTrendz();
             assertNotNull(result);
         } catch (ApiException e) {
             assertTrue(e.getCode() >= 400,
@@ -96,14 +96,14 @@ public class TrendzApiTest extends AbstractApiTest {
 
     @Test
     void testPublicConnectToTrendz() throws ApiException, IOException, InterruptedException {
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         saveFakeConfig();
 
         // publicConnectToTrendz returns void; verify it does not throw an
         // unexpected error (only 4xx/5xx are acceptable when Trendz is absent).
         try {
-            tbApi.publicConnectToTrendz();
+            client.publicConnectToTrendz();
         } catch (ApiException e) {
             assertTrue(e.getCode() >= 400,
                     "publicConnectToTrendz returned unexpected HTTP status: " + e.getCode());
@@ -116,11 +116,11 @@ public class TrendzApiTest extends AbstractApiTest {
 
     @Test
     void testGetTrendzSyncResult() throws ApiException, IOException, InterruptedException {
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
         saveFakeConfig();
 
         try {
-            TrendzSynchronizationResult result = tbApi.getTrendzSyncResult();
+            TrendzSynchronizationResult result = client.getTrendzSyncResult();
             assertNotNull(result);
         } catch (ApiException e) {
             assertTrue(e.getCode() >= 400,
@@ -134,11 +134,11 @@ public class TrendzApiTest extends AbstractApiTest {
 
     @Test
     void testPerformTrendzHealthcheck() throws ApiException, IOException, InterruptedException {
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
         saveFakeConfig();
 
         try {
-            TrendzHealthcheckResult result = tbApi.performTrendzHealthcheck();
+            TrendzHealthcheckResult result = client.performTrendzHealthcheck();
             assertNotNull(result);
         } catch (ApiException e) {
             assertTrue(e.getCode() >= 400,

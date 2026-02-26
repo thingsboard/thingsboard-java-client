@@ -52,7 +52,7 @@ public class ConverterApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
 
         // Create
-        Converter created = tbApi.saveConverter(buildConverter(TEST_PREFIX + ts, ConverterType.UPLINK));
+        Converter created = client.saveConverter(buildConverter(TEST_PREFIX + ts, ConverterType.UPLINK));
         assertNotNull(created);
         assertNotNull(created.getId());
         assertEquals(TEST_PREFIX + ts, created.getName());
@@ -61,7 +61,7 @@ public class ConverterApiTest extends AbstractApiTest {
         String converterId = created.getId().getId().toString();
 
         // Get by ID
-        Converter fetched = tbApi.getConverterById(converterId);
+        Converter fetched = client.getConverterById(converterId);
         assertNotNull(fetched);
         assertEquals(converterId, fetched.getId().getId().toString());
         assertEquals(created.getName(), fetched.getName());
@@ -69,14 +69,14 @@ public class ConverterApiTest extends AbstractApiTest {
         // Update
         fetched.setName(TEST_PREFIX + ts + "_updated");
         fetched.setDebugMode(true);
-        Converter updated = tbApi.saveConverter(fetched);
+        Converter updated = client.saveConverter(fetched);
         assertEquals(TEST_PREFIX + ts + "_updated", updated.getName());
 
         // Delete
-        tbApi.deleteConverter(converterId);
+        client.deleteConverter(converterId);
 
         // Verify gone
-        assertReturns404(() -> tbApi.getConverterById(converterId));
+        assertReturns404(() -> client.getConverterById(converterId));
     }
 
     @Test
@@ -88,31 +88,31 @@ public class ConverterApiTest extends AbstractApiTest {
         for (int i = 0; i < 10; i++) {
             String name = ((i % 2 == 0) ? TEST_PREFIX : TEST_PREFIX_2) + ts + "_" + i;
             ConverterType type = (i % 2 == 0) ? ConverterType.UPLINK : ConverterType.DOWNLINK;
-            Converter c = tbApi.saveConverter(buildConverter(name, type));
+            Converter c = client.saveConverter(buildConverter(name, type));
             createdIds.add(c.getId().getId().toString());
         }
 
         // List all - at least 10 created
-        PageDataConverter allPage = tbApi.getConverters("100", "0", null, null, null, null, null);
+        PageDataConverter allPage = client.getConverters("100", "0", null, null, null, null, null);
         assertNotNull(allPage);
         assertNotNull(allPage.getData());
         assertTrue(allPage.getTotalElements() >= 10);
 
         // Filter by textSearch (TEST_PREFIX_2 matches 5)
-        PageDataConverter filtered = tbApi.getConverters("100", "0", null, TEST_PREFIX_2, null, null, null);
+        PageDataConverter filtered = client.getConverters("100", "0", null, TEST_PREFIX_2, null, null, null);
         assertNotNull(filtered);
         assertEquals(5, filtered.getData().size());
         assertTrue(filtered.getData().stream()
                 .allMatch(c -> c.getName().contains(TEST_PREFIX_2)));
 
         // Pagination: page size 3 over all created should yield hasNext
-        PageDataConverter page1 = tbApi.getConverters("3", "0", null, TEST_PREFIX + ts, null, null, null);
+        PageDataConverter page1 = client.getConverters("3", "0", null, TEST_PREFIX + ts, null, null, null);
         assertEquals(3, page1.getData().size());
         assertTrue(page1.getHasNext());
 
         // Cleanup
         for (String id : createdIds) {
-            tbApi.deleteConverter(id);
+            client.deleteConverter(id);
         }
     }
 
@@ -120,28 +120,28 @@ public class ConverterApiTest extends AbstractApiTest {
     void testGetConvertersByIdsV2() throws ApiException {
         long ts = System.currentTimeMillis();
 
-        Converter c1 = tbApi.saveConverter(buildConverter(TEST_PREFIX + ts + "_a", ConverterType.UPLINK));
-        Converter c2 = tbApi.saveConverter(buildConverter(TEST_PREFIX + ts + "_b", ConverterType.DOWNLINK));
+        Converter c1 = client.saveConverter(buildConverter(TEST_PREFIX + ts + "_a", ConverterType.UPLINK));
+        Converter c2 = client.saveConverter(buildConverter(TEST_PREFIX + ts + "_b", ConverterType.DOWNLINK));
 
         String id1 = c1.getId().getId().toString();
         String id2 = c2.getId().getId().toString();
 
-        List<Converter> result = tbApi.getConvertersByIdsV2(List.of(id1, id2));
+        List<Converter> result = client.getConvertersByIdsV2(List.of(id1, id2));
         assertNotNull(result);
         assertEquals(2, result.size());
         assertTrue(result.stream().anyMatch(c -> c.getId().getId().toString().equals(id1)));
         assertTrue(result.stream().anyMatch(c -> c.getId().getId().toString().equals(id2)));
 
         // Cleanup
-        tbApi.deleteConverter(id1);
-        tbApi.deleteConverter(id2);
+        client.deleteConverter(id1);
+        client.deleteConverter(id2);
     }
 
     @Test
     void testNonExistentConverterReturns404() {
         String randomId = UUID.randomUUID().toString();
-        assertReturns404(() -> tbApi.getConverterById(randomId));
-        assertReturns404(() -> tbApi.deleteConverter(randomId));
+        assertReturns404(() -> client.getConverterById(randomId));
+        assertReturns404(() -> client.deleteConverter(randomId));
     }
 
 }

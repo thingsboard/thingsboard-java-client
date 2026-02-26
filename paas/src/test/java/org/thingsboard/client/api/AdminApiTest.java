@@ -35,17 +35,17 @@ public class AdminApiTest extends AbstractApiTest {
     @Test
     void testAdminSettingsLifecycle() throws Exception {
         // authenticate as sysadmin for admin settings management
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         // get mail settings
-        AdminSettings mailSettings = tbApi.getAdminSettings("mail", true);
+        AdminSettings mailSettings = client.getAdminSettings("mail", true);
         assertNotNull(mailSettings);
         assertNotNull(mailSettings.getKey());
         assertEquals("mail", mailSettings.getKey());
         assertNotNull(mailSettings.getJsonValue());
 
         // get general settings
-        AdminSettings generalSettings = tbApi.getAdminSettings("general", true);
+        AdminSettings generalSettings = client.getAdminSettings("general", true);
         assertNotNull(generalSettings);
         assertEquals("general", generalSettings.getKey());
         assertNotNull(generalSettings.getJsonValue());
@@ -53,27 +53,27 @@ public class AdminApiTest extends AbstractApiTest {
 
         // update general settings and restore
         ((ObjectNode) generalSettings.getJsonValue()).put("prohibitDifferentUrl", true);
-        AdminSettings updatedGeneralSettings = tbApi.saveAdminSettings(generalSettings);
+        AdminSettings updatedGeneralSettings = client.saveAdminSettings(generalSettings);
         assertTrue(updatedGeneralSettings.getJsonValue().get("prohibitDifferentUrl").asBoolean());
 
         // get security settings
-        SecuritySettings securitySettings = tbApi.getSecuritySettings();
+        SecuritySettings securitySettings = client.getSecuritySettings();
         assertNotNull(securitySettings);
         assertNotNull(securitySettings.getPasswordPolicy());
         Integer originalMaxAttempts = securitySettings.getMaxFailedLoginAttempts();
 
         // update security settings
         securitySettings.setMaxFailedLoginAttempts(10);
-        SecuritySettings updatedSecurity = tbApi.saveSecuritySettings(securitySettings);
+        SecuritySettings updatedSecurity = client.saveSecuritySettings(securitySettings);
         assertNotNull(updatedSecurity);
         assertEquals(10, updatedSecurity.getMaxFailedLoginAttempts());
 
         // restore original security settings
         updatedSecurity.setMaxFailedLoginAttempts(originalMaxAttempts);
-        tbApi.saveSecuritySettings(updatedSecurity);
+        client.saveSecuritySettings(updatedSecurity);
 
         // get JWT settings
-        JwtSettings jwtSettings = tbApi.getJwtSettings();
+        JwtSettings jwtSettings = client.getJwtSettings();
         assertNotNull(jwtSettings);
         assertNotNull(jwtSettings.getTokenExpirationTime());
         assertNotNull(jwtSettings.getRefreshTokenExpTime());
@@ -81,42 +81,42 @@ public class AdminApiTest extends AbstractApiTest {
         assertNotNull(jwtSettings.getTokenSigningKey());
 
         // get system info
-        SystemInfo systemInfo = tbApi.getSystemInfo();
+        SystemInfo systemInfo = client.getSystemInfo();
         assertNotNull(systemInfo);
 
         // get features info
-        FeaturesInfo featuresInfo = tbApi.getFeaturesInfo();
+        FeaturesInfo featuresInfo = client.getFeaturesInfo();
         assertNotNull(featuresInfo);
         assertFalse(featuresInfo.getSmsEnabled());
         assertTrue(featuresInfo.getOauthEnabled());
 
         // check updates
-        UpdateMessage updateMessage = tbApi.checkUpdates();
+        UpdateMessage updateMessage = client.checkUpdates();
         assertNotNull(updateMessage);
         assertNotNull(updateMessage.getCurrentVersion());
     }
 
     @Test
     void testTenantAdminSettingsAccess() throws Exception {
-        authorizeAs(TENANT_ADMIN_USERNAME, TEST_PASSWORD);
+        client.login(TENANT_ADMIN_USERNAME, TEST_PASSWORD);
 
         // tenant admin can read mail settings with systemByDefault=true (inherits from system)
-        AdminSettings mailSettings = tbApi.getAdminSettings("mail", true);
+        AdminSettings mailSettings = client.getAdminSettings("mail", true);
         assertNotNull(mailSettings);
         assertEquals("mail", mailSettings.getKey());
         assertNotNull(mailSettings.getJsonValue());
 
         // tenant admin can read general settings with systemByDefault=true
-        AdminSettings generalSettings = tbApi.getAdminSettings("general", true);
+        AdminSettings generalSettings = client.getAdminSettings("general", true);
         assertNotNull(generalSettings);
         assertEquals("general", generalSettings.getKey());
         assertNotNull(generalSettings.getJsonValue());
 
         // sysadmin-only APIs must be forbidden for tenant admin
-        assertReturns403(() -> tbApi.getJwtSettings());
-        assertReturns403(() -> tbApi.getSystemInfo());
-        assertReturns403(() -> tbApi.checkUpdates());
-        assertReturns403(() -> tbApi.getSecuritySettings());
+        assertReturns403(() -> client.getJwtSettings());
+        assertReturns403(() -> client.getSystemInfo());
+        assertReturns403(() -> client.checkUpdates());
+        assertReturns403(() -> client.getSecuritySettings());
     }
 
 }

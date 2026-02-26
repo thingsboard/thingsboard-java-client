@@ -45,7 +45,7 @@ public class DeviceApiTest extends AbstractApiTest {
             device.setLabel("Test Device " + i);
             device.setType(((i % 2 == 0) ? "default" : "thermostat"));
 
-            Device createdDevice = tbApi.saveDevice(device, null, null, null, null, null);
+            Device createdDevice = client.saveDevice(device, null, null, null, null, null);
             assertNotNull(createdDevice);
             assertNotNull(createdDevice.getId());
             assertEquals(deviceName, createdDevice.getName());
@@ -54,7 +54,7 @@ public class DeviceApiTest extends AbstractApiTest {
         }
 
         // find all, check count
-        PageDataDevice allDevices = tbApi.getTenantDevices(100, 0, null, null, null, null);
+        PageDataDevice allDevices = client.getTenantDevices(100, 0, null, null, null, null);
 
         assertNotNull(allDevices);
         assertNotNull(allDevices.getData());
@@ -62,12 +62,12 @@ public class DeviceApiTest extends AbstractApiTest {
         assertEquals(20, initialSize, "Expected at least 20 devices, but got " + allDevices.getData().size());
 
         //find all with search text, check count
-        PageDataDevice allDevicesBySearchText = tbApi.getTenantDevices(10, 0, null, TEST_PREFIX_2, null, null);
+        PageDataDevice allDevicesBySearchText = client.getTenantDevices(10, 0, null, TEST_PREFIX_2, null, null);
         assertEquals(10, allDevicesBySearchText.getData().size(), "Expected exactly 10 test devices");
 
         // find by id
         Device searchDevice = createdDevices.get(10);
-        Device device = tbApi.getDeviceById(searchDevice.getId().getId().toString());
+        Device device = client.getDeviceById(searchDevice.getId().getId().toString());
         assertEquals(searchDevice.getName(), device.getName());
 
         // create device with credentials
@@ -82,29 +82,29 @@ public class DeviceApiTest extends AbstractApiTest {
         request.setDevice(deviceWithCreds);
         request.setCredentials(creds);
 
-        Device savedDeviceWithCreds = tbApi.saveDeviceWithCredentials1(request, null, null, null);
+        Device savedDeviceWithCreds = client.saveDeviceWithCredentials1(request, null, null, null);
         assertEquals("device-with-creds", savedDeviceWithCreds.getName());
 
         // find credentials by device id
-        DeviceCredentials fetchedCreds = tbApi.getDeviceCredentialsByDeviceId(savedDeviceWithCreds.getId().getId().toString());
+        DeviceCredentials fetchedCreds = client.getDeviceCredentialsByDeviceId(savedDeviceWithCreds.getId().getId().toString());
         assertEquals(creds.getCredentialsId(), fetchedCreds.getCredentialsId());
 
         // delete device
         UUID deviceToDeleteId = createdDevices.get(0).getId().getId();
-        tbApi.deleteDevice(deviceToDeleteId.toString());
+        client.deleteDevice(deviceToDeleteId.toString());
 
         // Verify the device is deleted
-        PageDataDevice devicesAfterDelete = tbApi.getTenantDevices(100, 0, null, null, null, null);
+        PageDataDevice devicesAfterDelete = client.getTenantDevices(100, 0, null, null, null, null);
         assertEquals(initialSize, devicesAfterDelete.getData().size());
 
         assertReturns404(() ->
-                tbApi.getDeviceById(deviceToDeleteId.toString()));
+                client.getDeviceById(deviceToDeleteId.toString()));
 
         // assign device to customer
-        tbApi.assignDeviceToCustomer(savedCustomer.getId().getId().toString(), savedDeviceWithCreds.getId().getId().toString());
+        client.assignDeviceToCustomer(savedCustomer.getId().getId().toString(), savedDeviceWithCreds.getId().getId().toString());
 
         // check customer devices
-        PageDataDevice pageDataDevice = tbApi.getCustomerDevices(savedCustomer.getId().getId().toString(), 100, 0, null, null, null, null);
+        PageDataDevice pageDataDevice = client.getCustomerDevices(savedCustomer.getId().getId().toString(), 100, 0, null, null, null, null);
         List<Device> data = pageDataDevice.getData();
         assertEquals(1, data.size());
         assertEquals(savedDeviceWithCreds.getName(), data.get(0).getName());

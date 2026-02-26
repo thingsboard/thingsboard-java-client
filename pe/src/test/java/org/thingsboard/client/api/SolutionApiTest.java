@@ -37,7 +37,7 @@ public class SolutionApiTest extends AbstractApiTest {
     private static final long POLL_INTERVAL_MS = 1_000L;
 
     private boolean isInstalled(String templateId) throws ApiException {
-        return tbApi.getSolutionTemplateInfos().stream()
+        return client.getSolutionTemplateInfos().stream()
                 .filter(t -> templateId.equals(t.getId()))
                 .findFirst()
                 .map(t -> Boolean.TRUE.equals(t.getInstalled()))
@@ -62,7 +62,7 @@ public class SolutionApiTest extends AbstractApiTest {
 
     @Test
     void testGetSolutionTemplateInfos() throws ApiException {
-        List<TenantSolutionTemplateInfo> infos = tbApi.getSolutionTemplateInfos();
+        List<TenantSolutionTemplateInfo> infos = client.getSolutionTemplateInfos();
         assertNotNull(infos);
     }
 
@@ -72,12 +72,12 @@ public class SolutionApiTest extends AbstractApiTest {
 
     @Test
     void testGetSolutionTemplateDetails() throws ApiException {
-        List<TenantSolutionTemplateInfo> infos = tbApi.getSolutionTemplateInfos();
+        List<TenantSolutionTemplateInfo> infos = client.getSolutionTemplateInfos();
         assumeFalse(infos.isEmpty(), "No solution templates available in this environment");
 
         String templateId = infos.get(0).getId();
 
-        TenantSolutionTemplateDetails details = tbApi.getSolutionTemplateDetails(templateId);
+        TenantSolutionTemplateDetails details = client.getSolutionTemplateDetails(templateId);
         assertNotNull(details);
         assertEquals(templateId, details.getId());
     }
@@ -89,7 +89,7 @@ public class SolutionApiTest extends AbstractApiTest {
 
     @Test
     void testInstallAndUninstallSolutionTemplate() throws ApiException, InterruptedException {
-        List<TenantSolutionTemplateInfo> infos = tbApi.getSolutionTemplateInfos();
+        List<TenantSolutionTemplateInfo> infos = client.getSolutionTemplateInfos();
         assumeFalse(infos.isEmpty(), "No solution templates available in this environment");
 
         // The test tenant is freshly created, so no template should be installed;
@@ -106,7 +106,7 @@ public class SolutionApiTest extends AbstractApiTest {
                 : DEFAULT_INSTALL_TIMEOUT_MS;
 
         // installSolutionTemplate
-        SolutionInstallResponse response = tbApi.installSolutionTemplate(templateId);
+        SolutionInstallResponse response = client.installSolutionTemplate(templateId);
         assertNotNull(response);
 
         // Installation is asynchronous – poll until the template reports installed.
@@ -116,14 +116,14 @@ public class SolutionApiTest extends AbstractApiTest {
 
         // getSolutionTemplateInstructions (available after installation)
         TenantSolutionTemplateInstructions instructions =
-                tbApi.getSolutionTemplateInstructions(templateId);
+                client.getSolutionTemplateInstructions(templateId);
         assertNotNull(instructions);
 
         // uninstallSolutionTemplate
-        tbApi.uninstallSolutionTemplate(templateId);
+        client.uninstallSolutionTemplate(templateId);
 
         // Verify the template is no longer installed.
-        List<TenantSolutionTemplateInfo> afterUninstall = tbApi.getSolutionTemplateInfos();
+        List<TenantSolutionTemplateInfo> afterUninstall = client.getSolutionTemplateInfos();
         assertFalse(afterUninstall.stream()
                         .filter(t -> templateId.equals(t.getId()))
                         .findFirst()

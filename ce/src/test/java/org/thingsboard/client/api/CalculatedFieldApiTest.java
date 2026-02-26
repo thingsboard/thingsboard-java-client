@@ -48,12 +48,12 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
         Device device1 = new Device();
         device1.setName("CalcFieldDevice1_" + timestamp);
         device1.setType("default");
-        Device createdDevice1 = tbApi.saveDevice(device1, null, null, null, null, null);
+        Device createdDevice1 = client.saveDevice(device1, null, null, null, null, null);
 
         Device device2 = new Device();
         device2.setName("CalcFieldDevice2_" + timestamp);
         device2.setType("default");
-        Device createdDevice2 = tbApi.saveDevice(device2, null, null, null, null, null);
+        Device createdDevice2 = client.saveDevice(device2, null, null, null, null, null);
 
         // create calculated fields on device1
         for (int i = 0; i < 5; i++) {
@@ -83,7 +83,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
 
             cf.setConfiguration(config);
 
-            CalculatedField created = tbApi.saveCalculatedField(cf);
+            CalculatedField created = client.saveCalculatedField(cf);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(cf.getName(), created.getName());
@@ -120,27 +120,27 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
 
             cf.setConfiguration(config);
 
-            CalculatedField created = tbApi.saveCalculatedField(cf);
+            CalculatedField created = client.saveCalculatedField(cf);
             assertNotNull(created);
             createdFields.add(created);
         }
 
         // get calculated fields by entity id for device1
-        PageDataCalculatedField device1Fields = tbApi.getCalculatedFieldsByEntityIdV2(
+        PageDataCalculatedField device1Fields = client.getCalculatedFieldsByEntityIdV2(
                 EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(),
                 100, 0, CalculatedFieldType.SIMPLE, null, null, null);
         assertNotNull(device1Fields);
         assertEquals(5, device1Fields.getData().size());
 
         // get calculated fields by entity id for device2
-        PageDataCalculatedField device2Fields = tbApi.getCalculatedFieldsByEntityIdV2(
+        PageDataCalculatedField device2Fields = client.getCalculatedFieldsByEntityIdV2(
                 EntityType.DEVICE.toString(), createdDevice2.getId().getId().toString(),
                 100, 0, CalculatedFieldType.SIMPLE, null, null, null);
         assertEquals(3, device2Fields.getData().size());
 
         // get by id
         CalculatedField searchField = createdFields.get(2);
-        CalculatedField fetchedField = tbApi.getCalculatedFieldById(searchField.getId().getId().toString());
+        CalculatedField fetchedField = client.getCalculatedFieldById(searchField.getId().getId().toString());
         assertEquals(searchField.getName(), fetchedField.getName());
         assertEquals(searchField.getType(), fetchedField.getType());
         assertNotNull(fetchedField.getConfiguration());
@@ -151,7 +151,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
         // update calculated field
         fetchedField.setName(fetchedField.getName() + "_updated");
         fetchedConfig.setExpression("temp * 100");
-        CalculatedField updatedField = tbApi.saveCalculatedField(fetchedField);
+        CalculatedField updatedField = client.saveCalculatedField(fetchedField);
         assertEquals(fetchedField.getName(), updatedField.getName());
         SimpleCalculatedFieldConfiguration updatedConfig =
                 (SimpleCalculatedFieldConfiguration) updatedField.getConfiguration();
@@ -159,14 +159,14 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
 
         // delete calculated field
         UUID fieldToDeleteId = createdFields.get(0).getId().getId();
-        tbApi.deleteCalculatedField(fieldToDeleteId.toString());
+        client.deleteCalculatedField(fieldToDeleteId.toString());
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getCalculatedFieldById(fieldToDeleteId.toString())
+                client.getCalculatedFieldById(fieldToDeleteId.toString())
         );
 
-        PageDataCalculatedField device1FieldsAfterDelete = tbApi.getCalculatedFieldsByEntityIdV2(
+        PageDataCalculatedField device1FieldsAfterDelete = client.getCalculatedFieldsByEntityIdV2(
                 EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(),
                 100, 0, null, null, null, null);
         assertEquals(4, device1FieldsAfterDelete.getData().size());

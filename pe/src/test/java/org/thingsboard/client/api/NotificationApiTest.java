@@ -56,19 +56,19 @@ public class NotificationApiTest extends AbstractApiTest {
                         .name("Test Target " + timestamp)
                         ._configuration(targetConfig);
 
-        NotificationTarget savedTarget = tbApi.saveNotificationTarget(target);
+        NotificationTarget savedTarget = client.saveNotificationTarget(target);
         assertNotNull(savedTarget);
         assertNotNull(savedTarget.getId());
         assertEquals("Test Target " + timestamp, savedTarget.getName());
 
         // Get target by ID
         NotificationTarget fetchedTarget =
-                tbApi.getNotificationTargetById(savedTarget.getId().getId());
+                client.getNotificationTargetById(savedTarget.getId().getId());
         assertEquals(savedTarget.getName(), fetchedTarget.getName());
 
         // List targets
         PageDataNotificationTarget targetsPage =
-                tbApi.getNotificationTargets(100, 0, null, null, null);
+                client.getNotificationTargets(100, 0, null, null, null);
         assertNotNull(targetsPage);
         assertNotNull(targetsPage.getData());
         assertTrue(
@@ -77,7 +77,7 @@ public class NotificationApiTest extends AbstractApiTest {
 
         // Update target
         savedTarget.setName("Updated Target " + timestamp);
-        NotificationTarget updatedTarget = tbApi.saveNotificationTarget(savedTarget);
+        NotificationTarget updatedTarget = client.saveNotificationTarget(savedTarget);
         assertEquals("Updated Target " + timestamp, updatedTarget.getName());
 
         // === 2. Notification Template CRUD ===
@@ -97,20 +97,20 @@ public class NotificationApiTest extends AbstractApiTest {
                         .notificationType(NotificationType.GENERAL)
                         ._configuration(templateConfig);
 
-        NotificationTemplate savedTemplate = tbApi.saveNotificationTemplate(template);
+        NotificationTemplate savedTemplate = client.saveNotificationTemplate(template);
         assertNotNull(savedTemplate);
         assertNotNull(savedTemplate.getId());
         assertEquals("Test Template " + timestamp, savedTemplate.getName());
 
         // Get template by ID
         NotificationTemplate fetchedTemplate =
-                tbApi.getNotificationTemplateById(savedTemplate.getId().getId());
+                client.getNotificationTemplateById(savedTemplate.getId().getId());
         assertEquals(savedTemplate.getName(), fetchedTemplate.getName());
         assertEquals(NotificationType.GENERAL, fetchedTemplate.getNotificationType());
 
         // List templates
         PageDataNotificationTemplate templatesPage =
-                tbApi.getNotificationTemplates(100, 0, null, null, null, null);
+                client.getNotificationTemplates(100, 0, null, null, null, null);
         assertNotNull(templatesPage);
         assertTrue(
                 templatesPage.getData().stream()
@@ -118,7 +118,7 @@ public class NotificationApiTest extends AbstractApiTest {
 
         // Update template
         savedTemplate.setName("Updated Template " + timestamp);
-        NotificationTemplate updatedTemplate = tbApi.saveNotificationTemplate(savedTemplate);
+        NotificationTemplate updatedTemplate = client.saveNotificationTemplate(savedTemplate);
         assertEquals("Updated Template " + timestamp, updatedTemplate.getName());
 
         // === 3. Send notification & read notifications ===
@@ -128,63 +128,63 @@ public class NotificationApiTest extends AbstractApiTest {
                 new NotificationRequest()
                         .targets(List.of(savedTarget.getId().getId()))
                         .templateId(savedTemplate.getId());
-        NotificationRequest sentRequest = tbApi.createNotificationRequest(request);
+        NotificationRequest sentRequest = client.createNotificationRequest(request);
         assertNotNull(sentRequest);
         assertNotNull(sentRequest.getId());
 
         // Get request by ID
         NotificationRequestInfo fetchedRequest =
-                tbApi.getNotificationRequestById(sentRequest.getId().getId());
+                client.getNotificationRequestById(sentRequest.getId().getId());
         assertNotNull(fetchedRequest);
 
         // List requests
         PageDataNotificationRequestInfo requestsPage =
-                tbApi.getNotificationRequests(100, 0, null, null, null);
+                client.getNotificationRequests(100, 0, null, null, null);
         assertNotNull(requestsPage);
         assertFalse(requestsPage.getData().isEmpty());
 
         // Get notifications for current user
         PageDataNotification notificationsPage =
-                tbApi.getNotifications(100, 0, null, null, null, null, null);
+                client.getNotifications(100, 0, null, null, null, null, null);
         assertNotNull(notificationsPage);
         assertFalse(notificationsPage.getData().isEmpty());
 
         // Get unread count
-        Integer unreadCount = tbApi.getUnreadNotificationsCount("WEB");
+        Integer unreadCount = client.getUnreadNotificationsCount("WEB");
         assertNotNull(unreadCount);
         assertTrue(unreadCount > 0, "Expected at least one unread notification");
 
         // Mark single notification as read
-        tbApi.markNotificationAsRead(
+        client.markNotificationAsRead(
                 notificationsPage.getData().get(0).getId().getId());
 
         // Mark all as read
-        tbApi.markAllNotificationsAsRead(null);
-        Integer unreadAfterMarkAll = tbApi.getUnreadNotificationsCount(null);
+        client.markAllNotificationsAsRead(null);
+        Integer unreadAfterMarkAll = client.getUnreadNotificationsCount(null);
         assertEquals(0, unreadAfterMarkAll, "Expected no unread notifications after marking all as read");
 
         // === 4. Notification Settings ===
 
-        NotificationSettings settings = tbApi.getNotificationSettings();
+        NotificationSettings settings = client.getNotificationSettings();
         assertNotNull(settings);
 
-        List<NotificationDeliveryMethod> deliveryMethods = tbApi.getAvailableDeliveryMethods();
+        List<NotificationDeliveryMethod> deliveryMethods = client.getAvailableDeliveryMethods();
         assertNotNull(deliveryMethods);
         assertTrue(deliveryMethods.contains(NotificationDeliveryMethod.WEB));
 
         // === 5. Cleanup ===
 
         // Delete notification request
-        tbApi.deleteNotificationRequest(sentRequest.getId().getId());
-        assertReturns404(() -> tbApi.getNotificationRequestById(sentRequest.getId().getId()));
+        client.deleteNotificationRequest(sentRequest.getId().getId());
+        assertReturns404(() -> client.getNotificationRequestById(sentRequest.getId().getId()));
 
         // Delete template
-        tbApi.deleteNotificationTemplateById(savedTemplate.getId().getId());
-        assertReturns404(() -> tbApi.getNotificationTemplateById(savedTemplate.getId().getId()));
+        client.deleteNotificationTemplateById(savedTemplate.getId().getId());
+        assertReturns404(() -> client.getNotificationTemplateById(savedTemplate.getId().getId()));
 
         // Delete target
-        tbApi.deleteNotificationTargetById(savedTarget.getId().getId());
-        assertReturns404(() -> tbApi.getNotificationTargetById(savedTarget.getId().getId()));
+        client.deleteNotificationTargetById(savedTarget.getId().getId());
+        assertReturns404(() -> client.getNotificationTargetById(savedTarget.getId().getId()));
     }
 
 }

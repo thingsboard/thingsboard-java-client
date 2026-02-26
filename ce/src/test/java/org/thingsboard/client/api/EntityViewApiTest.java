@@ -60,7 +60,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         ev.setStartTimeMs(1000L);
         ev.setEndTimeMs(2000L);
 
-        EntityView saved = tbApi.saveEntityView(ev, null, null, null);
+        EntityView saved = client.saveEntityView(ev, null, null, null);
         assertNotNull(saved);
         assertNotNull(saved.getId());
         assertEquals(ev.getName(), saved.getName());
@@ -72,7 +72,7 @@ public class EntityViewApiTest extends AbstractApiTest {
 
         // get by id
         String evId = saved.getId().getId().toString();
-        EntityView fetched = tbApi.getEntityViewById(evId);
+        EntityView fetched = client.getEntityViewById(evId);
         assertNotNull(fetched);
         assertEquals(saved.getName(), fetched.getName());
         assertEquals(saved.getType(), fetched.getType());
@@ -85,7 +85,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         Device device = createTestDevice(String.valueOf(ts));
         EntityView saved = createEntityView(EV_PREFIX + "info_" + ts, "infoType", device);
 
-        EntityViewInfo info = tbApi.getEntityViewInfoById(saved.getId().getId().toString());
+        EntityViewInfo info = client.getEntityViewInfoById(saved.getId().getId().toString());
         assertNotNull(info);
         assertEquals(saved.getName(), info.getName());
         assertEquals("infoType", info.getType());
@@ -106,7 +106,7 @@ public class EntityViewApiTest extends AbstractApiTest {
                         .ss(List.of())
                         .sh(List.of())));
 
-        EntityView updated = tbApi.saveEntityView(saved, null, null, null);
+        EntityView updated = client.saveEntityView(saved, null, null, null);
         assertEquals(EV_PREFIX + "updated_" + ts, updated.getName());
         assertEquals(List.of("temperature", "pressure"), updated.getKeys().getTimeseries());
         assertEquals(saved.getId().getId(), updated.getId().getId());
@@ -119,11 +119,11 @@ public class EntityViewApiTest extends AbstractApiTest {
         EntityView saved = createEntityView(EV_PREFIX + "delete_" + ts, "default", device);
 
         String evId = saved.getId().getId().toString();
-        tbApi.getEntityViewById(evId);
+        client.getEntityViewById(evId);
 
-        tbApi.deleteEntityView(evId);
+        client.deleteEntityView(evId);
 
-        assertReturns404(() -> tbApi.getEntityViewById(evId));
+        assertReturns404(() -> client.getEntityViewById(evId));
     }
 
     @Test
@@ -135,7 +135,7 @@ public class EntityViewApiTest extends AbstractApiTest {
             createEntityView(EV_PREFIX + "tenant_" + ts + "_" + i, "tenantViewType", device);
         }
 
-        PageDataEntityView page = tbApi.getTenantEntityViews(100, 0, null, EV_PREFIX + "tenant_" + ts, null, null);
+        PageDataEntityView page = client.getTenantEntityViews(100, 0, null, EV_PREFIX + "tenant_" + ts, null, null);
         assertNotNull(page);
         assertEquals(3, page.getTotalElements().intValue());
         for (EntityView ev : page.getData()) {
@@ -149,7 +149,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         Device device = createTestDevice(String.valueOf(ts));
         createEntityView(EV_PREFIX + "tinfo_" + ts, "default", device);
 
-        PageDataEntityViewInfo page = tbApi.getTenantEntityViewInfos(100, 0, null, EV_PREFIX + "tinfo_" + ts, null, null);
+        PageDataEntityViewInfo page = client.getTenantEntityViewInfos(100, 0, null, EV_PREFIX + "tinfo_" + ts, null, null);
         assertNotNull(page);
         assertEquals(1, page.getTotalElements().intValue());
         assertEquals(EV_PREFIX + "tinfo_" + ts, page.getData().get(0).getName());
@@ -165,21 +165,21 @@ public class EntityViewApiTest extends AbstractApiTest {
         String customerId = savedCustomer.getId().getId().toString();
 
         // assign to customer
-        EntityView assigned = tbApi.assignEntityViewToCustomer(customerId, evId);
+        EntityView assigned = client.assignEntityViewToCustomer(customerId, evId);
         assertNotNull(assigned);
         assertEquals(savedCustomer.getId().getId(), assigned.getCustomerId().getId());
 
         // verify in customer entity views
-        PageDataEntityView customerViews = tbApi.getCustomerEntityViews(
+        PageDataEntityView customerViews = client.getCustomerEntityViews(
                 customerId, 100, 0, null, EV_PREFIX + "assign_" + ts, null, null);
         assertEquals(1, customerViews.getTotalElements().intValue());
         assertEquals(saved.getName(), customerViews.getData().get(0).getName());
 
         // unassign from customer
-        EntityView unassigned = tbApi.unassignEntityViewFromCustomer(evId);
+        EntityView unassigned = client.unassignEntityViewFromCustomer(evId);
         assertNotNull(unassigned);
 
-        PageDataEntityView afterUnassign = tbApi.getCustomerEntityViews(
+        PageDataEntityView afterUnassign = client.getCustomerEntityViews(
                 customerId, 100, 0, null, EV_PREFIX + "assign_" + ts, null, null);
         assertEquals(0, afterUnassign.getTotalElements().intValue());
     }
@@ -193,9 +193,9 @@ public class EntityViewApiTest extends AbstractApiTest {
         String evId = saved.getId().getId().toString();
         String customerId = savedCustomer.getId().getId().toString();
 
-        tbApi.assignEntityViewToCustomer(customerId, evId);
+        client.assignEntityViewToCustomer(customerId, evId);
 
-        PageDataEntityViewInfo infos = tbApi.getCustomerEntityViewInfos(
+        PageDataEntityViewInfo infos = client.getCustomerEntityViewInfos(
                 customerId, 100, 0, null, EV_PREFIX + "cinfo_" + ts, null, null);
         assertNotNull(infos);
         assertEquals(1, infos.getTotalElements().intValue());
@@ -208,7 +208,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         Device device = createTestDevice(String.valueOf(ts));
         createEntityView(EV_PREFIX + "types_" + ts, "uniqueEvType_" + ts, device);
 
-        List<EntitySubtype> types = tbApi.getEntityViewTypes();
+        List<EntitySubtype> types = client.getEntityViewTypes();
         assertNotNull(types);
         assertFalse(types.isEmpty());
 
@@ -221,7 +221,7 @@ public class EntityViewApiTest extends AbstractApiTest {
     @Test
     void testGetEntityViewById_notFound() {
         String nonExistentId = UUID.randomUUID().toString();
-        assertReturns404(() -> tbApi.getEntityViewById(nonExistentId));
+        assertReturns404(() -> client.getEntityViewById(nonExistentId));
     }
 
     @Test
@@ -233,14 +233,14 @@ public class EntityViewApiTest extends AbstractApiTest {
             createEntityView(EV_PREFIX + "paged_" + ts + "_" + i, "default", device);
         }
 
-        PageDataEntityView page1 = tbApi.getTenantEntityViews(2, 0, null, EV_PREFIX + "paged_" + ts, null, null);
+        PageDataEntityView page1 = client.getTenantEntityViews(2, 0, null, EV_PREFIX + "paged_" + ts, null, null);
         assertNotNull(page1);
         assertEquals(5, page1.getTotalElements().intValue());
         assertEquals(3, page1.getTotalPages().intValue());
         assertEquals(2, page1.getData().size());
         assertTrue(page1.getHasNext());
 
-        PageDataEntityView lastPage = tbApi.getTenantEntityViews(2, 2, null, EV_PREFIX + "paged_" + ts, null, null);
+        PageDataEntityView lastPage = client.getTenantEntityViews(2, 2, null, EV_PREFIX + "paged_" + ts, null, null);
         assertEquals(1, lastPage.getData().size());
         assertFalse(lastPage.getHasNext());
     }
@@ -249,7 +249,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName(EV_PREFIX + "device_" + suffix);
         device.setType("default");
-        return tbApi.saveDevice(device, null, null, null, null, null);
+        return client.saveDevice(device, null, null, null, null, null);
     }
 
     private EntityView createEntityView(String name, String type, Device device) throws Exception {
@@ -265,7 +265,7 @@ public class EntityViewApiTest extends AbstractApiTest {
                         .cs(List.of())
                         .ss(List.of())
                         .sh(List.of())));
-        return tbApi.saveEntityView(ev, null, null, null);
+        return client.saveEntityView(ev, null, null, null);
     }
 
 }

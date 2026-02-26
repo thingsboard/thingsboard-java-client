@@ -34,7 +34,7 @@ public class RpcV1ApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName(name);
         device.setType("default");
-        return tbApi.saveDevice(device, null, null, null, null, null, null);
+        return client.saveDevice(device, null, null, null, null, null, null);
     }
 
     // -------------------------------------------------------------------------
@@ -52,13 +52,13 @@ public class RpcV1ApiTest extends AbstractApiTest {
         // String as the return type and fails to deserialize the JSON object,
         // wrapping the IOException in ApiException with code 0.
         try {
-            tbApi.handleOneWayDeviceRPCRequest(deviceId, ONE_WAY_BODY);
+            client.handleOneWayDeviceRPCRequest(deviceId, ONE_WAY_BODY);
         } catch (ApiException e) {
             assertEquals(0, e.getCode(),
                     "handleOneWayDeviceRPCRequest got an unexpected HTTP error: " + e.getCode());
         }
 
-        tbApi.deleteDevice(deviceId);
+        client.deleteDevice(deviceId);
     }
 
     // -------------------------------------------------------------------------
@@ -74,13 +74,13 @@ public class RpcV1ApiTest extends AbstractApiTest {
         // Same behaviour as one-way: persistent=true returns {"rpcId":"..."}
         // immediately; client type mismatch produces ApiException(code=0).
         try {
-            tbApi.handleTwoWayDeviceRPCRequest(deviceId, TWO_WAY_BODY);
+            client.handleTwoWayDeviceRPCRequest(deviceId, TWO_WAY_BODY);
         } catch (ApiException e) {
             assertEquals(0, e.getCode(),
                     "handleTwoWayDeviceRPCRequest got an unexpected HTTP error: " + e.getCode());
         }
 
-        tbApi.deleteDevice(deviceId);
+        client.deleteDevice(deviceId);
     }
 
 }

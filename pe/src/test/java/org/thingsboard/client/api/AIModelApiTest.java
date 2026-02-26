@@ -38,14 +38,14 @@ public class AIModelApiTest extends AbstractApiTest {
         String name = AI_PREFIX + "save_" + ts;
 
         AiModel model = buildAiModel(name, "gpt-4o", 0.7);
-        AiModel saved = tbApi.saveAiModel(model);
+        AiModel saved = client.saveAiModel(model);
         assertNotNull(saved);
         assertNotNull(saved.getId());
         assertEquals(name, saved.getName());
         assertNotNull(saved.getConfiguration());
 
         // get by id
-        AiModel fetched = tbApi.getAiModelById(saved.getId().getId());
+        AiModel fetched = client.getAiModelById(saved.getId().getId());
         assertNotNull(fetched);
         assertEquals(name, fetched.getName());
         assertEquals(saved.getId().getId(), fetched.getId().getId());
@@ -56,7 +56,7 @@ public class AIModelApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         AiModel saved = createAiModel("getbyid_" + ts);
 
-        AiModel fetched = tbApi.getAiModelById(saved.getId().getId());
+        AiModel fetched = client.getAiModelById(saved.getId().getId());
         assertNotNull(fetched);
         assertEquals(saved.getName(), fetched.getName());
         assertEquals(saved.getId().getId(), fetched.getId().getId());
@@ -80,7 +80,7 @@ public class AIModelApiTest extends AbstractApiTest {
         updatedConfig.setProvider("OPENAI");
         saved.setConfiguration(updatedConfig);
 
-        AiModel updated = tbApi.saveAiModel(saved);
+        AiModel updated = client.saveAiModel(saved);
         assertNotNull(updated);
         assertEquals(saved.getId().getId(), updated.getId().getId());
         assertEquals(AI_PREFIX + "updated_" + ts, updated.getName());
@@ -92,12 +92,12 @@ public class AIModelApiTest extends AbstractApiTest {
         AiModel saved = createAiModel("delete_" + ts);
 
         UUID modelId = saved.getId().getId();
-        tbApi.getAiModelById(modelId);
+        client.getAiModelById(modelId);
 
-        Boolean deleted = tbApi.deleteAiModelById(modelId);
+        Boolean deleted = client.deleteAiModelById(modelId);
         assertTrue(deleted);
 
-        assertReturns404(() -> tbApi.getAiModelById(modelId));
+        assertReturns404(() -> client.getAiModelById(modelId));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class AIModelApiTest extends AbstractApiTest {
             createAiModel("list_" + ts + "_" + i);
         }
 
-        PageDataAiModel page = tbApi.getAiModels(100, 0, AI_PREFIX + "list_" + ts, null, null);
+        PageDataAiModel page = client.getAiModels(100, 0, AI_PREFIX + "list_" + ts, null, null);
         assertNotNull(page);
         assertEquals(3, page.getTotalElements().intValue());
         for (AiModel m : page.getData()) {
@@ -119,7 +119,7 @@ public class AIModelApiTest extends AbstractApiTest {
     @Test
     void testGetAiModelById_notFound() {
         UUID nonExistentId = UUID.randomUUID();
-        assertReturns404(() -> tbApi.getAiModelById(nonExistentId));
+        assertReturns404(() -> client.getAiModelById(nonExistentId));
     }
 
     @Test
@@ -130,14 +130,14 @@ public class AIModelApiTest extends AbstractApiTest {
             createAiModel("paged_" + ts + "_" + i);
         }
 
-        PageDataAiModel page1 = tbApi.getAiModels(2, 0, AI_PREFIX + "paged_" + ts, null, null);
+        PageDataAiModel page1 = client.getAiModels(2, 0, AI_PREFIX + "paged_" + ts, null, null);
         assertNotNull(page1);
         assertEquals(5, page1.getTotalElements().intValue());
         assertEquals(3, page1.getTotalPages().intValue());
         assertEquals(2, page1.getData().size());
         assertTrue(page1.getHasNext());
 
-        PageDataAiModel lastPage = tbApi.getAiModels(2, 2, AI_PREFIX + "paged_" + ts, null, null);
+        PageDataAiModel lastPage = client.getAiModels(2, 2, AI_PREFIX + "paged_" + ts, null, null);
         assertEquals(1, lastPage.getData().size());
         assertFalse(lastPage.getHasNext());
     }
@@ -160,7 +160,7 @@ public class AIModelApiTest extends AbstractApiTest {
     }
 
     private AiModel createAiModel(String suffix) throws Exception {
-        return tbApi.saveAiModel(buildAiModel(AI_PREFIX + suffix, "gpt-4o", 0.7));
+        return client.saveAiModel(buildAiModel(AI_PREFIX + suffix, "gpt-4o", 0.7));
     }
 
 }

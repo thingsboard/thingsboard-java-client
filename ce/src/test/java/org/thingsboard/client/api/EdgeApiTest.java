@@ -46,7 +46,7 @@ public class EdgeApiTest extends AbstractApiTest {
             edge.setRoutingKey("routing_key_" + timestamp + "_" + i);
             edge.setSecret("secret_key_" + timestamp + "_" + i);
 
-            Edge created = tbApi.saveEdge(edge);
+            Edge created = client.saveEdge(edge);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(edge.getName(), created.getName());
@@ -58,30 +58,30 @@ public class EdgeApiTest extends AbstractApiTest {
         }
 
         // list tenant edges with text search
-        PageDataEdge filteredEdges = tbApi.getTenantEdges(100, 0, null,
+        PageDataEdge filteredEdges = client.getTenantEdges(100, 0, null,
                 TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertNotNull(filteredEdges);
         assertEquals(5, filteredEdges.getData().size());
 
         // list tenant edges with type filter
-        PageDataEdge typedEdges = tbApi.getTenantEdges(100, 0, "gateway",
+        PageDataEdge typedEdges = client.getTenantEdges(100, 0, "gateway",
                 TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertEquals(5, typedEdges.getData().size());
 
         // get tenant edge infos
-        PageDataEdgeInfo edgeInfos = tbApi.getTenantEdgeInfos(100, 0, null,
+        PageDataEdgeInfo edgeInfos = client.getTenantEdgeInfos(100, 0, null,
                 TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertEquals(5, edgeInfos.getData().size());
 
         // get edge by id
         Edge searchEdge = createdEdges.get(2);
-        Edge fetchedEdge = tbApi.getEdgeById(searchEdge.getId().getId().toString());
+        Edge fetchedEdge = client.getEdgeById(searchEdge.getId().getId().toString());
         assertEquals(searchEdge.getName(), fetchedEdge.getName());
         assertEquals(searchEdge.getType(), fetchedEdge.getType());
         assertEquals(searchEdge.getRoutingKey(), fetchedEdge.getRoutingKey());
 
         // get edge by name
-        Edge fetchedByName = tbApi.getTenantEdgeByName(searchEdge.getName());
+        Edge fetchedByName = client.getTenantEdgeByName(searchEdge.getName());
         assertEquals(searchEdge.getId().getId(), fetchedByName.getId().getId());
 
         // get edges by list of ids
@@ -89,51 +89,51 @@ public class EdgeApiTest extends AbstractApiTest {
                 createdEdges.get(0).getId().getId().toString(),
                 createdEdges.get(1).getId().getId().toString()
         );
-        List<Edge> edgeList = tbApi.getEdgeList(idsToFetch);
+        List<Edge> edgeList = client.getEdgeList(idsToFetch);
         assertEquals(2, edgeList.size());
 
         // update edge
         Edge edgeToUpdate = createdEdges.get(3);
         edgeToUpdate.setLabel("Updated Label");
-        Edge updatedEdge = tbApi.saveEdge(edgeToUpdate);
+        Edge updatedEdge = client.saveEdge(edgeToUpdate);
         assertEquals("Updated Label", updatedEdge.getLabel());
 
         // assign edge to customer
         String customerId = savedCustomer.getId().getId().toString();
         String edgeId = createdEdges.get(1).getId().getId().toString();
-        Edge assignedEdge = tbApi.assignEdgeToCustomer(customerId, edgeId);
+        Edge assignedEdge = client.assignEdgeToCustomer(customerId, edgeId);
         assertNotNull(assignedEdge.getCustomerId());
 
         // get customer edges
-        PageDataEdge customerEdges = tbApi.getCustomerEdges(customerId, 100, 0,
+        PageDataEdge customerEdges = client.getCustomerEdges(customerId, 100, 0,
                 null, TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertEquals(1, customerEdges.getData().size());
 
         // get customer edge infos
-        PageDataEdgeInfo customerEdgeInfos = tbApi.getCustomerEdgeInfos(customerId, 100, 0,
+        PageDataEdgeInfo customerEdgeInfos = client.getCustomerEdgeInfos(customerId, 100, 0,
                 null, TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertEquals(1, customerEdgeInfos.getData().size());
         EdgeInfo edgeInfo = customerEdgeInfos.getData().get(0);
         assertNotNull(edgeInfo.getCustomerTitle());
 
         // unassign edge from customer
-        Edge unassignedEdge = tbApi.unassignEdgeFromCustomer(edgeId);
+        Edge unassignedEdge = client.unassignEdgeFromCustomer(edgeId);
         assertNotNull(unassignedEdge);
 
-        PageDataEdge customerEdgesAfter = tbApi.getCustomerEdges(customerId, 100, 0,
+        PageDataEdge customerEdgesAfter = client.getCustomerEdges(customerId, 100, 0,
                 null, TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertEquals(0, customerEdgesAfter.getData().size());
 
         // delete edge
         UUID edgeToDeleteId = createdEdges.get(0).getId().getId();
-        tbApi.deleteEdge(edgeToDeleteId.toString());
+        client.deleteEdge(edgeToDeleteId.toString());
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getEdgeById(edgeToDeleteId.toString())
+                client.getEdgeById(edgeToDeleteId.toString())
         );
 
-        PageDataEdge edgesAfterDelete = tbApi.getTenantEdges(100, 0, null,
+        PageDataEdge edgesAfterDelete = client.getTenantEdges(100, 0, null,
                 TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertEquals(4, edgesAfterDelete.getData().size());
     }

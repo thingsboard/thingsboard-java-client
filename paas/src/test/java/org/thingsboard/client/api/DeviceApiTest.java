@@ -55,7 +55,7 @@ public class DeviceApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName(name);
         device.setType("default");
-        return tbApi.saveDevice(device, null, null, null, null, null, null);
+        return client.saveDevice(device, null, null, null, null, null, null);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class DeviceApiTest extends AbstractApiTest {
             device.setLabel("Test Device " + i);
             device.setType(((i % 2 == 0) ? "default" : "thermostat"));
 
-            Device createdDevice = tbApi.saveDevice(device, null, null, null, null, null, null);
+            Device createdDevice = client.saveDevice(device, null, null, null, null, null, null);
             assertNotNull(createdDevice);
             assertNotNull(createdDevice.getId());
             assertEquals(deviceName, createdDevice.getName());
@@ -80,7 +80,7 @@ public class DeviceApiTest extends AbstractApiTest {
         }
 
         // find all, check count
-        PageDataDevice allDevices = tbApi.getTenantDevices(100, 0, null, null, null, null);
+        PageDataDevice allDevices = client.getTenantDevices(100, 0, null, null, null, null);
 
         assertNotNull(allDevices);
         assertNotNull(allDevices.getData());
@@ -88,12 +88,12 @@ public class DeviceApiTest extends AbstractApiTest {
         assertEquals(20, initialSize, "Expected at least 20 devices, but got " + allDevices.getData().size());
 
         //find all with search text, check count
-        PageDataDevice allDevicesBySearchText = tbApi.getTenantDevices(10, 0, null, TEST_PREFIX_2, null, null);
+        PageDataDevice allDevicesBySearchText = client.getTenantDevices(10, 0, null, TEST_PREFIX_2, null, null);
         assertEquals(10, allDevicesBySearchText.getData().size(), "Expected exactly 10 test devices");
 
         // find by id
         Device searchDevice = createdDevices.get(10);
-        Device device = tbApi.getDeviceById(searchDevice.getId().getId().toString());
+        Device device = client.getDeviceById(searchDevice.getId().getId().toString());
         assertEquals(searchDevice.getName(), device.getName());
 
         // create device with credentials
@@ -108,28 +108,28 @@ public class DeviceApiTest extends AbstractApiTest {
         request.setDevice(deviceWithCreds);
         request.setCredentials(creds);
 
-        Device savedDeviceWithCreds = tbApi.saveDeviceWithCredentials1(request, null, null, null, null, null);
+        Device savedDeviceWithCreds = client.saveDeviceWithCredentials1(request, null, null, null, null, null);
         assertEquals("device-with-creds", savedDeviceWithCreds.getName());
 
         // find credentials by device id
-        DeviceCredentials fetchedCreds = tbApi.getDeviceCredentialsByDeviceId(savedDeviceWithCreds.getId().getId().toString());
+        DeviceCredentials fetchedCreds = client.getDeviceCredentialsByDeviceId(savedDeviceWithCreds.getId().getId().toString());
         assertEquals(creds.getCredentialsId(), fetchedCreds.getCredentialsId());
 
         // delete device
         UUID deviceToDeleteId = createdDevices.get(0).getId().getId();
-        tbApi.deleteDevice(deviceToDeleteId.toString());
+        client.deleteDevice(deviceToDeleteId.toString());
 
         // Verify the device is deleted
-        PageDataDevice devicesAfterDelete = tbApi.getTenantDevices(100, 0, null, null, null, null);
+        PageDataDevice devicesAfterDelete = client.getTenantDevices(100, 0, null, null, null, null);
         assertEquals(initialSize, devicesAfterDelete.getData().size());
 
         assertReturns404(() ->
-                tbApi.getDeviceById(deviceToDeleteId.toString()));
+                client.getDeviceById(deviceToDeleteId.toString()));
     }
 
     @Test
     void testGetCustomerDevices() throws ApiException {
-        PageDataDevice result = tbApi.getCustomerDevices(
+        PageDataDevice result = client.getCustomerDevices(
                 savedCustomer.getId().getId().toString(), 100, 0, null, null, null, null);
         assertNotNull(result);
         assertNotNull(result.getData());
@@ -141,7 +141,7 @@ public class DeviceApiTest extends AbstractApiTest {
         createDevice(TEST_PREFIX + System.currentTimeMillis());
 
         // note: pageSize and page are String for this endpoint
-        PageDataDevice result = tbApi.getUserDevices("100", "0", null, null, null, null);
+        PageDataDevice result = client.getUserDevices("100", "0", null, null, null, null);
         assertNotNull(result);
         assertEquals(1, result.getData().size());
     }
@@ -150,17 +150,17 @@ public class DeviceApiTest extends AbstractApiTest {
     void testGetAllDeviceInfos() throws ApiException {
         createDevice(TEST_PREFIX + System.currentTimeMillis());
 
-        PageDataDeviceInfo result = tbApi.getAllDeviceInfos(100, 0, true, null, null, null, null, null);
+        PageDataDeviceInfo result = client.getAllDeviceInfos(100, 0, true, null, null, null, null, null);
         assertNotNull(result);
         assertEquals(1, result.getData().size());
     }
 
     @Test
     void testGetCustomerDeviceInfos() throws ApiException, IOException, InterruptedException {
-        authorizeAs(CUSTOMER_USERNAME, TEST_PASSWORD);
+        client.login(CUSTOMER_USERNAME, TEST_PASSWORD);
         createDevice(TEST_PREFIX + System.currentTimeMillis());
 
-        PageDataDeviceInfo result = tbApi.getCustomerDeviceInfos(
+        PageDataDeviceInfo result = client.getCustomerDeviceInfos(
                 savedCustomer.getId().getId().toString(), 100, 0, true, null, null, null, null, null);
         assertNotNull(result);
         assertEquals(1, result.getData().size());
@@ -170,7 +170,7 @@ public class DeviceApiTest extends AbstractApiTest {
     void testGetDevicesByIds() throws ApiException {
         Device device = createDevice(TEST_PREFIX + System.currentTimeMillis());
 
-        List<Device> result = tbApi.getDevicesByIds(List.of(device.getId().getId().toString()));
+        List<Device> result = client.getDevicesByIds(List.of(device.getId().getId().toString()));
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals(device.getId().getId(), result.get(0).getId().getId());
@@ -182,19 +182,19 @@ public class DeviceApiTest extends AbstractApiTest {
         Asset building = new Asset();
         building.setName(TEST_PREFIX + "Building");
         building.setType("building");
-        building = tbApi.saveAsset(building, null, null, null, null, null);
+        building = client.saveAsset(building, null, null, null, null, null);
 
         Device device = new Device();
         device.setName(TEST_PREFIX + "Sensor");
         device.setType("sensor");
-        device = tbApi.saveDevice(device, null, null, null, null, null, null);
+        device = client.saveDevice(device, null, null, null, null, null, null);
 
         EntityRelation buildingToDevice = new EntityRelation();
         buildingToDevice.setFrom(new EntityId().id(building.getId().getId()).entityType(EntityType.ASSET));
         buildingToDevice.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
         buildingToDevice.setType("Contains");
         buildingToDevice.setTypeGroup(RelationTypeGroup.COMMON);
-        EntityRelation savedRelation = tbApi.saveRelationV2(buildingToDevice);
+        EntityRelation savedRelation = client.saveRelationV2(buildingToDevice);
 
         RelationsSearchParameters params = new RelationsSearchParameters();
         params.setRootId(device.getId().getId());
@@ -206,7 +206,7 @@ public class DeviceApiTest extends AbstractApiTest {
         query.setParameters(params);
 
         // device has no outgoing relations; result is an empty list, not null
-        List<EntityRelation> result = tbApi.findByQuery(query);
+        List<EntityRelation> result = client.findByQuery(query);
         assertEquals(1, result.size());
     }
 
@@ -215,14 +215,14 @@ public class DeviceApiTest extends AbstractApiTest {
         EntityGroup entityGroup = new EntityGroup();
         entityGroup.setType(EntityGroup.TypeEnum.DEVICE);
         entityGroup.setName("Test Device Group");
-        EntityGroupInfo savedGroup = tbApi.saveEntityGroup(entityGroup);
+        EntityGroupInfo savedGroup = client.saveEntityGroup(entityGroup);
         String groupId = savedGroup.getId().getId().toString();
 
         Device device = createDevice(TEST_PREFIX + System.currentTimeMillis());
-        tbApi.addEntitiesToEntityGroup(groupId, List.of(device.getId().getId().toString()));
+        client.addEntitiesToEntityGroup(groupId, List.of(device.getId().getId().toString()));
 
         // note: pageSize and page are String for this endpoint
-        PageDataDevice result = tbApi.getDevicesByEntityGroupId(groupId, "100", "0", null, null, null);
+        PageDataDevice result = client.getDevicesByEntityGroupId(groupId, "100", "0", null, null, null);
         assertNotNull(result);
         assertEquals(1, result.getData().size(), "Expected exactly one device in the entity group");
         assertEquals(device.getId().getId(), result.getData().get(0).getId().getId());
@@ -231,25 +231,25 @@ public class DeviceApiTest extends AbstractApiTest {
     @Test
     void testAssignDeviceToTenant() throws Exception {
         // create a second tenant as sysadmin to receive the device
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
         Tenant secondTenant = new Tenant();
         secondTenant.setTitle("Second Test Tenant");
-        Tenant savedSecondTenant = tbApi.saveTenant(secondTenant);
+        Tenant savedSecondTenant = client.saveTenant(secondTenant);
 
         // switch back to first tenant admin and create the device
-        authorizeAs(TENANT_ADMIN_USERNAME, TEST_PASSWORD);
+        client.login(TENANT_ADMIN_USERNAME, TEST_PASSWORD);
         Device device = createDevice(TEST_PREFIX + System.currentTimeMillis());
 
         // assign the device to the second tenant
-        Device assignedDevice = tbApi.assignDeviceToTenant(
+        Device assignedDevice = client.assignDeviceToTenant(
                 savedSecondTenant.getId().getId().toString(),
                 device.getId().getId().toString());
         assertNotNull(assignedDevice);
         assertEquals(savedSecondTenant.getId().getId(), assignedDevice.getTenantId().getId());
 
         // device is now in the second tenant; clean up
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
-        tbApi.deleteTenant(savedSecondTenant.getId().getId().toString());
+        client.login("sysadmin@thingsboard.org", "sysadmin");
+        client.deleteTenant(savedSecondTenant.getId().getId().toString());
     }
 
     @Test
@@ -257,7 +257,7 @@ public class DeviceApiTest extends AbstractApiTest {
         Device device = createDevice(TEST_PREFIX + System.currentTimeMillis());
         String deviceProfileId = device.getDeviceProfileId().getId().toString();
 
-        Long count = tbApi.countByDeviceProfileAndEmptyOtaPackage("FIRMWARE", deviceProfileId);
+        Long count = client.countByDeviceProfileAndEmptyOtaPackage("FIRMWARE", deviceProfileId);
         assertEquals(1, count);
     }
 
@@ -266,15 +266,15 @@ public class DeviceApiTest extends AbstractApiTest {
         EntityGroup entityGroup = new EntityGroup();
         entityGroup.setType(EntityGroup.TypeEnum.DEVICE);
         entityGroup.setName("OTA Test Group");
-        EntityGroupInfo savedGroup = tbApi.saveEntityGroup(entityGroup);
+        EntityGroupInfo savedGroup = client.saveEntityGroup(entityGroup);
         String groupId = savedGroup.getId().getId().toString();
 
         Device device = createDevice(TEST_PREFIX + System.currentTimeMillis());
-        tbApi.addEntitiesToEntityGroup(groupId, List.of(device.getId().getId().toString()));
+        client.addEntitiesToEntityGroup(groupId, List.of(device.getId().getId().toString()));
 
         // use a random UUID as the OTA package reference; all devices in the group lack it
         String placeholderOtaPackageId = UUID.randomUUID().toString();
-        Long count = tbApi.countByDeviceGroupAndEmptyOtaPackage("FIRMWARE", placeholderOtaPackageId, groupId);
+        Long count = client.countByDeviceGroupAndEmptyOtaPackage("FIRMWARE", placeholderOtaPackageId, groupId);
         assertEquals(0, count);
     }
 
@@ -302,7 +302,7 @@ public class DeviceApiTest extends AbstractApiTest {
         request.setFile(csv);
         request.setMapping(mapping);
 
-        BulkImportResultDevice result = tbApi.processDevicesBulkImport(request);
+        BulkImportResultDevice result = client.processDevicesBulkImport(request);
         assertNotNull(result);
         assertEquals(1, ((Number) result.getCreated()).intValue(), "Expected one device to be created");
         assertEquals(0, ((Number) result.getErrors()).intValue(), "Expected no import errors");

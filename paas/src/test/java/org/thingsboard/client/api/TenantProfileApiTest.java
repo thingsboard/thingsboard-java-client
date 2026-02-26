@@ -42,16 +42,16 @@ public class TenantProfileApiTest extends AbstractApiTest {
         List<TenantProfile> createdProfiles = new ArrayList<>();
 
         // authenticate as sysadmin for tenant profile management
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         // get initial count (there should be a default profile)
-        PageDataTenantProfile initialProfiles = tbApi.getTenantProfiles(100, 0, null, null, null);
+        PageDataTenantProfile initialProfiles = client.getTenantProfiles(100, 0, null, null, null);
         assertNotNull(initialProfiles);
         int initialSize = initialProfiles.getData().size();
         assertTrue(initialSize >= 1, "Expected at least 1 default tenant profile");
 
         // get default tenant profile info
-        EntityInfo defaultProfileInfo = tbApi.getDefaultTenantProfileInfo();
+        EntityInfo defaultProfileInfo = client.getDefaultTenantProfileInfo();
         assertNotNull(defaultProfileInfo);
         assertNotNull(defaultProfileInfo.getName());
 
@@ -78,7 +78,7 @@ public class TenantProfileApiTest extends AbstractApiTest {
                 profile.setProfileData(profileData);
                 profile.setDefault(false);
 
-                TenantProfile created = tbApi.saveTenantProfile(profile);
+                TenantProfile created = client.saveTenantProfile(profile);
                 assertNotNull(created);
                 assertNotNull(created.getId());
                 assertEquals(profile.getName(), created.getName());
@@ -89,29 +89,29 @@ public class TenantProfileApiTest extends AbstractApiTest {
             }
 
             // find all, check count
-            PageDataTenantProfile allProfiles = tbApi.getTenantProfiles(100, 0, null, null, null);
+            PageDataTenantProfile allProfiles = client.getTenantProfiles(100, 0, null, null, null);
             assertNotNull(allProfiles);
             assertEquals(initialSize + 5, allProfiles.getData().size());
 
             // find with text search
-            PageDataTenantProfile filteredProfiles = tbApi.getTenantProfiles(100, 0,
+            PageDataTenantProfile filteredProfiles = client.getTenantProfiles(100, 0,
                     TEST_PREFIX + "TenantProfile_" + timestamp, null, null);
             assertEquals(5, filteredProfiles.getData().size());
 
             // get by id
             TenantProfile searchProfile = createdProfiles.get(2);
-            TenantProfile fetchedProfile = tbApi.getTenantProfileById(searchProfile.getId().getId().toString());
+            TenantProfile fetchedProfile = client.getTenantProfileById(searchProfile.getId().getId().toString());
             assertEquals(searchProfile.getName(), fetchedProfile.getName());
             assertEquals(searchProfile.getDescription(), fetchedProfile.getDescription());
 
             // update tenant profile
             fetchedProfile.setDescription("Updated description");
-            TenantProfile updatedProfile = tbApi.saveTenantProfile(fetchedProfile);
+            TenantProfile updatedProfile = client.saveTenantProfile(fetchedProfile);
             assertEquals("Updated description", updatedProfile.getDescription());
             assertEquals(fetchedProfile.getName(), updatedProfile.getName());
 
             // get tenant profile infos (paginated)
-            PageDataEntityInfo profileInfos = tbApi.getTenantProfileInfos(100, 0, null, null, null);
+            PageDataEntityInfo profileInfos = client.getTenantProfileInfos(100, 0, null, null, null);
             assertNotNull(profileInfos);
             assertEquals(initialSize + 5, profileInfos.getData().size());
 
@@ -120,17 +120,17 @@ public class TenantProfileApiTest extends AbstractApiTest {
                     createdProfiles.get(0).getId().getId().toString(),
                     createdProfiles.get(1).getId().getId().toString()
             );
-            List<TenantProfile> profileList = tbApi.getTenantProfileList(idsToFetch);
+            List<TenantProfile> profileList = client.getTenantProfileList(idsToFetch);
             assertEquals(2, profileList.size());
 
             // set a profile as default
             TenantProfile profileToSetDefault = createdProfiles.get(1);
-            tbApi.setDefaultTenantProfile(profileToSetDefault.getId().getId().toString());
-            EntityInfo defaultTenantProfileInfo = tbApi.getDefaultTenantProfileInfo();
+            client.setDefaultTenantProfile(profileToSetDefault.getId().getId().toString());
+            EntityInfo defaultTenantProfileInfo = client.getDefaultTenantProfileInfo();
             assertEquals(profileToSetDefault.getName(), defaultTenantProfileInfo.getName());
 
             // verify default profile info now points to the new default
-            EntityInfo newDefaultInfo = tbApi.getDefaultTenantProfileInfo();
+            EntityInfo newDefaultInfo = client.getDefaultTenantProfileInfo();
             assertEquals(profileToSetDefault.getName(), newDefaultInfo.getName());
 
             // restore original default profile
@@ -138,23 +138,23 @@ public class TenantProfileApiTest extends AbstractApiTest {
                     .filter(TenantProfile::getDefault)
                     .findFirst()
                     .orElseThrow();
-            tbApi.setDefaultTenantProfile(originalDefault.getId().getId().toString());
+            client.setDefaultTenantProfile(originalDefault.getId().getId().toString());
 
             // delete tenant profile (cannot delete the default one)
             UUID profileToDeleteId = createdProfiles.get(0).getId().getId();
-            tbApi.deleteTenantProfile(profileToDeleteId.toString());
+            client.deleteTenantProfile(profileToDeleteId.toString());
             createdProfiles.remove(0);
 
             // verify deletion
             assertReturns404(() ->
-                    tbApi.getTenantProfileById(profileToDeleteId.toString())
+                    client.getTenantProfileById(profileToDeleteId.toString())
             );
 
-            PageDataTenantProfile profilesAfterDelete = tbApi.getTenantProfiles(100, 0, null, null, null);
+            PageDataTenantProfile profilesAfterDelete = client.getTenantProfiles(100, 0, null, null, null);
             assertEquals(initialSize + 4, profilesAfterDelete.getData().size());
         } finally {
             // clean up created profiles
-            authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+            client.login("sysadmin@thingsboard.org", "sysadmin");
 
             // ensure original default is restored before deleting test profiles
             TenantProfile originalDefault = initialProfiles.getData().stream()
@@ -162,13 +162,13 @@ public class TenantProfileApiTest extends AbstractApiTest {
                     .findFirst()
                     .orElseThrow();
             try {
-                tbApi.setDefaultTenantProfile(originalDefault.getId().getId().toString());
+                client.setDefaultTenantProfile(originalDefault.getId().getId().toString());
             } catch (ApiException ignored) {
             }
 
             for (TenantProfile profile : createdProfiles) {
                 try {
-                    tbApi.deleteTenantProfile(profile.getId().getId().toString());
+                    client.deleteTenantProfile(profile.getId().getId().toString());
                 } catch (ApiException ignored) {
                 }
             }

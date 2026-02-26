@@ -62,7 +62,7 @@ public class TbImageApiTest extends AbstractApiTest {
             String title = TEST_PREFIX + "Image_" + timestamp + "_" + i;
             File imageFile = createTempImage("test_image_" + i, colors[i]);
 
-            TbResourceInfo uploaded = tbApi.uploadImage(imageFile, title, null);
+            TbResourceInfo uploaded = client.uploadImage(imageFile, title, null);
             assertNotNull(uploaded);
             assertNotNull(uploaded.getResourceKey());
             assertEquals(title, uploaded.getTitle());
@@ -72,61 +72,61 @@ public class TbImageApiTest extends AbstractApiTest {
         }
 
         // list images with text search
-        PageDataTbResourceInfo filteredImages = tbApi.getImages(100, 0, null, false,
+        PageDataTbResourceInfo filteredImages = client.getImages(100, 0, null, false,
                 TEST_PREFIX + "Image_" + timestamp, null, null);
         assertNotNull(filteredImages);
         assertEquals(5, filteredImages.getData().size());
 
         // get image info by type and key
         TbResourceInfo searchImage = createdImages.get(2);
-        TbResourceInfo fetchedInfo = tbApi.getImageInfo("tenant", searchImage.getResourceKey());
+        TbResourceInfo fetchedInfo = client.getImageInfo("tenant", searchImage.getResourceKey());
         assertEquals(searchImage.getTitle(), fetchedInfo.getTitle());
         assertEquals(searchImage.getResourceKey(), fetchedInfo.getResourceKey());
 
         // download image
-        File downloadedImage = tbApi.downloadImage("tenant", searchImage.getResourceKey(), null, null);
+        File downloadedImage = client.downloadImage("tenant", searchImage.getResourceKey(), null, null);
         assertNotNull(downloadedImage);
         assertTrue(downloadedImage.exists());
         assertTrue(downloadedImage.length() > 0);
 
         // download image preview
-        File preview = tbApi.downloadImagePreview("tenant", searchImage.getResourceKey(), null, null);
+        File preview = client.downloadImagePreview("tenant", searchImage.getResourceKey(), null, null);
         assertNotNull(preview);
         assertTrue(preview.exists());
         assertTrue(preview.length() > 0);
 
         // update image file
         File updatedImageFile = createTempImage("updated_image", Color.MAGENTA);
-        TbResourceInfo updatedImage = tbApi.updateImage("tenant", searchImage.getResourceKey(), updatedImageFile);
+        TbResourceInfo updatedImage = client.updateImage("tenant", searchImage.getResourceKey(), updatedImageFile);
         assertNotNull(updatedImage);
         assertEquals(searchImage.getResourceKey(), updatedImage.getResourceKey());
 
         // update image info (title)
-        TbResourceInfo infoToUpdate = tbApi.getImageInfo("tenant", createdImages.get(3).getResourceKey());
+        TbResourceInfo infoToUpdate = client.getImageInfo("tenant", createdImages.get(3).getResourceKey());
         infoToUpdate.setTitle(infoToUpdate.getTitle() + "_updated");
-        TbResourceInfo updatedInfo = tbApi.updateImageInfo("tenant", infoToUpdate.getResourceKey(), infoToUpdate);
+        TbResourceInfo updatedInfo = client.updateImageInfo("tenant", infoToUpdate.getResourceKey(), infoToUpdate);
         assertEquals(infoToUpdate.getTitle(), updatedInfo.getTitle());
 
         // make image public
-        TbResourceInfo publicImage = tbApi.updateImagePublicStatus("tenant",
+        TbResourceInfo publicImage = client.updateImagePublicStatus("tenant",
                 createdImages.get(1).getResourceKey(), true);
         assertTrue(publicImage.getPublic());
         assertNotNull(publicImage.getPublicResourceKey());
         assertNotNull(publicImage.getPublicLink());
 
         // download public image
-        File publicDownload = tbApi.downloadPublicImage(publicImage.getPublicResourceKey(), null, null);
+        File publicDownload = client.downloadPublicImage(publicImage.getPublicResourceKey(), null, null);
         assertNotNull(publicDownload);
         assertTrue(publicDownload.exists());
         assertTrue(publicDownload.length() > 0);
 
         // make image private again
-        TbResourceInfo privateImage = tbApi.updateImagePublicStatus("tenant",
+        TbResourceInfo privateImage = client.updateImagePublicStatus("tenant",
                 createdImages.get(1).getResourceKey(), false);
         assertEquals(false, privateImage.getPublic());
 
         // export image
-        ResourceExportData exportData = tbApi.exportImage("tenant", createdImages.get(4).getResourceKey());
+        ResourceExportData exportData = client.exportImage("tenant", createdImages.get(4).getResourceKey());
         assertNotNull(exportData);
         assertNotNull(exportData.getData());
         assertEquals(createdImages.get(4).getTitle(), exportData.getTitle());
@@ -134,16 +134,16 @@ public class TbImageApiTest extends AbstractApiTest {
 
         // delete image
         String keyToDelete = createdImages.get(0).getResourceKey();
-        TbImageDeleteResult deleteResult = tbApi.deleteImage("tenant", keyToDelete, false);
+        TbImageDeleteResult deleteResult = client.deleteImage("tenant", keyToDelete, false);
         assertNotNull(deleteResult);
         assertTrue(deleteResult.getSuccess());
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getImageInfo("tenant", keyToDelete)
+                client.getImageInfo("tenant", keyToDelete)
         );
 
-        PageDataTbResourceInfo imagesAfterDelete = tbApi.getImages(100, 0, null, false,
+        PageDataTbResourceInfo imagesAfterDelete = client.getImages(100, 0, null, false,
                 TEST_PREFIX + "Image_" + timestamp, null, null);
         assertEquals(4, imagesAfterDelete.getData().size());
     }

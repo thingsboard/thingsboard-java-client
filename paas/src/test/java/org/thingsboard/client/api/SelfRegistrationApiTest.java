@@ -39,7 +39,7 @@ public class SelfRegistrationApiTest extends AbstractApiTest {
     private Domain createDomain(String name) throws ApiException {
         Domain domain = new Domain();
         domain.setName(name);
-        return tbApi.saveDomain(domain, null);
+        return client.saveDomain(domain, null);
     }
 
     private WebSelfRegistrationParams buildParams(UUID domainId, String title) {
@@ -78,28 +78,28 @@ public class SelfRegistrationApiTest extends AbstractApiTest {
 
         // saveWebSelfRegistrationParams (create)
         WebSelfRegistrationParams saved =
-                tbApi.saveWebSelfRegistrationParams(buildParams(domainId, "Test Registration " + ts));
+                client.saveWebSelfRegistrationParams(buildParams(domainId, "Test Registration " + ts));
         assertNotNull(saved);
         assertEquals("Test Registration " + ts, saved.getTitle());
 
         // getWebSelfRegistrationParams
-        SelfRegistrationParams fetched = tbApi.getWebSelfRegistrationParams();
+        SelfRegistrationParams fetched = client.getWebSelfRegistrationParams();
         assertNotNull(fetched);
         assertEquals("Test Registration " + ts, fetched.getTitle());
 
         // saveWebSelfRegistrationParams (update)
         WebSelfRegistrationParams updatedParams = buildParams(domainId, "Updated Registration " + ts);
-        WebSelfRegistrationParams updated = tbApi.saveWebSelfRegistrationParams(updatedParams);
+        WebSelfRegistrationParams updated = client.saveWebSelfRegistrationParams(updatedParams);
         assertNotNull(updated);
         assertEquals("Updated Registration " + ts, updated.getTitle());
 
-        SelfRegistrationParams refetched = tbApi.getWebSelfRegistrationParams();
+        SelfRegistrationParams refetched = client.getWebSelfRegistrationParams();
         assertEquals("Updated Registration " + ts, refetched.getTitle());
 
         // deleteWebSelfRegistrationParams
-        tbApi.deleteWebSelfRegistrationParams();
+        client.deleteWebSelfRegistrationParams();
 
-        tbApi.deleteDomain(domainId);
+        client.deleteDomain(domainId);
     }
 
 }

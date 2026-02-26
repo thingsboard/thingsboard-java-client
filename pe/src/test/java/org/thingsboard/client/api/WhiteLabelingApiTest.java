@@ -29,33 +29,33 @@ public class WhiteLabelingApiTest extends AbstractApiTest {
 
     @Test
     void testTenantWhiteLabelingLifecycle() throws Exception {
-        authorizeAs(TENANT_ADMIN_USERNAME, TEST_PASSWORD);
+        client.login(TENANT_ADMIN_USERNAME, TEST_PASSWORD);
 
         // check white labeling permissions for this tenant
-        Boolean whiteLabelingAllowed = tbApi.isWhiteLabelingAllowed();
+        Boolean whiteLabelingAllowed = client.isWhiteLabelingAllowed();
         assertTrue(whiteLabelingAllowed);
 
-        Boolean customerWhiteLabelingAllowed = tbApi.isCustomerWhiteLabelingAllowed();
+        Boolean customerWhiteLabelingAllowed = client.isCustomerWhiteLabelingAllowed();
         assertTrue(customerWhiteLabelingAllowed);
 
-        WhiteLabelingParams currentParams = tbApi.getCurrentWhiteLabelParams(null);
+        WhiteLabelingParams currentParams = client.getCurrentWhiteLabelParams(null);
         assertNotNull(currentParams);
         currentParams.setAppTitle("Custom title");
 
-        WhiteLabelingParams saved = tbApi.saveWhiteLabelParams(currentParams, null);
+        WhiteLabelingParams saved = client.saveWhiteLabelParams(currentParams, null);
         assertNotNull(saved);
         assertEquals("Custom title", saved.getAppTitle());
 
-        LoginWhiteLabelingParams currentLoginParams = tbApi.getCurrentLoginWhiteLabelParams(null);
+        LoginWhiteLabelingParams currentLoginParams = client.getCurrentLoginWhiteLabelParams(null);
         assertNotNull(currentLoginParams);
 
         Domain domain = new Domain();
         domain.setName("test.com");
-        domain = tbApi.saveDomain(domain, null);
+        domain = client.saveDomain(domain, null);
 
         currentLoginParams.setDomainId(domain.getId());
         currentLoginParams.setAppTitle("Custom login title");
-        LoginWhiteLabelingParams savedLoginParams = tbApi.saveLoginWhiteLabelParams(currentLoginParams, null);
+        LoginWhiteLabelingParams savedLoginParams = client.saveLoginWhiteLabelParams(currentLoginParams, null);
         assertEquals("Custom login title", savedLoginParams.getAppTitle());
     }
 

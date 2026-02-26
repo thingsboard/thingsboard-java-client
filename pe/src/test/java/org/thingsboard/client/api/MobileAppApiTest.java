@@ -49,7 +49,7 @@ public class MobileAppApiTest extends AbstractApiTest {
             app.setPlatformType(PlatformType.ANDROID);
             app.setStatus(MobileAppStatus.DRAFT);
 
-            MobileApp created = tbApi.saveMobileApp(app);
+            MobileApp created = client.saveMobileApp(app);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(app.getPkgName(), created.getPkgName());
@@ -68,29 +68,29 @@ public class MobileAppApiTest extends AbstractApiTest {
             app.setPlatformType(PlatformType.IOS);
             app.setStatus(MobileAppStatus.DRAFT);
 
-            MobileApp created = tbApi.saveMobileApp(app);
+            MobileApp created = client.saveMobileApp(app);
             assertNotNull(created);
             createdApps.add(created);
         }
 
         // list all tenant mobile apps
-        PageDataMobileApp allApps = tbApi.getTenantMobileApps(100, 0, null,
+        PageDataMobileApp allApps = client.getTenantMobileApps(100, 0, null,
                 null, null, null);
         assertNotNull(allApps);
         assertEquals(5, allApps.getData().size());
 
         // list with platform type filter
-        PageDataMobileApp androidApps = tbApi.getTenantMobileApps(100, 0, PlatformType.ANDROID,
+        PageDataMobileApp androidApps = client.getTenantMobileApps(100, 0, PlatformType.ANDROID,
                 null, null, null);
         assertEquals(3, androidApps.getData().size());
 
-        PageDataMobileApp iosApps = tbApi.getTenantMobileApps(100, 0, PlatformType.IOS,
+        PageDataMobileApp iosApps = client.getTenantMobileApps(100, 0, PlatformType.IOS,
                 null, null, null);
         assertEquals(2, iosApps.getData().size());
 
         // get mobile app by id
         MobileApp searchApp = createdApps.get(1);
-        MobileApp fetchedApp = tbApi.getMobileAppById(searchApp.getId().getId());
+        MobileApp fetchedApp = client.getMobileAppById(searchApp.getId().getId());
         assertEquals(searchApp.getPkgName(), fetchedApp.getPkgName());
         assertEquals(searchApp.getTitle(), fetchedApp.getTitle());
         assertEquals(searchApp.getPlatformType(), fetchedApp.getPlatformType());
@@ -98,7 +98,7 @@ public class MobileAppApiTest extends AbstractApiTest {
         // update mobile app
         MobileApp appToUpdate = createdApps.get(2);
         appToUpdate.setTitle(appToUpdate.getTitle() + "_updated");
-        MobileApp updatedApp = tbApi.saveMobileApp(appToUpdate);
+        MobileApp updatedApp = client.saveMobileApp(appToUpdate);
         assertEquals(appToUpdate.getTitle(), updatedApp.getTitle());
 
         // create mobile app bundle with android and ios apps
@@ -109,46 +109,46 @@ public class MobileAppApiTest extends AbstractApiTest {
         bundle.setIosAppId(createdApps.get(3).getId());
         bundle.setOauth2Enabled(false);
 
-        MobileAppBundle savedBundle = tbApi.saveMobileAppBundle(bundle, null);
+        MobileAppBundle savedBundle = client.saveMobileAppBundle(bundle, null);
         assertNotNull(savedBundle);
         assertNotNull(savedBundle.getId());
         assertEquals(bundle.getTitle(), savedBundle.getTitle());
 
         // get bundle info by id
-        MobileAppBundleInfo bundleInfo = tbApi.getMobileAppBundleInfoById(savedBundle.getId().getId());
+        MobileAppBundleInfo bundleInfo = client.getMobileAppBundleInfoById(savedBundle.getId().getId());
         assertEquals(savedBundle.getTitle(), bundleInfo.getTitle());
         assertEquals("Test bundle", bundleInfo.getDescription());
         assertNotNull(bundleInfo.getAndroidAppId());
         assertNotNull(bundleInfo.getIosAppId());
 
         // list tenant bundles
-        PageDataMobileAppBundleInfo bundles = tbApi.getTenantMobileAppBundleInfos(100, 0,
+        PageDataMobileAppBundleInfo bundles = client.getTenantMobileAppBundleInfos(100, 0,
                 TEST_PREFIX + "Bundle_" + timestamp, null, null);
         assertEquals(1, bundles.getData().size());
 
         // update bundle
         savedBundle.setDescription("Updated description");
-        MobileAppBundle updatedBundle = tbApi.saveMobileAppBundle(savedBundle, null);
+        MobileAppBundle updatedBundle = client.saveMobileAppBundle(savedBundle, null);
         assertEquals("Updated description", updatedBundle.getDescription());
 
         // delete bundle
-        tbApi.deleteMobileAppBundle(savedBundle.getId().getId());
+        client.deleteMobileAppBundle(savedBundle.getId().getId());
 
         // verify bundle deletion
         assertReturns404(() ->
-                tbApi.getMobileAppBundleInfoById(savedBundle.getId().getId())
+                client.getMobileAppBundleInfoById(savedBundle.getId().getId())
         );
 
         // delete mobile app
         UUID appToDeleteId = createdApps.get(0).getId().getId();
-        tbApi.deleteMobileApp(appToDeleteId);
+        client.deleteMobileApp(appToDeleteId);
 
         // verify app deletion
         assertReturns404(() ->
-                tbApi.getMobileAppById(appToDeleteId)
+                client.getMobileAppById(appToDeleteId)
         );
 
-        PageDataMobileApp appsAfterDelete = tbApi.getTenantMobileApps(100, 0, null,
+        PageDataMobileApp appsAfterDelete = client.getTenantMobileApps(100, 0, null,
                 null, null, null);
         assertEquals(4, appsAfterDelete.getData().size());
     }

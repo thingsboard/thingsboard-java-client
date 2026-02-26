@@ -52,7 +52,7 @@ public class AssetApiTest extends AbstractApiTest {
             asset.setLabel("Test Asset " + i);
             asset.setType(((i % 2 == 0) ? "default" : "building"));
 
-            Asset createdAsset = tbApi.saveAsset(asset, null, null, null, null, null, null);
+            Asset createdAsset = client.saveAsset(asset, null, null, null, null, null, null);
             assertNotNull(createdAsset);
             assertNotNull(createdAsset.getId());
             assertEquals(assetName, createdAsset.getName());
@@ -61,7 +61,7 @@ public class AssetApiTest extends AbstractApiTest {
         }
 
         // find all, check count
-        PageDataAsset allAssets = tbApi.getTenantAssets(100, 0, null, null, null, null, null);
+        PageDataAsset allAssets = client.getTenantAssets(100, 0, null, null, null, null, null);
 
         assertNotNull(allAssets);
         assertNotNull(allAssets.getData());
@@ -69,24 +69,24 @@ public class AssetApiTest extends AbstractApiTest {
         assertEquals(20, initialSize, "Expected at least 20 assets, but got " + allAssets.getData().size());
 
         //find all with search text, check count
-        PageDataAsset allAssetsBySearchText = tbApi.getTenantAssets(100, 0, null, TEST_PREFIX_2, null, null, null);
+        PageDataAsset allAssetsBySearchText = client.getTenantAssets(100, 0, null, TEST_PREFIX_2, null, null, null);
         assertEquals(10, allAssetsBySearchText.getData().size(), "Expected exactly 10 test assets");
 
         // find by id
         Asset searchAsset = createdAssets.get(10);
-        Asset asset = tbApi.getAssetById(searchAsset.getId().getId().toString());
+        Asset asset = client.getAssetById(searchAsset.getId().getId().toString());
         assertEquals(searchAsset.getName(), asset.getName());
 
         // delete asset
         UUID assetToDeleteId = createdAssets.get(0).getId().getId();
-        tbApi.deleteAsset(assetToDeleteId.toString());
+        client.deleteAsset(assetToDeleteId.toString());
 
         // Verify the asset is deleted
-        PageDataAsset assetsAfterDelete = tbApi.getTenantAssets(100, 0, null, null, null, null, null);
+        PageDataAsset assetsAfterDelete = client.getTenantAssets(100, 0, null, null, null, null, null);
         assertEquals(initialSize - 1, assetsAfterDelete.getData().size());
 
         assertReturns404(() ->
-                tbApi.getAssetById(assetToDeleteId.toString())
+                client.getAssetById(assetToDeleteId.toString())
         );
     }
 
@@ -98,21 +98,21 @@ public class AssetApiTest extends AbstractApiTest {
         Asset a1 = new Asset();
         a1.setName(TEST_PREFIX + timestamp + "_info_0");
         a1.setType("warehouse");
-        Asset saved1 = tbApi.saveAsset(a1, null, null, null, null, null, null);
+        Asset saved1 = client.saveAsset(a1, null, null, null, null, null, null);
 
         Asset a2 = new Asset();
         a2.setName(TEST_PREFIX + timestamp + "_info_1");
         a2.setType("factory");
-        Asset saved2 = tbApi.saveAsset(a2, null, null, null, null, null, null);
+        Asset saved2 = client.saveAsset(a2, null, null, null, null, null, null);
 
         // getAssetInfoById — enriched with profile name and customer title
-        AssetInfo info = tbApi.getAssetInfoById(saved1.getId().getId().toString());
+        AssetInfo info = client.getAssetInfoById(saved1.getId().getId().toString());
         assertNotNull(info);
         assertEquals(saved1.getName(), info.getName());
         assertNotNull(info.getAssetProfileId());
 
         // getTenantAssetByName — exact name lookup
-        Asset byName = tbApi.getTenantAssetByName(saved1.getName());
+        Asset byName = client.getTenantAssetByName(saved1.getName());
         assertNotNull(byName);
         assertEquals(saved1.getName(), byName.getName());
         assertEquals(saved1.getId().getId(), byName.getId().getId());
@@ -122,19 +122,19 @@ public class AssetApiTest extends AbstractApiTest {
                 saved1.getId().getId().toString(),
                 saved2.getId().getId().toString()
         );
-        List<Asset> batch = tbApi.getAssetsByIds(ids);
+        List<Asset> batch = client.getAssetsByIds(ids);
         assertNotNull(batch);
         assertEquals(2, batch.size());
 
         // getAssetTypes — lists all distinct asset types used by this tenant
-        List<EntitySubtype> types = tbApi.getAssetTypes();
+        List<EntitySubtype> types = client.getAssetTypes();
         assertNotNull(types);
         List<String> typeNames = types.stream().map(EntitySubtype::getType).collect(Collectors.toList());
         assertTrue(typeNames.contains("warehouse"));
         assertTrue(typeNames.contains("factory"));
 
         // getAllAssetInfos — paginated asset info list for the tenant
-        PageDataAssetInfo allInfos = tbApi.getAllAssetInfos(100, 0, false, null, null, null, null);
+        PageDataAssetInfo allInfos = client.getAllAssetInfos(100, 0, false, null, null, null, null);
         assertNotNull(allInfos);
         assertNotNull(allInfos.getData());
         assertTrue(allInfos.getData().size() >= 2);
@@ -163,7 +163,7 @@ public class AssetApiTest extends AbstractApiTest {
         request.setFile(csv);
         request.setMapping(mapping);
 
-        BulkImportResultAsset result = tbApi.processAssetBulkImport(request);
+        BulkImportResultAsset result = client.processAssetBulkImport(request);
         assertNotNull(result);
         List<String> errors = result.getErrorsList();
         assertTrue(errors == null || errors.isEmpty(), "Expected no import errors: " + errors);

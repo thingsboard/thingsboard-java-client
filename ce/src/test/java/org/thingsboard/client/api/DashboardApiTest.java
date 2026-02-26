@@ -41,11 +41,11 @@ public class DashboardApiTest extends AbstractApiTest {
             String dashboardTitle = ((i % 2 == 0) ? TEST_PREFIX : TEST_PREFIX_2) + timestamp + "_" + i;
             dashboard.setTitle(dashboardTitle);
 
-            tbApi.saveDashboard(dashboard, null);
+            client.saveDashboard(dashboard, null);
         }
 
         // find all, check count
-        PageDataDashboardInfo allDashboards = tbApi.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo allDashboards = client.getTenantDashboards1(100, 0, null, null, null, null);
         assertNotNull(allDashboards);
         assertNotNull(allDashboards.getData());
         int initialSize = allDashboards.getData().size();
@@ -54,12 +54,12 @@ public class DashboardApiTest extends AbstractApiTest {
         List<DashboardInfo> createdDashboards = allDashboards.getData();
 
         // find all with search text, check count
-        PageDataDashboardInfo filteredDashboards = tbApi.getTenantDashboards1(100, 0, null, TEST_PREFIX_2, null, null);
+        PageDataDashboardInfo filteredDashboards = client.getTenantDashboards1(100, 0, null, TEST_PREFIX_2, null, null);
         assertEquals(10, filteredDashboards.getData().size(), "Expected exactly 10 dashboards matching prefix");
 
         // find by id
         DashboardInfo searchDashboard = createdDashboards.get(10);
-        DashboardInfo fetchedDashboard = tbApi.getDashboardInfoById(searchDashboard.getId().getId().toString());
+        DashboardInfo fetchedDashboard = client.getDashboardInfoById(searchDashboard.getId().getId().toString());
         assertEquals(searchDashboard.getTitle(), fetchedDashboard.getTitle());
 
         // update dashboard
@@ -67,56 +67,56 @@ public class DashboardApiTest extends AbstractApiTest {
         dashboardToUpdate.setId(fetchedDashboard.getId());
         dashboardToUpdate.setTitle(fetchedDashboard.getTitle() + "_updated");
         dashboardToUpdate.setVersion(fetchedDashboard.getVersion());
-        tbApi.saveDashboard(dashboardToUpdate, null);
+        client.saveDashboard(dashboardToUpdate, null);
 
-        DashboardInfo updatedDashboard = tbApi.getDashboardInfoById(fetchedDashboard.getId().getId().toString());
+        DashboardInfo updatedDashboard = client.getDashboardInfoById(fetchedDashboard.getId().getId().toString());
         assertEquals(fetchedDashboard.getTitle() + "_updated", updatedDashboard.getTitle());
 
         // assign dashboard to customer and verify
         String customerId = savedCustomer.getId().getId().toString();
         String dashboardId = createdDashboards.get(0).getId().getId().toString();
-        tbApi.assignDashboardToCustomer(customerId, dashboardId);
+        client.assignDashboardToCustomer(customerId, dashboardId);
 
-        PageDataDashboardInfo customerDashboards = tbApi.getCustomerDashboards(customerId, 100, 0, null, null, null, null);
+        PageDataDashboardInfo customerDashboards = client.getCustomerDashboards(customerId, 100, 0, null, null, null, null);
         assertEquals(1, customerDashboards.getData().size());
         assertEquals(createdDashboards.get(0).getTitle(), customerDashboards.getData().get(0).getTitle());
 
         // unassign dashboard from customer
-        tbApi.unassignDashboardFromCustomer(customerId, dashboardId);
-        PageDataDashboardInfo dashboardsAfterUnassign = tbApi.getCustomerDashboards(customerId, 100, 0, null, null, null, null);
+        client.unassignDashboardFromCustomer(customerId, dashboardId);
+        PageDataDashboardInfo dashboardsAfterUnassign = client.getCustomerDashboards(customerId, 100, 0, null, null, null, null);
         assertEquals(0, dashboardsAfterUnassign.getData().size());
 
         // make dashboard public and verify
-        tbApi.assignDashboardToPublicCustomer(dashboardId);
-        DashboardInfo publicDashboard = tbApi.getDashboardInfoById(dashboardId);
+        client.assignDashboardToPublicCustomer(dashboardId);
+        DashboardInfo publicDashboard = client.getDashboardInfoById(dashboardId);
         assertNotNull(publicDashboard.getAssignedCustomers());
         assertTrue(publicDashboard.getAssignedCustomers().size() > 0);
 
         // remove public access
-        tbApi.unassignDashboardFromPublicCustomer(dashboardId);
+        client.unassignDashboardFromPublicCustomer(dashboardId);
 
         // delete dashboard
         UUID dashboardToDeleteId = createdDashboards.get(0).getId().getId();
-        tbApi.deleteDashboard(dashboardToDeleteId.toString());
+        client.deleteDashboard(dashboardToDeleteId.toString());
 
         // verify deletion
-        PageDataDashboardInfo dashboardsAfterDelete = tbApi.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo dashboardsAfterDelete = client.getTenantDashboards1(100, 0, null, null, null, null);
         assertEquals(initialSize - 1, dashboardsAfterDelete.getData().size());
 
         assertReturns404(() ->
-                tbApi.getDashboardInfoById(dashboardToDeleteId.toString())
+                client.getDashboardInfoById(dashboardToDeleteId.toString())
         );
     }
 
     @Test
     void testGetServerTime() throws ApiException {
-        Long serverTime = tbApi.getServerTime();
+        Long serverTime = client.getServerTime();
         assertNotNull(serverTime);
     }
 
     @Test
     void testGetMaxDatapointsLimit() throws ApiException {
-        Long maxDatapointsLimit = tbApi.getMaxDatapointsLimit();
+        Long maxDatapointsLimit = client.getMaxDatapointsLimit();
         assertNotNull(maxDatapointsLimit);
     }
 

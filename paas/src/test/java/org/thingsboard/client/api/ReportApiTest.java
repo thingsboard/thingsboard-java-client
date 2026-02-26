@@ -49,7 +49,7 @@ public class ReportApiTest extends AbstractApiTest {
         template.setFormat(TbReportFormat.PDF);
         template.setType(ReportTemplateType.REPORT);
         template.setConfiguration(config);
-        return tbApi.saveReportTemplate(template);
+        return client.saveReportTemplate(template);
     }
 
     private ReportRequest buildRequest(ReportTemplate template) {
@@ -66,7 +66,7 @@ public class ReportApiTest extends AbstractApiTest {
     private Report waitForReport() throws ApiException, InterruptedException {
         long deadline = System.currentTimeMillis() + REPORT_POLL_TIMEOUT_MS;
         while (System.currentTimeMillis() < deadline) {
-            PageDataReport page = tbApi.getReports(1, 0, null, null, null);
+            PageDataReport page = client.getReports(1, 0, null, null, null);
             if (page != null && !page.getData().isEmpty()) {
                 return page.getData().get(0);
             }
@@ -81,7 +81,7 @@ public class ReportApiTest extends AbstractApiTest {
 
     @Test
     void testGetReports() throws ApiException {
-        PageDataReport page = tbApi.getReports(100, 0, null, null, null);
+        PageDataReport page = client.getReports(100, 0, null, null, null);
         assertNotNull(page);
         assertNotNull(page.getData());
     }
@@ -89,7 +89,7 @@ public class ReportApiTest extends AbstractApiTest {
     @Test
     void testGetReportInfos() throws ApiException {
         PageDataReportInfo infoPage =
-                tbApi.getReportInfos(100, 0, null, null, null, null, null, null);
+                client.getReportInfos(100, 0, null, null, null, null, null, null);
         assertNotNull(infoPage);
         assertNotNull(infoPage.getData());
     }
@@ -103,11 +103,11 @@ public class ReportApiTest extends AbstractApiTest {
         long ts = System.currentTimeMillis();
         ReportTemplate template = createTemplate(TEST_PREFIX + ts);
 
-        Job job = tbApi.requestReport(buildRequest(template));
+        Job job = client.requestReport(buildRequest(template));
         assertNotNull(job);
         assertNotNull(job.getId());
 
-        tbApi.deleteReportTemplate(template.getId().getId().toString());
+        client.deleteReportTemplate(template.getId().getId().toString());
     }
 
     // -------------------------------------------------------------------------
@@ -122,13 +122,13 @@ public class ReportApiTest extends AbstractApiTest {
         // Rendering requires dashboard components; an empty template may produce
         // an empty file or fail server-side.  Both outcomes are acceptable.
         try {
-            tbApi.testReportAndDownload(buildRequest(template));
+            client.testReportAndDownload(buildRequest(template));
         } catch (ApiException e) {
             assertTrue(e.getCode() >= 400,
                     "testReportAndDownload returned unexpected HTTP status: " + e.getCode());
         }
 
-        tbApi.deleteReportTemplate(template.getId().getId().toString());
+        client.deleteReportTemplate(template.getId().getId().toString());
     }
 
     // -------------------------------------------------------------------------
@@ -149,9 +149,9 @@ public class ReportApiTest extends AbstractApiTest {
         request.setInfo("{}");
 
         try {
-            Report report = tbApi.createReport(request);
+            Report report = client.createReport(request);
             if (report != null && report.getId() != null) {
-                tbApi.deleteReport(report.getId().getId().toString());
+                client.deleteReport(report.getId().getId().toString());
             }
         } catch (ApiException e) {
             assertTrue(e.getCode() >= 400,
@@ -171,33 +171,33 @@ public class ReportApiTest extends AbstractApiTest {
         ReportTemplate template = createTemplate(TEST_PREFIX + ts);
 
         // Trigger async report generation.
-        tbApi.requestReport(buildRequest(template));
+        client.requestReport(buildRequest(template));
 
         // Poll until the report is available.  In environments without a headless
         // browser the report will never appear; fall back to verifying the 404 path.
         Report report = waitForReport();
         if (report == null) {
-            assertReturns404(() -> tbApi.getReportById(UUID.randomUUID().toString()));
-            tbApi.deleteReportTemplate(template.getId().getId().toString());
+            assertReturns404(() -> client.getReportById(UUID.randomUUID().toString()));
+            client.deleteReportTemplate(template.getId().getId().toString());
             return;
         }
 
         String reportId = report.getId().getId().toString();
 
         // getReportById
-        Report fetched = tbApi.getReportById(reportId);
+        Report fetched = client.getReportById(reportId);
         assertNotNull(fetched);
         assertEquals(reportId, fetched.getId().getId().toString());
 
         // downloadReport
-        File downloaded = tbApi.downloadReport(report.getId().getId());
+        File downloaded = client.downloadReport(report.getId().getId());
         assertNotNull(downloaded);
 
         // deleteReport
-        tbApi.deleteReport(reportId);
-        assertReturns404(() -> tbApi.getReportById(reportId));
+        client.deleteReport(reportId);
+        assertReturns404(() -> client.getReportById(reportId));
 
-        tbApi.deleteReportTemplate(template.getId().getId().toString());
+        client.deleteReportTemplate(template.getId().getId().toString());
     }
 
 }

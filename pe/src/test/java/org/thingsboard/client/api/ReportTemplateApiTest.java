@@ -46,7 +46,7 @@ public class ReportTemplateApiTest extends AbstractApiTest {
     }
 
     private ReportTemplate createTemplate(String name) throws ApiException {
-        return tbApi.saveReportTemplate(buildTemplate(name));
+        return client.saveReportTemplate(buildTemplate(name));
     }
 
     // -------------------------------------------------------------------------
@@ -69,13 +69,13 @@ public class ReportTemplateApiTest extends AbstractApiTest {
         String templateId = saved.getId().getId().toString();
 
         // getReportTemplateById
-        ReportTemplate fetched = tbApi.getReportTemplateById(templateId);
+        ReportTemplate fetched = client.getReportTemplateById(templateId);
         assertNotNull(fetched);
         assertEquals(templateId, fetched.getId().getId().toString());
         assertEquals(name, fetched.getName());
 
         // getReportTemplateInfoById
-        ReportTemplateInfo info = tbApi.getReportTemplateInfoById(templateId);
+        ReportTemplateInfo info = client.getReportTemplateInfoById(templateId);
         assertNotNull(info);
         assertEquals(templateId, info.getId().getId().toString());
         assertEquals(name, info.getName());
@@ -83,12 +83,12 @@ public class ReportTemplateApiTest extends AbstractApiTest {
 
         // saveReportTemplate (update)
         fetched.setName(name + "_updated");
-        ReportTemplate updated = tbApi.saveReportTemplate(fetched);
+        ReportTemplate updated = client.saveReportTemplate(fetched);
         assertEquals(name + "_updated", updated.getName());
 
         // deleteReportTemplate
-        tbApi.deleteReportTemplate(templateId);
-        assertReturns404(() -> tbApi.getReportTemplateById(templateId));
+        client.deleteReportTemplate(templateId);
+        assertReturns404(() -> client.getReportTemplateById(templateId));
     }
 
     // -------------------------------------------------------------------------
@@ -106,7 +106,7 @@ public class ReportTemplateApiTest extends AbstractApiTest {
         String id2 = t2.getId().getId().toString();
         String id3 = t3.getId().getId().toString();
 
-        PageDataReportTemplateInfo page = tbApi.getAllReportTemplateInfos(
+        PageDataReportTemplateInfo page = client.getAllReportTemplateInfos(
                 100, 0, null, null, null, TEST_PREFIX + ts, null, null);
         assertNotNull(page);
         assertTrue(page.getTotalElements() >= 3);
@@ -114,9 +114,9 @@ public class ReportTemplateApiTest extends AbstractApiTest {
         assertTrue(page.getData().stream().anyMatch(t -> t.getId().getId().toString().equals(id2)));
         assertTrue(page.getData().stream().anyMatch(t -> t.getId().getId().toString().equals(id3)));
 
-        tbApi.deleteReportTemplate(id1);
-        tbApi.deleteReportTemplate(id2);
-        tbApi.deleteReportTemplate(id3);
+        client.deleteReportTemplate(id1);
+        client.deleteReportTemplate(id2);
+        client.deleteReportTemplate(id3);
     }
 
     // -------------------------------------------------------------------------
@@ -132,14 +132,14 @@ public class ReportTemplateApiTest extends AbstractApiTest {
         String id1 = t1.getId().getId().toString();
         String id2 = t2.getId().getId().toString();
 
-        List<ReportTemplateInfo> result = tbApi.getReportTemplatesByIds(List.of(id1, id2));
+        List<ReportTemplateInfo> result = client.getReportTemplatesByIds(List.of(id1, id2));
         assertNotNull(result);
         assertEquals(2, result.size());
         assertTrue(result.stream().anyMatch(t -> t.getId().getId().toString().equals(id1)));
         assertTrue(result.stream().anyMatch(t -> t.getId().getId().toString().equals(id2)));
 
-        tbApi.deleteReportTemplate(id1);
-        tbApi.deleteReportTemplate(id2);
+        client.deleteReportTemplate(id1);
+        client.deleteReportTemplate(id2);
     }
 
     // -------------------------------------------------------------------------
@@ -148,7 +148,7 @@ public class ReportTemplateApiTest extends AbstractApiTest {
 
     @Test
     void testGetReportTemplateByIdNotFound() {
-        assertReturns404(() -> tbApi.getReportTemplateById(UUID.randomUUID().toString()));
+        assertReturns404(() -> client.getReportTemplateById(UUID.randomUUID().toString()));
     }
 
 }

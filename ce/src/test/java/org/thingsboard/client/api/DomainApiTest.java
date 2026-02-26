@@ -40,7 +40,7 @@ public class DomainApiTest extends AbstractApiTest {
     void afterDomainTest() throws Exception {
         createdDomains.forEach(domain -> {
             try {
-                tbApi.deleteDomain(domain.getId().getId());
+                client.deleteDomain(domain.getId().getId());
             } catch (ApiException e) {
                 // ignore
             }
@@ -49,7 +49,7 @@ public class DomainApiTest extends AbstractApiTest {
 
     @Test
     void testDomainLifecycle() throws ApiException, IOException, InterruptedException {
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
+        client.login("sysadmin@thingsboard.org", "sysadmin");
 
         long timestamp = System.currentTimeMillis();
 
@@ -60,7 +60,7 @@ public class DomainApiTest extends AbstractApiTest {
             domain.setOauth2Enabled(false);
             domain.setPropagateToEdge(false);
 
-            Domain created = tbApi.saveDomain(domain, null);
+            Domain created = client.saveDomain(domain, null);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(domain.getName(), created.getName());
@@ -70,14 +70,14 @@ public class DomainApiTest extends AbstractApiTest {
         }
 
         // list tenant domains with text search
-        PageDataDomainInfo filteredDomains = tbApi.getTenantDomainInfos(100, 0,
+        PageDataDomainInfo filteredDomains = client.getTenantDomainInfos(100, 0,
                 "domain.", null, null);
         assertNotNull(filteredDomains);
         assertEquals(5, filteredDomains.getData().size());
 
         // get domain info by id
         Domain searchDomain = createdDomains.get(2);
-        DomainInfo fetchedInfo = tbApi.getDomainInfoById(searchDomain.getId().getId());
+        DomainInfo fetchedInfo = client.getDomainInfoById(searchDomain.getId().getId());
         assertEquals(searchDomain.getName(), fetchedInfo.getName());
         assertEquals(searchDomain.getOauth2Enabled(), fetchedInfo.getOauth2Enabled());
         assertNotNull(fetchedInfo.getOauth2ClientInfos());
@@ -85,20 +85,20 @@ public class DomainApiTest extends AbstractApiTest {
         // update domain
         Domain domainToUpdate = createdDomains.get(3);
         domainToUpdate.setPropagateToEdge(true);
-        Domain updatedDomain = tbApi.saveDomain(domainToUpdate, null);
+        Domain updatedDomain = client.saveDomain(domainToUpdate, null);
         assertEquals(true, updatedDomain.getPropagateToEdge());
 
         // delete domain
         UUID domainToDeleteId = createdDomains.get(0).getId().getId();
         createdDomains.remove(0);
-        tbApi.deleteDomain(domainToDeleteId);
+        client.deleteDomain(domainToDeleteId);
 
         // verify deletion
         assertReturns404(() ->
-                tbApi.getDomainInfoById(domainToDeleteId)
+                client.getDomainInfoById(domainToDeleteId)
         );
 
-        PageDataDomainInfo domainsAfterDelete = tbApi.getTenantDomainInfos(100, 0,
+        PageDataDomainInfo domainsAfterDelete = client.getTenantDomainInfos(100, 0,
                 "domain.", null, null);
         assertEquals(4, domainsAfterDelete.getData().size());
     }

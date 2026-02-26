@@ -40,13 +40,13 @@ public class AssetProfileApiTest extends AbstractApiTest {
         List<AssetProfile> createdProfiles = new ArrayList<>();
 
         // Get initial count (there should be a default profile)
-        PageDataAssetProfile initialProfiles = tbApi.getAssetProfiles(100, 0, null, null, null);
+        PageDataAssetProfile initialProfiles = client.getAssetProfiles(100, 0, null, null, null);
         assertNotNull(initialProfiles);
         int initialSize = initialProfiles.getData().size();
         assertTrue(initialSize == 1, "Expected at least 1 default asset profile");
 
         // Get default asset profile info
-        AssetProfileInfo defaultProfileInfo = tbApi.getDefaultAssetProfileInfo();
+        AssetProfileInfo defaultProfileInfo = client.getDefaultAssetProfileInfo();
         assertNotNull(defaultProfileInfo);
         assertEquals(defaultProfileInfo.getName(), "default");
 
@@ -56,7 +56,7 @@ public class AssetProfileApiTest extends AbstractApiTest {
             profile.setName("Test Asset Profile " + timestamp + "_" + i);
             profile.setDescription("Test description " + i);
 
-            AssetProfile created = tbApi.saveAssetProfile(profile);
+            AssetProfile created = client.saveAssetProfile(profile);
             assertNotNull(created);
             assertNotNull(created.getId());
             assertEquals(profile.getName(), created.getName());
@@ -67,61 +67,61 @@ public class AssetProfileApiTest extends AbstractApiTest {
         }
 
         // Find all, check count
-        PageDataAssetProfile allProfiles = tbApi.getAssetProfiles(100, 0, null, null, null);
+        PageDataAssetProfile allProfiles = client.getAssetProfiles(100, 0, null, null, null);
         assertNotNull(allProfiles);
         assertEquals(initialSize + 5, allProfiles.getData().size());
 
         // Find all with text search
-        PageDataAssetProfile filteredProfiles = tbApi.getAssetProfiles(100, 0, "Test Asset Profile " + timestamp, null, null);
+        PageDataAssetProfile filteredProfiles = client.getAssetProfiles(100, 0, "Test Asset Profile " + timestamp, null, null);
         assertEquals(5, filteredProfiles.getData().size());
 
         // Get by id
         AssetProfile searchProfile = createdProfiles.get(2);
-        AssetProfile fetchedProfile = tbApi.getAssetProfileById(searchProfile.getId().getId().toString(), false);
+        AssetProfile fetchedProfile = client.getAssetProfileById(searchProfile.getId().getId().toString(), false);
         assertEquals(searchProfile.getName(), fetchedProfile.getName());
         assertEquals(searchProfile.getDescription(), fetchedProfile.getDescription());
 
         // Update asset profile
         fetchedProfile.setDescription("Updated description");
-        AssetProfile updatedProfile = tbApi.saveAssetProfile(fetchedProfile);
+        AssetProfile updatedProfile = client.saveAssetProfile(fetchedProfile);
         assertEquals("Updated description", updatedProfile.getDescription());
         assertEquals(fetchedProfile.getName(), updatedProfile.getName());
 
         // Get asset profile info by id
-        AssetProfileInfo profileInfo = tbApi.getAssetProfileInfoById(searchProfile.getId().getId().toString());
+        AssetProfileInfo profileInfo = client.getAssetProfileInfoById(searchProfile.getId().getId().toString());
         assertNotNull(profileInfo);
         assertEquals(searchProfile.getName(), profileInfo.getName());
 
         // Get asset profile infos (paginated)
-        PageDataAssetProfile profileInfos = tbApi.getAssetProfiles(100, 0, null, null, null);
+        PageDataAssetProfile profileInfos = client.getAssetProfiles(100, 0, null, null, null);
         assertNotNull(profileInfos);
         assertEquals(initialSize + 5, profileInfos.getData().size());
 
         // Set a profile as default
         AssetProfile profileToSetDefault = createdProfiles.get(1);
-        AssetProfile newDefault = tbApi.setDefaultAssetProfile(profileToSetDefault.getId().getId().toString());
+        AssetProfile newDefault = client.setDefaultAssetProfile(profileToSetDefault.getId().getId().toString());
         assertNotNull(newDefault);
         assertTrue(newDefault.getDefault());
 
         // Verify default profile info now points to the new default
-        AssetProfileInfo newDefaultInfo = tbApi.getDefaultAssetProfileInfo();
+        AssetProfileInfo newDefaultInfo = client.getDefaultAssetProfileInfo();
         assertEquals(profileToSetDefault.getName(), newDefaultInfo.getName());
 
         // Get asset profile names
-        List<EntityInfo> profileNames = tbApi.getAssetProfileNames(false);
+        List<EntityInfo> profileNames = client.getAssetProfileNames(false);
         assertNotNull(profileNames);
         assertEquals(createdProfiles.size() + 1, profileNames.size());
 
         // Delete asset profile (cannot delete the default one, so delete a non-default one)
         UUID profileToDeleteId = createdProfiles.get(0).getId().getId();
-        tbApi.deleteAssetProfile(profileToDeleteId.toString());
+        client.deleteAssetProfile(profileToDeleteId.toString());
 
         // Verify the profile is deleted
         assertReturns404(() ->
-                tbApi.getAssetProfileById(profileToDeleteId.toString(), false));
+                client.getAssetProfileById(profileToDeleteId.toString(), false));
 
         // Verify count after deletion
-        PageDataAssetProfile profilesAfterDelete = tbApi.getAssetProfiles(100, 0, null, null, null);
+        PageDataAssetProfile profilesAfterDelete = client.getAssetProfiles(100, 0, null, null, null);
         assertEquals(initialSize + 4, profilesAfterDelete.getData().size());
 
         // Restore original default profile
@@ -129,7 +129,7 @@ public class AssetProfileApiTest extends AbstractApiTest {
                 .filter(AssetProfile::getDefault)
                 .findFirst()
                 .orElseThrow();
-        tbApi.setDefaultAssetProfile(originalDefault.getId().getId().toString());
+        client.setDefaultAssetProfile(originalDefault.getId().getId().toString());
     }
 
 }

@@ -46,11 +46,11 @@ public class DashboardApiTest extends AbstractApiTest {
             String dashboardTitle = ((i % 2 == 0) ? TEST_PREFIX : TEST_PREFIX_2) + timestamp + "_" + i;
             dashboard.setTitle(dashboardTitle);
 
-            tbApi.saveDashboard(dashboard, null, null, null);
+            client.saveDashboard(dashboard, null, null, null);
         }
 
         // find all, check count
-        PageDataDashboardInfo allDashboards = tbApi.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo allDashboards = client.getTenantDashboards1(100, 0, null, null, null, null);
         assertNotNull(allDashboards);
         assertNotNull(allDashboards.getData());
         int initialSize = allDashboards.getData().size();
@@ -59,12 +59,12 @@ public class DashboardApiTest extends AbstractApiTest {
         List<DashboardInfo> createdDashboards = allDashboards.getData();
 
         // find all with search text, check count
-        PageDataDashboardInfo filteredDashboards = tbApi.getTenantDashboards1(100, 0, null, TEST_PREFIX_2, null, null);
+        PageDataDashboardInfo filteredDashboards = client.getTenantDashboards1(100, 0, null, TEST_PREFIX_2, null, null);
         assertEquals(10, filteredDashboards.getData().size(), "Expected exactly 10 dashboards matching prefix");
 
         // find by id
         DashboardInfo searchDashboard = createdDashboards.get(10);
-        DashboardInfo fetchedDashboard = tbApi.getDashboardInfoById(searchDashboard.getId().getId().toString());
+        DashboardInfo fetchedDashboard = client.getDashboardInfoById(searchDashboard.getId().getId().toString());
         assertEquals(searchDashboard.getTitle(), fetchedDashboard.getTitle());
 
         // update dashboard
@@ -72,21 +72,21 @@ public class DashboardApiTest extends AbstractApiTest {
         dashboardToUpdate.setId(fetchedDashboard.getId());
         dashboardToUpdate.setTitle(fetchedDashboard.getTitle() + "_updated");
         dashboardToUpdate.setVersion(fetchedDashboard.getVersion());
-        tbApi.saveDashboard(dashboardToUpdate, null, null, null);
+        client.saveDashboard(dashboardToUpdate, null, null, null);
 
-        DashboardInfo updatedDashboard = tbApi.getDashboardInfoById(fetchedDashboard.getId().getId().toString());
+        DashboardInfo updatedDashboard = client.getDashboardInfoById(fetchedDashboard.getId().getId().toString());
         assertEquals(fetchedDashboard.getTitle() + "_updated", updatedDashboard.getTitle());
     }
 
     @Test
     void testGetServerTime() throws ApiException {
-        Long serverTime = tbApi.getServerTime();
+        Long serverTime = client.getServerTime();
         assertNotNull(serverTime);
     }
 
     @Test
     void testGetMaxDatapointsLimit() throws ApiException {
-        Long maxDatapointsLimit = tbApi.getMaxDatapointsLimit();
+        Long maxDatapointsLimit = client.getMaxDatapointsLimit();
         assertNotNull(maxDatapointsLimit);
     }
 
@@ -94,24 +94,24 @@ public class DashboardApiTest extends AbstractApiTest {
     void testGetTenantDashboards() throws Exception {
         Dashboard dashboard = new Dashboard();
         dashboard.setTitle(TEST_PREFIX + System.currentTimeMillis());
-        tbApi.saveDashboard(dashboard, null, null, null);
+        client.saveDashboard(dashboard, null, null, null);
 
         // tenant admin variant
-        PageDataDashboardInfo tenantAdminResult = tbApi.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo tenantAdminResult = client.getTenantDashboards1(100, 0, null, null, null, null);
         assertNotNull(tenantAdminResult);
         assertEquals(1, tenantAdminResult.getData().size());
 
         //get user dashboard
-        PageDataDashboardInfo userDashboards = tbApi.getUserDashboards(100, 0, null, null, null, null, null, null);
+        PageDataDashboardInfo userDashboards = client.getUserDashboards(100, 0, null, null, null, null, null, null);
         assertEquals(1, userDashboards.getData().size());
 
         //get all dashboards
-        PageDataDashboardInfo allDashboards = tbApi.getAllDashboards(100, 0, true, null, null, null);
+        PageDataDashboardInfo allDashboards = client.getAllDashboards(100, 0, true, null, null, null);
         assertEquals(1, allDashboards.getData().size());
 
         // system administrator variant (requires tenantId)
-        authorizeAs("sysadmin@thingsboard.org", "sysadmin");
-        PageDataDashboardInfo sysAdminResult = tbApi.getTenantDashboards(
+        client.login("sysadmin@thingsboard.org", "sysadmin");
+        PageDataDashboardInfo sysAdminResult = client.getTenantDashboards(
                 savedTenant.getId().getId().toString(), 100, 0, null, null, null);
         assertNotNull(sysAdminResult);
         assertEquals(1, sysAdminResult.getData().size(), "Expected at least one dashboard from sysadmin query");
@@ -122,7 +122,7 @@ public class DashboardApiTest extends AbstractApiTest {
         String customerId = savedCustomer.getId().getId().toString();
 
         // no dashboards are shared with the customer in test setup; call must succeed with empty result
-        PageDataDashboardInfo result = tbApi.getCustomerDashboards(customerId, 100, 0, true, null, null, null);
+        PageDataDashboardInfo result = client.getCustomerDashboards(customerId, 100, 0, true, null, null, null);
         assertNotNull(result);
         assertNotNull(result.getData());
         assertTrue(result.getData().isEmpty(), "Expected no dashboards assigned to the test customer");
@@ -132,14 +132,14 @@ public class DashboardApiTest extends AbstractApiTest {
     void testGetDashboardsByIds() throws ApiException {
         Dashboard dashboard = new Dashboard();
         dashboard.setTitle(TEST_PREFIX + System.currentTimeMillis());
-        tbApi.saveDashboard(dashboard, null, null, null);
+        client.saveDashboard(dashboard, null, null, null);
 
         // saveDashboard returns void, so fetch the ID via getTenantDashboards1
-        PageDataDashboardInfo all = tbApi.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo all = client.getTenantDashboards1(100, 0, null, null, null, null);
         assertFalse(all.getData().isEmpty());
         DashboardInfo first = all.getData().get(0);
 
-        List<DashboardInfo> result = tbApi.getDashboardsByIds(List.of(first.getId().getId().toString()));
+        List<DashboardInfo> result = client.getDashboardsByIds(List.of(first.getId().getId().toString()));
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals(first.getId().getId(), result.get(0).getId().getId());
@@ -151,7 +151,7 @@ public class DashboardApiTest extends AbstractApiTest {
         EntityGroup entityGroup = new EntityGroup();
         entityGroup.setType(EntityGroup.TypeEnum.DASHBOARD);
         entityGroup.setName("Test Dashboard Group");
-        EntityGroupInfo savedGroup = tbApi.saveEntityGroup(entityGroup);
+        EntityGroupInfo savedGroup = client.saveEntityGroup(entityGroup);
         assertNotNull(savedGroup.getId());
         String groupId = savedGroup.getId().getId().toString();
 
@@ -159,14 +159,14 @@ public class DashboardApiTest extends AbstractApiTest {
         Dashboard dashboard = new Dashboard();
         dashboard.setTitle(TEST_PREFIX + System.currentTimeMillis());
         dashboard.setConfiguration(OBJECT_MAPPER.createObjectNode());
-        tbApi.importGroupDashboards(groupId, List.of(dashboard), false);
+        client.importGroupDashboards(groupId, List.of(dashboard), false);
 
         // getDashboardsByEntityGroupId: verify the imported dashboard is present
-        PageDataDashboardInfo groupDashboards = tbApi.getDashboardsByEntityGroupId(groupId, 100, 0, null, null, null);
+        PageDataDashboardInfo groupDashboards = client.getDashboardsByEntityGroupId(groupId, 100, 0, null, null, null);
         assertNotNull(groupDashboards);
         assertEquals(1, groupDashboards.getData().size(), "Expected exactly one dashboard in the entity group");
 
-        List<Dashboard> dashboards = tbApi.exportGroupDashboards(groupId, 10, null);
+        List<Dashboard> dashboards = client.exportGroupDashboards(groupId, 10, null);
         assertEquals(1, dashboards.size());
         assertEquals(dashboard.getTitle(), dashboards.get(0).getTitle());
     }
@@ -176,13 +176,13 @@ public class DashboardApiTest extends AbstractApiTest {
         // create a dashboard and resolve its ID via getTenantDashboards1 (saveDashboard returns void)
         Dashboard dashboard = new Dashboard();
         dashboard.setTitle(TEST_PREFIX + System.currentTimeMillis());
-        tbApi.saveDashboard(dashboard, null, null, null);
+        client.saveDashboard(dashboard, null, null, null);
 
-        PageDataDashboardInfo all = tbApi.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo all = client.getTenantDashboards1(100, 0, null, null, null, null);
         DashboardId dashboardId = all.getData().get(0).getId();
 
         // getTenantHomeDashboardInfo: no home dashboard set for a freshly created tenant
-        HomeDashboardInfo initialInfo = tbApi.getTenantHomeDashboardInfo();
+        HomeDashboardInfo initialInfo = client.getTenantHomeDashboardInfo();
         assertNotNull(initialInfo);
         assertNull(initialInfo.getDashboardId(), "No home dashboard should be set for a new tenant");
 
@@ -190,15 +190,15 @@ public class DashboardApiTest extends AbstractApiTest {
         HomeDashboardInfo homeDashboardInfo = new HomeDashboardInfo();
         homeDashboardInfo.setDashboardId(dashboardId);
         homeDashboardInfo.setHideDashboardToolbar(false);
-        tbApi.setTenantHomeDashboardInfo(homeDashboardInfo);
+        client.setTenantHomeDashboardInfo(homeDashboardInfo);
 
         // getTenantHomeDashboardInfo must now reflect the change
-        HomeDashboardInfo tenantInfo = tbApi.getTenantHomeDashboardInfo();
+        HomeDashboardInfo tenantInfo = client.getTenantHomeDashboardInfo();
         assertNotNull(tenantInfo.getDashboardId());
         assertEquals(dashboardId.getId(), tenantInfo.getDashboardId().getId());
 
         // getHomeDashboardInfo: inherits the tenant-level setting for the tenant admin user
-        HomeDashboardInfo currentUserInfo = tbApi.getHomeDashboardInfo();
+        HomeDashboardInfo currentUserInfo = client.getHomeDashboardInfo();
         assertNotNull(currentUserInfo.getDashboardId());
         assertEquals(dashboardId.getId(), currentUserInfo.getDashboardId().getId());
     }
@@ -206,23 +206,23 @@ public class DashboardApiTest extends AbstractApiTest {
     @Test
     void testCustomerHomeDashboard() throws Exception {
         // switch to customer user authority
-        authorizeAs(CUSTOMER_USERNAME, TEST_PASSWORD);
+        client.login(CUSTOMER_USERNAME, TEST_PASSWORD);
 
         Dashboard dashboard = new Dashboard();
         dashboard.setTitle(TEST_PREFIX + System.currentTimeMillis());
-        dashboard = tbApi.saveDashboard(dashboard, null, null, null);
+        dashboard = client.saveDashboard(dashboard, null, null, null);
 
         // getCustomerHomeDashboardInfo: no home dashboard configured for a new customer
-        HomeDashboardInfo initialInfo = tbApi.getCustomerHomeDashboardInfo();
+        HomeDashboardInfo initialInfo = client.getCustomerHomeDashboardInfo();
         assertNotNull(initialInfo);
         assertNull(initialInfo.getDashboardId(), "No home dashboard should be set for a new customer");
 
         HomeDashboardInfo homeDashboardInfo = new HomeDashboardInfo();
         homeDashboardInfo.setDashboardId(dashboard.getId());
         homeDashboardInfo.setHideDashboardToolbar(false);
-        tbApi.setCustomerHomeDashboardInfo(homeDashboardInfo);
+        client.setCustomerHomeDashboardInfo(homeDashboardInfo);
 
-        HomeDashboardInfo updatedInfo = tbApi.getCustomerHomeDashboardInfo();
+        HomeDashboardInfo updatedInfo = client.getCustomerHomeDashboardInfo();
         assertNotNull(updatedInfo);
         assertEquals(dashboard.getId(), updatedInfo.getDashboardId());
     }

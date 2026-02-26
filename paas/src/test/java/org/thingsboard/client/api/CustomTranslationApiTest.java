@@ -43,7 +43,7 @@ public class CustomTranslationApiTest extends AbstractApiTest {
     }
 
     private TranslationInfo findLocaleInfo(String localeCode) throws ApiException {
-        List<TranslationInfo> infos = tbApi.getTranslationInfos();
+        List<TranslationInfo> infos = client.getTranslationInfos();
         assertNotNull(infos);
         return infos.stream()
                 .filter(t -> localeCode.equals(t.getLocaleCode()))
@@ -56,7 +56,7 @@ public class CustomTranslationApiTest extends AbstractApiTest {
         File translationFile = createTranslationFile("{\"testGreeting\":\"Hello\"}");
 
         // Upload custom translation
-        tbApi.uploadCustomTranslation(TEST_LOCALE, translationFile);
+        client.uploadCustomTranslation(TEST_LOCALE, translationFile);
 
         // Verify locale is now marked as customized
         TranslationInfo localeInfo = findLocaleInfo(TEST_LOCALE);
@@ -64,7 +64,7 @@ public class CustomTranslationApiTest extends AbstractApiTest {
                 "Locale should be customized after upload");
 
         // Delete the whole custom translation for the locale
-        tbApi.deleteCustomTranslation(TEST_LOCALE);
+        client.deleteCustomTranslation(TEST_LOCALE);
 
         // Verify customized flag is cleared
         assertFalse(findLocaleInfo(TEST_LOCALE).getCustomized(),
@@ -76,18 +76,18 @@ public class CustomTranslationApiTest extends AbstractApiTest {
         // Upload a translation with two flat keys
         File translationFile = createTranslationFile(
                 "{\"testGreeting\":\"Hello\",\"testFarewell\":\"Goodbye\"}");
-        tbApi.uploadCustomTranslation(TEST_LOCALE, translationFile);
+        client.uploadCustomTranslation(TEST_LOCALE, translationFile);
 
         assertTrue(findLocaleInfo(TEST_LOCALE).getCustomized());
 
         // Delete only one key — the other should keep the locale customized
-        tbApi.deleteCustomTranslationKey(TEST_LOCALE, "testGreeting");
+        client.deleteCustomTranslationKey(TEST_LOCALE, "testGreeting");
 
         assertTrue(findLocaleInfo(TEST_LOCALE).getCustomized(),
                 "Locale should still be customized after deleting just one of two keys");
 
         // Cleanup
-        tbApi.deleteCustomTranslation(TEST_LOCALE);
+        client.deleteCustomTranslation(TEST_LOCALE);
     }
 
     @Test
@@ -95,48 +95,48 @@ public class CustomTranslationApiTest extends AbstractApiTest {
         Map<String, Object> translations = Map.of("testGreeting", "Hello", "testFarewell", "Goodbye");
 
         // Save (create or fully replace) the custom translation
-        tbApi.saveCustomTranslation(TEST_LOCALE, translations);
+        client.saveCustomTranslation(TEST_LOCALE, translations);
 
         // Verify the stored content matches what was saved
-        JsonNode fetched = tbApi.getCustomTranslation(TEST_LOCALE);
+        JsonNode fetched = client.getCustomTranslation(TEST_LOCALE);
         assertNotNull(fetched);
         assertEquals("Hello", fetched.get("testGreeting").asText());
         assertEquals("Goodbye", fetched.get("testFarewell").asText());
 
         // Cleanup
-        tbApi.deleteCustomTranslation(TEST_LOCALE);
+        client.deleteCustomTranslation(TEST_LOCALE);
     }
 
     @Test
     void testPatchCustomTranslation() throws ApiException {
         // Save an initial state with two keys
-        tbApi.saveCustomTranslation(TEST_LOCALE, Map.of("testGreeting", "Hello", "testFarewell", "Goodbye"));
+        client.saveCustomTranslation(TEST_LOCALE, Map.of("testGreeting", "Hello", "testFarewell", "Goodbye"));
 
         // Patch updates only the supplied keys, leaving others intact
-        tbApi.patchCustomTranslation(TEST_LOCALE, Map.of("testGreeting", "Hi"));
+        client.patchCustomTranslation(TEST_LOCALE, Map.of("testGreeting", "Hi"));
 
-        JsonNode patched = tbApi.getCustomTranslation(TEST_LOCALE);
+        JsonNode patched = client.getCustomTranslation(TEST_LOCALE);
         assertNotNull(patched);
         assertEquals("Hi", patched.get("testGreeting").asText(), "Patched key should be updated");
         assertEquals("Goodbye", patched.get("testFarewell").asText(), "Unpatched key should remain unchanged");
 
         // Cleanup
-        tbApi.deleteCustomTranslation(TEST_LOCALE);
+        client.deleteCustomTranslation(TEST_LOCALE);
     }
 
     @Test
     void testGetMergedCustomTranslation() throws ApiException {
         // Save a custom override
-        tbApi.saveCustomTranslation(TEST_LOCALE, Map.of("testGreeting", "Hello"));
+        client.saveCustomTranslation(TEST_LOCALE, Map.of("testGreeting", "Hello"));
 
         // Merged result combines built-in platform keys and custom overrides
-        JsonNode merged = tbApi.getMergedCustomTranslation(TEST_LOCALE);
+        JsonNode merged = client.getMergedCustomTranslation(TEST_LOCALE);
         assertNotNull(merged);
         assertFalse(merged.isEmpty(), "Merged translation should contain at least the built-in keys");
         assertEquals("Hello", merged.get("testGreeting").asText(), "Custom key should appear in merged result");
 
         // Cleanup
-        tbApi.deleteCustomTranslation(TEST_LOCALE);
+        client.deleteCustomTranslation(TEST_LOCALE);
     }
 
 }
