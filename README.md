@@ -90,8 +90,8 @@ The `generate-client.sh` script handles the full workflow: generate, post-proces
 
 The script will auto-install `openapi-generator-cli` via npm if not found.
 
-Usage:
-  ./generate-client.sh [options] <edition> [base-url]
+```
+Usage: ./generate-client.sh [options] <edition> [base-url]
 
 Arguments:
   edition    ce | pe | paas | all
@@ -103,29 +103,36 @@ Options:
   --verbose  Show full generator output (per-file writes, operations, etc.)
   --dry-run  Generate into target/generated/ only. Skip copying to src/docs,
              license formatting, and git staging.
+```
 
-Examples:
-  ./generate-client.sh ce                            # Generate CE from local spec
-  ./generate-client.sh all                           # Generate all editions from local specs
-  ./generate-client.sh ce http://localhost:8080      # Fetch spec from a running TB, then generate
-  ./generate-client.sh --dry-run ce                  # Generate to target/ only, don't touch src/
-  ./generate-client.sh --verbose ce                  # Full output, no log filtering
+### Examples
 
-What it does:
-  1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
-  2. Runs openapi-generator-cli (Java native HTTP client)
-  3. Strips auto-generated OpenAPI comment blocks from Java files
-  4. Copies generated src/main/java/ and docs/ into the module (replaces previous)
-  5. Applies Apache 2.0 license headers via mvn license:format
-  6. Stages all changes with git add
+```bash
+./generate-client.sh ce                            # Generate CE from local spec
+./generate-client.sh all                           # Generate all editions from local specs
+./generate-client.sh ce http://localhost:8080       # Fetch spec from a running TB, then generate
+./generate-client.sh --dry-run ce                   # Generate to target/ only, don't touch src/
+./generate-client.sh --verbose ce                   # Full output, no log filtering
+```
 
-Preserved on regeneration:
-  - <edition>/pom.xml
-  - <edition>/src/test/  (tests are never touched)
-  - <edition>/spec/openapi.json  (only updated when base-url is provided)
+### What it does
 
-Replaced on regeneration:
-  - <edition>/src/main/java/
-  - <edition>/docs/
+1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
+2. Runs `openapi-generator-cli` (Java native HTTP client)
+3. Strips auto-generated OpenAPI comment blocks from Java files
+4. Copies generated `src/main/java/` and `docs/` into the module (replaces previous)
+5. Applies Apache 2.0 license headers via `mvn license:format`
+6. Stages all changes with `git add`
 
-Output log: generate-client.log (overwritten on each run)
+### Preserved on regeneration
+
+- `<edition>/pom.xml`
+- `<edition>/src/test/` (tests are never touched)
+- `<edition>/spec/openapi.json` (only updated when `base-url` is provided)
+
+### Replaced on regeneration
+
+- `<edition>/src/main/java/`
+- `<edition>/docs/`
+
+Output log: `generate-client.log` (overwritten on each run)
