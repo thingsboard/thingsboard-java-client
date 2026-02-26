@@ -43,7 +43,7 @@
 #   1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
 #   2. Runs openapi-generator-cli (Java native HTTP client)
 #   3. Strips auto-generated OpenAPI comment blocks from Java files
-#   4. Copies generated src/main/java/ and docs/ into the module (replaces previous)
+#   4. Copies generated src/main/java/ into the module (replaces previous)
 #   5. Applies Apache 2.0 license headers via mvn license:format
 #   6. Stages all changes with git add
 #
@@ -54,7 +54,6 @@
 #
 # Replaced on regeneration:
 #   - <edition>/src/main/java/
-#   - <edition>/docs/
 #
 # Output log: generate-client.log (overwritten on each run)
 #
@@ -143,11 +142,11 @@ generate() {
     --model-package "$BASE_PACKAGE.model" \
     --invoker-package "$BASE_PACKAGE" \
     --additional-properties hideGenerationTimestamp=true \
-    --global-property apiTests=false,modelTests=false \
+    --global-property apiTests=false,modelTests=false,apiDocs=false,modelDocs=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --openapi-normalizer SET_TAGS_FOR_ALL_OPERATIONS=Thingsboard \
-    2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword"; fi
+    2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword" -e "Skipped by.*options supplied by user"; fi
 
   # Strip generated OpenAPI comment block and collapse multiple blank lines
   find "$output_dir/src" -name "*.java" -exec perl -i -0pe 's|/\*\n \* ThingsBoard REST API.*?\*/\n+||s' {} +
@@ -155,12 +154,11 @@ generate() {
   if [ "$DRY_RUN" = true ]; then
     echo "Dry run: generated output is in $output_dir"
   else
-    # Copy generated sources and docs into the module
-    rm -rf "$module_dir/src/main/java" "$module_dir/docs"
+    # Copy generated sources into the module
+    rm -rf "$module_dir/src/main/java"
     mkdir -p "$module_dir/src/main/java"
     cp -r "$output_dir/src/main/java/"* "$module_dir/src/main/java/"
-    cp -r "$output_dir/docs" "$module_dir/"
-    echo "Copied src and docs to $module_dir"
+    echo "Copied src to $module_dir"
 
     # Copy common sources (ThingsboardClient, etc.)
     local common_src="$SCRIPT_DIR/common/src/main/java"

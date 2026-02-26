@@ -76,7 +76,6 @@ thingsboard-java-client/
 │   ├── pom.xml
 │   ├── spec/openapi.json            # OpenAPI spec (committed)
 │   ├── src/main/java/               # Generated + common sources (committed)
-│   ├── docs/                        # Generated API docs (committed)
 │   └── target/generated/            # Raw generator output (gitignored)
 ├── pe/
 │   └── (same structure as ce)
@@ -112,7 +111,7 @@ Arguments:
 
 Options:
   --verbose  Show full generator output (per-file writes, operations, etc.)
-  --dry-run  Generate into target/generated/ only. Skip copying to src/docs,
+  --dry-run  Generate into target/generated/ only. Skip copying to src/,
              license formatting, and git staging.
 ```
 
@@ -131,7 +130,7 @@ Options:
 1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
 2. Runs `openapi-generator-cli` (Java native HTTP client)
 3. Strips auto-generated OpenAPI comment blocks from Java files
-4. Copies generated `src/main/java/` and `docs/` into the module, then copies `common/` sources on top
+4. Copies generated `src/main/java/` into the module, then copies `common/` sources on top
 5. Applies Apache 2.0 license headers via `mvn license:format`
 6. Stages all changes with `git add`
 
@@ -145,6 +144,5 @@ Options:
 ### Replaced on regeneration
 
 - `<edition>/src/main/java/`
-- `<edition>/docs/`
 
 Output log: `generate-client.log` (overwritten on each run)
