@@ -15,6 +15,52 @@
 # limitations under the License.
 #
 
+#
+# Generates Java REST clients from OpenAPI specs using openapi-generator-cli.
+#
+# Usage:
+#   ./generate-client.sh [options] <edition> [base-url]
+#
+# Arguments:
+#   edition    ce | pe | paas | all
+#   base-url   Optional. Fetches spec from <base-url>/v3/api-docs/thingsboard
+#              and updates the local spec file before generation.
+#              Not supported with "all".
+#
+# Options:
+#   --verbose  Show full generator output (per-file writes, operations, etc.)
+#   --dry-run  Generate into target/generated/ only. Skip copying to src/docs,
+#              license formatting, and git staging.
+#
+# Examples:
+#   ./generate-client.sh ce                           # Generate CE from local spec
+#   ./generate-client.sh all                          # Generate all editions from local specs
+#   ./generate-client.sh ce http://localhost:8080      # Fetch spec from local TB, then generate
+#   ./generate-client.sh --dry-run ce                  # Generate to target/ only, don't touch src/
+#   ./generate-client.sh --verbose ce                  # Full output, no log filtering
+#
+# What it does:
+#   1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
+#   2. Runs openapi-generator-cli (Java native HTTP client)
+#   3. Strips auto-generated OpenAPI comment blocks from Java files
+#   4. Copies generated src/main/java/ and docs/ into the module (replaces previous)
+#   5. Applies Apache 2.0 license headers via mvn license:format
+#   6. Stages all changes with git add
+#
+# Preserved on regeneration:
+#   - <edition>/pom.xml
+#   - <edition>/src/test/  (tests are never touched)
+#   - <edition>/spec/openapi.json  (only updated when base-url is provided)
+#
+# Replaced on regeneration:
+#   - <edition>/src/main/java/
+#   - <edition>/docs/
+#
+# Output log: generate-client.log (overwritten on each run)
+#
+# Prerequisites: Node.js/npm, Java 25, Maven, Perl
+#
+
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
