@@ -124,7 +124,7 @@ public class CustomTimeSchedule extends AlarmSchedule {
 
 
   @Override
-  public CustomTimeSchedule type(@javax.annotation.Nonnull AlarmScheduleType type) {
+  public CustomTimeSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
     this.setType(type);
     return this;
   }

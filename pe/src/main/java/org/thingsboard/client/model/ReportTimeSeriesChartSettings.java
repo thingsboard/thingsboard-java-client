@@ -70,8 +70,8 @@ import org.thingsboard.client.ApiClient;
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_LABEL_COLOR,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_VALUE_FONT,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_VALUE_COLOR,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_XAXIS,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_YAXES,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_XAXIS,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_THRESHOLDS,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_GRID,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_Y_AXES,
@@ -158,13 +158,13 @@ public class ReportTimeSeriesChartSettings {
   @javax.annotation.Nullable
   private String legendValueColor;
 
-  public static final String JSON_PROPERTY_XAXIS = "xaxis";
-  @javax.annotation.Nullable
-  private TimeSeriesChartXAxisSettings xaxis;
-
   public static final String JSON_PROPERTY_YAXES = "yaxes";
   @javax.annotation.Nullable
   private Map<String, TimeSeriesChartYAxisSettings> yaxes = new HashMap<>();
+
+  public static final String JSON_PROPERTY_XAXIS = "xaxis";
+  @javax.annotation.Nullable
+  private TimeSeriesChartXAxisSettings xaxis;
 
   public static final String JSON_PROPERTY_THRESHOLDS = "thresholds";
   @javax.annotation.Nullable
@@ -589,30 +589,6 @@ public class ReportTimeSeriesChartSettings {
   }
 
 
-  public ReportTimeSeriesChartSettings xaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
-    this.xaxis = xaxis;
-    return this;
-  }
-
-  /**
-   * Get xaxis
-   * @return xaxis
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_XAXIS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TimeSeriesChartXAxisSettings getXaxis() {
-    return xaxis;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_XAXIS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setXaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
-    this.xaxis = xaxis;
-  }
-
-
   public ReportTimeSeriesChartSettings yaxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yaxes) {
     this.yaxes = yaxes;
     return this;
@@ -642,6 +618,30 @@ public class ReportTimeSeriesChartSettings {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setYaxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yaxes) {
     this.yaxes = yaxes;
+  }
+
+
+  public ReportTimeSeriesChartSettings xaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
+    this.xaxis = xaxis;
+    return this;
+  }
+
+  /**
+   * Get xaxis
+   * @return xaxis
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_XAXIS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TimeSeriesChartXAxisSettings getXaxis() {
+    return xaxis;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_XAXIS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setXaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
+    this.xaxis = xaxis;
   }
 
 
@@ -913,8 +913,8 @@ public class ReportTimeSeriesChartSettings {
         Objects.equals(this.legendLabelColor, reportTimeSeriesChartSettings.legendLabelColor) &&
         Objects.equals(this.legendValueFont, reportTimeSeriesChartSettings.legendValueFont) &&
         Objects.equals(this.legendValueColor, reportTimeSeriesChartSettings.legendValueColor) &&
-        Objects.equals(this.xaxis, reportTimeSeriesChartSettings.xaxis) &&
         Objects.equals(this.yaxes, reportTimeSeriesChartSettings.yaxes) &&
+        Objects.equals(this.xaxis, reportTimeSeriesChartSettings.xaxis) &&
         Objects.equals(this.thresholds, reportTimeSeriesChartSettings.thresholds) &&
         Objects.equals(this.grid, reportTimeSeriesChartSettings.grid) &&
         Objects.equals(this.yAxes, reportTimeSeriesChartSettings.yAxes) &&
@@ -928,7 +928,7 @@ public class ReportTimeSeriesChartSettings {
 
   @Override
   public int hashCode() {
-    return Objects.hash(showTitle, title, titleFont, titleColor, titleAlignment, stack, comparisonEnabled, timeForComparison, comparisonCustomIntervalValue, showLegend, legendColumnTitleFont, legendColumnTitleColor, legendLabelFont, legendLabelColor, legendValueFont, legendValueColor, xaxis, yaxes, thresholds, grid, yAxes, xAxis, barWidthSettings, noAggregationBarWidthSettings, states, comparisonXAxis, legendConfig);
+    return Objects.hash(showTitle, title, titleFont, titleColor, titleAlignment, stack, comparisonEnabled, timeForComparison, comparisonCustomIntervalValue, showLegend, legendColumnTitleFont, legendColumnTitleColor, legendLabelFont, legendLabelColor, legendValueFont, legendValueColor, yaxes, xaxis, thresholds, grid, yAxes, xAxis, barWidthSettings, noAggregationBarWidthSettings, states, comparisonXAxis, legendConfig);
   }
 
   @Override
@@ -951,8 +951,8 @@ public class ReportTimeSeriesChartSettings {
     sb.append("    legendLabelColor: ").append(toIndentedString(legendLabelColor)).append("\n");
     sb.append("    legendValueFont: ").append(toIndentedString(legendValueFont)).append("\n");
     sb.append("    legendValueColor: ").append(toIndentedString(legendValueColor)).append("\n");
-    sb.append("    xaxis: ").append(toIndentedString(xaxis)).append("\n");
     sb.append("    yaxes: ").append(toIndentedString(yaxes)).append("\n");
+    sb.append("    xaxis: ").append(toIndentedString(xaxis)).append("\n");
     sb.append("    thresholds: ").append(toIndentedString(thresholds)).append("\n");
     sb.append("    grid: ").append(toIndentedString(grid)).append("\n");
     sb.append("    yAxes: ").append(toIndentedString(yAxes)).append("\n");
@@ -1089,11 +1089,6 @@ public class ReportTimeSeriesChartSettings {
       joiner.add(String.format(java.util.Locale.ROOT, "%slegendValueColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendValueColor()))));
     }
 
-    // add `xaxis` to the URL query string
-    if (getXaxis() != null) {
-      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
-    }
-
     // add `yaxes` to the URL query string
     if (getYaxes() != null) {
       for (String _key : getYaxes().keySet()) {
@@ -1102,6 +1097,11 @@ public class ReportTimeSeriesChartSettings {
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
         }
       }
+    }
+
+    // add `xaxis` to the URL query string
+    if (getXaxis() != null) {
+      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
     }
 
     // add `thresholds` to the URL query string

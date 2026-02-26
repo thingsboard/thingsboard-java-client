@@ -46,8 +46,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   ComplexVersionCreateRequest.JSON_PROPERTY_SYNC_STRATEGY,
-  ComplexVersionCreateRequest.JSON_PROPERTY_ENTITY_TYPES,
-  ComplexVersionCreateRequest.JSON_PROPERTY_TYPE
+  ComplexVersionCreateRequest.JSON_PROPERTY_ENTITY_TYPES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -64,10 +63,6 @@ public class ComplexVersionCreateRequest extends VersionCreateRequest {
   public static final String JSON_PROPERTY_ENTITY_TYPES = "entityTypes";
   @javax.annotation.Nullable
   private Map<String, EntityTypeVersionCreateConfig> entityTypes = new HashMap<>();
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
-  private VersionCreateRequestType type = VersionCreateRequestType.COMPLEX;
 
   public ComplexVersionCreateRequest() { 
   }
@@ -128,30 +123,6 @@ public class ComplexVersionCreateRequest extends VersionCreateRequest {
   }
 
 
-  public ComplexVersionCreateRequest type(@javax.annotation.Nonnull VersionCreateRequestType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public VersionCreateRequestType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull VersionCreateRequestType type) {
-    this.type = type;
-  }
-
-
   @Override
   public ComplexVersionCreateRequest versionName(@javax.annotation.Nullable String versionName) {
     this.setVersionName(versionName);
@@ -161,6 +132,12 @@ public class ComplexVersionCreateRequest extends VersionCreateRequest {
   @Override
   public ComplexVersionCreateRequest branch(@javax.annotation.Nullable String branch) {
     this.setBranch(branch);
+    return this;
+  }
+
+  @Override
+  public ComplexVersionCreateRequest type(@javax.annotation.Nonnull VersionCreateRequestType type) {
+    this.setType(type);
     return this;
   }
 
@@ -178,13 +155,12 @@ public class ComplexVersionCreateRequest extends VersionCreateRequest {
     ComplexVersionCreateRequest complexVersionCreateRequest = (ComplexVersionCreateRequest) o;
     return Objects.equals(this.syncStrategy, complexVersionCreateRequest.syncStrategy) &&
         Objects.equals(this.entityTypes, complexVersionCreateRequest.entityTypes) &&
-        Objects.equals(this.type, complexVersionCreateRequest.type) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(syncStrategy, entityTypes, type, super.hashCode());
+    return Objects.hash(syncStrategy, entityTypes, super.hashCode());
   }
 
   @Override
@@ -194,7 +170,6 @@ public class ComplexVersionCreateRequest extends VersionCreateRequest {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    syncStrategy: ").append(toIndentedString(syncStrategy)).append("\n");
     sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

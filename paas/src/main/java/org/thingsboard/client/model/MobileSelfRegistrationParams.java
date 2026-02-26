@@ -699,6 +699,11 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       joiner.add(getNotificationRecipient().toUrlQueryString(prefix + "notificationRecipient" + suffix));
     }
 
+    // add `captcha` to the URL query string
+    if (getCaptcha() != null) {
+      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    }
+
     // add `signUpFields` to the URL query string
     if (getSignUpFields() != null) {
       for (int i = 0; i < getSignUpFields().size(); i++) {
@@ -727,11 +732,6 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
     // add `customerGroupId` to the URL query string
     if (getCustomerGroupId() != null) {
       joiner.add(getCustomerGroupId().toUrlQueryString(prefix + "customerGroupId" + suffix));
-    }
-
-    // add `captcha` to the URL query string
-    if (getCaptcha() != null) {
-      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
     }
 
     // add `privacyPolicy` to the URL query string

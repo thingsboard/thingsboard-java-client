@@ -143,12 +143,6 @@ public class ResourcesShortageNotificationRuleTriggerConfig extends Notification
   }
 
 
-  @Override
-  public ResourcesShortageNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
-
   /**
    * Return true if this ResourcesShortageNotificationRuleTriggerConfig object is equal to o.
    */

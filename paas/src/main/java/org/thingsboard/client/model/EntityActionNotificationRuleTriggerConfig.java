@@ -182,12 +182,6 @@ public class EntityActionNotificationRuleTriggerConfig extends NotificationRuleT
   }
 
 
-  @Override
-  public EntityActionNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
-
   /**
    * Return true if this EntityActionNotificationRuleTriggerConfig object is equal to o.
    */

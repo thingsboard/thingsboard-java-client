@@ -58,6 +58,7 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "EDGE_CONNECTION"),
   @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "ENTITIES_LIMIT"),
   @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "ENTITY_ACTION"),
+  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "INTEGRATION_LIFECYCLE_EVENT"),
   @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "NEW_PLATFORM_VERSION"),
   @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "RATE_LIMITS"),
   @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "RESOURCES_SHORTAGE"),
@@ -188,6 +189,7 @@ static {
   mappings.put("EDGE_CONNECTION", DefaultNotificationRuleRecipientsConfig.class);
   mappings.put("ENTITIES_LIMIT", DefaultNotificationRuleRecipientsConfig.class);
   mappings.put("ENTITY_ACTION", DefaultNotificationRuleRecipientsConfig.class);
+  mappings.put("INTEGRATION_LIFECYCLE_EVENT", DefaultNotificationRuleRecipientsConfig.class);
   mappings.put("NEW_PLATFORM_VERSION", DefaultNotificationRuleRecipientsConfig.class);
   mappings.put("RATE_LIMITS", DefaultNotificationRuleRecipientsConfig.class);
   mappings.put("RESOURCES_SHORTAGE", DefaultNotificationRuleRecipientsConfig.class);

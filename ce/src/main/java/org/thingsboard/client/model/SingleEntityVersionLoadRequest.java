@@ -44,8 +44,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   SingleEntityVersionLoadRequest.JSON_PROPERTY_EXTERNAL_ENTITY_ID,
-  SingleEntityVersionLoadRequest.JSON_PROPERTY_CONFIG,
-  SingleEntityVersionLoadRequest.JSON_PROPERTY_TYPE
+  SingleEntityVersionLoadRequest.JSON_PROPERTY_CONFIG
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -62,10 +61,6 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
   public static final String JSON_PROPERTY_CONFIG = "config";
   @javax.annotation.Nullable
   private VersionLoadConfig config;
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
-  private VersionLoadRequestType type = VersionLoadRequestType.SINGLE_ENTITY;
 
   public SingleEntityVersionLoadRequest() { 
   }
@@ -118,33 +113,15 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
   }
 
 
-  public SingleEntityVersionLoadRequest type(@javax.annotation.Nonnull VersionLoadRequestType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public VersionLoadRequestType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull VersionLoadRequestType type) {
-    this.type = type;
-  }
-
-
   @Override
   public SingleEntityVersionLoadRequest versionId(@javax.annotation.Nullable String versionId) {
     this.setVersionId(versionId);
+    return this;
+  }
+
+  @Override
+  public SingleEntityVersionLoadRequest type(@javax.annotation.Nonnull VersionLoadRequestType type) {
+    this.setType(type);
     return this;
   }
 
@@ -162,13 +139,12 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
     SingleEntityVersionLoadRequest singleEntityVersionLoadRequest = (SingleEntityVersionLoadRequest) o;
     return Objects.equals(this.externalEntityId, singleEntityVersionLoadRequest.externalEntityId) &&
         Objects.equals(this.config, singleEntityVersionLoadRequest.config) &&
-        Objects.equals(this.type, singleEntityVersionLoadRequest.type) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(externalEntityId, config, type, super.hashCode());
+    return Objects.hash(externalEntityId, config, super.hashCode());
   }
 
   @Override
@@ -178,7 +154,6 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    externalEntityId: ").append(toIndentedString(externalEntityId)).append("\n");
     sb.append("    config: ").append(toIndentedString(config)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

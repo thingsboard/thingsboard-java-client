@@ -41,7 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * Configuration for calculated fields
+ * Output
  */
 @JsonPropertyOrder({
   Output.JSON_PROPERTY_NAME,

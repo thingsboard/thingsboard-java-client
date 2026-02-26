@@ -44,8 +44,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   SingleEntityVersionCreateRequest.JSON_PROPERTY_ENTITY_ID,
-  SingleEntityVersionCreateRequest.JSON_PROPERTY_CONFIG,
-  SingleEntityVersionCreateRequest.JSON_PROPERTY_TYPE
+  SingleEntityVersionCreateRequest.JSON_PROPERTY_CONFIG
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -62,10 +61,6 @@ public class SingleEntityVersionCreateRequest extends VersionCreateRequest {
   public static final String JSON_PROPERTY_CONFIG = "config";
   @javax.annotation.Nullable
   private VersionCreateConfig config;
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
-  private VersionCreateRequestType type = VersionCreateRequestType.SINGLE_ENTITY;
 
   public SingleEntityVersionCreateRequest() { 
   }
@@ -118,30 +113,6 @@ public class SingleEntityVersionCreateRequest extends VersionCreateRequest {
   }
 
 
-  public SingleEntityVersionCreateRequest type(@javax.annotation.Nonnull VersionCreateRequestType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public VersionCreateRequestType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull VersionCreateRequestType type) {
-    this.type = type;
-  }
-
-
   @Override
   public SingleEntityVersionCreateRequest versionName(@javax.annotation.Nullable String versionName) {
     this.setVersionName(versionName);
@@ -151,6 +122,12 @@ public class SingleEntityVersionCreateRequest extends VersionCreateRequest {
   @Override
   public SingleEntityVersionCreateRequest branch(@javax.annotation.Nullable String branch) {
     this.setBranch(branch);
+    return this;
+  }
+
+  @Override
+  public SingleEntityVersionCreateRequest type(@javax.annotation.Nonnull VersionCreateRequestType type) {
+    this.setType(type);
     return this;
   }
 
@@ -168,13 +145,12 @@ public class SingleEntityVersionCreateRequest extends VersionCreateRequest {
     SingleEntityVersionCreateRequest singleEntityVersionCreateRequest = (SingleEntityVersionCreateRequest) o;
     return Objects.equals(this.entityId, singleEntityVersionCreateRequest.entityId) &&
         Objects.equals(this.config, singleEntityVersionCreateRequest.config) &&
-        Objects.equals(this.type, singleEntityVersionCreateRequest.type) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityId, config, type, super.hashCode());
+    return Objects.hash(entityId, config, super.hashCode());
   }
 
   @Override
@@ -184,7 +160,6 @@ public class SingleEntityVersionCreateRequest extends VersionCreateRequest {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
     sb.append("    config: ").append(toIndentedString(config)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

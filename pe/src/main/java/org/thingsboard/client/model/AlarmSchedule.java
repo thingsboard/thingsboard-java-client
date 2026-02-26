@@ -58,7 +58,7 @@ import org.thingsboard.client.ApiClient;
 
 public class AlarmSchedule {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private AlarmScheduleType type;
 
   public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
@@ -68,26 +68,26 @@ public class AlarmSchedule {
   public AlarmSchedule() { 
   }
 
-  public AlarmSchedule type(@javax.annotation.Nonnull AlarmScheduleType type) {
+  public AlarmSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
     this.type = type;
     return this;
   }
 
   /**
-   * Type of the alarm schedule
+   * Get type
    * @return type
    */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmScheduleType getType() {
     return type;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull AlarmScheduleType type) {
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(@javax.annotation.Nullable AlarmScheduleType type) {
     this.type = type;
   }
 

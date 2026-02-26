@@ -250,9 +250,6 @@ public class OtaPackageApiTest extends AbstractApiTest {
         updateReq.setType(saved.getType());
         updateReq.setVersion(saved.getVersion());
         updateReq.setDeviceProfileId(saved.getDeviceProfileId());
-        updateReq.setChecksumAlgorithm(saved.getChecksumAlgorithm());
-        updateReq.setContentType(saved.getContentType());
-        updateReq.setFileName(saved.getFileName());
         updateReq.setUrl(saved.getUrl());
         updateReq.setAdditionalInfo(OBJECT_MAPPER.createObjectNode().put("infoKey", "infoValue"));
 

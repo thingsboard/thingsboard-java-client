@@ -58,8 +58,8 @@ import org.thingsboard.client.ApiClient;
   TenantInfo.JSON_PROPERTY_EDGE_LICENSE_VERSION,
   TenantInfo.JSON_PROPERTY_TENANT_PROFILE_NAME,
   TenantInfo.JSON_PROPERTY_NAME,
-  TenantInfo.JSON_PROPERTY_ADDITIONAL_INFO,
-  TenantInfo.JSON_PROPERTY_ADDON_DATA
+  TenantInfo.JSON_PROPERTY_ADDON_DATA,
+  TenantInfo.JSON_PROPERTY_ADDITIONAL_INFO
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantInfo {
@@ -143,13 +143,13 @@ public class TenantInfo {
   @javax.annotation.Nullable
   private String name;
 
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
-
   public static final String JSON_PROPERTY_ADDON_DATA = "addonData";
   @javax.annotation.Nullable
   private TenantAddonData addonData;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public TenantInfo() { 
   }
@@ -624,30 +624,6 @@ public class TenantInfo {
 
 
 
-  public TenantInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the device
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   public TenantInfo addonData(@javax.annotation.Nullable TenantAddonData addonData) {
     this.addonData = addonData;
     return this;
@@ -669,6 +645,30 @@ public class TenantInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAddonData(@javax.annotation.Nullable TenantAddonData addonData) {
     this.addonData = addonData;
+  }
+
+
+  public TenantInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the device
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
   }
 
 
@@ -704,13 +704,13 @@ public class TenantInfo {
         Objects.equals(this.edgeLicenseVersion, tenantInfo.edgeLicenseVersion) &&
         Objects.equals(this.tenantProfileName, tenantInfo.tenantProfileName) &&
         Objects.equals(this.name, tenantInfo.name) &&
-        Objects.equals(this.additionalInfo, tenantInfo.additionalInfo) &&
-        Objects.equals(this.addonData, tenantInfo.addonData);
+        Objects.equals(this.addonData, tenantInfo.addonData) &&
+        Objects.equals(this.additionalInfo, tenantInfo.additionalInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, region, tenantProfileId, version, active, lastInactiveTs, currentPeriodStartTs, edgeLicenseVersion, tenantProfileName, name, additionalInfo, addonData);
+    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, region, tenantProfileId, version, active, lastInactiveTs, currentPeriodStartTs, edgeLicenseVersion, tenantProfileName, name, addonData, additionalInfo);
   }
 
   @Override
@@ -737,8 +737,8 @@ public class TenantInfo {
     sb.append("    edgeLicenseVersion: ").append(toIndentedString(edgeLicenseVersion)).append("\n");
     sb.append("    tenantProfileName: ").append(toIndentedString(tenantProfileName)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    addonData: ").append(toIndentedString(addonData)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -886,14 +886,14 @@ public class TenantInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
-    }
-
     // add `addonData` to the URL query string
     if (getAddonData() != null) {
       joiner.add(getAddonData().toUrlQueryString(prefix + "addonData" + suffix));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

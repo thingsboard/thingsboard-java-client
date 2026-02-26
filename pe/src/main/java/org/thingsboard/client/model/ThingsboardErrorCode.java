@@ -57,6 +57,8 @@ public enum ThingsboardErrorCode {
   
   NUMBER_40(new BigDecimal("40")),
   
+  NUMBER_41(new BigDecimal("41")),
+  
   NUMBER_45(new BigDecimal("45")),
   
   NUMBER_46(new BigDecimal("46"));
