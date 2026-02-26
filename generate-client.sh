@@ -161,6 +161,13 @@ generate() {
     cp -r "$output_dir/src/main/java/"* "$module_dir/src/main/java/"
     cp -r "$output_dir/docs" "$module_dir/"
     echo "Copied src and docs to $module_dir"
+
+    # Copy common sources (ThingsboardClient, etc.)
+    local common_src="$SCRIPT_DIR/common/src/main/java"
+    if [ -d "$common_src" ]; then
+      cp -r "$common_src/"* "$module_dir/src/main/java/"
+      echo "Copied common sources to $module_dir"
+    fi
   fi
 }
 
