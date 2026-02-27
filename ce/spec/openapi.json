@@ -47484,7 +47484,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "W5A2SHXzH4uUsc1TUTppS7jwSkAo5G"
+                      "resetToken": "8hFN4M6FOEYYydE0mqJYuIwZulLtT0"
                     }
                   }
                 }
@@ -47594,7 +47594,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "W5A2SHXzH4uUsc1TUTppS7jwSkAo5G"
+                      "resetToken": "8hFN4M6FOEYYydE0mqJYuIwZulLtT0"
                     }
                   }
                 }
@@ -83031,6 +83031,16 @@
           "provider"
         ]
       },
+      "AiModelExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
+      },
       "AiModelId": {
         "type": "object",
         "properties": {
@@ -83261,8 +83271,31 @@
           "triggerType"
         ]
       },
-      "AlarmCalculatedFieldConfiguration": {
+      "AlarmAssignmentRecipientsConfig": {
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
+      "AlarmCalculatedFieldConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CalculatedFieldConfiguration"
@@ -83461,6 +83494,30 @@
         ],
         "required": [
           "triggerType"
+        ]
+      },
+      "AlarmCommentRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
         ]
       },
       "AlarmCommentType": {
@@ -84183,7 +84240,6 @@
         ]
       },
       "AlarmRuleBooleanFilterPredicate": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
@@ -84338,7 +84394,6 @@
         ]
       },
       "AlarmRuleDurationCondition": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/AlarmRuleCondition"
@@ -84383,7 +84438,6 @@
         ]
       },
       "AlarmRuleNoDataFilterPredicate": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
@@ -84406,7 +84460,6 @@
         ]
       },
       "AlarmRuleNumericFilterPredicate": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
@@ -84429,7 +84482,6 @@
         ]
       },
       "AlarmRuleRepeatingCondition": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/AlarmRuleCondition"
@@ -84467,7 +84519,6 @@
         ]
       },
       "AlarmRuleSimpleCondition": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/AlarmRuleCondition"
@@ -84509,7 +84560,6 @@
         ]
       },
       "AlarmRuleStringFilterPredicate": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
@@ -85020,6 +85070,30 @@
           "triggerType"
         ]
       },
+      "ApiUsageLimitRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "ApiUsageStateFilter": {
         "allOf": [
           {
@@ -85130,6 +85204,16 @@
         },
         "required": [
           "name"
+        ]
+      },
+      "AssetExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "AssetId": {
@@ -85284,6 +85368,16 @@
             "description": "Used to mark the default profile. Default profile is used when the asset profile is not specified during asset creation."
           }
         }
+      },
+      "AssetProfileExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
       },
       "AssetProfileId": {
         "type": "object",
@@ -86990,6 +87084,16 @@
           "title"
         ]
       },
+      "CustomerExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
+      },
       "CustomerId": {
         "type": "object",
         "properties": {
@@ -87102,6 +87206,16 @@
         },
         "required": [
           "title"
+        ]
+      },
+      "DashboardExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "DashboardId": {
@@ -87294,7 +87408,6 @@
         ]
       },
       "DefaultDeviceConfiguration": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/DeviceConfiguration"
@@ -87372,9 +87485,6 @@
           {
             "type": "object",
             "properties": {
-              "triggerType": {
-                "$ref": "#/components/schemas/NotificationRuleTriggerType"
-              },
               "targets": {
                 "type": "array",
                 "items": {
@@ -87388,8 +87498,7 @@
         ],
         "description": "Default notification rule recipients configuration",
         "required": [
-          "targets",
-          "triggerType"
+          "targets"
         ]
       },
       "DefaultPageId": {
@@ -87893,6 +88002,30 @@
           "triggerType"
         ]
       },
+      "DeviceActivityRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "DeviceConfiguration": {
         "type": "object",
         "description": "Device configuration",
@@ -88311,6 +88444,16 @@
           }
         }
       },
+      "DeviceProfileExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
+      },
       "DeviceProfileId": {
         "type": "object",
         "properties": {
@@ -88659,7 +88802,6 @@
         ]
       },
       "DummyJobConfiguration": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/JobConfiguration"
@@ -88958,6 +89100,30 @@
           "triggerType"
         ]
       },
+      "EdgeCommunicationFailureRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "EdgeConnectionNotificationRuleTriggerConfig": {
         "allOf": [
           {
@@ -88986,6 +89152,30 @@
         ],
         "required": [
           "triggerType"
+        ]
+      },
+      "EdgeConnectionRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
         ]
       },
       "EdgeConnectivityEvent": {
@@ -89439,6 +89629,30 @@
           "triggerType"
         ]
       },
+      "EntitiesLimitRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "EntityActionNotificationRuleTriggerConfig": {
         "allOf": [
           {
@@ -89470,8 +89684,31 @@
           "triggerType"
         ]
       },
-      "EntityAggregationCalculatedFieldConfiguration": {
+      "EntityActionRecipientsConfig": {
         "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
+      "EntityAggregationCalculatedFieldConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CalculatedFieldConfiguration"
@@ -90230,6 +90467,16 @@
           "type"
         ]
       },
+      "EntityViewExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
+      },
       "EntityViewId": {
         "type": "object",
         "properties": {
@@ -90448,7 +90695,6 @@
         ]
       },
       "EscalatedNotificationRuleRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
@@ -90601,6 +90847,12 @@
       "FeaturesInfo": {
         "type": "object",
         "properties": {
+          "smsEnabled": {
+            "type": "boolean"
+          },
+          "oauthEnabled": {
+            "type": "boolean"
+          },
           "notificationEnabled": {
             "type": "boolean"
           },
@@ -90608,12 +90860,6 @@
             "type": "boolean"
           },
           "emailEnabled": {
-            "type": "boolean"
-          },
-          "smsEnabled": {
-            "type": "boolean"
-          },
-          "oauthEnabled": {
             "type": "boolean"
           }
         }
@@ -90695,7 +90941,6 @@
         }
       },
       "GeofencingCalculatedFieldConfiguration": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/CalculatedFieldConfiguration"
@@ -92523,6 +92768,30 @@
           "triggerType"
         ]
       },
+      "NewPlatformVersionRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "NoSecLwM2MBootstrapServerCredential": {
         "allOf": [
           {
@@ -93048,6 +93317,16 @@
           }
         }
       },
+      "NotificationRuleExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
+      },
       "NotificationRuleId": {
         "type": "object",
         "properties": {
@@ -93132,20 +93411,20 @@
         "discriminator": {
           "propertyName": "triggerType",
           "mapping": {
-            "ENTITY_ACTION": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
+            "ENTITY_ACTION": "#/components/schemas/EntityActionRecipientsConfig",
             "ALARM": "#/components/schemas/EscalatedNotificationRuleRecipientsConfig",
-            "ALARM_COMMENT": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "ALARM_ASSIGNMENT": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "DEVICE_ACTIVITY": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "EDGE_CONNECTION": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "EDGE_COMMUNICATION_FAILURE": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "NEW_PLATFORM_VERSION": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "ENTITIES_LIMIT": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "API_USAGE_LIMIT": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "RATE_LIMITS": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "TASK_PROCESSING_FAILURE": "#/components/schemas/DefaultNotificationRuleRecipientsConfig",
-            "RESOURCES_SHORTAGE": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "ALARM_COMMENT": "#/components/schemas/AlarmCommentRecipientsConfig",
+            "ALARM_ASSIGNMENT": "#/components/schemas/AlarmAssignmentRecipientsConfig",
+            "DEVICE_ACTIVITY": "#/components/schemas/DeviceActivityRecipientsConfig",
+            "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT": "#/components/schemas/RuleEngineComponentLifecycleEventRecipientsConfig",
+            "EDGE_CONNECTION": "#/components/schemas/EdgeConnectionRecipientsConfig",
+            "EDGE_COMMUNICATION_FAILURE": "#/components/schemas/EdgeCommunicationFailureRecipientsConfig",
+            "NEW_PLATFORM_VERSION": "#/components/schemas/NewPlatformVersionRecipientsConfig",
+            "ENTITIES_LIMIT": "#/components/schemas/EntitiesLimitRecipientsConfig",
+            "API_USAGE_LIMIT": "#/components/schemas/ApiUsageLimitRecipientsConfig",
+            "RATE_LIMITS": "#/components/schemas/RateLimitsRecipientsConfig",
+            "TASK_PROCESSING_FAILURE": "#/components/schemas/TaskProcessingFailureRecipientsConfig",
+            "RESOURCES_SHORTAGE": "#/components/schemas/ResourceShortageRecipientsConfig"
           }
         },
         "properties": {
@@ -93279,6 +93558,16 @@
           "type"
         ]
       },
+      "NotificationTargetExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
+      },
       "NotificationTargetId": {
         "type": "object",
         "properties": {
@@ -93348,6 +93637,16 @@
         },
         "required": [
           "deliveryMethodsTemplates"
+        ]
+      },
+      "NotificationTemplateExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
         ]
       },
       "NotificationTemplateId": {
@@ -96239,7 +96538,6 @@
         ]
       },
       "PropagationCalculatedFieldConfiguration": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/CalculatedFieldConfiguration"
@@ -96650,6 +96948,30 @@
           "triggerType"
         ]
       },
+      "RateLimitsRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "ReferencedEntityKey": {
         "type": "object",
         "properties": {
@@ -96665,7 +96987,6 @@
         }
       },
       "RelatedEntitiesAggregationCalculatedFieldConfiguration": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/CalculatedFieldConfiguration"
@@ -97003,6 +97324,30 @@
             "type": "boolean"
           }
         }
+      },
+      "ResourceShortageRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
       },
       "ResourceSubType": {
         "type": "string",
@@ -97492,6 +97837,30 @@
           "triggerType"
         ]
       },
+      "RuleEngineComponentLifecycleEventRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "RuleNode": {
         "type": "object",
         "properties": {
@@ -97782,7 +98151,6 @@
         }
       },
       "ScriptCalculatedFieldConfiguration": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/CalculatedFieldConfiguration"
@@ -97931,7 +98299,6 @@
         ]
       },
       "SimpleCalculatedFieldConfiguration": {
-        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/CalculatedFieldConfiguration"
@@ -98678,6 +99045,30 @@
           "triggerType"
         ]
       },
+      "TaskProcessingFailureRecipientsConfig": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "targets": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        ],
+        "required": [
+          "targets"
+        ]
+      },
       "TaskResult": {
         "type": "object",
         "discriminator": {
@@ -98855,11 +99246,11 @@
           "public": {
             "type": "boolean"
           },
-          "link": {
+          "publicLink": {
             "type": "string",
             "readOnly": true
           },
-          "publicLink": {
+          "link": {
             "type": "string",
             "readOnly": true
           }
@@ -98881,6 +99272,16 @@
             }
           }
         }
+      },
+      "TbResourceExportData": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
+          }
+        ],
+        "required": [
+          "entityType"
+        ]
       },
       "TbResourceId": {
         "type": "object",
@@ -98971,11 +99372,11 @@
           "public": {
             "type": "boolean"
           },
-          "link": {
+          "publicLink": {
             "type": "string",
             "readOnly": true
           },
-          "publicLink": {
+          "link": {
             "type": "string",
             "readOnly": true
           }

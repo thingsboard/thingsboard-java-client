@@ -29,12 +29,11 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import org.thingsboard.client.model.EntityType;
-import org.thingsboard.client.model.NotificationRuleTriggerConfig;
+import java.util.List;
+import java.util.UUID;
+import org.thingsboard.client.model.DefaultNotificationRuleRecipientsConfig;
 import org.thingsboard.client.model.NotificationRuleTriggerType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -42,11 +41,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * EntitiesLimitNotificationRuleTriggerConfig
+ * EntitiesLimitRecipientsConfig
  */
 @JsonPropertyOrder({
-  EntitiesLimitNotificationRuleTriggerConfig.JSON_PROPERTY_ENTITY_TYPES,
-  EntitiesLimitNotificationRuleTriggerConfig.JSON_PROPERTY_THRESHOLD
+  EntitiesLimitRecipientsConfig.JSON_PROPERTY_TARGETS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -55,84 +53,54 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "triggerType", visible = true)
 
-public class EntitiesLimitNotificationRuleTriggerConfig extends NotificationRuleTriggerConfig {
-  public static final String JSON_PROPERTY_ENTITY_TYPES = "entityTypes";
-  @javax.annotation.Nullable
-  private Set<EntityType> entityTypes = new LinkedHashSet<>();
+public class EntitiesLimitRecipientsConfig extends DefaultNotificationRuleRecipientsConfig {
+  public static final String JSON_PROPERTY_TARGETS = "targets";
+  @javax.annotation.Nonnull
+  private List<UUID> targets = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_THRESHOLD = "threshold";
-  @javax.annotation.Nullable
-  private Float threshold;
-
-  public EntitiesLimitNotificationRuleTriggerConfig() { 
+  public EntitiesLimitRecipientsConfig() { 
   }
 
-  public EntitiesLimitNotificationRuleTriggerConfig entityTypes(@javax.annotation.Nullable Set<EntityType> entityTypes) {
-    this.entityTypes = entityTypes;
+  public EntitiesLimitRecipientsConfig targets(@javax.annotation.Nonnull List<UUID> targets) {
+    this.targets = targets;
     return this;
   }
 
-  public EntitiesLimitNotificationRuleTriggerConfig addEntityTypesItem(EntityType entityTypesItem) {
-    if (this.entityTypes == null) {
-      this.entityTypes = new LinkedHashSet<>();
+  public EntitiesLimitRecipientsConfig addTargetsItem(UUID targetsItem) {
+    if (this.targets == null) {
+      this.targets = new ArrayList<>();
     }
-    this.entityTypes.add(entityTypesItem);
+    this.targets.add(targetsItem);
     return this;
   }
 
   /**
-   * Get entityTypes
-   * @return entityTypes
+   * Get targets
+   * @return targets
    */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Set<EntityType> getEntityTypes() {
-    return entityTypes;
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TARGETS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public List<UUID> getTargets() {
+    return targets;
   }
 
 
-  @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityTypes(@javax.annotation.Nullable Set<EntityType> entityTypes) {
-    this.entityTypes = entityTypes;
-  }
-
-
-  public EntitiesLimitNotificationRuleTriggerConfig threshold(@javax.annotation.Nullable Float threshold) {
-    this.threshold = threshold;
-    return this;
-  }
-
-  /**
-   * Get threshold
-   * maximum: 1
-   * @return threshold
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_THRESHOLD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Float getThreshold() {
-    return threshold;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_THRESHOLD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setThreshold(@javax.annotation.Nullable Float threshold) {
-    this.threshold = threshold;
+  @JsonProperty(value = JSON_PROPERTY_TARGETS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTargets(@javax.annotation.Nonnull List<UUID> targets) {
+    this.targets = targets;
   }
 
 
   @Override
-  public EntitiesLimitNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public EntitiesLimitRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }
 
   /**
-   * Return true if this EntitiesLimitNotificationRuleTriggerConfig object is equal to o.
+   * Return true if this EntitiesLimitRecipientsConfig object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -142,24 +110,22 @@ public class EntitiesLimitNotificationRuleTriggerConfig extends NotificationRule
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EntitiesLimitNotificationRuleTriggerConfig entitiesLimitNotificationRuleTriggerConfig = (EntitiesLimitNotificationRuleTriggerConfig) o;
-    return Objects.equals(this.entityTypes, entitiesLimitNotificationRuleTriggerConfig.entityTypes) &&
-        Objects.equals(this.threshold, entitiesLimitNotificationRuleTriggerConfig.threshold) &&
+    EntitiesLimitRecipientsConfig entitiesLimitRecipientsConfig = (EntitiesLimitRecipientsConfig) o;
+    return Objects.equals(this.targets, entitiesLimitRecipientsConfig.targets) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityTypes, threshold, super.hashCode());
+    return Objects.hash(targets, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EntitiesLimitNotificationRuleTriggerConfig {\n");
+    sb.append("class EntitiesLimitRecipientsConfig {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
-    sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
+    sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -212,22 +178,15 @@ public class EntitiesLimitNotificationRuleTriggerConfig extends NotificationRule
       joiner.add(String.format(java.util.Locale.ROOT, "%striggerType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTriggerType()))));
     }
 
-    // add `entityTypes` to the URL query string
-    if (getEntityTypes() != null) {
-      int i = 0;
-      for (EntityType _item : getEntityTypes()) {
-        if (_item != null) {
-          joiner.add(String.format(java.util.Locale.ROOT, "%sentityTypes%s%s=%s", prefix, suffix,
+    // add `targets` to the URL query string
+    if (getTargets() != null) {
+      for (int i = 0; i < getTargets().size(); i++) {
+        if (getTargets().get(i) != null) {
+          joiner.add(String.format(java.util.Locale.ROOT, "%stargets%s%s=%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
-              ApiClient.urlEncode(ApiClient.valueToString(_item))));
+              ApiClient.urlEncode(ApiClient.valueToString(getTargets().get(i)))));
         }
-        i++;
       }
-    }
-
-    // add `threshold` to the URL query string
-    if (getThreshold() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sthreshold%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getThreshold()))));
     }
 
     return joiner.toString();
@@ -235,8 +194,8 @@ public class EntitiesLimitNotificationRuleTriggerConfig extends NotificationRule
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("EntitiesLimitNotificationRuleTriggerConfig", EntitiesLimitNotificationRuleTriggerConfig.class);
-  JSON.registerDiscriminator(EntitiesLimitNotificationRuleTriggerConfig.class, "triggerType", mappings);
+  mappings.put("EntitiesLimitRecipientsConfig", EntitiesLimitRecipientsConfig.class);
+  JSON.registerDiscriminator(EntitiesLimitRecipientsConfig.class, "triggerType", mappings);
 }
 }
 

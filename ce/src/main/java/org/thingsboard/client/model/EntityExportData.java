@@ -66,6 +66,17 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = RuleChainExportData.class, name = "RULE_CHAIN"),
   @JsonSubTypes.Type(value = WidgetsBundleExportData.class, name = "WIDGETS_BUNDLE"),
   @JsonSubTypes.Type(value = WidgetTypeExportData.class, name = "WIDGET_TYPE"),
+  @JsonSubTypes.Type(value = AiModelExportData.class, name = "AiModelExportData"),
+  @JsonSubTypes.Type(value = AssetExportData.class, name = "AssetExportData"),
+  @JsonSubTypes.Type(value = AssetProfileExportData.class, name = "AssetProfileExportData"),
+  @JsonSubTypes.Type(value = CustomerExportData.class, name = "CustomerExportData"),
+  @JsonSubTypes.Type(value = DashboardExportData.class, name = "DashboardExportData"),
+  @JsonSubTypes.Type(value = DeviceProfileExportData.class, name = "DeviceProfileExportData"),
+  @JsonSubTypes.Type(value = EntityViewExportData.class, name = "EntityViewExportData"),
+  @JsonSubTypes.Type(value = NotificationRuleExportData.class, name = "NotificationRuleExportData"),
+  @JsonSubTypes.Type(value = NotificationTargetExportData.class, name = "NotificationTargetExportData"),
+  @JsonSubTypes.Type(value = NotificationTemplateExportData.class, name = "NotificationTemplateExportData"),
+  @JsonSubTypes.Type(value = TbResourceExportData.class, name = "TbResourceExportData"),
 })
 
 public class EntityExportData {
@@ -365,6 +376,17 @@ static {
   mappings.put("RULE_CHAIN", RuleChainExportData.class);
   mappings.put("WIDGETS_BUNDLE", WidgetsBundleExportData.class);
   mappings.put("WIDGET_TYPE", WidgetTypeExportData.class);
+  mappings.put("AiModelExportData", AiModelExportData.class);
+  mappings.put("AssetExportData", AssetExportData.class);
+  mappings.put("AssetProfileExportData", AssetProfileExportData.class);
+  mappings.put("CustomerExportData", CustomerExportData.class);
+  mappings.put("DashboardExportData", DashboardExportData.class);
+  mappings.put("DeviceProfileExportData", DeviceProfileExportData.class);
+  mappings.put("EntityViewExportData", EntityViewExportData.class);
+  mappings.put("NotificationRuleExportData", NotificationRuleExportData.class);
+  mappings.put("NotificationTargetExportData", NotificationTargetExportData.class);
+  mappings.put("NotificationTemplateExportData", NotificationTemplateExportData.class);
+  mappings.put("TbResourceExportData", TbResourceExportData.class);
   mappings.put("EntityExportData", EntityExportData.class);
   JSON.registerDiscriminator(EntityExportData.class, "entityType", mappings);
 }
