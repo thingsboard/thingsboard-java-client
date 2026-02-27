@@ -17,6 +17,13 @@ package org.thingsboard.client.api;
 
 import org.junit.jupiter.api.Test;
 import org.thingsboard.client.ApiException;
+import org.thingsboard.client.model.AlarmCalculatedFieldConfiguration;
+import org.thingsboard.client.model.AlarmConditionValueAlarmRuleSchedule;
+import org.thingsboard.client.model.AlarmRuleDefinition;
+import org.thingsboard.client.model.AlarmRuleSchedule;
+import org.thingsboard.client.model.AlarmRuleSimpleCondition;
+import org.thingsboard.client.model.AlarmRuleSpecificTimeSchedule;
+import org.thingsboard.client.model.AlarmSeverity;
 import org.thingsboard.client.model.Argument;
 import org.thingsboard.client.model.ArgumentType;
 import org.thingsboard.client.model.CalculatedField;
@@ -27,14 +34,18 @@ import org.thingsboard.client.model.EntityType;
 import org.thingsboard.client.model.PageDataCalculatedField;
 import org.thingsboard.client.model.ReferencedEntityKey;
 import org.thingsboard.client.model.SimpleCalculatedFieldConfiguration;
+import org.thingsboard.client.model.TbelAlarmConditionExpression;
 import org.thingsboard.client.model.TimeSeriesOutput;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class CalculatedFieldApiTest extends AbstractApiTest {
@@ -170,6 +181,118 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
                 EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(),
                 100, 0, null, null, null, null);
         assertEquals(4, device1FieldsAfterDelete.getData().size());
+    }
+
+    @Test
+    void testAlarmCalculatedFieldLifecycle() throws ApiException {
+        long timestamp = System.currentTimeMillis();
+
+        // create a device to attach the alarm calculated field to
+        Device device = new Device();
+        device.setName("AlarmCalcFieldDevice_" + timestamp);
+        device.setType("default");
+        Device createdDevice = client.saveDevice(device, null, null, null, null, null);
+
+        // build the alarm calculated field configuration
+        AlarmCalculatedFieldConfiguration config = new AlarmCalculatedFieldConfiguration();
+
+        // argument: temperature time-series
+        Argument tempArg = new Argument();
+        ReferencedEntityKey refKey = new ReferencedEntityKey();
+        refKey.setKey("temperature");
+        refKey.setType(ArgumentType.TS_LATEST);
+        tempArg.setRefEntityKey(refKey);
+        config.putArgumentsItem("temp", tempArg);
+
+        // create rule: HIGH_TEMPERATURE when temp > 50 (TBEL expression)
+        TbelAlarmConditionExpression createExpression = new TbelAlarmConditionExpression();
+        createExpression.setExpression("return temp > 50;");
+        AlarmRuleSimpleCondition createCondition = new AlarmRuleSimpleCondition();
+        createCondition.setExpression(createExpression);
+        AlarmRuleSpecificTimeSchedule specificTimeSchedule = new AlarmRuleSpecificTimeSchedule().addDaysOfWeekItem(3);
+        AlarmConditionValueAlarmRuleSchedule schedule = new AlarmConditionValueAlarmRuleSchedule().staticValue(specificTimeSchedule);
+        createCondition.setSchedule(schedule);
+        AlarmRuleDefinition createRule = new AlarmRuleDefinition();
+        createRule.setCondition(createCondition);
+        createRule.setAlarmDetails("Temperature is too high: ${temp}");
+        config.setCreateRules(Map.of(
+                AlarmSeverity.CRITICAL.name(), createRule
+        ));
+
+        // clear rule: when temp drops below 30
+        TbelAlarmConditionExpression clearExpression = new TbelAlarmConditionExpression();
+        clearExpression.setExpression("return temp < 30;");
+        AlarmRuleSimpleCondition clearCondition = new AlarmRuleSimpleCondition();
+        clearCondition.setExpression(clearExpression);
+        AlarmRuleDefinition clearRule = new AlarmRuleDefinition();
+        clearRule.setCondition(clearCondition);
+        config.setClearRule(clearRule);
+
+        config.setPropagate(true);
+        config.setPropagateToOwner(false);
+
+        // create calculated field
+        CalculatedField cf = new CalculatedField();
+        cf.setName(TEST_PREFIX + "AlarmCalcField_" + timestamp);
+        cf.setType(CalculatedFieldType.ALARM);
+
+        EntityId entityId = new EntityId();
+        entityId.setEntityType(EntityType.DEVICE);
+        entityId.setId(createdDevice.getId().getId());
+        cf.setEntityId(entityId);
+        cf.setConfiguration(config);
+
+        CalculatedField created = client.saveCalculatedField(cf);
+        assertNotNull(created);
+        assertNotNull(created.getId());
+        assertEquals(cf.getName(), created.getName());
+        assertEquals(CalculatedFieldType.ALARM, created.getType());
+        AlarmCalculatedFieldConfiguration configuration = (AlarmCalculatedFieldConfiguration) created.getConfiguration();
+        AlarmConditionValueAlarmRuleSchedule createdSchedule = configuration.getCreateRules().get(AlarmSeverity.CRITICAL.name()).getCondition().getSchedule();
+        AlarmRuleSpecificTimeSchedule staticSchedule = (AlarmRuleSpecificTimeSchedule)createdSchedule.getStaticValue();
+        assertEquals(Set.of(3), staticSchedule.getDaysOfWeek());
+
+        // get by id and verify configuration
+        CalculatedField fetched = client.getCalculatedFieldById(created.getId().getId().toString());
+        assertNotNull(fetched);
+        assertEquals(created.getName(), fetched.getName());
+        assertEquals(CalculatedFieldType.ALARM, fetched.getType());
+        assertNotNull(fetched.getConfiguration());
+        AlarmCalculatedFieldConfiguration fetchedConfig =
+                (AlarmCalculatedFieldConfiguration) fetched.getConfiguration();
+        assertNotNull(fetchedConfig.getCreateRules());
+        assertEquals(1, fetchedConfig.getCreateRules().size());
+        assertTrue(fetchedConfig.getCreateRules().containsKey("CRITICAL"));
+        assertNotNull(fetchedConfig.getClearRule());
+        assertEquals(Boolean.TRUE, fetchedConfig.getPropagate());
+
+        // update: add a second create rule for CRITICAL_TEMPERATURE
+        TbelAlarmConditionExpression criticalExpression = new TbelAlarmConditionExpression();
+        criticalExpression.setExpression("return temp > 80;");
+        AlarmRuleSimpleCondition criticalCondition = new AlarmRuleSimpleCondition();
+        criticalCondition.setExpression(criticalExpression);
+        AlarmRuleDefinition criticalRule = new AlarmRuleDefinition();
+        criticalRule.setCondition(criticalCondition);
+        fetchedConfig.putCreateRulesItem(AlarmSeverity.INDETERMINATE.name(), criticalRule);
+        fetched.setConfiguration(fetchedConfig);
+
+        CalculatedField updated = client.saveCalculatedField(fetched);
+        AlarmCalculatedFieldConfiguration updatedConfig =
+                (AlarmCalculatedFieldConfiguration) updated.getConfiguration();
+        assertEquals(2, updatedConfig.getCreateRules().size());
+        assertTrue(updatedConfig.getCreateRules().containsKey("INDETERMINATE"));
+
+        // filter by entity and ALARM type
+        PageDataCalculatedField deviceFields = client.getCalculatedFieldsByEntityIdV2(
+                EntityType.DEVICE.toString(), createdDevice.getId().getId().toString(),
+                100, 0, CalculatedFieldType.ALARM, null, null, null);
+        assertNotNull(deviceFields);
+        assertEquals(1, deviceFields.getData().size());
+
+        // delete and verify
+        UUID fieldId = created.getId().getId();
+        client.deleteCalculatedField(fieldId.toString());
+        assertReturns404(() -> client.getCalculatedFieldById(fieldId.toString()));
     }
 
 }
