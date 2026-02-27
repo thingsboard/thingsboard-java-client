@@ -1,0 +1,344 @@
+/**
+ * Copyright © 2026-2026 ThingsBoard, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.thingsboard.client.model;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.StringJoiner;
+import java.util.Objects;
+import java.util.Map;
+import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.thingsboard.client.model.AttributeExportData;
+import org.thingsboard.client.model.CalculatedField;
+import org.thingsboard.client.model.EntityRelation;
+import org.thingsboard.client.model.EntityType;
+import org.thingsboard.client.model.ExportableEntity;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+
+import org.thingsboard.client.ApiClient;
+/**
+ * AssetProfileExportData
+ */
+@JsonPropertyOrder({
+  AssetProfileExportData.JSON_PROPERTY_ENTITY_TYPE,
+  AssetProfileExportData.JSON_PROPERTY_ENTITY,
+  AssetProfileExportData.JSON_PROPERTY_RELATIONS,
+  AssetProfileExportData.JSON_PROPERTY_ATTRIBUTES,
+  AssetProfileExportData.JSON_PROPERTY_CALCULATED_FIELDS
+})
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+public class AssetProfileExportData {
+  public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
+  @javax.annotation.Nonnull
+  private EntityType entityType;
+
+  public static final String JSON_PROPERTY_ENTITY = "entity";
+  @javax.annotation.Nullable
+  private ExportableEntity entity;
+
+  public static final String JSON_PROPERTY_RELATIONS = "relations";
+  @javax.annotation.Nullable
+  private List<EntityRelation> relations = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_ATTRIBUTES = "attributes";
+  @javax.annotation.Nullable
+  private Map<String, List<AttributeExportData>> attributes = new HashMap<>();
+
+  public static final String JSON_PROPERTY_CALCULATED_FIELDS = "calculatedFields";
+  @javax.annotation.Nullable
+  private List<CalculatedField> calculatedFields = new ArrayList<>();
+
+  public AssetProfileExportData() { 
+  }
+
+  public AssetProfileExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.entityType = entityType;
+    return this;
+  }
+
+  /**
+   * Get entityType
+   * @return entityType
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public EntityType getEntityType() {
+    return entityType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEntityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.entityType = entityType;
+  }
+
+
+  public AssetProfileExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
+    this.entity = entity;
+    return this;
+  }
+
+  /**
+   * Get entity
+   * @return entity
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ExportableEntity getEntity() {
+    return entity;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntity(@javax.annotation.Nullable ExportableEntity entity) {
+    this.entity = entity;
+  }
+
+
+  public AssetProfileExportData relations(@javax.annotation.Nullable List<EntityRelation> relations) {
+    this.relations = relations;
+    return this;
+  }
+
+  public AssetProfileExportData addRelationsItem(EntityRelation relationsItem) {
+    if (this.relations == null) {
+      this.relations = new ArrayList<>();
+    }
+    this.relations.add(relationsItem);
+    return this;
+  }
+
+  /**
+   * Get relations
+   * @return relations
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_RELATIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<EntityRelation> getRelations() {
+    return relations;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_RELATIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRelations(@javax.annotation.Nullable List<EntityRelation> relations) {
+    this.relations = relations;
+  }
+
+
+  public AssetProfileExportData attributes(@javax.annotation.Nullable Map<String, List<AttributeExportData>> attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  public AssetProfileExportData putAttributesItem(String key, List<AttributeExportData> attributesItem) {
+    if (this.attributes == null) {
+      this.attributes = new HashMap<>();
+    }
+    this.attributes.put(key, attributesItem);
+    return this;
+  }
+
+  /**
+   * Map of attributes where key is the scope of attributes and value is the list of attributes for that scope
+   * @return attributes
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ATTRIBUTES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Map<String, List<AttributeExportData>> getAttributes() {
+    return attributes;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ATTRIBUTES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAttributes(@javax.annotation.Nullable Map<String, List<AttributeExportData>> attributes) {
+    this.attributes = attributes;
+  }
+
+
+  public AssetProfileExportData calculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
+    this.calculatedFields = calculatedFields;
+    return this;
+  }
+
+  public AssetProfileExportData addCalculatedFieldsItem(CalculatedField calculatedFieldsItem) {
+    if (this.calculatedFields == null) {
+      this.calculatedFields = new ArrayList<>();
+    }
+    this.calculatedFields.add(calculatedFieldsItem);
+    return this;
+  }
+
+  /**
+   * Get calculatedFields
+   * @return calculatedFields
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CALCULATED_FIELDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<CalculatedField> getCalculatedFields() {
+    return calculatedFields;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CALCULATED_FIELDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCalculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
+    this.calculatedFields = calculatedFields;
+  }
+
+
+  /**
+   * Return true if this AssetProfileExportData object is equal to o.
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    AssetProfileExportData assetProfileExportData = (AssetProfileExportData) o;
+    return Objects.equals(this.entityType, assetProfileExportData.entityType) &&
+        Objects.equals(this.entity, assetProfileExportData.entity) &&
+        Objects.equals(this.relations, assetProfileExportData.relations) &&
+        Objects.equals(this.attributes, assetProfileExportData.attributes) &&
+        Objects.equals(this.calculatedFields, assetProfileExportData.calculatedFields);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(entityType, entity, relations, attributes, calculatedFields);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class AssetProfileExportData {\n");
+    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
+    sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
+    sb.append("    relations: ").append(toIndentedString(relations)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
+    sb.append("    calculatedFields: ").append(toIndentedString(calculatedFields)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @return URL query string
+   */
+  public String toUrlQueryString() {
+    return toUrlQueryString(null);
+  }
+
+  /**
+   * Convert the instance into URL query string.
+   *
+   * @param prefix prefix of the query string
+   * @return URL query string
+   */
+  public String toUrlQueryString(String prefix) {
+    String suffix = "";
+    String containerSuffix = "";
+    String containerPrefix = "";
+    if (prefix == null) {
+      // style=form, explode=true, e.g. /pet?name=cat&type=manx
+      prefix = "";
+    } else {
+      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
+      prefix = prefix + "[";
+      suffix = "]";
+      containerSuffix = "]";
+      containerPrefix = "[";
+    }
+
+    StringJoiner joiner = new StringJoiner("&");
+
+    // add `entityType` to the URL query string
+    if (getEntityType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
+    }
+
+    // add `entity` to the URL query string
+    if (getEntity() != null) {
+      joiner.add(getEntity().toUrlQueryString(prefix + "entity" + suffix));
+    }
+
+    // add `relations` to the URL query string
+    if (getRelations() != null) {
+      for (int i = 0; i < getRelations().size(); i++) {
+        if (getRelations().get(i) != null) {
+          joiner.add(getRelations().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%srelations%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `attributes` to the URL query string
+    if (getAttributes() != null) {
+      for (String _key : getAttributes().keySet()) {
+        joiner.add(String.format(java.util.Locale.ROOT, "%sattributes%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
+            getAttributes().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getAttributes().get(_key)))));
+      }
+    }
+
+    // add `calculatedFields` to the URL query string
+    if (getCalculatedFields() != null) {
+      for (int i = 0; i < getCalculatedFields().size(); i++) {
+        if (getCalculatedFields().get(i) != null) {
+          joiner.add(getCalculatedFields().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%scalculatedFields%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    return joiner.toString();
+  }
+}
+

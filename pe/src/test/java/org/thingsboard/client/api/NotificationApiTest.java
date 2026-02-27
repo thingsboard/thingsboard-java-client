@@ -16,9 +16,15 @@
 package org.thingsboard.client.api;
 
 import org.junit.jupiter.api.Test;
+import org.thingsboard.client.model.EntityActionNotificationRuleTriggerConfig;
+import org.thingsboard.client.model.EntityActionRecipientsConfig;
+import org.thingsboard.client.model.EntityType;
 import org.thingsboard.client.model.NotificationDeliveryMethod;
 import org.thingsboard.client.model.NotificationRequest;
 import org.thingsboard.client.model.NotificationRequestInfo;
+import org.thingsboard.client.model.NotificationRule;
+import org.thingsboard.client.model.NotificationRuleInfo;
+import org.thingsboard.client.model.NotificationRuleTriggerType;
 import org.thingsboard.client.model.NotificationSettings;
 import org.thingsboard.client.model.NotificationTarget;
 import org.thingsboard.client.model.NotificationTemplate;
@@ -26,6 +32,7 @@ import org.thingsboard.client.model.NotificationTemplateConfig;
 import org.thingsboard.client.model.NotificationType;
 import org.thingsboard.client.model.PageDataNotification;
 import org.thingsboard.client.model.PageDataNotificationRequestInfo;
+import org.thingsboard.client.model.PageDataNotificationRuleInfo;
 import org.thingsboard.client.model.PageDataNotificationTarget;
 import org.thingsboard.client.model.PageDataNotificationTemplate;
 import org.thingsboard.client.model.PlatformUsersNotificationTargetConfig;
@@ -185,6 +192,85 @@ public class NotificationApiTest extends AbstractApiTest {
         // Delete target
         client.deleteNotificationTargetById(savedTarget.getId().getId());
         assertReturns404(() -> client.getNotificationTargetById(savedTarget.getId().getId()));
+    }
+
+    @Test
+    void testNotificationRuleLifecycle() throws Exception {
+        long timestamp = System.currentTimeMillis();
+
+        // Create a target for the rule recipients
+        TenantAdministratorsFilter usersFilter = new TenantAdministratorsFilter();
+        PlatformUsersNotificationTargetConfig targetConfig =
+                new PlatformUsersNotificationTargetConfig().usersFilter(usersFilter);
+        NotificationTarget target =
+                new NotificationTarget()
+                        .name("Rule Test Target " + timestamp)
+                        ._configuration(targetConfig);
+        NotificationTarget savedTarget = client.saveNotificationTarget(target);
+
+        // Create a template of type ENTITY_ACTION
+        WebDeliveryMethodNotificationTemplate webTemplate =
+                new WebDeliveryMethodNotificationTemplate()
+                        .subject("Entity action: ${entityType}")
+                        .body("Entity ${entityName} was ${actionType}")
+                        .enabled(true);
+        NotificationTemplateConfig templateConfig =
+                new NotificationTemplateConfig()
+                        .putDeliveryMethodsTemplatesItem("WEB", webTemplate);
+        NotificationTemplate template =
+                new NotificationTemplate()
+                        .name("Rule Test Template " + timestamp)
+                        .notificationType(NotificationType.ENTITY_ACTION)
+                        ._configuration(templateConfig);
+        NotificationTemplate savedTemplate = client.saveNotificationTemplate(template);
+
+        // Build trigger config: fire on DEVICE create/update
+        EntityActionNotificationRuleTriggerConfig triggerConfig =
+                new EntityActionNotificationRuleTriggerConfig()
+                        .addEntityTypesItem(EntityType.DEVICE)
+                        .created(true)
+                        .updated(true)
+                        .deleted(false);
+
+        // Build recipients config
+        EntityActionRecipientsConfig recipientsConfig = new EntityActionRecipientsConfig()
+                .addTargetsItem(savedTarget.getId().getId());
+
+        // saveNotificationRule - create
+        NotificationRule rule = new NotificationRule()
+                .name("Test Rule " + timestamp)
+                .enabled(true)
+                .templateId(savedTemplate.getId())
+                .triggerType(NotificationRuleTriggerType.ENTITY_ACTION)
+                .triggerConfig(triggerConfig)
+                .recipientsConfig(recipientsConfig);
+
+        NotificationRule savedRule = client.saveNotificationRule(rule);
+        assertNotNull(savedRule);
+        assertNotNull(savedRule.getId());
+        assertEquals("Test Rule " + timestamp, savedRule.getName());
+        assertEquals(NotificationRuleTriggerType.ENTITY_ACTION, savedRule.getTriggerType());
+        assertEquals(Boolean.TRUE, savedRule.getEnabled());
+
+        // getNotificationRuleById
+        NotificationRuleInfo fetchedRule = client.getNotificationRuleById(savedRule.getId().getId());
+        assertNotNull(fetchedRule);
+        assertEquals(savedRule.getName(), fetchedRule.getName());
+        assertEquals(NotificationRuleTriggerType.ENTITY_ACTION, fetchedRule.getTriggerType());
+
+        // getNotificationRules - verify it appears in the list
+        PageDataNotificationRuleInfo rulesPage = client.getNotificationRules(100, 0, null, null, null);
+        assertNotNull(rulesPage);
+        assertTrue(rulesPage.getData().stream()
+                .anyMatch(r -> r.getId().getId().equals(savedRule.getId().getId())));
+
+        // deleteNotificationRule
+        client.deleteNotificationRule(savedRule.getId().getId());
+        assertReturns404(() -> client.getNotificationRuleById(savedRule.getId().getId()));
+
+        // Cleanup
+        client.deleteNotificationTemplateById(savedTemplate.getId().getId());
+        client.deleteNotificationTargetById(savedTarget.getId().getId());
     }
 
 }
