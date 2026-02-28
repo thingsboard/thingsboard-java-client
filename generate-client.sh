@@ -54,6 +54,7 @@
 #
 # Replaced on regeneration:
 #   - <edition>/src/main/java/
+#   - <edition>/docs/
 #
 # Output log: generate-client.log (overwritten on each run)
 #
@@ -128,10 +129,20 @@ generate() {
     exit 1
   fi
 
-  rm -rf "$output_dir"
+  local docs_output_dir="$SCRIPT_DIR/$edition/target/generated-docs"
+
+  rm -rf "$output_dir" "$docs_output_dir"
 
   JACKSON_JSON_NODE="com.fasterxml.jackson.databind.JsonNode"
 
+  echo "Validating spec: $spec_file"
+  local validate_output
+  validate_output=$(openapi-generator-cli validate -i "$spec_file" 2>&1) || {
+    echo "$validate_output" | grep -v "Unused model:"
+    exit 1
+  }
+
+  # Run 1 — Java client (single class, no docs)
   echo "Generating client for edition: $edition from $spec_file"
   openapi-generator-cli generate \
     -i "$spec_file" \
@@ -142,10 +153,27 @@ generate() {
     --model-package "$BASE_PACKAGE.model" \
     --invoker-package "$BASE_PACKAGE" \
     --additional-properties hideGenerationTimestamp=true \
-    --global-property apiTests=false,modelTests=false,apiDocs=false,modelDocs=false \
+    --global-property apiTests=false,modelTests=false,modelDocs=false,apiDocs=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --openapi-normalizer SET_TAGS_FOR_ALL_OPERATIONS=Thingsboard \
+    2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword" -e "Skipped by.*options supplied by user"; fi
+
+  # Run 2 — Per-controller docs only (preserves original tags)
+  echo "Generating per-controller docs for edition: $edition"
+  openapi-generator-cli generate \
+    -i "$spec_file" \
+    -g java \
+    --library=native \
+    -o "$docs_output_dir" \
+    --api-package "$BASE_PACKAGE.api" \
+    --model-package "$BASE_PACKAGE.model" \
+    --invoker-package "$BASE_PACKAGE" \
+    --additional-properties hideGenerationTimestamp=true \
+    --global-property apis,models=false,supportingFiles=false,apiTests=false,modelTests=false,modelDocs=false \
+    --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
+    --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
+    -t "$SCRIPT_DIR/openapi" \
     2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword" -e "Skipped by.*options supplied by user"; fi
 
   # Strip generated OpenAPI comment block and collapse multiple blank lines
@@ -155,7 +183,8 @@ generate() {
   sed -i '' 's/extends Exception/extends RuntimeException/' "$output_dir/src/main/java/org/thingsboard/client/ApiException.java"
 
   if [ "$DRY_RUN" = true ]; then
-    echo "Dry run: generated output is in $output_dir"
+    echo "Dry run: generated client is in $output_dir"
+    echo "Dry run: generated docs are in $docs_output_dir"
   else
     # Copy generated sources into the module
     rm -rf "$module_dir/src/main/java"
@@ -169,6 +198,11 @@ generate() {
       cp -r "$common_src/"* "$module_dir/src/main/java/"
       echo "Copied common sources to $module_dir"
     fi
+
+    # Copy per-controller docs into the module
+    rm -rf "$module_dir/docs"
+    cp -r "$docs_output_dir/docs" "$module_dir/docs"
+    echo "Copied docs to $module_dir"
   fi
 }
 
