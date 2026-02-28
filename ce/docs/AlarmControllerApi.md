@@ -25,13 +25,18 @@
 
 Acknowledge Alarm (ackAlarm)
 
-Acknowledge the Alarm. Once acknowledged, the &#39;ack_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_ACK&#39; will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Acknowledge the Alarm. Once acknowledged, the 'ack_ts' field will be set to current timestamp and special rule chain event 'ALARM_ACK' will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmId** | **String** | A string value representing the alarm id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**AlarmInfo**
 
 
 ## assignAlarm
@@ -40,14 +45,19 @@ Acknowledge the Alarm. Once acknowledged, the &#39;ack_ts&#39; field will be set
 
 Assign/Reassign Alarm (assignAlarm)
 
-Assign the Alarm. Once assigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_ASSIGNED&#39; (or ALARM_REASSIGNED in case of assigning already assigned alarm) will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Assign the Alarm. Once assigned, the 'assign_ts' field will be set to current timestamp and special rule chain event 'ALARM_ASSIGNED' (or ALARM_REASSIGNED in case of assigning already assigned alarm) will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **assigneeId** | **String** | A string value representing the user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmId** | **String** | A string value representing the alarm id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **assigneeId** | **String** | A string value representing the user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**Alarm**
 
 
 ## clearAlarm
@@ -56,13 +66,18 @@ Assign the Alarm. Once assigned, the &#39;assign_ts&#39; field will be set to cu
 
 Clear Alarm (clearAlarm)
 
-Clear the Alarm. Once cleared, the &#39;clear_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_CLEAR&#39; will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Clear the Alarm. Once cleared, the 'clear_ts' field will be set to current timestamp and special rule chain event 'ALARM_CLEAR' will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmId** | **String** | A string value representing the alarm id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**AlarmInfo**
 
 
 ## deleteAlarm
@@ -71,13 +86,18 @@ Clear the Alarm. Once cleared, the &#39;clear_ts&#39; field will be set to curre
 
 Delete Alarm (deleteAlarm)
 
-Deletes the Alarm. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Deletes the Alarm. Referencing non-existing Alarm Id will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmId** | **String** | A string value representing the alarm id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**Boolean**
 
 
 ## getAlarmById
@@ -86,13 +106,18 @@ Deletes the Alarm. Referencing non-existing Alarm Id will cause an error.  Avail
 
 Get Alarm (getAlarmById)
 
-Fetch the Alarm object based on the provided Alarm Id. If the user has the authority of &#39;Tenant Administrator&#39;, the server checks that the originator of alarm is owned by the same tenant. If the user has the authority of &#39;Customer User&#39;, the server checks that the originator of alarm belongs to the customer. 
+Fetch the Alarm object based on the provided Alarm Id. If the user has the authority of 'Tenant Administrator', the server checks that the originator of alarm is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the originator of alarm belongs to the customer. 
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmId** | **String** | A string value representing the alarm id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**Alarm**
 
 
 ## getAlarmInfoById
@@ -101,13 +126,18 @@ Fetch the Alarm object based on the provided Alarm Id. If the user has the autho
 
 Get Alarm Info (getAlarmInfoById)
 
-Fetch the Alarm Info object based on the provided Alarm Id. If the user has the authority of &#39;Tenant Administrator&#39;, the server checks that the originator of alarm is owned by the same tenant. If the user has the authority of &#39;Customer User&#39;, the server checks that the originator of alarm belongs to the customer. Alarm Info is an extension of the default Alarm object that also contains name of the alarm originator.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Fetch the Alarm Info object based on the provided Alarm Id. If the user has the authority of 'Tenant Administrator', the server checks that the originator of alarm is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the originator of alarm belongs to the customer. Alarm Info is an extension of the default Alarm object that also contains name of the alarm originator.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmId** | **String** | A string value representing the alarm id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**AlarmInfo**
 
 
 ## getAlarmTypes
@@ -118,14 +148,19 @@ Get Alarm Types (getAlarmTypes)
 
 Returns a set of unique alarm types based on alarms that are either owned by the tenant or assigned to the customer which user is performing the request.
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on of next alarm fields: type, severity or status | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntitySubtype**
 
 
 ## getAlarms
@@ -134,25 +169,30 @@ Returns a set of unique alarm types based on alarms that are either owned by the
 
 Get Alarms (getAlarms)
 
-Returns a page of alarms for the selected entity. Specifying both parameters &#39;searchStatus&#39; and &#39;status&#39; at the same time will cause an error. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns a page of alarms for the selected entity. Specifying both parameters 'searchStatus' and 'status' at the same time will cause an error. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **searchStatus** | **String** | A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
 | **status** | **String** | A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
-| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on of next alarm fields: type, severity or status | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **fetchOriginator** | **Boolean** | A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: &#39;originatorName&#39; or will returns as null. | [optional] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+| **fetchOriginator** | **Boolean** | A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: 'originatorName' or will returns as null. | [optional] |
+
+### Return type
+
+**PageDataAlarmInfo**
 
 
 ## getAlarmsV2
@@ -161,25 +201,30 @@ Returns a page of alarms for the selected entity. Specifying both parameters &#3
 
 Get Alarms (getAlarmsV2)
 
-Returns a page of alarms for the selected entity. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns a page of alarms for the selected entity. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **statusList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
-| **severityList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
-| **typeList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing alarm types | [optional] |
-| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **statusList** | **List<String>** | A list of string values separated by comma ',' representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
+| **severityList** | **List<String>** | A list of string values separated by comma ',' representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
+| **typeList** | **List<String>** | A list of string values separated by comma ',' representing alarm types | [optional] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on of next alarm fields: type, severity or status | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+
+### Return type
+
+**PageDataAlarmInfo**
 
 
 ## getAllAlarms
@@ -188,7 +233,8 @@ Returns a page of alarms for the selected entity. You can specify parameters to 
 
 Get All Alarms (getAllAlarms)
 
-Returns a page of alarms that belongs to the current user owner. If the user has the authority of &#39;Tenant Administrator&#39;, the server returns alarms that belongs to the tenant of current user. If the user has the authority of &#39;Customer User&#39;, the server returns alarms that belongs to the customer of current user. Specifying both parameters &#39;searchStatus&#39; and &#39;status&#39; at the same time will cause an error. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns a page of alarms that belongs to the current user owner. If the user has the authority of 'Tenant Administrator', the server returns alarms that belongs to the tenant of current user. If the user has the authority of 'Customer User', the server returns alarms that belongs to the customer of current user. Specifying both parameters 'searchStatus' and 'status' at the same time will cause an error. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
@@ -198,13 +244,17 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **searchStatus** | **String** | A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
 | **status** | **String** | A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
-| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on of next alarm fields: type, severity or status | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **fetchOriginator** | **Boolean** | A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: &#39;originatorName&#39; or will returns as null. | [optional] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+| **fetchOriginator** | **Boolean** | A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: 'originatorName' or will returns as null. | [optional] |
+
+### Return type
+
+**PageDataAlarmInfo**
 
 
 ## getAllAlarmsV2
@@ -213,7 +263,8 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 
 Get All Alarms (getAllAlarmsV2)
 
-Returns a page of alarms that belongs to the current user owner. If the user has the authority of &#39;Tenant Administrator&#39;, the server returns alarms that belongs to the tenant of current user. If the user has the authority of &#39;Customer User&#39;, the server returns alarms that belongs to the customer of current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns a page of alarms that belongs to the current user owner. If the user has the authority of 'Tenant Administrator', the server returns alarms that belongs to the tenant of current user. If the user has the authority of 'Customer User', the server returns alarms that belongs to the customer of current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
@@ -221,15 +272,19 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **statusList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
-| **severityList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
-| **typeList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing alarm types | [optional] |
-| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **statusList** | **List<String>** | A list of string values separated by comma ',' representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
+| **severityList** | **List<String>** | A list of string values separated by comma ',' representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
+| **typeList** | **List<String>** | A list of string values separated by comma ',' representing alarm types | [optional] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on of next alarm fields: type, severity or status | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: 'createdTime'. | [optional] |
+
+### Return type
+
+**PageDataAlarmInfo**
 
 
 ## getHighestAlarmSeverity
@@ -238,17 +293,22 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 
 Get Highest Alarm Severity (getHighestAlarmSeverity)
 
-Search the alarms by originator (&#39;entityType&#39; and entityId&#39;) and optional &#39;status&#39; or &#39;searchStatus&#39; filters and returns the highest AlarmSeverity(CRITICAL, MAJOR, MINOR, WARNING or INDETERMINATE). Specifying both parameters &#39;searchStatus&#39; and &#39;status&#39; at the same time will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Search the alarms by originator ('entityType' and entityId') and optional 'status' or 'searchStatus' filters and returns the highest AlarmSeverity(CRITICAL, MAJOR, MINOR, WARNING or INDETERMINATE). Specifying both parameters 'searchStatus' and 'status' at the same time will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **searchStatus** | **String** | A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
 | **status** | **String** | A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
-| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+**AlarmSeverity**
 
 
 ## saveAlarm
@@ -257,13 +317,18 @@ Search the alarms by originator (&#39;entityType&#39; and entityId&#39;) and opt
 
 Create or Update Alarm (saveAlarm)
 
-Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm id will be present in the response. Specify existing Alarm id to update the alarm. Referencing non-existing Alarm Id will cause &#39;Not Found&#39; error.   Platform also deduplicate the alarms based on the entity id of originator and alarm &#39;type&#39;. For example, if the user or system component create the alarm with the type &#39;HighTemperature&#39; for device &#39;Device A&#39; the new active alarm is created. If the user tries to create &#39;HighTemperature&#39; alarm for the same device again, the previous alarm will be updated (the &#39;end_ts&#39; will be set to current timestamp). If the user clears the alarm (see &#39;Clear Alarm(clearAlarm)&#39;), than new alarm with the same type and same device may be created. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Alarm entity.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm id will be present in the response. Specify existing Alarm id to update the alarm. Referencing non-existing Alarm Id will cause 'Not Found' error.   Platform also deduplicate the alarms based on the entity id of originator and alarm 'type'. For example, if the user or system component create the alarm with the type 'HighTemperature' for device 'Device A' the new active alarm is created. If the user tries to create 'HighTemperature' alarm for the same device again, the previous alarm will be updated (the 'end_ts' will be set to current timestamp). If the user clears the alarm (see 'Clear Alarm(clearAlarm)'), than new alarm with the same type and same device may be created. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Alarm entity.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **alarm** | **Alarm** | A JSON value representing the alarm. | |
+
+### Return type
+
+**Alarm**
 
 
 ## unassignAlarm
@@ -272,11 +337,16 @@ Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id a
 
 Unassign Alarm (unassignAlarm)
 
-Unassign the Alarm. Once unassigned, the &#39;assign_ts&#39; field will be set to current timestamp and special rule chain event &#39;ALARM_UNASSIGNED&#39; will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Unassign the Alarm. Once unassigned, the 'assign_ts' field will be set to current timestamp and special rule chain event 'ALARM_UNASSIGNED' will be generated. Referencing non-existing Alarm Id will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmId** | **String** | A string value representing the alarm id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**Alarm**
 

@@ -30,14 +30,19 @@
 
 Delete Resource (deleteResource)
 
-Deletes the Resource. Referencing non-existing Resource Id will cause an error.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Deletes the Resource. Referencing non-existing Resource Id will cause an error.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **force** | **Boolean** |  | [optional] |
+
+### Return type
+
+**TbResourceDeleteResult**
 
 
 ## downloadJksResourceIfChanged
@@ -46,14 +51,19 @@ Deletes the Resource. Referencing non-existing Resource Id will cause an error. 
 
 Download JKS Resource (downloadJksResourceIfChanged)
 
-Download Resource based on the provided Resource Id or return 304 status code if resource was not changed.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Download Resource based on the provided Resource Id or return 304 status code if resource was not changed.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **ifNoneMatch** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## downloadJsResourceIfChanged
@@ -64,12 +74,17 @@ Download JS Resource (downloadJsResourceIfChanged)
 
 Download Resource based on the provided Resource Id or return 304 status code if resource was not changed.  Available for any authorized user. 
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **ifNoneMatch** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## downloadLwm2mResourceIfChanged
@@ -78,14 +93,19 @@ Download Resource based on the provided Resource Id or return 304 status code if
 
 Download LWM2M Resource (downloadLwm2mResourceIfChanged)
 
-Download Resource based on the provided Resource Id or return 304 status code if resource was not changed.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Download Resource based on the provided Resource Id or return 304 status code if resource was not changed.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **ifNoneMatch** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## downloadPkcs12ResourceIfChanged
@@ -94,14 +114,19 @@ Download Resource based on the provided Resource Id or return 304 status code if
 
 Download PKCS_12 Resource (downloadPkcs12ResourceIfChanged)
 
-Download Resource based on the provided Resource Id or return 304 status code if resource was not changed.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Download Resource based on the provided Resource Id or return 304 status code if resource was not changed.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **ifNoneMatch** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## downloadResource
@@ -110,13 +135,18 @@ Download Resource based on the provided Resource Id or return 304 status code if
 
 Download Resource (downloadResource)
 
-Download Resource based on the provided Resource Id.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Download Resource based on the provided Resource Id.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**File**
 
 
 ## downloadResourceIfChanged
@@ -127,23 +157,29 @@ Download resource (downloadResource)
 
 Download resource with a given type and key for the given scope  Available for any authorized user. 
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **resourceType** | **String** | Type of the resource | [enum: lwm2m_model, jks, pkcs_12, js_module, dashboard] |
 | **scope** | **String** | Scope of the resource | [enum: system, tenant] |
-| **key** | **String** | Key of the resource, e.g. &#39;extension.js&#39; | |
+| **key** | **String** | Key of the resource, e.g. 'extension.js' | |
 | **ifNoneMatch** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## getLwm2mListObjects
 
-> List&lt;LwM2mObject&gt; getLwm2mListObjects(sortOrder, sortProperty, objectIds)
+> List<LwM2mObject> getLwm2mListObjects(sortOrder, sortProperty, objectIds)
 
 Get LwM2M Objects (getLwm2mListObjects)
 
-Returns a page of LwM2M objects parsed from Resources with type &#39;LWM2M_MODEL&#39; owned by tenant or sysadmin. You can specify parameters to filter the results. LwM2M Object is a object that includes information about the LwM2M model which can be used in transport configuration for the LwM2M device profile.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of LwM2M objects parsed from Resources with type 'LWM2M_MODEL' owned by tenant or sysadmin. You can specify parameters to filter the results. LwM2M Object is a object that includes information about the LwM2M model which can be used in transport configuration for the LwM2M device profile.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -151,16 +187,21 @@ Returns a page of LwM2M objects parsed from Resources with type &#39;LWM2M_MODEL
 |------------- | ------------- | ------------- | -------------|
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [enum: ASC, DESC] |
 | **sortProperty** | **String** | Property of entity to sort by | [enum: id, name] |
-| **objectIds** | **List&lt;String&gt;** | LwM2M Object ids. | |
+| **objectIds** | **List<String>** | LwM2M Object ids. | |
+
+### Return type
+
+**List<LwM2mObject>**
 
 
 ## getLwm2mListObjectsPage
 
-> List&lt;LwM2mObject&gt; getLwm2mListObjectsPage(pageSize, page, textSearch, sortProperty, sortOrder)
+> List<LwM2mObject> getLwm2mListObjectsPage(pageSize, page, textSearch, sortProperty, sortOrder)
 
 Get LwM2M Objects (getLwm2mListObjectsPage)
 
-Returns a page of LwM2M objects parsed from Resources with type &#39;LWM2M_MODEL&#39; owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. LwM2M Object is a object that includes information about the LwM2M model which can be used in transport configuration for the LwM2M device profile.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of LwM2M objects parsed from Resources with type 'LWM2M_MODEL' owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. LwM2M Object is a object that includes information about the LwM2M model which can be used in transport configuration for the LwM2M device profile.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -168,9 +209,13 @@ Returns a page of LwM2M objects parsed from Resources with type &#39;LWM2M_MODEL
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the resource title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: id, name] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**List<LwM2mObject>**
 
 
 ## getResourceById
@@ -179,13 +224,18 @@ Returns a page of LwM2M objects parsed from Resources with type &#39;LWM2M_MODEL
 
 Get Resource (getResourceById)
 
-Fetch the Resource object based on the provided Resource Id. Resource is a heavyweight object that includes main information about the Resource and also data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Fetch the Resource object based on the provided Resource Id. Resource is a heavyweight object that includes main information about the Resource and also data.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**TbResource**
 
 
 ## getResourceInfo
@@ -194,7 +244,8 @@ Fetch the Resource object based on the provided Resource Id. Resource is a heavy
 
 Get resource info (getResourceInfo)
 
-Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -202,7 +253,11 @@ Get info for the resource with the given type, scope and key. Resource Info is a
 |------------- | ------------- | ------------- | -------------|
 | **resourceType** | **String** | Type of the resource | [enum: lwm2m_model, jks, pkcs_12, js_module, dashboard] |
 | **scope** | **String** | Scope of the resource | [enum: system, tenant] |
-| **key** | **String** | Key of the resource, e.g. &#39;extension.js&#39; | |
+| **key** | **String** | Key of the resource, e.g. 'extension.js' | |
+
+### Return type
+
+**TbResourceInfo**
 
 
 ## getResourceInfoById
@@ -211,13 +266,18 @@ Get info for the resource with the given type, scope and key. Resource Info is a
 
 Get Resource Info (getResourceInfoById)
 
-Fetch the Resource Info object based on the provided Resource Id. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Fetch the Resource Info object based on the provided Resource Id. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **resourceId** | **String** | A string value representing the resource id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**TbResourceInfo**
 
 
 ## getResources
@@ -226,7 +286,8 @@ Fetch the Resource Info object based on the provided Resource Id. Resource Info 
 
 Get Resource Infos (getResources)
 
-Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -236,22 +297,31 @@ Returns a page of Resource Info objects owned by tenant or sysadmin. You can spe
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **resourceType** | **String** | A string value representing the resource type. | [optional] [enum: LWM2M_MODEL, JKS, PKCS_12, JS_MODULE] |
 | **resourceSubType** | **String** | A string value representing the resource sub-type. | [optional] [enum: EXTENSION, MODULE] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the resource title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataTbResourceInfo**
 
 
 ## getSystemOrTenantResourcesByIdsV2
 
-> List&lt;TbResourceInfo&gt; getSystemOrTenantResourcesByIdsV2(resourceIds)
+> List<TbResourceInfo> getSystemOrTenantResourcesByIdsV2(resourceIds)
 
 Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2)
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceIds** | **List&lt;String&gt;** | A list of resource ids, separated by comma &#39;,&#39; | |
+| **resourceIds** | **List<String>** | A list of resource ids, separated by comma ',' | |
+
+### Return type
+
+**List<TbResourceInfo>**
 
 
 ## getTenantResources
@@ -260,7 +330,8 @@ Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2)
 
 Get All Resource Infos (getAllResources)
 
-Returns a page of Resource Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of Resource Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -268,9 +339,13 @@ Returns a page of Resource Info objects owned by tenant. You can specify paramet
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the resource title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataTbResourceInfo**
 
 
 ## saveResource
@@ -279,13 +354,18 @@ Returns a page of Resource Info objects owned by tenant. You can specify paramet
 
 Create Or Update Resource (saveResource)
 
-Create or update the Resource. When creating the Resource, platform generates Resource id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Resource id will be present in the response. Specify existing Resource id to update the Resource. Referencing non-existing Resource Id will cause &#39;Not Found&#39; error.   Resource combination of the title with the key is unique in the scope of tenant. Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Resource entity.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Create or update the Resource. When creating the Resource, platform generates Resource id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Resource id will be present in the response. Specify existing Resource id to update the Resource. Referencing non-existing Resource Id will cause 'Not Found' error.   Resource combination of the title with the key is unique in the scope of tenant. Remove 'id', 'tenantId' from the request body example (below) to create new Resource entity.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **tbResource** | **TbResource** |  | |
+
+### Return type
+
+**TbResourceInfo**
 
 
 ## updateResourceData
@@ -294,12 +374,17 @@ Create or update the Resource. When creating the Resource, platform generates Re
 
 updateResourceData
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** | Unique identifier of the Resource to update | |
 | **_file** | **File** | Resource file. | |
+
+### Return type
+
+**TbResourceInfo**
 
 
 ## updateResourceInfo
@@ -308,12 +393,17 @@ updateResourceData
 
 updateResourceInfo
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** | Unique identifier of the Resource to update | |
 | **tbResourceInfo** | **TbResourceInfo** |  | |
+
+### Return type
+
+**TbResourceInfo**
 
 
 ## uploadResource
@@ -322,7 +412,8 @@ updateResourceInfo
 
 Upload Resource via Multipart File (uploadResource)
 
-Create the Resource using multipart file upload.   Resource combination of the title with the key is unique in the scope of tenant.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Create the Resource using multipart file upload.   Resource combination of the title with the key is unique in the scope of tenant.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -333,4 +424,8 @@ Create the Resource using multipart file upload.   Resource combination of the t
 | **title** | **String** | Resource title. | [optional] |
 | **descriptor** | **String** | Resource descriptor (JSON). | [optional] |
 | **resourceSubType** | **String** | Resource sub type. | [optional] |
+
+### Return type
+
+**TbResourceInfo**
 

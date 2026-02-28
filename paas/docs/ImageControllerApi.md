@@ -25,6 +25,7 @@
 
 deleteImage
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -33,12 +34,17 @@ deleteImage
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
 | **force** | **Boolean** |  | [optional] |
 
+### Return type
+
+**TbImageDeleteResult**
+
 
 ## downloadImage
 
 > File downloadImage(type, key, ifNoneMatch, acceptEncoding)
 
 downloadImage
+
 
 ### Parameters
 
@@ -48,6 +54,10 @@ downloadImage
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
 | **ifNoneMatch** | **String** |  | [optional] |
 | **acceptEncoding** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## downloadImagePreview
@@ -56,6 +66,7 @@ downloadImage
 
 downloadImagePreview
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -64,6 +75,10 @@ downloadImagePreview
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
 | **ifNoneMatch** | **String** |  | [optional] |
 | **acceptEncoding** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## downloadLoginFavicon
@@ -72,6 +87,7 @@ downloadImagePreview
 
 downloadLoginFavicon
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -80,6 +96,10 @@ downloadLoginFavicon
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
 | **ifNoneMatch** | **String** |  | [optional] |
 | **acceptEncoding** | **String** |  | [optional] |
+
+### Return type
+
+**File**
 
 
 ## downloadLoginLogo
@@ -88,6 +108,7 @@ downloadLoginFavicon
 
 downloadLoginLogo
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -97,12 +118,17 @@ downloadLoginLogo
 | **ifNoneMatch** | **String** |  | [optional] |
 | **acceptEncoding** | **String** |  | [optional] |
 
+### Return type
+
+**File**
+
 
 ## downloadPublicImage
 
 > File downloadPublicImage(publicResourceKey, ifNoneMatch, acceptEncoding)
 
 downloadPublicImage
+
 
 ### Parameters
 
@@ -112,6 +138,10 @@ downloadPublicImage
 | **ifNoneMatch** | **String** |  | [optional] |
 | **acceptEncoding** | **String** |  | [optional] |
 
+### Return type
+
+**File**
+
 
 ## exportImage
 
@@ -119,12 +149,17 @@ downloadPublicImage
 
 exportImage
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **type** | **String** | Type of the image: tenant or system | [enum: tenant, system] |
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
+
+### Return type
+
+**ResourceExportData**
 
 
 ## getImageInfo
@@ -133,12 +168,17 @@ exportImage
 
 getImageInfo
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **type** | **String** | Type of the image: tenant or system | [enum: tenant, system] |
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
+
+### Return type
+
+**TbResourceInfo**
 
 
 ## getImages
@@ -147,6 +187,7 @@ getImageInfo
 
 getImages
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -154,10 +195,14 @@ getImages
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **imageSubType** | **String** | A string value representing resource sub-type. | [optional] [enum: IMAGE, SCADA_SYMBOL] |
-| **includeSystemImages** | **Boolean** | Use &#39;true&#39; to include system images. Disabled by default. Ignored for requests by users with system administrator authority. | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
+| **includeSystemImages** | **Boolean** | Use 'true' to include system images. Disabled by default. Ignored for requests by users with system administrator authority. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the resource title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataTbResourceInfo**
 
 
 ## importImage
@@ -166,11 +211,16 @@ getImages
 
 importImage
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **resourceExportData** | **ResourceExportData** |  | |
+
+### Return type
+
+**TbResourceInfo**
 
 
 ## updateImage
@@ -178,6 +228,7 @@ importImage
 > TbResourceInfo updateImage(type, key, _file)
 
 updateImage
+
 
 ### Parameters
 
@@ -187,12 +238,17 @@ updateImage
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
 | **_file** | **File** |  | |
 
+### Return type
+
+**TbResourceInfo**
+
 
 ## updateImageInfo
 
 > TbResourceInfo updateImageInfo(type, key, tbResourceInfo)
 
 updateImageInfo
+
 
 ### Parameters
 
@@ -202,12 +258,17 @@ updateImageInfo
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
 | **tbResourceInfo** | **TbResourceInfo** |  | |
 
+### Return type
+
+**TbResourceInfo**
+
 
 ## updateImagePublicStatus
 
 > TbResourceInfo updateImagePublicStatus(type, key, isPublic)
 
 updateImagePublicStatus
+
 
 ### Parameters
 
@@ -217,12 +278,17 @@ updateImagePublicStatus
 | **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
 | **isPublic** | **Boolean** |  | |
 
+### Return type
+
+**TbResourceInfo**
+
 
 ## uploadImage
 
 > TbResourceInfo uploadImage(_file, title, imageSubType)
 
 uploadImage
+
 
 ### Parameters
 
@@ -231,4 +297,8 @@ uploadImage
 | **_file** | **File** |  | |
 | **title** | **String** |  | [optional] |
 | **imageSubType** | **String** |  | [optional] |
+
+### Return type
+
+**TbResourceInfo**
 

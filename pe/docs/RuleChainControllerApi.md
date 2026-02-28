@@ -34,7 +34,8 @@
 
 Assign rule chain to edge (assignRuleChainToEdge)
 
-Creates assignment of an existing rule chain to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment rule chain (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once rule chain will be delivered to edge service, it&#39;s going to start processing messages locally.   Only rule chain with type &#39;EDGE&#39; can be assigned to edge.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Creates assignment of an existing rule chain to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment rule chain (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once rule chain will be delivered to edge service, it's going to start processing messages locally.   Only rule chain with type 'EDGE' can be assigned to edge.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -42,6 +43,10 @@ Creates assignment of an existing rule chain to an instance of The Edge. Assignm
 |------------- | ------------- | ------------- | -------------|
 | **edgeId** | **String** |  | |
 | **ruleChainId** | **String** |  | |
+
+### Return type
+
+**RuleChain**
 
 
 ## deleteRuleChain
@@ -50,13 +55,18 @@ Creates assignment of an existing rule chain to an instance of The Edge. Assignm
 
 Delete rule chain (deleteRuleChain)
 
-Deletes the rule chain. Referencing non-existing rule chain Id will cause an error. Referencing rule chain that is used in the device profiles will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Deletes the rule chain. Referencing non-existing rule chain Id will cause an error. Referencing rule chain that is used in the device profiles will cause an error.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## exportRuleChains
@@ -65,7 +75,8 @@ Deletes the rule chain. Referencing non-existing rule chain Id will cause an err
 
 Export Rule Chains
 
-Exports all tenant rule chains as one JSON.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Exports all tenant rule chains as one JSON.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -73,14 +84,23 @@ Exports all tenant rule chains as one JSON.  Available for users with &#39;TENAN
 |------------- | ------------- | ------------- | -------------|
 | **limit** | **Integer** | A limit of rule chains to export. | |
 
+### Return type
+
+**RuleChainData**
+
 
 ## getAutoAssignToEdgeRuleChains
 
-> List&lt;RuleChain&gt; getAutoAssignToEdgeRuleChains()
+> List<RuleChain> getAutoAssignToEdgeRuleChains()
 
 Get Auto Assign To Edge Rule Chains (getAutoAssignToEdgeRuleChains)
 
-Returns a list of Rule Chains that will be assigned to a newly created edge. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a list of Rule Chains that will be assigned to a newly created edge. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate 'metadata' object.  Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**List<RuleChain>**
+
 
 ## getEdgeRuleChains
 
@@ -88,18 +108,23 @@ Returns a list of Rule Chains that will be assigned to a newly created edge. The
 
 Get Edge Rule Chains (getEdgeRuleChains)
 
-Returns a page of Rule Chains assigned to the specified edge. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of Rule Chains assigned to the specified edge. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate 'metadata' object.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the rule chain name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the rule chain name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, root] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataRuleChain**
 
 
 ## getLatestRuleNodeDebugInput
@@ -108,13 +133,18 @@ Returns a page of Rule Chains assigned to the specified edge. The rule chain obj
 
 Get latest input message (getLatestRuleNodeDebugInput)
 
-Gets the input message from the debug events for specified Rule Chain Id. Referencing non-existing rule chain Id will cause an error.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Gets the input message from the debug events for specified Rule Chain Id. Referencing non-existing rule chain Id will cause an error.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleNodeId** | **String** | A string value representing the rule node id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleNodeId** | **String** | A string value representing the rule node id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## getRuleChainById
@@ -123,13 +153,18 @@ Gets the input message from the debug events for specified Rule Chain Id. Refere
 
 Get Rule Chain (getRuleChainById)
 
-Fetch the Rule Chain object based on the provided Rule Chain Id. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Fetch the Rule Chain object based on the provided Rule Chain Id. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate 'metadata' object.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**RuleChain**
 
 
 ## getRuleChainMetaData
@@ -138,43 +173,58 @@ Fetch the Rule Chain object based on the provided Rule Chain Id. The rule chain 
 
 Get Rule Chain (getRuleChainById)
 
-Fetch the Rule Chain Metadata object based on the provided Rule Chain Id. The metadata object contains information about the rule nodes and their connections.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Fetch the Rule Chain Metadata object based on the provided Rule Chain Id. The metadata object contains information about the rule nodes and their connections.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**RuleChainMetaData**
 
 
 ## getRuleChainOutputLabels
 
-> Set&lt;String&gt; getRuleChainOutputLabels(ruleChainId)
+> Set<String> getRuleChainOutputLabels(ruleChainId)
 
 Get Rule Chain output labels (getRuleChainOutputLabels)
 
-Fetch the unique labels for the \&quot;output\&quot; Rule Nodes that belong to the Rule Chain based on the provided Rule Chain Id. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Fetch the unique labels for the \"output\" Rule Nodes that belong to the Rule Chain based on the provided Rule Chain Id. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate 'metadata' object.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**Set<String>**
 
 
 ## getRuleChainOutputLabelsUsage
 
-> List&lt;RuleChainOutputLabelsUsage&gt; getRuleChainOutputLabelsUsage(ruleChainId)
+> List<RuleChainOutputLabelsUsage> getRuleChainOutputLabelsUsage(ruleChainId)
 
 Get output labels usage (getRuleChainOutputLabelsUsage)
 
-Fetch the list of rule chains and the relation types (labels) they use to process output of the current rule chain based on the provided Rule Chain Id. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Fetch the list of rule chains and the relation types (labels) they use to process output of the current rule chain based on the provided Rule Chain Id. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate 'metadata' object.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**List<RuleChainOutputLabelsUsage>**
 
 
 ## getRuleChains
@@ -183,7 +233,8 @@ Fetch the list of rule chains and the relation types (labels) they use to proces
 
 Get Rule Chains (getRuleChains)
 
-Returns a page of Rule Chains owned by tenant. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of Rule Chains owned by tenant. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate 'metadata' object.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -192,33 +243,43 @@ Returns a page of Rule Chains owned by tenant. The rule chain object is lightwei
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **type** | **String** | Rule chain type (CORE or EDGE) | [optional] [enum: CORE, EDGE] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the rule chain name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the rule chain name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, root] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataRuleChain**
 
 
 ## getRuleChainsByIdsV2
 
-> List&lt;RuleChain&gt; getRuleChainsByIdsV2(ruleChainIds)
+> List<RuleChain> getRuleChainsByIdsV2(ruleChainIds)
 
 Get Rule Chains By Ids (getRuleChainsByIdsV2)
 
-Requested rule chains must be owned by tenant which is performing the request.    Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Requested rule chains must be owned by tenant which is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainIds** | **List&lt;String&gt;** | A list of rule chain ids, separated by comma &#39;,&#39; | |
+| **ruleChainIds** | **List<String>** | A list of rule chain ids, separated by comma ',' | |
+
+### Return type
+
+**List<RuleChain>**
 
 
 ## importRuleChains
 
-> List&lt;RuleChainImportResult&gt; importRuleChains(ruleChainData, overwrite)
+> List<RuleChainImportResult> importRuleChains(ruleChainData, overwrite)
 
 Import Rule Chains
 
-Imports all tenant rule chains as one JSON.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Imports all tenant rule chains as one JSON.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -227,6 +288,10 @@ Imports all tenant rule chains as one JSON.  Available for users with &#39;TENAN
 | **ruleChainData** | **RuleChainData** |  | |
 | **overwrite** | **Boolean** | Enables overwrite for existing rule chains with the same name. | [optional] [default to false] |
 
+### Return type
+
+**List<RuleChainImportResult>**
+
 
 ## isTbelEnabled
 
@@ -234,7 +299,12 @@ Imports all tenant rule chains as one JSON.  Available for users with &#39;TENAN
 
 Is TBEL script executor enabled
 
-Returns &#39;True&#39; if the TBEL script execution is enabled  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns 'True' if the TBEL script execution is enabled  Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**Boolean**
+
 
 ## saveRuleChain
 
@@ -242,13 +312,18 @@ Returns &#39;True&#39; if the TBEL script execution is enabled  Available for us
 
 Create Or Update Rule Chain (saveRuleChain)
 
-Create or update the Rule Chain. When creating Rule Chain, platform generates Rule Chain Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Rule Chain Id will be present in the response. Specify existing Rule Chain id to update the rule chain. Referencing non-existing rule chain Id will cause &#39;Not Found&#39; error.  The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Rule Chain entity.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Create or update the Rule Chain. When creating Rule Chain, platform generates Rule Chain Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Rule Chain Id will be present in the response. Specify existing Rule Chain id to update the rule chain. Referencing non-existing rule chain Id will cause 'Not Found' error.  The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate 'metadata' object.Remove 'id', 'tenantId' from the request body example (below) to create new Rule Chain entity.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ruleChain** | **RuleChain** |  | |
+
+### Return type
+
+**RuleChain**
 
 
 ## saveRuleChain1
@@ -257,13 +332,18 @@ Create or update the Rule Chain. When creating Rule Chain, platform generates Ru
 
 Create Default Rule Chain
 
-Create rule chain from template, based on the specified name in the request. Creates the rule chain based on the template that is used to create root rule chain.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Create rule chain from template, based on the specified name in the request. Creates the rule chain based on the template that is used to create root rule chain.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **defaultRuleChainCreateRequest** | **DefaultRuleChainCreateRequest** |  | |
+
+### Return type
+
+**RuleChain**
 
 
 ## saveRuleChainMetaData
@@ -272,7 +352,8 @@ Create rule chain from template, based on the specified name in the request. Cre
 
 Update Rule Chain Metadata
 
-Updates the rule chain metadata. The metadata object contains information about the rule nodes and their connections.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Updates the rule chain metadata. The metadata object contains information about the rule nodes and their connections.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -281,6 +362,10 @@ Updates the rule chain metadata. The metadata object contains information about 
 | **ruleChainMetaData** | **RuleChainMetaData** |  | |
 | **updateRelated** | **Boolean** | Update related rule nodes. | [optional] [default to true] |
 
+### Return type
+
+**RuleChainMetaData**
+
 
 ## setAutoAssignToEdgeRuleChain
 
@@ -288,13 +373,18 @@ Updates the rule chain metadata. The metadata object contains information about 
 
 Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain)
 
-Makes the rule chain to be automatically assigned for any new edge that will be created. Does not assign this rule chain for already created edges.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Makes the rule chain to be automatically assigned for any new edge that will be created. Does not assign this rule chain for already created edges.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**RuleChain**
 
 
 ## setEdgeTemplateRootRuleChain
@@ -303,13 +393,18 @@ Makes the rule chain to be automatically assigned for any new edge that will be 
 
 Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain)
 
-Makes the rule chain to be root rule chain for any new edge that will be created. Does not update root rule chain for already created edges.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Makes the rule chain to be root rule chain for any new edge that will be created. Does not update root rule chain for already created edges.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**RuleChain**
 
 
 ## setRootRuleChain
@@ -318,13 +413,18 @@ Makes the rule chain to be root rule chain for any new edge that will be created
 
 Set Root Rule Chain (setRootRuleChain)
 
-Makes the rule chain to be root rule chain. Updates previous root rule chain as well.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Makes the rule chain to be root rule chain. Updates previous root rule chain as well.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**RuleChain**
 
 
 ## testScript
@@ -333,7 +433,8 @@ Makes the rule chain to be root rule chain. Updates previous root rule chain as 
 
 Test Script function
 
-Execute the Script function and return the result. The format of request:   &#x60;&#x60;&#x60;json {   \&quot;script\&quot;: \&quot;Your Function as String\&quot;,   \&quot;scriptType\&quot;: \&quot;One of: update, generate, filter, switch, json, string\&quot;,   \&quot;argNames\&quot;: [\&quot;msg\&quot;, \&quot;metadata\&quot;, \&quot;type\&quot;],   \&quot;msg\&quot;: \&quot;{\\\&quot;temperature\\\&quot;: 42}\&quot;,    \&quot;metadata\&quot;: {     \&quot;deviceName\&quot;: \&quot;Device A\&quot;,     \&quot;deviceType\&quot;: \&quot;Thermometer\&quot;   },   \&quot;msgType\&quot;: \&quot;POST_TELEMETRY_REQUEST\&quot; } &#x60;&#x60;&#x60;   Expected result JSON contains \&quot;output\&quot; and \&quot;error\&quot;.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Execute the Script function and return the result. The format of request:   ```json {   \"script\": \"Your Function as String\",   \"scriptType\": \"One of: update, generate, filter, switch, json, string\",   \"argNames\": [\"msg\", \"metadata\", \"type\"],   \"msg\": \"{\\\"temperature\\\": 42}\",    \"metadata\": {     \"deviceName\": \"Device A\",     \"deviceType\": \"Thermometer\"   },   \"msgType\": \"POST_TELEMETRY_REQUEST\" } ```   Expected result JSON contains \"output\" and \"error\".  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -342,6 +443,10 @@ Execute the Script function and return the result. The format of request:   &#x6
 | **body** | **Object** | Test JS request. See API call description above. | |
 | **scriptLang** | **ScriptLanguage** | Script language: JS or TBEL | [optional] [enum: JS, TBEL] |
 
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
 
 ## unassignRuleChainFromEdge
 
@@ -349,7 +454,8 @@ Execute the Script function and return the result. The format of request:   &#x6
 
 Unassign rule chain from edge (unassignRuleChainFromEdge)
 
-Clears assignment of the rule chain to the edge. Unassignment works in async way - first, &#39;unassign&#39; notification event pushed to edge queue on platform. Second, remote edge service will receive an &#39;unassign&#39; command to remove rule chain (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once &#39;unassign&#39; command will be delivered to edge service, it&#39;s going to remove rule chain locally.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Clears assignment of the rule chain to the edge. Unassignment works in async way - first, 'unassign' notification event pushed to edge queue on platform. Second, remote edge service will receive an 'unassign' command to remove rule chain (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once 'unassign' command will be delivered to edge service, it's going to remove rule chain locally.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -358,6 +464,10 @@ Clears assignment of the rule chain to the edge. Unassignment works in async way
 | **edgeId** | **String** |  | |
 | **ruleChainId** | **String** |  | |
 
+### Return type
+
+**RuleChain**
+
 
 ## unsetAutoAssignToEdgeRuleChain
 
@@ -365,11 +475,16 @@ Clears assignment of the rule chain to the edge. Unassignment works in async way
 
 Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain)
 
-Removes the rule chain from the list of rule chains that are going to be automatically assigned for any new edge that will be created. Does not unassign this rule chain for already assigned edges.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Removes the rule chain from the list of rule chains that are going to be automatically assigned for any new edge that will be created. Does not unassign this rule chain for already assigned edges.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**RuleChain**
 

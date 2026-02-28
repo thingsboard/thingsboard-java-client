@@ -20,13 +20,18 @@
 
 Delete Tenant Profile (deleteTenantProfile)
 
-Deletes the tenant profile. Referencing non-existing tenant profile Id will cause an error. Referencing profile that is used by the tenants will cause an error.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Deletes the tenant profile. Referencing non-existing tenant profile Id will cause an error. Referencing profile that is used by the tenants will cause an error.   Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## getDefaultTenantProfileInfo
@@ -35,7 +40,12 @@ Deletes the tenant profile. Referencing non-existing tenant profile Id will caus
 
 Get default Tenant Profile Info (getDefaultTenantProfileInfo)
 
-Fetch the default Tenant Profile Info object based. Tenant Profile Info is a lightweight object that contains only id and name of the profile.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Fetch the default Tenant Profile Info object based. Tenant Profile Info is a lightweight object that contains only id and name of the profile.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**EntityInfo**
+
 
 ## getTenantProfileById
 
@@ -43,13 +53,18 @@ Fetch the default Tenant Profile Info object based. Tenant Profile Info is a lig
 
 Get Tenant Profile (getTenantProfileById)
 
-Fetch the Tenant Profile object based on the provided Tenant Profile Id.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Fetch the Tenant Profile object based on the provided Tenant Profile Id.   Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**TenantProfile**
 
 
 ## getTenantProfileInfoById
@@ -58,13 +73,18 @@ Fetch the Tenant Profile object based on the provided Tenant Profile Id.   Avail
 
 Get Tenant Profile Info (getTenantProfileInfoById)
 
-Fetch the Tenant Profile Info object based on the provided Tenant Profile Id. Tenant Profile Info is a lightweight object that contains only id and name of the profile.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Fetch the Tenant Profile Info object based on the provided Tenant Profile Id. Tenant Profile Info is a lightweight object that contains only id and name of the profile.   Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityInfo**
 
 
 ## getTenantProfileInfos
@@ -73,7 +93,8 @@ Fetch the Tenant Profile Info object based on the provided Tenant Profile Id. Te
 
 Get Tenant Profiles Info (getTenantProfileInfos)
 
-Returns a page of tenant profile info objects registered in the platform. Tenant Profile Info is a lightweight object that contains only id and name of the profile. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Returns a page of tenant profile info objects registered in the platform. Tenant Profile Info is a lightweight object that contains only id and name of the profile. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
@@ -81,22 +102,31 @@ Returns a page of tenant profile info objects registered in the platform. Tenant
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the tenant profile name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the tenant profile name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: id, name] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityInfo**
 
 
 ## getTenantProfileList
 
-> List&lt;TenantProfile&gt; getTenantProfileList(ids)
+> List<TenantProfile> getTenantProfileList(ids)
 
 Get Tenant Profile list (getTenantProfileList)
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ids** | **List&lt;String&gt;** | Comma-separated list of tenant profile ids | |
+| **ids** | **List<String>** | Comma-separated list of tenant profile ids | |
+
+### Return type
+
+**List<TenantProfile>**
 
 
 ## getTenantProfiles
@@ -105,7 +135,8 @@ Get Tenant Profile list (getTenantProfileList)
 
 Get Tenant Profiles (getTenantProfiles)
 
-Returns a page of tenant profiles registered in the platform. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Returns a page of tenant profiles registered in the platform. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
@@ -113,9 +144,13 @@ Returns a page of tenant profiles registered in the platform. You can specify pa
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the tenant profile name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the tenant profile name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, description, isDefault] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataTenantProfile**
 
 
 ## saveTenantProfile
@@ -124,13 +159,18 @@ Returns a page of tenant profiles registered in the platform. You can specify pa
 
 Create Or update Tenant Profile (saveTenantProfile)
 
-Create or update the Tenant Profile. When creating tenant profile, platform generates Tenant Profile Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Tenant Profile Id will be present in the response. Specify existing Tenant Profile Id id to update the Tenant Profile. Referencing non-existing Tenant Profile Id will cause &#39;Not Found&#39; error.   Update of the tenant profile configuration will cause immediate recalculation of API limits for all affected Tenants.   The **&#39;profileData&#39;** object is the part of Tenant Profile that defines API limits and Rate limits.   You have an ability to define maximum number of devices (&#39;maxDevice&#39;), assets (&#39;maxAssets&#39;) and other entities. You may also define maximum number of messages to be processed per month (&#39;maxTransportMessages&#39;, &#39;maxREExecutions&#39;, etc). The &#39;*RateLimit&#39; defines the rate limits using simple syntax. For example, &#39;1000:1,20000:60&#39; means up to 1000 events per second but no more than 20000 event per minute. Let&#39;s review the example of tenant profile data below:   &#x60;&#x60;&#x60;json {   \&quot;name\&quot;: \&quot;Your name\&quot;,   \&quot;description\&quot;: \&quot;Your description\&quot;,   \&quot;isolatedTbRuleEngine\&quot;: false,   \&quot;profileData\&quot;: {     \&quot;configuration\&quot;: {       \&quot;type\&quot;: \&quot;DEFAULT\&quot;,       \&quot;maxDevices\&quot;: 0,       \&quot;maxAssets\&quot;: 0,       \&quot;maxCustomers\&quot;: 0,       \&quot;maxUsers\&quot;: 0,       \&quot;maxDashboards\&quot;: 0,       \&quot;maxRuleChains\&quot;: 0,       \&quot;maxResourcesInBytes\&quot;: 0,       \&quot;maxOtaPackagesInBytes\&quot;: 0,       \&quot;maxResourceSize\&quot;: 0,       \&quot;transportTenantMsgRateLimit\&quot;: \&quot;1000:1,20000:60\&quot;,       \&quot;transportTenantTelemetryMsgRateLimit\&quot;: \&quot;1000:1,20000:60\&quot;,       \&quot;transportTenantTelemetryDataPointsRateLimit\&quot;: \&quot;1000:1,20000:60\&quot;,       \&quot;transportDeviceMsgRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportDeviceTelemetryMsgRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportDeviceTelemetryDataPointsRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportGatewayMsgRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportGatewayTelemetryMsgRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportGatewayTelemetryDataPointsRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportGatewayDeviceMsgRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportGatewayDeviceTelemetryMsgRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;transportGatewayDeviceTelemetryDataPointsRateLimit\&quot;: \&quot;20:1,600:60\&quot;,       \&quot;maxTransportMessages\&quot;: 10000000,       \&quot;maxTransportDataPoints\&quot;: 10000000,       \&quot;maxREExecutions\&quot;: 4000000,       \&quot;maxJSExecutions\&quot;: 5000000,       \&quot;maxDPStorageDays\&quot;: 0,       \&quot;maxRuleNodeExecutionsPerMessage\&quot;: 50,       \&quot;maxDebugModeDurationMinutes\&quot;: 15,       \&quot;maxEmails\&quot;: 0,       \&quot;maxSms\&quot;: 0,       \&quot;maxCreatedAlarms\&quot;: 1000,       \&quot;defaultStorageTtlDays\&quot;: 0,       \&quot;alarmsTtlDays\&quot;: 0,       \&quot;rpcTtlDays\&quot;: 0,       \&quot;queueStatsTtlDays\&quot;: 0,       \&quot;ruleEngineExceptionsTtlDays\&quot;: 0,       \&quot;warnThreshold\&quot;: 0,       \&quot;maxCalculatedFieldsPerEntity\&quot;: 5,       \&quot;maxArgumentsPerCF\&quot;: 10,       \&quot;minAllowedScheduledUpdateIntervalInSecForCF\&quot;: 10,       \&quot;maxRelationLevelPerCfArgument\&quot;: 2,       \&quot;maxRelatedEntitiesToReturnPerCfArgument\&quot;: 100,       \&quot;maxDataPointsPerRollingArg\&quot;: 1000,       \&quot;maxStateSizeInKBytes\&quot;: 32,       \&quot;maxSingleValueArgumentSizeInKBytes\&quot;: 2,      \&quot;minAllowedDeduplicationIntervalInSecForCF\&quot;: 10,      \&quot;minAllowedAggregationIntervalInSecForCF\&quot;: 60,      \&quot;intermediateAggregationIntervalInSecForCF\&quot;: 300,      \&quot;cfReevaluationCheckInterval\&quot;: 60,      \&quot;alarmsReevaluationInterval\&quot;: 60    }   },   \&quot;default\&quot;: false } &#x60;&#x60;&#x60;Remove &#39;id&#39;, from the request body example (below) to create new Tenant Profile entity.  Available for users with &#39;SYS_ADMIN&#39; authority.
+Create or update the Tenant Profile. When creating tenant profile, platform generates Tenant Profile Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Tenant Profile Id will be present in the response. Specify existing Tenant Profile Id id to update the Tenant Profile. Referencing non-existing Tenant Profile Id will cause 'Not Found' error.   Update of the tenant profile configuration will cause immediate recalculation of API limits for all affected Tenants.   The **'profileData'** object is the part of Tenant Profile that defines API limits and Rate limits.   You have an ability to define maximum number of devices ('maxDevice'), assets ('maxAssets') and other entities. You may also define maximum number of messages to be processed per month ('maxTransportMessages', 'maxREExecutions', etc). The '*RateLimit' defines the rate limits using simple syntax. For example, '1000:1,20000:60' means up to 1000 events per second but no more than 20000 event per minute. Let's review the example of tenant profile data below:   ```json {   \"name\": \"Your name\",   \"description\": \"Your description\",   \"isolatedTbRuleEngine\": false,   \"profileData\": {     \"configuration\": {       \"type\": \"DEFAULT\",       \"maxDevices\": 0,       \"maxAssets\": 0,       \"maxCustomers\": 0,       \"maxUsers\": 0,       \"maxDashboards\": 0,       \"maxRuleChains\": 0,       \"maxResourcesInBytes\": 0,       \"maxOtaPackagesInBytes\": 0,       \"maxResourceSize\": 0,       \"transportTenantMsgRateLimit\": \"1000:1,20000:60\",       \"transportTenantTelemetryMsgRateLimit\": \"1000:1,20000:60\",       \"transportTenantTelemetryDataPointsRateLimit\": \"1000:1,20000:60\",       \"transportDeviceMsgRateLimit\": \"20:1,600:60\",       \"transportDeviceTelemetryMsgRateLimit\": \"20:1,600:60\",       \"transportDeviceTelemetryDataPointsRateLimit\": \"20:1,600:60\",       \"transportGatewayMsgRateLimit\": \"20:1,600:60\",       \"transportGatewayTelemetryMsgRateLimit\": \"20:1,600:60\",       \"transportGatewayTelemetryDataPointsRateLimit\": \"20:1,600:60\",       \"transportGatewayDeviceMsgRateLimit\": \"20:1,600:60\",       \"transportGatewayDeviceTelemetryMsgRateLimit\": \"20:1,600:60\",       \"transportGatewayDeviceTelemetryDataPointsRateLimit\": \"20:1,600:60\",       \"maxTransportMessages\": 10000000,       \"maxTransportDataPoints\": 10000000,       \"maxREExecutions\": 4000000,       \"maxJSExecutions\": 5000000,       \"maxDPStorageDays\": 0,       \"maxRuleNodeExecutionsPerMessage\": 50,       \"maxDebugModeDurationMinutes\": 15,       \"maxEmails\": 0,       \"maxSms\": 0,       \"maxCreatedAlarms\": 1000,       \"defaultStorageTtlDays\": 0,       \"alarmsTtlDays\": 0,       \"rpcTtlDays\": 0,       \"queueStatsTtlDays\": 0,       \"ruleEngineExceptionsTtlDays\": 0,       \"warnThreshold\": 0,       \"maxCalculatedFieldsPerEntity\": 5,       \"maxArgumentsPerCF\": 10,       \"minAllowedScheduledUpdateIntervalInSecForCF\": 10,       \"maxRelationLevelPerCfArgument\": 2,       \"maxRelatedEntitiesToReturnPerCfArgument\": 100,       \"maxDataPointsPerRollingArg\": 1000,       \"maxStateSizeInKBytes\": 32,       \"maxSingleValueArgumentSizeInKBytes\": 2,      \"minAllowedDeduplicationIntervalInSecForCF\": 10,      \"minAllowedAggregationIntervalInSecForCF\": 60,      \"intermediateAggregationIntervalInSecForCF\": 300,      \"cfReevaluationCheckInterval\": 60,      \"alarmsReevaluationInterval\": 60    }   },   \"default\": false } ```Remove 'id', from the request body example (below) to create new Tenant Profile entity.  Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **tenantProfile** | **TenantProfile** |  | |
+
+### Return type
+
+**TenantProfile**
 
 
 ## setDefaultTenantProfile
@@ -139,11 +179,16 @@ Create or update the Tenant Profile. When creating tenant profile, platform gene
 
 Make tenant profile default (setDefaultTenantProfile)
 
-Makes specified tenant profile to be default. Referencing non-existing tenant profile Id will cause an error.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Makes specified tenant profile to be default. Referencing non-existing tenant profile Id will cause an error.   Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**TenantProfile**
 

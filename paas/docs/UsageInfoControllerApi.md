@@ -11,3 +11,8 @@
 > UsageInfo getTenantUsageInfo()
 
 getTenantUsageInfo
+
+### Return type
+
+**UsageInfo**
+

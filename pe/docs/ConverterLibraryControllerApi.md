@@ -21,6 +21,7 @@ Get downlink converter (getDownlinkConverter)
 
 Returns downlink converter body for the vendor, integration type and model
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -28,6 +29,10 @@ Returns downlink converter body for the vendor, integration type and model
 | **integrationType** | **IntegrationType** |  | [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
 | **vendorName** | **String** |  | |
 | **model** | **String** |  | |
+
+### Return type
+
+**String**
 
 
 ## getDownlinkConverterMetadata
@@ -38,6 +43,7 @@ Get downlink converter metadata (getDownlinkConverterMetadata)
 
 Returns downlink converter metadata for the vendor, integration type and model
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -45,6 +51,10 @@ Returns downlink converter metadata for the vendor, integration type and model
 | **integrationType** | **IntegrationType** |  | [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
 | **vendorName** | **String** |  | |
 | **model** | **String** |  | |
+
+### Return type
+
+**String**
 
 
 ## getDownlinkPayload
@@ -55,6 +65,7 @@ Get downlink payload (getDownlinkPayload)
 
 Returns payload example for the downlink converter for the vendor, integration type and model
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -62,6 +73,10 @@ Returns payload example for the downlink converter for the vendor, integration t
 | **integrationType** | **IntegrationType** |  | [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
 | **vendorName** | **String** |  | |
 | **model** | **String** |  | |
+
+### Return type
+
+**String**
 
 
 ## getUplinkConverter
@@ -72,6 +87,7 @@ Get uplink converter (getUplinkConverter)
 
 Returns uplink converter body for the vendor, integration type and model
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -79,6 +95,10 @@ Returns uplink converter body for the vendor, integration type and model
 | **integrationType** | **IntegrationType** |  | [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
 | **vendorName** | **String** |  | |
 | **model** | **String** |  | |
+
+### Return type
+
+**String**
 
 
 ## getUplinkConverterMetadata
@@ -89,6 +109,7 @@ Get uplink converter metadata (getUplinkConverterMetadata)
 
 Returns uplink converter metadata for the vendor, integration type and model
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -96,6 +117,10 @@ Returns uplink converter metadata for the vendor, integration type and model
 | **integrationType** | **IntegrationType** |  | [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
 | **vendorName** | **String** |  | |
 | **model** | **String** |  | |
+
+### Return type
+
+**String**
 
 
 ## getUplinkPayload
@@ -106,6 +131,7 @@ Get uplink payload (getUplinkPayload)
 
 Returns payload example for the uplink converter for the vendor, integration type and model
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
@@ -114,14 +140,19 @@ Returns payload example for the uplink converter for the vendor, integration typ
 | **vendorName** | **String** |  | |
 | **model** | **String** |  | |
 
+### Return type
+
+**String**
+
 
 ## getVendorModels
 
-> List&lt;Model&gt; getVendorModels(integrationType, vendorName, converterType, page, pageSize, loadImages)
+> List<Model> getVendorModels(integrationType, vendorName, converterType, page, pageSize, loadImages)
 
 Get vendor models (getVendorModels)
 
 Returns a list of models for the vendor, integration type and converter type
+
 
 ### Parameters
 
@@ -134,14 +165,19 @@ Returns a list of models for the vendor, integration type and converter type
 | **pageSize** | **Integer** |  | [optional] [default to 2147483647] |
 | **loadImages** | **Boolean** |  | [optional] [default to true] |
 
+### Return type
+
+**List<Model>**
+
 
 ## getVendors
 
-> List&lt;Vendor&gt; getVendors(integrationType, converterType, page, pageSize, loadImages)
+> List<Vendor> getVendors(integrationType, converterType, page, pageSize, loadImages)
 
 Get vendors (getVendors)
 
 Returns a list of vendors for the integration type
+
 
 ### Parameters
 
@@ -152,4 +188,8 @@ Returns a list of vendors for the integration type
 | **page** | **Integer** |  | [optional] [default to 0] |
 | **pageSize** | **Integer** |  | [optional] [default to 2147483647] |
 | **loadImages** | **Boolean** |  | [optional] [default to true] |
+
+### Return type
+
+**List<Vendor>**
 

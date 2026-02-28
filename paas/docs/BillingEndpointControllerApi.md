@@ -22,11 +22,16 @@
 
 checkTenantCanUpdatePlan
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## notifyTenantPlanChanged
@@ -35,11 +40,16 @@ checkTenantCanUpdatePlan
 
 notifyTenantPlanChanged
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## notifyTenantStateChanged
@@ -48,11 +58,16 @@ notifyTenantPlanChanged
 
 notifyTenantStateChanged
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## notifyTenantSubscriptionCreated
@@ -61,11 +76,16 @@ notifyTenantStateChanged
 
 notifyTenantSubscriptionCreated
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## sendAccountActivatedEmail
@@ -74,11 +94,16 @@ notifyTenantSubscriptionCreated
 
 sendAccountActivatedEmail
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## sendActivationEmail1
@@ -87,11 +112,16 @@ sendAccountActivatedEmail
 
 sendActivationEmail
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## sendPasswordWasResetEmail
@@ -100,11 +130,16 @@ sendActivationEmail
 
 sendPasswordWasResetEmail
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## sendResetPasswordEmail
@@ -113,11 +148,16 @@ sendPasswordWasResetEmail
 
 sendResetPasswordEmail
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## tenantHasBillingRead
@@ -126,14 +166,29 @@ sendResetPasswordEmail
 
 tenantHasBillingRead
 
+### Return type
+
+**Boolean**
+
+
 ## tenantHasBillingWrite
 
 > Boolean tenantHasBillingWrite()
 
 tenantHasBillingWrite
 
+### Return type
+
+**Boolean**
+
+
 ## tenantHasHiddenPlansAccess
 
 > Boolean tenantHasHiddenPlansAccess()
 
 tenantHasHiddenPlansAccess
+
+### Return type
+
+**Boolean**
+

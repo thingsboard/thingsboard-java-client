@@ -14,28 +14,38 @@
 
 Get Queue stats entity by id (getQueueStatsById)
 
-Fetch the Queue stats object based on the provided Queue stats id.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Fetch the Queue stats object based on the provided Queue stats id.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **queueStatsId** | **String** | A string value representing the queue stats id. For example, &#39;687f294c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **queueStatsId** | **String** | A string value representing the queue stats id. For example, '687f294c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**QueueStats**
 
 
 ## getQueueStatsByIdsV2
 
-> List&lt;QueueStats&gt; getQueueStatsByIdsV2(queueStatsIds)
+> List<QueueStats> getQueueStatsByIdsV2(queueStatsIds)
 
 Get QueueStats By Ids (getQueueStatsByIdsV2)
 
 Fetch the Queue stats objects based on the provided ids. 
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **queueStatsIds** | **List&lt;String&gt;** | A list of queue stats ids, separated by comma &#39;,&#39; | |
+| **queueStatsIds** | **List<String>** | A list of queue stats ids, separated by comma ',' | |
+
+### Return type
+
+**List<QueueStats>**
 
 
 ## getTenantQueueStats
@@ -44,7 +54,8 @@ Fetch the Queue stats objects based on the provided ids.
 
 Get Queue Stats entities (getTenantQueueStats)
 
-Returns a page of queue stats objects that are designed to collect queue statistics for every service. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+Returns a page of queue stats objects that are designed to collect queue statistics for every service. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -52,7 +63,11 @@ Returns a page of queue stats objects that are designed to collect queue statist
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the queue name or service id. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the queue name or service id. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataQueueStats**
 

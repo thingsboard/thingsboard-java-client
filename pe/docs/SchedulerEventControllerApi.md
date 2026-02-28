@@ -25,14 +25,19 @@
 
 Assign scheduler event to edge (assignSchedulerEventToEdge)
 
-Creates assignment of an existing scheduler event to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment scheduler event (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once scheduler event will be delivered to edge service, it is going to be available for usage on remote edge instance.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+Creates assignment of an existing scheduler event to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment scheduler event (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once scheduler event will be delivered to edge service, it is going to be available for usage on remote edge instance.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**SchedulerEventInfo**
 
 
 ## deleteSchedulerEvent
@@ -41,13 +46,18 @@ Creates assignment of an existing scheduler event to an instance of The Edge. As
 
 Delete Scheduler Event (deleteSchedulerEvent)
 
-Deletes the scheduler event. Referencing non-existing Scheduler Event Id will cause &#39;Not Found&#39; error.   Security check is performed to verify that the user has &#39;DELETE&#39; permission for the entity (entities).
+Deletes the scheduler event. Referencing non-existing Scheduler Event Id will cause 'Not Found' error.   Security check is performed to verify that the user has 'DELETE' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## enableSchedulerEvent
@@ -56,44 +66,59 @@ Deletes the scheduler event. Referencing non-existing Scheduler Event Id will ca
 
 Enable or disable Scheduler Event (enableSchedulerEvent)
 
-Updates scheduler event with enabled &#x3D; true/false. Scheduler Event extends Scheduler Event Info object and adds &#39;configuration&#39; - a JSON structure of scheduler event configuration. See the &#39;Model&#39; tab of the Response Class for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Updates scheduler event with enabled = true/false. Scheduler Event extends Scheduler Event Info object and adds 'configuration' - a JSON structure of scheduler event configuration. See the 'Model' tab of the Response Class for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **enabledValue** | **Boolean** | Enabled or disabled scheduler | |
+
+### Return type
+
+**SchedulerEvent**
 
 
 ## getAllEdgeSchedulerEvents
 
-> List&lt;SchedulerEventInfo&gt; getAllEdgeSchedulerEvents(edgeId)
+> List<SchedulerEventInfo> getAllEdgeSchedulerEvents(edgeId)
 
 Get All Edge Scheduler Events (getAllEdgeSchedulerEvents)
 
-Fetch the list of Scheduler Event Info objects based on the provided Edge entity. Scheduler Event extends Scheduler Event Info object and adds &#39;configuration&#39; - a JSON structure of scheduler event configuration. See the &#39;Model&#39; tab of the Response Class for more details. Scheduler Events allows you to schedule various types of events with flexible schedule configuration. Scheduler fires configured scheduler events according to their schedule. See the &#39;Model&#39; tab of the Response Class for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Fetch the list of Scheduler Event Info objects based on the provided Edge entity. Scheduler Event extends Scheduler Event Info object and adds 'configuration' - a JSON structure of scheduler event configuration. See the 'Model' tab of the Response Class for more details. Scheduler Events allows you to schedule various types of events with flexible schedule configuration. Scheduler fires configured scheduler events according to their schedule. See the 'Model' tab of the Response Class for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**List<SchedulerEventInfo>**
 
 
 ## getAllSchedulerEventsV2
 
-> List&lt;SchedulerEventWithCustomerInfo&gt; getAllSchedulerEventsV2(type)
+> List<SchedulerEventWithCustomerInfo> getAllSchedulerEventsV2(type)
 
 Get all scheduler events (getAllSchedulerEventsV2)
 
-Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Event With Customer Info extends Scheduler Event Info object and adds &#39;customerTitle&#39; - a String value representing the title of the customer which user created a Scheduler Event and &#39;customerIsPublic&#39; - a boolean parameter that specifies if customer is public. See the &#39;Model&#39; tab of the Response Class for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Event With Customer Info extends Scheduler Event Info object and adds 'customerTitle' - a String value representing the title of the customer which user created a Scheduler Event and 'customerIsPublic' - a boolean parameter that specifies if customer is public. See the 'Model' tab of the Response Class for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **type** | **String** | A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
+| **type** | **String** | A string value representing the scheduler type. For example, 'generateReport' | [optional] |
+
+### Return type
+
+**List<SchedulerEventWithCustomerInfo>**
 
 
 ## getEdgeSchedulerEvents
@@ -102,18 +127,23 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 
 Get Edge Scheduler Events (getEdgeSchedulerEvents)
 
-Returns a page of  Scheduler Events Info objects based on the provided Edge entity. Scheduler Event extends Scheduler Event Info object and adds &#39;configuration&#39; - a JSON structure of scheduler event configuration. See the &#39;Model&#39; tab of the Response Class for more details. Scheduler Events allows you to schedule various types of events with flexible schedule configuration. Scheduler fires configured scheduler events according to their schedule. See the &#39;Model&#39; tab of the Response Class for more details. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Returns a page of  Scheduler Events Info objects based on the provided Edge entity. Scheduler Event extends Scheduler Event Info object and adds 'configuration' - a JSON structure of scheduler event configuration. See the 'Model' tab of the Response Class for more details. Scheduler Events allows you to schedule various types of events with flexible schedule configuration. Scheduler fires configured scheduler events according to their schedule. See the 'Model' tab of the Response Class for more details. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the scheduler event name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the scheduler event name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataSchedulerEventInfo**
 
 
 ## getScheduledReportEvents
@@ -122,7 +152,8 @@ Returns a page of  Scheduler Events Info objects based on the provided Edge enti
 
 Get Scheduled Report Events (getScheduledReportEvents)
 
-  Available for users with &#39;TENANT_ADMIN&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+  Available for users with 'TENANT_ADMIN' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
@@ -133,9 +164,13 @@ Get Scheduled Report Events (getScheduledReportEvents)
 | **reportTemplateId** | **UUID** | Report template id | [optional] |
 | **userId** | **UUID** | The user used for report generation. | [optional] |
 | **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the scheduler event name or customer title. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the scheduler event name or customer title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataScheduledReportInfo**
 
 
 ## getSchedulerEventById
@@ -144,13 +179,18 @@ Get Scheduled Report Events (getScheduledReportEvents)
 
 Get Scheduler Event (getSchedulerEventById)
 
-Fetch the SchedulerEvent object based on the provided scheduler event Id. Scheduler Event extends Scheduler Event Info object and adds &#39;configuration&#39; - a JSON structure of scheduler event configuration. See the &#39;Model&#39; tab of the Response Class for more details. Referencing non-existing Scheduler Event Id will cause &#39;Not Found&#39; error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Fetch the SchedulerEvent object based on the provided scheduler event Id. Scheduler Event extends Scheduler Event Info object and adds 'configuration' - a JSON structure of scheduler event configuration. See the 'Model' tab of the Response Class for more details. Referencing non-existing Scheduler Event Id will cause 'Not Found' error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**SchedulerEvent**
 
 
 ## getSchedulerEventInfoById
@@ -159,13 +199,18 @@ Fetch the SchedulerEvent object based on the provided scheduler event Id. Schedu
 
 Get Scheduler Event With Customer Info (getSchedulerEventInfoById)
 
-Fetch the SchedulerEventWithCustomerInfo object based on the provided scheduler event Id. Scheduler Event With Customer Info extends Scheduler Event Info object and adds &#39;customerTitle&#39; - a String value representing the title of the customer which user created a Scheduler Event and &#39;customerIsPublic&#39; - a boolean parameter that specifies if customer is public. See the &#39;Model&#39; tab of the Response Class for more details. Referencing non-existing Scheduler Event Id will cause &#39;Not Found&#39; error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Fetch the SchedulerEventWithCustomerInfo object based on the provided scheduler event Id. Scheduler Event With Customer Info extends Scheduler Event Info object and adds 'customerTitle' - a String value representing the title of the customer which user created a Scheduler Event and 'customerIsPublic' - a boolean parameter that specifies if customer is public. See the 'Model' tab of the Response Class for more details. Referencing non-existing Scheduler Event Id will cause 'Not Found' error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**SchedulerEventWithCustomerInfo**
 
 
 ## getSchedulerEvents
@@ -174,7 +219,8 @@ Fetch the SchedulerEventWithCustomerInfo object based on the provided scheduler 
 
 Get scheduler events (getSchedulerEvents)
 
-Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Event With Customer Info extends Scheduler Event Info object and adds &#39;customerTitle&#39; - a String value representing the title of the customer which user created a Scheduler Event and &#39;customerIsPublic&#39; - a boolean parameter that specifies if customer is public. See the &#39;Model&#39; tab of the Response Class for more details.   You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.     Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Event With Customer Info extends Scheduler Event Info object and adds 'customerTitle' - a String value representing the title of the customer which user created a Scheduler Event and 'customerIsPublic' - a boolean parameter that specifies if customer is public. See the 'Model' tab of the Response Class for more details.   You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.     Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
@@ -182,35 +228,45 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on event&#39;s name, type, or customer&#39;s name | [optional] |
+| **textSearch** | **String** | Case-insensitive 'substring' filter based on event's name, type, or customer's name | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-| **type** | **String** | A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
-| **edgeId** | **UUID** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **type** | **String** | A string value representing the scheduler type. For example, 'generateReport' | [optional] |
+| **edgeId** | **UUID** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+**PageDataSchedulerEventWithCustomerInfo**
 
 
 ## getSchedulerEventsByIdsV2
 
-> List&lt;SchedulerEventInfo&gt; getSchedulerEventsByIdsV2(schedulerEventIds)
+> List<SchedulerEventInfo> getSchedulerEventsByIdsV2(schedulerEventIds)
 
 Get Scheduler Events By Ids (getSchedulerEventsByIdsV2)
 
-Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Events allows you to schedule various types of events with flexible schedule configuration. Scheduler fires configured scheduler events according to their schedule. See the &#39;Model&#39; tab of the Response Class for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Events allows you to schedule various types of events with flexible schedule configuration. Scheduler fires configured scheduler events according to their schedule. See the 'Model' tab of the Response Class for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventIds** | **List&lt;String&gt;** | A list of scheduler event ids, separated by comma &#39;,&#39; | |
+| **schedulerEventIds** | **List<String>** | A list of scheduler event ids, separated by comma ',' | |
+
+### Return type
+
+**List<SchedulerEventInfo>**
 
 
 ## getSchedulerEventsByRange
 
-> List&lt;SchedulerEventWithCustomerInfo&gt; getSchedulerEventsByRange(startTime, endTime, type, edgeId, textSearch)
+> List<SchedulerEventWithCustomerInfo> getSchedulerEventsByRange(startTime, endTime, type, edgeId, textSearch)
 
 Get scheduler events (getSchedulerEventsByRange)
 
-Retrieves scheduler events filtering by event run time. Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Event With Customer Info extends Scheduler Event Info object and adds &#39;customerTitle&#39; - a String value representing the title of the customer which user created a Scheduler Event and &#39;customerIsPublic&#39; - a boolean parameter that specifies if customer is public. See the &#39;Model&#39; tab of the Response Class for more details.   You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.     Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Retrieves scheduler events filtering by event run time. Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Event With Customer Info extends Scheduler Event Info object and adds 'customerTitle' - a String value representing the title of the customer which user created a Scheduler Event and 'customerIsPublic' - a boolean parameter that specifies if customer is public. See the 'Model' tab of the Response Class for more details.   You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.     Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
@@ -218,9 +274,13 @@ Retrieves scheduler events filtering by event run time. Requested scheduler even
 |------------- | ------------- | ------------- | -------------|
 | **startTime** | **Long** | Start time filter in milliseconds for scheduler event run time | |
 | **endTime** | **Long** | End time filter in milliseconds for scheduler event run time | |
-| **type** | **String** | A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
-| **edgeId** | **UUID** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on event&#39;s name, type, or customer&#39;s name | [optional] |
+| **type** | **String** | A string value representing the scheduler type. For example, 'generateReport' | [optional] |
+| **edgeId** | **UUID** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+| **textSearch** | **String** | Case-insensitive 'substring' filter based on event's name, type, or customer's name | [optional] |
+
+### Return type
+
+**List<SchedulerEventWithCustomerInfo>**
 
 
 ## saveSchedulerEvent
@@ -229,13 +289,18 @@ Retrieves scheduler events filtering by event run time. Requested scheduler even
 
 Save Scheduler Event (saveSchedulerEvent)
 
-Creates or Updates scheduler event. Scheduler Event extends Scheduler Event Info object and adds &#39;configuration&#39; - a JSON structure of scheduler event configuration. See the &#39;Model&#39; tab of the Response Class for more details. When creating scheduler event, platform generates scheduler event Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created scheduler event id will be present in the response. Specify existing scheduler event id to update the scheduler event. Referencing non-existing scheduler event Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Scheduler Event entity.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Creates or Updates scheduler event. Scheduler Event extends Scheduler Event Info object and adds 'configuration' - a JSON structure of scheduler event configuration. See the 'Model' tab of the Response Class for more details. When creating scheduler event, platform generates scheduler event Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created scheduler event id will be present in the response. Specify existing scheduler event id to update the scheduler event. Referencing non-existing scheduler event Id will cause 'Not Found' error. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Scheduler Event entity.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **schedulerEvent** | **SchedulerEvent** |  | |
+
+### Return type
+
+**SchedulerEvent**
 
 
 ## unassignSchedulerEventFromEdge
@@ -244,12 +309,17 @@ Creates or Updates scheduler event. Scheduler Event extends Scheduler Event Info
 
 Unassign scheduler event from edge (unassignSchedulerEventFromEdge)
 
-Clears assignment of the scheduler event to the edge. Unassignment works in async way - first, &#39;unassign&#39; notification event pushed to edge queue on platform. Second, remote edge service will receive an &#39;unassign&#39; command to remove entity group (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once &#39;unassign&#39; command will be delivered to edge service, it&#39;s going to remove entity group and entities inside this group locally.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+Clears assignment of the scheduler event to the edge. Unassignment works in async way - first, 'unassign' notification event pushed to edge queue on platform. Second, remote edge service will receive an 'unassign' command to remove entity group (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once 'unassign' command will be delivered to edge service, it's going to remove entity group and entities inside this group locally.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**SchedulerEventInfo**
 

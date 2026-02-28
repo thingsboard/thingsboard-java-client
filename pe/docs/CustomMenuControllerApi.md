@@ -21,15 +21,20 @@
 
 Create Custom Menu (createCustomMenu)
 
-The api is designed to create Custom Menu without configuration. Is not applicable for update.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the custom menu with specified id.
+The api is designed to create Custom Menu without configuration. Is not applicable for update.  Security check is performed to verify that the user has 'WRITE' permission for the custom menu with specified id.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **customMenuInfo** | **CustomMenuInfo** |  | |
-| **assignToList** | **List&lt;String&gt;** | A list of entity ids, separated by comma &#39;,&#39; | [optional] |
+| **assignToList** | **List<String>** | A list of entity ids, separated by comma ',' | [optional] |
 | **force** | **Boolean** | Use force if you want to create default menu that conflicts with the existing one (old one will be update NO_ASSIGN assignee type) | [optional] |
+
+### Return type
+
+**CustomMenu**
 
 
 ## deleteCustomMenu
@@ -38,14 +43,19 @@ The api is designed to create Custom Menu without configuration. Is not applicab
 
 Delete custom menu (deleteCustomMenu)
 
-Deletes the custom menu based on the provided Custom Menu Id. Referencing non-existing custom menu Id will cause an error. If the custom menu is assigned to the list of users or customers bad request is returned.To delete a custom menu that has assignee list set &#39;force&#39; request param to true 
+Deletes the custom menu based on the provided Custom Menu Id. Referencing non-existing custom menu Id will cause an error. If the custom menu is assigned to the list of users or customers bad request is returned.To delete a custom menu that has assignee list set 'force' request param to true 
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **force** | **Boolean** | Force set to true will unassign menu before deletion | [optional] |
+
+### Return type
+
+**CustomMenuDeleteResult**
 
 
 ## getCustomMenu
@@ -56,26 +66,36 @@ Get end-user Custom Menu configuration (getCustomMenu)
 
 Fetch the Custom Menu configuration object for the authorized user. The custom menu is configured in the white labeling parameters and has one of three user scopes:SYSTEM, TENANT, CUSTOMER and four assignee type: NO_ASSIGN, ALL, CUSTOMERS, USERS.There are three default (assignee type: ALL) menus configured on the system level for each scope and if no other menu is configured for user, system configuration of the corresponding scope will be applied.If a custom menu with assignee type ALL is configured on the tenant level, it overrides the menu configuration of the corresponding scope on the system level. If a custom menu with assignee type USER_GROUPS is configured on the tenant level, it overrides default tenant menu.If a custom menu with assignee type CUSTOMERS is configured on tenant level for specific customer, it will be applied to all customer users.If a custom menu with assignee type ALL is configured on the customer level, it overrides the menu assigned on tenant level.If a custom menu with assignee type USER_GROUPS is configured on the customer level, it overrides default customer menu.If a custom menu is assigned to specific user, it overrides all other configuration.
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ifNoneMatch** | **String** |  | [optional] |
 
+### Return type
+
+null (empty response body)
+
 
 ## getCustomMenuAssigneeList
 
-> List&lt;EntityInfo&gt; getCustomMenuAssigneeList(customMenuId)
+> List<EntityInfo> getCustomMenuAssigneeList(customMenuId)
 
 Get Custom Menu assignee list (getCustomMenuAssigneeList)
 
-Fetch the list of Entity Info objects that represents users or customers, or empty list if custom menu is not assigned or has NO_ASSIGN/ALL assignee type.  Security check is performed to verify that the user has &#39;READ&#39; permission for the custom menu with specified id.
+Fetch the list of Entity Info objects that represents users or customers, or empty list if custom menu is not assigned or has NO_ASSIGN/ALL assignee type.  Security check is performed to verify that the user has 'READ' permission for the custom menu with specified id.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**List<EntityInfo>**
 
 
 ## getCustomMenuConfig
@@ -84,13 +104,18 @@ Fetch the list of Entity Info objects that represents users or customers, or emp
 
 Get Custom Menu configuration by id (getCustomMenuConfig)
 
-Fetch the Custom Menu configuration based on the provided Custom Menu Id.   Security check is performed to verify that the user has &#39;READ&#39; permission for the custom menu with specified id.
+Fetch the Custom Menu configuration based on the provided Custom Menu Id.   Security check is performed to verify that the user has 'READ' permission for the custom menu with specified id.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**CustomMenuConfig**
 
 
 ## getCustomMenuInfoById
@@ -99,13 +124,18 @@ Fetch the Custom Menu configuration based on the provided Custom Menu Id.   Secu
 
 Get Custom Menu Info (getCustomMenuInfoById)
 
-Fetch the Custom Menu Info object based on the provided Custom Menu Id.   Security check is performed to verify that the user has &#39;READ&#39; permission for the custom menu with specified id.
+Fetch the Custom Menu Info object based on the provided Custom Menu Id.   Security check is performed to verify that the user has 'READ' permission for the custom menu with specified id.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**CustomMenuInfo**
 
 
 ## getCustomMenuInfos
@@ -114,7 +144,8 @@ Fetch the Custom Menu Info object based on the provided Custom Menu Id.   Securi
 
 Get all custom menus configured at user level (getCustomMenuInfos)
 
-Returns a page of custom menu info objects owned by the tenant or the customer of a current user, scope and assigneeType request parameters can be used to filter the result.  Security check is performed to verify that the user has &#39;READ&#39; permission for the white labeling resource.
+Returns a page of custom menu info objects owned by the tenant or the customer of a current user, scope and assigneeType request parameters can be used to filter the result.  Security check is performed to verify that the user has 'READ' permission for the white labeling resource.
+
 
 ### Parameters
 
@@ -124,9 +155,13 @@ Returns a page of custom menu info objects owned by the tenant or the customer o
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **scope** | **CMScope** | Custom menu scope. | [optional] [enum: SYSTEM, TENANT, CUSTOMER] |
 | **assigneeType** | **CMAssigneeType** | Custom menu assignee type. | [optional] [enum: NO_ASSIGN, ALL, CUSTOMERS, USERS, USER_GROUPS] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the custom menu name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the custom menu name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataCustomMenuInfo**
 
 
 ## updateCustomMenuAssigneeList
@@ -135,7 +170,8 @@ Returns a page of custom menu info objects owned by the tenant or the customer o
 
 Update custom menu assignee list (updateCustomMenuAssigneeList)
 
-The api designed to update the list of assignees or assignee type based on the provided Custom Menu Id. To change assignee type, put new assignee type in path parameter.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the custom menu with specified id.
+The api designed to update the list of assignees or assignee type based on the provided Custom Menu Id. To change assignee type, put new assignee type in path parameter.  Security check is performed to verify that the user has 'WRITE' permission for the custom menu with specified id.
+
 
 ### Parameters
 
@@ -144,7 +180,11 @@ The api designed to update the list of assignees or assignee type based on the p
 | **id** | **UUID** |  | |
 | **assigneeType** | **CMAssigneeType** |  | [enum: NO_ASSIGN, ALL, CUSTOMERS, USERS, USER_GROUPS] |
 | **force** | **Boolean** | Use force if you want to override default menu | [optional] |
-| **requestBody** | **List&lt;String&gt;** |  | [optional] |
+| **requestBody** | **List<String>** |  | [optional] |
+
+### Return type
+
+null (empty response body)
 
 
 ## updateCustomMenuConfig
@@ -153,14 +193,19 @@ The api designed to update the list of assignees or assignee type based on the p
 
 Update Custom Menu configuration based on the provided Custom Menu Id (updateCustomMenuConfig)
 
-  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the custom menu with specified id.
+  Security check is performed to verify that the user has 'WRITE' permission for the custom menu with specified id.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **customMenuConfig** | **CustomMenuConfig** |  | |
+
+### Return type
+
+**CustomMenu**
 
 
 ## updateCustomMenuName
@@ -169,12 +214,17 @@ Update Custom Menu configuration based on the provided Custom Menu Id (updateCus
 
 Update Custom Menu name based on the provided Custom Menu Id (updateCustomMenuName)
 
-  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the custom menu with specified id.
+  Security check is performed to verify that the user has 'WRITE' permission for the custom menu with specified id.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **body** | **String** |  | |
+
+### Return type
+
+null (empty response body)
 

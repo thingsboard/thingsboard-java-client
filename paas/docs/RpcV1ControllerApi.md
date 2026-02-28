@@ -13,14 +13,19 @@
 
 Send one-way RPC request (handleOneWayDeviceRPCRequest)
 
-Deprecated. See &#39;Rpc V 2 Controller&#39; instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Deprecated. See 'Rpc V 2 Controller' instead.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **deviceId** | **String** | A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **body** | **String** |  | |
+
+### Return type
+
+**String**
 
 
 ## handleTwoWayDeviceRPCRequest1
@@ -29,12 +34,17 @@ Deprecated. See &#39;Rpc V 2 Controller&#39; instead.  Available for users with 
 
 Send two-way RPC request (handleTwoWayDeviceRPCRequest)
 
-Deprecated. See &#39;Rpc V 2 Controller&#39; instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Deprecated. See 'Rpc V 2 Controller' instead.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **deviceId** | **String** | A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **body** | **String** |  | |
+
+### Return type
+
+**String**
 

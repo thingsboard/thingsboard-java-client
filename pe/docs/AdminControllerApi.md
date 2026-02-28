@@ -36,7 +36,12 @@
 
 Check auto commit settings exists (autoCommitSettingsExists)
 
-Check whether the auto commit settings exists.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Check whether the auto commit settings exists.   Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**Boolean**
+
 
 ## checkRepositoryAccess
 
@@ -44,13 +49,18 @@ Check whether the auto commit settings exists.   Available for users with &#39;T
 
 Check repository access (checkRepositoryAccess)
 
-Attempts to check repository access.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Attempts to check repository access.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **repositorySettings** | **RepositorySettings** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## checkUpdates
@@ -59,13 +69,19 @@ Attempts to check repository access.   Available for users with &#39;TENANT_ADMI
 
 Check for new Platform Releases (checkUpdates)
 
-Check notifications about new platform releases.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Check notifications about new platform releases.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**UpdateMessage**
+
 
 ## codeProcessingUrl
 
 > codeProcessingUrl(code, state)
 
 codeProcessingUrl
+
 
 ### Parameters
 
@@ -74,6 +90,10 @@ codeProcessingUrl
 | **code** | **String** |  | |
 | **state** | **String** |  | |
 
+### Return type
+
+null (empty response body)
+
 
 ## deleteAutoCommitSettings
 
@@ -81,7 +101,12 @@ codeProcessingUrl
 
 Delete auto commit settings (deleteAutoCommitSettings)
 
-Deletes the auto commit settings.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Deletes the auto commit settings.  Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+null (empty response body)
+
 
 ## deleteRepositorySettings
 
@@ -89,7 +114,12 @@ Deletes the auto commit settings.  Available for users with &#39;TENANT_ADMIN&#3
 
 Delete repository settings (deleteRepositorySettings)
 
-Deletes the repository settings.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Deletes the repository settings.  Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+null (empty response body)
+
 
 ## getAdminSettings
 
@@ -97,14 +127,19 @@ Deletes the repository settings.  Available for users with &#39;TENANT_ADMIN&#39
 
 Get the Administration Settings object using key (getAdminSettings)
 
-Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
+Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **key** | **String** | A string value of the key (e.g. &#39;general&#39; or &#39;mail&#39;). | |
+| **key** | **String** | A string value of the key (e.g. 'general' or 'mail'). | |
 | **systemByDefault** | **Boolean** | Use system settings if settings are not defined on tenant level. | [optional] [default to false] |
+
+### Return type
+
+**AdminSettings**
 
 
 ## getAuthorizationUrl
@@ -115,13 +150,23 @@ Redirect user to mail provider login page.
 
 After user logged in and provided accessprovider sends authorization code to specified redirect uri.)
 
+### Return type
+
+**String**
+
+
 ## getAutoCommitSettings
 
-> Map&lt;String, AutoVersionCreateConfig&gt; getAutoCommitSettings()
+> Map<String, AutoVersionCreateConfig> getAutoCommitSettings()
 
 Get auto commit settings (getAutoCommitSettings)
 
-Get the auto commit settings object.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Get the auto commit settings object.   Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**Map<String, AutoVersionCreateConfig>**
+
 
 ## getFeaturesInfo
 
@@ -129,7 +174,12 @@ Get the auto commit settings object.   Available for users with &#39;TENANT_ADMI
 
 Get features info (getFeaturesInfo)
 
-Get information about enabled/disabled features.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Get information about enabled/disabled features.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**FeaturesInfo**
+
 
 ## getJwtSettings
 
@@ -137,7 +187,12 @@ Get information about enabled/disabled features.   Available for users with &#39
 
 Get the JWT Settings object (getJwtSettings)
 
-Get the JWT Settings object that contains JWT token policy, etc.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Get the JWT Settings object that contains JWT token policy, etc.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**JwtSettings**
+
 
 ## getLicenseUsageInfo
 
@@ -145,7 +200,12 @@ Get the JWT Settings object that contains JWT token policy, etc.   Available for
 
 Get license usage info (getLicenseUsageInfo)
 
-Get license usage info.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Get license usage info.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**LicenseUsageInfo**
+
 
 ## getMailProcessingUrl
 
@@ -153,7 +213,12 @@ Get license usage info.   Available for users with &#39;SYS_ADMIN&#39; authority
 
 Get OAuth2 log in processing URL (getMailProcessingUrl)
 
-Returns the URL enclosed in double quotes. After successful authentication with OAuth2 provider and user consent for requested scope, it makes a redirect to this path so that the platform can do further log in processing and generating access tokens.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Returns the URL enclosed in double quotes. After successful authentication with OAuth2 provider and user consent for requested scope, it makes a redirect to this path so that the platform can do further log in processing and generating access tokens.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**String**
+
 
 ## getRepositorySettings
 
@@ -161,7 +226,12 @@ Returns the URL enclosed in double quotes. After successful authentication with 
 
 Get repository settings (getRepositorySettings)
 
-Get the repository settings object.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Get the repository settings object.   Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**RepositorySettings**
+
 
 ## getRepositorySettingsInfo
 
@@ -169,13 +239,23 @@ Get the repository settings object.   Available for users with &#39;TENANT_ADMIN
 
 getRepositorySettingsInfo
 
+### Return type
+
+**RepositorySettingsInfo**
+
+
 ## getSecuritySettings
 
 > SecuritySettings getSecuritySettings()
 
 Get the Security Settings object (getSecuritySettings)
 
-Get the Security Settings object that contains password policy, etc.  Available for users with &#39;SYS_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
+Get the Security Settings object that contains password policy, etc.  Available for users with 'SYS_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
+
+### Return type
+
+**SecuritySettings**
+
 
 ## getSystemInfo
 
@@ -183,7 +263,12 @@ Get the Security Settings object that contains password policy, etc.  Available 
 
 Get system info (getSystemInfo)
 
-Get main information about system.   Available for users with &#39;SYS_ADMIN&#39; authority.
+Get main information about system.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**SystemInfo**
+
 
 ## repositorySettingsExists
 
@@ -191,7 +276,12 @@ Get main information about system.   Available for users with &#39;SYS_ADMIN&#39
 
 Check repository settings exists (repositorySettingsExists)
 
-Check whether the repository settings exists.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Check whether the repository settings exists.   Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**Boolean**
+
 
 ## saveAdminSettings
 
@@ -199,7 +289,8 @@ Check whether the repository settings exists.   Available for users with &#39;TE
 
 Creates or Updates the Administration Settings (saveAdminSettings)
 
-Creates or Updates the Administration Settings. Platform generates random Administration Settings Id during settings creation. The Administration Settings Id will be present in the response. Specify the Administration Settings Id when you would like to update the Administration Settings. Referencing non-existing Administration Settings Id will cause an error.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
+Creates or Updates the Administration Settings. Platform generates random Administration Settings Id during settings creation. The Administration Settings Id will be present in the response. Specify the Administration Settings Id when you would like to update the Administration Settings. Referencing non-existing Administration Settings Id will cause an error.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'WRITE' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
+
 
 ### Parameters
 
@@ -207,20 +298,29 @@ Creates or Updates the Administration Settings. Platform generates random Admini
 |------------- | ------------- | ------------- | -------------|
 | **adminSettings** | **AdminSettings** | A JSON value representing the Administration Settings. | |
 
+### Return type
+
+**AdminSettings**
+
 
 ## saveAutoCommitSettings
 
-> Map&lt;String, AutoVersionCreateConfig&gt; saveAutoCommitSettings(requestBody)
+> Map<String, AutoVersionCreateConfig> saveAutoCommitSettings(requestBody)
 
 Creates or Updates the auto commit settings (saveAutoCommitSettings)
 
-Creates or Updates the auto commit settings object.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Creates or Updates the auto commit settings object.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestBody** | **Map&lt;String, AutoVersionCreateConfig&gt;** |  | |
+| **requestBody** | **Map<String, AutoVersionCreateConfig>** |  | |
+
+### Return type
+
+**Map<String, AutoVersionCreateConfig>**
 
 
 ## saveJwtSettings
@@ -229,13 +329,18 @@ Creates or Updates the auto commit settings object.   Available for users with &
 
 Update JWT Settings (saveJwtSettings)
 
-Updates the JWT Settings object that contains JWT token policy, etc. The tokenSigningKey field is a Base64 encoded string.  Available for users with &#39;SYS_ADMIN&#39; authority.
+Updates the JWT Settings object that contains JWT token policy, etc. The tokenSigningKey field is a Base64 encoded string.  Available for users with 'SYS_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **jwtSettings** | **JwtSettings** |  | |
+
+### Return type
+
+**JwtPair**
 
 
 ## saveRepositorySettings
@@ -244,13 +349,18 @@ Updates the JWT Settings object that contains JWT token policy, etc. The tokenSi
 
 Creates or Updates the repository settings (saveRepositorySettings)
 
-Creates or Updates the repository settings object.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Creates or Updates the repository settings object.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **repositorySettings** | **RepositorySettings** |  | |
+
+### Return type
+
+**RepositorySettings**
 
 
 ## saveSecuritySettings
@@ -259,13 +369,18 @@ Creates or Updates the repository settings object.   Available for users with &#
 
 Update Security Settings (saveSecuritySettings)
 
-Updates the Security Settings object that contains password policy, etc.  Available for users with &#39;SYS_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
+Updates the Security Settings object that contains password policy, etc.  Available for users with 'SYS_ADMIN' authority.  Security check is performed to verify that the user has 'WRITE' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **securitySettings** | **SecuritySettings** |  | |
+
+### Return type
+
+**SecuritySettings**
 
 
 ## sendTestMail
@@ -274,13 +389,18 @@ Updates the Security Settings object that contains password policy, etc.  Availa
 
 Send test email (sendTestMail)
 
-Attempts to send test email using Mail Settings provided as a parameter. Email is sent to the address specified in the profile of user who is performing the requestYou may change the &#39;To&#39; email in the user profile of the System/Tenant Administrator.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
+Attempts to send test email using Mail Settings provided as a parameter. Email is sent to the address specified in the profile of user who is performing the requestYou may change the 'To' email in the user profile of the System/Tenant Administrator.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **adminSettings** | **AdminSettings** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## sendTestSms
@@ -289,11 +409,16 @@ Attempts to send test email using Mail Settings provided as a parameter. Email i
 
 Send test sms (sendTestSms)
 
-Attempts to send test sms to the System Administrator User using SMS Settings and phone number provided as a parameters of the request.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
+Attempts to send test sms to the System Administrator User using SMS Settings and phone number provided as a parameters of the request.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **testSmsRequest** | **TestSmsRequest** |  | |
+
+### Return type
+
+null (empty response body)
 

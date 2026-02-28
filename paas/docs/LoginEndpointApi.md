@@ -13,13 +13,18 @@
 
 Login method to get user JWT token data
 
-Login method used to authenticate user and get JWT token data.  Value of the response **token** field can be used as **X-Authorization** header value:  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;.
+Login method used to authenticate user and get JWT token data.  Value of the response **token** field can be used as **X-Authorization** header value:  `X-Authorization: Bearer $JWT_TOKEN_VALUE`.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **loginRequest** | **LoginRequest** | Login request | [optional] |
+
+### Return type
+
+**LoginResponse**
 
 
 ## refreshToken
@@ -28,11 +33,16 @@ Login method used to authenticate user and get JWT token data.  Value of the res
 
 Refresh user JWT token data
 
-Method to refresh JWT token. Provide a valid refresh token to get a new JWT token.  The response contains a new token that can be used for authorization.  &#x60;X-Authorization: Bearer $JWT_TOKEN_VALUE&#x60;
+Method to refresh JWT token. Provide a valid refresh token to get a new JWT token.  The response contains a new token that can be used for authorization.  `X-Authorization: Bearer $JWT_TOKEN_VALUE`
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **refreshTokenRequest** | **RefreshTokenRequest** | Refresh token request | [optional] |
+
+### Return type
+
+**LoginResponse**
 

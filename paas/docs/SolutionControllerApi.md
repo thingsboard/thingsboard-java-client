@@ -16,22 +16,32 @@
 
 Get Solution template details (getSolutionTemplateDetails)
 
-Get a solution template details based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Get a solution template details based on the provided id   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**TenantSolutionTemplateDetails**
 
 
 ## getSolutionTemplateInfos
 
-> List&lt;TenantSolutionTemplateInfo&gt; getSolutionTemplateInfos()
+> List<TenantSolutionTemplateInfo> getSolutionTemplateInfos()
 
 Get Solution templates (getSolutionTemplateInfos)
 
-Get a list of solution template descriptors   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Get a list of solution template descriptors   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+### Return type
+
+**List<TenantSolutionTemplateInfo>**
+
 
 ## getSolutionTemplateInstructions
 
@@ -39,13 +49,18 @@ Get a list of solution template descriptors   Security check is performed to ver
 
 Get Solution Template Instructions (getSolutionTemplateInstructions)
 
-Get a solution template instructions based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Get a solution template instructions based on the provided id   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**TenantSolutionTemplateInstructions**
 
 
 ## installSolutionTemplate
@@ -54,13 +69,18 @@ Get a solution template instructions based on the provided id   Security check i
 
 Install Solution Template (installSolutionTemplate)
 
-Install solution template based on the provided id   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+Install solution template based on the provided id   Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**SolutionInstallResponse**
 
 
 ## uninstallSolutionTemplate
@@ -69,11 +89,16 @@ Install solution template based on the provided id   Security check is performed
 
 Uninstall Solution Template (uninstallSolutionTemplate)
 
-Uninstall solution template based on the provided id   Security check is performed to verify that the user has &#39;DELETE&#39; permission for the entity (entities).
+Uninstall solution template based on the provided id   Security check is performed to verify that the user has 'DELETE' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **solutionTemplateId** | **String** | A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 

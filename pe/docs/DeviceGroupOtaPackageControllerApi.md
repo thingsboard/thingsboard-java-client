@@ -14,11 +14,16 @@
 
 deleteDeviceGroupOtaPackage
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **String** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## getFirmwareById
@@ -27,12 +32,17 @@ deleteDeviceGroupOtaPackage
 
 getFirmwareById
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupId** | **String** |  | |
 | **firmwareType** | **String** |  | |
+
+### Return type
+
+**DeviceGroupOtaPackage**
 
 
 ## saveDeviceGroupOtaPackage
@@ -41,9 +51,14 @@ getFirmwareById
 
 saveDeviceGroupOtaPackage
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **deviceGroupOtaPackage** | **DeviceGroupOtaPackage** |  | |
+
+### Return type
+
+**DeviceGroupOtaPackage**
 

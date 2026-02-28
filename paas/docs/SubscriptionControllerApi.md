@@ -16,17 +16,27 @@
 
 getMergedTenantProfileConfiguration
 
+### Return type
+
+**DefaultTenantProfileConfiguration**
+
+
 ## getTenantProfileConfigurationById
 
 > DefaultTenantProfileConfiguration getTenantProfileConfigurationById(tenantProfileId)
 
 getTenantProfileConfigurationById
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **tenantProfileId** | **String** |  | |
+
+### Return type
+
+**DefaultTenantProfileConfiguration**
 
 
 ## getTenantSubscription
@@ -35,14 +45,29 @@ getTenantProfileConfigurationById
 
 getTenantSubscription
 
+### Return type
+
+**SubscriptionDetails**
+
+
 ## getTenantSubscriptionUsage
 
 > SubscriptionUsage getTenantSubscriptionUsage()
 
 getTenantSubscriptionUsage
 
+### Return type
+
+**SubscriptionUsage**
+
+
 ## trendzUsed
 
 > Boolean trendzUsed()
 
 trendzUsed
+
+### Return type
+
+**Boolean**
+

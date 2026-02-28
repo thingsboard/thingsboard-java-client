@@ -18,11 +18,16 @@
 
 createChat
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## deleteChat
@@ -31,11 +36,16 @@ createChat
 
 deleteChat
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **chatId** | **UUID** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## exportChat
@@ -44,12 +54,17 @@ deleteChat
 
 exportChat
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **chatId** | **UUID** |  | |
 | **includeAuditLogs** | **Boolean** |  | [optional] [default to false] |
+
+### Return type
+
+**byte[]**
 
 
 ## getChatMessages
@@ -58,11 +73,16 @@ exportChat
 
 getChatMessages
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **chatId** | **UUID** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## listChats
@@ -71,11 +91,17 @@ getChatMessages
 
 listChats
 
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
 ## sendChatMessage
 
-> List&lt;Object&gt; sendChatMessage(chatId, xAuthorization, body)
+> List<Object> sendChatMessage(chatId, xAuthorization, body)
 
 sendChatMessage
+
 
 ### Parameters
 
@@ -85,6 +111,10 @@ sendChatMessage
 | **xAuthorization** | **String** |  | |
 | **body** | **String** |  | |
 
+### Return type
+
+**List<Object>**
+
 
 ## updateChat
 
@@ -92,10 +122,15 @@ sendChatMessage
 
 updateChat
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **chatId** | **UUID** |  | |
 | **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
 

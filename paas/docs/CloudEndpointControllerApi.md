@@ -16,11 +16,21 @@
 
 hasDomainReadPermission
 
+### Return type
+
+**Boolean**
+
+
 ## hasDomainWritePermission
 
 > Boolean hasDomainWritePermission()
 
 hasDomainWritePermission
+
+### Return type
+
+**Boolean**
+
 
 ## tenantHasWhiteLabelRead
 
@@ -28,14 +38,29 @@ hasDomainWritePermission
 
 tenantHasWhiteLabelRead
 
+### Return type
+
+**Boolean**
+
+
 ## tenantHasWhiteLabelWrite
 
 > Boolean tenantHasWhiteLabelWrite()
 
 tenantHasWhiteLabelWrite
 
+### Return type
+
+**Boolean**
+
+
 ## tenantWhiteLabelingAllowed1
 
 > tenantWhiteLabelingAllowed1()
 
 tenantWhiteLabelingAllowed
+
+### Return type
+
+null (empty response body)
+

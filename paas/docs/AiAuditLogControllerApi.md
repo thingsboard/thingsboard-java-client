@@ -12,10 +12,15 @@
 
 getAuditLogs
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **sourceId** | **UUID** |  | [optional] |
 | **status** | **AuditLogStatusFilter** |  | [optional] [default to ALL] [enum: SUCCESS, FAILURE, ALL] |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
 

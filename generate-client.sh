@@ -170,7 +170,7 @@ generate() {
     --model-package "$BASE_PACKAGE.model" \
     --invoker-package "$BASE_PACKAGE" \
     --additional-properties hideGenerationTimestamp=true \
-    --global-property apis,models=false,supportingFiles=false,apiTests=false,modelTests=false,modelDocs=false \
+    --global-property apis,models,supportingFiles=false,apiTests=false,modelTests=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
     -t "$SCRIPT_DIR/openapi" \

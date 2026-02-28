@@ -12,9 +12,14 @@
 
 resolveToolApproval
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
 

@@ -25,13 +25,18 @@
 
 Delete Login White Labeling configuration (deleteCurrentLoginWhiteLabelParams)
 
-Delete the Login White Labeling configuration that corresponds to the authority of the user.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.
+Delete the Login White Labeling configuration that corresponds to the authority of the user.   Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+null (empty response body)
 
 
 ## deleteCurrentWhiteLabelParams
@@ -40,13 +45,18 @@ Delete the Login White Labeling configuration that corresponds to the authority 
 
 Delete General White Labeling configuration (deleteCurrentWhiteLabelParams)
 
-Delete the White Labeling configuration that corresponds to the authority of the user.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.
+Delete the White Labeling configuration that corresponds to the authority of the user.   Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+null (empty response body)
 
 
 ## getCurrentLoginWhiteLabelParams
@@ -55,13 +65,18 @@ Delete the White Labeling configuration that corresponds to the authority of the
 
 Get Login White Labeling configuration (getCurrentWhiteLabelParams)
 
-Fetch the Login  White Labeling configuration that corresponds to the authority of the user. The API call is designed to load the Login White Labeling configuration for edition. So, the result is NOT merged with the parent level White Labeling configuration. Let&#39;s assume there is a custom White Labeling  configured on a system level. And there is no custom White Labeling  items configured on a tenant level. In such a case, the API call will return default object for the tenant administrator.   Security check is performed to verify that the user has &#39;READ&#39; permission for the white labeling resource.
+Fetch the Login  White Labeling configuration that corresponds to the authority of the user. The API call is designed to load the Login White Labeling configuration for edition. So, the result is NOT merged with the parent level White Labeling configuration. Let's assume there is a custom White Labeling  configured on a system level. And there is no custom White Labeling  items configured on a tenant level. In such a case, the API call will return default object for the tenant administrator.   Security check is performed to verify that the user has 'READ' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+**LoginWhiteLabelingParams**
 
 
 ## getCurrentWhiteLabelParams
@@ -70,13 +85,18 @@ Fetch the Login  White Labeling configuration that corresponds to the authority 
 
 Get White Labeling configuration (getCurrentWhiteLabelParams)
 
-Fetch the White Labeling configuration that corresponds to the authority of the user. The API call is designed to load the White Labeling configuration for edition. So, the result is NOT merged with the parent level White Labeling configuration. Let&#39;s assume there is a custom White Labeling  configured on a system level. And there is no custom White Labeling  items configured on a tenant level. In such a case, the API call will return default object for the tenant administrator.   Security check is performed to verify that the user has &#39;READ&#39; permission for the white labeling resource.
+Fetch the White Labeling configuration that corresponds to the authority of the user. The API call is designed to load the White Labeling configuration for edition. So, the result is NOT merged with the parent level White Labeling configuration. Let's assume there is a custom White Labeling  configured on a system level. And there is no custom White Labeling  items configured on a tenant level. In such a case, the API call will return default object for the tenant administrator.   Security check is performed to verify that the user has 'READ' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+**WhiteLabelingParams**
 
 
 ## getLoginWhiteLabelParams
@@ -87,19 +107,29 @@ Get Login White Labeling parameters
 
 Returns login white-labeling parameters based on the hostname from request.
 
+### Return type
+
+**LoginWhiteLabelingParams**
+
+
 ## getMailTemplates
 
 > com.fasterxml.jackson.databind.JsonNode getMailTemplates(systemByDefault)
 
 Get the Mail templates settings (getMailTemplates)
 
-Fetch Mail template settings.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the white labeling resource.
+Fetch Mail template settings.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **systemByDefault** | **Boolean** | Use system settings if settings are not defined on tenant level. | [optional] [default to false] |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## getWhiteLabelParams
@@ -110,13 +140,23 @@ Get White Labeling parameters
 
 Returns white-labeling parameters for the current user.
 
+### Return type
+
+**WhiteLabelingParams**
+
+
 ## isCustomerWhiteLabelingAllowed
 
 > Boolean isCustomerWhiteLabelingAllowed()
 
 Check Customer White Labeling Allowed
 
-Check if the White Labeling is enabled for the customers of the current tenant  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Check if the White Labeling is enabled for the customers of the current tenant  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.  Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**Boolean**
+
 
 ## isWhiteLabelingAllowed
 
@@ -124,7 +164,12 @@ Check if the White Labeling is enabled for the customers of the current tenant  
 
 Check White Labeling Allowed
 
-Check if the White Labeling is enabled for the current user owner (tenant or customer)  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Check if the White Labeling is enabled for the current user owner (tenant or customer)  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+### Return type
+
+**Boolean**
+
 
 ## previewWhiteLabelParams
 
@@ -132,13 +177,18 @@ Check if the White Labeling is enabled for the current user owner (tenant or cus
 
 Preview Login White Labeling configuration (saveWhiteLabelParams)
 
-Merge the White Labeling configuration with the parent configuration and return the result.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.
+Merge the White Labeling configuration with the parent configuration and return the result.  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **whiteLabelingParams** | **WhiteLabelingParams** |  | |
+
+### Return type
+
+**WhiteLabelingParams**
 
 
 ## saveLoginWhiteLabelParams
@@ -147,14 +197,19 @@ Merge the White Labeling configuration with the parent configuration and return 
 
 Create Or Update Login White Labeling configuration (saveWhiteLabelParams)
 
-Creates or Updates the White Labeling configuration.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.
+Creates or Updates the White Labeling configuration.  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **loginWhiteLabelingParams** | **LoginWhiteLabelingParams** |  | |
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+**LoginWhiteLabelingParams**
 
 
 ## saveMailTemplates
@@ -163,13 +218,18 @@ Creates or Updates the White Labeling configuration.  Security check is performe
 
 Save the Mail templates settings (saveMailTemplates)
 
-Creates or Updates the Mail templates settings.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.
+Creates or Updates the Mail templates settings.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **body** | **Object** | A JSON value representing the Administration Settings. | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## saveWhiteLabelParams
@@ -178,14 +238,19 @@ Creates or Updates the Mail templates settings.  Available for users with &#39;S
 
 Create Or Update White Labeling configuration (saveWhiteLabelParams)
 
-Creates or Updates the White Labeling configuration.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.
+Creates or Updates the White Labeling configuration.  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **whiteLabelingParams** | **WhiteLabelingParams** |  | |
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+**WhiteLabelingParams**
 
 
 ## tenantWhiteLabelingAllowed
@@ -193,3 +258,8 @@ Creates or Updates the White Labeling configuration.  Security check is performe
 > tenantWhiteLabelingAllowed()
 
 tenantWhiteLabelingAllowed
+
+### Return type
+
+null (empty response body)
+

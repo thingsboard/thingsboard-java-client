@@ -19,13 +19,18 @@
 
 Delete secret by ID (deleteSecret)
 
-Deletes the secret. Referencing non-existing Secret Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Deletes the secret. Referencing non-existing Secret Id will cause an error.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** |  | |
+
+### Return type
+
+**TbSecretDeleteResult**
 
 
 ## getSecretInfoById
@@ -34,13 +39,18 @@ Deletes the secret. Referencing non-existing Secret Id will cause an error.  Ava
 
 Get Secret info by Id (getSecretInfoById)
 
-  Available for users with &#39;TENANT_ADMIN&#39; authority.
+  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** |  | |
+
+### Return type
+
+**SecretInfo**
 
 
 ## getSecretInfoByName
@@ -49,13 +59,18 @@ Get Secret info by Id (getSecretInfoById)
 
 Get Secret info by name (getSecretInfoByName)
 
-  Available for users with &#39;TENANT_ADMIN&#39; authority.
+  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **name** | **String** |  | |
+
+### Return type
+
+**SecretInfo**
 
 
 ## getSecretInfos
@@ -64,7 +79,8 @@ Get Secret info by name (getSecretInfoByName)
 
 Get Tenant Secret infos (getSecretInfos)
 
-Returns a page of secret infos owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of secret infos owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -72,18 +88,27 @@ Returns a page of secret infos owned by tenant. You can specify parameters to fi
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the secret name and description. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the secret name and description. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: name] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataSecretInfo**
 
 
 ## getSecretNames
 
-> List&lt;String&gt; getSecretNames()
+> List<String> getSecretNames()
 
 Get Tenant Secret names (getSecretNames)
 
-Returns a page of secret names owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of secret names owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+
+### Return type
+
+**List<String>**
+
 
 ## saveSecret
 
@@ -91,13 +116,18 @@ Returns a page of secret names owned by tenant. You can specify parameters to fi
 
 Save or Update Secret (saveSecret)
 
-Create or update the Secret. When creating secret, platform generates Secret Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Secret Id will be present in the response. Specify existing Secret Id to update the secret. Secret name is not updatable, only value could be changed. Referencing non-existing Secret Id will cause &#39;Not Found&#39; error.  Secret name is unique in the scope of tenant.
+Create or update the Secret. When creating secret, platform generates Secret Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Secret Id will be present in the response. Specify existing Secret Id to update the secret. Secret name is not updatable, only value could be changed. Referencing non-existing Secret Id will cause 'Not Found' error.  Secret name is unique in the scope of tenant.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **secret** | **Secret** |  | |
+
+### Return type
+
+**SecretInfo**
 
 
 ## updateSecretDescription
@@ -106,7 +136,8 @@ Create or update the Secret. When creating secret, platform generates Secret Id 
 
 Update Secret Description
 
-Updates the description of the existing Secret by secretId. Only the description can be updated. Referencing a non-existing Secret Id will cause a &#39;Not Found&#39; error.
+Updates the description of the existing Secret by secretId. Only the description can be updated. Referencing a non-existing Secret Id will cause a 'Not Found' error.
+
 
 ### Parameters
 
@@ -115,6 +146,10 @@ Updates the description of the existing Secret by secretId. Only the description
 | **id** | **UUID** | Unique identifier of the Secret to update | |
 | **body** | **String** |  | [optional] |
 
+### Return type
+
+**SecretInfo**
+
 
 ## updateSecretValue
 
@@ -122,7 +157,8 @@ Updates the description of the existing Secret by secretId. Only the description
 
 Update Secret value
 
-Updates the value of the existing Secret by secretId. Referencing a non-existing Secret Id will cause a &#39;Not Found&#39; error.
+Updates the value of the existing Secret by secretId. Referencing a non-existing Secret Id will cause a 'Not Found' error.
+
 
 ### Parameters
 
@@ -130,4 +166,8 @@ Updates the value of the existing Secret by secretId. Referencing a non-existing
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** | Unique identifier of the Secret to update | |
 | **body** | **String** |  | |
+
+### Return type
+
+**SecretInfo**
 

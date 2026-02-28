@@ -29,14 +29,19 @@
 
 Assign Entity View to customer (assignEntityViewToCustomer)
 
-Creates assignment of the Entity View to customer. Customer will be able to query Entity View afterwards.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Creates assignment of the Entity View to customer. Customer will be able to query Entity View afterwards.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **entityViewId** | **String** | A string value representing the entity view id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **entityViewId** | **String** | A string value representing the entity view id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityView**
 
 
 ## assignEntityViewToEdge
@@ -45,7 +50,8 @@ Creates assignment of the Entity View to customer. Customer will be able to quer
 
 Assign entity view to edge (assignEntityViewToEdge)
 
-Creates assignment of an existing entity view to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment entity view (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once entity view will be delivered to edge service, it&#39;s going to be available for usage on remote edge instance.
+Creates assignment of an existing entity view to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment entity view (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once entity view will be delivered to edge service, it's going to be available for usage on remote edge instance.
+
 
 ### Parameters
 
@@ -54,6 +60,10 @@ Creates assignment of an existing entity view to an instance of The Edge. Assign
 | **edgeId** | **String** |  | |
 | **entityViewId** | **String** |  | |
 
+### Return type
+
+**EntityView**
+
 
 ## assignEntityViewToPublicCustomer
 
@@ -61,13 +71,18 @@ Creates assignment of an existing entity view to an instance of The Edge. Assign
 
 Make entity view publicly available (assignEntityViewToPublicCustomer)
 
-Entity View will be available for non-authorized (not logged-in) users. This is useful to create dashboards that you plan to share/embed on a publicly available website. However, users that are logged-in and belong to different tenant will not be able to access the entity view.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Entity View will be available for non-authorized (not logged-in) users. This is useful to create dashboards that you plan to share/embed on a publicly available website. However, users that are logged-in and belong to different tenant will not be able to access the entity view.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityViewId** | **String** | A string value representing the entity view id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityViewId** | **String** | A string value representing the entity view id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityView**
 
 
 ## deleteEntityView
@@ -76,28 +91,38 @@ Entity View will be available for non-authorized (not logged-in) users. This is 
 
 Delete entity view (deleteEntityView)
 
-Delete the EntityView object based on the provided entity view id.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Delete the EntityView object based on the provided entity view id.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityViewId** | **String** | A string value representing the entity view id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityViewId** | **String** | A string value representing the entity view id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## findByQuery1
 
-> List&lt;EntityView&gt; findByQuery1(entityViewSearchQuery)
+> List<EntityView> findByQuery1(entityViewSearchQuery)
 
 Find related entity views (findByQuery)
 
-Returns all entity views that are related to the specific entity. The entity id, relation type, entity view types, depth of the search, and other query parameters defined using complex &#39;EntityViewSearchQuery&#39; object. See &#39;Model&#39; tab of the Parameters for more info.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns all entity views that are related to the specific entity. The entity id, relation type, entity view types, depth of the search, and other query parameters defined using complex 'EntityViewSearchQuery' object. See 'Model' tab of the Parameters for more info.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityViewSearchQuery** | **EntityViewSearchQuery** |  | |
+
+### Return type
+
+**List<EntityView>**
 
 
 ## getCustomerEntityViewInfos
@@ -106,19 +131,24 @@ Returns all entity views that are related to the specific entity. The entity id,
 
 Get Customer Entity View info (getCustomerEntityViewInfos)
 
-Returns a page of Entity View info objects assigned to customer. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns a page of Entity View info objects assigned to customer. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the entity view name. | [optional] |
+| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **'starts with'** expression over their name. For example, this entity filter selects all 'Concrete Mixer' entity views which name starts with 'CAT':  ```json {   \"type\": \"entityViewType\",   \"entityViewType\": \"Concrete Mixer\",   \"entityViewNameFilter\": \"CAT\" } ``` | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the entity view name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, customerTitle] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityViewInfo**
 
 
 ## getCustomerEntityViews
@@ -127,19 +157,24 @@ Returns a page of Entity View info objects assigned to customer. Entity Views li
 
 Get Customer Entity Views (getCustomerEntityViews)
 
-Returns a page of Entity View objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns a page of Entity View objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the entity view name. | [optional] |
+| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **'starts with'** expression over their name. For example, this entity filter selects all 'Concrete Mixer' entity views which name starts with 'CAT':  ```json {   \"type\": \"entityViewType\",   \"entityViewType\": \"Concrete Mixer\",   \"entityViewNameFilter\": \"CAT\" } ``` | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the entity view name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityView**
 
 
 ## getEdgeEntityViews
@@ -147,6 +182,7 @@ Returns a page of Entity View objects assigned to customer. You can specify para
 > PageDataEntityView getEdgeEntityViews(edgeId, pageSize, page, type, textSearch, sortProperty, sortOrder, startTime, endTime)
 
 getEdgeEntityViews
+
 
 ### Parameters
 
@@ -162,6 +198,10 @@ getEdgeEntityViews
 | **startTime** | **Long** |  | [optional] |
 | **endTime** | **Long** |  | [optional] |
 
+### Return type
+
+**PageDataEntityView**
+
 
 ## getEntityViewById
 
@@ -169,13 +209,18 @@ getEdgeEntityViews
 
 Get entity view (getEntityViewById)
 
-Fetch the EntityView object based on the provided entity view id. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. See the &#39;Model&#39; tab for more details.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Fetch the EntityView object based on the provided entity view id. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. See the 'Model' tab for more details.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityViewId** | **String** | A string value representing the entity view id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityViewId** | **String** | A string value representing the entity view id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityView**
 
 
 ## getEntityViewInfoById
@@ -184,36 +229,51 @@ Fetch the EntityView object based on the provided entity view id. Entity Views l
 
 Get Entity View info (getEntityViewInfoById)
 
-Fetch the Entity View info object based on the provided Entity View Id. Entity Views Info extends the Entity View with customer title and &#39;is public&#39; flag. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. See the &#39;Model&#39; tab for more details.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Fetch the Entity View info object based on the provided Entity View Id. Entity Views Info extends the Entity View with customer title and 'is public' flag. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. See the 'Model' tab for more details.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityViewId** | **String** | A string value representing the entity view id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityViewId** | **String** | A string value representing the entity view id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityViewInfo**
 
 
 ## getEntityViewTypes
 
-> List&lt;EntitySubtype&gt; getEntityViewTypes()
+> List<EntitySubtype> getEntityViewTypes()
 
 Get Entity View Types (getEntityViewTypes)
 
-Returns a set of unique entity view types based on entity views that are either owned by the tenant or assigned to the customer which user is performing the request.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Returns a set of unique entity view types based on entity views that are either owned by the tenant or assigned to the customer which user is performing the request.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+### Return type
+
+**List<EntitySubtype>**
+
 
 ## getEntityViewsByIdsV2
 
-> List&lt;EntityView&gt; getEntityViewsByIdsV2(entityViewIds)
+> List<EntityView> getEntityViewsByIdsV2(entityViewIds)
 
 Get Entity Views By Ids (getEntityViewsByIdsV2)
 
 Requested entity views must be owned by tenant or assigned to customer which user is performing the request. 
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityViewIds** | **List&lt;String&gt;** | A list of entity view ids, separated by comma &#39;,&#39; | |
+| **entityViewIds** | **List<String>** | A list of entity view ids, separated by comma ',' | |
+
+### Return type
+
+**List<EntityView>**
 
 
 ## getTenantEntityViewByName
@@ -222,13 +282,18 @@ Requested entity views must be owned by tenant or assigned to customer which use
 
 Get Entity View by name (getTenantEntityViewByName)
 
-Fetch the Entity View object based on the tenant id and entity view name.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Fetch the Entity View object based on the tenant id and entity view name.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityViewName** | **String** | Entity View name | |
+
+### Return type
+
+**EntityView**
 
 
 ## getTenantEntityViewInfos
@@ -237,7 +302,8 @@ Fetch the Entity View object based on the tenant id and entity view name.   Avai
 
 Get Tenant Entity Views (getTenantEntityViews)
 
-Returns a page of entity views info owned by tenant. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of entity views info owned by tenant. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -245,10 +311,14 @@ Returns a page of entity views info owned by tenant. Entity Views limit the degr
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the entity view name. | [optional] |
+| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **'starts with'** expression over their name. For example, this entity filter selects all 'Concrete Mixer' entity views which name starts with 'CAT':  ```json {   \"type\": \"entityViewType\",   \"entityViewType\": \"Concrete Mixer\",   \"entityViewNameFilter\": \"CAT\" } ``` | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the entity view name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, customerTitle] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityViewInfo**
 
 
 ## getTenantEntityViews
@@ -257,7 +327,8 @@ Returns a page of entity views info owned by tenant. Entity Views limit the degr
 
 Get Tenant Entity Views (getTenantEntityViews)
 
-Returns a page of entity views owned by tenant. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+Returns a page of entity views owned by tenant. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
@@ -265,10 +336,14 @@ Returns a page of entity views owned by tenant. Entity Views limit the degree of
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the entity view name. | [optional] |
+| **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **'starts with'** expression over their name. For example, this entity filter selects all 'Concrete Mixer' entity views which name starts with 'CAT':  ```json {   \"type\": \"entityViewType\",   \"entityViewType\": \"Concrete Mixer\",   \"entityViewNameFilter\": \"CAT\" } ``` | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the entity view name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityView**
 
 
 ## saveEntityView
@@ -277,7 +352,8 @@ Returns a page of entity views owned by tenant. Entity Views limit the degree of
 
 Save or update entity view (saveEntityView)
 
-Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. See the &#39;Model&#39; tab for more details.Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Entity View entity.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers. See the 'Model' tab for more details.Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Entity View entity.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
 
 ### Parameters
 
@@ -285,8 +361,12 @@ Entity Views limit the degree of exposure of the Device or Asset telemetry and a
 |------------- | ------------- | ------------- | -------------|
 | **entityView** | **EntityView** |  | |
 | **nameConflictPolicy** | **NameConflictPolicy** | Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
-| **uniquifySeparator** | **String** | Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
-| **uniquifyStrategy** | **UniquifyStrategy** | Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
+| **uniquifySeparator** | **String** | Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is '-'; if a name conflict occurs for entity name 'test-name', created entity will have name like 'test-name-7fsh4f'. | [optional] [default to _] |
+| **uniquifyStrategy** | **UniquifyStrategy** | Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name 'test-name', created entity will have name like 'test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
+
+### Return type
+
+**EntityView**
 
 
 ## unassignEntityViewFromCustomer
@@ -295,13 +375,18 @@ Entity Views limit the degree of exposure of the Device or Asset telemetry and a
 
 Unassign Entity View from customer (unassignEntityViewFromCustomer)
 
-Clears assignment of the Entity View to customer. Customer will not be able to query Entity View afterwards.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+Clears assignment of the Entity View to customer. Customer will not be able to query Entity View afterwards.  Available for users with 'TENANT_ADMIN' authority.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityViewId** | **String** | A string value representing the entity view id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityViewId** | **String** | A string value representing the entity view id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityView**
 
 
 ## unassignEntityViewFromEdge
@@ -310,7 +395,8 @@ Clears assignment of the Entity View to customer. Customer will not be able to q
 
 Unassign entity view from edge (unassignEntityViewFromEdge)
 
-Clears assignment of the entity view to the edge. Unassignment works in async way - first, &#39;unassign&#39; notification event pushed to edge queue on platform. Second, remote edge service will receive an &#39;unassign&#39; command to remove entity view (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once &#39;unassign&#39; command will be delivered to edge service, it&#39;s going to remove entity view locally.
+Clears assignment of the entity view to the edge. Unassignment works in async way - first, 'unassign' notification event pushed to edge queue on platform. Second, remote edge service will receive an 'unassign' command to remove entity view (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once 'unassign' command will be delivered to edge service, it's going to remove entity view locally.
+
 
 ### Parameters
 
@@ -318,4 +404,8 @@ Clears assignment of the entity view to the edge. Unassignment works in async wa
 |------------- | ------------- | ------------- | -------------|
 | **edgeId** | **String** |  | |
 | **entityViewId** | **String** |  | |
+
+### Return type
+
+**EntityView**
 

@@ -16,11 +16,16 @@
 
 cancelJob
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## deleteJob
@@ -29,11 +34,16 @@ cancelJob
 
 deleteJob
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## getJobById
@@ -42,11 +52,16 @@ deleteJob
 
 getJobById
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** |  | |
+
+### Return type
+
+**Job**
 
 
 ## getJobs
@@ -55,20 +70,25 @@ getJobById
 
 getJobs
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on job&#39;s description | [optional] |
+| **textSearch** | **String** | Case-insensitive 'substring' filter based on job's description | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-| **types** | **List&lt;JobType&gt;** |  | [optional] |
-| **statuses** | **List&lt;JobStatus&gt;** |  | [optional] |
-| **entities** | **List&lt;UUID&gt;** |  | [optional] |
+| **types** | **List<JobType>** |  | [optional] |
+| **statuses** | **List<JobStatus>** |  | [optional] |
+| **entities** | **List<UUID>** |  | [optional] |
 | **startTime** | **Long** |  | [optional] |
 | **endTime** | **Long** |  | [optional] |
+
+### Return type
+
+**PageDataJob**
 
 
 ## reprocessJob
@@ -77,9 +97,14 @@ getJobs
 
 reprocessJob
 
+
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **id** | **UUID** |  | |
+
+### Return type
+
+null (empty response body)
 

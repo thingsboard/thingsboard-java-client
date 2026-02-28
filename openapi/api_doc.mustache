@@ -17,7 +17,7 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-{{#operations}}{{#operation}}| [**{{operationId}}**](#{{operationId}}) | **{{httpMethod}}** {{commonPath}}{{path}} | {{summary}} |
+{{#operations}}{{#operation}}| [**{{operationId}}**](#{{operationId}}) | **{{httpMethod}}** {{commonPath}}{{path}} | {{{summary}}} |
 {{/operation}}{{/operations}}
 
 {{#operations}}
@@ -25,18 +25,23 @@
 
 ## {{operationId}}
 
-> {{#returnType}}{{.}} {{/returnType}}{{operationId}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}})
+> {{#returnType}}{{{.}}} {{/returnType}}{{operationId}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}})
 
-{{summary}}{{#notes}}
+{{{summary}}}{{#notes}}
 
-{{.}}{{/notes}}{{#allParams}}{{#-first}}
+{{{.}}}{{/notes}}
+{{#allParams}}{{#-first}}
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-{{/-first}}| **{{paramName}}** | **{{dataType}}** | {{description}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
+{{/-first}}| **{{paramName}}** | **{{{dataType}}}** | {{{description}}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
 {{/allParams}}
+
+### Return type
+
+{{#returnType}}**{{{.}}}**{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}
 
 {{/operation}}
 {{/operations}}

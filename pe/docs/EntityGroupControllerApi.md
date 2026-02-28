@@ -46,14 +46,19 @@
 
 Add entities to the group (addEntitiesToEntityGroup)
 
-Add entities to the specified entity group. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;ADD_TO_GROUP&#39; permission for specified group.
+Add entities to the specified entity group. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'ADD_TO_GROUP' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | **List&lt;String&gt;** |  | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **requestBody** | **List<String>** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## assignEntityGroupToEdge
@@ -62,15 +67,20 @@ Add entities to the specified entity group. Entity group allows you to group mul
 
 Assign entity group to edge (assignEntityGroupToEdge)
 
-Creates assignment of an existing entity group to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment entity group (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once entity group will be delivered to edge service, edge will request entities of this group to be send to edge. Once entities will be delivered to edge service, they are going to be available for usage on remote edge instance.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+Creates assignment of an existing entity group to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment entity group (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once entity group will be delivered to edge service, edge will request entities of this group to be send to edge. Once entities will be delivered to edge service, they are going to be available for usage on remote edge instance.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityGroup**
 
 
 ## deleteEntityGroup
@@ -79,38 +89,49 @@ Creates assignment of an existing entity group to an instance of The Edge. Assig
 
 Delete Entity Group (deleteEntityGroup)
 
-Deletes the entity group but does not delete the entities in the group, since they are also present in reserved group &#39;All&#39;. Referencing non-existing Entity Group Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;DELETE&#39; permission for specified group.
+Deletes the entity group but does not delete the entities in the group, since they are also present in reserved group 'All'. Referencing non-existing Entity Group Id will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'DELETE' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## getAllEdgeEntityGroups
 
-> List&lt;EntityGroupInfo&gt; getAllEdgeEntityGroups(edgeId, groupType)
+> List<EntityGroupInfo> getAllEdgeEntityGroups(edgeId, groupType)
 
 Get All Edge Entity Groups by entity type (getAllEdgeEntityGroups)
 
-Fetch the list of Entity Group Info objects based on the provided Entity Type and assigned to the provided Edge entity. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Fetch the list of Entity Group Info objects based on the provided Entity Type and assigned to the provided Edge entity. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
+
+### Return type
+
+**List<EntityGroupInfo>**
 
 
 ## getAllEntityGroupsByOwnerAndType
 
-> List&lt;EntityGroupInfo&gt; getAllEntityGroupsByOwnerAndType(ownerType, ownerId, groupType)
+> List<EntityGroupInfo> getAllEntityGroupsByOwnerAndType(ownerType, ownerId, groupType)
 
 Get Entity Groups by owner and entity type (getEntityGroupsByOwnerAndTypeList)
 
-Fetch the list of Entity Group Info objects based on the provided Owner Id and Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the list of Entity Group Info objects based on the provided Owner Id and Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -120,14 +141,19 @@ Fetch the list of Entity Group Info objects based on the provided Owner Id and E
 | **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 
+### Return type
+
+**List<EntityGroupInfo>**
+
 
 ## getAllEntityGroupsByType
 
-> List&lt;EntityGroupInfo&gt; getAllEntityGroupsByType(groupType, includeShared)
+> List<EntityGroupInfo> getAllEntityGroupsByType(groupType, includeShared)
 
 Get Entity Groups by entity type (getAllEntityGroupsByType)
 
-Fetch the list of Entity Group Info objects based on the provided Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the list of Entity Group Info objects based on the provided Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -136,20 +162,29 @@ Fetch the list of Entity Group Info objects based on the provided Entity Type. E
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
 
+### Return type
+
+**List<EntityGroupInfo>**
+
 
 ## getAllSharedEntityGroups
 
-> List&lt;EntityGroupInfo&gt; getAllSharedEntityGroups(groupType)
+> List<EntityGroupInfo> getAllSharedEntityGroups(groupType)
 
 Get Shared Entity Groups by entity type (getAllSharedEntityGroups)
 
-Fetch the list of Shared Entity Group Info objects based on the provided Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the list of Shared Entity Group Info objects based on the provided Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+
+### Return type
+
+**List<EntityGroupInfo>**
 
 
 ## getEdgeEntityGroups
@@ -158,19 +193,24 @@ Fetch the list of Shared Entity Group Info objects based on the provided Entity 
 
 Get Edge Entity Groups by entity type (getEdgeEntityGroups)
 
-Returns a page of Entity Group Info objects based on the provided Entity Type and assigned to the provided Edge entity. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Returns a page of Entity Group Info objects based on the provided Entity Type and assigned to the provided Edge entity. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityGroupInfo**
 
 
 ## getEntities
@@ -179,18 +219,23 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 
 Get Group Entities (getEntities)
 
-Returns a page of Short Entity View objects that belongs to specified Entity Group Id. Short Entity View object contains the entity id and number of fields (attributes, telemetry, etc). List of those fields is configurable and defined in the group configuration.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Short Entity View objects that belongs to specified Entity Group Id. Short Entity View object contains the entity id and number of fields (attributes, telemetry, etc). List of those fields is configurable and defined in the group configuration.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataShortEntityView**
 
 
 ## getEntityGroupAllByOwnerAndType
@@ -199,7 +244,8 @@ Returns a page of Short Entity View objects that belongs to specified Entity Gro
 
 Get special group All by owner and entity type (getEntityGroupsByOwnerAndType)
 
-Fetch reserved group &#39;All&#39; based on the provided Owner Id and Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch reserved group 'All' based on the provided Owner Id and Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -209,6 +255,10 @@ Fetch reserved group &#39;All&#39; based on the provided Owner Id and Entity Typ
 | **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 
+### Return type
+
+**EntityGroupInfo**
+
 
 ## getEntityGroupById
 
@@ -216,13 +266,18 @@ Fetch reserved group &#39;All&#39; based on the provided Owner Id and Entity Typ
 
 Get Entity Group Info (getEntityGroupById)
 
-Fetch the Entity Group object based on the provided Entity Group Id. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Entity group name is unique in the scope of owner and entity type. For example, you can&#39;t create two tenant device groups called &#39;Water meters&#39;. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the Entity Group object based on the provided Entity Group Id. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Entity group name is unique in the scope of owner and entity type. For example, you can't create two tenant device groups called 'Water meters'. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityGroupInfo**
 
 
 ## getEntityGroupByOwnerAndNameAndType
@@ -231,7 +286,8 @@ Fetch the Entity Group object based on the provided Entity Group Id. Entity grou
 
 Get Entity Group by owner, type and name (getEntityGroupByOwnerAndNameAndType)
 
-Fetch the Entity Group object based on the provided Entity Group Id. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Entity group name is unique in the scope of owner and entity type. For example, you can&#39;t create two tenant device groups called &#39;Water meters&#39;. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the Entity Group object based on the provided Entity Group Id. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Entity group name is unique in the scope of owner and entity type. For example, you can't create two tenant device groups called 'Water meters'. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -242,6 +298,10 @@ Fetch the Entity Group object based on the provided Entity Group Id. Entity grou
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **groupName** | **String** | Entity Group name | |
 
+### Return type
+
+**EntityGroupInfo**
+
 
 ## getEntityGroupEntityInfoById
 
@@ -249,28 +309,38 @@ Fetch the Entity Group object based on the provided Entity Group Id. Entity grou
 
 Get Entity Group Entity Info (getEntityGroupEntityInfoById)
 
-Fetch the Entity Group Entity Info object based on the provided Entity Group Id. Entity Info is a lightweight object that contains only id and name of the entity group.   Entity group name is unique in the scope of owner and entity type. For example, you can&#39;t create two tenant device groups called &#39;Water meters&#39;. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the Entity Group Entity Info object based on the provided Entity Group Id. Entity Info is a lightweight object that contains only id and name of the entity group.   Entity group name is unique in the scope of owner and entity type. For example, you can't create two tenant device groups called 'Water meters'. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityInfo**
 
 
 ## getEntityGroupEntityInfosByIds
 
-> List&lt;EntityInfo&gt; getEntityGroupEntityInfosByIds(entityGroupIds)
+> List<EntityInfo> getEntityGroupEntityInfosByIds(entityGroupIds)
 
 Get Entity Group Entity Infos by Ids (getEntityGroupEntityInfosByIds)
 
-Fetch the list of Entity Group Entity Info objects based on the provided entity group ids list. Entity Info is a lightweight object that contains only id and name of the entity group.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the list of Entity Group Entity Info objects based on the provided entity group ids list. Entity Info is a lightweight object that contains only id and name of the entity group.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupIds** | **List&lt;String&gt;** | A list of group ids, separated by comma &#39;,&#39; | |
+| **entityGroupIds** | **List<String>** | A list of group ids, separated by comma ',' | |
+
+### Return type
+
+**List<EntityInfo>**
 
 
 ## getEntityGroupEntityInfosByOwnerAndTypeAndPageLink
@@ -279,7 +349,8 @@ Fetch the list of Entity Group Entity Info objects based on the provided entity 
 
 Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink)
 
-Returns a page of Entity Group Entity Info objects based on the provided Owner Id and Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Entity Group Entity Info objects based on the provided Owner Id and Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -290,9 +361,13 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityInfo**
 
 
 ## getEntityGroupEntityInfosByTypeAndPageLink
@@ -301,7 +376,8 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 
 Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink)
 
-Returns a page of Entity Group Entity Info objects based on the provided Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Entity Group Entity Info objects based on the provided Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -311,9 +387,13 @@ Returns a page of Entity Group Entity Info objects based on the provided Entity 
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
 | **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityInfo**
 
 
 ## getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink
@@ -322,7 +402,8 @@ Returns a page of Entity Group Entity Info objects based on the provided Entity 
 
 Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink)
 
-Returns a page of Entity Group Entity Info objects based on the provided Owner Id and Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Entity Group Entity Info objects based on the provided Owner Id and Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -333,24 +414,33 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityInfo**
 
 
 ## getEntityGroupsByIdsV2
 
-> List&lt;EntityGroupInfo&gt; getEntityGroupsByIdsV2(entityGroupIds)
+> List<EntityGroupInfo> getEntityGroupsByIdsV2(entityGroupIds)
 
 Get Entity Groups by Ids (getEntityGroupsByIdsV2)
 
-Fetch the list of Entity Group Info objects based on the provided entity group ids list. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the list of Entity Group Info objects based on the provided entity group ids list. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupIds** | **List&lt;String&gt;** | A list of group ids, separated by comma &#39;,&#39; | |
+| **entityGroupIds** | **List<String>** | A list of group ids, separated by comma ',' | |
+
+### Return type
+
+**List<EntityGroupInfo>**
 
 
 ## getEntityGroupsByOwnerAndTypeAndPageLink
@@ -359,7 +449,8 @@ Fetch the list of Entity Group Info objects based on the provided entity group i
 
 Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink)
 
-Returns a page of Entity Group objects based on the provided Owner Id and Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Entity Group objects based on the provided Owner Id and Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -370,9 +461,13 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityGroupInfo**
 
 
 ## getEntityGroupsByTypeAndPageLink
@@ -381,7 +476,8 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 
 Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink)
 
-Returns a page of Entity Group Info objects based on the provided Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Entity Group Info objects based on the provided Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -391,25 +487,34 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
 | **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityGroupInfo**
 
 
 ## getEntityGroupsForEntity
 
-> List&lt;EntityGroupId&gt; getEntityGroupsForEntity(entityType, entityId)
+> List<EntityGroupId> getEntityGroupsForEntity(entityType, entityId)
 
 Get Entity Groups by Entity Id (getEntityGroupsForEntity)
 
-Returns a list of groups that contain the specified Entity Id. For example, all device groups that contain specific device. The list always contain at least one element - special group &#39;All&#39;.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Returns a list of groups that contain the specified Entity Id. For example, all device groups that contain specific device. The list always contain at least one element - special group 'All'.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**List<EntityGroupId>**
 
 
 ## getEntityGroupsHierarchyByOwnerAndTypeAndPageLink
@@ -418,7 +523,8 @@ Returns a list of groups that contain the specified Entity Id. For example, all 
 
 Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink)
 
-Returns a page of Entity Group objects based on the provided Owner Id and Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Entity Group objects based on the provided Owner Id and Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -429,9 +535,13 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityGroupInfo**
 
 
 ## getGroupEntity
@@ -440,14 +550,19 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 
 Get Group Entity (getGroupEntity)
 
-Fetch the Short Entity View object based on the group and entity id. Short Entity View object contains the entity id and number of fields (attributes, telemetry, etc). List of those fields is configurable and defined in the group configuration.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the Short Entity View object based on the group and entity id. Short Entity View object contains the entity id and number of fields (attributes, telemetry, etc). List of those fields is configurable and defined in the group configuration.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**ShortEntityView**
 
 
 ## getOwnerInfo
@@ -456,7 +571,8 @@ Fetch the Short Entity View object based on the group and entity id. Short Entit
 
 Get Owner Info (getOwnerInfo)
 
-Fetch the owner info (tenant or customer) presented as Entity Info object based on the provided owner Id.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Fetch the owner info (tenant or customer) presented as Entity Info object based on the provided owner Id.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -465,6 +581,10 @@ Fetch the owner info (tenant or customer) presented as Entity Info object based 
 | **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
 | **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 
+### Return type
+
+**EntityInfo**
+
 
 ## getOwnerInfos
 
@@ -472,7 +592,8 @@ Fetch the owner info (tenant or customer) presented as Entity Info object based 
 
 Get Owner Infos (getOwnerInfos)
 
-Provides a rage view of Customers that the current user has READ access to. If the current user is Tenant administrator, the result set also contains the tenant. The call is designed for the UI auto-complete component to show tenant and all possible Customers that the user may select to change the owner of the particular entity or entity group.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Provides a rage view of Customers that the current user has READ access to. If the current user is Tenant administrator, the result set also contains the tenant. The call is designed for the UI auto-complete component to show tenant and all possible Customers that the user may select to change the owner of the particular entity or entity group.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
@@ -480,9 +601,13 @@ Provides a rage view of Customers that the current user has READ access to. If t
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityInfo**
 
 
 ## getOwners
@@ -491,7 +616,8 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 Get Owners (getOwners)
 
-Provides a rage view of Customers that the current user has READ access to. If the current user is Tenant administrator, the result set also contains the tenant. The call is designed for the UI auto-complete component to show tenant and all possible Customers that the user may select to change the owner of the particular entity or entity group.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+Provides a rage view of Customers that the current user has READ access to. If the current user is Tenant administrator, the result set also contains the tenant. The call is designed for the UI auto-complete component to show tenant and all possible Customers that the user may select to change the owner of the particular entity or entity group.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
 
 ### Parameters
 
@@ -499,9 +625,13 @@ Provides a rage view of Customers that the current user has READ access to. If t
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataContactBasedObject**
 
 
 ## getSharedEntityGroupEntityInfosByTypeAndPageLink
@@ -510,7 +640,8 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink)
 
-Returns a page of Shared Entity Group Entity Info objects based on the provided Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Shared Entity Group Entity Info objects based on the provided Entity Type and Page Link. Entity Info is a lightweight object that contains only id and name of the entity group. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -519,9 +650,13 @@ Returns a page of Shared Entity Group Entity Info objects based on the provided 
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityInfo**
 
 
 ## getSharedEntityGroupsByTypeAndPageLink
@@ -530,7 +665,8 @@ Returns a page of Shared Entity Group Entity Info objects based on the provided 
 
 Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink)
 
-Returns a page of Shared Entity Group Info objects based on the provided Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds &#39;ownerIds&#39; - a list of owner ids.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for specified group.
+Returns a page of Shared Entity Group Info objects based on the provided Entity Type and Page Link. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
 
 ### Parameters
 
@@ -539,9 +675,13 @@ Returns a page of Shared Entity Group Info objects based on the provided Entity 
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 | **pageSize** | **String** | Maximum amount of entities in a one page | |
 | **page** | **String** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEntityGroupInfo**
 
 
 ## makeEntityGroupPrivate
@@ -550,13 +690,18 @@ Returns a page of Shared Entity Group Info objects based on the provided Entity 
 
 Make Entity Group Private (makeEntityGroupPrivate)
 
-Make the entity group not available for non authorized users. Every group is private by default. This call is useful to hide the group that was previously made public.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+Make the entity group not available for non authorized users. Every group is private by default. This call is useful to hide the group that was previously made public.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## makeEntityGroupPublic
@@ -565,13 +710,18 @@ Make the entity group not available for non authorized users. Every group is pri
 
 Make Entity Group Publicly available (makeEntityGroupPublic)
 
-Make the entity group available for non authorized users. Useful for public dashboards that will be embedded into the public websites.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+Make the entity group available for non authorized users. Useful for public dashboards that will be embedded into the public websites.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## removeEntitiesFromEntityGroup
@@ -580,14 +730,19 @@ Make the entity group available for non authorized users. Useful for public dash
 
 Remove entities from the group (removeEntitiesFromEntityGroup)
 
-Removes entities from the specified entity group. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;REMOVE_FROM_GROUP&#39; permission for specified group.
+Removes entities from the specified entity group. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'REMOVE_FROM_GROUP' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | **List&lt;String&gt;** |  | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **requestBody** | **List<String>** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## saveEntityGroup
@@ -596,13 +751,18 @@ Removes entities from the specified entity group. Entity group allows you to gro
 
 Create Or Update Entity Group (saveEntityGroup)
 
-Create or update the Entity Group. When creating Entity Group, platform generates Entity Group Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Entity Group Id will be present in the response. Specify existing Entity Group Id to update the group. Referencing non-existing Entity Group Id will cause &#39;Not Found&#39; error.Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;ownerId&#39; from the request body example (below) to create new Entity Group entity.   Entity group name is unique in the scope of owner and entity type. For example, you can&#39;t create two tenant device groups called &#39;Water meters&#39;. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+Create or update the Entity Group. When creating Entity Group, platform generates Entity Group Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Entity Group Id will be present in the response. Specify existing Entity Group Id to update the group. Referencing non-existing Entity Group Id will cause 'Not Found' error.Remove 'id', 'tenantId' and optionally 'ownerId' from the request body example (below) to create new Entity Group entity.   Entity group name is unique in the scope of owner and entity type. For example, you can't create two tenant device groups called 'Water meters'. However, you may create device and asset group with the same name. And also you may create groups with the same name for two different customers of the same tenant.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityGroup** | **EntityGroup** |  | |
+
+### Return type
+
+**EntityGroupInfo**
 
 
 ## shareEntityGroup
@@ -611,14 +771,19 @@ Create or update the Entity Group. When creating Entity Group, platform generate
 
 Share the Entity Group (shareEntityGroup)
 
-Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **shareGroupRequest** | **ShareGroupRequest** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## shareEntityGroupToChildOwnerUserGroup
@@ -627,15 +792,20 @@ Share the entity group with certain user group based on the provided Share Group
 
 Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup)
 
-Share the entity group with specified user group using specified role.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+Share the entity group with specified user group using specified role.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String** | A string value representing the Entity Group Id that you would like to share. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **userGroupId** | **String** | A string value representing the Entity(User) Group Id that you would like to share with. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **roleId** | **String** | A string value representing the Role Id that describes set of permissions you would like to share (read, write, etc). For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id that you would like to share. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **userGroupId** | **String** | A string value representing the Entity(User) Group Id that you would like to share with. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **roleId** | **String** | A string value representing the Role Id that describes set of permissions you would like to share (read, write, etc). For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
 
 
 ## unassignEntityGroupFromEdge
@@ -644,13 +814,18 @@ Share the entity group with specified user group using specified role.   Availab
 
 Unassign entity group from edge (unassignEntityGroupFromEdge)
 
-Clears assignment of the entity group to the edge. Unassignment works in async way - first, &#39;unassign&#39; notification event pushed to edge queue on platform. Second, remote edge service will receive an &#39;unassign&#39; command to remove entity group (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once &#39;unassign&#39; command will be delivered to edge service, it&#39;s going to remove entity group and entities inside this group locally.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+Clears assignment of the entity group to the edge. Unassignment works in async way - first, 'unassign' notification event pushed to edge queue on platform. Second, remote edge service will receive an 'unassign' command to remove entity group (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once 'unassign' command will be delivered to edge service, it's going to remove entity group and entities inside this group locally.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
+
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
-| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**EntityGroup**
 
