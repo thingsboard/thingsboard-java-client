@@ -1,26 +1,24 @@
 # NotificationControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createNotificationRequest**](NotificationControllerApi.md#createNotificationRequest) | **POST** /api/notification/request | Create notification request (createNotificationRequest) |
-| [**deleteNotification**](NotificationControllerApi.md#deleteNotification) | **DELETE** /api/notification/{id} | Delete notification (deleteNotification) |
-| [**deleteNotificationRequest**](NotificationControllerApi.md#deleteNotificationRequest) | **DELETE** /api/notification/request/{id} | Delete notification request (deleteNotificationRequest) |
-| [**getAvailableDeliveryMethods**](NotificationControllerApi.md#getAvailableDeliveryMethods) | **GET** /api/notification/deliveryMethods | Get available delivery methods (getAvailableDeliveryMethods) |
-| [**getNotificationRequestById**](NotificationControllerApi.md#getNotificationRequestById) | **GET** /api/notification/request/{id} | Get notification request by id (getNotificationRequestById) |
-| [**getNotificationRequestPreview**](NotificationControllerApi.md#getNotificationRequestPreview) | **POST** /api/notification/request/preview | Get notification request preview (getNotificationRequestPreview) |
-| [**getNotificationRequests**](NotificationControllerApi.md#getNotificationRequests) | **GET** /api/notification/requests | Get notification requests (getNotificationRequests) |
-| [**getNotificationSettings**](NotificationControllerApi.md#getNotificationSettings) | **GET** /api/notification/settings | Get notification settings (getNotificationSettings) |
-| [**getNotifications**](NotificationControllerApi.md#getNotifications) | **GET** /api/notifications | Get notifications (getNotifications) |
-| [**getUnreadNotificationsCount**](NotificationControllerApi.md#getUnreadNotificationsCount) | **GET** /api/notifications/unread/count | Get unread notifications count (getUnreadNotificationsCount) |
-| [**getUserNotificationSettings**](NotificationControllerApi.md#getUserNotificationSettings) | **GET** /api/notification/settings/user | getUserNotificationSettings |
-| [**markAllNotificationsAsRead**](NotificationControllerApi.md#markAllNotificationsAsRead) | **PUT** /api/notifications/read | Mark all notifications as read (markAllNotificationsAsRead) |
-| [**markNotificationAsRead**](NotificationControllerApi.md#markNotificationAsRead) | **PUT** /api/notification/{id}/read | Mark notification as read (markNotificationAsRead) |
-| [**saveNotificationSettings**](NotificationControllerApi.md#saveNotificationSettings) | **POST** /api/notification/settings | Save notification settings (saveNotificationSettings) |
-| [**saveUserNotificationSettings**](NotificationControllerApi.md#saveUserNotificationSettings) | **POST** /api/notification/settings/user | saveUserNotificationSettings |
-| [**sendAddonAccessError**](NotificationControllerApi.md#sendAddonAccessError) | **POST** /api/notification/sendAddonAccessError/{addonType} | Send add-on access error notification to System/Tenant administrators (sendAddonAccessError) |
-| [**sendEntitiesLimitIncreaseRequest**](NotificationControllerApi.md#sendEntitiesLimitIncreaseRequest) | **POST** /api/notification/entitiesLimitIncreaseRequest/{entityType} | Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest) |
+| [**createNotificationRequest**](#createNotificationRequest) | **POST** /api/notification/request | Create notification request (createNotificationRequest) |
+| [**deleteNotification**](#deleteNotification) | **DELETE** /api/notification/{id} | Delete notification (deleteNotification) |
+| [**deleteNotificationRequest**](#deleteNotificationRequest) | **DELETE** /api/notification/request/{id} | Delete notification request (deleteNotificationRequest) |
+| [**getAvailableDeliveryMethods**](#getAvailableDeliveryMethods) | **GET** /api/notification/deliveryMethods | Get available delivery methods (getAvailableDeliveryMethods) |
+| [**getNotificationRequestById**](#getNotificationRequestById) | **GET** /api/notification/request/{id} | Get notification request by id (getNotificationRequestById) |
+| [**getNotificationRequestPreview**](#getNotificationRequestPreview) | **POST** /api/notification/request/preview | Get notification request preview (getNotificationRequestPreview) |
+| [**getNotificationRequests**](#getNotificationRequests) | **GET** /api/notification/requests | Get notification requests (getNotificationRequests) |
+| [**getNotificationSettings**](#getNotificationSettings) | **GET** /api/notification/settings | Get notification settings (getNotificationSettings) |
+| [**getNotifications**](#getNotifications) | **GET** /api/notifications | Get notifications (getNotifications) |
+| [**getUnreadNotificationsCount**](#getUnreadNotificationsCount) | **GET** /api/notifications/unread/count | Get unread notifications count (getUnreadNotificationsCount) |
+| [**getUserNotificationSettings**](#getUserNotificationSettings) | **GET** /api/notification/settings/user | getUserNotificationSettings |
+| [**markAllNotificationsAsRead**](#markAllNotificationsAsRead) | **PUT** /api/notifications/read | Mark all notifications as read (markAllNotificationsAsRead) |
+| [**markNotificationAsRead**](#markNotificationAsRead) | **PUT** /api/notification/{id}/read | Mark notification as read (markNotificationAsRead) |
+| [**saveNotificationSettings**](#saveNotificationSettings) | **POST** /api/notification/settings | Save notification settings (saveNotificationSettings) |
+| [**saveUserNotificationSettings**](#saveUserNotificationSettings) | **POST** /api/notification/settings/user | saveUserNotificationSettings |
+| [**sendAddonAccessError**](#sendAddonAccessError) | **POST** /api/notification/sendAddonAccessError/{addonType} | Send add-on access error notification to System/Tenant administrators (sendAddonAccessError) |
+| [**sendEntitiesLimitIncreaseRequest**](#sendEntitiesLimitIncreaseRequest) | **POST** /api/notification/entitiesLimitIncreaseRequest/{entityType} | Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest) |
 
 
 
@@ -34,34 +32,9 @@ Processes notification request. Mandatory request properties are &#x60;targets&#
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationRequest** | [**NotificationRequest**](NotificationRequest.md)|  | |
-
-### Return type
-
-[**NotificationRequest**](NotificationRequest.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **notificationRequest** | **NotificationRequest** |  | |
 
 
 ## deleteNotification
@@ -74,34 +47,9 @@ Deletes notification by its id.  Available for any authorized user.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## deleteNotificationRequest
@@ -114,34 +62,9 @@ Deletes notification request by its id.  If the request has status &#x60;SENT&#x
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getAvailableDeliveryMethods
@@ -151,35 +74,6 @@ null (empty response body)
 Get available delivery methods (getAvailableDeliveryMethods)
 
 Returns the list of delivery methods that are properly configured and are allowed to be used for sending notifications.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;NotificationDeliveryMethod&gt;**](NotificationDeliveryMethod.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getNotificationRequestById
 
@@ -191,34 +85,9 @@ Fetches notification request info by request id.  Available for users with &#39;
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**NotificationRequestInfo**](NotificationRequestInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getNotificationRequestPreview
@@ -231,35 +100,10 @@ Returns preview for notification request.  &#x60;processedTemplates&#x60; shows 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationRequest** | [**NotificationRequest**](NotificationRequest.md)|  | |
-| **recipientsPreviewSize** | **Integer**| Amount of the recipients to show in preview | [optional] [default to 20] |
-
-### Return type
-
-[**NotificationRequestPreview**](NotificationRequestPreview.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **notificationRequest** | **NotificationRequest** |  | |
+| **recipientsPreviewSize** | **Integer** | Amount of the recipients to show in preview | [optional] [default to 20] |
 
 
 ## getNotificationRequests
@@ -272,38 +116,13 @@ Returns the page of notification requests submitted by users of this tenant or s
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filed based on the used template name | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-
-### Return type
-
-[**PageDataNotificationRequestInfo**](PageDataNotificationRequestInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filed based on the used template name | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
 
 
 ## getNotificationSettings
@@ -313,35 +132,6 @@ Returns the page of notification requests submitted by users of this tenant or s
 Get notification settings (getNotificationSettings)
 
 Retrieves notification settings for this tenant or sysadmin.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**NotificationSettings**](NotificationSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getNotifications
 
@@ -353,40 +143,15 @@ Returns the page of notifications for current user.  You can specify parameters 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on notification subject or text | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-| **unreadOnly** | **Boolean**| To search for unread notifications only | [optional] [default to false] |
-| **deliveryMethod** | **String**| Delivery method | [optional] [enum: WEB, MOBILE_APP] |
-
-### Return type
-
-[**PageDataNotification**](PageDataNotification.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on notification subject or text | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
+| **unreadOnly** | **Boolean** | To search for unread notifications only | [optional] [default to false] |
+| **deliveryMethod** | **String** | Delivery method | [optional] [enum: WEB, MOBILE_APP] |
 
 
 ## getUnreadNotificationsCount
@@ -399,34 +164,9 @@ Returns unread notifications count for chosen delivery method.  Available for an
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deliveryMethod** | **String**| Delivery method | [optional] [enum: WEB, MOBILE_APP] |
-
-### Return type
-
-**Integer**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deliveryMethod** | **String** | Delivery method | [optional] [enum: WEB, MOBILE_APP] |
 
 
 ## getUserNotificationSettings
@@ -434,35 +174,6 @@ Returns unread notifications count for chosen delivery method.  Available for an
 > UserNotificationSettings getUserNotificationSettings()
 
 getUserNotificationSettings
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**UserNotificationSettings**](UserNotificationSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## markAllNotificationsAsRead
 
@@ -474,34 +185,9 @@ Marks all unread notifications as read.  Available for any authorized user.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deliveryMethod** | **String**| Delivery method | [optional] [enum: WEB, MOBILE_APP] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deliveryMethod** | **String** | Delivery method | [optional] [enum: WEB, MOBILE_APP] |
 
 
 ## markNotificationAsRead
@@ -514,34 +200,9 @@ Marks notification as read by its id.  Available for any authorized user.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## saveNotificationSettings
@@ -554,34 +215,9 @@ Saves notification settings for this tenant or sysadmin. &#x60;deliveryMethodsCo
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationSettings** | [**NotificationSettings**](NotificationSettings.md)|  | |
-
-### Return type
-
-[**NotificationSettings**](NotificationSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **notificationSettings** | **NotificationSettings** |  | |
 
 
 ## saveUserNotificationSettings
@@ -592,34 +228,9 @@ saveUserNotificationSettings
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userNotificationSettings** | [**UserNotificationSettings**](UserNotificationSettings.md)|  | |
-
-### Return type
-
-[**UserNotificationSettings**](UserNotificationSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **userNotificationSettings** | **UserNotificationSettings** |  | |
 
 
 ## sendAddonAccessError
@@ -632,34 +243,9 @@ Send add-on access error notification by Tenant Administrator or Customer User t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **addonType** | **String**| Addon type | [enum: EDGE, TRENDZ, WHITE_LABELING] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **addonType** | **String** | Addon type | [enum: EDGE, TRENDZ, WHITE_LABELING] |
 
 
 ## sendEntitiesLimitIncreaseRequest
@@ -672,32 +258,7 @@ Send entity limit increase request notification by Tenant Administrator or Custo
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| Entity type | [enum: DEVICE, ASSET, CUSTOMER, USER, DASHBOARD, RULE_CHAIN, EDGE, INTEGRATION, CONVERTER, SCHEDULER_EVENT] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | Entity type | [enum: DEVICE, ASSET, CUSTOMER, USER, DASHBOARD, RULE_CHAIN, EDGE, INTEGRATION, CONVERTER, SCHEDULER_EVENT] |
 

@@ -1,22 +1,20 @@
 # WhiteLabelingControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteCurrentLoginWhiteLabelParams**](WhiteLabelingControllerApi.md#deleteCurrentLoginWhiteLabelParams) | **DELETE** /api/whiteLabel/currentLoginWhiteLabelParams | Delete Login White Labeling configuration (deleteCurrentLoginWhiteLabelParams) |
-| [**deleteCurrentWhiteLabelParams**](WhiteLabelingControllerApi.md#deleteCurrentWhiteLabelParams) | **DELETE** /api/whiteLabel/currentWhiteLabelParams | Delete General White Labeling configuration (deleteCurrentWhiteLabelParams) |
-| [**getCurrentLoginWhiteLabelParams**](WhiteLabelingControllerApi.md#getCurrentLoginWhiteLabelParams) | **GET** /api/whiteLabel/currentLoginWhiteLabelParams | Get Login White Labeling configuration (getCurrentWhiteLabelParams) |
-| [**getCurrentWhiteLabelParams**](WhiteLabelingControllerApi.md#getCurrentWhiteLabelParams) | **GET** /api/whiteLabel/currentWhiteLabelParams | Get White Labeling configuration (getCurrentWhiteLabelParams) |
-| [**getLoginWhiteLabelParams**](WhiteLabelingControllerApi.md#getLoginWhiteLabelParams) | **GET** /api/noauth/whiteLabel/loginWhiteLabelParams | Get Login White Labeling parameters |
-| [**getMailTemplates**](WhiteLabelingControllerApi.md#getMailTemplates) | **GET** /api/whiteLabel/mailTemplates | Get the Mail templates settings (getMailTemplates) |
-| [**getWhiteLabelParams**](WhiteLabelingControllerApi.md#getWhiteLabelParams) | **GET** /api/whiteLabel/whiteLabelParams | Get White Labeling parameters |
-| [**isCustomerWhiteLabelingAllowed**](WhiteLabelingControllerApi.md#isCustomerWhiteLabelingAllowed) | **GET** /api/whiteLabel/isCustomerWhiteLabelingAllowed | Check Customer White Labeling Allowed |
-| [**isWhiteLabelingAllowed**](WhiteLabelingControllerApi.md#isWhiteLabelingAllowed) | **GET** /api/whiteLabel/isWhiteLabelingAllowed | Check White Labeling Allowed |
-| [**previewWhiteLabelParams**](WhiteLabelingControllerApi.md#previewWhiteLabelParams) | **POST** /api/whiteLabel/previewWhiteLabelParams | Preview Login White Labeling configuration (saveWhiteLabelParams) |
-| [**saveLoginWhiteLabelParams**](WhiteLabelingControllerApi.md#saveLoginWhiteLabelParams) | **POST** /api/whiteLabel/loginWhiteLabelParams | Create Or Update Login White Labeling configuration (saveWhiteLabelParams) |
-| [**saveMailTemplates**](WhiteLabelingControllerApi.md#saveMailTemplates) | **POST** /api/whiteLabel/mailTemplates | Save the Mail templates settings (saveMailTemplates) |
-| [**saveWhiteLabelParams**](WhiteLabelingControllerApi.md#saveWhiteLabelParams) | **POST** /api/whiteLabel/whiteLabelParams | Create Or Update White Labeling configuration (saveWhiteLabelParams) |
+| [**deleteCurrentLoginWhiteLabelParams**](#deleteCurrentLoginWhiteLabelParams) | **DELETE** /api/whiteLabel/currentLoginWhiteLabelParams | Delete Login White Labeling configuration (deleteCurrentLoginWhiteLabelParams) |
+| [**deleteCurrentWhiteLabelParams**](#deleteCurrentWhiteLabelParams) | **DELETE** /api/whiteLabel/currentWhiteLabelParams | Delete General White Labeling configuration (deleteCurrentWhiteLabelParams) |
+| [**getCurrentLoginWhiteLabelParams**](#getCurrentLoginWhiteLabelParams) | **GET** /api/whiteLabel/currentLoginWhiteLabelParams | Get Login White Labeling configuration (getCurrentWhiteLabelParams) |
+| [**getCurrentWhiteLabelParams**](#getCurrentWhiteLabelParams) | **GET** /api/whiteLabel/currentWhiteLabelParams | Get White Labeling configuration (getCurrentWhiteLabelParams) |
+| [**getLoginWhiteLabelParams**](#getLoginWhiteLabelParams) | **GET** /api/noauth/whiteLabel/loginWhiteLabelParams | Get Login White Labeling parameters |
+| [**getMailTemplates**](#getMailTemplates) | **GET** /api/whiteLabel/mailTemplates | Get the Mail templates settings (getMailTemplates) |
+| [**getWhiteLabelParams**](#getWhiteLabelParams) | **GET** /api/whiteLabel/whiteLabelParams | Get White Labeling parameters |
+| [**isCustomerWhiteLabelingAllowed**](#isCustomerWhiteLabelingAllowed) | **GET** /api/whiteLabel/isCustomerWhiteLabelingAllowed | Check Customer White Labeling Allowed |
+| [**isWhiteLabelingAllowed**](#isWhiteLabelingAllowed) | **GET** /api/whiteLabel/isWhiteLabelingAllowed | Check White Labeling Allowed |
+| [**previewWhiteLabelParams**](#previewWhiteLabelParams) | **POST** /api/whiteLabel/previewWhiteLabelParams | Preview Login White Labeling configuration (saveWhiteLabelParams) |
+| [**saveLoginWhiteLabelParams**](#saveLoginWhiteLabelParams) | **POST** /api/whiteLabel/loginWhiteLabelParams | Create Or Update Login White Labeling configuration (saveWhiteLabelParams) |
+| [**saveMailTemplates**](#saveMailTemplates) | **POST** /api/whiteLabel/mailTemplates | Save the Mail templates settings (saveMailTemplates) |
+| [**saveWhiteLabelParams**](#saveWhiteLabelParams) | **POST** /api/whiteLabel/whiteLabelParams | Create Or Update White Labeling configuration (saveWhiteLabelParams) |
 
 
 
@@ -30,34 +28,9 @@ Delete the Login White Labeling configuration that corresponds to the authority 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## deleteCurrentWhiteLabelParams
@@ -70,34 +43,9 @@ Delete the White Labeling configuration that corresponds to the authority of the
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## getCurrentLoginWhiteLabelParams
@@ -110,34 +58,9 @@ Fetch the Login  White Labeling configuration that corresponds to the authority 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-[**LoginWhiteLabelingParams**](LoginWhiteLabelingParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## getCurrentWhiteLabelParams
@@ -150,34 +73,9 @@ Fetch the White Labeling configuration that corresponds to the authority of the 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-[**WhiteLabelingParams**](WhiteLabelingParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## getLoginWhiteLabelParams
@@ -187,35 +85,6 @@ Fetch the White Labeling configuration that corresponds to the authority of the 
 Get Login White Labeling parameters
 
 Returns login white-labeling parameters based on the hostname from request.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**LoginWhiteLabelingParams**](LoginWhiteLabelingParams.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getMailTemplates
 
@@ -227,34 +96,9 @@ Fetch Mail template settings.   Available for users with &#39;SYS_ADMIN&#39; or 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **systemByDefault** | **Boolean**| Use system settings if settings are not defined on tenant level. | [optional] [default to false] |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **systemByDefault** | **Boolean** | Use system settings if settings are not defined on tenant level. | [optional] [default to false] |
 
 
 ## getWhiteLabelParams
@@ -265,35 +109,6 @@ Get White Labeling parameters
 
 Returns white-labeling parameters for the current user.
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**WhiteLabelingParams**](WhiteLabelingParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## isCustomerWhiteLabelingAllowed
 
 > Boolean isCustomerWhiteLabelingAllowed()
@@ -302,35 +117,6 @@ Check Customer White Labeling Allowed
 
 Check if the White Labeling is enabled for the customers of the current tenant  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.  Available for users with &#39;TENANT_ADMIN&#39; authority.
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**Boolean**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## isWhiteLabelingAllowed
 
 > Boolean isWhiteLabelingAllowed()
@@ -338,35 +124,6 @@ This endpoint does not need any parameter.
 Check White Labeling Allowed
 
 Check if the White Labeling is enabled for the current user owner (tenant or customer)  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**Boolean**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## previewWhiteLabelParams
 
@@ -378,34 +135,9 @@ Merge the White Labeling configuration with the parent configuration and return 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **whiteLabelingParams** | [**WhiteLabelingParams**](WhiteLabelingParams.md)|  | |
-
-### Return type
-
-[**WhiteLabelingParams**](WhiteLabelingParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **whiteLabelingParams** | **WhiteLabelingParams** |  | |
 
 
 ## saveLoginWhiteLabelParams
@@ -418,35 +150,10 @@ Creates or Updates the White Labeling configuration.  Security check is performe
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **loginWhiteLabelingParams** | [**LoginWhiteLabelingParams**](LoginWhiteLabelingParams.md)|  | |
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-[**LoginWhiteLabelingParams**](LoginWhiteLabelingParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **loginWhiteLabelingParams** | **LoginWhiteLabelingParams** |  | |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## saveMailTemplates
@@ -459,34 +166,9 @@ Creates or Updates the Mail templates settings.  Available for users with &#39;S
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **Object**| A JSON value representing the Administration Settings. | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **body** | **Object** | A JSON value representing the Administration Settings. | |
 
 
 ## saveWhiteLabelParams
@@ -499,33 +181,8 @@ Creates or Updates the White Labeling configuration.  Security check is performe
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **whiteLabelingParams** | [**WhiteLabelingParams**](WhiteLabelingParams.md)|  | |
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-[**WhiteLabelingParams**](WhiteLabelingParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **whiteLabelingParams** | **WhiteLabelingParams** |  | |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 

@@ -1,21 +1,19 @@
 # CalculatedFieldControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteCalculatedField**](CalculatedFieldControllerApi.md#deleteCalculatedField) | **DELETE** /api/calculatedField/{calculatedFieldId} | Delete Calculated Field (deleteCalculatedField) |
-| [**getCalculatedFieldById**](CalculatedFieldControllerApi.md#getCalculatedFieldById) | **GET** /api/calculatedField/{calculatedFieldId} | Get Calculated Field (getCalculatedFieldById) |
-| [**getCalculatedFieldNames**](CalculatedFieldControllerApi.md#getCalculatedFieldNames) | **GET** /api/calculatedFields/names | Get calculated field names (getCalculatedFieldNames) |
-| [**getCalculatedFields**](CalculatedFieldControllerApi.md#getCalculatedFields) | **GET** /api/calculatedFields | Get calculated fields (getCalculatedFields) |
-| [**getCalculatedFieldsByEntityIdV2**](CalculatedFieldControllerApi.md#getCalculatedFieldsByEntityIdV2) | **GET** /api/calculatedField/{entityType}/{entityId} | Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityIdV2) |
-| [**getLastCalculatedFieldReprocessingJob**](CalculatedFieldControllerApi.md#getLastCalculatedFieldReprocessingJob) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess/job | getLastCalculatedFieldReprocessingJob |
-| [**getLatestCalculatedFieldDebugEvent**](CalculatedFieldControllerApi.md#getLatestCalculatedFieldDebugEvent) | **GET** /api/calculatedField/{calculatedFieldId}/debug | Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent) |
-| [**reprocessCalculatedField**](CalculatedFieldControllerApi.md#reprocessCalculatedField) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess | Reprocess Calculated Field (reprocessCalculatedField) |
-| [**reprocessCalculatedFieldAndWait**](CalculatedFieldControllerApi.md#reprocessCalculatedFieldAndWait) | **GET** /api/calculatedField/{calculatedFieldId}/reprocessAndWait | Reprocess Calculated Field and wait for completion (reprocessCalculatedFieldAndWait) |
-| [**saveCalculatedField**](CalculatedFieldControllerApi.md#saveCalculatedField) | **POST** /api/calculatedField | Create Or Update Calculated Field (saveCalculatedField) |
-| [**testScript1**](CalculatedFieldControllerApi.md#testScript1) | **POST** /api/calculatedField/testScript | Test Script expression |
-| [**validateCalculatedFieldReprocessing**](CalculatedFieldControllerApi.md#validateCalculatedFieldReprocessing) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess/validate | Validate reprocessing capability of a calculated field (validateCalculatedFieldReprocessing) |
+| [**deleteCalculatedField**](#deleteCalculatedField) | **DELETE** /api/calculatedField/{calculatedFieldId} | Delete Calculated Field (deleteCalculatedField) |
+| [**getCalculatedFieldById**](#getCalculatedFieldById) | **GET** /api/calculatedField/{calculatedFieldId} | Get Calculated Field (getCalculatedFieldById) |
+| [**getCalculatedFieldNames**](#getCalculatedFieldNames) | **GET** /api/calculatedFields/names | Get calculated field names (getCalculatedFieldNames) |
+| [**getCalculatedFields**](#getCalculatedFields) | **GET** /api/calculatedFields | Get calculated fields (getCalculatedFields) |
+| [**getCalculatedFieldsByEntityIdV2**](#getCalculatedFieldsByEntityIdV2) | **GET** /api/calculatedField/{entityType}/{entityId} | Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityIdV2) |
+| [**getLastCalculatedFieldReprocessingJob**](#getLastCalculatedFieldReprocessingJob) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess/job | getLastCalculatedFieldReprocessingJob |
+| [**getLatestCalculatedFieldDebugEvent**](#getLatestCalculatedFieldDebugEvent) | **GET** /api/calculatedField/{calculatedFieldId}/debug | Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent) |
+| [**reprocessCalculatedField**](#reprocessCalculatedField) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess | Reprocess Calculated Field (reprocessCalculatedField) |
+| [**reprocessCalculatedFieldAndWait**](#reprocessCalculatedFieldAndWait) | **GET** /api/calculatedField/{calculatedFieldId}/reprocessAndWait | Reprocess Calculated Field and wait for completion (reprocessCalculatedFieldAndWait) |
+| [**saveCalculatedField**](#saveCalculatedField) | **POST** /api/calculatedField | Create Or Update Calculated Field (saveCalculatedField) |
+| [**testScript1**](#testScript1) | **POST** /api/calculatedField/testScript | Test Script expression |
+| [**validateCalculatedFieldReprocessing**](#validateCalculatedFieldReprocessing) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess/validate | Validate reprocessing capability of a calculated field (validateCalculatedFieldReprocessing) |
 
 
 
@@ -29,34 +27,9 @@ Deletes the calculated field. Referencing non-existing Calculated Field Id will 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedFieldId** | **String**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedFieldId** | **String** |  | |
 
 
 ## getCalculatedFieldById
@@ -69,34 +42,9 @@ Fetch the Calculated Field object based on the provided Calculated Field Id.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedFieldId** | **String**|  | |
-
-### Return type
-
-[**CalculatedField**](CalculatedField.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedFieldId** | **String** |  | |
 
 
 ## getCalculatedFieldNames
@@ -109,38 +57,13 @@ Fetch the list of calculated field names for specified type.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **type** | [**CalculatedFieldType**](.md)| Calculated field type filter. | [enum: SIMPLE, SCRIPT, GEOFENCING, ALARM, PROPAGATION, RELATED_ENTITIES_AGGREGATION, ENTITY_AGGREGATION] |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the calculated field name. | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataString**](PageDataString.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **type** | **CalculatedFieldType** | Calculated field type filter. | [enum: SIMPLE, SCRIPT, GEOFENCING, ALARM, PROPAGATION, RELATED_ENTITIES_AGGREGATION, ENTITY_AGGREGATION] |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the calculated field name. | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCalculatedFields
@@ -153,42 +76,17 @@ Fetch tenant calculated fields based on the filter.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **types** | [**Set&lt;CalculatedFieldType&gt;**](CalculatedFieldType.md)| Calculated field types filter. | [optional] |
-| **entityType** | [**EntityType**](.md)| Entity type filter. If not specified, calculated fields for all supported entity types will be returned. | [optional] [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
-| **entities** | [**Set&lt;UUID&gt;**](UUID.md)| Entities filter. If not specified, calculated fields for entity type filter will be returned. | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the calculated field name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **name** | [**List&lt;String&gt;**](String.md)| Repeatable name query parameter | [optional] |
-
-### Return type
-
-[**PageDataCalculatedFieldInfo**](PageDataCalculatedFieldInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **types** | **Set&lt;CalculatedFieldType&gt;** | Calculated field types filter. | [optional] |
+| **entityType** | **EntityType** | Entity type filter. If not specified, calculated fields for all supported entity types will be returned. | [optional] [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
+| **entities** | **Set&lt;UUID&gt;** | Entities filter. If not specified, calculated fields for entity type filter will be returned. | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the calculated field name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **name** | **List&lt;String&gt;** | Repeatable name query parameter | [optional] |
 
 
 ## getCalculatedFieldsByEntityIdV2
@@ -201,41 +99,16 @@ Fetch the Calculated Fields based on the provided Entity Id.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **type** | [**CalculatedFieldType**](.md)| Calculated field type. If not specified, all types will be returned. | [optional] [enum: SIMPLE, SCRIPT, GEOFENCING, ALARM, PROPAGATION, RELATED_ENTITIES_AGGREGATION, ENTITY_AGGREGATION] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the calculated field name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataCalculatedField**](PageDataCalculatedField.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **type** | **CalculatedFieldType** | Calculated field type. If not specified, all types will be returned. | [optional] [enum: SIMPLE, SCRIPT, GEOFENCING, ALARM, PROPAGATION, RELATED_ENTITIES_AGGREGATION, ENTITY_AGGREGATION] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the calculated field name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getLastCalculatedFieldReprocessingJob
@@ -246,34 +119,9 @@ getLastCalculatedFieldReprocessingJob
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedFieldId** | **UUID**|  | |
-
-### Return type
-
-[**Job**](Job.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedFieldId** | **UUID** |  | |
 
 
 ## getLatestCalculatedFieldDebugEvent
@@ -286,34 +134,9 @@ Gets latest calculated field debug event for specified calculated field id. Refe
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedFieldId** | **String**|  | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedFieldId** | **String** |  | |
 
 
 ## reprocessCalculatedField
@@ -326,36 +149,11 @@ Reprocesses the calculated field.  Available for users with &#39;TENANT_ADMIN&#3
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedFieldId** | **String**|  | |
-| **startTs** | **Long**|  | |
-| **endTs** | **Long**|  | |
-
-### Return type
-
-[**Job**](Job.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedFieldId** | **String** |  | |
+| **startTs** | **Long** |  | |
+| **endTs** | **Long** |  | |
 
 
 ## reprocessCalculatedFieldAndWait
@@ -368,36 +166,11 @@ Reprocesses the calculated field and waits until the job completes or fails.  Av
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedFieldId** | **String**|  | |
-| **startTs** | **Long**|  | |
-| **endTs** | **Long**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedFieldId** | **String** |  | |
+| **startTs** | **Long** |  | |
+| **endTs** | **Long** |  | |
 
 
 ## saveCalculatedField
@@ -410,34 +183,9 @@ Creates or Updates the Calculated Field. When creating calculated field, platfor
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedField** | [**CalculatedField**](CalculatedField.md)| A JSON value representing the calculated field. | |
-
-### Return type
-
-[**CalculatedField**](CalculatedField.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedField** | **CalculatedField** | A JSON value representing the calculated field. | |
 
 
 ## testScript1
@@ -450,34 +198,9 @@ Execute the Script expression and return the result. The format of request:   &#
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **Object**| Test calculated field TBEL expression. | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **body** | **Object** | Test calculated field TBEL expression. | |
 
 
 ## validateCalculatedFieldReprocessing
@@ -490,32 +213,7 @@ Checks whether the specified calculated field can be reprocessed. Returns a vali
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **calculatedFieldId** | **String**|  | |
-
-### Return type
-
-[**CfReprocessingValidationResult**](CfReprocessingValidationResult.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **calculatedFieldId** | **String** |  | |
 

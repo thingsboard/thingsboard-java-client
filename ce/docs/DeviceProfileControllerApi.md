@@ -1,21 +1,19 @@
 # DeviceProfileControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteDeviceProfile**](DeviceProfileControllerApi.md#deleteDeviceProfile) | **DELETE** /api/deviceProfile/{deviceProfileId} | Delete device profile (deleteDeviceProfile) |
-| [**getAttributesKeys**](DeviceProfileControllerApi.md#getAttributesKeys) | **GET** /api/deviceProfile/devices/keys/attributes | Get attribute keys (getAttributesKeys) |
-| [**getDefaultDeviceProfileInfo**](DeviceProfileControllerApi.md#getDefaultDeviceProfileInfo) | **GET** /api/deviceProfileInfo/default | Get Default Device Profile (getDefaultDeviceProfileInfo) |
-| [**getDeviceProfileById**](DeviceProfileControllerApi.md#getDeviceProfileById) | **GET** /api/deviceProfile/{deviceProfileId} | Get Device Profile (getDeviceProfileById) |
-| [**getDeviceProfileInfoById**](DeviceProfileControllerApi.md#getDeviceProfileInfoById) | **GET** /api/deviceProfileInfo/{deviceProfileId} | Get Device Profile Info (getDeviceProfileInfoById) |
-| [**getDeviceProfileInfos**](DeviceProfileControllerApi.md#getDeviceProfileInfos) | **GET** /api/deviceProfileInfos | Get Device Profiles for transport type (getDeviceProfileInfos) |
-| [**getDeviceProfileInfosByIdsV2**](DeviceProfileControllerApi.md#getDeviceProfileInfosByIdsV2) | **GET** /api/deviceProfileInfos/list | Get Device Profile Infos By Ids (getDeviceProfileInfosByIdsV2) |
-| [**getDeviceProfileNames**](DeviceProfileControllerApi.md#getDeviceProfileNames) | **GET** /api/deviceProfile/names | Get Device Profile names (getDeviceProfileNames) |
-| [**getDeviceProfiles**](DeviceProfileControllerApi.md#getDeviceProfiles) | **GET** /api/deviceProfiles | Get Device Profiles (getDeviceProfiles) |
-| [**getTimeseriesKeys1**](DeviceProfileControllerApi.md#getTimeseriesKeys1) | **GET** /api/deviceProfile/devices/keys/timeseries | Get time series keys (getTimeseriesKeys) |
-| [**saveDeviceProfile**](DeviceProfileControllerApi.md#saveDeviceProfile) | **POST** /api/deviceProfile | Create Or Update Device Profile (saveDeviceProfile) |
-| [**setDefaultDeviceProfile**](DeviceProfileControllerApi.md#setDefaultDeviceProfile) | **POST** /api/deviceProfile/{deviceProfileId}/default | Make Device Profile Default (setDefaultDeviceProfile) |
+| [**deleteDeviceProfile**](#deleteDeviceProfile) | **DELETE** /api/deviceProfile/{deviceProfileId} | Delete device profile (deleteDeviceProfile) |
+| [**getAttributesKeys**](#getAttributesKeys) | **GET** /api/deviceProfile/devices/keys/attributes | Get attribute keys (getAttributesKeys) |
+| [**getDefaultDeviceProfileInfo**](#getDefaultDeviceProfileInfo) | **GET** /api/deviceProfileInfo/default | Get Default Device Profile (getDefaultDeviceProfileInfo) |
+| [**getDeviceProfileById**](#getDeviceProfileById) | **GET** /api/deviceProfile/{deviceProfileId} | Get Device Profile (getDeviceProfileById) |
+| [**getDeviceProfileInfoById**](#getDeviceProfileInfoById) | **GET** /api/deviceProfileInfo/{deviceProfileId} | Get Device Profile Info (getDeviceProfileInfoById) |
+| [**getDeviceProfileInfos**](#getDeviceProfileInfos) | **GET** /api/deviceProfileInfos | Get Device Profiles for transport type (getDeviceProfileInfos) |
+| [**getDeviceProfileInfosByIdsV2**](#getDeviceProfileInfosByIdsV2) | **GET** /api/deviceProfileInfos/list | Get Device Profile Infos By Ids (getDeviceProfileInfosByIdsV2) |
+| [**getDeviceProfileNames**](#getDeviceProfileNames) | **GET** /api/deviceProfile/names | Get Device Profile names (getDeviceProfileNames) |
+| [**getDeviceProfiles**](#getDeviceProfiles) | **GET** /api/deviceProfiles | Get Device Profiles (getDeviceProfiles) |
+| [**getTimeseriesKeys1**](#getTimeseriesKeys1) | **GET** /api/deviceProfile/devices/keys/timeseries | Get time series keys (getTimeseriesKeys) |
+| [**saveDeviceProfile**](#saveDeviceProfile) | **POST** /api/deviceProfile | Create Or Update Device Profile (saveDeviceProfile) |
+| [**setDefaultDeviceProfile**](#setDefaultDeviceProfile) | **POST** /api/deviceProfile/{deviceProfileId}/default | Make Device Profile Default (setDefaultDeviceProfile) |
 
 
 
@@ -29,34 +27,9 @@ Deletes the device profile. Referencing non-existing device profile Id will caus
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAttributesKeys
@@ -69,34 +42,9 @@ Get a set of unique attribute keys used by devices that belong to specified prof
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-**List&lt;String&gt;**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## getDefaultDeviceProfileInfo
@@ -106,35 +54,6 @@ Get a set of unique attribute keys used by devices that belong to specified prof
 Get Default Device Profile (getDefaultDeviceProfileInfo)
 
 Fetch the Default Device Profile Info object. Device Profile Info is a lightweight object that includes main information about Device Profile excluding the heavyweight configuration object.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**DeviceProfileInfo**](DeviceProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getDeviceProfileById
 
@@ -146,35 +65,10 @@ Fetch the Device Profile object based on the provided Device Profile Id. The ser
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **inlineImages** | **Boolean**| Inline images as a data URL (Base64) | [optional] |
-
-### Return type
-
-[**DeviceProfile**](DeviceProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **inlineImages** | **Boolean** | Inline images as a data URL (Base64) | [optional] |
 
 
 ## getDeviceProfileInfoById
@@ -187,34 +81,9 @@ Fetch the Device Profile Info object based on the provided Device Profile Id. De
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**DeviceProfileInfo**](DeviceProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getDeviceProfileInfos
@@ -227,39 +96,14 @@ Returns a page of devices profile info objects owned by tenant. You can specify 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device profile name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, transportType, description, isDefault] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **transportType** | **String**| Type of the transport | [optional] [enum: DEFAULT, MQTT, COAP, LWM2M, SNMP] |
-
-### Return type
-
-[**PageDataDeviceProfileInfo**](PageDataDeviceProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device profile name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, transportType, description, isDefault] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **transportType** | **String** | Type of the transport | [optional] [enum: DEFAULT, MQTT, COAP, LWM2M, SNMP] |
 
 
 ## getDeviceProfileInfosByIdsV2
@@ -272,34 +116,9 @@ Requested device profiles must be owned by tenant which is performing the reques
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfileIds** | [**List&lt;String&gt;**](String.md)| A list of device profile ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;DeviceProfileInfo&gt;**](DeviceProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfileIds** | **List&lt;String&gt;** | A list of device profile ids, separated by comma &#39;,&#39; | |
 
 
 ## getDeviceProfileNames
@@ -312,34 +131,9 @@ Returns a set of unique device profile names owned by the tenant.  Available for
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **activeOnly** | **Boolean**| Flag indicating whether to retrieve exclusively the names of device profiles that are referenced by tenant&#39;s devices. | [optional] [default to false] |
-
-### Return type
-
-[**List&lt;EntityInfo&gt;**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **activeOnly** | **Boolean** | Flag indicating whether to retrieve exclusively the names of device profiles that are referenced by tenant&#39;s devices. | [optional] [default to false] |
 
 
 ## getDeviceProfiles
@@ -352,38 +146,13 @@ Returns a page of devices profile objects owned by tenant. You can specify param
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device profile name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, transportType, description, isDefault] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDeviceProfile**](PageDataDeviceProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device profile name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, transportType, description, isDefault] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getTimeseriesKeys1
@@ -396,34 +165,9 @@ Get a set of unique time series keys used by devices that belong to specified pr
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-**List&lt;String&gt;**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## saveDeviceProfile
@@ -436,34 +180,9 @@ Create or update the Device Profile. When creating device profile, platform gene
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfile** | [**DeviceProfile**](DeviceProfile.md)|  | |
-
-### Return type
-
-[**DeviceProfile**](DeviceProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfile** | **DeviceProfile** |  | |
 
 
 ## setDefaultDeviceProfile
@@ -476,32 +195,7 @@ Marks device profile as default within a tenant scope.  Available for users with
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**DeviceProfile**](DeviceProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 

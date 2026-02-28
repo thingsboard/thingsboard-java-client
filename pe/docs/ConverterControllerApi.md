@@ -1,18 +1,16 @@
 # ConverterControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteConverter**](ConverterControllerApi.md#deleteConverter) | **DELETE** /api/converter/{converterId} | Delete converter (deleteConverter) |
-| [**getConverterById**](ConverterControllerApi.md#getConverterById) | **GET** /api/converter/{converterId} | Get Converter (getConverterById) |
-| [**getConverters**](ConverterControllerApi.md#getConverters) | **GET** /api/converters | Get Converters (getConverters) |
-| [**getConvertersByIdsV2**](ConverterControllerApi.md#getConvertersByIdsV2) | **GET** /api/converters/list | Get Converters By Ids (getConvertersByIdsV2) |
-| [**getLatestConverterDebugInput**](ConverterControllerApi.md#getLatestConverterDebugInput) | **GET** /api/converter/{converterId}/debugIn | Get latest debug input event (getLatestConverterDebugInput) |
-| [**saveConverter**](ConverterControllerApi.md#saveConverter) | **POST** /api/converter | Create Or Update Converter (saveConverter) |
-| [**testDownLinkConverter**](ConverterControllerApi.md#testDownLinkConverter) | **POST** /api/converter/testDownLink | Test converter function (testDownLinkConverter) |
-| [**testUpLinkConverter**](ConverterControllerApi.md#testUpLinkConverter) | **POST** /api/converter/testUpLink | Test converter function (testUpLinkConverter) |
-| [**unwrapRawPayload**](ConverterControllerApi.md#unwrapRawPayload) | **POST** /api/converter/unwrap/{integrationType} | Transform input raw payload to the dedicated converter data (unwrapRawPayload) |
+| [**deleteConverter**](#deleteConverter) | **DELETE** /api/converter/{converterId} | Delete converter (deleteConverter) |
+| [**getConverterById**](#getConverterById) | **GET** /api/converter/{converterId} | Get Converter (getConverterById) |
+| [**getConverters**](#getConverters) | **GET** /api/converters | Get Converters (getConverters) |
+| [**getConvertersByIdsV2**](#getConvertersByIdsV2) | **GET** /api/converters/list | Get Converters By Ids (getConvertersByIdsV2) |
+| [**getLatestConverterDebugInput**](#getLatestConverterDebugInput) | **GET** /api/converter/{converterId}/debugIn | Get latest debug input event (getLatestConverterDebugInput) |
+| [**saveConverter**](#saveConverter) | **POST** /api/converter | Create Or Update Converter (saveConverter) |
+| [**testDownLinkConverter**](#testDownLinkConverter) | **POST** /api/converter/testDownLink | Test converter function (testDownLinkConverter) |
+| [**testUpLinkConverter**](#testUpLinkConverter) | **POST** /api/converter/testUpLink | Test converter function (testUpLinkConverter) |
+| [**unwrapRawPayload**](#unwrapRawPayload) | **POST** /api/converter/unwrap/{integrationType} | Transform input raw payload to the dedicated converter data (unwrapRawPayload) |
 
 
 
@@ -26,34 +24,9 @@ Deletes the converter and all the relations (from and to the converter). Referen
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **converterId** | **String**| A string value representing the converter id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **converterId** | **String** | A string value representing the converter id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getConverterById
@@ -66,34 +39,9 @@ Fetch the Converter object based on the provided Converter Id. The server checks
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **converterId** | **String**| A string value representing the converter id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Converter**](Converter.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **converterId** | **String** | A string value representing the converter id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getConverters
@@ -106,40 +54,15 @@ Returns a page of converters owned by tenant. You can specify parameters to filt
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **isEdgeTemplate** | **Boolean**| Fetch edge template converters | [optional] [default to false] |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the converter name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **integrationType** | [**IntegrationType**](.md)| A string value representing the integration type. One of the following: APACHE_PULSAR, AWS_IOT, AWS_KINESIS, AWS_SQS, AZURE_EVENT_HUB, AZURE_IOT_HUB, AZURE_SERVICE_BUS, CHIRPSTACK, COAP, CUSTOM, HTTP, IBM_WATSON_IOT, KAFKA, LORIOT, MQTT, OCEANCONNECT, OPC_UA, PUB_SUB, RABBITMQ,  SIGFOX,  TCP,  THINGPARK,  TMOBILE_IOT_CDP,  TPE,  TTI,  TTN,  TUYA,  UDP | [optional] [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
-
-### Return type
-
-[**PageDataConverter**](PageDataConverter.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **isEdgeTemplate** | **Boolean** | Fetch edge template converters | [optional] [default to false] |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the converter name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **integrationType** | **IntegrationType** | A string value representing the integration type. One of the following: APACHE_PULSAR, AWS_IOT, AWS_KINESIS, AWS_SQS, AZURE_EVENT_HUB, AZURE_IOT_HUB, AZURE_SERVICE_BUS, CHIRPSTACK, COAP, CUSTOM, HTTP, IBM_WATSON_IOT, KAFKA, LORIOT, MQTT, OCEANCONNECT, OPC_UA, PUB_SUB, RABBITMQ,  SIGFOX,  TCP,  THINGPARK,  TMOBILE_IOT_CDP,  TPE,  TTI,  TTN,  TUYA,  UDP | [optional] [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
 
 
 ## getConvertersByIdsV2
@@ -152,34 +75,9 @@ Requested converters must be owned by tenant which is performing the request.   
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **converterIds** | [**List&lt;String&gt;**](String.md)| A list of converter ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;Converter&gt;**](Converter.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **converterIds** | **List&lt;String&gt;** | A list of converter ids, separated by comma &#39;,&#39; | |
 
 
 ## getLatestConverterDebugInput
@@ -192,38 +90,13 @@ Returns a JSON object of the latest debug event representing the input message t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **converterId** | **String**| A string value representing the converter id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **converterType** | **String**| A string value representing the converter type. One of the following: UPLINK, DOWNLINK | [optional] |
-| **integrationType** | **String**| A string value representing the integration type. One of the following: APACHE_PULSAR, AWS_IOT, AWS_KINESIS, AWS_SQS, AZURE_EVENT_HUB, AZURE_IOT_HUB, AZURE_SERVICE_BUS, CHIRPSTACK, COAP, CUSTOM, HTTP, IBM_WATSON_IOT, KAFKA, LORIOT, MQTT, OCEANCONNECT, OPC_UA, PUB_SUB, RABBITMQ,  SIGFOX,  TCP,  THINGPARK,  TMOBILE_IOT_CDP,  TPE,  TTI,  TTN,  TUYA,  UDP | [optional] |
-| **integrationName** | **String**| A string value representing the integration name. For example, &#39;My New Integration&#39; | [optional] |
-| **converterVersion** | **Integer**| Converter version. | [optional] |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **converterId** | **String** | A string value representing the converter id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **converterType** | **String** | A string value representing the converter type. One of the following: UPLINK, DOWNLINK | [optional] |
+| **integrationType** | **String** | A string value representing the integration type. One of the following: APACHE_PULSAR, AWS_IOT, AWS_KINESIS, AWS_SQS, AZURE_EVENT_HUB, AZURE_IOT_HUB, AZURE_SERVICE_BUS, CHIRPSTACK, COAP, CUSTOM, HTTP, IBM_WATSON_IOT, KAFKA, LORIOT, MQTT, OCEANCONNECT, OPC_UA, PUB_SUB, RABBITMQ,  SIGFOX,  TCP,  THINGPARK,  TMOBILE_IOT_CDP,  TPE,  TTI,  TTN,  TUYA,  UDP | [optional] |
+| **integrationName** | **String** | A string value representing the integration name. For example, &#39;My New Integration&#39; | [optional] |
+| **converterVersion** | **Integer** | Converter version. | [optional] |
 
 
 ## saveConverter
@@ -236,34 +109,9 @@ Create or update the Converter. When creating converter, platform generates Conv
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **converter** | [**Converter**](Converter.md)| A JSON value representing the converter. | |
-
-### Return type
-
-[**Converter**](Converter.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **converter** | **Converter** | A JSON value representing the converter. | |
 
 
 ## testDownLinkConverter
@@ -276,35 +124,10 @@ Returns a JSON object representing the result of the processed incoming message.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **Object**| A JSON value representing the input to the converter function. | |
-| **scriptLang** | [**ScriptLanguage**](.md)| Script language: JS or TBEL | [optional] [enum: JS, TBEL] |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **body** | **Object** | A JSON value representing the input to the converter function. | |
+| **scriptLang** | **ScriptLanguage** | Script language: JS or TBEL | [optional] [enum: JS, TBEL] |
 
 
 ## testUpLinkConverter
@@ -317,35 +140,10 @@ Returns a JSON object representing the result of the processed incoming message.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **Object**| A JSON value representing the input to the converter function. | |
-| **scriptLang** | [**ScriptLanguage**](.md)| Script language: JS or TBEL | [optional] [enum: JS, TBEL] |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **body** | **Object** | A JSON value representing the input to the converter function. | |
+| **scriptLang** | **ScriptLanguage** | Script language: JS or TBEL | [optional] [enum: JS, TBEL] |
 
 
 ## unwrapRawPayload
@@ -358,33 +156,8 @@ Returns a JSON object representing the result of the unwrapped incoming raw mess
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationType** | [**IntegrationType**](.md)| A string value representing the integration type. One of the following: APACHE_PULSAR, AWS_IOT, AWS_KINESIS, AWS_SQS, AZURE_EVENT_HUB, AZURE_IOT_HUB, AZURE_SERVICE_BUS, CHIRPSTACK, COAP, CUSTOM, HTTP, IBM_WATSON_IOT, KAFKA, LORIOT, MQTT, OCEANCONNECT, OPC_UA, PUB_SUB, RABBITMQ,  SIGFOX,  TCP,  THINGPARK,  TMOBILE_IOT_CDP,  TPE,  TTI,  TTN,  TUYA,  UDP | [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
-| **body** | **Object**| A JSON value representing the input message. | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **integrationType** | **IntegrationType** | A string value representing the integration type. One of the following: APACHE_PULSAR, AWS_IOT, AWS_KINESIS, AWS_SQS, AZURE_EVENT_HUB, AZURE_IOT_HUB, AZURE_SERVICE_BUS, CHIRPSTACK, COAP, CUSTOM, HTTP, IBM_WATSON_IOT, KAFKA, LORIOT, MQTT, OCEANCONNECT, OPC_UA, PUB_SUB, RABBITMQ,  SIGFOX,  TCP,  THINGPARK,  TMOBILE_IOT_CDP,  TPE,  TTI,  TTN,  TUYA,  UDP | [enum: OCEANCONNECT, SIGFOX, THINGPARK, TPE, CHIRPSTACK, PARTICLE, TMOBILE_IOT_CDP, HTTP, MQTT, PUB_SUB, AWS_IOT, AWS_SQS, AWS_KINESIS, TTN, TTI, AZURE_EVENT_HUB, OPC_UA, CUSTOM, UDP, TCP, KAFKA, AZURE_IOT_HUB, APACHE_PULSAR, RABBITMQ, LORIOT, COAP, TUYA, AZURE_SERVICE_BUS, KPN] |
+| **body** | **Object** | A JSON value representing the input message. | |
 

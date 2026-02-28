@@ -1,14 +1,12 @@
 # RoleControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteRole**](RoleControllerApi.md#deleteRole) | **DELETE** /api/role/{roleId} | Delete role (deleteRole) |
-| [**getRoleById**](RoleControllerApi.md#getRoleById) | **GET** /api/role/{roleId} | Get Role by Id (getRoleById) |
-| [**getRoles**](RoleControllerApi.md#getRoles) | **GET** /api/roles | Get Roles (getRoles) |
-| [**getRolesByIdsV2**](RoleControllerApi.md#getRolesByIdsV2) | **GET** /api/roles/list | Get Roles By Ids (getRolesByIdsV2) |
-| [**saveRole**](RoleControllerApi.md#saveRole) | **POST** /api/role | Create Or Update Role (saveRole) |
+| [**deleteRole**](#deleteRole) | **DELETE** /api/role/{roleId} | Delete role (deleteRole) |
+| [**getRoleById**](#getRoleById) | **GET** /api/role/{roleId} | Get Role by Id (getRoleById) |
+| [**getRoles**](#getRoles) | **GET** /api/roles | Get Roles (getRoles) |
+| [**getRolesByIdsV2**](#getRolesByIdsV2) | **GET** /api/roles/list | Get Roles By Ids (getRolesByIdsV2) |
+| [**saveRole**](#saveRole) | **POST** /api/role | Create Or Update Role (saveRole) |
 
 
 
@@ -22,34 +20,9 @@ Deletes the role. Referencing non-existing role Id will cause an error.   Securi
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **roleId** | **String**| A string value representing the role id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **roleId** | **String** | A string value representing the role id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getRoleById
@@ -62,34 +35,9 @@ Fetch the Role object based on the provided Role Id. Role Contains a set of perm
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **roleId** | **String**| A string value representing the role id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Role**](Role.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **roleId** | **String** | A string value representing the role id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getRoles
@@ -102,39 +50,14 @@ Returns a page of roles that are available for the current user. Role Contains a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **type** | **String**| Type of the role | [optional] [enum: GENERIC, GROUP] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the role name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, description] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataRole**](PageDataRole.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **type** | **String** | Type of the role | [optional] [enum: GENERIC, GROUP] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the role name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, description] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getRolesByIdsV2
@@ -147,34 +70,9 @@ Returns the list of rows based on their ids.    Security check is performed to v
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **roleIds** | [**List&lt;String&gt;**](String.md)| A list of role ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;Role&gt;**](Role.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **roleIds** | **List&lt;String&gt;** | A list of role ids, separated by comma &#39;,&#39; | |
 
 
 ## saveRole
@@ -187,32 +85,7 @@ Creates or Updates the Role. When creating Role, platform generates Role Id as [
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **role** | [**Role**](Role.md)|  | |
-
-### Return type
-
-[**Role**](Role.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **role** | **Role** |  | |
 

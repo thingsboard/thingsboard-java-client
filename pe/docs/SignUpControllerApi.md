@@ -1,18 +1,16 @@
 # SignUpControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**acceptPrivacyPolicy**](SignUpControllerApi.md#acceptPrivacyPolicy) | **POST** /api/signup/acceptPrivacyPolicy | Accept privacy policy (acceptPrivacyPolicy) |
-| [**acceptTermsOfUse**](SignUpControllerApi.md#acceptTermsOfUse) | **POST** /api/signup/acceptTermsOfUse | Accept Terms of Use (acceptTermsOfUse) |
-| [**activateEmail**](SignUpControllerApi.md#activateEmail) | **GET** /api/noauth/activateEmail | Activate User using code from Email (activateEmail) |
-| [**activateUserByEmailCode**](SignUpControllerApi.md#activateUserByEmailCode) | **POST** /api/noauth/activateByEmailCode | Activate and login using code from Email (activateUserByEmailCode) |
-| [**mobileLogin**](SignUpControllerApi.md#mobileLogin) | **GET** /api/noauth/login | Mobile Login redirect (mobileLogin) |
-| [**privacyPolicyAccepted**](SignUpControllerApi.md#privacyPolicyAccepted) | **GET** /api/signup/privacyPolicyAccepted | Check privacy policy (privacyPolicyAccepted) |
-| [**resendEmailActivation**](SignUpControllerApi.md#resendEmailActivation) | **POST** /api/noauth/resendEmailActivation | Resend Activation Email (resendEmailActivation) |
-| [**signUp**](SignUpControllerApi.md#signUp) | **POST** /api/noauth/signup | User Sign Up (signUp) |
-| [**termsOfUseAccepted**](SignUpControllerApi.md#termsOfUseAccepted) | **GET** /api/signup/termsOfUseAccepted | Check Terms Of User (termsOfUseAccepted) |
+| [**acceptPrivacyPolicy**](#acceptPrivacyPolicy) | **POST** /api/signup/acceptPrivacyPolicy | Accept privacy policy (acceptPrivacyPolicy) |
+| [**acceptTermsOfUse**](#acceptTermsOfUse) | **POST** /api/signup/acceptTermsOfUse | Accept Terms of Use (acceptTermsOfUse) |
+| [**activateEmail**](#activateEmail) | **GET** /api/noauth/activateEmail | Activate User using code from Email (activateEmail) |
+| [**activateUserByEmailCode**](#activateUserByEmailCode) | **POST** /api/noauth/activateByEmailCode | Activate and login using code from Email (activateUserByEmailCode) |
+| [**mobileLogin**](#mobileLogin) | **GET** /api/noauth/login | Mobile Login redirect (mobileLogin) |
+| [**privacyPolicyAccepted**](#privacyPolicyAccepted) | **GET** /api/signup/privacyPolicyAccepted | Check privacy policy (privacyPolicyAccepted) |
+| [**resendEmailActivation**](#resendEmailActivation) | **POST** /api/noauth/resendEmailActivation | Resend Activation Email (resendEmailActivation) |
+| [**signUp**](#signUp) | **POST** /api/noauth/signup | User Sign Up (signUp) |
+| [**termsOfUseAccepted**](#termsOfUseAccepted) | **GET** /api/signup/termsOfUseAccepted | Check Terms Of User (termsOfUseAccepted) |
 
 
 
@@ -24,35 +22,6 @@ Accept privacy policy (acceptPrivacyPolicy)
 
 Accept privacy policy by the current user.
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## acceptTermsOfUse
 
 > com.fasterxml.jackson.databind.JsonNode acceptTermsOfUse()
@@ -60,35 +29,6 @@ This endpoint does not need any parameter.
 Accept Terms of Use (acceptTermsOfUse)
 
 Accept Terms of Use by the current user.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## activateEmail
 
@@ -100,36 +40,11 @@ Activate the user using code(link) from the activation email. Validates the code
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailCode** | **String**| Activation token. | |
-| **pkgName** | **String**| Optional package name of the mobile application. | [optional] |
-| **platform** | **String**| Platform type | [optional] [enum: ANDROID, IOS] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **emailCode** | **String** | Activation token. | |
+| **pkgName** | **String** | Optional package name of the mobile application. | [optional] |
+| **platform** | **String** | Platform type | [optional] [enum: ANDROID, IOS] |
 
 
 ## activateUserByEmailCode
@@ -142,36 +57,11 @@ Activate the user using code(link) from the activation email and return the JWT 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **emailCode** | **String**| Activation token. | |
-| **pkgName** | **String**| Optional package name of the mobile application. | [optional] |
-| **platform** | **String**| Platform type | [optional] [enum: ANDROID, IOS] |
-
-### Return type
-
-[**JwtPair**](JwtPair.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **emailCode** | **String** | Activation token. | |
+| **pkgName** | **String** | Optional package name of the mobile application. | [optional] |
+| **platform** | **String** | Platform type | [optional] [enum: ANDROID, IOS] |
 
 
 ## mobileLogin
@@ -184,35 +74,10 @@ This method generates redirect to the special link that is handled by mobile app
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pkgName** | **String**| Mobile app package name. Used to identify the application and build the redirect link. | |
-| **platform** | **String**| Platform type | [enum: ANDROID, IOS] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pkgName** | **String** | Mobile app package name. Used to identify the application and build the redirect link. | |
+| **platform** | **String** | Platform type | [enum: ANDROID, IOS] |
 
 
 ## privacyPolicyAccepted
@@ -222,35 +87,6 @@ No authorization required
 Check privacy policy (privacyPolicyAccepted)
 
 Checks that current user accepted the privacy policy.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**Boolean**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## resendEmailActivation
 
@@ -262,36 +98,11 @@ Request to resend the activation email for the user. Checks that user was not ac
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **email** | **String**| Email of the user. | |
-| **pkgName** | **String**| Optional package name of the mobile application. | [optional] |
-| **platform** | **String**| Platform type | [optional] [enum: ANDROID, IOS] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **email** | **String** | Email of the user. | |
+| **pkgName** | **String** | Optional package name of the mobile application. | [optional] |
+| **platform** | **String** | Platform type | [optional] [enum: ANDROID, IOS] |
 
 
 ## signUp
@@ -304,34 +115,9 @@ Process user sign up request. Creates the Customer and corresponding User based 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **signUpRequest** | [**SignUpRequest**](SignUpRequest.md)|  | |
-
-### Return type
-
-[**SignUpResult**](SignUpResult.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **signUpRequest** | **SignUpRequest** |  | |
 
 
 ## termsOfUseAccepted
@@ -341,32 +127,3 @@ No authorization required
 Check Terms Of User (termsOfUseAccepted)
 
 Checks that current user accepted the privacy policy.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**Boolean**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-

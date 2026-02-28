@@ -1,11 +1,9 @@
 # DashboardReportControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**downloadDashboardReport**](DashboardReportControllerApi.md#downloadDashboardReport) | **POST** /api/report/{dashboardId}/download | Download dashboard report (downloadDashboardReport) |
-| [**downloadTestReport**](DashboardReportControllerApi.md#downloadTestReport) | **POST** /api/report/test | Download test report (downloadTestReport) |
+| [**downloadDashboardReport**](#downloadDashboardReport) | **POST** /api/report/{dashboardId}/download | Download dashboard report (downloadDashboardReport) |
+| [**downloadTestReport**](#downloadTestReport) | **POST** /api/report/test | Download test report (downloadTestReport) |
 
 
 
@@ -19,35 +17,10 @@ Generate and download a report from the specified dashboard. The request payload
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **body** | **Object**|  | |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/pdf, image/jpeg, image/png, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **body** | **Object** |  | |
 
 
 ## downloadTestReport
@@ -60,33 +33,8 @@ Generate and download test report.  Available for users with &#39;TENANT_ADMIN&#
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardReportConfig** | [**DashboardReportConfig**](DashboardReportConfig.md)|  | |
-| **reportsServerEndpointUrl** | **String**| A string value representing the report server endpoint. | [optional] |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/pdf, image/jpeg, image/png, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardReportConfig** | **DashboardReportConfig** |  | |
+| **reportsServerEndpointUrl** | **String** | A string value representing the report server endpoint. | [optional] |
 

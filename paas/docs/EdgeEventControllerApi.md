@@ -1,10 +1,8 @@
 # EdgeEventControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getEdgeEvents**](EdgeEventControllerApi.md#getEdgeEvents) | **GET** /api/edge/{edgeId}/events | Get Edge Events (getEdgeEvents) |
+| [**getEdgeEvents**](#getEdgeEvents) | **GET** /api/edge/{edgeId}/events | Get Edge Events (getEdgeEvents) |
 
 
 
@@ -18,39 +16,14 @@ Returns a page of edge events for the requested edge. You can specify parameters
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the edge event type name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| Timestamp. Edge events with creation time before it won&#39;t be queried | [optional] |
-| **endTime** | **Long**| Timestamp. Edge events with creation time after it won&#39;t be queried | [optional] |
-
-### Return type
-
-[**PageDataEdgeEvent**](PageDataEdgeEvent.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the edge event type name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | Timestamp. Edge events with creation time before it won&#39;t be queried | [optional] |
+| **endTime** | **Long** | Timestamp. Edge events with creation time after it won&#39;t be queried | [optional] |
 

@@ -1,22 +1,20 @@
 # CustomerControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteCustomer**](CustomerControllerApi.md#deleteCustomer) | **DELETE** /api/customer/{customerId} | Delete Customer (deleteCustomer) |
-| [**getAllCustomerInfos**](CustomerControllerApi.md#getAllCustomerInfos) | **GET** /api/customerInfos/all | Get All Customer Infos for current user (getAllCustomerInfos) |
-| [**getCustomerById**](CustomerControllerApi.md#getCustomerById) | **GET** /api/customer/{customerId} | Get Customer (getCustomerById) |
-| [**getCustomerCustomerInfos**](CustomerControllerApi.md#getCustomerCustomerInfos) | **GET** /api/customer/{customerId}/customerInfos | Get Customer sub-customers Infos (getCustomerCustomerInfos) |
-| [**getCustomerInfoById**](CustomerControllerApi.md#getCustomerInfoById) | **GET** /api/customer/info/{customerId} | Get Customer info (getCustomerInfoById) |
-| [**getCustomerTitleById**](CustomerControllerApi.md#getCustomerTitleById) | **GET** /api/customer/{customerId}/title | Get Customer Title (getCustomerTitleById) |
-| [**getCustomers**](CustomerControllerApi.md#getCustomers) | **GET** /api/customers | Get Tenant Customers (getCustomers) |
-| [**getCustomersByEntityGroupId**](CustomerControllerApi.md#getCustomersByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/customers | Get customers by Entity Group Id (getCustomersByEntityGroupId) |
-| [**getCustomersByIdsV2**](CustomerControllerApi.md#getCustomersByIdsV2) | **GET** /api/customers/list | Get customers by Customer Ids (getCustomersByIdsV2) |
-| [**getShortCustomerInfoById**](CustomerControllerApi.md#getShortCustomerInfoById) | **GET** /api/customer/{customerId}/shortInfo | Get short Customer info (getShortCustomerInfoById) |
-| [**getTenantCustomer**](CustomerControllerApi.md#getTenantCustomer) | **GET** /api/tenant/customers | Get Tenant Customer by Customer title (getTenantCustomer) |
-| [**getUserCustomers**](CustomerControllerApi.md#getUserCustomers) | **GET** /api/user/customers | Get Customers (getUserCustomers) |
-| [**saveCustomer**](CustomerControllerApi.md#saveCustomer) | **POST** /api/customer | Create or update Customer (saveCustomer) |
+| [**deleteCustomer**](#deleteCustomer) | **DELETE** /api/customer/{customerId} | Delete Customer (deleteCustomer) |
+| [**getAllCustomerInfos**](#getAllCustomerInfos) | **GET** /api/customerInfos/all | Get All Customer Infos for current user (getAllCustomerInfos) |
+| [**getCustomerById**](#getCustomerById) | **GET** /api/customer/{customerId} | Get Customer (getCustomerById) |
+| [**getCustomerCustomerInfos**](#getCustomerCustomerInfos) | **GET** /api/customer/{customerId}/customerInfos | Get Customer sub-customers Infos (getCustomerCustomerInfos) |
+| [**getCustomerInfoById**](#getCustomerInfoById) | **GET** /api/customer/info/{customerId} | Get Customer info (getCustomerInfoById) |
+| [**getCustomerTitleById**](#getCustomerTitleById) | **GET** /api/customer/{customerId}/title | Get Customer Title (getCustomerTitleById) |
+| [**getCustomers**](#getCustomers) | **GET** /api/customers | Get Tenant Customers (getCustomers) |
+| [**getCustomersByEntityGroupId**](#getCustomersByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/customers | Get customers by Entity Group Id (getCustomersByEntityGroupId) |
+| [**getCustomersByIdsV2**](#getCustomersByIdsV2) | **GET** /api/customers/list | Get customers by Customer Ids (getCustomersByIdsV2) |
+| [**getShortCustomerInfoById**](#getShortCustomerInfoById) | **GET** /api/customer/{customerId}/shortInfo | Get short Customer info (getShortCustomerInfoById) |
+| [**getTenantCustomer**](#getTenantCustomer) | **GET** /api/tenant/customers | Get Tenant Customer by Customer title (getTenantCustomer) |
+| [**getUserCustomers**](#getUserCustomers) | **GET** /api/user/customers | Get Customers (getUserCustomers) |
+| [**saveCustomer**](#saveCustomer) | **POST** /api/customer | Create or update Customer (saveCustomer) |
 
 
 
@@ -30,34 +28,9 @@ Deletes the Customer and all customer Users. All assigned Dashboards, Assets, De
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAllCustomerInfos
@@ -70,39 +43,14 @@ Returns a page of customer info objects owned by the tenant or the customer of a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataCustomerInfo**](PageDataCustomerInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCustomerById
@@ -115,34 +63,9 @@ Get the Customer object based on the provided Customer Id. If the user has the a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Customer**](Customer.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getCustomerCustomerInfos
@@ -155,40 +78,15 @@ Returns a page of customer info objects owned by the specified customer. You can
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataCustomerInfo**](PageDataCustomerInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCustomerInfoById
@@ -201,34 +99,9 @@ Get the Customer info object based on the provided Customer Id. If the user has 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**CustomerInfo**](CustomerInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getCustomerTitleById
@@ -241,34 +114,9 @@ Get the title of the customer. If the user has the authority of &#39;Tenant Admi
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/text, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getCustomers
@@ -281,38 +129,13 @@ Returns a page of customers owned by tenant. You can specify parameters to filte
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataCustomer**](PageDataCustomer.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCustomersByEntityGroupId
@@ -325,39 +148,14 @@ Returns a page of Customer objects that belongs to specified Entity Group Id. Yo
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataCustomer**](PageDataCustomer.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCustomersByIdsV2
@@ -370,34 +168,9 @@ Returns a list of Customer objects based on the provided ids.  Available for use
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerIds** | [**List&lt;String&gt;**](String.md)| A list of customer ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;Customer&gt;**](Customer.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerIds** | **List&lt;String&gt;** | A list of customer ids, separated by comma &#39;,&#39; | |
 
 
 ## getShortCustomerInfoById
@@ -410,34 +183,9 @@ Get the short customer object that contains only the title and &#39;isPublic&#39
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getTenantCustomer
@@ -450,34 +198,9 @@ Get the Customer using Customer Title.   Available for users with &#39;TENANT_AD
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerTitle** | **String**| A string value representing the Customer title. | |
-
-### Return type
-
-[**Customer**](Customer.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerTitle** | **String** | A string value representing the Customer title. | |
 
 
 ## getUserCustomers
@@ -490,38 +213,13 @@ Returns a page of customers available for the user. You can specify parameters t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataCustomer**](PageDataCustomer.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## saveCustomer
@@ -534,37 +232,12 @@ Creates or Updates the Customer. When creating customer, platform generates Cust
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customer** | [**Customer**](Customer.md)| A JSON value representing the customer. | |
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity group. | [optional] |
-| **entityGroupIds** | [**List&lt;String&gt;**](String.md)| A list of string values, separated by comma &#39;,&#39; representing the Entity Group Ids. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;,&#39;a84f394c-42b6-435a-083c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity groups. | [optional] |
-| **nameConflictPolicy** | [**NameConflictPolicy**](.md)| Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
-| **uniquifySeparator** | **String**| Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
-| **uniquifyStrategy** | [**UniquifyStrategy**](.md)| Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
-
-### Return type
-
-[**Customer**](Customer.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customer** | **Customer** | A JSON value representing the customer. | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity group. | [optional] |
+| **entityGroupIds** | **List&lt;String&gt;** | A list of string values, separated by comma &#39;,&#39; representing the Entity Group Ids. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;,&#39;a84f394c-42b6-435a-083c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity groups. | [optional] |
+| **nameConflictPolicy** | **NameConflictPolicy** | Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
+| **uniquifySeparator** | **String** | Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
+| **uniquifyStrategy** | **UniquifyStrategy** | Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
 

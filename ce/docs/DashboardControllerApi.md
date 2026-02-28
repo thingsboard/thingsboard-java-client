@@ -1,33 +1,31 @@
 # DashboardControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addDashboardCustomers**](DashboardControllerApi.md#addDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/add | Adds the Dashboard Customers (addDashboardCustomers) |
-| [**assignDashboardToCustomer**](DashboardControllerApi.md#assignDashboardToCustomer) | **POST** /api/customer/{customerId}/dashboard/{dashboardId} | Assign the Dashboard (assignDashboardToCustomer) |
-| [**assignDashboardToEdge**](DashboardControllerApi.md#assignDashboardToEdge) | **POST** /api/edge/{edgeId}/dashboard/{dashboardId} | Assign dashboard to edge (assignDashboardToEdge) |
-| [**assignDashboardToPublicCustomer**](DashboardControllerApi.md#assignDashboardToPublicCustomer) | **POST** /api/customer/public/dashboard/{dashboardId} | Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer) |
-| [**deleteDashboard**](DashboardControllerApi.md#deleteDashboard) | **DELETE** /api/dashboard/{dashboardId} | Delete the Dashboard (deleteDashboard) |
-| [**getCustomerDashboards**](DashboardControllerApi.md#getCustomerDashboards) | **GET** /api/customer/{customerId}/dashboards | Get Customer Dashboards (getCustomerDashboards) |
-| [**getDashboardById**](DashboardControllerApi.md#getDashboardById) | **GET** /api/dashboard/{dashboardId} | Get Dashboard (getDashboardById) |
-| [**getDashboardInfoById**](DashboardControllerApi.md#getDashboardInfoById) | **GET** /api/dashboard/info/{dashboardId} | Get Dashboard Info (getDashboardInfoById) |
-| [**getDashboardsByIdsV2**](DashboardControllerApi.md#getDashboardsByIdsV2) | **GET** /api/dashboards/list | Get dashboards by Dashboard Ids (getDashboardsByIdsV2) |
-| [**getEdgeDashboards**](DashboardControllerApi.md#getEdgeDashboards) | **GET** /api/edge/{edgeId}/dashboards | Get Edge Dashboards (getEdgeDashboards) |
-| [**getHomeDashboard**](DashboardControllerApi.md#getHomeDashboard) | **GET** /api/dashboard/home | Get Home Dashboard (getHomeDashboard) |
-| [**getHomeDashboardInfo**](DashboardControllerApi.md#getHomeDashboardInfo) | **GET** /api/dashboard/home/info | Get Home Dashboard Info (getHomeDashboardInfo) |
-| [**getMaxDatapointsLimit**](DashboardControllerApi.md#getMaxDatapointsLimit) | **GET** /api/dashboard/maxDatapointsLimit | Get max data points limit (getMaxDatapointsLimit) |
-| [**getServerTime**](DashboardControllerApi.md#getServerTime) | **GET** /api/dashboard/serverTime | Get server time (getServerTime) |
-| [**getTenantDashboards**](DashboardControllerApi.md#getTenantDashboards) | **GET** /api/tenant/{tenantId}/dashboards | Get Tenant Dashboards by System Administrator (getTenantDashboards) |
-| [**getTenantDashboards1**](DashboardControllerApi.md#getTenantDashboards1) | **GET** /api/tenant/dashboards | Get Tenant Dashboards (getTenantDashboards) |
-| [**getTenantHomeDashboardInfo**](DashboardControllerApi.md#getTenantHomeDashboardInfo) | **GET** /api/tenant/dashboard/home/info | Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
-| [**removeDashboardCustomers**](DashboardControllerApi.md#removeDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/remove | Remove the Dashboard Customers (removeDashboardCustomers) |
-| [**saveDashboard**](DashboardControllerApi.md#saveDashboard) | **POST** /api/dashboard | Create Or Update Dashboard (saveDashboard) |
-| [**setTenantHomeDashboardInfo**](DashboardControllerApi.md#setTenantHomeDashboardInfo) | **POST** /api/tenant/dashboard/home/info | Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
-| [**unassignDashboardFromCustomer**](DashboardControllerApi.md#unassignDashboardFromCustomer) | **DELETE** /api/customer/{customerId}/dashboard/{dashboardId} | Unassign the Dashboard (unassignDashboardFromCustomer) |
-| [**unassignDashboardFromEdge**](DashboardControllerApi.md#unassignDashboardFromEdge) | **DELETE** /api/edge/{edgeId}/dashboard/{dashboardId} | Unassign dashboard from edge (unassignDashboardFromEdge) |
-| [**unassignDashboardFromPublicCustomer**](DashboardControllerApi.md#unassignDashboardFromPublicCustomer) | **DELETE** /api/customer/public/dashboard/{dashboardId} | Unassign the Dashboard from Public Customer (unassignDashboardFromPublicCustomer) |
-| [**updateDashboardCustomers**](DashboardControllerApi.md#updateDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers | Update the Dashboard Customers (updateDashboardCustomers) |
+| [**addDashboardCustomers**](#addDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/add | Adds the Dashboard Customers (addDashboardCustomers) |
+| [**assignDashboardToCustomer**](#assignDashboardToCustomer) | **POST** /api/customer/{customerId}/dashboard/{dashboardId} | Assign the Dashboard (assignDashboardToCustomer) |
+| [**assignDashboardToEdge**](#assignDashboardToEdge) | **POST** /api/edge/{edgeId}/dashboard/{dashboardId} | Assign dashboard to edge (assignDashboardToEdge) |
+| [**assignDashboardToPublicCustomer**](#assignDashboardToPublicCustomer) | **POST** /api/customer/public/dashboard/{dashboardId} | Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer) |
+| [**deleteDashboard**](#deleteDashboard) | **DELETE** /api/dashboard/{dashboardId} | Delete the Dashboard (deleteDashboard) |
+| [**getCustomerDashboards**](#getCustomerDashboards) | **GET** /api/customer/{customerId}/dashboards | Get Customer Dashboards (getCustomerDashboards) |
+| [**getDashboardById**](#getDashboardById) | **GET** /api/dashboard/{dashboardId} | Get Dashboard (getDashboardById) |
+| [**getDashboardInfoById**](#getDashboardInfoById) | **GET** /api/dashboard/info/{dashboardId} | Get Dashboard Info (getDashboardInfoById) |
+| [**getDashboardsByIdsV2**](#getDashboardsByIdsV2) | **GET** /api/dashboards/list | Get dashboards by Dashboard Ids (getDashboardsByIdsV2) |
+| [**getEdgeDashboards**](#getEdgeDashboards) | **GET** /api/edge/{edgeId}/dashboards | Get Edge Dashboards (getEdgeDashboards) |
+| [**getHomeDashboard**](#getHomeDashboard) | **GET** /api/dashboard/home | Get Home Dashboard (getHomeDashboard) |
+| [**getHomeDashboardInfo**](#getHomeDashboardInfo) | **GET** /api/dashboard/home/info | Get Home Dashboard Info (getHomeDashboardInfo) |
+| [**getMaxDatapointsLimit**](#getMaxDatapointsLimit) | **GET** /api/dashboard/maxDatapointsLimit | Get max data points limit (getMaxDatapointsLimit) |
+| [**getServerTime**](#getServerTime) | **GET** /api/dashboard/serverTime | Get server time (getServerTime) |
+| [**getTenantDashboards**](#getTenantDashboards) | **GET** /api/tenant/{tenantId}/dashboards | Get Tenant Dashboards by System Administrator (getTenantDashboards) |
+| [**getTenantDashboards1**](#getTenantDashboards1) | **GET** /api/tenant/dashboards | Get Tenant Dashboards (getTenantDashboards) |
+| [**getTenantHomeDashboardInfo**](#getTenantHomeDashboardInfo) | **GET** /api/tenant/dashboard/home/info | Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
+| [**removeDashboardCustomers**](#removeDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/remove | Remove the Dashboard Customers (removeDashboardCustomers) |
+| [**saveDashboard**](#saveDashboard) | **POST** /api/dashboard | Create Or Update Dashboard (saveDashboard) |
+| [**setTenantHomeDashboardInfo**](#setTenantHomeDashboardInfo) | **POST** /api/tenant/dashboard/home/info | Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
+| [**unassignDashboardFromCustomer**](#unassignDashboardFromCustomer) | **DELETE** /api/customer/{customerId}/dashboard/{dashboardId} | Unassign the Dashboard (unassignDashboardFromCustomer) |
+| [**unassignDashboardFromEdge**](#unassignDashboardFromEdge) | **DELETE** /api/edge/{edgeId}/dashboard/{dashboardId} | Unassign dashboard from edge (unassignDashboardFromEdge) |
+| [**unassignDashboardFromPublicCustomer**](#unassignDashboardFromPublicCustomer) | **DELETE** /api/customer/public/dashboard/{dashboardId} | Unassign the Dashboard from Public Customer (unassignDashboardFromPublicCustomer) |
+| [**updateDashboardCustomers**](#updateDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers | Update the Dashboard Customers (updateDashboardCustomers) |
 
 
 
@@ -41,35 +39,10 @@ Adds the list of Customers to the existing list of assignments for the Dashboard
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **requestBody** | **List&lt;String&gt;** |  | |
 
 
 ## assignDashboardToCustomer
@@ -82,35 +55,10 @@ Assign the Dashboard to specified Customer or do nothing if the Dashboard is alr
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## assignDashboardToEdge
@@ -123,35 +71,10 @@ Creates assignment of an existing dashboard to an instance of The Edge. Assignme
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**|  | |
-| **dashboardId** | **String**|  | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** |  | |
+| **dashboardId** | **String** |  | |
 
 
 ## assignDashboardToPublicCustomer
@@ -164,34 +87,9 @@ Assigns the dashboard to a special, auto-generated &#39;Public&#39; Customer. On
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## deleteDashboard
@@ -204,34 +102,9 @@ Delete the Dashboard.  Available for users with &#39;TENANT_ADMIN&#39; authority
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getCustomerDashboards
@@ -244,40 +117,15 @@ Returns a page of dashboard info objects owned by the specified customer. The Da
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **mobile** | **Boolean**| Exclude dashboards that are hidden for mobile | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDashboardInfo**](PageDataDashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **mobile** | **Boolean** | Exclude dashboards that are hidden for mobile | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getDashboardById
@@ -290,36 +138,11 @@ Get the dashboard based on &#39;dashboardId&#39; parameter. The Dashboard object
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **includeResources** | **Boolean**| Export used resources and replace resource links with resource metadata | [optional] |
-| **acceptEncoding** | **String**|  | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **includeResources** | **Boolean** | Export used resources and replace resource links with resource metadata | [optional] |
+| **acceptEncoding** | **String** |  | [optional] |
 
 
 ## getDashboardInfoById
@@ -332,34 +155,9 @@ Get the information about the dashboard based on &#39;dashboardId&#39; parameter
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**DashboardInfo**](DashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getDashboardsByIdsV2
@@ -372,34 +170,9 @@ Returns a list of DashboardInfo objects based on the provided ids.   Available f
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardIds** | [**List&lt;String&gt;**](String.md)| A list of dashboard ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;DashboardInfo&gt;**](DashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardIds** | **List&lt;String&gt;** | A list of dashboard ids, separated by comma &#39;,&#39; | |
 
 
 ## getEdgeDashboards
@@ -412,39 +185,14 @@ Returns a page of dashboard info objects assigned to the specified edge. The Das
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDashboardInfo**](PageDataDashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getHomeDashboard
@@ -457,34 +205,9 @@ Returns the home dashboard object that is configured as &#39;homeDashboardId&#39
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **acceptEncoding** | **String**|  | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **acceptEncoding** | **String** |  | [optional] |
 
 
 ## getHomeDashboardInfo
@@ -495,35 +218,6 @@ Get Home Dashboard Info (getHomeDashboardInfo)
 
 Returns the home dashboard info object that is configured as &#39;homeDashboardId&#39; parameter in the &#39;additionalInfo&#39; of the User. If &#39;homeDashboardId&#39; parameter is not set on the User level and the User has authority &#39;CUSTOMER_USER&#39;, check the same parameter for the corresponding Customer. If &#39;homeDashboardId&#39; parameter is not set on the User and Customer levels then checks the same parameter for the Tenant that owns the user.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**HomeDashboardInfo**](HomeDashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## getMaxDatapointsLimit
 
 > Long getMaxDatapointsLimit()
@@ -532,35 +226,6 @@ Get max data points limit (getMaxDatapointsLimit)
 
 Get the maximum number of data points that dashboard may request from the server per in a single subscription command. This value impacts the time window behavior. It impacts &#39;Max values&#39; parameter in case user selects &#39;None&#39; as &#39;Data aggregation function&#39;. It also impacts the &#39;Grouping interval&#39; in case of any other &#39;Data aggregation function&#39; is selected. The actual value of the limit is configurable in the system configuration file.
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**Long**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## getServerTime
 
 > Long getServerTime()
@@ -568,35 +233,6 @@ This endpoint does not need any parameter.
 Get server time (getServerTime)
 
 Get the server time (milliseconds since January 1, 1970 UTC). Used to adjust view of the dashboards according to the difference between browser and server time.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**Long**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getTenantDashboards
 
@@ -608,39 +244,14 @@ Returns a page of dashboard info objects owned by tenant. The Dashboard Info obj
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantId** | **String**| A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDashboardInfo**](PageDataDashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tenantId** | **String** | A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getTenantDashboards1
@@ -653,39 +264,14 @@ Returns a page of dashboard info objects owned by the tenant of a current user. 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **mobile** | **Boolean**| Exclude dashboards that are hidden for mobile | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDashboardInfo**](PageDataDashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **mobile** | **Boolean** | Exclude dashboards that are hidden for mobile | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getTenantHomeDashboardInfo
@@ -695,35 +281,6 @@ Returns a page of dashboard info objects owned by the tenant of a current user. 
 Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
 
 Returns the home dashboard info object that is configured as &#39;homeDashboardId&#39; parameter in the &#39;additionalInfo&#39; of the corresponding tenant.   Available for users with &#39;TENANT_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**HomeDashboardInfo**](HomeDashboardInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## removeDashboardCustomers
 
@@ -735,35 +292,10 @@ Removes the list of Customers from the existing list of assignments for the Dash
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **requestBody** | **List&lt;String&gt;** |  | |
 
 
 ## saveDashboard
@@ -776,35 +308,10 @@ Create or update the Dashboard. When creating dashboard, platform generates Dash
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboard** | [**Dashboard**](Dashboard.md)| A JSON value representing the dashboard. | |
-| **acceptEncoding** | **String**|  | [optional] |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboard** | **Dashboard** | A JSON value representing the dashboard. | |
+| **acceptEncoding** | **String** |  | [optional] |
 
 
 ## setTenantHomeDashboardInfo
@@ -817,34 +324,9 @@ Update the home dashboard assignment for the current tenant.   Available for use
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **homeDashboardInfo** | [**HomeDashboardInfo**](HomeDashboardInfo.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **homeDashboardInfo** | **HomeDashboardInfo** |  | |
 
 
 ## unassignDashboardFromCustomer
@@ -857,35 +339,10 @@ Unassign the Dashboard from specified Customer or do nothing if the Dashboard is
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## unassignDashboardFromEdge
@@ -898,35 +355,10 @@ Clears assignment of the dashboard to the edge. Unassignment works in async way 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**|  | |
-| **dashboardId** | **String**|  | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** |  | |
+| **dashboardId** | **String** |  | |
 
 
 ## unassignDashboardFromPublicCustomer
@@ -939,34 +371,9 @@ Unassigns the dashboard from a special, auto-generated &#39;Public&#39; Customer
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## updateDashboardCustomers
@@ -979,33 +386,8 @@ Updates the list of Customers that this Dashboard is assigned to. Removes previo
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String**| A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | [optional] |
-
-### Return type
-
-[**Dashboard**](Dashboard.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **dashboardId** | **String** | A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **requestBody** | **List&lt;String&gt;** |  | [optional] |
 

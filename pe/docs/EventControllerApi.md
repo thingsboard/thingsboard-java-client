@@ -1,13 +1,11 @@
 # EventControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**clearEvents**](EventControllerApi.md#clearEvents) | **POST** /api/events/{entityType}/{entityId}/clear | Clear Events (clearEvents) |
-| [**getEvents**](EventControllerApi.md#getEvents) | **GET** /api/events/{entityType}/{entityId} | Get Events (Deprecated) |
-| [**getEvents1**](EventControllerApi.md#getEvents1) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEvents) |
-| [**getEvents2**](EventControllerApi.md#getEvents2) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEvents) |
+| [**clearEvents**](#clearEvents) | **POST** /api/events/{entityType}/{entityId}/clear | Clear Events (clearEvents) |
+| [**getEvents**](#getEvents) | **GET** /api/events/{entityType}/{entityId} | Get Events (Deprecated) |
+| [**getEvents1**](#getEvents1) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEvents) |
+| [**getEvents2**](#getEvents2) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEvents) |
 
 
 
@@ -21,38 +19,13 @@ Clears events by filter for specified entity.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **eventFilter** | [**EventFilter**](EventFilter.md)|  | |
-| **startTime** | **Long**| Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
-| **endTime** | **Long**| Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **eventFilter** | **EventFilter** |  | |
+| **startTime** | **Long** | Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
+| **endTime** | **Long** | Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
 
 
 ## getEvents
@@ -65,43 +38,18 @@ Returns a page of events for specified entity. Deprecated and will be removed in
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **tenantId** | **String**| A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The value is not used in searching. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: ts, id] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
-| **endTime** | **Long**| Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
-
-### Return type
-
-[**PageDataEventInfo**](PageDataEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantId** | **String** | A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The value is not used in searching. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: ts, id] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
+| **endTime** | **Long** | Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
 
 
 ## getEvents1
@@ -114,44 +62,19 @@ Returns a page of events for the chosen entity by specifying the event filter. Y
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **tenantId** | **String**| A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **eventFilter** | [**EventFilter**](EventFilter.md)|  | |
-| **textSearch** | **String**| The value is not used in searching. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: ts, id] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
-| **endTime** | **Long**| Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
-
-### Return type
-
-[**PageDataEventInfo**](PageDataEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **tenantId** | **String** | A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **eventFilter** | **EventFilter** |  | |
+| **textSearch** | **String** | The value is not used in searching. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: ts, id] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
+| **endTime** | **Long** | Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
 
 
 ## getEvents2
@@ -164,42 +87,17 @@ Returns a page of events for specified entity by specifying event type. You can 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **eventType** | **String**| A string value representing event type | |
-| **tenantId** | **String**| A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The value is not used in searching. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: ts, id] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
-| **endTime** | **Long**| Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
-
-### Return type
-
-[**PageDataEventInfo**](PageDataEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **eventType** | **String** | A string value representing event type | |
+| **tenantId** | **String** | A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The value is not used in searching. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: ts, id] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | Timestamp. Events with creation time before it won&#39;t be queried. | [optional] |
+| **endTime** | **Long** | Timestamp. Events with creation time after it won&#39;t be queried. | [optional] |
 

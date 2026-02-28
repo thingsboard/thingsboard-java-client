@@ -1,13 +1,11 @@
 # RuleEngineControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**handleRuleEngineRequest**](RuleEngineControllerApi.md#handleRuleEngineRequest) | **POST** /api/rule-engine/{entityType}/{entityId} | Push entity message to the rule engine (handleRuleEngineRequest) |
-| [**handleRuleEngineRequest1**](RuleEngineControllerApi.md#handleRuleEngineRequest1) | **POST** /api/rule-engine/{entityType}/{entityId}/{timeout} | Push entity message with timeout to the rule engine (handleRuleEngineRequest) |
-| [**handleRuleEngineRequest2**](RuleEngineControllerApi.md#handleRuleEngineRequest2) | **POST** /api/rule-engine/{entityType}/{entityId}/{queueName}/{timeout} | Push entity message with timeout and specified queue to the rule engine (handleRuleEngineRequest) |
-| [**handleRuleEngineRequest3**](RuleEngineControllerApi.md#handleRuleEngineRequest3) | **POST** /api/rule-engine/ | Push user message to the rule engine (handleRuleEngineRequest) |
+| [**handleRuleEngineRequest**](#handleRuleEngineRequest) | **POST** /api/rule-engine/{entityType}/{entityId} | Push entity message to the rule engine (handleRuleEngineRequest) |
+| [**handleRuleEngineRequest1**](#handleRuleEngineRequest1) | **POST** /api/rule-engine/{entityType}/{entityId}/{timeout} | Push entity message with timeout to the rule engine (handleRuleEngineRequest) |
+| [**handleRuleEngineRequest2**](#handleRuleEngineRequest2) | **POST** /api/rule-engine/{entityType}/{entityId}/{queueName}/{timeout} | Push entity message with timeout and specified queue to the rule engine (handleRuleEngineRequest) |
+| [**handleRuleEngineRequest3**](#handleRuleEngineRequest3) | **POST** /api/rule-engine/ | Push user message to the rule engine (handleRuleEngineRequest) |
 
 
 
@@ -21,36 +19,11 @@ Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **body** | **String**|  | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **body** | **String** |  | |
 
 
 ## handleRuleEngineRequest1
@@ -63,37 +36,12 @@ Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **timeout** | **Integer**| Timeout to process the request in milliseconds | |
-| **body** | **String**|  | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **timeout** | **Integer** | Timeout to process the request in milliseconds | |
+| **body** | **String** |  | |
 
 
 ## handleRuleEngineRequest2
@@ -106,38 +54,13 @@ Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **queueName** | **String**| Queue name to process the request in the rule engine | |
-| **timeout** | **Integer**| Timeout to process the request in milliseconds | |
-| **body** | **String**|  | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **queueName** | **String** | Queue name to process the request in the rule engine | |
+| **timeout** | **Integer** | Timeout to process the request in milliseconds | |
+| **body** | **String** |  | |
 
 
 ## handleRuleEngineRequest3
@@ -150,32 +73,7 @@ Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **String**|  | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **body** | **String** |  | |
 

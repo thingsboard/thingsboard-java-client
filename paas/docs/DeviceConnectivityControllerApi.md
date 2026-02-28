@@ -1,12 +1,10 @@
 # DeviceConnectivityControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**downloadGatewayDockerCompose**](DeviceConnectivityControllerApi.md#downloadGatewayDockerCompose) | **GET** /api/device-connectivity/gateway-launch/{deviceId}/docker-compose/download | Download generated docker-compose.yml file for gateway (downloadGatewayDockerCompose) |
-| [**downloadServerCertificate**](DeviceConnectivityControllerApi.md#downloadServerCertificate) | **GET** /api/device-connectivity/{protocol}/certificate/download | Download server certificate using file path defined in device.connectivity properties (downloadServerCertificate) |
-| [**getDevicePublishTelemetryCommands**](DeviceConnectivityControllerApi.md#getDevicePublishTelemetryCommands) | **GET** /api/device-connectivity/{deviceId} | Get commands to publish device telemetry (getDevicePublishTelemetryCommands) |
+| [**downloadGatewayDockerCompose**](#downloadGatewayDockerCompose) | **GET** /api/device-connectivity/gateway-launch/{deviceId}/docker-compose/download | Download generated docker-compose.yml file for gateway (downloadGatewayDockerCompose) |
+| [**downloadServerCertificate**](#downloadServerCertificate) | **GET** /api/device-connectivity/{protocol}/certificate/download | Download server certificate using file path defined in device.connectivity properties (downloadServerCertificate) |
+| [**getDevicePublishTelemetryCommands**](#getDevicePublishTelemetryCommands) | **GET** /api/device-connectivity/{deviceId} | Get commands to publish device telemetry (getDevicePublishTelemetryCommands) |
 
 
 
@@ -20,34 +18,9 @@ Download generated docker-compose.yml for gateway.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## downloadServerCertificate
@@ -60,34 +33,9 @@ Download server certificate.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **protocol** | **String**| A string value representing the device connectivity protocol. Possible values: &#39;mqtt&#39;, &#39;mqtts&#39;, &#39;http&#39;, &#39;https&#39;, &#39;coap&#39;, &#39;coaps&#39; | |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/octet-stream, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **protocol** | **String** | A string value representing the device connectivity protocol. Possible values: &#39;mqtt&#39;, &#39;mqtts&#39;, &#39;http&#39;, &#39;https&#39;, &#39;coap&#39;, &#39;coaps&#39; | |
 
 
 ## getDevicePublishTelemetryCommands
@@ -100,32 +48,7 @@ Fetch the list of commands to publish device telemetry based on device profile I
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 

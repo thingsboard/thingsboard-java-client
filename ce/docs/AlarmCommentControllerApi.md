@@ -1,12 +1,10 @@
 # AlarmCommentControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteAlarmComment**](AlarmCommentControllerApi.md#deleteAlarmComment) | **DELETE** /api/alarm/{alarmId}/comment/{commentId} | Delete Alarm comment (deleteAlarmComment) |
-| [**getAlarmComments**](AlarmCommentControllerApi.md#getAlarmComments) | **GET** /api/alarm/{alarmId}/comment | Get Alarm comments (getAlarmComments) |
-| [**saveAlarmComment**](AlarmCommentControllerApi.md#saveAlarmComment) | **POST** /api/alarm/{alarmId}/comment | Create or update Alarm Comment  |
+| [**deleteAlarmComment**](#deleteAlarmComment) | **DELETE** /api/alarm/{alarmId}/comment/{commentId} | Delete Alarm comment (deleteAlarmComment) |
+| [**getAlarmComments**](#getAlarmComments) | **GET** /api/alarm/{alarmId}/comment | Get Alarm comments (getAlarmComments) |
+| [**saveAlarmComment**](#saveAlarmComment) | **POST** /api/alarm/{alarmId}/comment | Create or update Alarm Comment  |
 
 
 
@@ -20,35 +18,10 @@ Deletes the Alarm comment. Referencing non-existing Alarm comment Id will cause 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **commentId** | **String**| A string value representing the alarm comment id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **commentId** | **String** | A string value representing the alarm comment id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAlarmComments
@@ -61,38 +34,13 @@ Returns a page of alarm comments for specified alarm. You can specify parameters
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, id] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAlarmCommentInfo**](PageDataAlarmCommentInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, id] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## saveAlarmComment
@@ -105,33 +53,8 @@ Creates or Updates the Alarm Comment. When creating comment, platform generates 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **alarmComment** | [**AlarmComment**](AlarmComment.md)| A JSON value representing the comment. | |
-
-### Return type
-
-[**AlarmComment**](AlarmComment.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **alarmComment** | **AlarmComment** | A JSON value representing the comment. | |
 

@@ -1,44 +1,42 @@
 # EntityGroupControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addEntitiesToEntityGroup**](EntityGroupControllerApi.md#addEntitiesToEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/addEntities | Add entities to the group (addEntitiesToEntityGroup) |
-| [**assignEntityGroupToEdge**](EntityGroupControllerApi.md#assignEntityGroupToEdge) | **POST** /api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType} | Assign entity group to edge (assignEntityGroupToEdge) |
-| [**deleteEntityGroup**](EntityGroupControllerApi.md#deleteEntityGroup) | **DELETE** /api/entityGroup/{entityGroupId} | Delete Entity Group (deleteEntityGroup) |
-| [**getAllEdgeEntityGroups**](EntityGroupControllerApi.md#getAllEdgeEntityGroups) | **GET** /api/allEntityGroups/edge/{edgeId}/{groupType} | Get All Edge Entity Groups by entity type (getAllEdgeEntityGroups) |
-| [**getAllEntityGroupsByOwnerAndType**](EntityGroupControllerApi.md#getAllEntityGroupsByOwnerAndType) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType}/all | Get Entity Groups by owner and entity type (getEntityGroupsByOwnerAndTypeList) |
-| [**getAllEntityGroupsByType**](EntityGroupControllerApi.md#getAllEntityGroupsByType) | **GET** /api/entityGroups/{groupType}/all | Get Entity Groups by entity type (getAllEntityGroupsByType) |
-| [**getAllSharedEntityGroups**](EntityGroupControllerApi.md#getAllSharedEntityGroups) | **GET** /api/entityGroups/{groupType}/shared/all | Get Shared Entity Groups by entity type (getAllSharedEntityGroups) |
-| [**getEdgeEntityGroups**](EntityGroupControllerApi.md#getEdgeEntityGroups) | **GET** /api/entityGroups/edge/{edgeId}/{groupType} | Get Edge Entity Groups by entity type (getEdgeEntityGroups) |
-| [**getEntities**](EntityGroupControllerApi.md#getEntities) | **GET** /api/entityGroup/{entityGroupId}/entities | Get Group Entities (getEntities) |
-| [**getEntityGroupAllByOwnerAndType**](EntityGroupControllerApi.md#getEntityGroupAllByOwnerAndType) | **GET** /api/entityGroup/all/{ownerType}/{ownerId}/{groupType} | Get special group All by owner and entity type (getEntityGroupsByOwnerAndType) |
-| [**getEntityGroupById**](EntityGroupControllerApi.md#getEntityGroupById) | **GET** /api/entityGroup/{entityGroupId} | Get Entity Group Info (getEntityGroupById) |
-| [**getEntityGroupByOwnerAndNameAndType**](EntityGroupControllerApi.md#getEntityGroupByOwnerAndNameAndType) | **GET** /api/entityGroup/{ownerType}/{ownerId}/{groupType}/{groupName} | Get Entity Group by owner, type and name (getEntityGroupByOwnerAndNameAndType) |
-| [**getEntityGroupEntityInfoById**](EntityGroupControllerApi.md#getEntityGroupEntityInfoById) | **GET** /api/entityGroupInfo/{entityGroupId} | Get Entity Group Entity Info (getEntityGroupEntityInfoById) |
-| [**getEntityGroupEntityInfosByIds**](EntityGroupControllerApi.md#getEntityGroupEntityInfosByIds) | **GET** /api/entityGroupInfos | Get Entity Group Entity Infos by Ids (getEntityGroupEntityInfosByIds) |
-| [**getEntityGroupEntityInfosByOwnerAndTypeAndPageLink**](EntityGroupControllerApi.md#getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfos/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) |
-| [**getEntityGroupEntityInfosByTypeAndPageLink**](EntityGroupControllerApi.md#getEntityGroupEntityInfosByTypeAndPageLink) | **GET** /api/entityGroupInfos/{groupType} | Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink) |
-| [**getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink**](EntityGroupControllerApi.md#getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfosHierarchy/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) |
-| [**getEntityGroupsByIdsV2**](EntityGroupControllerApi.md#getEntityGroupsByIdsV2) | **GET** /api/entityGroups/list | Get Entity Groups by Ids (getEntityGroupsByIdsV2) |
-| [**getEntityGroupsByOwnerAndTypeAndPageLink**](EntityGroupControllerApi.md#getEntityGroupsByOwnerAndTypeAndPageLink) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType} | Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink) |
-| [**getEntityGroupsByTypeAndPageLink**](EntityGroupControllerApi.md#getEntityGroupsByTypeAndPageLink) | **GET** /api/entityGroups/{groupType} | Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink) |
-| [**getEntityGroupsForEntity**](EntityGroupControllerApi.md#getEntityGroupsForEntity) | **GET** /api/entityGroups/{entityType}/{entityId} | Get Entity Groups by Entity Id (getEntityGroupsForEntity) |
-| [**getEntityGroupsHierarchyByOwnerAndTypeAndPageLink**](EntityGroupControllerApi.md#getEntityGroupsHierarchyByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupsHierarchy/{ownerType}/{ownerId}/{groupType} | Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink) |
-| [**getGroupEntity**](EntityGroupControllerApi.md#getGroupEntity) | **GET** /api/entityGroup/{entityGroupId}/{entityId} | Get Group Entity (getGroupEntity) |
-| [**getOwnerInfo**](EntityGroupControllerApi.md#getOwnerInfo) | **GET** /api/ownerInfo/{ownerType}/{ownerId} | Get Owner Info (getOwnerInfo) |
-| [**getOwnerInfos**](EntityGroupControllerApi.md#getOwnerInfos) | **GET** /api/ownerInfos | Get Owner Infos (getOwnerInfos) |
-| [**getOwners**](EntityGroupControllerApi.md#getOwners) | **GET** /api/owners | Get Owners (getOwners) |
-| [**getSharedEntityGroupEntityInfosByTypeAndPageLink**](EntityGroupControllerApi.md#getSharedEntityGroupEntityInfosByTypeAndPageLink) | **GET** /api/entityGroupInfos/{groupType}/shared | Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink) |
-| [**getSharedEntityGroupsByTypeAndPageLink**](EntityGroupControllerApi.md#getSharedEntityGroupsByTypeAndPageLink) | **GET** /api/entityGroups/{groupType}/shared | Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink) |
-| [**makeEntityGroupPrivate**](EntityGroupControllerApi.md#makeEntityGroupPrivate) | **POST** /api/entityGroup/{entityGroupId}/makePrivate | Make Entity Group Private (makeEntityGroupPrivate) |
-| [**makeEntityGroupPublic**](EntityGroupControllerApi.md#makeEntityGroupPublic) | **POST** /api/entityGroup/{entityGroupId}/makePublic | Make Entity Group Publicly available (makeEntityGroupPublic) |
-| [**removeEntitiesFromEntityGroup**](EntityGroupControllerApi.md#removeEntitiesFromEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/deleteEntities | Remove entities from the group (removeEntitiesFromEntityGroup) |
-| [**saveEntityGroup**](EntityGroupControllerApi.md#saveEntityGroup) | **POST** /api/entityGroup | Create Or Update Entity Group (saveEntityGroup) |
-| [**shareEntityGroup**](EntityGroupControllerApi.md#shareEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/share | Share the Entity Group (shareEntityGroup) |
-| [**shareEntityGroupToChildOwnerUserGroup**](EntityGroupControllerApi.md#shareEntityGroupToChildOwnerUserGroup) | **POST** /api/entityGroup/{entityGroupId}/{userGroupId}/{roleId}/share | Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup) |
-| [**unassignEntityGroupFromEdge**](EntityGroupControllerApi.md#unassignEntityGroupFromEdge) | **DELETE** /api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType} | Unassign entity group from edge (unassignEntityGroupFromEdge) |
+| [**addEntitiesToEntityGroup**](#addEntitiesToEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/addEntities | Add entities to the group (addEntitiesToEntityGroup) |
+| [**assignEntityGroupToEdge**](#assignEntityGroupToEdge) | **POST** /api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType} | Assign entity group to edge (assignEntityGroupToEdge) |
+| [**deleteEntityGroup**](#deleteEntityGroup) | **DELETE** /api/entityGroup/{entityGroupId} | Delete Entity Group (deleteEntityGroup) |
+| [**getAllEdgeEntityGroups**](#getAllEdgeEntityGroups) | **GET** /api/allEntityGroups/edge/{edgeId}/{groupType} | Get All Edge Entity Groups by entity type (getAllEdgeEntityGroups) |
+| [**getAllEntityGroupsByOwnerAndType**](#getAllEntityGroupsByOwnerAndType) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType}/all | Get Entity Groups by owner and entity type (getEntityGroupsByOwnerAndTypeList) |
+| [**getAllEntityGroupsByType**](#getAllEntityGroupsByType) | **GET** /api/entityGroups/{groupType}/all | Get Entity Groups by entity type (getAllEntityGroupsByType) |
+| [**getAllSharedEntityGroups**](#getAllSharedEntityGroups) | **GET** /api/entityGroups/{groupType}/shared/all | Get Shared Entity Groups by entity type (getAllSharedEntityGroups) |
+| [**getEdgeEntityGroups**](#getEdgeEntityGroups) | **GET** /api/entityGroups/edge/{edgeId}/{groupType} | Get Edge Entity Groups by entity type (getEdgeEntityGroups) |
+| [**getEntities**](#getEntities) | **GET** /api/entityGroup/{entityGroupId}/entities | Get Group Entities (getEntities) |
+| [**getEntityGroupAllByOwnerAndType**](#getEntityGroupAllByOwnerAndType) | **GET** /api/entityGroup/all/{ownerType}/{ownerId}/{groupType} | Get special group All by owner and entity type (getEntityGroupsByOwnerAndType) |
+| [**getEntityGroupById**](#getEntityGroupById) | **GET** /api/entityGroup/{entityGroupId} | Get Entity Group Info (getEntityGroupById) |
+| [**getEntityGroupByOwnerAndNameAndType**](#getEntityGroupByOwnerAndNameAndType) | **GET** /api/entityGroup/{ownerType}/{ownerId}/{groupType}/{groupName} | Get Entity Group by owner, type and name (getEntityGroupByOwnerAndNameAndType) |
+| [**getEntityGroupEntityInfoById**](#getEntityGroupEntityInfoById) | **GET** /api/entityGroupInfo/{entityGroupId} | Get Entity Group Entity Info (getEntityGroupEntityInfoById) |
+| [**getEntityGroupEntityInfosByIds**](#getEntityGroupEntityInfosByIds) | **GET** /api/entityGroupInfos | Get Entity Group Entity Infos by Ids (getEntityGroupEntityInfosByIds) |
+| [**getEntityGroupEntityInfosByOwnerAndTypeAndPageLink**](#getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfos/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) |
+| [**getEntityGroupEntityInfosByTypeAndPageLink**](#getEntityGroupEntityInfosByTypeAndPageLink) | **GET** /api/entityGroupInfos/{groupType} | Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink) |
+| [**getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink**](#getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfosHierarchy/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) |
+| [**getEntityGroupsByIdsV2**](#getEntityGroupsByIdsV2) | **GET** /api/entityGroups/list | Get Entity Groups by Ids (getEntityGroupsByIdsV2) |
+| [**getEntityGroupsByOwnerAndTypeAndPageLink**](#getEntityGroupsByOwnerAndTypeAndPageLink) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType} | Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink) |
+| [**getEntityGroupsByTypeAndPageLink**](#getEntityGroupsByTypeAndPageLink) | **GET** /api/entityGroups/{groupType} | Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink) |
+| [**getEntityGroupsForEntity**](#getEntityGroupsForEntity) | **GET** /api/entityGroups/{entityType}/{entityId} | Get Entity Groups by Entity Id (getEntityGroupsForEntity) |
+| [**getEntityGroupsHierarchyByOwnerAndTypeAndPageLink**](#getEntityGroupsHierarchyByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupsHierarchy/{ownerType}/{ownerId}/{groupType} | Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink) |
+| [**getGroupEntity**](#getGroupEntity) | **GET** /api/entityGroup/{entityGroupId}/{entityId} | Get Group Entity (getGroupEntity) |
+| [**getOwnerInfo**](#getOwnerInfo) | **GET** /api/ownerInfo/{ownerType}/{ownerId} | Get Owner Info (getOwnerInfo) |
+| [**getOwnerInfos**](#getOwnerInfos) | **GET** /api/ownerInfos | Get Owner Infos (getOwnerInfos) |
+| [**getOwners**](#getOwners) | **GET** /api/owners | Get Owners (getOwners) |
+| [**getSharedEntityGroupEntityInfosByTypeAndPageLink**](#getSharedEntityGroupEntityInfosByTypeAndPageLink) | **GET** /api/entityGroupInfos/{groupType}/shared | Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink) |
+| [**getSharedEntityGroupsByTypeAndPageLink**](#getSharedEntityGroupsByTypeAndPageLink) | **GET** /api/entityGroups/{groupType}/shared | Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink) |
+| [**makeEntityGroupPrivate**](#makeEntityGroupPrivate) | **POST** /api/entityGroup/{entityGroupId}/makePrivate | Make Entity Group Private (makeEntityGroupPrivate) |
+| [**makeEntityGroupPublic**](#makeEntityGroupPublic) | **POST** /api/entityGroup/{entityGroupId}/makePublic | Make Entity Group Publicly available (makeEntityGroupPublic) |
+| [**removeEntitiesFromEntityGroup**](#removeEntitiesFromEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/deleteEntities | Remove entities from the group (removeEntitiesFromEntityGroup) |
+| [**saveEntityGroup**](#saveEntityGroup) | **POST** /api/entityGroup | Create Or Update Entity Group (saveEntityGroup) |
+| [**shareEntityGroup**](#shareEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/share | Share the Entity Group (shareEntityGroup) |
+| [**shareEntityGroupToChildOwnerUserGroup**](#shareEntityGroupToChildOwnerUserGroup) | **POST** /api/entityGroup/{entityGroupId}/{userGroupId}/{roleId}/share | Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup) |
+| [**unassignEntityGroupFromEdge**](#unassignEntityGroupFromEdge) | **DELETE** /api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType} | Unassign entity group from edge (unassignEntityGroupFromEdge) |
 
 
 
@@ -52,35 +50,10 @@ Add entities to the specified entity group. Entity group allows you to group mul
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **requestBody** | **List&lt;String&gt;** |  | |
 
 
 ## assignEntityGroupToEdge
@@ -93,36 +66,11 @@ Creates assignment of an existing entity group to an instance of The Edge. Assig
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **groupType** | **String**| EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**EntityGroup**](EntityGroup.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## deleteEntityGroup
@@ -135,34 +83,9 @@ Deletes the entity group but does not delete the entities in the group, since th
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAllEdgeEntityGroups
@@ -175,35 +98,10 @@ Fetch the list of Entity Group Info objects based on the provided Entity Type an
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **groupType** | **String**| EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
-
-### Return type
-
-[**List&lt;EntityGroupInfo&gt;**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
 
 
 ## getAllEntityGroupsByOwnerAndType
@@ -216,36 +114,11 @@ Fetch the list of Entity Group Info objects based on the provided Owner Id and E
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-
-### Return type
-
-[**List&lt;EntityGroupInfo&gt;**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 
 
 ## getAllEntityGroupsByType
@@ -258,35 +131,10 @@ Fetch the list of Entity Group Info objects based on the provided Entity Type. E
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **includeShared** | **Boolean**| Whether to include shared entity groups. | [optional] |
-
-### Return type
-
-[**List&lt;EntityGroupInfo&gt;**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
 
 
 ## getAllSharedEntityGroups
@@ -299,34 +147,9 @@ Fetch the list of Shared Entity Group Info objects based on the provided Entity 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-
-### Return type
-
-[**List&lt;EntityGroupInfo&gt;**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 
 
 ## getEdgeEntityGroups
@@ -339,40 +162,15 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **groupType** | **String**| EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityGroupInfo**](PageDataEntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEntities
@@ -385,39 +183,14 @@ Returns a page of Short Entity View objects that belongs to specified Entity Gro
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataShortEntityView**](PageDataShortEntityView.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEntityGroupAllByOwnerAndType
@@ -430,36 +203,11 @@ Fetch reserved group &#39;All&#39; based on the provided Owner Id and Entity Typ
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-
-### Return type
-
-[**EntityGroupInfo**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
 
 
 ## getEntityGroupById
@@ -472,34 +220,9 @@ Fetch the Entity Group object based on the provided Entity Group Id. Entity grou
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**EntityGroupInfo**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getEntityGroupByOwnerAndNameAndType
@@ -512,37 +235,12 @@ Fetch the Entity Group object based on the provided Entity Group Id. Entity grou
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **groupName** | **String**| Entity Group name | |
-
-### Return type
-
-[**EntityGroupInfo**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **groupName** | **String** | Entity Group name | |
 
 
 ## getEntityGroupEntityInfoById
@@ -555,34 +253,9 @@ Fetch the Entity Group Entity Info object based on the provided Entity Group Id.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**EntityInfo**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getEntityGroupEntityInfosByIds
@@ -595,34 +268,9 @@ Fetch the list of Entity Group Entity Info objects based on the provided entity 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupIds** | [**List&lt;String&gt;**](String.md)| A list of group ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;EntityInfo&gt;**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupIds** | **List&lt;String&gt;** | A list of group ids, separated by comma &#39;,&#39; | |
 
 
 ## getEntityGroupEntityInfosByOwnerAndTypeAndPageLink
@@ -635,41 +283,16 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityInfo**](PageDataEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEntityGroupEntityInfosByTypeAndPageLink
@@ -682,40 +305,15 @@ Returns a page of Entity Group Entity Info objects based on the provided Entity 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **includeShared** | **Boolean**| Whether to include shared entity groups. | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityInfo**](PageDataEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink
@@ -728,41 +326,16 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityInfo**](PageDataEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEntityGroupsByIdsV2
@@ -775,34 +348,9 @@ Fetch the list of Entity Group Info objects based on the provided entity group i
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupIds** | [**List&lt;String&gt;**](String.md)| A list of group ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;EntityGroupInfo&gt;**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupIds** | **List&lt;String&gt;** | A list of group ids, separated by comma &#39;,&#39; | |
 
 
 ## getEntityGroupsByOwnerAndTypeAndPageLink
@@ -815,41 +363,16 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityGroupInfo**](PageDataEntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEntityGroupsByTypeAndPageLink
@@ -862,40 +385,15 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **includeShared** | **Boolean**| Whether to include shared entity groups. | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityGroupInfo**](PageDataEntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEntityGroupsForEntity
@@ -908,35 +406,10 @@ Returns a list of groups that contain the specified Entity Id. For example, all 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**List&lt;EntityGroupId&gt;**](EntityGroupId.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getEntityGroupsHierarchyByOwnerAndTypeAndPageLink
@@ -949,41 +422,16 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityGroupInfo**](PageDataEntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getGroupEntity
@@ -996,35 +444,10 @@ Fetch the Short Entity View object based on the group and entity id. Short Entit
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**ShortEntityView**](ShortEntityView.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getOwnerInfo
@@ -1037,35 +460,10 @@ Fetch the owner info (tenant or customer) presented as Entity Info object based 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ownerType** | **String**| Tenant or Customer | [enum: TENANT, CUSTOMER] |
-| **ownerId** | **String**| A string value representing the Tenant or Customer id | |
-
-### Return type
-
-[**EntityInfo**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
+| **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 
 
 ## getOwnerInfos
@@ -1078,38 +476,13 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityInfo**](PageDataEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getOwners
@@ -1122,38 +495,13 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataContactBasedObject**](PageDataContactBasedObject.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getSharedEntityGroupEntityInfosByTypeAndPageLink
@@ -1166,39 +514,14 @@ Returns a page of Shared Entity Group Entity Info objects based on the provided 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityInfo**](PageDataEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getSharedEntityGroupsByTypeAndPageLink
@@ -1211,39 +534,14 @@ Returns a page of Shared Entity Group Info objects based on the provided Entity 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupType** | **String**| Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityGroupInfo**](PageDataEntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the entity group name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## makeEntityGroupPrivate
@@ -1256,34 +554,9 @@ Make the entity group not available for non authorized users. Every group is pri
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## makeEntityGroupPublic
@@ -1296,34 +569,9 @@ Make the entity group available for non authorized users. Useful for public dash
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## removeEntitiesFromEntityGroup
@@ -1336,35 +584,10 @@ Removes entities from the specified entity group. Entity group allows you to gro
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **requestBody** | **List&lt;String&gt;** |  | |
 
 
 ## saveEntityGroup
@@ -1377,34 +600,9 @@ Create or update the Entity Group. When creating Entity Group, platform generate
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroup** | [**EntityGroup**](EntityGroup.md)|  | |
-
-### Return type
-
-[**EntityGroupInfo**](EntityGroupInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroup** | **EntityGroup** |  | |
 
 
 ## shareEntityGroup
@@ -1417,35 +615,10 @@ Share the entity group with certain user group based on the provided Share Group
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **shareGroupRequest** | [**ShareGroupRequest**](ShareGroupRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **shareGroupRequest** | **ShareGroupRequest** |  | |
 
 
 ## shareEntityGroupToChildOwnerUserGroup
@@ -1458,36 +631,11 @@ Share the entity group with specified user group using specified role.   Availab
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id that you would like to share. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **userGroupId** | **String**| A string value representing the Entity(User) Group Id that you would like to share with. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **roleId** | **String**| A string value representing the Role Id that describes set of permissions you would like to share (read, write, etc). For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id that you would like to share. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **userGroupId** | **String** | A string value representing the Entity(User) Group Id that you would like to share with. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **roleId** | **String** | A string value representing the Role Id that describes set of permissions you would like to share (read, write, etc). For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## unassignEntityGroupFromEdge
@@ -1500,34 +648,9 @@ Clears assignment of the entity group to the edge. Unassignment works in async w
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **groupType** | **String**| EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**EntityGroup**](EntityGroup.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 

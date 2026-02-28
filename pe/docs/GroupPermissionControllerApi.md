@@ -1,16 +1,14 @@
 # GroupPermissionControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteGroupPermission**](GroupPermissionControllerApi.md#deleteGroupPermission) | **DELETE** /api/groupPermission/{groupPermissionId} | Delete group permission (deleteGroupPermission) |
-| [**getEntityGroupPermissions**](GroupPermissionControllerApi.md#getEntityGroupPermissions) | **GET** /api/entityGroup/{entityGroupId}/groupPermissions | Get group permissions by Entity Group Id (getEntityGroupPermissions) |
-| [**getGroupPermissionById**](GroupPermissionControllerApi.md#getGroupPermissionById) | **GET** /api/groupPermission/{groupPermissionId} | Get Group Permission (getGroupPermissionById) |
-| [**getGroupPermissionInfoById**](GroupPermissionControllerApi.md#getGroupPermissionInfoById) | **GET** /api/groupPermission/info/{groupPermissionId} | Get Group Permission Info (getGroupPermissionInfoById) |
-| [**getUserGroupPermissions**](GroupPermissionControllerApi.md#getUserGroupPermissions) | **GET** /api/userGroup/{userGroupId}/groupPermissions | Get group permissions by User Group Id (getUserGroupPermissions) |
-| [**loadUserGroupPermissionInfos**](GroupPermissionControllerApi.md#loadUserGroupPermissionInfos) | **POST** /api/userGroup/groupPermissions/info | Load User Group Permissions (loadUserGroupPermissionInfos) |
-| [**saveGroupPermission**](GroupPermissionControllerApi.md#saveGroupPermission) | **POST** /api/groupPermission | Create Or Update Group Permission (saveGroupPermission) |
+| [**deleteGroupPermission**](#deleteGroupPermission) | **DELETE** /api/groupPermission/{groupPermissionId} | Delete group permission (deleteGroupPermission) |
+| [**getEntityGroupPermissions**](#getEntityGroupPermissions) | **GET** /api/entityGroup/{entityGroupId}/groupPermissions | Get group permissions by Entity Group Id (getEntityGroupPermissions) |
+| [**getGroupPermissionById**](#getGroupPermissionById) | **GET** /api/groupPermission/{groupPermissionId} | Get Group Permission (getGroupPermissionById) |
+| [**getGroupPermissionInfoById**](#getGroupPermissionInfoById) | **GET** /api/groupPermission/info/{groupPermissionId} | Get Group Permission Info (getGroupPermissionInfoById) |
+| [**getUserGroupPermissions**](#getUserGroupPermissions) | **GET** /api/userGroup/{userGroupId}/groupPermissions | Get group permissions by User Group Id (getUserGroupPermissions) |
+| [**loadUserGroupPermissionInfos**](#loadUserGroupPermissionInfos) | **POST** /api/userGroup/groupPermissions/info | Load User Group Permissions (loadUserGroupPermissionInfos) |
+| [**saveGroupPermission**](#saveGroupPermission) | **POST** /api/groupPermission | Create Or Update Group Permission (saveGroupPermission) |
 
 
 
@@ -24,34 +22,9 @@ Deletes the group permission. Referencing non-existing group permission Id will 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupPermissionId** | **String**| A string value representing the group permission id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupPermissionId** | **String** | A string value representing the group permission id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getEntityGroupPermissions
@@ -64,34 +37,9 @@ Returns a list of group permission objects that is assigned for the specified En
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**List&lt;GroupPermissionInfo&gt;**](GroupPermissionInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getGroupPermissionById
@@ -104,34 +52,9 @@ Fetch the Group Permission object based on the provided Group Permission Id. Gro
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupPermissionId** | **String**| A string value representing the group permission id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**GroupPermission**](GroupPermission.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupPermissionId** | **String** | A string value representing the group permission id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getGroupPermissionInfoById
@@ -144,35 +67,10 @@ Fetch the Group Permission Info object based on the provided Group Permission Id
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupPermissionId** | **String**| A string value representing the group permission id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **isUserGroup** | **Boolean**| Load additional information about User(&#39;true&#39;) or Entity Group(&#39;false). | |
-
-### Return type
-
-[**GroupPermissionInfo**](GroupPermissionInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupPermissionId** | **String** | A string value representing the group permission id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **isUserGroup** | **Boolean** | Load additional information about User(&#39;true&#39;) or Entity Group(&#39;false). | |
 
 
 ## getUserGroupPermissions
@@ -185,34 +83,9 @@ Returns a list of group permission objects that belongs to specified User Group 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **userGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**List&lt;GroupPermissionInfo&gt;**](GroupPermissionInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **userGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## loadUserGroupPermissionInfos
@@ -225,34 +98,9 @@ Enrich a list of group permission objects with the information about Role, User 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupPermission** | [**List&lt;GroupPermission&gt;**](GroupPermission.md)|  | |
-
-### Return type
-
-[**List&lt;GroupPermissionInfo&gt;**](GroupPermissionInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupPermission** | **List&lt;GroupPermission&gt;** |  | |
 
 
 ## saveGroupPermission
@@ -265,32 +113,7 @@ Creates or Updates the Group Permission. When creating group permission, platfor
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **groupPermission** | [**GroupPermission**](GroupPermission.md)|  | |
-
-### Return type
-
-[**GroupPermission**](GroupPermission.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **groupPermission** | **GroupPermission** |  | |
 

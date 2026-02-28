@@ -1,23 +1,21 @@
 # AlarmControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**ackAlarm**](AlarmControllerApi.md#ackAlarm) | **POST** /api/alarm/{alarmId}/ack | Acknowledge Alarm (ackAlarm) |
-| [**assignAlarm**](AlarmControllerApi.md#assignAlarm) | **POST** /api/alarm/{alarmId}/assign/{assigneeId} | Assign/Reassign Alarm (assignAlarm) |
-| [**clearAlarm**](AlarmControllerApi.md#clearAlarm) | **POST** /api/alarm/{alarmId}/clear | Clear Alarm (clearAlarm) |
-| [**deleteAlarm**](AlarmControllerApi.md#deleteAlarm) | **DELETE** /api/alarm/{alarmId} | Delete Alarm (deleteAlarm) |
-| [**getAlarmById**](AlarmControllerApi.md#getAlarmById) | **GET** /api/alarm/{alarmId} | Get Alarm (getAlarmById) |
-| [**getAlarmInfoById**](AlarmControllerApi.md#getAlarmInfoById) | **GET** /api/alarm/info/{alarmId} | Get Alarm Info (getAlarmInfoById) |
-| [**getAlarmTypes**](AlarmControllerApi.md#getAlarmTypes) | **GET** /api/alarm/types | Get Alarm Types (getAlarmTypes) |
-| [**getAlarms**](AlarmControllerApi.md#getAlarms) | **GET** /api/alarm/{entityType}/{entityId} | Get Alarms (getAlarms) |
-| [**getAlarmsV2**](AlarmControllerApi.md#getAlarmsV2) | **GET** /api/v2/alarm/{entityType}/{entityId} | Get Alarms (getAlarmsV2) |
-| [**getAllAlarms**](AlarmControllerApi.md#getAllAlarms) | **GET** /api/alarms | Get All Alarms (getAllAlarms) |
-| [**getAllAlarmsV2**](AlarmControllerApi.md#getAllAlarmsV2) | **GET** /api/v2/alarms | Get All Alarms (getAllAlarmsV2) |
-| [**getHighestAlarmSeverity**](AlarmControllerApi.md#getHighestAlarmSeverity) | **GET** /api/alarm/highestSeverity/{entityType}/{entityId} | Get Highest Alarm Severity (getHighestAlarmSeverity) |
-| [**saveAlarm**](AlarmControllerApi.md#saveAlarm) | **POST** /api/alarm | Create or Update Alarm (saveAlarm) |
-| [**unassignAlarm**](AlarmControllerApi.md#unassignAlarm) | **DELETE** /api/alarm/{alarmId}/assign | Unassign Alarm (unassignAlarm) |
+| [**ackAlarm**](#ackAlarm) | **POST** /api/alarm/{alarmId}/ack | Acknowledge Alarm (ackAlarm) |
+| [**assignAlarm**](#assignAlarm) | **POST** /api/alarm/{alarmId}/assign/{assigneeId} | Assign/Reassign Alarm (assignAlarm) |
+| [**clearAlarm**](#clearAlarm) | **POST** /api/alarm/{alarmId}/clear | Clear Alarm (clearAlarm) |
+| [**deleteAlarm**](#deleteAlarm) | **DELETE** /api/alarm/{alarmId} | Delete Alarm (deleteAlarm) |
+| [**getAlarmById**](#getAlarmById) | **GET** /api/alarm/{alarmId} | Get Alarm (getAlarmById) |
+| [**getAlarmInfoById**](#getAlarmInfoById) | **GET** /api/alarm/info/{alarmId} | Get Alarm Info (getAlarmInfoById) |
+| [**getAlarmTypes**](#getAlarmTypes) | **GET** /api/alarm/types | Get Alarm Types (getAlarmTypes) |
+| [**getAlarms**](#getAlarms) | **GET** /api/alarm/{entityType}/{entityId} | Get Alarms (getAlarms) |
+| [**getAlarmsV2**](#getAlarmsV2) | **GET** /api/v2/alarm/{entityType}/{entityId} | Get Alarms (getAlarmsV2) |
+| [**getAllAlarms**](#getAllAlarms) | **GET** /api/alarms | Get All Alarms (getAllAlarms) |
+| [**getAllAlarmsV2**](#getAllAlarmsV2) | **GET** /api/v2/alarms | Get All Alarms (getAllAlarmsV2) |
+| [**getHighestAlarmSeverity**](#getHighestAlarmSeverity) | **GET** /api/alarm/highestSeverity/{entityType}/{entityId} | Get Highest Alarm Severity (getHighestAlarmSeverity) |
+| [**saveAlarm**](#saveAlarm) | **POST** /api/alarm | Create or Update Alarm (saveAlarm) |
+| [**unassignAlarm**](#unassignAlarm) | **DELETE** /api/alarm/{alarmId}/assign | Unassign Alarm (unassignAlarm) |
 
 
 
@@ -31,34 +29,9 @@ Acknowledge the Alarm. Once acknowledged, the &#39;ack_ts&#39; field will be set
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**AlarmInfo**](AlarmInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## assignAlarm
@@ -71,35 +44,10 @@ Assign the Alarm. Once assigned, the &#39;assign_ts&#39; field will be set to cu
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **assigneeId** | **String**| A string value representing the user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Alarm**](Alarm.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **assigneeId** | **String** | A string value representing the user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## clearAlarm
@@ -112,34 +60,9 @@ Clear the Alarm. Once cleared, the &#39;clear_ts&#39; field will be set to curre
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**AlarmInfo**](AlarmInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## deleteAlarm
@@ -152,34 +75,9 @@ Deletes the Alarm. Referencing non-existing Alarm Id will cause an error.  Avail
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-**Boolean**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAlarmById
@@ -192,34 +90,9 @@ Fetch the Alarm object based on the provided Alarm Id.   Available for users wit
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Alarm**](Alarm.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAlarmInfoById
@@ -232,34 +105,9 @@ Fetch the Alarm Info object based on the provided Alarm Id. Alarm Info is an ext
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**AlarmInfo**](AlarmInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAlarmTypes
@@ -272,37 +120,12 @@ Returns a set of unique alarm types based on alarms that are either owned by the
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntitySubtype**](PageDataEntitySubtype.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getAlarms
@@ -315,46 +138,21 @@ Returns a page of alarms for the selected entity. Specifying both parameters &#3
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **searchStatus** | **String**| A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
-| **status** | **String**| A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
-| **assigneeId** | **String**| A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long**| The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **fetchOriginator** | **Boolean**| A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: &#39;originatorName&#39; or will returns as null. | [optional] |
-
-### Return type
-
-[**PageDataAlarmInfo**](PageDataAlarmInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **searchStatus** | **String** | A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
+| **status** | **String** | A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **fetchOriginator** | **Boolean** | A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: &#39;originatorName&#39; or will returns as null. | [optional] |
 
 
 ## getAlarmsV2
@@ -367,46 +165,21 @@ Returns a page of alarms for the selected entity. You can specify parameters to 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **statusList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
-| **severityList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
-| **typeList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing alarm types | [optional] |
-| **assigneeId** | **String**| A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long**| The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-
-### Return type
-
-[**PageDataAlarmInfo**](PageDataAlarmInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **statusList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
+| **severityList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
+| **typeList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing alarm types | [optional] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
 
 
 ## getAllAlarms
@@ -419,44 +192,19 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **searchStatus** | **String**| A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
-| **status** | **String**| A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
-| **assigneeId** | **String**| A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long**| The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **fetchOriginator** | **Boolean**| A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: &#39;originatorName&#39; or will returns as null. | [optional] |
-
-### Return type
-
-[**PageDataAlarmInfo**](PageDataAlarmInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **searchStatus** | **String** | A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
+| **status** | **String** | A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **fetchOriginator** | **Boolean** | A boolean value to specify if the alarm originator name will be filled in the AlarmInfo object  field: &#39;originatorName&#39; or will returns as null. | [optional] |
 
 
 ## getAllAlarmsV2
@@ -469,44 +217,19 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **statusList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
-| **severityList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
-| **typeList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing alarm types | [optional] |
-| **assigneeId** | **String**| A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long**| The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-| **endTime** | **Long**| The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
-
-### Return type
-
-[**PageDataAlarmInfo**](PageDataAlarmInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **statusList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
+| **severityList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the AlarmSeverity enumeration value | [optional] [enum: CRITICAL, MAJOR, MINOR, WARNING, INDETERMINATE] |
+| **typeList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing alarm types | [optional] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on of next alarm fields: type, severity or status | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, startTs, endTs, type, ackTs, clearTs, severity, status] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **startTime** | **Long** | The start timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
+| **endTime** | **Long** | The end timestamp in milliseconds of the search time range over the Alarm class field: &#39;createdTime&#39;. | [optional] |
 
 
 ## getHighestAlarmSeverity
@@ -519,38 +242,13 @@ Search the alarms by originator (&#39;entityType&#39; and entityId&#39;) and opt
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **searchStatus** | **String**| A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
-| **status** | **String**| A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
-| **assigneeId** | **String**| A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-[**AlarmSeverity**](AlarmSeverity.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **searchStatus** | **String** | A string value representing one of the AlarmSearchStatus enumeration value | [optional] [enum: ANY, ACTIVE, CLEARED, ACK, UNACK] |
+| **status** | **String** | A string value representing one of the AlarmStatus enumeration value | [optional] [enum: ACTIVE_UNACK, ACTIVE_ACK, CLEARED_UNACK, CLEARED_ACK] |
+| **assigneeId** | **String** | A string value representing the assignee user id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## saveAlarm
@@ -563,34 +261,9 @@ Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarm** | [**Alarm**](Alarm.md)| A JSON value representing the alarm. | |
-
-### Return type
-
-[**Alarm**](Alarm.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarm** | **Alarm** | A JSON value representing the alarm. | |
 
 
 ## unassignAlarm
@@ -603,32 +276,7 @@ Unassign the Alarm. Once unassigned, the &#39;assign_ts&#39; field will be set t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmId** | **String**| A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Alarm**](Alarm.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmId** | **String** | A string value representing the alarm id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 

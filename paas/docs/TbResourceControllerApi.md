@@ -1,28 +1,26 @@
 # TbResourceControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteResource**](TbResourceControllerApi.md#deleteResource) | **DELETE** /api/resource/{resourceId} | Delete Resource (deleteResource) |
-| [**downloadJksResourceIfChanged**](TbResourceControllerApi.md#downloadJksResourceIfChanged) | **GET** /api/resource/jks/{resourceId}/download | Download JKS Resource (downloadJksResourceIfChanged) |
-| [**downloadJsResourceIfChanged**](TbResourceControllerApi.md#downloadJsResourceIfChanged) | **GET** /api/resource/js/{resourceId}/download | Download JS Resource (downloadJsResourceIfChanged) |
-| [**downloadLwm2mResourceIfChanged**](TbResourceControllerApi.md#downloadLwm2mResourceIfChanged) | **GET** /api/resource/lwm2m/{resourceId}/download | Download LWM2M Resource (downloadLwm2mResourceIfChanged) |
-| [**downloadPkcs12ResourceIfChanged**](TbResourceControllerApi.md#downloadPkcs12ResourceIfChanged) | **GET** /api/resource/pkcs12/{resourceId}/download | Download PKCS_12 Resource (downloadPkcs12ResourceIfChanged) |
-| [**downloadResource**](TbResourceControllerApi.md#downloadResource) | **GET** /api/resource/{resourceId}/download | Download Resource (downloadResource) |
-| [**downloadResourceIfChanged**](TbResourceControllerApi.md#downloadResourceIfChanged) | **GET** /api/resource/{resourceType}/{scope}/{key} | Download resource (downloadResource) |
-| [**getLwm2mListObjects**](TbResourceControllerApi.md#getLwm2mListObjects) | **GET** /api/resource/lwm2m | Get LwM2M Objects (getLwm2mListObjects) |
-| [**getLwm2mListObjectsPage**](TbResourceControllerApi.md#getLwm2mListObjectsPage) | **GET** /api/resource/lwm2m/page | Get LwM2M Objects (getLwm2mListObjectsPage) |
-| [**getResourceById**](TbResourceControllerApi.md#getResourceById) | **GET** /api/resource/{resourceId} | Get Resource (getResourceById) |
-| [**getResourceInfo**](TbResourceControllerApi.md#getResourceInfo) | **GET** /api/resource/{resourceType}/{scope}/{key}/info | Get resource info (getResourceInfo) |
-| [**getResourceInfoById**](TbResourceControllerApi.md#getResourceInfoById) | **GET** /api/resource/info/{resourceId} | Get Resource Info (getResourceInfoById) |
-| [**getResources**](TbResourceControllerApi.md#getResources) | **GET** /api/resource | Get Resource Infos (getResources) |
-| [**getSystemOrTenantResourcesByIdsV2**](TbResourceControllerApi.md#getSystemOrTenantResourcesByIdsV2) | **GET** /api/resource/list | Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2) |
-| [**getTenantResources**](TbResourceControllerApi.md#getTenantResources) | **GET** /api/resource/tenant | Get All Resource Infos (getAllResources) |
-| [**saveResource**](TbResourceControllerApi.md#saveResource) | **POST** /api/resource | Create Or Update Resource (saveResource) |
-| [**updateResourceData**](TbResourceControllerApi.md#updateResourceData) | **PUT** /api/resource/{id}/data | updateResourceData |
-| [**updateResourceInfo**](TbResourceControllerApi.md#updateResourceInfo) | **PUT** /api/resource/{id}/info | updateResourceInfo |
-| [**uploadResource**](TbResourceControllerApi.md#uploadResource) | **POST** /api/resource/upload | Upload Resource via Multipart File (uploadResource) |
+| [**deleteResource**](#deleteResource) | **DELETE** /api/resource/{resourceId} | Delete Resource (deleteResource) |
+| [**downloadJksResourceIfChanged**](#downloadJksResourceIfChanged) | **GET** /api/resource/jks/{resourceId}/download | Download JKS Resource (downloadJksResourceIfChanged) |
+| [**downloadJsResourceIfChanged**](#downloadJsResourceIfChanged) | **GET** /api/resource/js/{resourceId}/download | Download JS Resource (downloadJsResourceIfChanged) |
+| [**downloadLwm2mResourceIfChanged**](#downloadLwm2mResourceIfChanged) | **GET** /api/resource/lwm2m/{resourceId}/download | Download LWM2M Resource (downloadLwm2mResourceIfChanged) |
+| [**downloadPkcs12ResourceIfChanged**](#downloadPkcs12ResourceIfChanged) | **GET** /api/resource/pkcs12/{resourceId}/download | Download PKCS_12 Resource (downloadPkcs12ResourceIfChanged) |
+| [**downloadResource**](#downloadResource) | **GET** /api/resource/{resourceId}/download | Download Resource (downloadResource) |
+| [**downloadResourceIfChanged**](#downloadResourceIfChanged) | **GET** /api/resource/{resourceType}/{scope}/{key} | Download resource (downloadResource) |
+| [**getLwm2mListObjects**](#getLwm2mListObjects) | **GET** /api/resource/lwm2m | Get LwM2M Objects (getLwm2mListObjects) |
+| [**getLwm2mListObjectsPage**](#getLwm2mListObjectsPage) | **GET** /api/resource/lwm2m/page | Get LwM2M Objects (getLwm2mListObjectsPage) |
+| [**getResourceById**](#getResourceById) | **GET** /api/resource/{resourceId} | Get Resource (getResourceById) |
+| [**getResourceInfo**](#getResourceInfo) | **GET** /api/resource/{resourceType}/{scope}/{key}/info | Get resource info (getResourceInfo) |
+| [**getResourceInfoById**](#getResourceInfoById) | **GET** /api/resource/info/{resourceId} | Get Resource Info (getResourceInfoById) |
+| [**getResources**](#getResources) | **GET** /api/resource | Get Resource Infos (getResources) |
+| [**getSystemOrTenantResourcesByIdsV2**](#getSystemOrTenantResourcesByIdsV2) | **GET** /api/resource/list | Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2) |
+| [**getTenantResources**](#getTenantResources) | **GET** /api/resource/tenant | Get All Resource Infos (getAllResources) |
+| [**saveResource**](#saveResource) | **POST** /api/resource | Create Or Update Resource (saveResource) |
+| [**updateResourceData**](#updateResourceData) | **PUT** /api/resource/{id}/data | updateResourceData |
+| [**updateResourceInfo**](#updateResourceInfo) | **PUT** /api/resource/{id}/info | updateResourceInfo |
+| [**uploadResource**](#uploadResource) | **POST** /api/resource/upload | Upload Resource via Multipart File (uploadResource) |
 
 
 
@@ -36,35 +34,10 @@ Deletes the Resource. Referencing non-existing Resource Id will cause an error. 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **force** | **Boolean**|  | [optional] |
-
-### Return type
-
-[**TbResourceDeleteResult**](TbResourceDeleteResult.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **force** | **Boolean** |  | [optional] |
 
 
 ## downloadJksResourceIfChanged
@@ -77,35 +50,10 @@ Download Resource based on the provided Resource Id or return 304 status code if
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **ifNoneMatch** | **String**|  | [optional] |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/x-java-keystore, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ifNoneMatch** | **String** |  | [optional] |
 
 
 ## downloadJsResourceIfChanged
@@ -118,35 +66,10 @@ Download Resource based on the provided Resource Id or return 304 status code if
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **ifNoneMatch** | **String**|  | [optional] |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/javascript, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ifNoneMatch** | **String** |  | [optional] |
 
 
 ## downloadLwm2mResourceIfChanged
@@ -159,35 +82,10 @@ Download Resource based on the provided Resource Id or return 304 status code if
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **ifNoneMatch** | **String**|  | [optional] |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/xml, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ifNoneMatch** | **String** |  | [optional] |
 
 
 ## downloadPkcs12ResourceIfChanged
@@ -200,35 +98,10 @@ Download Resource based on the provided Resource Id or return 304 status code if
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **ifNoneMatch** | **String**|  | [optional] |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/x-pkcs12, application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **ifNoneMatch** | **String** |  | [optional] |
 
 
 ## downloadResource
@@ -241,34 +114,9 @@ Download Resource based on the provided Resource Id.  Available for users with &
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## downloadResourceIfChanged
@@ -281,37 +129,12 @@ Download resource with a given type and key for the given scope  Available for a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceType** | **String**| Type of the resource | [enum: lwm2m_model, jks, pkcs_12, js_module, dashboard] |
-| **scope** | **String**| Scope of the resource | [enum: system, tenant] |
-| **key** | **String**| Key of the resource, e.g. &#39;extension.js&#39; | |
-| **ifNoneMatch** | **String**|  | [optional] |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceType** | **String** | Type of the resource | [enum: lwm2m_model, jks, pkcs_12, js_module, dashboard] |
+| **scope** | **String** | Scope of the resource | [enum: system, tenant] |
+| **key** | **String** | Key of the resource, e.g. &#39;extension.js&#39; | |
+| **ifNoneMatch** | **String** |  | [optional] |
 
 
 ## getLwm2mListObjects
@@ -324,36 +147,11 @@ Returns a page of LwM2M objects parsed from Resources with type &#39;LWM2M_MODEL
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [enum: ASC, DESC] |
-| **sortProperty** | **String**| Property of entity to sort by | [enum: id, name] |
-| **objectIds** | [**List&lt;String&gt;**](String.md)| LwM2M Object ids. | |
-
-### Return type
-
-[**List&lt;LwM2mObject&gt;**](LwM2mObject.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [enum: ASC, DESC] |
+| **sortProperty** | **String** | Property of entity to sort by | [enum: id, name] |
+| **objectIds** | **List&lt;String&gt;** | LwM2M Object ids. | |
 
 
 ## getLwm2mListObjectsPage
@@ -366,38 +164,13 @@ Returns a page of LwM2M objects parsed from Resources with type &#39;LWM2M_MODEL
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: id, name] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**List&lt;LwM2mObject&gt;**](LwM2mObject.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: id, name] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getResourceById
@@ -410,34 +183,9 @@ Fetch the Resource object based on the provided Resource Id. Resource is a heavy
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**TbResource**](TbResource.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getResourceInfo
@@ -450,36 +198,11 @@ Get info for the resource with the given type, scope and key. Resource Info is a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceType** | **String**| Type of the resource | [enum: lwm2m_model, jks, pkcs_12, js_module, dashboard] |
-| **scope** | **String**| Scope of the resource | [enum: system, tenant] |
-| **key** | **String**| Key of the resource, e.g. &#39;extension.js&#39; | |
-
-### Return type
-
-[**TbResourceInfo**](TbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceType** | **String** | Type of the resource | [enum: lwm2m_model, jks, pkcs_12, js_module, dashboard] |
+| **scope** | **String** | Scope of the resource | [enum: system, tenant] |
+| **key** | **String** | Key of the resource, e.g. &#39;extension.js&#39; | |
 
 
 ## getResourceInfoById
@@ -492,34 +215,9 @@ Fetch the Resource Info object based on the provided Resource Id. Resource Info 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceId** | **String**| A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**TbResourceInfo**](TbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceId** | **String** | A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getResources
@@ -532,40 +230,15 @@ Returns a page of Resource Info objects owned by tenant or sysadmin. You can spe
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **resourceType** | **String**| A string value representing the resource type. | [optional] [enum: LWM2M_MODEL, JKS, PKCS_12, JS_MODULE] |
-| **resourceSubType** | **String**| A string value representing the resource sub-type. | [optional] [enum: EXTENSION, MODULE] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataTbResourceInfo**](PageDataTbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **resourceType** | **String** | A string value representing the resource type. | [optional] [enum: LWM2M_MODEL, JKS, PKCS_12, JS_MODULE] |
+| **resourceSubType** | **String** | A string value representing the resource sub-type. | [optional] [enum: EXTENSION, MODULE] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getSystemOrTenantResourcesByIdsV2
@@ -576,34 +249,9 @@ Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceIds** | [**List&lt;String&gt;**](String.md)| A list of resource ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;TbResourceInfo&gt;**](TbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceIds** | **List&lt;String&gt;** | A list of resource ids, separated by comma &#39;,&#39; | |
 
 
 ## getTenantResources
@@ -616,38 +264,13 @@ Returns a page of Resource Info objects owned by tenant. You can specify paramet
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataTbResourceInfo**](PageDataTbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the resource title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## saveResource
@@ -660,34 +283,9 @@ Create or update the Resource. When creating the Resource, platform generates Re
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tbResource** | [**TbResource**](TbResource.md)|  | |
-
-### Return type
-
-[**TbResourceInfo**](TbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tbResource** | **TbResource** |  | |
 
 
 ## updateResourceData
@@ -698,35 +296,10 @@ updateResourceData
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**| Unique identifier of the Resource to update | |
-| **_file** | **File**| Resource file. | |
-
-### Return type
-
-[**TbResourceInfo**](TbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** | Unique identifier of the Resource to update | |
+| **_file** | **File** | Resource file. | |
 
 
 ## updateResourceInfo
@@ -737,35 +310,10 @@ updateResourceInfo
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**| Unique identifier of the Resource to update | |
-| **tbResourceInfo** | [**TbResourceInfo**](TbResourceInfo.md)|  | |
-
-### Return type
-
-[**TbResourceInfo**](TbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** | Unique identifier of the Resource to update | |
+| **tbResourceInfo** | **TbResourceInfo** |  | |
 
 
 ## uploadResource
@@ -778,36 +326,11 @@ Create the Resource using multipart file upload.   Resource combination of the t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resourceType** | **String**| Resource type. | |
-| **_file** | **File**| Resource file. | |
-| **title** | **String**| Resource title. | [optional] |
-| **descriptor** | **String**| Resource descriptor (JSON). | [optional] |
-| **resourceSubType** | **String**| Resource sub type. | [optional] |
-
-### Return type
-
-[**TbResourceInfo**](TbResourceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resourceType** | **String** | Resource type. | |
+| **_file** | **File** | Resource file. | |
+| **title** | **String** | Resource title. | [optional] |
+| **descriptor** | **String** | Resource descriptor (JSON). | [optional] |
+| **resourceSubType** | **String** | Resource sub type. | [optional] |
 

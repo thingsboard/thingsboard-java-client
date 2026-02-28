@@ -1,23 +1,21 @@
 # EntityRelationControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteRelation**](EntityRelationControllerApi.md#deleteRelation) | **DELETE** /api/relation | Delete Relation (deleteRelation) |
-| [**deleteRelationV2**](EntityRelationControllerApi.md#deleteRelationV2) | **DELETE** /api/v2/relation | Delete Relation (deleteRelationV2) |
-| [**deleteRelations**](EntityRelationControllerApi.md#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteCommonRelations) |
-| [**findByFromAndRelationType**](EntityRelationControllerApi.md#findByFromAndRelationType) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findByFromAndRelationType) |
-| [**findByFromV2**](EntityRelationControllerApi.md#findByFromV2) | **GET** /api/relations/from/{fromType}/{fromId} | Get List of Relations (findByFromV2) |
-| [**findByQuery**](EntityRelationControllerApi.md#findByQuery) | **POST** /api/relations | Find related entities (findByQuery) |
-| [**findByToAndRelationType**](EntityRelationControllerApi.md#findByToAndRelationType) | **GET** /api/relations/to/{toType}/{toId}/{relationType} | Get List of Relations (findByToAndRelationType) |
-| [**findByToV2**](EntityRelationControllerApi.md#findByToV2) | **GET** /api/relations/to/{toType}/{toId} | Get List of Relations (findByToV2) |
-| [**findInfoByFromV2**](EntityRelationControllerApi.md#findInfoByFromV2) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findInfoByFromV2) |
-| [**findInfoByQuery**](EntityRelationControllerApi.md#findInfoByQuery) | **POST** /api/relations/info | Find related entity infos (findInfoByQuery) |
-| [**findInfoByToV2**](EntityRelationControllerApi.md#findInfoByToV2) | **GET** /api/relations/info/to/{toType}/{toId} | Get List of Relation Infos (findInfoByToV2) |
-| [**getRelation**](EntityRelationControllerApi.md#getRelation) | **GET** /api/relation | Get Relation (getRelation) |
-| [**saveRelation**](EntityRelationControllerApi.md#saveRelation) | **POST** /api/relation | Create Relation (saveRelation) |
-| [**saveRelationV2**](EntityRelationControllerApi.md#saveRelationV2) | **POST** /api/v2/relation | Create Relation (saveRelationV2) |
+| [**deleteRelation**](#deleteRelation) | **DELETE** /api/relation | Delete Relation (deleteRelation) |
+| [**deleteRelationV2**](#deleteRelationV2) | **DELETE** /api/v2/relation | Delete Relation (deleteRelationV2) |
+| [**deleteRelations**](#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteCommonRelations) |
+| [**findByFromAndRelationType**](#findByFromAndRelationType) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findByFromAndRelationType) |
+| [**findByFromV2**](#findByFromV2) | **GET** /api/relations/from/{fromType}/{fromId} | Get List of Relations (findByFromV2) |
+| [**findByQuery**](#findByQuery) | **POST** /api/relations | Find related entities (findByQuery) |
+| [**findByToAndRelationType**](#findByToAndRelationType) | **GET** /api/relations/to/{toType}/{toId}/{relationType} | Get List of Relations (findByToAndRelationType) |
+| [**findByToV2**](#findByToV2) | **GET** /api/relations/to/{toType}/{toId} | Get List of Relations (findByToV2) |
+| [**findInfoByFromV2**](#findInfoByFromV2) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findInfoByFromV2) |
+| [**findInfoByQuery**](#findInfoByQuery) | **POST** /api/relations/info | Find related entity infos (findInfoByQuery) |
+| [**findInfoByToV2**](#findInfoByToV2) | **GET** /api/relations/info/to/{toType}/{toId} | Get List of Relation Infos (findInfoByToV2) |
+| [**getRelation**](#getRelation) | **GET** /api/relation | Get Relation (getRelation) |
+| [**saveRelation**](#saveRelation) | **POST** /api/relation | Create Relation (saveRelation) |
+| [**saveRelationV2**](#saveRelationV2) | **POST** /api/v2/relation | Create Relation (saveRelationV2) |
 
 
 
@@ -31,39 +29,14 @@ Deletes a relation between two entities in the platform.   If the user has the a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fromId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **fromType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **relationType** | **String**| A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
-| **toId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **toType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **fromId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **fromType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **relationType** | **String** | A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
+| **toId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **toType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## deleteRelationV2
@@ -76,39 +49,14 @@ Deletes a relation between two entities in the platform.   If the user has the a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fromId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **fromType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **relationType** | **String**| A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
-| **toId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **toType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**EntityRelation**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **fromId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **fromType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **relationType** | **String** | A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
+| **toId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **toType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## deleteRelations
@@ -121,35 +69,10 @@ Deletes all the relations (&#39;from&#39; and &#39;to&#39; direction) for the sp
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
 
 
 ## findByFromAndRelationType
@@ -162,37 +85,12 @@ Returns list of relation objects for the specified entity by the &#39;from&#39; 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fromType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **fromId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **relationType** | **String**| A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**List&lt;EntityRelation&gt;**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **fromType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **fromId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **relationType** | **String** | A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## findByFromV2
@@ -205,36 +103,11 @@ Returns list of relation objects for the specified entity by the &#39;from&#39; 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fromType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **fromId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**List&lt;EntityRelation&gt;**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **fromType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **fromId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## findByQuery
@@ -247,34 +120,9 @@ Returns all entities that are related to the specific entity. The entity id, rel
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityRelationsQuery** | [**EntityRelationsQuery**](EntityRelationsQuery.md)|  | |
-
-### Return type
-
-[**List&lt;EntityRelation&gt;**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityRelationsQuery** | **EntityRelationsQuery** |  | |
 
 
 ## findByToAndRelationType
@@ -287,37 +135,12 @@ Returns list of relation objects for the specified entity by the &#39;to&#39; di
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **toType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **toId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **relationType** | **String**| A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**List&lt;EntityRelation&gt;**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **toType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **toId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **relationType** | **String** | A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## findByToV2
@@ -330,36 +153,11 @@ Returns list of relation objects for the specified entity by the &#39;to&#39; di
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **toType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **toId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**List&lt;EntityRelation&gt;**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **toType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **toId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## findInfoByFromV2
@@ -372,36 +170,11 @@ Returns list of relation info objects for the specified entity by the &#39;from&
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fromType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **fromId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**List&lt;EntityRelationInfo&gt;**](EntityRelationInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **fromType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **fromId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## findInfoByQuery
@@ -414,34 +187,9 @@ Returns all entity infos that are related to the specific entity. The entity id,
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityRelationsQuery** | [**EntityRelationsQuery**](EntityRelationsQuery.md)|  | |
-
-### Return type
-
-[**List&lt;EntityRelationInfo&gt;**](EntityRelationInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityRelationsQuery** | **EntityRelationsQuery** |  | |
 
 
 ## findInfoByToV2
@@ -454,36 +202,11 @@ Returns list of relation info objects for the specified entity by the &#39;to&#3
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **toType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **toId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**List&lt;EntityRelationInfo&gt;**](EntityRelationInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **toType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **toId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## getRelation
@@ -496,39 +219,14 @@ Returns relation object between two specified entities if present. Otherwise thr
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **fromId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **fromType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **relationType** | **String**| A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
-| **toId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **toType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **relationTypeGroup** | **String**| A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
-
-### Return type
-
-[**EntityRelation**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **fromId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **fromType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **relationType** | **String** | A string value representing relation type between entities. For example, &#39;Contains&#39;, &#39;Manages&#39;. It can be any string value. | |
+| **toId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **toType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, &#39;COMMON&#39; | [optional] |
 
 
 ## saveRelation
@@ -541,34 +239,9 @@ Creates or updates a relation between two entities in the platform. Relations un
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityRelation** | [**EntityRelation**](EntityRelation.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityRelation** | **EntityRelation** |  | |
 
 
 ## saveRelationV2
@@ -581,32 +254,7 @@ Creates or updates a relation between two entities in the platform. Relations un
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityRelation** | [**EntityRelation**](EntityRelation.md)|  | |
-
-### Return type
-
-[**EntityRelation**](EntityRelation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityRelation** | **EntityRelation** |  | |
 

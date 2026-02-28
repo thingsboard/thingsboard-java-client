@@ -1,15 +1,13 @@
 # ReportTemplateControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteReportTemplate**](ReportTemplateControllerApi.md#deleteReportTemplate) | **DELETE** /api/reportTemplate/{reportTemplateId} | Delete Report Template (deleteReportTemplate) |
-| [**getAllReportTemplateInfos**](ReportTemplateControllerApi.md#getAllReportTemplateInfos) | **GET** /api/reportTemplateInfos/all | Get All Report Templates for current user (getAllReportTemplateInfos) |
-| [**getReportTemplateById**](ReportTemplateControllerApi.md#getReportTemplateById) | **GET** /api/reportTemplate/{reportTemplateId} | Get Report Template (getReportTemplateById) |
-| [**getReportTemplateInfoById**](ReportTemplateControllerApi.md#getReportTemplateInfoById) | **GET** /api/reportTemplate/info/{reportTemplateId} | Get Report Template Info (getReportTemplateInfoById) |
-| [**getReportTemplatesByIds**](ReportTemplateControllerApi.md#getReportTemplatesByIds) | **GET** /api/reportTemplates | Get report templates by Report Template Ids (getReportTemplatesByIds) |
-| [**saveReportTemplate**](ReportTemplateControllerApi.md#saveReportTemplate) | **POST** /api/reportTemplate | Save Report Template (saveReportTemplate) |
+| [**deleteReportTemplate**](#deleteReportTemplate) | **DELETE** /api/reportTemplate/{reportTemplateId} | Delete Report Template (deleteReportTemplate) |
+| [**getAllReportTemplateInfos**](#getAllReportTemplateInfos) | **GET** /api/reportTemplateInfos/all | Get All Report Templates for current user (getAllReportTemplateInfos) |
+| [**getReportTemplateById**](#getReportTemplateById) | **GET** /api/reportTemplate/{reportTemplateId} | Get Report Template (getReportTemplateById) |
+| [**getReportTemplateInfoById**](#getReportTemplateInfoById) | **GET** /api/reportTemplate/info/{reportTemplateId} | Get Report Template Info (getReportTemplateInfoById) |
+| [**getReportTemplatesByIds**](#getReportTemplatesByIds) | **GET** /api/reportTemplates | Get report templates by Report Template Ids (getReportTemplatesByIds) |
+| [**saveReportTemplate**](#saveReportTemplate) | **POST** /api/reportTemplate | Save Report Template (saveReportTemplate) |
 
 
 
@@ -23,34 +21,9 @@ Deletes the report template. Referencing non-existing Report Template Id will ca
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportTemplateId** | **String**| A string value representing the report template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportTemplateId** | **String** | A string value representing the report template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAllReportTemplateInfos
@@ -63,41 +36,16 @@ Returns a page of report template info objects owned by the tenant or the custom
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **typeList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing one of the ReportTemplateType enumeration value. | [optional] [enum: REPORT, SUB_REPORT] |
-| **formatList** | [**List&lt;String&gt;**](String.md)| A list of string values separated by comma &#39;,&#39; representing one of the TbReportFormat enumeration value. | [optional] [enum: PDF, CSV] |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the report template name or customer title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, ownerName] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataReportTemplateInfo**](PageDataReportTemplateInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **typeList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the ReportTemplateType enumeration value. | [optional] [enum: REPORT, SUB_REPORT] |
+| **formatList** | **List&lt;String&gt;** | A list of string values separated by comma &#39;,&#39; representing one of the TbReportFormat enumeration value. | [optional] [enum: PDF, CSV] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the report template name or customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, ownerName] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getReportTemplateById
@@ -110,34 +58,9 @@ Fetch the ReportTemplate object based on the provided report template Id. Report
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportTemplateId** | **String**| A string value representing the report template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**ReportTemplate**](ReportTemplate.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportTemplateId** | **String** | A string value representing the report template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getReportTemplateInfoById
@@ -150,34 +73,9 @@ Fetch the ReportTemplateInfo object based on the provided report template Id. Re
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportTemplateId** | **String**| A string value representing the report template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**ReportTemplateInfo**](ReportTemplateInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportTemplateId** | **String** | A string value representing the report template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getReportTemplatesByIds
@@ -190,34 +88,9 @@ Returns a list of ReportTemplateInfo objects based on the provided ids. Filters 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportTemplateIds** | [**List&lt;String&gt;**](String.md)| A list of report template ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;ReportTemplateInfo&gt;**](ReportTemplateInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportTemplateIds** | **List&lt;String&gt;** | A list of report template ids, separated by comma &#39;,&#39; | |
 
 
 ## saveReportTemplate
@@ -230,32 +103,7 @@ Creates or Updates report template. Report Template extends Report Template Info
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportTemplate** | [**ReportTemplate**](ReportTemplate.md)|  | |
-
-### Return type
-
-[**ReportTemplate**](ReportTemplate.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportTemplate** | **ReportTemplate** |  | |
 

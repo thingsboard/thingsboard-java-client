@@ -1,12 +1,10 @@
 # ComponentDescriptorControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getComponentDescriptorByClazz**](ComponentDescriptorControllerApi.md#getComponentDescriptorByClazz) | **GET** /api/component/{componentDescriptorClazz} | Get Component Descriptor (getComponentDescriptorByClazz) |
-| [**getComponentDescriptorsByType**](ComponentDescriptorControllerApi.md#getComponentDescriptorsByType) | **GET** /api/components/{componentType} | Get Component Descriptors (getComponentDescriptorsByType) |
-| [**getComponentDescriptorsByTypes**](ComponentDescriptorControllerApi.md#getComponentDescriptorsByTypes) | **GET** /api/components | Get Component Descriptors (getComponentDescriptorsByTypes) |
+| [**getComponentDescriptorByClazz**](#getComponentDescriptorByClazz) | **GET** /api/component/{componentDescriptorClazz} | Get Component Descriptor (getComponentDescriptorByClazz) |
+| [**getComponentDescriptorsByType**](#getComponentDescriptorsByType) | **GET** /api/components/{componentType} | Get Component Descriptors (getComponentDescriptorsByType) |
+| [**getComponentDescriptorsByTypes**](#getComponentDescriptorsByTypes) | **GET** /api/components | Get Component Descriptors (getComponentDescriptorsByTypes) |
 
 
 
@@ -20,34 +18,9 @@ Gets the Component Descriptor object using class name from the path parameters. 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **componentDescriptorClazz** | **String**| Component Descriptor class name | |
-
-### Return type
-
-[**ComponentDescriptor**](ComponentDescriptor.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **componentDescriptorClazz** | **String** | Component Descriptor class name | |
 
 
 ## getComponentDescriptorsByType
@@ -60,35 +33,10 @@ Gets the Component Descriptors using rule node type and optional rule chain type
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **componentType** | **String**| Type of the Rule Node | [enum: ENRICHMENT, FILTER, TRANSFORMATION, ACTION, EXTERNAL] |
-| **ruleChainType** | **String**| Type of the Rule Chain | [optional] [enum: CORE, EDGE] |
-
-### Return type
-
-[**List&lt;ComponentDescriptor&gt;**](ComponentDescriptor.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **componentType** | **String** | Type of the Rule Node | [enum: ENRICHMENT, FILTER, TRANSFORMATION, ACTION, EXTERNAL] |
+| **ruleChainType** | **String** | Type of the Rule Chain | [optional] [enum: CORE, EDGE] |
 
 
 ## getComponentDescriptorsByTypes
@@ -101,33 +49,8 @@ Gets the Component Descriptors using coma separated list of rule node types and 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **componentTypes** | [**List&lt;String&gt;**](String.md)| List of types of the Rule Nodes, (ENRICHMENT, FILTER, TRANSFORMATION, ACTION or EXTERNAL) | |
-| **ruleChainType** | **String**| Type of the Rule Chain | [optional] [enum: CORE, EDGE] |
-
-### Return type
-
-[**List&lt;ComponentDescriptor&gt;**](ComponentDescriptor.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **componentTypes** | **List&lt;String&gt;** | List of types of the Rule Nodes, (ENRICHMENT, FILTER, TRANSFORMATION, ACTION or EXTERNAL) | |
+| **ruleChainType** | **String** | Type of the Rule Chain | [optional] [enum: CORE, EDGE] |
 

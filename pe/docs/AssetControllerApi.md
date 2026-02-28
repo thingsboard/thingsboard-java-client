@@ -1,24 +1,22 @@
 # AssetControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteAsset**](AssetControllerApi.md#deleteAsset) | **DELETE** /api/asset/{assetId} | Delete asset (deleteAsset) |
-| [**findByQuery4**](AssetControllerApi.md#findByQuery4) | **POST** /api/assets | Find related assets (findByQuery) |
-| [**getAllAssetInfos**](AssetControllerApi.md#getAllAssetInfos) | **GET** /api/assetInfos/all | Get All Asset Infos for current user (getAllAssetInfos) |
-| [**getAssetById**](AssetControllerApi.md#getAssetById) | **GET** /api/asset/{assetId} | Get Asset (getAssetById) |
-| [**getAssetInfoById**](AssetControllerApi.md#getAssetInfoById) | **GET** /api/asset/info/{assetId} | Get Asset Info (getAssetInfoById) |
-| [**getAssetTypes**](AssetControllerApi.md#getAssetTypes) | **GET** /api/asset/types | Get Asset Types (getAssetTypes) |
-| [**getAssetsByEntityGroupId**](AssetControllerApi.md#getAssetsByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/assets | Get assets by Entity Group Id (getAssetsByEntityGroupId) |
-| [**getAssetsByIds**](AssetControllerApi.md#getAssetsByIds) | **GET** /api/assets | Get Assets By Ids (getAssetsByIds) |
-| [**getCustomerAssetInfos**](AssetControllerApi.md#getCustomerAssetInfos) | **GET** /api/customer/{customerId}/assetInfos | Get Customer Asset Infos (getCustomerAssetInfos) |
-| [**getCustomerAssets**](AssetControllerApi.md#getCustomerAssets) | **GET** /api/customer/{customerId}/assets | Get Customer Assets (getCustomerAssets) |
-| [**getTenantAssetByName**](AssetControllerApi.md#getTenantAssetByName) | **GET** /api/tenant/asset | Get Tenant Asset (getTenantAsset) |
-| [**getTenantAssets**](AssetControllerApi.md#getTenantAssets) | **GET** /api/tenant/assets | Get Tenant Assets (getTenantAssets) |
-| [**getUserAssets**](AssetControllerApi.md#getUserAssets) | **GET** /api/user/assets | Get Assets (getUserAssets) |
-| [**processAssetBulkImport**](AssetControllerApi.md#processAssetBulkImport) | **POST** /api/asset/bulk_import | Import the bulk of assets (processAssetsBulkImport) |
-| [**saveAsset**](AssetControllerApi.md#saveAsset) | **POST** /api/asset | Create Or Update Asset (saveAsset) |
+| [**deleteAsset**](#deleteAsset) | **DELETE** /api/asset/{assetId} | Delete asset (deleteAsset) |
+| [**findByQuery4**](#findByQuery4) | **POST** /api/assets | Find related assets (findByQuery) |
+| [**getAllAssetInfos**](#getAllAssetInfos) | **GET** /api/assetInfos/all | Get All Asset Infos for current user (getAllAssetInfos) |
+| [**getAssetById**](#getAssetById) | **GET** /api/asset/{assetId} | Get Asset (getAssetById) |
+| [**getAssetInfoById**](#getAssetInfoById) | **GET** /api/asset/info/{assetId} | Get Asset Info (getAssetInfoById) |
+| [**getAssetTypes**](#getAssetTypes) | **GET** /api/asset/types | Get Asset Types (getAssetTypes) |
+| [**getAssetsByEntityGroupId**](#getAssetsByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/assets | Get assets by Entity Group Id (getAssetsByEntityGroupId) |
+| [**getAssetsByIds**](#getAssetsByIds) | **GET** /api/assets | Get Assets By Ids (getAssetsByIds) |
+| [**getCustomerAssetInfos**](#getCustomerAssetInfos) | **GET** /api/customer/{customerId}/assetInfos | Get Customer Asset Infos (getCustomerAssetInfos) |
+| [**getCustomerAssets**](#getCustomerAssets) | **GET** /api/customer/{customerId}/assets | Get Customer Assets (getCustomerAssets) |
+| [**getTenantAssetByName**](#getTenantAssetByName) | **GET** /api/tenant/asset | Get Tenant Asset (getTenantAsset) |
+| [**getTenantAssets**](#getTenantAssets) | **GET** /api/tenant/assets | Get Tenant Assets (getTenantAssets) |
+| [**getUserAssets**](#getUserAssets) | **GET** /api/user/assets | Get Assets (getUserAssets) |
+| [**processAssetBulkImport**](#processAssetBulkImport) | **POST** /api/asset/bulk_import | Import the bulk of assets (processAssetsBulkImport) |
+| [**saveAsset**](#saveAsset) | **POST** /api/asset | Create Or Update Asset (saveAsset) |
 
 
 
@@ -32,34 +30,9 @@ Deletes the asset and all the relations (from and to the asset). Referencing non
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetId** | **String**| A string value representing the asset id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetId** | **String** | A string value representing the asset id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## findByQuery4
@@ -72,34 +45,9 @@ Returns all assets that are related to the specific entity. The entity id, relat
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetSearchQuery** | [**AssetSearchQuery**](AssetSearchQuery.md)|  | |
-
-### Return type
-
-[**List&lt;Asset&gt;**](Asset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetSearchQuery** | **AssetSearchQuery** |  | |
 
 
 ## getAllAssetInfos
@@ -112,40 +60,15 @@ Returns a page of asset info objects owned by the tenant or the customer of a cu
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **assetProfileId** | **String**| A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAssetInfo**](PageDataAssetInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getAssetById
@@ -158,34 +81,9 @@ Fetch the Asset object based on the provided Asset Id. If the user has the autho
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetId** | **String**| A string value representing the asset id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Asset**](Asset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetId** | **String** | A string value representing the asset id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAssetInfoById
@@ -198,34 +96,9 @@ Fetch the Asset Info object based on the provided Asset Id. If the user has the 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetId** | **String**| A string value representing the asset id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**AssetInfo**](AssetInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetId** | **String** | A string value representing the asset id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAssetTypes
@@ -235,35 +108,6 @@ Fetch the Asset Info object based on the provided Asset Id. If the user has the 
 Get Asset Types (getAssetTypes)
 
 Deprecated. See &#39;getAssetProfileNames&#39; API from Asset Profile Controller instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;EntitySubtype&gt;**](EntitySubtype.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getAssetsByEntityGroupId
 
@@ -275,39 +119,14 @@ Returns a page of asset objects that belongs to specified Entity Group Id. You c
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAsset**](PageDataAsset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getAssetsByIds
@@ -320,34 +139,9 @@ Requested assets must be owned by tenant or assigned to customer which user is p
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetIds** | [**List&lt;String&gt;**](String.md)| A list of asset ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;Asset&gt;**](Asset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetIds** | **List&lt;String&gt;** | A list of asset ids, separated by comma &#39;,&#39; | |
 
 
 ## getCustomerAssetInfos
@@ -360,41 +154,16 @@ Returns a page of asset info objects owned by the specified customer. Asset Info
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **assetProfileId** | **String**| A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAssetInfo**](PageDataAssetInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCustomerAssets
@@ -407,40 +176,15 @@ Returns a page of assets objects owned by customer. You can specify parameters t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **type** | **String**| Asset type | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAsset**](PageDataAsset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **type** | **String** | Asset type | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getTenantAssetByName
@@ -453,34 +197,9 @@ Requested asset must be owned by tenant that the user belongs to. Asset name is 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetName** | **String**| A string value representing the Asset name. | |
-
-### Return type
-
-[**Asset**](Asset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetName** | **String** | A string value representing the Asset name. | |
 
 
 ## getTenantAssets
@@ -493,39 +212,14 @@ Returns a page of assets owned by tenant. You can specify parameters to filter t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **type** | **String**| Asset type | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAsset**](PageDataAsset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **type** | **String** | Asset type | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getUserAssets
@@ -538,40 +232,15 @@ Returns a page of assets objects available for the current user. You can specify
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **type** | **String**| Asset type | [optional] |
-| **assetProfileId** | **String**| A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAsset**](PageDataAsset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **type** | **String** | Asset type | [optional] |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## processAssetBulkImport
@@ -584,34 +253,9 @@ There&#39;s an ability to import the bulk of assets using the only .csv file.   
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bulkImportRequest** | [**BulkImportRequest**](BulkImportRequest.md)|  | |
-
-### Return type
-
-[**BulkImportResultAsset**](BulkImportResultAsset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **bulkImportRequest** | **BulkImportRequest** |  | |
 
 
 ## saveAsset
@@ -624,37 +268,12 @@ Creates or Updates the Asset. When creating asset, platform generates Asset Id a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **asset** | [**Asset**](Asset.md)| A JSON value representing the asset. | |
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity group. | [optional] |
-| **entityGroupIds** | [**List&lt;String&gt;**](String.md)| A list of string values, separated by comma &#39;,&#39; representing the Entity Group Ids. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;,&#39;a84f394c-42b6-435a-083c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity groups. | [optional] |
-| **nameConflictPolicy** | [**NameConflictPolicy**](.md)| Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
-| **uniquifySeparator** | **String**| Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
-| **uniquifyStrategy** | [**UniquifyStrategy**](.md)| Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
-
-### Return type
-
-[**Asset**](Asset.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **asset** | **Asset** | A JSON value representing the asset. | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity group. | [optional] |
+| **entityGroupIds** | **List&lt;String&gt;** | A list of string values, separated by comma &#39;,&#39; representing the Entity Group Ids. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39;,&#39;a84f394c-42b6-435a-083c-b7beff2784f9&#39;. If specified, the entity will be added to the corresponding entity groups. | [optional] |
+| **nameConflictPolicy** | **NameConflictPolicy** | Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
+| **uniquifySeparator** | **String** | Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
+| **uniquifyStrategy** | **UniquifyStrategy** | Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
 

@@ -1,19 +1,17 @@
 # AssetProfileControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteAssetProfile**](AssetProfileControllerApi.md#deleteAssetProfile) | **DELETE** /api/assetProfile/{assetProfileId} | Delete asset profile (deleteAssetProfile) |
-| [**getAssetProfileById**](AssetProfileControllerApi.md#getAssetProfileById) | **GET** /api/assetProfile/{assetProfileId} | Get Asset Profile (getAssetProfileById) |
-| [**getAssetProfileInfoById**](AssetProfileControllerApi.md#getAssetProfileInfoById) | **GET** /api/assetProfileInfo/{assetProfileId} | Get Asset Profile Info (getAssetProfileInfoById) |
-| [**getAssetProfileInfos**](AssetProfileControllerApi.md#getAssetProfileInfos) | **GET** /api/assetProfileInfos | Get Asset Profile infos (getAssetProfileInfos) |
-| [**getAssetProfileNames**](AssetProfileControllerApi.md#getAssetProfileNames) | **GET** /api/assetProfile/names | Get Asset Profile names (getAssetProfileNames) |
-| [**getAssetProfiles**](AssetProfileControllerApi.md#getAssetProfiles) | **GET** /api/assetProfiles | Get Asset Profiles (getAssetProfiles) |
-| [**getAssetProfilesByIdsV2**](AssetProfileControllerApi.md#getAssetProfilesByIdsV2) | **GET** /api/assetProfileInfos/list | Get Asset Profiles By Ids (getAssetProfilesByIdsV2) |
-| [**getDefaultAssetProfileInfo**](AssetProfileControllerApi.md#getDefaultAssetProfileInfo) | **GET** /api/assetProfileInfo/default | Get Default Asset Profile (getDefaultAssetProfileInfo) |
-| [**saveAssetProfile**](AssetProfileControllerApi.md#saveAssetProfile) | **POST** /api/assetProfile | Create Or Update Asset Profile (saveAssetProfile) |
-| [**setDefaultAssetProfile**](AssetProfileControllerApi.md#setDefaultAssetProfile) | **POST** /api/assetProfile/{assetProfileId}/default | Make Asset Profile Default (setDefaultAssetProfile) |
+| [**deleteAssetProfile**](#deleteAssetProfile) | **DELETE** /api/assetProfile/{assetProfileId} | Delete asset profile (deleteAssetProfile) |
+| [**getAssetProfileById**](#getAssetProfileById) | **GET** /api/assetProfile/{assetProfileId} | Get Asset Profile (getAssetProfileById) |
+| [**getAssetProfileInfoById**](#getAssetProfileInfoById) | **GET** /api/assetProfileInfo/{assetProfileId} | Get Asset Profile Info (getAssetProfileInfoById) |
+| [**getAssetProfileInfos**](#getAssetProfileInfos) | **GET** /api/assetProfileInfos | Get Asset Profile infos (getAssetProfileInfos) |
+| [**getAssetProfileNames**](#getAssetProfileNames) | **GET** /api/assetProfile/names | Get Asset Profile names (getAssetProfileNames) |
+| [**getAssetProfiles**](#getAssetProfiles) | **GET** /api/assetProfiles | Get Asset Profiles (getAssetProfiles) |
+| [**getAssetProfilesByIdsV2**](#getAssetProfilesByIdsV2) | **GET** /api/assetProfileInfos/list | Get Asset Profiles By Ids (getAssetProfilesByIdsV2) |
+| [**getDefaultAssetProfileInfo**](#getDefaultAssetProfileInfo) | **GET** /api/assetProfileInfo/default | Get Default Asset Profile (getDefaultAssetProfileInfo) |
+| [**saveAssetProfile**](#saveAssetProfile) | **POST** /api/assetProfile | Create Or Update Asset Profile (saveAssetProfile) |
+| [**setDefaultAssetProfile**](#setDefaultAssetProfile) | **POST** /api/assetProfile/{assetProfileId}/default | Make Asset Profile Default (setDefaultAssetProfile) |
 
 
 
@@ -27,34 +25,9 @@ Deletes the asset profile. Referencing non-existing asset profile Id will cause 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetProfileId** | **String**| A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAssetProfileById
@@ -67,35 +40,10 @@ Fetch the Asset Profile object based on the provided Asset Profile Id. The serve
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetProfileId** | **String**| A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **inlineImages** | **Boolean**| Inline images as a data URL (Base64) | [optional] |
-
-### Return type
-
-[**AssetProfile**](AssetProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **inlineImages** | **Boolean** | Inline images as a data URL (Base64) | [optional] |
 
 
 ## getAssetProfileInfoById
@@ -108,34 +56,9 @@ Fetch the Asset Profile Info object based on the provided Asset Profile Id. Asse
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetProfileId** | **String**| A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**AssetProfileInfo**](AssetProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAssetProfileInfos
@@ -148,38 +71,13 @@ Returns a page of asset profile info objects owned by tenant. You can specify pa
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset profile name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, description, isDefault] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAssetProfileInfo**](PageDataAssetProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset profile name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, description, isDefault] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getAssetProfileNames
@@ -192,34 +90,9 @@ Returns a set of unique asset profile names owned by the tenant.  Available for 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **activeOnly** | **Boolean**| Flag indicating whether to retrieve exclusively the names of asset profiles that are referenced by tenant&#39;s assets. | [optional] [default to false] |
-
-### Return type
-
-[**List&lt;EntityInfo&gt;**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **activeOnly** | **Boolean** | Flag indicating whether to retrieve exclusively the names of asset profiles that are referenced by tenant&#39;s assets. | [optional] [default to false] |
 
 
 ## getAssetProfiles
@@ -232,38 +105,13 @@ Returns a page of asset profile objects owned by tenant. You can specify paramet
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the asset profile name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, description, isDefault] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAssetProfile**](PageDataAssetProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the asset profile name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, description, isDefault] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getAssetProfilesByIdsV2
@@ -276,34 +124,9 @@ Requested asset profiles must be owned by tenant which is performing the request
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetProfileIds** | [**List&lt;String&gt;**](String.md)| A list of asset profile ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;AssetProfileInfo&gt;**](AssetProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetProfileIds** | **List&lt;String&gt;** | A list of asset profile ids, separated by comma &#39;,&#39; | |
 
 
 ## getDefaultAssetProfileInfo
@@ -313,35 +136,6 @@ Requested asset profiles must be owned by tenant which is performing the request
 Get Default Asset Profile (getDefaultAssetProfileInfo)
 
 Fetch the Default Asset Profile Info object. Asset Profile Info is a lightweight object that includes main information about Asset Profile.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**AssetProfileInfo**](AssetProfileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## saveAssetProfile
 
@@ -353,34 +147,9 @@ Create or update the Asset Profile. When creating asset profile, platform genera
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetProfile** | [**AssetProfile**](AssetProfile.md)|  | |
-
-### Return type
-
-[**AssetProfile**](AssetProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetProfile** | **AssetProfile** |  | |
 
 
 ## setDefaultAssetProfile
@@ -393,32 +162,7 @@ Marks asset profile as default within a tenant scope.  Available for users with 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetProfileId** | **String**| A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**AssetProfile**](AssetProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 

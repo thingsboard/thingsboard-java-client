@@ -1,32 +1,30 @@
 # DeviceControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignDeviceToTenant**](DeviceControllerApi.md#assignDeviceToTenant) | **POST** /api/tenant/{tenantId}/device/{deviceId} | Assign device to tenant (assignDeviceToTenant) |
-| [**claimDevice1**](DeviceControllerApi.md#claimDevice1) | **POST** /api/customer/device/{deviceName}/claim | Claim device (claimDevice) |
-| [**countByDeviceGroupAndEmptyOtaPackage**](DeviceControllerApi.md#countByDeviceGroupAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{otaPackageId}/{entityGroupId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
-| [**countByDeviceProfileAndEmptyOtaPackage**](DeviceControllerApi.md#countByDeviceProfileAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{deviceProfileId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
-| [**deleteDevice**](DeviceControllerApi.md#deleteDevice) | **DELETE** /api/device/{deviceId} | Delete device (deleteDevice) |
-| [**findByQuery3**](DeviceControllerApi.md#findByQuery3) | **POST** /api/devices | Find related devices (findByQuery) |
-| [**getAllDeviceInfos**](DeviceControllerApi.md#getAllDeviceInfos) | **GET** /api/deviceInfos/all | Get All Device Infos for current user (getAllDeviceInfos) |
-| [**getCustomerDeviceInfos**](DeviceControllerApi.md#getCustomerDeviceInfos) | **GET** /api/customer/{customerId}/deviceInfos | Get Customer Device Infos (getCustomerDeviceInfos) |
-| [**getCustomerDevices**](DeviceControllerApi.md#getCustomerDevices) | **GET** /api/customer/{customerId}/devices | Get Customer Devices (getCustomerDevices) |
-| [**getDeviceById**](DeviceControllerApi.md#getDeviceById) | **GET** /api/device/{deviceId} | Get Device (getDeviceById) |
-| [**getDeviceCredentialsByDeviceId**](DeviceControllerApi.md#getDeviceCredentialsByDeviceId) | **GET** /api/device/{deviceId}/credentials | Get Device Credentials (getDeviceCredentialsByDeviceId) |
-| [**getDeviceInfoById**](DeviceControllerApi.md#getDeviceInfoById) | **GET** /api/device/info/{deviceId} | Get Device (getDeviceInfoById) |
-| [**getDeviceTypes**](DeviceControllerApi.md#getDeviceTypes) | **GET** /api/device/types | Get Device Types (getDeviceTypes) |
-| [**getDevicesByEntityGroupId**](DeviceControllerApi.md#getDevicesByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/devices | Get devices by Entity Group Id (getDevicesByEntityGroupId) |
-| [**getDevicesByIds**](DeviceControllerApi.md#getDevicesByIds) | **GET** /api/devices | Get Devices By Ids (getDevicesByIds) |
-| [**getTenantDeviceByName**](DeviceControllerApi.md#getTenantDeviceByName) | **GET** /api/tenant/device | Get Tenant Device (getTenantDevice) |
-| [**getTenantDevices**](DeviceControllerApi.md#getTenantDevices) | **GET** /api/tenant/devices | Get Tenant Devices (getTenantDevices) |
-| [**getUserDevices**](DeviceControllerApi.md#getUserDevices) | **GET** /api/user/devices | Get Devices (getUserDevices) |
-| [**processDevicesBulkImport**](DeviceControllerApi.md#processDevicesBulkImport) | **POST** /api/device/bulk_import | Import the bulk of devices (processDevicesBulkImport) |
-| [**reClaimDevice**](DeviceControllerApi.md#reClaimDevice) | **DELETE** /api/customer/device/{deviceName}/claim | Reclaim device (reClaimDevice) |
-| [**saveDevice**](DeviceControllerApi.md#saveDevice) | **POST** /api/device | Create Or Update Device (saveDevice) |
-| [**saveDeviceWithCredentials1**](DeviceControllerApi.md#saveDeviceWithCredentials1) | **POST** /api/device-with-credentials | Create Device (saveDevice) with credentials  |
-| [**updateDeviceCredentials**](DeviceControllerApi.md#updateDeviceCredentials) | **POST** /api/device/credentials | Update device credentials (updateDeviceCredentials) |
+| [**assignDeviceToTenant**](#assignDeviceToTenant) | **POST** /api/tenant/{tenantId}/device/{deviceId} | Assign device to tenant (assignDeviceToTenant) |
+| [**claimDevice1**](#claimDevice1) | **POST** /api/customer/device/{deviceName}/claim | Claim device (claimDevice) |
+| [**countByDeviceGroupAndEmptyOtaPackage**](#countByDeviceGroupAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{otaPackageId}/{entityGroupId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
+| [**countByDeviceProfileAndEmptyOtaPackage**](#countByDeviceProfileAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{deviceProfileId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
+| [**deleteDevice**](#deleteDevice) | **DELETE** /api/device/{deviceId} | Delete device (deleteDevice) |
+| [**findByQuery3**](#findByQuery3) | **POST** /api/devices | Find related devices (findByQuery) |
+| [**getAllDeviceInfos**](#getAllDeviceInfos) | **GET** /api/deviceInfos/all | Get All Device Infos for current user (getAllDeviceInfos) |
+| [**getCustomerDeviceInfos**](#getCustomerDeviceInfos) | **GET** /api/customer/{customerId}/deviceInfos | Get Customer Device Infos (getCustomerDeviceInfos) |
+| [**getCustomerDevices**](#getCustomerDevices) | **GET** /api/customer/{customerId}/devices | Get Customer Devices (getCustomerDevices) |
+| [**getDeviceById**](#getDeviceById) | **GET** /api/device/{deviceId} | Get Device (getDeviceById) |
+| [**getDeviceCredentialsByDeviceId**](#getDeviceCredentialsByDeviceId) | **GET** /api/device/{deviceId}/credentials | Get Device Credentials (getDeviceCredentialsByDeviceId) |
+| [**getDeviceInfoById**](#getDeviceInfoById) | **GET** /api/device/info/{deviceId} | Get Device (getDeviceInfoById) |
+| [**getDeviceTypes**](#getDeviceTypes) | **GET** /api/device/types | Get Device Types (getDeviceTypes) |
+| [**getDevicesByEntityGroupId**](#getDevicesByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/devices | Get devices by Entity Group Id (getDevicesByEntityGroupId) |
+| [**getDevicesByIds**](#getDevicesByIds) | **GET** /api/devices | Get Devices By Ids (getDevicesByIds) |
+| [**getTenantDeviceByName**](#getTenantDeviceByName) | **GET** /api/tenant/device | Get Tenant Device (getTenantDevice) |
+| [**getTenantDevices**](#getTenantDevices) | **GET** /api/tenant/devices | Get Tenant Devices (getTenantDevices) |
+| [**getUserDevices**](#getUserDevices) | **GET** /api/user/devices | Get Devices (getUserDevices) |
+| [**processDevicesBulkImport**](#processDevicesBulkImport) | **POST** /api/device/bulk_import | Import the bulk of devices (processDevicesBulkImport) |
+| [**reClaimDevice**](#reClaimDevice) | **DELETE** /api/customer/device/{deviceName}/claim | Reclaim device (reClaimDevice) |
+| [**saveDevice**](#saveDevice) | **POST** /api/device | Create Or Update Device (saveDevice) |
+| [**saveDeviceWithCredentials1**](#saveDeviceWithCredentials1) | **POST** /api/device-with-credentials | Create Device (saveDevice) with credentials  |
+| [**updateDeviceCredentials**](#updateDeviceCredentials) | **POST** /api/device/credentials | Update device credentials (updateDeviceCredentials) |
 
 
 
@@ -40,35 +38,10 @@ Creates assignment of the device to tenant. Thereafter tenant will be able to re
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantId** | **String**| A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Device**](Device.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tenantId** | **String** | A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## claimDevice1
@@ -81,36 +54,11 @@ Claiming makes it possible to assign a device to the specific customer using dev
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceName** | **String**| Unique name of the device which is going to be claimed | |
-| **subCustomerId** | **String**|  | [optional] |
-| **claimRequest** | [**ClaimRequest**](ClaimRequest.md)|  | [optional] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceName** | **String** | Unique name of the device which is going to be claimed | |
+| **subCustomerId** | **String** |  | [optional] |
+| **claimRequest** | **ClaimRequest** |  | [optional] |
 
 
 ## countByDeviceGroupAndEmptyOtaPackage
@@ -123,36 +71,11 @@ The platform gives an ability to load OTA (over-the-air) packages to devices. It
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **otaPackageType** | **String**| OTA package type | [enum: FIRMWARE, SOFTWARE] |
-| **otaPackageId** | **String**|  | |
-| **entityGroupId** | **String**|  | |
-
-### Return type
-
-**Long**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **otaPackageType** | **String** | OTA package type | [enum: FIRMWARE, SOFTWARE] |
+| **otaPackageId** | **String** |  | |
+| **entityGroupId** | **String** |  | |
 
 
 ## countByDeviceProfileAndEmptyOtaPackage
@@ -165,35 +88,10 @@ The platform gives an ability to load OTA (over-the-air) packages to devices. It
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **otaPackageType** | **String**| OTA package type | [enum: FIRMWARE, SOFTWARE] |
-| **deviceProfileId** | **String**| Device Profile Id. I.g. &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-**Long**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **otaPackageType** | **String** | OTA package type | [enum: FIRMWARE, SOFTWARE] |
+| **deviceProfileId** | **String** | Device Profile Id. I.g. &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## deleteDevice
@@ -206,34 +104,9 @@ Deletes the device, it&#39;s credentials and all the relations (from and to the 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## findByQuery3
@@ -246,34 +119,9 @@ Returns all devices that are related to the specific entity. The entity id, rela
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceSearchQuery** | [**DeviceSearchQuery**](DeviceSearchQuery.md)|  | |
-
-### Return type
-
-[**List&lt;Device&gt;**](Device.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceSearchQuery** | **DeviceSearchQuery** |  | |
 
 
 ## getAllDeviceInfos
@@ -286,41 +134,16 @@ Returns a page of device info objects owned by the tenant or the customer of a c
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **active** | **Boolean**| A boolean value representing the device active flag. | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDeviceInfo**](PageDataDeviceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **active** | **Boolean** | A boolean value representing the device active flag. | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCustomerDeviceInfos
@@ -333,42 +156,17 @@ Returns a page of device info objects owned by the specified customer. Device In
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **deviceProfileId** | **String**| A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **active** | **Boolean**| A boolean value representing the device active flag. | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDeviceInfo**](PageDataDeviceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **active** | **Boolean** | A boolean value representing the device active flag. | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getCustomerDevices
@@ -381,40 +179,15 @@ Returns a page of devices objects assigned to customer. You can specify paramete
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String**| A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **type** | **String**| Device type as the name of the device profile | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDevice**](PageDataDevice.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customerId** | **String** | A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **type** | **String** | Device type as the name of the device profile | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getDeviceById
@@ -427,34 +200,9 @@ Fetch the Device object based on the provided Device Id.   Available for users w
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Device**](Device.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getDeviceCredentialsByDeviceId
@@ -467,34 +215,9 @@ If during device creation there wasn&#39;t specified any credentials, platform g
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**DeviceCredentials**](DeviceCredentials.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getDeviceInfoById
@@ -507,34 +230,9 @@ Fetch the Device info object based on the provided Device Id. Device Info is an 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**DeviceInfo**](DeviceInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getDeviceTypes
@@ -544,35 +242,6 @@ Fetch the Device info object based on the provided Device Id. Device Info is an 
 Get Device Types (getDeviceTypes)
 
 Deprecated. See &#39;getDeviceProfileNames&#39; API from Device Profile Controller instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;EntitySubtype&gt;**](EntitySubtype.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getDevicesByEntityGroupId
 
@@ -584,39 +253,14 @@ Returns a page of Device objects that belongs to specified Entity Group Id. You 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityGroupId** | **String**| A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDevice**](PageDataDevice.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getDevicesByIds
@@ -629,34 +273,9 @@ Requested devices must be owned by tenant or assigned to customer which user is 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceIds** | [**List&lt;String&gt;**](String.md)| A list of devices ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;Device&gt;**](Device.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceIds** | **List&lt;String&gt;** | A list of devices ids, separated by comma &#39;,&#39; | |
 
 
 ## getTenantDeviceByName
@@ -669,34 +288,9 @@ Requested device must be owned by tenant that the user belongs to. Device name i
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceName** | **String**| A string value representing the Device name. | |
-
-### Return type
-
-[**Device**](Device.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceName** | **String** | A string value representing the Device name. | |
 
 
 ## getTenantDevices
@@ -709,39 +303,14 @@ Returns a page of devices owned by tenant. You can specify parameters to filter 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **type** | **String**| Device type as the name of the device profile | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDevice**](PageDataDevice.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **type** | **String** | Device type as the name of the device profile | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getUserDevices
@@ -754,39 +323,14 @@ Returns a page of devices that are available for the current user. You can speci
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **type** | **String**| Device type as the name of the device profile | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataDevice**](PageDataDevice.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **type** | **String** | Device type as the name of the device profile | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the device name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## processDevicesBulkImport
@@ -799,34 +343,9 @@ There&#39;s an ability to import the bulk of devices using the only .csv file. S
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **bulkImportRequest** | [**BulkImportRequest**](BulkImportRequest.md)|  | |
-
-### Return type
-
-[**BulkImportResultDevice**](BulkImportResultDevice.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **bulkImportRequest** | **BulkImportRequest** |  | |
 
 
 ## reClaimDevice
@@ -839,34 +358,9 @@ Reclaiming means the device will be unassigned from the customer and the device 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceName** | **String**| Unique name of the device which is going to be reclaimed | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceName** | **String** | Unique name of the device which is going to be reclaimed | |
 
 
 ## saveDevice
@@ -879,40 +373,15 @@ Create or update the Device. When creating device, platform generates Device Id 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **device** | [**Device**](Device.md)| A JSON value representing the device. | |
-| **accessToken** | **String**| Optional value of the device credentials to be used during device creation. If omitted, access token will be auto-generated. | [optional] |
-| **entityGroupId** | **String**|  | [optional] |
-| **entityGroupIds** | [**List&lt;String&gt;**](String.md)| A list of entity group ids, separated by comma &#39;,&#39; | [optional] |
-| **nameConflictPolicy** | [**NameConflictPolicy**](.md)| Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
-| **uniquifySeparator** | **String**| Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
-| **uniquifyStrategy** | [**UniquifyStrategy**](.md)| Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
-
-### Return type
-
-[**Device**](Device.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **device** | **Device** | A JSON value representing the device. | |
+| **accessToken** | **String** | Optional value of the device credentials to be used during device creation. If omitted, access token will be auto-generated. | [optional] |
+| **entityGroupId** | **String** |  | [optional] |
+| **entityGroupIds** | **List&lt;String&gt;** | A list of entity group ids, separated by comma &#39;,&#39; | [optional] |
+| **nameConflictPolicy** | **NameConflictPolicy** | Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
+| **uniquifySeparator** | **String** | Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
+| **uniquifyStrategy** | **UniquifyStrategy** | Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
 
 
 ## saveDeviceWithCredentials1
@@ -925,39 +394,14 @@ Create or update the Device. When creating device, platform generates Device Id 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **saveDeviceWithCredentialsRequest** | [**SaveDeviceWithCredentialsRequest**](SaveDeviceWithCredentialsRequest.md)|  | |
-| **entityGroupId** | **String**|  | [optional] |
-| **entityGroupIds** | [**List&lt;String&gt;**](String.md)| A list of entity group ids, separated by comma &#39;,&#39; | [optional] |
-| **nameConflictPolicy** | [**NameConflictPolicy**](.md)| Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
-| **uniquifySeparator** | **String**| Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
-| **uniquifyStrategy** | [**UniquifyStrategy**](.md)| Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
-
-### Return type
-
-[**Device**](Device.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **saveDeviceWithCredentialsRequest** | **SaveDeviceWithCredentialsRequest** |  | |
+| **entityGroupId** | **String** |  | [optional] |
+| **entityGroupIds** | **List&lt;String&gt;** | A list of entity group ids, separated by comma &#39;,&#39; | [optional] |
+| **nameConflictPolicy** | **NameConflictPolicy** | Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
+| **uniquifySeparator** | **String** | Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is &#39;-&#39;; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-7fsh4f&#39;. | [optional] [default to _] |
+| **uniquifyStrategy** | **UniquifyStrategy** | Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name &#39;test-name&#39;, created entity will have name like &#39;test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
 
 
 ## updateDeviceCredentials
@@ -970,32 +414,7 @@ During device creation, platform generates random &#39;ACCESS_TOKEN&#39; credent
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceCredentials** | [**DeviceCredentials**](DeviceCredentials.md)|  | |
-
-### Return type
-
-[**DeviceCredentials**](DeviceCredentials.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceCredentials** | **DeviceCredentials** |  | |
 

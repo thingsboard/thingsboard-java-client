@@ -1,16 +1,14 @@
 # NotificationTargetControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteNotificationTargetById**](NotificationTargetControllerApi.md#deleteNotificationTargetById) | **DELETE** /api/notification/target/{id} | Delete notification target by id (deleteNotificationTargetById) |
-| [**getNotificationTargetById**](NotificationTargetControllerApi.md#getNotificationTargetById) | **GET** /api/notification/target/{id} | Get notification target by id (getNotificationTargetById) |
-| [**getNotificationTargets**](NotificationTargetControllerApi.md#getNotificationTargets) | **GET** /api/notification/targets | Get notification targets (getNotificationTargets) |
-| [**getNotificationTargetsByIdsV2**](NotificationTargetControllerApi.md#getNotificationTargetsByIdsV2) | **GET** /api/notification/targets/list | Get notification targets by ids (getNotificationTargetsByIdsV2) |
-| [**getNotificationTargetsBySupportedNotificationTypeV2**](NotificationTargetControllerApi.md#getNotificationTargetsBySupportedNotificationTypeV2) | **GET** /api/notification/targets/notificationType/{notificationType} | Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationTypeV2) |
-| [**getRecipientsForNotificationTargetConfig**](NotificationTargetControllerApi.md#getRecipientsForNotificationTargetConfig) | **POST** /api/notification/target/recipients | Get recipients for notification target config (getRecipientsForNotificationTargetConfig) |
-| [**saveNotificationTarget**](NotificationTargetControllerApi.md#saveNotificationTarget) | **POST** /api/notification/target | Save notification target (saveNotificationTarget) |
+| [**deleteNotificationTargetById**](#deleteNotificationTargetById) | **DELETE** /api/notification/target/{id} | Delete notification target by id (deleteNotificationTargetById) |
+| [**getNotificationTargetById**](#getNotificationTargetById) | **GET** /api/notification/target/{id} | Get notification target by id (getNotificationTargetById) |
+| [**getNotificationTargets**](#getNotificationTargets) | **GET** /api/notification/targets | Get notification targets (getNotificationTargets) |
+| [**getNotificationTargetsByIdsV2**](#getNotificationTargetsByIdsV2) | **GET** /api/notification/targets/list | Get notification targets by ids (getNotificationTargetsByIdsV2) |
+| [**getNotificationTargetsBySupportedNotificationTypeV2**](#getNotificationTargetsBySupportedNotificationTypeV2) | **GET** /api/notification/targets/notificationType/{notificationType} | Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationTypeV2) |
+| [**getRecipientsForNotificationTargetConfig**](#getRecipientsForNotificationTargetConfig) | **POST** /api/notification/target/recipients | Get recipients for notification target config (getRecipientsForNotificationTargetConfig) |
+| [**saveNotificationTarget**](#saveNotificationTarget) | **POST** /api/notification/target | Save notification target (saveNotificationTarget) |
 
 
 
@@ -24,34 +22,9 @@ Deletes notification target by its id.  This target cannot be referenced by exis
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getNotificationTargetById
@@ -64,34 +37,9 @@ Fetches notification target by id.  Available for users with &#39;SYS_ADMIN&#39;
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**NotificationTarget**](NotificationTarget.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getNotificationTargets
@@ -104,38 +52,13 @@ Returns the page of notification targets owned by sysadmin or tenant.  You can s
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filed based on the target&#39;s name | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-
-### Return type
-
-[**PageDataNotificationTarget**](PageDataNotificationTarget.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filed based on the target&#39;s name | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
 
 
 ## getNotificationTargetsByIdsV2
@@ -148,34 +71,9 @@ Returns the list of notification targets found by provided ids.  Available for u
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ids** | [**List&lt;String&gt;**](String.md)| Comma-separated list of uuids representing targets ids | |
-
-### Return type
-
-[**List&lt;NotificationTarget&gt;**](NotificationTarget.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ids** | **List&lt;String&gt;** | Comma-separated list of uuids representing targets ids | |
 
 
 ## getNotificationTargetsBySupportedNotificationTypeV2
@@ -188,39 +86,14 @@ Returns the page of notification targets filtered by notification type that they
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationType** | [**NotificationType**](.md)|  | [enum: GENERAL, ALARM, DEVICE_ACTIVITY, ENTITY_ACTION, ALARM_COMMENT, RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT, ALARM_ASSIGNMENT, NEW_PLATFORM_VERSION, ENTITIES_LIMIT, ENTITIES_LIMIT_INCREASE_REQUEST, API_USAGE_LIMIT, RULE_NODE, RATE_LIMITS, EDGE_CONNECTION, EDGE_COMMUNICATION_FAILURE, TASK_PROCESSING_FAILURE, RESOURCES_SHORTAGE] |
-| **pageSize** | **Integer**|  | |
-| **page** | **Integer**|  | |
-| **textSearch** | **String**|  | [optional] |
-| **sortProperty** | **String**|  | [optional] |
-| **sortOrder** | **String**|  | [optional] |
-
-### Return type
-
-[**PageDataNotificationTarget**](PageDataNotificationTarget.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **notificationType** | **NotificationType** |  | [enum: GENERAL, ALARM, DEVICE_ACTIVITY, ENTITY_ACTION, ALARM_COMMENT, RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT, ALARM_ASSIGNMENT, NEW_PLATFORM_VERSION, ENTITIES_LIMIT, ENTITIES_LIMIT_INCREASE_REQUEST, API_USAGE_LIMIT, RULE_NODE, RATE_LIMITS, EDGE_CONNECTION, EDGE_COMMUNICATION_FAILURE, TASK_PROCESSING_FAILURE, RESOURCES_SHORTAGE] |
+| **pageSize** | **Integer** |  | |
+| **page** | **Integer** |  | |
+| **textSearch** | **String** |  | [optional] |
+| **sortProperty** | **String** |  | [optional] |
+| **sortOrder** | **String** |  | [optional] |
 
 
 ## getRecipientsForNotificationTargetConfig
@@ -233,36 +106,11 @@ Returns the page of recipients for such notification target configuration.  Avai
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **notificationTarget** | [**NotificationTarget**](NotificationTarget.md)|  | |
-
-### Return type
-
-[**PageDataUser**](PageDataUser.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **notificationTarget** | **NotificationTarget** |  | |
 
 
 ## saveNotificationTarget
@@ -275,32 +123,7 @@ Creates or updates notification target.  Available &#x60;configuration&#x60; typ
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationTarget** | [**NotificationTarget**](NotificationTarget.md)|  | |
-
-### Return type
-
-[**NotificationTarget**](NotificationTarget.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **notificationTarget** | **NotificationTarget** |  | |
 

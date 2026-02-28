@@ -1,15 +1,13 @@
 # MobileAppControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteMobileApp**](MobileAppControllerApi.md#deleteMobileApp) | **DELETE** /api/mobile/app/{id} | Delete Mobile App by ID (deleteMobileApp) |
-| [**getLoginMobileInfo**](MobileAppControllerApi.md#getLoginMobileInfo) | **GET** /api/noauth/mobile | Get mobile app login info (getLoginMobileInfo) |
-| [**getMobileAppById**](MobileAppControllerApi.md#getMobileAppById) | **GET** /api/mobile/app/{id} | Get mobile info by id (getMobileAppInfoById) |
-| [**getTenantMobileApps**](MobileAppControllerApi.md#getTenantMobileApps) | **GET** /api/mobile/app | Get mobile app infos (getTenantMobileAppInfos) |
-| [**getUserMobileInfo**](MobileAppControllerApi.md#getUserMobileInfo) | **GET** /api/mobile | Get user mobile app basic info (getUserMobileInfo) |
-| [**saveMobileApp**](MobileAppControllerApi.md#saveMobileApp) | **POST** /api/mobile/app | Save Or update Mobile app (saveMobileApp) |
+| [**deleteMobileApp**](#deleteMobileApp) | **DELETE** /api/mobile/app/{id} | Delete Mobile App by ID (deleteMobileApp) |
+| [**getLoginMobileInfo**](#getLoginMobileInfo) | **GET** /api/noauth/mobile | Get mobile app login info (getLoginMobileInfo) |
+| [**getMobileAppById**](#getMobileAppById) | **GET** /api/mobile/app/{id} | Get mobile info by id (getMobileAppInfoById) |
+| [**getTenantMobileApps**](#getTenantMobileApps) | **GET** /api/mobile/app | Get mobile app infos (getTenantMobileAppInfos) |
+| [**getUserMobileInfo**](#getUserMobileInfo) | **GET** /api/mobile | Get user mobile app basic info (getUserMobileInfo) |
+| [**saveMobileApp**](#saveMobileApp) | **POST** /api/mobile/app | Save Or update Mobile app (saveMobileApp) |
 
 
 
@@ -23,34 +21,9 @@ Deletes Mobile App by ID. Referencing non-existing mobile app Id will cause an e
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getLoginMobileInfo
@@ -61,35 +34,10 @@ Get mobile app login info (getLoginMobileInfo)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pkgName** | **String**| Mobile application package name | |
-| **platform** | **String**| Platform type | [enum: ANDROID, IOS] |
-
-### Return type
-
-[**LoginMobileInfo**](LoginMobileInfo.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pkgName** | **String** | Mobile application package name | |
+| **platform** | **String** | Platform type | [enum: ANDROID, IOS] |
 
 
 ## getMobileAppById
@@ -102,34 +50,9 @@ Get mobile info by id (getMobileAppInfoById)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**MobileApp**](MobileApp.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getTenantMobileApps
@@ -142,39 +65,14 @@ Get mobile app infos (getTenantMobileAppInfos)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **platformType** | [**PlatformType**](.md)| Platform type: ANDROID or IOS | [optional] [enum: WEB, ANDROID, IOS] |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on app&#39;s name | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-
-### Return type
-
-[**PageDataMobileApp**](PageDataMobileApp.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **platformType** | **PlatformType** | Platform type: ANDROID or IOS | [optional] [enum: WEB, ANDROID, IOS] |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on app&#39;s name | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
 
 
 ## getUserMobileInfo
@@ -187,35 +85,10 @@ Get user mobile app basic info (getUserMobileInfo)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pkgName** | **String**| Mobile application package name | |
-| **platform** | **String**| Platform type | [enum: ANDROID, IOS] |
-
-### Return type
-
-[**UserMobileInfo**](UserMobileInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pkgName** | **String** | Mobile application package name | |
+| **platform** | **String** | Platform type | [enum: ANDROID, IOS] |
 
 
 ## saveMobileApp
@@ -228,32 +101,7 @@ Create or update the Mobile app. When creating mobile app, platform generates Mo
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **mobileApp** | [**MobileApp**](MobileApp.md)|  | |
-
-### Return type
-
-[**MobileApp**](MobileApp.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **mobileApp** | **MobileApp** |  | |
 

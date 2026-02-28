@@ -1,12 +1,10 @@
 # QueueStatsControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getQueueStatsById**](QueueStatsControllerApi.md#getQueueStatsById) | **GET** /api/queueStats/{queueStatsId} | Get Queue stats entity by id (getQueueStatsById) |
-| [**getQueueStatsByIdsV2**](QueueStatsControllerApi.md#getQueueStatsByIdsV2) | **GET** /api/queueStats/list | Get QueueStats By Ids (getQueueStatsByIdsV2) |
-| [**getTenantQueueStats**](QueueStatsControllerApi.md#getTenantQueueStats) | **GET** /api/queueStats | Get Queue Stats entities (getTenantQueueStats) |
+| [**getQueueStatsById**](#getQueueStatsById) | **GET** /api/queueStats/{queueStatsId} | Get Queue stats entity by id (getQueueStatsById) |
+| [**getQueueStatsByIdsV2**](#getQueueStatsByIdsV2) | **GET** /api/queueStats/list | Get QueueStats By Ids (getQueueStatsByIdsV2) |
+| [**getTenantQueueStats**](#getTenantQueueStats) | **GET** /api/queueStats | Get Queue Stats entities (getTenantQueueStats) |
 
 
 
@@ -20,34 +18,9 @@ Fetch the Queue stats object based on the provided Queue stats id.   Available f
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **queueStatsId** | **String**| A string value representing the queue stats id. For example, &#39;687f294c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**QueueStats**](QueueStats.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **queueStatsId** | **String** | A string value representing the queue stats id. For example, &#39;687f294c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getQueueStatsByIdsV2
@@ -60,34 +33,9 @@ Fetch the Queue stats objects based on the provided ids.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **queueStatsIds** | [**List&lt;String&gt;**](String.md)| A list of queue stats ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;QueueStats&gt;**](QueueStats.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **queueStatsIds** | **List&lt;String&gt;** | A list of queue stats ids, separated by comma &#39;,&#39; | |
 
 
 ## getTenantQueueStats
@@ -100,36 +48,11 @@ Returns a page of queue stats objects that are designed to collect queue statist
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the queue name or service id. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataQueueStats**](PageDataQueueStats.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the queue name or service id. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 

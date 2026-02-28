@@ -1,15 +1,13 @@
 # SelfRegistrationControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteWebSelfRegistrationParams**](SelfRegistrationControllerApi.md#deleteWebSelfRegistrationParams) | **DELETE** /api/selfRegistration/selfRegistrationParams | deleteWebSelfRegistrationParams |
-| [**getPrivacyPolicy**](SelfRegistrationControllerApi.md#getPrivacyPolicy) | **GET** /api/noauth/selfRegistration/privacyPolicy | Get Privacy Policy for Self Registration form (getPrivacyPolicy) |
-| [**getSignUpSelfRegistrationParams**](SelfRegistrationControllerApi.md#getSignUpSelfRegistrationParams) | **GET** /api/noauth/selfRegistration/signUpSelfRegistrationParams | Get Self Registration form parameters without authentication (getSignUpSelfRegistrationParams) |
-| [**getTermsOfUse**](SelfRegistrationControllerApi.md#getTermsOfUse) | **GET** /api/noauth/selfRegistration/termsOfUse | Get Terms of Use for Self Registration form (getTermsOfUse) |
-| [**getWebSelfRegistrationParams**](SelfRegistrationControllerApi.md#getWebSelfRegistrationParams) | **GET** /api/selfRegistration/selfRegistrationParams | Get Self Registration parameters (getSelfRegistrationParams) |
-| [**saveWebSelfRegistrationParams**](SelfRegistrationControllerApi.md#saveWebSelfRegistrationParams) | **POST** /api/selfRegistration/selfRegistrationParams | Create Or Update Self Registration parameters (saveSelfRegistrationParams) |
+| [**deleteWebSelfRegistrationParams**](#deleteWebSelfRegistrationParams) | **DELETE** /api/selfRegistration/selfRegistrationParams | deleteWebSelfRegistrationParams |
+| [**getPrivacyPolicy**](#getPrivacyPolicy) | **GET** /api/noauth/selfRegistration/privacyPolicy | Get Privacy Policy for Self Registration form (getPrivacyPolicy) |
+| [**getSignUpSelfRegistrationParams**](#getSignUpSelfRegistrationParams) | **GET** /api/noauth/selfRegistration/signUpSelfRegistrationParams | Get Self Registration form parameters without authentication (getSignUpSelfRegistrationParams) |
+| [**getTermsOfUse**](#getTermsOfUse) | **GET** /api/noauth/selfRegistration/termsOfUse | Get Terms of Use for Self Registration form (getTermsOfUse) |
+| [**getWebSelfRegistrationParams**](#getWebSelfRegistrationParams) | **GET** /api/selfRegistration/selfRegistrationParams | Get Self Registration parameters (getSelfRegistrationParams) |
+| [**saveWebSelfRegistrationParams**](#saveWebSelfRegistrationParams) | **POST** /api/selfRegistration/selfRegistrationParams | Create Or Update Self Registration parameters (saveSelfRegistrationParams) |
 
 
 
@@ -18,35 +16,6 @@ All URIs are relative to *http://localhost:8080*
 > deleteWebSelfRegistrationParams()
 
 deleteWebSelfRegistrationParams
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getPrivacyPolicy
 
@@ -58,35 +27,10 @@ Fetch the Privacy Policy based on the domain name from the request. Available fo
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pkgName** | **String**|  | [optional] |
-| **platform** | [**PlatformType**](.md)|  | [optional] [enum: WEB, ANDROID, IOS] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pkgName** | **String** |  | [optional] |
+| **platform** | **PlatformType** |  | [optional] [enum: WEB, ANDROID, IOS] |
 
 
 ## getSignUpSelfRegistrationParams
@@ -99,35 +43,10 @@ Fetch the Self Registration parameters based on the domain name from the request
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pkgName** | **String**|  | [optional] |
-| **platformType** | **String**| Platform type | [optional] [enum: ANDROID, IOS] |
-
-### Return type
-
-[**SignUpSelfRegistrationParams**](SignUpSelfRegistrationParams.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pkgName** | **String** |  | [optional] |
+| **platformType** | **String** | Platform type | [optional] [enum: ANDROID, IOS] |
 
 
 ## getTermsOfUse
@@ -140,35 +59,10 @@ Fetch the Terms of Use based on the domain name from the request. Available for 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pkgName** | **String**|  | [optional] |
-| **platform** | [**PlatformType**](.md)|  | [optional] [enum: WEB, ANDROID, IOS] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pkgName** | **String** |  | [optional] |
+| **platform** | **PlatformType** |  | [optional] [enum: WEB, ANDROID, IOS] |
 
 
 ## getWebSelfRegistrationParams
@@ -178,35 +72,6 @@ No authorization required
 Get Self Registration parameters (getSelfRegistrationParams)
 
 Fetch the Self Registration parameters object for the tenant of the current user.   Available for users with &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the white labeling resource.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**SelfRegistrationParams**](SelfRegistrationParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## saveWebSelfRegistrationParams
 
@@ -218,32 +83,7 @@ Creates or Updates the Self Registration parameters. When creating, platform gen
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **webSelfRegistrationParams** | [**WebSelfRegistrationParams**](WebSelfRegistrationParams.md)|  | |
-
-### Return type
-
-[**WebSelfRegistrationParams**](WebSelfRegistrationParams.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **webSelfRegistrationParams** | **WebSelfRegistrationParams** |  | |
 

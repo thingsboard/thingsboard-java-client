@@ -1,14 +1,12 @@
 # JobControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**cancelJob**](JobControllerApi.md#cancelJob) | **POST** /api/job/{id}/cancel | Cancel job (cancelJob) |
-| [**deleteJob**](JobControllerApi.md#deleteJob) | **DELETE** /api/job/{id} | deleteJob |
-| [**getJobById**](JobControllerApi.md#getJobById) | **GET** /api/job/{id} | Get job by id (getJobById) |
-| [**getJobs**](JobControllerApi.md#getJobs) | **GET** /api/jobs | Get jobs (getJobs) |
-| [**reprocessJob**](JobControllerApi.md#reprocessJob) | **POST** /api/job/{id}/reprocess | Reprocess job (reprocessJob) |
+| [**cancelJob**](#cancelJob) | **POST** /api/job/{id}/cancel | Cancel job (cancelJob) |
+| [**deleteJob**](#deleteJob) | **DELETE** /api/job/{id} | deleteJob |
+| [**getJobById**](#getJobById) | **GET** /api/job/{id} | Get job by id (getJobById) |
+| [**getJobs**](#getJobs) | **GET** /api/jobs | Get jobs (getJobs) |
+| [**reprocessJob**](#reprocessJob) | **POST** /api/job/{id}/reprocess | Reprocess job (reprocessJob) |
 
 
 
@@ -22,34 +20,9 @@ Cancels the job. The status of the job must be QUEUED, PENDING or RUNNING.  For 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## deleteJob
@@ -60,34 +33,9 @@ deleteJob
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getJobById
@@ -100,34 +48,9 @@ Fetches job info by id.  Example of a RUNNING CF_REPROCESSING job response: &#x6
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**Job**](Job.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getJobs
@@ -140,43 +63,18 @@ Returns the page of jobs.  You can specify parameters to filter the results. The
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on job&#39;s description | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-| **types** | [**List&lt;String&gt;**](String.md)| Comma-separated list of job types to include. If empty - all job types are included. | [optional] |
-| **statuses** | [**List&lt;String&gt;**](String.md)| Comma-separated list of job statuses to include. If empty - all job statuses are included. | [optional] |
-| **entities** | [**List&lt;String&gt;**](String.md)| Comma-separated list of entity ids. If empty - jobs for all entities are included. | [optional] |
-| **startTime** | **Long**| To only include jobs created after this timestamp. | [optional] |
-| **endTime** | **Long**| To only include jobs created before this timestamp. | [optional] |
-
-### Return type
-
-[**PageDataJob**](PageDataJob.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on job&#39;s description | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
+| **types** | **List&lt;String&gt;** | Comma-separated list of job types to include. If empty - all job types are included. | [optional] |
+| **statuses** | **List&lt;String&gt;** | Comma-separated list of job statuses to include. If empty - all job statuses are included. | [optional] |
+| **entities** | **List&lt;String&gt;** | Comma-separated list of entity ids. If empty - jobs for all entities are included. | [optional] |
+| **startTime** | **Long** | To only include jobs created after this timestamp. | [optional] |
+| **endTime** | **Long** | To only include jobs created before this timestamp. | [optional] |
 
 
 ## reprocessJob
@@ -189,32 +87,7 @@ Reprocesses the job. Failures are located at job.result.results list. Platform i
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 

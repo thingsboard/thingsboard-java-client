@@ -1,13 +1,11 @@
 # NotificationRuleControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteNotificationRule**](NotificationRuleControllerApi.md#deleteNotificationRule) | **DELETE** /api/notification/rule/{id} | Delete notification rule (deleteNotificationRule) |
-| [**getNotificationRuleById**](NotificationRuleControllerApi.md#getNotificationRuleById) | **GET** /api/notification/rule/{id} | Get notification rule by id (getNotificationRuleById) |
-| [**getNotificationRules**](NotificationRuleControllerApi.md#getNotificationRules) | **GET** /api/notification/rules | Get notification rules (getNotificationRules) |
-| [**saveNotificationRule**](NotificationRuleControllerApi.md#saveNotificationRule) | **POST** /api/notification/rule | Save notification rule (saveNotificationRule) |
+| [**deleteNotificationRule**](#deleteNotificationRule) | **DELETE** /api/notification/rule/{id} | Delete notification rule (deleteNotificationRule) |
+| [**getNotificationRuleById**](#getNotificationRuleById) | **GET** /api/notification/rule/{id} | Get notification rule by id (getNotificationRuleById) |
+| [**getNotificationRules**](#getNotificationRules) | **GET** /api/notification/rules | Get notification rules (getNotificationRules) |
+| [**saveNotificationRule**](#saveNotificationRule) | **POST** /api/notification/rule | Save notification rule (saveNotificationRule) |
 
 
 
@@ -21,34 +19,9 @@ Deletes notification rule by id. Cancels all related scheduled notification requ
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getNotificationRuleById
@@ -61,34 +34,9 @@ Fetches notification rule info by rule&#39;s id. In addition to regular notifica
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**NotificationRuleInfo**](NotificationRuleInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getNotificationRules
@@ -101,38 +49,13 @@ Returns the page of notification rules.  You can specify parameters to filter th
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on rule&#39;s name | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-
-### Return type
-
-[**PageDataNotificationRuleInfo**](PageDataNotificationRuleInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on rule&#39;s name | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
 
 
 ## saveNotificationRule
@@ -145,32 +68,7 @@ Creates or updates notification rule.   Mandatory properties are &#x60;name&#x60
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationRule** | [**NotificationRule**](NotificationRule.md)|  | |
-
-### Return type
-
-[**NotificationRule**](NotificationRule.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **notificationRule** | **NotificationRule** |  | |
 

@@ -1,17 +1,15 @@
 # EntityQueryControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**countAlarmsByQuery**](EntityQueryControllerApi.md#countAlarmsByQuery) | **POST** /api/alarmsQuery/count | Count Alarms by Query (countAlarmsByQuery) |
-| [**countEntitiesByQuery**](EntityQueryControllerApi.md#countEntitiesByQuery) | **POST** /api/entitiesQuery/count | Count Entities by Query |
-| [**findAlarmDataByQuery**](EntityQueryControllerApi.md#findAlarmDataByQuery) | **POST** /api/alarmsQuery/find | Find Alarms by Query |
-| [**findAvailableEntityKeysByQuery**](EntityQueryControllerApi.md#findAvailableEntityKeysByQuery) | **POST** /api/entitiesQuery/find/keys | Find Available Entity Keys by Query (deprecated) |
-| [**findAvailableEntityKeysByQueryV2**](EntityQueryControllerApi.md#findAvailableEntityKeysByQueryV2) | **POST** /api/v2/entitiesQuery/find/keys | Find Available Entity Keys By Query |
-| [**findEntityDataByQuery**](EntityQueryControllerApi.md#findEntityDataByQuery) | **POST** /api/entitiesQuery/find | Find Entity Data by Query |
-| [**getEdqsState**](EntityQueryControllerApi.md#getEdqsState) | **GET** /api/edqs/state | getEdqsState |
-| [**processSystemEdqsRequest**](EntityQueryControllerApi.md#processSystemEdqsRequest) | **POST** /api/edqs/system/request | processSystemEdqsRequest |
+| [**countAlarmsByQuery**](#countAlarmsByQuery) | **POST** /api/alarmsQuery/count | Count Alarms by Query (countAlarmsByQuery) |
+| [**countEntitiesByQuery**](#countEntitiesByQuery) | **POST** /api/entitiesQuery/count | Count Entities by Query |
+| [**findAlarmDataByQuery**](#findAlarmDataByQuery) | **POST** /api/alarmsQuery/find | Find Alarms by Query |
+| [**findAvailableEntityKeysByQuery**](#findAvailableEntityKeysByQuery) | **POST** /api/entitiesQuery/find/keys | Find Available Entity Keys by Query (deprecated) |
+| [**findAvailableEntityKeysByQueryV2**](#findAvailableEntityKeysByQueryV2) | **POST** /api/v2/entitiesQuery/find/keys | Find Available Entity Keys By Query |
+| [**findEntityDataByQuery**](#findEntityDataByQuery) | **POST** /api/entitiesQuery/find | Find Entity Data by Query |
+| [**getEdqsState**](#getEdqsState) | **GET** /api/edqs/state | getEdqsState |
+| [**processSystemEdqsRequest**](#processSystemEdqsRequest) | **POST** /api/edqs/system/request | processSystemEdqsRequest |
 
 
 
@@ -25,34 +23,9 @@ Returns the number of alarms that match the query definition.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmCountQuery** | [**AlarmCountQuery**](AlarmCountQuery.md)|  | |
-
-### Return type
-
-**Long**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmCountQuery** | **AlarmCountQuery** |  | |
 
 
 ## countEntitiesByQuery
@@ -65,34 +38,9 @@ Allows to run complex queries to search the count of platform entities (devices,
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityCountQuery** | [**EntityCountQuery**](EntityCountQuery.md)|  | |
-
-### Return type
-
-**Long**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityCountQuery** | **EntityCountQuery** |  | |
 
 
 ## findAlarmDataByQuery
@@ -105,34 +53,9 @@ This method description defines how Alarm Data Query extends the Entity Data Que
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **alarmDataQuery** | [**AlarmDataQuery**](AlarmDataQuery.md)|  | |
-
-### Return type
-
-[**PageDataAlarmData**](PageDataAlarmData.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **alarmDataQuery** | **AlarmDataQuery** |  | |
 
 
 ## findAvailableEntityKeysByQuery
@@ -145,37 +68,12 @@ Find Available Entity Keys by Query (deprecated)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **timeseries** | **Boolean**| When true, includes unique time series key names in the response. When false, the &#39;timeseries&#39; list will be empty. | |
-| **attributes** | **Boolean**| When true, includes unique attribute key names in the response. When false, the &#39;attribute&#39; list will be empty. Use &#39;scope&#39; parameter to filter by attribute scope. | |
-| **entityDataQuery** | [**EntityDataQuery**](EntityDataQuery.md)|  | |
-| **scope** | **String**| Filters attribute keys by scope. Only applies when &#39;attributes&#39; is true. If not specified, returns attribute keys from all scopes. | [optional] [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
-
-### Return type
-
-[**AvailableEntityKeys**](AvailableEntityKeys.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **timeseries** | **Boolean** | When true, includes unique time series key names in the response. When false, the &#39;timeseries&#39; list will be empty. | |
+| **attributes** | **Boolean** | When true, includes unique attribute key names in the response. When false, the &#39;attribute&#39; list will be empty. Use &#39;scope&#39; parameter to filter by attribute scope. | |
+| **entityDataQuery** | **EntityDataQuery** |  | |
+| **scope** | **String** | Filters attribute keys by scope. Only applies when &#39;attributes&#39; is true. If not specified, returns attribute keys from all scopes. | [optional] [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
 
 
 ## findAvailableEntityKeysByQueryV2
@@ -188,38 +86,13 @@ Discovers unique time series and/or attribute key names available on entities th
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityDataQuery** | [**EntityDataQuery**](EntityDataQuery.md)|  | |
-| **includeTimeseries** | **Boolean**| When true, includes unique time series keys in the response. When false, the &#39;timeseries&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
-| **includeAttributes** | **Boolean**| When true, includes unique attribute keys in the response. When false, the &#39;attributes&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
-| **scopes** | **String**| Filters attribute keys by scope. Only applies when &#39;includeAttributes&#39; is true. When not specified, scopes are auto-determined: all three scopes (server, client, shared) for device entities, server scope only for other entity types. | [optional] [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
-| **includeSamples** | **Boolean**| When true, each key entry includes a &#39;sample&#39; object with the most recent value and timestamp. When false, only key names are returned (sample is omitted from JSON). | [optional] [default to false] |
-
-### Return type
-
-[**AvailableEntityKeysV2**](AvailableEntityKeysV2.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityDataQuery** | **EntityDataQuery** |  | |
+| **includeTimeseries** | **Boolean** | When true, includes unique time series keys in the response. When false, the &#39;timeseries&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
+| **includeAttributes** | **Boolean** | When true, includes unique attribute keys in the response. When false, the &#39;attributes&#39; field is omitted. At least one of &#39;includeTimeseries&#39; or &#39;includeAttributes&#39; must be true. | [optional] [default to true] |
+| **scopes** | **String** | Filters attribute keys by scope. Only applies when &#39;includeAttributes&#39; is true. When not specified, scopes are auto-determined: all three scopes (server, client, shared) for device entities, server scope only for other entity types. | [optional] [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
+| **includeSamples** | **Boolean** | When true, each key entry includes a &#39;sample&#39; object with the most recent value and timestamp. When false, only key names are returned (sample is omitted from JSON). | [optional] [default to false] |
 
 
 ## findEntityDataByQuery
@@ -232,34 +105,9 @@ Allows to run complex queries over platform entities (devices, assets, customers
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityDataQuery** | [**EntityDataQuery**](EntityDataQuery.md)|  | |
-
-### Return type
-
-[**PageDataEntityData**](PageDataEntityData.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityDataQuery** | **EntityDataQuery** |  | |
 
 
 ## getEdqsState
@@ -267,35 +115,6 @@ Allows to run complex queries over platform entities (devices, assets, customers
 > EdqsState getEdqsState()
 
 getEdqsState
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**EdqsState**](EdqsState.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## processSystemEdqsRequest
 
@@ -305,32 +124,7 @@ processSystemEdqsRequest
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **toCoreEdqsRequest** | [**ToCoreEdqsRequest**](ToCoreEdqsRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **toCoreEdqsRequest** | **ToCoreEdqsRequest** |  | |
 

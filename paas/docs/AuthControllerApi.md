@@ -1,18 +1,16 @@
 # AuthControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**activateUser**](AuthControllerApi.md#activateUser) | **POST** /api/noauth/activate | Activate User |
-| [**changePassword**](AuthControllerApi.md#changePassword) | **POST** /api/auth/changePassword | Change password for current User (changePassword) |
-| [**checkActivateToken**](AuthControllerApi.md#checkActivateToken) | **GET** /api/noauth/activate | Check Activate User Token (checkActivateToken) |
-| [**checkResetToken**](AuthControllerApi.md#checkResetToken) | **GET** /api/noauth/resetPassword | Check password reset token (checkResetToken) |
-| [**getUser**](AuthControllerApi.md#getUser) | **GET** /api/auth/user | Get current User (getUser) |
-| [**getUserPasswordPolicy**](AuthControllerApi.md#getUserPasswordPolicy) | **GET** /api/noauth/userPasswordPolicy | Get the current User password policy (getUserPasswordPolicy) |
-| [**logout**](AuthControllerApi.md#logout) | **POST** /api/auth/logout | Logout (logout) |
-| [**requestResetPasswordByEmail**](AuthControllerApi.md#requestResetPasswordByEmail) | **POST** /api/noauth/resetPasswordByEmail | Request reset password email (requestResetPasswordByEmail) |
-| [**resetPassword**](AuthControllerApi.md#resetPassword) | **POST** /api/noauth/resetPassword | Reset password (resetPassword) |
+| [**activateUser**](#activateUser) | **POST** /api/noauth/activate | Activate User |
+| [**changePassword**](#changePassword) | **POST** /api/auth/changePassword | Change password for current User (changePassword) |
+| [**checkActivateToken**](#checkActivateToken) | **GET** /api/noauth/activate | Check Activate User Token (checkActivateToken) |
+| [**checkResetToken**](#checkResetToken) | **GET** /api/noauth/resetPassword | Check password reset token (checkResetToken) |
+| [**getUser**](#getUser) | **GET** /api/auth/user | Get current User (getUser) |
+| [**getUserPasswordPolicy**](#getUserPasswordPolicy) | **GET** /api/noauth/userPasswordPolicy | Get the current User password policy (getUserPasswordPolicy) |
+| [**logout**](#logout) | **POST** /api/auth/logout | Logout (logout) |
+| [**requestResetPasswordByEmail**](#requestResetPasswordByEmail) | **POST** /api/noauth/resetPasswordByEmail | Request reset password email (requestResetPasswordByEmail) |
+| [**resetPassword**](#resetPassword) | **POST** /api/noauth/resetPassword | Reset password (resetPassword) |
 
 
 
@@ -26,35 +24,10 @@ Checks the activation token and updates corresponding user password in the datab
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **activateUserRequest** | [**ActivateUserRequest**](ActivateUserRequest.md)|  | |
-| **sendActivationMail** | **Boolean**|  | [optional] [default to true] |
-
-### Return type
-
-[**JwtPair**](JwtPair.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **activateUserRequest** | **ActivateUserRequest** |  | |
+| **sendActivationMail** | **Boolean** |  | [optional] [default to true] |
 
 
 ## changePassword
@@ -67,34 +40,9 @@ Change the password for the User which credentials are used to perform this REST
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **changePasswordRequest** | [**ChangePasswordRequest**](ChangePasswordRequest.md)|  | |
-
-### Return type
-
-[**JwtPair**](JwtPair.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **changePasswordRequest** | **ChangePasswordRequest** |  | |
 
 
 ## checkActivateToken
@@ -107,34 +55,9 @@ Checks the activation token and forwards user to &#39;Create Password&#39; page.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **activateToken** | **String**| The activate token string. | |
-
-### Return type
-
-**Object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **activateToken** | **String** | The activate token string. | |
 
 
 ## checkResetToken
@@ -147,34 +70,9 @@ Checks the password reset token and forwards user to &#39;Reset Password&#39; pa
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resetToken** | **String**| The reset token string. | |
-
-### Return type
-
-**Object**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resetToken** | **String** | The reset token string. | |
 
 
 ## getUser
@@ -185,35 +83,6 @@ Get current User (getUser)
 
 Get the information about the User which credentials are used to perform this REST API call.
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**User**](User.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## getUserPasswordPolicy
 
 > UserPasswordPolicy getUserPasswordPolicy()
@@ -222,35 +91,6 @@ Get the current User password policy (getUserPasswordPolicy)
 
 API call to get the password policy for the password validation form(s).
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**UserPasswordPolicy**](UserPasswordPolicy.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## logout
 
 > logout()
@@ -258,35 +98,6 @@ No authorization required
 Logout (logout)
 
 Special API call to record the &#39;logout&#39; of the user to the Audit Logs. Since platform uses [JWT](https://jwt.io/), the actual logout is the procedure of clearing the [JWT](https://jwt.io/) token on the client side. 
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## requestResetPasswordByEmail
 
@@ -298,34 +109,9 @@ Request to send the reset password email if the user with specified email addres
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resetPasswordEmailRequest** | [**ResetPasswordEmailRequest**](ResetPasswordEmailRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resetPasswordEmailRequest** | **ResetPasswordEmailRequest** |  | |
 
 
 ## resetPassword
@@ -338,32 +124,7 @@ Checks the password reset token and updates the password. If token is not valid,
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **resetPasswordRequest** | [**ResetPasswordRequest**](ResetPasswordRequest.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **resetPasswordRequest** | **ResetPasswordRequest** |  | |
 

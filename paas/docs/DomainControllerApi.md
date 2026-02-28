@@ -1,15 +1,13 @@
 # DomainControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteDomain**](DomainControllerApi.md#deleteDomain) | **DELETE** /api/domain/{id} | Delete Domain by ID (deleteDomain) |
-| [**getCloudDomainInfoById**](DomainControllerApi.md#getCloudDomainInfoById) | **GET** /api/domain/cloud/info/{id} | Get Domain info by Id (getCloudDomainInfoById) |
-| [**getDomainInfoById**](DomainControllerApi.md#getDomainInfoById) | **GET** /api/domain/info/{id} | Get Domain info by Id (getDomainInfoById) |
-| [**getDomainInfos**](DomainControllerApi.md#getDomainInfos) | **GET** /api/domain/infos | Get Domain infos (getDomainInfos) |
-| [**saveDomain**](DomainControllerApi.md#saveDomain) | **POST** /api/domain | Save or Update Domain (saveDomain) |
-| [**updateOauth2Clients1**](DomainControllerApi.md#updateOauth2Clients1) | **PUT** /api/domain/{id}/oauth2Clients | Update oauth2 clients (updateOauth2Clients) |
+| [**deleteDomain**](#deleteDomain) | **DELETE** /api/domain/{id} | Delete Domain by ID (deleteDomain) |
+| [**getCloudDomainInfoById**](#getCloudDomainInfoById) | **GET** /api/domain/cloud/info/{id} | Get Domain info by Id (getCloudDomainInfoById) |
+| [**getDomainInfoById**](#getDomainInfoById) | **GET** /api/domain/info/{id} | Get Domain info by Id (getDomainInfoById) |
+| [**getDomainInfos**](#getDomainInfos) | **GET** /api/domain/infos | Get Domain infos (getDomainInfos) |
+| [**saveDomain**](#saveDomain) | **POST** /api/domain | Save or Update Domain (saveDomain) |
+| [**updateOauth2Clients1**](#updateOauth2Clients1) | **PUT** /api/domain/{id}/oauth2Clients | Update oauth2 clients (updateOauth2Clients) |
 
 
 
@@ -23,34 +21,9 @@ Deletes Domain by ID. Referencing non-existing domain Id will cause an error.  A
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getCloudDomainInfoById
@@ -63,34 +36,9 @@ Get Domain info by Id (getCloudDomainInfoById)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**DomainInfo**](DomainInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getDomainInfoById
@@ -103,34 +51,9 @@ Get Domain info by Id (getDomainInfoById)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**DomainInfo**](DomainInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getDomainInfos
@@ -143,38 +66,13 @@ Get Domain infos (getDomainInfos)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on domain&#39;s name | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-
-### Return type
-
-[**PageDataDomainInfo**](PageDataDomainInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on domain&#39;s name | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
 
 
 ## saveDomain
@@ -187,35 +85,10 @@ Create or update the Domain. When creating domain, platform generates Domain Id 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **domain** | [**Domain**](Domain.md)|  | |
-| **oauth2ClientIds** | [**List&lt;String&gt;**](String.md)| A list of oauth2 client registration ids, separated by comma &#39;,&#39; | [optional] |
-
-### Return type
-
-[**Domain**](Domain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **domain** | **Domain** |  | |
+| **oauth2ClientIds** | **List&lt;String&gt;** | A list of oauth2 client registration ids, separated by comma &#39;,&#39; | [optional] |
 
 
 ## updateOauth2Clients1
@@ -228,33 +101,8 @@ Update oauth2 clients for the specified domain.   Available for users with &#39;
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-| **UUID** | [**List&lt;UUID&gt;**](UUID.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
+| **UUID** | **List&lt;UUID&gt;** |  | |
 

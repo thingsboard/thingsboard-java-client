@@ -1,17 +1,15 @@
 # WidgetsBundleControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteWidgetsBundle**](WidgetsBundleControllerApi.md#deleteWidgetsBundle) | **DELETE** /api/widgetsBundle/{widgetsBundleId} | Delete widgets bundle (deleteWidgetsBundle) |
-| [**getWidgetsBundleById**](WidgetsBundleControllerApi.md#getWidgetsBundleById) | **GET** /api/widgetsBundle/{widgetsBundleId} | Get Widget Bundle (getWidgetsBundleById) |
-| [**getWidgetsBundles**](WidgetsBundleControllerApi.md#getWidgetsBundles) | **GET** /api/widgetsBundles | Get Widget Bundles (getWidgetsBundles) |
-| [**getWidgetsBundlesList**](WidgetsBundleControllerApi.md#getWidgetsBundlesList) | **GET** /api/widgetsBundles/list | Get Widgets Bundles By Ids (getWidgetsBundlesList) |
-| [**getWidgetsBundlesV2**](WidgetsBundleControllerApi.md#getWidgetsBundlesV2) | **GET** /api/widgetsBundles/all | Get all Widget Bundles (getWidgetsBundlesV2) |
-| [**saveWidgetsBundle**](WidgetsBundleControllerApi.md#saveWidgetsBundle) | **POST** /api/widgetsBundle | Create Or Update Widget Bundle (saveWidgetsBundle) |
-| [**updateWidgetsBundleWidgetFqns**](WidgetsBundleControllerApi.md#updateWidgetsBundleWidgetFqns) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypeFqns | Update widgets bundle widgets list from widget type FQNs list (updateWidgetsBundleWidgetFqns) |
-| [**updateWidgetsBundleWidgetTypes**](WidgetsBundleControllerApi.md#updateWidgetsBundleWidgetTypes) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypes | Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes) |
+| [**deleteWidgetsBundle**](#deleteWidgetsBundle) | **DELETE** /api/widgetsBundle/{widgetsBundleId} | Delete widgets bundle (deleteWidgetsBundle) |
+| [**getWidgetsBundleById**](#getWidgetsBundleById) | **GET** /api/widgetsBundle/{widgetsBundleId} | Get Widget Bundle (getWidgetsBundleById) |
+| [**getWidgetsBundles**](#getWidgetsBundles) | **GET** /api/widgetsBundles | Get Widget Bundles (getWidgetsBundles) |
+| [**getWidgetsBundlesList**](#getWidgetsBundlesList) | **GET** /api/widgetsBundles/list | Get Widgets Bundles By Ids (getWidgetsBundlesList) |
+| [**getWidgetsBundlesV2**](#getWidgetsBundlesV2) | **GET** /api/widgetsBundles/all | Get all Widget Bundles (getWidgetsBundlesV2) |
+| [**saveWidgetsBundle**](#saveWidgetsBundle) | **POST** /api/widgetsBundle | Create Or Update Widget Bundle (saveWidgetsBundle) |
+| [**updateWidgetsBundleWidgetFqns**](#updateWidgetsBundleWidgetFqns) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypeFqns | Update widgets bundle widgets list from widget type FQNs list (updateWidgetsBundleWidgetFqns) |
+| [**updateWidgetsBundleWidgetTypes**](#updateWidgetsBundleWidgetTypes) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypes | Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes) |
 
 
 
@@ -25,34 +23,9 @@ Deletes the widget bundle. Referencing non-existing Widget Bundle Id will cause 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **widgetsBundleId** | **String**| A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **widgetsBundleId** | **String** | A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getWidgetsBundleById
@@ -65,35 +38,10 @@ Get the Widget Bundle based on the provided Widget Bundle Id. Widget Bundle repr
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **widgetsBundleId** | **String**| A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **inlineImages** | **Boolean**| Inline images as a data URL (Base64) | [optional] |
-
-### Return type
-
-[**WidgetsBundle**](WidgetsBundle.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **widgetsBundleId** | **String** | A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **inlineImages** | **Boolean** | Inline images as a data URL (Base64) | [optional] |
 
 
 ## getWidgetsBundles
@@ -106,41 +54,16 @@ Returns a page of Widget Bundle objects available for current user. Widget Bundl
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the widget bundle title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title, tenantId] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **tenantOnly** | **Boolean**| Optional boolean parameter to include only tenant-level bundles without system | [optional] |
-| **fullSearch** | **Boolean**| Optional boolean parameter indicating extended search of widget bundles by description and by name / description of related widget types | [optional] |
-| **scadaFirst** | **Boolean**| Optional boolean parameter indicating whether to fetch widgets bundles with SCADA symbols first. Works only when fullSearch parameter is enabled | [optional] |
-
-### Return type
-
-[**PageDataWidgetsBundle**](PageDataWidgetsBundle.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the widget bundle title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, tenantId] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **tenantOnly** | **Boolean** | Optional boolean parameter to include only tenant-level bundles without system | [optional] |
+| **fullSearch** | **Boolean** | Optional boolean parameter indicating extended search of widget bundles by description and by name / description of related widget types | [optional] |
+| **scadaFirst** | **Boolean** | Optional boolean parameter indicating whether to fetch widgets bundles with SCADA symbols first. Works only when fullSearch parameter is enabled | [optional] |
 
 
 ## getWidgetsBundlesList
@@ -153,34 +76,9 @@ Requested widgets bundles must be system level or owned by tenant of the user wh
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **widgetsBundleIds** | [**List&lt;String&gt;**](String.md)| A list of widgets bundle ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;WidgetsBundle&gt;**](WidgetsBundle.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **widgetsBundleIds** | **List&lt;String&gt;** | A list of widgets bundle ids, separated by comma &#39;,&#39; | |
 
 
 ## getWidgetsBundlesV2
@@ -190,35 +88,6 @@ Requested widgets bundles must be system level or owned by tenant of the user wh
 Get all Widget Bundles (getWidgetsBundlesV2)
 
 Returns an array of Widget Bundle objects that are available for current user.Widget Bundle represents a group(bundle) of widgets. Widgets are grouped into bundle by type or use case.    Available for any authorized user. 
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;WidgetsBundle&gt;**](WidgetsBundle.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## saveWidgetsBundle
 
@@ -230,34 +99,9 @@ Create or update the Widget Bundle. Widget Bundle represents a group(bundle) of 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **widgetsBundle** | [**WidgetsBundle**](WidgetsBundle.md)|  | |
-
-### Return type
-
-[**WidgetsBundle**](WidgetsBundle.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **widgetsBundle** | **WidgetsBundle** |  | |
 
 
 ## updateWidgetsBundleWidgetFqns
@@ -270,35 +114,10 @@ Updates widgets bundle widgets list from widget type FQNs list.  Available for u
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **widgetsBundleId** | **String**| A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **widgetsBundleId** | **String** | A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **requestBody** | **List&lt;String&gt;** |  | |
 
 
 ## updateWidgetsBundleWidgetTypes
@@ -311,33 +130,8 @@ Updates widgets bundle widgets list.  Available for users with &#39;SYS_ADMIN&#3
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **widgetsBundleId** | **String**| A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **widgetsBundleId** | **String** | A string value representing the widget bundle id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **requestBody** | **List&lt;String&gt;** |  | |
 

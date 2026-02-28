@@ -1,18 +1,16 @@
 # TwoFactorAuthConfigControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteTwoFaAccountConfig**](TwoFactorAuthConfigControllerApi.md#deleteTwoFaAccountConfig) | **DELETE** /api/2fa/account/config | Delete 2FA account config (deleteTwoFaAccountConfig) |
-| [**generateTwoFaAccountConfig**](TwoFactorAuthConfigControllerApi.md#generateTwoFaAccountConfig) | **POST** /api/2fa/account/config/generate | Generate 2FA account config (generateTwoFaAccountConfig) |
-| [**getAccountTwoFaSettings**](TwoFactorAuthConfigControllerApi.md#getAccountTwoFaSettings) | **GET** /api/2fa/account/settings | Get account 2FA settings (getAccountTwoFaSettings) |
-| [**getAvailableTwoFaProviders1**](TwoFactorAuthConfigControllerApi.md#getAvailableTwoFaProviders1) | **GET** /api/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviders) |
-| [**getPlatformTwoFaSettings**](TwoFactorAuthConfigControllerApi.md#getPlatformTwoFaSettings) | **GET** /api/2fa/settings | Get platform 2FA settings (getPlatformTwoFaSettings) |
-| [**savePlatformTwoFaSettings**](TwoFactorAuthConfigControllerApi.md#savePlatformTwoFaSettings) | **POST** /api/2fa/settings | Save platform 2FA settings (savePlatformTwoFaSettings) |
-| [**submitTwoFaAccountConfig**](TwoFactorAuthConfigControllerApi.md#submitTwoFaAccountConfig) | **POST** /api/2fa/account/config/submit | Submit 2FA account config (submitTwoFaAccountConfig) |
-| [**updateTwoFaAccountConfig**](TwoFactorAuthConfigControllerApi.md#updateTwoFaAccountConfig) | **PUT** /api/2fa/account/config | Update 2FA account config (updateTwoFaAccountConfig) |
-| [**verifyAndSaveTwoFaAccountConfig**](TwoFactorAuthConfigControllerApi.md#verifyAndSaveTwoFaAccountConfig) | **POST** /api/2fa/account/config | Verify and save 2FA account config (verifyAndSaveTwoFaAccountConfig) |
+| [**deleteTwoFaAccountConfig**](#deleteTwoFaAccountConfig) | **DELETE** /api/2fa/account/config | Delete 2FA account config (deleteTwoFaAccountConfig) |
+| [**generateTwoFaAccountConfig**](#generateTwoFaAccountConfig) | **POST** /api/2fa/account/config/generate | Generate 2FA account config (generateTwoFaAccountConfig) |
+| [**getAccountTwoFaSettings**](#getAccountTwoFaSettings) | **GET** /api/2fa/account/settings | Get account 2FA settings (getAccountTwoFaSettings) |
+| [**getAvailableTwoFaProviders1**](#getAvailableTwoFaProviders1) | **GET** /api/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviders) |
+| [**getPlatformTwoFaSettings**](#getPlatformTwoFaSettings) | **GET** /api/2fa/settings | Get platform 2FA settings (getPlatformTwoFaSettings) |
+| [**savePlatformTwoFaSettings**](#savePlatformTwoFaSettings) | **POST** /api/2fa/settings | Save platform 2FA settings (savePlatformTwoFaSettings) |
+| [**submitTwoFaAccountConfig**](#submitTwoFaAccountConfig) | **POST** /api/2fa/account/config/submit | Submit 2FA account config (submitTwoFaAccountConfig) |
+| [**updateTwoFaAccountConfig**](#updateTwoFaAccountConfig) | **PUT** /api/2fa/account/config | Update 2FA account config (updateTwoFaAccountConfig) |
+| [**verifyAndSaveTwoFaAccountConfig**](#verifyAndSaveTwoFaAccountConfig) | **POST** /api/2fa/account/config | Verify and save 2FA account config (verifyAndSaveTwoFaAccountConfig) |
 
 
 
@@ -26,34 +24,9 @@ Delete 2FA config for a given 2FA provider type.  Returns whole account&#39;s 2F
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **providerType** | [**TwoFaProviderType**](.md)|  | [enum: TOTP, SMS, EMAIL, BACKUP_CODE] |
-
-### Return type
-
-[**AccountTwoFaSettings**](AccountTwoFaSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **providerType** | **TwoFaProviderType** |  | [enum: TOTP, SMS, EMAIL, BACKUP_CODE] |
 
 
 ## generateTwoFaAccountConfig
@@ -66,34 +39,9 @@ Generate new 2FA account config template for specified provider type.   For TOTP
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **providerType** | **String**| 2FA provider type to generate new account config for | |
-
-### Return type
-
-[**TwoFaAccountConfig**](TwoFaAccountConfig.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **providerType** | **String** | 2FA provider type to generate new account config for | |
 
 
 ## getAccountTwoFaSettings
@@ -104,35 +52,6 @@ Get account 2FA settings (getAccountTwoFaSettings)
 
 Get user&#39;s account 2FA configuration. Configuration contains configs for different 2FA providers.  Example: &#x60;&#x60;&#x60; {   \&quot;configs\&quot;: {     \&quot;EMAIL\&quot;: {       \&quot;providerType\&quot;: \&quot;EMAIL\&quot;,       \&quot;useByDefault\&quot;: true,       \&quot;email\&quot;: \&quot;tenant@thingsboard.org\&quot;     },     \&quot;TOTP\&quot;: {       \&quot;providerType\&quot;: \&quot;TOTP\&quot;,       \&quot;useByDefault\&quot;: false,       \&quot;authUrl\&quot;: \&quot;otpauth://totp/TB%202FA:tenant@thingsboard.org?issuer&#x3D;TB+2FA&amp;secret&#x3D;P6Z2TLYTASOGP6LCJZAD24ETT5DACNNX\&quot;     },     \&quot;SMS\&quot;: {       \&quot;providerType\&quot;: \&quot;SMS\&quot;,       \&quot;useByDefault\&quot;: false,       \&quot;phoneNumber\&quot;: \&quot;+380501253652\&quot;     }   } } &#x60;&#x60;&#x60;  Available for any authorized user. 
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**AccountTwoFaSettings**](AccountTwoFaSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## getAvailableTwoFaProviders1
 
 > List&lt;TwoFaProviderType&gt; getAvailableTwoFaProviders1()
@@ -141,35 +60,6 @@ Get available 2FA providers (getAvailableTwoFaProviders)
 
 Get the list of provider types available for user to use (the ones configured by tenant or sysadmin). Example of response: &#x60;&#x60;&#x60; [   \&quot;TOTP\&quot;,   \&quot;EMAIL\&quot;,   \&quot;SMS\&quot; ] &#x60;&#x60;&#x60;  Available for any authorized user. 
 
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;TwoFaProviderType&gt;**](TwoFaProviderType.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
-
 ## getPlatformTwoFaSettings
 
 > PlatformTwoFaSettings getPlatformTwoFaSettings()
@@ -177,35 +67,6 @@ This endpoint does not need any parameter.
 Get platform 2FA settings (getPlatformTwoFaSettings)
 
 Get platform settings for 2FA. The settings are described for savePlatformTwoFaSettings API method. If 2FA is not configured, then an empty response will be returned.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**PlatformTwoFaSettings**](PlatformTwoFaSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## savePlatformTwoFaSettings
 
@@ -217,34 +78,9 @@ Save 2FA settings for platform. The settings have following properties: - &#x60;
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **platformTwoFaSettings** | [**PlatformTwoFaSettings**](PlatformTwoFaSettings.md)|  | |
-
-### Return type
-
-[**PlatformTwoFaSettings**](PlatformTwoFaSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **platformTwoFaSettings** | **PlatformTwoFaSettings** |  | |
 
 
 ## submitTwoFaAccountConfig
@@ -257,34 +93,9 @@ Submit 2FA account config to prepare for a future verification. Basically, this 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **twoFaAccountConfig** | [**TwoFaAccountConfig**](TwoFaAccountConfig.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **twoFaAccountConfig** | **TwoFaAccountConfig** |  | |
 
 
 ## updateTwoFaAccountConfig
@@ -297,35 +108,10 @@ Update config for a given provider type.  Update request example: &#x60;&#x60;&#
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **providerType** | [**TwoFaProviderType**](.md)|  | [enum: TOTP, SMS, EMAIL, BACKUP_CODE] |
-| **twoFaAccountConfigUpdateRequest** | [**TwoFaAccountConfigUpdateRequest**](TwoFaAccountConfigUpdateRequest.md)|  | |
-
-### Return type
-
-[**AccountTwoFaSettings**](AccountTwoFaSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **providerType** | **TwoFaProviderType** |  | [enum: TOTP, SMS, EMAIL, BACKUP_CODE] |
+| **twoFaAccountConfigUpdateRequest** | **TwoFaAccountConfigUpdateRequest** |  | |
 
 
 ## verifyAndSaveTwoFaAccountConfig
@@ -338,33 +124,8 @@ Checks the verification code for submitted config, and if it is correct, saves t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **twoFaAccountConfig** | [**TwoFaAccountConfig**](TwoFaAccountConfig.md)|  | |
-| **verificationCode** | **String**|  | [optional] |
-
-### Return type
-
-[**AccountTwoFaSettings**](AccountTwoFaSettings.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **twoFaAccountConfig** | **TwoFaAccountConfig** |  | |
+| **verificationCode** | **String** |  | [optional] |
 

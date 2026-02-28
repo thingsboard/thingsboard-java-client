@@ -1,20 +1,18 @@
 # DeviceApiControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**claimDevice**](DeviceApiControllerApi.md#claimDevice) | **POST** /api/v1/{deviceToken}/claim | Save claiming information (claimDevice) |
-| [**getDeviceAttributes**](DeviceApiControllerApi.md#getDeviceAttributes) | **GET** /api/v1/{deviceToken}/attributes | Get attributes (getDeviceAttributes) |
-| [**getFirmware**](DeviceApiControllerApi.md#getFirmware) | **GET** /api/v1/{deviceToken}/firmware | Get Device Firmware (getFirmware) |
-| [**getSoftware**](DeviceApiControllerApi.md#getSoftware) | **GET** /api/v1/{deviceToken}/software | Get Device Software (getSoftware) |
-| [**postDeviceAttributes**](DeviceApiControllerApi.md#postDeviceAttributes) | **POST** /api/v1/{deviceToken}/attributes | Post attributes (postDeviceAttributes) |
-| [**postRpcRequest**](DeviceApiControllerApi.md#postRpcRequest) | **POST** /api/v1/{deviceToken}/rpc | Send the RPC command (postRpcRequest) |
-| [**postTelemetry**](DeviceApiControllerApi.md#postTelemetry) | **POST** /api/v1/{deviceToken}/telemetry | Post time series data (postTelemetry) |
-| [**provisionDevice**](DeviceApiControllerApi.md#provisionDevice) | **POST** /api/v1/provision | Provision new device (provisionDevice) |
-| [**replyToCommand**](DeviceApiControllerApi.md#replyToCommand) | **POST** /api/v1/{deviceToken}/rpc/{requestId} | Reply to RPC commands (replyToCommand) |
-| [**subscribeToAttributes**](DeviceApiControllerApi.md#subscribeToAttributes) | **GET** /api/v1/{deviceToken}/attributes/updates | Subscribe to attribute updates (subscribeToAttributes) (Deprecated) |
-| [**subscribeToCommands**](DeviceApiControllerApi.md#subscribeToCommands) | **GET** /api/v1/{deviceToken}/rpc | Subscribe to RPC commands (subscribeToCommands) (Deprecated) |
+| [**claimDevice**](#claimDevice) | **POST** /api/v1/{deviceToken}/claim | Save claiming information (claimDevice) |
+| [**getDeviceAttributes**](#getDeviceAttributes) | **GET** /api/v1/{deviceToken}/attributes | Get attributes (getDeviceAttributes) |
+| [**getFirmware**](#getFirmware) | **GET** /api/v1/{deviceToken}/firmware | Get Device Firmware (getFirmware) |
+| [**getSoftware**](#getSoftware) | **GET** /api/v1/{deviceToken}/software | Get Device Software (getSoftware) |
+| [**postDeviceAttributes**](#postDeviceAttributes) | **POST** /api/v1/{deviceToken}/attributes | Post attributes (postDeviceAttributes) |
+| [**postRpcRequest**](#postRpcRequest) | **POST** /api/v1/{deviceToken}/rpc | Send the RPC command (postRpcRequest) |
+| [**postTelemetry**](#postTelemetry) | **POST** /api/v1/{deviceToken}/telemetry | Post time series data (postTelemetry) |
+| [**provisionDevice**](#provisionDevice) | **POST** /api/v1/provision | Provision new device (provisionDevice) |
+| [**replyToCommand**](#replyToCommand) | **POST** /api/v1/{deviceToken}/rpc/{requestId} | Reply to RPC commands (replyToCommand) |
+| [**subscribeToAttributes**](#subscribeToAttributes) | **GET** /api/v1/{deviceToken}/attributes/updates | Subscribe to attribute updates (subscribeToAttributes) (Deprecated) |
+| [**subscribeToCommands**](#subscribeToCommands) | **GET** /api/v1/{deviceToken}/rpc | Subscribe to RPC commands (subscribeToCommands) (Deprecated) |
 
 
 
@@ -28,35 +26,10 @@ Saves the information required for user to claim the device. See more info about
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **body** | **String**|  | [optional] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **body** | **String** |  | [optional] |
 
 
 ## getDeviceAttributes
@@ -69,36 +42,11 @@ Returns all attributes that belong to device. Use optional &#39;clientKeys&#39; 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **clientKeys** | **String**| Comma separated key names for attribute with client scope | |
-| **sharedKeys** | **String**| Comma separated key names for attribute with shared scope | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **clientKeys** | **String** | Comma separated key names for attribute with client scope | |
+| **sharedKeys** | **String** | Comma separated key names for attribute with shared scope | |
 
 
 ## getFirmware
@@ -111,38 +59,13 @@ Downloads the current firmware package.When the platform initiates firmware upda
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **title** | **String**| Title of the firmware, corresponds to the value of &#39;fw_title&#39; attribute. | |
-| **version** | **String**| Version of the firmware, corresponds to the value of &#39;fw_version&#39; attribute. | |
-| **size** | **Integer**| Size of the chunk. Optional. Omit to download the entire file without chunks. | [optional] [default to 0] |
-| **chunk** | **Integer**| Index of the chunk. Optional. Omit to download the entire file without chunks. | [optional] [default to 0] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **title** | **String** | Title of the firmware, corresponds to the value of &#39;fw_title&#39; attribute. | |
+| **version** | **String** | Version of the firmware, corresponds to the value of &#39;fw_version&#39; attribute. | |
+| **size** | **Integer** | Size of the chunk. Optional. Omit to download the entire file without chunks. | [optional] [default to 0] |
+| **chunk** | **Integer** | Index of the chunk. Optional. Omit to download the entire file without chunks. | [optional] [default to 0] |
 
 
 ## getSoftware
@@ -155,38 +78,13 @@ Downloads the current software package.When the platform initiates software upda
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **title** | **String**| Title of the software, corresponds to the value of &#39;sw_title&#39; attribute. | |
-| **version** | **String**| Version of the software, corresponds to the value of &#39;sw_version&#39; attribute. | |
-| **size** | **Integer**| Size of the chunk. Optional. Omit to download the entire file without using  chunks. | [optional] [default to 0] |
-| **chunk** | **Integer**| Index of the chunk. Optional. Omit to download the entire file without using chunks. | [optional] [default to 0] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **title** | **String** | Title of the software, corresponds to the value of &#39;sw_title&#39; attribute. | |
+| **version** | **String** | Version of the software, corresponds to the value of &#39;sw_version&#39; attribute. | |
+| **size** | **Integer** | Size of the chunk. Optional. Omit to download the entire file without using  chunks. | [optional] [default to 0] |
+| **chunk** | **Integer** | Index of the chunk. Optional. Omit to download the entire file without using chunks. | [optional] [default to 0] |
 
 
 ## postDeviceAttributes
@@ -199,35 +97,10 @@ Post client attribute updates on behalf of device.   Example of the request:   &
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **body** | **String**| JSON with attribute key-value pairs. See API call description for example. | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **body** | **String** | JSON with attribute key-value pairs. See API call description for example. | |
 
 
 ## postRpcRequest
@@ -240,36 +113,10 @@ Send the RPC request to server. The request payload is a JSON document that cont
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **body** | **String**| The RPC request JSON | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | RPC request to server was sent to Rule Engine. |  -  |
-| **400** | Invalid structure of the request. |  -  |
-| **413** | Request payload too large. |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **body** | **String** | The RPC request JSON | |
 
 
 ## postTelemetry
@@ -282,35 +129,10 @@ Post time series data on behalf of device.   Example of the request: The request
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **body** | **String**|  | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **body** | **String** |  | |
 
 
 ## provisionDevice
@@ -323,34 +145,9 @@ Exchange the provision request to the device credentials. See more info about pr
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **String**| JSON with provision request. See API call description for example. | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **body** | **String** | JSON with provision request. See API call description for example. | |
 
 
 ## replyToCommand
@@ -363,37 +160,11 @@ Replies to server originated RPC command identified by &#39;requestId&#39; param
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **requestId** | **String**| RPC request id from the incoming RPC request | |
-| **body** | **String**| Reply to the RPC request, JSON. For example: {\&quot;status\&quot;:\&quot;success\&quot;} | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | RPC reply to command request was sent to Core. |  -  |
-| **400** | Invalid structure of the request. |  -  |
-| **413** | Request payload is too large. |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **requestId** | **String** | RPC request id from the incoming RPC request | |
+| **body** | **String** | Reply to the RPC request, JSON. For example: {\&quot;status\&quot;:\&quot;success\&quot;} | |
 
 
 ## subscribeToAttributes
@@ -406,35 +177,10 @@ Subscribes to client and shared scope attribute updates using http long polling.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **timeout** | **Long**| Optional timeout of the long poll. Typically less then 60 seconds, since limited on the server side. | [optional] [default to 0] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **timeout** | **Long** | Optional timeout of the long poll. Typically less then 60 seconds, since limited on the server side. | [optional] [default to 0] |
 
 
 ## subscribeToCommands
@@ -447,33 +193,8 @@ Subscribes to RPC commands using http long polling. Deprecated, since long polli
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String**| Your device access token. | |
-| **timeout** | **Long**| Optional timeout of the long poll. Typically less then 60 seconds, since limited on the server side. | [optional] [default to 0] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceToken** | **String** | Your device access token. | |
+| **timeout** | **Long** | Optional timeout of the long poll. Typically less then 60 seconds, since limited on the server side. | [optional] [default to 0] |
 

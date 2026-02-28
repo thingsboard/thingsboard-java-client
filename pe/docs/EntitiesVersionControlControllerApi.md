@@ -1,21 +1,19 @@
 # EntitiesVersionControlControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**compareEntityDataToVersion**](EntitiesVersionControlControllerApi.md#compareEntityDataToVersion) | **GET** /api/entities/vc/diff/{entityType}/{internalEntityUuid} | Compare entity data to version (compareEntityDataToVersion) |
-| [**getEntityDataInfo**](EntitiesVersionControlControllerApi.md#getEntityDataInfo) | **GET** /api/entities/vc/info/{versionId}/{entityType}/{externalEntityUuid} | Get entity data info (getEntityDataInfo) |
-| [**getVersionCreateRequestStatus**](EntitiesVersionControlControllerApi.md#getVersionCreateRequestStatus) | **GET** /api/entities/vc/version/{requestId}/status | Get version create request status (getVersionCreateRequestStatus) |
-| [**getVersionLoadRequestStatus**](EntitiesVersionControlControllerApi.md#getVersionLoadRequestStatus) | **GET** /api/entities/vc/entity/{requestId}/status | Get version load request status (getVersionLoadRequestStatus) |
-| [**listAllEntitiesAtVersion**](EntitiesVersionControlControllerApi.md#listAllEntitiesAtVersion) | **GET** /api/entities/vc/entity/{versionId} | List all entities at version (listAllEntitiesAtVersion) |
-| [**listBranches**](EntitiesVersionControlControllerApi.md#listBranches) | **GET** /api/entities/vc/branches | List branches (listBranches) |
-| [**listEntitiesAtVersion**](EntitiesVersionControlControllerApi.md#listEntitiesAtVersion) | **GET** /api/entities/vc/entity/{entityType}/{versionId} | List entities at version (listEntitiesAtVersion) |
-| [**listEntityTypeVersions**](EntitiesVersionControlControllerApi.md#listEntityTypeVersions) | **GET** /api/entities/vc/version/{entityType} | List entity type versions (listEntityTypeVersions) |
-| [**listEntityVersions**](EntitiesVersionControlControllerApi.md#listEntityVersions) | **GET** /api/entities/vc/version/{entityType}/{externalEntityUuid} | List entity versions (listEntityVersions) |
-| [**listVersions**](EntitiesVersionControlControllerApi.md#listVersions) | **GET** /api/entities/vc/version | List all versions (listVersions) |
-| [**loadEntitiesVersion**](EntitiesVersionControlControllerApi.md#loadEntitiesVersion) | **POST** /api/entities/vc/entity | Load entities version (loadEntitiesVersion) |
-| [**saveEntitiesVersion**](EntitiesVersionControlControllerApi.md#saveEntitiesVersion) | **POST** /api/entities/vc/version | Save entities version (saveEntitiesVersion) |
+| [**compareEntityDataToVersion**](#compareEntityDataToVersion) | **GET** /api/entities/vc/diff/{entityType}/{internalEntityUuid} | Compare entity data to version (compareEntityDataToVersion) |
+| [**getEntityDataInfo**](#getEntityDataInfo) | **GET** /api/entities/vc/info/{versionId}/{entityType}/{externalEntityUuid} | Get entity data info (getEntityDataInfo) |
+| [**getVersionCreateRequestStatus**](#getVersionCreateRequestStatus) | **GET** /api/entities/vc/version/{requestId}/status | Get version create request status (getVersionCreateRequestStatus) |
+| [**getVersionLoadRequestStatus**](#getVersionLoadRequestStatus) | **GET** /api/entities/vc/entity/{requestId}/status | Get version load request status (getVersionLoadRequestStatus) |
+| [**listAllEntitiesAtVersion**](#listAllEntitiesAtVersion) | **GET** /api/entities/vc/entity/{versionId} | List all entities at version (listAllEntitiesAtVersion) |
+| [**listBranches**](#listBranches) | **GET** /api/entities/vc/branches | List branches (listBranches) |
+| [**listEntitiesAtVersion**](#listEntitiesAtVersion) | **GET** /api/entities/vc/entity/{entityType}/{versionId} | List entities at version (listEntitiesAtVersion) |
+| [**listEntityTypeVersions**](#listEntityTypeVersions) | **GET** /api/entities/vc/version/{entityType} | List entity type versions (listEntityTypeVersions) |
+| [**listEntityVersions**](#listEntityVersions) | **GET** /api/entities/vc/version/{entityType}/{externalEntityUuid} | List entity versions (listEntityVersions) |
+| [**listVersions**](#listVersions) | **GET** /api/entities/vc/version | List all versions (listVersions) |
+| [**loadEntitiesVersion**](#loadEntitiesVersion) | **POST** /api/entities/vc/entity | Load entities version (loadEntitiesVersion) |
+| [**saveEntitiesVersion**](#saveEntitiesVersion) | **POST** /api/entities/vc/version | Save entities version (saveEntitiesVersion) |
 
 
 
@@ -29,36 +27,11 @@ Returns an object with current entity data and the one at a specific version. En
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | [**EntityType**](.md)| A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
-| **internalEntityUuid** | **UUID**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **versionId** | **String**| Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
-
-### Return type
-
-[**EntityDataDiff**](EntityDataDiff.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **EntityType** | A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
+| **internalEntityUuid** | **UUID** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **versionId** | **String** | Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
 
 
 ## getEntityDataInfo
@@ -71,37 +44,12 @@ Retrieves short info about the remote entity by external id at a concrete versio
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **versionId** | **String**| Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
-| **entityType** | [**EntityType**](.md)| A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
-| **externalEntityUuid** | **UUID**| A string value representing external entity id | |
-| **internalEntityId** | **UUID**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-[**EntityDataInfo**](EntityDataInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **versionId** | **String** | Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
+| **entityType** | **EntityType** | A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
+| **externalEntityUuid** | **UUID** | A string value representing external entity id | |
+| **internalEntityId** | **UUID** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## getVersionCreateRequestStatus
@@ -114,34 +62,9 @@ Returns the status of previously made version create request.   This status cont
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **UUID**| A string value representing the version control request id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**VersionCreationResult**](VersionCreationResult.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **requestId** | **UUID** | A string value representing the version control request id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getVersionLoadRequestStatus
@@ -154,34 +77,9 @@ Returns the status of previously made version load request. The structure contai
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **requestId** | **UUID**| A string value representing the version control request id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**VersionLoadResult**](VersionLoadResult.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **requestId** | **UUID** | A string value representing the version control request id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## listAllEntitiesAtVersion
@@ -194,34 +92,9 @@ Returns a list of all remote entities available in a specific version. Response 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **versionId** | **String**| Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
-
-### Return type
-
-[**List&lt;VersionedEntityInfo&gt;**](VersionedEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **versionId** | **String** | Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
 
 
 ## listBranches
@@ -231,35 +104,6 @@ Returns a list of all remote entities available in a specific version. Response 
 List branches (listBranches)
 
 Lists branches available in the remote repository.   Response example:  &#x60;&#x60;&#x60;json [   {     \&quot;name\&quot;: \&quot;master\&quot;,     \&quot;default\&quot;: true   },   {     \&quot;name\&quot;: \&quot;dev\&quot;,     \&quot;default\&quot;: false   },   {     \&quot;name\&quot;: \&quot;dev-2\&quot;,     \&quot;default\&quot;: false   } ] &#x60;&#x60;&#x60;
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;BranchInfo&gt;**](BranchInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## listEntitiesAtVersion
 
@@ -271,35 +115,10 @@ Returns a list of remote entities of a specific entity type that are available a
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | [**EntityType**](.md)| A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
-| **versionId** | **String**| Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
-
-### Return type
-
-[**List&lt;VersionedEntityInfo&gt;**](VersionedEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **EntityType** | A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
+| **versionId** | **String** | Version id, for example fd82625bdd7d6131cf8027b44ee967012ecaf990. Represents commit hash. | |
 
 
 ## listEntityTypeVersions
@@ -312,40 +131,15 @@ Returns list of versions of an entity type in a branch. This is a collected list
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | [**EntityType**](.md)| A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
-| **branch** | **String**| The name of the working branch, for example &#39;master&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the entity version name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: timestamp] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityVersion**](PageDataEntityVersion.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **EntityType** | A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
+| **branch** | **String** | The name of the working branch, for example &#39;master&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the entity version name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: timestamp] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## listEntityVersions
@@ -358,42 +152,17 @@ Returns list of versions for a specific entity in a concrete branch.  You need t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | [**EntityType**](.md)| A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
-| **externalEntityUuid** | **UUID**| A string value representing external entity id. This is &#x60;externalId&#x60; property of an entity, or otherwise if not set - simply id of this entity. | |
-| **branch** | **String**| The name of the working branch, for example &#39;master&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **internalEntityId** | **UUID**|  | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the entity version name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: timestamp] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityVersion**](PageDataEntityVersion.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **EntityType** | A string value representing the entity type. For example, &#39;DEVICE&#39; | [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
+| **externalEntityUuid** | **UUID** | A string value representing external entity id. This is &#x60;externalId&#x60; property of an entity, or otherwise if not set - simply id of this entity. | |
+| **branch** | **String** | The name of the working branch, for example &#39;master&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **internalEntityId** | **UUID** |  | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the entity version name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: timestamp] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## listVersions
@@ -406,39 +175,14 @@ Lists all available versions in a branch for all entity types.  If specified bra
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **branch** | **String**| The name of the working branch, for example &#39;master&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the entity version name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: timestamp] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityVersion**](PageDataEntityVersion.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **branch** | **String** | The name of the working branch, for example &#39;master&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the entity version name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: timestamp] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## loadEntitiesVersion
@@ -451,34 +195,9 @@ Loads specific version of remote entities (or single entity) by request. Support
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **versionLoadRequest** | [**VersionLoadRequest**](VersionLoadRequest.md)|  | |
-
-### Return type
-
-[**UUID**](UUID.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **versionLoadRequest** | **VersionLoadRequest** |  | |
 
 
 ## saveEntitiesVersion
@@ -491,32 +210,7 @@ Creates a new version of entities (or a single entity) by request. Supported ent
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **versionCreateRequest** | [**VersionCreateRequest**](VersionCreateRequest.md)|  | |
-
-### Return type
-
-[**UUID**](UUID.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **versionCreateRequest** | **VersionCreateRequest** |  | |
 

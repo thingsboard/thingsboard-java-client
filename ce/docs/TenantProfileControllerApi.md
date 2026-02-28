@@ -1,18 +1,16 @@
 # TenantProfileControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteTenantProfile**](TenantProfileControllerApi.md#deleteTenantProfile) | **DELETE** /api/tenantProfile/{tenantProfileId} | Delete Tenant Profile (deleteTenantProfile) |
-| [**getDefaultTenantProfileInfo**](TenantProfileControllerApi.md#getDefaultTenantProfileInfo) | **GET** /api/tenantProfileInfo/default | Get default Tenant Profile Info (getDefaultTenantProfileInfo) |
-| [**getTenantProfileById**](TenantProfileControllerApi.md#getTenantProfileById) | **GET** /api/tenantProfile/{tenantProfileId} | Get Tenant Profile (getTenantProfileById) |
-| [**getTenantProfileInfoById**](TenantProfileControllerApi.md#getTenantProfileInfoById) | **GET** /api/tenantProfileInfo/{tenantProfileId} | Get Tenant Profile Info (getTenantProfileInfoById) |
-| [**getTenantProfileInfos**](TenantProfileControllerApi.md#getTenantProfileInfos) | **GET** /api/tenantProfileInfos | Get Tenant Profiles Info (getTenantProfileInfos) |
-| [**getTenantProfileList**](TenantProfileControllerApi.md#getTenantProfileList) | **GET** /api/tenantProfiles/list | Get Tenant Profile list (getTenantProfileList) |
-| [**getTenantProfiles**](TenantProfileControllerApi.md#getTenantProfiles) | **GET** /api/tenantProfiles | Get Tenant Profiles (getTenantProfiles) |
-| [**saveTenantProfile**](TenantProfileControllerApi.md#saveTenantProfile) | **POST** /api/tenantProfile | Create Or update Tenant Profile (saveTenantProfile) |
-| [**setDefaultTenantProfile**](TenantProfileControllerApi.md#setDefaultTenantProfile) | **POST** /api/tenantProfile/{tenantProfileId}/default | Make tenant profile default (setDefaultTenantProfile) |
+| [**deleteTenantProfile**](#deleteTenantProfile) | **DELETE** /api/tenantProfile/{tenantProfileId} | Delete Tenant Profile (deleteTenantProfile) |
+| [**getDefaultTenantProfileInfo**](#getDefaultTenantProfileInfo) | **GET** /api/tenantProfileInfo/default | Get default Tenant Profile Info (getDefaultTenantProfileInfo) |
+| [**getTenantProfileById**](#getTenantProfileById) | **GET** /api/tenantProfile/{tenantProfileId} | Get Tenant Profile (getTenantProfileById) |
+| [**getTenantProfileInfoById**](#getTenantProfileInfoById) | **GET** /api/tenantProfileInfo/{tenantProfileId} | Get Tenant Profile Info (getTenantProfileInfoById) |
+| [**getTenantProfileInfos**](#getTenantProfileInfos) | **GET** /api/tenantProfileInfos | Get Tenant Profiles Info (getTenantProfileInfos) |
+| [**getTenantProfileList**](#getTenantProfileList) | **GET** /api/tenantProfiles/list | Get Tenant Profile list (getTenantProfileList) |
+| [**getTenantProfiles**](#getTenantProfiles) | **GET** /api/tenantProfiles | Get Tenant Profiles (getTenantProfiles) |
+| [**saveTenantProfile**](#saveTenantProfile) | **POST** /api/tenantProfile | Create Or update Tenant Profile (saveTenantProfile) |
+| [**setDefaultTenantProfile**](#setDefaultTenantProfile) | **POST** /api/tenantProfile/{tenantProfileId}/default | Make tenant profile default (setDefaultTenantProfile) |
 
 
 
@@ -26,34 +24,9 @@ Deletes the tenant profile. Referencing non-existing tenant profile Id will caus
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String**| A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getDefaultTenantProfileInfo
@@ -63,35 +36,6 @@ null (empty response body)
 Get default Tenant Profile Info (getDefaultTenantProfileInfo)
 
 Fetch the default Tenant Profile Info object based. Tenant Profile Info is a lightweight object that contains only id and name of the profile.   Available for users with &#39;SYS_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**EntityInfo**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getTenantProfileById
 
@@ -103,34 +47,9 @@ Fetch the Tenant Profile object based on the provided Tenant Profile Id.   Avail
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String**| A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**TenantProfile**](TenantProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getTenantProfileInfoById
@@ -143,34 +62,9 @@ Fetch the Tenant Profile Info object based on the provided Tenant Profile Id. Te
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String**| A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**EntityInfo**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getTenantProfileInfos
@@ -183,38 +77,13 @@ Returns a page of tenant profile info objects registered in the platform. Tenant
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the tenant profile name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: id, name] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataEntityInfo**](PageDataEntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the tenant profile name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: id, name] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getTenantProfileList
@@ -225,34 +94,9 @@ Get Tenant Profile list (getTenantProfileList)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ids** | [**List&lt;String&gt;**](String.md)| Comma-separated list of tenant profile ids | |
-
-### Return type
-
-[**List&lt;TenantProfile&gt;**](TenantProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ids** | **List&lt;String&gt;** | Comma-separated list of tenant profile ids | |
 
 
 ## getTenantProfiles
@@ -265,38 +109,13 @@ Returns a page of tenant profiles registered in the platform. You can specify pa
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the tenant profile name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, description, isDefault] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataTenantProfile**](PageDataTenantProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the tenant profile name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, description, isDefault] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## saveTenantProfile
@@ -309,34 +128,9 @@ Create or update the Tenant Profile. When creating tenant profile, platform gene
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfile** | [**TenantProfile**](TenantProfile.md)|  | |
-
-### Return type
-
-[**TenantProfile**](TenantProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tenantProfile** | **TenantProfile** |  | |
 
 
 ## setDefaultTenantProfile
@@ -349,32 +143,7 @@ Makes specified tenant profile to be default. Referencing non-existing tenant pr
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tenantProfileId** | **String**| A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**TenantProfile**](TenantProfile.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tenantProfileId** | **String** | A string value representing the tenant profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 

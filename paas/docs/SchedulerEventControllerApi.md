@@ -1,23 +1,21 @@
 # SchedulerEventControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignSchedulerEventToEdge**](SchedulerEventControllerApi.md#assignSchedulerEventToEdge) | **POST** /api/edge/{edgeId}/schedulerEvent/{schedulerEventId} | Assign scheduler event to edge (assignSchedulerEventToEdge) |
-| [**deleteSchedulerEvent**](SchedulerEventControllerApi.md#deleteSchedulerEvent) | **DELETE** /api/schedulerEvent/{schedulerEventId} | Delete Scheduler Event (deleteSchedulerEvent) |
-| [**enableSchedulerEvent**](SchedulerEventControllerApi.md#enableSchedulerEvent) | **PUT** /api/schedulerEvent/{schedulerEventId}/enabled/{enabledValue} | Enable or disable Scheduler Event (enableSchedulerEvent) |
-| [**getAllEdgeSchedulerEvents**](SchedulerEventControllerApi.md#getAllEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/allSchedulerEvents | Get All Edge Scheduler Events (getAllEdgeSchedulerEvents) |
-| [**getAllSchedulerEventsV2**](SchedulerEventControllerApi.md#getAllSchedulerEventsV2) | **GET** /api/schedulerEvents/all | Get all scheduler events (getAllSchedulerEventsV2) |
-| [**getEdgeSchedulerEvents**](SchedulerEventControllerApi.md#getEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/schedulerEvents | Get Edge Scheduler Events (getEdgeSchedulerEvents) |
-| [**getScheduledReportEvents**](SchedulerEventControllerApi.md#getScheduledReportEvents) | **GET** /api/scheduledReports | Get Scheduled Report Events (getScheduledReportEvents) |
-| [**getSchedulerEventById**](SchedulerEventControllerApi.md#getSchedulerEventById) | **GET** /api/schedulerEvent/{schedulerEventId} | Get Scheduler Event (getSchedulerEventById) |
-| [**getSchedulerEventInfoById**](SchedulerEventControllerApi.md#getSchedulerEventInfoById) | **GET** /api/schedulerEvent/info/{schedulerEventId} | Get Scheduler Event With Customer Info (getSchedulerEventInfoById) |
-| [**getSchedulerEvents**](SchedulerEventControllerApi.md#getSchedulerEvents) | **GET** /api/schedulerEvents | Get scheduler events (getSchedulerEvents) |
-| [**getSchedulerEventsByIdsV2**](SchedulerEventControllerApi.md#getSchedulerEventsByIdsV2) | **GET** /api/schedulerEvents/list | Get Scheduler Events By Ids (getSchedulerEventsByIdsV2) |
-| [**getSchedulerEventsByRange**](SchedulerEventControllerApi.md#getSchedulerEventsByRange) | **GET** /api/schedulerEvents/startTime/{startTime}/endTime/{endTime} | Get scheduler events (getSchedulerEventsByRange) |
-| [**saveSchedulerEvent**](SchedulerEventControllerApi.md#saveSchedulerEvent) | **POST** /api/schedulerEvent | Save Scheduler Event (saveSchedulerEvent) |
-| [**unassignSchedulerEventFromEdge**](SchedulerEventControllerApi.md#unassignSchedulerEventFromEdge) | **DELETE** /api/edge/{edgeId}/schedulerEvent/{schedulerEventId} | Unassign scheduler event from edge (unassignSchedulerEventFromEdge) |
+| [**assignSchedulerEventToEdge**](#assignSchedulerEventToEdge) | **POST** /api/edge/{edgeId}/schedulerEvent/{schedulerEventId} | Assign scheduler event to edge (assignSchedulerEventToEdge) |
+| [**deleteSchedulerEvent**](#deleteSchedulerEvent) | **DELETE** /api/schedulerEvent/{schedulerEventId} | Delete Scheduler Event (deleteSchedulerEvent) |
+| [**enableSchedulerEvent**](#enableSchedulerEvent) | **PUT** /api/schedulerEvent/{schedulerEventId}/enabled/{enabledValue} | Enable or disable Scheduler Event (enableSchedulerEvent) |
+| [**getAllEdgeSchedulerEvents**](#getAllEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/allSchedulerEvents | Get All Edge Scheduler Events (getAllEdgeSchedulerEvents) |
+| [**getAllSchedulerEventsV2**](#getAllSchedulerEventsV2) | **GET** /api/schedulerEvents/all | Get all scheduler events (getAllSchedulerEventsV2) |
+| [**getEdgeSchedulerEvents**](#getEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/schedulerEvents | Get Edge Scheduler Events (getEdgeSchedulerEvents) |
+| [**getScheduledReportEvents**](#getScheduledReportEvents) | **GET** /api/scheduledReports | Get Scheduled Report Events (getScheduledReportEvents) |
+| [**getSchedulerEventById**](#getSchedulerEventById) | **GET** /api/schedulerEvent/{schedulerEventId} | Get Scheduler Event (getSchedulerEventById) |
+| [**getSchedulerEventInfoById**](#getSchedulerEventInfoById) | **GET** /api/schedulerEvent/info/{schedulerEventId} | Get Scheduler Event With Customer Info (getSchedulerEventInfoById) |
+| [**getSchedulerEvents**](#getSchedulerEvents) | **GET** /api/schedulerEvents | Get scheduler events (getSchedulerEvents) |
+| [**getSchedulerEventsByIdsV2**](#getSchedulerEventsByIdsV2) | **GET** /api/schedulerEvents/list | Get Scheduler Events By Ids (getSchedulerEventsByIdsV2) |
+| [**getSchedulerEventsByRange**](#getSchedulerEventsByRange) | **GET** /api/schedulerEvents/startTime/{startTime}/endTime/{endTime} | Get scheduler events (getSchedulerEventsByRange) |
+| [**saveSchedulerEvent**](#saveSchedulerEvent) | **POST** /api/schedulerEvent | Save Scheduler Event (saveSchedulerEvent) |
+| [**unassignSchedulerEventFromEdge**](#unassignSchedulerEventFromEdge) | **DELETE** /api/edge/{edgeId}/schedulerEvent/{schedulerEventId} | Unassign scheduler event from edge (unassignSchedulerEventFromEdge) |
 
 
 
@@ -31,35 +29,10 @@ Creates assignment of an existing scheduler event to an instance of The Edge. As
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **schedulerEventId** | **String**| A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**SchedulerEventInfo**](SchedulerEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## deleteSchedulerEvent
@@ -72,34 +45,9 @@ Deletes the scheduler event. Referencing non-existing Scheduler Event Id will ca
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String**| A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## enableSchedulerEvent
@@ -112,35 +60,10 @@ Updates scheduler event with enabled &#x3D; true/false. Scheduler Event extends 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String**| A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **enabledValue** | **Boolean**| Enabled or disabled scheduler | |
-
-### Return type
-
-[**SchedulerEvent**](SchedulerEvent.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **enabledValue** | **Boolean** | Enabled or disabled scheduler | |
 
 
 ## getAllEdgeSchedulerEvents
@@ -153,34 +76,9 @@ Fetch the list of Scheduler Event Info objects based on the provided Edge entity
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**List&lt;SchedulerEventInfo&gt;**](SchedulerEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAllSchedulerEventsV2
@@ -193,34 +91,9 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **type** | **String**| A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
-
-### Return type
-
-[**List&lt;SchedulerEventWithCustomerInfo&gt;**](SchedulerEventWithCustomerInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **type** | **String** | A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
 
 
 ## getEdgeSchedulerEvents
@@ -233,39 +106,14 @@ Returns a page of  Scheduler Events Info objects based on the provided Edge enti
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the scheduler event name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataSchedulerEventInfo**](PageDataSchedulerEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the scheduler event name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getScheduledReportEvents
@@ -278,41 +126,16 @@ Get Scheduled Report Events (getScheduledReportEvents)
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **reportTemplateId** | **UUID**| Report template id | [optional] |
-| **userId** | **UUID**| The user used for report generation. | [optional] |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the scheduler event name or customer title. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataScheduledReportInfo**](PageDataScheduledReportInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **reportTemplateId** | **UUID** | Report template id | [optional] |
+| **userId** | **UUID** | The user used for report generation. | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the scheduler event name or customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getSchedulerEventById
@@ -325,34 +148,9 @@ Fetch the SchedulerEvent object based on the provided scheduler event Id. Schedu
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String**| A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**SchedulerEvent**](SchedulerEvent.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getSchedulerEventInfoById
@@ -365,34 +163,9 @@ Fetch the SchedulerEventWithCustomerInfo object based on the provided scheduler 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventId** | **String**| A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**SchedulerEventWithCustomerInfo**](SchedulerEventWithCustomerInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getSchedulerEvents
@@ -405,40 +178,15 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on event&#39;s name, type, or customer&#39;s name | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-| **type** | **String**| A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
-| **edgeId** | **UUID**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-
-### Return type
-
-[**PageDataSchedulerEventWithCustomerInfo**](PageDataSchedulerEventWithCustomerInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on event&#39;s name, type, or customer&#39;s name | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
+| **type** | **String** | A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
+| **edgeId** | **UUID** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
 
 
 ## getSchedulerEventsByIdsV2
@@ -451,34 +199,9 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEventIds** | [**List&lt;String&gt;**](String.md)| A list of scheduler event ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;SchedulerEventInfo&gt;**](SchedulerEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **schedulerEventIds** | **List&lt;String&gt;** | A list of scheduler event ids, separated by comma &#39;,&#39; | |
 
 
 ## getSchedulerEventsByRange
@@ -491,38 +214,13 @@ Retrieves scheduler events filtering by event run time. Requested scheduler even
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **startTime** | **Long**| Start time filter in milliseconds for scheduler event run time | |
-| **endTime** | **Long**| End time filter in milliseconds for scheduler event run time | |
-| **type** | **String**| A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
-| **edgeId** | **UUID**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on event&#39;s name, type, or customer&#39;s name | [optional] |
-
-### Return type
-
-[**List&lt;SchedulerEventWithCustomerInfo&gt;**](SchedulerEventWithCustomerInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **startTime** | **Long** | Start time filter in milliseconds for scheduler event run time | |
+| **endTime** | **Long** | End time filter in milliseconds for scheduler event run time | |
+| **type** | **String** | A string value representing the scheduler type. For example, &#39;generateReport&#39; | [optional] |
+| **edgeId** | **UUID** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | [optional] |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on event&#39;s name, type, or customer&#39;s name | [optional] |
 
 
 ## saveSchedulerEvent
@@ -535,34 +233,9 @@ Creates or Updates scheduler event. Scheduler Event extends Scheduler Event Info
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **schedulerEvent** | [**SchedulerEvent**](SchedulerEvent.md)|  | |
-
-### Return type
-
-[**SchedulerEvent**](SchedulerEvent.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **schedulerEvent** | **SchedulerEvent** |  | |
 
 
 ## unassignSchedulerEventFromEdge
@@ -575,33 +248,8 @@ Clears assignment of the scheduler event to the edge. Unassignment works in asyn
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **schedulerEventId** | **String**| A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**SchedulerEventInfo**](SchedulerEventInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **schedulerEventId** | **String** | A string value representing the scheduler id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 

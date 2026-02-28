@@ -1,18 +1,16 @@
 # ReportControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createReport**](ReportControllerApi.md#createReport) | **POST** /api/v2/report | createReport |
-| [**deleteReport**](ReportControllerApi.md#deleteReport) | **DELETE** /api/v2/report/{reportId} | Delete Report (deleteReport) |
-| [**downloadReport**](ReportControllerApi.md#downloadReport) | **GET** /api/v2/report/{reportId}/download | downloadReport |
-| [**getReportById**](ReportControllerApi.md#getReportById) | **GET** /api/v2/report/{reportId} | Get Report (getReportById) |
-| [**getReportInfos**](ReportControllerApi.md#getReportInfos) | **GET** /api/v2/reportInfos/all | getReportInfos |
-| [**getReports**](ReportControllerApi.md#getReports) | **GET** /api/v2/reports | getReports |
-| [**getReports1**](ReportControllerApi.md#getReports1) | **GET** /api/v2/reportInfos | getReports |
-| [**requestReport**](ReportControllerApi.md#requestReport) | **POST** /api/v2/report/request | requestReport |
-| [**testReportAndDownload**](ReportControllerApi.md#testReportAndDownload) | **POST** /api/v2/report/test | Download test report (downloadTestReport) |
+| [**createReport**](#createReport) | **POST** /api/v2/report | createReport |
+| [**deleteReport**](#deleteReport) | **DELETE** /api/v2/report/{reportId} | Delete Report (deleteReport) |
+| [**downloadReport**](#downloadReport) | **GET** /api/v2/report/{reportId}/download | downloadReport |
+| [**getReportById**](#getReportById) | **GET** /api/v2/report/{reportId} | Get Report (getReportById) |
+| [**getReportInfos**](#getReportInfos) | **GET** /api/v2/reportInfos/all | getReportInfos |
+| [**getReports**](#getReports) | **GET** /api/v2/reports | getReports |
+| [**getReports1**](#getReports1) | **GET** /api/v2/reportInfos | getReports |
+| [**requestReport**](#requestReport) | **POST** /api/v2/report/request | requestReport |
+| [**testReportAndDownload**](#testReportAndDownload) | **POST** /api/v2/report/test | Download test report (downloadTestReport) |
 
 
 
@@ -24,34 +22,9 @@ createReport
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createReportRequest** | [**CreateReportRequest**](CreateReportRequest.md)|  | [optional] |
-
-### Return type
-
-[**Report**](Report.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **createReportRequest** | **CreateReportRequest** |  | [optional] |
 
 
 ## deleteReport
@@ -64,34 +37,9 @@ Deletes the report. Referencing non-existing Report Id will cause &#39;Not Found
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**| A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportId** | **String** | A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## downloadReport
@@ -102,34 +50,9 @@ downloadReport
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportId** | **UUID**|  | |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportId** | **UUID** |  | |
 
 
 ## getReportById
@@ -142,34 +65,9 @@ Fetch the Report object based on the provided report Id. The platform uses Repor
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportId** | **String**| A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Report**](Report.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportId** | **String** | A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getReportInfos
@@ -180,41 +78,16 @@ getReportInfos
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **reportTemplateId** | **UUID**| Report template id | [optional] |
-| **userId** | **UUID**| The user used for report generation. | [optional] |
-| **includeCustomers** | **Boolean**| Include customer or sub-customer entities | [optional] |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-
-### Return type
-
-[**PageDataReportInfo**](PageDataReportInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **reportTemplateId** | **UUID** | Report template id | [optional] |
+| **userId** | **UUID** | The user used for report generation. | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
 
 
 ## getReports
@@ -225,38 +98,13 @@ getReports
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-
-### Return type
-
-[**PageDataReport**](PageDataReport.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
 
 
 ## getReports1
@@ -267,34 +115,9 @@ getReports
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **strReportIds** | [**List&lt;String&gt;**](String.md)| A list of report ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;ReportInfo&gt;**](ReportInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **strReportIds** | **List&lt;String&gt;** | A list of report ids, separated by comma &#39;,&#39; | |
 
 
 ## requestReport
@@ -305,34 +128,9 @@ requestReport
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportRequest** | [**ReportRequest**](ReportRequest.md)|  | |
-
-### Return type
-
-[**Job**](Job.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportRequest** | **ReportRequest** |  | |
 
 
 ## testReportAndDownload
@@ -345,32 +143,7 @@ Generate and download test report.  Available for users with &#39;TENANT_ADMIN&#
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **reportRequest** | [**ReportRequest**](ReportRequest.md)|  | |
-
-### Return type
-
-[**File**](File.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **reportRequest** | **ReportRequest** |  | |
 

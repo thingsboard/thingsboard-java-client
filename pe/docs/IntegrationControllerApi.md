@@ -1,24 +1,22 @@
 # IntegrationControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignIntegrationToEdge**](IntegrationControllerApi.md#assignIntegrationToEdge) | **POST** /api/edge/{edgeId}/integration/{integrationId} | Assign integration to edge (assignIntegrationToEdge) |
-| [**checkIntegrationConnection**](IntegrationControllerApi.md#checkIntegrationConnection) | **POST** /api/integration/check | Check integration connectivity (checkIntegrationConnection) |
-| [**deleteIntegration**](IntegrationControllerApi.md#deleteIntegration) | **DELETE** /api/integration/{integrationId} | Delete integration (deleteIntegration) |
-| [**findAllRelatedEdgesMissingAttributes**](IntegrationControllerApi.md#findAllRelatedEdgesMissingAttributes) | **GET** /api/edge/integration/{integrationId}/allMissingAttributes | Find missing attributes for all related edges (findAllRelatedEdgesMissingAttributes) |
-| [**findEdgeMissingAttributes**](IntegrationControllerApi.md#findEdgeMissingAttributes) | **GET** /api/edge/integration/{edgeId}/missingAttributes | Find edge missing attributes for assigned integrations (findEdgeMissingAttributes) |
-| [**getEdgeIntegrationInfos**](IntegrationControllerApi.md#getEdgeIntegrationInfos) | **GET** /api/edge/{edgeId}/integrationInfos | Get Edge Integrations (getEdgeIntegrationInfos) |
-| [**getEdgeIntegrations**](IntegrationControllerApi.md#getEdgeIntegrations) | **GET** /api/edge/{edgeId}/integrations | Get Edge Integrations (getEdgeIntegrations) |
-| [**getIntegrationById**](IntegrationControllerApi.md#getIntegrationById) | **GET** /api/integration/{integrationId} | Get Integration (getIntegrationById) |
-| [**getIntegrationByRoutingKey**](IntegrationControllerApi.md#getIntegrationByRoutingKey) | **GET** /api/integration/routingKey/{routingKey} | Get Integration by Routing Key (getIntegrationByRoutingKey) |
-| [**getIntegrationInfos**](IntegrationControllerApi.md#getIntegrationInfos) | **GET** /api/integrationInfos | Get Integration Infos (getIntegrationInfos) |
-| [**getIntegrations**](IntegrationControllerApi.md#getIntegrations) | **GET** /api/integrations | Get Integrations (getIntegrations) |
-| [**getIntegrationsByIdsV2**](IntegrationControllerApi.md#getIntegrationsByIdsV2) | **GET** /api/integrations/list | Get Integrations By Ids (getIntegrationsByIdsV2) |
-| [**getIntegrationsConvertersInfo**](IntegrationControllerApi.md#getIntegrationsConvertersInfo) | **GET** /api/integrations/converters/info | Get Integrations Converters info (getIntegrationsConvertersInfo) |
-| [**saveIntegration**](IntegrationControllerApi.md#saveIntegration) | **POST** /api/integration | Create Or Update Integration (saveIntegration) |
-| [**unassignIntegrationFromEdge**](IntegrationControllerApi.md#unassignIntegrationFromEdge) | **DELETE** /api/edge/{edgeId}/integration/{integrationId} | Unassign integration from edge (unassignIntegrationFromEdge) |
+| [**assignIntegrationToEdge**](#assignIntegrationToEdge) | **POST** /api/edge/{edgeId}/integration/{integrationId} | Assign integration to edge (assignIntegrationToEdge) |
+| [**checkIntegrationConnection**](#checkIntegrationConnection) | **POST** /api/integration/check | Check integration connectivity (checkIntegrationConnection) |
+| [**deleteIntegration**](#deleteIntegration) | **DELETE** /api/integration/{integrationId} | Delete integration (deleteIntegration) |
+| [**findAllRelatedEdgesMissingAttributes**](#findAllRelatedEdgesMissingAttributes) | **GET** /api/edge/integration/{integrationId}/allMissingAttributes | Find missing attributes for all related edges (findAllRelatedEdgesMissingAttributes) |
+| [**findEdgeMissingAttributes**](#findEdgeMissingAttributes) | **GET** /api/edge/integration/{edgeId}/missingAttributes | Find edge missing attributes for assigned integrations (findEdgeMissingAttributes) |
+| [**getEdgeIntegrationInfos**](#getEdgeIntegrationInfos) | **GET** /api/edge/{edgeId}/integrationInfos | Get Edge Integrations (getEdgeIntegrationInfos) |
+| [**getEdgeIntegrations**](#getEdgeIntegrations) | **GET** /api/edge/{edgeId}/integrations | Get Edge Integrations (getEdgeIntegrations) |
+| [**getIntegrationById**](#getIntegrationById) | **GET** /api/integration/{integrationId} | Get Integration (getIntegrationById) |
+| [**getIntegrationByRoutingKey**](#getIntegrationByRoutingKey) | **GET** /api/integration/routingKey/{routingKey} | Get Integration by Routing Key (getIntegrationByRoutingKey) |
+| [**getIntegrationInfos**](#getIntegrationInfos) | **GET** /api/integrationInfos | Get Integration Infos (getIntegrationInfos) |
+| [**getIntegrations**](#getIntegrations) | **GET** /api/integrations | Get Integrations (getIntegrations) |
+| [**getIntegrationsByIdsV2**](#getIntegrationsByIdsV2) | **GET** /api/integrations/list | Get Integrations By Ids (getIntegrationsByIdsV2) |
+| [**getIntegrationsConvertersInfo**](#getIntegrationsConvertersInfo) | **GET** /api/integrations/converters/info | Get Integrations Converters info (getIntegrationsConvertersInfo) |
+| [**saveIntegration**](#saveIntegration) | **POST** /api/integration | Create Or Update Integration (saveIntegration) |
+| [**unassignIntegrationFromEdge**](#unassignIntegrationFromEdge) | **DELETE** /api/edge/{edgeId}/integration/{integrationId} | Unassign integration from edge (unassignIntegrationFromEdge) |
 
 
 
@@ -32,35 +30,10 @@ Creates assignment of an existing integration edge template to an instance of Th
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**|  | |
-| **integrationId** | **String**|  | |
-
-### Return type
-
-[**Integration**](Integration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** |  | |
+| **integrationId** | **String** |  | |
 
 
 ## checkIntegrationConnection
@@ -73,34 +46,9 @@ Checks if the connection to the integration is established. Throws an error if t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integration** | [**Integration**](Integration.md)|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **integration** | **Integration** |  | |
 
 
 ## deleteIntegration
@@ -113,34 +61,9 @@ Deletes the integration and all the relations (from and to the integration). Ref
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationId** | **String**| A string value representing the integration id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **integrationId** | **String** | A string value representing the integration id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## findAllRelatedEdgesMissingAttributes
@@ -153,34 +76,9 @@ Returns list of attribute names of all related edges that are missing in the int
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationId** | **String**| A string value representing the integration id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **integrationId** | **String** | A string value representing the integration id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## findEdgeMissingAttributes
@@ -193,35 +91,10 @@ Returns list of edge attribute names that are missing in assigned integrations. 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **integrationIds** | [**List&lt;String&gt;**](String.md)| A list of assigned integration ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **integrationIds** | **List&lt;String&gt;** | A list of assigned integration ids, separated by comma &#39;,&#39; | |
 
 
 ## getEdgeIntegrationInfos
@@ -234,39 +107,14 @@ Returns a page of Integrations assigned to the specified edge. The integration o
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataIntegrationInfo**](PageDataIntegrationInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getEdgeIntegrations
@@ -279,39 +127,14 @@ Returns a page of Integrations assigned to the specified edge. The integration o
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataIntegration**](PageDataIntegration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getIntegrationById
@@ -324,34 +147,9 @@ Fetch the Integration object based on the provided Integration Id. The server ch
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationId** | **String**| A string value representing the integration id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Integration**](Integration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **integrationId** | **String** | A string value representing the integration id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getIntegrationByRoutingKey
@@ -364,34 +162,9 @@ Fetch the Integration object based on the provided routing key. The server check
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **routingKey** | **String**| A string value representing the integration routing key. For example, &#39;542047e6-c1b2-112e-a87e-e49247c09d4b&#39; | |
-
-### Return type
-
-[**Integration**](Integration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **routingKey** | **String** | A string value representing the integration routing key. For example, &#39;542047e6-c1b2-112e-a87e-e49247c09d4b&#39; | |
 
 
 ## getIntegrationInfos
@@ -404,39 +177,14 @@ Returns a page of integration infos owned by tenant. You can specify parameters 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **isEdgeTemplate** | **Boolean**| Fetch edge template integrations | [optional] [default to false] |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataIntegrationInfo**](PageDataIntegrationInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **isEdgeTemplate** | **Boolean** | Fetch edge template integrations | [optional] [default to false] |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getIntegrations
@@ -449,39 +197,14 @@ Returns a page of integrations owned by tenant. You can specify parameters to fi
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String**| Maximum amount of entities in a one page | |
-| **page** | **String**| Sequence number of page starting from 0 | |
-| **isEdgeTemplate** | **Boolean**| Fetch edge template integrations | [optional] [default to false] |
-| **textSearch** | **String**| The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataIntegration**](PageDataIntegration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **isEdgeTemplate** | **Boolean** | Fetch edge template integrations | [optional] [default to false] |
+| **textSearch** | **String** | The case insensitive &#39;startsWith&#39; filter based on the integration name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getIntegrationsByIdsV2
@@ -494,34 +217,9 @@ Requested integrations must be owned by tenant which is performing the request. 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integrationIds** | [**List&lt;String&gt;**](String.md)| A list of integration ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;Integration&gt;**](Integration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **integrationIds** | **List&lt;String&gt;** | A list of integration ids, separated by comma &#39;,&#39; | |
 
 
 ## getIntegrationsConvertersInfo
@@ -531,35 +229,6 @@ Requested integrations must be owned by tenant which is performing the request. 
 Get Integrations Converters info (getIntegrationsConvertersInfo)
 
 Returns a JSON object containing information about existing tenant converters and converters available in library.   Available for users with &#39;TENANT_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**Map&lt;String, IntegrationConvertersInfo&gt;**](IntegrationConvertersInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## saveIntegration
 
@@ -571,34 +240,9 @@ Create or update the Integration. When creating integration, platform generates 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **integration** | [**Integration**](Integration.md)|  | |
-
-### Return type
-
-[**Integration**](Integration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **integration** | **Integration** |  | |
 
 
 ## unassignIntegrationFromEdge
@@ -611,33 +255,8 @@ Clears assignment of the integration to the edge. Unassignment works in async wa
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**|  | |
-| **integrationId** | **String**|  | |
-
-### Return type
-
-[**Integration**](Integration.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** |  | |
+| **integrationId** | **String** |  | |
 

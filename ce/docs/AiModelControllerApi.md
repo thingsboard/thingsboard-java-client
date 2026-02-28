@@ -1,14 +1,12 @@
 # AiModelControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteAiModelById**](AiModelControllerApi.md#deleteAiModelById) | **DELETE** /api/ai/model/{modelUuid} | Delete AI model by ID (deleteAiModelById) |
-| [**getAiModelById**](AiModelControllerApi.md#getAiModelById) | **GET** /api/ai/model/{modelUuid} | Get AI model by ID (getAiModelById) |
-| [**getAiModels**](AiModelControllerApi.md#getAiModels) | **GET** /api/ai/model | Get AI models (getAiModels) |
-| [**saveAiModel**](AiModelControllerApi.md#saveAiModel) | **POST** /api/ai/model | Create or update AI model (saveAiModel) |
-| [**sendChatRequest**](AiModelControllerApi.md#sendChatRequest) | **POST** /api/ai/model/chat | Send request to AI chat model (sendChatRequest) |
+| [**deleteAiModelById**](#deleteAiModelById) | **DELETE** /api/ai/model/{modelUuid} | Delete AI model by ID (deleteAiModelById) |
+| [**getAiModelById**](#getAiModelById) | **GET** /api/ai/model/{modelUuid} | Get AI model by ID (getAiModelById) |
+| [**getAiModels**](#getAiModels) | **GET** /api/ai/model | Get AI models (getAiModels) |
+| [**saveAiModel**](#saveAiModel) | **POST** /api/ai/model | Create or update AI model (saveAiModel) |
+| [**sendChatRequest**](#sendChatRequest) | **POST** /api/ai/model/chat | Send request to AI chat model (sendChatRequest) |
 
 
 
@@ -22,34 +20,9 @@ Deletes the AI model record by its &#x60;id&#x60;. If a record with the specifie
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **modelUuid** | **UUID**| ID of the AI model record | |
-
-### Return type
-
-**Boolean**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **modelUuid** | **UUID** | ID of the AI model record | |
 
 
 ## getAiModelById
@@ -62,34 +35,9 @@ Fetches an AI model record by its &#x60;id&#x60;.  Available for users with &#39
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **modelUuid** | **UUID**| ID of the AI model record | |
-
-### Return type
-
-[**AiModel**](AiModel.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **modelUuid** | **UUID** | ID of the AI model record | |
 
 
 ## getAiModels
@@ -102,38 +50,13 @@ Returns a page of AI models. You can specify parameters to filter the results. T
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the AI model name, provider and model ID. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, provider, modelId] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataAiModel**](PageDataAiModel.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the AI model name, provider and model ID. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, provider, modelId] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## saveAiModel
@@ -146,34 +69,9 @@ Creates or updates an AI model record.  • **Create:** Omit the &#x60;id&#x60; 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **aiModel** | [**AiModel**](AiModel.md)|  | |
-
-### Return type
-
-[**AiModel**](AiModel.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **aiModel** | **AiModel** |  | |
 
 
 ## sendChatRequest
@@ -186,32 +84,7 @@ Submits a single prompt - made up of an optional system message and a required u
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **tbChatRequest** | [**TbChatRequest**](TbChatRequest.md)|  | |
-
-### Return type
-
-[**TbChatResponse**](TbChatResponse.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **tbChatRequest** | **TbChatRequest** |  | |
 

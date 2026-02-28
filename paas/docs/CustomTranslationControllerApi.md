@@ -1,16 +1,14 @@
 # CustomTranslationControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteCustomTranslation**](CustomTranslationControllerApi.md#deleteCustomTranslation) | **DELETE** /api/translation/custom/{localeCode} | Delete Custom Translation for specified locale (deleteCustomTranslation) |
-| [**deleteCustomTranslationKey**](CustomTranslationControllerApi.md#deleteCustomTranslationKey) | **DELETE** /api/translation/custom/{localeCode}/{keyPath} | Delete specified key of Custom Translation (deleteCustomTranslationKey)  |
-| [**getCustomTranslation**](CustomTranslationControllerApi.md#getCustomTranslation) | **GET** /api/translation/custom/{localeCode} | Get Custom Translation configuration (getCustomTranslation) |
-| [**getMergedCustomTranslation**](CustomTranslationControllerApi.md#getMergedCustomTranslation) | **GET** /api/translation/custom/merged/{localeCode} | Get end-user Custom Translation configuration (getMergedCustomTranslation) |
-| [**patchCustomTranslation**](CustomTranslationControllerApi.md#patchCustomTranslation) | **PATCH** /api/translation/custom/{localeCode} | Update Custom Translation for specified translation keys only (patchCustomTranslation) |
-| [**saveCustomTranslation**](CustomTranslationControllerApi.md#saveCustomTranslation) | **POST** /api/translation/custom/{localeCode} | Create Or Update Custom Translation (saveCustomTranslation) |
-| [**uploadCustomTranslation**](CustomTranslationControllerApi.md#uploadCustomTranslation) | **POST** /api/translation/custom/{localeCode}/upload | Upload Custom Translation (uploadCustomTranslation) |
+| [**deleteCustomTranslation**](#deleteCustomTranslation) | **DELETE** /api/translation/custom/{localeCode} | Delete Custom Translation for specified locale (deleteCustomTranslation) |
+| [**deleteCustomTranslationKey**](#deleteCustomTranslationKey) | **DELETE** /api/translation/custom/{localeCode}/{keyPath} | Delete specified key of Custom Translation (deleteCustomTranslationKey)  |
+| [**getCustomTranslation**](#getCustomTranslation) | **GET** /api/translation/custom/{localeCode} | Get Custom Translation configuration (getCustomTranslation) |
+| [**getMergedCustomTranslation**](#getMergedCustomTranslation) | **GET** /api/translation/custom/merged/{localeCode} | Get end-user Custom Translation configuration (getMergedCustomTranslation) |
+| [**patchCustomTranslation**](#patchCustomTranslation) | **PATCH** /api/translation/custom/{localeCode} | Update Custom Translation for specified translation keys only (patchCustomTranslation) |
+| [**saveCustomTranslation**](#saveCustomTranslation) | **POST** /api/translation/custom/{localeCode} | Create Or Update Custom Translation (saveCustomTranslation) |
+| [**uploadCustomTranslation**](#uploadCustomTranslation) | **POST** /api/translation/custom/{localeCode}/upload | Upload Custom Translation (uploadCustomTranslation) |
 
 
 
@@ -24,34 +22,9 @@ Delete entire custom translation settings for end-user  Security check is perfor
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **localeCode** | **String**| Locale code (e.g. &#39;en_US&#39;). | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **localeCode** | **String** | Locale code (e.g. &#39;en_US&#39;). | |
 
 
 ## deleteCustomTranslationKey
@@ -64,35 +37,10 @@ The API call is designed to delete specified key of the custom translation and r
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **localeCode** | **String**| Locale code (e.g. &#39;en_US&#39;). | |
-| **keyPath** | **String**| A string value representing key of the custom translation (e.g. &#39;notification.active&#39;). | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **localeCode** | **String** | Locale code (e.g. &#39;en_US&#39;). | |
+| **keyPath** | **String** | A string value representing key of the custom translation (e.g. &#39;notification.active&#39;). | |
 
 
 ## getCustomTranslation
@@ -105,34 +53,9 @@ Fetch the Custom Translation for specified locale that corresponds to the author
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **localeCode** | **String**| Locale code (e.g. &#39;en_US&#39;). | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **localeCode** | **String** | Locale code (e.g. &#39;en_US&#39;). | |
 
 
 ## getMergedCustomTranslation
@@ -145,34 +68,9 @@ Fetch end-user Custom Translation for specified locale. The custom translation i
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **localeCode** | **String**| Locale code (e.g. &#39;en_US&#39;). | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **localeCode** | **String** | Locale code (e.g. &#39;en_US&#39;). | |
 
 
 ## patchCustomTranslation
@@ -185,35 +83,10 @@ The API call is designed to update the custom translation for specified key only
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **localeCode** | **String**| Locale code (e.g. &#39;en_US&#39;). | |
-| **body** | **Object**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **localeCode** | **String** | Locale code (e.g. &#39;en_US&#39;). | |
+| **body** | **Object** |  | |
 
 
 ## saveCustomTranslation
@@ -226,35 +99,10 @@ Creates or Updates the Custom Translation for specified locale.   Request exampl
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **localeCode** | **String**| Locale code (e.g. &#39;en_US&#39;). | |
-| **body** | **Object**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **localeCode** | **String** | Locale code (e.g. &#39;en_US&#39;). | |
+| **body** | **Object** |  | |
 
 
 ## uploadCustomTranslation
@@ -267,33 +115,8 @@ Upload the Custom Translation for specified locale.   Request example:   &#x60;&
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **localeCode** | **String**| Locale code (e.g. &#39;en_US&#39;). | |
-| **_file** | **File**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **localeCode** | **String** | Locale code (e.g. &#39;en_US&#39;). | |
+| **_file** | **File** |  | |
 

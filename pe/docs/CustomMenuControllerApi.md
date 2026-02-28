@@ -1,19 +1,17 @@
 # CustomMenuControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createCustomMenu**](CustomMenuControllerApi.md#createCustomMenu) | **POST** /api/customMenu | Create Custom Menu (createCustomMenu) |
-| [**deleteCustomMenu**](CustomMenuControllerApi.md#deleteCustomMenu) | **DELETE** /api/customMenu/{customMenuId} | Delete custom menu (deleteCustomMenu) |
-| [**getCustomMenu**](CustomMenuControllerApi.md#getCustomMenu) | **GET** /api/customMenu | Get end-user Custom Menu configuration (getCustomMenu) |
-| [**getCustomMenuAssigneeList**](CustomMenuControllerApi.md#getCustomMenuAssigneeList) | **GET** /api/customMenu/{customMenuId}/assigneeList | Get Custom Menu assignee list (getCustomMenuAssigneeList) |
-| [**getCustomMenuConfig**](CustomMenuControllerApi.md#getCustomMenuConfig) | **GET** /api/customMenu/{customMenuId}/config | Get Custom Menu configuration by id (getCustomMenuConfig) |
-| [**getCustomMenuInfoById**](CustomMenuControllerApi.md#getCustomMenuInfoById) | **GET** /api/customMenu/{customMenuId}/info | Get Custom Menu Info (getCustomMenuInfoById) |
-| [**getCustomMenuInfos**](CustomMenuControllerApi.md#getCustomMenuInfos) | **GET** /api/customMenu/infos | Get all custom menus configured at user level (getCustomMenuInfos) |
-| [**updateCustomMenuAssigneeList**](CustomMenuControllerApi.md#updateCustomMenuAssigneeList) | **PUT** /api/customMenu/{id}/assign/{assigneeType} | Update custom menu assignee list (updateCustomMenuAssigneeList) |
-| [**updateCustomMenuConfig**](CustomMenuControllerApi.md#updateCustomMenuConfig) | **PUT** /api/customMenu/{customMenuId}/config | Update Custom Menu configuration based on the provided Custom Menu Id (updateCustomMenuConfig) |
-| [**updateCustomMenuName**](CustomMenuControllerApi.md#updateCustomMenuName) | **PUT** /api/customMenu/{customMenuId}/name | Update Custom Menu name based on the provided Custom Menu Id (updateCustomMenuName) |
+| [**createCustomMenu**](#createCustomMenu) | **POST** /api/customMenu | Create Custom Menu (createCustomMenu) |
+| [**deleteCustomMenu**](#deleteCustomMenu) | **DELETE** /api/customMenu/{customMenuId} | Delete custom menu (deleteCustomMenu) |
+| [**getCustomMenu**](#getCustomMenu) | **GET** /api/customMenu | Get end-user Custom Menu configuration (getCustomMenu) |
+| [**getCustomMenuAssigneeList**](#getCustomMenuAssigneeList) | **GET** /api/customMenu/{customMenuId}/assigneeList | Get Custom Menu assignee list (getCustomMenuAssigneeList) |
+| [**getCustomMenuConfig**](#getCustomMenuConfig) | **GET** /api/customMenu/{customMenuId}/config | Get Custom Menu configuration by id (getCustomMenuConfig) |
+| [**getCustomMenuInfoById**](#getCustomMenuInfoById) | **GET** /api/customMenu/{customMenuId}/info | Get Custom Menu Info (getCustomMenuInfoById) |
+| [**getCustomMenuInfos**](#getCustomMenuInfos) | **GET** /api/customMenu/infos | Get all custom menus configured at user level (getCustomMenuInfos) |
+| [**updateCustomMenuAssigneeList**](#updateCustomMenuAssigneeList) | **PUT** /api/customMenu/{id}/assign/{assigneeType} | Update custom menu assignee list (updateCustomMenuAssigneeList) |
+| [**updateCustomMenuConfig**](#updateCustomMenuConfig) | **PUT** /api/customMenu/{customMenuId}/config | Update Custom Menu configuration based on the provided Custom Menu Id (updateCustomMenuConfig) |
+| [**updateCustomMenuName**](#updateCustomMenuName) | **PUT** /api/customMenu/{customMenuId}/name | Update Custom Menu name based on the provided Custom Menu Id (updateCustomMenuName) |
 
 
 
@@ -27,36 +25,11 @@ The api is designed to create Custom Menu without configuration. Is not applicab
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuInfo** | [**CustomMenuInfo**](CustomMenuInfo.md)|  | |
-| **assignToList** | [**List&lt;String&gt;**](String.md)| A list of entity ids, separated by comma &#39;,&#39; | [optional] |
-| **force** | **Boolean**| Use force if you want to create default menu that conflicts with the existing one (old one will be update NO_ASSIGN assignee type) | [optional] |
-
-### Return type
-
-[**CustomMenu**](CustomMenu.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customMenuInfo** | **CustomMenuInfo** |  | |
+| **assignToList** | **List&lt;String&gt;** | A list of entity ids, separated by comma &#39;,&#39; | [optional] |
+| **force** | **Boolean** | Use force if you want to create default menu that conflicts with the existing one (old one will be update NO_ASSIGN assignee type) | [optional] |
 
 
 ## deleteCustomMenu
@@ -69,35 +42,10 @@ Deletes the custom menu based on the provided Custom Menu Id. Referencing non-ex
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID**| A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **force** | **Boolean**| Force set to true will unassign menu before deletion | [optional] |
-
-### Return type
-
-[**CustomMenuDeleteResult**](CustomMenuDeleteResult.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **force** | **Boolean** | Force set to true will unassign menu before deletion | [optional] |
 
 
 ## getCustomMenu
@@ -110,34 +58,9 @@ Fetch the Custom Menu configuration object for the authorized user. The custom m
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ifNoneMatch** | **String**|  | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ifNoneMatch** | **String** |  | [optional] |
 
 
 ## getCustomMenuAssigneeList
@@ -150,34 +73,9 @@ Fetch the list of Entity Info objects that represents users or customers, or emp
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID**| A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**List&lt;EntityInfo&gt;**](EntityInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getCustomMenuConfig
@@ -190,34 +88,9 @@ Fetch the Custom Menu configuration based on the provided Custom Menu Id.   Secu
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID**| A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**CustomMenuConfig**](CustomMenuConfig.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getCustomMenuInfoById
@@ -230,34 +103,9 @@ Fetch the Custom Menu Info object based on the provided Custom Menu Id.   Securi
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID**| A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**CustomMenuInfo**](CustomMenuInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getCustomMenuInfos
@@ -270,40 +118,15 @@ Returns a page of custom menu info objects owned by the tenant or the customer o
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **scope** | [**CMScope**](.md)| Custom menu scope. | [optional] [enum: SYSTEM, TENANT, CUSTOMER] |
-| **assigneeType** | [**CMAssigneeType**](.md)| Custom menu assignee type. | [optional] [enum: NO_ASSIGN, ALL, CUSTOMERS, USERS, USER_GROUPS] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the custom menu name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, title] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataCustomMenuInfo**](PageDataCustomMenuInfo.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **scope** | **CMScope** | Custom menu scope. | [optional] [enum: SYSTEM, TENANT, CUSTOMER] |
+| **assigneeType** | **CMAssigneeType** | Custom menu assignee type. | [optional] [enum: NO_ASSIGN, ALL, CUSTOMERS, USERS, USER_GROUPS] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the custom menu name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## updateCustomMenuAssigneeList
@@ -316,37 +139,12 @@ The api designed to update the list of assignees or assignee type based on the p
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-| **assigneeType** | [**CMAssigneeType**](.md)|  | [enum: NO_ASSIGN, ALL, CUSTOMERS, USERS, USER_GROUPS] |
-| **force** | **Boolean**| Use force if you want to override default menu | [optional] |
-| **requestBody** | [**List&lt;String&gt;**](String.md)|  | [optional] |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
+| **assigneeType** | **CMAssigneeType** |  | [enum: NO_ASSIGN, ALL, CUSTOMERS, USERS, USER_GROUPS] |
+| **force** | **Boolean** | Use force if you want to override default menu | [optional] |
+| **requestBody** | **List&lt;String&gt;** |  | [optional] |
 
 
 ## updateCustomMenuConfig
@@ -359,35 +157,10 @@ Update Custom Menu configuration based on the provided Custom Menu Id (updateCus
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID**| A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **customMenuConfig** | [**CustomMenuConfig**](CustomMenuConfig.md)|  | |
-
-### Return type
-
-[**CustomMenu**](CustomMenu.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **customMenuConfig** | **CustomMenuConfig** |  | |
 
 
 ## updateCustomMenuName
@@ -400,33 +173,8 @@ Update Custom Menu name based on the provided Custom Menu Id (updateCustomMenuNa
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customMenuId** | **UUID**| A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **body** | **String**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **customMenuId** | **UUID** | A string value representing the custom menu id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **body** | **String** |  | |
 

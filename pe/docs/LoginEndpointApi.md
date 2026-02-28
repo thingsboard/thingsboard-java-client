@@ -1,11 +1,9 @@
 # LoginEndpointApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**login**](LoginEndpointApi.md#login) | **POST** /api/auth/login | Login method to get user JWT token data |
-| [**refreshToken**](LoginEndpointApi.md#refreshToken) | **POST** /api/auth/token | Refresh user JWT token data |
+| [**login**](#login) | **POST** /api/auth/login | Login method to get user JWT token data |
+| [**refreshToken**](#refreshToken) | **POST** /api/auth/token | Refresh user JWT token data |
 
 
 
@@ -19,30 +17,9 @@ Login method used to authenticate user and get JWT token data.  Value of the res
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login request | [optional] |
-
-### Return type
-
-[**LoginResponse**](LoginResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
+| **loginRequest** | **LoginRequest** | Login request | [optional] |
 
 
 ## refreshToken
@@ -55,32 +32,7 @@ Method to refresh JWT token. Provide a valid refresh token to get a new JWT toke
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **refreshTokenRequest** | [**RefreshTokenRequest**](RefreshTokenRequest.md)| Refresh token request | [optional] |
-
-### Return type
-
-[**LoginResponse**](LoginResponse.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **401** | Unauthorized |  -  |
-| **400** | Bad Request |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **refreshTokenRequest** | **RefreshTokenRequest** | Refresh token request | [optional] |
 

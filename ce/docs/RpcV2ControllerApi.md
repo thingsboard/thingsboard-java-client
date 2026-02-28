@@ -1,14 +1,12 @@
 # RpcV2ControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteRpc**](RpcV2ControllerApi.md#deleteRpc) | **DELETE** /api/rpc/persistent/{rpcId} | Delete persistent RPC |
-| [**getPersistedRpc**](RpcV2ControllerApi.md#getPersistedRpc) | **GET** /api/rpc/persistent/{rpcId} | Get persistent RPC request |
-| [**getPersistedRpcByDevice**](RpcV2ControllerApi.md#getPersistedRpcByDevice) | **GET** /api/rpc/persistent/device/{deviceId} | Get persistent RPC requests |
-| [**handleOneWayDeviceRPCRequest**](RpcV2ControllerApi.md#handleOneWayDeviceRPCRequest) | **POST** /api/rpc/oneway/{deviceId} | Send one-way RPC request |
-| [**handleTwoWayDeviceRPCRequest**](RpcV2ControllerApi.md#handleTwoWayDeviceRPCRequest) | **POST** /api/rpc/twoway/{deviceId} | Send two-way RPC request |
+| [**deleteRpc**](#deleteRpc) | **DELETE** /api/rpc/persistent/{rpcId} | Delete persistent RPC |
+| [**getPersistedRpc**](#getPersistedRpc) | **GET** /api/rpc/persistent/{rpcId} | Get persistent RPC request |
+| [**getPersistedRpcByDevice**](#getPersistedRpcByDevice) | **GET** /api/rpc/persistent/device/{deviceId} | Get persistent RPC requests |
+| [**handleOneWayDeviceRPCRequest**](#handleOneWayDeviceRPCRequest) | **POST** /api/rpc/oneway/{deviceId} | Send one-way RPC request |
+| [**handleTwoWayDeviceRPCRequest**](#handleTwoWayDeviceRPCRequest) | **POST** /api/rpc/twoway/{deviceId} | Send two-way RPC request |
 
 
 
@@ -22,34 +20,9 @@ Deletes the persistent RPC request.  Available for users with &#39;TENANT_ADMIN&
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **rpcId** | **String**| A string value representing the rpc id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **rpcId** | **String** | A string value representing the rpc id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getPersistedRpc
@@ -62,34 +35,9 @@ Get information about the status of the RPC call.  Available for users with &#39
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **rpcId** | **String**| A string value representing the rpc id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**Rpc**](Rpc.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **rpcId** | **String** | A string value representing the rpc id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getPersistedRpcByDevice
@@ -102,40 +50,15 @@ Allows to query RPC calls for specific device using pagination.  Available for u
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **rpcStatus** | **String**| Status of the RPC | [optional] [enum: QUEUED, SENT, DELIVERED, SUCCESSFUL, TIMEOUT, EXPIRED, FAILED] |
-| **textSearch** | **String**| Not implemented. Leave empty. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, expirationTime, request, response] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **rpcStatus** | **String** | Status of the RPC | [optional] [enum: QUEUED, SENT, DELIVERED, SUCCESSFUL, TIMEOUT, EXPIRED, FAILED] |
+| **textSearch** | **String** | Not implemented. Leave empty. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, expirationTime, request, response] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## handleOneWayDeviceRPCRequest
@@ -148,37 +71,10 @@ Sends the one-way remote-procedure call (RPC) request to device. Sends the one-w
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **body** | **String**|  | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Persistent RPC request was saved to the database or lightweight RPC request was sent to the device. |  -  |
-| **400** | Invalid structure of the request. |  -  |
-| **401** | User is not authorized to send the RPC request. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **413** | Request payload is too large |  -  |
-| **504** | Timeout to process the RPC call. Most likely, device is offline. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **body** | **String** |  | |
 
 
 ## handleTwoWayDeviceRPCRequest
@@ -191,35 +87,8 @@ Sends the two-way remote-procedure call (RPC) request to device. Sends the one-w
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **body** | **String**|  | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Persistent RPC request was saved to the database or lightweight RPC response received. |  -  |
-| **400** | Invalid structure of the request. |  -  |
-| **401** | User is not authorized to send the RPC request. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **413** | Request payload is too large |  -  |
-| **504** | Timeout to process the RPC call. Most likely, device is offline. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **body** | **String** |  | |
 

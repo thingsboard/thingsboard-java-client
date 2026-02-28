@@ -1,24 +1,22 @@
 # TelemetryControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteDeviceAttributes**](TelemetryControllerApi.md#deleteDeviceAttributes) | **DELETE** /api/plugins/telemetry/{deviceId}/{scope} | Delete device attributes (deleteDeviceAttributes) |
-| [**deleteEntityAttributes**](TelemetryControllerApi.md#deleteEntityAttributes) | **DELETE** /api/plugins/telemetry/{entityType}/{entityId}/{scope} | Delete entity attributes (deleteEntityAttributes) |
-| [**deleteEntityTimeseries**](TelemetryControllerApi.md#deleteEntityTimeseries) | **DELETE** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/delete | Delete entity time series data (deleteEntityTimeseries) |
-| [**getAttributeKeys**](TelemetryControllerApi.md#getAttributeKeys) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/attributes | Get all attribute keys (getAttributeKeys) |
-| [**getAttributeKeysByScope**](TelemetryControllerApi.md#getAttributeKeysByScope) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/attributes/{scope} | Get all attribute keys by scope (getAttributeKeysByScope) |
-| [**getAttributes**](TelemetryControllerApi.md#getAttributes) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/attributes | Get attributes (getAttributes) |
-| [**getAttributesByScope**](TelemetryControllerApi.md#getAttributesByScope) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/attributes/{scope} | Get attributes by scope (getAttributesByScope) |
-| [**getLatestTimeseries**](TelemetryControllerApi.md#getLatestTimeseries) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries | Get latest time series value (getLatestTimeseries) |
-| [**getTimeseriesHistory**](TelemetryControllerApi.md#getTimeseriesHistory) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history | Get time series data (getTimeseriesHistory) |
-| [**getTimeseriesKeys**](TelemetryControllerApi.md#getTimeseriesKeys) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/timeseries | Get time series keys (getTimeseriesKeys) |
-| [**saveDeviceAttributes**](TelemetryControllerApi.md#saveDeviceAttributes) | **POST** /api/plugins/telemetry/{deviceId}/{scope} | Save device attributes (saveDeviceAttributes) |
-| [**saveEntityAttributesV1**](TelemetryControllerApi.md#saveEntityAttributesV1) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/{scope} | Save entity attributes (saveEntityAttributesV1) |
-| [**saveEntityAttributesV2**](TelemetryControllerApi.md#saveEntityAttributesV2) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/attributes/{scope} | Save entity attributes (saveEntityAttributesV2) |
-| [**saveEntityTelemetry**](TelemetryControllerApi.md#saveEntityTelemetry) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope} | Save or update time series data (saveEntityTelemetry) |
-| [**saveEntityTelemetryWithTTL**](TelemetryControllerApi.md#saveEntityTelemetryWithTTL) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope}/{ttl} | Save or update time series data with TTL (saveEntityTelemetryWithTTL) |
+| [**deleteDeviceAttributes**](#deleteDeviceAttributes) | **DELETE** /api/plugins/telemetry/{deviceId}/{scope} | Delete device attributes (deleteDeviceAttributes) |
+| [**deleteEntityAttributes**](#deleteEntityAttributes) | **DELETE** /api/plugins/telemetry/{entityType}/{entityId}/{scope} | Delete entity attributes (deleteEntityAttributes) |
+| [**deleteEntityTimeseries**](#deleteEntityTimeseries) | **DELETE** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/delete | Delete entity time series data (deleteEntityTimeseries) |
+| [**getAttributeKeys**](#getAttributeKeys) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/attributes | Get all attribute keys (getAttributeKeys) |
+| [**getAttributeKeysByScope**](#getAttributeKeysByScope) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/attributes/{scope} | Get all attribute keys by scope (getAttributeKeysByScope) |
+| [**getAttributes**](#getAttributes) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/attributes | Get attributes (getAttributes) |
+| [**getAttributesByScope**](#getAttributesByScope) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/attributes/{scope} | Get attributes by scope (getAttributesByScope) |
+| [**getLatestTimeseries**](#getLatestTimeseries) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries | Get latest time series value (getLatestTimeseries) |
+| [**getTimeseriesHistory**](#getTimeseriesHistory) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history | Get time series data (getTimeseriesHistory) |
+| [**getTimeseriesKeys**](#getTimeseriesKeys) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/timeseries | Get time series keys (getTimeseriesKeys) |
+| [**saveDeviceAttributes**](#saveDeviceAttributes) | **POST** /api/plugins/telemetry/{deviceId}/{scope} | Save device attributes (saveDeviceAttributes) |
+| [**saveEntityAttributesV1**](#saveEntityAttributesV1) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/{scope} | Save entity attributes (saveEntityAttributesV1) |
+| [**saveEntityAttributesV2**](#saveEntityAttributesV2) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/attributes/{scope} | Save entity attributes (saveEntityAttributesV2) |
+| [**saveEntityTelemetry**](#saveEntityTelemetry) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope} | Save or update time series data (saveEntityTelemetry) |
+| [**saveEntityTelemetryWithTTL**](#saveEntityTelemetryWithTTL) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope}/{ttl} | Save or update time series data with TTL (saveEntityTelemetryWithTTL) |
 
 
 
@@ -32,38 +30,12 @@ Delete device attributes using provided Device Id, scope and a list of keys. Ref
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
-| **keys** | **String**| A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
-| **key** | [**List&lt;String&gt;**](String.md)| Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Device attributes was removed for the selected keys in the request. Platform creates an audit log event about device attributes removal with action type &#39;ATTRIBUTES_DELETED&#39;. |  -  |
-| **400** | Platform returns a bad request in case if keys or scope are not specified. |  -  |
-| **401** | User is not authorized to delete device attributes for selected entity. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about device attributes removal with action type &#39;ATTRIBUTES_DELETED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
+| **keys** | **String** | A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
+| **key** | **List&lt;String&gt;** | Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
 
 
 ## deleteEntityAttributes
@@ -76,39 +48,13 @@ Delete entity attributes using provided Entity Id, scope and a list of keys. Ref
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
-| **keys** | **String**| A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
-| **key** | [**List&lt;String&gt;**](String.md)| Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Entity attributes was removed for the selected keys in the request. Platform creates an audit log event about entity attributes removal with action type &#39;ATTRIBUTES_DELETED&#39;. |  -  |
-| **400** | Platform returns a bad request in case if keys or scope are not specified. |  -  |
-| **401** | User is not authorized to delete entity attributes for selected entity. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about entity attributes removal with action type &#39;ATTRIBUTES_DELETED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
+| **keys** | **String** | A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
+| **key** | **List&lt;String&gt;** | Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
 
 
 ## deleteEntityTimeseries
@@ -121,43 +67,17 @@ Delete time series for selected entity based on entity id, entity type and keys.
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **keys** | **String**| A string value representing the comma-separated list of telemetry keys. If keys are not selected, the result will return all latest time series. For example, &#39;temperature,humidity&#39;. If telemetry keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
-| **deleteAllDataForKeys** | **Boolean**| A boolean value to specify if should be deleted all data for selected keys or only data that are in the selected time range. | [optional] [default to false] |
-| **startTs** | **Long**| A long value representing the start timestamp of removal time range in milliseconds. | [optional] |
-| **endTs** | **Long**| A long value representing the end timestamp of removal time range in milliseconds. | [optional] |
-| **deleteLatest** | **Boolean**| If the parameter is set to true, the latest telemetry can be removed, otherwise, in case that parameter is set to false the latest value will not removed. | [optional] [default to true] |
-| **rewriteLatestIfDeleted** | **Boolean**| If the parameter is set to true, the latest telemetry will be rewritten in case that current latest value was removed, otherwise, in case that parameter is set to false the new latest value will not set. | [optional] [default to false] |
-| **key** | [**List&lt;String&gt;**](String.md)| Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Time series for the selected keys in the request was removed. Platform creates an audit log event about entity time series removal with action type &#39;TIMESERIES_DELETED&#39;. |  -  |
-| **400** | Platform returns a bad request in case if keys list is empty or start and end timestamp values is empty when deleteAllDataForKeys is set to false. |  -  |
-| **401** | User is not authorized to delete entity time series for selected entity. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about entity time series removal with action type &#39;TIMESERIES_DELETED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **keys** | **String** | A string value representing the comma-separated list of telemetry keys. If keys are not selected, the result will return all latest time series. For example, &#39;temperature,humidity&#39;. If telemetry keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
+| **deleteAllDataForKeys** | **Boolean** | A boolean value to specify if should be deleted all data for selected keys or only data that are in the selected time range. | [optional] [default to false] |
+| **startTs** | **Long** | A long value representing the start timestamp of removal time range in milliseconds. | [optional] |
+| **endTs** | **Long** | A long value representing the end timestamp of removal time range in milliseconds. | [optional] |
+| **deleteLatest** | **Boolean** | If the parameter is set to true, the latest telemetry can be removed, otherwise, in case that parameter is set to false the latest value will not removed. | [optional] [default to true] |
+| **rewriteLatestIfDeleted** | **Boolean** | If the parameter is set to true, the latest telemetry will be rewritten in case that current latest value was removed, otherwise, in case that parameter is set to false the new latest value will not set. | [optional] [default to false] |
+| **key** | **List&lt;String&gt;** | Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
 
 
 ## getAttributeKeys
@@ -170,35 +90,10 @@ Returns a set of unique attribute key names for the selected entity. The respons
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-**List&lt;String&gt;**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getAttributeKeysByScope
@@ -211,36 +106,11 @@ Returns a set of unique attribute key names for the selected entity and attribut
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
-
-### Return type
-
-**List&lt;String&gt;**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
 
 
 ## getAttributes
@@ -253,37 +123,12 @@ Returns all attributes that belong to specified entity. Use optional &#39;keys&#
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **keys** | **String**| A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
-| **key** | [**List&lt;String&gt;**](String.md)| Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
-
-### Return type
-
-[**List&lt;AttributeData&gt;**](AttributeData.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **keys** | **String** | A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
+| **key** | **List&lt;String&gt;** | Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
 
 
 ## getAttributesByScope
@@ -296,38 +141,13 @@ Returns all attributes of a specified scope that belong to specified entity. Lis
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
-| **keys** | **String**| A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
-| **key** | [**List&lt;String&gt;**](String.md)| Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
-
-### Return type
-
-[**List&lt;AttributeData&gt;**](AttributeData.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-| **0** | default response |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
+| **keys** | **String** | A string value representing the comma-separated list of attributes keys. For example, &#39;active,inactivityAlarmTime&#39;. If attribute keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
+| **key** | **List&lt;String&gt;** | Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
 
 
 ## getLatestTimeseries
@@ -340,38 +160,13 @@ Returns all time series that belong to specified entity. Use optional &#39;keys&
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **keys** | **String**| A string value representing the comma-separated list of telemetry keys. If keys are not selected, the result will return all latest time series. For example, &#39;temperature,humidity&#39;. If telemetry keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
-| **useStrictDataTypes** | **Boolean**| Enables/disables conversion of telemetry values to strings. Conversion is enabled by default. Set parameter to &#39;true&#39; in order to disable the conversion. | [optional] [default to false] |
-| **key** | [**List&lt;String&gt;**](String.md)| Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
-
-### Return type
-
-[**Map&lt;String, List&lt;TsData&gt;&gt;**](List.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **keys** | **String** | A string value representing the comma-separated list of telemetry keys. If keys are not selected, the result will return all latest time series. For example, &#39;temperature,humidity&#39;. If telemetry keys contain comma, duplicate &#39;key&#39; parameter for each key, for example &#39;?key&#x3D;my,key&amp;key&#x3D;my,second,key | [optional] |
+| **useStrictDataTypes** | **Boolean** | Enables/disables conversion of telemetry values to strings. Conversion is enabled by default. Set parameter to &#39;true&#39; in order to disable the conversion. | [optional] [default to false] |
+| **key** | **List&lt;String&gt;** | Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
 
 
 ## getTimeseriesHistory
@@ -384,46 +179,21 @@ Returns a range of time series values for specified entity. Returns not aggregat
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **startTs** | **Long**| A long value representing the start timestamp of the time range in milliseconds, UTC. | |
-| **endTs** | **Long**| A long value representing the end timestamp of the time range in milliseconds, UTC. | |
-| **keys** | **String**| A string value representing the comma-separated list of telemetry keys. | [optional] |
-| **intervalType** | **String**| A string value representing the type fo the interval. | [optional] [enum: MILLISECONDS, WEEK, WEEK_ISO, MONTH, QUARTER] |
-| **interval** | **Long**| A long value representing the aggregation interval range in milliseconds. | [optional] [default to 0] |
-| **timeZone** | **String**| A string value representing the timezone that will be used to calculate exact timestamps for &#39;WEEK&#39;, &#39;WEEK_ISO&#39;, &#39;MONTH&#39; and &#39;QUARTER&#39; interval types. | [optional] |
-| **limit** | **String**| An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if &#39;agg&#39; parameter is set to &#39;NONE&#39;. | [optional] |
-| **agg** | **String**| A string value representing the aggregation function. If the interval is not specified, &#39;agg&#39; parameter will use &#39;NONE&#39; value. | [optional] [enum: MIN, MAX, AVG, SUM, COUNT, NONE] |
-| **orderBy** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **useStrictDataTypes** | **Boolean**| Enables/disables conversion of telemetry values to strings. Conversion is enabled by default. Set parameter to &#39;true&#39; in order to disable the conversion. | [optional] [default to false] |
-| **key** | [**List&lt;String&gt;**](String.md)| Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
-
-### Return type
-
-[**Map&lt;String, List&lt;TsData&gt;&gt;**](List.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **startTs** | **Long** | A long value representing the start timestamp of the time range in milliseconds, UTC. | |
+| **endTs** | **Long** | A long value representing the end timestamp of the time range in milliseconds, UTC. | |
+| **keys** | **String** | A string value representing the comma-separated list of telemetry keys. | [optional] |
+| **intervalType** | **String** | A string value representing the type fo the interval. | [optional] [enum: MILLISECONDS, WEEK, WEEK_ISO, MONTH, QUARTER] |
+| **interval** | **Long** | A long value representing the aggregation interval range in milliseconds. | [optional] [default to 0] |
+| **timeZone** | **String** | A string value representing the timezone that will be used to calculate exact timestamps for &#39;WEEK&#39;, &#39;WEEK_ISO&#39;, &#39;MONTH&#39; and &#39;QUARTER&#39; interval types. | [optional] |
+| **limit** | **String** | An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if &#39;agg&#39; parameter is set to &#39;NONE&#39;. | [optional] |
+| **agg** | **String** | A string value representing the aggregation function. If the interval is not specified, &#39;agg&#39; parameter will use &#39;NONE&#39; value. | [optional] [enum: MIN, MAX, AVG, SUM, COUNT, NONE] |
+| **orderBy** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **useStrictDataTypes** | **Boolean** | Enables/disables conversion of telemetry values to strings. Conversion is enabled by default. Set parameter to &#39;true&#39; in order to disable the conversion. | [optional] [default to false] |
+| **key** | **List&lt;String&gt;** | Repeatable key query parameter (alternative to comma-separated &#39;keys&#39;) | [optional] |
 
 
 ## getTimeseriesKeys
@@ -436,35 +206,10 @@ Returns a set of unique time series key names for the selected entity.   Referen
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-**List&lt;String&gt;**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## saveDeviceAttributes
@@ -477,37 +222,11 @@ Creates or updates the device attributes based on device id and specified attrib
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **deviceId** | **String**| A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
-| **body** | **String**| A string value representing the json object. For example, &#39;{\&quot;key\&quot;:\&quot;value\&quot;}&#39;. See API call description for more details. | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Attribute from the request was created or updated. Platform creates an audit log event about device attributes updates with action type &#39;ATTRIBUTES_UPDATED&#39;, and also sends event msg to the rule engine with msg type &#39;ATTRIBUTES_UPDATED&#39;. |  -  |
-| **400** | Invalid structure of the request or invalid attributes scope provided. |  -  |
-| **401** | User is not authorized to save device attributes for selected device. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about device attributes updates with action type &#39;ATTRIBUTES_UPDATED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **deviceId** | **String** | A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
+| **body** | **String** | A string value representing the json object. For example, &#39;{\&quot;key\&quot;:\&quot;value\&quot;}&#39;. See API call description for more details. | |
 
 
 ## saveEntityAttributesV1
@@ -520,38 +239,12 @@ Creates or updates the entity attributes based on Entity Id and the specified at
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
-| **body** | **String**| A string value representing the json object. For example, &#39;{\&quot;key\&quot;:\&quot;value\&quot;}&#39;. See API call description for more details. | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Attribute from the request was created or updated. Platform creates an audit log event about entity attributes updates with action type &#39;ATTRIBUTES_UPDATED&#39;, and also sends event msg to the rule engine with msg type &#39;ATTRIBUTES_UPDATED&#39;. |  -  |
-| **400** | Invalid structure of the request or invalid attributes scope provided. |  -  |
-| **401** | User is not authorized to save entity attributes for selected entity. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about entity attributes updates with action type &#39;ATTRIBUTES_UPDATED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
+| **body** | **String** | A string value representing the json object. For example, &#39;{\&quot;key\&quot;:\&quot;value\&quot;}&#39;. See API call description for more details. | |
 
 
 ## saveEntityAttributesV2
@@ -564,38 +257,12 @@ Creates or updates the entity attributes based on Entity Id and the specified at
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
-| **body** | **String**| A string value representing the json object. For example, &#39;{\&quot;key\&quot;:\&quot;value\&quot;}&#39;. See API call description for more details. | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Attribute from the request was created or updated. Platform creates an audit log event about entity attributes updates with action type &#39;ATTRIBUTES_UPDATED&#39;, and also sends event msg to the rule engine with msg type &#39;ATTRIBUTES_UPDATED&#39;. |  -  |
-| **400** | Invalid structure of the request or invalid attributes scope provided. |  -  |
-| **401** | User is not authorized to save entity attributes for selected entity. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about entity attributes updates with action type &#39;ATTRIBUTES_UPDATED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | A string value representing the attributes scope. For example, &#39;SERVER_SCOPE&#39;. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
+| **body** | **String** | A string value representing the json object. For example, &#39;{\&quot;key\&quot;:\&quot;value\&quot;}&#39;. See API call description for more details. | |
 
 
 ## saveEntityTelemetry
@@ -608,38 +275,12 @@ Creates or updates the entity time series data based on the Entity Id and reques
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| Value is deprecated, reserved for backward compatibility and not used in the API call implementation. Specify any scope for compatibility | [enum: ANY] |
-| **body** | **String**| A JSON with the telemetry values. See API call description for more details. | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Time series from the request was created or updated. Platform creates an audit log event about entity time series updates with action type &#39;TIMESERIES_UPDATED&#39;. |  -  |
-| **400** | Invalid structure of the request |  -  |
-| **401** | User is not authorized to save entity time series for selected entity. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about entity time series updates with action type &#39;TIMESERIES_UPDATED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | Value is deprecated, reserved for backward compatibility and not used in the API call implementation. Specify any scope for compatibility | [enum: ANY] |
+| **body** | **String** | A JSON with the telemetry values. See API call description for more details. | |
 
 
 ## saveEntityTelemetryWithTTL
@@ -652,37 +293,11 @@ Creates or updates the entity time series data based on the Entity Id and reques
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String**| A string value representing the entity type. For example, &#39;DEVICE&#39; | |
-| **entityId** | **String**| A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **scope** | **String**| Value is deprecated, reserved for backward compatibility and not used in the API call implementation. Specify any scope for compatibility | [enum: ANY] |
-| **ttl** | **Long**| A long value representing TTL (Time to Live) parameter. | |
-| **body** | **String**| A JSON with the telemetry values. See API call description for more details. | |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | Time series from the request was created or updated. Platform creates an audit log event about entity time series updates with action type &#39;TIMESERIES_UPDATED&#39;. |  -  |
-| **400** | Invalid structure of the request |  -  |
-| **401** | User is not authorized to save entity time series for selected entity. Most likely, User belongs to different Customer or Tenant. |  -  |
-| **500** | The exception was thrown during processing the request. Platform creates an audit log event about entity time series updates with action type &#39;TIMESERIES_UPDATED&#39; that includes an error stacktrace. |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **entityType** | **String** | A string value representing the entity type. For example, &#39;DEVICE&#39; | |
+| **entityId** | **String** | A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **scope** | **String** | Value is deprecated, reserved for backward compatibility and not used in the API call implementation. Specify any scope for compatibility | [enum: ANY] |
+| **ttl** | **Long** | A long value representing TTL (Time to Live) parameter. | |
+| **body** | **String** | A JSON with the telemetry values. See API call description for more details. | |
 

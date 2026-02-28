@@ -1,14 +1,12 @@
 # NotificationTemplateControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteNotificationTemplateById**](NotificationTemplateControllerApi.md#deleteNotificationTemplateById) | **DELETE** /api/notification/template/{id} | Delete notification template by id (deleteNotificationTemplateById |
-| [**getNotificationTemplateById**](NotificationTemplateControllerApi.md#getNotificationTemplateById) | **GET** /api/notification/template/{id} | Get notification template by id (getNotificationTemplateById) |
-| [**getNotificationTemplates**](NotificationTemplateControllerApi.md#getNotificationTemplates) | **GET** /api/notification/templates | Get notification templates (getNotificationTemplates) |
-| [**listSlackConversations**](NotificationTemplateControllerApi.md#listSlackConversations) | **GET** /api/notification/slack/conversations | List Slack conversations (listSlackConversations) |
-| [**saveNotificationTemplate**](NotificationTemplateControllerApi.md#saveNotificationTemplate) | **POST** /api/notification/template | Save notification template (saveNotificationTemplate) |
+| [**deleteNotificationTemplateById**](#deleteNotificationTemplateById) | **DELETE** /api/notification/template/{id} | Delete notification template by id (deleteNotificationTemplateById |
+| [**getNotificationTemplateById**](#getNotificationTemplateById) | **GET** /api/notification/template/{id} | Get notification template by id (getNotificationTemplateById) |
+| [**getNotificationTemplates**](#getNotificationTemplates) | **GET** /api/notification/templates | Get notification templates (getNotificationTemplates) |
+| [**listSlackConversations**](#listSlackConversations) | **GET** /api/notification/slack/conversations | List Slack conversations (listSlackConversations) |
+| [**saveNotificationTemplate**](#saveNotificationTemplate) | **POST** /api/notification/template | Save notification template (saveNotificationTemplate) |
 
 
 
@@ -22,34 +20,9 @@ Deletes notification template by its id.  This template cannot be referenced by 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getNotificationTemplateById
@@ -62,34 +35,9 @@ Fetches notification template by id.  Available for users with &#39;SYS_ADMIN&#3
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **id** | **UUID**|  | |
-
-### Return type
-
-[**NotificationTemplate**](NotificationTemplate.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **id** | **UUID** |  | |
 
 
 ## getNotificationTemplates
@@ -102,39 +50,14 @@ Returns the page of notification templates owned by sysadmin or tenant.  You can
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| Case-insensitive &#39;substring&#39; filter based on template&#39;s name and notification type | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-| **notificationTypes** | [**List&lt;String&gt;**](String.md)| Comma-separated list of notification types to filter the templates | [optional] |
-
-### Return type
-
-[**PageDataNotificationTemplate**](PageDataNotificationTemplate.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | Case-insensitive &#39;substring&#39; filter based on template&#39;s name and notification type | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
+| **notificationTypes** | **List&lt;String&gt;** | Comma-separated list of notification types to filter the templates | [optional] |
 
 
 ## listSlackConversations
@@ -147,35 +70,10 @@ List available Slack conversations by type.  Available for users with &#39;SYS_A
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **type** | [**SlackConversationType**](.md)|  | [enum: DIRECT, PUBLIC_CHANNEL, PRIVATE_CHANNEL] |
-| **token** | **String**| Slack bot token. If absent - system Slack settings will be used | [optional] |
-
-### Return type
-
-[**List&lt;SlackConversation&gt;**](SlackConversation.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **type** | **SlackConversationType** |  | [enum: DIRECT, PUBLIC_CHANNEL, PRIVATE_CHANNEL] |
+| **token** | **String** | Slack bot token. If absent - system Slack settings will be used | [optional] |
 
 
 ## saveNotificationTemplate
@@ -188,32 +86,7 @@ Creates or updates notification template.  Here is an example of template to sen
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **notificationTemplate** | [**NotificationTemplate**](NotificationTemplate.md)|  | |
-
-### Return type
-
-[**NotificationTemplate**](NotificationTemplate.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **notificationTemplate** | **NotificationTemplate** |  | |
 

@@ -1,32 +1,30 @@
 # RuleChainControllerApi
 
-All URIs are relative to *http://localhost:8080*
-
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**assignRuleChainToEdge**](RuleChainControllerApi.md#assignRuleChainToEdge) | **POST** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Assign rule chain to edge (assignRuleChainToEdge) |
-| [**deleteRuleChain**](RuleChainControllerApi.md#deleteRuleChain) | **DELETE** /api/ruleChain/{ruleChainId} | Delete rule chain (deleteRuleChain) |
-| [**exportRuleChains**](RuleChainControllerApi.md#exportRuleChains) | **GET** /api/ruleChains/export | Export Rule Chains |
-| [**getAutoAssignToEdgeRuleChains**](RuleChainControllerApi.md#getAutoAssignToEdgeRuleChains) | **GET** /api/ruleChain/autoAssignToEdgeRuleChains | Get Auto Assign To Edge Rule Chains (getAutoAssignToEdgeRuleChains) |
-| [**getEdgeRuleChains**](RuleChainControllerApi.md#getEdgeRuleChains) | **GET** /api/edge/{edgeId}/ruleChains | Get Edge Rule Chains (getEdgeRuleChains) |
-| [**getLatestRuleNodeDebugInput**](RuleChainControllerApi.md#getLatestRuleNodeDebugInput) | **GET** /api/ruleNode/{ruleNodeId}/debugIn | Get latest input message (getLatestRuleNodeDebugInput) |
-| [**getRuleChainById**](RuleChainControllerApi.md#getRuleChainById) | **GET** /api/ruleChain/{ruleChainId} | Get Rule Chain (getRuleChainById) |
-| [**getRuleChainMetaData**](RuleChainControllerApi.md#getRuleChainMetaData) | **GET** /api/ruleChain/{ruleChainId}/metadata | Get Rule Chain (getRuleChainById) |
-| [**getRuleChainOutputLabels**](RuleChainControllerApi.md#getRuleChainOutputLabels) | **GET** /api/ruleChain/{ruleChainId}/output/labels | Get Rule Chain output labels (getRuleChainOutputLabels) |
-| [**getRuleChainOutputLabelsUsage**](RuleChainControllerApi.md#getRuleChainOutputLabelsUsage) | **GET** /api/ruleChain/{ruleChainId}/output/labels/usage | Get output labels usage (getRuleChainOutputLabelsUsage) |
-| [**getRuleChains**](RuleChainControllerApi.md#getRuleChains) | **GET** /api/ruleChains | Get Rule Chains (getRuleChains) |
-| [**getRuleChainsByIdsV2**](RuleChainControllerApi.md#getRuleChainsByIdsV2) | **GET** /api/ruleChains/list | Get Rule Chains By Ids (getRuleChainsByIdsV2) |
-| [**importRuleChains**](RuleChainControllerApi.md#importRuleChains) | **POST** /api/ruleChains/import | Import Rule Chains |
-| [**isTbelEnabled**](RuleChainControllerApi.md#isTbelEnabled) | **GET** /api/ruleChain/tbelEnabled | Is TBEL script executor enabled |
-| [**saveRuleChain**](RuleChainControllerApi.md#saveRuleChain) | **POST** /api/ruleChain | Create Or Update Rule Chain (saveRuleChain) |
-| [**saveRuleChain1**](RuleChainControllerApi.md#saveRuleChain1) | **POST** /api/ruleChain/device/default | Create Default Rule Chain |
-| [**saveRuleChainMetaData**](RuleChainControllerApi.md#saveRuleChainMetaData) | **POST** /api/ruleChain/metadata | Update Rule Chain Metadata |
-| [**setAutoAssignToEdgeRuleChain**](RuleChainControllerApi.md#setAutoAssignToEdgeRuleChain) | **POST** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain) |
-| [**setEdgeTemplateRootRuleChain**](RuleChainControllerApi.md#setEdgeTemplateRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/edgeTemplateRoot | Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain) |
-| [**setRootRuleChain**](RuleChainControllerApi.md#setRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/root | Set Root Rule Chain (setRootRuleChain) |
-| [**testScript**](RuleChainControllerApi.md#testScript) | **POST** /api/ruleChain/testScript | Test Script function |
-| [**unassignRuleChainFromEdge**](RuleChainControllerApi.md#unassignRuleChainFromEdge) | **DELETE** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Unassign rule chain from edge (unassignRuleChainFromEdge) |
-| [**unsetAutoAssignToEdgeRuleChain**](RuleChainControllerApi.md#unsetAutoAssignToEdgeRuleChain) | **DELETE** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain) |
+| [**assignRuleChainToEdge**](#assignRuleChainToEdge) | **POST** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Assign rule chain to edge (assignRuleChainToEdge) |
+| [**deleteRuleChain**](#deleteRuleChain) | **DELETE** /api/ruleChain/{ruleChainId} | Delete rule chain (deleteRuleChain) |
+| [**exportRuleChains**](#exportRuleChains) | **GET** /api/ruleChains/export | Export Rule Chains |
+| [**getAutoAssignToEdgeRuleChains**](#getAutoAssignToEdgeRuleChains) | **GET** /api/ruleChain/autoAssignToEdgeRuleChains | Get Auto Assign To Edge Rule Chains (getAutoAssignToEdgeRuleChains) |
+| [**getEdgeRuleChains**](#getEdgeRuleChains) | **GET** /api/edge/{edgeId}/ruleChains | Get Edge Rule Chains (getEdgeRuleChains) |
+| [**getLatestRuleNodeDebugInput**](#getLatestRuleNodeDebugInput) | **GET** /api/ruleNode/{ruleNodeId}/debugIn | Get latest input message (getLatestRuleNodeDebugInput) |
+| [**getRuleChainById**](#getRuleChainById) | **GET** /api/ruleChain/{ruleChainId} | Get Rule Chain (getRuleChainById) |
+| [**getRuleChainMetaData**](#getRuleChainMetaData) | **GET** /api/ruleChain/{ruleChainId}/metadata | Get Rule Chain (getRuleChainById) |
+| [**getRuleChainOutputLabels**](#getRuleChainOutputLabels) | **GET** /api/ruleChain/{ruleChainId}/output/labels | Get Rule Chain output labels (getRuleChainOutputLabels) |
+| [**getRuleChainOutputLabelsUsage**](#getRuleChainOutputLabelsUsage) | **GET** /api/ruleChain/{ruleChainId}/output/labels/usage | Get output labels usage (getRuleChainOutputLabelsUsage) |
+| [**getRuleChains**](#getRuleChains) | **GET** /api/ruleChains | Get Rule Chains (getRuleChains) |
+| [**getRuleChainsByIdsV2**](#getRuleChainsByIdsV2) | **GET** /api/ruleChains/list | Get Rule Chains By Ids (getRuleChainsByIdsV2) |
+| [**importRuleChains**](#importRuleChains) | **POST** /api/ruleChains/import | Import Rule Chains |
+| [**isTbelEnabled**](#isTbelEnabled) | **GET** /api/ruleChain/tbelEnabled | Is TBEL script executor enabled |
+| [**saveRuleChain**](#saveRuleChain) | **POST** /api/ruleChain | Create Or Update Rule Chain (saveRuleChain) |
+| [**saveRuleChain1**](#saveRuleChain1) | **POST** /api/ruleChain/device/default | Create Default Rule Chain |
+| [**saveRuleChainMetaData**](#saveRuleChainMetaData) | **POST** /api/ruleChain/metadata | Update Rule Chain Metadata |
+| [**setAutoAssignToEdgeRuleChain**](#setAutoAssignToEdgeRuleChain) | **POST** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain) |
+| [**setEdgeTemplateRootRuleChain**](#setEdgeTemplateRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/edgeTemplateRoot | Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain) |
+| [**setRootRuleChain**](#setRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/root | Set Root Rule Chain (setRootRuleChain) |
+| [**testScript**](#testScript) | **POST** /api/ruleChain/testScript | Test Script function |
+| [**unassignRuleChainFromEdge**](#unassignRuleChainFromEdge) | **DELETE** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Unassign rule chain from edge (unassignRuleChainFromEdge) |
+| [**unsetAutoAssignToEdgeRuleChain**](#unsetAutoAssignToEdgeRuleChain) | **DELETE** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain) |
 
 
 
@@ -40,35 +38,10 @@ Creates assignment of an existing rule chain to an instance of The Edge. Assignm
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**|  | |
-| **ruleChainId** | **String**|  | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** |  | |
+| **ruleChainId** | **String** |  | |
 
 
 ## deleteRuleChain
@@ -81,34 +54,9 @@ Deletes the rule chain. Referencing non-existing rule chain Id will cause an err
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## exportRuleChains
@@ -121,34 +69,9 @@ Exports all tenant rule chains as one JSON.  Available for users with &#39;TENAN
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **limit** | **Integer**| A limit of rule chains to export. | |
-
-### Return type
-
-[**RuleChainData**](RuleChainData.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **limit** | **Integer** | A limit of rule chains to export. | |
 
 
 ## getAutoAssignToEdgeRuleChains
@@ -158,35 +81,6 @@ Exports all tenant rule chains as one JSON.  Available for users with &#39;TENAN
 Get Auto Assign To Edge Rule Chains (getAutoAssignToEdgeRuleChains)
 
 Returns a list of Rule Chains that will be assigned to a newly created edge. The rule chain object is lightweight and contains general information about the rule chain. List of rule nodes and their connection is stored in a separate &#39;metadata&#39; object.  Available for users with &#39;TENANT_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**List&lt;RuleChain&gt;**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## getEdgeRuleChains
 
@@ -198,39 +92,14 @@ Returns a page of Rule Chains assigned to the specified edge. The rule chain obj
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**| A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the rule chain name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, root] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataRuleChain**](PageDataRuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** | A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the rule chain name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, root] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getLatestRuleNodeDebugInput
@@ -243,34 +112,9 @@ Gets the input message from the debug events for specified Rule Chain Id. Refere
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleNodeId** | **String**| A string value representing the rule node id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleNodeId** | **String** | A string value representing the rule node id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getRuleChainById
@@ -283,34 +127,9 @@ Fetch the Rule Chain object based on the provided Rule Chain Id. The rule chain 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getRuleChainMetaData
@@ -323,34 +142,9 @@ Fetch the Rule Chain Metadata object based on the provided Rule Chain Id. The me
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**RuleChainMetaData**](RuleChainMetaData.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getRuleChainOutputLabels
@@ -363,34 +157,9 @@ Fetch the unique labels for the \&quot;output\&quot; Rule Nodes that belong to t
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-**Set&lt;String&gt;**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getRuleChainOutputLabelsUsage
@@ -403,34 +172,9 @@ Fetch the list of rule chains and the relation types (labels) they use to proces
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**List&lt;RuleChainOutputLabelsUsage&gt;**](RuleChainOutputLabelsUsage.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## getRuleChains
@@ -443,39 +187,14 @@ Returns a page of Rule Chains owned by tenant. The rule chain object is lightwei
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer**| Maximum amount of entities in a one page | |
-| **page** | **Integer**| Sequence number of page starting from 0 | |
-| **type** | **String**| Rule chain type (CORE or EDGE) | [optional] [enum: CORE, EDGE] |
-| **textSearch** | **String**| The case insensitive &#39;substring&#39; filter based on the rule chain name. | [optional] |
-| **sortProperty** | **String**| Property of entity to sort by | [optional] [enum: createdTime, name, root] |
-| **sortOrder** | **String**| Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-[**PageDataRuleChain**](PageDataRuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **type** | **String** | Rule chain type (CORE or EDGE) | [optional] [enum: CORE, EDGE] |
+| **textSearch** | **String** | The case insensitive &#39;substring&#39; filter based on the rule chain name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, root] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 
 
 ## getRuleChainsByIdsV2
@@ -488,34 +207,9 @@ Requested rule chains must be owned by tenant which is performing the request.  
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainIds** | [**List&lt;String&gt;**](String.md)| A list of rule chain ids, separated by comma &#39;,&#39; | |
-
-### Return type
-
-[**List&lt;RuleChain&gt;**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainIds** | **List&lt;String&gt;** | A list of rule chain ids, separated by comma &#39;,&#39; | |
 
 
 ## importRuleChains
@@ -528,35 +222,10 @@ Imports all tenant rule chains as one JSON.  Available for users with &#39;TENAN
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainData** | [**RuleChainData**](RuleChainData.md)|  | |
-| **overwrite** | **Boolean**| Enables overwrite for existing rule chains with the same name. | [optional] [default to false] |
-
-### Return type
-
-[**List&lt;RuleChainImportResult&gt;**](RuleChainImportResult.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainData** | **RuleChainData** |  | |
+| **overwrite** | **Boolean** | Enables overwrite for existing rule chains with the same name. | [optional] [default to false] |
 
 
 ## isTbelEnabled
@@ -566,35 +235,6 @@ Imports all tenant rule chains as one JSON.  Available for users with &#39;TENAN
 Is TBEL script executor enabled
 
 Returns &#39;True&#39; if the TBEL script execution is enabled  Available for users with &#39;TENANT_ADMIN&#39; authority.
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-**Boolean**
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
-
 
 ## saveRuleChain
 
@@ -606,34 +246,9 @@ Create or update the Rule Chain. When creating Rule Chain, platform generates Ru
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChain** | [**RuleChain**](RuleChain.md)|  | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChain** | **RuleChain** |  | |
 
 
 ## saveRuleChain1
@@ -646,34 +261,9 @@ Create rule chain from template, based on the specified name in the request. Cre
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **defaultRuleChainCreateRequest** | [**DefaultRuleChainCreateRequest**](DefaultRuleChainCreateRequest.md)|  | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **defaultRuleChainCreateRequest** | **DefaultRuleChainCreateRequest** |  | |
 
 
 ## saveRuleChainMetaData
@@ -686,35 +276,10 @@ Updates the rule chain metadata. The metadata object contains information about 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainMetaData** | [**RuleChainMetaData**](RuleChainMetaData.md)|  | |
-| **updateRelated** | **Boolean**| Update related rule nodes. | [optional] [default to true] |
-
-### Return type
-
-[**RuleChainMetaData**](RuleChainMetaData.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainMetaData** | **RuleChainMetaData** |  | |
+| **updateRelated** | **Boolean** | Update related rule nodes. | [optional] [default to true] |
 
 
 ## setAutoAssignToEdgeRuleChain
@@ -727,34 +292,9 @@ Makes the rule chain to be automatically assigned for any new edge that will be 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## setEdgeTemplateRootRuleChain
@@ -767,34 +307,9 @@ Makes the rule chain to be root rule chain for any new edge that will be created
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## setRootRuleChain
@@ -807,34 +322,9 @@ Makes the rule chain to be root rule chain. Updates previous root rule chain as 
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
 
 ## testScript
@@ -847,35 +337,10 @@ Execute the Script function and return the result. The format of request:   &#x6
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **Object**| Test JS request. See API call description above. | |
-| **scriptLang** | [**ScriptLanguage**](.md)| Script language: JS or TBEL | [optional] [enum: JS, TBEL] |
-
-### Return type
-
-[**com.fasterxml.jackson.databind.JsonNode**](com.fasterxml.jackson.databind.JsonNode.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **body** | **Object** | Test JS request. See API call description above. | |
+| **scriptLang** | **ScriptLanguage** | Script language: JS or TBEL | [optional] [enum: JS, TBEL] |
 
 
 ## unassignRuleChainFromEdge
@@ -888,35 +353,10 @@ Clears assignment of the rule chain to the edge. Unassignment works in async way
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String**|  | |
-| **ruleChainId** | **String**|  | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **edgeId** | **String** |  | |
+| **ruleChainId** | **String** |  | |
 
 
 ## unsetAutoAssignToEdgeRuleChain
@@ -929,32 +369,7 @@ Removes the rule chain from the list of rule chains that are going to be automat
 
 ### Parameters
 
-
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **ruleChainId** | **String**| A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
-
-### Return type
-
-[**RuleChain**](RuleChain.md)
-
-### Authorization
-
-[api_key_form](../README.md#api_key_form), [http_login_form](../README.md#http_login_form)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** | OK |  -  |
-| **400** | Bad Request |  -  |
-| **401** | Unauthorized |  -  |
-| **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
-| **429** | Too Many Requests |  -  |
+| **ruleChainId** | **String** | A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; | |
 
