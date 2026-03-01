@@ -190,7 +190,7 @@ generate() {
   find "$output_dir/src" -name "*.java" -exec perl -i -0pe 's|/\*\n \* ThingsBoard REST API.*?\*/\n+||s' {} +
 
   # Make ApiException unchecked (extend RuntimeException instead of Exception)
-  sed -i '' 's/extends Exception/extends RuntimeException/' "$output_dir/src/main/java/org/thingsboard/client/ApiException.java"
+  perl -i -pe 's/extends Exception/extends RuntimeException/' "$output_dir/src/main/java/org/thingsboard/client/ApiException.java"
 
   if [ "$DRY_RUN" = true ]; then
     echo "Dry run: generated client is in $output_dir"
