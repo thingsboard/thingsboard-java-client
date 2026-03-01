@@ -142,6 +142,16 @@ generate() {
     exit 1
   }
 
+  # Detect duplicate operationIds (ThingsBoard's spec generator appends _1, _2, etc.)
+  local duplicates
+  duplicates=$(grep -o '"operationId" *: *"[^"]*"' "$spec_file" | sed 's/.*: *"//;s/"//' | grep -E '_[0-9]+$' || true)
+  if [ -n "$duplicates" ]; then
+    echo "Error: spec contains duplicate operationIds (suffixed by ThingsBoard):"
+    echo "$duplicates" | sed 's/^/  /'
+    echo "Fix the @ApiOperation annotations in ThingsBoard source to use unique names."
+    exit 1
+  fi
+
   # Run 1 — Java client (single class, no docs)
   echo "Generating client for edition: $edition from $spec_file"
   openapi-generator-cli generate \
