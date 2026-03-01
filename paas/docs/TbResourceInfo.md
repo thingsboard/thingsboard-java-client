@@ -1,0 +1,39 @@
+
+# TbResourceInfo
+
+`org.thingsboard.client.model.TbResourceInfo`
+
+A JSON value representing the Resource Info.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **id** | **TbResourceId** | JSON object with the Resource Id. Specify this field to update the Resource. Referencing non-existing Resource Id will cause error. Omit this field to create new Resource. | [optional] |
+| **createdTime** | **Long** | Timestamp of the resource creation, in milliseconds | [optional] [readonly] |
+| **tenantId** | **TenantId** | JSON object with Tenant Id. Tenant Id of the resource can't be changed. | [optional] [readonly] |
+| **customerId** | **CustomerId** | JSON object with Customer Id. Customer Id of the resource can't be changed. | [optional] [readonly] |
+| **title** | **String** | Resource title. | [optional] |
+| **resourceType** | **ResourceType** | Resource type. | [optional] |
+| **resourceSubType** | **ResourceSubType** | Resource sub type. | [optional] |
+| **resourceKey** | **String** | Resource key. | [optional] |
+| **publicResourceKey** | **String** | Public resource key. | [optional] |
+| **etag** | **String** | Resource etag. | [optional] [readonly] |
+| **fileName** | **String** | Resource file name. | [optional] |
+| **descriptor** | **com.fasterxml.jackson.databind.JsonNode** | Resource descriptor. | [optional] |
+| **name** | **String** |  | [optional] [readonly] |
+| **_public** | **Boolean** |  | [optional] |
+| **link** | **String** |  | [optional] [readonly] |
+| **publicLink** | **String** |  | [optional] [readonly] |
+
+
+
+---
+
+### Conventions
+
+- **Package:** `org.thingsboard.client.model`
+- **Getter pattern:** `get<PropertyName>()` — e.g., `getId()`, `getName()`
+- **Setter pattern:** `set<PropertyName>(value)` — e.g., `setId(value)`, `setName(value)`
+- **Null fields:** Getters return `null` for unset optional fields; they do not throw exceptions
+

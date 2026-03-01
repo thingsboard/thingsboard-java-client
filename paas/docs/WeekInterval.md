@@ -1,0 +1,25 @@
+
+# WeekInterval
+
+`org.thingsboard.client.model.WeekInterval`
+
+**Extends:** **AggInterval**
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **tz** | **String** |  | |
+| **offsetSec** | **Long** |  | [optional] |
+
+
+
+---
+
+### Conventions
+
+- **Package:** `org.thingsboard.client.model`
+- **Getter pattern:** `get<PropertyName>()` — e.g., `getId()`, `getName()`
+- **Setter pattern:** `set<PropertyName>(value)` — e.g., `setId(value)`, `setName(value)`
+- **Null fields:** Getters return `null` for unset optional fields; they do not throw exceptions
+
