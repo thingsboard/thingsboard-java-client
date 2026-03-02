@@ -41,10 +41,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * Default notification rule recipients configuration
+ * ApiUsageLimitRecipientsConfig
  */
 @JsonPropertyOrder({
-  DefaultNotificationRuleRecipientsConfig.JSON_PROPERTY_TARGETS
+  ApiUsageLimitRecipientsConfig.JSON_PROPERTY_TARGETS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -52,38 +52,21 @@ import org.thingsboard.client.ApiClient;
   allowSetters = true // allows the triggerType to be set during deserialization
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "triggerType", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = EscalatedNotificationRuleRecipientsConfig.class, name = "ALARM"),
-  @JsonSubTypes.Type(value = AlarmAssignmentRecipientsConfig.class, name = "ALARM_ASSIGNMENT"),
-  @JsonSubTypes.Type(value = AlarmCommentRecipientsConfig.class, name = "ALARM_COMMENT"),
-  @JsonSubTypes.Type(value = ApiUsageLimitRecipientsConfig.class, name = "API_USAGE_LIMIT"),
-  @JsonSubTypes.Type(value = DeviceActivityRecipientsConfig.class, name = "DEVICE_ACTIVITY"),
-  @JsonSubTypes.Type(value = EdgeCommunicationFailureRecipientsConfig.class, name = "EDGE_COMMUNICATION_FAILURE"),
-  @JsonSubTypes.Type(value = EdgeConnectionRecipientsConfig.class, name = "EDGE_CONNECTION"),
-  @JsonSubTypes.Type(value = EntitiesLimitRecipientsConfig.class, name = "ENTITIES_LIMIT"),
-  @JsonSubTypes.Type(value = EntityActionRecipientsConfig.class, name = "ENTITY_ACTION"),
-  @JsonSubTypes.Type(value = IntegrationLifecycleEventRecipientsConfig.class, name = "INTEGRATION_LIFECYCLE_EVENT"),
-  @JsonSubTypes.Type(value = NewPlatformVersionRecipientsConfig.class, name = "NEW_PLATFORM_VERSION"),
-  @JsonSubTypes.Type(value = RateLimitsRecipientsConfig.class, name = "RATE_LIMITS"),
-  @JsonSubTypes.Type(value = ResourceShortageRecipientsConfig.class, name = "RESOURCES_SHORTAGE"),
-  @JsonSubTypes.Type(value = RuleEngineComponentLifecycleEventRecipientsConfig.class, name = "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"),
-  @JsonSubTypes.Type(value = TaskProcessingFailureRecipientsConfig.class, name = "TASK_PROCESSING_FAILURE"),
-})
 
-public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRecipientsConfig {
+public class ApiUsageLimitRecipientsConfig extends NotificationRuleRecipientsConfig {
   public static final String JSON_PROPERTY_TARGETS = "targets";
   @javax.annotation.Nonnull
   private List<UUID> targets = new ArrayList<>();
 
-  public DefaultNotificationRuleRecipientsConfig() { 
+  public ApiUsageLimitRecipientsConfig() { 
   }
 
-  public DefaultNotificationRuleRecipientsConfig targets(@javax.annotation.Nonnull List<UUID> targets) {
+  public ApiUsageLimitRecipientsConfig targets(@javax.annotation.Nonnull List<UUID> targets) {
     this.targets = targets;
     return this;
   }
 
-  public DefaultNotificationRuleRecipientsConfig addTargetsItem(UUID targetsItem) {
+  public ApiUsageLimitRecipientsConfig addTargetsItem(UUID targetsItem) {
     if (this.targets == null) {
       this.targets = new ArrayList<>();
     }
@@ -111,13 +94,13 @@ public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRec
 
 
   @Override
-  public DefaultNotificationRuleRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public ApiUsageLimitRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }
 
   /**
-   * Return true if this DefaultNotificationRuleRecipientsConfig object is equal to o.
+   * Return true if this ApiUsageLimitRecipientsConfig object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -127,8 +110,8 @@ public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRec
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DefaultNotificationRuleRecipientsConfig defaultNotificationRuleRecipientsConfig = (DefaultNotificationRuleRecipientsConfig) o;
-    return Objects.equals(this.targets, defaultNotificationRuleRecipientsConfig.targets) &&
+    ApiUsageLimitRecipientsConfig apiUsageLimitRecipientsConfig = (ApiUsageLimitRecipientsConfig) o;
+    return Objects.equals(this.targets, apiUsageLimitRecipientsConfig.targets) &&
         super.equals(o);
   }
 
@@ -140,7 +123,7 @@ public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRec
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DefaultNotificationRuleRecipientsConfig {\n");
+    sb.append("class ApiUsageLimitRecipientsConfig {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("}");
@@ -211,23 +194,8 @@ public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRec
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("ALARM", EscalatedNotificationRuleRecipientsConfig.class);
-  mappings.put("ALARM_ASSIGNMENT", AlarmAssignmentRecipientsConfig.class);
-  mappings.put("ALARM_COMMENT", AlarmCommentRecipientsConfig.class);
-  mappings.put("API_USAGE_LIMIT", ApiUsageLimitRecipientsConfig.class);
-  mappings.put("DEVICE_ACTIVITY", DeviceActivityRecipientsConfig.class);
-  mappings.put("EDGE_COMMUNICATION_FAILURE", EdgeCommunicationFailureRecipientsConfig.class);
-  mappings.put("EDGE_CONNECTION", EdgeConnectionRecipientsConfig.class);
-  mappings.put("ENTITIES_LIMIT", EntitiesLimitRecipientsConfig.class);
-  mappings.put("ENTITY_ACTION", EntityActionRecipientsConfig.class);
-  mappings.put("INTEGRATION_LIFECYCLE_EVENT", IntegrationLifecycleEventRecipientsConfig.class);
-  mappings.put("NEW_PLATFORM_VERSION", NewPlatformVersionRecipientsConfig.class);
-  mappings.put("RATE_LIMITS", RateLimitsRecipientsConfig.class);
-  mappings.put("RESOURCES_SHORTAGE", ResourceShortageRecipientsConfig.class);
-  mappings.put("RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", RuleEngineComponentLifecycleEventRecipientsConfig.class);
-  mappings.put("TASK_PROCESSING_FAILURE", TaskProcessingFailureRecipientsConfig.class);
-  mappings.put("DefaultNotificationRuleRecipientsConfig", DefaultNotificationRuleRecipientsConfig.class);
-  JSON.registerDiscriminator(DefaultNotificationRuleRecipientsConfig.class, "triggerType", mappings);
+  mappings.put("ApiUsageLimitRecipientsConfig", ApiUsageLimitRecipientsConfig.class);
+  JSON.registerDiscriminator(ApiUsageLimitRecipientsConfig.class, "triggerType", mappings);
 }
 }
 

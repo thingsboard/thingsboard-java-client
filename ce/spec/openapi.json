@@ -47484,7 +47484,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "hgzIG9qjW8X4gVtFPE1nIY2z6qwcnS"
+                      "resetToken": "rn84O4reBePrD2ZVlvdlO5lvBUhscM"
                     }
                   }
                 }
@@ -47594,7 +47594,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "hgzIG9qjW8X4gVtFPE1nIY2z6qwcnS"
+                      "resetToken": "rn84O4reBePrD2ZVlvdlO5lvBUhscM"
                     }
                   }
                 }
@@ -83032,37 +83032,11 @@
         ]
       },
       "AiModelExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -83298,10 +83272,9 @@
         ]
       },
       "AlarmAssignmentRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -83523,10 +83496,9 @@
         ]
       },
       "AlarmCommentRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -85097,10 +85069,9 @@
         ]
       },
       "ApiUsageLimitRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -85233,37 +85204,11 @@
         ]
       },
       "AssetExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -85422,37 +85367,11 @@
         }
       },
       "AssetProfileExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -87163,37 +87082,11 @@
         ]
       },
       "CustomerExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -87313,37 +87206,11 @@
         ]
       },
       "DashboardExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -87604,31 +87471,6 @@
         "required": [
           "type",
           "visible"
-        ]
-      },
-      "DefaultNotificationRuleRecipientsConfig": {
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "targets": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "format": "uuid"
-                },
-                "minItems": 1
-              }
-            }
-          }
-        ],
-        "description": "Default notification rule recipients configuration",
-        "required": [
-          "targets"
         ]
       },
       "DefaultPageId": {
@@ -88133,10 +87975,9 @@
         ]
       },
       "DeviceActivityRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -88575,37 +88416,11 @@
         }
       },
       "DeviceProfileExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -89257,10 +89072,9 @@
         ]
       },
       "EdgeCommunicationFailureRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -89311,10 +89125,9 @@
         ]
       },
       "EdgeConnectionRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -89786,10 +89599,9 @@
         ]
       },
       "EntitiesLimitRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -89841,10 +89653,9 @@
         ]
       },
       "EntityActionRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -90635,37 +90446,11 @@
         ]
       },
       "EntityViewExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -92962,10 +92747,9 @@
         ]
       },
       "NewPlatformVersionRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -93511,37 +93295,11 @@
         }
       },
       "NotificationRuleExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -93885,37 +93643,11 @@
         ]
       },
       "NotificationTemplateExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]
@@ -97220,10 +96952,9 @@
         ]
       },
       "RateLimitsRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -97597,10 +97328,9 @@
         }
       },
       "ResourceShortageRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -98109,10 +97839,9 @@
         ]
       },
       "RuleEngineComponentLifecycleEventRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -99317,10 +99046,9 @@
         ]
       },
       "TaskProcessingFailureRecipientsConfig": {
-        "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/DefaultNotificationRuleRecipientsConfig"
+            "$ref": "#/components/schemas/NotificationRuleRecipientsConfig"
           },
           {
             "type": "object",
@@ -99545,37 +99273,11 @@
         }
       },
       "TbResourceExportData": {
-        "type": "object",
-        "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
-          "entity": {
-            "$ref": "#/components/schemas/ExportableEntity"
-          },
-          "relations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntityRelation"
-            }
-          },
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/AttributeExportData"
-              }
-            },
-            "description": "Map of attributes where key is the scope of attributes and value is the list of attributes for that scope"
-          },
-          "calculatedFields": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CalculatedField"
-            }
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityExportData"
           }
-        },
+        ],
         "required": [
           "entityType"
         ]

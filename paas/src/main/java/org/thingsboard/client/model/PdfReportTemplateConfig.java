@@ -249,12 +249,6 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
-  public PdfReportTemplateConfig timeDataPattern(@javax.annotation.Nullable String timeDataPattern) {
-    this.setTimeDataPattern(timeDataPattern);
-    return this;
-  }
-
-  @Override
   public PdfReportTemplateConfig namePattern(@javax.annotation.Nullable String namePattern) {
     this.setNamePattern(namePattern);
     return this;
@@ -263,6 +257,12 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   @Override
   public PdfReportTemplateConfig components(@javax.annotation.Nonnull List<ReportComponent> components) {
     this.setComponents(components);
+    return this;
+  }
+
+  @Override
+  public PdfReportTemplateConfig timeDataPattern(@javax.annotation.Nullable String timeDataPattern) {
+    this.setTimeDataPattern(timeDataPattern);
     return this;
   }
 
@@ -371,11 +371,6 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
       }
     }
 
-    // add `timeDataPattern` to the URL query string
-    if (getTimeDataPattern() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimeDataPattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeDataPattern()))));
-    }
-
     // add `namePattern` to the URL query string
     if (getNamePattern() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%snamePattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNamePattern()))));
@@ -389,6 +384,11 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `timeDataPattern` to the URL query string
+    if (getTimeDataPattern() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimeDataPattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeDataPattern()))));
     }
 
     // add `entityAliases` to the URL query string

@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AiModelExportData
+ * ReportTemplateExportData
  */
 @JsonPropertyOrder({
 })
@@ -57,42 +57,42 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 
-public class AiModelExportData extends EntityExportData {
-  public AiModelExportData() { 
+public class ReportTemplateExportData extends EntityExportData {
+  public ReportTemplateExportData() { 
   }
 
   @Override
-  public AiModelExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
+  public ReportTemplateExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
     this.setEntityType(entityType);
     return this;
   }
 
   @Override
-  public AiModelExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
+  public ReportTemplateExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
     this.setEntity(entity);
     return this;
   }
 
   @Override
-  public AiModelExportData relations(@javax.annotation.Nullable List<EntityRelation> relations) {
+  public ReportTemplateExportData relations(@javax.annotation.Nullable List<EntityRelation> relations) {
     this.setRelations(relations);
     return this;
   }
 
   @Override
-  public AiModelExportData attributes(@javax.annotation.Nullable Map<String, List<AttributeExportData>> attributes) {
+  public ReportTemplateExportData attributes(@javax.annotation.Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
-  public AiModelExportData calculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
+  public ReportTemplateExportData calculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
     return this;
   }
 
   /**
-   * Return true if this AiModelExportData object is equal to o.
+   * Return true if this ReportTemplateExportData object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -113,7 +113,7 @@ public class AiModelExportData extends EntityExportData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AiModelExportData {\n");
+    sb.append("class ReportTemplateExportData {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
@@ -206,8 +206,8 @@ public class AiModelExportData extends EntityExportData {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("AiModelExportData", AiModelExportData.class);
-  JSON.registerDiscriminator(AiModelExportData.class, "entityType", mappings);
+  mappings.put("ReportTemplateExportData", ReportTemplateExportData.class);
+  JSON.registerDiscriminator(ReportTemplateExportData.class, "entityType", mappings);
 }
 }
 

@@ -41,8 +41,8 @@ import org.thingsboard.client.ApiClient;
  * NotificationInfo
  */
 @JsonPropertyOrder({
-  NotificationInfo.JSON_PROPERTY_STATE_ENTITY_ID,
   NotificationInfo.JSON_PROPERTY_DASHBOARD_ID,
+  NotificationInfo.JSON_PROPERTY_STATE_ENTITY_ID,
   NotificationInfo.JSON_PROPERTY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -53,13 +53,13 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class NotificationInfo {
-  public static final String JSON_PROPERTY_STATE_ENTITY_ID = "stateEntityId";
-  @javax.annotation.Nullable
-  private EntityId stateEntityId;
-
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
   @javax.annotation.Nullable
   private DashboardId dashboardId;
+
+  public static final String JSON_PROPERTY_STATE_ENTITY_ID = "stateEntityId";
+  @javax.annotation.Nullable
+  private EntityId stateEntityId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nonnull
@@ -67,30 +67,6 @@ public class NotificationInfo {
 
   public NotificationInfo() { 
   }
-
-  public NotificationInfo stateEntityId(@javax.annotation.Nullable EntityId stateEntityId) {
-    this.stateEntityId = stateEntityId;
-    return this;
-  }
-
-  /**
-   * Get stateEntityId
-   * @return stateEntityId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATE_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityId getStateEntityId() {
-    return stateEntityId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_STATE_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStateEntityId(@javax.annotation.Nullable EntityId stateEntityId) {
-    this.stateEntityId = stateEntityId;
-  }
-
 
   public NotificationInfo dashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
@@ -113,6 +89,30 @@ public class NotificationInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
+  }
+
+
+  public NotificationInfo stateEntityId(@javax.annotation.Nullable EntityId stateEntityId) {
+    this.stateEntityId = stateEntityId;
+    return this;
+  }
+
+  /**
+   * Get stateEntityId
+   * @return stateEntityId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_STATE_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getStateEntityId() {
+    return stateEntityId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_STATE_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStateEntityId(@javax.annotation.Nullable EntityId stateEntityId) {
+    this.stateEntityId = stateEntityId;
   }
 
 
@@ -152,22 +152,22 @@ public class NotificationInfo {
       return false;
     }
     NotificationInfo notificationInfo = (NotificationInfo) o;
-    return Objects.equals(this.stateEntityId, notificationInfo.stateEntityId) &&
-        Objects.equals(this.dashboardId, notificationInfo.dashboardId) &&
+    return Objects.equals(this.dashboardId, notificationInfo.dashboardId) &&
+        Objects.equals(this.stateEntityId, notificationInfo.stateEntityId) &&
         Objects.equals(this.type, notificationInfo.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(stateEntityId, dashboardId, type);
+    return Objects.hash(dashboardId, stateEntityId, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationInfo {\n");
-    sb.append("    stateEntityId: ").append(toIndentedString(stateEntityId)).append("\n");
     sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");
+    sb.append("    stateEntityId: ").append(toIndentedString(stateEntityId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -216,14 +216,14 @@ public class NotificationInfo {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `stateEntityId` to the URL query string
-    if (getStateEntityId() != null) {
-      joiner.add(getStateEntityId().toUrlQueryString(prefix + "stateEntityId" + suffix));
-    }
-
     // add `dashboardId` to the URL query string
     if (getDashboardId() != null) {
       joiner.add(getDashboardId().toUrlQueryString(prefix + "dashboardId" + suffix));
+    }
+
+    // add `stateEntityId` to the URL query string
+    if (getStateEntityId() != null) {
+      joiner.add(getStateEntityId().toUrlQueryString(prefix + "stateEntityId" + suffix));
     }
 
     // add `type` to the URL query string

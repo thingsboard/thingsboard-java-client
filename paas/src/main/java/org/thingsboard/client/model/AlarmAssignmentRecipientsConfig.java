@@ -41,11 +41,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * Default notification rule recipients configuration
+ * AlarmAssignmentRecipientsConfig
  */
 @JsonPropertyOrder({
-  DefaultNotificationRuleRecipientsConfig.JSON_PROPERTY_TRIGGER_TYPE,
-  DefaultNotificationRuleRecipientsConfig.JSON_PROPERTY_TARGETS
+  AlarmAssignmentRecipientsConfig.JSON_PROPERTY_TARGETS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,48 +53,20 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "triggerType", visible = true)
 
-public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRecipientsConfig {
-  public static final String JSON_PROPERTY_TRIGGER_TYPE = "triggerType";
-  @javax.annotation.Nonnull
-  private NotificationRuleTriggerType triggerType = NotificationRuleTriggerType.ENTITY_ACTION;
-
+public class AlarmAssignmentRecipientsConfig extends NotificationRuleRecipientsConfig {
   public static final String JSON_PROPERTY_TARGETS = "targets";
   @javax.annotation.Nonnull
   private List<UUID> targets = new ArrayList<>();
 
-  public DefaultNotificationRuleRecipientsConfig() { 
+  public AlarmAssignmentRecipientsConfig() { 
   }
 
-  public DefaultNotificationRuleRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
-    this.triggerType = triggerType;
-    return this;
-  }
-
-  /**
-   * Get triggerType
-   * @return triggerType
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public NotificationRuleTriggerType getTriggerType() {
-    return triggerType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTriggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
-    this.triggerType = triggerType;
-  }
-
-
-  public DefaultNotificationRuleRecipientsConfig targets(@javax.annotation.Nonnull List<UUID> targets) {
+  public AlarmAssignmentRecipientsConfig targets(@javax.annotation.Nonnull List<UUID> targets) {
     this.targets = targets;
     return this;
   }
 
-  public DefaultNotificationRuleRecipientsConfig addTargetsItem(UUID targetsItem) {
+  public AlarmAssignmentRecipientsConfig addTargetsItem(UUID targetsItem) {
     if (this.targets == null) {
       this.targets = new ArrayList<>();
     }
@@ -122,8 +93,14 @@ public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRec
   }
 
 
+  @Override
+  public AlarmAssignmentRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
+    return this;
+  }
+
   /**
-   * Return true if this DefaultNotificationRuleRecipientsConfig object is equal to o.
+   * Return true if this AlarmAssignmentRecipientsConfig object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -133,23 +110,21 @@ public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRec
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DefaultNotificationRuleRecipientsConfig defaultNotificationRuleRecipientsConfig = (DefaultNotificationRuleRecipientsConfig) o;
-    return Objects.equals(this.triggerType, defaultNotificationRuleRecipientsConfig.triggerType) &&
-        Objects.equals(this.targets, defaultNotificationRuleRecipientsConfig.targets) &&
+    AlarmAssignmentRecipientsConfig alarmAssignmentRecipientsConfig = (AlarmAssignmentRecipientsConfig) o;
+    return Objects.equals(this.targets, alarmAssignmentRecipientsConfig.targets) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(triggerType, targets, super.hashCode());
+    return Objects.hash(targets, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DefaultNotificationRuleRecipientsConfig {\n");
+    sb.append("class AlarmAssignmentRecipientsConfig {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    triggerType: ").append(toIndentedString(triggerType)).append("\n");
     sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -219,8 +194,8 @@ public class DefaultNotificationRuleRecipientsConfig extends NotificationRuleRec
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("DefaultNotificationRuleRecipientsConfig", DefaultNotificationRuleRecipientsConfig.class);
-  JSON.registerDiscriminator(DefaultNotificationRuleRecipientsConfig.class, "triggerType", mappings);
+  mappings.put("AlarmAssignmentRecipientsConfig", AlarmAssignmentRecipientsConfig.class);
+  JSON.registerDiscriminator(AlarmAssignmentRecipientsConfig.class, "triggerType", mappings);
 }
 }
 

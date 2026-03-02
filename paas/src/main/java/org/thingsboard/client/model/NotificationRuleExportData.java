@@ -46,7 +46,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * GroupEntityExportData
+ * NotificationRuleExportData
  */
 @JsonPropertyOrder({
 })
@@ -57,42 +57,42 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 
-public class GroupEntityExportData extends EntityExportData {
-  public GroupEntityExportData() { 
+public class NotificationRuleExportData extends EntityExportData {
+  public NotificationRuleExportData() { 
   }
 
   @Override
-  public GroupEntityExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
+  public NotificationRuleExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
     this.setEntityType(entityType);
     return this;
   }
 
   @Override
-  public GroupEntityExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
+  public NotificationRuleExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
     this.setEntity(entity);
     return this;
   }
 
   @Override
-  public GroupEntityExportData relations(@javax.annotation.Nullable List<EntityRelation> relations) {
+  public NotificationRuleExportData relations(@javax.annotation.Nullable List<EntityRelation> relations) {
     this.setRelations(relations);
     return this;
   }
 
   @Override
-  public GroupEntityExportData attributes(@javax.annotation.Nullable Map<String, List<AttributeExportData>> attributes) {
+  public NotificationRuleExportData attributes(@javax.annotation.Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
-  public GroupEntityExportData calculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
+  public NotificationRuleExportData calculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
     return this;
   }
 
   /**
-   * Return true if this GroupEntityExportData object is equal to o.
+   * Return true if this NotificationRuleExportData object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -113,7 +113,7 @@ public class GroupEntityExportData extends EntityExportData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GroupEntityExportData {\n");
+    sb.append("class NotificationRuleExportData {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
@@ -206,8 +206,8 @@ public class GroupEntityExportData extends EntityExportData {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("GroupEntityExportData", GroupEntityExportData.class);
-  JSON.registerDiscriminator(GroupEntityExportData.class, "entityType", mappings);
+  mappings.put("NotificationRuleExportData", NotificationRuleExportData.class);
+  JSON.registerDiscriminator(NotificationRuleExportData.class, "entityType", mappings);
 }
 }
 

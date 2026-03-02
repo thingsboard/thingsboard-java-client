@@ -63,7 +63,6 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = ResourceShortageRecipientsConfig.class, name = "RESOURCES_SHORTAGE"),
   @JsonSubTypes.Type(value = RuleEngineComponentLifecycleEventRecipientsConfig.class, name = "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT"),
   @JsonSubTypes.Type(value = TaskProcessingFailureRecipientsConfig.class, name = "TASK_PROCESSING_FAILURE"),
-  @JsonSubTypes.Type(value = DefaultNotificationRuleRecipientsConfig.class, name = "DefaultNotificationRuleRecipientsConfig"),
 })
 
 public class NotificationRuleRecipientsConfig {
@@ -194,7 +193,6 @@ static {
   mappings.put("RESOURCES_SHORTAGE", ResourceShortageRecipientsConfig.class);
   mappings.put("RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT", RuleEngineComponentLifecycleEventRecipientsConfig.class);
   mappings.put("TASK_PROCESSING_FAILURE", TaskProcessingFailureRecipientsConfig.class);
-  mappings.put("DefaultNotificationRuleRecipientsConfig", DefaultNotificationRuleRecipientsConfig.class);
   mappings.put("NotificationRuleRecipientsConfig", NotificationRuleRecipientsConfig.class);
   JSON.registerDiscriminator(NotificationRuleRecipientsConfig.class, "triggerType", mappings);
 }

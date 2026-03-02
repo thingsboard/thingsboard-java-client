@@ -33,7 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
-import org.thingsboard.client.model.DefaultNotificationRuleRecipientsConfig;
+import org.thingsboard.client.model.NotificationRuleRecipientsConfig;
 import org.thingsboard.client.model.NotificationRuleTriggerType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -53,7 +53,7 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "triggerType", visible = true)
 
-public class DeviceActivityRecipientsConfig extends DefaultNotificationRuleRecipientsConfig {
+public class DeviceActivityRecipientsConfig extends NotificationRuleRecipientsConfig {
   public static final String JSON_PROPERTY_TARGETS = "targets";
   @javax.annotation.Nonnull
   private List<UUID> targets = new ArrayList<>();
