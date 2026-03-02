@@ -161,7 +161,7 @@ public class EntityRelationApiTest extends AbstractApiTest {
         query.setParameters(params);
         query.setFilters(List.of(filter));
 
-        List<EntityRelation> queryResult = client.findByQuery(query);
+        List<EntityRelation> queryResult = client.findEntityRelationsByQuery(query);
         assertTrue(queryResult.size() >= 3);
 
         // find info by query

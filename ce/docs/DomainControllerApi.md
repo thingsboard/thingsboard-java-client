@@ -6,7 +6,7 @@
 | [**getDomainInfoById**](#getDomainInfoById) | **GET** /api/domain/info/{id} | Get Domain info by Id (getDomainInfoById) |
 | [**getTenantDomainInfos**](#getTenantDomainInfos) | **GET** /api/domain/infos | Get Domain infos (getTenantDomainInfos) |
 | [**saveDomain**](#saveDomain) | **POST** /api/domain | Save or Update Domain (saveDomain) |
-| [**updateOauth2Clients1**](#updateOauth2Clients1) | **PUT** /api/domain/{id}/oauth2Clients | Update oauth2 clients (updateOauth2Clients) |
+| [**updateDomainOauth2Clients**](#updateDomainOauth2Clients) | **PUT** /api/domain/{id}/oauth2Clients | Update oauth2 clients (updateDomainOauth2Clients) |
 
 
 
@@ -95,11 +95,11 @@ Create or update the Domain. When creating domain, platform generates Domain Id 
 **Domain**
 
 
-## updateOauth2Clients1
+## updateDomainOauth2Clients
 
-> updateOauth2Clients1(id, UUID)
+> updateDomainOauth2Clients(id, UUID)
 
-Update oauth2 clients (updateOauth2Clients)
+Update oauth2 clients (updateDomainOauth2Clients)
 
 Update oauth2 clients for the specified domain. 
 

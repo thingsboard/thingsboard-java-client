@@ -82,7 +82,7 @@ public class DeviceApiTest extends AbstractApiTest {
         request.setDevice(deviceWithCreds);
         request.setCredentials(creds);
 
-        Device savedDeviceWithCreds = client.saveDeviceWithCredentials1(request, null, null, null);
+        Device savedDeviceWithCreds = client.saveDeviceWithCredentials(request, null, null, null);
         assertEquals("device-with-creds", savedDeviceWithCreds.getName());
 
         // find credentials by device id

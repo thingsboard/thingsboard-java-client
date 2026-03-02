@@ -9,7 +9,7 @@
 | [**getCalculatedFieldsByEntityIdV2**](#getCalculatedFieldsByEntityIdV2) | **GET** /api/calculatedField/{entityType}/{entityId} | Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityIdV2) |
 | [**getLatestCalculatedFieldDebugEvent**](#getLatestCalculatedFieldDebugEvent) | **GET** /api/calculatedField/{calculatedFieldId}/debug | Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent) |
 | [**saveCalculatedField**](#saveCalculatedField) | **POST** /api/calculatedField | Create Or Update Calculated Field (saveCalculatedField) |
-| [**testScript1**](#testScript1) | **POST** /api/calculatedField/testScript | Test Script expression |
+| [**testCalculatedFieldScript**](#testCalculatedFieldScript) | **POST** /api/calculatedField/testScript | Test Script expression |
 
 
 
@@ -172,9 +172,9 @@ Creates or Updates the Calculated Field. When creating calculated field, platfor
 **CalculatedField**
 
 
-## testScript1
+## testCalculatedFieldScript
 
-> com.fasterxml.jackson.databind.JsonNode testScript1(body)
+> com.fasterxml.jackson.databind.JsonNode testCalculatedFieldScript(body)
 
 Test Script expression
 

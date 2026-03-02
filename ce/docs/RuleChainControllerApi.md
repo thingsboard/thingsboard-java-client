@@ -16,13 +16,13 @@
 | [**getRuleChainsByIdsV2**](#getRuleChainsByIdsV2) | **GET** /api/ruleChains/list | Get Rule Chains By Ids (getRuleChainsByIdsV2) |
 | [**importRuleChains**](#importRuleChains) | **POST** /api/ruleChains/import | Import Rule Chains |
 | [**isTbelEnabled**](#isTbelEnabled) | **GET** /api/ruleChain/tbelEnabled | Is TBEL script executor enabled |
+| [**saveDefaultRuleChain**](#saveDefaultRuleChain) | **POST** /api/ruleChain/device/default | Create Default Rule Chain (saveDefaultRuleChain) |
 | [**saveRuleChain**](#saveRuleChain) | **POST** /api/ruleChain | Create Or Update Rule Chain (saveRuleChain) |
-| [**saveRuleChain1**](#saveRuleChain1) | **POST** /api/ruleChain/device/default | Create Default Rule Chain |
 | [**saveRuleChainMetaData**](#saveRuleChainMetaData) | **POST** /api/ruleChain/metadata | Update Rule Chain Metadata |
 | [**setAutoAssignToEdgeRuleChain**](#setAutoAssignToEdgeRuleChain) | **POST** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain) |
 | [**setEdgeTemplateRootRuleChain**](#setEdgeTemplateRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/edgeTemplateRoot | Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain) |
 | [**setRootRuleChain**](#setRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/root | Set Root Rule Chain (setRootRuleChain) |
-| [**testScript**](#testScript) | **POST** /api/ruleChain/testScript | Test Script function |
+| [**testRuleChainScript**](#testRuleChainScript) | **POST** /api/ruleChain/testScript | Test Script function |
 | [**unassignRuleChainFromEdge**](#unassignRuleChainFromEdge) | **DELETE** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Unassign rule chain from edge (unassignRuleChainFromEdge) |
 | [**unsetAutoAssignToEdgeRuleChain**](#unsetAutoAssignToEdgeRuleChain) | **DELETE** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain) |
 
@@ -306,6 +306,26 @@ Returns 'True' if the TBEL script execution is enabled  Available for users with
 **Boolean**
 
 
+## saveDefaultRuleChain
+
+> RuleChain saveDefaultRuleChain(defaultRuleChainCreateRequest)
+
+Create Default Rule Chain (saveDefaultRuleChain)
+
+Create rule chain from template, based on the specified name in the request. Creates the rule chain based on the template that is used to create root rule chain.   Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **defaultRuleChainCreateRequest** | **DefaultRuleChainCreateRequest** |  | |
+
+### Return type
+
+**RuleChain**
+
+
 ## saveRuleChain
 
 > RuleChain saveRuleChain(ruleChain)
@@ -320,26 +340,6 @@ Create or update the Rule Chain. When creating Rule Chain, platform generates Ru
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ruleChain** | **RuleChain** |  | |
-
-### Return type
-
-**RuleChain**
-
-
-## saveRuleChain1
-
-> RuleChain saveRuleChain1(defaultRuleChainCreateRequest)
-
-Create Default Rule Chain
-
-Create rule chain from template, based on the specified name in the request. Creates the rule chain based on the template that is used to create root rule chain.   Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **defaultRuleChainCreateRequest** | **DefaultRuleChainCreateRequest** |  | |
 
 ### Return type
 
@@ -427,9 +427,9 @@ Makes the rule chain to be root rule chain. Updates previous root rule chain as 
 **RuleChain**
 
 
-## testScript
+## testRuleChainScript
 
-> com.fasterxml.jackson.databind.JsonNode testScript(body, scriptLang)
+> com.fasterxml.jackson.databind.JsonNode testRuleChainScript(body, scriptLang)
 
 Test Script function
 

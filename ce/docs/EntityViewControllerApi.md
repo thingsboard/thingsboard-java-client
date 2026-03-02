@@ -6,7 +6,7 @@
 | [**assignEntityViewToEdge**](#assignEntityViewToEdge) | **POST** /api/edge/{edgeId}/entityView/{entityViewId} | Assign entity view to edge (assignEntityViewToEdge) |
 | [**assignEntityViewToPublicCustomer**](#assignEntityViewToPublicCustomer) | **POST** /api/customer/public/entityView/{entityViewId} | Make entity view publicly available (assignEntityViewToPublicCustomer) |
 | [**deleteEntityView**](#deleteEntityView) | **DELETE** /api/entityView/{entityViewId} | Delete entity view (deleteEntityView) |
-| [**findByQuery1**](#findByQuery1) | **POST** /api/entityViews | Find related entity views (findByQuery) |
+| [**findEntityViewsByQuery**](#findEntityViewsByQuery) | **POST** /api/entityViews | Find related entity views (findEntityViewsByQuery) |
 | [**getCustomerEntityViewInfos**](#getCustomerEntityViewInfos) | **GET** /api/customer/{customerId}/entityViewInfos | Get Customer Entity View info (getCustomerEntityViewInfos) |
 | [**getCustomerEntityViews**](#getCustomerEntityViews) | **GET** /api/customer/{customerId}/entityViews | Get Customer Entity Views (getCustomerEntityViews) |
 | [**getEdgeEntityViews**](#getEdgeEntityViews) | **GET** /api/edge/{edgeId}/entityViews | getEdgeEntityViews |
@@ -105,11 +105,11 @@ Delete the EntityView object based on the provided entity view id.   Available f
 null (empty response body)
 
 
-## findByQuery1
+## findEntityViewsByQuery
 
-> List<EntityView> findByQuery1(entityViewSearchQuery)
+> List<EntityView> findEntityViewsByQuery(entityViewSearchQuery)
 
-Find related entity views (findByQuery)
+Find related entity views (findEntityViewsByQuery)
 
 Returns all entity views that are related to the specific entity. The entity id, relation type, entity view types, depth of the search, and other query parameters defined using complex 'EntityViewSearchQuery' object. See 'Model' tab of the Parameters for more info.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
