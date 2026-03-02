@@ -104,6 +104,18 @@ if [ ! -f "$GENERATOR_JAR" ]; then
 fi
 openapi-generator-cli() { java -jar "$GENERATOR_JAR" "$@"; }
 
+# Resolve mvn: prefer M2_HOME/MAVEN_HOME, fall back to PATH
+if [ -n "${M2_HOME:-}" ] && [ -x "$M2_HOME/bin/mvn" ]; then
+  MVN="$M2_HOME/bin/mvn"
+elif [ -n "${MAVEN_HOME:-}" ] && [ -x "$MAVEN_HOME/bin/mvn" ]; then
+  MVN="$MAVEN_HOME/bin/mvn"
+elif command -v mvn >/dev/null 2>&1; then
+  MVN="mvn"
+else
+  echo "Error: mvn not found. Set M2_HOME or MAVEN_HOME, or add mvn to PATH."
+  exit 1
+fi
+
 generate() {
   local edition="$1"
   local spec_file="$SCRIPT_DIR/$edition/spec/openapi.json"
@@ -228,9 +240,9 @@ fi
 if [ "$DRY_RUN" = false ]; then
   # Apply license headers and stage changes
   if [ "$VERBOSE" = true ]; then
-    mvn -f "$SCRIPT_DIR/pom.xml" license:format
+    "$MVN" -f "$SCRIPT_DIR/pom.xml" license:format
   else
-    mvn -f "$SCRIPT_DIR/pom.xml" license:format -q
+    "$MVN" -f "$SCRIPT_DIR/pom.xml" license:format -q
   fi
   git -C "$SCRIPT_DIR" add .
 fi
