@@ -93,11 +93,12 @@ LOG_FILE="$SCRIPT_DIR/generate-client.log"
 exec > >(tee "$LOG_FILE") 2>&1
 
 OPENAPI_GENERATOR_VERSION="7.20.0"
-GENERATOR_JAR="$SCRIPT_DIR/.cache/openapi-generator-cli-${OPENAPI_GENERATOR_VERSION}.jar"
+GENERATOR_CACHE_DIR="${OPENAPI_GENERATOR_CACHE_DIR:-${HOME}/.cache/openapi-generator}"
+GENERATOR_JAR="$GENERATOR_CACHE_DIR/openapi-generator-cli-${OPENAPI_GENERATOR_VERSION}.jar"
 
 if [ ! -f "$GENERATOR_JAR" ]; then
   echo "Downloading openapi-generator-cli ${OPENAPI_GENERATOR_VERSION}..."
-  mkdir -p "$SCRIPT_DIR/.cache"
+  mkdir -p "$GENERATOR_CACHE_DIR"
   curl -fSL -o "$GENERATOR_JAR" \
     "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${OPENAPI_GENERATOR_VERSION}/openapi-generator-cli-${OPENAPI_GENERATOR_VERSION}.jar"
 fi
