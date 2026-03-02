@@ -7,9 +7,9 @@
 | [**deleteRelations**](#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteCommonRelations) |
 | [**findByFromAndRelationType**](#findByFromAndRelationType) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findByFromAndRelationType) |
 | [**findByFromV2**](#findByFromV2) | **GET** /api/relations/from/{fromType}/{fromId} | Get List of Relations (findByFromV2) |
-| [**findByQuery**](#findByQuery) | **POST** /api/relations | Find related entities (findByQuery) |
 | [**findByToAndRelationType**](#findByToAndRelationType) | **GET** /api/relations/to/{toType}/{toId}/{relationType} | Get List of Relations (findByToAndRelationType) |
 | [**findByToV2**](#findByToV2) | **GET** /api/relations/to/{toType}/{toId} | Get List of Relations (findByToV2) |
+| [**findEntityRelationsByQuery**](#findEntityRelationsByQuery) | **POST** /api/relations | Find related entities (findEntityRelationsByQuery) |
 | [**findInfoByFromV2**](#findInfoByFromV2) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findInfoByFromV2) |
 | [**findInfoByQuery**](#findInfoByQuery) | **POST** /api/relations/info | Find related entity infos (findInfoByQuery) |
 | [**findInfoByToV2**](#findInfoByToV2) | **GET** /api/relations/info/to/{toType}/{toId} | Get List of Relation Infos (findInfoByToV2) |
@@ -135,26 +135,6 @@ Returns list of relation objects for the specified entity by the 'from' directio
 **List<EntityRelation>**
 
 
-## findByQuery
-
-> List<EntityRelation> findByQuery(entityRelationsQuery)
-
-Find related entities (findByQuery)
-
-Returns all entities that are related to the specific entity. The entity id, relation type, entity types, depth of the search, and other query parameters defined using complex 'EntityRelationsQuery' object. See 'Model' tab of the Parameters for more info.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **entityRelationsQuery** | **EntityRelationsQuery** |  | |
-
-### Return type
-
-**List<EntityRelation>**
-
-
 ## findByToAndRelationType
 
 > List<EntityRelation> findByToAndRelationType(toType, toId, relationType, relationTypeGroup)
@@ -194,6 +174,26 @@ Returns list of relation objects for the specified entity by the 'to' direction.
 | **toType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
 | **toId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
+
+### Return type
+
+**List<EntityRelation>**
+
+
+## findEntityRelationsByQuery
+
+> List<EntityRelation> findEntityRelationsByQuery(entityRelationsQuery)
+
+Find related entities (findEntityRelationsByQuery)
+
+Returns all entities that are related to the specific entity. The entity id, relation type, entity types, depth of the search, and other query parameters defined using complex 'EntityRelationsQuery' object. See 'Model' tab of the Parameters for more info.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityRelationsQuery** | **EntityRelationsQuery** |  | |
 
 ### Return type
 

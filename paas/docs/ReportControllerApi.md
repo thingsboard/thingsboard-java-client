@@ -7,8 +7,8 @@
 | [**downloadReport**](#downloadReport) | **GET** /api/v2/report/{reportId}/download | downloadReport |
 | [**getReportById**](#getReportById) | **GET** /api/v2/report/{reportId} | Get Report (getReportById) |
 | [**getReportInfos**](#getReportInfos) | **GET** /api/v2/reportInfos/all | getReportInfos |
+| [**getReportInfosByIds**](#getReportInfosByIds) | **GET** /api/v2/reportInfos | getReportInfosByIds |
 | [**getReports**](#getReports) | **GET** /api/v2/reports | getReports |
-| [**getReports1**](#getReports1) | **GET** /api/v2/reportInfos | getReports |
 | [**requestReport**](#requestReport) | **POST** /api/v2/report/request | requestReport |
 | [**testReportAndDownload**](#testReportAndDownload) | **POST** /api/v2/report/test | Download test report (downloadTestReport) |
 
@@ -115,6 +115,24 @@ getReportInfos
 **PageDataReportInfo**
 
 
+## getReportInfosByIds
+
+> List<ReportInfo> getReportInfosByIds(strReportIds)
+
+getReportInfosByIds
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **strReportIds** | **List<String>** | A list of report ids, separated by comma ',' | |
+
+### Return type
+
+**List<ReportInfo>**
+
+
 ## getReports
 
 > PageDataReport getReports(pageSize, page, textSearch, sortProperty, sortOrder)
@@ -135,24 +153,6 @@ getReports
 ### Return type
 
 **PageDataReport**
-
-
-## getReports1
-
-> List<ReportInfo> getReports1(strReportIds)
-
-getReports
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **strReportIds** | **List<String>** | A list of report ids, separated by comma ',' | |
-
-### Return type
-
-**List<ReportInfo>**
 
 
 ## requestReport

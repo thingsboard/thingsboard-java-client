@@ -1,18 +1,14 @@
 
-# DefaultNotificationRuleRecipientsConfig
+# ReportTemplateExportData
 
-`org.thingsboard.client.model.DefaultNotificationRuleRecipientsConfig`
+`org.thingsboard.client.model.ReportTemplateExportData`
 
-Default notification rule recipients configuration
-
-**Extends:** **NotificationRuleRecipientsConfig**
+**Extends:** **EntityExportData**
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **triggerType** | **NotificationRuleTriggerType** |  | |
-| **targets** | **List\<UUID\>** |  | |
 
 
 

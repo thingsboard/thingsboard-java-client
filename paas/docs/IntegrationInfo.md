@@ -19,8 +19,8 @@
 | **version** | **Long** |  | [optional] |
 | **status** | **Object** |  | [optional] |
 | **stats** | **Object** |  | [optional] |
-| **remote** | **Boolean** | Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core | [optional] |
 | **edgeTemplate** | **Boolean** | Boolean flag that specifies that is regular or edge template integration | [optional] |
+| **remote** | **Boolean** | Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core | [optional] |
 
 
 

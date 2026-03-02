@@ -3,7 +3,7 @@
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteEntityView**](#deleteEntityView) | **DELETE** /api/entityView/{entityViewId} | Delete entity view (deleteEntityView) |
-| [**findByQuery1**](#findByQuery1) | **POST** /api/entityViews | Find related entity views (findByQuery) |
+| [**findByQuery**](#findByQuery) | **POST** /api/entityViews | Find related entity views (findByQuery) |
 | [**getAllEntityViewInfos**](#getAllEntityViewInfos) | **GET** /api/entityViewInfos/all | Get All Entity View Infos for current user (getAllEntityViewInfos) |
 | [**getCustomerEntityViewInfos**](#getCustomerEntityViewInfos) | **GET** /api/customer/{customerId}/entityViewInfos | Get Customer Entity View Infos (getCustomerEntityViewInfos) |
 | [**getCustomerEntityViews**](#getCustomerEntityViews) | **GET** /api/customer/{customerId}/entityViews | Get Customer Entity Views (getCustomerEntityViews) |
@@ -39,9 +39,9 @@ Delete the EntityView object based on the provided entity view id.   Available f
 null (empty response body)
 
 
-## findByQuery1
+## findByQuery
 
-> List<EntityView> findByQuery1(entityViewSearchQuery)
+> List<EntityView> findByQuery(entityViewSearchQuery)
 
 Find related entity views (findByQuery)
 

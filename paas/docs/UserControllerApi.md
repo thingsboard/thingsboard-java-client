@@ -2,9 +2,9 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteGeneralUserSettings**](#deleteGeneralUserSettings) | **DELETE** /api/user/settings/{paths} | Delete user settings (deleteGeneralUserSettings) |
 | [**deleteUser**](#deleteUser) | **DELETE** /api/user/{userId} | Delete User (deleteUser) |
-| [**deleteUserSettings**](#deleteUserSettings) | **DELETE** /api/user/settings/{type}/{paths} | Delete user settings (deleteUserSettings) |
-| [**deleteUserSettings1**](#deleteUserSettings1) | **DELETE** /api/user/settings/{paths} | Delete user settings (deleteUserSettings) |
+| [**deleteUserSettingsByType**](#deleteUserSettingsByType) | **DELETE** /api/user/settings/{type}/{paths} | Delete user settings by type (deleteUserSettingsByType) |
 | [**findUsersByQuery**](#findUsersByQuery) | **GET** /api/users/info | Find users by query (findUsersByQuery) |
 | [**getActivationLink**](#getActivationLink) | **GET** /api/user/{userId}/activationLink | Get activation link (getActivationLink) |
 | [**getActivationLinkInfo**](#getActivationLinkInfo) | **GET** /api/user/{userId}/activationLinkInfo | Get activation link info (getActivationLinkInfo) |
@@ -37,6 +37,26 @@
 
 
 
+## deleteGeneralUserSettings
+
+> deleteGeneralUserSettings(paths)
+
+Delete user settings (deleteGeneralUserSettings)
+
+Delete user settings by specifying list of json element xpaths.   Example: to delete B and C element in { \"A\": {\"B\": 5}, \"C\": 15} send A.B,C in jsonPaths request parameter
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **paths** | **String** | paths | |
+
+### Return type
+
+null (empty response body)
+
+
 ## deleteUser
 
 > deleteUser(userId)
@@ -57,11 +77,11 @@ Deletes the User, it's credentials and all the relations (from and to the User).
 null (empty response body)
 
 
-## deleteUserSettings
+## deleteUserSettingsByType
 
-> deleteUserSettings(paths, type)
+> deleteUserSettingsByType(paths, type)
 
-Delete user settings (deleteUserSettings)
+Delete user settings by type (deleteUserSettingsByType)
 
 Delete user settings by specifying list of json element xpaths.   Example: to delete B and C element in { \"A\": {\"B\": 5}, \"C\": 15} send A.B,C in jsonPaths request parameter
 
@@ -72,26 +92,6 @@ Delete user settings by specifying list of json element xpaths.   Example: to de
 |------------- | ------------- | ------------- | -------------|
 | **paths** | **String** | paths | |
 | **type** | **String** | Settings type, case insensitive, one of: \"general\", \"quick_links\", \"doc_links\" or \"dashboards\". | |
-
-### Return type
-
-null (empty response body)
-
-
-## deleteUserSettings1
-
-> deleteUserSettings1(paths)
-
-Delete user settings (deleteUserSettings)
-
-Delete user settings by specifying list of json element xpaths.   Example: to delete B and C element in { \"A\": {\"B\": 5}, \"C\": 15} send A.B,C in jsonPaths request parameter
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **paths** | **String** | paths | |
 
 ### Return type
 

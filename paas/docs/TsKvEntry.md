@@ -14,9 +14,9 @@
 | **longValue** | **Long** |  | [optional] |
 | **booleanValue** | **Boolean** |  | [optional] |
 | **valueAsString** | **String** |  | [optional] |
-| **strValue** | **String** |  | [optional] |
 | **dataType** | **DataType** |  | [optional] |
 | **jsonValue** | **String** |  | [optional] |
+| **strValue** | **String** |  | [optional] |
 | **version** | **Long** |  | [optional] |
 
 

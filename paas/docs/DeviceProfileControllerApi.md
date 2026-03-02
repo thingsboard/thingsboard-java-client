@@ -10,8 +10,8 @@
 | [**getDeviceProfileInfos**](#getDeviceProfileInfos) | **GET** /api/deviceProfileInfos | Get Device Profiles for transport type (getDeviceProfileInfos) |
 | [**getDeviceProfileInfosByIdsV2**](#getDeviceProfileInfosByIdsV2) | **GET** /api/deviceProfileInfos/list | Get Device Profile Infos By Ids (getDeviceProfileInfosByIdsV2) |
 | [**getDeviceProfileNames**](#getDeviceProfileNames) | **GET** /api/deviceProfile/names | Get Device Profile names (getDeviceProfileNames) |
+| [**getDeviceProfileTimeseriesKeys**](#getDeviceProfileTimeseriesKeys) | **GET** /api/deviceProfile/devices/keys/timeseries | Get time series keys (getDeviceProfileTimeseriesKeys) |
 | [**getDeviceProfiles**](#getDeviceProfiles) | **GET** /api/deviceProfiles | Get Device Profiles (getDeviceProfiles) |
-| [**getTimeseriesKeys1**](#getTimeseriesKeys1) | **GET** /api/deviceProfile/devices/keys/timeseries | Get time series keys (getTimeseriesKeys) |
 | [**saveDeviceProfile**](#saveDeviceProfile) | **POST** /api/deviceProfile | Create Or Update Device Profile (saveDeviceProfile) |
 | [**setDefaultDeviceProfile**](#setDefaultDeviceProfile) | **POST** /api/deviceProfile/{deviceProfileId}/default | Make Device Profile Default (setDefaultDeviceProfile) |
 
@@ -176,6 +176,26 @@ Returns a set of unique device profile names owned by the tenant.  Available for
 **List<EntityInfo>**
 
 
+## getDeviceProfileTimeseriesKeys
+
+> List<String> getDeviceProfileTimeseriesKeys(deviceProfileId)
+
+Get time series keys (getDeviceProfileTimeseriesKeys)
+
+Get a set of unique time series keys used by devices that belong to specified profile. If profile is not set returns a list of unique keys among all profiles. The call is used for auto-complete in the UI forms. The implementation limits the number of devices that participate in search to 100 as a trade of between accurate results and time-consuming queries.   Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **deviceProfileId** | **String** | A string value representing the device profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+
+### Return type
+
+**List<String>**
+
+
 ## getDeviceProfiles
 
 > PageDataDeviceProfile getDeviceProfiles(pageSize, page, textSearch, sortProperty, sortOrder)
@@ -198,26 +218,6 @@ Returns a page of devices profile objects owned by tenant. You can specify param
 ### Return type
 
 **PageDataDeviceProfile**
-
-
-## getTimeseriesKeys1
-
-> List<String> getTimeseriesKeys1(deviceProfileId)
-
-Get time series keys (getTimeseriesKeys)
-
-Get a set of unique time series keys used by devices that belong to specified profile. If profile is not set returns a list of unique keys among all profiles. The call is used for auto-complete in the UI forms. The implementation limits the number of devices that participate in search to 100 as a trade of between accurate results and time-consuming queries.   Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **deviceProfileId** | **String** | A string value representing the device profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
-
-### Return type
-
-**List<String>**
 
 
 ## saveDeviceProfile

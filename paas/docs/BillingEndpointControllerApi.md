@@ -7,7 +7,7 @@
 | [**notifyTenantStateChanged**](#notifyTenantStateChanged) | **POST** /api/billingEndpoint/tenantStateChanged | notifyTenantStateChanged |
 | [**notifyTenantSubscriptionCreated**](#notifyTenantSubscriptionCreated) | **POST** /api/billingEndpoint/tenantSubscriptionCreated | notifyTenantSubscriptionCreated |
 | [**sendAccountActivatedEmail**](#sendAccountActivatedEmail) | **POST** /api/billingEndpoint/sendAccountActivated | sendAccountActivatedEmail |
-| [**sendActivationEmail1**](#sendActivationEmail1) | **POST** /api/billingEndpoint/sendActivation | sendActivationEmail |
+| [**sendBillingActivationEmail**](#sendBillingActivationEmail) | **POST** /api/billingEndpoint/sendActivation | sendBillingActivationEmail |
 | [**sendPasswordWasResetEmail**](#sendPasswordWasResetEmail) | **POST** /api/billingEndpoint/sendPasswordWasReset | sendPasswordWasResetEmail |
 | [**sendResetPasswordEmail**](#sendResetPasswordEmail) | **POST** /api/billingEndpoint/sendResetPassword | sendResetPasswordEmail |
 | [**tenantHasBillingRead**](#tenantHasBillingRead) | **GET** /api/billingEndpoint/tenant/permission/billing/read | tenantHasBillingRead |
@@ -106,11 +106,11 @@ sendAccountActivatedEmail
 null (empty response body)
 
 
-## sendActivationEmail1
+## sendBillingActivationEmail
 
-> sendActivationEmail1(body)
+> sendBillingActivationEmail(body)
 
-sendActivationEmail
+sendBillingActivationEmail
 
 
 ### Parameters

@@ -38,9 +38,9 @@ import org.thingsboard.client.ApiClient;
   FeaturesInfo.JSON_PROPERTY_SMS_ENABLED,
   FeaturesInfo.JSON_PROPERTY_OAUTH_ENABLED,
   FeaturesInfo.JSON_PROPERTY_NOTIFICATION_ENABLED,
-  FeaturesInfo.JSON_PROPERTY_EMAIL_ENABLED,
+  FeaturesInfo.JSON_PROPERTY_WHITE_LABELING_ENABLED,
   FeaturesInfo.JSON_PROPERTY_TWO_FA_ENABLED,
-  FeaturesInfo.JSON_PROPERTY_WHITE_LABELING_ENABLED
+  FeaturesInfo.JSON_PROPERTY_EMAIL_ENABLED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FeaturesInfo {
@@ -56,17 +56,17 @@ public class FeaturesInfo {
   @javax.annotation.Nullable
   private Boolean notificationEnabled;
 
-  public static final String JSON_PROPERTY_EMAIL_ENABLED = "emailEnabled";
+  public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
   @javax.annotation.Nullable
-  private Boolean emailEnabled;
+  private Boolean whiteLabelingEnabled;
 
   public static final String JSON_PROPERTY_TWO_FA_ENABLED = "twoFaEnabled";
   @javax.annotation.Nullable
   private Boolean twoFaEnabled;
 
-  public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
+  public static final String JSON_PROPERTY_EMAIL_ENABLED = "emailEnabled";
   @javax.annotation.Nullable
-  private Boolean whiteLabelingEnabled;
+  private Boolean emailEnabled;
 
   public FeaturesInfo() { 
   }
@@ -143,27 +143,27 @@ public class FeaturesInfo {
   }
 
 
-  public FeaturesInfo emailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
-    this.emailEnabled = emailEnabled;
+  public FeaturesInfo whiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+    this.whiteLabelingEnabled = whiteLabelingEnabled;
     return this;
   }
 
   /**
-   * Get emailEnabled
-   * @return emailEnabled
+   * Get whiteLabelingEnabled
+   * @return whiteLabelingEnabled
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEmailEnabled() {
-    return emailEnabled;
+  public Boolean getWhiteLabelingEnabled() {
+    return whiteLabelingEnabled;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
-    this.emailEnabled = emailEnabled;
+  public void setWhiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+    this.whiteLabelingEnabled = whiteLabelingEnabled;
   }
 
 
@@ -191,27 +191,27 @@ public class FeaturesInfo {
   }
 
 
-  public FeaturesInfo whiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
-    this.whiteLabelingEnabled = whiteLabelingEnabled;
+  public FeaturesInfo emailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
+    this.emailEnabled = emailEnabled;
     return this;
   }
 
   /**
-   * Get whiteLabelingEnabled
-   * @return whiteLabelingEnabled
+   * Get emailEnabled
+   * @return emailEnabled
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
+  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getWhiteLabelingEnabled() {
-    return whiteLabelingEnabled;
+  public Boolean getEmailEnabled() {
+    return emailEnabled;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
+  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWhiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
-    this.whiteLabelingEnabled = whiteLabelingEnabled;
+  public void setEmailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
+    this.emailEnabled = emailEnabled;
   }
 
 
@@ -230,14 +230,14 @@ public class FeaturesInfo {
     return Objects.equals(this.smsEnabled, featuresInfo.smsEnabled) &&
         Objects.equals(this.oauthEnabled, featuresInfo.oauthEnabled) &&
         Objects.equals(this.notificationEnabled, featuresInfo.notificationEnabled) &&
-        Objects.equals(this.emailEnabled, featuresInfo.emailEnabled) &&
+        Objects.equals(this.whiteLabelingEnabled, featuresInfo.whiteLabelingEnabled) &&
         Objects.equals(this.twoFaEnabled, featuresInfo.twoFaEnabled) &&
-        Objects.equals(this.whiteLabelingEnabled, featuresInfo.whiteLabelingEnabled);
+        Objects.equals(this.emailEnabled, featuresInfo.emailEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(smsEnabled, oauthEnabled, notificationEnabled, emailEnabled, twoFaEnabled, whiteLabelingEnabled);
+    return Objects.hash(smsEnabled, oauthEnabled, notificationEnabled, whiteLabelingEnabled, twoFaEnabled, emailEnabled);
   }
 
   @Override
@@ -247,9 +247,9 @@ public class FeaturesInfo {
     sb.append("    smsEnabled: ").append(toIndentedString(smsEnabled)).append("\n");
     sb.append("    oauthEnabled: ").append(toIndentedString(oauthEnabled)).append("\n");
     sb.append("    notificationEnabled: ").append(toIndentedString(notificationEnabled)).append("\n");
-    sb.append("    emailEnabled: ").append(toIndentedString(emailEnabled)).append("\n");
-    sb.append("    twoFaEnabled: ").append(toIndentedString(twoFaEnabled)).append("\n");
     sb.append("    whiteLabelingEnabled: ").append(toIndentedString(whiteLabelingEnabled)).append("\n");
+    sb.append("    twoFaEnabled: ").append(toIndentedString(twoFaEnabled)).append("\n");
+    sb.append("    emailEnabled: ").append(toIndentedString(emailEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -312,9 +312,9 @@ public class FeaturesInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%snotificationEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotificationEnabled()))));
     }
 
-    // add `emailEnabled` to the URL query string
-    if (getEmailEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%semailEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEmailEnabled()))));
+    // add `whiteLabelingEnabled` to the URL query string
+    if (getWhiteLabelingEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%swhiteLabelingEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWhiteLabelingEnabled()))));
     }
 
     // add `twoFaEnabled` to the URL query string
@@ -322,9 +322,9 @@ public class FeaturesInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%stwoFaEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTwoFaEnabled()))));
     }
 
-    // add `whiteLabelingEnabled` to the URL query string
-    if (getWhiteLabelingEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%swhiteLabelingEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWhiteLabelingEnabled()))));
+    // add `emailEnabled` to the URL query string
+    if (getEmailEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%semailEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEmailEnabled()))));
     }
 
     return joiner.toString();

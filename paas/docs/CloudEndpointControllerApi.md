@@ -2,12 +2,23 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**checkTenantWhiteLabelingAllowed**](#checkTenantWhiteLabelingAllowed) | **GET** /api/cloudEndpoint/tenant/permission/whiteLabelingAllowed | checkTenantWhiteLabelingAllowed |
 | [**hasDomainReadPermission**](#hasDomainReadPermission) | **GET** /api/cloudEndpoint/permission/domain/read | hasDomainReadPermission |
 | [**hasDomainWritePermission**](#hasDomainWritePermission) | **GET** /api/cloudEndpoint/permission/domain/write | hasDomainWritePermission |
 | [**tenantHasWhiteLabelRead**](#tenantHasWhiteLabelRead) | **GET** /api/cloudEndpoint/tenant/permission/whiteLabel/read | tenantHasWhiteLabelRead |
 | [**tenantHasWhiteLabelWrite**](#tenantHasWhiteLabelWrite) | **GET** /api/cloudEndpoint/tenant/permission/whiteLabel/write | tenantHasWhiteLabelWrite |
-| [**tenantWhiteLabelingAllowed1**](#tenantWhiteLabelingAllowed1) | **GET** /api/cloudEndpoint/tenant/permission/whiteLabelingAllowed | tenantWhiteLabelingAllowed |
 
+
+
+## checkTenantWhiteLabelingAllowed
+
+> checkTenantWhiteLabelingAllowed()
+
+checkTenantWhiteLabelingAllowed
+
+### Return type
+
+null (empty response body)
 
 
 ## hasDomainReadPermission
@@ -52,15 +63,4 @@ tenantHasWhiteLabelWrite
 ### Return type
 
 **Boolean**
-
-
-## tenantWhiteLabelingAllowed1
-
-> tenantWhiteLabelingAllowed1()
-
-tenantWhiteLabelingAllowed
-
-### Return type
-
-null (empty response body)
 
