@@ -58,7 +58,7 @@
 #
 # Output log: generate-client.log (overwritten on each run)
 #
-# Prerequisites: Node.js/npm, Java 25, Maven, Perl
+# Prerequisites: Java 25, Maven, Perl (Node.js/npm optional — JAR fallback used if absent)
 #
 
 set -euo pipefail
@@ -92,24 +92,16 @@ LOG_FILE="$SCRIPT_DIR/generate-client.log"
 # Log everything to file and stdout
 exec > >(tee "$LOG_FILE") 2>&1
 
-# Initialize nvm if available
-NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  . "$NVM_DIR/nvm.sh"
+OPENAPI_GENERATOR_VERSION="7.20.0"
+GENERATOR_JAR="$SCRIPT_DIR/.cache/openapi-generator-cli-${OPENAPI_GENERATOR_VERSION}.jar"
+
+if [ ! -f "$GENERATOR_JAR" ]; then
+  echo "Downloading openapi-generator-cli ${OPENAPI_GENERATOR_VERSION}..."
+  mkdir -p "$SCRIPT_DIR/.cache"
+  curl -fSL -o "$GENERATOR_JAR" \
+    "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${OPENAPI_GENERATOR_VERSION}/openapi-generator-cli-${OPENAPI_GENERATOR_VERSION}.jar"
 fi
-
-# Ensure openapi-generator-cli is available
-if ! command -v openapi-generator-cli &> /dev/null; then
-  echo "openapi-generator-cli not found. Installing via npm..."
-
-  if ! command -v npm &> /dev/null; then
-    echo "Error: npm is not installed. Please install Node.js/npm first."
-    exit 1
-  fi
-
-  npm install -g @openapitools/openapi-generator-cli
-  echo "openapi-generator-cli installed successfully."
-fi
+openapi-generator-cli() { java -jar "$GENERATOR_JAR" "$@"; }
 
 generate() {
   local edition="$1"
