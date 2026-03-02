@@ -12,7 +12,7 @@
 | [**reprocessCalculatedField**](#reprocessCalculatedField) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess | Reprocess Calculated Field (reprocessCalculatedField) |
 | [**reprocessCalculatedFieldAndWait**](#reprocessCalculatedFieldAndWait) | **GET** /api/calculatedField/{calculatedFieldId}/reprocessAndWait | Reprocess Calculated Field and wait for completion (reprocessCalculatedFieldAndWait) |
 | [**saveCalculatedField**](#saveCalculatedField) | **POST** /api/calculatedField | Create Or Update Calculated Field (saveCalculatedField) |
-| [**testScript1**](#testScript1) | **POST** /api/calculatedField/testScript | Test Script expression |
+| [**testCalculatedFieldScript**](#testCalculatedFieldScript) | **POST** /api/calculatedField/testScript | Test Script expression |
 | [**validateCalculatedFieldReprocessing**](#validateCalculatedFieldReprocessing) | **GET** /api/calculatedField/{calculatedFieldId}/reprocess/validate | Validate reprocessing capability of a calculated field (validateCalculatedFieldReprocessing) |
 
 
@@ -238,9 +238,9 @@ Creates or Updates the Calculated Field. When creating calculated field, platfor
 **CalculatedField**
 
 
-## testScript1
+## testCalculatedFieldScript
 
-> com.fasterxml.jackson.databind.JsonNode testScript1(body)
+> com.fasterxml.jackson.databind.JsonNode testCalculatedFieldScript(body)
 
 Test Script expression
 

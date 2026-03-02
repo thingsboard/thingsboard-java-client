@@ -10,8 +10,8 @@
 | **format** | **TbReportFormat** | Report format | |
 | **entityAliases** | **List\<EntityAlias\>** |  | [optional] |
 | **filters** | **List\<Filter\>** |  | [optional] |
-| **components** | **List\<ReportComponent\>** |  | [optional] |
 | **namePattern** | **String** |  | [optional] |
+| **components** | **List\<ReportComponent\>** |  | [optional] |
 | **timeDataPattern** | **String** |  | [optional] |
 
 

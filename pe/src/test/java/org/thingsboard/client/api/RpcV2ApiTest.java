@@ -72,7 +72,7 @@ public class RpcV2ApiTest extends AbstractApiTest {
         // which the generated client (return type String) cannot deserialise →
         // IOException wrapped in ApiException with code 0.
         try {
-            client.handleOneWayDeviceRPCRequest1(deviceId, PERSISTENT_BODY);
+            client.handleOneWayDeviceRPCRequestV2(deviceId, PERSISTENT_BODY);
         } catch (ApiException e) {
             assertEquals(0, e.getCode(),
                     "handleOneWayDeviceRPCRequest1 got an unexpected HTTP error: " + e.getCode());
@@ -93,7 +93,7 @@ public class RpcV2ApiTest extends AbstractApiTest {
 
         // Same behaviour as one-way with persistent=true.
         try {
-            client.handleTwoWayDeviceRPCRequest1(deviceId, PERSISTENT_BODY);
+            client.handleTwoWayDeviceRPCRequestV2(deviceId, PERSISTENT_BODY);
         } catch (ApiException e) {
             assertEquals(0, e.getCode(),
                     "handleTwoWayDeviceRPCRequest1 got an unexpected HTTP error: " + e.getCode());

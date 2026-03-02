@@ -294,7 +294,7 @@ public class UserApiTest extends AbstractApiTest {
         assertEquals("2", typed.get("y").asText());
 
         // deleteUserSettings removes a specific key from a typed settings section
-        client.deleteUserSettings("x", settingsType);
+        client.deleteUserSettingsByType("x", settingsType);
         JsonNode afterDelete = client.getUserSettings(settingsType);
         assertNotNull(afterDelete);
         assertFalse(afterDelete.has("x"));
