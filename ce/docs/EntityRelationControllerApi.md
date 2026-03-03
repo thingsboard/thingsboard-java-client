@@ -2,8 +2,7 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**deleteRelation**](#deleteRelation) | **DELETE** /api/relation | Delete Relation (deleteRelation) |
-| [**deleteRelationAndReturn**](#deleteRelationAndReturn) | **DELETE** /api/v2/relation | Delete Relation (deleteRelationAndReturn) |
+| [**deleteRelation**](#deleteRelation) | **DELETE** /api/v2/relation | Delete Relation (deleteRelation) |
 | [**deleteRelations**](#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteRelations) |
 | [**findEntityRelationInfosByFrom**](#findEntityRelationInfosByFrom) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findEntityRelationInfosByFrom) |
 | [**findEntityRelationInfosByQuery**](#findEntityRelationInfosByQuery) | **POST** /api/relations/info | Find related entity infos (findEntityRelationInfosByQuery) |
@@ -20,34 +19,9 @@
 
 ## deleteRelation
 
-> deleteRelation(fromId, fromType, relationType, toId, toType, relationTypeGroup)
+> EntityRelation deleteRelation(fromId, fromType, relationType, toId, toType, relationTypeGroup)
 
 Delete Relation (deleteRelation)
-
-Deletes a relation between two entities in the platform.   If the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **fromId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **fromType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
-| **relationType** | **String** | A string value representing relation type between entities. For example, 'Contains', 'Manages'. It can be any string value. | |
-| **toId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **toType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
-| **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
-
-### Return type
-
-null (empty response body)
-
-
-## deleteRelationAndReturn
-
-> EntityRelation deleteRelationAndReturn(fromId, fromType, relationType, toId, toType, relationTypeGroup)
-
-Delete Relation (deleteRelationAndReturn)
 
 Deletes a relation between two entities in the platform.   If the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.
 

@@ -38572,188 +38572,6 @@
             "ApiKeyForm": []
           }
         ]
-      },
-      "delete": {
-        "tags": [
-          "entity-relation-controller"
-        ],
-        "summary": "Delete Relation (deleteRelation)",
-        "description": "Deletes a relation between two entities in the platform. \n\nIf the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.",
-        "operationId": "deleteRelation",
-        "parameters": [
-          {
-            "name": "fromId",
-            "in": "query",
-            "description": "A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fromType",
-            "in": "query",
-            "description": "A string value representing the entity type. For example, 'DEVICE'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "relationType",
-            "in": "query",
-            "description": "A string value representing relation type between entities. For example, 'Contains', 'Manages'. It can be any string value.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "relationTypeGroup",
-            "in": "query",
-            "description": "A string value representing relation type group. For example, 'COMMON'",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "toId",
-            "in": "query",
-            "description": "A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "toType",
-            "in": "query",
-            "description": "A string value representing the entity type. For example, 'DEVICE'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid UUID string: 123",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
       }
     },
     "/api/relations": {
@@ -40366,9 +40184,9 @@
         "tags": [
           "entity-relation-controller"
         ],
-        "summary": "Delete Relation (deleteRelationAndReturn)",
+        "summary": "Delete Relation (deleteRelation)",
         "description": "Deletes a relation between two entities in the platform. \n\nIf the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.",
-        "operationId": "deleteRelationAndReturn",
+        "operationId": "deleteRelation",
         "parameters": [
           {
             "name": "fromId",
@@ -47111,7 +46929,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "GKUiVvgXp7IFwt5ZQhyTLh0MsE8trE"
+                      "resetToken": "udgDQOpS1Q4ZFEL8qHF9s8cSKQ7d1h"
                     }
                   }
                 }
@@ -47221,7 +47039,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "GKUiVvgXp7IFwt5ZQhyTLh0MsE8trE"
+                      "resetToken": "udgDQOpS1Q4ZFEL8qHF9s8cSKQ7d1h"
                     }
                   }
                 }
