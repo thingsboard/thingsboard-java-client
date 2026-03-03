@@ -126,7 +126,7 @@ public class ConverterApiTest extends AbstractApiTest {
         String id1 = c1.getId().getId().toString();
         String id2 = c2.getId().getId().toString();
 
-        List<Converter> result = client.getConvertersByIdsV2(List.of(id1, id2));
+        List<Converter> result = client.getConvertersByIds(List.of(id1, id2));
         assertNotNull(result);
         assertEquals(2, result.size());
         assertTrue(result.stream().anyMatch(c -> c.getId().getId().toString().equals(id1)));

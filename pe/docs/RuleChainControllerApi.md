@@ -13,16 +13,16 @@
 | [**getRuleChainOutputLabels**](#getRuleChainOutputLabels) | **GET** /api/ruleChain/{ruleChainId}/output/labels | Get Rule Chain output labels (getRuleChainOutputLabels) |
 | [**getRuleChainOutputLabelsUsage**](#getRuleChainOutputLabelsUsage) | **GET** /api/ruleChain/{ruleChainId}/output/labels/usage | Get output labels usage (getRuleChainOutputLabelsUsage) |
 | [**getRuleChains**](#getRuleChains) | **GET** /api/ruleChains | Get Rule Chains (getRuleChains) |
-| [**getRuleChainsByIdsV2**](#getRuleChainsByIdsV2) | **GET** /api/ruleChains/list | Get Rule Chains By Ids (getRuleChainsByIdsV2) |
+| [**getRuleChainsByIds**](#getRuleChainsByIds) | **GET** /api/ruleChains/list | Get Rule Chains By Ids (getRuleChainsByIds) |
 | [**importRuleChains**](#importRuleChains) | **POST** /api/ruleChains/import | Import Rule Chains |
 | [**isTbelEnabled**](#isTbelEnabled) | **GET** /api/ruleChain/tbelEnabled | Is TBEL script executor enabled |
 | [**saveRuleChain**](#saveRuleChain) | **POST** /api/ruleChain | Create Or Update Rule Chain (saveRuleChain) |
-| [**saveRuleChain1**](#saveRuleChain1) | **POST** /api/ruleChain/device/default | Create Default Rule Chain |
 | [**saveRuleChainMetaData**](#saveRuleChainMetaData) | **POST** /api/ruleChain/metadata | Update Rule Chain Metadata |
 | [**setAutoAssignToEdgeRuleChain**](#setAutoAssignToEdgeRuleChain) | **POST** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain) |
+| [**setDeviceDefaultRuleChain**](#setDeviceDefaultRuleChain) | **POST** /api/ruleChain/device/default | Create Default Rule Chain (setDeviceDefaultRuleChain) |
 | [**setEdgeTemplateRootRuleChain**](#setEdgeTemplateRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/edgeTemplateRoot | Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain) |
 | [**setRootRuleChain**](#setRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/root | Set Root Rule Chain (setRootRuleChain) |
-| [**testScript**](#testScript) | **POST** /api/ruleChain/testScript | Test Script function |
+| [**testRuleChainScript**](#testRuleChainScript) | **POST** /api/ruleChain/testScript | Test Script function |
 | [**unassignRuleChainFromEdge**](#unassignRuleChainFromEdge) | **DELETE** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Unassign rule chain from edge (unassignRuleChainFromEdge) |
 | [**unsetAutoAssignToEdgeRuleChain**](#unsetAutoAssignToEdgeRuleChain) | **DELETE** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain) |
 
@@ -252,11 +252,11 @@ Returns a page of Rule Chains owned by tenant. The rule chain object is lightwei
 **PageDataRuleChain**
 
 
-## getRuleChainsByIdsV2
+## getRuleChainsByIds
 
-> List<RuleChain> getRuleChainsByIdsV2(ruleChainIds)
+> List<RuleChain> getRuleChainsByIds(ruleChainIds)
 
-Get Rule Chains By Ids (getRuleChainsByIdsV2)
+Get Rule Chains By Ids (getRuleChainsByIds)
 
 Requested rule chains must be owned by tenant which is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
@@ -326,26 +326,6 @@ Create or update the Rule Chain. When creating Rule Chain, platform generates Ru
 **RuleChain**
 
 
-## saveRuleChain1
-
-> RuleChain saveRuleChain1(defaultRuleChainCreateRequest)
-
-Create Default Rule Chain
-
-Create rule chain from template, based on the specified name in the request. Creates the rule chain based on the template that is used to create root rule chain.   Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **defaultRuleChainCreateRequest** | **DefaultRuleChainCreateRequest** |  | |
-
-### Return type
-
-**RuleChain**
-
-
 ## saveRuleChainMetaData
 
 > RuleChainMetaData saveRuleChainMetaData(ruleChainMetaData, updateRelated)
@@ -381,6 +361,26 @@ Makes the rule chain to be automatically assigned for any new edge that will be 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **ruleChainId** | **String** | A string value representing the rule chain id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**RuleChain**
+
+
+## setDeviceDefaultRuleChain
+
+> RuleChain setDeviceDefaultRuleChain(defaultRuleChainCreateRequest)
+
+Create Default Rule Chain (setDeviceDefaultRuleChain)
+
+Create rule chain from template, based on the specified name in the request. Creates the rule chain based on the template that is used to create root rule chain.   Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **defaultRuleChainCreateRequest** | **DefaultRuleChainCreateRequest** |  | |
 
 ### Return type
 
@@ -427,9 +427,9 @@ Makes the rule chain to be root rule chain. Updates previous root rule chain as 
 **RuleChain**
 
 
-## testScript
+## testRuleChainScript
 
-> com.fasterxml.jackson.databind.JsonNode testScript(body, scriptLang)
+> com.fasterxml.jackson.databind.JsonNode testRuleChainScript(body, scriptLang)
 
 Test Script function
 

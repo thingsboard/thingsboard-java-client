@@ -3,7 +3,7 @@
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getQueueStatsById**](#getQueueStatsById) | **GET** /api/queueStats/{queueStatsId} | Get Queue stats entity by id (getQueueStatsById) |
-| [**getQueueStatsByIdsV2**](#getQueueStatsByIdsV2) | **GET** /api/queueStats/list | Get QueueStats By Ids (getQueueStatsByIdsV2) |
+| [**getQueueStatsByIds**](#getQueueStatsByIds) | **GET** /api/queueStats/list | Get QueueStats By Ids (getQueueStatsByIds) |
 | [**getTenantQueueStats**](#getTenantQueueStats) | **GET** /api/queueStats | Get Queue Stats entities (getTenantQueueStats) |
 
 
@@ -28,11 +28,11 @@ Fetch the Queue stats object based on the provided Queue stats id.   Available f
 **QueueStats**
 
 
-## getQueueStatsByIdsV2
+## getQueueStatsByIds
 
-> List<QueueStats> getQueueStatsByIdsV2(queueStatsIds)
+> List<QueueStats> getQueueStatsByIds(queueStatsIds)
 
-Get QueueStats By Ids (getQueueStatsByIdsV2)
+Get QueueStats By Ids (getQueueStatsByIds)
 
 Fetch the Queue stats objects based on the provided ids. 
 

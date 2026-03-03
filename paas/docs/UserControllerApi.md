@@ -2,9 +2,9 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**deleteGeneralUserSettings**](#deleteGeneralUserSettings) | **DELETE** /api/user/settings/{paths} | Delete user settings (deleteGeneralUserSettings) |
 | [**deleteUser**](#deleteUser) | **DELETE** /api/user/{userId} | Delete User (deleteUser) |
-| [**deleteUserSettings**](#deleteUserSettings) | **DELETE** /api/user/settings/{type}/{paths} | Delete user settings (deleteUserSettings) |
-| [**deleteUserSettings1**](#deleteUserSettings1) | **DELETE** /api/user/settings/{paths} | Delete user settings (deleteUserSettings) |
+| [**deleteUserSettingsByType**](#deleteUserSettingsByType) | **DELETE** /api/user/settings/{type}/{paths} | Delete user settings by type (deleteUserSettingsByType) |
 | [**findUsersByQuery**](#findUsersByQuery) | **GET** /api/users/info | Find users by query (findUsersByQuery) |
 | [**getActivationLink**](#getActivationLink) | **GET** /api/user/{userId}/activationLink | Get activation link (getActivationLink) |
 | [**getActivationLinkInfo**](#getActivationLinkInfo) | **GET** /api/user/{userId}/activationLinkInfo | Get activation link info (getActivationLinkInfo) |
@@ -12,7 +12,7 @@
 | [**getAllUserInfos**](#getAllUserInfos) | **GET** /api/userInfos/all | Get All User Infos for current user (getAllUserInfos) |
 | [**getCustomerUserInfos**](#getCustomerUserInfos) | **GET** /api/customer/{customerId}/userInfos | Get Customer user Infos (getCustomerUserInfos) |
 | [**getCustomerUsers**](#getCustomerUsers) | **GET** /api/customer/{customerId}/users | Get Customer Users (getCustomerUsers) |
-| [**getGeneralUserSettings**](#getGeneralUserSettings) | **GET** /api/user/settings/general | Get user settings (getUserSettings) |
+| [**getGeneralUserSettings**](#getGeneralUserSettings) | **GET** /api/user/settings/general | Get user settings (getGeneralUserSettings) |
 | [**getLastVisitedDashboards**](#getLastVisitedDashboards) | **GET** /api/user/lastVisitedDashboards | Get information about last visited and starred dashboards (getLastVisitedDashboards) |
 | [**getMobileSession**](#getMobileSession) | **GET** /api/user/mobile/session | getMobileSession |
 | [**getTenantAdmins**](#getTenantAdmins) | **GET** /api/tenant/{tenantId}/users | Get Tenant Users (getTenantAdmins) |
@@ -22,11 +22,11 @@
 | [**getUserToken**](#getUserToken) | **GET** /api/user/{userId}/token | Get User Token (getUserToken) |
 | [**getUserUsers**](#getUserUsers) | **GET** /api/user/users | Get Users (getUsers) |
 | [**getUsersByEntityGroupId**](#getUsersByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/users | Get users by Entity Group Id (getUsersByEntityGroupId) |
-| [**getUsersByIdsV2**](#getUsersByIdsV2) | **GET** /api/users/list | Get Users By Ids (getUsersByIdsV2) |
+| [**getUsersByIds**](#getUsersByIds) | **GET** /api/users/list | Get Users By Ids (getUsersByIds) |
 | [**getUsersForAssign**](#getUsersForAssign) | **GET** /api/users/assign/{alarmId} | Get usersForAssign (getUsersForAssign) |
 | [**isUserTokenAccessEnabled**](#isUserTokenAccessEnabled) | **GET** /api/user/tokenAccessEnabled | Check Token Access Enabled (isUserTokenAccessEnabled) |
-| [**putGeneralUserSettings**](#putGeneralUserSettings) | **PUT** /api/user/settings/general | Update user settings (saveUserSettings) |
-| [**putUserSettings**](#putUserSettings) | **PUT** /api/user/settings/{type} | Update user settings (saveUserSettings) |
+| [**putGeneralUserSettings**](#putGeneralUserSettings) | **PUT** /api/user/settings/general | Update user settings (putGeneralUserSettings) |
+| [**putUserSettings**](#putUserSettings) | **PUT** /api/user/settings/{type} | Update user settings (putUserSettings) |
 | [**removeMobileSession**](#removeMobileSession) | **DELETE** /api/user/mobile/session | removeMobileSession |
 | [**reportUserDashboardAction**](#reportUserDashboardAction) | **GET** /api/user/dashboards/{dashboardId}/{action} | Report action of User over the dashboard (reportUserDashboardAction) |
 | [**saveMobileSession**](#saveMobileSession) | **POST** /api/user/mobile/session | saveMobileSession |
@@ -35,6 +35,26 @@
 | [**sendActivationEmail**](#sendActivationEmail) | **POST** /api/user/sendActivationMail | Send or re-send the activation email |
 | [**setUserCredentialsEnabled**](#setUserCredentialsEnabled) | **POST** /api/user/{userId}/userCredentialsEnabled | Enable/Disable User credentials (setUserCredentialsEnabled) |
 
+
+
+## deleteGeneralUserSettings
+
+> deleteGeneralUserSettings(paths)
+
+Delete user settings (deleteGeneralUserSettings)
+
+Delete user settings by specifying list of json element xpaths.   Example: to delete B and C element in { \"A\": {\"B\": 5}, \"C\": 15} send A.B,C in jsonPaths request parameter
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **paths** | **String** | paths | |
+
+### Return type
+
+null (empty response body)
 
 
 ## deleteUser
@@ -57,11 +77,11 @@ Deletes the User, it's credentials and all the relations (from and to the User).
 null (empty response body)
 
 
-## deleteUserSettings
+## deleteUserSettingsByType
 
-> deleteUserSettings(paths, type)
+> deleteUserSettingsByType(paths, type)
 
-Delete user settings (deleteUserSettings)
+Delete user settings by type (deleteUserSettingsByType)
 
 Delete user settings by specifying list of json element xpaths.   Example: to delete B and C element in { \"A\": {\"B\": 5}, \"C\": 15} send A.B,C in jsonPaths request parameter
 
@@ -72,26 +92,6 @@ Delete user settings by specifying list of json element xpaths.   Example: to de
 |------------- | ------------- | ------------- | -------------|
 | **paths** | **String** | paths | |
 | **type** | **String** | Settings type, case insensitive, one of: \"general\", \"quick_links\", \"doc_links\" or \"dashboards\". | |
-
-### Return type
-
-null (empty response body)
-
-
-## deleteUserSettings1
-
-> deleteUserSettings1(paths)
-
-Delete user settings (deleteUserSettings)
-
-Delete user settings by specifying list of json element xpaths.   Example: to delete B and C element in { \"A\": {\"B\": 5}, \"C\": 15} send A.B,C in jsonPaths request parameter
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **paths** | **String** | paths | |
 
 ### Return type
 
@@ -266,7 +266,7 @@ Returns a page of users owned by customer. You can specify parameters to filter 
 
 > com.fasterxml.jackson.databind.JsonNode getGeneralUserSettings()
 
-Get user settings (getUserSettings)
+Get user settings (getGeneralUserSettings)
 
 Fetch the User settings based on authorized user. 
 
@@ -460,11 +460,11 @@ Returns a page of user objects that belongs to specified Entity Group Id. You ca
 **PageDataUser**
 
 
-## getUsersByIdsV2
+## getUsersByIds
 
-> List<User> getUsersByIdsV2(userIds)
+> List<User> getUsersByIds(userIds)
 
-Get Users By Ids (getUsersByIdsV2)
+Get Users By Ids (getUsersByIds)
 
 Requested users must be owned by tenant or assigned to customer which user is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
@@ -522,7 +522,7 @@ Checks that the system is configured to allow administrators to impersonate them
 
 > putGeneralUserSettings(body)
 
-Update user settings (saveUserSettings)
+Update user settings (putGeneralUserSettings)
 
 Update user settings for authorized user. Only specified json elements will be updated.Example: you have such settings: {A:5, B:{C:10, D:20}}. Updating it with {B:{C:10, D:30}} will result in{A:5, B:{C:10, D:30}}. The same could be achieved by putting {B.D:30}
 
@@ -542,7 +542,7 @@ null (empty response body)
 
 > putUserSettings(type, body)
 
-Update user settings (saveUserSettings)
+Update user settings (putUserSettings)
 
 Update user settings for authorized user. Only specified json elements will be updated.Example: you have such settings: {A:5, B:{C:10, D:20}}. Updating it with {B:{C:10, D:30}} will result in{A:5, B:{C:10, D:30}}. The same could be achieved by putting {B.D:30}
 

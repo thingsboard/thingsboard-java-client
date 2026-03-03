@@ -206,7 +206,7 @@ public class OtaPackageApiTest extends AbstractApiTest {
         createFirmwareWithUrl("byprofile_" + ts + "_0");
         createFirmwareWithUrl("byprofile_" + ts + "_1");
 
-        PageDataOtaPackageInfo page = client.getOtaPackages1(
+        PageDataOtaPackageInfo page = client.getOtaPackagesByDeviceProfileAndType(
                 profileId.getId().toString(), "FIRMWARE", 100, 0,
                 OTA_PREFIX + "byprofile_" + ts, null, null);
         assertNotNull(page);

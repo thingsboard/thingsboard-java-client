@@ -7,7 +7,7 @@
 | [**getTenantInfoById**](#getTenantInfoById) | **GET** /api/tenant/info/{tenantId} | Get Tenant Info (getTenantInfoById) |
 | [**getTenantInfos**](#getTenantInfos) | **GET** /api/tenantInfos | Get Tenants Info (getTenants) |
 | [**getTenants**](#getTenants) | **GET** /api/tenants | Get Tenants (getTenants) |
-| [**getTenantsByIdsV2**](#getTenantsByIdsV2) | **GET** /api/tenants/list | Get Tenants By Ids (getTenantsByIdsV2) |
+| [**getTenantsByIds**](#getTenantsByIds) | **GET** /api/tenants/list | Get Tenants By Ids (getTenantsByIds) |
 | [**saveTenant**](#saveTenant) | **POST** /api/tenant | Create Or update Tenant (saveTenant) |
 
 
@@ -120,11 +120,11 @@ Returns a page of tenants registered in the platform. You can specify parameters
 **PageDataTenant**
 
 
-## getTenantsByIdsV2
+## getTenantsByIds
 
-> List<Tenant> getTenantsByIdsV2(tenantIds)
+> List<Tenant> getTenantsByIds(tenantIds)
 
-Get Tenants By Ids (getTenantsByIdsV2)
+Get Tenants By Ids (getTenantsByIds)
 
 Fetch Tenant objects based on the provided ids.   Available for users with 'SYS_ADMIN' authority.
 

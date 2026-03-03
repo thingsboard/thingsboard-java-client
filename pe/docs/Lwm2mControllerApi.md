@@ -3,7 +3,7 @@
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getLwm2mBootstrapSecurityInfo**](#getLwm2mBootstrapSecurityInfo) | **GET** /api/lwm2m/deviceProfile/bootstrap/{isBootstrapServer} | Get Lwm2m Bootstrap SecurityInfo (getLwm2mBootstrapSecurityInfo) |
-| [**saveDeviceWithCredentials**](#saveDeviceWithCredentials) | **POST** /api/lwm2m/device-credentials | Save device with credentials (Deprecated) |
+| [**saveLwm2mDeviceWithCredentials**](#saveLwm2mDeviceWithCredentials) | **POST** /api/lwm2m/device-credentials | Save LwM2M device with credentials (saveLwm2mDeviceWithCredentials) |
 
 
 
@@ -27,11 +27,13 @@ Get the Lwm2m Bootstrap SecurityInfo object (of the current server) based on the
 **LwM2MServerSecurityConfigDefault**
 
 
-## saveDeviceWithCredentials
+## saveLwm2mDeviceWithCredentials
 
-> Device saveDeviceWithCredentials(requestBody, entityGroupId)
+> Device saveLwm2mDeviceWithCredentials(requestBody, entityGroupId)
 
-Save device with credentials (Deprecated)
+Save LwM2M device with credentials (saveLwm2mDeviceWithCredentials)
+
+Deprecated.
 
 
 ### Parameters

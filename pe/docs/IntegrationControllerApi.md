@@ -13,7 +13,7 @@
 | [**getIntegrationByRoutingKey**](#getIntegrationByRoutingKey) | **GET** /api/integration/routingKey/{routingKey} | Get Integration by Routing Key (getIntegrationByRoutingKey) |
 | [**getIntegrationInfos**](#getIntegrationInfos) | **GET** /api/integrationInfos | Get Integration Infos (getIntegrationInfos) |
 | [**getIntegrations**](#getIntegrations) | **GET** /api/integrations | Get Integrations (getIntegrations) |
-| [**getIntegrationsByIdsV2**](#getIntegrationsByIdsV2) | **GET** /api/integrations/list | Get Integrations By Ids (getIntegrationsByIdsV2) |
+| [**getIntegrationsByIds**](#getIntegrationsByIds) | **GET** /api/integrations/list | Get Integrations By Ids (getIntegrationsByIds) |
 | [**getIntegrationsConvertersInfo**](#getIntegrationsConvertersInfo) | **GET** /api/integrations/converters/info | Get Integrations Converters info (getIntegrationsConvertersInfo) |
 | [**saveIntegration**](#saveIntegration) | **POST** /api/integration | Create Or Update Integration (saveIntegration) |
 | [**unassignIntegrationFromEdge**](#unassignIntegrationFromEdge) | **DELETE** /api/edge/{edgeId}/integration/{integrationId} | Unassign integration from edge (unassignIntegrationFromEdge) |
@@ -262,11 +262,11 @@ Returns a page of integrations owned by tenant. You can specify parameters to fi
 **PageDataIntegration**
 
 
-## getIntegrationsByIdsV2
+## getIntegrationsByIds
 
-> List<Integration> getIntegrationsByIdsV2(integrationIds)
+> List<Integration> getIntegrationsByIds(integrationIds)
 
-Get Integrations By Ids (getIntegrationsByIdsV2)
+Get Integrations By Ids (getIntegrationsByIds)
 
 Requested integrations must be owned by tenant which is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 

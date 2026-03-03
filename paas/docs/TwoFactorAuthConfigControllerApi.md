@@ -5,7 +5,7 @@
 | [**deleteTwoFaAccountConfig**](#deleteTwoFaAccountConfig) | **DELETE** /api/2fa/account/config | Delete 2FA account config (deleteTwoFaAccountConfig) |
 | [**generateTwoFaAccountConfig**](#generateTwoFaAccountConfig) | **POST** /api/2fa/account/config/generate | Generate 2FA account config (generateTwoFaAccountConfig) |
 | [**getAccountTwoFaSettings**](#getAccountTwoFaSettings) | **GET** /api/2fa/account/settings | Get account 2FA settings (getAccountTwoFaSettings) |
-| [**getAvailableTwoFaProviders1**](#getAvailableTwoFaProviders1) | **GET** /api/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviders) |
+| [**getAvailableTwoFaProviderTypes**](#getAvailableTwoFaProviderTypes) | **GET** /api/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviderTypes) |
 | [**getPlatformTwoFaSettings**](#getPlatformTwoFaSettings) | **GET** /api/2fa/settings | Get platform 2FA settings (getPlatformTwoFaSettings) |
 | [**savePlatformTwoFaSettings**](#savePlatformTwoFaSettings) | **POST** /api/2fa/settings | Save platform 2FA settings (savePlatformTwoFaSettings) |
 | [**submitTwoFaAccountConfig**](#submitTwoFaAccountConfig) | **POST** /api/2fa/account/config/submit | Submit 2FA account config (submitTwoFaAccountConfig) |
@@ -67,11 +67,11 @@ Get user's account 2FA configuration. Configuration contains configs for differe
 **AccountTwoFaSettings**
 
 
-## getAvailableTwoFaProviders1
+## getAvailableTwoFaProviderTypes
 
-> List<TwoFaProviderType> getAvailableTwoFaProviders1()
+> List<TwoFaProviderType> getAvailableTwoFaProviderTypes()
 
-Get available 2FA providers (getAvailableTwoFaProviders)
+Get available 2FA providers (getAvailableTwoFaProviderTypes)
 
 Get the list of provider types available for user to use (the ones configured by tenant or sysadmin). Example of response: ``` [   \"TOTP\",   \"EMAIL\",   \"SMS\" ] ```  Available for any authorized user. 
 

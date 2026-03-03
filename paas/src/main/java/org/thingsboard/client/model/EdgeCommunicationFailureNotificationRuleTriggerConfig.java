@@ -95,6 +95,12 @@ public class EdgeCommunicationFailureNotificationRuleTriggerConfig extends Notif
   }
 
 
+  @Override
+  public EdgeCommunicationFailureNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
+    return this;
+  }
+
   /**
    * Return true if this EdgeCommunicationFailureNotificationRuleTriggerConfig object is equal to o.
    */

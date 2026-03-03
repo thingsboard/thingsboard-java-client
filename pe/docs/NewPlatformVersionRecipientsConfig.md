@@ -1,14 +1,15 @@
 
-# GroupEntityExportData
+# NewPlatformVersionRecipientsConfig
 
-`org.thingsboard.client.model.GroupEntityExportData`
+`org.thingsboard.client.model.NewPlatformVersionRecipientsConfig`
 
-**Extends:** **EntityExportData**
+**Extends:** **NotificationRuleRecipientsConfig**
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **targets** | **List\<UUID\>** |  | |
 
 
 

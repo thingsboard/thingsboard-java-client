@@ -9,9 +9,9 @@
 |------------ | ------------- | ------------- | -------------|
 | **format** | **TbReportFormat** | Report format | |
 | **filters** | **List\<Filter\>** |  | [optional] |
-| **timeDataPattern** | **String** |  | [optional] |
 | **namePattern** | **String** |  | [optional] |
 | **components** | **List\<ReportComponent\>** |  | [optional] |
+| **timeDataPattern** | **String** |  | [optional] |
 | **entityAliases** | **List\<EntityAlias\>** |  | [optional] |
 
 

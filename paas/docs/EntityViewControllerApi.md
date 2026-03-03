@@ -3,7 +3,7 @@
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteEntityView**](#deleteEntityView) | **DELETE** /api/entityView/{entityViewId} | Delete entity view (deleteEntityView) |
-| [**findByQuery1**](#findByQuery1) | **POST** /api/entityViews | Find related entity views (findByQuery) |
+| [**findEntityViewsByQuery**](#findEntityViewsByQuery) | **POST** /api/entityViews | Find related entity views (findEntityViewsByQuery) |
 | [**getAllEntityViewInfos**](#getAllEntityViewInfos) | **GET** /api/entityViewInfos/all | Get All Entity View Infos for current user (getAllEntityViewInfos) |
 | [**getCustomerEntityViewInfos**](#getCustomerEntityViewInfos) | **GET** /api/customer/{customerId}/entityViewInfos | Get Customer Entity View Infos (getCustomerEntityViewInfos) |
 | [**getCustomerEntityViews**](#getCustomerEntityViews) | **GET** /api/customer/{customerId}/entityViews | Get Customer Entity Views (getCustomerEntityViews) |
@@ -11,7 +11,7 @@
 | [**getEntityViewInfoById**](#getEntityViewInfoById) | **GET** /api/entityView/info/{entityViewId} | Get entity view info (getEntityViewInfoById) |
 | [**getEntityViewTypes**](#getEntityViewTypes) | **GET** /api/entityView/types | Get Entity View Types (getEntityViewTypes) |
 | [**getEntityViewsByEntityGroupId**](#getEntityViewsByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/entityViews | Get entity views by Entity Group Id (getEntityViewsByEntityGroupId) |
-| [**getEntityViewsByIdsV2**](#getEntityViewsByIdsV2) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIds) |
+| [**getEntityViewsByIds**](#getEntityViewsByIds) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIds) |
 | [**getTenantEntityViewByName**](#getTenantEntityViewByName) | **GET** /api/tenant/entityView | Get Entity View by name (getTenantEntityViewByName) |
 | [**getTenantEntityViews**](#getTenantEntityViews) | **GET** /api/tenant/entityViews | Get Tenant Entity Views (getTenantEntityViews) |
 | [**getUserEntityViews**](#getUserEntityViews) | **GET** /api/user/entityViews | Get Entity Views (getUserEntityViews) |
@@ -39,11 +39,11 @@ Delete the EntityView object based on the provided entity view id.   Available f
 null (empty response body)
 
 
-## findByQuery1
+## findEntityViewsByQuery
 
-> List<EntityView> findByQuery1(entityViewSearchQuery)
+> List<EntityView> findEntityViewsByQuery(entityViewSearchQuery)
 
-Find related entity views (findByQuery)
+Find related entity views (findEntityViewsByQuery)
 
 Returns all entity views that are related to the specific entity. The entity id, relation type, entity view types, depth of the search, and other query parameters defined using complex 'EntityViewSearchQuery' object. See 'Model' tab of the Parameters for more info.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
@@ -216,9 +216,9 @@ Returns a page of Entity View objects that belongs to specified Entity View Id. 
 **PageDataEntityView**
 
 
-## getEntityViewsByIdsV2
+## getEntityViewsByIds
 
-> List<EntityView> getEntityViewsByIdsV2(entityViewIds)
+> List<EntityView> getEntityViewsByIds(entityViewIds)
 
 Get Entity Views By Ids (getEntityViewsByIds)
 

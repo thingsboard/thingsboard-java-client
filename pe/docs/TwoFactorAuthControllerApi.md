@@ -4,7 +4,7 @@
 |------------- | ------------- | -------------|
 | [**authenticateByTwoFaConfigurationToken**](#authenticateByTwoFaConfigurationToken) | **POST** /api/auth/2fa/login | Get regular token pair after successfully configuring 2FA |
 | [**checkTwoFaVerificationCode**](#checkTwoFaVerificationCode) | **POST** /api/auth/2fa/verification/check | Check 2FA verification code (checkTwoFaVerificationCode) |
-| [**getAvailableTwoFaProviders**](#getAvailableTwoFaProviders) | **GET** /api/auth/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviders) |
+| [**getAvailableTwoFaProviderInfos**](#getAvailableTwoFaProviderInfos) | **GET** /api/auth/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviderInfos) |
 | [**requestTwoFaVerificationCode**](#requestTwoFaVerificationCode) | **POST** /api/auth/2fa/verification/send | Request 2FA verification code (requestTwoFaVerificationCode) |
 
 
@@ -43,11 +43,11 @@ Checks 2FA verification code, and if it is correct the method returns a regular 
 **JwtPair**
 
 
-## getAvailableTwoFaProviders
+## getAvailableTwoFaProviderInfos
 
-> List<TwoFaProviderInfo> getAvailableTwoFaProviders()
+> List<TwoFaProviderInfo> getAvailableTwoFaProviderInfos()
 
-Get available 2FA providers (getAvailableTwoFaProviders)
+Get available 2FA providers (getAvailableTwoFaProviderInfos)
 
 Get the list of 2FA provider infos available for user to use. Example: ``` [   {     \"type\": \"EMAIL\",     \"default\": true,     \"contact\": \"ab*****ko@gmail.com\"   },   {     \"type\": \"TOTP\",     \"default\": false,     \"contact\": null   },   {     \"type\": \"SMS\",     \"default\": false,     \"contact\": \"+38********12\"   } ] ```
 
