@@ -243,6 +243,12 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
+  public PdfReportTemplateConfig entityAliases(@javax.annotation.Nullable List<EntityAlias> entityAliases) {
+    this.setEntityAliases(entityAliases);
+    return this;
+  }
+
+  @Override
   public PdfReportTemplateConfig filters(@javax.annotation.Nullable List<Filter> filters) {
     this.setFilters(filters);
     return this;
@@ -263,12 +269,6 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   @Override
   public PdfReportTemplateConfig timeDataPattern(@javax.annotation.Nullable String timeDataPattern) {
     this.setTimeDataPattern(timeDataPattern);
-    return this;
-  }
-
-  @Override
-  public PdfReportTemplateConfig entityAliases(@javax.annotation.Nullable List<EntityAlias> entityAliases) {
-    this.setEntityAliases(entityAliases);
     return this;
   }
 
@@ -361,6 +361,16 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
       joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFormat()))));
     }
 
+    // add `entityAliases` to the URL query string
+    if (getEntityAliases() != null) {
+      for (int i = 0; i < getEntityAliases().size(); i++) {
+        if (getEntityAliases().get(i) != null) {
+          joiner.add(getEntityAliases().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sentityAliases%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
     // add `filters` to the URL query string
     if (getFilters() != null) {
       for (int i = 0; i < getFilters().size(); i++) {
@@ -389,16 +399,6 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
     // add `timeDataPattern` to the URL query string
     if (getTimeDataPattern() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stimeDataPattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeDataPattern()))));
-    }
-
-    // add `entityAliases` to the URL query string
-    if (getEntityAliases() != null) {
-      for (int i = 0; i < getEntityAliases().size(); i++) {
-        if (getEntityAliases().get(i) != null) {
-          joiner.add(getEntityAliases().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sentityAliases%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
     }
 
     // add `pageSize` to the URL query string
