@@ -5,7 +5,6 @@
 | [**clearEvents**](#clearEvents) | **POST** /api/events/{entityType}/{entityId}/clear | Clear Events (clearEvents) |
 | [**getEventsByFilter**](#getEventsByFilter) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEventsByFilter) |
 | [**getEventsByType**](#getEventsByType) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEventsByType) |
-| [**getEventsDeprecated**](#getEventsDeprecated) | **GET** /api/events/{entityType}/{entityId} | Get Events (getEventsDeprecated) (Deprecated) |
 
 
 
@@ -79,35 +78,6 @@ Returns a page of events for specified entity by specifying event type. You can 
 | **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **eventType** | **String** | A string value representing event type | |
-| **tenantId** | **String** | A string value representing the tenant id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
-| **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The value is not used in searching. | [optional] |
-| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: ts, id] |
-| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long** | Timestamp. Events with creation time before it won't be queried. | [optional] |
-| **endTime** | **Long** | Timestamp. Events with creation time after it won't be queried. | [optional] |
-
-### Return type
-
-**PageDataEventInfo**
-
-
-## getEventsDeprecated
-
-> PageDataEventInfo getEventsDeprecated(entityType, entityId, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
-
-Get Events (getEventsDeprecated) (Deprecated)
-
-Returns a page of events for specified entity. Deprecated and will be removed in next minor release. The call was deprecated to improve the performance of the system. Current implementation will return 'Lifecycle' events only. Use 'Get events by type' or 'Get events by filter' instead. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. 
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
-| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **tenantId** | **String** | A string value representing the tenant id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |

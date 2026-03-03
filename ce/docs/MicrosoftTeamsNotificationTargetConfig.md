@@ -15,8 +15,8 @@
 | **id** | **Object** |  | [optional] |
 | **title** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
-| **firstName** | **String** |  | [optional] |
 | **lastName** | **String** |  | [optional] |
+| **firstName** | **String** |  | [optional] |
 
 
 

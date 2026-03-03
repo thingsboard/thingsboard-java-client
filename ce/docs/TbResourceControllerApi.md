@@ -15,7 +15,7 @@
 | [**getResourceInfo**](#getResourceInfo) | **GET** /api/resource/{resourceType}/{scope}/{key}/info | Get resource info (getResourceInfo) |
 | [**getResourceInfoById**](#getResourceInfoById) | **GET** /api/resource/info/{resourceId} | Get Resource Info (getResourceInfoById) |
 | [**getResources**](#getResources) | **GET** /api/resource | Get Resource Infos (getResources) |
-| [**getSystemOrTenantResourcesByIdsV2**](#getSystemOrTenantResourcesByIdsV2) | **GET** /api/resource/list | Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2) |
+| [**getSystemOrTenantResourcesByIds**](#getSystemOrTenantResourcesByIds) | **GET** /api/resource/list | Get Resource Infos by ids (getSystemOrTenantResourcesByIds) |
 | [**getTenantResources**](#getTenantResources) | **GET** /api/resource/tenant | Get All Resource Infos (getAllResources) |
 | [**saveResource**](#saveResource) | **POST** /api/resource | Create Or Update Resource (saveResource) |
 | [**updateResourceData**](#updateResourceData) | **PUT** /api/resource/{id}/data | updateResourceData |
@@ -306,11 +306,11 @@ Returns a page of Resource Info objects owned by tenant or sysadmin. You can spe
 **PageDataTbResourceInfo**
 
 
-## getSystemOrTenantResourcesByIdsV2
+## getSystemOrTenantResourcesByIds
 
-> List<TbResourceInfo> getSystemOrTenantResourcesByIdsV2(resourceIds)
+> List<TbResourceInfo> getSystemOrTenantResourcesByIds(resourceIds)
 
-Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2)
+Get Resource Infos by ids (getSystemOrTenantResourcesByIds)
 
 
 ### Parameters

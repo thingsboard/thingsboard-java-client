@@ -6,7 +6,7 @@
 | [**getCustomerById**](#getCustomerById) | **GET** /api/customer/{customerId} | Get Customer (getCustomerById) |
 | [**getCustomerTitleById**](#getCustomerTitleById) | **GET** /api/customer/{customerId}/title | Get Customer Title (getCustomerTitleById) |
 | [**getCustomers**](#getCustomers) | **GET** /api/customers | Get Tenant Customers (getCustomers) |
-| [**getCustomersByIdsV2**](#getCustomersByIdsV2) | **GET** /api/customers/list | Get customers by Customer Ids (getCustomersByIdsV2) |
+| [**getCustomersByIds**](#getCustomersByIds) | **GET** /api/customers/list | Get customers by Customer Ids (getCustomersByIds) |
 | [**getShortCustomerInfoById**](#getShortCustomerInfoById) | **GET** /api/customer/{customerId}/shortInfo | Get short Customer info (getShortCustomerInfoById) |
 | [**getTenantCustomer**](#getTenantCustomer) | **GET** /api/tenant/customers | Get Tenant Customer by Customer title (getTenantCustomer) |
 | [**saveCustomer**](#saveCustomer) | **POST** /api/customer | Create or update Customer (saveCustomer) |
@@ -97,11 +97,11 @@ Returns a page of customers owned by tenant. You can specify parameters to filte
 **PageDataCustomer**
 
 
-## getCustomersByIdsV2
+## getCustomersByIds
 
-> List<Customer> getCustomersByIdsV2(customerIds)
+> List<Customer> getCustomersByIds(customerIds)
 
-Get customers by Customer Ids (getCustomersByIdsV2)
+Get customers by Customer Ids (getCustomersByIds)
 
 Returns a list of Customer objects based on the provided ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

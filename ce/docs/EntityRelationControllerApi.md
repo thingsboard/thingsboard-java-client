@@ -3,19 +3,19 @@
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteRelation**](#deleteRelation) | **DELETE** /api/relation | Delete Relation (deleteRelation) |
-| [**deleteRelationV2**](#deleteRelationV2) | **DELETE** /api/v2/relation | Delete Relation (deleteRelationV2) |
+| [**deleteRelationAndReturn**](#deleteRelationAndReturn) | **DELETE** /api/v2/relation | Delete Relation (deleteRelationAndReturn) |
 | [**deleteRelations**](#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteCommonRelations) |
-| [**findByFromAndRelationType**](#findByFromAndRelationType) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findByFromAndRelationType) |
-| [**findByFromV2**](#findByFromV2) | **GET** /api/relations/from/{fromType}/{fromId} | Get List of Relations (findByFromV2) |
-| [**findByToAndRelationType**](#findByToAndRelationType) | **GET** /api/relations/to/{toType}/{toId}/{relationType} | Get List of Relations (findByToAndRelationType) |
-| [**findByToV2**](#findByToV2) | **GET** /api/relations/to/{toType}/{toId} | Get List of Relations (findByToV2) |
+| [**findEntityRelationInfosByFrom**](#findEntityRelationInfosByFrom) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findEntityRelationInfosByFrom) |
+| [**findEntityRelationInfosByQuery**](#findEntityRelationInfosByQuery) | **POST** /api/relations/info | Find related entity infos (findEntityRelationInfosByQuery) |
+| [**findEntityRelationInfosByTo**](#findEntityRelationInfosByTo) | **GET** /api/relations/info/to/{toType}/{toId} | Get List of Relation Infos (findEntityRelationInfosByTo) |
+| [**findEntityRelationsByFrom**](#findEntityRelationsByFrom) | **GET** /api/relations/from/{fromType}/{fromId} | Get List of Relations (findEntityRelationsByFrom) |
+| [**findEntityRelationsByFromAndRelationType**](#findEntityRelationsByFromAndRelationType) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findEntityRelationsByFromAndRelationType) |
 | [**findEntityRelationsByQuery**](#findEntityRelationsByQuery) | **POST** /api/relations | Find related entities (findEntityRelationsByQuery) |
-| [**findInfoByFromV2**](#findInfoByFromV2) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findInfoByFromV2) |
-| [**findInfoByQuery**](#findInfoByQuery) | **POST** /api/relations/info | Find related entity infos (findInfoByQuery) |
-| [**findInfoByToV2**](#findInfoByToV2) | **GET** /api/relations/info/to/{toType}/{toId} | Get List of Relation Infos (findInfoByToV2) |
+| [**findEntityRelationsByTo**](#findEntityRelationsByTo) | **GET** /api/relations/to/{toType}/{toId} | Get List of Relations (findEntityRelationsByTo) |
+| [**findEntityRelationsByToAndRelationType**](#findEntityRelationsByToAndRelationType) | **GET** /api/relations/to/{toType}/{toId}/{relationType} | Get List of Relations (findEntityRelationsByToAndRelationType) |
 | [**getRelation**](#getRelation) | **GET** /api/relation | Get Relation (getRelation) |
 | [**saveRelation**](#saveRelation) | **POST** /api/relation | Create Relation (saveRelation) |
-| [**saveRelationV2**](#saveRelationV2) | **POST** /api/v2/relation | Create Relation (saveRelationV2) |
+| [**saveRelationAndReturn**](#saveRelationAndReturn) | **POST** /api/v2/relation | Create Relation (saveRelationAndReturn) |
 
 
 
@@ -44,11 +44,11 @@ Deletes a relation between two entities in the platform.   If the user has the a
 null (empty response body)
 
 
-## deleteRelationV2
+## deleteRelationAndReturn
 
-> EntityRelation deleteRelationV2(fromId, fromType, relationType, toId, toType, relationTypeGroup)
+> EntityRelation deleteRelationAndReturn(fromId, fromType, relationType, toId, toType, relationTypeGroup)
 
-Delete Relation (deleteRelationV2)
+Delete Relation (deleteRelationAndReturn)
 
 Deletes a relation between two entities in the platform.   If the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.
 
@@ -90,13 +90,13 @@ Deletes all the relations ('from' and 'to' direction) for the specified entity a
 null (empty response body)
 
 
-## findByFromAndRelationType
+## findEntityRelationInfosByFrom
 
-> List<EntityRelation> findByFromAndRelationType(fromType, fromId, relationType, relationTypeGroup)
+> List<EntityRelationInfo> findEntityRelationInfosByFrom(fromType, fromId, relationTypeGroup)
 
-Get List of Relations (findByFromAndRelationType)
+Get List of Relation Infos (findEntityRelationInfosByFrom)
 
-Returns list of relation objects for the specified entity by the 'from' direction and relation type.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
+Returns list of relation info objects for the specified entity by the 'from' direction.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer. Relation Info is an extension of the default Relation object that contains information about the 'from' and 'to' entity names. 
 
 
 ### Parameters
@@ -105,19 +105,60 @@ Returns list of relation objects for the specified entity by the 'from' directio
 |------------- | ------------- | ------------- | -------------|
 | **fromType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
 | **fromId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **relationType** | **String** | A string value representing relation type between entities. For example, 'Contains', 'Manages'. It can be any string value. | |
 | **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
 
 ### Return type
 
-**List<EntityRelation>**
+**List<EntityRelationInfo>**
 
 
-## findByFromV2
+## findEntityRelationInfosByQuery
 
-> List<EntityRelation> findByFromV2(fromType, fromId, relationTypeGroup)
+> List<EntityRelationInfo> findEntityRelationInfosByQuery(entityRelationsQuery)
 
-Get List of Relations (findByFromV2)
+Find related entity infos (findEntityRelationInfosByQuery)
+
+Returns all entity infos that are related to the specific entity. The entity id, relation type, entity types, depth of the search, and other query parameters defined using complex 'EntityRelationsQuery' object. See 'Model' tab of the Parameters for more info. Relation Info is an extension of the default Relation object that contains information about the 'from' and 'to' entity names. 
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityRelationsQuery** | **EntityRelationsQuery** |  | |
+
+### Return type
+
+**List<EntityRelationInfo>**
+
+
+## findEntityRelationInfosByTo
+
+> List<EntityRelationInfo> findEntityRelationInfosByTo(toType, toId, relationTypeGroup)
+
+Get List of Relation Infos (findEntityRelationInfosByTo)
+
+Returns list of relation info objects for the specified entity by the 'to' direction.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer. Relation Info is an extension of the default Relation object that contains information about the 'from' and 'to' entity names. 
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **toType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **toId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
+
+### Return type
+
+**List<EntityRelationInfo>**
+
+
+## findEntityRelationsByFrom
+
+> List<EntityRelation> findEntityRelationsByFrom(fromType, fromId, relationTypeGroup)
+
+Get List of Relations (findEntityRelationsByFrom)
 
 Returns list of relation objects for the specified entity by the 'from' direction.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
 
@@ -135,44 +176,22 @@ Returns list of relation objects for the specified entity by the 'from' directio
 **List<EntityRelation>**
 
 
-## findByToAndRelationType
+## findEntityRelationsByFromAndRelationType
 
-> List<EntityRelation> findByToAndRelationType(toType, toId, relationType, relationTypeGroup)
+> List<EntityRelation> findEntityRelationsByFromAndRelationType(fromType, fromId, relationType, relationTypeGroup)
 
-Get List of Relations (findByToAndRelationType)
+Get List of Relations (findEntityRelationsByFromAndRelationType)
 
-Returns list of relation objects for the specified entity by the 'to' direction and relation type.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
+Returns list of relation objects for the specified entity by the 'from' direction and relation type.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **toType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
-| **toId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **fromType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **fromId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **relationType** | **String** | A string value representing relation type between entities. For example, 'Contains', 'Manages'. It can be any string value. | |
-| **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
-
-### Return type
-
-**List<EntityRelation>**
-
-
-## findByToV2
-
-> List<EntityRelation> findByToV2(toType, toId, relationTypeGroup)
-
-Get List of Relations (findByToV2)
-
-Returns list of relation objects for the specified entity by the 'to' direction.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **toType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
-| **toId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
 
 ### Return type
@@ -200,55 +219,13 @@ Returns all entities that are related to the specific entity. The entity id, rel
 **List<EntityRelation>**
 
 
-## findInfoByFromV2
+## findEntityRelationsByTo
 
-> List<EntityRelationInfo> findInfoByFromV2(fromType, fromId, relationTypeGroup)
+> List<EntityRelation> findEntityRelationsByTo(toType, toId, relationTypeGroup)
 
-Get List of Relation Infos (findInfoByFromV2)
+Get List of Relations (findEntityRelationsByTo)
 
-Returns list of relation info objects for the specified entity by the 'from' direction.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer. Relation Info is an extension of the default Relation object that contains information about the 'from' and 'to' entity names. 
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **fromType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
-| **fromId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
-
-### Return type
-
-**List<EntityRelationInfo>**
-
-
-## findInfoByQuery
-
-> List<EntityRelationInfo> findInfoByQuery(entityRelationsQuery)
-
-Find related entity infos (findInfoByQuery)
-
-Returns all entity infos that are related to the specific entity. The entity id, relation type, entity types, depth of the search, and other query parameters defined using complex 'EntityRelationsQuery' object. See 'Model' tab of the Parameters for more info. Relation Info is an extension of the default Relation object that contains information about the 'from' and 'to' entity names. 
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **entityRelationsQuery** | **EntityRelationsQuery** |  | |
-
-### Return type
-
-**List<EntityRelationInfo>**
-
-
-## findInfoByToV2
-
-> List<EntityRelationInfo> findInfoByToV2(toType, toId, relationTypeGroup)
-
-Get List of Relation Infos (findInfoByToV2)
-
-Returns list of relation info objects for the specified entity by the 'to' direction.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer. Relation Info is an extension of the default Relation object that contains information about the 'from' and 'to' entity names. 
+Returns list of relation objects for the specified entity by the 'to' direction.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
 
 
 ### Parameters
@@ -261,7 +238,30 @@ Returns list of relation info objects for the specified entity by the 'to' direc
 
 ### Return type
 
-**List<EntityRelationInfo>**
+**List<EntityRelation>**
+
+
+## findEntityRelationsByToAndRelationType
+
+> List<EntityRelation> findEntityRelationsByToAndRelationType(toType, toId, relationType, relationTypeGroup)
+
+Get List of Relations (findEntityRelationsByToAndRelationType)
+
+Returns list of relation objects for the specified entity by the 'to' direction and relation type.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **toType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **toId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **relationType** | **String** | A string value representing relation type between entities. For example, 'Contains', 'Manages'. It can be any string value. | |
+| **relationTypeGroup** | **String** | A string value representing relation type group. For example, 'COMMON' | [optional] |
+
+### Return type
+
+**List<EntityRelation>**
 
 
 ## getRelation
@@ -309,11 +309,11 @@ Creates or updates a relation between two entities in the platform. Relations un
 null (empty response body)
 
 
-## saveRelationV2
+## saveRelationAndReturn
 
-> EntityRelation saveRelationV2(entityRelation)
+> EntityRelation saveRelationAndReturn(entityRelation)
 
-Create Relation (saveRelationV2)
+Create Relation (saveRelationAndReturn)
 
 Creates or updates a relation between two entities in the platform. Relations unique key is a combination of from/to entity id and relation type group and relation type.   If the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.
 

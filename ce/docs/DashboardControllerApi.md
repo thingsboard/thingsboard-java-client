@@ -10,7 +10,7 @@
 | [**getCustomerDashboards**](#getCustomerDashboards) | **GET** /api/customer/{customerId}/dashboards | Get Customer Dashboards (getCustomerDashboards) |
 | [**getDashboardById**](#getDashboardById) | **GET** /api/dashboard/{dashboardId} | Get Dashboard (getDashboardById) |
 | [**getDashboardInfoById**](#getDashboardInfoById) | **GET** /api/dashboard/info/{dashboardId} | Get Dashboard Info (getDashboardInfoById) |
-| [**getDashboardsByIdsV2**](#getDashboardsByIdsV2) | **GET** /api/dashboards/list | Get dashboards by Dashboard Ids (getDashboardsByIdsV2) |
+| [**getDashboardsByIds**](#getDashboardsByIds) | **GET** /api/dashboards/list | Get dashboards by Dashboard Ids (getDashboardsByIds) |
 | [**getEdgeDashboards**](#getEdgeDashboards) | **GET** /api/edge/{edgeId}/dashboards | Get Edge Dashboards (getEdgeDashboards) |
 | [**getHomeDashboard**](#getHomeDashboard) | **GET** /api/dashboard/home | Get Home Dashboard (getHomeDashboard) |
 | [**getHomeDashboardInfo**](#getHomeDashboardInfo) | **GET** /api/dashboard/home/info | Get Home Dashboard Info (getHomeDashboardInfo) |
@@ -200,11 +200,11 @@ Get the information about the dashboard based on 'dashboardId' parameter. The Da
 **DashboardInfo**
 
 
-## getDashboardsByIdsV2
+## getDashboardsByIds
 
-> List<DashboardInfo> getDashboardsByIdsV2(dashboardIds)
+> List<DashboardInfo> getDashboardsByIds(dashboardIds)
 
-Get dashboards by Dashboard Ids (getDashboardsByIdsV2)
+Get dashboards by Dashboard Ids (getDashboardsByIds)
 
 Returns a list of DashboardInfo objects based on the provided ids.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

@@ -5,8 +5,8 @@
 | [**deleteNotificationTargetById**](#deleteNotificationTargetById) | **DELETE** /api/notification/target/{id} | Delete notification target by id (deleteNotificationTargetById) |
 | [**getNotificationTargetById**](#getNotificationTargetById) | **GET** /api/notification/target/{id} | Get notification target by id (getNotificationTargetById) |
 | [**getNotificationTargets**](#getNotificationTargets) | **GET** /api/notification/targets | Get notification targets (getNotificationTargets) |
-| [**getNotificationTargetsByIdsV2**](#getNotificationTargetsByIdsV2) | **GET** /api/notification/targets/list | Get notification targets by ids (getNotificationTargetsByIdsV2) |
-| [**getNotificationTargetsBySupportedNotificationTypeV2**](#getNotificationTargetsBySupportedNotificationTypeV2) | **GET** /api/notification/targets/notificationType/{notificationType} | Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationTypeV2) |
+| [**getNotificationTargetsByIds**](#getNotificationTargetsByIds) | **GET** /api/notification/targets/list | Get notification targets by ids (getNotificationTargetsByIds) |
+| [**getNotificationTargetsBySupportedNotificationType**](#getNotificationTargetsBySupportedNotificationType) | **GET** /api/notification/targets/notificationType/{notificationType} | Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationType) |
 | [**getRecipientsForNotificationTargetConfig**](#getRecipientsForNotificationTargetConfig) | **POST** /api/notification/target/recipients | Get recipients for notification target config (getRecipientsForNotificationTargetConfig) |
 | [**saveNotificationTarget**](#saveNotificationTarget) | **POST** /api/notification/target | Save notification target (saveNotificationTarget) |
 
@@ -76,11 +76,11 @@ Returns the page of notification targets owned by sysadmin or tenant.  You can s
 **PageDataNotificationTarget**
 
 
-## getNotificationTargetsByIdsV2
+## getNotificationTargetsByIds
 
-> List<NotificationTarget> getNotificationTargetsByIdsV2(ids)
+> List<NotificationTarget> getNotificationTargetsByIds(ids)
 
-Get notification targets by ids (getNotificationTargetsByIdsV2)
+Get notification targets by ids (getNotificationTargetsByIds)
 
 Returns the list of notification targets found by provided ids.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
@@ -96,11 +96,11 @@ Returns the list of notification targets found by provided ids.  Available for u
 **List<NotificationTarget>**
 
 
-## getNotificationTargetsBySupportedNotificationTypeV2
+## getNotificationTargetsBySupportedNotificationType
 
-> PageDataNotificationTarget getNotificationTargetsBySupportedNotificationTypeV2(notificationType, pageSize, page, textSearch, sortProperty, sortOrder)
+> PageDataNotificationTarget getNotificationTargetsBySupportedNotificationType(notificationType, pageSize, page, textSearch, sortProperty, sortOrder)
 
-Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationTypeV2)
+Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationType)
 
 Returns the page of notification targets filtered by notification type that they can be used for.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 

@@ -108,7 +108,7 @@ public class Oauth2ApiTest extends AbstractApiTest {
                 createdClients.get(0).getId().getId().toString(),
                 createdClients.get(1).getId().getId().toString()
         );
-        List<OAuth2ClientInfo> fetchedInfos = client.findTenantOAuth2ClientInfosByIdsV2(idsToFetch);
+        List<OAuth2ClientInfo> fetchedInfos = client.findTenantOAuth2ClientInfosByIds(idsToFetch);
         assertEquals(2, fetchedInfos.size());
 
         // update OAuth2 client

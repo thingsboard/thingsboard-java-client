@@ -17,7 +17,7 @@
 | [**getUserSettings**](#getUserSettings) | **GET** /api/user/settings/{type} | Get user settings (getUserSettings) |
 | [**getUserToken**](#getUserToken) | **GET** /api/user/{userId}/token | Get User Token (getUserToken) |
 | [**getUsers**](#getUsers) | **GET** /api/users | Get Users (getUsers) |
-| [**getUsersByIdsV2**](#getUsersByIdsV2) | **GET** /api/users/list | Get Users By Ids (getUsersByIdsV2) |
+| [**getUsersByIds**](#getUsersByIds) | **GET** /api/users/list | Get Users By Ids (getUsersByIds) |
 | [**getUsersForAssign**](#getUsersForAssign) | **GET** /api/users/assign/{alarmId} | Get usersForAssign (getUsersForAssign) |
 | [**isUserTokenAccessEnabled**](#isUserTokenAccessEnabled) | **GET** /api/user/tokenAccessEnabled | Check Token Access Enabled (isUserTokenAccessEnabled) |
 | [**putGeneralUserSettings**](#putGeneralUserSettings) | **PUT** /api/user/settings/general | Update user settings (saveUserSettings) |
@@ -335,11 +335,11 @@ Returns a page of users owned by tenant or customer. The scope depends on author
 **PageDataUser**
 
 
-## getUsersByIdsV2
+## getUsersByIds
 
-> List<User> getUsersByIdsV2(userIds)
+> List<User> getUsersByIds(userIds)
 
-Get Users By Ids (getUsersByIdsV2)
+Get Users By Ids (getUsersByIds)
 
 Requested users must be owned by tenant or assigned to customer which user is performing the request. 
 

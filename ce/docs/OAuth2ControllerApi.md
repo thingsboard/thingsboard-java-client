@@ -4,7 +4,7 @@
 |------------- | ------------- | -------------|
 | [**deleteOauth2Client**](#deleteOauth2Client) | **DELETE** /api/oauth2/client/{id} | Delete oauth2 client (deleteOauth2Client) |
 | [**findTenantOAuth2ClientInfos**](#findTenantOAuth2ClientInfos) | **GET** /api/oauth2/client/infos | Get OAuth2 Client infos (findTenantOAuth2ClientInfos) |
-| [**findTenantOAuth2ClientInfosByIdsV2**](#findTenantOAuth2ClientInfosByIdsV2) | **GET** /api/oauth2/client/list | Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIdsV2) |
+| [**findTenantOAuth2ClientInfosByIds**](#findTenantOAuth2ClientInfosByIds) | **GET** /api/oauth2/client/list | Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIds) |
 | [**getLoginProcessingUrl**](#getLoginProcessingUrl) | **GET** /api/oauth2/loginProcessingUrl | Get OAuth2 log in processing URL (getLoginProcessingUrl) |
 | [**getOAuth2ClientById**](#getOAuth2ClientById) | **GET** /api/oauth2/client/{id} | Get OAuth2 Client by id (getOAuth2ClientById) |
 | [**getOAuth2Clients**](#getOAuth2Clients) | **POST** /api/noauth/oauth2Clients | Get OAuth2 clients (getOAuth2Clients) |
@@ -56,11 +56,11 @@ Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
 **PageDataOAuth2ClientInfo**
 
 
-## findTenantOAuth2ClientInfosByIdsV2
+## findTenantOAuth2ClientInfosByIds
 
-> List<OAuth2ClientInfo> findTenantOAuth2ClientInfosByIdsV2(clientIds)
+> List<OAuth2ClientInfo> findTenantOAuth2ClientInfosByIds(clientIds)
 
-Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIdsV2)
+Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIds)
 
 Fetch OAuth2 Client info objects based on the provided ids.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 

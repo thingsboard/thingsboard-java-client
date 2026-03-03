@@ -6,7 +6,7 @@
 | [**getCalculatedFieldById**](#getCalculatedFieldById) | **GET** /api/calculatedField/{calculatedFieldId} | Get Calculated Field (getCalculatedFieldById) |
 | [**getCalculatedFieldNames**](#getCalculatedFieldNames) | **GET** /api/calculatedFields/names | Get calculated field names (getCalculatedFieldNames) |
 | [**getCalculatedFields**](#getCalculatedFields) | **GET** /api/calculatedFields | Get calculated fields (getCalculatedFields) |
-| [**getCalculatedFieldsByEntityIdV2**](#getCalculatedFieldsByEntityIdV2) | **GET** /api/calculatedField/{entityType}/{entityId} | Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityIdV2) |
+| [**getCalculatedFieldsByEntityId**](#getCalculatedFieldsByEntityId) | **GET** /api/calculatedField/{entityType}/{entityId} | Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityId) |
 | [**getLatestCalculatedFieldDebugEvent**](#getLatestCalculatedFieldDebugEvent) | **GET** /api/calculatedField/{calculatedFieldId}/debug | Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent) |
 | [**saveCalculatedField**](#saveCalculatedField) | **POST** /api/calculatedField | Create Or Update Calculated Field (saveCalculatedField) |
 | [**testCalculatedFieldScript**](#testCalculatedFieldScript) | **POST** /api/calculatedField/testScript | Test Script expression |
@@ -105,11 +105,11 @@ Fetch tenant calculated fields based on the filter.
 **PageDataCalculatedFieldInfo**
 
 
-## getCalculatedFieldsByEntityIdV2
+## getCalculatedFieldsByEntityId
 
-> PageDataCalculatedField getCalculatedFieldsByEntityIdV2(entityType, entityId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+> PageDataCalculatedField getCalculatedFieldsByEntityId(entityType, entityId, pageSize, page, type, textSearch, sortProperty, sortOrder)
 
-Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityIdV2)
+Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityId)
 
 Fetch the Calculated Fields based on the provided Entity Id.
 

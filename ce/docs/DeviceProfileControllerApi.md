@@ -8,7 +8,7 @@
 | [**getDeviceProfileById**](#getDeviceProfileById) | **GET** /api/deviceProfile/{deviceProfileId} | Get Device Profile (getDeviceProfileById) |
 | [**getDeviceProfileInfoById**](#getDeviceProfileInfoById) | **GET** /api/deviceProfileInfo/{deviceProfileId} | Get Device Profile Info (getDeviceProfileInfoById) |
 | [**getDeviceProfileInfos**](#getDeviceProfileInfos) | **GET** /api/deviceProfileInfos | Get Device Profiles for transport type (getDeviceProfileInfos) |
-| [**getDeviceProfileInfosByIdsV2**](#getDeviceProfileInfosByIdsV2) | **GET** /api/deviceProfileInfos/list | Get Device Profile Infos By Ids (getDeviceProfileInfosByIdsV2) |
+| [**getDeviceProfileInfosByIds**](#getDeviceProfileInfosByIds) | **GET** /api/deviceProfileInfos/list | Get Device Profile Infos By Ids (getDeviceProfileInfosByIds) |
 | [**getDeviceProfileNames**](#getDeviceProfileNames) | **GET** /api/deviceProfile/names | Get Device Profile names (getDeviceProfileNames) |
 | [**getDeviceProfileTimeseriesKeys**](#getDeviceProfileTimeseriesKeys) | **GET** /api/deviceProfile/devices/keys/timeseries | Get time series keys (getDeviceProfileTimeseriesKeys) |
 | [**getDeviceProfiles**](#getDeviceProfiles) | **GET** /api/deviceProfiles | Get Device Profiles (getDeviceProfiles) |
@@ -136,11 +136,11 @@ Returns a page of devices profile info objects owned by tenant. You can specify 
 **PageDataDeviceProfileInfo**
 
 
-## getDeviceProfileInfosByIdsV2
+## getDeviceProfileInfosByIds
 
-> List<DeviceProfileInfo> getDeviceProfileInfosByIdsV2(deviceProfileIds)
+> List<DeviceProfileInfo> getDeviceProfileInfosByIds(deviceProfileIds)
 
-Get Device Profile Infos By Ids (getDeviceProfileInfosByIdsV2)
+Get Device Profile Infos By Ids (getDeviceProfileInfosByIds)
 
 Requested device profiles must be owned by tenant which is performing the request.   
 

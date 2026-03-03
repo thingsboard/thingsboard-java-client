@@ -137,14 +137,14 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
         }
 
         // get calculated fields by entity id for device1
-        PageDataCalculatedField device1Fields = client.getCalculatedFieldsByEntityIdV2(
+        PageDataCalculatedField device1Fields = client.getCalculatedFieldsByEntityId(
                 EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(),
                 100, 0, CalculatedFieldType.SIMPLE, null, null, null);
         assertNotNull(device1Fields);
         assertEquals(5, device1Fields.getData().size());
 
         // get calculated fields by entity id for device2
-        PageDataCalculatedField device2Fields = client.getCalculatedFieldsByEntityIdV2(
+        PageDataCalculatedField device2Fields = client.getCalculatedFieldsByEntityId(
                 EntityType.DEVICE.toString(), createdDevice2.getId().getId().toString(),
                 100, 0, CalculatedFieldType.SIMPLE, null, null, null);
         assertEquals(3, device2Fields.getData().size());
@@ -177,7 +177,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
                 client.getCalculatedFieldById(fieldToDeleteId.toString())
         );
 
-        PageDataCalculatedField device1FieldsAfterDelete = client.getCalculatedFieldsByEntityIdV2(
+        PageDataCalculatedField device1FieldsAfterDelete = client.getCalculatedFieldsByEntityId(
                 EntityType.DEVICE.toString(), createdDevice1.getId().getId().toString(),
                 100, 0, null, null, null, null);
         assertEquals(4, device1FieldsAfterDelete.getData().size());
@@ -283,7 +283,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
         assertTrue(updatedConfig.getCreateRules().containsKey("INDETERMINATE"));
 
         // filter by entity and ALARM type
-        PageDataCalculatedField deviceFields = client.getCalculatedFieldsByEntityIdV2(
+        PageDataCalculatedField deviceFields = client.getCalculatedFieldsByEntityId(
                 EntityType.DEVICE.toString(), createdDevice.getId().getId().toString(),
                 100, 0, CalculatedFieldType.ALARM, null, null, null);
         assertNotNull(deviceFields);

@@ -12,7 +12,7 @@
 | [**getAssetsByIds**](#getAssetsByIds) | **GET** /api/assets | Get Assets By Ids (getAssetsByIds) |
 | [**getCustomerAssetInfos**](#getCustomerAssetInfos) | **GET** /api/customer/{customerId}/assetInfos | Get Customer Asset Infos (getCustomerAssetInfos) |
 | [**getCustomerAssets**](#getCustomerAssets) | **GET** /api/customer/{customerId}/assets | Get Customer Assets (getCustomerAssets) |
-| [**getTenantAssetByName**](#getTenantAssetByName) | **GET** /api/tenant/asset | Get Tenant Asset (getTenantAsset) |
+| [**getTenantAssetByName**](#getTenantAssetByName) | **GET** /api/tenant/asset | Get Tenant Asset (getTenantAssetByName) |
 | [**getTenantAssets**](#getTenantAssets) | **GET** /api/tenant/assets | Get Tenant Assets (getTenantAssets) |
 | [**getUserAssets**](#getUserAssets) | **GET** /api/user/assets | Get Assets (getUserAssets) |
 | [**processAssetBulkImport**](#processAssetBulkImport) | **POST** /api/asset/bulk_import | Import the bulk of assets (processAssetsBulkImport) |
@@ -241,7 +241,7 @@ Returns a page of assets objects owned by customer. You can specify parameters t
 
 > Asset getTenantAssetByName(assetName)
 
-Get Tenant Asset (getTenantAsset)
+Get Tenant Asset (getTenantAssetByName)
 
 Requested asset must be owned by tenant that the user belongs to. Asset name is an unique property of asset. So it can be used to identify the asset.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 

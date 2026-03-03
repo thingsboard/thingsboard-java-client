@@ -9,7 +9,7 @@
 | [**getAlarmById**](#getAlarmById) | **GET** /api/alarm/{alarmId} | Get Alarm (getAlarmById) |
 | [**getAlarmInfoById**](#getAlarmInfoById) | **GET** /api/alarm/info/{alarmId} | Get Alarm Info (getAlarmInfoById) |
 | [**getAlarmTypes**](#getAlarmTypes) | **GET** /api/alarm/types | Get Alarm Types (getAlarmTypes) |
-| [**getAlarms**](#getAlarms) | **GET** /api/alarm/{entityType}/{entityId} | Get Alarms (getAlarms) |
+| [**getAlarmsByEntity**](#getAlarmsByEntity) | **GET** /api/alarm/{entityType}/{entityId} | Get Alarms (getAlarmsByEntity) |
 | [**getAlarmsV2**](#getAlarmsV2) | **GET** /api/v2/alarm/{entityType}/{entityId} | Get Alarms (getAlarmsV2) |
 | [**getAllAlarms**](#getAllAlarms) | **GET** /api/alarms | Get All Alarms (getAllAlarms) |
 | [**getAllAlarmsV2**](#getAllAlarmsV2) | **GET** /api/v2/alarms | Get All Alarms (getAllAlarmsV2) |
@@ -163,11 +163,11 @@ Returns a set of unique alarm types based on alarms that are either owned by the
 **PageDataEntitySubtype**
 
 
-## getAlarms
+## getAlarmsByEntity
 
-> PageDataAlarmInfo getAlarms(entityType, entityId, pageSize, page, searchStatus, status, assigneeId, textSearch, sortProperty, sortOrder, startTime, endTime, fetchOriginator)
+> PageDataAlarmInfo getAlarmsByEntity(entityType, entityId, pageSize, page, searchStatus, status, assigneeId, textSearch, sortProperty, sortOrder, startTime, endTime, fetchOriginator)
 
-Get Alarms (getAlarms)
+Get Alarms (getAlarmsByEntity)
 
 Returns a page of alarms for the selected entity. Specifying both parameters 'searchStatus' and 'status' at the same time will cause an error.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
