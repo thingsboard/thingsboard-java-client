@@ -82,20 +82,20 @@ public class EntityRelationApiTest extends AbstractApiTest {
         buildingToFloor.setTo(entityId(floor));
         buildingToFloor.setType("Contains");
         buildingToFloor.setTypeGroup(RelationTypeGroup.COMMON);
-        EntityRelation savedRelation = client.saveRelationAndReturn(buildingToFloor);
+        EntityRelation savedRelation = client.saveRelation(buildingToFloor);
         assertNotNull(savedRelation);
         assertEquals("Contains", savedRelation.getType());
 
-        client.saveRelationAndReturn(new EntityRelation()
+        client.saveRelation(new EntityRelation()
                 .from(entityId(floor))
                 .to(entityId(device1))
                 .type("Contains")
                 .typeGroup(RelationTypeGroup.COMMON));
-        client.saveRelationAndReturn(new EntityRelation()
+        client.saveRelation(new EntityRelation()
                 .from(entityId(floor))
                 .to(entityId(device2))
                 .type("Contains").typeGroup(RelationTypeGroup.COMMON));
-        client.saveRelationAndReturn(new EntityRelation()
+        client.saveRelation(new EntityRelation()
                 .from(entityId(floor))
                 .to(entityId(device3))
                 .type("Manages")

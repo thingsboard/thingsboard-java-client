@@ -14,13 +14,13 @@
 | **title** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **homeDashboard** | **HomeDashboardParams** |  | [optional] |
+| **notificationRecipient** | **NotificationTargetId** |  | [optional] |
+| **captcha** | **CaptchaParams** |  | [optional] |
 | **signUpFields** | **List\<SignUpField\>** |  | [optional] |
 | **defaultDashboard** | **DefaultDashboardParams** |  | [optional] |
 | **customerTitlePrefix** | **String** |  | [optional] |
 | **customMenuId** | **CustomMenuId** |  | [optional] |
 | **customerGroupId** | **EntityGroupId** |  | [optional] |
-| **notificationRecipient** | **NotificationTargetId** |  | [optional] |
-| **captcha** | **CaptchaParams** |  | [optional] |
 
 
 

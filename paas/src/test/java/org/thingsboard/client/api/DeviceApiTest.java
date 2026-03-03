@@ -194,7 +194,7 @@ public class DeviceApiTest extends AbstractApiTest {
         buildingToDevice.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
         buildingToDevice.setType("Contains");
         buildingToDevice.setTypeGroup(RelationTypeGroup.COMMON);
-        EntityRelation savedRelation = client.saveRelationAndReturn(buildingToDevice);
+        EntityRelation savedRelation = client.saveRelation(buildingToDevice);
 
         RelationsSearchParameters params = new RelationsSearchParameters();
         params.setRootId(device.getId().getId());

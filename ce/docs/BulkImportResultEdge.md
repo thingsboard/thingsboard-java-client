@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **created** | **Object** |  | [optional] |
-| **updated** | **Object** |  | [optional] |
-| **errors** | **Object** |  | [optional] |
+| **created** | **Integer** |  | [optional] |
+| **updated** | **Integer** |  | [optional] |
+| **errors** | **Integer** |  | [optional] |
 | **errorsList** | **List\<String\>** |  | [optional] |
 
 

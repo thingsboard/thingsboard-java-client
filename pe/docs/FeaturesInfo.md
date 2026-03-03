@@ -10,8 +10,8 @@
 | **smsEnabled** | **Boolean** |  | [optional] |
 | **oauthEnabled** | **Boolean** |  | [optional] |
 | **whiteLabelingEnabled** | **Boolean** |  | [optional] |
-| **twoFaEnabled** | **Boolean** |  | [optional] |
 | **notificationEnabled** | **Boolean** |  | [optional] |
+| **twoFaEnabled** | **Boolean** |  | [optional] |
 | **emailEnabled** | **Boolean** |  | [optional] |
 
 

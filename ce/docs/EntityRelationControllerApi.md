@@ -14,8 +14,7 @@
 | [**findEntityRelationsByTo**](#findEntityRelationsByTo) | **GET** /api/relations/to/{toType}/{toId} | Get List of Relations (findEntityRelationsByTo) |
 | [**findEntityRelationsByToAndRelationType**](#findEntityRelationsByToAndRelationType) | **GET** /api/relations/to/{toType}/{toId}/{relationType} | Get List of Relations (findEntityRelationsByToAndRelationType) |
 | [**getRelation**](#getRelation) | **GET** /api/relation | Get Relation (getRelation) |
-| [**saveRelation**](#saveRelation) | **POST** /api/relation | Create Relation (saveRelation) |
-| [**saveRelationAndReturn**](#saveRelationAndReturn) | **POST** /api/v2/relation | Create Relation (saveRelationAndReturn) |
+| [**saveRelation**](#saveRelation) | **POST** /api/v2/relation | Create Relation (saveRelation) |
 
 
 
@@ -291,29 +290,9 @@ Returns relation object between two specified entities if present. Otherwise thr
 
 ## saveRelation
 
-> saveRelation(entityRelation)
+> EntityRelation saveRelation(entityRelation)
 
 Create Relation (saveRelation)
-
-Creates or updates a relation between two entities in the platform. Relations unique key is a combination of from/to entity id and relation type group and relation type.   If the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **entityRelation** | **EntityRelation** |  | |
-
-### Return type
-
-null (empty response body)
-
-
-## saveRelationAndReturn
-
-> EntityRelation saveRelationAndReturn(entityRelation)
-
-Create Relation (saveRelationAndReturn)
 
 Creates or updates a relation between two entities in the platform. Relations unique key is a combination of from/to entity id and relation type group and relation type.   If the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.
 

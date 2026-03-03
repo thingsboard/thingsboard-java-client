@@ -38573,142 +38573,6 @@
           }
         ]
       },
-      "post": {
-        "tags": [
-          "entity-relation-controller"
-        ],
-        "summary": "Create Relation (saveRelation)",
-        "description": "Creates or updates a relation between two entities in the platform. Relations unique key is a combination of from/to entity id and relation type group and relation type. \n\nIf the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.",
-        "operationId": "saveRelation",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EntityRelation"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid request body",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      },
       "delete": {
         "tags": [
           "entity-relation-controller"
@@ -40359,9 +40223,9 @@
         "tags": [
           "entity-relation-controller"
         ],
-        "summary": "Create Relation (saveRelationAndReturn)",
+        "summary": "Create Relation (saveRelation)",
         "description": "Creates or updates a relation between two entities in the platform. Relations unique key is a combination of from/to entity id and relation type group and relation type. \n\nIf the user has the authority of 'System Administrator', the server checks that 'from' and 'to' entities are owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that 'from' and 'to' entities are owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the 'from' and 'to' entities are assigned to the same customer.",
-        "operationId": "saveRelationAndReturn",
+        "operationId": "saveRelation",
         "requestBody": {
           "content": {
             "application/json": {
@@ -47247,7 +47111,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "zfY1Qqi3tXlHwN2G8F4Z3D5iwG5dRH"
+                      "resetToken": "GKUiVvgXp7IFwt5ZQhyTLh0MsE8trE"
                     }
                   }
                 }
@@ -47357,7 +47221,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "zfY1Qqi3tXlHwN2G8F4Z3D5iwG5dRH"
+                      "resetToken": "GKUiVvgXp7IFwt5ZQhyTLh0MsE8trE"
                     }
                   }
                 }
@@ -85955,12 +85819,15 @@
         "type": "object",
         "properties": {
           "created": {
+            "type": "integer",
             "format": "int32"
           },
           "updated": {
+            "type": "integer",
             "format": "int32"
           },
           "errors": {
+            "type": "integer",
             "format": "int32"
           },
           "errorsList": {
@@ -85975,12 +85842,15 @@
         "type": "object",
         "properties": {
           "created": {
+            "type": "integer",
             "format": "int32"
           },
           "updated": {
+            "type": "integer",
             "format": "int32"
           },
           "errors": {
+            "type": "integer",
             "format": "int32"
           },
           "errorsList": {
@@ -85995,12 +85865,15 @@
         "type": "object",
         "properties": {
           "created": {
+            "type": "integer",
             "format": "int32"
           },
           "updated": {
+            "type": "integer",
             "format": "int32"
           },
           "errors": {
+            "type": "integer",
             "format": "int32"
           },
           "errorsList": {
@@ -92966,6 +92839,7 @@
           "sent": {
             "type": "object",
             "additionalProperties": {
+              "type": "integer",
               "format": "int32"
             },
             "description": "Number of successfully sent notifications per delivery method",
@@ -92985,6 +92859,7 @@
             "description": "Errors per delivery method. Each entry maps recipient name to error message"
           },
           "totalErrors": {
+            "type": "integer",
             "format": "int32",
             "description": "Total number of errors across all delivery methods"
           },
