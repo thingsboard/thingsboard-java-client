@@ -5,7 +5,7 @@
 | [**activateInstance**](#activateInstance) | **POST** /api/license/activateInstance | Activate edge instance (activateInstance) |
 | [**checkInstance**](#checkInstance) | **POST** /api/license/checkInstance | Check edge license (checkInstance) |
 | [**deleteEdge**](#deleteEdge) | **DELETE** /api/edge/{edgeId} | Delete edge (deleteEdge) |
-| [**findByQuery2**](#findByQuery2) | **POST** /api/edges | Find related edges (findByQuery) |
+| [**findEdgesByQuery**](#findEdgesByQuery) | **POST** /api/edges | Find related edges (findEdgesByQuery) |
 | [**findMissingToRelatedRuleChains**](#findMissingToRelatedRuleChains) | **GET** /api/edge/missingToRelatedRuleChains/{edgeId} | Find missing rule chains (findMissingToRelatedRuleChains) |
 | [**getAllEdgeInfos**](#getAllEdgeInfos) | **GET** /api/edgeInfos/all | Get All Edge Infos for current user (getAllEdgeInfos) |
 | [**getCustomerEdgeInfos**](#getCustomerEdgeInfos) | **GET** /api/customer/{customerId}/edgeInfos | Get Customer Edge Infos (getCustomerEdgeInfos) |
@@ -91,11 +91,11 @@ Deletes the edge. Referencing non-existing edge Id will cause an error.  Availab
 null (empty response body)
 
 
-## findByQuery2
+## findEdgesByQuery
 
-> List<Edge> findByQuery2(edgeSearchQuery)
+> List<Edge> findEdgesByQuery(edgeSearchQuery)
 
-Find related edges (findByQuery)
+Find related edges (findEdgesByQuery)
 
 Returns all edges that are related to the specific entity. The entity id, relation type, edge types, depth of the search, and other query parameters defined using complex 'EdgeSearchQuery' object. See 'Model' tab of the Parameters for more info.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

@@ -100,7 +100,7 @@ public class TbResourceApiTest extends AbstractApiTest {
                 createdResources.get(0).getId().getId().toString(),
                 createdResources.get(1).getId().getId().toString()
         );
-        List<TbResourceInfo> resourceList = client.getSystemOrTenantResourcesByIdsV2(idsToFetch);
+        List<TbResourceInfo> resourceList = client.getSystemOrTenantResourcesByIds(idsToFetch);
         assertEquals(2, resourceList.size());
 
         // update resource

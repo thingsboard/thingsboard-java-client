@@ -59,7 +59,7 @@ public class TwoFactorAuthApiTest extends AbstractApiTest {
         assertEquals(300, savedSettings.getTotalAllowedTimeForVerification());
 
         // get available 2FA providers (should include TOTP)
-        List<TwoFaProviderType> providerTypes = client.getAvailableTwoFaProviders1();
+        List<TwoFaProviderType> providerTypes = client.getAvailableTwoFaProviderTypes();
         assertNotNull(providerTypes);
         assertTrue(providerTypes.contains(TwoFaProviderType.TOTP));
 

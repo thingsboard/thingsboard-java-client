@@ -115,7 +115,7 @@ public class CustomerApiTest extends AbstractApiTest {
     void testGetCustomersByIdsV2() throws ApiException {
         String customerId = savedCustomer.getId().getId().toString();
 
-        List<Customer> result = client.getCustomersByIdsV2(List.of(customerId));
+        List<Customer> result = client.getCustomersByIds(List.of(customerId));
 
         assertNotNull(result);
         assertEquals(1, result.size(), "Expected exactly one customer returned");

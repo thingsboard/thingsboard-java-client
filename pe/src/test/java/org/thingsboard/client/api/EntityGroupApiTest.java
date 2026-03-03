@@ -251,7 +251,7 @@ public class EntityGroupApiTest extends AbstractApiTest {
         String id2 = g2.getId().getId().toString();
 
         // getEntityGroupsByIdsV2
-        List<EntityGroupInfo> byIds = client.getEntityGroupsByIdsV2(List.of(id1, id2));
+        List<EntityGroupInfo> byIds = client.getEntityGroupsByIds(List.of(id1, id2));
         assertNotNull(byIds);
         assertEquals(2, byIds.size());
         assertTrue(byIds.stream().anyMatch(g -> g.getId().getId().toString().equals(id1)));

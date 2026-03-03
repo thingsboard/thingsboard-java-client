@@ -61,9 +61,20 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = AiModelExportData.class, name = "AI_MODEL"),
+  @JsonSubTypes.Type(value = AssetExportData.class, name = "ASSET"),
+  @JsonSubTypes.Type(value = AssetProfileExportData.class, name = "ASSET_PROFILE"),
+  @JsonSubTypes.Type(value = CustomerExportData.class, name = "CUSTOMER"),
+  @JsonSubTypes.Type(value = DashboardExportData.class, name = "DASHBOARD"),
   @JsonSubTypes.Type(value = DeviceExportData.class, name = "DEVICE"),
+  @JsonSubTypes.Type(value = DeviceProfileExportData.class, name = "DEVICE_PROFILE"),
+  @JsonSubTypes.Type(value = EntityViewExportData.class, name = "ENTITY_VIEW"),
+  @JsonSubTypes.Type(value = NotificationRuleExportData.class, name = "NOTIFICATION_RULE"),
+  @JsonSubTypes.Type(value = NotificationTargetExportData.class, name = "NOTIFICATION_TARGET"),
+  @JsonSubTypes.Type(value = NotificationTemplateExportData.class, name = "NOTIFICATION_TEMPLATE"),
   @JsonSubTypes.Type(value = OtaPackageExportData.class, name = "OTA_PACKAGE"),
   @JsonSubTypes.Type(value = RuleChainExportData.class, name = "RULE_CHAIN"),
+  @JsonSubTypes.Type(value = TbResourceExportData.class, name = "TB_RESOURCE"),
   @JsonSubTypes.Type(value = WidgetsBundleExportData.class, name = "WIDGETS_BUNDLE"),
   @JsonSubTypes.Type(value = WidgetTypeExportData.class, name = "WIDGET_TYPE"),
 })
@@ -360,9 +371,20 @@ public class EntityExportData {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
+  mappings.put("AI_MODEL", AiModelExportData.class);
+  mappings.put("ASSET", AssetExportData.class);
+  mappings.put("ASSET_PROFILE", AssetProfileExportData.class);
+  mappings.put("CUSTOMER", CustomerExportData.class);
+  mappings.put("DASHBOARD", DashboardExportData.class);
   mappings.put("DEVICE", DeviceExportData.class);
+  mappings.put("DEVICE_PROFILE", DeviceProfileExportData.class);
+  mappings.put("ENTITY_VIEW", EntityViewExportData.class);
+  mappings.put("NOTIFICATION_RULE", NotificationRuleExportData.class);
+  mappings.put("NOTIFICATION_TARGET", NotificationTargetExportData.class);
+  mappings.put("NOTIFICATION_TEMPLATE", NotificationTemplateExportData.class);
   mappings.put("OTA_PACKAGE", OtaPackageExportData.class);
   mappings.put("RULE_CHAIN", RuleChainExportData.class);
+  mappings.put("TB_RESOURCE", TbResourceExportData.class);
   mappings.put("WIDGETS_BUNDLE", WidgetsBundleExportData.class);
   mappings.put("WIDGET_TYPE", WidgetTypeExportData.class);
   mappings.put("EntityExportData", EntityExportData.class);

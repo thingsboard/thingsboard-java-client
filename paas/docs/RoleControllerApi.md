@@ -5,7 +5,7 @@
 | [**deleteRole**](#deleteRole) | **DELETE** /api/role/{roleId} | Delete role (deleteRole) |
 | [**getRoleById**](#getRoleById) | **GET** /api/role/{roleId} | Get Role by Id (getRoleById) |
 | [**getRoles**](#getRoles) | **GET** /api/roles | Get Roles (getRoles) |
-| [**getRolesByIdsV2**](#getRolesByIdsV2) | **GET** /api/roles/list | Get Roles By Ids (getRolesByIdsV2) |
+| [**getRolesByIds**](#getRolesByIds) | **GET** /api/roles/list | Get Roles By Ids (getRolesByIds) |
 | [**saveRole**](#saveRole) | **POST** /api/role | Create Or Update Role (saveRole) |
 
 
@@ -75,11 +75,11 @@ Returns a page of roles that are available for the current user. Role Contains a
 **PageDataRole**
 
 
-## getRolesByIdsV2
+## getRolesByIds
 
-> List<Role> getRolesByIdsV2(roleIds)
+> List<Role> getRolesByIds(roleIds)
 
-Get Roles By Ids (getRolesByIdsV2)
+Get Roles By Ids (getRolesByIds)
 
 Returns the list of rows based on their ids.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 

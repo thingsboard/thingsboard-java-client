@@ -6,7 +6,7 @@
 | [**assignEntityGroupToEdge**](#assignEntityGroupToEdge) | **POST** /api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType} | Assign entity group to edge (assignEntityGroupToEdge) |
 | [**deleteEntityGroup**](#deleteEntityGroup) | **DELETE** /api/entityGroup/{entityGroupId} | Delete Entity Group (deleteEntityGroup) |
 | [**getAllEdgeEntityGroups**](#getAllEdgeEntityGroups) | **GET** /api/allEntityGroups/edge/{edgeId}/{groupType} | Get All Edge Entity Groups by entity type (getAllEdgeEntityGroups) |
-| [**getAllEntityGroupsByOwnerAndType**](#getAllEntityGroupsByOwnerAndType) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType}/all | Get Entity Groups by owner and entity type (getEntityGroupsByOwnerAndTypeList) |
+| [**getAllEntityGroupsByOwnerAndType**](#getAllEntityGroupsByOwnerAndType) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType}/all | Get Entity Groups by owner and entity type (getAllEntityGroupsByOwnerAndType) |
 | [**getAllEntityGroupsByType**](#getAllEntityGroupsByType) | **GET** /api/entityGroups/{groupType}/all | Get Entity Groups by entity type (getAllEntityGroupsByType) |
 | [**getAllSharedEntityGroups**](#getAllSharedEntityGroups) | **GET** /api/entityGroups/{groupType}/shared/all | Get Shared Entity Groups by entity type (getAllSharedEntityGroups) |
 | [**getEdgeEntityGroups**](#getEdgeEntityGroups) | **GET** /api/entityGroups/edge/{edgeId}/{groupType} | Get Edge Entity Groups by entity type (getEdgeEntityGroups) |
@@ -19,7 +19,7 @@
 | [**getEntityGroupEntityInfosByOwnerAndTypeAndPageLink**](#getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfos/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) |
 | [**getEntityGroupEntityInfosByTypeAndPageLink**](#getEntityGroupEntityInfosByTypeAndPageLink) | **GET** /api/entityGroupInfos/{groupType} | Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink) |
 | [**getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink**](#getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfosHierarchy/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) |
-| [**getEntityGroupsByIdsV2**](#getEntityGroupsByIdsV2) | **GET** /api/entityGroups/list | Get Entity Groups by Ids (getEntityGroupsByIdsV2) |
+| [**getEntityGroupsByIds**](#getEntityGroupsByIds) | **GET** /api/entityGroups/list | Get Entity Groups by Ids (getEntityGroupsByIds) |
 | [**getEntityGroupsByOwnerAndTypeAndPageLink**](#getEntityGroupsByOwnerAndTypeAndPageLink) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType} | Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink) |
 | [**getEntityGroupsByTypeAndPageLink**](#getEntityGroupsByTypeAndPageLink) | **GET** /api/entityGroups/{groupType} | Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink) |
 | [**getEntityGroupsForEntity**](#getEntityGroupsForEntity) | **GET** /api/entityGroups/{entityType}/{entityId} | Get Entity Groups by Entity Id (getEntityGroupsForEntity) |
@@ -128,7 +128,7 @@ Fetch the list of Entity Group Info objects based on the provided Entity Type an
 
 > List<EntityGroupInfo> getAllEntityGroupsByOwnerAndType(ownerType, ownerId, groupType)
 
-Get Entity Groups by owner and entity type (getEntityGroupsByOwnerAndTypeList)
+Get Entity Groups by owner and entity type (getAllEntityGroupsByOwnerAndType)
 
 Fetch the list of Entity Group Info objects based on the provided Owner Id and Entity Type. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
 
@@ -423,11 +423,11 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 **PageDataEntityInfo**
 
 
-## getEntityGroupsByIdsV2
+## getEntityGroupsByIds
 
-> List<EntityGroupInfo> getEntityGroupsByIdsV2(entityGroupIds)
+> List<EntityGroupInfo> getEntityGroupsByIds(entityGroupIds)
 
-Get Entity Groups by Ids (getEntityGroupsByIdsV2)
+Get Entity Groups by Ids (getEntityGroupsByIds)
 
 Fetch the list of Entity Group Info objects based on the provided entity group ids list. Entity group allows you to group multiple entities of the same entity type (Device, Asset, Customer, User, Dashboard, etc). Entity Group always have an owner - particular Tenant or Customer. Each entity may belong to multiple groups simultaneously.Entity Group Info extends Entity Group object and adds 'ownerIds' - a list of owner ids.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
 

@@ -108,7 +108,7 @@ public class DeviceApiTest extends AbstractApiTest {
         request.setDevice(deviceWithCreds);
         request.setCredentials(creds);
 
-        Device savedDeviceWithCreds = client.saveDeviceWithCredentials1(request, null, null, null, null, null);
+        Device savedDeviceWithCreds = client.saveDeviceWithCredentials(request, null, null, null, null, null);
         assertEquals("device-with-creds", savedDeviceWithCreds.getName());
 
         // find credentials by device id
@@ -194,7 +194,7 @@ public class DeviceApiTest extends AbstractApiTest {
         buildingToDevice.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
         buildingToDevice.setType("Contains");
         buildingToDevice.setTypeGroup(RelationTypeGroup.COMMON);
-        EntityRelation savedRelation = client.saveRelationV2(buildingToDevice);
+        EntityRelation savedRelation = client.saveRelation(buildingToDevice);
 
         RelationsSearchParameters params = new RelationsSearchParameters();
         params.setRootId(device.getId().getId());
@@ -206,7 +206,7 @@ public class DeviceApiTest extends AbstractApiTest {
         query.setParameters(params);
 
         // device has no outgoing relations; result is an empty list, not null
-        List<EntityRelation> result = client.findByQuery(query);
+        List<EntityRelation> result = client.findEntityRelationsByQuery(query);
         assertEquals(1, result.size());
     }
 

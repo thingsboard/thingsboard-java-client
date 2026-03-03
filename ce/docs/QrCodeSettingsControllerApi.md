@@ -4,7 +4,7 @@
 |------------- | ------------- | -------------|
 | [**getApplicationRedirect**](#getApplicationRedirect) | **GET** /api/noauth/qr | getApplicationRedirect |
 | [**getMobileAppDeepLink**](#getMobileAppDeepLink) | **GET** /api/mobile/qr/deepLink | Get the deep link to the associated mobile application (getMobileAppDeepLink) |
-| [**getQrCodeSettings**](#getQrCodeSettings) | **GET** /api/mobile/qr/settings | Get Mobile application settings (getMobileAppSettings) |
+| [**getQrCodeSettings**](#getQrCodeSettings) | **GET** /api/mobile/qr/settings | Get Mobile application settings (getQrCodeSettings) |
 | [**getUserTokenByMobileSecret**](#getUserTokenByMobileSecret) | **GET** /api/noauth/qr/{secret} | Get User Token (getUserTokenByMobileSecret) |
 | [**saveQrCodeSettings**](#saveQrCodeSettings) | **POST** /api/mobile/qr/settings | Create Or Update the Mobile application settings (saveMobileAppSettings) |
 
@@ -45,7 +45,7 @@ Fetch the url that takes user to linked mobile application   Available for any a
 
 > QrCodeSettings getQrCodeSettings()
 
-Get Mobile application settings (getMobileAppSettings)
+Get Mobile application settings (getQrCodeSettings)
 
 The response payload contains configuration for android/iOS applications and platform qr code widget settings.  Available for any authorized user. 
 

@@ -5,19 +5,19 @@
 | [**autoCommitSettingsExists**](#autoCommitSettingsExists) | **GET** /api/admin/autoCommitSettings/exists | Check auto commit settings exists (autoCommitSettingsExists) |
 | [**checkRepositoryAccess**](#checkRepositoryAccess) | **POST** /api/admin/repositorySettings/checkAccess | Check repository access (checkRepositoryAccess) |
 | [**checkUpdates**](#checkUpdates) | **GET** /api/admin/updates | Check for new Platform Releases (checkUpdates) |
-| [**codeProcessingUrl**](#codeProcessingUrl) | **GET** /api/admin/mail/oauth2/code | codeProcessingUrl |
 | [**deleteAutoCommitSettings**](#deleteAutoCommitSettings) | **DELETE** /api/admin/autoCommitSettings | Delete auto commit settings (deleteAutoCommitSettings) |
 | [**deleteRepositorySettings**](#deleteRepositorySettings) | **DELETE** /api/admin/repositorySettings | Delete repository settings (deleteRepositorySettings) |
 | [**getAdminSettings**](#getAdminSettings) | **GET** /api/admin/settings/{key} | Get the Administration Settings object using key (getAdminSettings) |
-| [**getAuthorizationUrl**](#getAuthorizationUrl) | **GET** /api/admin/mail/oauth2/authorize | Redirect user to mail provider login page.  |
 | [**getAutoCommitSettings**](#getAutoCommitSettings) | **GET** /api/admin/autoCommitSettings | Get auto commit settings (getAutoCommitSettings) |
 | [**getFeaturesInfo**](#getFeaturesInfo) | **GET** /api/admin/featuresInfo | Get features info (getFeaturesInfo) |
 | [**getJwtSettings**](#getJwtSettings) | **GET** /api/admin/jwtSettings | Get the JWT Settings object (getJwtSettings) |
+| [**getMailOAuth2AuthorizationUrl**](#getMailOAuth2AuthorizationUrl) | **GET** /api/admin/mail/oauth2/authorize | Redirect user to mail provider login page.  |
 | [**getMailProcessingUrl**](#getMailProcessingUrl) | **GET** /api/admin/mail/oauth2/loginProcessingUrl | Get OAuth2 log in processing URL (getMailProcessingUrl) |
 | [**getRepositorySettings**](#getRepositorySettings) | **GET** /api/admin/repositorySettings | Get repository settings (getRepositorySettings) |
 | [**getRepositorySettingsInfo**](#getRepositorySettingsInfo) | **GET** /api/admin/repositorySettings/info | getRepositorySettingsInfo |
 | [**getSecuritySettings**](#getSecuritySettings) | **GET** /api/admin/securitySettings | Get the Security Settings object (getSecuritySettings) |
 | [**getSystemInfo**](#getSystemInfo) | **GET** /api/admin/systemInfo | Get system info (getSystemInfo) |
+| [**handleMailOAuth2Callback**](#handleMailOAuth2Callback) | **GET** /api/admin/mail/oauth2/code | handleMailOAuth2Callback |
 | [**repositorySettingsExists**](#repositorySettingsExists) | **GET** /api/admin/repositorySettings/exists | Check repository settings exists (repositorySettingsExists) |
 | [**saveAdminSettings**](#saveAdminSettings) | **POST** /api/admin/settings | Creates or Updates the Administration Settings (saveAdminSettings) |
 | [**saveAutoCommitSettings**](#saveAutoCommitSettings) | **POST** /api/admin/autoCommitSettings | Creates or Updates the auto commit settings (saveAutoCommitSettings) |
@@ -75,25 +75,6 @@ Check notifications about new platform releases.   Available for users with 'SYS
 **UpdateMessage**
 
 
-## codeProcessingUrl
-
-> codeProcessingUrl(code, state)
-
-codeProcessingUrl
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **code** | **String** |  | |
-| **state** | **String** |  | |
-
-### Return type
-
-null (empty response body)
-
-
 ## deleteAutoCommitSettings
 
 > deleteAutoCommitSettings()
@@ -140,19 +121,6 @@ Get the Administration Settings object using specified string key. Referencing n
 **AdminSettings**
 
 
-## getAuthorizationUrl
-
-> String getAuthorizationUrl()
-
-Redirect user to mail provider login page. 
-
-After user logged in and provided accessprovider sends authorization code to specified redirect uri.)
-
-### Return type
-
-**String**
-
-
 ## getAutoCommitSettings
 
 > Map<String, AutoVersionCreateConfig> getAutoCommitSettings()
@@ -190,6 +158,19 @@ Get the JWT Settings object that contains JWT token policy, etc.   Available for
 ### Return type
 
 **JwtSettings**
+
+
+## getMailOAuth2AuthorizationUrl
+
+> String getMailOAuth2AuthorizationUrl()
+
+Redirect user to mail provider login page. 
+
+After user logged in and provided accessprovider sends authorization code to specified redirect uri.)
+
+### Return type
+
+**String**
 
 
 ## getMailProcessingUrl
@@ -253,6 +234,25 @@ Get main information about system.   Available for users with 'SYS_ADMIN' author
 ### Return type
 
 **SystemInfo**
+
+
+## handleMailOAuth2Callback
+
+> handleMailOAuth2Callback(code, state)
+
+handleMailOAuth2Callback
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **code** | **String** |  | |
+| **state** | **String** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## repositorySettingsExists

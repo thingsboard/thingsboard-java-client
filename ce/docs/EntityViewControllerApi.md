@@ -6,14 +6,14 @@
 | [**assignEntityViewToEdge**](#assignEntityViewToEdge) | **POST** /api/edge/{edgeId}/entityView/{entityViewId} | Assign entity view to edge (assignEntityViewToEdge) |
 | [**assignEntityViewToPublicCustomer**](#assignEntityViewToPublicCustomer) | **POST** /api/customer/public/entityView/{entityViewId} | Make entity view publicly available (assignEntityViewToPublicCustomer) |
 | [**deleteEntityView**](#deleteEntityView) | **DELETE** /api/entityView/{entityViewId} | Delete entity view (deleteEntityView) |
-| [**findByQuery1**](#findByQuery1) | **POST** /api/entityViews | Find related entity views (findByQuery) |
+| [**findEntityViewsByQuery**](#findEntityViewsByQuery) | **POST** /api/entityViews | Find related entity views (findEntityViewsByQuery) |
 | [**getCustomerEntityViewInfos**](#getCustomerEntityViewInfos) | **GET** /api/customer/{customerId}/entityViewInfos | Get Customer Entity View info (getCustomerEntityViewInfos) |
 | [**getCustomerEntityViews**](#getCustomerEntityViews) | **GET** /api/customer/{customerId}/entityViews | Get Customer Entity Views (getCustomerEntityViews) |
 | [**getEdgeEntityViews**](#getEdgeEntityViews) | **GET** /api/edge/{edgeId}/entityViews | getEdgeEntityViews |
 | [**getEntityViewById**](#getEntityViewById) | **GET** /api/entityView/{entityViewId} | Get entity view (getEntityViewById) |
 | [**getEntityViewInfoById**](#getEntityViewInfoById) | **GET** /api/entityView/info/{entityViewId} | Get Entity View info (getEntityViewInfoById) |
 | [**getEntityViewTypes**](#getEntityViewTypes) | **GET** /api/entityView/types | Get Entity View Types (getEntityViewTypes) |
-| [**getEntityViewsByIdsV2**](#getEntityViewsByIdsV2) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIdsV2) |
+| [**getEntityViewsByIds**](#getEntityViewsByIds) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIds) |
 | [**getTenantEntityViewByName**](#getTenantEntityViewByName) | **GET** /api/tenant/entityView | Get Entity View by name (getTenantEntityViewByName) |
 | [**getTenantEntityViewInfos**](#getTenantEntityViewInfos) | **GET** /api/tenant/entityViewInfos | Get Tenant Entity Views (getTenantEntityViews) |
 | [**getTenantEntityViews**](#getTenantEntityViews) | **GET** /api/tenant/entityViews | Get Tenant Entity Views (getTenantEntityViews) |
@@ -105,11 +105,11 @@ Delete the EntityView object based on the provided entity view id.   Available f
 null (empty response body)
 
 
-## findByQuery1
+## findEntityViewsByQuery
 
-> List<EntityView> findByQuery1(entityViewSearchQuery)
+> List<EntityView> findEntityViewsByQuery(entityViewSearchQuery)
 
-Find related entity views (findByQuery)
+Find related entity views (findEntityViewsByQuery)
 
 Returns all entity views that are related to the specific entity. The entity id, relation type, entity view types, depth of the search, and other query parameters defined using complex 'EntityViewSearchQuery' object. See 'Model' tab of the Parameters for more info.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
@@ -256,11 +256,11 @@ Returns a set of unique entity view types based on entity views that are either 
 **List<EntitySubtype>**
 
 
-## getEntityViewsByIdsV2
+## getEntityViewsByIds
 
-> List<EntityView> getEntityViewsByIdsV2(entityViewIds)
+> List<EntityView> getEntityViewsByIds(entityViewIds)
 
-Get Entity Views By Ids (getEntityViewsByIdsV2)
+Get Entity Views By Ids (getEntityViewsByIds)
 
 Requested entity views must be owned by tenant or assigned to customer which user is performing the request. 
 

@@ -6,7 +6,7 @@
 | [**getMobileAppBundleInfoById**](#getMobileAppBundleInfoById) | **GET** /api/mobile/bundle/info/{id} | Get mobile app bundle info by id (getMobileAppBundleInfoById) |
 | [**getTenantMobileAppBundleInfos**](#getTenantMobileAppBundleInfos) | **GET** /api/mobile/bundle/infos | Get mobile app bundle infos (getTenantMobileAppBundleInfos) |
 | [**saveMobileAppBundle**](#saveMobileAppBundle) | **POST** /api/mobile/bundle | Save Or update Mobile app bundle (saveMobileAppBundle) |
-| [**updateOauth2Clients**](#updateOauth2Clients) | **PUT** /api/mobile/bundle/{id}/oauth2Clients | Update oauth2 clients (updateOauth2Clients) |
+| [**updateMobileAppBundleOauth2Clients**](#updateMobileAppBundleOauth2Clients) | **PUT** /api/mobile/bundle/{id}/oauth2Clients | Update oauth2 clients (updateMobileAppBundleOauth2Clients) |
 
 
 
@@ -95,11 +95,11 @@ Create or update the Mobile app bundle that represents tha pair of ANDROID and I
 **MobileAppBundle**
 
 
-## updateOauth2Clients
+## updateMobileAppBundleOauth2Clients
 
-> updateOauth2Clients(id, UUID)
+> updateMobileAppBundleOauth2Clients(id, UUID)
 
-Update oauth2 clients (updateOauth2Clients)
+Update oauth2 clients (updateMobileAppBundleOauth2Clients)
 
 Update oauth2 clients of the specified mobile app bundle.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 

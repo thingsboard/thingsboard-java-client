@@ -6,7 +6,7 @@
 | [**assignAssetToEdge**](#assignAssetToEdge) | **POST** /api/edge/{edgeId}/asset/{assetId} | Assign asset to edge (assignAssetToEdge) |
 | [**assignAssetToPublicCustomer**](#assignAssetToPublicCustomer) | **POST** /api/customer/public/asset/{assetId} | Make asset publicly available (assignAssetToPublicCustomer) |
 | [**deleteAsset**](#deleteAsset) | **DELETE** /api/asset/{assetId} | Delete asset (deleteAsset) |
-| [**findByQuery4**](#findByQuery4) | **POST** /api/assets | Find related assets (findByQuery) |
+| [**findAssetsByQuery**](#findAssetsByQuery) | **POST** /api/assets | Find related assets (findAssetsByQuery) |
 | [**getAssetById**](#getAssetById) | **GET** /api/asset/{assetId} | Get Asset (getAssetById) |
 | [**getAssetInfoById**](#getAssetInfoById) | **GET** /api/asset/info/{assetId} | Get Asset Info (getAssetInfoById) |
 | [**getAssetTypes**](#getAssetTypes) | **GET** /api/asset/types | Get Asset Types (getAssetTypes) |
@@ -106,11 +106,11 @@ Deletes the asset and all the relations (from and to the asset). Referencing non
 null (empty response body)
 
 
-## findByQuery4
+## findAssetsByQuery
 
-> List<Asset> findByQuery4(assetSearchQuery)
+> List<Asset> findAssetsByQuery(assetSearchQuery)
 
-Find related assets (findByQuery)
+Find related assets (findAssetsByQuery)
 
 Returns all assets that are related to the specific entity. The entity id, relation type, asset types, depth of the search, and other query parameters defined using complex 'AssetSearchQuery' object. See 'Model' tab of the Parameters for more info.
 

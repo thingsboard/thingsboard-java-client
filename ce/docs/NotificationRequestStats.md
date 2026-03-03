@@ -9,9 +9,9 @@ Notification request processing statistics
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **sent** | **Map\<String, Object\>** | Number of successfully sent notifications per delivery method | [optional] |
+| **sent** | **Map\<String, Integer\>** | Number of successfully sent notifications per delivery method | [optional] |
 | **errors** | **Map\<String, Map<String, String>\>** | Errors per delivery method. Each entry maps recipient name to error message | [optional] |
-| **totalErrors** | **Object** |  | [optional] |
+| **totalErrors** | **Integer** | Total number of errors across all delivery methods | [optional] |
 | **error** | **String** | General error message if the entire request failed | [optional] |
 
 

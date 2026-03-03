@@ -2,7 +2,6 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**claimDevice**](#claimDevice) | **POST** /api/v1/{deviceToken}/claim | Save claiming information (claimDevice) |
 | [**getDeviceAttributes**](#getDeviceAttributes) | **GET** /api/v1/{deviceToken}/attributes | Get attributes (getDeviceAttributes) |
 | [**getFirmware**](#getFirmware) | **GET** /api/v1/{deviceToken}/firmware | Get Device Firmware (getFirmware) |
 | [**getSoftware**](#getSoftware) | **GET** /api/v1/{deviceToken}/software | Get Device Software (getSoftware) |
@@ -11,30 +10,10 @@
 | [**postTelemetry**](#postTelemetry) | **POST** /api/v1/{deviceToken}/telemetry | Post time series data (postTelemetry) |
 | [**provisionDevice**](#provisionDevice) | **POST** /api/v1/provision | Provision new device (provisionDevice) |
 | [**replyToCommand**](#replyToCommand) | **POST** /api/v1/{deviceToken}/rpc/{requestId} | Reply to RPC commands (replyToCommand) |
+| [**saveClaimingInfo**](#saveClaimingInfo) | **POST** /api/v1/{deviceToken}/claim | Save claiming information (saveClaimingInfo) |
 | [**subscribeToAttributes**](#subscribeToAttributes) | **GET** /api/v1/{deviceToken}/attributes/updates | Subscribe to attribute updates (subscribeToAttributes) (Deprecated) |
 | [**subscribeToCommands**](#subscribeToCommands) | **GET** /api/v1/{deviceToken}/rpc | Subscribe to RPC commands (subscribeToCommands) (Deprecated) |
 
-
-
-## claimDevice
-
-> String claimDevice(deviceToken, body)
-
-Save claiming information (claimDevice)
-
-Saves the information required for user to claim the device. See more info about claiming in the corresponding 'Claiming devices' platform documentation.  Example of the request payload:   ```json {\"secretKey\":\"value\", \"durationMs\":60000} ```  Note: both 'secretKey' and 'durationMs' is optional parameters. In case the secretKey is not specified, the empty string as a default value is used. In case the durationMs is not specified, the system parameter device.claim.duration is used.  The API call is designed to be used by device firmware and requires device access token ('deviceToken'). It is not recommended to use this API call by third-party scripts, rule-engine or platform widgets (use 'Telemetry Controller' instead). 
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **deviceToken** | **String** | Your device access token. | |
-| **body** | **String** |  | [optional] |
-
-### Return type
-
-**String**
 
 
 ## getDeviceAttributes
@@ -206,6 +185,27 @@ Replies to server originated RPC command identified by 'requestId' parameter. Th
 | **deviceToken** | **String** | Your device access token. | |
 | **requestId** | **String** | RPC request id from the incoming RPC request | |
 | **body** | **String** | Reply to the RPC request, JSON. For example: {\"status\":\"success\"} | |
+
+### Return type
+
+**String**
+
+
+## saveClaimingInfo
+
+> String saveClaimingInfo(deviceToken, body)
+
+Save claiming information (saveClaimingInfo)
+
+Saves the information required for user to claim the device. See more info about claiming in the corresponding 'Claiming devices' platform documentation.  Example of the request payload:   ```json {\"secretKey\":\"value\", \"durationMs\":60000} ```  Note: both 'secretKey' and 'durationMs' is optional parameters. In case the secretKey is not specified, the empty string as a default value is used. In case the durationMs is not specified, the system parameter device.claim.duration is used.  The API call is designed to be used by device firmware and requires device access token ('deviceToken'). It is not recommended to use this API call by third-party scripts, rule-engine or platform widgets (use 'Telemetry Controller' instead). 
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **deviceToken** | **String** | Your device access token. | |
+| **body** | **String** |  | [optional] |
 
 ### Return type
 

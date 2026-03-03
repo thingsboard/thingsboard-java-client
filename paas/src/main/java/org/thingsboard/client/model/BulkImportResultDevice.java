@@ -29,10 +29,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -49,13 +45,16 @@ import org.thingsboard.client.ApiClient;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportResultDevice {
   public static final String JSON_PROPERTY_CREATED = "created";
-  private JsonNullable<Object> created = JsonNullable.<Object>of(null);
+  @javax.annotation.Nullable
+  private Integer created;
 
   public static final String JSON_PROPERTY_UPDATED = "updated";
-  private JsonNullable<Object> updated = JsonNullable.<Object>of(null);
+  @javax.annotation.Nullable
+  private Integer updated;
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
-  private JsonNullable<Object> errors = JsonNullable.<Object>of(null);
+  @javax.annotation.Nullable
+  private Integer errors;
 
   public static final String JSON_PROPERTY_ERRORS_LIST = "errorsList";
   @javax.annotation.Nullable
@@ -64,8 +63,8 @@ public class BulkImportResultDevice {
   public BulkImportResultDevice() { 
   }
 
-  public BulkImportResultDevice created(@javax.annotation.Nullable Object created) {
-    this.created = JsonNullable.<Object>of(created);
+  public BulkImportResultDevice created(@javax.annotation.Nullable Integer created) {
+    this.created = created;
     return this;
   }
 
@@ -74,30 +73,22 @@ public class BulkImportResultDevice {
    * @return created
    */
   @javax.annotation.Nullable
-  @JsonIgnore
-  public Object getCreated() {
-        return created.orElse(null);
+  @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getCreated() {
+    return created;
   }
+
 
   @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Object> getCreated_JsonNullable() {
-    return created;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_CREATED)
-  public void setCreated_JsonNullable(JsonNullable<Object> created) {
+  public void setCreated(@javax.annotation.Nullable Integer created) {
     this.created = created;
   }
 
-  public void setCreated(@javax.annotation.Nullable Object created) {
-    this.created = JsonNullable.<Object>of(created);
-  }
 
-
-  public BulkImportResultDevice updated(@javax.annotation.Nullable Object updated) {
-    this.updated = JsonNullable.<Object>of(updated);
+  public BulkImportResultDevice updated(@javax.annotation.Nullable Integer updated) {
+    this.updated = updated;
     return this;
   }
 
@@ -106,30 +97,22 @@ public class BulkImportResultDevice {
    * @return updated
    */
   @javax.annotation.Nullable
-  @JsonIgnore
-  public Object getUpdated() {
-        return updated.orElse(null);
+  @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getUpdated() {
+    return updated;
   }
+
 
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Object> getUpdated_JsonNullable() {
-    return updated;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_UPDATED)
-  public void setUpdated_JsonNullable(JsonNullable<Object> updated) {
+  public void setUpdated(@javax.annotation.Nullable Integer updated) {
     this.updated = updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable Object updated) {
-    this.updated = JsonNullable.<Object>of(updated);
-  }
 
-
-  public BulkImportResultDevice errors(@javax.annotation.Nullable Object errors) {
-    this.errors = JsonNullable.<Object>of(errors);
+  public BulkImportResultDevice errors(@javax.annotation.Nullable Integer errors) {
+    this.errors = errors;
     return this;
   }
 
@@ -138,25 +121,17 @@ public class BulkImportResultDevice {
    * @return errors
    */
   @javax.annotation.Nullable
-  @JsonIgnore
-  public Object getErrors() {
-        return errors.orElse(null);
+  @JsonProperty(value = JSON_PROPERTY_ERRORS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getErrors() {
+    return errors;
   }
+
 
   @JsonProperty(value = JSON_PROPERTY_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Object> getErrors_JsonNullable() {
-    return errors;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_ERRORS)
-  public void setErrors_JsonNullable(JsonNullable<Object> errors) {
+  public void setErrors(@javax.annotation.Nullable Integer errors) {
     this.errors = errors;
-  }
-
-  public void setErrors(@javax.annotation.Nullable Object errors) {
-    this.errors = JsonNullable.<Object>of(errors);
   }
 
 
@@ -204,26 +179,15 @@ public class BulkImportResultDevice {
       return false;
     }
     BulkImportResultDevice bulkImportResultDevice = (BulkImportResultDevice) o;
-    return equalsNullable(this.created, bulkImportResultDevice.created) &&
-        equalsNullable(this.updated, bulkImportResultDevice.updated) &&
-        equalsNullable(this.errors, bulkImportResultDevice.errors) &&
+    return Objects.equals(this.created, bulkImportResultDevice.created) &&
+        Objects.equals(this.updated, bulkImportResultDevice.updated) &&
+        Objects.equals(this.errors, bulkImportResultDevice.errors) &&
         Objects.equals(this.errorsList, bulkImportResultDevice.errorsList);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(created), hashCodeNullable(updated), hashCodeNullable(errors), errorsList);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(created, updated, errors, errorsList);
   }
 
   @Override

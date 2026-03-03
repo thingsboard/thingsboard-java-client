@@ -170,7 +170,7 @@ public class IntegrationApiTest extends AbstractApiTest {
         String id2 = i2.getId().getId().toString();
 
         // getIntegrationsByIdsV2 (covers both getIntegrationsByIds and getIntegrationsByIdsV2)
-        List<Integration> result = client.getIntegrationsByIdsV2(List.of(id1, id2));
+        List<Integration> result = client.getIntegrationsByIds(List.of(id1, id2));
         assertNotNull(result);
         assertEquals(2, result.size());
         assertTrue(result.stream().anyMatch(i -> i.getId().getId().toString().equals(id1)));
