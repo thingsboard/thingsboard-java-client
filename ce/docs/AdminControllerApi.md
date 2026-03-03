@@ -12,7 +12,7 @@
 | [**getFeaturesInfo**](#getFeaturesInfo) | **GET** /api/admin/featuresInfo | Get features info (getFeaturesInfo) |
 | [**getJwtSettings**](#getJwtSettings) | **GET** /api/admin/jwtSettings | Get the JWT Settings object (getJwtSettings) |
 | [**getMailOAuth2AuthorizationUrl**](#getMailOAuth2AuthorizationUrl) | **GET** /api/admin/mail/oauth2/authorize | Redirect user to mail provider login page.  |
-| [**getMailOAuth2RedirectUri**](#getMailOAuth2RedirectUri) | **GET** /api/admin/mail/oauth2/loginProcessingUrl | Get OAuth2 log in processing URL (getMailOAuth2RedirectUri) |
+| [**getMailProcessingUrl**](#getMailProcessingUrl) | **GET** /api/admin/mail/oauth2/loginProcessingUrl | Get OAuth2 log in processing URL (getMailProcessingUrl) |
 | [**getRepositorySettings**](#getRepositorySettings) | **GET** /api/admin/repositorySettings | Get repository settings (getRepositorySettings) |
 | [**getRepositorySettingsInfo**](#getRepositorySettingsInfo) | **GET** /api/admin/repositorySettings/info | getRepositorySettingsInfo |
 | [**getSecuritySettings**](#getSecuritySettings) | **GET** /api/admin/securitySettings | Get the Security Settings object (getSecuritySettings) |
@@ -173,11 +173,11 @@ After user logged in and provided accessprovider sends authorization code to spe
 **String**
 
 
-## getMailOAuth2RedirectUri
+## getMailProcessingUrl
 
-> String getMailOAuth2RedirectUri()
+> String getMailProcessingUrl()
 
-Get OAuth2 log in processing URL (getMailOAuth2RedirectUri)
+Get OAuth2 log in processing URL (getMailProcessingUrl)
 
 Returns the URL enclosed in double quotes. After successful authentication with OAuth2 provider and user consent for requested scope, it makes a redirect to this path so that the platform can do further log in processing and generating access tokens.   Available for users with 'SYS_ADMIN' authority.
 

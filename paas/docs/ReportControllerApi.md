@@ -10,7 +10,7 @@
 | [**getReportInfosByIds**](#getReportInfosByIds) | **GET** /api/v2/reportInfos | getReportInfosByIds |
 | [**getReports**](#getReports) | **GET** /api/v2/reports | getReports |
 | [**requestReport**](#requestReport) | **POST** /api/v2/report/request | requestReport |
-| [**testReportAndDownload**](#testReportAndDownload) | **POST** /api/v2/report/test | Download test report (downloadTestReport) |
+| [**testReportAndDownload**](#testReportAndDownload) | **POST** /api/v2/report/test | Download test report (testReportAndDownload) |
 
 
 
@@ -177,7 +177,7 @@ requestReport
 
 > File testReportAndDownload(reportRequest)
 
-Download test report (downloadTestReport)
+Download test report (testReportAndDownload)
 
 Generate and download test report.  Available for users with 'TENANT_ADMIN' authority.
 

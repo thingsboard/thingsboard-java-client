@@ -52,6 +52,8 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   SelfRegistrationParams.JSON_PROPERTY_PERMISSIONS,
   SelfRegistrationParams.JSON_PROPERTY_TYPE,
+  SelfRegistrationParams.JSON_PROPERTY_SHOW_PRIVACY_POLICY,
+  SelfRegistrationParams.JSON_PROPERTY_SHOW_TERMS_OF_USE,
   SelfRegistrationParams.JSON_PROPERTY_TITLE,
   SelfRegistrationParams.JSON_PROPERTY_ENABLED,
   SelfRegistrationParams.JSON_PROPERTY_HOME_DASHBOARD,
@@ -61,9 +63,7 @@ import org.thingsboard.client.ApiClient;
   SelfRegistrationParams.JSON_PROPERTY_DEFAULT_DASHBOARD,
   SelfRegistrationParams.JSON_PROPERTY_CUSTOMER_TITLE_PREFIX,
   SelfRegistrationParams.JSON_PROPERTY_CUSTOM_MENU_ID,
-  SelfRegistrationParams.JSON_PROPERTY_CUSTOMER_GROUP_ID,
-  SelfRegistrationParams.JSON_PROPERTY_SHOW_PRIVACY_POLICY,
-  SelfRegistrationParams.JSON_PROPERTY_SHOW_TERMS_OF_USE
+  SelfRegistrationParams.JSON_PROPERTY_CUSTOMER_GROUP_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -84,6 +84,14 @@ public class SelfRegistrationParams {
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nonnull
   private SelfRegistrationType type;
+
+  public static final String JSON_PROPERTY_SHOW_PRIVACY_POLICY = "showPrivacyPolicy";
+  @javax.annotation.Nullable
+  private Boolean showPrivacyPolicy;
+
+  public static final String JSON_PROPERTY_SHOW_TERMS_OF_USE = "showTermsOfUse";
+  @javax.annotation.Nullable
+  private Boolean showTermsOfUse;
 
   public static final String JSON_PROPERTY_TITLE = "title";
   @javax.annotation.Nullable
@@ -124,14 +132,6 @@ public class SelfRegistrationParams {
   public static final String JSON_PROPERTY_CUSTOMER_GROUP_ID = "customerGroupId";
   @javax.annotation.Nullable
   private EntityGroupId customerGroupId;
-
-  public static final String JSON_PROPERTY_SHOW_PRIVACY_POLICY = "showPrivacyPolicy";
-  @javax.annotation.Nullable
-  private Boolean showPrivacyPolicy;
-
-  public static final String JSON_PROPERTY_SHOW_TERMS_OF_USE = "showTermsOfUse";
-  @javax.annotation.Nullable
-  private Boolean showTermsOfUse;
 
   public SelfRegistrationParams() { 
   }
@@ -189,6 +189,54 @@ public class SelfRegistrationParams {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull SelfRegistrationType type) {
     this.type = type;
+  }
+
+
+  public SelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+    this.showPrivacyPolicy = showPrivacyPolicy;
+    return this;
+  }
+
+  /**
+   * Get showPrivacyPolicy
+   * @return showPrivacyPolicy
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getShowPrivacyPolicy() {
+    return showPrivacyPolicy;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setShowPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+    this.showPrivacyPolicy = showPrivacyPolicy;
+  }
+
+
+  public SelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+    this.showTermsOfUse = showTermsOfUse;
+    return this;
+  }
+
+  /**
+   * Get showTermsOfUse
+   * @return showTermsOfUse
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getShowTermsOfUse() {
+    return showTermsOfUse;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setShowTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+    this.showTermsOfUse = showTermsOfUse;
   }
 
 
@@ -440,54 +488,6 @@ public class SelfRegistrationParams {
   }
 
 
-  public SelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.showPrivacyPolicy = showPrivacyPolicy;
-    return this;
-  }
-
-  /**
-   * Get showPrivacyPolicy
-   * @return showPrivacyPolicy
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getShowPrivacyPolicy() {
-    return showPrivacyPolicy;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.showPrivacyPolicy = showPrivacyPolicy;
-  }
-
-
-  public SelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.showTermsOfUse = showTermsOfUse;
-    return this;
-  }
-
-  /**
-   * Get showTermsOfUse
-   * @return showTermsOfUse
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getShowTermsOfUse() {
-    return showTermsOfUse;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.showTermsOfUse = showTermsOfUse;
-  }
-
-
   /**
    * Return true if this SelfRegistrationParams object is equal to o.
    */
@@ -502,6 +502,8 @@ public class SelfRegistrationParams {
     SelfRegistrationParams selfRegistrationParams = (SelfRegistrationParams) o;
     return Objects.equals(this.permissions, selfRegistrationParams.permissions) &&
         Objects.equals(this.type, selfRegistrationParams.type) &&
+        Objects.equals(this.showPrivacyPolicy, selfRegistrationParams.showPrivacyPolicy) &&
+        Objects.equals(this.showTermsOfUse, selfRegistrationParams.showTermsOfUse) &&
         Objects.equals(this.title, selfRegistrationParams.title) &&
         Objects.equals(this.enabled, selfRegistrationParams.enabled) &&
         Objects.equals(this.homeDashboard, selfRegistrationParams.homeDashboard) &&
@@ -511,14 +513,12 @@ public class SelfRegistrationParams {
         Objects.equals(this.defaultDashboard, selfRegistrationParams.defaultDashboard) &&
         Objects.equals(this.customerTitlePrefix, selfRegistrationParams.customerTitlePrefix) &&
         Objects.equals(this.customMenuId, selfRegistrationParams.customMenuId) &&
-        Objects.equals(this.customerGroupId, selfRegistrationParams.customerGroupId) &&
-        Objects.equals(this.showPrivacyPolicy, selfRegistrationParams.showPrivacyPolicy) &&
-        Objects.equals(this.showTermsOfUse, selfRegistrationParams.showTermsOfUse);
+        Objects.equals(this.customerGroupId, selfRegistrationParams.customerGroupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(permissions, type, title, enabled, homeDashboard, notificationRecipient, captcha, signUpFields, defaultDashboard, customerTitlePrefix, customMenuId, customerGroupId, showPrivacyPolicy, showTermsOfUse);
+    return Objects.hash(permissions, type, showPrivacyPolicy, showTermsOfUse, title, enabled, homeDashboard, notificationRecipient, captcha, signUpFields, defaultDashboard, customerTitlePrefix, customMenuId, customerGroupId);
   }
 
   @Override
@@ -527,6 +527,8 @@ public class SelfRegistrationParams {
     sb.append("class SelfRegistrationParams {\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    showPrivacyPolicy: ").append(toIndentedString(showPrivacyPolicy)).append("\n");
+    sb.append("    showTermsOfUse: ").append(toIndentedString(showTermsOfUse)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    homeDashboard: ").append(toIndentedString(homeDashboard)).append("\n");
@@ -537,8 +539,6 @@ public class SelfRegistrationParams {
     sb.append("    customerTitlePrefix: ").append(toIndentedString(customerTitlePrefix)).append("\n");
     sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
     sb.append("    customerGroupId: ").append(toIndentedString(customerGroupId)).append("\n");
-    sb.append("    showPrivacyPolicy: ").append(toIndentedString(showPrivacyPolicy)).append("\n");
-    sb.append("    showTermsOfUse: ").append(toIndentedString(showTermsOfUse)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -601,6 +601,16 @@ public class SelfRegistrationParams {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
+    // add `showPrivacyPolicy` to the URL query string
+    if (getShowPrivacyPolicy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
+    }
+
+    // add `showTermsOfUse` to the URL query string
+    if (getShowTermsOfUse() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
+    }
+
     // add `title` to the URL query string
     if (getTitle() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
@@ -654,16 +664,6 @@ public class SelfRegistrationParams {
     // add `customerGroupId` to the URL query string
     if (getCustomerGroupId() != null) {
       joiner.add(getCustomerGroupId().toUrlQueryString(prefix + "customerGroupId" + suffix));
-    }
-
-    // add `showPrivacyPolicy` to the URL query string
-    if (getShowPrivacyPolicy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
-    }
-
-    // add `showTermsOfUse` to the URL query string
-    if (getShowTermsOfUse() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
     }
 
     return joiner.toString();

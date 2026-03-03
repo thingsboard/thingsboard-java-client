@@ -5,7 +5,7 @@
 | [**deleteConverter**](#deleteConverter) | **DELETE** /api/converter/{converterId} | Delete converter (deleteConverter) |
 | [**getConverterById**](#getConverterById) | **GET** /api/converter/{converterId} | Get Converter (getConverterById) |
 | [**getConverters**](#getConverters) | **GET** /api/converters | Get Converters (getConverters) |
-| [**getConvertersByIdsV2**](#getConvertersByIdsV2) | **GET** /api/converters/list | Get Converters By Ids (getConvertersByIdsV2) |
+| [**getConvertersByIds**](#getConvertersByIds) | **GET** /api/converters/list | Get Converters By Ids (getConvertersByIds) |
 | [**getLatestConverterDebugInput**](#getLatestConverterDebugInput) | **GET** /api/converter/{converterId}/debugIn | Get latest debug input event (getLatestConverterDebugInput) |
 | [**saveConverter**](#saveConverter) | **POST** /api/converter | Create Or Update Converter (saveConverter) |
 | [**testDownLinkConverter**](#testDownLinkConverter) | **POST** /api/converter/testDownLink | Test converter function (testDownLinkConverter) |
@@ -80,11 +80,11 @@ Returns a page of converters owned by tenant. You can specify parameters to filt
 **PageDataConverter**
 
 
-## getConvertersByIdsV2
+## getConvertersByIds
 
-> List<Converter> getConvertersByIdsV2(converterIds)
+> List<Converter> getConvertersByIds(converterIds)
 
-Get Converters By Ids (getConvertersByIdsV2)
+Get Converters By Ids (getConvertersByIds)
 
 Requested converters must be owned by tenant which is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 

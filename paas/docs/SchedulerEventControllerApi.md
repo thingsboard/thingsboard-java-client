@@ -6,13 +6,13 @@
 | [**deleteSchedulerEvent**](#deleteSchedulerEvent) | **DELETE** /api/schedulerEvent/{schedulerEventId} | Delete Scheduler Event (deleteSchedulerEvent) |
 | [**enableSchedulerEvent**](#enableSchedulerEvent) | **PUT** /api/schedulerEvent/{schedulerEventId}/enabled/{enabledValue} | Enable or disable Scheduler Event (enableSchedulerEvent) |
 | [**getAllEdgeSchedulerEvents**](#getAllEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/allSchedulerEvents | Get All Edge Scheduler Events (getAllEdgeSchedulerEvents) |
-| [**getAllSchedulerEventsV2**](#getAllSchedulerEventsV2) | **GET** /api/schedulerEvents/all | Get all scheduler events (getAllSchedulerEventsV2) |
+| [**getAllSchedulerEvents**](#getAllSchedulerEvents) | **GET** /api/schedulerEvents/all | Get all scheduler events (getAllSchedulerEvents) |
 | [**getEdgeSchedulerEvents**](#getEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/schedulerEvents | Get Edge Scheduler Events (getEdgeSchedulerEvents) |
 | [**getScheduledReportEvents**](#getScheduledReportEvents) | **GET** /api/scheduledReports | Get Scheduled Report Events (getScheduledReportEvents) |
 | [**getSchedulerEventById**](#getSchedulerEventById) | **GET** /api/schedulerEvent/{schedulerEventId} | Get Scheduler Event (getSchedulerEventById) |
 | [**getSchedulerEventInfoById**](#getSchedulerEventInfoById) | **GET** /api/schedulerEvent/info/{schedulerEventId} | Get Scheduler Event With Customer Info (getSchedulerEventInfoById) |
 | [**getSchedulerEvents**](#getSchedulerEvents) | **GET** /api/schedulerEvents | Get scheduler events (getSchedulerEvents) |
-| [**getSchedulerEventsByIdsV2**](#getSchedulerEventsByIdsV2) | **GET** /api/schedulerEvents/list | Get Scheduler Events By Ids (getSchedulerEventsByIdsV2) |
+| [**getSchedulerEventsByIds**](#getSchedulerEventsByIds) | **GET** /api/schedulerEvents/list | Get Scheduler Events By Ids (getSchedulerEventsByIds) |
 | [**getSchedulerEventsByRange**](#getSchedulerEventsByRange) | **GET** /api/schedulerEvents/startTime/{startTime}/endTime/{endTime} | Get scheduler events (getSchedulerEventsByRange) |
 | [**saveSchedulerEvent**](#saveSchedulerEvent) | **POST** /api/schedulerEvent | Save Scheduler Event (saveSchedulerEvent) |
 | [**unassignSchedulerEventFromEdge**](#unassignSchedulerEventFromEdge) | **DELETE** /api/edge/{edgeId}/schedulerEvent/{schedulerEventId} | Unassign scheduler event from edge (unassignSchedulerEventFromEdge) |
@@ -101,11 +101,11 @@ Fetch the list of Scheduler Event Info objects based on the provided Edge entity
 **List<SchedulerEventInfo>**
 
 
-## getAllSchedulerEventsV2
+## getAllSchedulerEvents
 
-> List<SchedulerEventWithCustomerInfo> getAllSchedulerEventsV2(type)
+> List<SchedulerEventWithCustomerInfo> getAllSchedulerEvents(type)
 
-Get all scheduler events (getAllSchedulerEventsV2)
+Get all scheduler events (getAllSchedulerEvents)
 
 Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Event With Customer Info extends Scheduler Event Info object and adds 'customerTitle' - a String value representing the title of the customer which user created a Scheduler Event and 'customerIsPublic' - a boolean parameter that specifies if customer is public. See the 'Model' tab of the Response Class for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
@@ -239,11 +239,11 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 **PageDataSchedulerEventWithCustomerInfo**
 
 
-## getSchedulerEventsByIdsV2
+## getSchedulerEventsByIds
 
-> List<SchedulerEventInfo> getSchedulerEventsByIdsV2(schedulerEventIds)
+> List<SchedulerEventInfo> getSchedulerEventsByIds(schedulerEventIds)
 
-Get Scheduler Events By Ids (getSchedulerEventsByIdsV2)
+Get Scheduler Events By Ids (getSchedulerEventsByIds)
 
 Requested scheduler events must be owned by tenant or assigned to customer which user is performing the request. Scheduler Events allows you to schedule various types of events with flexible schedule configuration. Scheduler fires configured scheduler events according to their schedule. See the 'Model' tab of the Response Class for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 

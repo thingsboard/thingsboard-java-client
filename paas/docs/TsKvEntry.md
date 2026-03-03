@@ -13,10 +13,10 @@
 | **doubleValue** | **Double** |  | [optional] |
 | **longValue** | **Long** |  | [optional] |
 | **booleanValue** | **Boolean** |  | [optional] |
-| **valueAsString** | **String** |  | [optional] |
 | **dataType** | **DataType** |  | [optional] |
 | **jsonValue** | **String** |  | [optional] |
 | **strValue** | **String** |  | [optional] |
+| **valueAsString** | **String** |  | [optional] |
 | **version** | **Long** |  | [optional] |
 
 

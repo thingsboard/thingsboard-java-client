@@ -4,7 +4,7 @@
 |------------- | ------------- | -------------|
 | [**deleteRelation**](#deleteRelation) | **DELETE** /api/relation | Delete Relation (deleteRelation) |
 | [**deleteRelationAndReturn**](#deleteRelationAndReturn) | **DELETE** /api/v2/relation | Delete Relation (deleteRelationAndReturn) |
-| [**deleteRelations**](#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteCommonRelations) |
+| [**deleteRelations**](#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteRelations) |
 | [**findEntityRelationInfosByFrom**](#findEntityRelationInfosByFrom) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findEntityRelationInfosByFrom) |
 | [**findEntityRelationInfosByQuery**](#findEntityRelationInfosByQuery) | **POST** /api/relations/info | Find related entity infos (findEntityRelationInfosByQuery) |
 | [**findEntityRelationInfosByTo**](#findEntityRelationInfosByTo) | **GET** /api/relations/info/to/{toType}/{toId} | Get List of Relation Infos (findEntityRelationInfosByTo) |
@@ -73,7 +73,7 @@ Deletes a relation between two entities in the platform.   If the user has the a
 
 > deleteRelations(entityId, entityType)
 
-Delete common relations (deleteCommonRelations)
+Delete common relations (deleteRelations)
 
 Deletes all the relations ('from' and 'to' direction) for the specified entity and relation type group: 'COMMON'.   If the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.
 

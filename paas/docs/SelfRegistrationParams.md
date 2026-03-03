@@ -9,6 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 | **permissions** | **List\<GroupPermission\>** |  | [optional] |
 | **type** | **SelfRegistrationType** |  | |
+| **showPrivacyPolicy** | **Boolean** |  | [optional] |
+| **showTermsOfUse** | **Boolean** |  | [optional] |
 | **title** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **homeDashboard** | **HomeDashboardParams** |  | [optional] |
@@ -19,8 +21,6 @@
 | **customerTitlePrefix** | **String** |  | [optional] |
 | **customMenuId** | **CustomMenuId** |  | [optional] |
 | **customerGroupId** | **EntityGroupId** |  | [optional] |
-| **showPrivacyPolicy** | **Boolean** |  | [optional] |
-| **showTermsOfUse** | **Boolean** |  | [optional] |
 
 
 

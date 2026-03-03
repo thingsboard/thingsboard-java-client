@@ -12,7 +12,7 @@
 | [**getAllUserInfos**](#getAllUserInfos) | **GET** /api/userInfos/all | Get All User Infos for current user (getAllUserInfos) |
 | [**getCustomerUserInfos**](#getCustomerUserInfos) | **GET** /api/customer/{customerId}/userInfos | Get Customer user Infos (getCustomerUserInfos) |
 | [**getCustomerUsers**](#getCustomerUsers) | **GET** /api/customer/{customerId}/users | Get Customer Users (getCustomerUsers) |
-| [**getGeneralUserSettings**](#getGeneralUserSettings) | **GET** /api/user/settings/general | Get user settings (getUserSettings) |
+| [**getGeneralUserSettings**](#getGeneralUserSettings) | **GET** /api/user/settings/general | Get user settings (getGeneralUserSettings) |
 | [**getLastVisitedDashboards**](#getLastVisitedDashboards) | **GET** /api/user/lastVisitedDashboards | Get information about last visited and starred dashboards (getLastVisitedDashboards) |
 | [**getMobileSession**](#getMobileSession) | **GET** /api/user/mobile/session | getMobileSession |
 | [**getTenantAdmins**](#getTenantAdmins) | **GET** /api/tenant/{tenantId}/users | Get Tenant Users (getTenantAdmins) |
@@ -22,11 +22,11 @@
 | [**getUserToken**](#getUserToken) | **GET** /api/user/{userId}/token | Get User Token (getUserToken) |
 | [**getUserUsers**](#getUserUsers) | **GET** /api/user/users | Get Users (getUsers) |
 | [**getUsersByEntityGroupId**](#getUsersByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/users | Get users by Entity Group Id (getUsersByEntityGroupId) |
-| [**getUsersByIdsV2**](#getUsersByIdsV2) | **GET** /api/users/list | Get Users By Ids (getUsersByIdsV2) |
+| [**getUsersByIds**](#getUsersByIds) | **GET** /api/users/list | Get Users By Ids (getUsersByIds) |
 | [**getUsersForAssign**](#getUsersForAssign) | **GET** /api/users/assign/{alarmId} | Get usersForAssign (getUsersForAssign) |
 | [**isUserTokenAccessEnabled**](#isUserTokenAccessEnabled) | **GET** /api/user/tokenAccessEnabled | Check Token Access Enabled (isUserTokenAccessEnabled) |
-| [**putGeneralUserSettings**](#putGeneralUserSettings) | **PUT** /api/user/settings/general | Update user settings (saveUserSettings) |
-| [**putUserSettings**](#putUserSettings) | **PUT** /api/user/settings/{type} | Update user settings (saveUserSettings) |
+| [**putGeneralUserSettings**](#putGeneralUserSettings) | **PUT** /api/user/settings/general | Update user settings (putGeneralUserSettings) |
+| [**putUserSettings**](#putUserSettings) | **PUT** /api/user/settings/{type} | Update user settings (putUserSettings) |
 | [**removeMobileSession**](#removeMobileSession) | **DELETE** /api/user/mobile/session | removeMobileSession |
 | [**reportUserDashboardAction**](#reportUserDashboardAction) | **GET** /api/user/dashboards/{dashboardId}/{action} | Report action of User over the dashboard (reportUserDashboardAction) |
 | [**saveMobileSession**](#saveMobileSession) | **POST** /api/user/mobile/session | saveMobileSession |
@@ -266,7 +266,7 @@ Returns a page of users owned by customer. You can specify parameters to filter 
 
 > com.fasterxml.jackson.databind.JsonNode getGeneralUserSettings()
 
-Get user settings (getUserSettings)
+Get user settings (getGeneralUserSettings)
 
 Fetch the User settings based on authorized user. 
 
@@ -460,11 +460,11 @@ Returns a page of user objects that belongs to specified Entity Group Id. You ca
 **PageDataUser**
 
 
-## getUsersByIdsV2
+## getUsersByIds
 
-> List<User> getUsersByIdsV2(userIds)
+> List<User> getUsersByIds(userIds)
 
-Get Users By Ids (getUsersByIdsV2)
+Get Users By Ids (getUsersByIds)
 
 Requested users must be owned by tenant or assigned to customer which user is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
@@ -522,7 +522,7 @@ Checks that the system is configured to allow administrators to impersonate them
 
 > putGeneralUserSettings(body)
 
-Update user settings (saveUserSettings)
+Update user settings (putGeneralUserSettings)
 
 Update user settings for authorized user. Only specified json elements will be updated.Example: you have such settings: {A:5, B:{C:10, D:20}}. Updating it with {B:{C:10, D:30}} will result in{A:5, B:{C:10, D:30}}. The same could be achieved by putting {B.D:30}
 
@@ -542,7 +542,7 @@ null (empty response body)
 
 > putUserSettings(type, body)
 
-Update user settings (saveUserSettings)
+Update user settings (putUserSettings)
 
 Update user settings for authorized user. Only specified json elements will be updated.Example: you have such settings: {A:5, B:{C:10, D:20}}. Updating it with {B:{C:10, D:30}} will result in{A:5, B:{C:10, D:30}}. The same could be achieved by putting {B.D:30}
 

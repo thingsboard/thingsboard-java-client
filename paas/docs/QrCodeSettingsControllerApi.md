@@ -3,11 +3,11 @@
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getApplicationRedirect**](#getApplicationRedirect) | **GET** /api/noauth/qr | getApplicationRedirect |
-| [**getMergedMobileAppSettings**](#getMergedMobileAppSettings) | **GET** /api/mobile/qr/merged | Get QR code configuration for home page (getMobileAppQrCodeConfig) |
+| [**getMergedMobileAppSettings**](#getMergedMobileAppSettings) | **GET** /api/mobile/qr/merged | Get QR code configuration for home page (getMergedMobileAppSettings) |
 | [**getMobileAppDeepLink**](#getMobileAppDeepLink) | **GET** /api/mobile/qr/deepLink | Get the deep link to the associated mobile application (getMobileAppDeepLink) |
-| [**getQrCodeSettings**](#getQrCodeSettings) | **GET** /api/mobile/qr/settings | Get Mobile application settings (getMobileAppSettings) |
+| [**getQrCodeSettings**](#getQrCodeSettings) | **GET** /api/mobile/qr/settings | Get Mobile application settings (getQrCodeSettings) |
 | [**getUserTokenByMobileSecret**](#getUserTokenByMobileSecret) | **GET** /api/noauth/qr/{secret} | Get User Token (getUserTokenByMobileSecret) |
-| [**saveQrCodeSettings**](#saveQrCodeSettings) | **POST** /api/mobile/qr/settings | Create Or Update the Mobile application settings (saveMobileAppSettings) |
+| [**saveQrCodeSettings**](#saveQrCodeSettings) | **POST** /api/mobile/qr/settings | Create Or Update the Mobile application settings (saveQrCodeSettings) |
 
 
 
@@ -33,7 +33,7 @@ getApplicationRedirect
 
 > QrCodeSettings getMergedMobileAppSettings()
 
-Get QR code configuration for home page (getMobileAppQrCodeConfig)
+Get QR code configuration for home page (getMergedMobileAppSettings)
 
 The response payload contains ui configuration of qr code  Available for any authorized user. 
 
@@ -59,7 +59,7 @@ Fetch the url that takes user to linked mobile application   Available for any a
 
 > QrCodeSettings getQrCodeSettings()
 
-Get Mobile application settings (getMobileAppSettings)
+Get Mobile application settings (getQrCodeSettings)
 
 The response payload contains configuration for android/iOS applications and platform qr code widget settings.  Available for any authorized user. 
 
@@ -92,7 +92,7 @@ Returns the token of the User based on the provided secret key.
 
 > QrCodeSettings saveQrCodeSettings(qrCodeSettings)
 
-Create Or Update the Mobile application settings (saveMobileAppSettings)
+Create Or Update the Mobile application settings (saveQrCodeSettings)
 
 The request payload contains configuration for android/iOS applications and platform qr code widget settings.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 

@@ -50,8 +50,8 @@ import org.thingsboard.client.ApiClient;
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_ID,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_TITLE,
   MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_EMAIL,
-  MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_LAST_NAME,
-  MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_FIRST_NAME
+  MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_FIRST_NAME,
+  MicrosoftTeamsNotificationTargetConfig.JSON_PROPERTY_LAST_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -84,13 +84,13 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
   @javax.annotation.Nullable
   private String email;
 
-  public static final String JSON_PROPERTY_LAST_NAME = "lastName";
-  @javax.annotation.Nullable
-  private String lastName;
-
   public static final String JSON_PROPERTY_FIRST_NAME = "firstName";
   @javax.annotation.Nullable
   private String firstName;
+
+  public static final String JSON_PROPERTY_LAST_NAME = "lastName";
+  @javax.annotation.Nullable
+  private String lastName;
 
   public MicrosoftTeamsNotificationTargetConfig() { 
   }
@@ -247,30 +247,6 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
   }
 
 
-  public MicrosoftTeamsNotificationTargetConfig lastName(@javax.annotation.Nullable String lastName) {
-    this.lastName = lastName;
-    return this;
-  }
-
-  /**
-   * Get lastName
-   * @return lastName
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLastName() {
-    return lastName;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastName(@javax.annotation.Nullable String lastName) {
-    this.lastName = lastName;
-  }
-
-
   public MicrosoftTeamsNotificationTargetConfig firstName(@javax.annotation.Nullable String firstName) {
     this.firstName = firstName;
     return this;
@@ -292,6 +268,30 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFirstName(@javax.annotation.Nullable String firstName) {
     this.firstName = firstName;
+  }
+
+
+  public MicrosoftTeamsNotificationTargetConfig lastName(@javax.annotation.Nullable String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  /**
+   * Get lastName
+   * @return lastName
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLastName() {
+    return lastName;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLastName(@javax.annotation.Nullable String lastName) {
+    this.lastName = lastName;
   }
 
 
@@ -325,8 +325,8 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
         equalsNullable(this.id, microsoftTeamsNotificationTargetConfig.id) &&
         Objects.equals(this.title, microsoftTeamsNotificationTargetConfig.title) &&
         Objects.equals(this.email, microsoftTeamsNotificationTargetConfig.email) &&
-        Objects.equals(this.lastName, microsoftTeamsNotificationTargetConfig.lastName) &&
         Objects.equals(this.firstName, microsoftTeamsNotificationTargetConfig.firstName) &&
+        Objects.equals(this.lastName, microsoftTeamsNotificationTargetConfig.lastName) &&
         super.equals(o);
   }
 
@@ -336,7 +336,7 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhookUrl, channelName, useOldApi, hashCodeNullable(id), title, email, lastName, firstName, super.hashCode());
+    return Objects.hash(webhookUrl, channelName, useOldApi, hashCodeNullable(id), title, email, firstName, lastName, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -357,8 +357,8 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
+    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -446,14 +446,14 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
       joiner.add(String.format(java.util.Locale.ROOT, "%semail%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEmail()))));
     }
 
-    // add `lastName` to the URL query string
-    if (getLastName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slastName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLastName()))));
-    }
-
     // add `firstName` to the URL query string
     if (getFirstName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sfirstName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFirstName()))));
+    }
+
+    // add `lastName` to the URL query string
+    if (getLastName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slastName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLastName()))));
     }
 
     return joiner.toString();

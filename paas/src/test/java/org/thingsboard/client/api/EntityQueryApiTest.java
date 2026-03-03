@@ -320,7 +320,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             rel.setTo(new EntityId().id(child.getId().getId()).entityType(EntityType.ASSET));
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            client.saveRelationV2(rel);
+            client.saveRelationAndReturn(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -353,7 +353,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             rel.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            client.saveRelationV2(rel);
+            client.saveRelationAndReturn(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -423,7 +423,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             rel.setTo(new EntityId().id(edge.getId().getId()).entityType(EntityType.EDGE));
             rel.setType("Manages");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            client.saveRelationV2(rel);
+            client.saveRelationAndReturn(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -486,7 +486,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             rel.setTo(new EntityId().id(ev.getId().getId()).entityType(EntityType.ENTITY_VIEW));
             rel.setType("HasView");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            client.saveRelationV2(rel);
+            client.saveRelationAndReturn(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -518,7 +518,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             rel.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
-            client.saveRelationV2(rel);
+            client.saveRelationAndReturn(rel);
         }
 
         EntityDataQuery query = new EntityDataQuery()

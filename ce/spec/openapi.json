@@ -1492,9 +1492,9 @@
         "tags": [
           "admin-controller"
         ],
-        "summary": "Get OAuth2 log in processing URL (getMailOAuth2RedirectUri)",
+        "summary": "Get OAuth2 log in processing URL (getMailProcessingUrl)",
         "description": "Returns the URL enclosed in double quotes. After successful authentication with OAuth2 provider and user consent for requested scope, it makes a redirect to this path so that the platform can do further log in processing and generating access tokens. \n\nAvailable for users with 'SYS_ADMIN' authority.",
-        "operationId": "getMailOAuth2RedirectUri",
+        "operationId": "getMailProcessingUrl",
         "responses": {
           "200": {
             "description": "OK",
@@ -39043,7 +39043,7 @@
         "tags": [
           "entity-relation-controller"
         ],
-        "summary": "Delete common relations (deleteCommonRelations)",
+        "summary": "Delete common relations (deleteRelations)",
         "description": "Deletes all the relations ('from' and 'to' direction) for the specified entity and relation type group: 'COMMON'. \n\nIf the user has the authority of 'System Administrator', the server checks that the entity is owned by the sysadmin. If the user has the authority of 'Tenant Administrator', the server checks that the entity is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the entity is assigned to the same customer.",
         "operationId": "deleteRelations",
         "parameters": [
@@ -47247,7 +47247,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "Z8N4Bd5BJaliMtRMeZwes3k3JHEZcQ"
+                      "resetToken": "zfY1Qqi3tXlHwN2G8F4Z3D5iwG5dRH"
                     }
                   }
                 }
@@ -47357,7 +47357,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "Z8N4Bd5BJaliMtRMeZwes3k3JHEZcQ"
+                      "resetToken": "zfY1Qqi3tXlHwN2G8F4Z3D5iwG5dRH"
                     }
                   }
                 }
@@ -48824,7 +48824,7 @@
         "tags": [
           "mobile-app-controller"
         ],
-        "summary": "Get mobile app infos (getTenantMobileAppInfos)",
+        "summary": "Get mobile app infos (getTenantMobileApps)",
         "description": "\n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
         "operationId": "getTenantMobileApps",
         "parameters": [
@@ -49160,7 +49160,7 @@
         "tags": [
           "mobile-app-controller"
         ],
-        "summary": "Get mobile info by id (getMobileAppInfoById)",
+        "summary": "Get mobile info by id (getMobileAppById)",
         "description": "\n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
         "operationId": "getMobileAppById",
         "parameters": [
@@ -57434,7 +57434,7 @@
         "tags": [
           "qr-code-settings-controller"
         ],
-        "summary": "Get Mobile application settings (getMobileAppSettings)",
+        "summary": "Get Mobile application settings (getQrCodeSettings)",
         "description": "The response payload contains configuration for android/iOS applications and platform qr code widget settings.\n\nAvailable for any authorized user. ",
         "operationId": "getQrCodeSettings",
         "responses": {
@@ -66233,7 +66233,7 @@
         "tags": [
           "tb-resource-controller"
         ],
-        "summary": "Get All Resource Infos (getAllResources)",
+        "summary": "Get All Resource Infos (getTenantResources)",
         "description": "Returns a page of Resource Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data. \n\nAvailable for users with 'TENANT_ADMIN' authority.",
         "operationId": "getTenantResources",
         "parameters": [
@@ -67365,7 +67365,7 @@
         "tags": [
           "tb-resource-controller"
         ],
-        "summary": "Download resource (downloadResource)",
+        "summary": "Download resource (downloadResourceIfChanged)",
         "description": "Download resource with a given type and key for the given scope\n\nAvailable for any authorized user. ",
         "operationId": "downloadResourceIfChanged",
         "parameters": [
@@ -75926,7 +75926,7 @@
         "tags": [
           "user-controller"
         ],
-        "summary": "Get information about last visited and starred dashboards (getLastVisitedDashboards)",
+        "summary": "Get information about last visited and starred dashboards (getUserDashboardsInfo)",
         "description": "Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "getUserDashboardsInfo",
         "responses": {
@@ -76924,7 +76924,7 @@
         "tags": [
           "user-controller"
         ],
-        "summary": "Get user settings (getUserSettings)",
+        "summary": "Get user settings (getGeneralUserSettings)",
         "description": "Fetch the User settings based on authorized user. ",
         "operationId": "getGeneralUserSettings",
         "responses": {
@@ -77057,7 +77057,7 @@
         "tags": [
           "user-controller"
         ],
-        "summary": "Update user settings (saveUserSettings)",
+        "summary": "Update user settings (putGeneralUserSettings)",
         "description": "Update user settings for authorized user. Only specified json elements will be updated.Example: you have such settings: {A:5, B:{C:10, D:20}}. Updating it with {B:{C:10, D:30}} will result in{A:5, B:{C:10, D:30}}. The same could be achieved by putting {B.D:30}",
         "operationId": "putGeneralUserSettings",
         "requestBody": {
@@ -77478,7 +77478,7 @@
         "tags": [
           "user-controller"
         ],
-        "summary": "Update user settings (saveUserSettings)",
+        "summary": "Update user settings (putUserSettings)",
         "description": "Update user settings for authorized user. Only specified json elements will be updated.Example: you have such settings: {A:5, B:{C:10, D:20}}. Updating it with {B:{C:10, D:30}} will result in{A:5, B:{C:10, D:30}}. The same could be achieved by putting {B.D:30}",
         "operationId": "putUserSettings",
         "parameters": [
@@ -91943,10 +91943,10 @@
               "email": {
                 "type": "string"
               },
-              "lastName": {
+              "firstName": {
                 "type": "string"
               },
-              "firstName": {
+              "lastName": {
                 "type": "string"
               }
             }
