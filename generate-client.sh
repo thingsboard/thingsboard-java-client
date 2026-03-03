@@ -58,7 +58,7 @@
 #
 # Output log: generate-client.log (overwritten on each run)
 #
-# Prerequisites: Node.js/npm, Java 25, Maven, Perl
+# Prerequisites: Java 25, Maven, Perl (Node.js/npm optional — JAR fallback used if absent)
 #
 
 set -euo pipefail
@@ -92,24 +92,17 @@ LOG_FILE="$SCRIPT_DIR/generate-client.log"
 # Log everything to file and stdout
 exec > >(tee "$LOG_FILE") 2>&1
 
-# Initialize nvm if available
-NVM_DIR="$HOME/.nvm"
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  . "$NVM_DIR/nvm.sh"
+OPENAPI_GENERATOR_VERSION="7.20.0"
+GENERATOR_CACHE_DIR="${OPENAPI_GENERATOR_CACHE_DIR:-${HOME}/.cache/openapi-generator}"
+GENERATOR_JAR="$GENERATOR_CACHE_DIR/openapi-generator-cli-${OPENAPI_GENERATOR_VERSION}.jar"
+
+if [ ! -f "$GENERATOR_JAR" ]; then
+  echo "Downloading openapi-generator-cli ${OPENAPI_GENERATOR_VERSION}..."
+  mkdir -p "$GENERATOR_CACHE_DIR"
+  curl -fSL -o "$GENERATOR_JAR" \
+    "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/${OPENAPI_GENERATOR_VERSION}/openapi-generator-cli-${OPENAPI_GENERATOR_VERSION}.jar"
 fi
-
-# Ensure openapi-generator-cli is available
-if ! command -v openapi-generator-cli &> /dev/null; then
-  echo "openapi-generator-cli not found. Installing via npm..."
-
-  if ! command -v npm &> /dev/null; then
-    echo "Error: npm is not installed. Please install Node.js/npm first."
-    exit 1
-  fi
-
-  npm install -g @openapitools/openapi-generator-cli
-  echo "openapi-generator-cli installed successfully."
-fi
+openapi-generator-cli() { java -jar "$GENERATOR_JAR" "$@"; }
 
 generate() {
   local edition="$1"
@@ -233,11 +226,23 @@ else
 fi
 
 if [ "$DRY_RUN" = false ]; then
+  # Resolve mvn: prefer M2_HOME/MAVEN_HOME, fall back to PATH
+  if [ -n "${M2_HOME:-}" ] && [ -x "$M2_HOME/bin/mvn" ]; then
+    MVN="$M2_HOME/bin/mvn"
+  elif [ -n "${MAVEN_HOME:-}" ] && [ -x "$MAVEN_HOME/bin/mvn" ]; then
+    MVN="$MAVEN_HOME/bin/mvn"
+  elif command -v mvn >/dev/null 2>&1; then
+    MVN="mvn"
+  else
+    echo "Error: mvn not found. Set M2_HOME or MAVEN_HOME, or add mvn to PATH."
+    exit 1
+  fi
+
   # Apply license headers and stage changes
   if [ "$VERBOSE" = true ]; then
-    mvn -f "$SCRIPT_DIR/pom.xml" license:format
+    "$MVN" -f "$SCRIPT_DIR/pom.xml" license:format
   else
-    mvn -f "$SCRIPT_DIR/pom.xml" license:format -q
+    "$MVN" -f "$SCRIPT_DIR/pom.xml" license:format -q
   fi
   git -C "$SCRIPT_DIR" add .
 fi
