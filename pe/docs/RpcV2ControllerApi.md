@@ -5,8 +5,8 @@
 | [**deleteRpc**](#deleteRpc) | **DELETE** /api/rpc/persistent/{rpcId} | Delete persistent RPC |
 | [**getPersistedRpc**](#getPersistedRpc) | **GET** /api/rpc/persistent/{rpcId} | Get persistent RPC request |
 | [**getPersistedRpcByDevice**](#getPersistedRpcByDevice) | **GET** /api/rpc/persistent/device/{deviceId} | Get persistent RPC requests |
-| [**handleOneWayDeviceRPCRequest**](#handleOneWayDeviceRPCRequest) | **POST** /api/rpc/oneway/{deviceId} | Send one-way RPC request |
-| [**handleTwoWayDeviceRPCRequest**](#handleTwoWayDeviceRPCRequest) | **POST** /api/rpc/twoway/{deviceId} | Send two-way RPC request |
+| [**handleOneWayDeviceRPCRequestV2**](#handleOneWayDeviceRPCRequestV2) | **POST** /api/rpc/oneway/{deviceId} | Send one-way RPC request (handleOneWayDeviceRPCRequestV2) |
+| [**handleTwoWayDeviceRPCRequestV2**](#handleTwoWayDeviceRPCRequestV2) | **POST** /api/rpc/twoway/{deviceId} | Send two-way RPC request (handleTwoWayDeviceRPCRequestV2) |
 
 
 
@@ -76,11 +76,11 @@ Allows to query RPC calls for specific device using pagination.  Available for u
 **String**
 
 
-## handleOneWayDeviceRPCRequest
+## handleOneWayDeviceRPCRequestV2
 
-> String handleOneWayDeviceRPCRequest(deviceId, body)
+> String handleOneWayDeviceRPCRequestV2(deviceId, body)
 
-Send one-way RPC request
+Send one-way RPC request (handleOneWayDeviceRPCRequestV2)
 
 Sends the one-way remote-procedure call (RPC) request to device. Sends the one-way remote-procedure call (RPC) request to device. The RPC call is A JSON that contains the method name ('method'), parameters ('params') and multiple optional fields. See example below. We will review the properties of the RPC call one-by-one below.   ```json {   \"method\": \"setGpio\",   \"params\": {     \"pin\": 7,     \"value\": 1   },   \"persistent\": false,   \"timeout\": 5000 } ```  ### Server-side RPC structure  The body of server-side RPC request consists of multiple fields:  * **method** - mandatory, name of the method to distinct the RPC calls.   For example, \"getCurrentTime\" or \"getWeatherForecast\". The value of the parameter is a string. * **params** - mandatory, parameters used for processing of the request. The value is a JSON. Leave empty JSON \"{}\" if no parameters needed. * **timeout** - optional, value of the processing timeout in milliseconds. The default value is 10000 (10 seconds). The minimum value is 5000 (5 seconds). * **expirationTime** - optional, value of the epoch time (in milliseconds, UTC timezone). Overrides **timeout** if present. * **persistent** - optional, indicates persistent RPC. The default value is \"false\". * **retries** - optional, defines how many times persistent RPC will be re-sent in case of failures on the network and/or device side. * **additionalInfo** - optional, defines metadata for the persistent RPC that will be added to the persistent RPC events.  ### RPC Result In case of persistent RPC, the result of this call is 'rpcId' UUID. In case of lightweight RPC, the result of this call is either 200 OK if the message was sent to device, or 504 Gateway Timeout if device is offline.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
@@ -97,11 +97,11 @@ Sends the one-way remote-procedure call (RPC) request to device. Sends the one-w
 **String**
 
 
-## handleTwoWayDeviceRPCRequest
+## handleTwoWayDeviceRPCRequestV2
 
-> String handleTwoWayDeviceRPCRequest(deviceId, body)
+> String handleTwoWayDeviceRPCRequestV2(deviceId, body)
 
-Send two-way RPC request
+Send two-way RPC request (handleTwoWayDeviceRPCRequestV2)
 
 Sends the two-way remote-procedure call (RPC) request to device. Sends the one-way remote-procedure call (RPC) request to device. The RPC call is A JSON that contains the method name ('method'), parameters ('params') and multiple optional fields. See example below. We will review the properties of the RPC call one-by-one below.   ```json {   \"method\": \"setGpio\",   \"params\": {     \"pin\": 7,     \"value\": 1   },   \"persistent\": false,   \"timeout\": 5000 } ```  ### Server-side RPC structure  The body of server-side RPC request consists of multiple fields:  * **method** - mandatory, name of the method to distinct the RPC calls.   For example, \"getCurrentTime\" or \"getWeatherForecast\". The value of the parameter is a string. * **params** - mandatory, parameters used for processing of the request. The value is a JSON. Leave empty JSON \"{}\" if no parameters needed. * **timeout** - optional, value of the processing timeout in milliseconds. The default value is 10000 (10 seconds). The minimum value is 5000 (5 seconds). * **expirationTime** - optional, value of the epoch time (in milliseconds, UTC timezone). Overrides **timeout** if present. * **persistent** - optional, indicates persistent RPC. The default value is \"false\". * **retries** - optional, defines how many times persistent RPC will be re-sent in case of failures on the network and/or device side. * **additionalInfo** - optional, defines metadata for the persistent RPC that will be added to the persistent RPC events.  ### RPC Result In case of persistent RPC, the result of this call is 'rpcId' UUID. In case of lightweight RPC, the result of this call is the response from device, or 504 Gateway Timeout if device is offline.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

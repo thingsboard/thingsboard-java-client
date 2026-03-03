@@ -259,6 +259,12 @@ public class RuleEngineComponentLifecycleEventNotificationRuleTriggerConfig exte
   }
 
 
+  @Override
+  public RuleEngineComponentLifecycleEventNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
+    return this;
+  }
+
   /**
    * Return true if this RuleEngineComponentLifecycleEventNotificationRuleTriggerConfig object is equal to o.
    */

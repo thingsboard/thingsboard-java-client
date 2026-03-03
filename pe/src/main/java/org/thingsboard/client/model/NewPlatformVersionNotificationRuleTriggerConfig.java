@@ -53,6 +53,12 @@ public class NewPlatformVersionNotificationRuleTriggerConfig extends Notificatio
   public NewPlatformVersionNotificationRuleTriggerConfig() { 
   }
 
+  @Override
+  public NewPlatformVersionNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
+    return this;
+  }
+
   /**
    * Return true if this NewPlatformVersionNotificationRuleTriggerConfig object is equal to o.
    */

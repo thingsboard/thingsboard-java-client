@@ -4,8 +4,8 @@
 |------------- | ------------- | -------------|
 | [**deleteMobileApp**](#deleteMobileApp) | **DELETE** /api/mobile/app/{id} | Delete Mobile App by ID (deleteMobileApp) |
 | [**getLoginMobileInfo**](#getLoginMobileInfo) | **GET** /api/noauth/mobile | Get mobile app login info (getLoginMobileInfo) |
-| [**getMobileAppById**](#getMobileAppById) | **GET** /api/mobile/app/{id} | Get mobile info by id (getMobileAppInfoById) |
-| [**getTenantMobileApps**](#getTenantMobileApps) | **GET** /api/mobile/app | Get mobile app infos (getTenantMobileAppInfos) |
+| [**getMobileAppById**](#getMobileAppById) | **GET** /api/mobile/app/{id} | Get mobile info by id (getMobileAppById) |
+| [**getTenantMobileApps**](#getTenantMobileApps) | **GET** /api/mobile/app | Get mobile app infos (getTenantMobileApps) |
 | [**getUserMobileInfo**](#getUserMobileInfo) | **GET** /api/mobile | Get user mobile app basic info (getUserMobileInfo) |
 | [**saveMobileApp**](#saveMobileApp) | **POST** /api/mobile/app | Save Or update Mobile app (saveMobileApp) |
 
@@ -54,7 +54,7 @@ Get mobile app login info (getLoginMobileInfo)
 
 > MobileApp getMobileAppById(id)
 
-Get mobile info by id (getMobileAppInfoById)
+Get mobile info by id (getMobileAppById)
 
   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
@@ -74,7 +74,7 @@ Get mobile info by id (getMobileAppInfoById)
 
 > PageDataMobileApp getTenantMobileApps(pageSize, page, platformType, textSearch, sortProperty, sortOrder)
 
-Get mobile app infos (getTenantMobileAppInfos)
+Get mobile app infos (getTenantMobileApps)
 
   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
