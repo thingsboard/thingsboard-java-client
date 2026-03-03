@@ -8,15 +8,15 @@
 | [**downloadLwm2mResourceIfChanged**](#downloadLwm2mResourceIfChanged) | **GET** /api/resource/lwm2m/{resourceId}/download | Download LWM2M Resource (downloadLwm2mResourceIfChanged) |
 | [**downloadPkcs12ResourceIfChanged**](#downloadPkcs12ResourceIfChanged) | **GET** /api/resource/pkcs12/{resourceId}/download | Download PKCS_12 Resource (downloadPkcs12ResourceIfChanged) |
 | [**downloadResource**](#downloadResource) | **GET** /api/resource/{resourceId}/download | Download Resource (downloadResource) |
-| [**downloadResourceIfChanged**](#downloadResourceIfChanged) | **GET** /api/resource/{resourceType}/{scope}/{key} | Download resource (downloadResource) |
+| [**downloadResourceIfChanged**](#downloadResourceIfChanged) | **GET** /api/resource/{resourceType}/{scope}/{key} | Download resource (downloadResourceIfChanged) |
 | [**getLwm2mListObjects**](#getLwm2mListObjects) | **GET** /api/resource/lwm2m | Get LwM2M Objects (getLwm2mListObjects) |
 | [**getLwm2mListObjectsPage**](#getLwm2mListObjectsPage) | **GET** /api/resource/lwm2m/page | Get LwM2M Objects (getLwm2mListObjectsPage) |
 | [**getResourceById**](#getResourceById) | **GET** /api/resource/{resourceId} | Get Resource (getResourceById) |
 | [**getResourceInfo**](#getResourceInfo) | **GET** /api/resource/{resourceType}/{scope}/{key}/info | Get resource info (getResourceInfo) |
 | [**getResourceInfoById**](#getResourceInfoById) | **GET** /api/resource/info/{resourceId} | Get Resource Info (getResourceInfoById) |
 | [**getResources**](#getResources) | **GET** /api/resource | Get Resource Infos (getResources) |
-| [**getSystemOrTenantResourcesByIdsV2**](#getSystemOrTenantResourcesByIdsV2) | **GET** /api/resource/list | Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2) |
-| [**getTenantResources**](#getTenantResources) | **GET** /api/resource/tenant | Get All Resource Infos (getAllResources) |
+| [**getSystemOrTenantResourcesByIds**](#getSystemOrTenantResourcesByIds) | **GET** /api/resource/list | Get Resource Infos by ids (getSystemOrTenantResourcesByIds) |
+| [**getTenantResources**](#getTenantResources) | **GET** /api/resource/tenant | Get All Resource Infos (getTenantResources) |
 | [**saveResource**](#saveResource) | **POST** /api/resource | Create Or Update Resource (saveResource) |
 | [**updateResourceData**](#updateResourceData) | **PUT** /api/resource/{id}/data | updateResourceData |
 | [**updateResourceInfo**](#updateResourceInfo) | **PUT** /api/resource/{id}/info | updateResourceInfo |
@@ -153,7 +153,7 @@ Download Resource based on the provided Resource Id.  Available for users with '
 
 > File downloadResourceIfChanged(resourceType, scope, key, ifNoneMatch)
 
-Download resource (downloadResource)
+Download resource (downloadResourceIfChanged)
 
 Download resource with a given type and key for the given scope  Available for any authorized user. 
 
@@ -306,11 +306,11 @@ Returns a page of Resource Info objects owned by tenant or sysadmin. You can spe
 **PageDataTbResourceInfo**
 
 
-## getSystemOrTenantResourcesByIdsV2
+## getSystemOrTenantResourcesByIds
 
-> List<TbResourceInfo> getSystemOrTenantResourcesByIdsV2(resourceIds)
+> List<TbResourceInfo> getSystemOrTenantResourcesByIds(resourceIds)
 
-Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2)
+Get Resource Infos by ids (getSystemOrTenantResourcesByIds)
 
 
 ### Parameters
@@ -328,7 +328,7 @@ Get Resource Infos by ids (getSystemOrTenantResourcesByIdsV2)
 
 > PageDataTbResourceInfo getTenantResources(pageSize, page, textSearch, sortProperty, sortOrder)
 
-Get All Resource Infos (getAllResources)
+Get All Resource Infos (getTenantResources)
 
 Returns a page of Resource Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with 'TENANT_ADMIN' authority.
 

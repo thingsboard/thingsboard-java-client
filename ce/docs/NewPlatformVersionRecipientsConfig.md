@@ -1,9 +1,7 @@
 
-# DefaultNotificationRuleRecipientsConfig
+# NewPlatformVersionRecipientsConfig
 
-`org.thingsboard.client.model.DefaultNotificationRuleRecipientsConfig`
-
-Default notification rule recipients configuration
+`org.thingsboard.client.model.NewPlatformVersionRecipientsConfig`
 
 **Extends:** **NotificationRuleRecipientsConfig**
 
@@ -11,7 +9,6 @@ Default notification rule recipients configuration
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **triggerType** | **NotificationRuleTriggerType** |  | |
 | **targets** | **List\<UUID\>** |  | |
 
 

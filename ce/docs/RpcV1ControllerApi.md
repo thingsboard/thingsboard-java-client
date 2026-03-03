@@ -2,16 +2,16 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**handleOneWayDeviceRPCRequest1**](#handleOneWayDeviceRPCRequest1) | **POST** /api/plugins/rpc/oneway/{deviceId} | Send one-way RPC request (handleOneWayDeviceRPCRequest) |
-| [**handleTwoWayDeviceRPCRequest1**](#handleTwoWayDeviceRPCRequest1) | **POST** /api/plugins/rpc/twoway/{deviceId} | Send two-way RPC request (handleTwoWayDeviceRPCRequest) |
+| [**handleOneWayDeviceRPCRequestV1**](#handleOneWayDeviceRPCRequestV1) | **POST** /api/plugins/rpc/oneway/{deviceId} | Send one-way RPC request (handleOneWayDeviceRPCRequestV1) |
+| [**handleTwoWayDeviceRPCRequestV1**](#handleTwoWayDeviceRPCRequestV1) | **POST** /api/plugins/rpc/twoway/{deviceId} | Send two-way RPC request (handleTwoWayDeviceRPCRequestV1) |
 
 
 
-## handleOneWayDeviceRPCRequest1
+## handleOneWayDeviceRPCRequestV1
 
-> String handleOneWayDeviceRPCRequest1(deviceId, body)
+> String handleOneWayDeviceRPCRequestV1(deviceId, body)
 
-Send one-way RPC request (handleOneWayDeviceRPCRequest)
+Send one-way RPC request (handleOneWayDeviceRPCRequestV1)
 
 Deprecated. See 'Rpc V 2 Controller' instead.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
@@ -28,11 +28,11 @@ Deprecated. See 'Rpc V 2 Controller' instead.  Available for users with 'TENANT_
 **String**
 
 
-## handleTwoWayDeviceRPCRequest1
+## handleTwoWayDeviceRPCRequestV1
 
-> String handleTwoWayDeviceRPCRequest1(deviceId, body)
+> String handleTwoWayDeviceRPCRequestV1(deviceId, body)
 
-Send two-way RPC request (handleTwoWayDeviceRPCRequest)
+Send two-way RPC request (handleTwoWayDeviceRPCRequestV1)
 
 Deprecated. See 'Rpc V 2 Controller' instead.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

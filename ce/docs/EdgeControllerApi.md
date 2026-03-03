@@ -5,7 +5,7 @@
 | [**assignEdgeToCustomer**](#assignEdgeToCustomer) | **POST** /api/customer/{customerId}/edge/{edgeId} | Assign edge to customer (assignEdgeToCustomer) |
 | [**assignEdgeToPublicCustomer**](#assignEdgeToPublicCustomer) | **POST** /api/customer/public/edge/{edgeId} | Make edge publicly available (assignEdgeToPublicCustomer) |
 | [**deleteEdge**](#deleteEdge) | **DELETE** /api/edge/{edgeId} | Delete edge (deleteEdge) |
-| [**findByQuery2**](#findByQuery2) | **POST** /api/edges | Find related edges (findByQuery) |
+| [**findEdgesByQuery**](#findEdgesByQuery) | **POST** /api/edges | Find related edges (findEdgesByQuery) |
 | [**findMissingToRelatedRuleChains**](#findMissingToRelatedRuleChains) | **GET** /api/edge/missingToRelatedRuleChains/{edgeId} | Find missing rule chains (findMissingToRelatedRuleChains) |
 | [**getCustomerEdgeInfos**](#getCustomerEdgeInfos) | **GET** /api/customer/{customerId}/edgeInfos | Get Customer Edge Infos (getCustomerEdgeInfos) |
 | [**getCustomerEdges**](#getCustomerEdges) | **GET** /api/customer/{customerId}/edges | Get Customer Edges (getCustomerEdges) |
@@ -90,11 +90,11 @@ Deletes the edge. Referencing non-existing edge Id will cause an error.  Availab
 null (empty response body)
 
 
-## findByQuery2
+## findEdgesByQuery
 
-> List<Edge> findByQuery2(edgeSearchQuery)
+> List<Edge> findEdgesByQuery(edgeSearchQuery)
 
-Find related edges (findByQuery)
+Find related edges (findEdgesByQuery)
 
 Returns all edges that are related to the specific entity. The entity id, relation type, edge types, depth of the search, and other query parameters defined using complex 'EdgeSearchQuery' object. See 'Model' tab of the Parameters for more info.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

@@ -29,10 +29,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -50,14 +46,15 @@ import org.thingsboard.client.ApiClient;
 public class NotificationRequestStats {
   public static final String JSON_PROPERTY_SENT = "sent";
   @javax.annotation.Nullable
-  private Map<String, Object> sent = new HashMap<>();
+  private Map<String, Integer> sent = new HashMap<>();
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @javax.annotation.Nullable
   private Map<String, Map<String, String>> errors = new HashMap<>();
 
   public static final String JSON_PROPERTY_TOTAL_ERRORS = "totalErrors";
-  private JsonNullable<Object> totalErrors = JsonNullable.<Object>of(null);
+  @javax.annotation.Nullable
+  private Integer totalErrors;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
@@ -66,12 +63,12 @@ public class NotificationRequestStats {
   public NotificationRequestStats() { 
   }
 
-  public NotificationRequestStats sent(@javax.annotation.Nullable Map<String, Object> sent) {
+  public NotificationRequestStats sent(@javax.annotation.Nullable Map<String, Integer> sent) {
     this.sent = sent;
     return this;
   }
 
-  public NotificationRequestStats putSentItem(String key, Object sentItem) {
+  public NotificationRequestStats putSentItem(String key, Integer sentItem) {
     if (this.sent == null) {
       this.sent = new HashMap<>();
     }
@@ -85,15 +82,15 @@ public class NotificationRequestStats {
    */
   @javax.annotation.Nullable
   @JsonProperty(value = JSON_PROPERTY_SENT, required = false)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public Map<String, Object> getSent() {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Map<String, Integer> getSent() {
     return sent;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_SENT, required = false)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSent(@javax.annotation.Nullable Map<String, Object> sent) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSent(@javax.annotation.Nullable Map<String, Integer> sent) {
     this.sent = sent;
   }
 
@@ -130,35 +127,27 @@ public class NotificationRequestStats {
   }
 
 
-  public NotificationRequestStats totalErrors(@javax.annotation.Nullable Object totalErrors) {
-    this.totalErrors = JsonNullable.<Object>of(totalErrors);
+  public NotificationRequestStats totalErrors(@javax.annotation.Nullable Integer totalErrors) {
+    this.totalErrors = totalErrors;
     return this;
   }
 
   /**
-   * Get totalErrors
+   * Total number of errors across all delivery methods
    * @return totalErrors
    */
   @javax.annotation.Nullable
-  @JsonIgnore
-  public Object getTotalErrors() {
-        return totalErrors.orElse(null);
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_ERRORS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getTotalErrors() {
+    return totalErrors;
   }
+
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Object> getTotalErrors_JsonNullable() {
-    return totalErrors;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_TOTAL_ERRORS)
-  public void setTotalErrors_JsonNullable(JsonNullable<Object> totalErrors) {
+  public void setTotalErrors(@javax.annotation.Nullable Integer totalErrors) {
     this.totalErrors = totalErrors;
-  }
-
-  public void setTotalErrors(@javax.annotation.Nullable Object totalErrors) {
-    this.totalErrors = JsonNullable.<Object>of(totalErrors);
   }
 
 
@@ -200,24 +189,13 @@ public class NotificationRequestStats {
     NotificationRequestStats notificationRequestStats = (NotificationRequestStats) o;
     return Objects.equals(this.sent, notificationRequestStats.sent) &&
         Objects.equals(this.errors, notificationRequestStats.errors) &&
-        equalsNullable(this.totalErrors, notificationRequestStats.totalErrors) &&
+        Objects.equals(this.totalErrors, notificationRequestStats.totalErrors) &&
         Objects.equals(this.error, notificationRequestStats.error);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sent, errors, hashCodeNullable(totalErrors), error);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(sent, errors, totalErrors, error);
   }
 
   @Override
