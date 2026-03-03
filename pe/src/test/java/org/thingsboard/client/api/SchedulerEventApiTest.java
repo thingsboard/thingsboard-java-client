@@ -123,13 +123,13 @@ public class SchedulerEventApiTest extends AbstractApiTest {
         String id2 = e2.getId().getId().toString();
 
         // getAllSchedulerEventsV2 – no type filter
-        List<SchedulerEventWithCustomerInfo> all = client.getAllSchedulerEventsV2(null);
+        List<SchedulerEventWithCustomerInfo> all = client.getAllSchedulerEvents(null);
         assertNotNull(all);
         assertTrue(all.stream().anyMatch(e -> e.getId().getId().toString().equals(id1)));
         assertTrue(all.stream().anyMatch(e -> e.getId().getId().toString().equals(id2)));
 
         // getAllSchedulerEventsV2 – with type filter
-        List<SchedulerEventWithCustomerInfo> filtered = client.getAllSchedulerEventsV2(EVENT_TYPE);
+        List<SchedulerEventWithCustomerInfo> filtered = client.getAllSchedulerEvents(EVENT_TYPE);
         assertNotNull(filtered);
         assertTrue(filtered.stream().anyMatch(e -> e.getId().getId().toString().equals(id1)));
 
@@ -211,7 +211,7 @@ public class SchedulerEventApiTest extends AbstractApiTest {
         String id1 = e1.getId().getId().toString();
         String id2 = e2.getId().getId().toString();
 
-        List<SchedulerEventInfo> result = client.getSchedulerEventsByIdsV2(List.of(id1, id2));
+        List<SchedulerEventInfo> result = client.getSchedulerEventsByIds(List.of(id1, id2));
         assertNotNull(result);
         assertEquals(2, result.size());
         assertTrue(result.stream().anyMatch(e -> e.getId().getId().toString().equals(id1)));

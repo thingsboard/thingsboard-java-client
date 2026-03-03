@@ -50,7 +50,7 @@ public class DashboardApiTest extends AbstractApiTest {
         }
 
         // find all, check count
-        PageDataDashboardInfo allDashboards = client.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo allDashboards = client.getTenantDashboards(100, 0, null, null, null, null);
         assertNotNull(allDashboards);
         assertNotNull(allDashboards.getData());
         int initialSize = allDashboards.getData().size();
@@ -59,7 +59,7 @@ public class DashboardApiTest extends AbstractApiTest {
         List<DashboardInfo> createdDashboards = allDashboards.getData();
 
         // find all with search text, check count
-        PageDataDashboardInfo filteredDashboards = client.getTenantDashboards1(100, 0, null, TEST_PREFIX_2, null, null);
+        PageDataDashboardInfo filteredDashboards = client.getTenantDashboards(100, 0, null, TEST_PREFIX_2, null, null);
         assertEquals(10, filteredDashboards.getData().size(), "Expected exactly 10 dashboards matching prefix");
 
         // find by id
@@ -97,7 +97,7 @@ public class DashboardApiTest extends AbstractApiTest {
         client.saveDashboard(dashboard, null, null, null);
 
         // tenant admin variant
-        PageDataDashboardInfo tenantAdminResult = client.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo tenantAdminResult = client.getTenantDashboards(100, 0, null, null, null, null);
         assertNotNull(tenantAdminResult);
         assertEquals(1, tenantAdminResult.getData().size());
 
@@ -111,7 +111,7 @@ public class DashboardApiTest extends AbstractApiTest {
 
         // system administrator variant (requires tenantId)
         client.login("sysadmin@thingsboard.org", "sysadmin");
-        PageDataDashboardInfo sysAdminResult = client.getTenantDashboards(
+        PageDataDashboardInfo sysAdminResult = client.getTenantDashboardsByTenantId(
                 savedTenant.getId().getId().toString(), 100, 0, null, null, null);
         assertNotNull(sysAdminResult);
         assertEquals(1, sysAdminResult.getData().size(), "Expected at least one dashboard from sysadmin query");
@@ -135,7 +135,7 @@ public class DashboardApiTest extends AbstractApiTest {
         client.saveDashboard(dashboard, null, null, null);
 
         // saveDashboard returns void, so fetch the ID via getTenantDashboards1
-        PageDataDashboardInfo all = client.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo all = client.getTenantDashboards(100, 0, null, null, null, null);
         assertFalse(all.getData().isEmpty());
         DashboardInfo first = all.getData().get(0);
 
@@ -178,7 +178,7 @@ public class DashboardApiTest extends AbstractApiTest {
         dashboard.setTitle(TEST_PREFIX + System.currentTimeMillis());
         client.saveDashboard(dashboard, null, null, null);
 
-        PageDataDashboardInfo all = client.getTenantDashboards1(100, 0, null, null, null, null);
+        PageDataDashboardInfo all = client.getTenantDashboards(100, 0, null, null, null, null);
         DashboardId dashboardId = all.getData().get(0).getId();
 
         // getTenantHomeDashboardInfo: no home dashboard set for a freshly created tenant

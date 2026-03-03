@@ -214,7 +214,7 @@ public class UserApiTest extends AbstractApiTest {
         user.setEmail("byids_" + ts + "@test.com");
         User created = client.saveUser(user, "false", null, null);
 
-        List<User> result = client.getUsersByIdsV2(List.of(created.getId().getId().toString()));
+        List<User> result = client.getUsersByIds(List.of(created.getId().getId().toString()));
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals(created.getId().getId(), result.get(0).getId().getId());
@@ -294,7 +294,7 @@ public class UserApiTest extends AbstractApiTest {
         assertEquals("2", typed.get("y").asText());
 
         // deleteUserSettings removes a specific key from a typed settings section
-        client.deleteUserSettings("x", settingsType);
+        client.deleteUserSettingsByType("x", settingsType);
         JsonNode afterDelete = client.getUserSettings(settingsType);
         assertNotNull(afterDelete);
         assertFalse(afterDelete.has("x"));

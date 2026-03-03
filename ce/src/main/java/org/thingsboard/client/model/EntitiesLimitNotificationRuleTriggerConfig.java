@@ -125,6 +125,12 @@ public class EntitiesLimitNotificationRuleTriggerConfig extends NotificationRule
   }
 
 
+  @Override
+  public EntitiesLimitNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
+    return this;
+  }
+
   /**
    * Return true if this EntitiesLimitNotificationRuleTriggerConfig object is equal to o.
    */

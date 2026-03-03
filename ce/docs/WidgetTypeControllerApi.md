@@ -4,9 +4,9 @@
 |------------- | ------------- | -------------|
 | [**deleteWidgetType**](#deleteWidgetType) | **DELETE** /api/widgetType/{widgetTypeId} | Delete widget type (deleteWidgetType) |
 | [**getBundleWidgetTypeFqns**](#getBundleWidgetTypeFqns) | **GET** /api/widgetTypeFqns | Get all Widget type fqns for specified Bundle (getBundleWidgetTypeFqns) |
+| [**getBundleWidgetTypes**](#getBundleWidgetTypes) | **GET** /api/widgetsBundles/{widgetsBundleId}/widgetTypes | Get all Widget types for specified Bundle (getBundleWidgetTypes) |
 | [**getBundleWidgetTypesDetails**](#getBundleWidgetTypesDetails) | **GET** /api/widgetTypesDetails | Get all Widget types details for specified Bundle (getBundleWidgetTypesDetails) |
 | [**getBundleWidgetTypesInfos**](#getBundleWidgetTypesInfos) | **GET** /api/widgetTypesInfos | Get Widget Type Info objects (getBundleWidgetTypesInfos) |
-| [**getBundleWidgetTypesV2**](#getBundleWidgetTypesV2) | **GET** /api/widgetsBundles/{widgetsBundleId}/widgetTypes | Get all Widget types for specified Bundle (getBundleWidgetTypes) |
 | [**getWidgetType**](#getWidgetType) | **GET** /api/widgetType | Get Widget Type (getWidgetType) |
 | [**getWidgetTypeById**](#getWidgetTypeById) | **GET** /api/widgetType/{widgetTypeId} | Get Widget Type Details (getWidgetTypeById) |
 | [**getWidgetTypeInfoById**](#getWidgetTypeInfoById) | **GET** /api/widgetTypeInfo/{widgetTypeId} | Get Widget Type Info (getWidgetTypeInfoById) |
@@ -53,6 +53,26 @@ Returns an array of Widget Type fqns that belong to specified Widget Bundle.  Av
 ### Return type
 
 **List<String>**
+
+
+## getBundleWidgetTypes
+
+> List<WidgetType> getBundleWidgetTypes(widgetsBundleId)
+
+Get all Widget types for specified Bundle (getBundleWidgetTypes)
+
+Returns an array of Widget Type objects that belong to specified Widget Bundle.Widget Type represents the template for widget creation. Widget Type and Widget are similar to class and object in OOP theory.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **widgetsBundleId** | **String** | Widget Bundle Id | |
+
+### Return type
+
+**List<WidgetType>**
 
 
 ## getBundleWidgetTypesDetails
@@ -102,26 +122,6 @@ Get the Widget Type Info objects based on the provided parameters. Widget Type I
 ### Return type
 
 **PageDataWidgetTypeInfo**
-
-
-## getBundleWidgetTypesV2
-
-> List<WidgetType> getBundleWidgetTypesV2(widgetsBundleId)
-
-Get all Widget types for specified Bundle (getBundleWidgetTypes)
-
-Returns an array of Widget Type objects that belong to specified Widget Bundle.Widget Type represents the template for widget creation. Widget Type and Widget are similar to class and object in OOP theory.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **widgetsBundleId** | **String** | Widget Bundle Id | |
-
-### Return type
-
-**List<WidgetType>**
 
 
 ## getWidgetType

@@ -8,7 +8,7 @@
 | [**getOtaPackageById**](#getOtaPackageById) | **GET** /api/otaPackage/{otaPackageId} | Get OTA Package (getOtaPackageById) |
 | [**getOtaPackageInfoById**](#getOtaPackageInfoById) | **GET** /api/otaPackage/info/{otaPackageId} | Get OTA Package Info (getOtaPackageInfoById) |
 | [**getOtaPackages**](#getOtaPackages) | **GET** /api/otaPackages | Get OTA Package Infos (getOtaPackages) |
-| [**getOtaPackages1**](#getOtaPackages1) | **GET** /api/otaPackages/{deviceProfileId}/{type} | Get OTA Package Infos (getOtaPackages) |
+| [**getOtaPackagesByDeviceProfileIdAndType**](#getOtaPackagesByDeviceProfileIdAndType) | **GET** /api/otaPackages/{deviceProfileId}/{type} | Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType) |
 | [**saveOtaPackageData**](#saveOtaPackageData) | **POST** /api/otaPackage/{otaPackageId} | Save OTA Package data (saveOtaPackageData) |
 | [**saveOtaPackageInfo**](#saveOtaPackageInfo) | **POST** /api/otaPackage | Create Or Update OTA Package Info (saveOtaPackageInfo) |
 
@@ -144,11 +144,11 @@ Returns a page of OTA Package Info objects owned by tenant. You can specify para
 **PageDataOtaPackageInfo**
 
 
-## getOtaPackages1
+## getOtaPackagesByDeviceProfileIdAndType
 
-> PageDataOtaPackageInfo getOtaPackages1(deviceProfileId, type, pageSize, page, textSearch, sortProperty, sortOrder)
+> PageDataOtaPackageInfo getOtaPackagesByDeviceProfileIdAndType(deviceProfileId, type, pageSize, page, textSearch, sortProperty, sortOrder)
 
-Get OTA Package Infos (getOtaPackages)
+Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType)
 
 Returns a page of OTA Package Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. OTA Package Info is a lightweight object that includes main information about the OTA Package excluding the heavyweight data.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

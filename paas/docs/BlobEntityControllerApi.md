@@ -5,7 +5,7 @@
 | [**deleteBlobEntity**](#deleteBlobEntity) | **DELETE** /api/blobEntity/{blobEntityId} | Delete Blob Entity (deleteBlobEntity) |
 | [**downloadBlobEntity**](#downloadBlobEntity) | **GET** /api/blobEntity/{blobEntityId}/download | Download Blob Entity By Id (downloadBlobEntity) |
 | [**getBlobEntities**](#getBlobEntities) | **GET** /api/blobEntities | Get Blob Entities (getBlobEntities) |
-| [**getBlobEntitiesByIdsV2**](#getBlobEntitiesByIdsV2) | **GET** /api/blobEntities/list | Get Blob Entities By Ids (getBlobEntitiesByIdsV2) |
+| [**getBlobEntitiesByIds**](#getBlobEntitiesByIds) | **GET** /api/blobEntities/list | Get Blob Entities By Ids (getBlobEntitiesByIds) |
 | [**getBlobEntityInfoById**](#getBlobEntityInfoById) | **GET** /api/blobEntity/info/{blobEntityId} | Get Blob Entity With Customer Info (getBlobEntityInfoById) |
 
 
@@ -77,11 +77,11 @@ Returns a page of BlobEntityWithCustomerInfo object that are available for the c
 **PageDataBlobEntityWithCustomerInfo**
 
 
-## getBlobEntitiesByIdsV2
+## getBlobEntitiesByIds
 
-> List<BlobEntityInfo> getBlobEntitiesByIdsV2(blobEntityIds)
+> List<BlobEntityInfo> getBlobEntitiesByIds(blobEntityIds)
 
-Get Blob Entities By Ids (getBlobEntitiesByIdsV2)
+Get Blob Entities By Ids (getBlobEntitiesByIds)
 
 Requested blob entities must be owned by tenant or assigned to customer which user is performing the request. The platform uses Blob(binary large object) entities in the reporting feature, in order to store Dashboard states snapshots of different content types in base64 format. BlobEntityInfo represents an object that contains base info about the blob entity(name, type, contentType, etc.). See the 'Model' tab of the Response Class for more details.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 

@@ -8,7 +8,7 @@
 | [**getAssetProfileInfos**](#getAssetProfileInfos) | **GET** /api/assetProfileInfos | Get Asset Profile infos (getAssetProfileInfos) |
 | [**getAssetProfileNames**](#getAssetProfileNames) | **GET** /api/assetProfile/names | Get Asset Profile names (getAssetProfileNames) |
 | [**getAssetProfiles**](#getAssetProfiles) | **GET** /api/assetProfiles | Get Asset Profiles (getAssetProfiles) |
-| [**getAssetProfilesByIdsV2**](#getAssetProfilesByIdsV2) | **GET** /api/assetProfileInfos/list | Get Asset Profiles By Ids (getAssetProfilesByIdsV2) |
+| [**getAssetProfilesByIds**](#getAssetProfilesByIds) | **GET** /api/assetProfileInfos/list | Get Asset Profiles By Ids (getAssetProfilesByIds) |
 | [**getDefaultAssetProfileInfo**](#getDefaultAssetProfileInfo) | **GET** /api/assetProfileInfo/default | Get Default Asset Profile (getDefaultAssetProfileInfo) |
 | [**saveAssetProfile**](#saveAssetProfile) | **POST** /api/assetProfile | Create Or Update Asset Profile (saveAssetProfile) |
 | [**setDefaultAssetProfile**](#setDefaultAssetProfile) | **POST** /api/assetProfile/{assetProfileId}/default | Make Asset Profile Default (setDefaultAssetProfile) |
@@ -144,11 +144,11 @@ Returns a page of asset profile objects owned by tenant. You can specify paramet
 **PageDataAssetProfile**
 
 
-## getAssetProfilesByIdsV2
+## getAssetProfilesByIds
 
-> List<AssetProfileInfo> getAssetProfilesByIdsV2(assetProfileIds)
+> List<AssetProfileInfo> getAssetProfilesByIds(assetProfileIds)
 
-Get Asset Profiles By Ids (getAssetProfilesByIdsV2)
+Get Asset Profiles By Ids (getAssetProfilesByIds)
 
 Requested asset profiles must be owned by tenant which is performing the request.   
 

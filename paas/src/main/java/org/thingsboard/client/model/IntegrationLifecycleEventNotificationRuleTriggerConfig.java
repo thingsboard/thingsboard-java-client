@@ -202,6 +202,12 @@ public class IntegrationLifecycleEventNotificationRuleTriggerConfig extends Noti
   }
 
 
+  @Override
+  public IntegrationLifecycleEventNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
+    return this;
+  }
+
   /**
    * Return true if this IntegrationLifecycleEventNotificationRuleTriggerConfig object is equal to o.
    */

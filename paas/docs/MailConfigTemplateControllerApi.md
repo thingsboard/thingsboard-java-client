@@ -2,13 +2,13 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getClientRegistrationTemplates1**](#getClientRegistrationTemplates1) | **GET** /api/mail/config/template | Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority. |
+| [**getClientRegistrationTemplates**](#getClientRegistrationTemplates) | **GET** /api/mail/config/template | Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority. |
 
 
 
-## getClientRegistrationTemplates1
+## getClientRegistrationTemplates
 
-> com.fasterxml.jackson.databind.JsonNode getClientRegistrationTemplates1()
+> com.fasterxml.jackson.databind.JsonNode getClientRegistrationTemplates()
 
 Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 

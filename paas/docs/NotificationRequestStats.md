@@ -9,9 +9,9 @@ Notification request processing statistics
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **sent** | **Map\<String, Object\>** |  | [optional] |
+| **sent** | **Map\<String, Integer\>** |  | [optional] |
 | **errors** | **Map\<String, Map<String, String>\>** |  | [optional] |
-| **totalErrors** | **Object** |  | [optional] |
+| **totalErrors** | **Integer** |  | [optional] |
 | **error** | **String** |  | [optional] |
 | **totalSent** | **Integer** |  | [optional] |
 

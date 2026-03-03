@@ -10,14 +10,14 @@
 | [**getCustomerDashboards**](#getCustomerDashboards) | **GET** /api/customer/{customerId}/dashboards | Get Customer Dashboards (getCustomerDashboards) |
 | [**getDashboardById**](#getDashboardById) | **GET** /api/dashboard/{dashboardId} | Get Dashboard (getDashboardById) |
 | [**getDashboardInfoById**](#getDashboardInfoById) | **GET** /api/dashboard/info/{dashboardId} | Get Dashboard Info (getDashboardInfoById) |
-| [**getDashboardsByIdsV2**](#getDashboardsByIdsV2) | **GET** /api/dashboards/list | Get dashboards by Dashboard Ids (getDashboardsByIdsV2) |
+| [**getDashboardsByIds**](#getDashboardsByIds) | **GET** /api/dashboards/list | Get dashboards by Dashboard Ids (getDashboardsByIds) |
 | [**getEdgeDashboards**](#getEdgeDashboards) | **GET** /api/edge/{edgeId}/dashboards | Get Edge Dashboards (getEdgeDashboards) |
 | [**getHomeDashboard**](#getHomeDashboard) | **GET** /api/dashboard/home | Get Home Dashboard (getHomeDashboard) |
 | [**getHomeDashboardInfo**](#getHomeDashboardInfo) | **GET** /api/dashboard/home/info | Get Home Dashboard Info (getHomeDashboardInfo) |
 | [**getMaxDatapointsLimit**](#getMaxDatapointsLimit) | **GET** /api/dashboard/maxDatapointsLimit | Get max data points limit (getMaxDatapointsLimit) |
 | [**getServerTime**](#getServerTime) | **GET** /api/dashboard/serverTime | Get server time (getServerTime) |
-| [**getTenantDashboards**](#getTenantDashboards) | **GET** /api/tenant/{tenantId}/dashboards | Get Tenant Dashboards by System Administrator (getTenantDashboards) |
-| [**getTenantDashboards1**](#getTenantDashboards1) | **GET** /api/tenant/dashboards | Get Tenant Dashboards (getTenantDashboards) |
+| [**getTenantDashboards**](#getTenantDashboards) | **GET** /api/tenant/dashboards | Get Tenant Dashboards (getTenantDashboards) |
+| [**getTenantDashboardsByTenantId**](#getTenantDashboardsByTenantId) | **GET** /api/tenant/{tenantId}/dashboards | Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId) |
 | [**getTenantHomeDashboardInfo**](#getTenantHomeDashboardInfo) | **GET** /api/tenant/dashboard/home/info | Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
 | [**removeDashboardCustomers**](#removeDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/remove | Remove the Dashboard Customers (removeDashboardCustomers) |
 | [**saveDashboard**](#saveDashboard) | **POST** /api/dashboard | Create Or Update Dashboard (saveDashboard) |
@@ -200,11 +200,11 @@ Get the information about the dashboard based on 'dashboardId' parameter. The Da
 **DashboardInfo**
 
 
-## getDashboardsByIdsV2
+## getDashboardsByIds
 
-> List<DashboardInfo> getDashboardsByIdsV2(dashboardIds)
+> List<DashboardInfo> getDashboardsByIds(dashboardIds)
 
-Get dashboards by Dashboard Ids (getDashboardsByIdsV2)
+Get dashboards by Dashboard Ids (getDashboardsByIds)
 
 Returns a list of DashboardInfo objects based on the provided ids.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
@@ -306,32 +306,7 @@ Get the server time (milliseconds since January 1, 1970 UTC). Used to adjust vie
 
 ## getTenantDashboards
 
-> PageDataDashboardInfo getTenantDashboards(tenantId, pageSize, page, textSearch, sortProperty, sortOrder)
-
-Get Tenant Dashboards by System Administrator (getTenantDashboards)
-
-Returns a page of dashboard info objects owned by tenant. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **tenantId** | **String** | A string value representing the tenant id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
-| **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
-| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
-| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-**PageDataDashboardInfo**
-
-
-## getTenantDashboards1
-
-> PageDataDashboardInfo getTenantDashboards1(pageSize, page, mobile, textSearch, sortProperty, sortOrder)
+> PageDataDashboardInfo getTenantDashboards(pageSize, page, mobile, textSearch, sortProperty, sortOrder)
 
 Get Tenant Dashboards (getTenantDashboards)
 
@@ -345,6 +320,31 @@ Returns a page of dashboard info objects owned by the tenant of a current user. 
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **mobile** | **Boolean** | Exclude dashboards that are hidden for mobile | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataDashboardInfo**
+
+
+## getTenantDashboardsByTenantId
+
+> PageDataDashboardInfo getTenantDashboardsByTenantId(tenantId, pageSize, page, textSearch, sortProperty, sortOrder)
+
+Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId)
+
+Returns a page of dashboard info objects owned by tenant. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **tenantId** | **String** | A string value representing the tenant id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |

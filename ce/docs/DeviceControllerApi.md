@@ -6,10 +6,10 @@
 | [**assignDeviceToEdge**](#assignDeviceToEdge) | **POST** /api/edge/{edgeId}/device/{deviceId} | Assign device to edge (assignDeviceToEdge) |
 | [**assignDeviceToPublicCustomer**](#assignDeviceToPublicCustomer) | **POST** /api/customer/public/device/{deviceId} | Make device publicly available (assignDeviceToPublicCustomer) |
 | [**assignDeviceToTenant**](#assignDeviceToTenant) | **POST** /api/tenant/{tenantId}/device/{deviceId} | Assign device to tenant (assignDeviceToTenant) |
-| [**claimDevice1**](#claimDevice1) | **POST** /api/customer/device/{deviceName}/claim | Claim device (claimDevice) |
+| [**claimDevice**](#claimDevice) | **POST** /api/customer/device/{deviceName}/claim | Claim device (claimDevice) |
 | [**countByDeviceProfileAndEmptyOtaPackage**](#countByDeviceProfileAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{deviceProfileId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
 | [**deleteDevice**](#deleteDevice) | **DELETE** /api/device/{deviceId} | Delete device (deleteDevice) |
-| [**findByQuery3**](#findByQuery3) | **POST** /api/devices | Find related devices (findByQuery) |
+| [**findDevicesByQuery**](#findDevicesByQuery) | **POST** /api/devices | Find related devices (findDevicesByQuery) |
 | [**getCustomerDeviceInfos**](#getCustomerDeviceInfos) | **GET** /api/customer/{customerId}/deviceInfos | Get Customer Device Infos (getCustomerDeviceInfos) |
 | [**getCustomerDevices**](#getCustomerDevices) | **GET** /api/customer/{customerId}/devices | Get Customer Devices (getCustomerDevices) |
 | [**getDeviceById**](#getDeviceById) | **GET** /api/device/{deviceId} | Get Device (getDeviceById) |
@@ -24,7 +24,7 @@
 | [**processDevicesBulkImport**](#processDevicesBulkImport) | **POST** /api/device/bulk_import | Import the bulk of devices (processDevicesBulkImport) |
 | [**reClaimDevice**](#reClaimDevice) | **DELETE** /api/customer/device/{deviceName}/claim | Reclaim device (reClaimDevice) |
 | [**saveDevice**](#saveDevice) | **POST** /api/device | Create Or Update Device (saveDevice) |
-| [**saveDeviceWithCredentials1**](#saveDeviceWithCredentials1) | **POST** /api/device-with-credentials | Create Device (saveDevice) with credentials  |
+| [**saveDeviceWithCredentials**](#saveDeviceWithCredentials) | **POST** /api/device-with-credentials | Create Device (saveDevice) with credentials  |
 | [**unassignDeviceFromCustomer**](#unassignDeviceFromCustomer) | **DELETE** /api/customer/device/{deviceId} | Unassign device from customer (unassignDeviceFromCustomer) |
 | [**unassignDeviceFromEdge**](#unassignDeviceFromEdge) | **DELETE** /api/edge/{edgeId}/device/{deviceId} | Unassign device from edge (unassignDeviceFromEdge) |
 | [**updateDeviceCredentials**](#updateDeviceCredentials) | **POST** /api/device/credentials | Update device credentials (updateDeviceCredentials) |
@@ -114,9 +114,9 @@ Creates assignment of the device to tenant. Thereafter tenant will be able to re
 **Device**
 
 
-## claimDevice1
+## claimDevice
 
-> String claimDevice1(deviceName, claimRequest)
+> String claimDevice(deviceName, claimRequest)
 
 Claim device (claimDevice)
 
@@ -176,11 +176,11 @@ Deletes the device, it's credentials and all the relations (from and to the devi
 null (empty response body)
 
 
-## findByQuery3
+## findDevicesByQuery
 
-> List<Device> findByQuery3(deviceSearchQuery)
+> List<Device> findDevicesByQuery(deviceSearchQuery)
 
-Find related devices (findByQuery)
+Find related devices (findDevicesByQuery)
 
 Returns all devices that are related to the specific entity. The entity id, relation type, device types, depth of the search, and other query parameters defined using complex 'DeviceSearchQuery' object. See 'Model' tab of the Parameters for more info.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
@@ -509,9 +509,9 @@ Create or update the Device. When creating device, platform generates Device Id 
 **Device**
 
 
-## saveDeviceWithCredentials1
+## saveDeviceWithCredentials
 
-> Device saveDeviceWithCredentials1(saveDeviceWithCredentialsRequest, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+> Device saveDeviceWithCredentials(saveDeviceWithCredentialsRequest, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
 
 Create Device (saveDevice) with credentials 
 

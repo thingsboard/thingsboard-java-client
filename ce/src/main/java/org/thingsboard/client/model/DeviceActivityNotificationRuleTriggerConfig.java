@@ -172,6 +172,12 @@ public class DeviceActivityNotificationRuleTriggerConfig extends NotificationRul
   }
 
 
+  @Override
+  public DeviceActivityNotificationRuleTriggerConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+    this.setTriggerType(triggerType);
+    return this;
+  }
+
   /**
    * Return true if this DeviceActivityNotificationRuleTriggerConfig object is equal to o.
    */

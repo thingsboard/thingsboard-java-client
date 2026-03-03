@@ -71,12 +71,6 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
-  public CsvReportTemplateConfig timeDataPattern(@javax.annotation.Nullable String timeDataPattern) {
-    this.setTimeDataPattern(timeDataPattern);
-    return this;
-  }
-
-  @Override
   public CsvReportTemplateConfig namePattern(@javax.annotation.Nullable String namePattern) {
     this.setNamePattern(namePattern);
     return this;
@@ -85,6 +79,12 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
   @Override
   public CsvReportTemplateConfig components(@javax.annotation.Nonnull List<ReportComponent> components) {
     this.setComponents(components);
+    return this;
+  }
+
+  @Override
+  public CsvReportTemplateConfig timeDataPattern(@javax.annotation.Nullable String timeDataPattern) {
+    this.setTimeDataPattern(timeDataPattern);
     return this;
   }
 
@@ -180,11 +180,6 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
       }
     }
 
-    // add `timeDataPattern` to the URL query string
-    if (getTimeDataPattern() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimeDataPattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeDataPattern()))));
-    }
-
     // add `namePattern` to the URL query string
     if (getNamePattern() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%snamePattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNamePattern()))));
@@ -198,6 +193,11 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `timeDataPattern` to the URL query string
+    if (getTimeDataPattern() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimeDataPattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeDataPattern()))));
     }
 
     // add `entityAliases` to the URL query string

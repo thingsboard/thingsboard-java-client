@@ -2,15 +2,15 @@
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getAuditLogs1**](#getAuditLogs1) | **GET** /api/ai/audit-logs | getAuditLogs |
+| [**getAiAuditLogs**](#getAiAuditLogs) | **GET** /api/ai/audit-logs | getAiAuditLogs |
 
 
 
-## getAuditLogs1
+## getAiAuditLogs
 
-> com.fasterxml.jackson.databind.JsonNode getAuditLogs1(sourceId, status)
+> com.fasterxml.jackson.databind.JsonNode getAiAuditLogs(sourceId, status)
 
-getAuditLogs
+getAiAuditLogs
 
 
 ### Parameters

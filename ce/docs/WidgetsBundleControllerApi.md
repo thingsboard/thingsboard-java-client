@@ -3,10 +3,10 @@
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteWidgetsBundle**](#deleteWidgetsBundle) | **DELETE** /api/widgetsBundle/{widgetsBundleId} | Delete widgets bundle (deleteWidgetsBundle) |
+| [**getAllWidgetsBundles**](#getAllWidgetsBundles) | **GET** /api/widgetsBundles/all | Get all Widget Bundles (getAllWidgetsBundles) |
 | [**getWidgetsBundleById**](#getWidgetsBundleById) | **GET** /api/widgetsBundle/{widgetsBundleId} | Get Widget Bundle (getWidgetsBundleById) |
 | [**getWidgetsBundles**](#getWidgetsBundles) | **GET** /api/widgetsBundles | Get Widget Bundles (getWidgetsBundles) |
 | [**getWidgetsBundlesList**](#getWidgetsBundlesList) | **GET** /api/widgetsBundles/list | Get Widgets Bundles By Ids (getWidgetsBundlesList) |
-| [**getWidgetsBundlesV2**](#getWidgetsBundlesV2) | **GET** /api/widgetsBundles/all | Get all Widget Bundles (getWidgetsBundlesV2) |
 | [**saveWidgetsBundle**](#saveWidgetsBundle) | **POST** /api/widgetsBundle | Create Or Update Widget Bundle (saveWidgetsBundle) |
 | [**updateWidgetsBundleWidgetFqns**](#updateWidgetsBundleWidgetFqns) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypeFqns | Update widgets bundle widgets list from widget type FQNs list (updateWidgetsBundleWidgetFqns) |
 | [**updateWidgetsBundleWidgetTypes**](#updateWidgetsBundleWidgetTypes) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypes | Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes) |
@@ -31,6 +31,19 @@ Deletes the widget bundle. Referencing non-existing Widget Bundle Id will cause 
 ### Return type
 
 null (empty response body)
+
+
+## getAllWidgetsBundles
+
+> List<WidgetsBundle> getAllWidgetsBundles()
+
+Get all Widget Bundles (getAllWidgetsBundles)
+
+Returns an array of Widget Bundle objects that are available for current user.Widget Bundle represents a group(bundle) of widgets. Widgets are grouped into bundle by type or use case.    Available for any authorized user. 
+
+### Return type
+
+**List<WidgetsBundle>**
 
 
 ## getWidgetsBundleById
@@ -95,19 +108,6 @@ Requested widgets bundles must be system level or owned by tenant of the user wh
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **widgetsBundleIds** | **List<String>** | A list of widgets bundle ids, separated by comma ',' | |
-
-### Return type
-
-**List<WidgetsBundle>**
-
-
-## getWidgetsBundlesV2
-
-> List<WidgetsBundle> getWidgetsBundlesV2()
-
-Get all Widget Bundles (getWidgetsBundlesV2)
-
-Returns an array of Widget Bundle objects that are available for current user.Widget Bundle represents a group(bundle) of widgets. Widgets are grouped into bundle by type or use case.    Available for any authorized user. 
 
 ### Return type
 

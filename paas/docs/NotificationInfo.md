@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **stateEntityId** | **EntityId** |  | [optional] |
 | **dashboardId** | **DashboardId** |  | [optional] |
+| **stateEntityId** | **EntityId** |  | [optional] |
 | **type** | **String** |  | |
 
 
