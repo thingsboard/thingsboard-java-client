@@ -57,7 +57,6 @@ public class GroupPermissionApiTest extends AbstractApiTest {
         permission.setUserGroupId(new EntityGroupId().id(UUID.fromString(userGroupId)).entityType(EntityType.ENTITY_GROUP));
         permission.setRoleId(new RoleId().id(UUID.fromString(roleId)).entityType(EntityType.ROLE));
         permission.setEntityGroupId(new EntityGroupId().id(UUID.fromString(entityGroupId)).entityType(EntityType.ENTITY_GROUP));
-        permission.setEntityGroupType(EntityType.DEVICE);
         return permission;
     }
 
