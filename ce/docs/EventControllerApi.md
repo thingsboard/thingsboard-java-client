@@ -1,16 +1,21 @@
 # EventControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**clearEvents**](#clearEvents) | **POST** /api/events/{entityType}/{entityId}/clear | Clear Events (clearEvents) |
-| [**getEventsByFilter**](#getEventsByFilter) | **POST** /api/events/{entityType}/{entityId} | Get Events by event filter (getEventsByFilter) |
-| [**getEventsByType**](#getEventsByType) | **GET** /api/events/{entityType}/{entityId}/{eventType} | Get Events by type (getEventsByType) |
+`ThingsboardClient` methods:
 
+```
+void clearEvents(@Nonnull String entityType, @Nonnull String entityId, @Nonnull EventFilter eventFilter, @Nullable Long startTime, @Nullable Long endTime) // Clear Events (clearEvents)
+PageDataEventInfo getEventsByFilter(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nonnull EventFilter eventFilter, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get Events by event filter (getEventsByFilter)
+PageDataEventInfo getEventsByType(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String eventType, @Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get Events by type (getEventsByType)
+```
 
 
 ## clearEvents
 
-> clearEvents(entityType, entityId, eventFilter, startTime, endTime)
+```
+void clearEvents(@Nonnull String entityType, @Nonnull String entityId, @Nonnull EventFilter eventFilter, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**POST** `/api/events/{entityType}/{entityId}/clear`
 
 Clear Events (clearEvents)
 
@@ -34,7 +39,11 @@ null (empty response body)
 
 ## getEventsByFilter
 
-> PageDataEventInfo getEventsByFilter(entityType, entityId, tenantId, pageSize, page, eventFilter, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataEventInfo getEventsByFilter(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nonnull EventFilter eventFilter, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**POST** `/api/events/{entityType}/{entityId}`
 
 Get Events by event filter (getEventsByFilter)
 
@@ -64,7 +73,11 @@ Returns a page of events for the chosen entity by specifying the event filter. Y
 
 ## getEventsByType
 
-> PageDataEventInfo getEventsByType(entityType, entityId, eventType, tenantId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataEventInfo getEventsByType(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String eventType, @Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/events/{entityType}/{entityId}/{eventType}`
 
 Get Events by type (getEventsByType)
 

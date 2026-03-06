@@ -1,27 +1,32 @@
 # EntityViewControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteEntityView**](#deleteEntityView) | **DELETE** /api/entityView/{entityViewId} | Delete entity view (deleteEntityView) |
-| [**findEntityViewsByQuery**](#findEntityViewsByQuery) | **POST** /api/entityViews | Find related entity views (findEntityViewsByQuery) |
-| [**getAllEntityViewInfos**](#getAllEntityViewInfos) | **GET** /api/entityViewInfos/all | Get All Entity View Infos for current user (getAllEntityViewInfos) |
-| [**getCustomerEntityViewInfos**](#getCustomerEntityViewInfos) | **GET** /api/customer/{customerId}/entityViewInfos | Get Customer Entity View Infos (getCustomerEntityViewInfos) |
-| [**getCustomerEntityViews**](#getCustomerEntityViews) | **GET** /api/customer/{customerId}/entityViews | Get Customer Entity Views (getCustomerEntityViews) |
-| [**getEntityViewById**](#getEntityViewById) | **GET** /api/entityView/{entityViewId} | Get entity view (getEntityViewById) |
-| [**getEntityViewInfoById**](#getEntityViewInfoById) | **GET** /api/entityView/info/{entityViewId} | Get entity view info (getEntityViewInfoById) |
-| [**getEntityViewTypes**](#getEntityViewTypes) | **GET** /api/entityView/types | Get Entity View Types (getEntityViewTypes) |
-| [**getEntityViewsByEntityGroupId**](#getEntityViewsByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/entityViews | Get entity views by Entity Group Id (getEntityViewsByEntityGroupId) |
-| [**getEntityViewsByIds**](#getEntityViewsByIds) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIds) |
-| [**getTenantEntityViewByName**](#getTenantEntityViewByName) | **GET** /api/tenant/entityView | Get Entity View by name (getTenantEntityViewByName) |
-| [**getTenantEntityViews**](#getTenantEntityViews) | **GET** /api/tenant/entityViews | Get Tenant Entity Views (getTenantEntityViews) |
-| [**getUserEntityViews**](#getUserEntityViews) | **GET** /api/user/entityViews | Get Entity Views (getUserEntityViews) |
-| [**saveEntityView**](#saveEntityView) | **POST** /api/entityView | Save or update entity view (saveEntityView) |
+`ThingsboardClient` methods:
 
+```
+void deleteEntityView(@Nonnull String entityViewId) // Delete entity view (deleteEntityView)
+List<EntityView> findEntityViewsByQuery(@Nonnull EntityViewSearchQuery entityViewSearchQuery) // Find related entity views (findEntityViewsByQuery)
+PageDataEntityViewInfo getAllEntityViewInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Entity View Infos for current user (getAllEntityViewInfos)
+PageDataEntityViewInfo getCustomerEntityViewInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Entity View Infos (getCustomerEntityViewInfos)
+PageDataEntityView getCustomerEntityViews(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Entity Views (getCustomerEntityViews)
+EntityView getEntityViewById(@Nonnull String entityViewId) // Get entity view (getEntityViewById)
+EntityViewInfo getEntityViewInfoById(@Nonnull String entityViewId) // Get entity view info (getEntityViewInfoById)
+List<EntitySubtype> getEntityViewTypes() // Get Entity View Types (getEntityViewTypes)
+PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get entity views by Entity Group Id (getEntityViewsByEntityGroupId)
+List<EntityView> getEntityViewsByIds(@Nonnull List<String> entityViewIds) // Get Entity Views By Ids (getEntityViewsByIds)
+EntityView getTenantEntityViewByName(@Nonnull String entityViewName) // Get Entity View by name (getTenantEntityViewByName)
+PageDataEntityView getTenantEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Entity Views (getTenantEntityViews)
+PageDataEntityView getUserEntityViews(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Views (getUserEntityViews)
+EntityView saveEntityView(@Nonnull EntityView entityView, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Save or update entity view (saveEntityView)
+```
 
 
 ## deleteEntityView
 
-> deleteEntityView(entityViewId)
+```
+void deleteEntityView(@Nonnull String entityViewId)
+```
+
+**DELETE** `/api/entityView/{entityViewId}`
 
 Delete entity view (deleteEntityView)
 
@@ -41,7 +46,11 @@ null (empty response body)
 
 ## findEntityViewsByQuery
 
-> List<EntityView> findEntityViewsByQuery(entityViewSearchQuery)
+```
+List<EntityView> findEntityViewsByQuery(@Nonnull EntityViewSearchQuery entityViewSearchQuery)
+```
+
+**POST** `/api/entityViews`
 
 Find related entity views (findEntityViewsByQuery)
 
@@ -61,7 +70,11 @@ Returns all entity views that are related to the specific entity. The entity id,
 
 ## getAllEntityViewInfos
 
-> PageDataEntityViewInfo getAllEntityViewInfos(pageSize, page, includeCustomers, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityViewInfo getAllEntityViewInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityViewInfos/all`
 
 Get All Entity View Infos for current user (getAllEntityViewInfos)
 
@@ -87,7 +100,11 @@ Returns a page of entity view info objects owned by the tenant or the customer o
 
 ## getCustomerEntityViewInfos
 
-> PageDataEntityViewInfo getCustomerEntityViewInfos(customerId, pageSize, page, includeCustomers, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityViewInfo getCustomerEntityViewInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/entityViewInfos`
 
 Get Customer Entity View Infos (getCustomerEntityViewInfos)
 
@@ -114,7 +131,11 @@ Returns a page of entity view info objects owned by the specified customer. Enti
 
 ## getCustomerEntityViews
 
-> PageDataEntityView getCustomerEntityViews(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityView getCustomerEntityViews(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/entityViews`
 
 Get Customer Entity Views (getCustomerEntityViews)
 
@@ -140,7 +161,11 @@ Returns a page of Entity View objects assigned to customer. You can specify para
 
 ## getEntityViewById
 
-> EntityView getEntityViewById(entityViewId)
+```
+EntityView getEntityViewById(@Nonnull String entityViewId)
+```
+
+**GET** `/api/entityView/{entityViewId}`
 
 Get entity view (getEntityViewById)
 
@@ -160,7 +185,11 @@ Fetch the EntityView object based on the provided entity view id. Entity Views l
 
 ## getEntityViewInfoById
 
-> EntityViewInfo getEntityViewInfoById(entityViewId)
+```
+EntityViewInfo getEntityViewInfoById(@Nonnull String entityViewId)
+```
+
+**GET** `/api/entityView/info/{entityViewId}`
 
 Get entity view info (getEntityViewInfoById)
 
@@ -180,7 +209,11 @@ Fetch the Entity View info object based on the provided entity view id. Entity V
 
 ## getEntityViewTypes
 
-> List<EntitySubtype> getEntityViewTypes()
+```
+List<EntitySubtype> getEntityViewTypes()
+```
+
+**GET** `/api/entityView/types`
 
 Get Entity View Types (getEntityViewTypes)
 
@@ -193,7 +226,11 @@ Returns a set of unique entity view types based on entity views that are either 
 
 ## getEntityViewsByEntityGroupId
 
-> PageDataEntityView getEntityViewsByEntityGroupId(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/entityViews`
 
 Get entity views by Entity Group Id (getEntityViewsByEntityGroupId)
 
@@ -218,7 +255,11 @@ Returns a page of Entity View objects that belongs to specified Entity View Id. 
 
 ## getEntityViewsByIds
 
-> List<EntityView> getEntityViewsByIds(entityViewIds)
+```
+List<EntityView> getEntityViewsByIds(@Nonnull List<String> entityViewIds)
+```
+
+**GET** `/api/entityViews/list`
 
 Get Entity Views By Ids (getEntityViewsByIds)
 
@@ -238,7 +279,11 @@ Requested entity views must be owned by tenant or assigned to customer which use
 
 ## getTenantEntityViewByName
 
-> EntityView getTenantEntityViewByName(entityViewName)
+```
+EntityView getTenantEntityViewByName(@Nonnull String entityViewName)
+```
+
+**GET** `/api/tenant/entityView`
 
 Get Entity View by name (getTenantEntityViewByName)
 
@@ -258,7 +303,11 @@ Fetch the Entity View object based on the tenant id and entity view name.   Avai
 
 ## getTenantEntityViews
 
-> PageDataEntityView getTenantEntityViews(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityView getTenantEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/entityViews`
 
 Get Tenant Entity Views (getTenantEntityViews)
 
@@ -283,7 +332,11 @@ Returns a page of entity views owned by tenant. Entity Views limit the degree of
 
 ## getUserEntityViews
 
-> PageDataEntityView getUserEntityViews(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityView getUserEntityViews(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/entityViews`
 
 Get Entity Views (getUserEntityViews)
 
@@ -308,7 +361,11 @@ Returns a page of entity views that are available for the current user. You can 
 
 ## saveEntityView
 
-> EntityView saveEntityView(entityView, entityGroupId, entityGroupIds, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+EntityView saveEntityView(@Nonnull EntityView entityView, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/entityView`
 
 Save or update entity view (saveEntityView)
 

@@ -1,36 +1,41 @@
 # RuleChainControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**assignRuleChainToEdge**](#assignRuleChainToEdge) | **POST** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Assign rule chain to edge (assignRuleChainToEdge) |
-| [**deleteRuleChain**](#deleteRuleChain) | **DELETE** /api/ruleChain/{ruleChainId} | Delete rule chain (deleteRuleChain) |
-| [**exportRuleChains**](#exportRuleChains) | **GET** /api/ruleChains/export | Export Rule Chains |
-| [**getAutoAssignToEdgeRuleChains**](#getAutoAssignToEdgeRuleChains) | **GET** /api/ruleChain/autoAssignToEdgeRuleChains | Get Auto Assign To Edge Rule Chains (getAutoAssignToEdgeRuleChains) |
-| [**getEdgeRuleChains**](#getEdgeRuleChains) | **GET** /api/edge/{edgeId}/ruleChains | Get Edge Rule Chains (getEdgeRuleChains) |
-| [**getLatestRuleNodeDebugInput**](#getLatestRuleNodeDebugInput) | **GET** /api/ruleNode/{ruleNodeId}/debugIn | Get latest input message (getLatestRuleNodeDebugInput) |
-| [**getRuleChainById**](#getRuleChainById) | **GET** /api/ruleChain/{ruleChainId} | Get Rule Chain (getRuleChainById) |
-| [**getRuleChainMetaData**](#getRuleChainMetaData) | **GET** /api/ruleChain/{ruleChainId}/metadata | Get Rule Chain (getRuleChainById) |
-| [**getRuleChainOutputLabels**](#getRuleChainOutputLabels) | **GET** /api/ruleChain/{ruleChainId}/output/labels | Get Rule Chain output labels (getRuleChainOutputLabels) |
-| [**getRuleChainOutputLabelsUsage**](#getRuleChainOutputLabelsUsage) | **GET** /api/ruleChain/{ruleChainId}/output/labels/usage | Get output labels usage (getRuleChainOutputLabelsUsage) |
-| [**getRuleChains**](#getRuleChains) | **GET** /api/ruleChains | Get Rule Chains (getRuleChains) |
-| [**getRuleChainsByIds**](#getRuleChainsByIds) | **GET** /api/ruleChains/list | Get Rule Chains By Ids (getRuleChainsByIds) |
-| [**importRuleChains**](#importRuleChains) | **POST** /api/ruleChains/import | Import Rule Chains |
-| [**isTbelEnabled**](#isTbelEnabled) | **GET** /api/ruleChain/tbelEnabled | Is TBEL script executor enabled |
-| [**saveRuleChain**](#saveRuleChain) | **POST** /api/ruleChain | Create Or Update Rule Chain (saveRuleChain) |
-| [**saveRuleChainMetaData**](#saveRuleChainMetaData) | **POST** /api/ruleChain/metadata | Update Rule Chain Metadata |
-| [**setAutoAssignToEdgeRuleChain**](#setAutoAssignToEdgeRuleChain) | **POST** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain) |
-| [**setDeviceDefaultRuleChain**](#setDeviceDefaultRuleChain) | **POST** /api/ruleChain/device/default | Create Default Rule Chain (setDeviceDefaultRuleChain) |
-| [**setEdgeTemplateRootRuleChain**](#setEdgeTemplateRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/edgeTemplateRoot | Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain) |
-| [**setRootRuleChain**](#setRootRuleChain) | **POST** /api/ruleChain/{ruleChainId}/root | Set Root Rule Chain (setRootRuleChain) |
-| [**testRuleChainScript**](#testRuleChainScript) | **POST** /api/ruleChain/testScript | Test Script function |
-| [**unassignRuleChainFromEdge**](#unassignRuleChainFromEdge) | **DELETE** /api/edge/{edgeId}/ruleChain/{ruleChainId} | Unassign rule chain from edge (unassignRuleChainFromEdge) |
-| [**unsetAutoAssignToEdgeRuleChain**](#unsetAutoAssignToEdgeRuleChain) | **DELETE** /api/ruleChain/{ruleChainId}/autoAssignToEdge | Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain) |
+`ThingsboardClient` methods:
 
+```
+RuleChain assignRuleChainToEdge(@Nonnull String edgeId, @Nonnull String ruleChainId) // Assign rule chain to edge (assignRuleChainToEdge)
+void deleteRuleChain(@Nonnull String ruleChainId) // Delete rule chain (deleteRuleChain)
+RuleChainData exportRuleChains(@Nonnull Integer limit) // Export Rule Chains
+List<RuleChain> getAutoAssignToEdgeRuleChains() // Get Auto Assign To Edge Rule Chains (getAutoAssignToEdgeRuleChains)
+PageDataRuleChain getEdgeRuleChains(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Rule Chains (getEdgeRuleChains)
+com.fasterxml.jackson.databind.JsonNode getLatestRuleNodeDebugInput(@Nonnull String ruleNodeId) // Get latest input message (getLatestRuleNodeDebugInput)
+RuleChain getRuleChainById(@Nonnull String ruleChainId) // Get Rule Chain (getRuleChainById)
+RuleChainMetaData getRuleChainMetaData(@Nonnull String ruleChainId) // Get Rule Chain (getRuleChainById)
+Set<String> getRuleChainOutputLabels(@Nonnull String ruleChainId) // Get Rule Chain output labels (getRuleChainOutputLabels)
+List<RuleChainOutputLabelsUsage> getRuleChainOutputLabelsUsage(@Nonnull String ruleChainId) // Get output labels usage (getRuleChainOutputLabelsUsage)
+PageDataRuleChain getRuleChains(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Rule Chains (getRuleChains)
+List<RuleChain> getRuleChainsByIds(@Nonnull List<String> ruleChainIds) // Get Rule Chains By Ids (getRuleChainsByIds)
+List<RuleChainImportResult> importRuleChains(@Nonnull RuleChainData ruleChainData, @Nullable Boolean overwrite) // Import Rule Chains
+Boolean isTbelEnabled() // Is TBEL script executor enabled
+RuleChain saveRuleChain(@Nonnull RuleChain ruleChain) // Create Or Update Rule Chain (saveRuleChain)
+RuleChainMetaData saveRuleChainMetaData(@Nonnull RuleChainMetaData ruleChainMetaData, @Nullable Boolean updateRelated) // Update Rule Chain Metadata
+RuleChain setAutoAssignToEdgeRuleChain(@Nonnull String ruleChainId) // Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain)
+RuleChain setDeviceDefaultRuleChain(@Nonnull DefaultRuleChainCreateRequest defaultRuleChainCreateRequest) // Create Default Rule Chain (setDeviceDefaultRuleChain)
+RuleChain setEdgeTemplateRootRuleChain(@Nonnull String ruleChainId) // Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain)
+RuleChain setRootRuleChain(@Nonnull String ruleChainId) // Set Root Rule Chain (setRootRuleChain)
+com.fasterxml.jackson.databind.JsonNode testRuleChainScript(@Nonnull Object body, @Nullable ScriptLanguage scriptLang) // Test Script function
+RuleChain unassignRuleChainFromEdge(@Nonnull String edgeId, @Nonnull String ruleChainId) // Unassign rule chain from edge (unassignRuleChainFromEdge)
+RuleChain unsetAutoAssignToEdgeRuleChain(@Nonnull String ruleChainId) // Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain)
+```
 
 
 ## assignRuleChainToEdge
 
-> RuleChain assignRuleChainToEdge(edgeId, ruleChainId)
+```
+RuleChain assignRuleChainToEdge(@Nonnull String edgeId, @Nonnull String ruleChainId)
+```
+
+**POST** `/api/edge/{edgeId}/ruleChain/{ruleChainId}`
 
 Assign rule chain to edge (assignRuleChainToEdge)
 
@@ -51,7 +56,11 @@ Creates assignment of an existing rule chain to an instance of The Edge. Assignm
 
 ## deleteRuleChain
 
-> deleteRuleChain(ruleChainId)
+```
+void deleteRuleChain(@Nonnull String ruleChainId)
+```
+
+**DELETE** `/api/ruleChain/{ruleChainId}`
 
 Delete rule chain (deleteRuleChain)
 
@@ -71,7 +80,11 @@ null (empty response body)
 
 ## exportRuleChains
 
-> RuleChainData exportRuleChains(limit)
+```
+RuleChainData exportRuleChains(@Nonnull Integer limit)
+```
+
+**GET** `/api/ruleChains/export`
 
 Export Rule Chains
 
@@ -91,7 +104,11 @@ Exports all tenant rule chains as one JSON.  Available for users with 'TENANT_AD
 
 ## getAutoAssignToEdgeRuleChains
 
-> List<RuleChain> getAutoAssignToEdgeRuleChains()
+```
+List<RuleChain> getAutoAssignToEdgeRuleChains()
+```
+
+**GET** `/api/ruleChain/autoAssignToEdgeRuleChains`
 
 Get Auto Assign To Edge Rule Chains (getAutoAssignToEdgeRuleChains)
 
@@ -104,7 +121,11 @@ Returns a list of Rule Chains that will be assigned to a newly created edge. The
 
 ## getEdgeRuleChains
 
-> PageDataRuleChain getEdgeRuleChains(edgeId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataRuleChain getEdgeRuleChains(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edge/{edgeId}/ruleChains`
 
 Get Edge Rule Chains (getEdgeRuleChains)
 
@@ -129,7 +150,11 @@ Returns a page of Rule Chains assigned to the specified edge. The rule chain obj
 
 ## getLatestRuleNodeDebugInput
 
-> com.fasterxml.jackson.databind.JsonNode getLatestRuleNodeDebugInput(ruleNodeId)
+```
+com.fasterxml.jackson.databind.JsonNode getLatestRuleNodeDebugInput(@Nonnull String ruleNodeId)
+```
+
+**GET** `/api/ruleNode/{ruleNodeId}/debugIn`
 
 Get latest input message (getLatestRuleNodeDebugInput)
 
@@ -149,7 +174,11 @@ Gets the input message from the debug events for specified Rule Chain Id. Refere
 
 ## getRuleChainById
 
-> RuleChain getRuleChainById(ruleChainId)
+```
+RuleChain getRuleChainById(@Nonnull String ruleChainId)
+```
+
+**GET** `/api/ruleChain/{ruleChainId}`
 
 Get Rule Chain (getRuleChainById)
 
@@ -169,7 +198,11 @@ Fetch the Rule Chain object based on the provided Rule Chain Id. The rule chain 
 
 ## getRuleChainMetaData
 
-> RuleChainMetaData getRuleChainMetaData(ruleChainId)
+```
+RuleChainMetaData getRuleChainMetaData(@Nonnull String ruleChainId)
+```
+
+**GET** `/api/ruleChain/{ruleChainId}/metadata`
 
 Get Rule Chain (getRuleChainById)
 
@@ -189,7 +222,11 @@ Fetch the Rule Chain Metadata object based on the provided Rule Chain Id. The me
 
 ## getRuleChainOutputLabels
 
-> Set<String> getRuleChainOutputLabels(ruleChainId)
+```
+Set<String> getRuleChainOutputLabels(@Nonnull String ruleChainId)
+```
+
+**GET** `/api/ruleChain/{ruleChainId}/output/labels`
 
 Get Rule Chain output labels (getRuleChainOutputLabels)
 
@@ -209,7 +246,11 @@ Fetch the unique labels for the \"output\" Rule Nodes that belong to the Rule Ch
 
 ## getRuleChainOutputLabelsUsage
 
-> List<RuleChainOutputLabelsUsage> getRuleChainOutputLabelsUsage(ruleChainId)
+```
+List<RuleChainOutputLabelsUsage> getRuleChainOutputLabelsUsage(@Nonnull String ruleChainId)
+```
+
+**GET** `/api/ruleChain/{ruleChainId}/output/labels/usage`
 
 Get output labels usage (getRuleChainOutputLabelsUsage)
 
@@ -229,7 +270,11 @@ Fetch the list of rule chains and the relation types (labels) they use to proces
 
 ## getRuleChains
 
-> PageDataRuleChain getRuleChains(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataRuleChain getRuleChains(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/ruleChains`
 
 Get Rule Chains (getRuleChains)
 
@@ -254,7 +299,11 @@ Returns a page of Rule Chains owned by tenant. The rule chain object is lightwei
 
 ## getRuleChainsByIds
 
-> List<RuleChain> getRuleChainsByIds(ruleChainIds)
+```
+List<RuleChain> getRuleChainsByIds(@Nonnull List<String> ruleChainIds)
+```
+
+**GET** `/api/ruleChains/list`
 
 Get Rule Chains By Ids (getRuleChainsByIds)
 
@@ -274,7 +323,11 @@ Requested rule chains must be owned by tenant which is performing the request.  
 
 ## importRuleChains
 
-> List<RuleChainImportResult> importRuleChains(ruleChainData, overwrite)
+```
+List<RuleChainImportResult> importRuleChains(@Nonnull RuleChainData ruleChainData, @Nullable Boolean overwrite)
+```
+
+**POST** `/api/ruleChains/import`
 
 Import Rule Chains
 
@@ -295,7 +348,11 @@ Imports all tenant rule chains as one JSON.  Available for users with 'TENANT_AD
 
 ## isTbelEnabled
 
-> Boolean isTbelEnabled()
+```
+Boolean isTbelEnabled()
+```
+
+**GET** `/api/ruleChain/tbelEnabled`
 
 Is TBEL script executor enabled
 
@@ -308,7 +365,11 @@ Returns 'True' if the TBEL script execution is enabled  Available for users with
 
 ## saveRuleChain
 
-> RuleChain saveRuleChain(ruleChain)
+```
+RuleChain saveRuleChain(@Nonnull RuleChain ruleChain)
+```
+
+**POST** `/api/ruleChain`
 
 Create Or Update Rule Chain (saveRuleChain)
 
@@ -328,7 +389,11 @@ Create or update the Rule Chain. When creating Rule Chain, platform generates Ru
 
 ## saveRuleChainMetaData
 
-> RuleChainMetaData saveRuleChainMetaData(ruleChainMetaData, updateRelated)
+```
+RuleChainMetaData saveRuleChainMetaData(@Nonnull RuleChainMetaData ruleChainMetaData, @Nullable Boolean updateRelated)
+```
+
+**POST** `/api/ruleChain/metadata`
 
 Update Rule Chain Metadata
 
@@ -349,7 +414,11 @@ Updates the rule chain metadata. The metadata object contains information about 
 
 ## setAutoAssignToEdgeRuleChain
 
-> RuleChain setAutoAssignToEdgeRuleChain(ruleChainId)
+```
+RuleChain setAutoAssignToEdgeRuleChain(@Nonnull String ruleChainId)
+```
+
+**POST** `/api/ruleChain/{ruleChainId}/autoAssignToEdge`
 
 Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain)
 
@@ -369,7 +438,11 @@ Makes the rule chain to be automatically assigned for any new edge that will be 
 
 ## setDeviceDefaultRuleChain
 
-> RuleChain setDeviceDefaultRuleChain(defaultRuleChainCreateRequest)
+```
+RuleChain setDeviceDefaultRuleChain(@Nonnull DefaultRuleChainCreateRequest defaultRuleChainCreateRequest)
+```
+
+**POST** `/api/ruleChain/device/default`
 
 Create Default Rule Chain (setDeviceDefaultRuleChain)
 
@@ -389,7 +462,11 @@ Create rule chain from template, based on the specified name in the request. Cre
 
 ## setEdgeTemplateRootRuleChain
 
-> RuleChain setEdgeTemplateRootRuleChain(ruleChainId)
+```
+RuleChain setEdgeTemplateRootRuleChain(@Nonnull String ruleChainId)
+```
+
+**POST** `/api/ruleChain/{ruleChainId}/edgeTemplateRoot`
 
 Set Edge Template Root Rule Chain (setEdgeTemplateRootRuleChain)
 
@@ -409,7 +486,11 @@ Makes the rule chain to be root rule chain for any new edge that will be created
 
 ## setRootRuleChain
 
-> RuleChain setRootRuleChain(ruleChainId)
+```
+RuleChain setRootRuleChain(@Nonnull String ruleChainId)
+```
+
+**POST** `/api/ruleChain/{ruleChainId}/root`
 
 Set Root Rule Chain (setRootRuleChain)
 
@@ -429,7 +510,11 @@ Makes the rule chain to be root rule chain. Updates previous root rule chain as 
 
 ## testRuleChainScript
 
-> com.fasterxml.jackson.databind.JsonNode testRuleChainScript(body, scriptLang)
+```
+com.fasterxml.jackson.databind.JsonNode testRuleChainScript(@Nonnull Object body, @Nullable ScriptLanguage scriptLang)
+```
+
+**POST** `/api/ruleChain/testScript`
 
 Test Script function
 
@@ -450,7 +535,11 @@ Execute the Script function and return the result. The format of request:   ```j
 
 ## unassignRuleChainFromEdge
 
-> RuleChain unassignRuleChainFromEdge(edgeId, ruleChainId)
+```
+RuleChain unassignRuleChainFromEdge(@Nonnull String edgeId, @Nonnull String ruleChainId)
+```
+
+**DELETE** `/api/edge/{edgeId}/ruleChain/{ruleChainId}`
 
 Unassign rule chain from edge (unassignRuleChainFromEdge)
 
@@ -471,7 +560,11 @@ Clears assignment of the rule chain to the edge. Unassignment works in async way
 
 ## unsetAutoAssignToEdgeRuleChain
 
-> RuleChain unsetAutoAssignToEdgeRuleChain(ruleChainId)
+```
+RuleChain unsetAutoAssignToEdgeRuleChain(@Nonnull String ruleChainId)
+```
+
+**DELETE** `/api/ruleChain/{ruleChainId}/autoAssignToEdge`
 
 Unset Auto Assign To Edge Rule Chain (unsetAutoAssignToEdgeRuleChain)
 

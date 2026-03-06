@@ -1,32 +1,37 @@
 # AssetControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**assignAssetToCustomer**](#assignAssetToCustomer) | **POST** /api/customer/{customerId}/asset/{assetId} | Assign asset to customer (assignAssetToCustomer) |
-| [**assignAssetToEdge**](#assignAssetToEdge) | **POST** /api/edge/{edgeId}/asset/{assetId} | Assign asset to edge (assignAssetToEdge) |
-| [**assignAssetToPublicCustomer**](#assignAssetToPublicCustomer) | **POST** /api/customer/public/asset/{assetId} | Make asset publicly available (assignAssetToPublicCustomer) |
-| [**deleteAsset**](#deleteAsset) | **DELETE** /api/asset/{assetId} | Delete asset (deleteAsset) |
-| [**findAssetsByQuery**](#findAssetsByQuery) | **POST** /api/assets | Find related assets (findAssetsByQuery) |
-| [**getAssetById**](#getAssetById) | **GET** /api/asset/{assetId} | Get Asset (getAssetById) |
-| [**getAssetInfoById**](#getAssetInfoById) | **GET** /api/asset/info/{assetId} | Get Asset Info (getAssetInfoById) |
-| [**getAssetTypes**](#getAssetTypes) | **GET** /api/asset/types | Get Asset Types (getAssetTypes) |
-| [**getAssetsByIds**](#getAssetsByIds) | **GET** /api/assets | Get Assets By Ids (getAssetsByIds) |
-| [**getCustomerAssetInfos**](#getCustomerAssetInfos) | **GET** /api/customer/{customerId}/assetInfos | Get Customer Asset Infos (getCustomerAssetInfos) |
-| [**getCustomerAssets**](#getCustomerAssets) | **GET** /api/customer/{customerId}/assets | Get Customer Assets (getCustomerAssets) |
-| [**getEdgeAssets**](#getEdgeAssets) | **GET** /api/edge/{edgeId}/assets | Get assets assigned to edge (getEdgeAssets) |
-| [**getTenantAssetByName**](#getTenantAssetByName) | **GET** /api/tenant/asset | Get Tenant Asset (getTenantAssetByName) |
-| [**getTenantAssetInfos**](#getTenantAssetInfos) | **GET** /api/tenant/assetInfos | Get Tenant Asset Infos (getTenantAssetInfos) |
-| [**getTenantAssets**](#getTenantAssets) | **GET** /api/tenant/assets | Get Tenant Assets (getTenantAssets) |
-| [**processAssetsBulkImport**](#processAssetsBulkImport) | **POST** /api/asset/bulk_import | Import the bulk of assets (processAssetsBulkImport) |
-| [**saveAsset**](#saveAsset) | **POST** /api/asset | Create Or Update Asset (saveAsset) |
-| [**unassignAssetFromCustomer**](#unassignAssetFromCustomer) | **DELETE** /api/customer/asset/{assetId} | Unassign asset from customer (unassignAssetFromCustomer) |
-| [**unassignAssetFromEdge**](#unassignAssetFromEdge) | **DELETE** /api/edge/{edgeId}/asset/{assetId} | Unassign asset from edge (unassignAssetFromEdge) |
+`ThingsboardClient` methods:
 
+```
+Asset assignAssetToCustomer(@Nonnull String customerId, @Nonnull String assetId) // Assign asset to customer (assignAssetToCustomer)
+Asset assignAssetToEdge(@Nonnull String edgeId, @Nonnull String assetId) // Assign asset to edge (assignAssetToEdge)
+Asset assignAssetToPublicCustomer(@Nonnull String assetId) // Make asset publicly available (assignAssetToPublicCustomer)
+void deleteAsset(@Nonnull String assetId) // Delete asset (deleteAsset)
+List<Asset> findAssetsByQuery(@Nonnull AssetSearchQuery assetSearchQuery) // Find related assets (findAssetsByQuery)
+Asset getAssetById(@Nonnull String assetId) // Get Asset (getAssetById)
+AssetInfo getAssetInfoById(@Nonnull String assetId) // Get Asset Info (getAssetInfoById)
+List<EntitySubtype> getAssetTypes() // Get Asset Types (getAssetTypes)
+List<Asset> getAssetsByIds(@Nonnull List<String> assetIds) // Get Assets By Ids (getAssetsByIds)
+PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Asset Infos (getCustomerAssetInfos)
+PageDataAsset getCustomerAssets(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Assets (getCustomerAssets)
+PageDataAsset getEdgeAssets(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get assets assigned to edge (getEdgeAssets)
+Asset getTenantAssetByName(@Nonnull String assetName) // Get Tenant Asset (getTenantAssetByName)
+PageDataAssetInfo getTenantAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Asset Infos (getTenantAssetInfos)
+PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Assets (getTenantAssets)
+BulkImportResultAsset processAssetsBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of assets (processAssetsBulkImport)
+Asset saveAsset(@Nonnull Asset asset, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Asset (saveAsset)
+Asset unassignAssetFromCustomer(@Nonnull String assetId) // Unassign asset from customer (unassignAssetFromCustomer)
+Asset unassignAssetFromEdge(@Nonnull String edgeId, @Nonnull String assetId) // Unassign asset from edge (unassignAssetFromEdge)
+```
 
 
 ## assignAssetToCustomer
 
-> Asset assignAssetToCustomer(customerId, assetId)
+```
+Asset assignAssetToCustomer(@Nonnull String customerId, @Nonnull String assetId)
+```
+
+**POST** `/api/customer/{customerId}/asset/{assetId}`
 
 Assign asset to customer (assignAssetToCustomer)
 
@@ -47,7 +52,11 @@ Creates assignment of the asset to customer. Customer will be able to query asse
 
 ## assignAssetToEdge
 
-> Asset assignAssetToEdge(edgeId, assetId)
+```
+Asset assignAssetToEdge(@Nonnull String edgeId, @Nonnull String assetId)
+```
+
+**POST** `/api/edge/{edgeId}/asset/{assetId}`
 
 Assign asset to edge (assignAssetToEdge)
 
@@ -68,7 +77,11 @@ Creates assignment of an existing asset to an instance of The Edge. Assignment w
 
 ## assignAssetToPublicCustomer
 
-> Asset assignAssetToPublicCustomer(assetId)
+```
+Asset assignAssetToPublicCustomer(@Nonnull String assetId)
+```
+
+**POST** `/api/customer/public/asset/{assetId}`
 
 Make asset publicly available (assignAssetToPublicCustomer)
 
@@ -88,7 +101,11 @@ Asset will be available for non-authorized (not logged-in) users. This is useful
 
 ## deleteAsset
 
-> deleteAsset(assetId)
+```
+void deleteAsset(@Nonnull String assetId)
+```
+
+**DELETE** `/api/asset/{assetId}`
 
 Delete asset (deleteAsset)
 
@@ -108,7 +125,11 @@ null (empty response body)
 
 ## findAssetsByQuery
 
-> List<Asset> findAssetsByQuery(assetSearchQuery)
+```
+List<Asset> findAssetsByQuery(@Nonnull AssetSearchQuery assetSearchQuery)
+```
+
+**POST** `/api/assets`
 
 Find related assets (findAssetsByQuery)
 
@@ -128,7 +149,11 @@ Returns all assets that are related to the specific entity. The entity id, relat
 
 ## getAssetById
 
-> Asset getAssetById(assetId)
+```
+Asset getAssetById(@Nonnull String assetId)
+```
+
+**GET** `/api/asset/{assetId}`
 
 Get Asset (getAssetById)
 
@@ -148,7 +173,11 @@ Fetch the Asset object based on the provided Asset Id. If the user has the autho
 
 ## getAssetInfoById
 
-> AssetInfo getAssetInfoById(assetId)
+```
+AssetInfo getAssetInfoById(@Nonnull String assetId)
+```
+
+**GET** `/api/asset/info/{assetId}`
 
 Get Asset Info (getAssetInfoById)
 
@@ -168,7 +197,11 @@ Fetch the Asset Info object based on the provided Asset Id. If the user has the 
 
 ## getAssetTypes
 
-> List<EntitySubtype> getAssetTypes()
+```
+List<EntitySubtype> getAssetTypes()
+```
+
+**GET** `/api/asset/types`
 
 Get Asset Types (getAssetTypes)
 
@@ -181,7 +214,11 @@ Deprecated. See 'getAssetProfileNames' API from Asset Profile Controller instead
 
 ## getAssetsByIds
 
-> List<Asset> getAssetsByIds(assetIds)
+```
+List<Asset> getAssetsByIds(@Nonnull List<String> assetIds)
+```
+
+**GET** `/api/assets`
 
 Get Assets By Ids (getAssetsByIds)
 
@@ -201,7 +238,11 @@ Requested assets must be owned by tenant or assigned to customer which user is p
 
 ## getCustomerAssetInfos
 
-> PageDataAssetInfo getCustomerAssetInfos(customerId, pageSize, page, type, assetProfileId, textSearch, sortProperty, sortOrder)
+```
+PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/assetInfos`
 
 Get Customer Asset Infos (getCustomerAssetInfos)
 
@@ -228,7 +269,11 @@ Returns a page of assets info objects assigned to customer. You can specify para
 
 ## getCustomerAssets
 
-> PageDataAsset getCustomerAssets(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataAsset getCustomerAssets(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/assets`
 
 Get Customer Assets (getCustomerAssets)
 
@@ -254,7 +299,11 @@ Returns a page of assets objects assigned to customer. You can specify parameter
 
 ## getEdgeAssets
 
-> PageDataAsset getEdgeAssets(edgeId, pageSize, page, type, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataAsset getEdgeAssets(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/edge/{edgeId}/assets`
 
 Get assets assigned to edge (getEdgeAssets)
 
@@ -282,7 +331,11 @@ Returns a page of assets assigned to edge. You can specify parameters to filter 
 
 ## getTenantAssetByName
 
-> Asset getTenantAssetByName(assetName)
+```
+Asset getTenantAssetByName(@Nonnull String assetName)
+```
+
+**GET** `/api/tenant/asset`
 
 Get Tenant Asset (getTenantAssetByName)
 
@@ -302,7 +355,11 @@ Requested asset must be owned by tenant that the user belongs to. Asset name is 
 
 ## getTenantAssetInfos
 
-> PageDataAssetInfo getTenantAssetInfos(pageSize, page, type, assetProfileId, textSearch, sortProperty, sortOrder)
+```
+PageDataAssetInfo getTenantAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/assetInfos`
 
 Get Tenant Asset Infos (getTenantAssetInfos)
 
@@ -328,7 +385,11 @@ Returns a page of assets info objects owned by tenant. You can specify parameter
 
 ## getTenantAssets
 
-> PageDataAsset getTenantAssets(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/assets`
 
 Get Tenant Assets (getTenantAssets)
 
@@ -353,7 +414,11 @@ Returns a page of assets owned by tenant. You can specify parameters to filter t
 
 ## processAssetsBulkImport
 
-> BulkImportResultAsset processAssetsBulkImport(bulkImportRequest)
+```
+BulkImportResultAsset processAssetsBulkImport(@Nonnull BulkImportRequest bulkImportRequest)
+```
+
+**POST** `/api/asset/bulk_import`
 
 Import the bulk of assets (processAssetsBulkImport)
 
@@ -373,7 +438,11 @@ There's an ability to import the bulk of assets using the only .csv file.
 
 ## saveAsset
 
-> Asset saveAsset(asset, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Asset saveAsset(@Nonnull Asset asset, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/asset`
 
 Create Or Update Asset (saveAsset)
 
@@ -396,7 +465,11 @@ Creates or Updates the Asset. When creating asset, platform generates Asset Id a
 
 ## unassignAssetFromCustomer
 
-> Asset unassignAssetFromCustomer(assetId)
+```
+Asset unassignAssetFromCustomer(@Nonnull String assetId)
+```
+
+**DELETE** `/api/customer/asset/{assetId}`
 
 Unassign asset from customer (unassignAssetFromCustomer)
 
@@ -416,7 +489,11 @@ Clears assignment of the asset to customer. Customer will not be able to query a
 
 ## unassignAssetFromEdge
 
-> Asset unassignAssetFromEdge(edgeId, assetId)
+```
+Asset unassignAssetFromEdge(@Nonnull String edgeId, @Nonnull String assetId)
+```
+
+**DELETE** `/api/edge/{edgeId}/asset/{assetId}`
 
 Unassign asset from edge (unassignAssetFromEdge)
 

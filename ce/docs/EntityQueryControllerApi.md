@@ -1,21 +1,26 @@
 # EntityQueryControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**countAlarmsByQuery**](#countAlarmsByQuery) | **POST** /api/alarmsQuery/count | Count Alarms by Query (countAlarmsByQuery) |
-| [**countEntitiesByQuery**](#countEntitiesByQuery) | **POST** /api/entitiesQuery/count | Count Entities by Query |
-| [**findAlarmDataByQuery**](#findAlarmDataByQuery) | **POST** /api/alarmsQuery/find | Find Alarms by Query |
-| [**findAvailableEntityKeysByQuery**](#findAvailableEntityKeysByQuery) | **POST** /api/entitiesQuery/find/keys | Find Available Entity Keys by Query (deprecated) |
-| [**findAvailableEntityKeysByQueryV2**](#findAvailableEntityKeysByQueryV2) | **POST** /api/v2/entitiesQuery/find/keys | Find Available Entity Keys By Query |
-| [**findEntityDataByQuery**](#findEntityDataByQuery) | **POST** /api/entitiesQuery/find | Find Entity Data by Query |
-| [**getEdqsState**](#getEdqsState) | **GET** /api/edqs/state | getEdqsState |
-| [**processSystemEdqsRequest**](#processSystemEdqsRequest) | **POST** /api/edqs/system/request | processSystemEdqsRequest |
+`ThingsboardClient` methods:
 
+```
+Long countAlarmsByQuery(@Nonnull AlarmCountQuery alarmCountQuery) // Count Alarms by Query (countAlarmsByQuery)
+Long countEntitiesByQuery(@Nonnull EntityCountQuery entityCountQuery) // Count Entities by Query
+PageDataAlarmData findAlarmDataByQuery(@Nonnull AlarmDataQuery alarmDataQuery) // Find Alarms by Query
+AvailableEntityKeys findAvailableEntityKeysByQuery(@Nonnull Boolean timeseries, @Nonnull Boolean attributes, @Nonnull EntityDataQuery entityDataQuery, @Nullable String scope) // Find Available Entity Keys by Query (deprecated)
+AvailableEntityKeysV2 findAvailableEntityKeysByQueryV2(@Nonnull EntityDataQuery entityDataQuery, @Nullable Boolean includeTimeseries, @Nullable Boolean includeAttributes, @Nullable String scopes, @Nullable Boolean includeSamples) // Find Available Entity Keys By Query
+PageDataEntityData findEntityDataByQuery(@Nonnull EntityDataQuery entityDataQuery) // Find Entity Data by Query
+EdqsState getEdqsState() // getEdqsState
+void processSystemEdqsRequest(@Nonnull ToCoreEdqsRequest toCoreEdqsRequest) // processSystemEdqsRequest
+```
 
 
 ## countAlarmsByQuery
 
-> Long countAlarmsByQuery(alarmCountQuery)
+```
+Long countAlarmsByQuery(@Nonnull AlarmCountQuery alarmCountQuery)
+```
+
+**POST** `/api/alarmsQuery/count`
 
 Count Alarms by Query (countAlarmsByQuery)
 
@@ -35,7 +40,11 @@ Returns the number of alarms that match the query definition.
 
 ## countEntitiesByQuery
 
-> Long countEntitiesByQuery(entityCountQuery)
+```
+Long countEntitiesByQuery(@Nonnull EntityCountQuery entityCountQuery)
+```
+
+**POST** `/api/entitiesQuery/count`
 
 Count Entities by Query
 
@@ -55,7 +64,11 @@ Allows to run complex queries to search the count of platform entities (devices,
 
 ## findAlarmDataByQuery
 
-> PageDataAlarmData findAlarmDataByQuery(alarmDataQuery)
+```
+PageDataAlarmData findAlarmDataByQuery(@Nonnull AlarmDataQuery alarmDataQuery)
+```
+
+**POST** `/api/alarmsQuery/find`
 
 Find Alarms by Query
 
@@ -75,7 +88,11 @@ This method description defines how Alarm Data Query extends the Entity Data Que
 
 ## findAvailableEntityKeysByQuery
 
-> AvailableEntityKeys findAvailableEntityKeysByQuery(timeseries, attributes, entityDataQuery, scope)
+```
+AvailableEntityKeys findAvailableEntityKeysByQuery(@Nonnull Boolean timeseries, @Nonnull Boolean attributes, @Nonnull EntityDataQuery entityDataQuery, @Nullable String scope)
+```
+
+**POST** `/api/entitiesQuery/find/keys`
 
 Find Available Entity Keys by Query (deprecated)
 
@@ -98,7 +115,11 @@ Find Available Entity Keys by Query (deprecated)
 
 ## findAvailableEntityKeysByQueryV2
 
-> AvailableEntityKeysV2 findAvailableEntityKeysByQueryV2(entityDataQuery, includeTimeseries, includeAttributes, scopes, includeSamples)
+```
+AvailableEntityKeysV2 findAvailableEntityKeysByQueryV2(@Nonnull EntityDataQuery entityDataQuery, @Nullable Boolean includeTimeseries, @Nullable Boolean includeAttributes, @Nullable String scopes, @Nullable Boolean includeSamples)
+```
+
+**POST** `/api/v2/entitiesQuery/find/keys`
 
 Find Available Entity Keys By Query
 
@@ -122,7 +143,11 @@ Discovers unique time series and/or attribute key names available on entities th
 
 ## findEntityDataByQuery
 
-> PageDataEntityData findEntityDataByQuery(entityDataQuery)
+```
+PageDataEntityData findEntityDataByQuery(@Nonnull EntityDataQuery entityDataQuery)
+```
+
+**POST** `/api/entitiesQuery/find`
 
 Find Entity Data by Query
 
@@ -142,7 +167,11 @@ Allows to run complex queries over platform entities (devices, assets, customers
 
 ## getEdqsState
 
-> EdqsState getEdqsState()
+```
+EdqsState getEdqsState()
+```
+
+**GET** `/api/edqs/state`
 
 getEdqsState
 
@@ -153,7 +182,11 @@ getEdqsState
 
 ## processSystemEdqsRequest
 
-> processSystemEdqsRequest(toCoreEdqsRequest)
+```
+void processSystemEdqsRequest(@Nonnull ToCoreEdqsRequest toCoreEdqsRequest)
+```
+
+**POST** `/api/edqs/system/request`
 
 processSystemEdqsRequest
 

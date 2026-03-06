@@ -1,18 +1,23 @@
 # SolutionControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getSolutionTemplateDetails**](#getSolutionTemplateDetails) | **GET** /api/solutions/templates/details/{solutionTemplateId} | Get Solution template details (getSolutionTemplateDetails) |
-| [**getSolutionTemplateInfos**](#getSolutionTemplateInfos) | **GET** /api/solutions/templates/infos | Get Solution templates (getSolutionTemplateInfos) |
-| [**getSolutionTemplateInstructions**](#getSolutionTemplateInstructions) | **GET** /api/solutions/templates/instructions/{solutionTemplateId} | Get Solution Template Instructions (getSolutionTemplateInstructions) |
-| [**installSolutionTemplate**](#installSolutionTemplate) | **POST** /api/solutions/templates/{solutionTemplateId}/install | Install Solution Template (installSolutionTemplate) |
-| [**uninstallSolutionTemplate**](#uninstallSolutionTemplate) | **DELETE** /api/solutions/templates/{solutionTemplateId}/delete | Uninstall Solution Template (uninstallSolutionTemplate) |
+`ThingsboardClient` methods:
 
+```
+TenantSolutionTemplateDetails getSolutionTemplateDetails(@Nonnull String solutionTemplateId) // Get Solution template details (getSolutionTemplateDetails)
+List<TenantSolutionTemplateInfo> getSolutionTemplateInfos() // Get Solution templates (getSolutionTemplateInfos)
+TenantSolutionTemplateInstructions getSolutionTemplateInstructions(@Nonnull String solutionTemplateId) // Get Solution Template Instructions (getSolutionTemplateInstructions)
+SolutionInstallResponse installSolutionTemplate(@Nonnull String solutionTemplateId) // Install Solution Template (installSolutionTemplate)
+void uninstallSolutionTemplate(@Nonnull String solutionTemplateId) // Uninstall Solution Template (uninstallSolutionTemplate)
+```
 
 
 ## getSolutionTemplateDetails
 
-> TenantSolutionTemplateDetails getSolutionTemplateDetails(solutionTemplateId)
+```
+TenantSolutionTemplateDetails getSolutionTemplateDetails(@Nonnull String solutionTemplateId)
+```
+
+**GET** `/api/solutions/templates/details/{solutionTemplateId}`
 
 Get Solution template details (getSolutionTemplateDetails)
 
@@ -32,7 +37,11 @@ Get a solution template details based on the provided id   Security check is per
 
 ## getSolutionTemplateInfos
 
-> List<TenantSolutionTemplateInfo> getSolutionTemplateInfos()
+```
+List<TenantSolutionTemplateInfo> getSolutionTemplateInfos()
+```
+
+**GET** `/api/solutions/templates/infos`
 
 Get Solution templates (getSolutionTemplateInfos)
 
@@ -45,7 +54,11 @@ Get a list of solution template descriptors   Security check is performed to ver
 
 ## getSolutionTemplateInstructions
 
-> TenantSolutionTemplateInstructions getSolutionTemplateInstructions(solutionTemplateId)
+```
+TenantSolutionTemplateInstructions getSolutionTemplateInstructions(@Nonnull String solutionTemplateId)
+```
+
+**GET** `/api/solutions/templates/instructions/{solutionTemplateId}`
 
 Get Solution Template Instructions (getSolutionTemplateInstructions)
 
@@ -65,7 +78,11 @@ Get a solution template instructions based on the provided id   Security check i
 
 ## installSolutionTemplate
 
-> SolutionInstallResponse installSolutionTemplate(solutionTemplateId)
+```
+SolutionInstallResponse installSolutionTemplate(@Nonnull String solutionTemplateId)
+```
+
+**POST** `/api/solutions/templates/{solutionTemplateId}/install`
 
 Install Solution Template (installSolutionTemplate)
 
@@ -85,7 +102,11 @@ Install solution template based on the provided id   Security check is performed
 
 ## uninstallSolutionTemplate
 
-> uninstallSolutionTemplate(solutionTemplateId)
+```
+void uninstallSolutionTemplate(@Nonnull String solutionTemplateId)
+```
+
+**DELETE** `/api/solutions/templates/{solutionTemplateId}/delete`
 
 Uninstall Solution Template (uninstallSolutionTemplate)
 

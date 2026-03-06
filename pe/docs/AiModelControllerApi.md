@@ -1,18 +1,23 @@
 # AiModelControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteAiModelById**](#deleteAiModelById) | **DELETE** /api/ai/model/{modelUuid} | Delete AI model by ID (deleteAiModelById) |
-| [**getAiModelById**](#getAiModelById) | **GET** /api/ai/model/{modelUuid} | Get AI model by ID (getAiModelById) |
-| [**getAiModels**](#getAiModels) | **GET** /api/ai/model | Get AI models (getAiModels) |
-| [**saveAiModel**](#saveAiModel) | **POST** /api/ai/model | Create or update AI model (saveAiModel) |
-| [**sendChatRequest**](#sendChatRequest) | **POST** /api/ai/model/chat | Send request to AI chat model (sendChatRequest) |
+`ThingsboardClient` methods:
 
+```
+Boolean deleteAiModelById(@Nonnull UUID modelUuid) // Delete AI model by ID (deleteAiModelById)
+AiModel getAiModelById(@Nonnull UUID modelUuid) // Get AI model by ID (getAiModelById)
+PageDataAiModel getAiModels(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get AI models (getAiModels)
+AiModel saveAiModel(@Nonnull AiModel aiModel) // Create or update AI model (saveAiModel)
+TbChatResponse sendChatRequest(@Nonnull TbChatRequest tbChatRequest) // Send request to AI chat model (sendChatRequest)
+```
 
 
 ## deleteAiModelById
 
-> Boolean deleteAiModelById(modelUuid)
+```
+Boolean deleteAiModelById(@Nonnull UUID modelUuid)
+```
+
+**DELETE** `/api/ai/model/{modelUuid}`
 
 Delete AI model by ID (deleteAiModelById)
 
@@ -32,7 +37,11 @@ Deletes the AI model record by its `id`. If a record with the specified `id` exi
 
 ## getAiModelById
 
-> AiModel getAiModelById(modelUuid)
+```
+AiModel getAiModelById(@Nonnull UUID modelUuid)
+```
+
+**GET** `/api/ai/model/{modelUuid}`
 
 Get AI model by ID (getAiModelById)
 
@@ -52,7 +61,11 @@ Fetches an AI model record by its `id`.  Available for users with 'TENANT_ADMIN'
 
 ## getAiModels
 
-> PageDataAiModel getAiModels(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataAiModel getAiModels(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/ai/model`
 
 Get AI models (getAiModels)
 
@@ -76,7 +89,11 @@ Returns a page of AI models. You can specify parameters to filter the results. T
 
 ## saveAiModel
 
-> AiModel saveAiModel(aiModel)
+```
+AiModel saveAiModel(@Nonnull AiModel aiModel)
+```
+
+**POST** `/api/ai/model`
 
 Create or update AI model (saveAiModel)
 
@@ -96,7 +113,11 @@ Creates or updates an AI model record.  • **Create:** Omit the `id` to create 
 
 ## sendChatRequest
 
-> TbChatResponse sendChatRequest(tbChatRequest)
+```
+TbChatResponse sendChatRequest(@Nonnull TbChatRequest tbChatRequest)
+```
+
+**POST** `/api/ai/model/chat`
 
 Send request to AI chat model (sendChatRequest)
 

@@ -1,18 +1,23 @@
 # QueueControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteQueue**](#deleteQueue) | **DELETE** /api/queues/{queueId} | Delete Queue (deleteQueue) |
-| [**getQueueById**](#getQueueById) | **GET** /api/queues/{queueId} | Get Queue (getQueueById) |
-| [**getQueueByName**](#getQueueByName) | **GET** /api/queues/name/{queueName} | Get Queue (getQueueByName) |
-| [**getTenantQueuesByServiceType**](#getTenantQueuesByServiceType) | **GET** /api/queues | Get Queues (getTenantQueuesByServiceType) |
-| [**saveQueue**](#saveQueue) | **POST** /api/queues | Create Or Update Queue (saveQueue) |
+`ThingsboardClient` methods:
 
+```
+void deleteQueue(@Nonnull String queueId) // Delete Queue (deleteQueue)
+Queue getQueueById(@Nonnull String queueId) // Get Queue (getQueueById)
+Queue getQueueByName(@Nonnull String queueName) // Get Queue (getQueueByName)
+PageDataQueue getTenantQueuesByServiceType(@Nonnull String serviceType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Queues (getTenantQueuesByServiceType)
+Queue saveQueue(@Nonnull String serviceType, @Nonnull Queue queue) // Create Or Update Queue (saveQueue)
+```
 
 
 ## deleteQueue
 
-> deleteQueue(queueId)
+```
+void deleteQueue(@Nonnull String queueId)
+```
+
+**DELETE** `/api/queues/{queueId}`
 
 Delete Queue (deleteQueue)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## getQueueById
 
-> Queue getQueueById(queueId)
+```
+Queue getQueueById(@Nonnull String queueId)
+```
+
+**GET** `/api/queues/{queueId}`
 
 Get Queue (getQueueById)
 
@@ -52,7 +61,11 @@ Fetch the Queue object based on the provided Queue Id.   Available for users wit
 
 ## getQueueByName
 
-> Queue getQueueByName(queueName)
+```
+Queue getQueueByName(@Nonnull String queueName)
+```
+
+**GET** `/api/queues/name/{queueName}`
 
 Get Queue (getQueueByName)
 
@@ -72,7 +85,11 @@ Fetch the Queue object based on the provided Queue name.   Available for users w
 
 ## getTenantQueuesByServiceType
 
-> PageDataQueue getTenantQueuesByServiceType(serviceType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataQueue getTenantQueuesByServiceType(@Nonnull String serviceType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/queues`
 
 Get Queues (getTenantQueuesByServiceType)
 
@@ -97,7 +114,11 @@ Returns a page of queues registered in the platform. You can specify parameters 
 
 ## saveQueue
 
-> Queue saveQueue(serviceType, queue)
+```
+Queue saveQueue(@Nonnull String serviceType, @Nonnull Queue queue)
+```
+
+**POST** `/api/queues`
 
 Create Or Update Queue (saveQueue)
 

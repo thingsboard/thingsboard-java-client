@@ -1,18 +1,23 @@
 # JobControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**cancelJob**](#cancelJob) | **POST** /api/job/{id}/cancel | cancelJob |
-| [**deleteJob**](#deleteJob) | **DELETE** /api/job/{id} | deleteJob |
-| [**getJobById**](#getJobById) | **GET** /api/job/{id} | getJobById |
-| [**getJobs**](#getJobs) | **GET** /api/jobs | getJobs |
-| [**reprocessJob**](#reprocessJob) | **POST** /api/job/{id}/reprocess | reprocessJob |
+`ThingsboardClient` methods:
 
+```
+void cancelJob(@Nonnull UUID id) // cancelJob
+void deleteJob(@Nonnull UUID id) // deleteJob
+Job getJobById(@Nonnull UUID id) // getJobById
+PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<JobType> types, @Nullable List<JobStatus> statuses, @Nullable List<UUID> entities, @Nullable Long startTime, @Nullable Long endTime) // getJobs
+void reprocessJob(@Nonnull UUID id) // reprocessJob
+```
 
 
 ## cancelJob
 
-> cancelJob(id)
+```
+void cancelJob(@Nonnull UUID id)
+```
+
+**POST** `/api/job/{id}/cancel`
 
 cancelJob
 
@@ -30,7 +35,11 @@ null (empty response body)
 
 ## deleteJob
 
-> deleteJob(id)
+```
+void deleteJob(@Nonnull UUID id)
+```
+
+**DELETE** `/api/job/{id}`
 
 deleteJob
 
@@ -48,7 +57,11 @@ null (empty response body)
 
 ## getJobById
 
-> Job getJobById(id)
+```
+Job getJobById(@Nonnull UUID id)
+```
+
+**GET** `/api/job/{id}`
 
 getJobById
 
@@ -66,7 +79,11 @@ getJobById
 
 ## getJobs
 
-> PageDataJob getJobs(pageSize, page, textSearch, sortProperty, sortOrder, types, statuses, entities, startTime, endTime)
+```
+PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<JobType> types, @Nullable List<JobStatus> statuses, @Nullable List<UUID> entities, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/jobs`
 
 getJobs
 
@@ -93,7 +110,11 @@ getJobs
 
 ## reprocessJob
 
-> reprocessJob(id)
+```
+void reprocessJob(@Nonnull UUID id)
+```
+
+**POST** `/api/job/{id}/reprocess`
 
 reprocessJob
 

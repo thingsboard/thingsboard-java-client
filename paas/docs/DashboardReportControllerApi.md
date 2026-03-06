@@ -1,15 +1,20 @@
 # DashboardReportControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**downloadDashboardReport**](#downloadDashboardReport) | **POST** /api/report/{dashboardId}/download | Download dashboard report (downloadDashboardReport) |
-| [**downloadTestReport**](#downloadTestReport) | **POST** /api/report/test | Download test report (downloadTestReport) |
+`ThingsboardClient` methods:
 
+```
+File downloadDashboardReport(@Nonnull String dashboardId, @Nonnull Object body) // Download dashboard report (downloadDashboardReport)
+File downloadTestReport(@Nonnull DashboardReportConfig dashboardReportConfig, @Nullable String reportsServerEndpointUrl) // Download test report (downloadTestReport)
+```
 
 
 ## downloadDashboardReport
 
-> File downloadDashboardReport(dashboardId, body)
+```
+File downloadDashboardReport(@Nonnull String dashboardId, @Nonnull Object body)
+```
+
+**POST** `/api/report/{dashboardId}/download`
 
 Download dashboard report (downloadDashboardReport)
 
@@ -30,7 +35,11 @@ Generate and download a report from the specified dashboard. The request payload
 
 ## downloadTestReport
 
-> File downloadTestReport(dashboardReportConfig, reportsServerEndpointUrl)
+```
+File downloadTestReport(@Nonnull DashboardReportConfig dashboardReportConfig, @Nullable String reportsServerEndpointUrl)
+```
+
+**POST** `/api/report/test`
 
 Download test report (downloadTestReport)
 

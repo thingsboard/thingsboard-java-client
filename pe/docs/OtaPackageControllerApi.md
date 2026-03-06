@@ -1,22 +1,27 @@
 # OtaPackageControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteOtaPackage**](#deleteOtaPackage) | **DELETE** /api/otaPackage/{otaPackageId} | Delete OTA Package (deleteOtaPackage) |
-| [**downloadOtaPackage**](#downloadOtaPackage) | **GET** /api/otaPackage/{otaPackageId}/download | Download OTA Package (downloadOtaPackage) |
-| [**getGroupOtaPackages**](#getGroupOtaPackages) | **GET** /api/otaPackages/group/{groupId}/{type} | Get group OTA Package Infos (getGroupOtaPackages) |
-| [**getOtaPackageById**](#getOtaPackageById) | **GET** /api/otaPackage/{otaPackageId} | Get OTA Package (getOtaPackageById) |
-| [**getOtaPackageInfoById**](#getOtaPackageInfoById) | **GET** /api/otaPackage/info/{otaPackageId} | Get OTA Package Info (getOtaPackageInfoById) |
-| [**getOtaPackages**](#getOtaPackages) | **GET** /api/otaPackages | Get OTA Package Infos (getOtaPackages) |
-| [**getOtaPackagesByDeviceProfileIdAndType**](#getOtaPackagesByDeviceProfileIdAndType) | **GET** /api/otaPackages/{deviceProfileId}/{type} | Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType) |
-| [**saveOtaPackageData**](#saveOtaPackageData) | **POST** /api/otaPackage/{otaPackageId} | Save OTA Package data (saveOtaPackageData) |
-| [**saveOtaPackageInfo**](#saveOtaPackageInfo) | **POST** /api/otaPackage | Create Or Update OTA Package Info (saveOtaPackageInfo) |
+`ThingsboardClient` methods:
 
+```
+void deleteOtaPackage(@Nonnull String otaPackageId) // Delete OTA Package (deleteOtaPackage)
+File downloadOtaPackage(@Nonnull String otaPackageId) // Download OTA Package (downloadOtaPackage)
+PageDataOtaPackageInfo getGroupOtaPackages(@Nonnull String groupId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get group OTA Package Infos (getGroupOtaPackages)
+OtaPackage getOtaPackageById(@Nonnull String otaPackageId) // Get OTA Package (getOtaPackageById)
+OtaPackageInfo getOtaPackageInfoById(@Nonnull String otaPackageId) // Get OTA Package Info (getOtaPackageInfoById)
+PageDataOtaPackageInfo getOtaPackages(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OTA Package Infos (getOtaPackages)
+PageDataOtaPackageInfo getOtaPackagesByDeviceProfileIdAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType)
+OtaPackageInfo saveOtaPackageData(@Nonnull String otaPackageId, @Nonnull String checksumAlgorithm, @Nonnull File _file, @Nullable String checksum) // Save OTA Package data (saveOtaPackageData)
+OtaPackageInfo saveOtaPackageInfo(@Nonnull SaveOtaPackageInfoRequest saveOtaPackageInfoRequest) // Create Or Update OTA Package Info (saveOtaPackageInfo)
+```
 
 
 ## deleteOtaPackage
 
-> deleteOtaPackage(otaPackageId)
+```
+void deleteOtaPackage(@Nonnull String otaPackageId)
+```
+
+**DELETE** `/api/otaPackage/{otaPackageId}`
 
 Delete OTA Package (deleteOtaPackage)
 
@@ -36,7 +41,11 @@ null (empty response body)
 
 ## downloadOtaPackage
 
-> File downloadOtaPackage(otaPackageId)
+```
+File downloadOtaPackage(@Nonnull String otaPackageId)
+```
+
+**GET** `/api/otaPackage/{otaPackageId}/download`
 
 Download OTA Package (downloadOtaPackage)
 
@@ -56,7 +65,11 @@ Download OTA Package based on the provided OTA Package Id.  Available for users 
 
 ## getGroupOtaPackages
 
-> PageDataOtaPackageInfo getGroupOtaPackages(groupId, type, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataOtaPackageInfo getGroupOtaPackages(@Nonnull String groupId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/otaPackages/group/{groupId}/{type}`
 
 Get group OTA Package Infos (getGroupOtaPackages)
 
@@ -82,7 +95,11 @@ Returns a page of OTA Package Info objects owned by tenant, and by entity group.
 
 ## getOtaPackageById
 
-> OtaPackage getOtaPackageById(otaPackageId)
+```
+OtaPackage getOtaPackageById(@Nonnull String otaPackageId)
+```
+
+**GET** `/api/otaPackage/{otaPackageId}`
 
 Get OTA Package (getOtaPackageById)
 
@@ -102,7 +119,11 @@ Fetch the OTA Package object based on the provided OTA Package Id. The server ch
 
 ## getOtaPackageInfoById
 
-> OtaPackageInfo getOtaPackageInfoById(otaPackageId)
+```
+OtaPackageInfo getOtaPackageInfoById(@Nonnull String otaPackageId)
+```
+
+**GET** `/api/otaPackage/info/{otaPackageId}`
 
 Get OTA Package Info (getOtaPackageInfoById)
 
@@ -122,7 +143,11 @@ Fetch the OTA Package Info object based on the provided OTA Package Id. OTA Pack
 
 ## getOtaPackages
 
-> PageDataOtaPackageInfo getOtaPackages(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataOtaPackageInfo getOtaPackages(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/otaPackages`
 
 Get OTA Package Infos (getOtaPackages)
 
@@ -146,7 +171,11 @@ Returns a page of OTA Package Info objects owned by tenant. You can specify para
 
 ## getOtaPackagesByDeviceProfileIdAndType
 
-> PageDataOtaPackageInfo getOtaPackagesByDeviceProfileIdAndType(deviceProfileId, type, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataOtaPackageInfo getOtaPackagesByDeviceProfileIdAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/otaPackages/{deviceProfileId}/{type}`
 
 Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType)
 
@@ -172,7 +201,11 @@ Returns a page of OTA Package Info objects owned by tenant. You can specify para
 
 ## saveOtaPackageData
 
-> OtaPackageInfo saveOtaPackageData(otaPackageId, checksumAlgorithm, _file, checksum)
+```
+OtaPackageInfo saveOtaPackageData(@Nonnull String otaPackageId, @Nonnull String checksumAlgorithm, @Nonnull File _file, @Nullable String checksum)
+```
+
+**POST** `/api/otaPackage/{otaPackageId}`
 
 Save OTA Package data (saveOtaPackageData)
 
@@ -195,7 +228,11 @@ Update the OTA Package. Adds the date to the existing OTA Package Info  Availabl
 
 ## saveOtaPackageInfo
 
-> OtaPackageInfo saveOtaPackageInfo(saveOtaPackageInfoRequest)
+```
+OtaPackageInfo saveOtaPackageInfo(@Nonnull SaveOtaPackageInfoRequest saveOtaPackageInfoRequest)
+```
+
+**POST** `/api/otaPackage`
 
 Create Or Update OTA Package Info (saveOtaPackageInfo)
 

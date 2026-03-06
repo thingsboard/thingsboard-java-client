@@ -1,17 +1,22 @@
 # TrendzApiControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getTrendzSummary**](#getTrendzSummary) | **GET** /api/trendz/summary | Get Trendz Summary (getTrendzSummary) |
-| [**getTrendzUsage**](#getTrendzUsage) | **GET** /api/trendz/usage | Get Trendz Usage (getTrendzUsage) |
-| [**getTrendzViewById**](#getTrendzViewById) | **GET** /api/trendz/view/{viewId} | Get Trendz View by Id (getTrendzViewById) |
-| [**getTrendzViews**](#getTrendzViews) | **GET** /api/trendz/view/all | Get Trendz Views (getTrendzViews) |
+`ThingsboardClient` methods:
 
+```
+TrendzSummary getTrendzSummary() // Get Trendz Summary (getTrendzSummary)
+TrendzUsage getTrendzUsage() // Get Trendz Usage (getTrendzUsage)
+TrendzViewConfig getTrendzViewById(@Nonnull String viewId) // Get Trendz View by Id (getTrendzViewById)
+PageDataTrendzViewConfigLite getTrendzViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Trendz Views (getTrendzViews)
+```
 
 
 ## getTrendzSummary
 
-> TrendzSummary getTrendzSummary()
+```
+TrendzSummary getTrendzSummary()
+```
+
+**GET** `/api/trendz/summary`
 
 Get Trendz Summary (getTrendzSummary)
 
@@ -24,7 +29,11 @@ Fetch the Trendz summary object. Can only be used if Trendz is already synchroni
 
 ## getTrendzUsage
 
-> TrendzUsage getTrendzUsage()
+```
+TrendzUsage getTrendzUsage()
+```
+
+**GET** `/api/trendz/usage`
 
 Get Trendz Usage (getTrendzUsage)
 
@@ -37,7 +46,11 @@ Fetch the Trendz usage object. Can only be used if Trendz is already synchronize
 
 ## getTrendzViewById
 
-> TrendzViewConfig getTrendzViewById(viewId)
+```
+TrendzViewConfig getTrendzViewById(@Nonnull String viewId)
+```
+
+**GET** `/api/trendz/view/{viewId}`
 
 Get Trendz View by Id (getTrendzViewById)
 
@@ -57,7 +70,11 @@ Fetch the Trendz View object based on the provided Trendz View Id. Can only be u
 
 ## getTrendzViews
 
-> PageDataTrendzViewConfigLite getTrendzViews(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataTrendzViewConfigLite getTrendzViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/trendz/view/all`
 
 Get Trendz Views (getTrendzViews)
 

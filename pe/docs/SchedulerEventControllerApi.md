@@ -1,27 +1,32 @@
 # SchedulerEventControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**assignSchedulerEventToEdge**](#assignSchedulerEventToEdge) | **POST** /api/edge/{edgeId}/schedulerEvent/{schedulerEventId} | Assign scheduler event to edge (assignSchedulerEventToEdge) |
-| [**deleteSchedulerEvent**](#deleteSchedulerEvent) | **DELETE** /api/schedulerEvent/{schedulerEventId} | Delete Scheduler Event (deleteSchedulerEvent) |
-| [**enableSchedulerEvent**](#enableSchedulerEvent) | **PUT** /api/schedulerEvent/{schedulerEventId}/enabled/{enabledValue} | Enable or disable Scheduler Event (enableSchedulerEvent) |
-| [**getAllEdgeSchedulerEvents**](#getAllEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/allSchedulerEvents | Get All Edge Scheduler Events (getAllEdgeSchedulerEvents) |
-| [**getAllSchedulerEvents**](#getAllSchedulerEvents) | **GET** /api/schedulerEvents/all | Get all scheduler events (getAllSchedulerEvents) |
-| [**getEdgeSchedulerEvents**](#getEdgeSchedulerEvents) | **GET** /api/edge/{edgeId}/schedulerEvents | Get Edge Scheduler Events (getEdgeSchedulerEvents) |
-| [**getScheduledReportEvents**](#getScheduledReportEvents) | **GET** /api/scheduledReports | Get Scheduled Report Events (getScheduledReportEvents) |
-| [**getSchedulerEventById**](#getSchedulerEventById) | **GET** /api/schedulerEvent/{schedulerEventId} | Get Scheduler Event (getSchedulerEventById) |
-| [**getSchedulerEventInfoById**](#getSchedulerEventInfoById) | **GET** /api/schedulerEvent/info/{schedulerEventId} | Get Scheduler Event With Customer Info (getSchedulerEventInfoById) |
-| [**getSchedulerEvents**](#getSchedulerEvents) | **GET** /api/schedulerEvents | Get scheduler events (getSchedulerEvents) |
-| [**getSchedulerEventsByIds**](#getSchedulerEventsByIds) | **GET** /api/schedulerEvents/list | Get Scheduler Events By Ids (getSchedulerEventsByIds) |
-| [**getSchedulerEventsByRange**](#getSchedulerEventsByRange) | **GET** /api/schedulerEvents/startTime/{startTime}/endTime/{endTime} | Get scheduler events (getSchedulerEventsByRange) |
-| [**saveSchedulerEvent**](#saveSchedulerEvent) | **POST** /api/schedulerEvent | Save Scheduler Event (saveSchedulerEvent) |
-| [**unassignSchedulerEventFromEdge**](#unassignSchedulerEventFromEdge) | **DELETE** /api/edge/{edgeId}/schedulerEvent/{schedulerEventId} | Unassign scheduler event from edge (unassignSchedulerEventFromEdge) |
+`ThingsboardClient` methods:
 
+```
+SchedulerEventInfo assignSchedulerEventToEdge(@Nonnull String edgeId, @Nonnull String schedulerEventId) // Assign scheduler event to edge (assignSchedulerEventToEdge)
+void deleteSchedulerEvent(@Nonnull String schedulerEventId) // Delete Scheduler Event (deleteSchedulerEvent)
+SchedulerEvent enableSchedulerEvent(@Nonnull String schedulerEventId, @Nonnull Boolean enabledValue) // Enable or disable Scheduler Event (enableSchedulerEvent)
+List<SchedulerEventInfo> getAllEdgeSchedulerEvents(@Nonnull String edgeId) // Get All Edge Scheduler Events (getAllEdgeSchedulerEvents)
+List<SchedulerEventWithCustomerInfo> getAllSchedulerEvents(@Nullable String type) // Get all scheduler events (getAllSchedulerEvents)
+PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Scheduler Events (getEdgeSchedulerEvents)
+PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull String pageSize, @Nonnull String page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Scheduled Report Events (getScheduledReportEvents)
+SchedulerEvent getSchedulerEventById(@Nonnull String schedulerEventId) // Get Scheduler Event (getSchedulerEventById)
+SchedulerEventWithCustomerInfo getSchedulerEventInfoById(@Nonnull String schedulerEventId) // Get Scheduler Event With Customer Info (getSchedulerEventInfoById)
+PageDataSchedulerEventWithCustomerInfo getSchedulerEvents(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String type, @Nullable UUID edgeId) // Get scheduler events (getSchedulerEvents)
+List<SchedulerEventInfo> getSchedulerEventsByIds(@Nonnull List<String> schedulerEventIds) // Get Scheduler Events By Ids (getSchedulerEventsByIds)
+List<SchedulerEventWithCustomerInfo> getSchedulerEventsByRange(@Nonnull Long startTime, @Nonnull Long endTime, @Nullable String type, @Nullable UUID edgeId, @Nullable String textSearch) // Get scheduler events (getSchedulerEventsByRange)
+SchedulerEvent saveSchedulerEvent(@Nonnull SchedulerEvent schedulerEvent) // Save Scheduler Event (saveSchedulerEvent)
+SchedulerEventInfo unassignSchedulerEventFromEdge(@Nonnull String edgeId, @Nonnull String schedulerEventId) // Unassign scheduler event from edge (unassignSchedulerEventFromEdge)
+```
 
 
 ## assignSchedulerEventToEdge
 
-> SchedulerEventInfo assignSchedulerEventToEdge(edgeId, schedulerEventId)
+```
+SchedulerEventInfo assignSchedulerEventToEdge(@Nonnull String edgeId, @Nonnull String schedulerEventId)
+```
+
+**POST** `/api/edge/{edgeId}/schedulerEvent/{schedulerEventId}`
 
 Assign scheduler event to edge (assignSchedulerEventToEdge)
 
@@ -42,7 +47,11 @@ Creates assignment of an existing scheduler event to an instance of The Edge. As
 
 ## deleteSchedulerEvent
 
-> deleteSchedulerEvent(schedulerEventId)
+```
+void deleteSchedulerEvent(@Nonnull String schedulerEventId)
+```
+
+**DELETE** `/api/schedulerEvent/{schedulerEventId}`
 
 Delete Scheduler Event (deleteSchedulerEvent)
 
@@ -62,7 +71,11 @@ null (empty response body)
 
 ## enableSchedulerEvent
 
-> SchedulerEvent enableSchedulerEvent(schedulerEventId, enabledValue)
+```
+SchedulerEvent enableSchedulerEvent(@Nonnull String schedulerEventId, @Nonnull Boolean enabledValue)
+```
+
+**PUT** `/api/schedulerEvent/{schedulerEventId}/enabled/{enabledValue}`
 
 Enable or disable Scheduler Event (enableSchedulerEvent)
 
@@ -83,7 +96,11 @@ Updates scheduler event with enabled = true/false. Scheduler Event extends Sched
 
 ## getAllEdgeSchedulerEvents
 
-> List<SchedulerEventInfo> getAllEdgeSchedulerEvents(edgeId)
+```
+List<SchedulerEventInfo> getAllEdgeSchedulerEvents(@Nonnull String edgeId)
+```
+
+**GET** `/api/edge/{edgeId}/allSchedulerEvents`
 
 Get All Edge Scheduler Events (getAllEdgeSchedulerEvents)
 
@@ -103,7 +120,11 @@ Fetch the list of Scheduler Event Info objects based on the provided Edge entity
 
 ## getAllSchedulerEvents
 
-> List<SchedulerEventWithCustomerInfo> getAllSchedulerEvents(type)
+```
+List<SchedulerEventWithCustomerInfo> getAllSchedulerEvents(@Nullable String type)
+```
+
+**GET** `/api/schedulerEvents/all`
 
 Get all scheduler events (getAllSchedulerEvents)
 
@@ -123,7 +144,11 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 
 ## getEdgeSchedulerEvents
 
-> PageDataSchedulerEventInfo getEdgeSchedulerEvents(edgeId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edge/{edgeId}/schedulerEvents`
 
 Get Edge Scheduler Events (getEdgeSchedulerEvents)
 
@@ -148,7 +173,11 @@ Returns a page of  Scheduler Events Info objects based on the provided Edge enti
 
 ## getScheduledReportEvents
 
-> PageDataScheduledReportInfo getScheduledReportEvents(pageSize, page, reportTemplateId, userId, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull String pageSize, @Nonnull String page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/scheduledReports`
 
 Get Scheduled Report Events (getScheduledReportEvents)
 
@@ -175,7 +204,11 @@ Get Scheduled Report Events (getScheduledReportEvents)
 
 ## getSchedulerEventById
 
-> SchedulerEvent getSchedulerEventById(schedulerEventId)
+```
+SchedulerEvent getSchedulerEventById(@Nonnull String schedulerEventId)
+```
+
+**GET** `/api/schedulerEvent/{schedulerEventId}`
 
 Get Scheduler Event (getSchedulerEventById)
 
@@ -195,7 +228,11 @@ Fetch the SchedulerEvent object based on the provided scheduler event Id. Schedu
 
 ## getSchedulerEventInfoById
 
-> SchedulerEventWithCustomerInfo getSchedulerEventInfoById(schedulerEventId)
+```
+SchedulerEventWithCustomerInfo getSchedulerEventInfoById(@Nonnull String schedulerEventId)
+```
+
+**GET** `/api/schedulerEvent/info/{schedulerEventId}`
 
 Get Scheduler Event With Customer Info (getSchedulerEventInfoById)
 
@@ -215,7 +252,11 @@ Fetch the SchedulerEventWithCustomerInfo object based on the provided scheduler 
 
 ## getSchedulerEvents
 
-> PageDataSchedulerEventWithCustomerInfo getSchedulerEvents(pageSize, page, textSearch, sortProperty, sortOrder, type, edgeId)
+```
+PageDataSchedulerEventWithCustomerInfo getSchedulerEvents(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String type, @Nullable UUID edgeId)
+```
+
+**GET** `/api/schedulerEvents`
 
 Get scheduler events (getSchedulerEvents)
 
@@ -241,7 +282,11 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 
 ## getSchedulerEventsByIds
 
-> List<SchedulerEventInfo> getSchedulerEventsByIds(schedulerEventIds)
+```
+List<SchedulerEventInfo> getSchedulerEventsByIds(@Nonnull List<String> schedulerEventIds)
+```
+
+**GET** `/api/schedulerEvents/list`
 
 Get Scheduler Events By Ids (getSchedulerEventsByIds)
 
@@ -261,7 +306,11 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 
 ## getSchedulerEventsByRange
 
-> List<SchedulerEventWithCustomerInfo> getSchedulerEventsByRange(startTime, endTime, type, edgeId, textSearch)
+```
+List<SchedulerEventWithCustomerInfo> getSchedulerEventsByRange(@Nonnull Long startTime, @Nonnull Long endTime, @Nullable String type, @Nullable UUID edgeId, @Nullable String textSearch)
+```
+
+**GET** `/api/schedulerEvents/startTime/{startTime}/endTime/{endTime}`
 
 Get scheduler events (getSchedulerEventsByRange)
 
@@ -285,7 +334,11 @@ Retrieves scheduler events filtering by event run time. Requested scheduler even
 
 ## saveSchedulerEvent
 
-> SchedulerEvent saveSchedulerEvent(schedulerEvent)
+```
+SchedulerEvent saveSchedulerEvent(@Nonnull SchedulerEvent schedulerEvent)
+```
+
+**POST** `/api/schedulerEvent`
 
 Save Scheduler Event (saveSchedulerEvent)
 
@@ -305,7 +358,11 @@ Creates or Updates scheduler event. Scheduler Event extends Scheduler Event Info
 
 ## unassignSchedulerEventFromEdge
 
-> SchedulerEventInfo unassignSchedulerEventFromEdge(edgeId, schedulerEventId)
+```
+SchedulerEventInfo unassignSchedulerEventFromEdge(@Nonnull String edgeId, @Nonnull String schedulerEventId)
+```
+
+**DELETE** `/api/edge/{edgeId}/schedulerEvent/{schedulerEventId}`
 
 Unassign scheduler event from edge (unassignSchedulerEventFromEdge)
 

@@ -1,15 +1,20 @@
 # UserPermissionsControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getAllowedPermissions**](#getAllowedPermissions) | **GET** /api/permissions/allowedPermissions | Get Permissions (getAllowedPermissions) |
-| [**hasEntityPermission**](#hasEntityPermission) | **GET** /api/permission/{entityType}/{entityId}/{operation} | Check permission for specified entity (hasEntityPermission) |
+`ThingsboardClient` methods:
 
+```
+AllowedPermissionsInfo getAllowedPermissions() // Get Permissions (getAllowedPermissions)
+Boolean hasEntityPermission(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String operation) // Check permission for specified entity (hasEntityPermission)
+```
 
 
 ## getAllowedPermissions
 
-> AllowedPermissionsInfo getAllowedPermissions()
+```
+AllowedPermissionsInfo getAllowedPermissions()
+```
+
+**GET** `/api/permissions/allowedPermissions`
 
 Get Permissions (getAllowedPermissions)
 
@@ -22,7 +27,11 @@ Returns a complex object that describes:   * all possible (both granted and not 
 
 ## hasEntityPermission
 
-> Boolean hasEntityPermission(entityType, entityId, operation)
+```
+Boolean hasEntityPermission(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String operation)
+```
+
+**GET** `/api/permission/{entityType}/{entityId}/{operation}`
 
 Check permission for specified entity (hasEntityPermission)
 

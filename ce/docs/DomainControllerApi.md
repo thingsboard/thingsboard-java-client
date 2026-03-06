@@ -1,18 +1,23 @@
 # DomainControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteDomain**](#deleteDomain) | **DELETE** /api/domain/{id} | Delete Domain by ID (deleteDomain) |
-| [**getDomainInfoById**](#getDomainInfoById) | **GET** /api/domain/info/{id} | Get Domain info by Id (getDomainInfoById) |
-| [**getTenantDomainInfos**](#getTenantDomainInfos) | **GET** /api/domain/infos | Get Domain infos (getTenantDomainInfos) |
-| [**saveDomain**](#saveDomain) | **POST** /api/domain | Save or Update Domain (saveDomain) |
-| [**updateDomainOauth2Clients**](#updateDomainOauth2Clients) | **PUT** /api/domain/{id}/oauth2Clients | Update oauth2 clients (updateDomainOauth2Clients) |
+`ThingsboardClient` methods:
 
+```
+void deleteDomain(@Nonnull UUID id) // Delete Domain by ID (deleteDomain)
+DomainInfo getDomainInfoById(@Nonnull UUID id) // Get Domain info by Id (getDomainInfoById)
+PageDataDomainInfo getTenantDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Domain infos (getTenantDomainInfos)
+Domain saveDomain(@Nonnull Domain domain, @Nullable List<String> oauth2ClientIds) // Save or Update Domain (saveDomain)
+void updateDomainOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) // Update oauth2 clients (updateDomainOauth2Clients)
+```
 
 
 ## deleteDomain
 
-> deleteDomain(id)
+```
+void deleteDomain(@Nonnull UUID id)
+```
+
+**DELETE** `/api/domain/{id}`
 
 Delete Domain by ID (deleteDomain)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## getDomainInfoById
 
-> DomainInfo getDomainInfoById(id)
+```
+DomainInfo getDomainInfoById(@Nonnull UUID id)
+```
+
+**GET** `/api/domain/info/{id}`
 
 Get Domain info by Id (getDomainInfoById)
 
@@ -52,7 +61,11 @@ Get Domain info by Id (getDomainInfoById)
 
 ## getTenantDomainInfos
 
-> PageDataDomainInfo getTenantDomainInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDomainInfo getTenantDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/domain/infos`
 
 Get Domain infos (getTenantDomainInfos)
 
@@ -76,7 +89,11 @@ Get Domain infos (getTenantDomainInfos)
 
 ## saveDomain
 
-> Domain saveDomain(domain, oauth2ClientIds)
+```
+Domain saveDomain(@Nonnull Domain domain, @Nullable List<String> oauth2ClientIds)
+```
+
+**POST** `/api/domain`
 
 Save or Update Domain (saveDomain)
 
@@ -97,7 +114,11 @@ Create or update the Domain. When creating domain, platform generates Domain Id 
 
 ## updateDomainOauth2Clients
 
-> updateDomainOauth2Clients(id, UUID)
+```
+void updateDomainOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID)
+```
+
+**PUT** `/api/domain/{id}/oauth2Clients`
 
 Update oauth2 clients (updateDomainOauth2Clients)
 

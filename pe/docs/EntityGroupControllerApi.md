@@ -1,48 +1,53 @@
 # EntityGroupControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**addEntitiesToEntityGroup**](#addEntitiesToEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/addEntities | Add entities to the group (addEntitiesToEntityGroup) |
-| [**assignEntityGroupToEdge**](#assignEntityGroupToEdge) | **POST** /api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType} | Assign entity group to edge (assignEntityGroupToEdge) |
-| [**deleteEntityGroup**](#deleteEntityGroup) | **DELETE** /api/entityGroup/{entityGroupId} | Delete Entity Group (deleteEntityGroup) |
-| [**getAllEdgeEntityGroups**](#getAllEdgeEntityGroups) | **GET** /api/allEntityGroups/edge/{edgeId}/{groupType} | Get All Edge Entity Groups by entity type (getAllEdgeEntityGroups) |
-| [**getAllEntityGroupsByOwnerAndType**](#getAllEntityGroupsByOwnerAndType) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType}/all | Get Entity Groups by owner and entity type (getAllEntityGroupsByOwnerAndType) |
-| [**getAllEntityGroupsByType**](#getAllEntityGroupsByType) | **GET** /api/entityGroups/{groupType}/all | Get Entity Groups by entity type (getAllEntityGroupsByType) |
-| [**getAllSharedEntityGroups**](#getAllSharedEntityGroups) | **GET** /api/entityGroups/{groupType}/shared/all | Get Shared Entity Groups by entity type (getAllSharedEntityGroups) |
-| [**getEdgeEntityGroups**](#getEdgeEntityGroups) | **GET** /api/entityGroups/edge/{edgeId}/{groupType} | Get Edge Entity Groups by entity type (getEdgeEntityGroups) |
-| [**getEntities**](#getEntities) | **GET** /api/entityGroup/{entityGroupId}/entities | Get Group Entities (getEntities) |
-| [**getEntityGroupAllByOwnerAndType**](#getEntityGroupAllByOwnerAndType) | **GET** /api/entityGroup/all/{ownerType}/{ownerId}/{groupType} | Get special group All by owner and entity type (getEntityGroupsByOwnerAndType) |
-| [**getEntityGroupById**](#getEntityGroupById) | **GET** /api/entityGroup/{entityGroupId} | Get Entity Group Info (getEntityGroupById) |
-| [**getEntityGroupByOwnerAndNameAndType**](#getEntityGroupByOwnerAndNameAndType) | **GET** /api/entityGroup/{ownerType}/{ownerId}/{groupType}/{groupName} | Get Entity Group by owner, type and name (getEntityGroupByOwnerAndNameAndType) |
-| [**getEntityGroupEntityInfoById**](#getEntityGroupEntityInfoById) | **GET** /api/entityGroupInfo/{entityGroupId} | Get Entity Group Entity Info (getEntityGroupEntityInfoById) |
-| [**getEntityGroupEntityInfosByIds**](#getEntityGroupEntityInfosByIds) | **GET** /api/entityGroupInfos | Get Entity Group Entity Infos by Ids (getEntityGroupEntityInfosByIds) |
-| [**getEntityGroupEntityInfosByOwnerAndTypeAndPageLink**](#getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfos/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink) |
-| [**getEntityGroupEntityInfosByTypeAndPageLink**](#getEntityGroupEntityInfosByTypeAndPageLink) | **GET** /api/entityGroupInfos/{groupType} | Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink) |
-| [**getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink**](#getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupInfosHierarchy/{ownerType}/{ownerId}/{groupType} | Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink) |
-| [**getEntityGroupsByIds**](#getEntityGroupsByIds) | **GET** /api/entityGroups/list | Get Entity Groups by Ids (getEntityGroupsByIds) |
-| [**getEntityGroupsByOwnerAndTypeAndPageLink**](#getEntityGroupsByOwnerAndTypeAndPageLink) | **GET** /api/entityGroups/{ownerType}/{ownerId}/{groupType} | Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink) |
-| [**getEntityGroupsByTypeAndPageLink**](#getEntityGroupsByTypeAndPageLink) | **GET** /api/entityGroups/{groupType} | Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink) |
-| [**getEntityGroupsForEntity**](#getEntityGroupsForEntity) | **GET** /api/entityGroups/{entityType}/{entityId} | Get Entity Groups by Entity Id (getEntityGroupsForEntity) |
-| [**getEntityGroupsHierarchyByOwnerAndTypeAndPageLink**](#getEntityGroupsHierarchyByOwnerAndTypeAndPageLink) | **GET** /api/entityGroupsHierarchy/{ownerType}/{ownerId}/{groupType} | Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink) |
-| [**getGroupEntity**](#getGroupEntity) | **GET** /api/entityGroup/{entityGroupId}/{entityId} | Get Group Entity (getGroupEntity) |
-| [**getOwnerInfo**](#getOwnerInfo) | **GET** /api/ownerInfo/{ownerType}/{ownerId} | Get Owner Info (getOwnerInfo) |
-| [**getOwnerInfos**](#getOwnerInfos) | **GET** /api/ownerInfos | Get Owner Infos (getOwnerInfos) |
-| [**getOwners**](#getOwners) | **GET** /api/owners | Get Owners (getOwners) |
-| [**getSharedEntityGroupEntityInfosByTypeAndPageLink**](#getSharedEntityGroupEntityInfosByTypeAndPageLink) | **GET** /api/entityGroupInfos/{groupType}/shared | Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink) |
-| [**getSharedEntityGroupsByTypeAndPageLink**](#getSharedEntityGroupsByTypeAndPageLink) | **GET** /api/entityGroups/{groupType}/shared | Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink) |
-| [**makeEntityGroupPrivate**](#makeEntityGroupPrivate) | **POST** /api/entityGroup/{entityGroupId}/makePrivate | Make Entity Group Private (makeEntityGroupPrivate) |
-| [**makeEntityGroupPublic**](#makeEntityGroupPublic) | **POST** /api/entityGroup/{entityGroupId}/makePublic | Make Entity Group Publicly available (makeEntityGroupPublic) |
-| [**removeEntitiesFromEntityGroup**](#removeEntitiesFromEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/deleteEntities | Remove entities from the group (removeEntitiesFromEntityGroup) |
-| [**saveEntityGroup**](#saveEntityGroup) | **POST** /api/entityGroup | Create Or Update Entity Group (saveEntityGroup) |
-| [**shareEntityGroup**](#shareEntityGroup) | **POST** /api/entityGroup/{entityGroupId}/share | Share the Entity Group (shareEntityGroup) |
-| [**shareEntityGroupToChildOwnerUserGroup**](#shareEntityGroupToChildOwnerUserGroup) | **POST** /api/entityGroup/{entityGroupId}/{userGroupId}/{roleId}/share | Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup) |
-| [**unassignEntityGroupFromEdge**](#unassignEntityGroupFromEdge) | **DELETE** /api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType} | Unassign entity group from edge (unassignEntityGroupFromEdge) |
+`ThingsboardClient` methods:
 
+```
+void addEntitiesToEntityGroup(@Nonnull String entityGroupId, @Nonnull List<String> requestBody) // Add entities to the group (addEntitiesToEntityGroup)
+EntityGroup assignEntityGroupToEdge(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String entityGroupId) // Assign entity group to edge (assignEntityGroupToEdge)
+void deleteEntityGroup(@Nonnull String entityGroupId) // Delete Entity Group (deleteEntityGroup)
+List<EntityGroupInfo> getAllEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType) // Get All Edge Entity Groups by entity type (getAllEdgeEntityGroups)
+List<EntityGroupInfo> getAllEntityGroupsByOwnerAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType) // Get Entity Groups by owner and entity type (getAllEntityGroupsByOwnerAndType)
+List<EntityGroupInfo> getAllEntityGroupsByType(@Nonnull String groupType, @Nullable Boolean includeShared) // Get Entity Groups by entity type (getAllEntityGroupsByType)
+List<EntityGroupInfo> getAllSharedEntityGroups(@Nonnull String groupType) // Get Shared Entity Groups by entity type (getAllSharedEntityGroups)
+PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Entity Groups by entity type (getEdgeEntityGroups)
+PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Group Entities (getEntities)
+EntityGroupInfo getEntityGroupAllByOwnerAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType) // Get special group All by owner and entity type (getEntityGroupsByOwnerAndType)
+EntityGroupInfo getEntityGroupById(@Nonnull String entityGroupId) // Get Entity Group Info (getEntityGroupById)
+EntityGroupInfo getEntityGroupByOwnerAndNameAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String groupName) // Get Entity Group by owner, type and name (getEntityGroupByOwnerAndNameAndType)
+EntityInfo getEntityGroupEntityInfoById(@Nonnull String entityGroupId) // Get Entity Group Entity Info (getEntityGroupEntityInfoById)
+List<EntityInfo> getEntityGroupEntityInfosByIds(@Nonnull List<String> entityGroupIds) // Get Entity Group Entity Infos by Ids (getEntityGroupEntityInfosByIds)
+PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink)
+PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink)
+PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink)
+List<EntityGroupInfo> getEntityGroupsByIds(@Nonnull List<String> entityGroupIds) // Get Entity Groups by Ids (getEntityGroupsByIds)
+PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink)
+PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink)
+List<EntityGroupId> getEntityGroupsForEntity(@Nonnull String entityType, @Nonnull String entityId) // Get Entity Groups by Entity Id (getEntityGroupsForEntity)
+PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink)
+ShortEntityView getGroupEntity(@Nonnull String entityGroupId, @Nonnull String entityId) // Get Group Entity (getGroupEntity)
+EntityInfo getOwnerInfo(@Nonnull String ownerType, @Nonnull String ownerId) // Get Owner Info (getOwnerInfo)
+PageDataEntityInfo getOwnerInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Owner Infos (getOwnerInfos)
+PageDataContactBasedObject getOwners(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Owners (getOwners)
+PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink)
+PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink)
+void makeEntityGroupPrivate(@Nonnull String entityGroupId) // Make Entity Group Private (makeEntityGroupPrivate)
+void makeEntityGroupPublic(@Nonnull String entityGroupId) // Make Entity Group Publicly available (makeEntityGroupPublic)
+void removeEntitiesFromEntityGroup(@Nonnull String entityGroupId, @Nonnull List<String> requestBody) // Remove entities from the group (removeEntitiesFromEntityGroup)
+EntityGroupInfo saveEntityGroup(@Nonnull EntityGroup entityGroup) // Create Or Update Entity Group (saveEntityGroup)
+void shareEntityGroup(@Nonnull String entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest) // Share the Entity Group (shareEntityGroup)
+void shareEntityGroupToChildOwnerUserGroup(@Nonnull String entityGroupId, @Nonnull String userGroupId, @Nonnull String roleId) // Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup)
+EntityGroup unassignEntityGroupFromEdge(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String entityGroupId) // Unassign entity group from edge (unassignEntityGroupFromEdge)
+```
 
 
 ## addEntitiesToEntityGroup
 
-> addEntitiesToEntityGroup(entityGroupId, requestBody)
+```
+void addEntitiesToEntityGroup(@Nonnull String entityGroupId, @Nonnull List<String> requestBody)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/addEntities`
 
 Add entities to the group (addEntitiesToEntityGroup)
 
@@ -63,7 +68,11 @@ null (empty response body)
 
 ## assignEntityGroupToEdge
 
-> EntityGroup assignEntityGroupToEdge(edgeId, groupType, entityGroupId)
+```
+EntityGroup assignEntityGroupToEdge(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String entityGroupId)
+```
+
+**POST** `/api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType}`
 
 Assign entity group to edge (assignEntityGroupToEdge)
 
@@ -85,7 +94,11 @@ Creates assignment of an existing entity group to an instance of The Edge. Assig
 
 ## deleteEntityGroup
 
-> deleteEntityGroup(entityGroupId)
+```
+void deleteEntityGroup(@Nonnull String entityGroupId)
+```
+
+**DELETE** `/api/entityGroup/{entityGroupId}`
 
 Delete Entity Group (deleteEntityGroup)
 
@@ -105,7 +118,11 @@ null (empty response body)
 
 ## getAllEdgeEntityGroups
 
-> List<EntityGroupInfo> getAllEdgeEntityGroups(edgeId, groupType)
+```
+List<EntityGroupInfo> getAllEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType)
+```
+
+**GET** `/api/allEntityGroups/edge/{edgeId}/{groupType}`
 
 Get All Edge Entity Groups by entity type (getAllEdgeEntityGroups)
 
@@ -126,7 +143,11 @@ Fetch the list of Entity Group Info objects based on the provided Entity Type an
 
 ## getAllEntityGroupsByOwnerAndType
 
-> List<EntityGroupInfo> getAllEntityGroupsByOwnerAndType(ownerType, ownerId, groupType)
+```
+List<EntityGroupInfo> getAllEntityGroupsByOwnerAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType)
+```
+
+**GET** `/api/entityGroups/{ownerType}/{ownerId}/{groupType}/all`
 
 Get Entity Groups by owner and entity type (getAllEntityGroupsByOwnerAndType)
 
@@ -148,7 +169,11 @@ Fetch the list of Entity Group Info objects based on the provided Owner Id and E
 
 ## getAllEntityGroupsByType
 
-> List<EntityGroupInfo> getAllEntityGroupsByType(groupType, includeShared)
+```
+List<EntityGroupInfo> getAllEntityGroupsByType(@Nonnull String groupType, @Nullable Boolean includeShared)
+```
+
+**GET** `/api/entityGroups/{groupType}/all`
 
 Get Entity Groups by entity type (getAllEntityGroupsByType)
 
@@ -169,7 +194,11 @@ Fetch the list of Entity Group Info objects based on the provided Entity Type. E
 
 ## getAllSharedEntityGroups
 
-> List<EntityGroupInfo> getAllSharedEntityGroups(groupType)
+```
+List<EntityGroupInfo> getAllSharedEntityGroups(@Nonnull String groupType)
+```
+
+**GET** `/api/entityGroups/{groupType}/shared/all`
 
 Get Shared Entity Groups by entity type (getAllSharedEntityGroups)
 
@@ -189,7 +218,11 @@ Fetch the list of Shared Entity Group Info objects based on the provided Entity 
 
 ## getEdgeEntityGroups
 
-> PageDataEntityGroupInfo getEdgeEntityGroups(edgeId, groupType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroups/edge/{edgeId}/{groupType}`
 
 Get Edge Entity Groups by entity type (getEdgeEntityGroups)
 
@@ -215,7 +248,11 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 
 ## getEntities
 
-> PageDataShortEntityView getEntities(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/entities`
 
 Get Group Entities (getEntities)
 
@@ -240,7 +277,11 @@ Returns a page of Short Entity View objects that belongs to specified Entity Gro
 
 ## getEntityGroupAllByOwnerAndType
 
-> EntityGroupInfo getEntityGroupAllByOwnerAndType(ownerType, ownerId, groupType)
+```
+EntityGroupInfo getEntityGroupAllByOwnerAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType)
+```
+
+**GET** `/api/entityGroup/all/{ownerType}/{ownerId}/{groupType}`
 
 Get special group All by owner and entity type (getEntityGroupsByOwnerAndType)
 
@@ -262,7 +303,11 @@ Fetch reserved group 'All' based on the provided Owner Id and Entity Type. Entit
 
 ## getEntityGroupById
 
-> EntityGroupInfo getEntityGroupById(entityGroupId)
+```
+EntityGroupInfo getEntityGroupById(@Nonnull String entityGroupId)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}`
 
 Get Entity Group Info (getEntityGroupById)
 
@@ -282,7 +327,11 @@ Fetch the Entity Group object based on the provided Entity Group Id. Entity grou
 
 ## getEntityGroupByOwnerAndNameAndType
 
-> EntityGroupInfo getEntityGroupByOwnerAndNameAndType(ownerType, ownerId, groupType, groupName)
+```
+EntityGroupInfo getEntityGroupByOwnerAndNameAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String groupName)
+```
+
+**GET** `/api/entityGroup/{ownerType}/{ownerId}/{groupType}/{groupName}`
 
 Get Entity Group by owner, type and name (getEntityGroupByOwnerAndNameAndType)
 
@@ -305,7 +354,11 @@ Fetch the Entity Group object based on the provided Entity Group Id. Entity grou
 
 ## getEntityGroupEntityInfoById
 
-> EntityInfo getEntityGroupEntityInfoById(entityGroupId)
+```
+EntityInfo getEntityGroupEntityInfoById(@Nonnull String entityGroupId)
+```
+
+**GET** `/api/entityGroupInfo/{entityGroupId}`
 
 Get Entity Group Entity Info (getEntityGroupEntityInfoById)
 
@@ -325,7 +378,11 @@ Fetch the Entity Group Entity Info object based on the provided Entity Group Id.
 
 ## getEntityGroupEntityInfosByIds
 
-> List<EntityInfo> getEntityGroupEntityInfosByIds(entityGroupIds)
+```
+List<EntityInfo> getEntityGroupEntityInfosByIds(@Nonnull List<String> entityGroupIds)
+```
+
+**GET** `/api/entityGroupInfos`
 
 Get Entity Group Entity Infos by Ids (getEntityGroupEntityInfosByIds)
 
@@ -345,7 +402,11 @@ Fetch the list of Entity Group Entity Info objects based on the provided entity 
 
 ## getEntityGroupEntityInfosByOwnerAndTypeAndPageLink
 
-> PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroupInfos/{ownerType}/{ownerId}/{groupType}`
 
 Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink)
 
@@ -372,7 +433,11 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 
 ## getEntityGroupEntityInfosByTypeAndPageLink
 
-> PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(groupType, pageSize, page, includeShared, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroupInfos/{groupType}`
 
 Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink)
 
@@ -398,7 +463,11 @@ Returns a page of Entity Group Entity Info objects based on the provided Entity 
 
 ## getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink
 
-> PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroupInfosHierarchy/{ownerType}/{ownerId}/{groupType}`
 
 Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink)
 
@@ -425,7 +494,11 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 
 ## getEntityGroupsByIds
 
-> List<EntityGroupInfo> getEntityGroupsByIds(entityGroupIds)
+```
+List<EntityGroupInfo> getEntityGroupsByIds(@Nonnull List<String> entityGroupIds)
+```
+
+**GET** `/api/entityGroups/list`
 
 Get Entity Groups by Ids (getEntityGroupsByIds)
 
@@ -445,7 +518,11 @@ Fetch the list of Entity Group Info objects based on the provided entity group i
 
 ## getEntityGroupsByOwnerAndTypeAndPageLink
 
-> PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroups/{ownerType}/{ownerId}/{groupType}`
 
 Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink)
 
@@ -472,7 +549,11 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 
 ## getEntityGroupsByTypeAndPageLink
 
-> PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(groupType, pageSize, page, includeShared, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroups/{groupType}`
 
 Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink)
 
@@ -498,7 +579,11 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 
 ## getEntityGroupsForEntity
 
-> List<EntityGroupId> getEntityGroupsForEntity(entityType, entityId)
+```
+List<EntityGroupId> getEntityGroupsForEntity(@Nonnull String entityType, @Nonnull String entityId)
+```
+
+**GET** `/api/entityGroups/{entityType}/{entityId}`
 
 Get Entity Groups by Entity Id (getEntityGroupsForEntity)
 
@@ -519,7 +604,11 @@ Returns a list of groups that contain the specified Entity Id. For example, all 
 
 ## getEntityGroupsHierarchyByOwnerAndTypeAndPageLink
 
-> PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(ownerType, ownerId, groupType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroupsHierarchy/{ownerType}/{ownerId}/{groupType}`
 
 Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink)
 
@@ -546,7 +635,11 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 
 ## getGroupEntity
 
-> ShortEntityView getGroupEntity(entityGroupId, entityId)
+```
+ShortEntityView getGroupEntity(@Nonnull String entityGroupId, @Nonnull String entityId)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/{entityId}`
 
 Get Group Entity (getGroupEntity)
 
@@ -567,7 +660,11 @@ Fetch the Short Entity View object based on the group and entity id. Short Entit
 
 ## getOwnerInfo
 
-> EntityInfo getOwnerInfo(ownerType, ownerId)
+```
+EntityInfo getOwnerInfo(@Nonnull String ownerType, @Nonnull String ownerId)
+```
+
+**GET** `/api/ownerInfo/{ownerType}/{ownerId}`
 
 Get Owner Info (getOwnerInfo)
 
@@ -588,7 +685,11 @@ Fetch the owner info (tenant or customer) presented as Entity Info object based 
 
 ## getOwnerInfos
 
-> PageDataEntityInfo getOwnerInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityInfo getOwnerInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/ownerInfos`
 
 Get Owner Infos (getOwnerInfos)
 
@@ -612,7 +713,11 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 ## getOwners
 
-> PageDataContactBasedObject getOwners(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataContactBasedObject getOwners(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/owners`
 
 Get Owners (getOwners)
 
@@ -636,7 +741,11 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 ## getSharedEntityGroupEntityInfosByTypeAndPageLink
 
-> PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(groupType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroupInfos/{groupType}/shared`
 
 Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink)
 
@@ -661,7 +770,11 @@ Returns a page of Shared Entity Group Entity Info objects based on the provided 
 
 ## getSharedEntityGroupsByTypeAndPageLink
 
-> PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(groupType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroups/{groupType}/shared`
 
 Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink)
 
@@ -686,7 +799,11 @@ Returns a page of Shared Entity Group Info objects based on the provided Entity 
 
 ## makeEntityGroupPrivate
 
-> makeEntityGroupPrivate(entityGroupId)
+```
+void makeEntityGroupPrivate(@Nonnull String entityGroupId)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/makePrivate`
 
 Make Entity Group Private (makeEntityGroupPrivate)
 
@@ -706,7 +823,11 @@ null (empty response body)
 
 ## makeEntityGroupPublic
 
-> makeEntityGroupPublic(entityGroupId)
+```
+void makeEntityGroupPublic(@Nonnull String entityGroupId)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/makePublic`
 
 Make Entity Group Publicly available (makeEntityGroupPublic)
 
@@ -726,7 +847,11 @@ null (empty response body)
 
 ## removeEntitiesFromEntityGroup
 
-> removeEntitiesFromEntityGroup(entityGroupId, requestBody)
+```
+void removeEntitiesFromEntityGroup(@Nonnull String entityGroupId, @Nonnull List<String> requestBody)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/deleteEntities`
 
 Remove entities from the group (removeEntitiesFromEntityGroup)
 
@@ -747,7 +872,11 @@ null (empty response body)
 
 ## saveEntityGroup
 
-> EntityGroupInfo saveEntityGroup(entityGroup)
+```
+EntityGroupInfo saveEntityGroup(@Nonnull EntityGroup entityGroup)
+```
+
+**POST** `/api/entityGroup`
 
 Create Or Update Entity Group (saveEntityGroup)
 
@@ -767,7 +896,11 @@ Create or update the Entity Group. When creating Entity Group, platform generate
 
 ## shareEntityGroup
 
-> shareEntityGroup(entityGroupId, shareGroupRequest)
+```
+void shareEntityGroup(@Nonnull String entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/share`
 
 Share the Entity Group (shareEntityGroup)
 
@@ -788,7 +921,11 @@ null (empty response body)
 
 ## shareEntityGroupToChildOwnerUserGroup
 
-> shareEntityGroupToChildOwnerUserGroup(entityGroupId, userGroupId, roleId)
+```
+void shareEntityGroupToChildOwnerUserGroup(@Nonnull String entityGroupId, @Nonnull String userGroupId, @Nonnull String roleId)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/{userGroupId}/{roleId}/share`
 
 Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup)
 
@@ -810,7 +947,11 @@ null (empty response body)
 
 ## unassignEntityGroupFromEdge
 
-> EntityGroup unassignEntityGroupFromEdge(edgeId, groupType, entityGroupId)
+```
+EntityGroup unassignEntityGroupFromEdge(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String entityGroupId)
+```
+
+**DELETE** `/api/edge/{edgeId}/entityGroup/{entityGroupId}/{groupType}`
 
 Unassign entity group from edge (unassignEntityGroupFromEdge)
 

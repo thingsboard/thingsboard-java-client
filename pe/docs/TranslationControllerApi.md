@@ -1,20 +1,25 @@
 # TranslationControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**downloadFullTranslation**](#downloadFullTranslation) | **GET** /api/translation/full/{localeCode}/download | Download end-user all-to-one translation (downloadFullTranslation) |
-| [**getAvailableJavaLocales**](#getAvailableJavaLocales) | **GET** /api/translation/availableJavaLocales | Get list of available java locales (getAvailableJavaLocales) |
-| [**getAvailableLocales**](#getAvailableLocales) | **GET** /api/translation/availableLocales | Get list of available locales (getAvailableLocales) |
-| [**getFullTranslation**](#getFullTranslation) | **GET** /api/translation/full/{localeCode} | Get end-user all-to-one translation (getFullTranslation) |
-| [**getLoginPageTranslation**](#getLoginPageTranslation) | **GET** /api/noauth/translation/login/{localeCode} | Get system translation for login page |
-| [**getTranslationForBasicEdit**](#getTranslationForBasicEdit) | **GET** /api/translation/edit/basic/{localeCode} | Get end-user multi-translation for basic edit (getTranslationForBasicEdit) |
-| [**getTranslationInfos**](#getTranslationInfos) | **GET** /api/translation/info | Get Translation info (getTranslationInfos) |
+`ThingsboardClient` methods:
 
+```
+File downloadFullTranslation(@Nonnull String localeCode) // Download end-user all-to-one translation (downloadFullTranslation)
+com.fasterxml.jackson.databind.JsonNode getAvailableJavaLocales() // Get list of available java locales (getAvailableJavaLocales)
+com.fasterxml.jackson.databind.JsonNode getAvailableLocales() // Get list of available locales (getAvailableLocales)
+void getFullTranslation(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // Get end-user all-to-one translation (getFullTranslation)
+com.fasterxml.jackson.databind.JsonNode getLoginPageTranslation(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // Get system translation for login page
+com.fasterxml.jackson.databind.JsonNode getTranslationForBasicEdit(@Nonnull String localeCode) // Get end-user multi-translation for basic edit (getTranslationForBasicEdit)
+List<TranslationInfo> getTranslationInfos() // Get Translation info (getTranslationInfos)
+```
 
 
 ## downloadFullTranslation
 
-> File downloadFullTranslation(localeCode)
+```
+File downloadFullTranslation(@Nonnull String localeCode)
+```
+
+**GET** `/api/translation/full/{localeCode}/download`
 
 Download end-user all-to-one translation (downloadFullTranslation)
 
@@ -34,7 +39,11 @@ Fetch the end-user translation for the specified locale. The result is a json fi
 
 ## getAvailableJavaLocales
 
-> com.fasterxml.jackson.databind.JsonNode getAvailableJavaLocales()
+```
+com.fasterxml.jackson.databind.JsonNode getAvailableJavaLocales()
+```
+
+**GET** `/api/translation/availableJavaLocales`
 
 Get list of available java locales (getAvailableJavaLocales)
 
@@ -47,7 +56,11 @@ The result is map where key is locale code and value is locale language and coun
 
 ## getAvailableLocales
 
-> com.fasterxml.jackson.databind.JsonNode getAvailableLocales()
+```
+com.fasterxml.jackson.databind.JsonNode getAvailableLocales()
+```
+
+**GET** `/api/translation/availableLocales`
 
 Get list of available locales (getAvailableLocales)
 
@@ -60,7 +73,11 @@ Fetch the list of customized locales from all levels  Security check is performe
 
 ## getFullTranslation
 
-> getFullTranslation(localeCode, ifNoneMatch, acceptEncoding)
+```
+void getFullTranslation(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/translation/full/{localeCode}`
 
 Get end-user all-to-one translation (getFullTranslation)
 
@@ -82,7 +99,11 @@ null (empty response body)
 
 ## getLoginPageTranslation
 
-> com.fasterxml.jackson.databind.JsonNode getLoginPageTranslation(localeCode, ifNoneMatch, acceptEncoding)
+```
+com.fasterxml.jackson.databind.JsonNode getLoginPageTranslation(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/noauth/translation/login/{localeCode}`
 
 Get system translation for login page
 
@@ -104,7 +125,11 @@ Fetch the end-user translation for specified locale.
 
 ## getTranslationForBasicEdit
 
-> com.fasterxml.jackson.databind.JsonNode getTranslationForBasicEdit(localeCode)
+```
+com.fasterxml.jackson.databind.JsonNode getTranslationForBasicEdit(@Nonnull String localeCode)
+```
+
+**GET** `/api/translation/edit/basic/{localeCode}`
 
 Get end-user multi-translation for basic edit (getTranslationForBasicEdit)
 
@@ -124,7 +149,11 @@ Fetch the translation info map where value is info object containing key transla
 
 ## getTranslationInfos
 
-> List<TranslationInfo> getTranslationInfos()
+```
+List<TranslationInfo> getTranslationInfos()
+```
+
+**GET** `/api/translation/info`
 
 Get Translation info (getTranslationInfos)
 

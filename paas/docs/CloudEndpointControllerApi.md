@@ -1,18 +1,23 @@
 # CloudEndpointControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**checkTenantWhiteLabelingAllowed**](#checkTenantWhiteLabelingAllowed) | **GET** /api/cloudEndpoint/tenant/permission/whiteLabelingAllowed | checkTenantWhiteLabelingAllowed |
-| [**hasDomainReadPermission**](#hasDomainReadPermission) | **GET** /api/cloudEndpoint/permission/domain/read | hasDomainReadPermission |
-| [**hasDomainWritePermission**](#hasDomainWritePermission) | **GET** /api/cloudEndpoint/permission/domain/write | hasDomainWritePermission |
-| [**tenantHasWhiteLabelRead**](#tenantHasWhiteLabelRead) | **GET** /api/cloudEndpoint/tenant/permission/whiteLabel/read | tenantHasWhiteLabelRead |
-| [**tenantHasWhiteLabelWrite**](#tenantHasWhiteLabelWrite) | **GET** /api/cloudEndpoint/tenant/permission/whiteLabel/write | tenantHasWhiteLabelWrite |
+`ThingsboardClient` methods:
 
+```
+void checkTenantWhiteLabelingAllowed() // checkTenantWhiteLabelingAllowed
+Boolean hasDomainReadPermission() // hasDomainReadPermission
+Boolean hasDomainWritePermission() // hasDomainWritePermission
+Boolean tenantHasWhiteLabelRead() // tenantHasWhiteLabelRead
+Boolean tenantHasWhiteLabelWrite() // tenantHasWhiteLabelWrite
+```
 
 
 ## checkTenantWhiteLabelingAllowed
 
-> checkTenantWhiteLabelingAllowed()
+```
+void checkTenantWhiteLabelingAllowed()
+```
+
+**GET** `/api/cloudEndpoint/tenant/permission/whiteLabelingAllowed`
 
 checkTenantWhiteLabelingAllowed
 
@@ -23,7 +28,11 @@ null (empty response body)
 
 ## hasDomainReadPermission
 
-> Boolean hasDomainReadPermission()
+```
+Boolean hasDomainReadPermission()
+```
+
+**GET** `/api/cloudEndpoint/permission/domain/read`
 
 hasDomainReadPermission
 
@@ -34,7 +43,11 @@ hasDomainReadPermission
 
 ## hasDomainWritePermission
 
-> Boolean hasDomainWritePermission()
+```
+Boolean hasDomainWritePermission()
+```
+
+**GET** `/api/cloudEndpoint/permission/domain/write`
 
 hasDomainWritePermission
 
@@ -45,7 +58,11 @@ hasDomainWritePermission
 
 ## tenantHasWhiteLabelRead
 
-> Boolean tenantHasWhiteLabelRead()
+```
+Boolean tenantHasWhiteLabelRead()
+```
+
+**GET** `/api/cloudEndpoint/tenant/permission/whiteLabel/read`
 
 tenantHasWhiteLabelRead
 
@@ -56,7 +73,11 @@ tenantHasWhiteLabelRead
 
 ## tenantHasWhiteLabelWrite
 
-> Boolean tenantHasWhiteLabelWrite()
+```
+Boolean tenantHasWhiteLabelWrite()
+```
+
+**GET** `/api/cloudEndpoint/tenant/permission/whiteLabel/write`
 
 tenantHasWhiteLabelWrite
 

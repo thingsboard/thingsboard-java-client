@@ -1,14 +1,19 @@
 # AiToolControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**resolveToolApproval**](#resolveToolApproval) | **POST** /api/ai/tools/resolve-approval | resolveToolApproval |
+`ThingsboardClient` methods:
 
+```
+com.fasterxml.jackson.databind.JsonNode resolveToolApproval(@Nonnull Object body) // resolveToolApproval
+```
 
 
 ## resolveToolApproval
 
-> com.fasterxml.jackson.databind.JsonNode resolveToolApproval(body)
+```
+com.fasterxml.jackson.databind.JsonNode resolveToolApproval(@Nonnull Object body)
+```
+
+**POST** `/api/ai/tools/resolve-approval`
 
 resolveToolApproval
 

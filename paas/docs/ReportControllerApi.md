@@ -1,22 +1,27 @@
 # ReportControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**createReport**](#createReport) | **POST** /api/v2/report | createReport |
-| [**deleteReport**](#deleteReport) | **DELETE** /api/v2/report/{reportId} | Delete Report (deleteReport) |
-| [**downloadReport**](#downloadReport) | **GET** /api/v2/report/{reportId}/download | downloadReport |
-| [**getReportById**](#getReportById) | **GET** /api/v2/report/{reportId} | Get Report (getReportById) |
-| [**getReportInfos**](#getReportInfos) | **GET** /api/v2/reportInfos/all | getReportInfos |
-| [**getReportInfosByIds**](#getReportInfosByIds) | **GET** /api/v2/reportInfos | getReportInfosByIds |
-| [**getReports**](#getReports) | **GET** /api/v2/reports | getReports |
-| [**requestReport**](#requestReport) | **POST** /api/v2/report/request | requestReport |
-| [**testReportAndDownload**](#testReportAndDownload) | **POST** /api/v2/report/test | Download test report (testReportAndDownload) |
+`ThingsboardClient` methods:
 
+```
+Report createReport(@Nullable CreateReportRequest createReportRequest) // createReport
+void deleteReport(@Nonnull String reportId) // Delete Report (deleteReport)
+File downloadReport(@Nonnull UUID reportId) // downloadReport
+Report getReportById(@Nonnull String reportId) // Get Report (getReportById)
+PageDataReportInfo getReportInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // getReportInfos
+List<ReportInfo> getReportInfosByIds(@Nonnull List<String> strReportIds) // getReportInfosByIds
+PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // getReports
+Job requestReport(@Nonnull ReportRequest reportRequest) // requestReport
+File testReportAndDownload(@Nonnull ReportRequest reportRequest) // Download test report (testReportAndDownload)
+```
 
 
 ## createReport
 
-> Report createReport(createReportRequest)
+```
+Report createReport(@Nullable CreateReportRequest createReportRequest)
+```
+
+**POST** `/api/v2/report`
 
 createReport
 
@@ -34,7 +39,11 @@ createReport
 
 ## deleteReport
 
-> deleteReport(reportId)
+```
+void deleteReport(@Nonnull String reportId)
+```
+
+**DELETE** `/api/v2/report/{reportId}`
 
 Delete Report (deleteReport)
 
@@ -54,7 +63,11 @@ null (empty response body)
 
 ## downloadReport
 
-> File downloadReport(reportId)
+```
+File downloadReport(@Nonnull UUID reportId)
+```
+
+**GET** `/api/v2/report/{reportId}/download`
 
 downloadReport
 
@@ -72,7 +85,11 @@ downloadReport
 
 ## getReportById
 
-> Report getReportById(reportId)
+```
+Report getReportById(@Nonnull String reportId)
+```
+
+**GET** `/api/v2/report/{reportId}`
 
 Get Report (getReportById)
 
@@ -92,7 +109,11 @@ Fetch the Report object based on the provided report Id. The platform uses Repor
 
 ## getReportInfos
 
-> PageDataReportInfo getReportInfos(pageSize, page, reportTemplateId, userId, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataReportInfo getReportInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/v2/reportInfos/all`
 
 getReportInfos
 
@@ -117,7 +138,11 @@ getReportInfos
 
 ## getReportInfosByIds
 
-> List<ReportInfo> getReportInfosByIds(strReportIds)
+```
+List<ReportInfo> getReportInfosByIds(@Nonnull List<String> strReportIds)
+```
+
+**GET** `/api/v2/reportInfos`
 
 getReportInfosByIds
 
@@ -135,7 +160,11 @@ getReportInfosByIds
 
 ## getReports
 
-> PageDataReport getReports(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/v2/reports`
 
 getReports
 
@@ -157,7 +186,11 @@ getReports
 
 ## requestReport
 
-> Job requestReport(reportRequest)
+```
+Job requestReport(@Nonnull ReportRequest reportRequest)
+```
+
+**POST** `/api/v2/report/request`
 
 requestReport
 
@@ -175,7 +208,11 @@ requestReport
 
 ## testReportAndDownload
 
-> File testReportAndDownload(reportRequest)
+```
+File testReportAndDownload(@Nonnull ReportRequest reportRequest)
+```
+
+**POST** `/api/v2/report/test`
 
 Download test report (testReportAndDownload)
 

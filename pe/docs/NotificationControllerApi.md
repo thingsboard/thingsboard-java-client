@@ -1,30 +1,35 @@
 # NotificationControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**createNotificationRequest**](#createNotificationRequest) | **POST** /api/notification/request | Create notification request (createNotificationRequest) |
-| [**deleteNotification**](#deleteNotification) | **DELETE** /api/notification/{id} | Delete notification (deleteNotification) |
-| [**deleteNotificationRequest**](#deleteNotificationRequest) | **DELETE** /api/notification/request/{id} | Delete notification request (deleteNotificationRequest) |
-| [**getAvailableDeliveryMethods**](#getAvailableDeliveryMethods) | **GET** /api/notification/deliveryMethods | Get available delivery methods (getAvailableDeliveryMethods) |
-| [**getNotificationRequestById**](#getNotificationRequestById) | **GET** /api/notification/request/{id} | Get notification request by id (getNotificationRequestById) |
-| [**getNotificationRequestPreview**](#getNotificationRequestPreview) | **POST** /api/notification/request/preview | Get notification request preview (getNotificationRequestPreview) |
-| [**getNotificationRequests**](#getNotificationRequests) | **GET** /api/notification/requests | Get notification requests (getNotificationRequests) |
-| [**getNotificationSettings**](#getNotificationSettings) | **GET** /api/notification/settings | Get notification settings (getNotificationSettings) |
-| [**getNotifications**](#getNotifications) | **GET** /api/notifications | Get notifications (getNotifications) |
-| [**getUnreadNotificationsCount**](#getUnreadNotificationsCount) | **GET** /api/notifications/unread/count | Get unread notifications count (getUnreadNotificationsCount) |
-| [**getUserNotificationSettings**](#getUserNotificationSettings) | **GET** /api/notification/settings/user | getUserNotificationSettings |
-| [**markAllNotificationsAsRead**](#markAllNotificationsAsRead) | **PUT** /api/notifications/read | Mark all notifications as read (markAllNotificationsAsRead) |
-| [**markNotificationAsRead**](#markNotificationAsRead) | **PUT** /api/notification/{id}/read | Mark notification as read (markNotificationAsRead) |
-| [**saveNotificationSettings**](#saveNotificationSettings) | **POST** /api/notification/settings | Save notification settings (saveNotificationSettings) |
-| [**saveUserNotificationSettings**](#saveUserNotificationSettings) | **POST** /api/notification/settings/user | saveUserNotificationSettings |
-| [**sendAddonAccessError**](#sendAddonAccessError) | **POST** /api/notification/sendAddonAccessError/{addonType} | Send add-on access error notification to System/Tenant administrators (sendAddonAccessError) |
-| [**sendEntitiesLimitIncreaseRequest**](#sendEntitiesLimitIncreaseRequest) | **POST** /api/notification/entitiesLimitIncreaseRequest/{entityType} | Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest) |
+`ThingsboardClient` methods:
 
+```
+NotificationRequest createNotificationRequest(@Nonnull NotificationRequest notificationRequest) // Create notification request (createNotificationRequest)
+void deleteNotification(@Nonnull UUID id) // Delete notification (deleteNotification)
+void deleteNotificationRequest(@Nonnull UUID id) // Delete notification request (deleteNotificationRequest)
+List<NotificationDeliveryMethod> getAvailableDeliveryMethods() // Get available delivery methods (getAvailableDeliveryMethods)
+NotificationRequestInfo getNotificationRequestById(@Nonnull UUID id) // Get notification request by id (getNotificationRequestById)
+NotificationRequestPreview getNotificationRequestPreview(@Nonnull NotificationRequest notificationRequest, @Nullable Integer recipientsPreviewSize) // Get notification request preview (getNotificationRequestPreview)
+PageDataNotificationRequestInfo getNotificationRequests(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get notification requests (getNotificationRequests)
+NotificationSettings getNotificationSettings() // Get notification settings (getNotificationSettings)
+PageDataNotification getNotifications(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean unreadOnly, @Nullable String deliveryMethod) // Get notifications (getNotifications)
+Integer getUnreadNotificationsCount(@Nullable String deliveryMethod) // Get unread notifications count (getUnreadNotificationsCount)
+UserNotificationSettings getUserNotificationSettings() // getUserNotificationSettings
+void markAllNotificationsAsRead(@Nullable String deliveryMethod) // Mark all notifications as read (markAllNotificationsAsRead)
+void markNotificationAsRead(@Nonnull UUID id) // Mark notification as read (markNotificationAsRead)
+NotificationSettings saveNotificationSettings(@Nonnull NotificationSettings notificationSettings) // Save notification settings (saveNotificationSettings)
+UserNotificationSettings saveUserNotificationSettings(@Nonnull UserNotificationSettings userNotificationSettings) // saveUserNotificationSettings
+void sendAddonAccessError(@Nonnull String addonType) // Send add-on access error notification to System/Tenant administrators (sendAddonAccessError)
+void sendEntitiesLimitIncreaseRequest(@Nonnull String entityType) // Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest)
+```
 
 
 ## createNotificationRequest
 
-> NotificationRequest createNotificationRequest(notificationRequest)
+```
+NotificationRequest createNotificationRequest(@Nonnull NotificationRequest notificationRequest)
+```
+
+**POST** `/api/notification/request`
 
 Create notification request (createNotificationRequest)
 
@@ -44,7 +49,11 @@ Processes notification request. Mandatory request properties are `targets` (list
 
 ## deleteNotification
 
-> deleteNotification(id)
+```
+void deleteNotification(@Nonnull UUID id)
+```
+
+**DELETE** `/api/notification/{id}`
 
 Delete notification (deleteNotification)
 
@@ -64,7 +73,11 @@ null (empty response body)
 
 ## deleteNotificationRequest
 
-> deleteNotificationRequest(id)
+```
+void deleteNotificationRequest(@Nonnull UUID id)
+```
+
+**DELETE** `/api/notification/request/{id}`
 
 Delete notification request (deleteNotificationRequest)
 
@@ -84,7 +97,11 @@ null (empty response body)
 
 ## getAvailableDeliveryMethods
 
-> List<NotificationDeliveryMethod> getAvailableDeliveryMethods()
+```
+List<NotificationDeliveryMethod> getAvailableDeliveryMethods()
+```
+
+**GET** `/api/notification/deliveryMethods`
 
 Get available delivery methods (getAvailableDeliveryMethods)
 
@@ -97,7 +114,11 @@ Returns the list of delivery methods that are properly configured and are allowe
 
 ## getNotificationRequestById
 
-> NotificationRequestInfo getNotificationRequestById(id)
+```
+NotificationRequestInfo getNotificationRequestById(@Nonnull UUID id)
+```
+
+**GET** `/api/notification/request/{id}`
 
 Get notification request by id (getNotificationRequestById)
 
@@ -117,7 +138,11 @@ Fetches notification request info by request id.  Available for users with 'SYS_
 
 ## getNotificationRequestPreview
 
-> NotificationRequestPreview getNotificationRequestPreview(notificationRequest, recipientsPreviewSize)
+```
+NotificationRequestPreview getNotificationRequestPreview(@Nonnull NotificationRequest notificationRequest, @Nullable Integer recipientsPreviewSize)
+```
+
+**POST** `/api/notification/request/preview`
 
 Get notification request preview (getNotificationRequestPreview)
 
@@ -138,7 +163,11 @@ Returns preview for notification request.  `processedTemplates` shows how the no
 
 ## getNotificationRequests
 
-> PageDataNotificationRequestInfo getNotificationRequests(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataNotificationRequestInfo getNotificationRequests(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/notification/requests`
 
 Get notification requests (getNotificationRequests)
 
@@ -162,7 +191,11 @@ Returns the page of notification requests submitted by users of this tenant or s
 
 ## getNotificationSettings
 
-> NotificationSettings getNotificationSettings()
+```
+NotificationSettings getNotificationSettings()
+```
+
+**GET** `/api/notification/settings`
 
 Get notification settings (getNotificationSettings)
 
@@ -175,7 +208,11 @@ Retrieves notification settings for this tenant or sysadmin.  Available for user
 
 ## getNotifications
 
-> PageDataNotification getNotifications(pageSize, page, textSearch, sortProperty, sortOrder, unreadOnly, deliveryMethod)
+```
+PageDataNotification getNotifications(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean unreadOnly, @Nullable String deliveryMethod)
+```
+
+**GET** `/api/notifications`
 
 Get notifications (getNotifications)
 
@@ -201,7 +238,11 @@ Returns the page of notifications for current user.  You can specify parameters 
 
 ## getUnreadNotificationsCount
 
-> Integer getUnreadNotificationsCount(deliveryMethod)
+```
+Integer getUnreadNotificationsCount(@Nullable String deliveryMethod)
+```
+
+**GET** `/api/notifications/unread/count`
 
 Get unread notifications count (getUnreadNotificationsCount)
 
@@ -221,7 +262,11 @@ Returns unread notifications count for chosen delivery method.  Available for an
 
 ## getUserNotificationSettings
 
-> UserNotificationSettings getUserNotificationSettings()
+```
+UserNotificationSettings getUserNotificationSettings()
+```
+
+**GET** `/api/notification/settings/user`
 
 getUserNotificationSettings
 
@@ -232,7 +277,11 @@ getUserNotificationSettings
 
 ## markAllNotificationsAsRead
 
-> markAllNotificationsAsRead(deliveryMethod)
+```
+void markAllNotificationsAsRead(@Nullable String deliveryMethod)
+```
+
+**PUT** `/api/notifications/read`
 
 Mark all notifications as read (markAllNotificationsAsRead)
 
@@ -252,7 +301,11 @@ null (empty response body)
 
 ## markNotificationAsRead
 
-> markNotificationAsRead(id)
+```
+void markNotificationAsRead(@Nonnull UUID id)
+```
+
+**PUT** `/api/notification/{id}/read`
 
 Mark notification as read (markNotificationAsRead)
 
@@ -272,7 +325,11 @@ null (empty response body)
 
 ## saveNotificationSettings
 
-> NotificationSettings saveNotificationSettings(notificationSettings)
+```
+NotificationSettings saveNotificationSettings(@Nonnull NotificationSettings notificationSettings)
+```
+
+**POST** `/api/notification/settings`
 
 Save notification settings (saveNotificationSettings)
 
@@ -292,7 +349,11 @@ Saves notification settings for this tenant or sysadmin. `deliveryMethodsConfigs
 
 ## saveUserNotificationSettings
 
-> UserNotificationSettings saveUserNotificationSettings(userNotificationSettings)
+```
+UserNotificationSettings saveUserNotificationSettings(@Nonnull UserNotificationSettings userNotificationSettings)
+```
+
+**POST** `/api/notification/settings/user`
 
 saveUserNotificationSettings
 
@@ -310,7 +371,11 @@ saveUserNotificationSettings
 
 ## sendAddonAccessError
 
-> sendAddonAccessError(addonType)
+```
+void sendAddonAccessError(@Nonnull String addonType)
+```
+
+**POST** `/api/notification/sendAddonAccessError/{addonType}`
 
 Send add-on access error notification to System/Tenant administrators (sendAddonAccessError)
 
@@ -330,7 +395,11 @@ null (empty response body)
 
 ## sendEntitiesLimitIncreaseRequest
 
-> sendEntitiesLimitIncreaseRequest(entityType)
+```
+void sendEntitiesLimitIncreaseRequest(@Nonnull String entityType)
+```
+
+**POST** `/api/notification/entitiesLimitIncreaseRequest/{entityType}`
 
 Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest)
 

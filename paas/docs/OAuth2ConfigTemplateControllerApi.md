@@ -1,16 +1,21 @@
 # OAuth2ConfigTemplateControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteClientRegistrationTemplate**](#deleteClientRegistrationTemplate) | **DELETE** /api/oauth2/config/template/{clientRegistrationTemplateId} | Delete OAuth2 client registration template by id (deleteClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority. |
-| [**getOAuth2ClientRegistrationTemplates**](#getOAuth2ClientRegistrationTemplates) | **GET** /api/oauth2/config/template | Get the list of all OAuth2 client registration templates (getOAuth2ClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority. |
-| [**saveClientRegistrationTemplate**](#saveClientRegistrationTemplate) | **POST** /api/oauth2/config/template | Create or update OAuth2 client registration template (saveClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority. |
+`ThingsboardClient` methods:
 
+```
+void deleteClientRegistrationTemplate(@Nonnull String clientRegistrationTemplateId) // Delete OAuth2 client registration template by id (deleteClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
+List<OAuth2ClientRegistrationTemplate> getOAuth2ClientRegistrationTemplates() // Get the list of all OAuth2 client registration templates (getOAuth2ClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+OAuth2ClientRegistrationTemplate saveClientRegistrationTemplate(@Nonnull OAuth2ClientRegistrationTemplate oauth2ClientRegistrationTemplate) // Create or update OAuth2 client registration template (saveClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
+```
 
 
 ## deleteClientRegistrationTemplate
 
-> deleteClientRegistrationTemplate(clientRegistrationTemplateId)
+```
+void deleteClientRegistrationTemplate(@Nonnull String clientRegistrationTemplateId)
+```
+
+**DELETE** `/api/oauth2/config/template/{clientRegistrationTemplateId}`
 
 Delete OAuth2 client registration template by id (deleteClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
 
@@ -30,7 +35,11 @@ null (empty response body)
 
 ## getOAuth2ClientRegistrationTemplates
 
-> List<OAuth2ClientRegistrationTemplate> getOAuth2ClientRegistrationTemplates()
+```
+List<OAuth2ClientRegistrationTemplate> getOAuth2ClientRegistrationTemplates()
+```
+
+**GET** `/api/oauth2/config/template`
 
 Get the list of all OAuth2 client registration templates (getOAuth2ClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
@@ -43,7 +52,11 @@ Client registration template is OAuth2 provider configuration template with defa
 
 ## saveClientRegistrationTemplate
 
-> OAuth2ClientRegistrationTemplate saveClientRegistrationTemplate(oauth2ClientRegistrationTemplate)
+```
+OAuth2ClientRegistrationTemplate saveClientRegistrationTemplate(@Nonnull OAuth2ClientRegistrationTemplate oauth2ClientRegistrationTemplate)
+```
+
+**POST** `/api/oauth2/config/template`
 
 Create or update OAuth2 client registration template (saveClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
 

@@ -1,16 +1,21 @@
 # ComponentDescriptorControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getComponentDescriptorByClazz**](#getComponentDescriptorByClazz) | **GET** /api/component/{componentDescriptorClazz} | Get Component Descriptor (getComponentDescriptorByClazz) |
-| [**getComponentDescriptorsByType**](#getComponentDescriptorsByType) | **GET** /api/components/{componentType} | Get Component Descriptors (getComponentDescriptorsByType) |
-| [**getComponentDescriptorsByTypes**](#getComponentDescriptorsByTypes) | **GET** /api/components | Get Component Descriptors (getComponentDescriptorsByTypes) |
+`ThingsboardClient` methods:
 
+```
+ComponentDescriptor getComponentDescriptorByClazz(@Nonnull String componentDescriptorClazz) // Get Component Descriptor (getComponentDescriptorByClazz)
+List<ComponentDescriptor> getComponentDescriptorsByType(@Nonnull String componentType, @Nullable String ruleChainType) // Get Component Descriptors (getComponentDescriptorsByType)
+List<ComponentDescriptor> getComponentDescriptorsByTypes(@Nonnull List<String> componentTypes, @Nullable String ruleChainType) // Get Component Descriptors (getComponentDescriptorsByTypes)
+```
 
 
 ## getComponentDescriptorByClazz
 
-> ComponentDescriptor getComponentDescriptorByClazz(componentDescriptorClazz)
+```
+ComponentDescriptor getComponentDescriptorByClazz(@Nonnull String componentDescriptorClazz)
+```
+
+**GET** `/api/component/{componentDescriptorClazz}`
 
 Get Component Descriptor (getComponentDescriptorByClazz)
 
@@ -30,7 +35,11 @@ Gets the Component Descriptor object using class name from the path parameters. 
 
 ## getComponentDescriptorsByType
 
-> List<ComponentDescriptor> getComponentDescriptorsByType(componentType, ruleChainType)
+```
+List<ComponentDescriptor> getComponentDescriptorsByType(@Nonnull String componentType, @Nullable String ruleChainType)
+```
+
+**GET** `/api/components/{componentType}`
 
 Get Component Descriptors (getComponentDescriptorsByType)
 
@@ -51,7 +60,11 @@ Gets the Component Descriptors using rule node type and optional rule chain type
 
 ## getComponentDescriptorsByTypes
 
-> List<ComponentDescriptor> getComponentDescriptorsByTypes(componentTypes, ruleChainType)
+```
+List<ComponentDescriptor> getComponentDescriptorsByTypes(@Nonnull List<String> componentTypes, @Nullable String ruleChainType)
+```
+
+**GET** `/api/components`
 
 Get Component Descriptors (getComponentDescriptorsByTypes)
 

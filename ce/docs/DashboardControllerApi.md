@@ -1,37 +1,42 @@
 # DashboardControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**addDashboardCustomers**](#addDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/add | Adds the Dashboard Customers (addDashboardCustomers) |
-| [**assignDashboardToCustomer**](#assignDashboardToCustomer) | **POST** /api/customer/{customerId}/dashboard/{dashboardId} | Assign the Dashboard (assignDashboardToCustomer) |
-| [**assignDashboardToEdge**](#assignDashboardToEdge) | **POST** /api/edge/{edgeId}/dashboard/{dashboardId} | Assign dashboard to edge (assignDashboardToEdge) |
-| [**assignDashboardToPublicCustomer**](#assignDashboardToPublicCustomer) | **POST** /api/customer/public/dashboard/{dashboardId} | Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer) |
-| [**deleteDashboard**](#deleteDashboard) | **DELETE** /api/dashboard/{dashboardId} | Delete the Dashboard (deleteDashboard) |
-| [**getCustomerDashboards**](#getCustomerDashboards) | **GET** /api/customer/{customerId}/dashboards | Get Customer Dashboards (getCustomerDashboards) |
-| [**getDashboardById**](#getDashboardById) | **GET** /api/dashboard/{dashboardId} | Get Dashboard (getDashboardById) |
-| [**getDashboardInfoById**](#getDashboardInfoById) | **GET** /api/dashboard/info/{dashboardId} | Get Dashboard Info (getDashboardInfoById) |
-| [**getDashboardsByIds**](#getDashboardsByIds) | **GET** /api/dashboards/list | Get dashboards by Dashboard Ids (getDashboardsByIds) |
-| [**getEdgeDashboards**](#getEdgeDashboards) | **GET** /api/edge/{edgeId}/dashboards | Get Edge Dashboards (getEdgeDashboards) |
-| [**getHomeDashboard**](#getHomeDashboard) | **GET** /api/dashboard/home | Get Home Dashboard (getHomeDashboard) |
-| [**getHomeDashboardInfo**](#getHomeDashboardInfo) | **GET** /api/dashboard/home/info | Get Home Dashboard Info (getHomeDashboardInfo) |
-| [**getMaxDatapointsLimit**](#getMaxDatapointsLimit) | **GET** /api/dashboard/maxDatapointsLimit | Get max data points limit (getMaxDatapointsLimit) |
-| [**getServerTime**](#getServerTime) | **GET** /api/dashboard/serverTime | Get server time (getServerTime) |
-| [**getTenantDashboards**](#getTenantDashboards) | **GET** /api/tenant/dashboards | Get Tenant Dashboards (getTenantDashboards) |
-| [**getTenantDashboardsByTenantId**](#getTenantDashboardsByTenantId) | **GET** /api/tenant/{tenantId}/dashboards | Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId) |
-| [**getTenantHomeDashboardInfo**](#getTenantHomeDashboardInfo) | **GET** /api/tenant/dashboard/home/info | Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
-| [**removeDashboardCustomers**](#removeDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers/remove | Remove the Dashboard Customers (removeDashboardCustomers) |
-| [**saveDashboard**](#saveDashboard) | **POST** /api/dashboard | Create Or Update Dashboard (saveDashboard) |
-| [**setTenantHomeDashboardInfo**](#setTenantHomeDashboardInfo) | **POST** /api/tenant/dashboard/home/info | Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
-| [**unassignDashboardFromCustomer**](#unassignDashboardFromCustomer) | **DELETE** /api/customer/{customerId}/dashboard/{dashboardId} | Unassign the Dashboard (unassignDashboardFromCustomer) |
-| [**unassignDashboardFromEdge**](#unassignDashboardFromEdge) | **DELETE** /api/edge/{edgeId}/dashboard/{dashboardId} | Unassign dashboard from edge (unassignDashboardFromEdge) |
-| [**unassignDashboardFromPublicCustomer**](#unassignDashboardFromPublicCustomer) | **DELETE** /api/customer/public/dashboard/{dashboardId} | Unassign the Dashboard from Public Customer (unassignDashboardFromPublicCustomer) |
-| [**updateDashboardCustomers**](#updateDashboardCustomers) | **POST** /api/dashboard/{dashboardId}/customers | Update the Dashboard Customers (updateDashboardCustomers) |
+`ThingsboardClient` methods:
 
+```
+Dashboard addDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody) // Adds the Dashboard Customers (addDashboardCustomers)
+Dashboard assignDashboardToCustomer(@Nonnull String customerId, @Nonnull String dashboardId) // Assign the Dashboard (assignDashboardToCustomer)
+Dashboard assignDashboardToEdge(@Nonnull String edgeId, @Nonnull String dashboardId) // Assign dashboard to edge (assignDashboardToEdge)
+Dashboard assignDashboardToPublicCustomer(@Nonnull String dashboardId) // Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer)
+void deleteDashboard(@Nonnull String dashboardId) // Delete the Dashboard (deleteDashboard)
+PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Dashboards (getCustomerDashboards)
+void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) // Get Dashboard (getDashboardById)
+DashboardInfo getDashboardInfoById(@Nonnull String dashboardId) // Get Dashboard Info (getDashboardInfoById)
+List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds) // Get dashboards by Dashboard Ids (getDashboardsByIds)
+PageDataDashboardInfo getEdgeDashboards(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Dashboards (getEdgeDashboards)
+void getHomeDashboard(@Nullable String acceptEncoding) // Get Home Dashboard (getHomeDashboard)
+HomeDashboardInfo getHomeDashboardInfo() // Get Home Dashboard Info (getHomeDashboardInfo)
+Long getMaxDatapointsLimit() // Get max data points limit (getMaxDatapointsLimit)
+Long getServerTime() // Get server time (getServerTime)
+PageDataDashboardInfo getTenantDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Dashboards (getTenantDashboards)
+PageDataDashboardInfo getTenantDashboardsByTenantId(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId)
+HomeDashboardInfo getTenantHomeDashboardInfo() // Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
+Dashboard removeDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody) // Remove the Dashboard Customers (removeDashboardCustomers)
+Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String acceptEncoding) // Create Or Update Dashboard (saveDashboard)
+void setTenantHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo) // Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
+Dashboard unassignDashboardFromCustomer(@Nonnull String customerId, @Nonnull String dashboardId) // Unassign the Dashboard (unassignDashboardFromCustomer)
+Dashboard unassignDashboardFromEdge(@Nonnull String edgeId, @Nonnull String dashboardId) // Unassign dashboard from edge (unassignDashboardFromEdge)
+Dashboard unassignDashboardFromPublicCustomer(@Nonnull String dashboardId) // Unassign the Dashboard from Public Customer (unassignDashboardFromPublicCustomer)
+Dashboard updateDashboardCustomers(@Nonnull String dashboardId, @Nullable List<String> requestBody) // Update the Dashboard Customers (updateDashboardCustomers)
+```
 
 
 ## addDashboardCustomers
 
-> Dashboard addDashboardCustomers(dashboardId, requestBody)
+```
+Dashboard addDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody)
+```
+
+**POST** `/api/dashboard/{dashboardId}/customers/add`
 
 Adds the Dashboard Customers (addDashboardCustomers)
 
@@ -52,7 +57,11 @@ Adds the list of Customers to the existing list of assignments for the Dashboard
 
 ## assignDashboardToCustomer
 
-> Dashboard assignDashboardToCustomer(customerId, dashboardId)
+```
+Dashboard assignDashboardToCustomer(@Nonnull String customerId, @Nonnull String dashboardId)
+```
+
+**POST** `/api/customer/{customerId}/dashboard/{dashboardId}`
 
 Assign the Dashboard (assignDashboardToCustomer)
 
@@ -73,7 +82,11 @@ Assign the Dashboard to specified Customer or do nothing if the Dashboard is alr
 
 ## assignDashboardToEdge
 
-> Dashboard assignDashboardToEdge(edgeId, dashboardId)
+```
+Dashboard assignDashboardToEdge(@Nonnull String edgeId, @Nonnull String dashboardId)
+```
+
+**POST** `/api/edge/{edgeId}/dashboard/{dashboardId}`
 
 Assign dashboard to edge (assignDashboardToEdge)
 
@@ -94,7 +107,11 @@ Creates assignment of an existing dashboard to an instance of The Edge. Assignme
 
 ## assignDashboardToPublicCustomer
 
-> Dashboard assignDashboardToPublicCustomer(dashboardId)
+```
+Dashboard assignDashboardToPublicCustomer(@Nonnull String dashboardId)
+```
+
+**POST** `/api/customer/public/dashboard/{dashboardId}`
 
 Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer)
 
@@ -114,7 +131,11 @@ Assigns the dashboard to a special, auto-generated 'Public' Customer. Once assig
 
 ## deleteDashboard
 
-> deleteDashboard(dashboardId)
+```
+void deleteDashboard(@Nonnull String dashboardId)
+```
+
+**DELETE** `/api/dashboard/{dashboardId}`
 
 Delete the Dashboard (deleteDashboard)
 
@@ -134,7 +155,11 @@ null (empty response body)
 
 ## getCustomerDashboards
 
-> PageDataDashboardInfo getCustomerDashboards(customerId, pageSize, page, mobile, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/dashboards`
 
 Get Customer Dashboards (getCustomerDashboards)
 
@@ -160,7 +185,11 @@ Returns a page of dashboard info objects owned by the specified customer. The Da
 
 ## getDashboardById
 
-> getDashboardById(dashboardId, includeResources, acceptEncoding)
+```
+void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/dashboard/{dashboardId}`
 
 Get Dashboard (getDashboardById)
 
@@ -182,7 +211,11 @@ null (empty response body)
 
 ## getDashboardInfoById
 
-> DashboardInfo getDashboardInfoById(dashboardId)
+```
+DashboardInfo getDashboardInfoById(@Nonnull String dashboardId)
+```
+
+**GET** `/api/dashboard/info/{dashboardId}`
 
 Get Dashboard Info (getDashboardInfoById)
 
@@ -202,7 +235,11 @@ Get the information about the dashboard based on 'dashboardId' parameter. The Da
 
 ## getDashboardsByIds
 
-> List<DashboardInfo> getDashboardsByIds(dashboardIds)
+```
+List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds)
+```
+
+**GET** `/api/dashboards/list`
 
 Get dashboards by Dashboard Ids (getDashboardsByIds)
 
@@ -222,7 +259,11 @@ Returns a list of DashboardInfo objects based on the provided ids.   Available f
 
 ## getEdgeDashboards
 
-> PageDataDashboardInfo getEdgeDashboards(edgeId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getEdgeDashboards(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edge/{edgeId}/dashboards`
 
 Get Edge Dashboards (getEdgeDashboards)
 
@@ -247,7 +288,11 @@ Returns a page of dashboard info objects assigned to the specified edge. The Das
 
 ## getHomeDashboard
 
-> getHomeDashboard(acceptEncoding)
+```
+void getHomeDashboard(@Nullable String acceptEncoding)
+```
+
+**GET** `/api/dashboard/home`
 
 Get Home Dashboard (getHomeDashboard)
 
@@ -267,7 +312,11 @@ null (empty response body)
 
 ## getHomeDashboardInfo
 
-> HomeDashboardInfo getHomeDashboardInfo()
+```
+HomeDashboardInfo getHomeDashboardInfo()
+```
+
+**GET** `/api/dashboard/home/info`
 
 Get Home Dashboard Info (getHomeDashboardInfo)
 
@@ -280,7 +329,11 @@ Returns the home dashboard info object that is configured as 'homeDashboardId' p
 
 ## getMaxDatapointsLimit
 
-> Long getMaxDatapointsLimit()
+```
+Long getMaxDatapointsLimit()
+```
+
+**GET** `/api/dashboard/maxDatapointsLimit`
 
 Get max data points limit (getMaxDatapointsLimit)
 
@@ -293,7 +346,11 @@ Get the maximum number of data points that dashboard may request from the server
 
 ## getServerTime
 
-> Long getServerTime()
+```
+Long getServerTime()
+```
+
+**GET** `/api/dashboard/serverTime`
 
 Get server time (getServerTime)
 
@@ -306,7 +363,11 @@ Get the server time (milliseconds since January 1, 1970 UTC). Used to adjust vie
 
 ## getTenantDashboards
 
-> PageDataDashboardInfo getTenantDashboards(pageSize, page, mobile, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getTenantDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/dashboards`
 
 Get Tenant Dashboards (getTenantDashboards)
 
@@ -331,7 +392,11 @@ Returns a page of dashboard info objects owned by the tenant of a current user. 
 
 ## getTenantDashboardsByTenantId
 
-> PageDataDashboardInfo getTenantDashboardsByTenantId(tenantId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getTenantDashboardsByTenantId(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/{tenantId}/dashboards`
 
 Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId)
 
@@ -356,7 +421,11 @@ Returns a page of dashboard info objects owned by tenant. The Dashboard Info obj
 
 ## getTenantHomeDashboardInfo
 
-> HomeDashboardInfo getTenantHomeDashboardInfo()
+```
+HomeDashboardInfo getTenantHomeDashboardInfo()
+```
+
+**GET** `/api/tenant/dashboard/home/info`
 
 Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
 
@@ -369,7 +438,11 @@ Returns the home dashboard info object that is configured as 'homeDashboardId' p
 
 ## removeDashboardCustomers
 
-> Dashboard removeDashboardCustomers(dashboardId, requestBody)
+```
+Dashboard removeDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody)
+```
+
+**POST** `/api/dashboard/{dashboardId}/customers/remove`
 
 Remove the Dashboard Customers (removeDashboardCustomers)
 
@@ -390,7 +463,11 @@ Removes the list of Customers from the existing list of assignments for the Dash
 
 ## saveDashboard
 
-> Dashboard saveDashboard(dashboard, acceptEncoding)
+```
+Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String acceptEncoding)
+```
+
+**POST** `/api/dashboard`
 
 Create Or Update Dashboard (saveDashboard)
 
@@ -411,7 +488,11 @@ Create or update the Dashboard. When creating dashboard, platform generates Dash
 
 ## setTenantHomeDashboardInfo
 
-> setTenantHomeDashboardInfo(homeDashboardInfo)
+```
+void setTenantHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo)
+```
+
+**POST** `/api/tenant/dashboard/home/info`
 
 Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
 
@@ -431,7 +512,11 @@ null (empty response body)
 
 ## unassignDashboardFromCustomer
 
-> Dashboard unassignDashboardFromCustomer(customerId, dashboardId)
+```
+Dashboard unassignDashboardFromCustomer(@Nonnull String customerId, @Nonnull String dashboardId)
+```
+
+**DELETE** `/api/customer/{customerId}/dashboard/{dashboardId}`
 
 Unassign the Dashboard (unassignDashboardFromCustomer)
 
@@ -452,7 +537,11 @@ Unassign the Dashboard from specified Customer or do nothing if the Dashboard is
 
 ## unassignDashboardFromEdge
 
-> Dashboard unassignDashboardFromEdge(edgeId, dashboardId)
+```
+Dashboard unassignDashboardFromEdge(@Nonnull String edgeId, @Nonnull String dashboardId)
+```
+
+**DELETE** `/api/edge/{edgeId}/dashboard/{dashboardId}`
 
 Unassign dashboard from edge (unassignDashboardFromEdge)
 
@@ -473,7 +562,11 @@ Clears assignment of the dashboard to the edge. Unassignment works in async way 
 
 ## unassignDashboardFromPublicCustomer
 
-> Dashboard unassignDashboardFromPublicCustomer(dashboardId)
+```
+Dashboard unassignDashboardFromPublicCustomer(@Nonnull String dashboardId)
+```
+
+**DELETE** `/api/customer/public/dashboard/{dashboardId}`
 
 Unassign the Dashboard from Public Customer (unassignDashboardFromPublicCustomer)
 
@@ -493,7 +586,11 @@ Unassigns the dashboard from a special, auto-generated 'Public' Customer. Once u
 
 ## updateDashboardCustomers
 
-> Dashboard updateDashboardCustomers(dashboardId, requestBody)
+```
+Dashboard updateDashboardCustomers(@Nonnull String dashboardId, @Nullable List<String> requestBody)
+```
+
+**POST** `/api/dashboard/{dashboardId}/customers`
 
 Update the Dashboard Customers (updateDashboardCustomers)
 

@@ -1,31 +1,36 @@
 # EntityViewControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**assignEntityViewToCustomer**](#assignEntityViewToCustomer) | **POST** /api/customer/{customerId}/entityView/{entityViewId} | Assign Entity View to customer (assignEntityViewToCustomer) |
-| [**assignEntityViewToEdge**](#assignEntityViewToEdge) | **POST** /api/edge/{edgeId}/entityView/{entityViewId} | Assign entity view to edge (assignEntityViewToEdge) |
-| [**assignEntityViewToPublicCustomer**](#assignEntityViewToPublicCustomer) | **POST** /api/customer/public/entityView/{entityViewId} | Make entity view publicly available (assignEntityViewToPublicCustomer) |
-| [**deleteEntityView**](#deleteEntityView) | **DELETE** /api/entityView/{entityViewId} | Delete entity view (deleteEntityView) |
-| [**findEntityViewsByQuery**](#findEntityViewsByQuery) | **POST** /api/entityViews | Find related entity views (findEntityViewsByQuery) |
-| [**getCustomerEntityViewInfos**](#getCustomerEntityViewInfos) | **GET** /api/customer/{customerId}/entityViewInfos | Get Customer Entity View info (getCustomerEntityViewInfos) |
-| [**getCustomerEntityViews**](#getCustomerEntityViews) | **GET** /api/customer/{customerId}/entityViews | Get Customer Entity Views (getCustomerEntityViews) |
-| [**getEdgeEntityViews**](#getEdgeEntityViews) | **GET** /api/edge/{edgeId}/entityViews | getEdgeEntityViews |
-| [**getEntityViewById**](#getEntityViewById) | **GET** /api/entityView/{entityViewId} | Get entity view (getEntityViewById) |
-| [**getEntityViewInfoById**](#getEntityViewInfoById) | **GET** /api/entityView/info/{entityViewId} | Get Entity View info (getEntityViewInfoById) |
-| [**getEntityViewTypes**](#getEntityViewTypes) | **GET** /api/entityView/types | Get Entity View Types (getEntityViewTypes) |
-| [**getEntityViewsByIds**](#getEntityViewsByIds) | **GET** /api/entityViews/list | Get Entity Views By Ids (getEntityViewsByIds) |
-| [**getTenantEntityViewByName**](#getTenantEntityViewByName) | **GET** /api/tenant/entityView | Get Entity View by name (getTenantEntityViewByName) |
-| [**getTenantEntityViewInfos**](#getTenantEntityViewInfos) | **GET** /api/tenant/entityViewInfos | Get Tenant Entity Views (getTenantEntityViews) |
-| [**getTenantEntityViews**](#getTenantEntityViews) | **GET** /api/tenant/entityViews | Get Tenant Entity Views (getTenantEntityViews) |
-| [**saveEntityView**](#saveEntityView) | **POST** /api/entityView | Save or update entity view (saveEntityView) |
-| [**unassignEntityViewFromCustomer**](#unassignEntityViewFromCustomer) | **DELETE** /api/customer/entityView/{entityViewId} | Unassign Entity View from customer (unassignEntityViewFromCustomer) |
-| [**unassignEntityViewFromEdge**](#unassignEntityViewFromEdge) | **DELETE** /api/edge/{edgeId}/entityView/{entityViewId} | Unassign entity view from edge (unassignEntityViewFromEdge) |
+`ThingsboardClient` methods:
 
+```
+EntityView assignEntityViewToCustomer(@Nonnull String customerId, @Nonnull String entityViewId) // Assign Entity View to customer (assignEntityViewToCustomer)
+EntityView assignEntityViewToEdge(@Nonnull String edgeId, @Nonnull String entityViewId) // Assign entity view to edge (assignEntityViewToEdge)
+EntityView assignEntityViewToPublicCustomer(@Nonnull String entityViewId) // Make entity view publicly available (assignEntityViewToPublicCustomer)
+void deleteEntityView(@Nonnull String entityViewId) // Delete entity view (deleteEntityView)
+List<EntityView> findEntityViewsByQuery(@Nonnull EntityViewSearchQuery entityViewSearchQuery) // Find related entity views (findEntityViewsByQuery)
+PageDataEntityViewInfo getCustomerEntityViewInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Entity View info (getCustomerEntityViewInfos)
+PageDataEntityView getCustomerEntityViews(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Entity Views (getCustomerEntityViews)
+PageDataEntityView getEdgeEntityViews(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // getEdgeEntityViews
+EntityView getEntityViewById(@Nonnull String entityViewId) // Get entity view (getEntityViewById)
+EntityViewInfo getEntityViewInfoById(@Nonnull String entityViewId) // Get Entity View info (getEntityViewInfoById)
+List<EntitySubtype> getEntityViewTypes() // Get Entity View Types (getEntityViewTypes)
+List<EntityView> getEntityViewsByIds(@Nonnull List<String> entityViewIds) // Get Entity Views By Ids (getEntityViewsByIds)
+EntityView getTenantEntityViewByName(@Nonnull String entityViewName) // Get Entity View by name (getTenantEntityViewByName)
+PageDataEntityViewInfo getTenantEntityViewInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Entity Views (getTenantEntityViews)
+PageDataEntityView getTenantEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Entity Views (getTenantEntityViews)
+EntityView saveEntityView(@Nonnull EntityView entityView, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Save or update entity view (saveEntityView)
+EntityView unassignEntityViewFromCustomer(@Nonnull String entityViewId) // Unassign Entity View from customer (unassignEntityViewFromCustomer)
+EntityView unassignEntityViewFromEdge(@Nonnull String edgeId, @Nonnull String entityViewId) // Unassign entity view from edge (unassignEntityViewFromEdge)
+```
 
 
 ## assignEntityViewToCustomer
 
-> EntityView assignEntityViewToCustomer(customerId, entityViewId)
+```
+EntityView assignEntityViewToCustomer(@Nonnull String customerId, @Nonnull String entityViewId)
+```
+
+**POST** `/api/customer/{customerId}/entityView/{entityViewId}`
 
 Assign Entity View to customer (assignEntityViewToCustomer)
 
@@ -46,7 +51,11 @@ Creates assignment of the Entity View to customer. Customer will be able to quer
 
 ## assignEntityViewToEdge
 
-> EntityView assignEntityViewToEdge(edgeId, entityViewId)
+```
+EntityView assignEntityViewToEdge(@Nonnull String edgeId, @Nonnull String entityViewId)
+```
+
+**POST** `/api/edge/{edgeId}/entityView/{entityViewId}`
 
 Assign entity view to edge (assignEntityViewToEdge)
 
@@ -67,7 +76,11 @@ Creates assignment of an existing entity view to an instance of The Edge. Assign
 
 ## assignEntityViewToPublicCustomer
 
-> EntityView assignEntityViewToPublicCustomer(entityViewId)
+```
+EntityView assignEntityViewToPublicCustomer(@Nonnull String entityViewId)
+```
+
+**POST** `/api/customer/public/entityView/{entityViewId}`
 
 Make entity view publicly available (assignEntityViewToPublicCustomer)
 
@@ -87,7 +100,11 @@ Entity View will be available for non-authorized (not logged-in) users. This is 
 
 ## deleteEntityView
 
-> deleteEntityView(entityViewId)
+```
+void deleteEntityView(@Nonnull String entityViewId)
+```
+
+**DELETE** `/api/entityView/{entityViewId}`
 
 Delete entity view (deleteEntityView)
 
@@ -107,7 +124,11 @@ null (empty response body)
 
 ## findEntityViewsByQuery
 
-> List<EntityView> findEntityViewsByQuery(entityViewSearchQuery)
+```
+List<EntityView> findEntityViewsByQuery(@Nonnull EntityViewSearchQuery entityViewSearchQuery)
+```
+
+**POST** `/api/entityViews`
 
 Find related entity views (findEntityViewsByQuery)
 
@@ -127,7 +148,11 @@ Returns all entity views that are related to the specific entity. The entity id,
 
 ## getCustomerEntityViewInfos
 
-> PageDataEntityViewInfo getCustomerEntityViewInfos(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityViewInfo getCustomerEntityViewInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/entityViewInfos`
 
 Get Customer Entity View info (getCustomerEntityViewInfos)
 
@@ -153,7 +178,11 @@ Returns a page of Entity View info objects assigned to customer. Entity Views li
 
 ## getCustomerEntityViews
 
-> PageDataEntityView getCustomerEntityViews(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityView getCustomerEntityViews(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/entityViews`
 
 Get Customer Entity Views (getCustomerEntityViews)
 
@@ -179,7 +208,11 @@ Returns a page of Entity View objects assigned to customer. You can specify para
 
 ## getEdgeEntityViews
 
-> PageDataEntityView getEdgeEntityViews(edgeId, pageSize, page, type, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataEntityView getEdgeEntityViews(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/edge/{edgeId}/entityViews`
 
 getEdgeEntityViews
 
@@ -205,7 +238,11 @@ getEdgeEntityViews
 
 ## getEntityViewById
 
-> EntityView getEntityViewById(entityViewId)
+```
+EntityView getEntityViewById(@Nonnull String entityViewId)
+```
+
+**GET** `/api/entityView/{entityViewId}`
 
 Get entity view (getEntityViewById)
 
@@ -225,7 +262,11 @@ Fetch the EntityView object based on the provided entity view id. Entity Views l
 
 ## getEntityViewInfoById
 
-> EntityViewInfo getEntityViewInfoById(entityViewId)
+```
+EntityViewInfo getEntityViewInfoById(@Nonnull String entityViewId)
+```
+
+**GET** `/api/entityView/info/{entityViewId}`
 
 Get Entity View info (getEntityViewInfoById)
 
@@ -245,7 +286,11 @@ Fetch the Entity View info object based on the provided Entity View Id. Entity V
 
 ## getEntityViewTypes
 
-> List<EntitySubtype> getEntityViewTypes()
+```
+List<EntitySubtype> getEntityViewTypes()
+```
+
+**GET** `/api/entityView/types`
 
 Get Entity View Types (getEntityViewTypes)
 
@@ -258,7 +303,11 @@ Returns a set of unique entity view types based on entity views that are either 
 
 ## getEntityViewsByIds
 
-> List<EntityView> getEntityViewsByIds(entityViewIds)
+```
+List<EntityView> getEntityViewsByIds(@Nonnull List<String> entityViewIds)
+```
+
+**GET** `/api/entityViews/list`
 
 Get Entity Views By Ids (getEntityViewsByIds)
 
@@ -278,7 +327,11 @@ Requested entity views must be owned by tenant or assigned to customer which use
 
 ## getTenantEntityViewByName
 
-> EntityView getTenantEntityViewByName(entityViewName)
+```
+EntityView getTenantEntityViewByName(@Nonnull String entityViewName)
+```
+
+**GET** `/api/tenant/entityView`
 
 Get Entity View by name (getTenantEntityViewByName)
 
@@ -298,7 +351,11 @@ Fetch the Entity View object based on the tenant id and entity view name.   Avai
 
 ## getTenantEntityViewInfos
 
-> PageDataEntityViewInfo getTenantEntityViewInfos(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityViewInfo getTenantEntityViewInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/entityViewInfos`
 
 Get Tenant Entity Views (getTenantEntityViews)
 
@@ -323,7 +380,11 @@ Returns a page of entity views info owned by tenant. Entity Views limit the degr
 
 ## getTenantEntityViews
 
-> PageDataEntityView getTenantEntityViews(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityView getTenantEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/entityViews`
 
 Get Tenant Entity Views (getTenantEntityViews)
 
@@ -348,7 +409,11 @@ Returns a page of entity views owned by tenant. Entity Views limit the degree of
 
 ## saveEntityView
 
-> EntityView saveEntityView(entityView, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+EntityView saveEntityView(@Nonnull EntityView entityView, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/entityView`
 
 Save or update entity view (saveEntityView)
 
@@ -371,7 +436,11 @@ Entity Views limit the degree of exposure of the Device or Asset telemetry and a
 
 ## unassignEntityViewFromCustomer
 
-> EntityView unassignEntityViewFromCustomer(entityViewId)
+```
+EntityView unassignEntityViewFromCustomer(@Nonnull String entityViewId)
+```
+
+**DELETE** `/api/customer/entityView/{entityViewId}`
 
 Unassign Entity View from customer (unassignEntityViewFromCustomer)
 
@@ -391,7 +460,11 @@ Clears assignment of the Entity View to customer. Customer will not be able to q
 
 ## unassignEntityViewFromEdge
 
-> EntityView unassignEntityViewFromEdge(edgeId, entityViewId)
+```
+EntityView unassignEntityViewFromEdge(@Nonnull String edgeId, @Nonnull String entityViewId)
+```
+
+**DELETE** `/api/edge/{edgeId}/entityView/{entityViewId}`
 
 Unassign entity view from edge (unassignEntityViewFromEdge)
 

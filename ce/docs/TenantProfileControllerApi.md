@@ -1,22 +1,27 @@
 # TenantProfileControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteTenantProfile**](#deleteTenantProfile) | **DELETE** /api/tenantProfile/{tenantProfileId} | Delete Tenant Profile (deleteTenantProfile) |
-| [**getDefaultTenantProfileInfo**](#getDefaultTenantProfileInfo) | **GET** /api/tenantProfileInfo/default | Get default Tenant Profile Info (getDefaultTenantProfileInfo) |
-| [**getTenantProfileById**](#getTenantProfileById) | **GET** /api/tenantProfile/{tenantProfileId} | Get Tenant Profile (getTenantProfileById) |
-| [**getTenantProfileInfoById**](#getTenantProfileInfoById) | **GET** /api/tenantProfileInfo/{tenantProfileId} | Get Tenant Profile Info (getTenantProfileInfoById) |
-| [**getTenantProfileInfos**](#getTenantProfileInfos) | **GET** /api/tenantProfileInfos | Get Tenant Profiles Info (getTenantProfileInfos) |
-| [**getTenantProfileList**](#getTenantProfileList) | **GET** /api/tenantProfiles/list | Get Tenant Profile list (getTenantProfileList) |
-| [**getTenantProfiles**](#getTenantProfiles) | **GET** /api/tenantProfiles | Get Tenant Profiles (getTenantProfiles) |
-| [**saveTenantProfile**](#saveTenantProfile) | **POST** /api/tenantProfile | Create Or update Tenant Profile (saveTenantProfile) |
-| [**setDefaultTenantProfile**](#setDefaultTenantProfile) | **POST** /api/tenantProfile/{tenantProfileId}/default | Make tenant profile default (setDefaultTenantProfile) |
+`ThingsboardClient` methods:
 
+```
+void deleteTenantProfile(@Nonnull String tenantProfileId) // Delete Tenant Profile (deleteTenantProfile)
+EntityInfo getDefaultTenantProfileInfo() // Get default Tenant Profile Info (getDefaultTenantProfileInfo)
+TenantProfile getTenantProfileById(@Nonnull String tenantProfileId) // Get Tenant Profile (getTenantProfileById)
+EntityInfo getTenantProfileInfoById(@Nonnull String tenantProfileId) // Get Tenant Profile Info (getTenantProfileInfoById)
+PageDataEntityInfo getTenantProfileInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Profiles Info (getTenantProfileInfos)
+List<TenantProfile> getTenantProfileList(@Nonnull List<String> ids) // Get Tenant Profile list (getTenantProfileList)
+PageDataTenantProfile getTenantProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Profiles (getTenantProfiles)
+TenantProfile saveTenantProfile(@Nonnull TenantProfile tenantProfile) // Create Or update Tenant Profile (saveTenantProfile)
+TenantProfile setDefaultTenantProfile(@Nonnull String tenantProfileId) // Make tenant profile default (setDefaultTenantProfile)
+```
 
 
 ## deleteTenantProfile
 
-> deleteTenantProfile(tenantProfileId)
+```
+void deleteTenantProfile(@Nonnull String tenantProfileId)
+```
+
+**DELETE** `/api/tenantProfile/{tenantProfileId}`
 
 Delete Tenant Profile (deleteTenantProfile)
 
@@ -36,7 +41,11 @@ null (empty response body)
 
 ## getDefaultTenantProfileInfo
 
-> EntityInfo getDefaultTenantProfileInfo()
+```
+EntityInfo getDefaultTenantProfileInfo()
+```
+
+**GET** `/api/tenantProfileInfo/default`
 
 Get default Tenant Profile Info (getDefaultTenantProfileInfo)
 
@@ -49,7 +58,11 @@ Fetch the default Tenant Profile Info object based. Tenant Profile Info is a lig
 
 ## getTenantProfileById
 
-> TenantProfile getTenantProfileById(tenantProfileId)
+```
+TenantProfile getTenantProfileById(@Nonnull String tenantProfileId)
+```
+
+**GET** `/api/tenantProfile/{tenantProfileId}`
 
 Get Tenant Profile (getTenantProfileById)
 
@@ -69,7 +82,11 @@ Fetch the Tenant Profile object based on the provided Tenant Profile Id.   Avail
 
 ## getTenantProfileInfoById
 
-> EntityInfo getTenantProfileInfoById(tenantProfileId)
+```
+EntityInfo getTenantProfileInfoById(@Nonnull String tenantProfileId)
+```
+
+**GET** `/api/tenantProfileInfo/{tenantProfileId}`
 
 Get Tenant Profile Info (getTenantProfileInfoById)
 
@@ -89,7 +106,11 @@ Fetch the Tenant Profile Info object based on the provided Tenant Profile Id. Te
 
 ## getTenantProfileInfos
 
-> PageDataEntityInfo getTenantProfileInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityInfo getTenantProfileInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenantProfileInfos`
 
 Get Tenant Profiles Info (getTenantProfileInfos)
 
@@ -113,7 +134,11 @@ Returns a page of tenant profile info objects registered in the platform. Tenant
 
 ## getTenantProfileList
 
-> List<TenantProfile> getTenantProfileList(ids)
+```
+List<TenantProfile> getTenantProfileList(@Nonnull List<String> ids)
+```
+
+**GET** `/api/tenantProfiles/list`
 
 Get Tenant Profile list (getTenantProfileList)
 
@@ -131,7 +156,11 @@ Get Tenant Profile list (getTenantProfileList)
 
 ## getTenantProfiles
 
-> PageDataTenantProfile getTenantProfiles(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataTenantProfile getTenantProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenantProfiles`
 
 Get Tenant Profiles (getTenantProfiles)
 
@@ -155,7 +184,11 @@ Returns a page of tenant profiles registered in the platform. You can specify pa
 
 ## saveTenantProfile
 
-> TenantProfile saveTenantProfile(tenantProfile)
+```
+TenantProfile saveTenantProfile(@Nonnull TenantProfile tenantProfile)
+```
+
+**POST** `/api/tenantProfile`
 
 Create Or update Tenant Profile (saveTenantProfile)
 
@@ -175,7 +208,11 @@ Create or update the Tenant Profile. When creating tenant profile, platform gene
 
 ## setDefaultTenantProfile
 
-> TenantProfile setDefaultTenantProfile(tenantProfileId)
+```
+TenantProfile setDefaultTenantProfile(@Nonnull String tenantProfileId)
+```
+
+**POST** `/api/tenantProfile/{tenantProfileId}/default`
 
 Make tenant profile default (setDefaultTenantProfile)
 

@@ -1,19 +1,24 @@
 # SelfRegistrationControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteWebSelfRegistrationParams**](#deleteWebSelfRegistrationParams) | **DELETE** /api/selfRegistration/selfRegistrationParams | deleteWebSelfRegistrationParams |
-| [**getPrivacyPolicy**](#getPrivacyPolicy) | **GET** /api/noauth/selfRegistration/privacyPolicy | Get Privacy Policy for Self Registration form (getPrivacyPolicy) |
-| [**getSignUpSelfRegistrationParams**](#getSignUpSelfRegistrationParams) | **GET** /api/noauth/selfRegistration/signUpSelfRegistrationParams | Get Self Registration form parameters without authentication (getSignUpSelfRegistrationParams) |
-| [**getTermsOfUse**](#getTermsOfUse) | **GET** /api/noauth/selfRegistration/termsOfUse | Get Terms of Use for Self Registration form (getTermsOfUse) |
-| [**getWebSelfRegistrationParams**](#getWebSelfRegistrationParams) | **GET** /api/selfRegistration/selfRegistrationParams | Get Self Registration parameters (getSelfRegistrationParams) |
-| [**saveWebSelfRegistrationParams**](#saveWebSelfRegistrationParams) | **POST** /api/selfRegistration/selfRegistrationParams | Create Or Update Self Registration parameters (saveSelfRegistrationParams) |
+`ThingsboardClient` methods:
 
+```
+void deleteWebSelfRegistrationParams() // deleteWebSelfRegistrationParams
+String getPrivacyPolicy(@Nullable String pkgName, @Nullable PlatformType platform) // Get Privacy Policy for Self Registration form (getPrivacyPolicy)
+SignUpSelfRegistrationParams getSignUpSelfRegistrationParams(@Nullable String pkgName, @Nullable String platformType) // Get Self Registration form parameters without authentication (getSignUpSelfRegistrationParams)
+String getTermsOfUse(@Nullable String pkgName, @Nullable PlatformType platform) // Get Terms of Use for Self Registration form (getTermsOfUse)
+SelfRegistrationParams getWebSelfRegistrationParams() // Get Self Registration parameters (getSelfRegistrationParams)
+WebSelfRegistrationParams saveWebSelfRegistrationParams(@Nonnull WebSelfRegistrationParams webSelfRegistrationParams) // Create Or Update Self Registration parameters (saveSelfRegistrationParams)
+```
 
 
 ## deleteWebSelfRegistrationParams
 
-> deleteWebSelfRegistrationParams()
+```
+void deleteWebSelfRegistrationParams()
+```
+
+**DELETE** `/api/selfRegistration/selfRegistrationParams`
 
 deleteWebSelfRegistrationParams
 
@@ -24,7 +29,11 @@ null (empty response body)
 
 ## getPrivacyPolicy
 
-> String getPrivacyPolicy(pkgName, platform)
+```
+String getPrivacyPolicy(@Nullable String pkgName, @Nullable PlatformType platform)
+```
+
+**GET** `/api/noauth/selfRegistration/privacyPolicy`
 
 Get Privacy Policy for Self Registration form (getPrivacyPolicy)
 
@@ -45,7 +54,11 @@ Fetch the Privacy Policy based on the domain name from the request. Available fo
 
 ## getSignUpSelfRegistrationParams
 
-> SignUpSelfRegistrationParams getSignUpSelfRegistrationParams(pkgName, platformType)
+```
+SignUpSelfRegistrationParams getSignUpSelfRegistrationParams(@Nullable String pkgName, @Nullable String platformType)
+```
+
+**GET** `/api/noauth/selfRegistration/signUpSelfRegistrationParams`
 
 Get Self Registration form parameters without authentication (getSignUpSelfRegistrationParams)
 
@@ -66,7 +79,11 @@ Fetch the Self Registration parameters based on the domain name from the request
 
 ## getTermsOfUse
 
-> String getTermsOfUse(pkgName, platform)
+```
+String getTermsOfUse(@Nullable String pkgName, @Nullable PlatformType platform)
+```
+
+**GET** `/api/noauth/selfRegistration/termsOfUse`
 
 Get Terms of Use for Self Registration form (getTermsOfUse)
 
@@ -87,7 +104,11 @@ Fetch the Terms of Use based on the domain name from the request. Available for 
 
 ## getWebSelfRegistrationParams
 
-> SelfRegistrationParams getWebSelfRegistrationParams()
+```
+SelfRegistrationParams getWebSelfRegistrationParams()
+```
+
+**GET** `/api/selfRegistration/selfRegistrationParams`
 
 Get Self Registration parameters (getSelfRegistrationParams)
 
@@ -100,7 +121,11 @@ Fetch the Self Registration parameters object for the tenant of the current user
 
 ## saveWebSelfRegistrationParams
 
-> WebSelfRegistrationParams saveWebSelfRegistrationParams(webSelfRegistrationParams)
+```
+WebSelfRegistrationParams saveWebSelfRegistrationParams(@Nonnull WebSelfRegistrationParams webSelfRegistrationParams)
+```
+
+**POST** `/api/selfRegistration/selfRegistrationParams`
 
 Create Or Update Self Registration parameters (saveSelfRegistrationParams)
 

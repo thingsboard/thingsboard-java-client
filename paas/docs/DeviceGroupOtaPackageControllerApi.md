@@ -1,16 +1,21 @@
 # DeviceGroupOtaPackageControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteDeviceGroupOtaPackage**](#deleteDeviceGroupOtaPackage) | **DELETE** /api/deviceGroupOtaPackage/{id} | deleteDeviceGroupOtaPackage |
-| [**getFirmwareById**](#getFirmwareById) | **GET** /api/deviceGroupOtaPackage/{groupId}/{firmwareType} | getFirmwareById |
-| [**saveDeviceGroupOtaPackage**](#saveDeviceGroupOtaPackage) | **POST** /api/deviceGroupOtaPackage | saveDeviceGroupOtaPackage |
+`ThingsboardClient` methods:
 
+```
+void deleteDeviceGroupOtaPackage(@Nonnull String id) // deleteDeviceGroupOtaPackage
+DeviceGroupOtaPackage getFirmwareById(@Nonnull String groupId, @Nonnull String firmwareType) // getFirmwareById
+DeviceGroupOtaPackage saveDeviceGroupOtaPackage(@Nonnull DeviceGroupOtaPackage deviceGroupOtaPackage) // saveDeviceGroupOtaPackage
+```
 
 
 ## deleteDeviceGroupOtaPackage
 
-> deleteDeviceGroupOtaPackage(id)
+```
+void deleteDeviceGroupOtaPackage(@Nonnull String id)
+```
+
+**DELETE** `/api/deviceGroupOtaPackage/{id}`
 
 deleteDeviceGroupOtaPackage
 
@@ -28,7 +33,11 @@ null (empty response body)
 
 ## getFirmwareById
 
-> DeviceGroupOtaPackage getFirmwareById(groupId, firmwareType)
+```
+DeviceGroupOtaPackage getFirmwareById(@Nonnull String groupId, @Nonnull String firmwareType)
+```
+
+**GET** `/api/deviceGroupOtaPackage/{groupId}/{firmwareType}`
 
 getFirmwareById
 
@@ -47,7 +56,11 @@ getFirmwareById
 
 ## saveDeviceGroupOtaPackage
 
-> DeviceGroupOtaPackage saveDeviceGroupOtaPackage(deviceGroupOtaPackage)
+```
+DeviceGroupOtaPackage saveDeviceGroupOtaPackage(@Nonnull DeviceGroupOtaPackage deviceGroupOtaPackage)
+```
+
+**POST** `/api/deviceGroupOtaPackage`
 
 saveDeviceGroupOtaPackage
 

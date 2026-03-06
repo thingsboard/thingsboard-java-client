@@ -1,38 +1,43 @@
 # AdminControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**autoCommitSettingsExists**](#autoCommitSettingsExists) | **GET** /api/admin/autoCommitSettings/exists | Check auto commit settings exists (autoCommitSettingsExists) |
-| [**checkRepositoryAccess**](#checkRepositoryAccess) | **POST** /api/admin/repositorySettings/checkAccess | Check repository access (checkRepositoryAccess) |
-| [**checkUpdates**](#checkUpdates) | **GET** /api/admin/updates | Check for new Platform Releases (checkUpdates) |
-| [**deleteAutoCommitSettings**](#deleteAutoCommitSettings) | **DELETE** /api/admin/autoCommitSettings | Delete auto commit settings (deleteAutoCommitSettings) |
-| [**deleteRepositorySettings**](#deleteRepositorySettings) | **DELETE** /api/admin/repositorySettings | Delete repository settings (deleteRepositorySettings) |
-| [**getAdminSettings**](#getAdminSettings) | **GET** /api/admin/settings/{key} | Get the Administration Settings object using key (getAdminSettings) |
-| [**getAutoCommitSettings**](#getAutoCommitSettings) | **GET** /api/admin/autoCommitSettings | Get auto commit settings (getAutoCommitSettings) |
-| [**getFeaturesInfo**](#getFeaturesInfo) | **GET** /api/admin/featuresInfo | Get features info (getFeaturesInfo) |
-| [**getJwtSettings**](#getJwtSettings) | **GET** /api/admin/jwtSettings | Get the JWT Settings object (getJwtSettings) |
-| [**getLicenseUsageInfo**](#getLicenseUsageInfo) | **GET** /api/admin/licenseUsageInfo | Get license usage info (getLicenseUsageInfo) |
-| [**getMailOAuth2AuthorizationUrl**](#getMailOAuth2AuthorizationUrl) | **GET** /api/admin/mail/oauth2/authorize | Redirect user to mail provider login page.  |
-| [**getMailProcessingUrl**](#getMailProcessingUrl) | **GET** /api/admin/mail/oauth2/loginProcessingUrl | Get OAuth2 log in processing URL (getMailProcessingUrl) |
-| [**getRepositorySettings**](#getRepositorySettings) | **GET** /api/admin/repositorySettings | Get repository settings (getRepositorySettings) |
-| [**getRepositorySettingsInfo**](#getRepositorySettingsInfo) | **GET** /api/admin/repositorySettings/info | getRepositorySettingsInfo |
-| [**getSecuritySettings**](#getSecuritySettings) | **GET** /api/admin/securitySettings | Get the Security Settings object (getSecuritySettings) |
-| [**getSystemInfo**](#getSystemInfo) | **GET** /api/admin/systemInfo | Get system info (getSystemInfo) |
-| [**handleMailOAuth2Callback**](#handleMailOAuth2Callback) | **GET** /api/admin/mail/oauth2/code | handleMailOAuth2Callback |
-| [**repositorySettingsExists**](#repositorySettingsExists) | **GET** /api/admin/repositorySettings/exists | Check repository settings exists (repositorySettingsExists) |
-| [**saveAdminSettings**](#saveAdminSettings) | **POST** /api/admin/settings | Creates or Updates the Administration Settings (saveAdminSettings) |
-| [**saveAutoCommitSettings**](#saveAutoCommitSettings) | **POST** /api/admin/autoCommitSettings | Creates or Updates the auto commit settings (saveAutoCommitSettings) |
-| [**saveJwtSettings**](#saveJwtSettings) | **POST** /api/admin/jwtSettings | Update JWT Settings (saveJwtSettings) |
-| [**saveRepositorySettings**](#saveRepositorySettings) | **POST** /api/admin/repositorySettings | Creates or Updates the repository settings (saveRepositorySettings) |
-| [**saveSecuritySettings**](#saveSecuritySettings) | **POST** /api/admin/securitySettings | Update Security Settings (saveSecuritySettings) |
-| [**sendTestMail**](#sendTestMail) | **POST** /api/admin/settings/testMail | Send test email (sendTestMail) |
-| [**sendTestSms**](#sendTestSms) | **POST** /api/admin/settings/testSms | Send test sms (sendTestSms) |
+`ThingsboardClient` methods:
 
+```
+Boolean autoCommitSettingsExists() // Check auto commit settings exists (autoCommitSettingsExists)
+void checkRepositoryAccess(@Nonnull RepositorySettings repositorySettings) // Check repository access (checkRepositoryAccess)
+UpdateMessage checkUpdates() // Check for new Platform Releases (checkUpdates)
+void deleteAutoCommitSettings() // Delete auto commit settings (deleteAutoCommitSettings)
+void deleteRepositorySettings() // Delete repository settings (deleteRepositorySettings)
+AdminSettings getAdminSettings(@Nonnull String key, @Nullable Boolean systemByDefault) // Get the Administration Settings object using key (getAdminSettings)
+Map<String, AutoVersionCreateConfig> getAutoCommitSettings() // Get auto commit settings (getAutoCommitSettings)
+FeaturesInfo getFeaturesInfo() // Get features info (getFeaturesInfo)
+JwtSettings getJwtSettings() // Get the JWT Settings object (getJwtSettings)
+LicenseUsageInfo getLicenseUsageInfo() // Get license usage info (getLicenseUsageInfo)
+String getMailOAuth2AuthorizationUrl() // Redirect user to mail provider login page. 
+String getMailProcessingUrl() // Get OAuth2 log in processing URL (getMailProcessingUrl)
+RepositorySettings getRepositorySettings() // Get repository settings (getRepositorySettings)
+RepositorySettingsInfo getRepositorySettingsInfo() // getRepositorySettingsInfo
+SecuritySettings getSecuritySettings() // Get the Security Settings object (getSecuritySettings)
+SystemInfo getSystemInfo() // Get system info (getSystemInfo)
+void handleMailOAuth2Callback(@Nonnull String code, @Nonnull String state) // handleMailOAuth2Callback
+Boolean repositorySettingsExists() // Check repository settings exists (repositorySettingsExists)
+AdminSettings saveAdminSettings(@Nonnull AdminSettings adminSettings) // Creates or Updates the Administration Settings (saveAdminSettings)
+Map<String, AutoVersionCreateConfig> saveAutoCommitSettings(@Nonnull Map<String, AutoVersionCreateConfig> requestBody) // Creates or Updates the auto commit settings (saveAutoCommitSettings)
+JwtPair saveJwtSettings(@Nonnull JwtSettings jwtSettings) // Update JWT Settings (saveJwtSettings)
+RepositorySettings saveRepositorySettings(@Nonnull RepositorySettings repositorySettings) // Creates or Updates the repository settings (saveRepositorySettings)
+SecuritySettings saveSecuritySettings(@Nonnull SecuritySettings securitySettings) // Update Security Settings (saveSecuritySettings)
+void sendTestMail(@Nonnull AdminSettings adminSettings) // Send test email (sendTestMail)
+void sendTestSms(@Nonnull TestSmsRequest testSmsRequest) // Send test sms (sendTestSms)
+```
 
 
 ## autoCommitSettingsExists
 
-> Boolean autoCommitSettingsExists()
+```
+Boolean autoCommitSettingsExists()
+```
+
+**GET** `/api/admin/autoCommitSettings/exists`
 
 Check auto commit settings exists (autoCommitSettingsExists)
 
@@ -45,7 +50,11 @@ Check whether the auto commit settings exists.   Available for users with 'TENAN
 
 ## checkRepositoryAccess
 
-> checkRepositoryAccess(repositorySettings)
+```
+void checkRepositoryAccess(@Nonnull RepositorySettings repositorySettings)
+```
+
+**POST** `/api/admin/repositorySettings/checkAccess`
 
 Check repository access (checkRepositoryAccess)
 
@@ -65,7 +74,11 @@ null (empty response body)
 
 ## checkUpdates
 
-> UpdateMessage checkUpdates()
+```
+UpdateMessage checkUpdates()
+```
+
+**GET** `/api/admin/updates`
 
 Check for new Platform Releases (checkUpdates)
 
@@ -78,7 +91,11 @@ Check notifications about new platform releases.   Available for users with 'SYS
 
 ## deleteAutoCommitSettings
 
-> deleteAutoCommitSettings()
+```
+void deleteAutoCommitSettings()
+```
+
+**DELETE** `/api/admin/autoCommitSettings`
 
 Delete auto commit settings (deleteAutoCommitSettings)
 
@@ -91,7 +108,11 @@ null (empty response body)
 
 ## deleteRepositorySettings
 
-> deleteRepositorySettings()
+```
+void deleteRepositorySettings()
+```
+
+**DELETE** `/api/admin/repositorySettings`
 
 Delete repository settings (deleteRepositorySettings)
 
@@ -104,7 +125,11 @@ null (empty response body)
 
 ## getAdminSettings
 
-> AdminSettings getAdminSettings(key, systemByDefault)
+```
+AdminSettings getAdminSettings(@Nonnull String key, @Nullable Boolean systemByDefault)
+```
+
+**GET** `/api/admin/settings/{key}`
 
 Get the Administration Settings object using key (getAdminSettings)
 
@@ -125,7 +150,11 @@ Get the Administration Settings object using specified string key. Referencing n
 
 ## getAutoCommitSettings
 
-> Map<String, AutoVersionCreateConfig> getAutoCommitSettings()
+```
+Map<String, AutoVersionCreateConfig> getAutoCommitSettings()
+```
+
+**GET** `/api/admin/autoCommitSettings`
 
 Get auto commit settings (getAutoCommitSettings)
 
@@ -138,7 +167,11 @@ Get the auto commit settings object.   Available for users with 'TENANT_ADMIN' a
 
 ## getFeaturesInfo
 
-> FeaturesInfo getFeaturesInfo()
+```
+FeaturesInfo getFeaturesInfo()
+```
+
+**GET** `/api/admin/featuresInfo`
 
 Get features info (getFeaturesInfo)
 
@@ -151,7 +184,11 @@ Get information about enabled/disabled features.   Available for users with 'SYS
 
 ## getJwtSettings
 
-> JwtSettings getJwtSettings()
+```
+JwtSettings getJwtSettings()
+```
+
+**GET** `/api/admin/jwtSettings`
 
 Get the JWT Settings object (getJwtSettings)
 
@@ -164,7 +201,11 @@ Get the JWT Settings object that contains JWT token policy, etc.   Available for
 
 ## getLicenseUsageInfo
 
-> LicenseUsageInfo getLicenseUsageInfo()
+```
+LicenseUsageInfo getLicenseUsageInfo()
+```
+
+**GET** `/api/admin/licenseUsageInfo`
 
 Get license usage info (getLicenseUsageInfo)
 
@@ -177,7 +218,11 @@ Get license usage info.   Available for users with 'SYS_ADMIN' authority.
 
 ## getMailOAuth2AuthorizationUrl
 
-> String getMailOAuth2AuthorizationUrl()
+```
+String getMailOAuth2AuthorizationUrl()
+```
+
+**GET** `/api/admin/mail/oauth2/authorize`
 
 Redirect user to mail provider login page. 
 
@@ -190,7 +235,11 @@ After user logged in and provided accessprovider sends authorization code to spe
 
 ## getMailProcessingUrl
 
-> String getMailProcessingUrl()
+```
+String getMailProcessingUrl()
+```
+
+**GET** `/api/admin/mail/oauth2/loginProcessingUrl`
 
 Get OAuth2 log in processing URL (getMailProcessingUrl)
 
@@ -203,7 +252,11 @@ Returns the URL enclosed in double quotes. After successful authentication with 
 
 ## getRepositorySettings
 
-> RepositorySettings getRepositorySettings()
+```
+RepositorySettings getRepositorySettings()
+```
+
+**GET** `/api/admin/repositorySettings`
 
 Get repository settings (getRepositorySettings)
 
@@ -216,7 +269,11 @@ Get the repository settings object.   Available for users with 'TENANT_ADMIN' au
 
 ## getRepositorySettingsInfo
 
-> RepositorySettingsInfo getRepositorySettingsInfo()
+```
+RepositorySettingsInfo getRepositorySettingsInfo()
+```
+
+**GET** `/api/admin/repositorySettings/info`
 
 getRepositorySettingsInfo
 
@@ -227,7 +284,11 @@ getRepositorySettingsInfo
 
 ## getSecuritySettings
 
-> SecuritySettings getSecuritySettings()
+```
+SecuritySettings getSecuritySettings()
+```
+
+**GET** `/api/admin/securitySettings`
 
 Get the Security Settings object (getSecuritySettings)
 
@@ -240,7 +301,11 @@ Get the Security Settings object that contains password policy, etc.  Available 
 
 ## getSystemInfo
 
-> SystemInfo getSystemInfo()
+```
+SystemInfo getSystemInfo()
+```
+
+**GET** `/api/admin/systemInfo`
 
 Get system info (getSystemInfo)
 
@@ -253,7 +318,11 @@ Get main information about system.   Available for users with 'SYS_ADMIN' author
 
 ## handleMailOAuth2Callback
 
-> handleMailOAuth2Callback(code, state)
+```
+void handleMailOAuth2Callback(@Nonnull String code, @Nonnull String state)
+```
+
+**GET** `/api/admin/mail/oauth2/code`
 
 handleMailOAuth2Callback
 
@@ -272,7 +341,11 @@ null (empty response body)
 
 ## repositorySettingsExists
 
-> Boolean repositorySettingsExists()
+```
+Boolean repositorySettingsExists()
+```
+
+**GET** `/api/admin/repositorySettings/exists`
 
 Check repository settings exists (repositorySettingsExists)
 
@@ -285,7 +358,11 @@ Check whether the repository settings exists.   Available for users with 'TENANT
 
 ## saveAdminSettings
 
-> AdminSettings saveAdminSettings(adminSettings)
+```
+AdminSettings saveAdminSettings(@Nonnull AdminSettings adminSettings)
+```
+
+**POST** `/api/admin/settings`
 
 Creates or Updates the Administration Settings (saveAdminSettings)
 
@@ -305,7 +382,11 @@ Creates or Updates the Administration Settings. Platform generates random Admini
 
 ## saveAutoCommitSettings
 
-> Map<String, AutoVersionCreateConfig> saveAutoCommitSettings(requestBody)
+```
+Map<String, AutoVersionCreateConfig> saveAutoCommitSettings(@Nonnull Map<String, AutoVersionCreateConfig> requestBody)
+```
+
+**POST** `/api/admin/autoCommitSettings`
 
 Creates or Updates the auto commit settings (saveAutoCommitSettings)
 
@@ -325,7 +406,11 @@ Creates or Updates the auto commit settings object.   Available for users with '
 
 ## saveJwtSettings
 
-> JwtPair saveJwtSettings(jwtSettings)
+```
+JwtPair saveJwtSettings(@Nonnull JwtSettings jwtSettings)
+```
+
+**POST** `/api/admin/jwtSettings`
 
 Update JWT Settings (saveJwtSettings)
 
@@ -345,7 +430,11 @@ Updates the JWT Settings object that contains JWT token policy, etc. The tokenSi
 
 ## saveRepositorySettings
 
-> RepositorySettings saveRepositorySettings(repositorySettings)
+```
+RepositorySettings saveRepositorySettings(@Nonnull RepositorySettings repositorySettings)
+```
+
+**POST** `/api/admin/repositorySettings`
 
 Creates or Updates the repository settings (saveRepositorySettings)
 
@@ -365,7 +454,11 @@ Creates or Updates the repository settings object.   Available for users with 'T
 
 ## saveSecuritySettings
 
-> SecuritySettings saveSecuritySettings(securitySettings)
+```
+SecuritySettings saveSecuritySettings(@Nonnull SecuritySettings securitySettings)
+```
+
+**POST** `/api/admin/securitySettings`
 
 Update Security Settings (saveSecuritySettings)
 
@@ -385,7 +478,11 @@ Updates the Security Settings object that contains password policy, etc.  Availa
 
 ## sendTestMail
 
-> sendTestMail(adminSettings)
+```
+void sendTestMail(@Nonnull AdminSettings adminSettings)
+```
+
+**POST** `/api/admin/settings/testMail`
 
 Send test email (sendTestMail)
 
@@ -405,7 +502,11 @@ null (empty response body)
 
 ## sendTestSms
 
-> sendTestSms(testSmsRequest)
+```
+void sendTestSms(@Nonnull TestSmsRequest testSmsRequest)
+```
+
+**POST** `/api/admin/settings/testSms`
 
 Send test sms (sendTestSms)
 

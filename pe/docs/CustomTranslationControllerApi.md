@@ -1,20 +1,25 @@
 # CustomTranslationControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteCustomTranslation**](#deleteCustomTranslation) | **DELETE** /api/translation/custom/{localeCode} | Delete Custom Translation for specified locale (deleteCustomTranslation) |
-| [**deleteCustomTranslationKey**](#deleteCustomTranslationKey) | **DELETE** /api/translation/custom/{localeCode}/{keyPath} | Delete specified key of Custom Translation (deleteCustomTranslationKey)  |
-| [**getCustomTranslation**](#getCustomTranslation) | **GET** /api/translation/custom/{localeCode} | Get Custom Translation configuration (getCustomTranslation) |
-| [**getMergedCustomTranslation**](#getMergedCustomTranslation) | **GET** /api/translation/custom/merged/{localeCode} | Get end-user Custom Translation configuration (getMergedCustomTranslation) |
-| [**patchCustomTranslation**](#patchCustomTranslation) | **PATCH** /api/translation/custom/{localeCode} | Update Custom Translation for specified translation keys only (patchCustomTranslation) |
-| [**saveCustomTranslation**](#saveCustomTranslation) | **POST** /api/translation/custom/{localeCode} | Create Or Update Custom Translation (saveCustomTranslation) |
-| [**uploadCustomTranslation**](#uploadCustomTranslation) | **POST** /api/translation/custom/{localeCode}/upload | Upload Custom Translation (uploadCustomTranslation) |
+`ThingsboardClient` methods:
 
+```
+void deleteCustomTranslation(@Nonnull String localeCode) // Delete Custom Translation for specified locale (deleteCustomTranslation)
+void deleteCustomTranslationKey(@Nonnull String localeCode, @Nonnull String keyPath) // Delete specified key of Custom Translation (deleteCustomTranslationKey) 
+com.fasterxml.jackson.databind.JsonNode getCustomTranslation(@Nonnull String localeCode) // Get Custom Translation configuration (getCustomTranslation)
+com.fasterxml.jackson.databind.JsonNode getMergedCustomTranslation(@Nonnull String localeCode) // Get end-user Custom Translation configuration (getMergedCustomTranslation)
+void patchCustomTranslation(@Nonnull String localeCode, @Nonnull Object body) // Update Custom Translation for specified translation keys only (patchCustomTranslation)
+void saveCustomTranslation(@Nonnull String localeCode, @Nonnull Object body) // Create Or Update Custom Translation (saveCustomTranslation)
+void uploadCustomTranslation(@Nonnull String localeCode, @Nonnull File _file) // Upload Custom Translation (uploadCustomTranslation)
+```
 
 
 ## deleteCustomTranslation
 
-> deleteCustomTranslation(localeCode)
+```
+void deleteCustomTranslation(@Nonnull String localeCode)
+```
+
+**DELETE** `/api/translation/custom/{localeCode}`
 
 Delete Custom Translation for specified locale (deleteCustomTranslation)
 
@@ -34,7 +39,11 @@ null (empty response body)
 
 ## deleteCustomTranslationKey
 
-> deleteCustomTranslationKey(localeCode, keyPath)
+```
+void deleteCustomTranslationKey(@Nonnull String localeCode, @Nonnull String keyPath)
+```
+
+**DELETE** `/api/translation/custom/{localeCode}/{keyPath}`
 
 Delete specified key of Custom Translation (deleteCustomTranslationKey) 
 
@@ -55,7 +64,11 @@ null (empty response body)
 
 ## getCustomTranslation
 
-> com.fasterxml.jackson.databind.JsonNode getCustomTranslation(localeCode)
+```
+com.fasterxml.jackson.databind.JsonNode getCustomTranslation(@Nonnull String localeCode)
+```
+
+**GET** `/api/translation/custom/{localeCode}`
 
 Get Custom Translation configuration (getCustomTranslation)
 
@@ -75,7 +88,11 @@ Fetch the Custom Translation for specified locale that corresponds to the author
 
 ## getMergedCustomTranslation
 
-> com.fasterxml.jackson.databind.JsonNode getMergedCustomTranslation(localeCode)
+```
+com.fasterxml.jackson.databind.JsonNode getMergedCustomTranslation(@Nonnull String localeCode)
+```
+
+**GET** `/api/translation/custom/merged/{localeCode}`
 
 Get end-user Custom Translation configuration (getMergedCustomTranslation)
 
@@ -95,7 +112,11 @@ Fetch end-user Custom Translation for specified locale. The custom translation i
 
 ## patchCustomTranslation
 
-> patchCustomTranslation(localeCode, body)
+```
+void patchCustomTranslation(@Nonnull String localeCode, @Nonnull Object body)
+```
+
+**PATCH** `/api/translation/custom/{localeCode}`
 
 Update Custom Translation for specified translation keys only (patchCustomTranslation)
 
@@ -116,7 +137,11 @@ null (empty response body)
 
 ## saveCustomTranslation
 
-> saveCustomTranslation(localeCode, body)
+```
+void saveCustomTranslation(@Nonnull String localeCode, @Nonnull Object body)
+```
+
+**POST** `/api/translation/custom/{localeCode}`
 
 Create Or Update Custom Translation (saveCustomTranslation)
 
@@ -137,7 +162,11 @@ null (empty response body)
 
 ## uploadCustomTranslation
 
-> uploadCustomTranslation(localeCode, _file)
+```
+void uploadCustomTranslation(@Nonnull String localeCode, @Nonnull File _file)
+```
+
+**POST** `/api/translation/custom/{localeCode}/upload`
 
 Upload Custom Translation (uploadCustomTranslation)
 

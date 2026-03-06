@@ -1,20 +1,25 @@
 # NotificationTargetControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteNotificationTargetById**](#deleteNotificationTargetById) | **DELETE** /api/notification/target/{id} | Delete notification target by id (deleteNotificationTargetById) |
-| [**getNotificationTargetById**](#getNotificationTargetById) | **GET** /api/notification/target/{id} | Get notification target by id (getNotificationTargetById) |
-| [**getNotificationTargets**](#getNotificationTargets) | **GET** /api/notification/targets | Get notification targets (getNotificationTargets) |
-| [**getNotificationTargetsByIds**](#getNotificationTargetsByIds) | **GET** /api/notification/targets/list | Get notification targets by ids (getNotificationTargetsByIds) |
-| [**getNotificationTargetsBySupportedNotificationType**](#getNotificationTargetsBySupportedNotificationType) | **GET** /api/notification/targets/notificationType/{notificationType} | Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationType) |
-| [**getRecipientsForNotificationTargetConfig**](#getRecipientsForNotificationTargetConfig) | **POST** /api/notification/target/recipients | Get recipients for notification target config (getRecipientsForNotificationTargetConfig) |
-| [**saveNotificationTarget**](#saveNotificationTarget) | **POST** /api/notification/target | Save notification target (saveNotificationTarget) |
+`ThingsboardClient` methods:
 
+```
+void deleteNotificationTargetById(@Nonnull UUID id) // Delete notification target by id (deleteNotificationTargetById)
+NotificationTarget getNotificationTargetById(@Nonnull UUID id) // Get notification target by id (getNotificationTargetById)
+PageDataNotificationTarget getNotificationTargets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get notification targets (getNotificationTargets)
+List<NotificationTarget> getNotificationTargetsByIds(@Nonnull List<String> ids) // Get notification targets by ids (getNotificationTargetsByIds)
+PageDataNotificationTarget getNotificationTargetsBySupportedNotificationType(@Nonnull NotificationType notificationType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationType)
+PageDataUser getRecipientsForNotificationTargetConfig(@Nonnull Integer pageSize, @Nonnull Integer page, @Nonnull NotificationTarget notificationTarget) // Get recipients for notification target config (getRecipientsForNotificationTargetConfig)
+NotificationTarget saveNotificationTarget(@Nonnull NotificationTarget notificationTarget) // Save notification target (saveNotificationTarget)
+```
 
 
 ## deleteNotificationTargetById
 
-> deleteNotificationTargetById(id)
+```
+void deleteNotificationTargetById(@Nonnull UUID id)
+```
+
+**DELETE** `/api/notification/target/{id}`
 
 Delete notification target by id (deleteNotificationTargetById)
 
@@ -34,7 +39,11 @@ null (empty response body)
 
 ## getNotificationTargetById
 
-> NotificationTarget getNotificationTargetById(id)
+```
+NotificationTarget getNotificationTargetById(@Nonnull UUID id)
+```
+
+**GET** `/api/notification/target/{id}`
 
 Get notification target by id (getNotificationTargetById)
 
@@ -54,7 +63,11 @@ Fetches notification target by id.  Available for users with 'SYS_ADMIN' or 'TEN
 
 ## getNotificationTargets
 
-> PageDataNotificationTarget getNotificationTargets(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataNotificationTarget getNotificationTargets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/notification/targets`
 
 Get notification targets (getNotificationTargets)
 
@@ -78,7 +91,11 @@ Returns the page of notification targets owned by sysadmin or tenant.  You can s
 
 ## getNotificationTargetsByIds
 
-> List<NotificationTarget> getNotificationTargetsByIds(ids)
+```
+List<NotificationTarget> getNotificationTargetsByIds(@Nonnull List<String> ids)
+```
+
+**GET** `/api/notification/targets/list`
 
 Get notification targets by ids (getNotificationTargetsByIds)
 
@@ -98,7 +115,11 @@ Returns the list of notification targets found by provided ids.  Available for u
 
 ## getNotificationTargetsBySupportedNotificationType
 
-> PageDataNotificationTarget getNotificationTargetsBySupportedNotificationType(notificationType, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataNotificationTarget getNotificationTargetsBySupportedNotificationType(@Nonnull NotificationType notificationType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/notification/targets/notificationType/{notificationType}`
 
 Get notification targets by supported notification type (getNotificationTargetsBySupportedNotificationType)
 
@@ -123,7 +144,11 @@ Returns the page of notification targets filtered by notification type that they
 
 ## getRecipientsForNotificationTargetConfig
 
-> PageDataUser getRecipientsForNotificationTargetConfig(pageSize, page, notificationTarget)
+```
+PageDataUser getRecipientsForNotificationTargetConfig(@Nonnull Integer pageSize, @Nonnull Integer page, @Nonnull NotificationTarget notificationTarget)
+```
+
+**POST** `/api/notification/target/recipients`
 
 Get recipients for notification target config (getRecipientsForNotificationTargetConfig)
 
@@ -145,7 +170,11 @@ Returns the page of recipients for such notification target configuration.  Avai
 
 ## saveNotificationTarget
 
-> NotificationTarget saveNotificationTarget(notificationTarget)
+```
+NotificationTarget saveNotificationTarget(@Nonnull NotificationTarget notificationTarget)
+```
+
+**POST** `/api/notification/target`
 
 Save notification target (saveNotificationTarget)
 

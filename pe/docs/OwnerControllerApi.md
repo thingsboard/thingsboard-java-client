@@ -1,15 +1,20 @@
 # OwnerControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**changeOwnerToCustomer**](#changeOwnerToCustomer) | **POST** /api/owner/CUSTOMER/{ownerId}/{entityType}/{entityId} | Change owner to customer (changeOwnerToCustomer) |
-| [**changeOwnerToTenant**](#changeOwnerToTenant) | **POST** /api/owner/TENANT/{ownerId}/{entityType}/{entityId} | Change owner to tenant (changeOwnerToTenant) |
+`ThingsboardClient` methods:
 
+```
+void changeOwnerToCustomer(@Nonnull String ownerId, @Nonnull String entityType, @Nonnull String entityId, @Nullable List<String> requestBody) // Change owner to customer (changeOwnerToCustomer)
+void changeOwnerToTenant(@Nonnull String ownerId, @Nonnull String entityType, @Nonnull String entityId, @Nullable List<String> requestBody) // Change owner to tenant (changeOwnerToTenant)
+```
 
 
 ## changeOwnerToCustomer
 
-> changeOwnerToCustomer(ownerId, entityType, entityId, requestBody)
+```
+void changeOwnerToCustomer(@Nonnull String ownerId, @Nonnull String entityType, @Nonnull String entityId, @Nullable List<String> requestBody)
+```
+
+**POST** `/api/owner/CUSTOMER/{ownerId}/{entityType}/{entityId}`
 
 Change owner to customer (changeOwnerToCustomer)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## changeOwnerToTenant
 
-> changeOwnerToTenant(ownerId, entityType, entityId, requestBody)
+```
+void changeOwnerToTenant(@Nonnull String ownerId, @Nonnull String entityType, @Nonnull String entityId, @Nullable List<String> requestBody)
+```
+
+**POST** `/api/owner/TENANT/{ownerId}/{entityType}/{entityId}`
 
 Change owner to tenant (changeOwnerToTenant)
 

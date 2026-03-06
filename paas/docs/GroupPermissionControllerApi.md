@@ -1,20 +1,25 @@
 # GroupPermissionControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteGroupPermission**](#deleteGroupPermission) | **DELETE** /api/groupPermission/{groupPermissionId} | Delete group permission (deleteGroupPermission) |
-| [**getEntityGroupPermissions**](#getEntityGroupPermissions) | **GET** /api/entityGroup/{entityGroupId}/groupPermissions | Get group permissions by Entity Group Id (getEntityGroupPermissions) |
-| [**getGroupPermissionById**](#getGroupPermissionById) | **GET** /api/groupPermission/{groupPermissionId} | Get Group Permission (getGroupPermissionById) |
-| [**getGroupPermissionInfoById**](#getGroupPermissionInfoById) | **GET** /api/groupPermission/info/{groupPermissionId} | Get Group Permission Info (getGroupPermissionInfoById) |
-| [**getUserGroupPermissions**](#getUserGroupPermissions) | **GET** /api/userGroup/{userGroupId}/groupPermissions | Get group permissions by User Group Id (getUserGroupPermissions) |
-| [**loadUserGroupPermissionInfos**](#loadUserGroupPermissionInfos) | **POST** /api/userGroup/groupPermissions/info | Load User Group Permissions (loadUserGroupPermissionInfos) |
-| [**saveGroupPermission**](#saveGroupPermission) | **POST** /api/groupPermission | Create Or Update Group Permission (saveGroupPermission) |
+`ThingsboardClient` methods:
 
+```
+void deleteGroupPermission(@Nonnull String groupPermissionId) // Delete group permission (deleteGroupPermission)
+List<GroupPermissionInfo> getEntityGroupPermissions(@Nonnull String entityGroupId) // Get group permissions by Entity Group Id (getEntityGroupPermissions)
+GroupPermission getGroupPermissionById(@Nonnull String groupPermissionId) // Get Group Permission (getGroupPermissionById)
+GroupPermissionInfo getGroupPermissionInfoById(@Nonnull String groupPermissionId, @Nonnull Boolean isUserGroup) // Get Group Permission Info (getGroupPermissionInfoById)
+List<GroupPermissionInfo> getUserGroupPermissions(@Nonnull String userGroupId) // Get group permissions by User Group Id (getUserGroupPermissions)
+List<GroupPermissionInfo> loadUserGroupPermissionInfos(@Nonnull List<GroupPermission> groupPermission) // Load User Group Permissions (loadUserGroupPermissionInfos)
+GroupPermission saveGroupPermission(@Nonnull GroupPermission groupPermission) // Create Or Update Group Permission (saveGroupPermission)
+```
 
 
 ## deleteGroupPermission
 
-> deleteGroupPermission(groupPermissionId)
+```
+void deleteGroupPermission(@Nonnull String groupPermissionId)
+```
+
+**DELETE** `/api/groupPermission/{groupPermissionId}`
 
 Delete group permission (deleteGroupPermission)
 
@@ -34,7 +39,11 @@ null (empty response body)
 
 ## getEntityGroupPermissions
 
-> List<GroupPermissionInfo> getEntityGroupPermissions(entityGroupId)
+```
+List<GroupPermissionInfo> getEntityGroupPermissions(@Nonnull String entityGroupId)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/groupPermissions`
 
 Get group permissions by Entity Group Id (getEntityGroupPermissions)
 
@@ -54,7 +63,11 @@ Returns a list of group permission objects that is assigned for the specified En
 
 ## getGroupPermissionById
 
-> GroupPermission getGroupPermissionById(groupPermissionId)
+```
+GroupPermission getGroupPermissionById(@Nonnull String groupPermissionId)
+```
+
+**GET** `/api/groupPermission/{groupPermissionId}`
 
 Get Group Permission (getGroupPermissionById)
 
@@ -74,7 +87,11 @@ Fetch the Group Permission object based on the provided Group Permission Id. Gro
 
 ## getGroupPermissionInfoById
 
-> GroupPermissionInfo getGroupPermissionInfoById(groupPermissionId, isUserGroup)
+```
+GroupPermissionInfo getGroupPermissionInfoById(@Nonnull String groupPermissionId, @Nonnull Boolean isUserGroup)
+```
+
+**GET** `/api/groupPermission/info/{groupPermissionId}`
 
 Get Group Permission Info (getGroupPermissionInfoById)
 
@@ -95,7 +112,11 @@ Fetch the Group Permission Info object based on the provided Group Permission Id
 
 ## getUserGroupPermissions
 
-> List<GroupPermissionInfo> getUserGroupPermissions(userGroupId)
+```
+List<GroupPermissionInfo> getUserGroupPermissions(@Nonnull String userGroupId)
+```
+
+**GET** `/api/userGroup/{userGroupId}/groupPermissions`
 
 Get group permissions by User Group Id (getUserGroupPermissions)
 
@@ -115,7 +136,11 @@ Returns a list of group permission objects that belongs to specified User Group 
 
 ## loadUserGroupPermissionInfos
 
-> List<GroupPermissionInfo> loadUserGroupPermissionInfos(groupPermission)
+```
+List<GroupPermissionInfo> loadUserGroupPermissionInfos(@Nonnull List<GroupPermission> groupPermission)
+```
+
+**POST** `/api/userGroup/groupPermissions/info`
 
 Load User Group Permissions (loadUserGroupPermissionInfos)
 
@@ -135,7 +160,11 @@ Enrich a list of group permission objects with the information about Role, User 
 
 ## saveGroupPermission
 
-> GroupPermission saveGroupPermission(groupPermission)
+```
+GroupPermission saveGroupPermission(@Nonnull GroupPermission groupPermission)
+```
+
+**POST** `/api/groupPermission`
 
 Create Or Update Group Permission (saveGroupPermission)
 

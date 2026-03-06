@@ -1,22 +1,27 @@
 # ConverterControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteConverter**](#deleteConverter) | **DELETE** /api/converter/{converterId} | Delete converter (deleteConverter) |
-| [**getConverterById**](#getConverterById) | **GET** /api/converter/{converterId} | Get Converter (getConverterById) |
-| [**getConverters**](#getConverters) | **GET** /api/converters | Get Converters (getConverters) |
-| [**getConvertersByIds**](#getConvertersByIds) | **GET** /api/converters/list | Get Converters By Ids (getConvertersByIds) |
-| [**getLatestConverterDebugInput**](#getLatestConverterDebugInput) | **GET** /api/converter/{converterId}/debugIn | Get latest debug input event (getLatestConverterDebugInput) |
-| [**saveConverter**](#saveConverter) | **POST** /api/converter | Create Or Update Converter (saveConverter) |
-| [**testDownLinkConverter**](#testDownLinkConverter) | **POST** /api/converter/testDownLink | Test converter function (testDownLinkConverter) |
-| [**testUpLinkConverter**](#testUpLinkConverter) | **POST** /api/converter/testUpLink | Test converter function (testUpLinkConverter) |
-| [**unwrapRawPayload**](#unwrapRawPayload) | **POST** /api/converter/unwrap/{integrationType} | Transform input raw payload to the dedicated converter data (unwrapRawPayload) |
+`ThingsboardClient` methods:
 
+```
+void deleteConverter(@Nonnull String converterId) // Delete converter (deleteConverter)
+Converter getConverterById(@Nonnull String converterId) // Get Converter (getConverterById)
+PageDataConverter getConverters(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType) // Get Converters (getConverters)
+List<Converter> getConvertersByIds(@Nonnull List<String> converterIds) // Get Converters By Ids (getConvertersByIds)
+com.fasterxml.jackson.databind.JsonNode getLatestConverterDebugInput(@Nonnull String converterId, @Nullable String converterType, @Nullable String integrationType, @Nullable String integrationName, @Nullable Integer converterVersion) // Get latest debug input event (getLatestConverterDebugInput)
+Converter saveConverter(@Nonnull Converter converter) // Create Or Update Converter (saveConverter)
+com.fasterxml.jackson.databind.JsonNode testDownLinkConverter(@Nonnull Object body, @Nullable ScriptLanguage scriptLang) // Test converter function (testDownLinkConverter)
+com.fasterxml.jackson.databind.JsonNode testUpLinkConverter(@Nonnull Object body, @Nullable ScriptLanguage scriptLang) // Test converter function (testUpLinkConverter)
+com.fasterxml.jackson.databind.JsonNode unwrapRawPayload(@Nonnull IntegrationType integrationType, @Nonnull Object body) // Transform input raw payload to the dedicated converter data (unwrapRawPayload)
+```
 
 
 ## deleteConverter
 
-> deleteConverter(converterId)
+```
+void deleteConverter(@Nonnull String converterId)
+```
+
+**DELETE** `/api/converter/{converterId}`
 
 Delete converter (deleteConverter)
 
@@ -36,7 +41,11 @@ null (empty response body)
 
 ## getConverterById
 
-> Converter getConverterById(converterId)
+```
+Converter getConverterById(@Nonnull String converterId)
+```
+
+**GET** `/api/converter/{converterId}`
 
 Get Converter (getConverterById)
 
@@ -56,7 +65,11 @@ Fetch the Converter object based on the provided Converter Id. The server checks
 
 ## getConverters
 
-> PageDataConverter getConverters(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder, integrationType)
+```
+PageDataConverter getConverters(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType)
+```
+
+**GET** `/api/converters`
 
 Get Converters (getConverters)
 
@@ -82,7 +95,11 @@ Returns a page of converters owned by tenant. You can specify parameters to filt
 
 ## getConvertersByIds
 
-> List<Converter> getConvertersByIds(converterIds)
+```
+List<Converter> getConvertersByIds(@Nonnull List<String> converterIds)
+```
+
+**GET** `/api/converters/list`
 
 Get Converters By Ids (getConvertersByIds)
 
@@ -102,7 +119,11 @@ Requested converters must be owned by tenant which is performing the request.   
 
 ## getLatestConverterDebugInput
 
-> com.fasterxml.jackson.databind.JsonNode getLatestConverterDebugInput(converterId, converterType, integrationType, integrationName, converterVersion)
+```
+com.fasterxml.jackson.databind.JsonNode getLatestConverterDebugInput(@Nonnull String converterId, @Nullable String converterType, @Nullable String integrationType, @Nullable String integrationName, @Nullable Integer converterVersion)
+```
+
+**GET** `/api/converter/{converterId}/debugIn`
 
 Get latest debug input event (getLatestConverterDebugInput)
 
@@ -126,7 +147,11 @@ Returns a JSON object of the latest debug event representing the input message t
 
 ## saveConverter
 
-> Converter saveConverter(converter)
+```
+Converter saveConverter(@Nonnull Converter converter)
+```
+
+**POST** `/api/converter`
 
 Create Or Update Converter (saveConverter)
 
@@ -146,7 +171,11 @@ Create or update the Converter. When creating converter, platform generates Conv
 
 ## testDownLinkConverter
 
-> com.fasterxml.jackson.databind.JsonNode testDownLinkConverter(body, scriptLang)
+```
+com.fasterxml.jackson.databind.JsonNode testDownLinkConverter(@Nonnull Object body, @Nullable ScriptLanguage scriptLang)
+```
+
+**POST** `/api/converter/testDownLink`
 
 Test converter function (testDownLinkConverter)
 
@@ -167,7 +196,11 @@ Returns a JSON object representing the result of the processed incoming message.
 
 ## testUpLinkConverter
 
-> com.fasterxml.jackson.databind.JsonNode testUpLinkConverter(body, scriptLang)
+```
+com.fasterxml.jackson.databind.JsonNode testUpLinkConverter(@Nonnull Object body, @Nullable ScriptLanguage scriptLang)
+```
+
+**POST** `/api/converter/testUpLink`
 
 Test converter function (testUpLinkConverter)
 
@@ -188,7 +221,11 @@ Returns a JSON object representing the result of the processed incoming message.
 
 ## unwrapRawPayload
 
-> com.fasterxml.jackson.databind.JsonNode unwrapRawPayload(integrationType, body)
+```
+com.fasterxml.jackson.databind.JsonNode unwrapRawPayload(@Nonnull IntegrationType integrationType, @Nonnull Object body)
+```
+
+**POST** `/api/converter/unwrap/{integrationType}`
 
 Transform input raw payload to the dedicated converter data (unwrapRawPayload)
 

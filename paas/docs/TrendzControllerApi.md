@@ -1,19 +1,24 @@
 # TrendzControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**connectToTrendz**](#connectToTrendz) | **POST** /api/trendz/connect | Connect to Trendz (connectToTrendz) |
-| [**getTrendzConfig**](#getTrendzConfig) | **GET** /api/trendz/config | Get Trendz configuration (getTrendzConfig) |
-| [**getTrendzSyncResult**](#getTrendzSyncResult) | **GET** /api/trendz/sync | Get Trendz synchronization result (getTrendzSyncResult) |
-| [**performTrendzHealthcheck**](#performTrendzHealthcheck) | **GET** /api/trendz/healthcheck | Perform Trendz healthcheck (performTrendzHealthcheck) |
-| [**publicConnectToTrendz**](#publicConnectToTrendz) | **POST** /api/trendz/public/connect | Public connect to Trendz (publicConnectToTrendz) |
-| [**saveTrendzConfig**](#saveTrendzConfig) | **POST** /api/trendz/config | Save Trendz configuration (saveTrendzConfig) |
+`ThingsboardClient` methods:
 
+```
+TrendzSynchronizationResult connectToTrendz() // Connect to Trendz (connectToTrendz)
+TrendzConfiguration getTrendzConfig() // Get Trendz configuration (getTrendzConfig)
+TrendzSynchronizationResult getTrendzSyncResult() // Get Trendz synchronization result (getTrendzSyncResult)
+TrendzHealthcheckResult performTrendzHealthcheck() // Perform Trendz healthcheck (performTrendzHealthcheck)
+void publicConnectToTrendz() // Public connect to Trendz (publicConnectToTrendz)
+TrendzConfiguration saveTrendzConfig(@Nonnull TrendzConfiguration trendzConfiguration) // Save Trendz configuration (saveTrendzConfig)
+```
 
 
 ## connectToTrendz
 
-> TrendzSynchronizationResult connectToTrendz()
+```
+TrendzSynchronizationResult connectToTrendz()
+```
+
+**POST** `/api/trendz/connect`
 
 Connect to Trendz (connectToTrendz)
 
@@ -26,7 +31,11 @@ Initiates synchronization with Trendz (Connect button action). Uses Trendz confi
 
 ## getTrendzConfig
 
-> TrendzConfiguration getTrendzConfig()
+```
+TrendzConfiguration getTrendzConfig()
+```
+
+**GET** `/api/trendz/config`
 
 Get Trendz configuration (getTrendzConfig)
 
@@ -39,7 +48,11 @@ Retrieves Trendz configuration (URLs). Returns trendzUrl and tbUrl.  Available f
 
 ## getTrendzSyncResult
 
-> TrendzSynchronizationResult getTrendzSyncResult()
+```
+TrendzSynchronizationResult getTrendzSyncResult()
+```
+
+**GET** `/api/trendz/sync`
 
 Get Trendz synchronization result (getTrendzSyncResult)
 
@@ -52,7 +65,11 @@ Retrieves Trendz synchronization result and status. Returns trendzVersion, updat
 
 ## performTrendzHealthcheck
 
-> TrendzHealthcheckResult performTrendzHealthcheck()
+```
+TrendzHealthcheckResult performTrendzHealthcheck()
+```
+
+**GET** `/api/trendz/healthcheck`
 
 Perform Trendz healthcheck (performTrendzHealthcheck)
 
@@ -65,7 +82,11 @@ Performs healthcheck for Trendz integration. Returns version, type, status, and 
 
 ## publicConnectToTrendz
 
-> publicConnectToTrendz()
+```
+void publicConnectToTrendz()
+```
+
+**POST** `/api/trendz/public/connect`
 
 Public connect to Trendz (publicConnectToTrendz)
 
@@ -78,7 +99,11 @@ null (empty response body)
 
 ## saveTrendzConfig
 
-> TrendzConfiguration saveTrendzConfig(trendzConfiguration)
+```
+TrendzConfiguration saveTrendzConfig(@Nonnull TrendzConfiguration trendzConfiguration)
+```
+
+**POST** `/api/trendz/config`
 
 Save Trendz configuration (saveTrendzConfig)
 

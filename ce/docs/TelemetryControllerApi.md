@@ -1,28 +1,33 @@
 # TelemetryControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteDeviceAttributes**](#deleteDeviceAttributes) | **DELETE** /api/plugins/telemetry/{deviceId}/{scope} | Delete device attributes (deleteDeviceAttributes) |
-| [**deleteEntityAttributes**](#deleteEntityAttributes) | **DELETE** /api/plugins/telemetry/{entityType}/{entityId}/{scope} | Delete entity attributes (deleteEntityAttributes) |
-| [**deleteEntityTimeseries**](#deleteEntityTimeseries) | **DELETE** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/delete | Delete entity time series data (deleteEntityTimeseries) |
-| [**getAttributeKeys**](#getAttributeKeys) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/attributes | Get all attribute keys (getAttributeKeys) |
-| [**getAttributeKeysByScope**](#getAttributeKeysByScope) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/attributes/{scope} | Get all attribute keys by scope (getAttributeKeysByScope) |
-| [**getAttributes**](#getAttributes) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/attributes | Get attributes (getAttributes) |
-| [**getAttributesByScope**](#getAttributesByScope) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/attributes/{scope} | Get attributes by scope (getAttributesByScope) |
-| [**getLatestTimeseries**](#getLatestTimeseries) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries | Get latest time series value (getLatestTimeseries) |
-| [**getTimeseriesHistory**](#getTimeseriesHistory) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history | Get time series data (getTimeseriesHistory) |
-| [**getTimeseriesKeys**](#getTimeseriesKeys) | **GET** /api/plugins/telemetry/{entityType}/{entityId}/keys/timeseries | Get time series keys (getTimeseriesKeys) |
-| [**saveDeviceAttributes**](#saveDeviceAttributes) | **POST** /api/plugins/telemetry/{deviceId}/{scope} | Save device attributes (saveDeviceAttributes) |
-| [**saveEntityAttributesV1**](#saveEntityAttributesV1) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/{scope} | Save entity attributes (saveEntityAttributesV1) |
-| [**saveEntityAttributesV2**](#saveEntityAttributesV2) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/attributes/{scope} | Save entity attributes (saveEntityAttributesV2) |
-| [**saveEntityTelemetry**](#saveEntityTelemetry) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope} | Save or update time series data (saveEntityTelemetry) |
-| [**saveEntityTelemetryWithTTL**](#saveEntityTelemetryWithTTL) | **POST** /api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope}/{ttl} | Save or update time series data with TTL (saveEntityTelemetryWithTTL) |
+`ThingsboardClient` methods:
 
+```
+String deleteDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Delete device attributes (deleteDeviceAttributes)
+String deleteEntityAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Delete entity attributes (deleteEntityAttributes)
+String deleteEntityTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean deleteAllDataForKeys, @Nullable Long startTs, @Nullable Long endTs, @Nullable Boolean deleteLatest, @Nullable Boolean rewriteLatestIfDeleted, @Nullable List<String> key) // Delete entity time series data (deleteEntityTimeseries)
+List<String> getAttributeKeys(@Nonnull String entityType, @Nonnull String entityId) // Get all attribute keys (getAttributeKeys)
+List<String> getAttributeKeysByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope) // Get all attribute keys by scope (getAttributeKeysByScope)
+List<AttributeData> getAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable List<String> key) // Get attributes (getAttributes)
+List<AttributeData> getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Get attributes by scope (getAttributesByScope)
+Map<String, List<TsData>> getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get latest time series value (getLatestTimeseries)
+Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get time series data (getTimeseriesHistory)
+List<String> getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId) // Get time series keys (getTimeseriesKeys)
+String saveDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nonnull String body) // Save device attributes (saveDeviceAttributes)
+String saveEntityAttributesV1(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body) // Save entity attributes (saveEntityAttributesV1)
+String saveEntityAttributesV2(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body) // Save entity attributes (saveEntityAttributesV2)
+String saveEntityTelemetry(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body) // Save or update time series data (saveEntityTelemetry)
+String saveEntityTelemetryWithTTL(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull Long ttl, @Nonnull String body) // Save or update time series data with TTL (saveEntityTelemetryWithTTL)
+```
 
 
 ## deleteDeviceAttributes
 
-> String deleteDeviceAttributes(deviceId, scope, keys, key)
+```
+String deleteDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key)
+```
+
+**DELETE** `/api/plugins/telemetry/{deviceId}/{scope}`
 
 Delete device attributes (deleteDeviceAttributes)
 
@@ -45,7 +50,11 @@ Delete device attributes using provided Device Id, scope and a list of keys. Ref
 
 ## deleteEntityAttributes
 
-> String deleteEntityAttributes(entityType, entityId, scope, keys, key)
+```
+String deleteEntityAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key)
+```
+
+**DELETE** `/api/plugins/telemetry/{entityType}/{entityId}/{scope}`
 
 Delete entity attributes (deleteEntityAttributes)
 
@@ -69,7 +78,11 @@ Delete entity attributes using provided Entity Id, scope and a list of keys. Ref
 
 ## deleteEntityTimeseries
 
-> String deleteEntityTimeseries(entityType, entityId, keys, deleteAllDataForKeys, startTs, endTs, deleteLatest, rewriteLatestIfDeleted, key)
+```
+String deleteEntityTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean deleteAllDataForKeys, @Nullable Long startTs, @Nullable Long endTs, @Nullable Boolean deleteLatest, @Nullable Boolean rewriteLatestIfDeleted, @Nullable List<String> key)
+```
+
+**DELETE** `/api/plugins/telemetry/{entityType}/{entityId}/timeseries/delete`
 
 Delete entity time series data (deleteEntityTimeseries)
 
@@ -97,7 +110,11 @@ Delete time series for selected entity based on entity id, entity type and keys.
 
 ## getAttributeKeys
 
-> List<String> getAttributeKeys(entityType, entityId)
+```
+List<String> getAttributeKeys(@Nonnull String entityType, @Nonnull String entityId)
+```
+
+**GET** `/api/plugins/telemetry/{entityType}/{entityId}/keys/attributes`
 
 Get all attribute keys (getAttributeKeys)
 
@@ -118,7 +135,11 @@ Returns a set of unique attribute key names for the selected entity. The respons
 
 ## getAttributeKeysByScope
 
-> List<String> getAttributeKeysByScope(entityType, entityId, scope)
+```
+List<String> getAttributeKeysByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope)
+```
+
+**GET** `/api/plugins/telemetry/{entityType}/{entityId}/keys/attributes/{scope}`
 
 Get all attribute keys by scope (getAttributeKeysByScope)
 
@@ -140,7 +161,11 @@ Returns a set of unique attribute key names for the selected entity and attribut
 
 ## getAttributes
 
-> List<AttributeData> getAttributes(entityType, entityId, keys, key)
+```
+List<AttributeData> getAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable List<String> key)
+```
+
+**GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/attributes`
 
 Get attributes (getAttributes)
 
@@ -163,7 +188,11 @@ Returns all attributes that belong to specified entity. Use optional 'keys' para
 
 ## getAttributesByScope
 
-> List<AttributeData> getAttributesByScope(entityType, entityId, scope, keys, key)
+```
+List<AttributeData> getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key)
+```
+
+**GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/attributes/{scope}`
 
 Get attributes by scope (getAttributesByScope)
 
@@ -187,7 +216,11 @@ Returns all attributes of a specified scope that belong to specified entity. Lis
 
 ## getLatestTimeseries
 
-> Map<String, List<TsData>> getLatestTimeseries(entityType, entityId, keys, useStrictDataTypes, key)
+```
+Map<String, List<TsData>> getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
+```
+
+**GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/timeseries`
 
 Get latest time series value (getLatestTimeseries)
 
@@ -211,7 +244,11 @@ Returns all time series that belong to specified entity. Use optional 'keys' par
 
 ## getTimeseriesHistory
 
-> Map<String, List<TsData>> getTimeseriesHistory(entityType, entityId, startTs, endTs, keys, intervalType, interval, timeZone, limit, agg, orderBy, useStrictDataTypes, key)
+```
+Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
+```
+
+**GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history`
 
 Get time series data (getTimeseriesHistory)
 
@@ -243,7 +280,11 @@ Returns a range of time series values for specified entity. Returns not aggregat
 
 ## getTimeseriesKeys
 
-> List<String> getTimeseriesKeys(entityType, entityId)
+```
+List<String> getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId)
+```
+
+**GET** `/api/plugins/telemetry/{entityType}/{entityId}/keys/timeseries`
 
 Get time series keys (getTimeseriesKeys)
 
@@ -264,7 +305,11 @@ Returns a set of unique time series key names for the selected entity.   Referen
 
 ## saveDeviceAttributes
 
-> String saveDeviceAttributes(deviceId, scope, body)
+```
+String saveDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nonnull String body)
+```
+
+**POST** `/api/plugins/telemetry/{deviceId}/{scope}`
 
 Save device attributes (saveDeviceAttributes)
 
@@ -286,7 +331,11 @@ Creates or updates the device attributes based on device id and specified attrib
 
 ## saveEntityAttributesV1
 
-> String saveEntityAttributesV1(entityType, entityId, scope, body)
+```
+String saveEntityAttributesV1(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body)
+```
+
+**POST** `/api/plugins/telemetry/{entityType}/{entityId}/{scope}`
 
 Save entity attributes (saveEntityAttributesV1)
 
@@ -309,7 +358,11 @@ Creates or updates the entity attributes based on Entity Id and the specified at
 
 ## saveEntityAttributesV2
 
-> String saveEntityAttributesV2(entityType, entityId, scope, body)
+```
+String saveEntityAttributesV2(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body)
+```
+
+**POST** `/api/plugins/telemetry/{entityType}/{entityId}/attributes/{scope}`
 
 Save entity attributes (saveEntityAttributesV2)
 
@@ -332,7 +385,11 @@ Creates or updates the entity attributes based on Entity Id and the specified at
 
 ## saveEntityTelemetry
 
-> String saveEntityTelemetry(entityType, entityId, scope, body)
+```
+String saveEntityTelemetry(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body)
+```
+
+**POST** `/api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope}`
 
 Save or update time series data (saveEntityTelemetry)
 
@@ -355,7 +412,11 @@ Creates or updates the entity time series data based on the Entity Id and reques
 
 ## saveEntityTelemetryWithTTL
 
-> String saveEntityTelemetryWithTTL(entityType, entityId, scope, ttl, body)
+```
+String saveEntityTelemetryWithTTL(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull Long ttl, @Nonnull String body)
+```
+
+**POST** `/api/plugins/telemetry/{entityType}/{entityId}/timeseries/{scope}/{ttl}`
 
 Save or update time series data with TTL (saveEntityTelemetryWithTTL)
 

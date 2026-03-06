@@ -1,45 +1,50 @@
 # UserControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteGeneralUserSettings**](#deleteGeneralUserSettings) | **DELETE** /api/user/settings/{paths} | Delete user settings (deleteGeneralUserSettings) |
-| [**deleteUser**](#deleteUser) | **DELETE** /api/user/{userId} | Delete User (deleteUser) |
-| [**deleteUserSettingsByType**](#deleteUserSettingsByType) | **DELETE** /api/user/settings/{type}/{paths} | Delete user settings by type (deleteUserSettingsByType) |
-| [**findUsersByQuery**](#findUsersByQuery) | **GET** /api/users/info | Find users by query (findUsersByQuery) |
-| [**getActivationLink**](#getActivationLink) | **GET** /api/user/{userId}/activationLink | Get activation link (getActivationLink) |
-| [**getActivationLinkInfo**](#getActivationLinkInfo) | **GET** /api/user/{userId}/activationLinkInfo | Get activation link info (getActivationLinkInfo) |
-| [**getAllCustomerUsers**](#getAllCustomerUsers) | **GET** /api/customer/users | Get Customer Users (getCustomerUsers) |
-| [**getAllUserInfos**](#getAllUserInfos) | **GET** /api/userInfos/all | Get All User Infos for current user (getAllUserInfos) |
-| [**getCustomerUserInfos**](#getCustomerUserInfos) | **GET** /api/customer/{customerId}/userInfos | Get Customer user Infos (getCustomerUserInfos) |
-| [**getCustomerUsers**](#getCustomerUsers) | **GET** /api/customer/{customerId}/users | Get Customer Users (getCustomerUsers) |
-| [**getGeneralUserSettings**](#getGeneralUserSettings) | **GET** /api/user/settings/general | Get user settings (getGeneralUserSettings) |
-| [**getLastVisitedDashboards**](#getLastVisitedDashboards) | **GET** /api/user/lastVisitedDashboards | Get information about last visited and starred dashboards (getLastVisitedDashboards) |
-| [**getMobileSession**](#getMobileSession) | **GET** /api/user/mobile/session | getMobileSession |
-| [**getTenantAdmins**](#getTenantAdmins) | **GET** /api/tenant/{tenantId}/users | Get Tenant Users (getTenantAdmins) |
-| [**getUserById**](#getUserById) | **GET** /api/user/{userId} | Get User (getUserById) |
-| [**getUserInfoById**](#getUserInfoById) | **GET** /api/user/info/{userId} | Get User info (getUserInfoById) |
-| [**getUserSettings**](#getUserSettings) | **GET** /api/user/settings/{type} | Get user settings (getUserSettings) |
-| [**getUserToken**](#getUserToken) | **GET** /api/user/{userId}/token | Get User Token (getUserToken) |
-| [**getUserUsers**](#getUserUsers) | **GET** /api/user/users | Get Users (getUsers) |
-| [**getUsersByEntityGroupId**](#getUsersByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/users | Get users by Entity Group Id (getUsersByEntityGroupId) |
-| [**getUsersByIds**](#getUsersByIds) | **GET** /api/users/list | Get Users By Ids (getUsersByIds) |
-| [**getUsersForAssign**](#getUsersForAssign) | **GET** /api/users/assign/{alarmId} | Get usersForAssign (getUsersForAssign) |
-| [**isUserTokenAccessEnabled**](#isUserTokenAccessEnabled) | **GET** /api/user/tokenAccessEnabled | Check Token Access Enabled (isUserTokenAccessEnabled) |
-| [**putGeneralUserSettings**](#putGeneralUserSettings) | **PUT** /api/user/settings/general | Update user settings (putGeneralUserSettings) |
-| [**putUserSettings**](#putUserSettings) | **PUT** /api/user/settings/{type} | Update user settings (putUserSettings) |
-| [**removeMobileSession**](#removeMobileSession) | **DELETE** /api/user/mobile/session | removeMobileSession |
-| [**reportUserDashboardAction**](#reportUserDashboardAction) | **GET** /api/user/dashboards/{dashboardId}/{action} | Report action of User over the dashboard (reportUserDashboardAction) |
-| [**saveMobileSession**](#saveMobileSession) | **POST** /api/user/mobile/session | saveMobileSession |
-| [**saveUser**](#saveUser) | **POST** /api/user | Save Or update User (saveUser) |
-| [**saveUserSettings**](#saveUserSettings) | **POST** /api/user/settings | Save user settings (saveUserSettings) |
-| [**sendActivationEmail**](#sendActivationEmail) | **POST** /api/user/sendActivationMail | Send or re-send the activation email |
-| [**setUserCredentialsEnabled**](#setUserCredentialsEnabled) | **POST** /api/user/{userId}/userCredentialsEnabled | Enable/Disable User credentials (setUserCredentialsEnabled) |
+`ThingsboardClient` methods:
 
+```
+void deleteGeneralUserSettings(@Nonnull String paths) // Delete user settings (deleteGeneralUserSettings)
+void deleteUser(@Nonnull String userId) // Delete User (deleteUser)
+void deleteUserSettingsByType(@Nonnull String paths, @Nonnull String type) // Delete user settings by type (deleteUserSettingsByType)
+PageDataUserEmailInfo findUsersByQuery(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Find users by query (findUsersByQuery)
+String getActivationLink(@Nonnull String userId) // Get activation link (getActivationLink)
+UserActivationLink getActivationLinkInfo(@Nonnull String userId) // Get activation link info (getActivationLinkInfo)
+PageDataUser getAllCustomerUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Users (getCustomerUsers)
+PageDataUserInfo getAllUserInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All User Infos for current user (getAllUserInfos)
+PageDataUserInfo getCustomerUserInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer user Infos (getCustomerUserInfos)
+PageDataUser getCustomerUsers(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Users (getCustomerUsers)
+com.fasterxml.jackson.databind.JsonNode getGeneralUserSettings() // Get user settings (getGeneralUserSettings)
+UserDashboardsInfo getLastVisitedDashboards() // Get information about last visited and starred dashboards (getLastVisitedDashboards)
+MobileSessionInfo getMobileSession(@Nonnull String xMobileToken) // getMobileSession
+PageDataUser getTenantAdmins(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Users (getTenantAdmins)
+User getUserById(@Nonnull String userId) // Get User (getUserById)
+UserInfo getUserInfoById(@Nonnull String userId) // Get User info (getUserInfoById)
+com.fasterxml.jackson.databind.JsonNode getUserSettings(@Nonnull String type) // Get user settings (getUserSettings)
+JwtPair getUserToken(@Nonnull String userId) // Get User Token (getUserToken)
+PageDataUser getUserUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Users (getUsers)
+PageDataUser getUsersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get users by Entity Group Id (getUsersByEntityGroupId)
+List<User> getUsersByIds(@Nonnull List<String> userIds) // Get Users By Ids (getUsersByIds)
+PageDataUserEmailInfo getUsersForAssign(@Nonnull String alarmId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get usersForAssign (getUsersForAssign)
+Boolean isUserTokenAccessEnabled() // Check Token Access Enabled (isUserTokenAccessEnabled)
+void putGeneralUserSettings(@Nonnull Object body) // Update user settings (putGeneralUserSettings)
+void putUserSettings(@Nonnull String type, @Nonnull Object body) // Update user settings (putUserSettings)
+void removeMobileSession(@Nonnull String xMobileToken) // removeMobileSession
+UserDashboardsInfo reportUserDashboardAction(@Nonnull String dashboardId, @Nonnull String action) // Report action of User over the dashboard (reportUserDashboardAction)
+void saveMobileSession(@Nonnull String xMobileToken, @Nonnull MobileSessionInfo mobileSessionInfo) // saveMobileSession
+User saveUser(@Nonnull User user, @Nullable String sendActivationMail, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds) // Save Or update User (saveUser)
+com.fasterxml.jackson.databind.JsonNode saveUserSettings(@Nonnull Object body) // Save user settings (saveUserSettings)
+void sendActivationEmail(@Nonnull String email) // Send or re-send the activation email
+void setUserCredentialsEnabled(@Nonnull String userId, @Nullable String userCredentialsEnabled) // Enable/Disable User credentials (setUserCredentialsEnabled)
+```
 
 
 ## deleteGeneralUserSettings
 
-> deleteGeneralUserSettings(paths)
+```
+void deleteGeneralUserSettings(@Nonnull String paths)
+```
+
+**DELETE** `/api/user/settings/{paths}`
 
 Delete user settings (deleteGeneralUserSettings)
 
@@ -59,7 +64,11 @@ null (empty response body)
 
 ## deleteUser
 
-> deleteUser(userId)
+```
+void deleteUser(@Nonnull String userId)
+```
+
+**DELETE** `/api/user/{userId}`
 
 Delete User (deleteUser)
 
@@ -79,7 +88,11 @@ null (empty response body)
 
 ## deleteUserSettingsByType
 
-> deleteUserSettingsByType(paths, type)
+```
+void deleteUserSettingsByType(@Nonnull String paths, @Nonnull String type)
+```
+
+**DELETE** `/api/user/settings/{type}/{paths}`
 
 Delete user settings by type (deleteUserSettingsByType)
 
@@ -100,7 +113,11 @@ null (empty response body)
 
 ## findUsersByQuery
 
-> PageDataUserEmailInfo findUsersByQuery(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataUserEmailInfo findUsersByQuery(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/users/info`
 
 Find users by query (findUsersByQuery)
 
@@ -124,7 +141,11 @@ Returns page of user data objects. Search is been executed by email, firstName a
 
 ## getActivationLink
 
-> String getActivationLink(userId)
+```
+String getActivationLink(@Nonnull String userId)
+```
+
+**GET** `/api/user/{userId}/activationLink`
 
 Get activation link (getActivationLink)
 
@@ -144,7 +165,11 @@ Get the activation link for the user. The base url for activation link is config
 
 ## getActivationLinkInfo
 
-> UserActivationLink getActivationLinkInfo(userId)
+```
+UserActivationLink getActivationLinkInfo(@Nonnull String userId)
+```
+
+**GET** `/api/user/{userId}/activationLinkInfo`
 
 Get activation link info (getActivationLinkInfo)
 
@@ -164,7 +189,11 @@ Get the activation link info for the user. The base url for activation link is c
 
 ## getAllCustomerUsers
 
-> PageDataUser getAllCustomerUsers(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataUser getAllCustomerUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/users`
 
 Get Customer Users (getCustomerUsers)
 
@@ -188,7 +217,11 @@ Returns a page of users for the current tenant with authority 'CUSTOMER_USER'. Y
 
 ## getAllUserInfos
 
-> PageDataUserInfo getAllUserInfos(pageSize, page, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataUserInfo getAllUserInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/userInfos/all`
 
 Get All User Infos for current user (getAllUserInfos)
 
@@ -213,7 +246,11 @@ Returns a page of user info objects owned by the tenant or the customer of a cur
 
 ## getCustomerUserInfos
 
-> PageDataUserInfo getCustomerUserInfos(customerId, pageSize, page, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataUserInfo getCustomerUserInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/userInfos`
 
 Get Customer user Infos (getCustomerUserInfos)
 
@@ -239,7 +276,11 @@ Returns a page of user info objects owned by the specified customer. You can spe
 
 ## getCustomerUsers
 
-> PageDataUser getCustomerUsers(customerId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataUser getCustomerUsers(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/users`
 
 Get Customer Users (getCustomerUsers)
 
@@ -264,7 +305,11 @@ Returns a page of users owned by customer. You can specify parameters to filter 
 
 ## getGeneralUserSettings
 
-> com.fasterxml.jackson.databind.JsonNode getGeneralUserSettings()
+```
+com.fasterxml.jackson.databind.JsonNode getGeneralUserSettings()
+```
+
+**GET** `/api/user/settings/general`
 
 Get user settings (getGeneralUserSettings)
 
@@ -277,7 +322,11 @@ Fetch the User settings based on authorized user.
 
 ## getLastVisitedDashboards
 
-> UserDashboardsInfo getLastVisitedDashboards()
+```
+UserDashboardsInfo getLastVisitedDashboards()
+```
+
+**GET** `/api/user/lastVisitedDashboards`
 
 Get information about last visited and starred dashboards (getLastVisitedDashboards)
 
@@ -290,7 +339,11 @@ Fetch the list of last visited and starred dashboards. Both lists are limited to
 
 ## getMobileSession
 
-> MobileSessionInfo getMobileSession(xMobileToken)
+```
+MobileSessionInfo getMobileSession(@Nonnull String xMobileToken)
+```
+
+**GET** `/api/user/mobile/session`
 
 getMobileSession
 
@@ -308,7 +361,11 @@ getMobileSession
 
 ## getTenantAdmins
 
-> PageDataUser getTenantAdmins(tenantId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataUser getTenantAdmins(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/{tenantId}/users`
 
 Get Tenant Users (getTenantAdmins)
 
@@ -333,7 +390,11 @@ Returns a page of users owned by tenant. You can specify parameters to filter th
 
 ## getUserById
 
-> User getUserById(userId)
+```
+User getUserById(@Nonnull String userId)
+```
+
+**GET** `/api/user/{userId}`
 
 Get User (getUserById)
 
@@ -353,7 +414,11 @@ Fetch the User object based on the provided User Id. If the user has the authori
 
 ## getUserInfoById
 
-> UserInfo getUserInfoById(userId)
+```
+UserInfo getUserInfoById(@Nonnull String userId)
+```
+
+**GET** `/api/user/info/{userId}`
 
 Get User info (getUserInfoById)
 
@@ -373,7 +438,11 @@ Fetch the User info object based on the provided User Id. If the user has the au
 
 ## getUserSettings
 
-> com.fasterxml.jackson.databind.JsonNode getUserSettings(type)
+```
+com.fasterxml.jackson.databind.JsonNode getUserSettings(@Nonnull String type)
+```
+
+**GET** `/api/user/settings/{type}`
 
 Get user settings (getUserSettings)
 
@@ -393,7 +462,11 @@ Fetch the User settings based on authorized user.
 
 ## getUserToken
 
-> JwtPair getUserToken(userId)
+```
+JwtPair getUserToken(@Nonnull String userId)
+```
+
+**GET** `/api/user/{userId}/token`
 
 Get User Token (getUserToken)
 
@@ -413,7 +486,11 @@ Returns the token of the User based on the provided User Id. If the user who per
 
 ## getUserUsers
 
-> PageDataUser getUserUsers(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataUser getUserUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/users`
 
 Get Users (getUsers)
 
@@ -437,7 +514,11 @@ Returns a page of user objects available for the current user. You can specify p
 
 ## getUsersByEntityGroupId
 
-> PageDataUser getUsersByEntityGroupId(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataUser getUsersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/users`
 
 Get users by Entity Group Id (getUsersByEntityGroupId)
 
@@ -462,7 +543,11 @@ Returns a page of user objects that belongs to specified Entity Group Id. You ca
 
 ## getUsersByIds
 
-> List<User> getUsersByIds(userIds)
+```
+List<User> getUsersByIds(@Nonnull List<String> userIds)
+```
+
+**GET** `/api/users/list`
 
 Get Users By Ids (getUsersByIds)
 
@@ -482,7 +567,11 @@ Requested users must be owned by tenant or assigned to customer which user is pe
 
 ## getUsersForAssign
 
-> PageDataUserEmailInfo getUsersForAssign(alarmId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataUserEmailInfo getUsersForAssign(@Nonnull String alarmId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/users/assign/{alarmId}`
 
 Get usersForAssign (getUsersForAssign)
 
@@ -507,7 +596,11 @@ Returns page of user data objects that can be assigned to provided alarmId. Sear
 
 ## isUserTokenAccessEnabled
 
-> Boolean isUserTokenAccessEnabled()
+```
+Boolean isUserTokenAccessEnabled()
+```
+
+**GET** `/api/user/tokenAccessEnabled`
 
 Check Token Access Enabled (isUserTokenAccessEnabled)
 
@@ -520,7 +613,11 @@ Checks that the system is configured to allow administrators to impersonate them
 
 ## putGeneralUserSettings
 
-> putGeneralUserSettings(body)
+```
+void putGeneralUserSettings(@Nonnull Object body)
+```
+
+**PUT** `/api/user/settings/general`
 
 Update user settings (putGeneralUserSettings)
 
@@ -540,7 +637,11 @@ null (empty response body)
 
 ## putUserSettings
 
-> putUserSettings(type, body)
+```
+void putUserSettings(@Nonnull String type, @Nonnull Object body)
+```
+
+**PUT** `/api/user/settings/{type}`
 
 Update user settings (putUserSettings)
 
@@ -561,7 +662,11 @@ null (empty response body)
 
 ## removeMobileSession
 
-> removeMobileSession(xMobileToken)
+```
+void removeMobileSession(@Nonnull String xMobileToken)
+```
+
+**DELETE** `/api/user/mobile/session`
 
 removeMobileSession
 
@@ -579,7 +684,11 @@ null (empty response body)
 
 ## reportUserDashboardAction
 
-> UserDashboardsInfo reportUserDashboardAction(dashboardId, action)
+```
+UserDashboardsInfo reportUserDashboardAction(@Nonnull String dashboardId, @Nonnull String action)
+```
+
+**GET** `/api/user/dashboards/{dashboardId}/{action}`
 
 Report action of User over the dashboard (reportUserDashboardAction)
 
@@ -600,7 +709,11 @@ Report action of User over the dashboard.   Available for users with 'TENANT_ADM
 
 ## saveMobileSession
 
-> saveMobileSession(xMobileToken, mobileSessionInfo)
+```
+void saveMobileSession(@Nonnull String xMobileToken, @Nonnull MobileSessionInfo mobileSessionInfo)
+```
+
+**POST** `/api/user/mobile/session`
 
 saveMobileSession
 
@@ -619,7 +732,11 @@ null (empty response body)
 
 ## saveUser
 
-> User saveUser(user, sendActivationMail, entityGroupId, entityGroupIds)
+```
+User saveUser(@Nonnull User user, @Nullable String sendActivationMail, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds)
+```
+
+**POST** `/api/user`
 
 Save Or update User (saveUser)
 
@@ -642,7 +759,11 @@ Create or update the User. When creating user, platform generates User Id as [ti
 
 ## saveUserSettings
 
-> com.fasterxml.jackson.databind.JsonNode saveUserSettings(body)
+```
+com.fasterxml.jackson.databind.JsonNode saveUserSettings(@Nonnull Object body)
+```
+
+**POST** `/api/user/settings`
 
 Save user settings (saveUserSettings)
 
@@ -662,7 +783,11 @@ Save user settings represented in json format for authorized user.
 
 ## sendActivationEmail
 
-> sendActivationEmail(email)
+```
+void sendActivationEmail(@Nonnull String email)
+```
+
+**POST** `/api/user/sendActivationMail`
 
 Send or re-send the activation email
 
@@ -682,7 +807,11 @@ null (empty response body)
 
 ## setUserCredentialsEnabled
 
-> setUserCredentialsEnabled(userId, userCredentialsEnabled)
+```
+void setUserCredentialsEnabled(@Nonnull String userId, @Nullable String userCredentialsEnabled)
+```
+
+**POST** `/api/user/{userId}/userCredentialsEnabled`
 
 Enable/Disable User credentials (setUserCredentialsEnabled)
 

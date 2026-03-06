@@ -1,27 +1,32 @@
 # AlarmControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**ackAlarm**](#ackAlarm) | **POST** /api/alarm/{alarmId}/ack | Acknowledge Alarm (ackAlarm) |
-| [**assignAlarm**](#assignAlarm) | **POST** /api/alarm/{alarmId}/assign/{assigneeId} | Assign/Reassign Alarm (assignAlarm) |
-| [**clearAlarm**](#clearAlarm) | **POST** /api/alarm/{alarmId}/clear | Clear Alarm (clearAlarm) |
-| [**deleteAlarm**](#deleteAlarm) | **DELETE** /api/alarm/{alarmId} | Delete Alarm (deleteAlarm) |
-| [**getAlarmById**](#getAlarmById) | **GET** /api/alarm/{alarmId} | Get Alarm (getAlarmById) |
-| [**getAlarmInfoById**](#getAlarmInfoById) | **GET** /api/alarm/info/{alarmId} | Get Alarm Info (getAlarmInfoById) |
-| [**getAlarmTypes**](#getAlarmTypes) | **GET** /api/alarm/types | Get Alarm Types (getAlarmTypes) |
-| [**getAlarmsByEntity**](#getAlarmsByEntity) | **GET** /api/alarm/{entityType}/{entityId} | Get Alarms (getAlarmsByEntity) |
-| [**getAlarmsV2**](#getAlarmsV2) | **GET** /api/v2/alarm/{entityType}/{entityId} | Get Alarms (getAlarmsV2) |
-| [**getAllAlarms**](#getAllAlarms) | **GET** /api/alarms | Get All Alarms (getAllAlarms) |
-| [**getAllAlarmsV2**](#getAllAlarmsV2) | **GET** /api/v2/alarms | Get All Alarms (getAllAlarmsV2) |
-| [**getHighestAlarmSeverity**](#getHighestAlarmSeverity) | **GET** /api/alarm/highestSeverity/{entityType}/{entityId} | Get Highest Alarm Severity (getHighestAlarmSeverity) |
-| [**saveAlarm**](#saveAlarm) | **POST** /api/alarm | Create or Update Alarm (saveAlarm) |
-| [**unassignAlarm**](#unassignAlarm) | **DELETE** /api/alarm/{alarmId}/assign | Unassign Alarm (unassignAlarm) |
+`ThingsboardClient` methods:
 
+```
+AlarmInfo ackAlarm(@Nonnull String alarmId) // Acknowledge Alarm (ackAlarm)
+Alarm assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId) // Assign/Reassign Alarm (assignAlarm)
+AlarmInfo clearAlarm(@Nonnull String alarmId) // Clear Alarm (clearAlarm)
+Boolean deleteAlarm(@Nonnull String alarmId) // Delete Alarm (deleteAlarm)
+Alarm getAlarmById(@Nonnull String alarmId) // Get Alarm (getAlarmById)
+AlarmInfo getAlarmInfoById(@Nonnull String alarmId) // Get Alarm Info (getAlarmInfoById)
+PageDataEntitySubtype getAlarmTypes(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder) // Get Alarm Types (getAlarmTypes)
+PageDataAlarmInfo getAlarmsByEntity(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String searchStatus, @Nullable String status, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable Boolean fetchOriginator) // Get Alarms (getAlarmsByEntity)
+PageDataAlarmInfo getAlarmsV2(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> statusList, @Nullable List<String> severityList, @Nullable List<String> typeList, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get Alarms (getAlarmsV2)
+PageDataAlarmInfo getAllAlarms(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String searchStatus, @Nullable String status, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable Boolean fetchOriginator) // Get All Alarms (getAllAlarms)
+PageDataAlarmInfo getAllAlarmsV2(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> statusList, @Nullable List<String> severityList, @Nullable List<String> typeList, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get All Alarms (getAllAlarmsV2)
+AlarmSeverity getHighestAlarmSeverity(@Nonnull String entityType, @Nonnull String entityId, @Nullable String searchStatus, @Nullable String status, @Nullable String assigneeId) // Get Highest Alarm Severity (getHighestAlarmSeverity)
+Alarm saveAlarm(@Nonnull Alarm alarm) // Create or Update Alarm (saveAlarm)
+Alarm unassignAlarm(@Nonnull String alarmId) // Unassign Alarm (unassignAlarm)
+```
 
 
 ## ackAlarm
 
-> AlarmInfo ackAlarm(alarmId)
+```
+AlarmInfo ackAlarm(@Nonnull String alarmId)
+```
+
+**POST** `/api/alarm/{alarmId}/ack`
 
 Acknowledge Alarm (ackAlarm)
 
@@ -41,7 +46,11 @@ Acknowledge the Alarm. Once acknowledged, the 'ack_ts' field will be set to curr
 
 ## assignAlarm
 
-> Alarm assignAlarm(alarmId, assigneeId)
+```
+Alarm assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId)
+```
+
+**POST** `/api/alarm/{alarmId}/assign/{assigneeId}`
 
 Assign/Reassign Alarm (assignAlarm)
 
@@ -62,7 +71,11 @@ Assign the Alarm. Once assigned, the 'assign_ts' field will be set to current ti
 
 ## clearAlarm
 
-> AlarmInfo clearAlarm(alarmId)
+```
+AlarmInfo clearAlarm(@Nonnull String alarmId)
+```
+
+**POST** `/api/alarm/{alarmId}/clear`
 
 Clear Alarm (clearAlarm)
 
@@ -82,7 +95,11 @@ Clear the Alarm. Once cleared, the 'clear_ts' field will be set to current times
 
 ## deleteAlarm
 
-> Boolean deleteAlarm(alarmId)
+```
+Boolean deleteAlarm(@Nonnull String alarmId)
+```
+
+**DELETE** `/api/alarm/{alarmId}`
 
 Delete Alarm (deleteAlarm)
 
@@ -102,7 +119,11 @@ Deletes the Alarm. Referencing non-existing Alarm Id will cause an error.  Avail
 
 ## getAlarmById
 
-> Alarm getAlarmById(alarmId)
+```
+Alarm getAlarmById(@Nonnull String alarmId)
+```
+
+**GET** `/api/alarm/{alarmId}`
 
 Get Alarm (getAlarmById)
 
@@ -122,7 +143,11 @@ Fetch the Alarm object based on the provided Alarm Id.   Available for users wit
 
 ## getAlarmInfoById
 
-> AlarmInfo getAlarmInfoById(alarmId)
+```
+AlarmInfo getAlarmInfoById(@Nonnull String alarmId)
+```
+
+**GET** `/api/alarm/info/{alarmId}`
 
 Get Alarm Info (getAlarmInfoById)
 
@@ -142,7 +167,11 @@ Fetch the Alarm Info object based on the provided Alarm Id. Alarm Info is an ext
 
 ## getAlarmTypes
 
-> PageDataEntitySubtype getAlarmTypes(pageSize, page, textSearch, sortOrder)
+```
+PageDataEntitySubtype getAlarmTypes(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder)
+```
+
+**GET** `/api/alarm/types`
 
 Get Alarm Types (getAlarmTypes)
 
@@ -165,7 +194,11 @@ Returns a set of unique alarm types based on alarms that are either owned by the
 
 ## getAlarmsByEntity
 
-> PageDataAlarmInfo getAlarmsByEntity(entityType, entityId, pageSize, page, searchStatus, status, assigneeId, textSearch, sortProperty, sortOrder, startTime, endTime, fetchOriginator)
+```
+PageDataAlarmInfo getAlarmsByEntity(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String searchStatus, @Nullable String status, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable Boolean fetchOriginator)
+```
+
+**GET** `/api/alarm/{entityType}/{entityId}`
 
 Get Alarms (getAlarmsByEntity)
 
@@ -197,7 +230,11 @@ Returns a page of alarms for the selected entity. Specifying both parameters 'se
 
 ## getAlarmsV2
 
-> PageDataAlarmInfo getAlarmsV2(entityType, entityId, pageSize, page, statusList, severityList, typeList, assigneeId, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataAlarmInfo getAlarmsV2(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> statusList, @Nullable List<String> severityList, @Nullable List<String> typeList, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/v2/alarm/{entityType}/{entityId}`
 
 Get Alarms (getAlarmsV2)
 
@@ -229,7 +266,11 @@ Returns a page of alarms for the selected entity. You can specify parameters to 
 
 ## getAllAlarms
 
-> PageDataAlarmInfo getAllAlarms(pageSize, page, searchStatus, status, assigneeId, textSearch, sortProperty, sortOrder, startTime, endTime, fetchOriginator)
+```
+PageDataAlarmInfo getAllAlarms(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String searchStatus, @Nullable String status, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable Boolean fetchOriginator)
+```
+
+**GET** `/api/alarms`
 
 Get All Alarms (getAllAlarms)
 
@@ -259,7 +300,11 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 
 ## getAllAlarmsV2
 
-> PageDataAlarmInfo getAllAlarmsV2(pageSize, page, statusList, severityList, typeList, assigneeId, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataAlarmInfo getAllAlarmsV2(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> statusList, @Nullable List<String> severityList, @Nullable List<String> typeList, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/v2/alarms`
 
 Get All Alarms (getAllAlarmsV2)
 
@@ -289,7 +334,11 @@ Returns a page of alarms that belongs to the current user owner. If the user has
 
 ## getHighestAlarmSeverity
 
-> AlarmSeverity getHighestAlarmSeverity(entityType, entityId, searchStatus, status, assigneeId)
+```
+AlarmSeverity getHighestAlarmSeverity(@Nonnull String entityType, @Nonnull String entityId, @Nullable String searchStatus, @Nullable String status, @Nullable String assigneeId)
+```
+
+**GET** `/api/alarm/highestSeverity/{entityType}/{entityId}`
 
 Get Highest Alarm Severity (getHighestAlarmSeverity)
 
@@ -313,7 +362,11 @@ Search the alarms by originator ('entityType' and entityId') and optional 'statu
 
 ## saveAlarm
 
-> Alarm saveAlarm(alarm)
+```
+Alarm saveAlarm(@Nonnull Alarm alarm)
+```
+
+**POST** `/api/alarm`
 
 Create or Update Alarm (saveAlarm)
 
@@ -333,7 +386,11 @@ Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id a
 
 ## unassignAlarm
 
-> Alarm unassignAlarm(alarmId)
+```
+Alarm unassignAlarm(@Nonnull String alarmId)
+```
+
+**DELETE** `/api/alarm/{alarmId}/assign`
 
 Unassign Alarm (unassignAlarm)
 

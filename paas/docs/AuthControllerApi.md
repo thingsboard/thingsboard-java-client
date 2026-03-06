@@ -1,22 +1,27 @@
 # AuthControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**activateUser**](#activateUser) | **POST** /api/noauth/activate | Activate User |
-| [**changePassword**](#changePassword) | **POST** /api/auth/changePassword | Change password for current User (changePassword) |
-| [**checkActivateToken**](#checkActivateToken) | **GET** /api/noauth/activate | Check Activate User Token (checkActivateToken) |
-| [**checkResetToken**](#checkResetToken) | **GET** /api/noauth/resetPassword | Check password reset token (checkResetToken) |
-| [**getUser**](#getUser) | **GET** /api/auth/user | Get current User (getUser) |
-| [**getUserPasswordPolicy**](#getUserPasswordPolicy) | **GET** /api/noauth/userPasswordPolicy | Get the current User password policy (getUserPasswordPolicy) |
-| [**logout**](#logout) | **POST** /api/auth/logout | Logout (logout) |
-| [**requestResetPasswordByEmail**](#requestResetPasswordByEmail) | **POST** /api/noauth/resetPasswordByEmail | Request reset password email (requestResetPasswordByEmail) |
-| [**resetPassword**](#resetPassword) | **POST** /api/noauth/resetPassword | Reset password (resetPassword) |
+`ThingsboardClient` methods:
 
+```
+JwtPair activateUser(@Nonnull ActivateUserRequest activateUserRequest, @Nullable Boolean sendActivationMail) // Activate User
+JwtPair changePassword(@Nonnull ChangePasswordRequest changePasswordRequest) // Change password for current User (changePassword)
+Object checkActivateToken(@Nonnull String activateToken) // Check Activate User Token (checkActivateToken)
+Object checkResetToken(@Nonnull String resetToken) // Check password reset token (checkResetToken)
+User getUser() // Get current User (getUser)
+UserPasswordPolicy getUserPasswordPolicy() // Get the current User password policy (getUserPasswordPolicy)
+void logout() // Logout (logout)
+void requestResetPasswordByEmail(@Nonnull ResetPasswordEmailRequest resetPasswordEmailRequest) // Request reset password email (requestResetPasswordByEmail)
+void resetPassword(@Nonnull ResetPasswordRequest resetPasswordRequest) // Reset password (resetPassword)
+```
 
 
 ## activateUser
 
-> JwtPair activateUser(activateUserRequest, sendActivationMail)
+```
+JwtPair activateUser(@Nonnull ActivateUserRequest activateUserRequest, @Nullable Boolean sendActivationMail)
+```
+
+**POST** `/api/noauth/activate`
 
 Activate User
 
@@ -37,7 +42,11 @@ Checks the activation token and updates corresponding user password in the datab
 
 ## changePassword
 
-> JwtPair changePassword(changePasswordRequest)
+```
+JwtPair changePassword(@Nonnull ChangePasswordRequest changePasswordRequest)
+```
+
+**POST** `/api/auth/changePassword`
 
 Change password for current User (changePassword)
 
@@ -57,7 +66,11 @@ Change the password for the User which credentials are used to perform this REST
 
 ## checkActivateToken
 
-> Object checkActivateToken(activateToken)
+```
+Object checkActivateToken(@Nonnull String activateToken)
+```
+
+**GET** `/api/noauth/activate`
 
 Check Activate User Token (checkActivateToken)
 
@@ -77,7 +90,11 @@ Checks the activation token and forwards user to 'Create Password' page. If toke
 
 ## checkResetToken
 
-> Object checkResetToken(resetToken)
+```
+Object checkResetToken(@Nonnull String resetToken)
+```
+
+**GET** `/api/noauth/resetPassword`
 
 Check password reset token (checkResetToken)
 
@@ -97,7 +114,11 @@ Checks the password reset token and forwards user to 'Reset Password' page. If t
 
 ## getUser
 
-> User getUser()
+```
+User getUser()
+```
+
+**GET** `/api/auth/user`
 
 Get current User (getUser)
 
@@ -110,7 +131,11 @@ Get the information about the User which credentials are used to perform this RE
 
 ## getUserPasswordPolicy
 
-> UserPasswordPolicy getUserPasswordPolicy()
+```
+UserPasswordPolicy getUserPasswordPolicy()
+```
+
+**GET** `/api/noauth/userPasswordPolicy`
 
 Get the current User password policy (getUserPasswordPolicy)
 
@@ -123,7 +148,11 @@ API call to get the password policy for the password validation form(s).
 
 ## logout
 
-> logout()
+```
+void logout()
+```
+
+**POST** `/api/auth/logout`
 
 Logout (logout)
 
@@ -136,7 +165,11 @@ null (empty response body)
 
 ## requestResetPasswordByEmail
 
-> requestResetPasswordByEmail(resetPasswordEmailRequest)
+```
+void requestResetPasswordByEmail(@Nonnull ResetPasswordEmailRequest resetPasswordEmailRequest)
+```
+
+**POST** `/api/noauth/resetPasswordByEmail`
 
 Request reset password email (requestResetPasswordByEmail)
 
@@ -156,7 +189,11 @@ null (empty response body)
 
 ## resetPassword
 
-> resetPassword(resetPasswordRequest)
+```
+void resetPassword(@Nonnull ResetPasswordRequest resetPasswordRequest)
+```
+
+**POST** `/api/noauth/resetPassword`
 
 Reset password (resetPassword)
 

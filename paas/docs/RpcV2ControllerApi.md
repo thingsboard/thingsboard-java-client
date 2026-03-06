@@ -1,18 +1,23 @@
 # RpcV2ControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteRpc**](#deleteRpc) | **DELETE** /api/rpc/persistent/{rpcId} | Delete persistent RPC |
-| [**getPersistedRpc**](#getPersistedRpc) | **GET** /api/rpc/persistent/{rpcId} | Get persistent RPC request |
-| [**getPersistedRpcByDevice**](#getPersistedRpcByDevice) | **GET** /api/rpc/persistent/device/{deviceId} | Get persistent RPC requests |
-| [**handleOneWayDeviceRPCRequestV2**](#handleOneWayDeviceRPCRequestV2) | **POST** /api/rpc/oneway/{deviceId} | Send one-way RPC request (handleOneWayDeviceRPCRequestV2) |
-| [**handleTwoWayDeviceRPCRequestV2**](#handleTwoWayDeviceRPCRequestV2) | **POST** /api/rpc/twoway/{deviceId} | Send two-way RPC request (handleTwoWayDeviceRPCRequestV2) |
+`ThingsboardClient` methods:
 
+```
+void deleteRpc(@Nonnull String rpcId) // Delete persistent RPC
+Rpc getPersistedRpc(@Nonnull String rpcId) // Get persistent RPC request
+String getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get persistent RPC requests
+String handleOneWayDeviceRPCRequestV2(@Nonnull String deviceId, @Nonnull String body) // Send one-way RPC request (handleOneWayDeviceRPCRequestV2)
+String handleTwoWayDeviceRPCRequestV2(@Nonnull String deviceId, @Nonnull String body) // Send two-way RPC request (handleTwoWayDeviceRPCRequestV2)
+```
 
 
 ## deleteRpc
 
-> deleteRpc(rpcId)
+```
+void deleteRpc(@Nonnull String rpcId)
+```
+
+**DELETE** `/api/rpc/persistent/{rpcId}`
 
 Delete persistent RPC
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## getPersistedRpc
 
-> Rpc getPersistedRpc(rpcId)
+```
+Rpc getPersistedRpc(@Nonnull String rpcId)
+```
+
+**GET** `/api/rpc/persistent/{rpcId}`
 
 Get persistent RPC request
 
@@ -52,7 +61,11 @@ Get information about the status of the RPC call.  Available for users with 'TEN
 
 ## getPersistedRpcByDevice
 
-> String getPersistedRpcByDevice(deviceId, pageSize, page, rpcStatus, textSearch, sortProperty, sortOrder)
+```
+String getPersistedRpcByDevice(@Nonnull String deviceId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String rpcStatus, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/rpc/persistent/device/{deviceId}`
 
 Get persistent RPC requests
 
@@ -78,7 +91,11 @@ Allows to query RPC calls for specific device using pagination.  Available for u
 
 ## handleOneWayDeviceRPCRequestV2
 
-> String handleOneWayDeviceRPCRequestV2(deviceId, body)
+```
+String handleOneWayDeviceRPCRequestV2(@Nonnull String deviceId, @Nonnull String body)
+```
+
+**POST** `/api/rpc/oneway/{deviceId}`
 
 Send one-way RPC request (handleOneWayDeviceRPCRequestV2)
 
@@ -99,7 +116,11 @@ Sends the one-way remote-procedure call (RPC) request to device. Sends the one-w
 
 ## handleTwoWayDeviceRPCRequestV2
 
-> String handleTwoWayDeviceRPCRequestV2(deviceId, body)
+```
+String handleTwoWayDeviceRPCRequestV2(@Nonnull String deviceId, @Nonnull String body)
+```
+
+**POST** `/api/rpc/twoway/{deviceId}`
 
 Send two-way RPC request (handleTwoWayDeviceRPCRequestV2)
 

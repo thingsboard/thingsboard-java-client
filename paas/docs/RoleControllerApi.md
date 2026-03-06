@@ -1,18 +1,23 @@
 # RoleControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteRole**](#deleteRole) | **DELETE** /api/role/{roleId} | Delete role (deleteRole) |
-| [**getRoleById**](#getRoleById) | **GET** /api/role/{roleId} | Get Role by Id (getRoleById) |
-| [**getRoles**](#getRoles) | **GET** /api/roles | Get Roles (getRoles) |
-| [**getRolesByIds**](#getRolesByIds) | **GET** /api/roles/list | Get Roles By Ids (getRolesByIds) |
-| [**saveRole**](#saveRole) | **POST** /api/role | Create Or Update Role (saveRole) |
+`ThingsboardClient` methods:
 
+```
+void deleteRole(@Nonnull String roleId) // Delete role (deleteRole)
+Role getRoleById(@Nonnull String roleId) // Get Role by Id (getRoleById)
+PageDataRole getRoles(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Roles (getRoles)
+List<Role> getRolesByIds(@Nonnull List<String> roleIds) // Get Roles By Ids (getRolesByIds)
+Role saveRole(@Nonnull Role role) // Create Or Update Role (saveRole)
+```
 
 
 ## deleteRole
 
-> deleteRole(roleId)
+```
+void deleteRole(@Nonnull String roleId)
+```
+
+**DELETE** `/api/role/{roleId}`
 
 Delete role (deleteRole)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## getRoleById
 
-> Role getRoleById(roleId)
+```
+Role getRoleById(@Nonnull String roleId)
+```
+
+**GET** `/api/role/{roleId}`
 
 Get Role by Id (getRoleById)
 
@@ -52,7 +61,11 @@ Fetch the Role object based on the provided Role Id. Role Contains a set of perm
 
 ## getRoles
 
-> PageDataRole getRoles(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataRole getRoles(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/roles`
 
 Get Roles (getRoles)
 
@@ -77,7 +90,11 @@ Returns a page of roles that are available for the current user. Role Contains a
 
 ## getRolesByIds
 
-> List<Role> getRolesByIds(roleIds)
+```
+List<Role> getRolesByIds(@Nonnull List<String> roleIds)
+```
+
+**GET** `/api/roles/list`
 
 Get Roles By Ids (getRolesByIds)
 
@@ -97,7 +114,11 @@ Returns the list of rows based on their ids.    Security check is performed to v
 
 ## saveRole
 
-> Role saveRole(role)
+```
+Role saveRole(@Nonnull Role role)
+```
+
+**POST** `/api/role`
 
 Create Or Update Role (saveRole)
 

@@ -1,16 +1,21 @@
 # QueueStatsControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getQueueStatsById**](#getQueueStatsById) | **GET** /api/queueStats/{queueStatsId} | Get Queue stats entity by id (getQueueStatsById) |
-| [**getQueueStatsByIds**](#getQueueStatsByIds) | **GET** /api/queueStats/list | Get QueueStats By Ids (getQueueStatsByIds) |
-| [**getTenantQueueStats**](#getTenantQueueStats) | **GET** /api/queueStats | Get Queue Stats entities (getTenantQueueStats) |
+`ThingsboardClient` methods:
 
+```
+QueueStats getQueueStatsById(@Nonnull String queueStatsId) // Get Queue stats entity by id (getQueueStatsById)
+List<QueueStats> getQueueStatsByIds(@Nonnull List<String> queueStatsIds) // Get QueueStats By Ids (getQueueStatsByIds)
+PageDataQueueStats getTenantQueueStats(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Queue Stats entities (getTenantQueueStats)
+```
 
 
 ## getQueueStatsById
 
-> QueueStats getQueueStatsById(queueStatsId)
+```
+QueueStats getQueueStatsById(@Nonnull String queueStatsId)
+```
+
+**GET** `/api/queueStats/{queueStatsId}`
 
 Get Queue stats entity by id (getQueueStatsById)
 
@@ -30,7 +35,11 @@ Fetch the Queue stats object based on the provided Queue stats id.   Available f
 
 ## getQueueStatsByIds
 
-> List<QueueStats> getQueueStatsByIds(queueStatsIds)
+```
+List<QueueStats> getQueueStatsByIds(@Nonnull List<String> queueStatsIds)
+```
+
+**GET** `/api/queueStats/list`
 
 Get QueueStats By Ids (getQueueStatsByIds)
 
@@ -50,7 +59,11 @@ Fetch the Queue stats objects based on the provided ids.
 
 ## getTenantQueueStats
 
-> PageDataQueueStats getTenantQueueStats(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataQueueStats getTenantQueueStats(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/queueStats`
 
 Get Queue Stats entities (getTenantQueueStats)
 

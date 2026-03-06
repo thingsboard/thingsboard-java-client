@@ -1,20 +1,25 @@
 # AiChatControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**createChat**](#createChat) | **POST** /api/ai/chats | createChat |
-| [**deleteChat**](#deleteChat) | **DELETE** /api/ai/chats/{chatId} | deleteChat |
-| [**exportChat**](#exportChat) | **GET** /api/ai/chats/{chatId}/export | exportChat |
-| [**getChatMessages**](#getChatMessages) | **GET** /api/ai/chats/{chatId}/messages | getChatMessages |
-| [**listChats**](#listChats) | **GET** /api/ai/chats | listChats |
-| [**sendChatMessage**](#sendChatMessage) | **POST** /api/ai/chats/{chatId}/messages | sendChatMessage |
-| [**updateChat**](#updateChat) | **PATCH** /api/ai/chats/{chatId} | updateChat |
+`ThingsboardClient` methods:
 
+```
+com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body) // createChat
+void deleteChat(@Nonnull UUID chatId) // deleteChat
+byte[] exportChat(@Nonnull UUID chatId, @Nullable Boolean includeAuditLogs) // exportChat
+com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId) // getChatMessages
+com.fasterxml.jackson.databind.JsonNode listChats() // listChats
+List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body) // sendChatMessage
+void updateChat(@Nonnull UUID chatId, @Nonnull Object body) // updateChat
+```
 
 
 ## createChat
 
-> com.fasterxml.jackson.databind.JsonNode createChat(body)
+```
+com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body)
+```
+
+**POST** `/api/ai/chats`
 
 createChat
 
@@ -32,7 +37,11 @@ createChat
 
 ## deleteChat
 
-> deleteChat(chatId)
+```
+void deleteChat(@Nonnull UUID chatId)
+```
+
+**DELETE** `/api/ai/chats/{chatId}`
 
 deleteChat
 
@@ -50,7 +59,11 @@ null (empty response body)
 
 ## exportChat
 
-> byte[] exportChat(chatId, includeAuditLogs)
+```
+byte[] exportChat(@Nonnull UUID chatId, @Nullable Boolean includeAuditLogs)
+```
+
+**GET** `/api/ai/chats/{chatId}/export`
 
 exportChat
 
@@ -69,7 +82,11 @@ exportChat
 
 ## getChatMessages
 
-> com.fasterxml.jackson.databind.JsonNode getChatMessages(chatId)
+```
+com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId)
+```
+
+**GET** `/api/ai/chats/{chatId}/messages`
 
 getChatMessages
 
@@ -87,7 +104,11 @@ getChatMessages
 
 ## listChats
 
-> com.fasterxml.jackson.databind.JsonNode listChats()
+```
+com.fasterxml.jackson.databind.JsonNode listChats()
+```
+
+**GET** `/api/ai/chats`
 
 listChats
 
@@ -98,7 +119,11 @@ listChats
 
 ## sendChatMessage
 
-> List<Object> sendChatMessage(chatId, xAuthorization, body)
+```
+List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body)
+```
+
+**POST** `/api/ai/chats/{chatId}/messages`
 
 sendChatMessage
 
@@ -118,7 +143,11 @@ sendChatMessage
 
 ## updateChat
 
-> updateChat(chatId, body)
+```
+void updateChat(@Nonnull UUID chatId, @Nonnull Object body)
+```
+
+**PATCH** `/api/ai/chats/{chatId}`
 
 updateChat
 

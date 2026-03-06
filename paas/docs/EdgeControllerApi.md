@@ -1,38 +1,43 @@
 # EdgeControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**activateInstance**](#activateInstance) | **POST** /api/license/activateInstance | Activate edge instance (activateInstance) |
-| [**checkInstance**](#checkInstance) | **POST** /api/license/checkInstance | Check edge license (checkInstance) |
-| [**deleteEdge**](#deleteEdge) | **DELETE** /api/edge/{edgeId} | Delete edge (deleteEdge) |
-| [**findEdgesByQuery**](#findEdgesByQuery) | **POST** /api/edges | Find related edges (findEdgesByQuery) |
-| [**findMissingToRelatedRuleChains**](#findMissingToRelatedRuleChains) | **GET** /api/edge/missingToRelatedRuleChains/{edgeId} | Find missing rule chains (findMissingToRelatedRuleChains) |
-| [**getAllEdgeInfos**](#getAllEdgeInfos) | **GET** /api/edgeInfos/all | Get All Edge Infos for current user (getAllEdgeInfos) |
-| [**getCustomerEdgeInfos**](#getCustomerEdgeInfos) | **GET** /api/customer/{customerId}/edgeInfos | Get Customer Edge Infos (getCustomerEdgeInfos) |
-| [**getCustomerEdges**](#getCustomerEdges) | **GET** /api/customer/{customerId}/edges | Get Customer Edges (getCustomerEdges) |
-| [**getEdgeById**](#getEdgeById) | **GET** /api/edge/{edgeId} | Get Edge (getEdgeById) |
-| [**getEdgeInfoById**](#getEdgeInfoById) | **GET** /api/edge/info/{edgeId} | Get Edge Info (getEdgeInfoById) |
-| [**getEdgeInstallInstructions**](#getEdgeInstallInstructions) | **GET** /api/edge/instructions/install/{edgeId}/{method} | Get Edge Install Instructions (getEdgeInstallInstructions) |
-| [**getEdgeList**](#getEdgeList) | **GET** /api/edges/list | Get Edges By Ids (getEdgeList) |
-| [**getEdgeTypes**](#getEdgeTypes) | **GET** /api/edge/types | Get Edge Types (getEdgeTypes) |
-| [**getEdgeUpgradeInstructions**](#getEdgeUpgradeInstructions) | **GET** /api/edge/instructions/upgrade/{edgeVersion}/{method} | Get Edge Upgrade Instructions (getEdgeUpgradeInstructions) |
-| [**getEdges**](#getEdges) | **GET** /api/edges | Get Tenant Edges (getEdges) |
-| [**getEdgesByEntityGroupId**](#getEdgesByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/edges | Get edges by Entity Group Id (getEdgesByEntityGroupId) |
-| [**getTenantEdgeByName**](#getTenantEdgeByName) | **GET** /api/tenant/edge | Get Tenant Edge by name (getTenantEdgeByName) |
-| [**getTenantEdges**](#getTenantEdges) | **GET** /api/tenant/edges | Get Tenant Edges (getTenantEdges) |
-| [**getUserEdges**](#getUserEdges) | **GET** /api/user/edges | Get Edges (getUserEdges) |
-| [**isEdgeUpgradeAvailable**](#isEdgeUpgradeAvailable) | **GET** /api/edge/{edgeId}/upgrade/available | Is edge upgrade enabled (isEdgeUpgradeAvailable) |
-| [**isEdgesSupportEnabled**](#isEdgesSupportEnabled) | **GET** /api/edges/enabled | Is edges support enabled (isEdgesSupportEnabled) |
-| [**processEdgesBulkImport**](#processEdgesBulkImport) | **POST** /api/edge/bulk_import | Import the bulk of edges (processEdgesBulkImport) |
-| [**saveEdge**](#saveEdge) | **POST** /api/edge | Create Or Update Edge (saveEdge) |
-| [**setEdgeRootRuleChain**](#setEdgeRootRuleChain) | **POST** /api/edge/{edgeId}/{ruleChainId}/root | Set root rule chain for provided edge (setEdgeRootRuleChain) |
-| [**syncEdge**](#syncEdge) | **POST** /api/edge/sync/{edgeId} | Sync edge (syncEdge) |
+`ThingsboardClient` methods:
 
+```
+com.fasterxml.jackson.databind.JsonNode activateInstance(@Nonnull String licenseSecret, @Nonnull String releaseDate) // Activate edge instance (activateInstance)
+com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body) // Check edge license (checkInstance)
+void deleteEdge(@Nonnull String edgeId) // Delete edge (deleteEdge)
+List<Edge> findEdgesByQuery(@Nonnull EdgeSearchQuery edgeSearchQuery) // Find related edges (findEdgesByQuery)
+String findMissingToRelatedRuleChains(@Nonnull String edgeId) // Find missing rule chains (findMissingToRelatedRuleChains)
+PageDataEdgeInfo getAllEdgeInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Edge Infos for current user (getAllEdgeInfos)
+PageDataEdgeInfo getCustomerEdgeInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Edge Infos (getCustomerEdgeInfos)
+PageDataEdge getCustomerEdges(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Edges (getCustomerEdges)
+Edge getEdgeById(@Nonnull String edgeId) // Get Edge (getEdgeById)
+EdgeInfo getEdgeInfoById(@Nonnull String edgeId) // Get Edge Info (getEdgeInfoById)
+EdgeInstructions getEdgeInstallInstructions(@Nonnull String edgeId, @Nonnull String method) // Get Edge Install Instructions (getEdgeInstallInstructions)
+List<Edge> getEdgeList(@Nonnull List<String> edgeIds) // Get Edges By Ids (getEdgeList)
+List<EntitySubtype> getEdgeTypes() // Get Edge Types (getEdgeTypes)
+EdgeInstructions getEdgeUpgradeInstructions(@Nonnull String edgeVersion, @Nonnull String method) // Get Edge Upgrade Instructions (getEdgeUpgradeInstructions)
+PageDataEdge getEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Edges (getEdges)
+PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get edges by Entity Group Id (getEdgesByEntityGroupId)
+Edge getTenantEdgeByName(@Nonnull String edgeName) // Get Tenant Edge by name (getTenantEdgeByName)
+PageDataEdge getTenantEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Edges (getTenantEdges)
+PageDataEdge getUserEdges(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edges (getUserEdges)
+Boolean isEdgeUpgradeAvailable(@Nonnull String edgeId) // Is edge upgrade enabled (isEdgeUpgradeAvailable)
+Boolean isEdgesSupportEnabled() // Is edges support enabled (isEdgesSupportEnabled)
+BulkImportResultEdge processEdgesBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of edges (processEdgesBulkImport)
+Edge saveEdge(@Nonnull Edge edge, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds) // Create Or Update Edge (saveEdge)
+Edge setEdgeRootRuleChain(@Nonnull String edgeId, @Nonnull String ruleChainId) // Set root rule chain for provided edge (setEdgeRootRuleChain)
+String syncEdge(@Nonnull String edgeId) // Sync edge (syncEdge)
+```
 
 
 ## activateInstance
 
-> com.fasterxml.jackson.databind.JsonNode activateInstance(licenseSecret, releaseDate)
+```
+com.fasterxml.jackson.databind.JsonNode activateInstance(@Nonnull String licenseSecret, @Nonnull String releaseDate)
+```
+
+**POST** `/api/license/activateInstance`
 
 Activate edge instance (activateInstance)
 
@@ -53,7 +58,11 @@ Activates edge license on license portal.
 
 ## checkInstance
 
-> com.fasterxml.jackson.databind.JsonNode checkInstance(body)
+```
+com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body)
+```
+
+**POST** `/api/license/checkInstance`
 
 Check edge license (checkInstance)
 
@@ -73,7 +82,11 @@ Checks license request from edge service by forwarding request to license portal
 
 ## deleteEdge
 
-> deleteEdge(edgeId)
+```
+void deleteEdge(@Nonnull String edgeId)
+```
+
+**DELETE** `/api/edge/{edgeId}`
 
 Delete edge (deleteEdge)
 
@@ -93,7 +106,11 @@ null (empty response body)
 
 ## findEdgesByQuery
 
-> List<Edge> findEdgesByQuery(edgeSearchQuery)
+```
+List<Edge> findEdgesByQuery(@Nonnull EdgeSearchQuery edgeSearchQuery)
+```
+
+**POST** `/api/edges`
 
 Find related edges (findEdgesByQuery)
 
@@ -113,7 +130,11 @@ Returns all edges that are related to the specific entity. The entity id, relati
 
 ## findMissingToRelatedRuleChains
 
-> String findMissingToRelatedRuleChains(edgeId)
+```
+String findMissingToRelatedRuleChains(@Nonnull String edgeId)
+```
+
+**GET** `/api/edge/missingToRelatedRuleChains/{edgeId}`
 
 Find missing rule chains (findMissingToRelatedRuleChains)
 
@@ -133,7 +154,11 @@ Returns list of rule chains ids that are not assigned to particular edge, but th
 
 ## getAllEdgeInfos
 
-> PageDataEdgeInfo getAllEdgeInfos(pageSize, page, includeCustomers, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEdgeInfo getAllEdgeInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edgeInfos/all`
 
 Get All Edge Infos for current user (getAllEdgeInfos)
 
@@ -159,7 +184,11 @@ Returns a page of edge info objects owned by the tenant or the customer of a cur
 
 ## getCustomerEdgeInfos
 
-> PageDataEdgeInfo getCustomerEdgeInfos(customerId, pageSize, page, includeCustomers, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEdgeInfo getCustomerEdgeInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/edgeInfos`
 
 Get Customer Edge Infos (getCustomerEdgeInfos)
 
@@ -186,7 +215,11 @@ Returns a page of edge info objects owned by the specified customer. You can spe
 
 ## getCustomerEdges
 
-> PageDataEdge getCustomerEdges(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEdge getCustomerEdges(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/edges`
 
 Get Customer Edges (getCustomerEdges)
 
@@ -212,7 +245,11 @@ Returns a page of edges objects assigned to customer. You can specify parameters
 
 ## getEdgeById
 
-> Edge getEdgeById(edgeId)
+```
+Edge getEdgeById(@Nonnull String edgeId)
+```
+
+**GET** `/api/edge/{edgeId}`
 
 Get Edge (getEdgeById)
 
@@ -232,7 +269,11 @@ Get the Edge object based on the provided Edge Id. If the user has the authority
 
 ## getEdgeInfoById
 
-> EdgeInfo getEdgeInfoById(edgeId)
+```
+EdgeInfo getEdgeInfoById(@Nonnull String edgeId)
+```
+
+**GET** `/api/edge/info/{edgeId}`
 
 Get Edge Info (getEdgeInfoById)
 
@@ -252,7 +293,11 @@ Get the Edge info object based on the provided Edge Id. If the user has the auth
 
 ## getEdgeInstallInstructions
 
-> EdgeInstructions getEdgeInstallInstructions(edgeId, method)
+```
+EdgeInstructions getEdgeInstallInstructions(@Nonnull String edgeId, @Nonnull String method)
+```
+
+**GET** `/api/edge/instructions/install/{edgeId}/{method}`
 
 Get Edge Install Instructions (getEdgeInstallInstructions)
 
@@ -273,7 +318,11 @@ Get an install instructions for provided edge id.If the user has the authority o
 
 ## getEdgeList
 
-> List<Edge> getEdgeList(edgeIds)
+```
+List<Edge> getEdgeList(@Nonnull List<String> edgeIds)
+```
+
+**GET** `/api/edges/list`
 
 Get Edges By Ids (getEdgeList)
 
@@ -293,7 +342,11 @@ Requested edges must be owned by tenant or assigned to customer which user is pe
 
 ## getEdgeTypes
 
-> List<EntitySubtype> getEdgeTypes()
+```
+List<EntitySubtype> getEdgeTypes()
+```
+
+**GET** `/api/edge/types`
 
 Get Edge Types (getEdgeTypes)
 
@@ -306,7 +359,11 @@ Returns a set of unique edge types based on edges that are either owned by the t
 
 ## getEdgeUpgradeInstructions
 
-> EdgeInstructions getEdgeUpgradeInstructions(edgeVersion, method)
+```
+EdgeInstructions getEdgeUpgradeInstructions(@Nonnull String edgeVersion, @Nonnull String method)
+```
+
+**GET** `/api/edge/instructions/upgrade/{edgeVersion}/{method}`
 
 Get Edge Upgrade Instructions (getEdgeUpgradeInstructions)
 
@@ -327,7 +384,11 @@ Get an upgrade instructions for provided edge version.If the user has the author
 
 ## getEdges
 
-> PageDataEdge getEdges(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEdge getEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edges`
 
 Get Tenant Edges (getEdges)
 
@@ -351,7 +412,11 @@ Returns a page of edges owned by tenant. You can specify parameters to filter th
 
 ## getEdgesByEntityGroupId
 
-> PageDataEdge getEdgesByEntityGroupId(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/edges`
 
 Get edges by Entity Group Id (getEdgesByEntityGroupId)
 
@@ -376,7 +441,11 @@ Returns a page of Edge objects that belongs to specified Entity Group Id. You ca
 
 ## getTenantEdgeByName
 
-> Edge getTenantEdgeByName(edgeName)
+```
+Edge getTenantEdgeByName(@Nonnull String edgeName)
+```
+
+**GET** `/api/tenant/edge`
 
 Get Tenant Edge by name (getTenantEdgeByName)
 
@@ -396,7 +465,11 @@ Requested edge must be owned by tenant or customer that the user belongs to. Edg
 
 ## getTenantEdges
 
-> PageDataEdge getTenantEdges(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEdge getTenantEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/edges`
 
 Get Tenant Edges (getTenantEdges)
 
@@ -421,7 +494,11 @@ Returns a page of edges owned by tenant. You can specify parameters to filter th
 
 ## getUserEdges
 
-> PageDataEdge getUserEdges(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataEdge getUserEdges(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/edges`
 
 Get Edges (getUserEdges)
 
@@ -446,7 +523,11 @@ Returns a page of edges available for current user. You can specify parameters t
 
 ## isEdgeUpgradeAvailable
 
-> Boolean isEdgeUpgradeAvailable(edgeId)
+```
+Boolean isEdgeUpgradeAvailable(@Nonnull String edgeId)
+```
+
+**GET** `/api/edge/{edgeId}/upgrade/available`
 
 Is edge upgrade enabled (isEdgeUpgradeAvailable)
 
@@ -466,7 +547,11 @@ Returns 'true' if upgrade available for connected edge, 'false' - otherwise.
 
 ## isEdgesSupportEnabled
 
-> Boolean isEdgesSupportEnabled()
+```
+Boolean isEdgesSupportEnabled()
+```
+
+**GET** `/api/edges/enabled`
 
 Is edges support enabled (isEdgesSupportEnabled)
 
@@ -479,7 +564,11 @@ Returns 'true' if edges support enabled on server, 'false' - otherwise.
 
 ## processEdgesBulkImport
 
-> BulkImportResultEdge processEdgesBulkImport(bulkImportRequest)
+```
+BulkImportResultEdge processEdgesBulkImport(@Nonnull BulkImportRequest bulkImportRequest)
+```
+
+**POST** `/api/edge/bulk_import`
 
 Import the bulk of edges (processEdgesBulkImport)
 
@@ -499,7 +588,11 @@ There's an ability to import the bulk of edges using the only .csv file.  Availa
 
 ## saveEdge
 
-> Edge saveEdge(edge, entityGroupId, entityGroupIds)
+```
+Edge saveEdge(@Nonnull Edge edge, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds)
+```
+
+**POST** `/api/edge`
 
 Create Or Update Edge (saveEdge)
 
@@ -521,7 +614,11 @@ Create or update the Edge. When creating edge, platform generates Edge Id as [ti
 
 ## setEdgeRootRuleChain
 
-> Edge setEdgeRootRuleChain(edgeId, ruleChainId)
+```
+Edge setEdgeRootRuleChain(@Nonnull String edgeId, @Nonnull String ruleChainId)
+```
+
+**POST** `/api/edge/{edgeId}/{ruleChainId}/root`
 
 Set root rule chain for provided edge (setEdgeRootRuleChain)
 
@@ -542,7 +639,11 @@ Change root rule chain of the edge to the new provided rule chain.  This operati
 
 ## syncEdge
 
-> String syncEdge(edgeId)
+```
+String syncEdge(@Nonnull String edgeId)
+```
+
+**POST** `/api/edge/sync/{edgeId}`
 
 Sync edge (syncEdge)
 

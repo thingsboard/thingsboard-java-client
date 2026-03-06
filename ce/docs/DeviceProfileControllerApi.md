@@ -1,25 +1,30 @@
 # DeviceProfileControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteDeviceProfile**](#deleteDeviceProfile) | **DELETE** /api/deviceProfile/{deviceProfileId} | Delete device profile (deleteDeviceProfile) |
-| [**getAttributesKeys**](#getAttributesKeys) | **GET** /api/deviceProfile/devices/keys/attributes | Get attribute keys (getAttributesKeys) |
-| [**getDefaultDeviceProfileInfo**](#getDefaultDeviceProfileInfo) | **GET** /api/deviceProfileInfo/default | Get Default Device Profile (getDefaultDeviceProfileInfo) |
-| [**getDeviceProfileById**](#getDeviceProfileById) | **GET** /api/deviceProfile/{deviceProfileId} | Get Device Profile (getDeviceProfileById) |
-| [**getDeviceProfileInfoById**](#getDeviceProfileInfoById) | **GET** /api/deviceProfileInfo/{deviceProfileId} | Get Device Profile Info (getDeviceProfileInfoById) |
-| [**getDeviceProfileInfos**](#getDeviceProfileInfos) | **GET** /api/deviceProfileInfos | Get Device Profiles for transport type (getDeviceProfileInfos) |
-| [**getDeviceProfileInfosByIds**](#getDeviceProfileInfosByIds) | **GET** /api/deviceProfileInfos/list | Get Device Profile Infos By Ids (getDeviceProfileInfosByIds) |
-| [**getDeviceProfileNames**](#getDeviceProfileNames) | **GET** /api/deviceProfile/names | Get Device Profile names (getDeviceProfileNames) |
-| [**getDeviceProfileTimeseriesKeys**](#getDeviceProfileTimeseriesKeys) | **GET** /api/deviceProfile/devices/keys/timeseries | Get time series keys (getDeviceProfileTimeseriesKeys) |
-| [**getDeviceProfiles**](#getDeviceProfiles) | **GET** /api/deviceProfiles | Get Device Profiles (getDeviceProfiles) |
-| [**saveDeviceProfile**](#saveDeviceProfile) | **POST** /api/deviceProfile | Create Or Update Device Profile (saveDeviceProfile) |
-| [**setDefaultDeviceProfile**](#setDefaultDeviceProfile) | **POST** /api/deviceProfile/{deviceProfileId}/default | Make Device Profile Default (setDefaultDeviceProfile) |
+`ThingsboardClient` methods:
 
+```
+void deleteDeviceProfile(@Nonnull String deviceProfileId) // Delete device profile (deleteDeviceProfile)
+List<String> getAttributesKeys(@Nullable String deviceProfileId) // Get attribute keys (getAttributesKeys)
+DeviceProfileInfo getDefaultDeviceProfileInfo() // Get Default Device Profile (getDefaultDeviceProfileInfo)
+DeviceProfile getDeviceProfileById(@Nonnull String deviceProfileId, @Nullable Boolean inlineImages) // Get Device Profile (getDeviceProfileById)
+DeviceProfileInfo getDeviceProfileInfoById(@Nonnull String deviceProfileId) // Get Device Profile Info (getDeviceProfileInfoById)
+PageDataDeviceProfileInfo getDeviceProfileInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String transportType) // Get Device Profiles for transport type (getDeviceProfileInfos)
+List<DeviceProfileInfo> getDeviceProfileInfosByIds(@Nonnull List<String> deviceProfileIds) // Get Device Profile Infos By Ids (getDeviceProfileInfosByIds)
+List<EntityInfo> getDeviceProfileNames(@Nullable Boolean activeOnly) // Get Device Profile names (getDeviceProfileNames)
+List<String> getDeviceProfileTimeseriesKeys(@Nullable String deviceProfileId) // Get time series keys (getDeviceProfileTimeseriesKeys)
+PageDataDeviceProfile getDeviceProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Device Profiles (getDeviceProfiles)
+DeviceProfile saveDeviceProfile(@Nonnull DeviceProfile deviceProfile) // Create Or Update Device Profile (saveDeviceProfile)
+DeviceProfile setDefaultDeviceProfile(@Nonnull String deviceProfileId) // Make Device Profile Default (setDefaultDeviceProfile)
+```
 
 
 ## deleteDeviceProfile
 
-> deleteDeviceProfile(deviceProfileId)
+```
+void deleteDeviceProfile(@Nonnull String deviceProfileId)
+```
+
+**DELETE** `/api/deviceProfile/{deviceProfileId}`
 
 Delete device profile (deleteDeviceProfile)
 
@@ -39,7 +44,11 @@ null (empty response body)
 
 ## getAttributesKeys
 
-> List<String> getAttributesKeys(deviceProfileId)
+```
+List<String> getAttributesKeys(@Nullable String deviceProfileId)
+```
+
+**GET** `/api/deviceProfile/devices/keys/attributes`
 
 Get attribute keys (getAttributesKeys)
 
@@ -59,7 +68,11 @@ Get a set of unique attribute keys used by devices that belong to specified prof
 
 ## getDefaultDeviceProfileInfo
 
-> DeviceProfileInfo getDefaultDeviceProfileInfo()
+```
+DeviceProfileInfo getDefaultDeviceProfileInfo()
+```
+
+**GET** `/api/deviceProfileInfo/default`
 
 Get Default Device Profile (getDefaultDeviceProfileInfo)
 
@@ -72,7 +85,11 @@ Fetch the Default Device Profile Info object. Device Profile Info is a lightweig
 
 ## getDeviceProfileById
 
-> DeviceProfile getDeviceProfileById(deviceProfileId, inlineImages)
+```
+DeviceProfile getDeviceProfileById(@Nonnull String deviceProfileId, @Nullable Boolean inlineImages)
+```
+
+**GET** `/api/deviceProfile/{deviceProfileId}`
 
 Get Device Profile (getDeviceProfileById)
 
@@ -93,7 +110,11 @@ Fetch the Device Profile object based on the provided Device Profile Id. The ser
 
 ## getDeviceProfileInfoById
 
-> DeviceProfileInfo getDeviceProfileInfoById(deviceProfileId)
+```
+DeviceProfileInfo getDeviceProfileInfoById(@Nonnull String deviceProfileId)
+```
+
+**GET** `/api/deviceProfileInfo/{deviceProfileId}`
 
 Get Device Profile Info (getDeviceProfileInfoById)
 
@@ -113,7 +134,11 @@ Fetch the Device Profile Info object based on the provided Device Profile Id. De
 
 ## getDeviceProfileInfos
 
-> PageDataDeviceProfileInfo getDeviceProfileInfos(pageSize, page, textSearch, sortProperty, sortOrder, transportType)
+```
+PageDataDeviceProfileInfo getDeviceProfileInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String transportType)
+```
+
+**GET** `/api/deviceProfileInfos`
 
 Get Device Profiles for transport type (getDeviceProfileInfos)
 
@@ -138,7 +163,11 @@ Returns a page of devices profile info objects owned by tenant. You can specify 
 
 ## getDeviceProfileInfosByIds
 
-> List<DeviceProfileInfo> getDeviceProfileInfosByIds(deviceProfileIds)
+```
+List<DeviceProfileInfo> getDeviceProfileInfosByIds(@Nonnull List<String> deviceProfileIds)
+```
+
+**GET** `/api/deviceProfileInfos/list`
 
 Get Device Profile Infos By Ids (getDeviceProfileInfosByIds)
 
@@ -158,7 +187,11 @@ Requested device profiles must be owned by tenant which is performing the reques
 
 ## getDeviceProfileNames
 
-> List<EntityInfo> getDeviceProfileNames(activeOnly)
+```
+List<EntityInfo> getDeviceProfileNames(@Nullable Boolean activeOnly)
+```
+
+**GET** `/api/deviceProfile/names`
 
 Get Device Profile names (getDeviceProfileNames)
 
@@ -178,7 +211,11 @@ Returns a set of unique device profile names owned by the tenant.  Available for
 
 ## getDeviceProfileTimeseriesKeys
 
-> List<String> getDeviceProfileTimeseriesKeys(deviceProfileId)
+```
+List<String> getDeviceProfileTimeseriesKeys(@Nullable String deviceProfileId)
+```
+
+**GET** `/api/deviceProfile/devices/keys/timeseries`
 
 Get time series keys (getDeviceProfileTimeseriesKeys)
 
@@ -198,7 +235,11 @@ Get a set of unique time series keys used by devices that belong to specified pr
 
 ## getDeviceProfiles
 
-> PageDataDeviceProfile getDeviceProfiles(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDeviceProfile getDeviceProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/deviceProfiles`
 
 Get Device Profiles (getDeviceProfiles)
 
@@ -222,7 +263,11 @@ Returns a page of devices profile objects owned by tenant. You can specify param
 
 ## saveDeviceProfile
 
-> DeviceProfile saveDeviceProfile(deviceProfile)
+```
+DeviceProfile saveDeviceProfile(@Nonnull DeviceProfile deviceProfile)
+```
+
+**POST** `/api/deviceProfile`
 
 Create Or Update Device Profile (saveDeviceProfile)
 
@@ -242,7 +287,11 @@ Create or update the Device Profile. When creating device profile, platform gene
 
 ## setDefaultDeviceProfile
 
-> DeviceProfile setDefaultDeviceProfile(deviceProfileId)
+```
+DeviceProfile setDefaultDeviceProfile(@Nonnull String deviceProfileId)
+```
+
+**POST** `/api/deviceProfile/{deviceProfileId}/default`
 
 Make Device Profile Default (setDefaultDeviceProfile)
 

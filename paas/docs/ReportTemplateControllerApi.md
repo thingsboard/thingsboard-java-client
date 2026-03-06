@@ -1,19 +1,24 @@
 # ReportTemplateControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteReportTemplate**](#deleteReportTemplate) | **DELETE** /api/reportTemplate/{reportTemplateId} | Delete Report Template (deleteReportTemplate) |
-| [**getAllReportTemplateInfos**](#getAllReportTemplateInfos) | **GET** /api/reportTemplateInfos/all | Get All Report Templates for current user (getAllReportTemplateInfos) |
-| [**getReportTemplateById**](#getReportTemplateById) | **GET** /api/reportTemplate/{reportTemplateId} | Get Report Template (getReportTemplateById) |
-| [**getReportTemplateInfoById**](#getReportTemplateInfoById) | **GET** /api/reportTemplate/info/{reportTemplateId} | Get Report Template Info (getReportTemplateInfoById) |
-| [**getReportTemplatesByIds**](#getReportTemplatesByIds) | **GET** /api/reportTemplates | Get report templates by Report Template Ids (getReportTemplatesByIds) |
-| [**saveReportTemplate**](#saveReportTemplate) | **POST** /api/reportTemplate | Save Report Template (saveReportTemplate) |
+`ThingsboardClient` methods:
 
+```
+void deleteReportTemplate(@Nonnull String reportTemplateId) // Delete Report Template (deleteReportTemplate)
+PageDataReportTemplateInfo getAllReportTemplateInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> typeList, @Nullable List<String> formatList, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Report Templates for current user (getAllReportTemplateInfos)
+ReportTemplate getReportTemplateById(@Nonnull String reportTemplateId) // Get Report Template (getReportTemplateById)
+ReportTemplateInfo getReportTemplateInfoById(@Nonnull String reportTemplateId) // Get Report Template Info (getReportTemplateInfoById)
+List<ReportTemplateInfo> getReportTemplatesByIds(@Nonnull List<String> reportTemplateIds) // Get report templates by Report Template Ids (getReportTemplatesByIds)
+ReportTemplate saveReportTemplate(@Nonnull ReportTemplate reportTemplate) // Save Report Template (saveReportTemplate)
+```
 
 
 ## deleteReportTemplate
 
-> deleteReportTemplate(reportTemplateId)
+```
+void deleteReportTemplate(@Nonnull String reportTemplateId)
+```
+
+**DELETE** `/api/reportTemplate/{reportTemplateId}`
 
 Delete Report Template (deleteReportTemplate)
 
@@ -33,7 +38,11 @@ null (empty response body)
 
 ## getAllReportTemplateInfos
 
-> PageDataReportTemplateInfo getAllReportTemplateInfos(pageSize, page, typeList, formatList, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataReportTemplateInfo getAllReportTemplateInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> typeList, @Nullable List<String> formatList, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/reportTemplateInfos/all`
 
 Get All Report Templates for current user (getAllReportTemplateInfos)
 
@@ -60,7 +69,11 @@ Returns a page of report template info objects owned by the tenant or the custom
 
 ## getReportTemplateById
 
-> ReportTemplate getReportTemplateById(reportTemplateId)
+```
+ReportTemplate getReportTemplateById(@Nonnull String reportTemplateId)
+```
+
+**GET** `/api/reportTemplate/{reportTemplateId}`
 
 Get Report Template (getReportTemplateById)
 
@@ -80,7 +93,11 @@ Fetch the ReportTemplate object based on the provided report template Id. Report
 
 ## getReportTemplateInfoById
 
-> ReportTemplateInfo getReportTemplateInfoById(reportTemplateId)
+```
+ReportTemplateInfo getReportTemplateInfoById(@Nonnull String reportTemplateId)
+```
+
+**GET** `/api/reportTemplate/info/{reportTemplateId}`
 
 Get Report Template Info (getReportTemplateInfoById)
 
@@ -100,7 +117,11 @@ Fetch the ReportTemplateInfo object based on the provided report template Id. Re
 
 ## getReportTemplatesByIds
 
-> List<ReportTemplateInfo> getReportTemplatesByIds(reportTemplateIds)
+```
+List<ReportTemplateInfo> getReportTemplatesByIds(@Nonnull List<String> reportTemplateIds)
+```
+
+**GET** `/api/reportTemplates`
 
 Get report templates by Report Template Ids (getReportTemplatesByIds)
 
@@ -120,7 +141,11 @@ Returns a list of ReportTemplateInfo objects based on the provided ids. Filters 
 
 ## saveReportTemplate
 
-> ReportTemplate saveReportTemplate(reportTemplate)
+```
+ReportTemplate saveReportTemplate(@Nonnull ReportTemplate reportTemplate)
+```
+
+**POST** `/api/reportTemplate`
 
 Save Report Template (saveReportTemplate)
 

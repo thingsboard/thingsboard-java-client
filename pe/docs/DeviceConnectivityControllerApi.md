@@ -1,16 +1,21 @@
 # DeviceConnectivityControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**downloadGatewayDockerCompose**](#downloadGatewayDockerCompose) | **GET** /api/device-connectivity/gateway-launch/{deviceId}/docker-compose/download | Download generated docker-compose.yml file for gateway (downloadGatewayDockerCompose) |
-| [**downloadServerCertificate**](#downloadServerCertificate) | **GET** /api/device-connectivity/{protocol}/certificate/download | Download server certificate using file path defined in device.connectivity properties (downloadServerCertificate) |
-| [**getDevicePublishTelemetryCommands**](#getDevicePublishTelemetryCommands) | **GET** /api/device-connectivity/{deviceId} | Get commands to publish device telemetry (getDevicePublishTelemetryCommands) |
+`ThingsboardClient` methods:
 
+```
+File downloadGatewayDockerCompose(@Nonnull String deviceId) // Download generated docker-compose.yml file for gateway (downloadGatewayDockerCompose)
+File downloadServerCertificate(@Nonnull String protocol) // Download server certificate using file path defined in device.connectivity properties (downloadServerCertificate)
+com.fasterxml.jackson.databind.JsonNode getDevicePublishTelemetryCommands(@Nonnull String deviceId) // Get commands to publish device telemetry (getDevicePublishTelemetryCommands)
+```
 
 
 ## downloadGatewayDockerCompose
 
-> File downloadGatewayDockerCompose(deviceId)
+```
+File downloadGatewayDockerCompose(@Nonnull String deviceId)
+```
+
+**GET** `/api/device-connectivity/gateway-launch/{deviceId}/docker-compose/download`
 
 Download generated docker-compose.yml file for gateway (downloadGatewayDockerCompose)
 
@@ -30,7 +35,11 @@ Download generated docker-compose.yml for gateway.
 
 ## downloadServerCertificate
 
-> File downloadServerCertificate(protocol)
+```
+File downloadServerCertificate(@Nonnull String protocol)
+```
+
+**GET** `/api/device-connectivity/{protocol}/certificate/download`
 
 Download server certificate using file path defined in device.connectivity properties (downloadServerCertificate)
 
@@ -50,7 +59,11 @@ Download server certificate.
 
 ## getDevicePublishTelemetryCommands
 
-> com.fasterxml.jackson.databind.JsonNode getDevicePublishTelemetryCommands(deviceId)
+```
+com.fasterxml.jackson.databind.JsonNode getDevicePublishTelemetryCommands(@Nonnull String deviceId)
+```
+
+**GET** `/api/device-connectivity/{deviceId}`
 
 Get commands to publish device telemetry (getDevicePublishTelemetryCommands)
 

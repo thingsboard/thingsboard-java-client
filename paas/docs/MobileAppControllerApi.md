@@ -1,19 +1,24 @@
 # MobileAppControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteMobileApp**](#deleteMobileApp) | **DELETE** /api/mobile/app/{id} | Delete Mobile App by ID (deleteMobileApp) |
-| [**getLoginMobileInfo**](#getLoginMobileInfo) | **GET** /api/noauth/mobile | Get mobile app login info (getLoginMobileInfo) |
-| [**getMobileAppById**](#getMobileAppById) | **GET** /api/mobile/app/{id} | Get mobile info by id (getMobileAppById) |
-| [**getTenantMobileApps**](#getTenantMobileApps) | **GET** /api/mobile/app | Get mobile app infos (getTenantMobileApps) |
-| [**getUserMobileInfo**](#getUserMobileInfo) | **GET** /api/mobile | Get user mobile app basic info (getUserMobileInfo) |
-| [**saveMobileApp**](#saveMobileApp) | **POST** /api/mobile/app | Save Or update Mobile app (saveMobileApp) |
+`ThingsboardClient` methods:
 
+```
+void deleteMobileApp(@Nonnull UUID id) // Delete Mobile App by ID (deleteMobileApp)
+LoginMobileInfo getLoginMobileInfo(@Nonnull String pkgName, @Nonnull String platform) // Get mobile app login info (getLoginMobileInfo)
+MobileApp getMobileAppById(@Nonnull UUID id) // Get mobile info by id (getMobileAppById)
+PageDataMobileApp getTenantMobileApps(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable PlatformType platformType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get mobile app infos (getTenantMobileApps)
+UserMobileInfo getUserMobileInfo(@Nonnull String pkgName, @Nonnull String platform) // Get user mobile app basic info (getUserMobileInfo)
+MobileApp saveMobileApp(@Nonnull MobileApp mobileApp) // Save Or update Mobile app (saveMobileApp)
+```
 
 
 ## deleteMobileApp
 
-> deleteMobileApp(id)
+```
+void deleteMobileApp(@Nonnull UUID id)
+```
+
+**DELETE** `/api/mobile/app/{id}`
 
 Delete Mobile App by ID (deleteMobileApp)
 
@@ -33,7 +38,11 @@ null (empty response body)
 
 ## getLoginMobileInfo
 
-> LoginMobileInfo getLoginMobileInfo(pkgName, platform)
+```
+LoginMobileInfo getLoginMobileInfo(@Nonnull String pkgName, @Nonnull String platform)
+```
+
+**GET** `/api/noauth/mobile`
 
 Get mobile app login info (getLoginMobileInfo)
 
@@ -52,7 +61,11 @@ Get mobile app login info (getLoginMobileInfo)
 
 ## getMobileAppById
 
-> MobileApp getMobileAppById(id)
+```
+MobileApp getMobileAppById(@Nonnull UUID id)
+```
+
+**GET** `/api/mobile/app/{id}`
 
 Get mobile info by id (getMobileAppById)
 
@@ -72,7 +85,11 @@ Get mobile info by id (getMobileAppById)
 
 ## getTenantMobileApps
 
-> PageDataMobileApp getTenantMobileApps(pageSize, page, platformType, textSearch, sortProperty, sortOrder)
+```
+PageDataMobileApp getTenantMobileApps(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable PlatformType platformType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/mobile/app`
 
 Get mobile app infos (getTenantMobileApps)
 
@@ -97,7 +114,11 @@ Get mobile app infos (getTenantMobileApps)
 
 ## getUserMobileInfo
 
-> UserMobileInfo getUserMobileInfo(pkgName, platform)
+```
+UserMobileInfo getUserMobileInfo(@Nonnull String pkgName, @Nonnull String platform)
+```
+
+**GET** `/api/mobile`
 
 Get user mobile app basic info (getUserMobileInfo)
 
@@ -118,7 +139,11 @@ Get user mobile app basic info (getUserMobileInfo)
 
 ## saveMobileApp
 
-> MobileApp saveMobileApp(mobileApp)
+```
+MobileApp saveMobileApp(@Nonnull MobileApp mobileApp)
+```
+
+**POST** `/api/mobile/app`
 
 Save Or update Mobile app (saveMobileApp)
 

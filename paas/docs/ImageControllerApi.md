@@ -1,27 +1,32 @@
 # ImageControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteImage**](#deleteImage) | **DELETE** /api/images/{type}/{key} | deleteImage |
-| [**downloadImage**](#downloadImage) | **GET** /api/images/{type}/{key} | downloadImage |
-| [**downloadImagePreview**](#downloadImagePreview) | **GET** /api/images/{type}/{key}/preview | downloadImagePreview |
-| [**downloadLoginFavicon**](#downloadLoginFavicon) | **GET** /api/noauth/whiteLabel/loginFavicon/{type}/{key} | downloadLoginFavicon |
-| [**downloadLoginLogo**](#downloadLoginLogo) | **GET** /api/noauth/whiteLabel/loginLogo/{type}/{key} | downloadLoginLogo |
-| [**downloadPublicImage**](#downloadPublicImage) | **GET** /api/images/public/{publicResourceKey} | downloadPublicImage |
-| [**exportImage**](#exportImage) | **GET** /api/images/{type}/{key}/export | exportImage |
-| [**getImageInfo**](#getImageInfo) | **GET** /api/images/{type}/{key}/info | getImageInfo |
-| [**getImages**](#getImages) | **GET** /api/images | getImages |
-| [**importImage**](#importImage) | **PUT** /api/image/import | importImage |
-| [**updateImage**](#updateImage) | **PUT** /api/images/{type}/{key} | updateImage |
-| [**updateImageInfo**](#updateImageInfo) | **PUT** /api/images/{type}/{key}/info | updateImageInfo |
-| [**updateImagePublicStatus**](#updateImagePublicStatus) | **PUT** /api/images/{type}/{key}/public/{isPublic} | updateImagePublicStatus |
-| [**uploadImage**](#uploadImage) | **POST** /api/image | uploadImage |
+`ThingsboardClient` methods:
 
+```
+TbImageDeleteResult deleteImage(@Nonnull String type, @Nonnull String key, @Nullable Boolean force) // deleteImage
+File downloadImage(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadImage
+File downloadImagePreview(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadImagePreview
+File downloadLoginFavicon(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadLoginFavicon
+File downloadLoginLogo(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadLoginLogo
+File downloadPublicImage(@Nonnull String publicResourceKey, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadPublicImage
+ResourceExportData exportImage(@Nonnull String type, @Nonnull String key) // exportImage
+TbResourceInfo getImageInfo(@Nonnull String type, @Nonnull String key) // getImageInfo
+PageDataTbResourceInfo getImages(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String imageSubType, @Nullable Boolean includeSystemImages, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // getImages
+TbResourceInfo importImage(@Nonnull ResourceExportData resourceExportData) // importImage
+TbResourceInfo updateImage(@Nonnull String type, @Nonnull String key, @Nonnull File _file) // updateImage
+TbResourceInfo updateImageInfo(@Nonnull String type, @Nonnull String key, @Nonnull TbResourceInfo tbResourceInfo) // updateImageInfo
+TbResourceInfo updateImagePublicStatus(@Nonnull String type, @Nonnull String key, @Nonnull Boolean isPublic) // updateImagePublicStatus
+TbResourceInfo uploadImage(@Nonnull File _file, @Nullable String title, @Nullable String imageSubType) // uploadImage
+```
 
 
 ## deleteImage
 
-> TbImageDeleteResult deleteImage(type, key, force)
+```
+TbImageDeleteResult deleteImage(@Nonnull String type, @Nonnull String key, @Nullable Boolean force)
+```
+
+**DELETE** `/api/images/{type}/{key}`
 
 deleteImage
 
@@ -41,7 +46,11 @@ deleteImage
 
 ## downloadImage
 
-> File downloadImage(type, key, ifNoneMatch, acceptEncoding)
+```
+File downloadImage(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/images/{type}/{key}`
 
 downloadImage
 
@@ -62,7 +71,11 @@ downloadImage
 
 ## downloadImagePreview
 
-> File downloadImagePreview(type, key, ifNoneMatch, acceptEncoding)
+```
+File downloadImagePreview(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/images/{type}/{key}/preview`
 
 downloadImagePreview
 
@@ -83,7 +96,11 @@ downloadImagePreview
 
 ## downloadLoginFavicon
 
-> File downloadLoginFavicon(type, key, ifNoneMatch, acceptEncoding)
+```
+File downloadLoginFavicon(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/noauth/whiteLabel/loginFavicon/{type}/{key}`
 
 downloadLoginFavicon
 
@@ -104,7 +121,11 @@ downloadLoginFavicon
 
 ## downloadLoginLogo
 
-> File downloadLoginLogo(type, key, ifNoneMatch, acceptEncoding)
+```
+File downloadLoginLogo(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/noauth/whiteLabel/loginLogo/{type}/{key}`
 
 downloadLoginLogo
 
@@ -125,7 +146,11 @@ downloadLoginLogo
 
 ## downloadPublicImage
 
-> File downloadPublicImage(publicResourceKey, ifNoneMatch, acceptEncoding)
+```
+File downloadPublicImage(@Nonnull String publicResourceKey, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/images/public/{publicResourceKey}`
 
 downloadPublicImage
 
@@ -145,7 +170,11 @@ downloadPublicImage
 
 ## exportImage
 
-> ResourceExportData exportImage(type, key)
+```
+ResourceExportData exportImage(@Nonnull String type, @Nonnull String key)
+```
+
+**GET** `/api/images/{type}/{key}/export`
 
 exportImage
 
@@ -164,7 +193,11 @@ exportImage
 
 ## getImageInfo
 
-> TbResourceInfo getImageInfo(type, key)
+```
+TbResourceInfo getImageInfo(@Nonnull String type, @Nonnull String key)
+```
+
+**GET** `/api/images/{type}/{key}/info`
 
 getImageInfo
 
@@ -183,7 +216,11 @@ getImageInfo
 
 ## getImages
 
-> PageDataTbResourceInfo getImages(pageSize, page, imageSubType, includeSystemImages, textSearch, sortProperty, sortOrder)
+```
+PageDataTbResourceInfo getImages(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String imageSubType, @Nullable Boolean includeSystemImages, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/images`
 
 getImages
 
@@ -207,7 +244,11 @@ getImages
 
 ## importImage
 
-> TbResourceInfo importImage(resourceExportData)
+```
+TbResourceInfo importImage(@Nonnull ResourceExportData resourceExportData)
+```
+
+**PUT** `/api/image/import`
 
 importImage
 
@@ -225,7 +266,11 @@ importImage
 
 ## updateImage
 
-> TbResourceInfo updateImage(type, key, _file)
+```
+TbResourceInfo updateImage(@Nonnull String type, @Nonnull String key, @Nonnull File _file)
+```
+
+**PUT** `/api/images/{type}/{key}`
 
 updateImage
 
@@ -245,7 +290,11 @@ updateImage
 
 ## updateImageInfo
 
-> TbResourceInfo updateImageInfo(type, key, tbResourceInfo)
+```
+TbResourceInfo updateImageInfo(@Nonnull String type, @Nonnull String key, @Nonnull TbResourceInfo tbResourceInfo)
+```
+
+**PUT** `/api/images/{type}/{key}/info`
 
 updateImageInfo
 
@@ -265,7 +314,11 @@ updateImageInfo
 
 ## updateImagePublicStatus
 
-> TbResourceInfo updateImagePublicStatus(type, key, isPublic)
+```
+TbResourceInfo updateImagePublicStatus(@Nonnull String type, @Nonnull String key, @Nonnull Boolean isPublic)
+```
+
+**PUT** `/api/images/{type}/{key}/public/{isPublic}`
 
 updateImagePublicStatus
 
@@ -285,7 +338,11 @@ updateImagePublicStatus
 
 ## uploadImage
 
-> TbResourceInfo uploadImage(_file, title, imageSubType)
+```
+TbResourceInfo uploadImage(@Nonnull File _file, @Nullable String title, @Nullable String imageSubType)
+```
+
+**POST** `/api/image`
 
 uploadImage
 

@@ -1,14 +1,19 @@
 # AiAuditLogControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getAiAuditLogs**](#getAiAuditLogs) | **GET** /api/ai/audit-logs | getAiAuditLogs |
+`ThingsboardClient` methods:
 
+```
+com.fasterxml.jackson.databind.JsonNode getAiAuditLogs(@Nullable UUID sourceId, @Nullable AuditLogStatusFilter status) // getAiAuditLogs
+```
 
 
 ## getAiAuditLogs
 
-> com.fasterxml.jackson.databind.JsonNode getAiAuditLogs(sourceId, status)
+```
+com.fasterxml.jackson.databind.JsonNode getAiAuditLogs(@Nullable UUID sourceId, @Nullable AuditLogStatusFilter status)
+```
+
+**GET** `/api/ai/audit-logs`
 
 getAiAuditLogs
 

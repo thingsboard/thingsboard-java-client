@@ -1,18 +1,23 @@
 # ApiKeyControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteApiKey**](#deleteApiKey) | **DELETE** /api/apiKey/{id} | Delete API key by ID (deleteApiKey) |
-| [**enableApiKey**](#enableApiKey) | **PUT** /api/apiKey/{id}/enabled/{enabledValue} | Enable or disable API key (enableApiKey) |
-| [**getUserApiKeys**](#getUserApiKeys) | **GET** /api/apiKeys/{userId} | Get User Api Keys (getUserApiKeys) |
-| [**saveApiKey**](#saveApiKey) | **POST** /api/apiKey | Save API key for user (saveApiKey) |
-| [**updateApiKeyDescription**](#updateApiKeyDescription) | **PUT** /api/apiKey/{id}/description | Update API key Description |
+`ThingsboardClient` methods:
 
+```
+void deleteApiKey(@Nonnull UUID id) // Delete API key by ID (deleteApiKey)
+ApiKeyInfo enableApiKey(@Nonnull UUID id, @Nonnull Boolean enabledValue) // Enable or disable API key (enableApiKey)
+PageDataApiKeyInfo getUserApiKeys(@Nonnull String userId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get User Api Keys (getUserApiKeys)
+ApiKey saveApiKey(@Nonnull ApiKeyInfo apiKeyInfo) // Save API key for user (saveApiKey)
+ApiKeyInfo updateApiKeyDescription(@Nonnull UUID id, @Nullable String body) // Update API key Description
+```
 
 
 ## deleteApiKey
 
-> deleteApiKey(id)
+```
+void deleteApiKey(@Nonnull UUID id)
+```
+
+**DELETE** `/api/apiKey/{id}`
 
 Delete API key by ID (deleteApiKey)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## enableApiKey
 
-> ApiKeyInfo enableApiKey(id, enabledValue)
+```
+ApiKeyInfo enableApiKey(@Nonnull UUID id, @Nonnull Boolean enabledValue)
+```
+
+**PUT** `/api/apiKey/{id}/enabled/{enabledValue}`
 
 Enable or disable API key (enableApiKey)
 
@@ -53,7 +62,11 @@ Updates api key with enabled = true/false.   Available for any authorized user.
 
 ## getUserApiKeys
 
-> PageDataApiKeyInfo getUserApiKeys(userId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataApiKeyInfo getUserApiKeys(@Nonnull String userId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/apiKeys/{userId}`
 
 Get User Api Keys (getUserApiKeys)
 
@@ -78,7 +91,11 @@ Returns a page of api keys owned by user. You can specify parameters to filter t
 
 ## saveApiKey
 
-> ApiKey saveApiKey(apiKeyInfo)
+```
+ApiKey saveApiKey(@Nonnull ApiKeyInfo apiKeyInfo)
+```
+
+**POST** `/api/apiKey`
 
 Save API key for user (saveApiKey)
 
@@ -98,7 +115,11 @@ Creates an API key for the given user and returns the token ONCE as 'ApiKey <val
 
 ## updateApiKeyDescription
 
-> ApiKeyInfo updateApiKeyDescription(id, body)
+```
+ApiKeyInfo updateApiKeyDescription(@Nonnull UUID id, @Nullable String body)
+```
+
+**PUT** `/api/apiKey/{id}/description`
 
 Update API key Description
 

@@ -1,21 +1,26 @@
 # CustomerControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteCustomer**](#deleteCustomer) | **DELETE** /api/customer/{customerId} | Delete Customer (deleteCustomer) |
-| [**getCustomerById**](#getCustomerById) | **GET** /api/customer/{customerId} | Get Customer (getCustomerById) |
-| [**getCustomerTitleById**](#getCustomerTitleById) | **GET** /api/customer/{customerId}/title | Get Customer Title (getCustomerTitleById) |
-| [**getCustomers**](#getCustomers) | **GET** /api/customers | Get Tenant Customers (getCustomers) |
-| [**getCustomersByIds**](#getCustomersByIds) | **GET** /api/customers/list | Get customers by Customer Ids (getCustomersByIds) |
-| [**getShortCustomerInfoById**](#getShortCustomerInfoById) | **GET** /api/customer/{customerId}/shortInfo | Get short Customer info (getShortCustomerInfoById) |
-| [**getTenantCustomer**](#getTenantCustomer) | **GET** /api/tenant/customers | Get Tenant Customer by Customer title (getTenantCustomer) |
-| [**saveCustomer**](#saveCustomer) | **POST** /api/customer | Create or update Customer (saveCustomer) |
+`ThingsboardClient` methods:
 
+```
+void deleteCustomer(@Nonnull String customerId) // Delete Customer (deleteCustomer)
+Customer getCustomerById(@Nonnull String customerId) // Get Customer (getCustomerById)
+String getCustomerTitleById(@Nonnull String customerId) // Get Customer Title (getCustomerTitleById)
+PageDataCustomer getCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Customers (getCustomers)
+List<Customer> getCustomersByIds(@Nonnull List<String> customerIds) // Get customers by Customer Ids (getCustomersByIds)
+com.fasterxml.jackson.databind.JsonNode getShortCustomerInfoById(@Nonnull String customerId) // Get short Customer info (getShortCustomerInfoById)
+Customer getTenantCustomer(@Nonnull String customerTitle) // Get Tenant Customer by Customer title (getTenantCustomer)
+Customer saveCustomer(@Nonnull Customer customer, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create or update Customer (saveCustomer)
+```
 
 
 ## deleteCustomer
 
-> deleteCustomer(customerId)
+```
+void deleteCustomer(@Nonnull String customerId)
+```
+
+**DELETE** `/api/customer/{customerId}`
 
 Delete Customer (deleteCustomer)
 
@@ -35,7 +40,11 @@ null (empty response body)
 
 ## getCustomerById
 
-> Customer getCustomerById(customerId)
+```
+Customer getCustomerById(@Nonnull String customerId)
+```
+
+**GET** `/api/customer/{customerId}`
 
 Get Customer (getCustomerById)
 
@@ -55,7 +64,11 @@ Get the Customer object based on the provided Customer Id. If the user has the a
 
 ## getCustomerTitleById
 
-> String getCustomerTitleById(customerId)
+```
+String getCustomerTitleById(@Nonnull String customerId)
+```
+
+**GET** `/api/customer/{customerId}/title`
 
 Get Customer Title (getCustomerTitleById)
 
@@ -75,7 +88,11 @@ Get the title of the customer. If the user has the authority of 'Tenant Administ
 
 ## getCustomers
 
-> PageDataCustomer getCustomers(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataCustomer getCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customers`
 
 Get Tenant Customers (getCustomers)
 
@@ -99,7 +116,11 @@ Returns a page of customers owned by tenant. You can specify parameters to filte
 
 ## getCustomersByIds
 
-> List<Customer> getCustomersByIds(customerIds)
+```
+List<Customer> getCustomersByIds(@Nonnull List<String> customerIds)
+```
+
+**GET** `/api/customers/list`
 
 Get customers by Customer Ids (getCustomersByIds)
 
@@ -119,7 +140,11 @@ Returns a list of Customer objects based on the provided ids.  Available for use
 
 ## getShortCustomerInfoById
 
-> com.fasterxml.jackson.databind.JsonNode getShortCustomerInfoById(customerId)
+```
+com.fasterxml.jackson.databind.JsonNode getShortCustomerInfoById(@Nonnull String customerId)
+```
+
+**GET** `/api/customer/{customerId}/shortInfo`
 
 Get short Customer info (getShortCustomerInfoById)
 
@@ -139,7 +164,11 @@ Get the short customer object that contains only the title and 'isPublic' flag. 
 
 ## getTenantCustomer
 
-> Customer getTenantCustomer(customerTitle)
+```
+Customer getTenantCustomer(@Nonnull String customerTitle)
+```
+
+**GET** `/api/tenant/customers`
 
 Get Tenant Customer by Customer title (getTenantCustomer)
 
@@ -159,7 +188,11 @@ Get the Customer using Customer Title.   Available for users with 'TENANT_ADMIN'
 
 ## saveCustomer
 
-> Customer saveCustomer(customer, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Customer saveCustomer(@Nonnull Customer customer, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/customer`
 
 Create or update Customer (saveCustomer)
 

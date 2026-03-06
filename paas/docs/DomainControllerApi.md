@@ -1,19 +1,24 @@
 # DomainControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteDomain**](#deleteDomain) | **DELETE** /api/domain/{id} | Delete Domain by ID (deleteDomain) |
-| [**getCloudDomainInfoById**](#getCloudDomainInfoById) | **GET** /api/domain/cloud/info/{id} | Get Domain info by Id (getCloudDomainInfoById) |
-| [**getDomainInfoById**](#getDomainInfoById) | **GET** /api/domain/info/{id} | Get Domain info by Id (getDomainInfoById) |
-| [**getDomainInfos**](#getDomainInfos) | **GET** /api/domain/infos | Get Domain infos (getDomainInfos) |
-| [**saveDomain**](#saveDomain) | **POST** /api/domain | Save or Update Domain (saveDomain) |
-| [**updateOauth2Clients**](#updateOauth2Clients) | **PUT** /api/domain/{id}/oauth2Clients | Update oauth2 clients (updateOauth2Clients) |
+`ThingsboardClient` methods:
 
+```
+void deleteDomain(@Nonnull UUID id) // Delete Domain by ID (deleteDomain)
+DomainInfo getCloudDomainInfoById(@Nonnull UUID id) // Get Domain info by Id (getCloudDomainInfoById)
+DomainInfo getDomainInfoById(@Nonnull UUID id) // Get Domain info by Id (getDomainInfoById)
+PageDataDomainInfo getDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Domain infos (getDomainInfos)
+Domain saveDomain(@Nonnull Domain domain, @Nullable List<String> oauth2ClientIds) // Save or Update Domain (saveDomain)
+void updateOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) // Update oauth2 clients (updateOauth2Clients)
+```
 
 
 ## deleteDomain
 
-> deleteDomain(id)
+```
+void deleteDomain(@Nonnull UUID id)
+```
+
+**DELETE** `/api/domain/{id}`
 
 Delete Domain by ID (deleteDomain)
 
@@ -33,7 +38,11 @@ null (empty response body)
 
 ## getCloudDomainInfoById
 
-> DomainInfo getCloudDomainInfoById(id)
+```
+DomainInfo getCloudDomainInfoById(@Nonnull UUID id)
+```
+
+**GET** `/api/domain/cloud/info/{id}`
 
 Get Domain info by Id (getCloudDomainInfoById)
 
@@ -53,7 +62,11 @@ Get Domain info by Id (getCloudDomainInfoById)
 
 ## getDomainInfoById
 
-> DomainInfo getDomainInfoById(id)
+```
+DomainInfo getDomainInfoById(@Nonnull UUID id)
+```
+
+**GET** `/api/domain/info/{id}`
 
 Get Domain info by Id (getDomainInfoById)
 
@@ -73,7 +86,11 @@ Get Domain info by Id (getDomainInfoById)
 
 ## getDomainInfos
 
-> PageDataDomainInfo getDomainInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDomainInfo getDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/domain/infos`
 
 Get Domain infos (getDomainInfos)
 
@@ -97,7 +114,11 @@ Get Domain infos (getDomainInfos)
 
 ## saveDomain
 
-> Domain saveDomain(domain, oauth2ClientIds)
+```
+Domain saveDomain(@Nonnull Domain domain, @Nullable List<String> oauth2ClientIds)
+```
+
+**POST** `/api/domain`
 
 Save or Update Domain (saveDomain)
 
@@ -118,7 +139,11 @@ Create or update the Domain. When creating domain, platform generates Domain Id 
 
 ## updateOauth2Clients
 
-> updateOauth2Clients(id, UUID)
+```
+void updateOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID)
+```
+
+**PUT** `/api/domain/{id}/oauth2Clients`
 
 Update oauth2 clients (updateOauth2Clients)
 

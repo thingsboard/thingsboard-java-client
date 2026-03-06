@@ -1,17 +1,22 @@
 # RuleEngineControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**handleRuleEngineRequestForEntity**](#handleRuleEngineRequestForEntity) | **POST** /api/rule-engine/{entityType}/{entityId} | Push entity message to the rule engine (handleRuleEngineRequestForEntity) |
-| [**handleRuleEngineRequestForEntityWithQueueAndTimeout**](#handleRuleEngineRequestForEntityWithQueueAndTimeout) | **POST** /api/rule-engine/{entityType}/{entityId}/{queueName}/{timeout} | Push entity message with timeout and specified queue to the rule engine (handleRuleEngineRequestForEntityWithQueueAndTimeout) |
-| [**handleRuleEngineRequestForEntityWithTimeout**](#handleRuleEngineRequestForEntityWithTimeout) | **POST** /api/rule-engine/{entityType}/{entityId}/{timeout} | Push entity message with timeout to the rule engine (handleRuleEngineRequestForEntityWithTimeout) |
-| [**handleRuleEngineRequestForUser**](#handleRuleEngineRequestForUser) | **POST** /api/rule-engine/ | Push user message to the rule engine (handleRuleEngineRequestForUser) |
+`ThingsboardClient` methods:
 
+```
+String handleRuleEngineRequestForEntity(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String body) // Push entity message to the rule engine (handleRuleEngineRequestForEntity)
+String handleRuleEngineRequestForEntityWithQueueAndTimeout(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String queueName, @Nonnull Integer timeout, @Nonnull String body) // Push entity message with timeout and specified queue to the rule engine (handleRuleEngineRequestForEntityWithQueueAndTimeout)
+String handleRuleEngineRequestForEntityWithTimeout(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer timeout, @Nonnull String body) // Push entity message with timeout to the rule engine (handleRuleEngineRequestForEntityWithTimeout)
+String handleRuleEngineRequestForUser(@Nonnull String body) // Push user message to the rule engine (handleRuleEngineRequestForUser)
+```
 
 
 ## handleRuleEngineRequestForEntity
 
-> String handleRuleEngineRequestForEntity(entityType, entityId, body)
+```
+String handleRuleEngineRequestForEntity(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String body)
+```
+
+**POST** `/api/rule-engine/{entityType}/{entityId}`
 
 Push entity message to the rule engine (handleRuleEngineRequestForEntity)
 
@@ -33,7 +38,11 @@ Creates the Message with type 'REST_API_REQUEST' and payload taken from the requ
 
 ## handleRuleEngineRequestForEntityWithQueueAndTimeout
 
-> String handleRuleEngineRequestForEntityWithQueueAndTimeout(entityType, entityId, queueName, timeout, body)
+```
+String handleRuleEngineRequestForEntityWithQueueAndTimeout(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String queueName, @Nonnull Integer timeout, @Nonnull String body)
+```
+
+**POST** `/api/rule-engine/{entityType}/{entityId}/{queueName}/{timeout}`
 
 Push entity message with timeout and specified queue to the rule engine (handleRuleEngineRequestForEntityWithQueueAndTimeout)
 
@@ -57,7 +66,11 @@ Creates the Message with type 'REST_API_REQUEST' and payload taken from the requ
 
 ## handleRuleEngineRequestForEntityWithTimeout
 
-> String handleRuleEngineRequestForEntityWithTimeout(entityType, entityId, timeout, body)
+```
+String handleRuleEngineRequestForEntityWithTimeout(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer timeout, @Nonnull String body)
+```
+
+**POST** `/api/rule-engine/{entityType}/{entityId}/{timeout}`
 
 Push entity message with timeout to the rule engine (handleRuleEngineRequestForEntityWithTimeout)
 
@@ -80,7 +93,11 @@ Creates the Message with type 'REST_API_REQUEST' and payload taken from the requ
 
 ## handleRuleEngineRequestForUser
 
-> String handleRuleEngineRequestForUser(body)
+```
+String handleRuleEngineRequestForUser(@Nonnull String body)
+```
+
+**POST** `/api/rule-engine/`
 
 Push user message to the rule engine (handleRuleEngineRequestForUser)
 

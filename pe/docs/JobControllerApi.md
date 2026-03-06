@@ -1,18 +1,23 @@
 # JobControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**cancelJob**](#cancelJob) | **POST** /api/job/{id}/cancel | Cancel job (cancelJob) |
-| [**deleteJob**](#deleteJob) | **DELETE** /api/job/{id} | deleteJob |
-| [**getJobById**](#getJobById) | **GET** /api/job/{id} | Get job by id (getJobById) |
-| [**getJobs**](#getJobs) | **GET** /api/jobs | Get jobs (getJobs) |
-| [**reprocessJob**](#reprocessJob) | **POST** /api/job/{id}/reprocess | Reprocess job (reprocessJob) |
+`ThingsboardClient` methods:
 
+```
+void cancelJob(@Nonnull UUID id) // Cancel job (cancelJob)
+void deleteJob(@Nonnull UUID id) // deleteJob
+Job getJobById(@Nonnull UUID id) // Get job by id (getJobById)
+PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime) // Get jobs (getJobs)
+void reprocessJob(@Nonnull UUID id) // Reprocess job (reprocessJob)
+```
 
 
 ## cancelJob
 
-> cancelJob(id)
+```
+void cancelJob(@Nonnull UUID id)
+```
+
+**POST** `/api/job/{id}/cancel`
 
 Cancel job (cancelJob)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## deleteJob
 
-> deleteJob(id)
+```
+void deleteJob(@Nonnull UUID id)
+```
+
+**DELETE** `/api/job/{id}`
 
 deleteJob
 
@@ -50,7 +59,11 @@ null (empty response body)
 
 ## getJobById
 
-> Job getJobById(id)
+```
+Job getJobById(@Nonnull UUID id)
+```
+
+**GET** `/api/job/{id}`
 
 Get job by id (getJobById)
 
@@ -70,7 +83,11 @@ Fetches job info by id.  Example of a RUNNING CF_REPROCESSING job response: ```j
 
 ## getJobs
 
-> PageDataJob getJobs(pageSize, page, textSearch, sortProperty, sortOrder, types, statuses, entities, startTime, endTime)
+```
+PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/jobs`
 
 Get jobs (getJobs)
 
@@ -99,7 +116,11 @@ Returns the page of jobs.  You can specify parameters to filter the results. The
 
 ## reprocessJob
 
-> reprocessJob(id)
+```
+void reprocessJob(@Nonnull UUID id)
+```
+
+**POST** `/api/job/{id}/reprocess`
 
 Reprocess job (reprocessJob)
 

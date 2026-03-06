@@ -1,23 +1,28 @@
 # CustomMenuControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**createCustomMenu**](#createCustomMenu) | **POST** /api/customMenu | Create Custom Menu (createCustomMenu) |
-| [**deleteCustomMenu**](#deleteCustomMenu) | **DELETE** /api/customMenu/{customMenuId} | Delete custom menu (deleteCustomMenu) |
-| [**getCustomMenu**](#getCustomMenu) | **GET** /api/customMenu | Get end-user Custom Menu configuration (getCustomMenu) |
-| [**getCustomMenuAssigneeList**](#getCustomMenuAssigneeList) | **GET** /api/customMenu/{customMenuId}/assigneeList | Get Custom Menu assignee list (getCustomMenuAssigneeList) |
-| [**getCustomMenuConfig**](#getCustomMenuConfig) | **GET** /api/customMenu/{customMenuId}/config | Get Custom Menu configuration by id (getCustomMenuConfig) |
-| [**getCustomMenuInfoById**](#getCustomMenuInfoById) | **GET** /api/customMenu/{customMenuId}/info | Get Custom Menu Info (getCustomMenuInfoById) |
-| [**getCustomMenuInfos**](#getCustomMenuInfos) | **GET** /api/customMenu/infos | Get all custom menus configured at user level (getCustomMenuInfos) |
-| [**updateCustomMenuAssigneeList**](#updateCustomMenuAssigneeList) | **PUT** /api/customMenu/{id}/assign/{assigneeType} | Update custom menu assignee list (updateCustomMenuAssigneeList) |
-| [**updateCustomMenuConfig**](#updateCustomMenuConfig) | **PUT** /api/customMenu/{customMenuId}/config | Update Custom Menu configuration based on the provided Custom Menu Id (updateCustomMenuConfig) |
-| [**updateCustomMenuName**](#updateCustomMenuName) | **PUT** /api/customMenu/{customMenuId}/name | Update Custom Menu name based on the provided Custom Menu Id (updateCustomMenuName) |
+`ThingsboardClient` methods:
 
+```
+CustomMenu createCustomMenu(@Nonnull CustomMenuInfo customMenuInfo, @Nullable List<String> assignToList, @Nullable Boolean force) // Create Custom Menu (createCustomMenu)
+CustomMenuDeleteResult deleteCustomMenu(@Nonnull UUID customMenuId, @Nullable Boolean force) // Delete custom menu (deleteCustomMenu)
+void getCustomMenu(@Nullable String ifNoneMatch) // Get end-user Custom Menu configuration (getCustomMenu)
+List<EntityInfo> getCustomMenuAssigneeList(@Nonnull UUID customMenuId) // Get Custom Menu assignee list (getCustomMenuAssigneeList)
+CustomMenuConfig getCustomMenuConfig(@Nonnull UUID customMenuId) // Get Custom Menu configuration by id (getCustomMenuConfig)
+CustomMenuInfo getCustomMenuInfoById(@Nonnull UUID customMenuId) // Get Custom Menu Info (getCustomMenuInfoById)
+PageDataCustomMenuInfo getCustomMenuInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable CMScope scope, @Nullable CMAssigneeType assigneeType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get all custom menus configured at user level (getCustomMenuInfos)
+void updateCustomMenuAssigneeList(@Nonnull UUID id, @Nonnull CMAssigneeType assigneeType, @Nullable Boolean force, @Nullable List<String> requestBody) // Update custom menu assignee list (updateCustomMenuAssigneeList)
+CustomMenu updateCustomMenuConfig(@Nonnull UUID customMenuId, @Nonnull CustomMenuConfig customMenuConfig) // Update Custom Menu configuration based on the provided Custom Menu Id (updateCustomMenuConfig)
+void updateCustomMenuName(@Nonnull UUID customMenuId, @Nonnull String body) // Update Custom Menu name based on the provided Custom Menu Id (updateCustomMenuName)
+```
 
 
 ## createCustomMenu
 
-> CustomMenu createCustomMenu(customMenuInfo, assignToList, force)
+```
+CustomMenu createCustomMenu(@Nonnull CustomMenuInfo customMenuInfo, @Nullable List<String> assignToList, @Nullable Boolean force)
+```
+
+**POST** `/api/customMenu`
 
 Create Custom Menu (createCustomMenu)
 
@@ -39,7 +44,11 @@ The api is designed to create Custom Menu without configuration. Is not applicab
 
 ## deleteCustomMenu
 
-> CustomMenuDeleteResult deleteCustomMenu(customMenuId, force)
+```
+CustomMenuDeleteResult deleteCustomMenu(@Nonnull UUID customMenuId, @Nullable Boolean force)
+```
+
+**DELETE** `/api/customMenu/{customMenuId}`
 
 Delete custom menu (deleteCustomMenu)
 
@@ -60,7 +69,11 @@ Deletes the custom menu based on the provided Custom Menu Id. Referencing non-ex
 
 ## getCustomMenu
 
-> getCustomMenu(ifNoneMatch)
+```
+void getCustomMenu(@Nullable String ifNoneMatch)
+```
+
+**GET** `/api/customMenu`
 
 Get end-user Custom Menu configuration (getCustomMenu)
 
@@ -80,7 +93,11 @@ null (empty response body)
 
 ## getCustomMenuAssigneeList
 
-> List<EntityInfo> getCustomMenuAssigneeList(customMenuId)
+```
+List<EntityInfo> getCustomMenuAssigneeList(@Nonnull UUID customMenuId)
+```
+
+**GET** `/api/customMenu/{customMenuId}/assigneeList`
 
 Get Custom Menu assignee list (getCustomMenuAssigneeList)
 
@@ -100,7 +117,11 @@ Fetch the list of Entity Info objects that represents users or customers, or emp
 
 ## getCustomMenuConfig
 
-> CustomMenuConfig getCustomMenuConfig(customMenuId)
+```
+CustomMenuConfig getCustomMenuConfig(@Nonnull UUID customMenuId)
+```
+
+**GET** `/api/customMenu/{customMenuId}/config`
 
 Get Custom Menu configuration by id (getCustomMenuConfig)
 
@@ -120,7 +141,11 @@ Fetch the Custom Menu configuration based on the provided Custom Menu Id.   Secu
 
 ## getCustomMenuInfoById
 
-> CustomMenuInfo getCustomMenuInfoById(customMenuId)
+```
+CustomMenuInfo getCustomMenuInfoById(@Nonnull UUID customMenuId)
+```
+
+**GET** `/api/customMenu/{customMenuId}/info`
 
 Get Custom Menu Info (getCustomMenuInfoById)
 
@@ -140,7 +165,11 @@ Fetch the Custom Menu Info object based on the provided Custom Menu Id.   Securi
 
 ## getCustomMenuInfos
 
-> PageDataCustomMenuInfo getCustomMenuInfos(pageSize, page, scope, assigneeType, textSearch, sortProperty, sortOrder)
+```
+PageDataCustomMenuInfo getCustomMenuInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable CMScope scope, @Nullable CMAssigneeType assigneeType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customMenu/infos`
 
 Get all custom menus configured at user level (getCustomMenuInfos)
 
@@ -166,7 +195,11 @@ Returns a page of custom menu info objects owned by the tenant or the customer o
 
 ## updateCustomMenuAssigneeList
 
-> updateCustomMenuAssigneeList(id, assigneeType, force, requestBody)
+```
+void updateCustomMenuAssigneeList(@Nonnull UUID id, @Nonnull CMAssigneeType assigneeType, @Nullable Boolean force, @Nullable List<String> requestBody)
+```
+
+**PUT** `/api/customMenu/{id}/assign/{assigneeType}`
 
 Update custom menu assignee list (updateCustomMenuAssigneeList)
 
@@ -189,7 +222,11 @@ null (empty response body)
 
 ## updateCustomMenuConfig
 
-> CustomMenu updateCustomMenuConfig(customMenuId, customMenuConfig)
+```
+CustomMenu updateCustomMenuConfig(@Nonnull UUID customMenuId, @Nonnull CustomMenuConfig customMenuConfig)
+```
+
+**PUT** `/api/customMenu/{customMenuId}/config`
 
 Update Custom Menu configuration based on the provided Custom Menu Id (updateCustomMenuConfig)
 
@@ -210,7 +247,11 @@ Update Custom Menu configuration based on the provided Custom Menu Id (updateCus
 
 ## updateCustomMenuName
 
-> updateCustomMenuName(customMenuId, body)
+```
+void updateCustomMenuName(@Nonnull UUID customMenuId, @Nonnull String body)
+```
+
+**PUT** `/api/customMenu/{customMenuId}/name`
 
 Update Custom Menu name based on the provided Custom Menu Id (updateCustomMenuName)
 

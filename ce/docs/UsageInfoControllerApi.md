@@ -1,14 +1,19 @@
 # UsageInfoControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getTenantUsageInfo**](#getTenantUsageInfo) | **GET** /api/usage | getTenantUsageInfo |
+`ThingsboardClient` methods:
 
+```
+UsageInfo getTenantUsageInfo() // getTenantUsageInfo
+```
 
 
 ## getTenantUsageInfo
 
-> UsageInfo getTenantUsageInfo()
+```
+UsageInfo getTenantUsageInfo()
+```
+
+**GET** `/api/usage`
 
 getTenantUsageInfo
 

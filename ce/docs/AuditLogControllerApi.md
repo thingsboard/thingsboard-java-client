@@ -1,17 +1,22 @@
 # AuditLogControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getAuditLogs**](#getAuditLogs) | **GET** /api/audit/logs | Get all audit logs (getAuditLogs) |
-| [**getAuditLogsByCustomerId**](#getAuditLogsByCustomerId) | **GET** /api/audit/logs/customer/{customerId} | Get audit logs by customer id (getAuditLogsByCustomerId) |
-| [**getAuditLogsByEntityId**](#getAuditLogsByEntityId) | **GET** /api/audit/logs/entity/{entityType}/{entityId} | Get audit logs by entity id (getAuditLogsByEntityId) |
-| [**getAuditLogsByUserId**](#getAuditLogsByUserId) | **GET** /api/audit/logs/user/{userId} | Get audit logs by user id (getAuditLogsByUserId) |
+`ThingsboardClient` methods:
 
+```
+PageDataAuditLog getAuditLogs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes) // Get all audit logs (getAuditLogs)
+PageDataAuditLog getAuditLogsByCustomerId(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes) // Get audit logs by customer id (getAuditLogsByCustomerId)
+PageDataAuditLog getAuditLogsByEntityId(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes) // Get audit logs by entity id (getAuditLogsByEntityId)
+PageDataAuditLog getAuditLogsByUserId(@Nonnull String userId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes) // Get audit logs by user id (getAuditLogsByUserId)
+```
 
 
 ## getAuditLogs
 
-> PageDataAuditLog getAuditLogs(pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime, actionTypes)
+```
+PageDataAuditLog getAuditLogs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes)
+```
+
+**GET** `/api/audit/logs`
 
 Get all audit logs (getAuditLogs)
 
@@ -38,7 +43,11 @@ Returns a page of audit logs related to all entities in the scope of the current
 
 ## getAuditLogsByCustomerId
 
-> PageDataAuditLog getAuditLogsByCustomerId(customerId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime, actionTypes)
+```
+PageDataAuditLog getAuditLogsByCustomerId(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes)
+```
+
+**GET** `/api/audit/logs/customer/{customerId}`
 
 Get audit logs by customer id (getAuditLogsByCustomerId)
 
@@ -66,7 +75,11 @@ Returns a page of audit logs related to the targeted customer entities (devices,
 
 ## getAuditLogsByEntityId
 
-> PageDataAuditLog getAuditLogsByEntityId(entityType, entityId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime, actionTypes)
+```
+PageDataAuditLog getAuditLogsByEntityId(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes)
+```
+
+**GET** `/api/audit/logs/entity/{entityType}/{entityId}`
 
 Get audit logs by entity id (getAuditLogsByEntityId)
 
@@ -95,7 +108,11 @@ Returns a page of audit logs related to the actions on the targeted entity. Basi
 
 ## getAuditLogsByUserId
 
-> PageDataAuditLog getAuditLogsByUserId(userId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime, actionTypes)
+```
+PageDataAuditLog getAuditLogsByUserId(@Nonnull String userId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime, @Nullable String actionTypes)
+```
+
+**GET** `/api/audit/logs/user/{userId}`
 
 Get audit logs by user id (getAuditLogsByUserId)
 

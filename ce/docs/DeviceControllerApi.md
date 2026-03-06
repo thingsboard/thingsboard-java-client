@@ -1,39 +1,44 @@
 # DeviceControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**assignDeviceToCustomer**](#assignDeviceToCustomer) | **POST** /api/customer/{customerId}/device/{deviceId} | Assign device to customer (assignDeviceToCustomer) |
-| [**assignDeviceToEdge**](#assignDeviceToEdge) | **POST** /api/edge/{edgeId}/device/{deviceId} | Assign device to edge (assignDeviceToEdge) |
-| [**assignDeviceToPublicCustomer**](#assignDeviceToPublicCustomer) | **POST** /api/customer/public/device/{deviceId} | Make device publicly available (assignDeviceToPublicCustomer) |
-| [**assignDeviceToTenant**](#assignDeviceToTenant) | **POST** /api/tenant/{tenantId}/device/{deviceId} | Assign device to tenant (assignDeviceToTenant) |
-| [**claimDevice**](#claimDevice) | **POST** /api/customer/device/{deviceName}/claim | Claim device (claimDevice) |
-| [**countByDeviceProfileAndEmptyOtaPackage**](#countByDeviceProfileAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{deviceProfileId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
-| [**deleteDevice**](#deleteDevice) | **DELETE** /api/device/{deviceId} | Delete device (deleteDevice) |
-| [**findDevicesByQuery**](#findDevicesByQuery) | **POST** /api/devices | Find related devices (findDevicesByQuery) |
-| [**getCustomerDeviceInfos**](#getCustomerDeviceInfos) | **GET** /api/customer/{customerId}/deviceInfos | Get Customer Device Infos (getCustomerDeviceInfos) |
-| [**getCustomerDevices**](#getCustomerDevices) | **GET** /api/customer/{customerId}/devices | Get Customer Devices (getCustomerDevices) |
-| [**getDeviceById**](#getDeviceById) | **GET** /api/device/{deviceId} | Get Device (getDeviceById) |
-| [**getDeviceCredentialsByDeviceId**](#getDeviceCredentialsByDeviceId) | **GET** /api/device/{deviceId}/credentials | Get Device Credentials (getDeviceCredentialsByDeviceId) |
-| [**getDeviceInfoById**](#getDeviceInfoById) | **GET** /api/device/info/{deviceId} | Get Device Info (getDeviceInfoById) |
-| [**getDeviceTypes**](#getDeviceTypes) | **GET** /api/device/types | Get Device Types (getDeviceTypes) |
-| [**getDevicesByIds**](#getDevicesByIds) | **GET** /api/devices | Get Devices By Ids (getDevicesByIds) |
-| [**getEdgeDevices**](#getEdgeDevices) | **GET** /api/edge/{edgeId}/devices | Get devices assigned to edge (getEdgeDevices) |
-| [**getTenantDeviceByName**](#getTenantDeviceByName) | **GET** /api/tenant/device | Get Tenant Device (getTenantDeviceByName) |
-| [**getTenantDeviceInfos**](#getTenantDeviceInfos) | **GET** /api/tenant/deviceInfos | Get Tenant Device Infos (getTenantDeviceInfos) |
-| [**getTenantDevices**](#getTenantDevices) | **GET** /api/tenant/devices | Get Tenant Devices (getTenantDevices) |
-| [**processDevicesBulkImport**](#processDevicesBulkImport) | **POST** /api/device/bulk_import | Import the bulk of devices (processDevicesBulkImport) |
-| [**reClaimDevice**](#reClaimDevice) | **DELETE** /api/customer/device/{deviceName}/claim | Reclaim device (reClaimDevice) |
-| [**saveDevice**](#saveDevice) | **POST** /api/device | Create Or Update Device (saveDevice) |
-| [**saveDeviceWithCredentials**](#saveDeviceWithCredentials) | **POST** /api/device-with-credentials | Create Device (saveDevice) with credentials  |
-| [**unassignDeviceFromCustomer**](#unassignDeviceFromCustomer) | **DELETE** /api/customer/device/{deviceId} | Unassign device from customer (unassignDeviceFromCustomer) |
-| [**unassignDeviceFromEdge**](#unassignDeviceFromEdge) | **DELETE** /api/edge/{edgeId}/device/{deviceId} | Unassign device from edge (unassignDeviceFromEdge) |
-| [**updateDeviceCredentials**](#updateDeviceCredentials) | **POST** /api/device/credentials | Update device credentials (updateDeviceCredentials) |
+`ThingsboardClient` methods:
 
+```
+Device assignDeviceToCustomer(@Nonnull String customerId, @Nonnull String deviceId) // Assign device to customer (assignDeviceToCustomer)
+Device assignDeviceToEdge(@Nonnull String edgeId, @Nonnull String deviceId) // Assign device to edge (assignDeviceToEdge)
+Device assignDeviceToPublicCustomer(@Nonnull String deviceId) // Make device publicly available (assignDeviceToPublicCustomer)
+Device assignDeviceToTenant(@Nonnull String tenantId, @Nonnull String deviceId) // Assign device to tenant (assignDeviceToTenant)
+String claimDevice(@Nonnull String deviceName, @Nullable ClaimRequest claimRequest) // Claim device (claimDevice)
+Long countByDeviceProfileAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String deviceProfileId) // Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
+void deleteDevice(@Nonnull String deviceId) // Delete device (deleteDevice)
+List<Device> findDevicesByQuery(@Nonnull DeviceSearchQuery deviceSearchQuery) // Find related devices (findDevicesByQuery)
+PageDataDeviceInfo getCustomerDeviceInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Device Infos (getCustomerDeviceInfos)
+PageDataDevice getCustomerDevices(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Devices (getCustomerDevices)
+Device getDeviceById(@Nonnull String deviceId) // Get Device (getDeviceById)
+DeviceCredentials getDeviceCredentialsByDeviceId(@Nonnull String deviceId) // Get Device Credentials (getDeviceCredentialsByDeviceId)
+DeviceInfo getDeviceInfoById(@Nonnull String deviceId) // Get Device Info (getDeviceInfoById)
+List<EntitySubtype> getDeviceTypes() // Get Device Types (getDeviceTypes)
+List<Device> getDevicesByIds(@Nonnull List<String> deviceIds) // Get Devices By Ids (getDevicesByIds)
+PageDataDeviceInfo getEdgeDevices(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get devices assigned to edge (getEdgeDevices)
+Device getTenantDeviceByName(@Nonnull String deviceName) // Get Tenant Device (getTenantDeviceByName)
+PageDataDeviceInfo getTenantDeviceInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Device Infos (getTenantDeviceInfos)
+PageDataDevice getTenantDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Devices (getTenantDevices)
+BulkImportResultDevice processDevicesBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of devices (processDevicesBulkImport)
+String reClaimDevice(@Nonnull String deviceName) // Reclaim device (reClaimDevice)
+Device saveDevice(@Nonnull Device device, @Nullable String accessToken, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Device (saveDevice)
+Device saveDeviceWithCredentials(@Nonnull SaveDeviceWithCredentialsRequest saveDeviceWithCredentialsRequest, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Device (saveDevice) with credentials 
+Device unassignDeviceFromCustomer(@Nonnull String deviceId) // Unassign device from customer (unassignDeviceFromCustomer)
+Device unassignDeviceFromEdge(@Nonnull String edgeId, @Nonnull String deviceId) // Unassign device from edge (unassignDeviceFromEdge)
+DeviceCredentials updateDeviceCredentials(@Nonnull DeviceCredentials deviceCredentials) // Update device credentials (updateDeviceCredentials)
+```
 
 
 ## assignDeviceToCustomer
 
-> Device assignDeviceToCustomer(customerId, deviceId)
+```
+Device assignDeviceToCustomer(@Nonnull String customerId, @Nonnull String deviceId)
+```
+
+**POST** `/api/customer/{customerId}/device/{deviceId}`
 
 Assign device to customer (assignDeviceToCustomer)
 
@@ -54,7 +59,11 @@ Creates assignment of the device to customer. Customer will be able to query dev
 
 ## assignDeviceToEdge
 
-> Device assignDeviceToEdge(edgeId, deviceId)
+```
+Device assignDeviceToEdge(@Nonnull String edgeId, @Nonnull String deviceId)
+```
+
+**POST** `/api/edge/{edgeId}/device/{deviceId}`
 
 Assign device to edge (assignDeviceToEdge)
 
@@ -75,7 +84,11 @@ Creates assignment of an existing device to an instance of The Edge. Assignment 
 
 ## assignDeviceToPublicCustomer
 
-> Device assignDeviceToPublicCustomer(deviceId)
+```
+Device assignDeviceToPublicCustomer(@Nonnull String deviceId)
+```
+
+**POST** `/api/customer/public/device/{deviceId}`
 
 Make device publicly available (assignDeviceToPublicCustomer)
 
@@ -95,7 +108,11 @@ Device will be available for non-authorized (not logged-in) users. This is usefu
 
 ## assignDeviceToTenant
 
-> Device assignDeviceToTenant(tenantId, deviceId)
+```
+Device assignDeviceToTenant(@Nonnull String tenantId, @Nonnull String deviceId)
+```
+
+**POST** `/api/tenant/{tenantId}/device/{deviceId}`
 
 Assign device to tenant (assignDeviceToTenant)
 
@@ -116,7 +133,11 @@ Creates assignment of the device to tenant. Thereafter tenant will be able to re
 
 ## claimDevice
 
-> String claimDevice(deviceName, claimRequest)
+```
+String claimDevice(@Nonnull String deviceName, @Nullable ClaimRequest claimRequest)
+```
+
+**POST** `/api/customer/device/{deviceName}/claim`
 
 Claim device (claimDevice)
 
@@ -137,7 +158,11 @@ Claiming makes it possible to assign a device to the specific customer using dev
 
 ## countByDeviceProfileAndEmptyOtaPackage
 
-> Long countByDeviceProfileAndEmptyOtaPackage(otaPackageType, deviceProfileId)
+```
+Long countByDeviceProfileAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String deviceProfileId)
+```
+
+**GET** `/api/devices/count/{otaPackageType}/{deviceProfileId}`
 
 Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
 
@@ -158,7 +183,11 @@ The platform gives an ability to load OTA (over-the-air) packages to devices. It
 
 ## deleteDevice
 
-> deleteDevice(deviceId)
+```
+void deleteDevice(@Nonnull String deviceId)
+```
+
+**DELETE** `/api/device/{deviceId}`
 
 Delete device (deleteDevice)
 
@@ -178,7 +207,11 @@ null (empty response body)
 
 ## findDevicesByQuery
 
-> List<Device> findDevicesByQuery(deviceSearchQuery)
+```
+List<Device> findDevicesByQuery(@Nonnull DeviceSearchQuery deviceSearchQuery)
+```
+
+**POST** `/api/devices`
 
 Find related devices (findDevicesByQuery)
 
@@ -198,7 +231,11 @@ Returns all devices that are related to the specific entity. The entity id, rela
 
 ## getCustomerDeviceInfos
 
-> PageDataDeviceInfo getCustomerDeviceInfos(customerId, pageSize, page, type, deviceProfileId, active, textSearch, sortProperty, sortOrder)
+```
+PageDataDeviceInfo getCustomerDeviceInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/deviceInfos`
 
 Get Customer Device Infos (getCustomerDeviceInfos)
 
@@ -226,7 +263,11 @@ Returns a page of devices info objects assigned to customer. You can specify par
 
 ## getCustomerDevices
 
-> PageDataDevice getCustomerDevices(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataDevice getCustomerDevices(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/devices`
 
 Get Customer Devices (getCustomerDevices)
 
@@ -252,7 +293,11 @@ Returns a page of devices objects assigned to customer. You can specify paramete
 
 ## getDeviceById
 
-> Device getDeviceById(deviceId)
+```
+Device getDeviceById(@Nonnull String deviceId)
+```
+
+**GET** `/api/device/{deviceId}`
 
 Get Device (getDeviceById)
 
@@ -272,7 +317,11 @@ Fetch the Device object based on the provided Device Id. If the user has the aut
 
 ## getDeviceCredentialsByDeviceId
 
-> DeviceCredentials getDeviceCredentialsByDeviceId(deviceId)
+```
+DeviceCredentials getDeviceCredentialsByDeviceId(@Nonnull String deviceId)
+```
+
+**GET** `/api/device/{deviceId}/credentials`
 
 Get Device Credentials (getDeviceCredentialsByDeviceId)
 
@@ -292,7 +341,11 @@ If during device creation there wasn't specified any credentials, platform gener
 
 ## getDeviceInfoById
 
-> DeviceInfo getDeviceInfoById(deviceId)
+```
+DeviceInfo getDeviceInfoById(@Nonnull String deviceId)
+```
+
+**GET** `/api/device/info/{deviceId}`
 
 Get Device Info (getDeviceInfoById)
 
@@ -312,7 +365,11 @@ Fetch the Device Info object based on the provided Device Id. If the user has th
 
 ## getDeviceTypes
 
-> List<EntitySubtype> getDeviceTypes()
+```
+List<EntitySubtype> getDeviceTypes()
+```
+
+**GET** `/api/device/types`
 
 Get Device Types (getDeviceTypes)
 
@@ -325,7 +382,11 @@ Deprecated. See 'getDeviceProfileNames' API from Device Profile Controller inste
 
 ## getDevicesByIds
 
-> List<Device> getDevicesByIds(deviceIds)
+```
+List<Device> getDevicesByIds(@Nonnull List<String> deviceIds)
+```
+
+**GET** `/api/devices`
 
 Get Devices By Ids (getDevicesByIds)
 
@@ -345,7 +406,11 @@ Requested devices must be owned by tenant or assigned to customer which user is 
 
 ## getEdgeDevices
 
-> PageDataDeviceInfo getEdgeDevices(edgeId, pageSize, page, type, deviceProfileId, active, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataDeviceInfo getEdgeDevices(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/edge/{edgeId}/devices`
 
 Get devices assigned to edge (getEdgeDevices)
 
@@ -375,7 +440,11 @@ Returns a page of devices assigned to edge. You can specify parameters to filter
 
 ## getTenantDeviceByName
 
-> Device getTenantDeviceByName(deviceName)
+```
+Device getTenantDeviceByName(@Nonnull String deviceName)
+```
+
+**GET** `/api/tenant/device`
 
 Get Tenant Device (getTenantDeviceByName)
 
@@ -395,7 +464,11 @@ Requested device must be owned by tenant that the user belongs to. Device name i
 
 ## getTenantDeviceInfos
 
-> PageDataDeviceInfo getTenantDeviceInfos(pageSize, page, type, deviceProfileId, active, textSearch, sortProperty, sortOrder)
+```
+PageDataDeviceInfo getTenantDeviceInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/deviceInfos`
 
 Get Tenant Device Infos (getTenantDeviceInfos)
 
@@ -422,7 +495,11 @@ Returns a page of devices info objects owned by tenant. You can specify paramete
 
 ## getTenantDevices
 
-> PageDataDevice getTenantDevices(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataDevice getTenantDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/devices`
 
 Get Tenant Devices (getTenantDevices)
 
@@ -447,7 +524,11 @@ Returns a page of devices owned by tenant. You can specify parameters to filter 
 
 ## processDevicesBulkImport
 
-> BulkImportResultDevice processDevicesBulkImport(bulkImportRequest)
+```
+BulkImportResultDevice processDevicesBulkImport(@Nonnull BulkImportRequest bulkImportRequest)
+```
+
+**POST** `/api/device/bulk_import`
 
 Import the bulk of devices (processDevicesBulkImport)
 
@@ -467,7 +548,11 @@ There's an ability to import the bulk of devices using the only .csv file.  Avai
 
 ## reClaimDevice
 
-> String reClaimDevice(deviceName)
+```
+String reClaimDevice(@Nonnull String deviceName)
+```
+
+**DELETE** `/api/customer/device/{deviceName}/claim`
 
 Reclaim device (reClaimDevice)
 
@@ -487,7 +572,11 @@ Reclaiming means the device will be unassigned from the customer and the device 
 
 ## saveDevice
 
-> Device saveDevice(device, accessToken, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Device saveDevice(@Nonnull Device device, @Nullable String accessToken, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/device`
 
 Create Or Update Device (saveDevice)
 
@@ -511,7 +600,11 @@ Create or update the Device. When creating device, platform generates Device Id 
 
 ## saveDeviceWithCredentials
 
-> Device saveDeviceWithCredentials(saveDeviceWithCredentialsRequest, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Device saveDeviceWithCredentials(@Nonnull SaveDeviceWithCredentialsRequest saveDeviceWithCredentialsRequest, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/device-with-credentials`
 
 Create Device (saveDevice) with credentials 
 
@@ -534,7 +627,11 @@ Create or update the Device. When creating device, platform generates Device Id 
 
 ## unassignDeviceFromCustomer
 
-> Device unassignDeviceFromCustomer(deviceId)
+```
+Device unassignDeviceFromCustomer(@Nonnull String deviceId)
+```
+
+**DELETE** `/api/customer/device/{deviceId}`
 
 Unassign device from customer (unassignDeviceFromCustomer)
 
@@ -554,7 +651,11 @@ Clears assignment of the device to customer. Customer will not be able to query 
 
 ## unassignDeviceFromEdge
 
-> Device unassignDeviceFromEdge(edgeId, deviceId)
+```
+Device unassignDeviceFromEdge(@Nonnull String edgeId, @Nonnull String deviceId)
+```
+
+**DELETE** `/api/edge/{edgeId}/device/{deviceId}`
 
 Unassign device from edge (unassignDeviceFromEdge)
 
@@ -575,7 +676,11 @@ Clears assignment of the device to the edge. Unassignment works in async way - f
 
 ## updateDeviceCredentials
 
-> DeviceCredentials updateDeviceCredentials(deviceCredentials)
+```
+DeviceCredentials updateDeviceCredentials(@Nonnull DeviceCredentials deviceCredentials)
+```
+
+**POST** `/api/device/credentials`
 
 Update device credentials (updateDeviceCredentials)
 

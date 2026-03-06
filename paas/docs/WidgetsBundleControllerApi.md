@@ -1,21 +1,26 @@
 # WidgetsBundleControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteWidgetsBundle**](#deleteWidgetsBundle) | **DELETE** /api/widgetsBundle/{widgetsBundleId} | Delete widgets bundle (deleteWidgetsBundle) |
-| [**getAllWidgetsBundles**](#getAllWidgetsBundles) | **GET** /api/widgetsBundles/all | Get all Widget Bundles (getAllWidgetsBundles) |
-| [**getWidgetsBundleById**](#getWidgetsBundleById) | **GET** /api/widgetsBundle/{widgetsBundleId} | Get Widget Bundle (getWidgetsBundleById) |
-| [**getWidgetsBundles**](#getWidgetsBundles) | **GET** /api/widgetsBundles | Get Widget Bundles (getWidgetsBundles) |
-| [**getWidgetsBundlesList**](#getWidgetsBundlesList) | **GET** /api/widgetsBundles/list | Get Widgets Bundles By Ids (getWidgetsBundlesList) |
-| [**saveWidgetsBundle**](#saveWidgetsBundle) | **POST** /api/widgetsBundle | Create Or Update Widget Bundle (saveWidgetsBundle) |
-| [**updateWidgetsBundleWidgetFqns**](#updateWidgetsBundleWidgetFqns) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypeFqns | Update widgets bundle widgets list from widget type FQNs list (updateWidgetsBundleWidgetFqns) |
-| [**updateWidgetsBundleWidgetTypes**](#updateWidgetsBundleWidgetTypes) | **POST** /api/widgetsBundle/{widgetsBundleId}/widgetTypes | Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes) |
+`ThingsboardClient` methods:
 
+```
+void deleteWidgetsBundle(@Nonnull String widgetsBundleId) // Delete widgets bundle (deleteWidgetsBundle)
+List<WidgetsBundle> getAllWidgetsBundles() // Get all Widget Bundles (getAllWidgetsBundles)
+WidgetsBundle getWidgetsBundleById(@Nonnull String widgetsBundleId, @Nullable Boolean inlineImages) // Get Widget Bundle (getWidgetsBundleById)
+PageDataWidgetsBundle getWidgetsBundles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean tenantOnly, @Nullable Boolean fullSearch, @Nullable Boolean scadaFirst) // Get Widget Bundles (getWidgetsBundles)
+List<WidgetsBundle> getWidgetsBundlesList(@Nonnull List<String> widgetsBundleIds) // Get Widgets Bundles By Ids (getWidgetsBundlesList)
+WidgetsBundle saveWidgetsBundle(@Nonnull WidgetsBundle widgetsBundle) // Create Or Update Widget Bundle (saveWidgetsBundle)
+void updateWidgetsBundleWidgetFqns(@Nonnull String widgetsBundleId, @Nonnull List<String> requestBody) // Update widgets bundle widgets list from widget type FQNs list (updateWidgetsBundleWidgetFqns)
+void updateWidgetsBundleWidgetTypes(@Nonnull String widgetsBundleId, @Nonnull List<String> requestBody) // Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes)
+```
 
 
 ## deleteWidgetsBundle
 
-> deleteWidgetsBundle(widgetsBundleId)
+```
+void deleteWidgetsBundle(@Nonnull String widgetsBundleId)
+```
+
+**DELETE** `/api/widgetsBundle/{widgetsBundleId}`
 
 Delete widgets bundle (deleteWidgetsBundle)
 
@@ -35,7 +40,11 @@ null (empty response body)
 
 ## getAllWidgetsBundles
 
-> List<WidgetsBundle> getAllWidgetsBundles()
+```
+List<WidgetsBundle> getAllWidgetsBundles()
+```
+
+**GET** `/api/widgetsBundles/all`
 
 Get all Widget Bundles (getAllWidgetsBundles)
 
@@ -48,7 +57,11 @@ Returns an array of Widget Bundle objects that are available for current user.Wi
 
 ## getWidgetsBundleById
 
-> WidgetsBundle getWidgetsBundleById(widgetsBundleId, inlineImages)
+```
+WidgetsBundle getWidgetsBundleById(@Nonnull String widgetsBundleId, @Nullable Boolean inlineImages)
+```
+
+**GET** `/api/widgetsBundle/{widgetsBundleId}`
 
 Get Widget Bundle (getWidgetsBundleById)
 
@@ -69,7 +82,11 @@ Get the Widget Bundle based on the provided Widget Bundle Id. Widget Bundle repr
 
 ## getWidgetsBundles
 
-> PageDataWidgetsBundle getWidgetsBundles(pageSize, page, textSearch, sortProperty, sortOrder, tenantOnly, fullSearch, scadaFirst)
+```
+PageDataWidgetsBundle getWidgetsBundles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean tenantOnly, @Nullable Boolean fullSearch, @Nullable Boolean scadaFirst)
+```
+
+**GET** `/api/widgetsBundles`
 
 Get Widget Bundles (getWidgetsBundles)
 
@@ -96,7 +113,11 @@ Returns a page of Widget Bundle objects available for current user. Widget Bundl
 
 ## getWidgetsBundlesList
 
-> List<WidgetsBundle> getWidgetsBundlesList(widgetsBundleIds)
+```
+List<WidgetsBundle> getWidgetsBundlesList(@Nonnull List<String> widgetsBundleIds)
+```
+
+**GET** `/api/widgetsBundles/list`
 
 Get Widgets Bundles By Ids (getWidgetsBundlesList)
 
@@ -116,7 +137,11 @@ Requested widgets bundles must be system level or owned by tenant of the user wh
 
 ## saveWidgetsBundle
 
-> WidgetsBundle saveWidgetsBundle(widgetsBundle)
+```
+WidgetsBundle saveWidgetsBundle(@Nonnull WidgetsBundle widgetsBundle)
+```
+
+**POST** `/api/widgetsBundle`
 
 Create Or Update Widget Bundle (saveWidgetsBundle)
 
@@ -136,7 +161,11 @@ Create or update the Widget Bundle. Widget Bundle represents a group(bundle) of 
 
 ## updateWidgetsBundleWidgetFqns
 
-> updateWidgetsBundleWidgetFqns(widgetsBundleId, requestBody)
+```
+void updateWidgetsBundleWidgetFqns(@Nonnull String widgetsBundleId, @Nonnull List<String> requestBody)
+```
+
+**POST** `/api/widgetsBundle/{widgetsBundleId}/widgetTypeFqns`
 
 Update widgets bundle widgets list from widget type FQNs list (updateWidgetsBundleWidgetFqns)
 
@@ -157,7 +186,11 @@ null (empty response body)
 
 ## updateWidgetsBundleWidgetTypes
 
-> updateWidgetsBundleWidgetTypes(widgetsBundleId, requestBody)
+```
+void updateWidgetsBundleWidgetTypes(@Nonnull String widgetsBundleId, @Nonnull List<String> requestBody)
+```
+
+**POST** `/api/widgetsBundle/{widgetsBundleId}/widgetTypes`
 
 Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes)
 

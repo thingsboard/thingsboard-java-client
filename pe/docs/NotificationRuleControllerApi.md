@@ -1,17 +1,22 @@
 # NotificationRuleControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteNotificationRule**](#deleteNotificationRule) | **DELETE** /api/notification/rule/{id} | Delete notification rule (deleteNotificationRule) |
-| [**getNotificationRuleById**](#getNotificationRuleById) | **GET** /api/notification/rule/{id} | Get notification rule by id (getNotificationRuleById) |
-| [**getNotificationRules**](#getNotificationRules) | **GET** /api/notification/rules | Get notification rules (getNotificationRules) |
-| [**saveNotificationRule**](#saveNotificationRule) | **POST** /api/notification/rule | Save notification rule (saveNotificationRule) |
+`ThingsboardClient` methods:
 
+```
+void deleteNotificationRule(@Nonnull UUID id) // Delete notification rule (deleteNotificationRule)
+NotificationRuleInfo getNotificationRuleById(@Nonnull UUID id) // Get notification rule by id (getNotificationRuleById)
+PageDataNotificationRuleInfo getNotificationRules(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get notification rules (getNotificationRules)
+NotificationRule saveNotificationRule(@Nonnull NotificationRule notificationRule) // Save notification rule (saveNotificationRule)
+```
 
 
 ## deleteNotificationRule
 
-> deleteNotificationRule(id)
+```
+void deleteNotificationRule(@Nonnull UUID id)
+```
+
+**DELETE** `/api/notification/rule/{id}`
 
 Delete notification rule (deleteNotificationRule)
 
@@ -31,7 +36,11 @@ null (empty response body)
 
 ## getNotificationRuleById
 
-> NotificationRuleInfo getNotificationRuleById(id)
+```
+NotificationRuleInfo getNotificationRuleById(@Nonnull UUID id)
+```
+
+**GET** `/api/notification/rule/{id}`
 
 Get notification rule by id (getNotificationRuleById)
 
@@ -51,7 +60,11 @@ Fetches notification rule info by rule's id. In addition to regular notification
 
 ## getNotificationRules
 
-> PageDataNotificationRuleInfo getNotificationRules(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataNotificationRuleInfo getNotificationRules(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/notification/rules`
 
 Get notification rules (getNotificationRules)
 
@@ -75,7 +88,11 @@ Returns the page of notification rules.  You can specify parameters to filter th
 
 ## saveNotificationRule
 
-> NotificationRule saveNotificationRule(notificationRule)
+```
+NotificationRule saveNotificationRule(@Nonnull NotificationRule notificationRule)
+```
+
+**POST** `/api/notification/rule`
 
 Save notification rule (saveNotificationRule)
 

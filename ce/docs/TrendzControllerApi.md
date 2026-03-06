@@ -1,15 +1,20 @@
 # TrendzControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getTrendzSettings**](#getTrendzSettings) | **GET** /api/trendz/settings | Get Trendz Settings (getTrendzSettings) |
-| [**saveTrendzSettings**](#saveTrendzSettings) | **POST** /api/trendz/settings | Save Trendz settings (saveTrendzSettings) |
+`ThingsboardClient` methods:
 
+```
+TrendzSettings getTrendzSettings() // Get Trendz Settings (getTrendzSettings)
+TrendzSettings saveTrendzSettings(@Nonnull TrendzSettings trendzSettings) // Save Trendz settings (saveTrendzSettings)
+```
 
 
 ## getTrendzSettings
 
-> TrendzSettings getTrendzSettings()
+```
+TrendzSettings getTrendzSettings()
+```
+
+**GET** `/api/trendz/settings`
 
 Get Trendz Settings (getTrendzSettings)
 
@@ -22,7 +27,11 @@ Retrieves Trendz settings for this tenant.  Available for users with 'TENANT_ADM
 
 ## saveTrendzSettings
 
-> TrendzSettings saveTrendzSettings(trendzSettings)
+```
+TrendzSettings saveTrendzSettings(@Nonnull TrendzSettings trendzSettings)
+```
+
+**POST** `/api/trendz/settings`
 
 Save Trendz settings (saveTrendzSettings)
 

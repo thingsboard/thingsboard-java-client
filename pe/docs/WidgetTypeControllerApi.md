@@ -1,23 +1,28 @@
 # WidgetTypeControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteWidgetType**](#deleteWidgetType) | **DELETE** /api/widgetType/{widgetTypeId} | Delete widget type (deleteWidgetType) |
-| [**getBundleWidgetTypeFqns**](#getBundleWidgetTypeFqns) | **GET** /api/widgetTypeFqns | Get all Widget type fqns for specified Bundle (getBundleWidgetTypeFqns) |
-| [**getBundleWidgetTypes**](#getBundleWidgetTypes) | **GET** /api/widgetsBundle/{widgetsBundleId}/widgetTypes | Get all Widget types for specified Bundle (getBundleWidgetTypes) |
-| [**getBundleWidgetTypesDetails**](#getBundleWidgetTypesDetails) | **GET** /api/widgetTypesDetails | Get all Widget types details for specified Bundle (getBundleWidgetTypesDetails) |
-| [**getBundleWidgetTypesInfos**](#getBundleWidgetTypesInfos) | **GET** /api/widgetTypesInfos | Get Widget Type Info objects (getBundleWidgetTypesInfos) |
-| [**getWidgetType**](#getWidgetType) | **GET** /api/widgetType | Get Widget Type (getWidgetType) |
-| [**getWidgetTypeById**](#getWidgetTypeById) | **GET** /api/widgetType/{widgetTypeId} | Get Widget Type Details (getWidgetTypeById) |
-| [**getWidgetTypeInfoById**](#getWidgetTypeInfoById) | **GET** /api/widgetTypeInfo/{widgetTypeId} | Get Widget Type Info (getWidgetTypeInfoById) |
-| [**getWidgetTypes**](#getWidgetTypes) | **GET** /api/widgetTypes | Get Widget Types (getWidgetTypes) |
-| [**saveWidgetType**](#saveWidgetType) | **POST** /api/widgetType | Create Or Update Widget Type (saveWidgetType) |
+`ThingsboardClient` methods:
 
+```
+void deleteWidgetType(@Nonnull String widgetTypeId) // Delete widget type (deleteWidgetType)
+List<String> getBundleWidgetTypeFqns(@Nonnull String widgetsBundleId) // Get all Widget type fqns for specified Bundle (getBundleWidgetTypeFqns)
+List<WidgetType> getBundleWidgetTypes(@Nonnull String widgetsBundleId) // Get all Widget types for specified Bundle (getBundleWidgetTypes)
+List<WidgetTypeDetails> getBundleWidgetTypesDetails(@Nonnull String widgetsBundleId, @Nullable Boolean includeResources) // Get all Widget types details for specified Bundle (getBundleWidgetTypesDetails)
+PageDataWidgetTypeInfo getBundleWidgetTypesInfos(@Nonnull String widgetsBundleId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean fullSearch, @Nullable String deprecatedFilter, @Nullable List<String> widgetTypeList) // Get Widget Type Info objects (getBundleWidgetTypesInfos)
+WidgetType getWidgetType(@Nonnull String fqn) // Get Widget Type (getWidgetType)
+WidgetTypeDetails getWidgetTypeById(@Nonnull String widgetTypeId, @Nullable Boolean includeResources) // Get Widget Type Details (getWidgetTypeById)
+WidgetTypeInfo getWidgetTypeInfoById(@Nonnull String widgetTypeId) // Get Widget Type Info (getWidgetTypeInfoById)
+PageDataWidgetTypeInfo getWidgetTypes(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean tenantOnly, @Nullable Boolean fullSearch, @Nullable String deprecatedFilter, @Nullable List<String> widgetTypeList, @Nullable Boolean scadaFirst) // Get Widget Types (getWidgetTypes)
+WidgetTypeDetails saveWidgetType(@Nonnull WidgetTypeDetails widgetTypeDetails, @Nullable Boolean updateExistingByFqn) // Create Or Update Widget Type (saveWidgetType)
+```
 
 
 ## deleteWidgetType
 
-> deleteWidgetType(widgetTypeId)
+```
+void deleteWidgetType(@Nonnull String widgetTypeId)
+```
+
+**DELETE** `/api/widgetType/{widgetTypeId}`
 
 Delete widget type (deleteWidgetType)
 
@@ -37,7 +42,11 @@ null (empty response body)
 
 ## getBundleWidgetTypeFqns
 
-> List<String> getBundleWidgetTypeFqns(widgetsBundleId)
+```
+List<String> getBundleWidgetTypeFqns(@Nonnull String widgetsBundleId)
+```
+
+**GET** `/api/widgetTypeFqns`
 
 Get all Widget type fqns for specified Bundle (getBundleWidgetTypeFqns)
 
@@ -57,7 +66,11 @@ Returns an array of Widget Type fqns that belong to specified Widget Bundle.  Av
 
 ## getBundleWidgetTypes
 
-> List<WidgetType> getBundleWidgetTypes(widgetsBundleId)
+```
+List<WidgetType> getBundleWidgetTypes(@Nonnull String widgetsBundleId)
+```
+
+**GET** `/api/widgetsBundle/{widgetsBundleId}/widgetTypes`
 
 Get all Widget types for specified Bundle (getBundleWidgetTypes)
 
@@ -77,7 +90,11 @@ Returns an array of Widget Type objects that belong to specified Widget Bundle.W
 
 ## getBundleWidgetTypesDetails
 
-> List<WidgetTypeDetails> getBundleWidgetTypesDetails(widgetsBundleId, includeResources)
+```
+List<WidgetTypeDetails> getBundleWidgetTypesDetails(@Nonnull String widgetsBundleId, @Nullable Boolean includeResources)
+```
+
+**GET** `/api/widgetTypesDetails`
 
 Get all Widget types details for specified Bundle (getBundleWidgetTypesDetails)
 
@@ -98,7 +115,11 @@ Returns an array of Widget Type Details objects that belong to specified Widget 
 
 ## getBundleWidgetTypesInfos
 
-> PageDataWidgetTypeInfo getBundleWidgetTypesInfos(widgetsBundleId, pageSize, page, textSearch, sortProperty, sortOrder, fullSearch, deprecatedFilter, widgetTypeList)
+```
+PageDataWidgetTypeInfo getBundleWidgetTypesInfos(@Nonnull String widgetsBundleId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean fullSearch, @Nullable String deprecatedFilter, @Nullable List<String> widgetTypeList)
+```
+
+**GET** `/api/widgetTypesInfos`
 
 Get Widget Type Info objects (getBundleWidgetTypesInfos)
 
@@ -126,7 +147,11 @@ Get the Widget Type Info objects based on the provided parameters. Widget Type I
 
 ## getWidgetType
 
-> WidgetType getWidgetType(fqn)
+```
+WidgetType getWidgetType(@Nonnull String fqn)
+```
+
+**GET** `/api/widgetType`
 
 Get Widget Type (getWidgetType)
 
@@ -146,7 +171,11 @@ Get the Widget Type by FQN. Widget Type represents the template for widget creat
 
 ## getWidgetTypeById
 
-> WidgetTypeDetails getWidgetTypeById(widgetTypeId, includeResources)
+```
+WidgetTypeDetails getWidgetTypeById(@Nonnull String widgetTypeId, @Nullable Boolean includeResources)
+```
+
+**GET** `/api/widgetType/{widgetTypeId}`
 
 Get Widget Type Details (getWidgetTypeById)
 
@@ -167,7 +196,11 @@ Get the Widget Type Details based on the provided Widget Type Id. Widget Type De
 
 ## getWidgetTypeInfoById
 
-> WidgetTypeInfo getWidgetTypeInfoById(widgetTypeId)
+```
+WidgetTypeInfo getWidgetTypeInfoById(@Nonnull String widgetTypeId)
+```
+
+**GET** `/api/widgetTypeInfo/{widgetTypeId}`
 
 Get Widget Type Info (getWidgetTypeInfoById)
 
@@ -187,7 +220,11 @@ Get the Widget Type Info based on the provided Widget Type Id. Widget Type Detai
 
 ## getWidgetTypes
 
-> PageDataWidgetTypeInfo getWidgetTypes(pageSize, page, textSearch, sortProperty, sortOrder, tenantOnly, fullSearch, deprecatedFilter, widgetTypeList, scadaFirst)
+```
+PageDataWidgetTypeInfo getWidgetTypes(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean tenantOnly, @Nullable Boolean fullSearch, @Nullable String deprecatedFilter, @Nullable List<String> widgetTypeList, @Nullable Boolean scadaFirst)
+```
+
+**GET** `/api/widgetTypes`
 
 Get Widget Types (getWidgetTypes)
 
@@ -216,7 +253,11 @@ Returns a page of Widget Type objects available for current user. Widget Type re
 
 ## saveWidgetType
 
-> WidgetTypeDetails saveWidgetType(widgetTypeDetails, updateExistingByFqn)
+```
+WidgetTypeDetails saveWidgetType(@Nonnull WidgetTypeDetails widgetTypeDetails, @Nullable Boolean updateExistingByFqn)
+```
+
+**POST** `/api/widgetType`
 
 Create Or Update Widget Type (saveWidgetType)
 

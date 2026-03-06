@@ -1,15 +1,20 @@
 # Lwm2mControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getLwm2mBootstrapSecurityInfo**](#getLwm2mBootstrapSecurityInfo) | **GET** /api/lwm2m/deviceProfile/bootstrap/{isBootstrapServer} | Get Lwm2m Bootstrap SecurityInfo (getLwm2mBootstrapSecurityInfo) |
-| [**saveLwm2mDeviceWithCredentials**](#saveLwm2mDeviceWithCredentials) | **POST** /api/lwm2m/device-credentials | Save LwM2M device with credentials (saveLwm2mDeviceWithCredentials) |
+`ThingsboardClient` methods:
 
+```
+LwM2MServerSecurityConfigDefault getLwm2mBootstrapSecurityInfo(@Nonnull Boolean isBootstrapServer) // Get Lwm2m Bootstrap SecurityInfo (getLwm2mBootstrapSecurityInfo)
+Device saveLwm2mDeviceWithCredentials(@Nonnull Map<String, Object> requestBody, @Nullable String entityGroupId) // Save LwM2M device with credentials (saveLwm2mDeviceWithCredentials)
+```
 
 
 ## getLwm2mBootstrapSecurityInfo
 
-> LwM2MServerSecurityConfigDefault getLwm2mBootstrapSecurityInfo(isBootstrapServer)
+```
+LwM2MServerSecurityConfigDefault getLwm2mBootstrapSecurityInfo(@Nonnull Boolean isBootstrapServer)
+```
+
+**GET** `/api/lwm2m/deviceProfile/bootstrap/{isBootstrapServer}`
 
 Get Lwm2m Bootstrap SecurityInfo (getLwm2mBootstrapSecurityInfo)
 
@@ -29,7 +34,11 @@ Get the Lwm2m Bootstrap SecurityInfo object (of the current server) based on the
 
 ## saveLwm2mDeviceWithCredentials
 
-> Device saveLwm2mDeviceWithCredentials(requestBody, entityGroupId)
+```
+Device saveLwm2mDeviceWithCredentials(@Nonnull Map<String, Object> requestBody, @Nullable String entityGroupId)
+```
+
+**POST** `/api/lwm2m/device-credentials`
 
 Save LwM2M device with credentials (saveLwm2mDeviceWithCredentials)
 

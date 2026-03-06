@@ -1,18 +1,23 @@
 # NotificationTemplateControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteNotificationTemplateById**](#deleteNotificationTemplateById) | **DELETE** /api/notification/template/{id} | Delete notification template by id (deleteNotificationTemplateById |
-| [**getNotificationTemplateById**](#getNotificationTemplateById) | **GET** /api/notification/template/{id} | Get notification template by id (getNotificationTemplateById) |
-| [**getNotificationTemplates**](#getNotificationTemplates) | **GET** /api/notification/templates | Get notification templates (getNotificationTemplates) |
-| [**listSlackConversations**](#listSlackConversations) | **GET** /api/notification/slack/conversations | List Slack conversations (listSlackConversations) |
-| [**saveNotificationTemplate**](#saveNotificationTemplate) | **POST** /api/notification/template | Save notification template (saveNotificationTemplate) |
+`ThingsboardClient` methods:
 
+```
+void deleteNotificationTemplateById(@Nonnull UUID id) // Delete notification template by id (deleteNotificationTemplateById
+NotificationTemplate getNotificationTemplateById(@Nonnull UUID id) // Get notification template by id (getNotificationTemplateById)
+PageDataNotificationTemplate getNotificationTemplates(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> notificationTypes) // Get notification templates (getNotificationTemplates)
+List<SlackConversation> listSlackConversations(@Nonnull SlackConversationType type, @Nullable String token) // List Slack conversations (listSlackConversations)
+NotificationTemplate saveNotificationTemplate(@Nonnull NotificationTemplate notificationTemplate) // Save notification template (saveNotificationTemplate)
+```
 
 
 ## deleteNotificationTemplateById
 
-> deleteNotificationTemplateById(id)
+```
+void deleteNotificationTemplateById(@Nonnull UUID id)
+```
+
+**DELETE** `/api/notification/template/{id}`
 
 Delete notification template by id (deleteNotificationTemplateById
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## getNotificationTemplateById
 
-> NotificationTemplate getNotificationTemplateById(id)
+```
+NotificationTemplate getNotificationTemplateById(@Nonnull UUID id)
+```
+
+**GET** `/api/notification/template/{id}`
 
 Get notification template by id (getNotificationTemplateById)
 
@@ -52,7 +61,11 @@ Fetches notification template by id.  Available for users with 'SYS_ADMIN' or 'T
 
 ## getNotificationTemplates
 
-> PageDataNotificationTemplate getNotificationTemplates(pageSize, page, textSearch, sortProperty, sortOrder, notificationTypes)
+```
+PageDataNotificationTemplate getNotificationTemplates(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> notificationTypes)
+```
+
+**GET** `/api/notification/templates`
 
 Get notification templates (getNotificationTemplates)
 
@@ -77,7 +90,11 @@ Returns the page of notification templates owned by sysadmin or tenant.  You can
 
 ## listSlackConversations
 
-> List<SlackConversation> listSlackConversations(type, token)
+```
+List<SlackConversation> listSlackConversations(@Nonnull SlackConversationType type, @Nullable String token)
+```
+
+**GET** `/api/notification/slack/conversations`
 
 List Slack conversations (listSlackConversations)
 
@@ -98,7 +115,11 @@ List available Slack conversations by type.  Available for users with 'SYS_ADMIN
 
 ## saveNotificationTemplate
 
-> NotificationTemplate saveNotificationTemplate(notificationTemplate)
+```
+NotificationTemplate saveNotificationTemplate(@Nonnull NotificationTemplate notificationTemplate)
+```
+
+**POST** `/api/notification/template`
 
 Save notification template (saveNotificationTemplate)
 

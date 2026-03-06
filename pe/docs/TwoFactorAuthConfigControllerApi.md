@@ -1,22 +1,27 @@
 # TwoFactorAuthConfigControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteTwoFaAccountConfig**](#deleteTwoFaAccountConfig) | **DELETE** /api/2fa/account/config | Delete 2FA account config (deleteTwoFaAccountConfig) |
-| [**generateTwoFaAccountConfig**](#generateTwoFaAccountConfig) | **POST** /api/2fa/account/config/generate | Generate 2FA account config (generateTwoFaAccountConfig) |
-| [**getAccountTwoFaSettings**](#getAccountTwoFaSettings) | **GET** /api/2fa/account/settings | Get account 2FA settings (getAccountTwoFaSettings) |
-| [**getAvailableTwoFaProviderTypes**](#getAvailableTwoFaProviderTypes) | **GET** /api/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviderTypes) |
-| [**getPlatformTwoFaSettings**](#getPlatformTwoFaSettings) | **GET** /api/2fa/settings | Get platform 2FA settings (getPlatformTwoFaSettings) |
-| [**savePlatformTwoFaSettings**](#savePlatformTwoFaSettings) | **POST** /api/2fa/settings | Save platform 2FA settings (savePlatformTwoFaSettings) |
-| [**submitTwoFaAccountConfig**](#submitTwoFaAccountConfig) | **POST** /api/2fa/account/config/submit | Submit 2FA account config (submitTwoFaAccountConfig) |
-| [**updateTwoFaAccountConfig**](#updateTwoFaAccountConfig) | **PUT** /api/2fa/account/config | Update 2FA account config (updateTwoFaAccountConfig) |
-| [**verifyAndSaveTwoFaAccountConfig**](#verifyAndSaveTwoFaAccountConfig) | **POST** /api/2fa/account/config | Verify and save 2FA account config (verifyAndSaveTwoFaAccountConfig) |
+`ThingsboardClient` methods:
 
+```
+AccountTwoFaSettings deleteTwoFaAccountConfig(@Nonnull TwoFaProviderType providerType) // Delete 2FA account config (deleteTwoFaAccountConfig)
+TwoFaAccountConfig generateTwoFaAccountConfig(@Nonnull String providerType) // Generate 2FA account config (generateTwoFaAccountConfig)
+AccountTwoFaSettings getAccountTwoFaSettings() // Get account 2FA settings (getAccountTwoFaSettings)
+List<TwoFaProviderType> getAvailableTwoFaProviderTypes() // Get available 2FA providers (getAvailableTwoFaProviderTypes)
+PlatformTwoFaSettings getPlatformTwoFaSettings() // Get platform 2FA settings (getPlatformTwoFaSettings)
+PlatformTwoFaSettings savePlatformTwoFaSettings(@Nonnull PlatformTwoFaSettings platformTwoFaSettings) // Save platform 2FA settings (savePlatformTwoFaSettings)
+void submitTwoFaAccountConfig(@Nonnull TwoFaAccountConfig twoFaAccountConfig) // Submit 2FA account config (submitTwoFaAccountConfig)
+AccountTwoFaSettings updateTwoFaAccountConfig(@Nonnull TwoFaProviderType providerType, @Nonnull TwoFaAccountConfigUpdateRequest twoFaAccountConfigUpdateRequest) // Update 2FA account config (updateTwoFaAccountConfig)
+AccountTwoFaSettings verifyAndSaveTwoFaAccountConfig(@Nonnull TwoFaAccountConfig twoFaAccountConfig, @Nullable String verificationCode) // Verify and save 2FA account config (verifyAndSaveTwoFaAccountConfig)
+```
 
 
 ## deleteTwoFaAccountConfig
 
-> AccountTwoFaSettings deleteTwoFaAccountConfig(providerType)
+```
+AccountTwoFaSettings deleteTwoFaAccountConfig(@Nonnull TwoFaProviderType providerType)
+```
+
+**DELETE** `/api/2fa/account/config`
 
 Delete 2FA account config (deleteTwoFaAccountConfig)
 
@@ -36,7 +41,11 @@ Delete 2FA config for a given 2FA provider type.  Returns whole account's 2FA se
 
 ## generateTwoFaAccountConfig
 
-> TwoFaAccountConfig generateTwoFaAccountConfig(providerType)
+```
+TwoFaAccountConfig generateTwoFaAccountConfig(@Nonnull String providerType)
+```
+
+**POST** `/api/2fa/account/config/generate`
 
 Generate 2FA account config (generateTwoFaAccountConfig)
 
@@ -56,7 +65,11 @@ Generate new 2FA account config template for specified provider type.   For TOTP
 
 ## getAccountTwoFaSettings
 
-> AccountTwoFaSettings getAccountTwoFaSettings()
+```
+AccountTwoFaSettings getAccountTwoFaSettings()
+```
+
+**GET** `/api/2fa/account/settings`
 
 Get account 2FA settings (getAccountTwoFaSettings)
 
@@ -69,7 +82,11 @@ Get user's account 2FA configuration. Configuration contains configs for differe
 
 ## getAvailableTwoFaProviderTypes
 
-> List<TwoFaProviderType> getAvailableTwoFaProviderTypes()
+```
+List<TwoFaProviderType> getAvailableTwoFaProviderTypes()
+```
+
+**GET** `/api/2fa/providers`
 
 Get available 2FA providers (getAvailableTwoFaProviderTypes)
 
@@ -82,7 +99,11 @@ Get the list of provider types available for user to use (the ones configured by
 
 ## getPlatformTwoFaSettings
 
-> PlatformTwoFaSettings getPlatformTwoFaSettings()
+```
+PlatformTwoFaSettings getPlatformTwoFaSettings()
+```
+
+**GET** `/api/2fa/settings`
 
 Get platform 2FA settings (getPlatformTwoFaSettings)
 
@@ -95,7 +116,11 @@ Get platform settings for 2FA. The settings are described for savePlatformTwoFaS
 
 ## savePlatformTwoFaSettings
 
-> PlatformTwoFaSettings savePlatformTwoFaSettings(platformTwoFaSettings)
+```
+PlatformTwoFaSettings savePlatformTwoFaSettings(@Nonnull PlatformTwoFaSettings platformTwoFaSettings)
+```
+
+**POST** `/api/2fa/settings`
 
 Save platform 2FA settings (savePlatformTwoFaSettings)
 
@@ -115,7 +140,11 @@ Save 2FA settings for platform. The settings have following properties: - `useSy
 
 ## submitTwoFaAccountConfig
 
-> submitTwoFaAccountConfig(twoFaAccountConfig)
+```
+void submitTwoFaAccountConfig(@Nonnull TwoFaAccountConfig twoFaAccountConfig)
+```
+
+**POST** `/api/2fa/account/config/submit`
 
 Submit 2FA account config (submitTwoFaAccountConfig)
 
@@ -135,7 +164,11 @@ null (empty response body)
 
 ## updateTwoFaAccountConfig
 
-> AccountTwoFaSettings updateTwoFaAccountConfig(providerType, twoFaAccountConfigUpdateRequest)
+```
+AccountTwoFaSettings updateTwoFaAccountConfig(@Nonnull TwoFaProviderType providerType, @Nonnull TwoFaAccountConfigUpdateRequest twoFaAccountConfigUpdateRequest)
+```
+
+**PUT** `/api/2fa/account/config`
 
 Update 2FA account config (updateTwoFaAccountConfig)
 
@@ -156,7 +189,11 @@ Update config for a given provider type.  Update request example: ``` {   \"useB
 
 ## verifyAndSaveTwoFaAccountConfig
 
-> AccountTwoFaSettings verifyAndSaveTwoFaAccountConfig(twoFaAccountConfig, verificationCode)
+```
+AccountTwoFaSettings verifyAndSaveTwoFaAccountConfig(@Nonnull TwoFaAccountConfig twoFaAccountConfig, @Nullable String verificationCode)
+```
+
+**POST** `/api/2fa/account/config`
 
 Verify and save 2FA account config (verifyAndSaveTwoFaAccountConfig)
 

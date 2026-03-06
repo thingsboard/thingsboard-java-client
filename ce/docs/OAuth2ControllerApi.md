@@ -1,20 +1,25 @@
 # OAuth2ControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteOauth2Client**](#deleteOauth2Client) | **DELETE** /api/oauth2/client/{id} | Delete oauth2 client (deleteOauth2Client) |
-| [**findTenantOAuth2ClientInfos**](#findTenantOAuth2ClientInfos) | **GET** /api/oauth2/client/infos | Get OAuth2 Client infos (findTenantOAuth2ClientInfos) |
-| [**findTenantOAuth2ClientInfosByIds**](#findTenantOAuth2ClientInfosByIds) | **GET** /api/oauth2/client/list | Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIds) |
-| [**getLoginProcessingUrl**](#getLoginProcessingUrl) | **GET** /api/oauth2/loginProcessingUrl | Get OAuth2 log in processing URL (getLoginProcessingUrl) |
-| [**getOAuth2ClientById**](#getOAuth2ClientById) | **GET** /api/oauth2/client/{id} | Get OAuth2 Client by id (getOAuth2ClientById) |
-| [**getOAuth2Clients**](#getOAuth2Clients) | **POST** /api/noauth/oauth2Clients | Get OAuth2 clients (getOAuth2Clients) |
-| [**saveOAuth2Client**](#saveOAuth2Client) | **POST** /api/oauth2/client | Save OAuth2 Client (saveOAuth2Client) |
+`ThingsboardClient` methods:
 
+```
+void deleteOauth2Client(@Nonnull UUID id) // Delete oauth2 client (deleteOauth2Client)
+PageDataOAuth2ClientInfo findTenantOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
+List<OAuth2ClientInfo> findTenantOAuth2ClientInfosByIds(@Nonnull List<String> clientIds) // Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIds)
+String getLoginProcessingUrl() // Get OAuth2 log in processing URL (getLoginProcessingUrl)
+OAuth2Client getOAuth2ClientById(@Nonnull UUID id) // Get OAuth2 Client by id (getOAuth2ClientById)
+List<OAuth2ClientLoginInfo> getOAuth2Clients(@Nullable String pkgName, @Nullable String platform) // Get OAuth2 clients (getOAuth2Clients)
+OAuth2Client saveOAuth2Client(@Nonnull OAuth2Client oauth2Client) // Save OAuth2 Client (saveOAuth2Client)
+```
 
 
 ## deleteOauth2Client
 
-> deleteOauth2Client(id)
+```
+void deleteOauth2Client(@Nonnull UUID id)
+```
+
+**DELETE** `/api/oauth2/client/{id}`
 
 Delete oauth2 client (deleteOauth2Client)
 
@@ -34,7 +39,11 @@ null (empty response body)
 
 ## findTenantOAuth2ClientInfos
 
-> PageDataOAuth2ClientInfo findTenantOAuth2ClientInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataOAuth2ClientInfo findTenantOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/oauth2/client/infos`
 
 Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
 
@@ -58,7 +67,11 @@ Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
 
 ## findTenantOAuth2ClientInfosByIds
 
-> List<OAuth2ClientInfo> findTenantOAuth2ClientInfosByIds(clientIds)
+```
+List<OAuth2ClientInfo> findTenantOAuth2ClientInfosByIds(@Nonnull List<String> clientIds)
+```
+
+**GET** `/api/oauth2/client/list`
 
 Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIds)
 
@@ -78,7 +91,11 @@ Fetch OAuth2 Client info objects based on the provided ids.   Available for user
 
 ## getLoginProcessingUrl
 
-> String getLoginProcessingUrl()
+```
+String getLoginProcessingUrl()
+```
+
+**GET** `/api/oauth2/loginProcessingUrl`
 
 Get OAuth2 log in processing URL (getLoginProcessingUrl)
 
@@ -91,7 +108,11 @@ Returns the URL enclosed in double quotes. After successful authentication with 
 
 ## getOAuth2ClientById
 
-> OAuth2Client getOAuth2ClientById(id)
+```
+OAuth2Client getOAuth2ClientById(@Nonnull UUID id)
+```
+
+**GET** `/api/oauth2/client/{id}`
 
 Get OAuth2 Client by id (getOAuth2ClientById)
 
@@ -111,7 +132,11 @@ Get OAuth2 Client by id (getOAuth2ClientById)
 
 ## getOAuth2Clients
 
-> List<OAuth2ClientLoginInfo> getOAuth2Clients(pkgName, platform)
+```
+List<OAuth2ClientLoginInfo> getOAuth2Clients(@Nullable String pkgName, @Nullable String platform)
+```
+
+**POST** `/api/noauth/oauth2Clients`
 
 Get OAuth2 clients (getOAuth2Clients)
 
@@ -132,7 +157,11 @@ Get the list of OAuth2 clients to log in with, available for such domain scheme 
 
 ## saveOAuth2Client
 
-> OAuth2Client saveOAuth2Client(oauth2Client)
+```
+OAuth2Client saveOAuth2Client(@Nonnull OAuth2Client oauth2Client)
+```
+
+**POST** `/api/oauth2/client`
 
 Save OAuth2 Client (saveOAuth2Client)
 

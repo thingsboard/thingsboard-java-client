@@ -1,31 +1,36 @@
 # SignUpControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**acceptPrivacyPolicy**](#acceptPrivacyPolicy) | **POST** /api/signup/acceptPrivacyPolicy | Accept privacy policy (acceptPrivacyPolicy) |
-| [**acceptPrivacyPolicyAndTermsOfUse**](#acceptPrivacyPolicyAndTermsOfUse) | **POST** /api/signup/acceptPrivacyPolicyAndTermsOfUse | acceptPrivacyPolicyAndTermsOfUse |
-| [**acceptTermsOfUse**](#acceptTermsOfUse) | **POST** /api/signup/acceptTermsOfUse | Accept Terms of Use (acceptTermsOfUse) |
-| [**activateCloudEmail**](#activateCloudEmail) | **GET** /api/noauth/cloud/activateEmail | activateCloudEmail |
-| [**activateCloudUserByEmailCode**](#activateCloudUserByEmailCode) | **POST** /api/noauth/cloud/activateByEmailCode | activateCloudUserByEmailCode |
-| [**activateEmail**](#activateEmail) | **GET** /api/noauth/activateEmail | Activate User using code from Email (activateEmail) |
-| [**activateUserByEmailCode**](#activateUserByEmailCode) | **POST** /api/noauth/activateByEmailCode | Activate and login using code from Email (activateUserByEmailCode) |
-| [**cloudMobileLogin**](#cloudMobileLogin) | **GET** /api/noauth/cloud/login | Cloud mobile Login redirect (cloudMobileLogin) |
-| [**deleteTenantAccount**](#deleteTenantAccount) | **POST** /api/signup/tenantAccount | deleteTenantAccount |
-| [**getRecaptchaParams**](#getRecaptchaParams) | **GET** /api/noauth/signup/recaptchaParams | getRecaptchaParams |
-| [**isDisplayWelcome**](#isDisplayWelcome) | **GET** /api/signup/displayWelcome | isDisplayWelcome |
-| [**mobileLogin**](#mobileLogin) | **GET** /api/noauth/login | Mobile Login redirect (mobileLogin) |
-| [**privacyPolicyAccepted**](#privacyPolicyAccepted) | **GET** /api/signup/privacyPolicyAccepted | Check privacy policy (privacyPolicyAccepted) |
-| [**resendCloudEmailActivation**](#resendCloudEmailActivation) | **POST** /api/noauth/cloud/resendEmailActivation | resendCloudEmailActivation |
-| [**resendEmailActivation**](#resendEmailActivation) | **POST** /api/noauth/resendEmailActivation | Resend Activation Email (resendEmailActivation) |
-| [**setNotDisplayWelcome**](#setNotDisplayWelcome) | **POST** /api/signup/notDisplayWelcome | setNotDisplayWelcome |
-| [**signUp**](#signUp) | **POST** /api/noauth/signup | User Sign Up (signUp) |
-| [**termsOfUseAccepted**](#termsOfUseAccepted) | **GET** /api/signup/termsOfUseAccepted | Check Terms Of User (termsOfUseAccepted) |
+`ThingsboardClient` methods:
 
+```
+JwtPair acceptPrivacyPolicy() // Accept privacy policy (acceptPrivacyPolicy)
+JwtPair acceptPrivacyPolicyAndTermsOfUse() // acceptPrivacyPolicyAndTermsOfUse
+JwtPair acceptTermsOfUse() // Accept Terms of Use (acceptTermsOfUse)
+String activateCloudEmail(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform) // activateCloudEmail
+JwtPair activateCloudUserByEmailCode(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform) // activateCloudUserByEmailCode
+String activateEmail(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform) // Activate User using code from Email (activateEmail)
+JwtPair activateUserByEmailCode(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform) // Activate and login using code from Email (activateUserByEmailCode)
+String cloudMobileLogin(@Nonnull String pkgName, @Nullable String platform) // Cloud mobile Login redirect (cloudMobileLogin)
+void deleteTenantAccount(@Nullable DeleteTenantRequest deleteTenantRequest) // deleteTenantAccount
+CaptchaClientParams getRecaptchaParams() // getRecaptchaParams
+Boolean isDisplayWelcome() // isDisplayWelcome
+String mobileLogin(@Nonnull String pkgName, @Nonnull String platform) // Mobile Login redirect (mobileLogin)
+Boolean privacyPolicyAccepted() // Check privacy policy (privacyPolicyAccepted)
+void resendCloudEmailActivation(@Nonnull String email, @Nullable String pkgName, @Nullable String platform) // resendCloudEmailActivation
+void resendEmailActivation(@Nonnull String email, @Nullable String pkgName, @Nullable String platform) // Resend Activation Email (resendEmailActivation)
+void setNotDisplayWelcome() // setNotDisplayWelcome
+SignUpResult signUp(@Nonnull SignUpRequest signUpRequest) // User Sign Up (signUp)
+Boolean termsOfUseAccepted() // Check Terms Of User (termsOfUseAccepted)
+```
 
 
 ## acceptPrivacyPolicy
 
-> JwtPair acceptPrivacyPolicy()
+```
+JwtPair acceptPrivacyPolicy()
+```
+
+**POST** `/api/signup/acceptPrivacyPolicy`
 
 Accept privacy policy (acceptPrivacyPolicy)
 
@@ -38,7 +43,11 @@ Accept privacy policy by the current user.
 
 ## acceptPrivacyPolicyAndTermsOfUse
 
-> JwtPair acceptPrivacyPolicyAndTermsOfUse()
+```
+JwtPair acceptPrivacyPolicyAndTermsOfUse()
+```
+
+**POST** `/api/signup/acceptPrivacyPolicyAndTermsOfUse`
 
 acceptPrivacyPolicyAndTermsOfUse
 
@@ -49,7 +58,11 @@ acceptPrivacyPolicyAndTermsOfUse
 
 ## acceptTermsOfUse
 
-> JwtPair acceptTermsOfUse()
+```
+JwtPair acceptTermsOfUse()
+```
+
+**POST** `/api/signup/acceptTermsOfUse`
 
 Accept Terms of Use (acceptTermsOfUse)
 
@@ -62,7 +75,11 @@ Accept Terms of Use by the current user.
 
 ## activateCloudEmail
 
-> String activateCloudEmail(emailCode, pkgName, platform)
+```
+String activateCloudEmail(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform)
+```
+
+**GET** `/api/noauth/cloud/activateEmail`
 
 activateCloudEmail
 
@@ -82,7 +99,11 @@ activateCloudEmail
 
 ## activateCloudUserByEmailCode
 
-> JwtPair activateCloudUserByEmailCode(emailCode, pkgName, platform)
+```
+JwtPair activateCloudUserByEmailCode(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform)
+```
+
+**POST** `/api/noauth/cloud/activateByEmailCode`
 
 activateCloudUserByEmailCode
 
@@ -102,7 +123,11 @@ activateCloudUserByEmailCode
 
 ## activateEmail
 
-> String activateEmail(emailCode, pkgName, platform)
+```
+String activateEmail(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform)
+```
+
+**GET** `/api/noauth/activateEmail`
 
 Activate User using code from Email (activateEmail)
 
@@ -124,7 +149,11 @@ Activate the user using code(link) from the activation email. Validates the code
 
 ## activateUserByEmailCode
 
-> JwtPair activateUserByEmailCode(emailCode, pkgName, platform)
+```
+JwtPair activateUserByEmailCode(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform)
+```
+
+**POST** `/api/noauth/activateByEmailCode`
 
 Activate and login using code from Email (activateUserByEmailCode)
 
@@ -146,7 +175,11 @@ Activate the user using code(link) from the activation email and return the JWT 
 
 ## cloudMobileLogin
 
-> String cloudMobileLogin(pkgName, platform)
+```
+String cloudMobileLogin(@Nonnull String pkgName, @Nullable String platform)
+```
+
+**GET** `/api/noauth/cloud/login`
 
 Cloud mobile Login redirect (cloudMobileLogin)
 
@@ -167,7 +200,11 @@ This method generates redirect to the special link that is handled by mobile app
 
 ## deleteTenantAccount
 
-> deleteTenantAccount(deleteTenantRequest)
+```
+void deleteTenantAccount(@Nullable DeleteTenantRequest deleteTenantRequest)
+```
+
+**POST** `/api/signup/tenantAccount`
 
 deleteTenantAccount
 
@@ -185,7 +222,11 @@ null (empty response body)
 
 ## getRecaptchaParams
 
-> CaptchaClientParams getRecaptchaParams()
+```
+CaptchaClientParams getRecaptchaParams()
+```
+
+**GET** `/api/noauth/signup/recaptchaParams`
 
 getRecaptchaParams
 
@@ -196,7 +237,11 @@ getRecaptchaParams
 
 ## isDisplayWelcome
 
-> Boolean isDisplayWelcome()
+```
+Boolean isDisplayWelcome()
+```
+
+**GET** `/api/signup/displayWelcome`
 
 isDisplayWelcome
 
@@ -207,7 +252,11 @@ isDisplayWelcome
 
 ## mobileLogin
 
-> String mobileLogin(pkgName, platform)
+```
+String mobileLogin(@Nonnull String pkgName, @Nonnull String platform)
+```
+
+**GET** `/api/noauth/login`
 
 Mobile Login redirect (mobileLogin)
 
@@ -228,7 +277,11 @@ This method generates redirect to the special link that is handled by mobile app
 
 ## privacyPolicyAccepted
 
-> Boolean privacyPolicyAccepted()
+```
+Boolean privacyPolicyAccepted()
+```
+
+**GET** `/api/signup/privacyPolicyAccepted`
 
 Check privacy policy (privacyPolicyAccepted)
 
@@ -241,7 +294,11 @@ Checks that current user accepted the privacy policy.
 
 ## resendCloudEmailActivation
 
-> resendCloudEmailActivation(email, pkgName, platform)
+```
+void resendCloudEmailActivation(@Nonnull String email, @Nullable String pkgName, @Nullable String platform)
+```
+
+**POST** `/api/noauth/cloud/resendEmailActivation`
 
 resendCloudEmailActivation
 
@@ -261,7 +318,11 @@ null (empty response body)
 
 ## resendEmailActivation
 
-> resendEmailActivation(email, pkgName, platform)
+```
+void resendEmailActivation(@Nonnull String email, @Nullable String pkgName, @Nullable String platform)
+```
+
+**POST** `/api/noauth/resendEmailActivation`
 
 Resend Activation Email (resendEmailActivation)
 
@@ -283,7 +344,11 @@ null (empty response body)
 
 ## setNotDisplayWelcome
 
-> setNotDisplayWelcome()
+```
+void setNotDisplayWelcome()
+```
+
+**POST** `/api/signup/notDisplayWelcome`
 
 setNotDisplayWelcome
 
@@ -294,7 +359,11 @@ null (empty response body)
 
 ## signUp
 
-> SignUpResult signUp(signUpRequest)
+```
+SignUpResult signUp(@Nonnull SignUpRequest signUpRequest)
+```
+
+**POST** `/api/noauth/signup`
 
 User Sign Up (signUp)
 
@@ -314,7 +383,11 @@ Process user sign up request. Creates the Customer and corresponding User based 
 
 ## termsOfUseAccepted
 
-> Boolean termsOfUseAccepted()
+```
+Boolean termsOfUseAccepted()
+```
+
+**GET** `/api/signup/termsOfUseAccepted`
 
 Check Terms Of User (termsOfUseAccepted)
 

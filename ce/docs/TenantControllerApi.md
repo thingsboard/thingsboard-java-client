@@ -1,20 +1,25 @@
 # TenantControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteTenant**](#deleteTenant) | **DELETE** /api/tenant/{tenantId} | Delete Tenant (deleteTenant) |
-| [**getTenantById**](#getTenantById) | **GET** /api/tenant/{tenantId} | Get Tenant (getTenantById) |
-| [**getTenantInfoById**](#getTenantInfoById) | **GET** /api/tenant/info/{tenantId} | Get Tenant Info (getTenantInfoById) |
-| [**getTenantInfos**](#getTenantInfos) | **GET** /api/tenantInfos | Get Tenants Info (getTenants) |
-| [**getTenants**](#getTenants) | **GET** /api/tenants | Get Tenants (getTenants) |
-| [**getTenantsByIds**](#getTenantsByIds) | **GET** /api/tenants/list | Get Tenants list (getTenantsByIds) |
-| [**saveTenant**](#saveTenant) | **POST** /api/tenant | Create Or update Tenant (saveTenant) |
+`ThingsboardClient` methods:
 
+```
+void deleteTenant(@Nonnull String tenantId) // Delete Tenant (deleteTenant)
+Tenant getTenantById(@Nonnull String tenantId) // Get Tenant (getTenantById)
+TenantInfo getTenantInfoById(@Nonnull String tenantId) // Get Tenant Info (getTenantInfoById)
+PageDataTenantInfo getTenantInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenants Info (getTenants)
+PageDataTenant getTenants(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenants (getTenants)
+List<Tenant> getTenantsByIds(@Nonnull List<String> tenantIds) // Get Tenants list (getTenantsByIds)
+Tenant saveTenant(@Nonnull Tenant tenant) // Create Or update Tenant (saveTenant)
+```
 
 
 ## deleteTenant
 
-> deleteTenant(tenantId)
+```
+void deleteTenant(@Nonnull String tenantId)
+```
+
+**DELETE** `/api/tenant/{tenantId}`
 
 Delete Tenant (deleteTenant)
 
@@ -34,7 +39,11 @@ null (empty response body)
 
 ## getTenantById
 
-> Tenant getTenantById(tenantId)
+```
+Tenant getTenantById(@Nonnull String tenantId)
+```
+
+**GET** `/api/tenant/{tenantId}`
 
 Get Tenant (getTenantById)
 
@@ -54,7 +63,11 @@ Fetch the Tenant object based on the provided Tenant Id.   Available for users w
 
 ## getTenantInfoById
 
-> TenantInfo getTenantInfoById(tenantId)
+```
+TenantInfo getTenantInfoById(@Nonnull String tenantId)
+```
+
+**GET** `/api/tenant/info/{tenantId}`
 
 Get Tenant Info (getTenantInfoById)
 
@@ -74,7 +87,11 @@ Fetch the Tenant Info object based on the provided Tenant Id. The Tenant Info ob
 
 ## getTenantInfos
 
-> PageDataTenantInfo getTenantInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataTenantInfo getTenantInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenantInfos`
 
 Get Tenants Info (getTenants)
 
@@ -98,7 +115,11 @@ Returns a page of tenant info objects registered in the platform. The Tenant Inf
 
 ## getTenants
 
-> PageDataTenant getTenants(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataTenant getTenants(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenants`
 
 Get Tenants (getTenants)
 
@@ -122,7 +143,11 @@ Returns a page of tenants registered in the platform. You can specify parameters
 
 ## getTenantsByIds
 
-> List<Tenant> getTenantsByIds(tenantIds)
+```
+List<Tenant> getTenantsByIds(@Nonnull List<String> tenantIds)
+```
+
+**GET** `/api/tenants/list`
 
 Get Tenants list (getTenantsByIds)
 
@@ -140,7 +165,11 @@ Get Tenants list (getTenantsByIds)
 
 ## saveTenant
 
-> Tenant saveTenant(tenant)
+```
+Tenant saveTenant(@Nonnull Tenant tenant)
+```
+
+**POST** `/api/tenant`
 
 Create Or update Tenant (saveTenant)
 

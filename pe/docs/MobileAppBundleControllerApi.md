@@ -1,18 +1,23 @@
 # MobileAppBundleControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteMobileAppBundle**](#deleteMobileAppBundle) | **DELETE** /api/mobile/bundle/{id} | Delete Mobile App Bundle by ID (deleteMobileAppBundle) |
-| [**getMobileAppBundleInfoById**](#getMobileAppBundleInfoById) | **GET** /api/mobile/bundle/info/{id} | Get mobile app bundle info by id (getMobileAppBundleInfoById) |
-| [**getTenantMobileAppBundleInfos**](#getTenantMobileAppBundleInfos) | **GET** /api/mobile/bundle/infos | Get mobile app bundle infos (getTenantMobileAppBundleInfos) |
-| [**saveMobileAppBundle**](#saveMobileAppBundle) | **POST** /api/mobile/bundle | Save Or update Mobile app bundle (saveMobileAppBundle) |
-| [**updateMobileAppBundleOauth2Clients**](#updateMobileAppBundleOauth2Clients) | **PUT** /api/mobile/bundle/{id}/oauth2Clients | Update oauth2 clients (updateMobileAppBundleOauth2Clients) |
+`ThingsboardClient` methods:
 
+```
+void deleteMobileAppBundle(@Nonnull UUID id) // Delete Mobile App Bundle by ID (deleteMobileAppBundle)
+MobileAppBundleInfo getMobileAppBundleInfoById(@Nonnull UUID id) // Get mobile app bundle info by id (getMobileAppBundleInfoById)
+PageDataMobileAppBundleInfo getTenantMobileAppBundleInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get mobile app bundle infos (getTenantMobileAppBundleInfos)
+MobileAppBundle saveMobileAppBundle(@Nonnull MobileAppBundle mobileAppBundle, @Nullable List<String> oauth2ClientIds) // Save Or update Mobile app bundle (saveMobileAppBundle)
+void updateMobileAppBundleOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) // Update oauth2 clients (updateMobileAppBundleOauth2Clients)
+```
 
 
 ## deleteMobileAppBundle
 
-> deleteMobileAppBundle(id)
+```
+void deleteMobileAppBundle(@Nonnull UUID id)
+```
+
+**DELETE** `/api/mobile/bundle/{id}`
 
 Delete Mobile App Bundle by ID (deleteMobileAppBundle)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## getMobileAppBundleInfoById
 
-> MobileAppBundleInfo getMobileAppBundleInfoById(id)
+```
+MobileAppBundleInfo getMobileAppBundleInfoById(@Nonnull UUID id)
+```
+
+**GET** `/api/mobile/bundle/info/{id}`
 
 Get mobile app bundle info by id (getMobileAppBundleInfoById)
 
@@ -52,7 +61,11 @@ Get mobile app bundle info by id (getMobileAppBundleInfoById)
 
 ## getTenantMobileAppBundleInfos
 
-> PageDataMobileAppBundleInfo getTenantMobileAppBundleInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataMobileAppBundleInfo getTenantMobileAppBundleInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/mobile/bundle/infos`
 
 Get mobile app bundle infos (getTenantMobileAppBundleInfos)
 
@@ -76,7 +89,11 @@ Get mobile app bundle infos (getTenantMobileAppBundleInfos)
 
 ## saveMobileAppBundle
 
-> MobileAppBundle saveMobileAppBundle(mobileAppBundle, oauth2ClientIds)
+```
+MobileAppBundle saveMobileAppBundle(@Nonnull MobileAppBundle mobileAppBundle, @Nullable List<String> oauth2ClientIds)
+```
+
+**POST** `/api/mobile/bundle`
 
 Save Or update Mobile app bundle (saveMobileAppBundle)
 
@@ -97,7 +114,11 @@ Create or update the Mobile app bundle that represents tha pair of ANDROID and I
 
 ## updateMobileAppBundleOauth2Clients
 
-> updateMobileAppBundleOauth2Clients(id, UUID)
+```
+void updateMobileAppBundleOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID)
+```
+
+**PUT** `/api/mobile/bundle/{id}/oauth2Clients`
 
 Update oauth2 clients (updateMobileAppBundleOauth2Clients)
 

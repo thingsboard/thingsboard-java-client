@@ -1,21 +1,26 @@
 # ConverterLibraryControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getDownlinkConverter**](#getDownlinkConverter) | **GET** /api/converter/library/{integrationType}/{vendorName}/{model}/downlink | Get downlink converter (getDownlinkConverter) |
-| [**getDownlinkConverterMetadata**](#getDownlinkConverterMetadata) | **GET** /api/converter/library/{integrationType}/{vendorName}/{model}/downlink/metadata | Get downlink converter metadata (getDownlinkConverterMetadata) |
-| [**getDownlinkPayload**](#getDownlinkPayload) | **GET** /api/converter/library/{integrationType}/{vendorName}/{model}/downlink/payload | Get downlink payload (getDownlinkPayload) |
-| [**getUplinkConverter**](#getUplinkConverter) | **GET** /api/converter/library/{integrationType}/{vendorName}/{model}/uplink | Get uplink converter (getUplinkConverter) |
-| [**getUplinkConverterMetadata**](#getUplinkConverterMetadata) | **GET** /api/converter/library/{integrationType}/{vendorName}/{model}/uplink/metadata | Get uplink converter metadata (getUplinkConverterMetadata) |
-| [**getUplinkPayload**](#getUplinkPayload) | **GET** /api/converter/library/{integrationType}/{vendorName}/{model}/uplink/payload | Get uplink payload (getUplinkPayload) |
-| [**getVendorModels**](#getVendorModels) | **GET** /api/converter/library/{integrationType}/{vendorName}/models | Get vendor models (getVendorModels) |
-| [**getVendors**](#getVendors) | **GET** /api/converter/library/{integrationType}/vendors | Get vendors (getVendors) |
+`ThingsboardClient` methods:
 
+```
+String getDownlinkConverter(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model) // Get downlink converter (getDownlinkConverter)
+String getDownlinkConverterMetadata(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model) // Get downlink converter metadata (getDownlinkConverterMetadata)
+String getDownlinkPayload(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model) // Get downlink payload (getDownlinkPayload)
+String getUplinkConverter(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model) // Get uplink converter (getUplinkConverter)
+String getUplinkConverterMetadata(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model) // Get uplink converter metadata (getUplinkConverterMetadata)
+String getUplinkPayload(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model) // Get uplink payload (getUplinkPayload)
+List<Model> getVendorModels(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nullable String converterType, @Nullable Integer page, @Nullable Integer pageSize, @Nullable Boolean loadImages) // Get vendor models (getVendorModels)
+List<Vendor> getVendors(@Nonnull IntegrationType integrationType, @Nullable String converterType, @Nullable Integer page, @Nullable Integer pageSize, @Nullable Boolean loadImages) // Get vendors (getVendors)
+```
 
 
 ## getDownlinkConverter
 
-> String getDownlinkConverter(integrationType, vendorName, model)
+```
+String getDownlinkConverter(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model)
+```
+
+**GET** `/api/converter/library/{integrationType}/{vendorName}/{model}/downlink`
 
 Get downlink converter (getDownlinkConverter)
 
@@ -37,7 +42,11 @@ Returns downlink converter body for the vendor, integration type and model
 
 ## getDownlinkConverterMetadata
 
-> String getDownlinkConverterMetadata(integrationType, vendorName, model)
+```
+String getDownlinkConverterMetadata(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model)
+```
+
+**GET** `/api/converter/library/{integrationType}/{vendorName}/{model}/downlink/metadata`
 
 Get downlink converter metadata (getDownlinkConverterMetadata)
 
@@ -59,7 +68,11 @@ Returns downlink converter metadata for the vendor, integration type and model
 
 ## getDownlinkPayload
 
-> String getDownlinkPayload(integrationType, vendorName, model)
+```
+String getDownlinkPayload(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model)
+```
+
+**GET** `/api/converter/library/{integrationType}/{vendorName}/{model}/downlink/payload`
 
 Get downlink payload (getDownlinkPayload)
 
@@ -81,7 +94,11 @@ Returns payload example for the downlink converter for the vendor, integration t
 
 ## getUplinkConverter
 
-> String getUplinkConverter(integrationType, vendorName, model)
+```
+String getUplinkConverter(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model)
+```
+
+**GET** `/api/converter/library/{integrationType}/{vendorName}/{model}/uplink`
 
 Get uplink converter (getUplinkConverter)
 
@@ -103,7 +120,11 @@ Returns uplink converter body for the vendor, integration type and model
 
 ## getUplinkConverterMetadata
 
-> String getUplinkConverterMetadata(integrationType, vendorName, model)
+```
+String getUplinkConverterMetadata(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model)
+```
+
+**GET** `/api/converter/library/{integrationType}/{vendorName}/{model}/uplink/metadata`
 
 Get uplink converter metadata (getUplinkConverterMetadata)
 
@@ -125,7 +146,11 @@ Returns uplink converter metadata for the vendor, integration type and model
 
 ## getUplinkPayload
 
-> String getUplinkPayload(integrationType, vendorName, model)
+```
+String getUplinkPayload(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nonnull String model)
+```
+
+**GET** `/api/converter/library/{integrationType}/{vendorName}/{model}/uplink/payload`
 
 Get uplink payload (getUplinkPayload)
 
@@ -147,7 +172,11 @@ Returns payload example for the uplink converter for the vendor, integration typ
 
 ## getVendorModels
 
-> List<Model> getVendorModels(integrationType, vendorName, converterType, page, pageSize, loadImages)
+```
+List<Model> getVendorModels(@Nonnull IntegrationType integrationType, @Nonnull String vendorName, @Nullable String converterType, @Nullable Integer page, @Nullable Integer pageSize, @Nullable Boolean loadImages)
+```
+
+**GET** `/api/converter/library/{integrationType}/{vendorName}/models`
 
 Get vendor models (getVendorModels)
 
@@ -172,7 +201,11 @@ Returns a list of models for the vendor, integration type and converter type
 
 ## getVendors
 
-> List<Vendor> getVendors(integrationType, converterType, page, pageSize, loadImages)
+```
+List<Vendor> getVendors(@Nonnull IntegrationType integrationType, @Nullable String converterType, @Nullable Integer page, @Nullable Integer pageSize, @Nullable Boolean loadImages)
+```
+
+**GET** `/api/converter/library/{integrationType}/vendors`
 
 Get vendors (getVendors)
 

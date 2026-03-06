@@ -1,26 +1,31 @@
 # CustomerControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteCustomer**](#deleteCustomer) | **DELETE** /api/customer/{customerId} | Delete Customer (deleteCustomer) |
-| [**getAllCustomerInfos**](#getAllCustomerInfos) | **GET** /api/customerInfos/all | Get All Customer Infos for current user (getAllCustomerInfos) |
-| [**getCustomerById**](#getCustomerById) | **GET** /api/customer/{customerId} | Get Customer (getCustomerById) |
-| [**getCustomerCustomerInfos**](#getCustomerCustomerInfos) | **GET** /api/customer/{customerId}/customerInfos | Get Customer sub-customers Infos (getCustomerCustomerInfos) |
-| [**getCustomerInfoById**](#getCustomerInfoById) | **GET** /api/customer/info/{customerId} | Get Customer info (getCustomerInfoById) |
-| [**getCustomerTitleById**](#getCustomerTitleById) | **GET** /api/customer/{customerId}/title | Get Customer Title (getCustomerTitleById) |
-| [**getCustomers**](#getCustomers) | **GET** /api/customers | Get Tenant Customers (getCustomers) |
-| [**getCustomersByEntityGroupId**](#getCustomersByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/customers | Get customers by Entity Group Id (getCustomersByEntityGroupId) |
-| [**getCustomersByIds**](#getCustomersByIds) | **GET** /api/customers/list | Get customers by Customer Ids (getCustomersByIds) |
-| [**getShortCustomerInfoById**](#getShortCustomerInfoById) | **GET** /api/customer/{customerId}/shortInfo | Get short Customer info (getShortCustomerInfoById) |
-| [**getTenantCustomer**](#getTenantCustomer) | **GET** /api/tenant/customers | Get Tenant Customer by Customer title (getTenantCustomer) |
-| [**getUserCustomers**](#getUserCustomers) | **GET** /api/user/customers | Get Customers (getUserCustomers) |
-| [**saveCustomer**](#saveCustomer) | **POST** /api/customer | Create or update Customer (saveCustomer) |
+`ThingsboardClient` methods:
 
+```
+void deleteCustomer(@Nonnull String customerId) // Delete Customer (deleteCustomer)
+PageDataCustomerInfo getAllCustomerInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Customer Infos for current user (getAllCustomerInfos)
+Customer getCustomerById(@Nonnull String customerId) // Get Customer (getCustomerById)
+PageDataCustomerInfo getCustomerCustomerInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer sub-customers Infos (getCustomerCustomerInfos)
+CustomerInfo getCustomerInfoById(@Nonnull String customerId) // Get Customer info (getCustomerInfoById)
+String getCustomerTitleById(@Nonnull String customerId) // Get Customer Title (getCustomerTitleById)
+PageDataCustomer getCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Customers (getCustomers)
+PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get customers by Entity Group Id (getCustomersByEntityGroupId)
+List<Customer> getCustomersByIds(@Nonnull List<String> customerIds) // Get customers by Customer Ids (getCustomersByIds)
+com.fasterxml.jackson.databind.JsonNode getShortCustomerInfoById(@Nonnull String customerId) // Get short Customer info (getShortCustomerInfoById)
+Customer getTenantCustomer(@Nonnull String customerTitle) // Get Tenant Customer by Customer title (getTenantCustomer)
+PageDataCustomer getUserCustomers(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customers (getUserCustomers)
+Customer saveCustomer(@Nonnull Customer customer, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create or update Customer (saveCustomer)
+```
 
 
 ## deleteCustomer
 
-> deleteCustomer(customerId)
+```
+void deleteCustomer(@Nonnull String customerId)
+```
+
+**DELETE** `/api/customer/{customerId}`
 
 Delete Customer (deleteCustomer)
 
@@ -40,7 +45,11 @@ null (empty response body)
 
 ## getAllCustomerInfos
 
-> PageDataCustomerInfo getAllCustomerInfos(pageSize, page, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataCustomerInfo getAllCustomerInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customerInfos/all`
 
 Get All Customer Infos for current user (getAllCustomerInfos)
 
@@ -65,7 +74,11 @@ Returns a page of customer info objects owned by the tenant or the customer of a
 
 ## getCustomerById
 
-> Customer getCustomerById(customerId)
+```
+Customer getCustomerById(@Nonnull String customerId)
+```
+
+**GET** `/api/customer/{customerId}`
 
 Get Customer (getCustomerById)
 
@@ -85,7 +98,11 @@ Get the Customer object based on the provided Customer Id. If the user has the a
 
 ## getCustomerCustomerInfos
 
-> PageDataCustomerInfo getCustomerCustomerInfos(customerId, pageSize, page, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataCustomerInfo getCustomerCustomerInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/customerInfos`
 
 Get Customer sub-customers Infos (getCustomerCustomerInfos)
 
@@ -111,7 +128,11 @@ Returns a page of customer info objects owned by the specified customer. You can
 
 ## getCustomerInfoById
 
-> CustomerInfo getCustomerInfoById(customerId)
+```
+CustomerInfo getCustomerInfoById(@Nonnull String customerId)
+```
+
+**GET** `/api/customer/info/{customerId}`
 
 Get Customer info (getCustomerInfoById)
 
@@ -131,7 +152,11 @@ Get the Customer info object based on the provided Customer Id. If the user has 
 
 ## getCustomerTitleById
 
-> String getCustomerTitleById(customerId)
+```
+String getCustomerTitleById(@Nonnull String customerId)
+```
+
+**GET** `/api/customer/{customerId}/title`
 
 Get Customer Title (getCustomerTitleById)
 
@@ -151,7 +176,11 @@ Get the title of the customer. If the user has the authority of 'Tenant Administ
 
 ## getCustomers
 
-> PageDataCustomer getCustomers(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataCustomer getCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customers`
 
 Get Tenant Customers (getCustomers)
 
@@ -175,7 +204,11 @@ Returns a page of customers owned by tenant. You can specify parameters to filte
 
 ## getCustomersByEntityGroupId
 
-> PageDataCustomer getCustomersByEntityGroupId(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/customers`
 
 Get customers by Entity Group Id (getCustomersByEntityGroupId)
 
@@ -200,7 +233,11 @@ Returns a page of Customer objects that belongs to specified Entity Group Id. Yo
 
 ## getCustomersByIds
 
-> List<Customer> getCustomersByIds(customerIds)
+```
+List<Customer> getCustomersByIds(@Nonnull List<String> customerIds)
+```
+
+**GET** `/api/customers/list`
 
 Get customers by Customer Ids (getCustomersByIds)
 
@@ -220,7 +257,11 @@ Returns a list of Customer objects based on the provided ids.  Available for use
 
 ## getShortCustomerInfoById
 
-> com.fasterxml.jackson.databind.JsonNode getShortCustomerInfoById(customerId)
+```
+com.fasterxml.jackson.databind.JsonNode getShortCustomerInfoById(@Nonnull String customerId)
+```
+
+**GET** `/api/customer/{customerId}/shortInfo`
 
 Get short Customer info (getShortCustomerInfoById)
 
@@ -240,7 +281,11 @@ Get the short customer object that contains only the title and 'isPublic' flag. 
 
 ## getTenantCustomer
 
-> Customer getTenantCustomer(customerTitle)
+```
+Customer getTenantCustomer(@Nonnull String customerTitle)
+```
+
+**GET** `/api/tenant/customers`
 
 Get Tenant Customer by Customer title (getTenantCustomer)
 
@@ -260,7 +305,11 @@ Get the Customer using Customer Title.   Available for users with 'TENANT_ADMIN'
 
 ## getUserCustomers
 
-> PageDataCustomer getUserCustomers(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataCustomer getUserCustomers(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/customers`
 
 Get Customers (getUserCustomers)
 
@@ -284,7 +333,11 @@ Returns a page of customers available for the user. You can specify parameters t
 
 ## saveCustomer
 
-> Customer saveCustomer(customer, entityGroupId, entityGroupIds, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Customer saveCustomer(@Nonnull Customer customer, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/customer`
 
 Create or update Customer (saveCustomer)
 

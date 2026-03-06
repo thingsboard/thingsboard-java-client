@@ -1,16 +1,21 @@
 # AlarmCommentControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteAlarmComment**](#deleteAlarmComment) | **DELETE** /api/alarm/{alarmId}/comment/{commentId} | Delete Alarm comment (deleteAlarmComment) |
-| [**getAlarmComments**](#getAlarmComments) | **GET** /api/alarm/{alarmId}/comment | Get Alarm comments (getAlarmComments) |
-| [**saveAlarmComment**](#saveAlarmComment) | **POST** /api/alarm/{alarmId}/comment | Create or update Alarm Comment  |
+`ThingsboardClient` methods:
 
+```
+void deleteAlarmComment(@Nonnull String alarmId, @Nonnull String commentId) // Delete Alarm comment (deleteAlarmComment)
+PageDataAlarmCommentInfo getAlarmComments(@Nonnull String alarmId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder) // Get Alarm comments (getAlarmComments)
+AlarmComment saveAlarmComment(@Nonnull String alarmId, @Nonnull AlarmComment alarmComment) // Create or update Alarm Comment 
+```
 
 
 ## deleteAlarmComment
 
-> deleteAlarmComment(alarmId, commentId)
+```
+void deleteAlarmComment(@Nonnull String alarmId, @Nonnull String commentId)
+```
+
+**DELETE** `/api/alarm/{alarmId}/comment/{commentId}`
 
 Delete Alarm comment (deleteAlarmComment)
 
@@ -31,7 +36,11 @@ null (empty response body)
 
 ## getAlarmComments
 
-> PageDataAlarmCommentInfo getAlarmComments(alarmId, pageSize, page, sortProperty, sortOrder)
+```
+PageDataAlarmCommentInfo getAlarmComments(@Nonnull String alarmId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/alarm/{alarmId}/comment`
 
 Get Alarm comments (getAlarmComments)
 
@@ -55,7 +64,11 @@ Returns a page of alarm comments for specified alarm. You can specify parameters
 
 ## saveAlarmComment
 
-> AlarmComment saveAlarmComment(alarmId, alarmComment)
+```
+AlarmComment saveAlarmComment(@Nonnull String alarmId, @Nonnull AlarmComment alarmComment)
+```
+
+**POST** `/api/alarm/{alarmId}/comment`
 
 Create or update Alarm Comment 
 

@@ -1,36 +1,41 @@
 # DeviceControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**assignDeviceToTenant**](#assignDeviceToTenant) | **POST** /api/tenant/{tenantId}/device/{deviceId} | Assign device to tenant (assignDeviceToTenant) |
-| [**claimDevice**](#claimDevice) | **POST** /api/customer/device/{deviceName}/claim | Claim device (claimDevice) |
-| [**countByDeviceGroupAndEmptyOtaPackage**](#countByDeviceGroupAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{otaPackageId}/{entityGroupId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
-| [**countByDeviceProfileAndEmptyOtaPackage**](#countByDeviceProfileAndEmptyOtaPackage) | **GET** /api/devices/count/{otaPackageType}/{deviceProfileId} | Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage) |
-| [**deleteDevice**](#deleteDevice) | **DELETE** /api/device/{deviceId} | Delete device (deleteDevice) |
-| [**findDevicesByQuery**](#findDevicesByQuery) | **POST** /api/devices | Find related devices (findDevicesByQuery) |
-| [**getAllDeviceInfos**](#getAllDeviceInfos) | **GET** /api/deviceInfos/all | Get All Device Infos for current user (getAllDeviceInfos) |
-| [**getCustomerDeviceInfos**](#getCustomerDeviceInfos) | **GET** /api/customer/{customerId}/deviceInfos | Get Customer Device Infos (getCustomerDeviceInfos) |
-| [**getCustomerDevices**](#getCustomerDevices) | **GET** /api/customer/{customerId}/devices | Get Customer Devices (getCustomerDevices) |
-| [**getDeviceById**](#getDeviceById) | **GET** /api/device/{deviceId} | Get Device (getDeviceById) |
-| [**getDeviceCredentialsByDeviceId**](#getDeviceCredentialsByDeviceId) | **GET** /api/device/{deviceId}/credentials | Get Device Credentials (getDeviceCredentialsByDeviceId) |
-| [**getDeviceInfoById**](#getDeviceInfoById) | **GET** /api/device/info/{deviceId} | Get Device (getDeviceInfoById) |
-| [**getDeviceTypes**](#getDeviceTypes) | **GET** /api/device/types | Get Device Types (getDeviceTypes) |
-| [**getDevicesByEntityGroupId**](#getDevicesByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/devices | Get devices by Entity Group Id (getDevicesByEntityGroupId) |
-| [**getDevicesByIds**](#getDevicesByIds) | **GET** /api/devices | Get Devices By Ids (getDevicesByIds) |
-| [**getTenantDeviceByName**](#getTenantDeviceByName) | **GET** /api/tenant/device | Get Tenant Device (getTenantDevice) |
-| [**getTenantDevices**](#getTenantDevices) | **GET** /api/tenant/devices | Get Tenant Devices (getTenantDevices) |
-| [**getUserDevices**](#getUserDevices) | **GET** /api/user/devices | Get Devices (getUserDevices) |
-| [**processDevicesBulkImport**](#processDevicesBulkImport) | **POST** /api/device/bulk_import | Import the bulk of devices (processDevicesBulkImport) |
-| [**reClaimDevice**](#reClaimDevice) | **DELETE** /api/customer/device/{deviceName}/claim | Reclaim device (reClaimDevice) |
-| [**saveDevice**](#saveDevice) | **POST** /api/device | Create Or Update Device (saveDevice) |
-| [**saveDeviceWithCredentials**](#saveDeviceWithCredentials) | **POST** /api/device-with-credentials | Create Device (saveDevice) with credentials  |
-| [**updateDeviceCredentials**](#updateDeviceCredentials) | **POST** /api/device/credentials | Update device credentials (updateDeviceCredentials) |
+`ThingsboardClient` methods:
 
+```
+Device assignDeviceToTenant(@Nonnull String tenantId, @Nonnull String deviceId) // Assign device to tenant (assignDeviceToTenant)
+String claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest) // Claim device (claimDevice)
+Long countByDeviceGroupAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String otaPackageId, @Nonnull String entityGroupId) // Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
+Long countByDeviceProfileAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String deviceProfileId) // Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
+void deleteDevice(@Nonnull String deviceId) // Delete device (deleteDevice)
+List<Device> findDevicesByQuery(@Nonnull DeviceSearchQuery deviceSearchQuery) // Find related devices (findDevicesByQuery)
+PageDataDeviceInfo getAllDeviceInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Device Infos for current user (getAllDeviceInfos)
+PageDataDeviceInfo getCustomerDeviceInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Device Infos (getCustomerDeviceInfos)
+PageDataDevice getCustomerDevices(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Devices (getCustomerDevices)
+Device getDeviceById(@Nonnull String deviceId) // Get Device (getDeviceById)
+DeviceCredentials getDeviceCredentialsByDeviceId(@Nonnull String deviceId) // Get Device Credentials (getDeviceCredentialsByDeviceId)
+DeviceInfo getDeviceInfoById(@Nonnull String deviceId) // Get Device (getDeviceInfoById)
+List<EntitySubtype> getDeviceTypes() // Get Device Types (getDeviceTypes)
+PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get devices by Entity Group Id (getDevicesByEntityGroupId)
+List<Device> getDevicesByIds(@Nonnull List<String> deviceIds) // Get Devices By Ids (getDevicesByIds)
+Device getTenantDeviceByName(@Nonnull String deviceName) // Get Tenant Device (getTenantDevice)
+PageDataDevice getTenantDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Devices (getTenantDevices)
+PageDataDevice getUserDevices(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Devices (getUserDevices)
+BulkImportResultDevice processDevicesBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of devices (processDevicesBulkImport)
+String reClaimDevice(@Nonnull String deviceName) // Reclaim device (reClaimDevice)
+Device saveDevice(@Nonnull Device device, @Nullable String accessToken, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Device (saveDevice)
+Device saveDeviceWithCredentials(@Nonnull SaveDeviceWithCredentialsRequest saveDeviceWithCredentialsRequest, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Device (saveDevice) with credentials 
+DeviceCredentials updateDeviceCredentials(@Nonnull DeviceCredentials deviceCredentials) // Update device credentials (updateDeviceCredentials)
+```
 
 
 ## assignDeviceToTenant
 
-> Device assignDeviceToTenant(tenantId, deviceId)
+```
+Device assignDeviceToTenant(@Nonnull String tenantId, @Nonnull String deviceId)
+```
+
+**POST** `/api/tenant/{tenantId}/device/{deviceId}`
 
 Assign device to tenant (assignDeviceToTenant)
 
@@ -51,7 +56,11 @@ Creates assignment of the device to tenant. Thereafter tenant will be able to re
 
 ## claimDevice
 
-> String claimDevice(deviceName, subCustomerId, claimRequest)
+```
+String claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest)
+```
+
+**POST** `/api/customer/device/{deviceName}/claim`
 
 Claim device (claimDevice)
 
@@ -73,7 +82,11 @@ Claiming makes it possible to assign a device to the specific customer using dev
 
 ## countByDeviceGroupAndEmptyOtaPackage
 
-> Long countByDeviceGroupAndEmptyOtaPackage(otaPackageType, otaPackageId, entityGroupId)
+```
+Long countByDeviceGroupAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String otaPackageId, @Nonnull String entityGroupId)
+```
+
+**GET** `/api/devices/count/{otaPackageType}/{otaPackageId}/{entityGroupId}`
 
 Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
 
@@ -95,7 +108,11 @@ The platform gives an ability to load OTA (over-the-air) packages to devices. It
 
 ## countByDeviceProfileAndEmptyOtaPackage
 
-> Long countByDeviceProfileAndEmptyOtaPackage(otaPackageType, deviceProfileId)
+```
+Long countByDeviceProfileAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String deviceProfileId)
+```
+
+**GET** `/api/devices/count/{otaPackageType}/{deviceProfileId}`
 
 Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
 
@@ -116,7 +133,11 @@ The platform gives an ability to load OTA (over-the-air) packages to devices. It
 
 ## deleteDevice
 
-> deleteDevice(deviceId)
+```
+void deleteDevice(@Nonnull String deviceId)
+```
+
+**DELETE** `/api/device/{deviceId}`
 
 Delete device (deleteDevice)
 
@@ -136,7 +157,11 @@ null (empty response body)
 
 ## findDevicesByQuery
 
-> List<Device> findDevicesByQuery(deviceSearchQuery)
+```
+List<Device> findDevicesByQuery(@Nonnull DeviceSearchQuery deviceSearchQuery)
+```
+
+**POST** `/api/devices`
 
 Find related devices (findDevicesByQuery)
 
@@ -156,7 +181,11 @@ Returns all devices that are related to the specific entity. The entity id, rela
 
 ## getAllDeviceInfos
 
-> PageDataDeviceInfo getAllDeviceInfos(pageSize, page, includeCustomers, deviceProfileId, active, textSearch, sortProperty, sortOrder)
+```
+PageDataDeviceInfo getAllDeviceInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/deviceInfos/all`
 
 Get All Device Infos for current user (getAllDeviceInfos)
 
@@ -183,7 +212,11 @@ Returns a page of device info objects owned by the tenant or the customer of a c
 
 ## getCustomerDeviceInfos
 
-> PageDataDeviceInfo getCustomerDeviceInfos(customerId, pageSize, page, includeCustomers, deviceProfileId, active, textSearch, sortProperty, sortOrder)
+```
+PageDataDeviceInfo getCustomerDeviceInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String deviceProfileId, @Nullable Boolean active, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/deviceInfos`
 
 Get Customer Device Infos (getCustomerDeviceInfos)
 
@@ -211,7 +244,11 @@ Returns a page of device info objects owned by the specified customer. Device In
 
 ## getCustomerDevices
 
-> PageDataDevice getCustomerDevices(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataDevice getCustomerDevices(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/devices`
 
 Get Customer Devices (getCustomerDevices)
 
@@ -237,7 +274,11 @@ Returns a page of devices objects assigned to customer. You can specify paramete
 
 ## getDeviceById
 
-> Device getDeviceById(deviceId)
+```
+Device getDeviceById(@Nonnull String deviceId)
+```
+
+**GET** `/api/device/{deviceId}`
 
 Get Device (getDeviceById)
 
@@ -257,7 +298,11 @@ Fetch the Device object based on the provided Device Id.   Available for users w
 
 ## getDeviceCredentialsByDeviceId
 
-> DeviceCredentials getDeviceCredentialsByDeviceId(deviceId)
+```
+DeviceCredentials getDeviceCredentialsByDeviceId(@Nonnull String deviceId)
+```
+
+**GET** `/api/device/{deviceId}/credentials`
 
 Get Device Credentials (getDeviceCredentialsByDeviceId)
 
@@ -277,7 +322,11 @@ If during device creation there wasn't specified any credentials, platform gener
 
 ## getDeviceInfoById
 
-> DeviceInfo getDeviceInfoById(deviceId)
+```
+DeviceInfo getDeviceInfoById(@Nonnull String deviceId)
+```
+
+**GET** `/api/device/info/{deviceId}`
 
 Get Device (getDeviceInfoById)
 
@@ -297,7 +346,11 @@ Fetch the Device info object based on the provided Device Id. Device Info is an 
 
 ## getDeviceTypes
 
-> List<EntitySubtype> getDeviceTypes()
+```
+List<EntitySubtype> getDeviceTypes()
+```
+
+**GET** `/api/device/types`
 
 Get Device Types (getDeviceTypes)
 
@@ -310,7 +363,11 @@ Deprecated. See 'getDeviceProfileNames' API from Device Profile Controller inste
 
 ## getDevicesByEntityGroupId
 
-> PageDataDevice getDevicesByEntityGroupId(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/devices`
 
 Get devices by Entity Group Id (getDevicesByEntityGroupId)
 
@@ -335,7 +392,11 @@ Returns a page of Device objects that belongs to specified Entity Group Id. You 
 
 ## getDevicesByIds
 
-> List<Device> getDevicesByIds(deviceIds)
+```
+List<Device> getDevicesByIds(@Nonnull List<String> deviceIds)
+```
+
+**GET** `/api/devices`
 
 Get Devices By Ids (getDevicesByIds)
 
@@ -355,7 +416,11 @@ Requested devices must be owned by tenant or assigned to customer which user is 
 
 ## getTenantDeviceByName
 
-> Device getTenantDeviceByName(deviceName)
+```
+Device getTenantDeviceByName(@Nonnull String deviceName)
+```
+
+**GET** `/api/tenant/device`
 
 Get Tenant Device (getTenantDevice)
 
@@ -375,7 +440,11 @@ Requested device must be owned by tenant that the user belongs to. Device name i
 
 ## getTenantDevices
 
-> PageDataDevice getTenantDevices(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataDevice getTenantDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/devices`
 
 Get Tenant Devices (getTenantDevices)
 
@@ -400,7 +469,11 @@ Returns a page of devices owned by tenant. You can specify parameters to filter 
 
 ## getUserDevices
 
-> PageDataDevice getUserDevices(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataDevice getUserDevices(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/devices`
 
 Get Devices (getUserDevices)
 
@@ -425,7 +498,11 @@ Returns a page of devices that are available for the current user. You can speci
 
 ## processDevicesBulkImport
 
-> BulkImportResultDevice processDevicesBulkImport(bulkImportRequest)
+```
+BulkImportResultDevice processDevicesBulkImport(@Nonnull BulkImportRequest bulkImportRequest)
+```
+
+**POST** `/api/device/bulk_import`
 
 Import the bulk of devices (processDevicesBulkImport)
 
@@ -445,7 +522,11 @@ There's an ability to import the bulk of devices using the only .csv file. Secur
 
 ## reClaimDevice
 
-> String reClaimDevice(deviceName)
+```
+String reClaimDevice(@Nonnull String deviceName)
+```
+
+**DELETE** `/api/customer/device/{deviceName}/claim`
 
 Reclaim device (reClaimDevice)
 
@@ -465,7 +546,11 @@ Reclaiming means the device will be unassigned from the customer and the device 
 
 ## saveDevice
 
-> Device saveDevice(device, accessToken, entityGroupId, entityGroupIds, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Device saveDevice(@Nonnull Device device, @Nullable String accessToken, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/device`
 
 Create Or Update Device (saveDevice)
 
@@ -491,7 +576,11 @@ Create or update the Device. When creating device, platform generates Device Id 
 
 ## saveDeviceWithCredentials
 
-> Device saveDeviceWithCredentials(saveDeviceWithCredentialsRequest, entityGroupId, entityGroupIds, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Device saveDeviceWithCredentials(@Nonnull SaveDeviceWithCredentialsRequest saveDeviceWithCredentialsRequest, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/device-with-credentials`
 
 Create Device (saveDevice) with credentials 
 
@@ -516,7 +605,11 @@ Create or update the Device. When creating device, platform generates Device Id 
 
 ## updateDeviceCredentials
 
-> DeviceCredentials updateDeviceCredentials(deviceCredentials)
+```
+DeviceCredentials updateDeviceCredentials(@Nonnull DeviceCredentials deviceCredentials)
+```
+
+**POST** `/api/device/credentials`
 
 Update device credentials (updateDeviceCredentials)
 

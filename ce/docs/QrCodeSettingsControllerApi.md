@@ -1,18 +1,23 @@
 # QrCodeSettingsControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getApplicationRedirect**](#getApplicationRedirect) | **GET** /api/noauth/qr | getApplicationRedirect |
-| [**getMobileAppDeepLink**](#getMobileAppDeepLink) | **GET** /api/mobile/qr/deepLink | Get the deep link to the associated mobile application (getMobileAppDeepLink) |
-| [**getQrCodeSettings**](#getQrCodeSettings) | **GET** /api/mobile/qr/settings | Get Mobile application settings (getQrCodeSettings) |
-| [**getUserTokenByMobileSecret**](#getUserTokenByMobileSecret) | **GET** /api/noauth/qr/{secret} | Get User Token (getUserTokenByMobileSecret) |
-| [**saveQrCodeSettings**](#saveQrCodeSettings) | **POST** /api/mobile/qr/settings | Create Or Update the Mobile application settings (saveMobileAppSettings) |
+`ThingsboardClient` methods:
 
+```
+Object getApplicationRedirect(@Nonnull String userAgent) // getApplicationRedirect
+String getMobileAppDeepLink() // Get the deep link to the associated mobile application (getMobileAppDeepLink)
+QrCodeSettings getQrCodeSettings() // Get Mobile application settings (getQrCodeSettings)
+JwtPair getUserTokenByMobileSecret(@Nonnull String secret) // Get User Token (getUserTokenByMobileSecret)
+QrCodeSettings saveQrCodeSettings(@Nonnull QrCodeSettings qrCodeSettings) // Create Or Update the Mobile application settings (saveMobileAppSettings)
+```
 
 
 ## getApplicationRedirect
 
-> Object getApplicationRedirect(userAgent)
+```
+Object getApplicationRedirect(@Nonnull String userAgent)
+```
+
+**GET** `/api/noauth/qr`
 
 getApplicationRedirect
 
@@ -30,7 +35,11 @@ getApplicationRedirect
 
 ## getMobileAppDeepLink
 
-> String getMobileAppDeepLink()
+```
+String getMobileAppDeepLink()
+```
+
+**GET** `/api/mobile/qr/deepLink`
 
 Get the deep link to the associated mobile application (getMobileAppDeepLink)
 
@@ -43,7 +52,11 @@ Fetch the url that takes user to linked mobile application   Available for any a
 
 ## getQrCodeSettings
 
-> QrCodeSettings getQrCodeSettings()
+```
+QrCodeSettings getQrCodeSettings()
+```
+
+**GET** `/api/mobile/qr/settings`
 
 Get Mobile application settings (getQrCodeSettings)
 
@@ -56,7 +69,11 @@ The response payload contains configuration for android/iOS applications and pla
 
 ## getUserTokenByMobileSecret
 
-> JwtPair getUserTokenByMobileSecret(secret)
+```
+JwtPair getUserTokenByMobileSecret(@Nonnull String secret)
+```
+
+**GET** `/api/noauth/qr/{secret}`
 
 Get User Token (getUserTokenByMobileSecret)
 
@@ -76,7 +93,11 @@ Returns the token of the User based on the provided secret key.
 
 ## saveQrCodeSettings
 
-> QrCodeSettings saveQrCodeSettings(qrCodeSettings)
+```
+QrCodeSettings saveQrCodeSettings(@Nonnull QrCodeSettings qrCodeSettings)
+```
+
+**POST** `/api/mobile/qr/settings`
 
 Create Or Update the Mobile application settings (saveMobileAppSettings)
 

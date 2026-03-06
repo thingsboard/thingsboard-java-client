@@ -1,14 +1,19 @@
 # UiSettingsControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getHelpBaseUrl**](#getHelpBaseUrl) | **GET** /api/uiSettings/helpBaseUrl | Get UI help base url (getHelpBaseUrl) |
+`ThingsboardClient` methods:
 
+```
+String getHelpBaseUrl() // Get UI help base url (getHelpBaseUrl)
+```
 
 
 ## getHelpBaseUrl
 
-> String getHelpBaseUrl()
+```
+String getHelpBaseUrl()
+```
+
+**GET** `/api/uiSettings/helpBaseUrl`
 
 Get UI help base url (getHelpBaseUrl)
 

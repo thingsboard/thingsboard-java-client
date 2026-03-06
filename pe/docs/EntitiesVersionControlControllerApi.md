@@ -1,25 +1,30 @@
 # EntitiesVersionControlControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**compareEntityDataToVersion**](#compareEntityDataToVersion) | **GET** /api/entities/vc/diff/{entityType}/{internalEntityUuid} | Compare entity data to version (compareEntityDataToVersion) |
-| [**getEntityDataInfo**](#getEntityDataInfo) | **GET** /api/entities/vc/info/{versionId}/{entityType}/{externalEntityUuid} | Get entity data info (getEntityDataInfo) |
-| [**getVersionCreateRequestStatus**](#getVersionCreateRequestStatus) | **GET** /api/entities/vc/version/{requestId}/status | Get version create request status (getVersionCreateRequestStatus) |
-| [**getVersionLoadRequestStatus**](#getVersionLoadRequestStatus) | **GET** /api/entities/vc/entity/{requestId}/status | Get version load request status (getVersionLoadRequestStatus) |
-| [**listAllEntitiesAtVersion**](#listAllEntitiesAtVersion) | **GET** /api/entities/vc/entity/{versionId} | List all entities at version (listAllEntitiesAtVersion) |
-| [**listBranches**](#listBranches) | **GET** /api/entities/vc/branches | List branches (listBranches) |
-| [**listEntitiesAtVersion**](#listEntitiesAtVersion) | **GET** /api/entities/vc/entity/{entityType}/{versionId} | List entities at version (listEntitiesAtVersion) |
-| [**listEntityTypeVersions**](#listEntityTypeVersions) | **GET** /api/entities/vc/version/{entityType} | List entity type versions (listEntityTypeVersions) |
-| [**listEntityVersions**](#listEntityVersions) | **GET** /api/entities/vc/version/{entityType}/{externalEntityUuid} | List entity versions (listEntityVersions) |
-| [**listVersions**](#listVersions) | **GET** /api/entities/vc/version | List all versions (listVersions) |
-| [**loadEntitiesVersion**](#loadEntitiesVersion) | **POST** /api/entities/vc/entity | Load entities version (loadEntitiesVersion) |
-| [**saveEntitiesVersion**](#saveEntitiesVersion) | **POST** /api/entities/vc/version | Save entities version (saveEntitiesVersion) |
+`ThingsboardClient` methods:
 
+```
+EntityDataDiff compareEntityDataToVersion(@Nonnull EntityType entityType, @Nonnull UUID internalEntityUuid, @Nonnull String versionId) // Compare entity data to version (compareEntityDataToVersion)
+EntityDataInfo getEntityDataInfo(@Nonnull String versionId, @Nonnull EntityType entityType, @Nonnull UUID externalEntityUuid, @Nullable UUID internalEntityId) // Get entity data info (getEntityDataInfo)
+VersionCreationResult getVersionCreateRequestStatus(@Nonnull UUID requestId) // Get version create request status (getVersionCreateRequestStatus)
+VersionLoadResult getVersionLoadRequestStatus(@Nonnull UUID requestId) // Get version load request status (getVersionLoadRequestStatus)
+List<VersionedEntityInfo> listAllEntitiesAtVersion(@Nonnull String versionId) // List all entities at version (listAllEntitiesAtVersion)
+List<BranchInfo> listBranches() // List branches (listBranches)
+List<VersionedEntityInfo> listEntitiesAtVersion(@Nonnull EntityType entityType, @Nonnull String versionId) // List entities at version (listEntitiesAtVersion)
+PageDataEntityVersion listEntityTypeVersions(@Nonnull EntityType entityType, @Nonnull String branch, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // List entity type versions (listEntityTypeVersions)
+PageDataEntityVersion listEntityVersions(@Nonnull EntityType entityType, @Nonnull UUID externalEntityUuid, @Nonnull String branch, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID internalEntityId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // List entity versions (listEntityVersions)
+PageDataEntityVersion listVersions(@Nonnull String branch, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // List all versions (listVersions)
+UUID loadEntitiesVersion(@Nonnull VersionLoadRequest versionLoadRequest) // Load entities version (loadEntitiesVersion)
+UUID saveEntitiesVersion(@Nonnull VersionCreateRequest versionCreateRequest) // Save entities version (saveEntitiesVersion)
+```
 
 
 ## compareEntityDataToVersion
 
-> EntityDataDiff compareEntityDataToVersion(entityType, internalEntityUuid, versionId)
+```
+EntityDataDiff compareEntityDataToVersion(@Nonnull EntityType entityType, @Nonnull UUID internalEntityUuid, @Nonnull String versionId)
+```
+
+**GET** `/api/entities/vc/diff/{entityType}/{internalEntityUuid}`
 
 Compare entity data to version (compareEntityDataToVersion)
 
@@ -41,7 +46,11 @@ Returns an object with current entity data and the one at a specific version. En
 
 ## getEntityDataInfo
 
-> EntityDataInfo getEntityDataInfo(versionId, entityType, externalEntityUuid, internalEntityId)
+```
+EntityDataInfo getEntityDataInfo(@Nonnull String versionId, @Nonnull EntityType entityType, @Nonnull UUID externalEntityUuid, @Nullable UUID internalEntityId)
+```
+
+**GET** `/api/entities/vc/info/{versionId}/{entityType}/{externalEntityUuid}`
 
 Get entity data info (getEntityDataInfo)
 
@@ -64,7 +73,11 @@ Retrieves short info about the remote entity by external id at a concrete versio
 
 ## getVersionCreateRequestStatus
 
-> VersionCreationResult getVersionCreateRequestStatus(requestId)
+```
+VersionCreationResult getVersionCreateRequestStatus(@Nonnull UUID requestId)
+```
+
+**GET** `/api/entities/vc/version/{requestId}/status`
 
 Get version create request status (getVersionCreateRequestStatus)
 
@@ -84,7 +97,11 @@ Returns the status of previously made version create request.   This status cont
 
 ## getVersionLoadRequestStatus
 
-> VersionLoadResult getVersionLoadRequestStatus(requestId)
+```
+VersionLoadResult getVersionLoadRequestStatus(@Nonnull UUID requestId)
+```
+
+**GET** `/api/entities/vc/entity/{requestId}/status`
 
 Get version load request status (getVersionLoadRequestStatus)
 
@@ -104,7 +121,11 @@ Returns the status of previously made version load request. The structure contai
 
 ## listAllEntitiesAtVersion
 
-> List<VersionedEntityInfo> listAllEntitiesAtVersion(versionId)
+```
+List<VersionedEntityInfo> listAllEntitiesAtVersion(@Nonnull String versionId)
+```
+
+**GET** `/api/entities/vc/entity/{versionId}`
 
 List all entities at version (listAllEntitiesAtVersion)
 
@@ -124,7 +145,11 @@ Returns a list of all remote entities available in a specific version. Response 
 
 ## listBranches
 
-> List<BranchInfo> listBranches()
+```
+List<BranchInfo> listBranches()
+```
+
+**GET** `/api/entities/vc/branches`
 
 List branches (listBranches)
 
@@ -137,7 +162,11 @@ Lists branches available in the remote repository.   Response example:  ```json 
 
 ## listEntitiesAtVersion
 
-> List<VersionedEntityInfo> listEntitiesAtVersion(entityType, versionId)
+```
+List<VersionedEntityInfo> listEntitiesAtVersion(@Nonnull EntityType entityType, @Nonnull String versionId)
+```
+
+**GET** `/api/entities/vc/entity/{entityType}/{versionId}`
 
 List entities at version (listEntitiesAtVersion)
 
@@ -158,7 +187,11 @@ Returns a list of remote entities of a specific entity type that are available a
 
 ## listEntityTypeVersions
 
-> PageDataEntityVersion listEntityTypeVersions(entityType, branch, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityVersion listEntityTypeVersions(@Nonnull EntityType entityType, @Nonnull String branch, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entities/vc/version/{entityType}`
 
 List entity type versions (listEntityTypeVersions)
 
@@ -184,7 +217,11 @@ Returns list of versions of an entity type in a branch. This is a collected list
 
 ## listEntityVersions
 
-> PageDataEntityVersion listEntityVersions(entityType, externalEntityUuid, branch, pageSize, page, internalEntityId, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityVersion listEntityVersions(@Nonnull EntityType entityType, @Nonnull UUID externalEntityUuid, @Nonnull String branch, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID internalEntityId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entities/vc/version/{entityType}/{externalEntityUuid}`
 
 List entity versions (listEntityVersions)
 
@@ -212,7 +249,11 @@ Returns list of versions for a specific entity in a concrete branch.  You need t
 
 ## listVersions
 
-> PageDataEntityVersion listVersions(branch, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataEntityVersion listVersions(@Nonnull String branch, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entities/vc/version`
 
 List all versions (listVersions)
 
@@ -237,7 +278,11 @@ Lists all available versions in a branch for all entity types.  If specified bra
 
 ## loadEntitiesVersion
 
-> UUID loadEntitiesVersion(versionLoadRequest)
+```
+UUID loadEntitiesVersion(@Nonnull VersionLoadRequest versionLoadRequest)
+```
+
+**POST** `/api/entities/vc/entity`
 
 Load entities version (loadEntitiesVersion)
 
@@ -257,7 +302,11 @@ Loads specific version of remote entities (or single entity) by request. Support
 
 ## saveEntitiesVersion
 
-> UUID saveEntitiesVersion(versionCreateRequest)
+```
+UUID saveEntitiesVersion(@Nonnull VersionCreateRequest versionCreateRequest)
+```
+
+**POST** `/api/entities/vc/version`
 
 Save entities version (saveEntitiesVersion)
 

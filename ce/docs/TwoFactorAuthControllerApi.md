@@ -1,17 +1,22 @@
 # TwoFactorAuthControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**authenticateByTwoFaConfigurationToken**](#authenticateByTwoFaConfigurationToken) | **POST** /api/auth/2fa/login | Get regular token pair after successfully configuring 2FA |
-| [**checkTwoFaVerificationCode**](#checkTwoFaVerificationCode) | **POST** /api/auth/2fa/verification/check | Check 2FA verification code (checkTwoFaVerificationCode) |
-| [**getAvailableTwoFaProviderInfos**](#getAvailableTwoFaProviderInfos) | **GET** /api/auth/2fa/providers | Get available 2FA providers (getAvailableTwoFaProviderInfos) |
-| [**requestTwoFaVerificationCode**](#requestTwoFaVerificationCode) | **POST** /api/auth/2fa/verification/send | Request 2FA verification code (requestTwoFaVerificationCode) |
+`ThingsboardClient` methods:
 
+```
+JwtPair authenticateByTwoFaConfigurationToken() // Get regular token pair after successfully configuring 2FA
+JwtPair checkTwoFaVerificationCode(@Nonnull TwoFaProviderType providerType, @Nonnull String verificationCode) // Check 2FA verification code (checkTwoFaVerificationCode)
+List<TwoFaProviderInfo> getAvailableTwoFaProviderInfos() // Get available 2FA providers (getAvailableTwoFaProviderInfos)
+void requestTwoFaVerificationCode(@Nonnull TwoFaProviderType providerType) // Request 2FA verification code (requestTwoFaVerificationCode)
+```
 
 
 ## authenticateByTwoFaConfigurationToken
 
-> JwtPair authenticateByTwoFaConfigurationToken()
+```
+JwtPair authenticateByTwoFaConfigurationToken()
+```
+
+**POST** `/api/auth/2fa/login`
 
 Get regular token pair after successfully configuring 2FA
 
@@ -24,7 +29,11 @@ Checks 2FA is configured, returning token pair on success.
 
 ## checkTwoFaVerificationCode
 
-> JwtPair checkTwoFaVerificationCode(providerType, verificationCode)
+```
+JwtPair checkTwoFaVerificationCode(@Nonnull TwoFaProviderType providerType, @Nonnull String verificationCode)
+```
+
+**POST** `/api/auth/2fa/verification/check`
 
 Check 2FA verification code (checkTwoFaVerificationCode)
 
@@ -45,7 +54,11 @@ Checks 2FA verification code, and if it is correct the method returns a regular 
 
 ## getAvailableTwoFaProviderInfos
 
-> List<TwoFaProviderInfo> getAvailableTwoFaProviderInfos()
+```
+List<TwoFaProviderInfo> getAvailableTwoFaProviderInfos()
+```
+
+**GET** `/api/auth/2fa/providers`
 
 Get available 2FA providers (getAvailableTwoFaProviderInfos)
 
@@ -58,7 +71,11 @@ Get the list of 2FA provider infos available for user to use. Example: ``` [   {
 
 ## requestTwoFaVerificationCode
 
-> requestTwoFaVerificationCode(providerType)
+```
+void requestTwoFaVerificationCode(@Nonnull TwoFaProviderType providerType)
+```
+
+**POST** `/api/auth/2fa/verification/send`
 
 Request 2FA verification code (requestTwoFaVerificationCode)
 

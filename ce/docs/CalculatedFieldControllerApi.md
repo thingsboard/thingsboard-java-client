@@ -1,21 +1,26 @@
 # CalculatedFieldControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteCalculatedField**](#deleteCalculatedField) | **DELETE** /api/calculatedField/{calculatedFieldId} | Delete Calculated Field (deleteCalculatedField) |
-| [**getCalculatedFieldById**](#getCalculatedFieldById) | **GET** /api/calculatedField/{calculatedFieldId} | Get Calculated Field (getCalculatedFieldById) |
-| [**getCalculatedFieldNames**](#getCalculatedFieldNames) | **GET** /api/calculatedFields/names | Get calculated field names (getCalculatedFieldNames) |
-| [**getCalculatedFields**](#getCalculatedFields) | **GET** /api/calculatedFields | Get calculated fields (getCalculatedFields) |
-| [**getCalculatedFieldsByEntityId**](#getCalculatedFieldsByEntityId) | **GET** /api/calculatedField/{entityType}/{entityId} | Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityId) |
-| [**getLatestCalculatedFieldDebugEvent**](#getLatestCalculatedFieldDebugEvent) | **GET** /api/calculatedField/{calculatedFieldId}/debug | Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent) |
-| [**saveCalculatedField**](#saveCalculatedField) | **POST** /api/calculatedField | Create Or Update Calculated Field (saveCalculatedField) |
-| [**testCalculatedFieldScript**](#testCalculatedFieldScript) | **POST** /api/calculatedField/testScript | Test Script expression |
+`ThingsboardClient` methods:
 
+```
+void deleteCalculatedField(@Nonnull String calculatedFieldId) // Delete Calculated Field (deleteCalculatedField)
+CalculatedField getCalculatedFieldById(@Nonnull String calculatedFieldId) // Get Calculated Field (getCalculatedFieldById)
+PageDataString getCalculatedFieldNames(@Nonnull CalculatedFieldType type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder) // Get calculated field names (getCalculatedFieldNames)
+PageDataCalculatedFieldInfo getCalculatedFields(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<CalculatedFieldType> types, @Nullable EntityType entityType, @Nullable Set<UUID> entities, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> name) // Get calculated fields (getCalculatedFields)
+PageDataCalculatedField getCalculatedFieldsByEntityId(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable CalculatedFieldType type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityId)
+com.fasterxml.jackson.databind.JsonNode getLatestCalculatedFieldDebugEvent(@Nonnull String calculatedFieldId) // Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent)
+CalculatedField saveCalculatedField(@Nonnull CalculatedField calculatedField) // Create Or Update Calculated Field (saveCalculatedField)
+com.fasterxml.jackson.databind.JsonNode testCalculatedFieldScript(@Nonnull Object body) // Test Script expression
+```
 
 
 ## deleteCalculatedField
 
-> deleteCalculatedField(calculatedFieldId)
+```
+void deleteCalculatedField(@Nonnull String calculatedFieldId)
+```
+
+**DELETE** `/api/calculatedField/{calculatedFieldId}`
 
 Delete Calculated Field (deleteCalculatedField)
 
@@ -35,7 +40,11 @@ null (empty response body)
 
 ## getCalculatedFieldById
 
-> CalculatedField getCalculatedFieldById(calculatedFieldId)
+```
+CalculatedField getCalculatedFieldById(@Nonnull String calculatedFieldId)
+```
+
+**GET** `/api/calculatedField/{calculatedFieldId}`
 
 Get Calculated Field (getCalculatedFieldById)
 
@@ -55,7 +64,11 @@ Fetch the Calculated Field object based on the provided Calculated Field Id.
 
 ## getCalculatedFieldNames
 
-> PageDataString getCalculatedFieldNames(type, pageSize, page, textSearch, sortOrder)
+```
+PageDataString getCalculatedFieldNames(@Nonnull CalculatedFieldType type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder)
+```
+
+**GET** `/api/calculatedFields/names`
 
 Get calculated field names (getCalculatedFieldNames)
 
@@ -79,7 +92,11 @@ Fetch the list of calculated field names for specified type.
 
 ## getCalculatedFields
 
-> PageDataCalculatedFieldInfo getCalculatedFields(pageSize, page, types, entityType, entities, textSearch, sortProperty, sortOrder, name)
+```
+PageDataCalculatedFieldInfo getCalculatedFields(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<CalculatedFieldType> types, @Nullable EntityType entityType, @Nullable Set<UUID> entities, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> name)
+```
+
+**GET** `/api/calculatedFields`
 
 Get calculated fields (getCalculatedFields)
 
@@ -107,7 +124,11 @@ Fetch tenant calculated fields based on the filter.
 
 ## getCalculatedFieldsByEntityId
 
-> PageDataCalculatedField getCalculatedFieldsByEntityId(entityType, entityId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataCalculatedField getCalculatedFieldsByEntityId(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable CalculatedFieldType type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/calculatedField/{entityType}/{entityId}`
 
 Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityId)
 
@@ -134,7 +155,11 @@ Fetch the Calculated Fields based on the provided Entity Id.
 
 ## getLatestCalculatedFieldDebugEvent
 
-> com.fasterxml.jackson.databind.JsonNode getLatestCalculatedFieldDebugEvent(calculatedFieldId)
+```
+com.fasterxml.jackson.databind.JsonNode getLatestCalculatedFieldDebugEvent(@Nonnull String calculatedFieldId)
+```
+
+**GET** `/api/calculatedField/{calculatedFieldId}/debug`
 
 Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent)
 
@@ -154,7 +179,11 @@ Gets latest calculated field debug event for specified calculated field id. Refe
 
 ## saveCalculatedField
 
-> CalculatedField saveCalculatedField(calculatedField)
+```
+CalculatedField saveCalculatedField(@Nonnull CalculatedField calculatedField)
+```
+
+**POST** `/api/calculatedField`
 
 Create Or Update Calculated Field (saveCalculatedField)
 
@@ -174,7 +203,11 @@ Creates or Updates the Calculated Field. When creating calculated field, platfor
 
 ## testCalculatedFieldScript
 
-> com.fasterxml.jackson.databind.JsonNode testCalculatedFieldScript(body)
+```
+com.fasterxml.jackson.databind.JsonNode testCalculatedFieldScript(@Nonnull Object body)
+```
+
+**POST** `/api/calculatedField/testScript`
 
 Test Script expression
 

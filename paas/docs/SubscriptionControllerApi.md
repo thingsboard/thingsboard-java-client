@@ -1,18 +1,23 @@
 # SubscriptionControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getMergedTenantProfileConfiguration**](#getMergedTenantProfileConfiguration) | **GET** /api/tenant/subscription/mergedProfileConfig | getMergedTenantProfileConfiguration |
-| [**getTenantProfileConfigurationById**](#getTenantProfileConfigurationById) | **GET** /api/tenantProfile/{tenantProfileId}/profileConfig | getTenantProfileConfigurationById |
-| [**getTenantSubscription**](#getTenantSubscription) | **GET** /api/tenant/subscription | getTenantSubscription |
-| [**getTenantSubscriptionUsage**](#getTenantSubscriptionUsage) | **GET** /api/tenant/subscription/usage | getTenantSubscriptionUsage |
-| [**trendzUsed**](#trendzUsed) | **GET** /api/tenant/subscription/trendzUsed | trendzUsed |
+`ThingsboardClient` methods:
 
+```
+DefaultTenantProfileConfiguration getMergedTenantProfileConfiguration() // getMergedTenantProfileConfiguration
+DefaultTenantProfileConfiguration getTenantProfileConfigurationById(@Nonnull String tenantProfileId) // getTenantProfileConfigurationById
+SubscriptionDetails getTenantSubscription() // getTenantSubscription
+SubscriptionUsage getTenantSubscriptionUsage() // getTenantSubscriptionUsage
+Boolean trendzUsed() // trendzUsed
+```
 
 
 ## getMergedTenantProfileConfiguration
 
-> DefaultTenantProfileConfiguration getMergedTenantProfileConfiguration()
+```
+DefaultTenantProfileConfiguration getMergedTenantProfileConfiguration()
+```
+
+**GET** `/api/tenant/subscription/mergedProfileConfig`
 
 getMergedTenantProfileConfiguration
 
@@ -23,7 +28,11 @@ getMergedTenantProfileConfiguration
 
 ## getTenantProfileConfigurationById
 
-> DefaultTenantProfileConfiguration getTenantProfileConfigurationById(tenantProfileId)
+```
+DefaultTenantProfileConfiguration getTenantProfileConfigurationById(@Nonnull String tenantProfileId)
+```
+
+**GET** `/api/tenantProfile/{tenantProfileId}/profileConfig`
 
 getTenantProfileConfigurationById
 
@@ -41,7 +50,11 @@ getTenantProfileConfigurationById
 
 ## getTenantSubscription
 
-> SubscriptionDetails getTenantSubscription()
+```
+SubscriptionDetails getTenantSubscription()
+```
+
+**GET** `/api/tenant/subscription`
 
 getTenantSubscription
 
@@ -52,7 +65,11 @@ getTenantSubscription
 
 ## getTenantSubscriptionUsage
 
-> SubscriptionUsage getTenantSubscriptionUsage()
+```
+SubscriptionUsage getTenantSubscriptionUsage()
+```
+
+**GET** `/api/tenant/subscription/usage`
 
 getTenantSubscriptionUsage
 
@@ -63,7 +80,11 @@ getTenantSubscriptionUsage
 
 ## trendzUsed
 
-> Boolean trendzUsed()
+```
+Boolean trendzUsed()
+```
+
+**GET** `/api/tenant/subscription/trendzUsed`
 
 trendzUsed
 

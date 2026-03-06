@@ -1,15 +1,20 @@
 # LoginEndpointApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**login**](#login) | **POST** /api/auth/login | Login method to get user JWT token data |
-| [**refreshToken**](#refreshToken) | **POST** /api/auth/token | Refresh user JWT token data |
+`ThingsboardClient` methods:
 
+```
+LoginResponse login(@Nullable LoginRequest loginRequest) // Login method to get user JWT token data
+LoginResponse refreshToken(@Nullable RefreshTokenRequest refreshTokenRequest) // Refresh user JWT token data
+```
 
 
 ## login
 
-> LoginResponse login(loginRequest)
+```
+LoginResponse login(@Nullable LoginRequest loginRequest)
+```
+
+**POST** `/api/auth/login`
 
 Login method to get user JWT token data
 
@@ -29,7 +34,11 @@ Login method used to authenticate user and get JWT token data.  Value of the res
 
 ## refreshToken
 
-> LoginResponse refreshToken(refreshTokenRequest)
+```
+LoginResponse refreshToken(@Nullable RefreshTokenRequest refreshTokenRequest)
+```
+
+**POST** `/api/auth/token`
 
 Refresh user JWT token data
 

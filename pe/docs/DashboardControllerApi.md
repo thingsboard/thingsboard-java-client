@@ -1,34 +1,39 @@
 # DashboardControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteDashboard**](#deleteDashboard) | **DELETE** /api/dashboard/{dashboardId} | Delete the Dashboard (deleteDashboard) |
-| [**exportGroupDashboards**](#exportGroupDashboards) | **GET** /api/entityGroup/{entityGroupId}/dashboards/export | Export Dashboards (exportGroupDashboards) |
-| [**getAllDashboards**](#getAllDashboards) | **GET** /api/dashboards/all | Get All Dashboards for current user (getAllDashboards) |
-| [**getCustomerDashboards**](#getCustomerDashboards) | **GET** /api/customer/{customerId}/dashboards | Get Customer Dashboards (getCustomerDashboards) |
-| [**getCustomerHomeDashboardInfo**](#getCustomerHomeDashboardInfo) | **GET** /api/customer/dashboard/home/info | Get Customer Home Dashboard Info (getCustomerHomeDashboardInfo) |
-| [**getDashboardById**](#getDashboardById) | **GET** /api/dashboard/{dashboardId} | Get Dashboard (getDashboardById) |
-| [**getDashboardInfoById**](#getDashboardInfoById) | **GET** /api/dashboard/info/{dashboardId} | Get Dashboard Info (getDashboardInfoById) |
-| [**getDashboardsByEntityGroupId**](#getDashboardsByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/dashboards | Get dashboards by Entity Group Id (getDashboardsByEntityGroupId) |
-| [**getDashboardsByIds**](#getDashboardsByIds) | **GET** /api/dashboards | Get dashboards by Dashboard Ids (getDashboardsByIds) |
-| [**getHomeDashboard**](#getHomeDashboard) | **GET** /api/dashboard/home | Get Home Dashboard (getHomeDashboard) |
-| [**getHomeDashboardInfo**](#getHomeDashboardInfo) | **GET** /api/dashboard/home/info | Get Home Dashboard Info (getHomeDashboardInfo) |
-| [**getMaxDatapointsLimit**](#getMaxDatapointsLimit) | **GET** /api/dashboard/maxDatapointsLimit | Get max data points limit (getMaxDatapointsLimit) |
-| [**getServerTime**](#getServerTime) | **GET** /api/dashboard/serverTime | Get server time (getServerTime) |
-| [**getTenantDashboards**](#getTenantDashboards) | **GET** /api/tenant/dashboards | Get Tenant Dashboards (getTenantDashboards) |
-| [**getTenantDashboardsByTenantId**](#getTenantDashboardsByTenantId) | **GET** /api/tenant/{tenantId}/dashboards | Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId) |
-| [**getTenantHomeDashboardInfo**](#getTenantHomeDashboardInfo) | **GET** /api/tenant/dashboard/home/info | Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
-| [**getUserDashboards**](#getUserDashboards) | **GET** /api/user/dashboards | Get Dashboards (getUserDashboards) |
-| [**importGroupDashboards**](#importGroupDashboards) | **POST** /api/entityGroup/{entityGroupId}/dashboards/import | Import Dashboards (importGroupDashboards) |
-| [**saveDashboard**](#saveDashboard) | **POST** /api/dashboard | Create Or Update Dashboard (saveDashboard) |
-| [**setCustomerHomeDashboardInfo**](#setCustomerHomeDashboardInfo) | **POST** /api/customer/dashboard/home/info | Update Customer Home Dashboard Info (setCustomerHomeDashboardInfo) |
-| [**setTenantHomeDashboardInfo**](#setTenantHomeDashboardInfo) | **POST** /api/tenant/dashboard/home/info | Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo) |
+`ThingsboardClient` methods:
 
+```
+void deleteDashboard(@Nonnull String dashboardId) // Delete the Dashboard (deleteDashboard)
+List<Dashboard> exportGroupDashboards(@Nonnull String entityGroupId, @Nonnull Integer limit, @Nullable String acceptEncoding) // Export Dashboards (exportGroupDashboards)
+PageDataDashboardInfo getAllDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Dashboards for current user (getAllDashboards)
+PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Dashboards (getCustomerDashboards)
+HomeDashboardInfo getCustomerHomeDashboardInfo() // Get Customer Home Dashboard Info (getCustomerHomeDashboardInfo)
+void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) // Get Dashboard (getDashboardById)
+DashboardInfo getDashboardInfoById(@Nonnull String dashboardId) // Get Dashboard Info (getDashboardInfoById)
+PageDataDashboardInfo getDashboardsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get dashboards by Entity Group Id (getDashboardsByEntityGroupId)
+List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds) // Get dashboards by Dashboard Ids (getDashboardsByIds)
+void getHomeDashboard(@Nullable String acceptEncoding) // Get Home Dashboard (getHomeDashboard)
+HomeDashboardInfo getHomeDashboardInfo() // Get Home Dashboard Info (getHomeDashboardInfo)
+Long getMaxDatapointsLimit() // Get max data points limit (getMaxDatapointsLimit)
+Long getServerTime() // Get server time (getServerTime)
+PageDataDashboardInfo getTenantDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Dashboards (getTenantDashboards)
+PageDataDashboardInfo getTenantDashboardsByTenantId(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId)
+HomeDashboardInfo getTenantHomeDashboardInfo() // Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
+PageDataDashboardInfo getUserDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String operation, @Nullable String userId) // Get Dashboards (getUserDashboards)
+void importGroupDashboards(@Nonnull String entityGroupId, @Nonnull List<Dashboard> dashboard, @Nullable Boolean overwrite) // Import Dashboards (importGroupDashboards)
+Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable String acceptEncoding) // Create Or Update Dashboard (saveDashboard)
+void setCustomerHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo) // Update Customer Home Dashboard Info (setCustomerHomeDashboardInfo)
+void setTenantHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo) // Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
+```
 
 
 ## deleteDashboard
 
-> deleteDashboard(dashboardId)
+```
+void deleteDashboard(@Nonnull String dashboardId)
+```
+
+**DELETE** `/api/dashboard/{dashboardId}`
 
 Delete the Dashboard (deleteDashboard)
 
@@ -48,7 +53,11 @@ null (empty response body)
 
 ## exportGroupDashboards
 
-> List<Dashboard> exportGroupDashboards(entityGroupId, limit, acceptEncoding)
+```
+List<Dashboard> exportGroupDashboards(@Nonnull String entityGroupId, @Nonnull Integer limit, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/dashboards/export`
 
 Export Dashboards (exportGroupDashboards)
 
@@ -70,7 +79,11 @@ Export the dashboards that belong to specified group id.The Dashboard object is 
 
 ## getAllDashboards
 
-> PageDataDashboardInfo getAllDashboards(pageSize, page, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getAllDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/dashboards/all`
 
 Get All Dashboards for current user (getAllDashboards)
 
@@ -95,7 +108,11 @@ Returns a page of dashboard info objects owned by the tenant or the customer of 
 
 ## getCustomerDashboards
 
-> PageDataDashboardInfo getCustomerDashboards(customerId, pageSize, page, includeCustomers, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/dashboards`
 
 Get Customer Dashboards (getCustomerDashboards)
 
@@ -121,7 +138,11 @@ Returns a page of dashboard info objects owned by the specified customer. The Da
 
 ## getCustomerHomeDashboardInfo
 
-> HomeDashboardInfo getCustomerHomeDashboardInfo()
+```
+HomeDashboardInfo getCustomerHomeDashboardInfo()
+```
+
+**GET** `/api/customer/dashboard/home/info`
 
 Get Customer Home Dashboard Info (getCustomerHomeDashboardInfo)
 
@@ -134,7 +155,11 @@ Returns the home dashboard info object that is configured as 'homeDashboardId' p
 
 ## getDashboardById
 
-> getDashboardById(dashboardId, includeResources, acceptEncoding)
+```
+void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/dashboard/{dashboardId}`
 
 Get Dashboard (getDashboardById)
 
@@ -156,7 +181,11 @@ null (empty response body)
 
 ## getDashboardInfoById
 
-> DashboardInfo getDashboardInfoById(dashboardId)
+```
+DashboardInfo getDashboardInfoById(@Nonnull String dashboardId)
+```
+
+**GET** `/api/dashboard/info/{dashboardId}`
 
 Get Dashboard Info (getDashboardInfoById)
 
@@ -176,7 +205,11 @@ Get the information about the dashboard based on 'dashboardId' parameter. The Da
 
 ## getDashboardsByEntityGroupId
 
-> PageDataDashboardInfo getDashboardsByEntityGroupId(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getDashboardsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/dashboards`
 
 Get dashboards by Entity Group Id (getDashboardsByEntityGroupId)
 
@@ -201,7 +234,11 @@ Returns a page of Dashboard objects that belongs to specified Entity Group Id. Y
 
 ## getDashboardsByIds
 
-> List<DashboardInfo> getDashboardsByIds(dashboardIds)
+```
+List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds)
+```
+
+**GET** `/api/dashboards`
 
 Get dashboards by Dashboard Ids (getDashboardsByIds)
 
@@ -221,7 +258,11 @@ Returns a list of DashboardInfo objects based on the provided ids. Filters the l
 
 ## getHomeDashboard
 
-> getHomeDashboard(acceptEncoding)
+```
+void getHomeDashboard(@Nullable String acceptEncoding)
+```
+
+**GET** `/api/dashboard/home`
 
 Get Home Dashboard (getHomeDashboard)
 
@@ -241,7 +282,11 @@ null (empty response body)
 
 ## getHomeDashboardInfo
 
-> HomeDashboardInfo getHomeDashboardInfo()
+```
+HomeDashboardInfo getHomeDashboardInfo()
+```
+
+**GET** `/api/dashboard/home/info`
 
 Get Home Dashboard Info (getHomeDashboardInfo)
 
@@ -254,7 +299,11 @@ Returns the home dashboard info object that is configured as 'homeDashboardId' p
 
 ## getMaxDatapointsLimit
 
-> Long getMaxDatapointsLimit()
+```
+Long getMaxDatapointsLimit()
+```
+
+**GET** `/api/dashboard/maxDatapointsLimit`
 
 Get max data points limit (getMaxDatapointsLimit)
 
@@ -267,7 +316,11 @@ Get the maximum number of data points that dashboard may request from the server
 
 ## getServerTime
 
-> Long getServerTime()
+```
+Long getServerTime()
+```
+
+**GET** `/api/dashboard/serverTime`
 
 Get server time (getServerTime)
 
@@ -280,7 +333,11 @@ Get the server time (milliseconds since January 1, 1970 UTC). Used to adjust vie
 
 ## getTenantDashboards
 
-> PageDataDashboardInfo getTenantDashboards(pageSize, page, mobile, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getTenantDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/dashboards`
 
 Get Tenant Dashboards (getTenantDashboards)
 
@@ -305,7 +362,11 @@ Returns a page of dashboard info objects owned by the tenant of a current user. 
 
 ## getTenantDashboardsByTenantId
 
-> PageDataDashboardInfo getTenantDashboardsByTenantId(tenantId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataDashboardInfo getTenantDashboardsByTenantId(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/{tenantId}/dashboards`
 
 Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId)
 
@@ -330,7 +391,11 @@ Returns a page of dashboard info objects owned by tenant. The Dashboard Info obj
 
 ## getTenantHomeDashboardInfo
 
-> HomeDashboardInfo getTenantHomeDashboardInfo()
+```
+HomeDashboardInfo getTenantHomeDashboardInfo()
+```
+
+**GET** `/api/tenant/dashboard/home/info`
 
 Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
 
@@ -343,7 +408,11 @@ Returns the home dashboard info object that is configured as 'homeDashboardId' p
 
 ## getUserDashboards
 
-> PageDataDashboardInfo getUserDashboards(pageSize, page, mobile, textSearch, sortProperty, sortOrder, operation, userId)
+```
+PageDataDashboardInfo getUserDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String operation, @Nullable String userId)
+```
+
+**GET** `/api/user/dashboards`
 
 Get Dashboards (getUserDashboards)
 
@@ -370,7 +439,11 @@ Returns a page of Dashboard Info objects available for specified or current user
 
 ## importGroupDashboards
 
-> importGroupDashboards(entityGroupId, dashboard, overwrite)
+```
+void importGroupDashboards(@Nonnull String entityGroupId, @Nonnull List<Dashboard> dashboard, @Nullable Boolean overwrite)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/dashboards/import`
 
 Import Dashboards (importGroupDashboards)
 
@@ -392,7 +465,11 @@ null (empty response body)
 
 ## saveDashboard
 
-> Dashboard saveDashboard(dashboard, entityGroupId, entityGroupIds, acceptEncoding)
+```
+Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable String acceptEncoding)
+```
+
+**POST** `/api/dashboard`
 
 Create Or Update Dashboard (saveDashboard)
 
@@ -415,7 +492,11 @@ Create or update the Dashboard. When creating dashboard, platform generates Dash
 
 ## setCustomerHomeDashboardInfo
 
-> setCustomerHomeDashboardInfo(homeDashboardInfo)
+```
+void setCustomerHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo)
+```
+
+**POST** `/api/customer/dashboard/home/info`
 
 Update Customer Home Dashboard Info (setCustomerHomeDashboardInfo)
 
@@ -435,7 +516,11 @@ null (empty response body)
 
 ## setTenantHomeDashboardInfo
 
-> setTenantHomeDashboardInfo(homeDashboardInfo)
+```
+void setTenantHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo)
+```
+
+**POST** `/api/tenant/dashboard/home/info`
 
 Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
 

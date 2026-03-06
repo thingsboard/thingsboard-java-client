@@ -1,28 +1,33 @@
 # IntegrationControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**assignIntegrationToEdge**](#assignIntegrationToEdge) | **POST** /api/edge/{edgeId}/integration/{integrationId} | Assign integration to edge (assignIntegrationToEdge) |
-| [**checkIntegrationConnection**](#checkIntegrationConnection) | **POST** /api/integration/check | Check integration connectivity (checkIntegrationConnection) |
-| [**deleteIntegration**](#deleteIntegration) | **DELETE** /api/integration/{integrationId} | Delete integration (deleteIntegration) |
-| [**findAllRelatedEdgesMissingAttributes**](#findAllRelatedEdgesMissingAttributes) | **GET** /api/edge/integration/{integrationId}/allMissingAttributes | Find missing attributes for all related edges (findAllRelatedEdgesMissingAttributes) |
-| [**findEdgeMissingAttributes**](#findEdgeMissingAttributes) | **GET** /api/edge/integration/{edgeId}/missingAttributes | Find edge missing attributes for assigned integrations (findEdgeMissingAttributes) |
-| [**getEdgeIntegrationInfos**](#getEdgeIntegrationInfos) | **GET** /api/edge/{edgeId}/integrationInfos | Get Edge Integrations (getEdgeIntegrationInfos) |
-| [**getEdgeIntegrations**](#getEdgeIntegrations) | **GET** /api/edge/{edgeId}/integrations | Get Edge Integrations (getEdgeIntegrations) |
-| [**getIntegrationById**](#getIntegrationById) | **GET** /api/integration/{integrationId} | Get Integration (getIntegrationById) |
-| [**getIntegrationByRoutingKey**](#getIntegrationByRoutingKey) | **GET** /api/integration/routingKey/{routingKey} | Get Integration by Routing Key (getIntegrationByRoutingKey) |
-| [**getIntegrationInfos**](#getIntegrationInfos) | **GET** /api/integrationInfos | Get Integration Infos (getIntegrationInfos) |
-| [**getIntegrations**](#getIntegrations) | **GET** /api/integrations | Get Integrations (getIntegrations) |
-| [**getIntegrationsByIds**](#getIntegrationsByIds) | **GET** /api/integrations/list | Get Integrations By Ids (getIntegrationsByIds) |
-| [**getIntegrationsConvertersInfo**](#getIntegrationsConvertersInfo) | **GET** /api/integrations/converters/info | Get Integrations Converters info (getIntegrationsConvertersInfo) |
-| [**saveIntegration**](#saveIntegration) | **POST** /api/integration | Create Or Update Integration (saveIntegration) |
-| [**unassignIntegrationFromEdge**](#unassignIntegrationFromEdge) | **DELETE** /api/edge/{edgeId}/integration/{integrationId} | Unassign integration from edge (unassignIntegrationFromEdge) |
+`ThingsboardClient` methods:
 
+```
+Integration assignIntegrationToEdge(@Nonnull String edgeId, @Nonnull String integrationId) // Assign integration to edge (assignIntegrationToEdge)
+void checkIntegrationConnection(@Nonnull Integration integration) // Check integration connectivity (checkIntegrationConnection)
+void deleteIntegration(@Nonnull String integrationId) // Delete integration (deleteIntegration)
+String findAllRelatedEdgesMissingAttributes(@Nonnull String integrationId) // Find missing attributes for all related edges (findAllRelatedEdgesMissingAttributes)
+String findEdgeMissingAttributes(@Nonnull String edgeId, @Nonnull List<String> integrationIds) // Find edge missing attributes for assigned integrations (findEdgeMissingAttributes)
+PageDataIntegrationInfo getEdgeIntegrationInfos(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Integrations (getEdgeIntegrationInfos)
+PageDataIntegration getEdgeIntegrations(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Integrations (getEdgeIntegrations)
+Integration getIntegrationById(@Nonnull String integrationId) // Get Integration (getIntegrationById)
+Integration getIntegrationByRoutingKey(@Nonnull String routingKey) // Get Integration by Routing Key (getIntegrationByRoutingKey)
+PageDataIntegrationInfo getIntegrationInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Integration Infos (getIntegrationInfos)
+PageDataIntegration getIntegrations(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Integrations (getIntegrations)
+List<Integration> getIntegrationsByIds(@Nonnull List<String> integrationIds) // Get Integrations By Ids (getIntegrationsByIds)
+Map<String, IntegrationConvertersInfo> getIntegrationsConvertersInfo() // Get Integrations Converters info (getIntegrationsConvertersInfo)
+Integration saveIntegration(@Nonnull Integration integration) // Create Or Update Integration (saveIntegration)
+Integration unassignIntegrationFromEdge(@Nonnull String edgeId, @Nonnull String integrationId) // Unassign integration from edge (unassignIntegrationFromEdge)
+```
 
 
 ## assignIntegrationToEdge
 
-> Integration assignIntegrationToEdge(edgeId, integrationId)
+```
+Integration assignIntegrationToEdge(@Nonnull String edgeId, @Nonnull String integrationId)
+```
+
+**POST** `/api/edge/{edgeId}/integration/{integrationId}`
 
 Assign integration to edge (assignIntegrationToEdge)
 
@@ -43,7 +48,11 @@ Creates assignment of an existing integration edge template to an instance of Th
 
 ## checkIntegrationConnection
 
-> checkIntegrationConnection(integration)
+```
+void checkIntegrationConnection(@Nonnull Integration integration)
+```
+
+**POST** `/api/integration/check`
 
 Check integration connectivity (checkIntegrationConnection)
 
@@ -63,7 +72,11 @@ null (empty response body)
 
 ## deleteIntegration
 
-> deleteIntegration(integrationId)
+```
+void deleteIntegration(@Nonnull String integrationId)
+```
+
+**DELETE** `/api/integration/{integrationId}`
 
 Delete integration (deleteIntegration)
 
@@ -83,7 +96,11 @@ null (empty response body)
 
 ## findAllRelatedEdgesMissingAttributes
 
-> String findAllRelatedEdgesMissingAttributes(integrationId)
+```
+String findAllRelatedEdgesMissingAttributes(@Nonnull String integrationId)
+```
+
+**GET** `/api/edge/integration/{integrationId}/allMissingAttributes`
 
 Find missing attributes for all related edges (findAllRelatedEdgesMissingAttributes)
 
@@ -103,7 +120,11 @@ Returns list of attribute names of all related edges that are missing in the int
 
 ## findEdgeMissingAttributes
 
-> String findEdgeMissingAttributes(edgeId, integrationIds)
+```
+String findEdgeMissingAttributes(@Nonnull String edgeId, @Nonnull List<String> integrationIds)
+```
+
+**GET** `/api/edge/integration/{edgeId}/missingAttributes`
 
 Find edge missing attributes for assigned integrations (findEdgeMissingAttributes)
 
@@ -124,7 +145,11 @@ Returns list of edge attribute names that are missing in assigned integrations. 
 
 ## getEdgeIntegrationInfos
 
-> PageDataIntegrationInfo getEdgeIntegrationInfos(edgeId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataIntegrationInfo getEdgeIntegrationInfos(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edge/{edgeId}/integrationInfos`
 
 Get Edge Integrations (getEdgeIntegrationInfos)
 
@@ -149,7 +174,11 @@ Returns a page of Integrations assigned to the specified edge. The integration o
 
 ## getEdgeIntegrations
 
-> PageDataIntegration getEdgeIntegrations(edgeId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataIntegration getEdgeIntegrations(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edge/{edgeId}/integrations`
 
 Get Edge Integrations (getEdgeIntegrations)
 
@@ -174,7 +203,11 @@ Returns a page of Integrations assigned to the specified edge. The integration o
 
 ## getIntegrationById
 
-> Integration getIntegrationById(integrationId)
+```
+Integration getIntegrationById(@Nonnull String integrationId)
+```
+
+**GET** `/api/integration/{integrationId}`
 
 Get Integration (getIntegrationById)
 
@@ -194,7 +227,11 @@ Fetch the Integration object based on the provided Integration Id. The server ch
 
 ## getIntegrationByRoutingKey
 
-> Integration getIntegrationByRoutingKey(routingKey)
+```
+Integration getIntegrationByRoutingKey(@Nonnull String routingKey)
+```
+
+**GET** `/api/integration/routingKey/{routingKey}`
 
 Get Integration by Routing Key (getIntegrationByRoutingKey)
 
@@ -214,7 +251,11 @@ Fetch the Integration object based on the provided routing key. The server check
 
 ## getIntegrationInfos
 
-> PageDataIntegrationInfo getIntegrationInfos(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder)
+```
+PageDataIntegrationInfo getIntegrationInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/integrationInfos`
 
 Get Integration Infos (getIntegrationInfos)
 
@@ -239,7 +280,11 @@ Returns a page of integration infos owned by tenant. You can specify parameters 
 
 ## getIntegrations
 
-> PageDataIntegration getIntegrations(pageSize, page, isEdgeTemplate, textSearch, sortProperty, sortOrder)
+```
+PageDataIntegration getIntegrations(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/integrations`
 
 Get Integrations (getIntegrations)
 
@@ -264,7 +309,11 @@ Returns a page of integrations owned by tenant. You can specify parameters to fi
 
 ## getIntegrationsByIds
 
-> List<Integration> getIntegrationsByIds(integrationIds)
+```
+List<Integration> getIntegrationsByIds(@Nonnull List<String> integrationIds)
+```
+
+**GET** `/api/integrations/list`
 
 Get Integrations By Ids (getIntegrationsByIds)
 
@@ -284,7 +333,11 @@ Requested integrations must be owned by tenant which is performing the request. 
 
 ## getIntegrationsConvertersInfo
 
-> Map<String, IntegrationConvertersInfo> getIntegrationsConvertersInfo()
+```
+Map<String, IntegrationConvertersInfo> getIntegrationsConvertersInfo()
+```
+
+**GET** `/api/integrations/converters/info`
 
 Get Integrations Converters info (getIntegrationsConvertersInfo)
 
@@ -297,7 +350,11 @@ Returns a JSON object containing information about existing tenant converters an
 
 ## saveIntegration
 
-> Integration saveIntegration(integration)
+```
+Integration saveIntegration(@Nonnull Integration integration)
+```
+
+**POST** `/api/integration`
 
 Create Or Update Integration (saveIntegration)
 
@@ -317,7 +374,11 @@ Create or update the Integration. When creating integration, platform generates 
 
 ## unassignIntegrationFromEdge
 
-> Integration unassignIntegrationFromEdge(edgeId, integrationId)
+```
+Integration unassignIntegrationFromEdge(@Nonnull String edgeId, @Nonnull String integrationId)
+```
+
+**DELETE** `/api/edge/{edgeId}/integration/{integrationId}`
 
 Unassign integration from edge (unassignIntegrationFromEdge)
 

@@ -1,22 +1,27 @@
 # SignUpControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**acceptPrivacyPolicy**](#acceptPrivacyPolicy) | **POST** /api/signup/acceptPrivacyPolicy | Accept privacy policy (acceptPrivacyPolicy) |
-| [**acceptTermsOfUse**](#acceptTermsOfUse) | **POST** /api/signup/acceptTermsOfUse | Accept Terms of Use (acceptTermsOfUse) |
-| [**activateEmail**](#activateEmail) | **GET** /api/noauth/activateEmail | Activate User using code from Email (activateEmail) |
-| [**activateUserByEmailCode**](#activateUserByEmailCode) | **POST** /api/noauth/activateByEmailCode | Activate and login using code from Email (activateUserByEmailCode) |
-| [**mobileLogin**](#mobileLogin) | **GET** /api/noauth/login | Mobile Login redirect (mobileLogin) |
-| [**privacyPolicyAccepted**](#privacyPolicyAccepted) | **GET** /api/signup/privacyPolicyAccepted | Check privacy policy (privacyPolicyAccepted) |
-| [**resendEmailActivation**](#resendEmailActivation) | **POST** /api/noauth/resendEmailActivation | Resend Activation Email (resendEmailActivation) |
-| [**signUp**](#signUp) | **POST** /api/noauth/signup | User Sign Up (signUp) |
-| [**termsOfUseAccepted**](#termsOfUseAccepted) | **GET** /api/signup/termsOfUseAccepted | Check Terms Of User (termsOfUseAccepted) |
+`ThingsboardClient` methods:
 
+```
+com.fasterxml.jackson.databind.JsonNode acceptPrivacyPolicy() // Accept privacy policy (acceptPrivacyPolicy)
+com.fasterxml.jackson.databind.JsonNode acceptTermsOfUse() // Accept Terms of Use (acceptTermsOfUse)
+String activateEmail(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform) // Activate User using code from Email (activateEmail)
+JwtPair activateUserByEmailCode(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform) // Activate and login using code from Email (activateUserByEmailCode)
+String mobileLogin(@Nonnull String pkgName, @Nonnull String platform) // Mobile Login redirect (mobileLogin)
+Boolean privacyPolicyAccepted() // Check privacy policy (privacyPolicyAccepted)
+void resendEmailActivation(@Nonnull String email, @Nullable String pkgName, @Nullable String platform) // Resend Activation Email (resendEmailActivation)
+SignUpResult signUp(@Nonnull SignUpRequest signUpRequest) // User Sign Up (signUp)
+Boolean termsOfUseAccepted() // Check Terms Of User (termsOfUseAccepted)
+```
 
 
 ## acceptPrivacyPolicy
 
-> com.fasterxml.jackson.databind.JsonNode acceptPrivacyPolicy()
+```
+com.fasterxml.jackson.databind.JsonNode acceptPrivacyPolicy()
+```
+
+**POST** `/api/signup/acceptPrivacyPolicy`
 
 Accept privacy policy (acceptPrivacyPolicy)
 
@@ -29,7 +34,11 @@ Accept privacy policy by the current user.
 
 ## acceptTermsOfUse
 
-> com.fasterxml.jackson.databind.JsonNode acceptTermsOfUse()
+```
+com.fasterxml.jackson.databind.JsonNode acceptTermsOfUse()
+```
+
+**POST** `/api/signup/acceptTermsOfUse`
 
 Accept Terms of Use (acceptTermsOfUse)
 
@@ -42,7 +51,11 @@ Accept Terms of Use by the current user.
 
 ## activateEmail
 
-> String activateEmail(emailCode, pkgName, platform)
+```
+String activateEmail(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform)
+```
+
+**GET** `/api/noauth/activateEmail`
 
 Activate User using code from Email (activateEmail)
 
@@ -64,7 +77,11 @@ Activate the user using code(link) from the activation email. Validates the code
 
 ## activateUserByEmailCode
 
-> JwtPair activateUserByEmailCode(emailCode, pkgName, platform)
+```
+JwtPair activateUserByEmailCode(@Nonnull String emailCode, @Nullable String pkgName, @Nullable String platform)
+```
+
+**POST** `/api/noauth/activateByEmailCode`
 
 Activate and login using code from Email (activateUserByEmailCode)
 
@@ -86,7 +103,11 @@ Activate the user using code(link) from the activation email and return the JWT 
 
 ## mobileLogin
 
-> String mobileLogin(pkgName, platform)
+```
+String mobileLogin(@Nonnull String pkgName, @Nonnull String platform)
+```
+
+**GET** `/api/noauth/login`
 
 Mobile Login redirect (mobileLogin)
 
@@ -107,7 +128,11 @@ This method generates redirect to the special link that is handled by mobile app
 
 ## privacyPolicyAccepted
 
-> Boolean privacyPolicyAccepted()
+```
+Boolean privacyPolicyAccepted()
+```
+
+**GET** `/api/signup/privacyPolicyAccepted`
 
 Check privacy policy (privacyPolicyAccepted)
 
@@ -120,7 +145,11 @@ Checks that current user accepted the privacy policy.
 
 ## resendEmailActivation
 
-> resendEmailActivation(email, pkgName, platform)
+```
+void resendEmailActivation(@Nonnull String email, @Nullable String pkgName, @Nullable String platform)
+```
+
+**POST** `/api/noauth/resendEmailActivation`
 
 Resend Activation Email (resendEmailActivation)
 
@@ -142,7 +171,11 @@ null (empty response body)
 
 ## signUp
 
-> SignUpResult signUp(signUpRequest)
+```
+SignUpResult signUp(@Nonnull SignUpRequest signUpRequest)
+```
+
+**POST** `/api/noauth/signup`
 
 User Sign Up (signUp)
 
@@ -162,7 +195,11 @@ Process user sign up request. Creates the Customer and corresponding User based 
 
 ## termsOfUseAccepted
 
-> Boolean termsOfUseAccepted()
+```
+Boolean termsOfUseAccepted()
+```
+
+**GET** `/api/signup/termsOfUseAccepted`
 
 Check Terms Of User (termsOfUseAccepted)
 

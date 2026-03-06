@@ -1,18 +1,23 @@
 # BlobEntityControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteBlobEntity**](#deleteBlobEntity) | **DELETE** /api/blobEntity/{blobEntityId} | Delete Blob Entity (deleteBlobEntity) |
-| [**downloadBlobEntity**](#downloadBlobEntity) | **GET** /api/blobEntity/{blobEntityId}/download | Download Blob Entity By Id (downloadBlobEntity) |
-| [**getBlobEntities**](#getBlobEntities) | **GET** /api/blobEntities | Get Blob Entities (getBlobEntities) |
-| [**getBlobEntitiesByIds**](#getBlobEntitiesByIds) | **GET** /api/blobEntities/list | Get Blob Entities By Ids (getBlobEntitiesByIds) |
-| [**getBlobEntityInfoById**](#getBlobEntityInfoById) | **GET** /api/blobEntity/info/{blobEntityId} | Get Blob Entity With Customer Info (getBlobEntityInfoById) |
+`ThingsboardClient` methods:
 
+```
+void deleteBlobEntity(@Nonnull String blobEntityId) // Delete Blob Entity (deleteBlobEntity)
+File downloadBlobEntity(@Nonnull String blobEntityId) // Download Blob Entity By Id (downloadBlobEntity)
+PageDataBlobEntityWithCustomerInfo getBlobEntities(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get Blob Entities (getBlobEntities)
+List<BlobEntityInfo> getBlobEntitiesByIds(@Nonnull List<String> blobEntityIds) // Get Blob Entities By Ids (getBlobEntitiesByIds)
+BlobEntityWithCustomerInfo getBlobEntityInfoById(@Nonnull String blobEntityId) // Get Blob Entity With Customer Info (getBlobEntityInfoById)
+```
 
 
 ## deleteBlobEntity
 
-> deleteBlobEntity(blobEntityId)
+```
+void deleteBlobEntity(@Nonnull String blobEntityId)
+```
+
+**DELETE** `/api/blobEntity/{blobEntityId}`
 
 Delete Blob Entity (deleteBlobEntity)
 
@@ -32,7 +37,11 @@ null (empty response body)
 
 ## downloadBlobEntity
 
-> File downloadBlobEntity(blobEntityId)
+```
+File downloadBlobEntity(@Nonnull String blobEntityId)
+```
+
+**GET** `/api/blobEntity/{blobEntityId}/download`
 
 Download Blob Entity By Id (downloadBlobEntity)
 
@@ -52,7 +61,11 @@ Download report file based on the provided Blob entity Id. Referencing non-exist
 
 ## getBlobEntities
 
-> PageDataBlobEntityWithCustomerInfo getBlobEntities(pageSize, page, type, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataBlobEntityWithCustomerInfo getBlobEntities(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/blobEntities`
 
 Get Blob Entities (getBlobEntities)
 
@@ -79,7 +92,11 @@ Returns a page of BlobEntityWithCustomerInfo object that are available for the c
 
 ## getBlobEntitiesByIds
 
-> List<BlobEntityInfo> getBlobEntitiesByIds(blobEntityIds)
+```
+List<BlobEntityInfo> getBlobEntitiesByIds(@Nonnull List<String> blobEntityIds)
+```
+
+**GET** `/api/blobEntities/list`
 
 Get Blob Entities By Ids (getBlobEntitiesByIds)
 
@@ -99,7 +116,11 @@ Requested blob entities must be owned by tenant or assigned to customer which us
 
 ## getBlobEntityInfoById
 
-> BlobEntityWithCustomerInfo getBlobEntityInfoById(blobEntityId)
+```
+BlobEntityWithCustomerInfo getBlobEntityInfoById(@Nonnull String blobEntityId)
+```
+
+**GET** `/api/blobEntity/info/{blobEntityId}`
 
 Get Blob Entity With Customer Info (getBlobEntityInfoById)
 

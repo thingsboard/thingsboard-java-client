@@ -1,23 +1,28 @@
 # AssetProfileControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteAssetProfile**](#deleteAssetProfile) | **DELETE** /api/assetProfile/{assetProfileId} | Delete asset profile (deleteAssetProfile) |
-| [**getAssetProfileById**](#getAssetProfileById) | **GET** /api/assetProfile/{assetProfileId} | Get Asset Profile (getAssetProfileById) |
-| [**getAssetProfileInfoById**](#getAssetProfileInfoById) | **GET** /api/assetProfileInfo/{assetProfileId} | Get Asset Profile Info (getAssetProfileInfoById) |
-| [**getAssetProfileInfos**](#getAssetProfileInfos) | **GET** /api/assetProfileInfos | Get Asset Profile infos (getAssetProfileInfos) |
-| [**getAssetProfileNames**](#getAssetProfileNames) | **GET** /api/assetProfile/names | Get Asset Profile names (getAssetProfileNames) |
-| [**getAssetProfiles**](#getAssetProfiles) | **GET** /api/assetProfiles | Get Asset Profiles (getAssetProfiles) |
-| [**getAssetProfilesByIds**](#getAssetProfilesByIds) | **GET** /api/assetProfileInfos/list | Get Asset Profiles By Ids (getAssetProfilesByIds) |
-| [**getDefaultAssetProfileInfo**](#getDefaultAssetProfileInfo) | **GET** /api/assetProfileInfo/default | Get Default Asset Profile (getDefaultAssetProfileInfo) |
-| [**saveAssetProfile**](#saveAssetProfile) | **POST** /api/assetProfile | Create Or Update Asset Profile (saveAssetProfile) |
-| [**setDefaultAssetProfile**](#setDefaultAssetProfile) | **POST** /api/assetProfile/{assetProfileId}/default | Make Asset Profile Default (setDefaultAssetProfile) |
+`ThingsboardClient` methods:
 
+```
+void deleteAssetProfile(@Nonnull String assetProfileId) // Delete asset profile (deleteAssetProfile)
+AssetProfile getAssetProfileById(@Nonnull String assetProfileId, @Nullable Boolean inlineImages) // Get Asset Profile (getAssetProfileById)
+AssetProfileInfo getAssetProfileInfoById(@Nonnull String assetProfileId) // Get Asset Profile Info (getAssetProfileInfoById)
+PageDataAssetProfileInfo getAssetProfileInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Asset Profile infos (getAssetProfileInfos)
+List<EntityInfo> getAssetProfileNames(@Nullable Boolean activeOnly) // Get Asset Profile names (getAssetProfileNames)
+PageDataAssetProfile getAssetProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Asset Profiles (getAssetProfiles)
+List<AssetProfileInfo> getAssetProfilesByIds(@Nonnull List<String> assetProfileIds) // Get Asset Profiles By Ids (getAssetProfilesByIds)
+AssetProfileInfo getDefaultAssetProfileInfo() // Get Default Asset Profile (getDefaultAssetProfileInfo)
+AssetProfile saveAssetProfile(@Nonnull AssetProfile assetProfile) // Create Or Update Asset Profile (saveAssetProfile)
+AssetProfile setDefaultAssetProfile(@Nonnull String assetProfileId) // Make Asset Profile Default (setDefaultAssetProfile)
+```
 
 
 ## deleteAssetProfile
 
-> deleteAssetProfile(assetProfileId)
+```
+void deleteAssetProfile(@Nonnull String assetProfileId)
+```
+
+**DELETE** `/api/assetProfile/{assetProfileId}`
 
 Delete asset profile (deleteAssetProfile)
 
@@ -37,7 +42,11 @@ null (empty response body)
 
 ## getAssetProfileById
 
-> AssetProfile getAssetProfileById(assetProfileId, inlineImages)
+```
+AssetProfile getAssetProfileById(@Nonnull String assetProfileId, @Nullable Boolean inlineImages)
+```
+
+**GET** `/api/assetProfile/{assetProfileId}`
 
 Get Asset Profile (getAssetProfileById)
 
@@ -58,7 +67,11 @@ Fetch the Asset Profile object based on the provided Asset Profile Id. The serve
 
 ## getAssetProfileInfoById
 
-> AssetProfileInfo getAssetProfileInfoById(assetProfileId)
+```
+AssetProfileInfo getAssetProfileInfoById(@Nonnull String assetProfileId)
+```
+
+**GET** `/api/assetProfileInfo/{assetProfileId}`
 
 Get Asset Profile Info (getAssetProfileInfoById)
 
@@ -78,7 +91,11 @@ Fetch the Asset Profile Info object based on the provided Asset Profile Id. Asse
 
 ## getAssetProfileInfos
 
-> PageDataAssetProfileInfo getAssetProfileInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataAssetProfileInfo getAssetProfileInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/assetProfileInfos`
 
 Get Asset Profile infos (getAssetProfileInfos)
 
@@ -102,7 +119,11 @@ Returns a page of asset profile info objects owned by tenant. You can specify pa
 
 ## getAssetProfileNames
 
-> List<EntityInfo> getAssetProfileNames(activeOnly)
+```
+List<EntityInfo> getAssetProfileNames(@Nullable Boolean activeOnly)
+```
+
+**GET** `/api/assetProfile/names`
 
 Get Asset Profile names (getAssetProfileNames)
 
@@ -122,7 +143,11 @@ Returns a set of unique asset profile names owned by the tenant.  Available for 
 
 ## getAssetProfiles
 
-> PageDataAssetProfile getAssetProfiles(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataAssetProfile getAssetProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/assetProfiles`
 
 Get Asset Profiles (getAssetProfiles)
 
@@ -146,7 +171,11 @@ Returns a page of asset profile objects owned by tenant. You can specify paramet
 
 ## getAssetProfilesByIds
 
-> List<AssetProfileInfo> getAssetProfilesByIds(assetProfileIds)
+```
+List<AssetProfileInfo> getAssetProfilesByIds(@Nonnull List<String> assetProfileIds)
+```
+
+**GET** `/api/assetProfileInfos/list`
 
 Get Asset Profiles By Ids (getAssetProfilesByIds)
 
@@ -166,7 +195,11 @@ Requested asset profiles must be owned by tenant which is performing the request
 
 ## getDefaultAssetProfileInfo
 
-> AssetProfileInfo getDefaultAssetProfileInfo()
+```
+AssetProfileInfo getDefaultAssetProfileInfo()
+```
+
+**GET** `/api/assetProfileInfo/default`
 
 Get Default Asset Profile (getDefaultAssetProfileInfo)
 
@@ -179,7 +212,11 @@ Fetch the Default Asset Profile Info object. Asset Profile Info is a lightweight
 
 ## saveAssetProfile
 
-> AssetProfile saveAssetProfile(assetProfile)
+```
+AssetProfile saveAssetProfile(@Nonnull AssetProfile assetProfile)
+```
+
+**POST** `/api/assetProfile`
 
 Create Or Update Asset Profile (saveAssetProfile)
 
@@ -199,7 +236,11 @@ Create or update the Asset Profile. When creating asset profile, platform genera
 
 ## setDefaultAssetProfile
 
-> AssetProfile setDefaultAssetProfile(assetProfileId)
+```
+AssetProfile setDefaultAssetProfile(@Nonnull String assetProfileId)
+```
+
+**POST** `/api/assetProfile/{assetProfileId}/default`
 
 Make Asset Profile Default (setDefaultAssetProfile)
 

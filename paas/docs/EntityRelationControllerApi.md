@@ -1,25 +1,30 @@
 # EntityRelationControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteRelation**](#deleteRelation) | **DELETE** /api/v2/relation | Delete Relation (deleteRelation) |
-| [**deleteRelations**](#deleteRelations) | **DELETE** /api/relations | Delete common relations (deleteRelations) |
-| [**findEntityRelationInfosByFrom**](#findEntityRelationInfosByFrom) | **GET** /api/relations/info/from/{fromType}/{fromId} | Get List of Relation Infos (findEntityRelationInfosByFrom) |
-| [**findEntityRelationInfosByQuery**](#findEntityRelationInfosByQuery) | **POST** /api/relations/info | Find related entity infos (findEntityRelationInfosByQuery) |
-| [**findEntityRelationInfosByTo**](#findEntityRelationInfosByTo) | **GET** /api/relations/info/to/{toType}/{toId} | Get List of Relation Infos (findEntityRelationInfosByTo) |
-| [**findEntityRelationsByFrom**](#findEntityRelationsByFrom) | **GET** /api/relations/from/{fromType}/{fromId} | Get List of Relations (findEntityRelationsByFrom) |
-| [**findEntityRelationsByFromAndRelationType**](#findEntityRelationsByFromAndRelationType) | **GET** /api/relations/from/{fromType}/{fromId}/{relationType} | Get List of Relations (findEntityRelationsByFromAndRelationType) |
-| [**findEntityRelationsByQuery**](#findEntityRelationsByQuery) | **POST** /api/relations | Find related entities (findEntityRelationsByQuery) |
-| [**findEntityRelationsByTo**](#findEntityRelationsByTo) | **GET** /api/relations/to/{toType}/{toId} | Get List of Relations (findEntityRelationsByTo) |
-| [**findEntityRelationsByToAndRelationType**](#findEntityRelationsByToAndRelationType) | **GET** /api/relations/to/{toType}/{toId}/{relationType} | Get List of Relations (findEntityRelationsByToAndRelationType) |
-| [**getRelation**](#getRelation) | **GET** /api/relation | Get Relation (getRelation) |
-| [**saveRelation**](#saveRelation) | **POST** /api/v2/relation | Create Relation (saveRelation) |
+`ThingsboardClient` methods:
 
+```
+EntityRelation deleteRelation(@Nonnull String fromId, @Nonnull String fromType, @Nonnull String relationType, @Nonnull String toId, @Nonnull String toType, @Nullable String relationTypeGroup) // Delete Relation (deleteRelation)
+void deleteRelations(@Nonnull String entityId, @Nonnull String entityType) // Delete common relations (deleteRelations)
+List<EntityRelationInfo> findEntityRelationInfosByFrom(@Nonnull String fromType, @Nonnull String fromId, @Nullable String relationTypeGroup) // Get List of Relation Infos (findEntityRelationInfosByFrom)
+List<EntityRelationInfo> findEntityRelationInfosByQuery(@Nonnull EntityRelationsQuery entityRelationsQuery) // Find related entity infos (findEntityRelationInfosByQuery)
+List<EntityRelationInfo> findEntityRelationInfosByTo(@Nonnull String toType, @Nonnull String toId, @Nullable String relationTypeGroup) // Get List of Relation Infos (findEntityRelationInfosByTo)
+List<EntityRelation> findEntityRelationsByFrom(@Nonnull String fromType, @Nonnull String fromId, @Nullable String relationTypeGroup) // Get List of Relations (findEntityRelationsByFrom)
+List<EntityRelation> findEntityRelationsByFromAndRelationType(@Nonnull String fromType, @Nonnull String fromId, @Nonnull String relationType, @Nullable String relationTypeGroup) // Get List of Relations (findEntityRelationsByFromAndRelationType)
+List<EntityRelation> findEntityRelationsByQuery(@Nonnull EntityRelationsQuery entityRelationsQuery) // Find related entities (findEntityRelationsByQuery)
+List<EntityRelation> findEntityRelationsByTo(@Nonnull String toType, @Nonnull String toId, @Nullable String relationTypeGroup) // Get List of Relations (findEntityRelationsByTo)
+List<EntityRelation> findEntityRelationsByToAndRelationType(@Nonnull String toType, @Nonnull String toId, @Nonnull String relationType, @Nullable String relationTypeGroup) // Get List of Relations (findEntityRelationsByToAndRelationType)
+EntityRelation getRelation(@Nonnull String fromId, @Nonnull String fromType, @Nonnull String relationType, @Nonnull String toId, @Nonnull String toType, @Nullable String relationTypeGroup) // Get Relation (getRelation)
+EntityRelation saveRelation(@Nonnull EntityRelation entityRelation) // Create Relation (saveRelation)
+```
 
 
 ## deleteRelation
 
-> EntityRelation deleteRelation(fromId, fromType, relationType, toId, toType, relationTypeGroup)
+```
+EntityRelation deleteRelation(@Nonnull String fromId, @Nonnull String fromType, @Nonnull String relationType, @Nonnull String toId, @Nonnull String toType, @Nullable String relationTypeGroup)
+```
+
+**DELETE** `/api/v2/relation`
 
 Delete Relation (deleteRelation)
 
@@ -44,7 +49,11 @@ Deletes a relation between two entities in the platform.   If the user has the a
 
 ## deleteRelations
 
-> deleteRelations(entityId, entityType)
+```
+void deleteRelations(@Nonnull String entityId, @Nonnull String entityType)
+```
+
+**DELETE** `/api/relations`
 
 Delete common relations (deleteRelations)
 
@@ -65,7 +74,11 @@ null (empty response body)
 
 ## findEntityRelationInfosByFrom
 
-> List<EntityRelationInfo> findEntityRelationInfosByFrom(fromType, fromId, relationTypeGroup)
+```
+List<EntityRelationInfo> findEntityRelationInfosByFrom(@Nonnull String fromType, @Nonnull String fromId, @Nullable String relationTypeGroup)
+```
+
+**GET** `/api/relations/info/from/{fromType}/{fromId}`
 
 Get List of Relation Infos (findEntityRelationInfosByFrom)
 
@@ -87,7 +100,11 @@ Returns list of relation info objects for the specified entity by the 'from' dir
 
 ## findEntityRelationInfosByQuery
 
-> List<EntityRelationInfo> findEntityRelationInfosByQuery(entityRelationsQuery)
+```
+List<EntityRelationInfo> findEntityRelationInfosByQuery(@Nonnull EntityRelationsQuery entityRelationsQuery)
+```
+
+**POST** `/api/relations/info`
 
 Find related entity infos (findEntityRelationInfosByQuery)
 
@@ -107,7 +124,11 @@ Returns all entity infos that are related to the specific entity. The entity id,
 
 ## findEntityRelationInfosByTo
 
-> List<EntityRelationInfo> findEntityRelationInfosByTo(toType, toId, relationTypeGroup)
+```
+List<EntityRelationInfo> findEntityRelationInfosByTo(@Nonnull String toType, @Nonnull String toId, @Nullable String relationTypeGroup)
+```
+
+**GET** `/api/relations/info/to/{toType}/{toId}`
 
 Get List of Relation Infos (findEntityRelationInfosByTo)
 
@@ -129,7 +150,11 @@ Returns list of relation info objects for the specified entity by the 'to' direc
 
 ## findEntityRelationsByFrom
 
-> List<EntityRelation> findEntityRelationsByFrom(fromType, fromId, relationTypeGroup)
+```
+List<EntityRelation> findEntityRelationsByFrom(@Nonnull String fromType, @Nonnull String fromId, @Nullable String relationTypeGroup)
+```
+
+**GET** `/api/relations/from/{fromType}/{fromId}`
 
 Get List of Relations (findEntityRelationsByFrom)
 
@@ -151,7 +176,11 @@ Returns list of relation objects for the specified entity by the 'from' directio
 
 ## findEntityRelationsByFromAndRelationType
 
-> List<EntityRelation> findEntityRelationsByFromAndRelationType(fromType, fromId, relationType, relationTypeGroup)
+```
+List<EntityRelation> findEntityRelationsByFromAndRelationType(@Nonnull String fromType, @Nonnull String fromId, @Nonnull String relationType, @Nullable String relationTypeGroup)
+```
+
+**GET** `/api/relations/from/{fromType}/{fromId}/{relationType}`
 
 Get List of Relations (findEntityRelationsByFromAndRelationType)
 
@@ -174,7 +203,11 @@ Returns list of relation objects for the specified entity by the 'from' directio
 
 ## findEntityRelationsByQuery
 
-> List<EntityRelation> findEntityRelationsByQuery(entityRelationsQuery)
+```
+List<EntityRelation> findEntityRelationsByQuery(@Nonnull EntityRelationsQuery entityRelationsQuery)
+```
+
+**POST** `/api/relations`
 
 Find related entities (findEntityRelationsByQuery)
 
@@ -194,7 +227,11 @@ Returns all entities that are related to the specific entity. The entity id, rel
 
 ## findEntityRelationsByTo
 
-> List<EntityRelation> findEntityRelationsByTo(toType, toId, relationTypeGroup)
+```
+List<EntityRelation> findEntityRelationsByTo(@Nonnull String toType, @Nonnull String toId, @Nullable String relationTypeGroup)
+```
+
+**GET** `/api/relations/to/{toType}/{toId}`
 
 Get List of Relations (findEntityRelationsByTo)
 
@@ -216,7 +253,11 @@ Returns list of relation objects for the specified entity by the 'to' direction.
 
 ## findEntityRelationsByToAndRelationType
 
-> List<EntityRelation> findEntityRelationsByToAndRelationType(toType, toId, relationType, relationTypeGroup)
+```
+List<EntityRelation> findEntityRelationsByToAndRelationType(@Nonnull String toType, @Nonnull String toId, @Nonnull String relationType, @Nullable String relationTypeGroup)
+```
+
+**GET** `/api/relations/to/{toType}/{toId}/{relationType}`
 
 Get List of Relations (findEntityRelationsByToAndRelationType)
 
@@ -239,7 +280,11 @@ Returns list of relation objects for the specified entity by the 'to' direction 
 
 ## getRelation
 
-> EntityRelation getRelation(fromId, fromType, relationType, toId, toType, relationTypeGroup)
+```
+EntityRelation getRelation(@Nonnull String fromId, @Nonnull String fromType, @Nonnull String relationType, @Nonnull String toId, @Nonnull String toType, @Nullable String relationTypeGroup)
+```
+
+**GET** `/api/relation`
 
 Get Relation (getRelation)
 
@@ -264,7 +309,11 @@ Returns relation object between two specified entities if present. Otherwise thr
 
 ## saveRelation
 
-> EntityRelation saveRelation(entityRelation)
+```
+EntityRelation saveRelation(@Nonnull EntityRelation entityRelation)
+```
+
+**POST** `/api/v2/relation`
 
 Create Relation (saveRelation)
 

@@ -1,28 +1,33 @@
 # AssetControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteAsset**](#deleteAsset) | **DELETE** /api/asset/{assetId} | Delete asset (deleteAsset) |
-| [**findAssetsByQuery**](#findAssetsByQuery) | **POST** /api/assets | Find related assets (findAssetsByQuery) |
-| [**getAllAssetInfos**](#getAllAssetInfos) | **GET** /api/assetInfos/all | Get All Asset Infos for current user (getAllAssetInfos) |
-| [**getAssetById**](#getAssetById) | **GET** /api/asset/{assetId} | Get Asset (getAssetById) |
-| [**getAssetInfoById**](#getAssetInfoById) | **GET** /api/asset/info/{assetId} | Get Asset Info (getAssetInfoById) |
-| [**getAssetTypes**](#getAssetTypes) | **GET** /api/asset/types | Get Asset Types (getAssetTypes) |
-| [**getAssetsByEntityGroupId**](#getAssetsByEntityGroupId) | **GET** /api/entityGroup/{entityGroupId}/assets | Get assets by Entity Group Id (getAssetsByEntityGroupId) |
-| [**getAssetsByIds**](#getAssetsByIds) | **GET** /api/assets | Get Assets By Ids (getAssetsByIds) |
-| [**getCustomerAssetInfos**](#getCustomerAssetInfos) | **GET** /api/customer/{customerId}/assetInfos | Get Customer Asset Infos (getCustomerAssetInfos) |
-| [**getCustomerAssets**](#getCustomerAssets) | **GET** /api/customer/{customerId}/assets | Get Customer Assets (getCustomerAssets) |
-| [**getTenantAssetByName**](#getTenantAssetByName) | **GET** /api/tenant/asset | Get Tenant Asset (getTenantAssetByName) |
-| [**getTenantAssets**](#getTenantAssets) | **GET** /api/tenant/assets | Get Tenant Assets (getTenantAssets) |
-| [**getUserAssets**](#getUserAssets) | **GET** /api/user/assets | Get Assets (getUserAssets) |
-| [**processAssetBulkImport**](#processAssetBulkImport) | **POST** /api/asset/bulk_import | Import the bulk of assets (processAssetsBulkImport) |
-| [**saveAsset**](#saveAsset) | **POST** /api/asset | Create Or Update Asset (saveAsset) |
+`ThingsboardClient` methods:
 
+```
+void deleteAsset(@Nonnull String assetId) // Delete asset (deleteAsset)
+List<Asset> findAssetsByQuery(@Nonnull AssetSearchQuery assetSearchQuery) // Find related assets (findAssetsByQuery)
+PageDataAssetInfo getAllAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Asset Infos for current user (getAllAssetInfos)
+Asset getAssetById(@Nonnull String assetId) // Get Asset (getAssetById)
+AssetInfo getAssetInfoById(@Nonnull String assetId) // Get Asset Info (getAssetInfoById)
+List<EntitySubtype> getAssetTypes() // Get Asset Types (getAssetTypes)
+PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get assets by Entity Group Id (getAssetsByEntityGroupId)
+List<Asset> getAssetsByIds(@Nonnull List<String> assetIds) // Get Assets By Ids (getAssetsByIds)
+PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Asset Infos (getCustomerAssetInfos)
+PageDataAsset getCustomerAssets(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Assets (getCustomerAssets)
+Asset getTenantAssetByName(@Nonnull String assetName) // Get Tenant Asset (getTenantAssetByName)
+PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Assets (getTenantAssets)
+PageDataAsset getUserAssets(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Assets (getUserAssets)
+BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of assets (processAssetsBulkImport)
+Asset saveAsset(@Nonnull Asset asset, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Asset (saveAsset)
+```
 
 
 ## deleteAsset
 
-> deleteAsset(assetId)
+```
+void deleteAsset(@Nonnull String assetId)
+```
+
+**DELETE** `/api/asset/{assetId}`
 
 Delete asset (deleteAsset)
 
@@ -42,7 +47,11 @@ null (empty response body)
 
 ## findAssetsByQuery
 
-> List<Asset> findAssetsByQuery(assetSearchQuery)
+```
+List<Asset> findAssetsByQuery(@Nonnull AssetSearchQuery assetSearchQuery)
+```
+
+**POST** `/api/assets`
 
 Find related assets (findAssetsByQuery)
 
@@ -62,7 +71,11 @@ Returns all assets that are related to the specific entity. The entity id, relat
 
 ## getAllAssetInfos
 
-> PageDataAssetInfo getAllAssetInfos(pageSize, page, includeCustomers, assetProfileId, textSearch, sortProperty, sortOrder)
+```
+PageDataAssetInfo getAllAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/assetInfos/all`
 
 Get All Asset Infos for current user (getAllAssetInfos)
 
@@ -88,7 +101,11 @@ Returns a page of asset info objects owned by the tenant or the customer of a cu
 
 ## getAssetById
 
-> Asset getAssetById(assetId)
+```
+Asset getAssetById(@Nonnull String assetId)
+```
+
+**GET** `/api/asset/{assetId}`
 
 Get Asset (getAssetById)
 
@@ -108,7 +125,11 @@ Fetch the Asset object based on the provided Asset Id. If the user has the autho
 
 ## getAssetInfoById
 
-> AssetInfo getAssetInfoById(assetId)
+```
+AssetInfo getAssetInfoById(@Nonnull String assetId)
+```
+
+**GET** `/api/asset/info/{assetId}`
 
 Get Asset Info (getAssetInfoById)
 
@@ -128,7 +149,11 @@ Fetch the Asset Info object based on the provided Asset Id. If the user has the 
 
 ## getAssetTypes
 
-> List<EntitySubtype> getAssetTypes()
+```
+List<EntitySubtype> getAssetTypes()
+```
+
+**GET** `/api/asset/types`
 
 Get Asset Types (getAssetTypes)
 
@@ -141,7 +166,11 @@ Deprecated. See 'getAssetProfileNames' API from Asset Profile Controller instead
 
 ## getAssetsByEntityGroupId
 
-> PageDataAsset getAssetsByEntityGroupId(entityGroupId, pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/assets`
 
 Get assets by Entity Group Id (getAssetsByEntityGroupId)
 
@@ -166,7 +195,11 @@ Returns a page of asset objects that belongs to specified Entity Group Id. You c
 
 ## getAssetsByIds
 
-> List<Asset> getAssetsByIds(assetIds)
+```
+List<Asset> getAssetsByIds(@Nonnull List<String> assetIds)
+```
+
+**GET** `/api/assets`
 
 Get Assets By Ids (getAssetsByIds)
 
@@ -186,7 +219,11 @@ Requested assets must be owned by tenant or assigned to customer which user is p
 
 ## getCustomerAssetInfos
 
-> PageDataAssetInfo getCustomerAssetInfos(customerId, pageSize, page, includeCustomers, assetProfileId, textSearch, sortProperty, sortOrder)
+```
+PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/assetInfos`
 
 Get Customer Asset Infos (getCustomerAssetInfos)
 
@@ -213,7 +250,11 @@ Returns a page of asset info objects owned by the specified customer. Asset Info
 
 ## getCustomerAssets
 
-> PageDataAsset getCustomerAssets(customerId, pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataAsset getCustomerAssets(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/assets`
 
 Get Customer Assets (getCustomerAssets)
 
@@ -239,7 +280,11 @@ Returns a page of assets objects owned by customer. You can specify parameters t
 
 ## getTenantAssetByName
 
-> Asset getTenantAssetByName(assetName)
+```
+Asset getTenantAssetByName(@Nonnull String assetName)
+```
+
+**GET** `/api/tenant/asset`
 
 Get Tenant Asset (getTenantAssetByName)
 
@@ -259,7 +304,11 @@ Requested asset must be owned by tenant that the user belongs to. Asset name is 
 
 ## getTenantAssets
 
-> PageDataAsset getTenantAssets(pageSize, page, type, textSearch, sortProperty, sortOrder)
+```
+PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/tenant/assets`
 
 Get Tenant Assets (getTenantAssets)
 
@@ -284,7 +333,11 @@ Returns a page of assets owned by tenant. You can specify parameters to filter t
 
 ## getUserAssets
 
-> PageDataAsset getUserAssets(pageSize, page, type, assetProfileId, textSearch, sortProperty, sortOrder)
+```
+PageDataAsset getUserAssets(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/assets`
 
 Get Assets (getUserAssets)
 
@@ -310,7 +363,11 @@ Returns a page of assets objects available for the current user. You can specify
 
 ## processAssetBulkImport
 
-> BulkImportResultAsset processAssetBulkImport(bulkImportRequest)
+```
+BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest)
+```
+
+**POST** `/api/asset/bulk_import`
 
 Import the bulk of assets (processAssetsBulkImport)
 
@@ -330,7 +387,11 @@ There's an ability to import the bulk of assets using the only .csv file.   Secu
 
 ## saveAsset
 
-> Asset saveAsset(asset, entityGroupId, entityGroupIds, nameConflictPolicy, uniquifySeparator, uniquifyStrategy)
+```
+Asset saveAsset(@Nonnull Asset asset, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+```
+
+**POST** `/api/asset`
 
 Create Or Update Asset (saveAsset)
 

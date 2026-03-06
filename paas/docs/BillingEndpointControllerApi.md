@@ -1,24 +1,29 @@
 # BillingEndpointControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**checkTenantCanUpdatePlan**](#checkTenantCanUpdatePlan) | **POST** /api/billingEndpoint/tenantCanUpdatePlan | checkTenantCanUpdatePlan |
-| [**notifyTenantPlanChanged**](#notifyTenantPlanChanged) | **POST** /api/billingEndpoint/tenantPlanChanged | notifyTenantPlanChanged |
-| [**notifyTenantStateChanged**](#notifyTenantStateChanged) | **POST** /api/billingEndpoint/tenantStateChanged | notifyTenantStateChanged |
-| [**notifyTenantSubscriptionCreated**](#notifyTenantSubscriptionCreated) | **POST** /api/billingEndpoint/tenantSubscriptionCreated | notifyTenantSubscriptionCreated |
-| [**sendAccountActivatedEmail**](#sendAccountActivatedEmail) | **POST** /api/billingEndpoint/sendAccountActivated | sendAccountActivatedEmail |
-| [**sendBillingActivationEmail**](#sendBillingActivationEmail) | **POST** /api/billingEndpoint/sendActivation | sendBillingActivationEmail |
-| [**sendPasswordWasResetEmail**](#sendPasswordWasResetEmail) | **POST** /api/billingEndpoint/sendPasswordWasReset | sendPasswordWasResetEmail |
-| [**sendResetPasswordEmail**](#sendResetPasswordEmail) | **POST** /api/billingEndpoint/sendResetPassword | sendResetPasswordEmail |
-| [**tenantHasBillingRead**](#tenantHasBillingRead) | **GET** /api/billingEndpoint/tenant/permission/billing/read | tenantHasBillingRead |
-| [**tenantHasBillingWrite**](#tenantHasBillingWrite) | **GET** /api/billingEndpoint/tenant/permission/billing/write | tenantHasBillingWrite |
-| [**tenantHasHiddenPlansAccess**](#tenantHasHiddenPlansAccess) | **GET** /api/billingEndpoint/tenant/permission/billing/hiddenPlans | tenantHasHiddenPlansAccess |
+`ThingsboardClient` methods:
 
+```
+void checkTenantCanUpdatePlan(@Nonnull Object body) // checkTenantCanUpdatePlan
+void notifyTenantPlanChanged(@Nonnull Object body) // notifyTenantPlanChanged
+void notifyTenantStateChanged(@Nonnull Object body) // notifyTenantStateChanged
+void notifyTenantSubscriptionCreated(@Nonnull Object body) // notifyTenantSubscriptionCreated
+void sendAccountActivatedEmail(@Nonnull Object body) // sendAccountActivatedEmail
+void sendBillingActivationEmail(@Nonnull Object body) // sendBillingActivationEmail
+void sendPasswordWasResetEmail(@Nonnull Object body) // sendPasswordWasResetEmail
+void sendResetPasswordEmail(@Nonnull Object body) // sendResetPasswordEmail
+Boolean tenantHasBillingRead() // tenantHasBillingRead
+Boolean tenantHasBillingWrite() // tenantHasBillingWrite
+Boolean tenantHasHiddenPlansAccess() // tenantHasHiddenPlansAccess
+```
 
 
 ## checkTenantCanUpdatePlan
 
-> checkTenantCanUpdatePlan(body)
+```
+void checkTenantCanUpdatePlan(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/tenantCanUpdatePlan`
 
 checkTenantCanUpdatePlan
 
@@ -36,7 +41,11 @@ null (empty response body)
 
 ## notifyTenantPlanChanged
 
-> notifyTenantPlanChanged(body)
+```
+void notifyTenantPlanChanged(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/tenantPlanChanged`
 
 notifyTenantPlanChanged
 
@@ -54,7 +63,11 @@ null (empty response body)
 
 ## notifyTenantStateChanged
 
-> notifyTenantStateChanged(body)
+```
+void notifyTenantStateChanged(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/tenantStateChanged`
 
 notifyTenantStateChanged
 
@@ -72,7 +85,11 @@ null (empty response body)
 
 ## notifyTenantSubscriptionCreated
 
-> notifyTenantSubscriptionCreated(body)
+```
+void notifyTenantSubscriptionCreated(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/tenantSubscriptionCreated`
 
 notifyTenantSubscriptionCreated
 
@@ -90,7 +107,11 @@ null (empty response body)
 
 ## sendAccountActivatedEmail
 
-> sendAccountActivatedEmail(body)
+```
+void sendAccountActivatedEmail(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/sendAccountActivated`
 
 sendAccountActivatedEmail
 
@@ -108,7 +129,11 @@ null (empty response body)
 
 ## sendBillingActivationEmail
 
-> sendBillingActivationEmail(body)
+```
+void sendBillingActivationEmail(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/sendActivation`
 
 sendBillingActivationEmail
 
@@ -126,7 +151,11 @@ null (empty response body)
 
 ## sendPasswordWasResetEmail
 
-> sendPasswordWasResetEmail(body)
+```
+void sendPasswordWasResetEmail(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/sendPasswordWasReset`
 
 sendPasswordWasResetEmail
 
@@ -144,7 +173,11 @@ null (empty response body)
 
 ## sendResetPasswordEmail
 
-> sendResetPasswordEmail(body)
+```
+void sendResetPasswordEmail(@Nonnull Object body)
+```
+
+**POST** `/api/billingEndpoint/sendResetPassword`
 
 sendResetPasswordEmail
 
@@ -162,7 +195,11 @@ null (empty response body)
 
 ## tenantHasBillingRead
 
-> Boolean tenantHasBillingRead()
+```
+Boolean tenantHasBillingRead()
+```
+
+**GET** `/api/billingEndpoint/tenant/permission/billing/read`
 
 tenantHasBillingRead
 
@@ -173,7 +210,11 @@ tenantHasBillingRead
 
 ## tenantHasBillingWrite
 
-> Boolean tenantHasBillingWrite()
+```
+Boolean tenantHasBillingWrite()
+```
+
+**GET** `/api/billingEndpoint/tenant/permission/billing/write`
 
 tenantHasBillingWrite
 
@@ -184,7 +225,11 @@ tenantHasBillingWrite
 
 ## tenantHasHiddenPlansAccess
 
-> Boolean tenantHasHiddenPlansAccess()
+```
+Boolean tenantHasHiddenPlansAccess()
+```
+
+**GET** `/api/billingEndpoint/tenant/permission/billing/hiddenPlans`
 
 tenantHasHiddenPlansAccess
 

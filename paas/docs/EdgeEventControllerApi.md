@@ -1,14 +1,19 @@
 # EdgeEventControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getEdgeEvents**](#getEdgeEvents) | **GET** /api/edge/{edgeId}/events | Get Edge Events (getEdgeEvents) |
+`ThingsboardClient` methods:
 
+```
+PageDataEdgeEvent getEdgeEvents(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get Edge Events (getEdgeEvents)
+```
 
 
 ## getEdgeEvents
 
-> PageDataEdgeEvent getEdgeEvents(edgeId, pageSize, page, textSearch, sortProperty, sortOrder, startTime, endTime)
+```
+PageDataEdgeEvent getEdgeEvents(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
+```
+
+**GET** `/api/edge/{edgeId}/events`
 
 Get Edge Events (getEdgeEvents)
 

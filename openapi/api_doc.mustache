@@ -15,17 +15,22 @@
 }}
 # {{classname}}
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-{{#operations}}{{#operation}}| [**{{operationId}}**](#{{operationId}}) | **{{httpMethod}}** {{commonPath}}{{path}} | {{{summary}}} |
-{{/operation}}{{/operations}}
+`ThingsboardClient` methods:
+
+```
+{{#operations}}{{#operation}}{{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{#required}}@Nonnull {{/required}}{{^required}}@Nullable {{/required}}{{{dataType}}} {{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}}) // {{{summary}}}
+{{/operation}}{{/operations}}```
 
 {{#operations}}
 {{#operation}}
 
 ## {{operationId}}
 
-> {{#returnType}}{{{.}}} {{/returnType}}{{operationId}}({{#allParams}}{{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}})
+```
+{{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{#required}}@Nonnull {{/required}}{{^required}}@Nullable {{/required}}{{{dataType}}} {{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}})
+```
+
+**{{httpMethod}}** `{{commonPath}}{{path}}`
 
 {{{summary}}}{{#notes}}
 

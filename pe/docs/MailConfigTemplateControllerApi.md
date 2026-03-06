@@ -1,14 +1,19 @@
 # MailConfigTemplateControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**getClientRegistrationTemplates**](#getClientRegistrationTemplates) | **GET** /api/mail/config/template | Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority. |
+`ThingsboardClient` methods:
 
+```
+com.fasterxml.jackson.databind.JsonNode getClientRegistrationTemplates() // Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+```
 
 
 ## getClientRegistrationTemplates
 
-> com.fasterxml.jackson.databind.JsonNode getClientRegistrationTemplates()
+```
+com.fasterxml.jackson.databind.JsonNode getClientRegistrationTemplates()
+```
+
+**GET** `/api/mail/config/template`
 
 Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 

@@ -1,21 +1,26 @@
 # SecretControllerApi
 
-| Method | HTTP request | Description |
-|------------- | ------------- | -------------|
-| [**deleteSecret**](#deleteSecret) | **DELETE** /api/secret/{id} | Delete secret by ID (deleteSecret) |
-| [**getSecretInfoById**](#getSecretInfoById) | **GET** /api/secret/{id}/info | Get Secret info by Id (getSecretInfoById) |
-| [**getSecretInfoByName**](#getSecretInfoByName) | **GET** /api/secret | Get Secret info by name (getSecretInfoByName) |
-| [**getSecretInfos**](#getSecretInfos) | **GET** /api/secrets | Get Tenant Secret infos (getSecretInfos) |
-| [**getSecretNames**](#getSecretNames) | **GET** /api/secret/names | Get Tenant Secret names (getSecretNames) |
-| [**saveSecret**](#saveSecret) | **POST** /api/secret | Save or Update Secret (saveSecret) |
-| [**updateSecretDescription**](#updateSecretDescription) | **PUT** /api/secret/{id}/description | Update Secret Description |
-| [**updateSecretValue**](#updateSecretValue) | **PUT** /api/secret/{id}/value | Update Secret value |
+`ThingsboardClient` methods:
 
+```
+TbSecretDeleteResult deleteSecret(@Nonnull UUID id) // Delete secret by ID (deleteSecret)
+SecretInfo getSecretInfoById(@Nonnull UUID id) // Get Secret info by Id (getSecretInfoById)
+SecretInfo getSecretInfoByName(@Nonnull String name) // Get Secret info by name (getSecretInfoByName)
+PageDataSecretInfo getSecretInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Secret infos (getSecretInfos)
+List<String> getSecretNames() // Get Tenant Secret names (getSecretNames)
+SecretInfo saveSecret(@Nonnull Secret secret) // Save or Update Secret (saveSecret)
+SecretInfo updateSecretDescription(@Nonnull UUID id, @Nullable String body) // Update Secret Description
+SecretInfo updateSecretValue(@Nonnull UUID id, @Nonnull String body) // Update Secret value
+```
 
 
 ## deleteSecret
 
-> TbSecretDeleteResult deleteSecret(id)
+```
+TbSecretDeleteResult deleteSecret(@Nonnull UUID id)
+```
+
+**DELETE** `/api/secret/{id}`
 
 Delete secret by ID (deleteSecret)
 
@@ -35,7 +40,11 @@ Deletes the secret. Referencing non-existing Secret Id will cause an error.  Ava
 
 ## getSecretInfoById
 
-> SecretInfo getSecretInfoById(id)
+```
+SecretInfo getSecretInfoById(@Nonnull UUID id)
+```
+
+**GET** `/api/secret/{id}/info`
 
 Get Secret info by Id (getSecretInfoById)
 
@@ -55,7 +64,11 @@ Get Secret info by Id (getSecretInfoById)
 
 ## getSecretInfoByName
 
-> SecretInfo getSecretInfoByName(name)
+```
+SecretInfo getSecretInfoByName(@Nonnull String name)
+```
+
+**GET** `/api/secret`
 
 Get Secret info by name (getSecretInfoByName)
 
@@ -75,7 +88,11 @@ Get Secret info by name (getSecretInfoByName)
 
 ## getSecretInfos
 
-> PageDataSecretInfo getSecretInfos(pageSize, page, textSearch, sortProperty, sortOrder)
+```
+PageDataSecretInfo getSecretInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/secrets`
 
 Get Tenant Secret infos (getSecretInfos)
 
@@ -99,7 +116,11 @@ Returns a page of secret infos owned by tenant. You can specify parameters to fi
 
 ## getSecretNames
 
-> List<String> getSecretNames()
+```
+List<String> getSecretNames()
+```
+
+**GET** `/api/secret/names`
 
 Get Tenant Secret names (getSecretNames)
 
@@ -112,7 +133,11 @@ Returns a page of secret names owned by tenant. You can specify parameters to fi
 
 ## saveSecret
 
-> SecretInfo saveSecret(secret)
+```
+SecretInfo saveSecret(@Nonnull Secret secret)
+```
+
+**POST** `/api/secret`
 
 Save or Update Secret (saveSecret)
 
@@ -132,7 +157,11 @@ Create or update the Secret. When creating secret, platform generates Secret Id 
 
 ## updateSecretDescription
 
-> SecretInfo updateSecretDescription(id, body)
+```
+SecretInfo updateSecretDescription(@Nonnull UUID id, @Nullable String body)
+```
+
+**PUT** `/api/secret/{id}/description`
 
 Update Secret Description
 
@@ -153,7 +182,11 @@ Updates the description of the existing Secret by secretId. Only the description
 
 ## updateSecretValue
 
-> SecretInfo updateSecretValue(id, body)
+```
+SecretInfo updateSecretValue(@Nonnull UUID id, @Nonnull String body)
+```
+
+**PUT** `/api/secret/{id}/value`
 
 Update Secret value
 
