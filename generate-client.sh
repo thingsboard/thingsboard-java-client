@@ -206,6 +206,13 @@ generate() {
     rm -rf "$module_dir/docs"
     cp -r "$docs_output_dir/docs" "$module_dir/docs"
     echo "Copied docs to $module_dir"
+
+    # Copy common docs (tb-examples.md, etc.)
+    local common_docs="$SCRIPT_DIR/common/docs"
+    if [ -d "$common_docs" ]; then
+      cp -r "$common_docs/"* "$module_dir/docs/"
+      echo "Copied common docs to $module_dir"
+    fi
   fi
 }
 
