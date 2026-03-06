@@ -9,10 +9,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **dashboardId** | **String** | Dashboard id | [optional] |
 | **label** | **String** | Page label | [optional] |
 | **visible** | **Boolean** | Indicates if page is visible | |
 | **icon** | **String** | URL of the page icon | [optional] |
+| **dashboardId** | **String** | Dashboard id | [optional] |
 
 
 

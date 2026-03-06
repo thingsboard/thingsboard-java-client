@@ -123,6 +123,12 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
 
   @Override
+  public ScriptCalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
+    this.setAiGenerated(aiGenerated);
+    return this;
+  }
+
+  @Override
   public ScriptCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
     this.setOutput(output);
     return this;
@@ -209,6 +215,11 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `aiGenerated` to the URL query string
+    if (getAiGenerated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
+    }
 
     // add `output` to the URL query string
     if (getOutput() != null) {

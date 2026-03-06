@@ -478,7 +478,7 @@ public class UserInfo {
   }
 
   /**
-   * Additional parameters of the user
+   * Additional parameters of the user. May include: &#39;defaultDashboardId&#39; (string, UUID of the default dashboard), &#39;defaultDashboardFullscreen&#39; (boolean), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean), &#39;lang&#39; (string, user locale, e.g. &#39;en_US&#39;), &#39;authProviderName&#39; (string, name of the authentication provider).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

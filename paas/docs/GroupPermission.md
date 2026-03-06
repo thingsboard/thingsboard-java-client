@@ -10,10 +10,10 @@ A JSON value representing the group permission.
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **tenantId** | **TenantId** | JSON object with the Tenant Id. | [optional] [readonly] |
-| **userGroupId** | **EntityGroupId** | JSON object with the User Group Id. Represent user group that will have permissions to perform operations against corresponding Entity Group. | [optional] |
-| **roleId** | **RoleId** | JSON object with the Role Id. Represent set of permissions. | [optional] |
-| **entityGroupId** | **EntityGroupId** | JSON object with the Entity Group Id. Represent entity (device, asset, etc.) group. | [optional] |
-| **entityGroupType** | **EntityType** | Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc. | [optional] |
+| **userGroupId** | **EntityGroupId** | JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group. | |
+| **roleId** | **RoleId** | JSON object with the Role Id. Represents the set of permissions. The role type (GENERIC or GROUP) determines whether 'entityGroupId' is required. | |
+| **entityGroupId** | **EntityGroupId** | JSON object with the Entity Group Id. Required when using a GROUP role — specifies the entity group to which the permissions apply. Must be null or omitted when using a GENERIC role. | [optional] |
+| **entityGroupType** | **EntityType** | Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc. Auto-populated from the referenced entity group. Null for generic permissions. | [optional] [readonly] |
 | **isPublic** | **Boolean** |  | [optional] |
 | **id** | **GroupPermissionId** | JSON object with the Group Permission Id. Specify this field to update the Group Permission. Referencing non-existing Group Permission Id will cause error. Omit this field to create new Group Permission. | [optional] |
 | **createdTime** | **Long** | Timestamp of the group permission creation, in milliseconds | [optional] [readonly] |

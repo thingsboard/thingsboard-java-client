@@ -59,7 +59,7 @@ String deleteEntityAttributes(@Nonnull String entityType, @Nonnull String entity
 
 Delete entity attributes (deleteEntityAttributes)
 
-Delete entity attributes using provided Entity Id, scope and a list of keys. Referencing a non-existing entity Id or invalid entity type will cause an error.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Delete entity attributes using provided Entity Id, scope and a list of keys. This operation is idempotent: keys that do not exist are silently ignored and the response is still 200 OK. Referencing a non-existing entity Id or invalid entity type will cause an error.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters

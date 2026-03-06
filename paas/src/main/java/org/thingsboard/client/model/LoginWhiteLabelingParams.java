@@ -53,6 +53,7 @@ import org.thingsboard.client.ApiClient;
   LoginWhiteLabelingParams.JSON_PROPERTY_CUSTOM_CSS,
   LoginWhiteLabelingParams.JSON_PROPERTY_HIDE_CONNECTIVITY_DIALOG,
   LoginWhiteLabelingParams.JSON_PROPERTY_OVERRIDE_TRENDZ_NAME,
+  LoginWhiteLabelingParams.JSON_PROPERTY_HIDE_CHAT_BOT,
   LoginWhiteLabelingParams.JSON_PROPERTY_PAGE_BACKGROUND_COLOR,
   LoginWhiteLabelingParams.JSON_PROPERTY_DARK_FOREGROUND,
   LoginWhiteLabelingParams.JSON_PROPERTY_DOMAIN_ID,
@@ -122,6 +123,10 @@ public class LoginWhiteLabelingParams {
   public static final String JSON_PROPERTY_OVERRIDE_TRENDZ_NAME = "overrideTrendzName";
   @javax.annotation.Nullable
   private Boolean overrideTrendzName;
+
+  public static final String JSON_PROPERTY_HIDE_CHAT_BOT = "hideChatBot";
+  @javax.annotation.Nullable
+  private Boolean hideChatBot;
 
   public static final String JSON_PROPERTY_PAGE_BACKGROUND_COLOR = "pageBackgroundColor";
   @javax.annotation.Nullable
@@ -512,6 +517,30 @@ public class LoginWhiteLabelingParams {
   }
 
 
+  public LoginWhiteLabelingParams hideChatBot(@javax.annotation.Nullable Boolean hideChatBot) {
+    this.hideChatBot = hideChatBot;
+    return this;
+  }
+
+  /**
+   * Hide chat bot
+   * @return hideChatBot
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_HIDE_CHAT_BOT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getHideChatBot() {
+    return hideChatBot;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_HIDE_CHAT_BOT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHideChatBot(@javax.annotation.Nullable Boolean hideChatBot) {
+    this.hideChatBot = hideChatBot;
+  }
+
+
   public LoginWhiteLabelingParams pageBackgroundColor(@javax.annotation.Nullable String pageBackgroundColor) {
     this.pageBackgroundColor = pageBackgroundColor;
     return this;
@@ -707,6 +736,7 @@ public class LoginWhiteLabelingParams {
         Objects.equals(this.customCss, loginWhiteLabelingParams.customCss) &&
         Objects.equals(this.hideConnectivityDialog, loginWhiteLabelingParams.hideConnectivityDialog) &&
         Objects.equals(this.overrideTrendzName, loginWhiteLabelingParams.overrideTrendzName) &&
+        Objects.equals(this.hideChatBot, loginWhiteLabelingParams.hideChatBot) &&
         Objects.equals(this.pageBackgroundColor, loginWhiteLabelingParams.pageBackgroundColor) &&
         Objects.equals(this.darkForeground, loginWhiteLabelingParams.darkForeground) &&
         Objects.equals(this.domainId, loginWhiteLabelingParams.domainId) &&
@@ -718,7 +748,7 @@ public class LoginWhiteLabelingParams {
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoImageUrl, logoImageHeight, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, pageBackgroundColor, darkForeground, domainId, baseUrl, prohibitDifferentUrl, adminSettingsId, showNameBottom);
+    return Objects.hash(logoImageUrl, logoImageHeight, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot, pageBackgroundColor, darkForeground, domainId, baseUrl, prohibitDifferentUrl, adminSettingsId, showNameBottom);
   }
 
   @Override
@@ -740,6 +770,7 @@ public class LoginWhiteLabelingParams {
     sb.append("    customCss: ").append(toIndentedString(customCss)).append("\n");
     sb.append("    hideConnectivityDialog: ").append(toIndentedString(hideConnectivityDialog)).append("\n");
     sb.append("    overrideTrendzName: ").append(toIndentedString(overrideTrendzName)).append("\n");
+    sb.append("    hideChatBot: ").append(toIndentedString(hideChatBot)).append("\n");
     sb.append("    pageBackgroundColor: ").append(toIndentedString(pageBackgroundColor)).append("\n");
     sb.append("    darkForeground: ").append(toIndentedString(darkForeground)).append("\n");
     sb.append("    domainId: ").append(toIndentedString(domainId)).append("\n");
@@ -867,6 +898,11 @@ public class LoginWhiteLabelingParams {
     // add `overrideTrendzName` to the URL query string
     if (getOverrideTrendzName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%soverrideTrendzName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOverrideTrendzName()))));
+    }
+
+    // add `hideChatBot` to the URL query string
+    if (getHideChatBot() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%shideChatBot%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHideChatBot()))));
     }
 
     // add `pageBackgroundColor` to the URL query string

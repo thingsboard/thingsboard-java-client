@@ -42,9 +42,9 @@ import org.thingsboard.client.ApiClient;
  * AssetTypeFilter
  */
 @JsonPropertyOrder({
-  AssetTypeFilter.JSON_PROPERTY_ASSET_TYPE,
   AssetTypeFilter.JSON_PROPERTY_ASSET_TYPES,
-  AssetTypeFilter.JSON_PROPERTY_ASSET_NAME_FILTER
+  AssetTypeFilter.JSON_PROPERTY_ASSET_NAME_FILTER,
+  AssetTypeFilter.JSON_PROPERTY_ASSET_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +54,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class AssetTypeFilter extends EntityFilter {
-  public static final String JSON_PROPERTY_ASSET_TYPE = "assetType";
-  @javax.annotation.Nullable
-  private String assetType;
-
   public static final String JSON_PROPERTY_ASSET_TYPES = "assetTypes";
   @javax.annotation.Nullable
   private List<String> assetTypes = new ArrayList<>();
@@ -66,34 +62,12 @@ public class AssetTypeFilter extends EntityFilter {
   @javax.annotation.Nullable
   private String assetNameFilter;
 
+  public static final String JSON_PROPERTY_ASSET_TYPE = "assetType";
+  @javax.annotation.Nullable
+  private String assetType;
+
   public AssetTypeFilter() { 
   }
-
-  public AssetTypeFilter assetType(@javax.annotation.Nullable String assetType) {
-    this.assetType = assetType;
-    return this;
-  }
-
-  /**
-   * Get assetType
-   * @return assetType
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ASSET_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssetType() {
-    return assetType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ASSET_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssetType(@javax.annotation.Nullable String assetType) {
-    this.assetType = assetType;
-  }
-
 
   public AssetTypeFilter assetTypes(@javax.annotation.Nullable List<String> assetTypes) {
     this.assetTypes = assetTypes;
@@ -151,6 +125,32 @@ public class AssetTypeFilter extends EntityFilter {
   }
 
 
+  public AssetTypeFilter assetType(@javax.annotation.Nullable String assetType) {
+    this.assetType = assetType;
+    return this;
+  }
+
+  /**
+   * Get assetType
+   * @return assetType
+   * @deprecated
+   */
+  @Deprecated
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ASSET_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAssetType() {
+    return assetType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ASSET_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssetType(@javax.annotation.Nullable String assetType) {
+    this.assetType = assetType;
+  }
+
+
   @Override
   public AssetTypeFilter type(@javax.annotation.Nonnull String type) {
     this.setType(type);
@@ -169,15 +169,15 @@ public class AssetTypeFilter extends EntityFilter {
       return false;
     }
     AssetTypeFilter assetTypeFilter = (AssetTypeFilter) o;
-    return Objects.equals(this.assetType, assetTypeFilter.assetType) &&
-        Objects.equals(this.assetTypes, assetTypeFilter.assetTypes) &&
+    return Objects.equals(this.assetTypes, assetTypeFilter.assetTypes) &&
         Objects.equals(this.assetNameFilter, assetTypeFilter.assetNameFilter) &&
+        Objects.equals(this.assetType, assetTypeFilter.assetType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assetType, assetTypes, assetNameFilter, super.hashCode());
+    return Objects.hash(assetTypes, assetNameFilter, assetType, super.hashCode());
   }
 
   @Override
@@ -185,9 +185,9 @@ public class AssetTypeFilter extends EntityFilter {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssetTypeFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("    assetTypes: ").append(toIndentedString(assetTypes)).append("\n");
     sb.append("    assetNameFilter: ").append(toIndentedString(assetNameFilter)).append("\n");
+    sb.append("    assetType: ").append(toIndentedString(assetType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -240,11 +240,6 @@ public class AssetTypeFilter extends EntityFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `assetType` to the URL query string
-    if (getAssetType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sassetType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAssetType()))));
-    }
-
     // add `assetTypes` to the URL query string
     if (getAssetTypes() != null) {
       for (int i = 0; i < getAssetTypes().size(); i++) {
@@ -257,6 +252,11 @@ public class AssetTypeFilter extends EntityFilter {
     // add `assetNameFilter` to the URL query string
     if (getAssetNameFilter() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sassetNameFilter%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAssetNameFilter()))));
+    }
+
+    // add `assetType` to the URL query string
+    if (getAssetType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sassetType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAssetType()))));
     }
 
     return joiner.toString();

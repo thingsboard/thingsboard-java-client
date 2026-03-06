@@ -42,12 +42,12 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   DebugConverterEventFilter.JSON_PROPERTY_SERVER,
-  DebugConverterEventFilter.JSON_PROPERTY_IS_ERROR,
   DebugConverterEventFilter.JSON_PROPERTY_ERROR_STR,
   DebugConverterEventFilter.JSON_PROPERTY_TYPE,
   DebugConverterEventFilter.JSON_PROPERTY_IN,
   DebugConverterEventFilter.JSON_PROPERTY_OUT,
   DebugConverterEventFilter.JSON_PROPERTY_METADATA,
+  DebugConverterEventFilter.JSON_PROPERTY_IS_ERROR,
   DebugConverterEventFilter.JSON_PROPERTY_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -61,10 +61,6 @@ public class DebugConverterEventFilter extends EventFilter {
   public static final String JSON_PROPERTY_SERVER = "server";
   @javax.annotation.Nullable
   private String server;
-
-  public static final String JSON_PROPERTY_IS_ERROR = "isError";
-  @javax.annotation.Nullable
-  private Boolean isError;
 
   public static final String JSON_PROPERTY_ERROR_STR = "errorStr";
   @javax.annotation.Nullable
@@ -85,6 +81,10 @@ public class DebugConverterEventFilter extends EventFilter {
   public static final String JSON_PROPERTY_METADATA = "metadata";
   @javax.annotation.Nullable
   private String metadata;
+
+  public static final String JSON_PROPERTY_IS_ERROR = "isError";
+  @javax.annotation.Nullable
+  private Boolean isError;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
@@ -114,30 +114,6 @@ public class DebugConverterEventFilter extends EventFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setServer(@javax.annotation.Nullable String server) {
     this.server = server;
-  }
-
-
-  public DebugConverterEventFilter isError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-    return this;
-  }
-
-  /**
-   * Get isError
-   * @return isError
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsError() {
-    return isError;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
   }
 
 
@@ -261,6 +237,30 @@ public class DebugConverterEventFilter extends EventFilter {
   }
 
 
+  public DebugConverterEventFilter isError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
+    return this;
+  }
+
+  /**
+   * Get isError
+   * @return isError
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsError() {
+    return isError;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
+  }
+
+
   public DebugConverterEventFilter error(@javax.annotation.Nullable Boolean error) {
     this.error = error;
     return this;
@@ -310,19 +310,19 @@ public class DebugConverterEventFilter extends EventFilter {
     }
     DebugConverterEventFilter debugConverterEventFilter = (DebugConverterEventFilter) o;
     return Objects.equals(this.server, debugConverterEventFilter.server) &&
-        Objects.equals(this.isError, debugConverterEventFilter.isError) &&
         Objects.equals(this.errorStr, debugConverterEventFilter.errorStr) &&
         Objects.equals(this.type, debugConverterEventFilter.type) &&
         Objects.equals(this.in, debugConverterEventFilter.in) &&
         Objects.equals(this.out, debugConverterEventFilter.out) &&
         Objects.equals(this.metadata, debugConverterEventFilter.metadata) &&
+        Objects.equals(this.isError, debugConverterEventFilter.isError) &&
         Objects.equals(this.error, debugConverterEventFilter.error) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(server, isError, errorStr, type, in, out, metadata, error, super.hashCode());
+    return Objects.hash(server, errorStr, type, in, out, metadata, isError, error, super.hashCode());
   }
 
   @Override
@@ -331,12 +331,12 @@ public class DebugConverterEventFilter extends EventFilter {
     sb.append("class DebugConverterEventFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
-    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    errorStr: ").append(toIndentedString(errorStr)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    in: ").append(toIndentedString(in)).append("\n");
     sb.append("    out: ").append(toIndentedString(out)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -400,11 +400,6 @@ public class DebugConverterEventFilter extends EventFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%sserver%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getServer()))));
     }
 
-    // add `isError` to the URL query string
-    if (getIsError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
-    }
-
     // add `errorStr` to the URL query string
     if (getErrorStr() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serrorStr%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorStr()))));
@@ -428,6 +423,11 @@ public class DebugConverterEventFilter extends EventFilter {
     // add `metadata` to the URL query string
     if (getMetadata() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smetadata%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMetadata()))));
+    }
+
+    // add `isError` to the URL query string
+    if (getIsError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
     }
 
     // add `error` to the URL query string

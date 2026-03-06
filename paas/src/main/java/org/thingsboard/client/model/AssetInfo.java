@@ -382,7 +382,7 @@ public class AssetInfo {
   }
 
   /**
-   * Additional parameters of the asset
+   * Additional parameters of the asset. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

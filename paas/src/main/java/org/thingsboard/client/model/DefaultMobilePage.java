@@ -42,10 +42,10 @@ import org.thingsboard.client.ApiClient;
  * DefaultMobilePage
  */
 @JsonPropertyOrder({
-  DefaultMobilePage.JSON_PROPERTY_ID,
   DefaultMobilePage.JSON_PROPERTY_LABEL,
   DefaultMobilePage.JSON_PROPERTY_VISIBLE,
-  DefaultMobilePage.JSON_PROPERTY_ICON
+  DefaultMobilePage.JSON_PROPERTY_ICON,
+  DefaultMobilePage.JSON_PROPERTY_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -55,10 +55,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class DefaultMobilePage extends MobilePage {
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private DefaultPageId id;
-
   public static final String JSON_PROPERTY_LABEL = "label";
   @javax.annotation.Nullable
   private String label;
@@ -71,32 +67,12 @@ public class DefaultMobilePage extends MobilePage {
   @javax.annotation.Nullable
   private String icon;
 
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private DefaultPageId id;
+
   public DefaultMobilePage() { 
   }
-
-  public DefaultMobilePage id(@javax.annotation.Nullable DefaultPageId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Identifier for default page
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DefaultPageId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable DefaultPageId id) {
-    this.id = id;
-  }
-
 
   public DefaultMobilePage label(@javax.annotation.Nullable String label) {
     this.label = label;
@@ -170,6 +146,30 @@ public class DefaultMobilePage extends MobilePage {
   }
 
 
+  public DefaultMobilePage id(@javax.annotation.Nullable DefaultPageId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Identifier for default page
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DefaultPageId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable DefaultPageId id) {
+    this.id = id;
+  }
+
+
   @Override
   public DefaultMobilePage type(@javax.annotation.Nonnull MobilePageType type) {
     this.setType(type);
@@ -188,16 +188,16 @@ public class DefaultMobilePage extends MobilePage {
       return false;
     }
     DefaultMobilePage defaultMobilePage = (DefaultMobilePage) o;
-    return Objects.equals(this.id, defaultMobilePage.id) &&
-        Objects.equals(this.label, defaultMobilePage.label) &&
+    return Objects.equals(this.label, defaultMobilePage.label) &&
         Objects.equals(this.visible, defaultMobilePage.visible) &&
         Objects.equals(this.icon, defaultMobilePage.icon) &&
+        Objects.equals(this.id, defaultMobilePage.id) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, label, visible, icon, super.hashCode());
+    return Objects.hash(label, visible, icon, id, super.hashCode());
   }
 
   @Override
@@ -205,10 +205,10 @@ public class DefaultMobilePage extends MobilePage {
     StringBuilder sb = new StringBuilder();
     sb.append("class DefaultMobilePage {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -266,11 +266,6 @@ public class DefaultMobilePage extends MobilePage {
       joiner.add(String.format(java.util.Locale.ROOT, "%svisible%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVisible()))));
     }
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
-    }
-
     // add `label` to the URL query string
     if (getLabel() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slabel%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLabel()))));
@@ -279,6 +274,11 @@ public class DefaultMobilePage extends MobilePage {
     // add `icon` to the URL query string
     if (getIcon() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sicon%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIcon()))));
+    }
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     return joiner.toString();

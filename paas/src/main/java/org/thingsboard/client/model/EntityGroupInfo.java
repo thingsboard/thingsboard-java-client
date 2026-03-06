@@ -369,7 +369,7 @@ public class EntityGroupInfo {
   }
 
   /**
-   * Arbitrary JSON with additional information about the group
+   * Additional parameters of the entity group. May include: &#39;description&#39; (string), &#39;isPublic&#39; (boolean, whether this group is shared publicly), &#39;publicCustomerId&#39; (string, UUID of the public customer associated with this group).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

@@ -24,6 +24,7 @@ A JSON value representing the white labeling configuration
 | **customCss** | **String** | Custom CSS content | [optional] |
 | **hideConnectivityDialog** | **Boolean** | Hide device connectivity dialog | [optional] |
 | **overrideTrendzName** | **Boolean** | Override Trendz Add-on name | [optional] |
+| **hideChatBot** | **Boolean** | Hide chat bot | [optional] |
 
 
 

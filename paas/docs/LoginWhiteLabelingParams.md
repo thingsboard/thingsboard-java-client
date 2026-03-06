@@ -24,6 +24,7 @@ A JSON value representing the login white labeling configuration
 | **customCss** | **String** | Custom CSS content | [optional] |
 | **hideConnectivityDialog** | **Boolean** | Hide device connectivity dialog | [optional] |
 | **overrideTrendzName** | **Boolean** | Override Trendz Add-on name | [optional] |
+| **hideChatBot** | **Boolean** | Hide chat bot | [optional] |
 | **pageBackgroundColor** | **String** | Login page background color | [optional] |
 | **darkForeground** | **Boolean** | Enable/Disable dark foreground | [optional] |
 | **domainId** | **DomainId** | Domain id | [optional] |

@@ -45,13 +45,13 @@ import org.thingsboard.client.ApiClient;
  * TimeSeriesChartKeySettings
  */
 @JsonPropertyOrder({
+  TimeSeriesChartKeySettings.JSON_PROPERTY_Y_AXIS_ID,
   TimeSeriesChartKeySettings.JSON_PROPERTY_SHOW_IN_LEGEND,
   TimeSeriesChartKeySettings.JSON_PROPERTY_SERIES_TYPE,
   TimeSeriesChartKeySettings.JSON_PROPERTY_LINE_SETTINGS,
   TimeSeriesChartKeySettings.JSON_PROPERTY_BAR_SETTINGS,
   TimeSeriesChartKeySettings.JSON_PROPERTY_COMPARISON_SETTINGS,
-  TimeSeriesChartKeySettings.JSON_PROPERTY_YAXIS_ID,
-  TimeSeriesChartKeySettings.JSON_PROPERTY_Y_AXIS_ID
+  TimeSeriesChartKeySettings.JSON_PROPERTY_YAXIS_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -61,6 +61,10 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class TimeSeriesChartKeySettings extends DataKeySettings {
+  public static final String JSON_PROPERTY_Y_AXIS_ID = "yAxisId";
+  @javax.annotation.Nullable
+  private String yAxisId;
+
   public static final String JSON_PROPERTY_SHOW_IN_LEGEND = "showInLegend";
   @javax.annotation.Nullable
   private Boolean showInLegend;
@@ -85,12 +89,32 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
   @javax.annotation.Nullable
   private String yaxisId;
 
-  public static final String JSON_PROPERTY_Y_AXIS_ID = "yAxisId";
-  @javax.annotation.Nullable
-  private String yAxisId;
-
   public TimeSeriesChartKeySettings() { 
   }
+
+  public TimeSeriesChartKeySettings yAxisId(@javax.annotation.Nullable String yAxisId) {
+    this.yAxisId = yAxisId;
+    return this;
+  }
+
+  /**
+   * Get yAxisId
+   * @return yAxisId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getyAxisId() {
+    return yAxisId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setyAxisId(@javax.annotation.Nullable String yAxisId) {
+    this.yAxisId = yAxisId;
+  }
+
 
   public TimeSeriesChartKeySettings showInLegend(@javax.annotation.Nullable Boolean showInLegend) {
     this.showInLegend = showInLegend;
@@ -236,30 +260,6 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
   }
 
 
-  public TimeSeriesChartKeySettings yAxisId(@javax.annotation.Nullable String yAxisId) {
-    this.yAxisId = yAxisId;
-    return this;
-  }
-
-  /**
-   * Get yAxisId
-   * @return yAxisId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getyAxisId() {
-    return yAxisId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setyAxisId(@javax.annotation.Nullable String yAxisId) {
-    this.yAxisId = yAxisId;
-  }
-
-
   @Override
   public TimeSeriesChartKeySettings type(@javax.annotation.Nonnull DataKeySettingsType type) {
     this.setType(type);
@@ -278,19 +278,19 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
       return false;
     }
     TimeSeriesChartKeySettings timeSeriesChartKeySettings = (TimeSeriesChartKeySettings) o;
-    return Objects.equals(this.showInLegend, timeSeriesChartKeySettings.showInLegend) &&
+    return Objects.equals(this.yAxisId, timeSeriesChartKeySettings.yAxisId) &&
+        Objects.equals(this.showInLegend, timeSeriesChartKeySettings.showInLegend) &&
         Objects.equals(this.seriesType, timeSeriesChartKeySettings.seriesType) &&
         Objects.equals(this.lineSettings, timeSeriesChartKeySettings.lineSettings) &&
         Objects.equals(this.barSettings, timeSeriesChartKeySettings.barSettings) &&
         Objects.equals(this.comparisonSettings, timeSeriesChartKeySettings.comparisonSettings) &&
         Objects.equals(this.yaxisId, timeSeriesChartKeySettings.yaxisId) &&
-        Objects.equals(this.yAxisId, timeSeriesChartKeySettings.yAxisId) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(showInLegend, seriesType, lineSettings, barSettings, comparisonSettings, yaxisId, yAxisId, super.hashCode());
+    return Objects.hash(yAxisId, showInLegend, seriesType, lineSettings, barSettings, comparisonSettings, yaxisId, super.hashCode());
   }
 
   @Override
@@ -298,13 +298,13 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
     StringBuilder sb = new StringBuilder();
     sb.append("class TimeSeriesChartKeySettings {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    yAxisId: ").append(toIndentedString(yAxisId)).append("\n");
     sb.append("    showInLegend: ").append(toIndentedString(showInLegend)).append("\n");
     sb.append("    seriesType: ").append(toIndentedString(seriesType)).append("\n");
     sb.append("    lineSettings: ").append(toIndentedString(lineSettings)).append("\n");
     sb.append("    barSettings: ").append(toIndentedString(barSettings)).append("\n");
     sb.append("    comparisonSettings: ").append(toIndentedString(comparisonSettings)).append("\n");
     sb.append("    yaxisId: ").append(toIndentedString(yaxisId)).append("\n");
-    sb.append("    yAxisId: ").append(toIndentedString(yAxisId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -357,6 +357,11 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
+    // add `yAxisId` to the URL query string
+    if (getyAxisId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%syAxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getyAxisId()))));
+    }
+
     // add `showInLegend` to the URL query string
     if (getShowInLegend() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sshowInLegend%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowInLegend()))));
@@ -385,11 +390,6 @@ public class TimeSeriesChartKeySettings extends DataKeySettings {
     // add `yaxisId` to the URL query string
     if (getYaxisId() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%syaxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getYaxisId()))));
-    }
-
-    // add `yAxisId` to the URL query string
-    if (getyAxisId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%syAxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getyAxisId()))));
     }
 
     return joiner.toString();

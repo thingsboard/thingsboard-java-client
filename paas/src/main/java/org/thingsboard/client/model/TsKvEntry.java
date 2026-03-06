@@ -45,11 +45,11 @@ import org.thingsboard.client.ApiClient;
   TsKvEntry.JSON_PROPERTY_KEY,
   TsKvEntry.JSON_PROPERTY_BOOLEAN_VALUE,
   TsKvEntry.JSON_PROPERTY_VALUE_AS_STRING,
+  TsKvEntry.JSON_PROPERTY_LONG_VALUE,
+  TsKvEntry.JSON_PROPERTY_DOUBLE_VALUE,
   TsKvEntry.JSON_PROPERTY_DATA_TYPE,
   TsKvEntry.JSON_PROPERTY_JSON_VALUE,
   TsKvEntry.JSON_PROPERTY_STR_VALUE,
-  TsKvEntry.JSON_PROPERTY_LONG_VALUE,
-  TsKvEntry.JSON_PROPERTY_DOUBLE_VALUE,
   TsKvEntry.JSON_PROPERTY_VERSION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -73,6 +73,14 @@ public class TsKvEntry {
   @javax.annotation.Nullable
   private String valueAsString;
 
+  public static final String JSON_PROPERTY_LONG_VALUE = "longValue";
+  @javax.annotation.Nullable
+  private Long longValue;
+
+  public static final String JSON_PROPERTY_DOUBLE_VALUE = "doubleValue";
+  @javax.annotation.Nullable
+  private Double doubleValue;
+
   public static final String JSON_PROPERTY_DATA_TYPE = "dataType";
   @javax.annotation.Nullable
   private DataType dataType;
@@ -84,14 +92,6 @@ public class TsKvEntry {
   public static final String JSON_PROPERTY_STR_VALUE = "strValue";
   @javax.annotation.Nullable
   private String strValue;
-
-  public static final String JSON_PROPERTY_LONG_VALUE = "longValue";
-  @javax.annotation.Nullable
-  private Long longValue;
-
-  public static final String JSON_PROPERTY_DOUBLE_VALUE = "doubleValue";
-  @javax.annotation.Nullable
-  private Double doubleValue;
 
   public static final String JSON_PROPERTY_VERSION = "version";
   @javax.annotation.Nullable
@@ -228,6 +228,54 @@ public class TsKvEntry {
   }
 
 
+  public TsKvEntry longValue(@javax.annotation.Nullable Long longValue) {
+    this.longValue = longValue;
+    return this;
+  }
+
+  /**
+   * Get longValue
+   * @return longValue
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getLongValue() {
+    return longValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLongValue(@javax.annotation.Nullable Long longValue) {
+    this.longValue = longValue;
+  }
+
+
+  public TsKvEntry doubleValue(@javax.annotation.Nullable Double doubleValue) {
+    this.doubleValue = doubleValue;
+    return this;
+  }
+
+  /**
+   * Get doubleValue
+   * @return doubleValue
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getDoubleValue() {
+    return doubleValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDoubleValue(@javax.annotation.Nullable Double doubleValue) {
+    this.doubleValue = doubleValue;
+  }
+
+
   public TsKvEntry dataType(@javax.annotation.Nullable DataType dataType) {
     this.dataType = dataType;
     return this;
@@ -300,54 +348,6 @@ public class TsKvEntry {
   }
 
 
-  public TsKvEntry longValue(@javax.annotation.Nullable Long longValue) {
-    this.longValue = longValue;
-    return this;
-  }
-
-  /**
-   * Get longValue
-   * @return longValue
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getLongValue() {
-    return longValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLongValue(@javax.annotation.Nullable Long longValue) {
-    this.longValue = longValue;
-  }
-
-
-  public TsKvEntry doubleValue(@javax.annotation.Nullable Double doubleValue) {
-    this.doubleValue = doubleValue;
-    return this;
-  }
-
-  /**
-   * Get doubleValue
-   * @return doubleValue
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getDoubleValue() {
-    return doubleValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDoubleValue(@javax.annotation.Nullable Double doubleValue) {
-    this.doubleValue = doubleValue;
-  }
-
-
   public TsKvEntry version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
@@ -389,11 +389,11 @@ public class TsKvEntry {
         Objects.equals(this.key, tsKvEntry.key) &&
         Objects.equals(this.booleanValue, tsKvEntry.booleanValue) &&
         Objects.equals(this.valueAsString, tsKvEntry.valueAsString) &&
+        Objects.equals(this.longValue, tsKvEntry.longValue) &&
+        Objects.equals(this.doubleValue, tsKvEntry.doubleValue) &&
         Objects.equals(this.dataType, tsKvEntry.dataType) &&
         Objects.equals(this.jsonValue, tsKvEntry.jsonValue) &&
         Objects.equals(this.strValue, tsKvEntry.strValue) &&
-        Objects.equals(this.longValue, tsKvEntry.longValue) &&
-        Objects.equals(this.doubleValue, tsKvEntry.doubleValue) &&
         Objects.equals(this.version, tsKvEntry.version);
   }
 
@@ -403,7 +403,7 @@ public class TsKvEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ts, hashCodeNullable(value), key, booleanValue, valueAsString, dataType, jsonValue, strValue, longValue, doubleValue, version);
+    return Objects.hash(ts, hashCodeNullable(value), key, booleanValue, valueAsString, longValue, doubleValue, dataType, jsonValue, strValue, version);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -422,11 +422,11 @@ public class TsKvEntry {
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    booleanValue: ").append(toIndentedString(booleanValue)).append("\n");
     sb.append("    valueAsString: ").append(toIndentedString(valueAsString)).append("\n");
+    sb.append("    longValue: ").append(toIndentedString(longValue)).append("\n");
+    sb.append("    doubleValue: ").append(toIndentedString(doubleValue)).append("\n");
     sb.append("    dataType: ").append(toIndentedString(dataType)).append("\n");
     sb.append("    jsonValue: ").append(toIndentedString(jsonValue)).append("\n");
     sb.append("    strValue: ").append(toIndentedString(strValue)).append("\n");
-    sb.append("    longValue: ").append(toIndentedString(longValue)).append("\n");
-    sb.append("    doubleValue: ").append(toIndentedString(doubleValue)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -500,6 +500,16 @@ public class TsKvEntry {
       joiner.add(String.format(java.util.Locale.ROOT, "%svalueAsString%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getValueAsString()))));
     }
 
+    // add `longValue` to the URL query string
+    if (getLongValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slongValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLongValue()))));
+    }
+
+    // add `doubleValue` to the URL query string
+    if (getDoubleValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdoubleValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDoubleValue()))));
+    }
+
     // add `dataType` to the URL query string
     if (getDataType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdataType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDataType()))));
@@ -513,16 +523,6 @@ public class TsKvEntry {
     // add `strValue` to the URL query string
     if (getStrValue() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstrValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStrValue()))));
-    }
-
-    // add `longValue` to the URL query string
-    if (getLongValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slongValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLongValue()))));
-    }
-
-    // add `doubleValue` to the URL query string
-    if (getDoubleValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdoubleValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDoubleValue()))));
     }
 
     // add `version` to the URL query string

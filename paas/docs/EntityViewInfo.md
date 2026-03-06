@@ -21,7 +21,7 @@
 | **ownerName** | **String** | Owner name | [optional] [readonly] |
 | **groups** | **List\<EntityInfo\>** | Groups | [optional] |
 | **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 
 
 

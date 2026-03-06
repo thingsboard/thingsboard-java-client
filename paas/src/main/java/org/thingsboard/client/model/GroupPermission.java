@@ -58,11 +58,11 @@ public class GroupPermission {
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_USER_GROUP_ID = "userGroupId";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private EntityGroupId userGroupId;
 
   public static final String JSON_PROPERTY_ROLE_ID = "roleId";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private RoleId roleId;
 
   public static final String JSON_PROPERTY_ENTITY_GROUP_ID = "entityGroupId";
@@ -99,11 +99,13 @@ public class GroupPermission {
   @JsonCreator
   public GroupPermission(
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
+    @JsonProperty(JSON_PROPERTY_ENTITY_GROUP_TYPE) EntityType entityGroupType, 
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_NAME) String name
   ) {
   this();
     this.tenantId = tenantId;
+    this.entityGroupType = entityGroupType;
     this.createdTime = createdTime;
     this.name = name;
   }
@@ -122,50 +124,50 @@ public class GroupPermission {
 
 
 
-  public GroupPermission userGroupId(@javax.annotation.Nullable EntityGroupId userGroupId) {
+  public GroupPermission userGroupId(@javax.annotation.Nonnull EntityGroupId userGroupId) {
     this.userGroupId = userGroupId;
     return this;
   }
 
   /**
-   * JSON object with the User Group Id. Represent user group that will have permissions to perform operations against corresponding Entity Group.
+   * JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group.
    * @return userGroupId
    */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityGroupId getUserGroupId() {
     return userGroupId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserGroupId(@javax.annotation.Nullable EntityGroupId userGroupId) {
+  @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUserGroupId(@javax.annotation.Nonnull EntityGroupId userGroupId) {
     this.userGroupId = userGroupId;
   }
 
 
-  public GroupPermission roleId(@javax.annotation.Nullable RoleId roleId) {
+  public GroupPermission roleId(@javax.annotation.Nonnull RoleId roleId) {
     this.roleId = roleId;
     return this;
   }
 
   /**
-   * JSON object with the Role Id. Represent set of permissions.
+   * JSON object with the Role Id. Represents the set of permissions. The role type (GENERIC or GROUP) determines whether &#39;entityGroupId&#39; is required.
    * @return roleId
    */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ROLE_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ROLE_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RoleId getRoleId() {
     return roleId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ROLE_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRoleId(@javax.annotation.Nullable RoleId roleId) {
+  @JsonProperty(value = JSON_PROPERTY_ROLE_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setRoleId(@javax.annotation.Nonnull RoleId roleId) {
     this.roleId = roleId;
   }
 
@@ -176,7 +178,7 @@ public class GroupPermission {
   }
 
   /**
-   * JSON object with the Entity Group Id. Represent entity (device, asset, etc.) group.
+   * JSON object with the Entity Group Id. Required when using a GROUP role — specifies the entity group to which the permissions apply. Must be null or omitted when using a GENERIC role.
    * @return entityGroupId
    */
   @javax.annotation.Nullable
@@ -194,13 +196,8 @@ public class GroupPermission {
   }
 
 
-  public GroupPermission entityGroupType(@javax.annotation.Nullable EntityType entityGroupType) {
-    this.entityGroupType = entityGroupType;
-    return this;
-  }
-
   /**
-   * Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc.
+   * Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc. Auto-populated from the referenced entity group. Null for generic permissions.
    * @return entityGroupType
    */
   @javax.annotation.Nullable
@@ -211,11 +208,6 @@ public class GroupPermission {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityGroupType(@javax.annotation.Nullable EntityType entityGroupType) {
-    this.entityGroupType = entityGroupType;
-  }
 
 
   public GroupPermission isPublic(@javax.annotation.Nullable Boolean isPublic) {
