@@ -116,7 +116,7 @@ public class Edge {
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Edge() { 
   }
@@ -429,7 +429,7 @@ public class Edge {
   }
 
   /**
-   * Get additionalInfo
+   * Additional parameters of the edge. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

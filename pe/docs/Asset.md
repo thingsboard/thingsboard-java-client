@@ -17,7 +17,7 @@
 | **assetProfileId** | **AssetProfileId** | JSON object with Asset Profile Id. | [optional] |
 | **version** | **Long** |  | [optional] |
 | **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the asset | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the asset. May include: 'description' (string). | [optional] |
 
 
 

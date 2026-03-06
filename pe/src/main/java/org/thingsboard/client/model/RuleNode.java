@@ -395,7 +395,7 @@ public class RuleNode {
   }
 
   /**
-   * Additional parameters of the rule node. Contains &#39;layoutX&#39; and &#39;layoutY&#39; properties for visualization.
+   * Additional parameters of the rule node. May include: &#39;layoutX&#39; (number, X coordinate for visualization), &#39;layoutY&#39; (number, Y coordinate for visualization), &#39;description&#39; (string).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

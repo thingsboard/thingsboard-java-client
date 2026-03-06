@@ -37,18 +37,22 @@ import org.thingsboard.client.ApiClient;
  * BaseReadTsKvQuery
  */
 @JsonPropertyOrder({
+  BaseReadTsKvQuery.JSON_PROPERTY_ID,
   BaseReadTsKvQuery.JSON_PROPERTY_KEY,
   BaseReadTsKvQuery.JSON_PROPERTY_START_TS,
   BaseReadTsKvQuery.JSON_PROPERTY_END_TS,
   BaseReadTsKvQuery.JSON_PROPERTY_AGG_PARAMETERS,
   BaseReadTsKvQuery.JSON_PROPERTY_LIMIT,
   BaseReadTsKvQuery.JSON_PROPERTY_ORDER,
-  BaseReadTsKvQuery.JSON_PROPERTY_ID,
   BaseReadTsKvQuery.JSON_PROPERTY_INTERVAL,
   BaseReadTsKvQuery.JSON_PROPERTY_AGGREGATION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BaseReadTsKvQuery {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private Integer id;
+
   public static final String JSON_PROPERTY_KEY = "key";
   @javax.annotation.Nullable
   private String key;
@@ -73,10 +77,6 @@ public class BaseReadTsKvQuery {
   @javax.annotation.Nullable
   private String order;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private Integer id;
-
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   @javax.annotation.Nullable
   private Long interval;
@@ -87,6 +87,30 @@ public class BaseReadTsKvQuery {
 
   public BaseReadTsKvQuery() { 
   }
+
+  public BaseReadTsKvQuery id(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable Integer id) {
+    this.id = id;
+  }
+
 
   public BaseReadTsKvQuery key(@javax.annotation.Nullable String key) {
     this.key = key;
@@ -232,30 +256,6 @@ public class BaseReadTsKvQuery {
   }
 
 
-  public BaseReadTsKvQuery id(@javax.annotation.Nullable Integer id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable Integer id) {
-    this.id = id;
-  }
-
-
   public BaseReadTsKvQuery interval(@javax.annotation.Nullable Long interval) {
     this.interval = interval;
     return this;
@@ -316,33 +316,33 @@ public class BaseReadTsKvQuery {
       return false;
     }
     BaseReadTsKvQuery baseReadTsKvQuery = (BaseReadTsKvQuery) o;
-    return Objects.equals(this.key, baseReadTsKvQuery.key) &&
+    return Objects.equals(this.id, baseReadTsKvQuery.id) &&
+        Objects.equals(this.key, baseReadTsKvQuery.key) &&
         Objects.equals(this.startTs, baseReadTsKvQuery.startTs) &&
         Objects.equals(this.endTs, baseReadTsKvQuery.endTs) &&
         Objects.equals(this.aggParameters, baseReadTsKvQuery.aggParameters) &&
         Objects.equals(this.limit, baseReadTsKvQuery.limit) &&
         Objects.equals(this.order, baseReadTsKvQuery.order) &&
-        Objects.equals(this.id, baseReadTsKvQuery.id) &&
         Objects.equals(this.interval, baseReadTsKvQuery.interval) &&
         Objects.equals(this.aggregation, baseReadTsKvQuery.aggregation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, startTs, endTs, aggParameters, limit, order, id, interval, aggregation);
+    return Objects.hash(id, key, startTs, endTs, aggParameters, limit, order, interval, aggregation);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseReadTsKvQuery {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    startTs: ").append(toIndentedString(startTs)).append("\n");
     sb.append("    endTs: ").append(toIndentedString(endTs)).append("\n");
     sb.append("    aggParameters: ").append(toIndentedString(aggParameters)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    aggregation: ").append(toIndentedString(aggregation)).append("\n");
     sb.append("}");
@@ -392,6 +392,11 @@ public class BaseReadTsKvQuery {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
+    }
+
     // add `key` to the URL query string
     if (getKey() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%skey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKey()))));
@@ -420,11 +425,6 @@ public class BaseReadTsKvQuery {
     // add `order` to the URL query string
     if (getOrder() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sorder%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOrder()))));
-    }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     // add `interval` to the URL query string

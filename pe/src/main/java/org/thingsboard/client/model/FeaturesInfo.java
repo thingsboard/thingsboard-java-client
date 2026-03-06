@@ -35,19 +35,15 @@ import org.thingsboard.client.ApiClient;
  * FeaturesInfo
  */
 @JsonPropertyOrder({
-  FeaturesInfo.JSON_PROPERTY_WHITE_LABELING_ENABLED,
   FeaturesInfo.JSON_PROPERTY_SMS_ENABLED,
   FeaturesInfo.JSON_PROPERTY_OAUTH_ENABLED,
-  FeaturesInfo.JSON_PROPERTY_NOTIFICATION_ENABLED,
+  FeaturesInfo.JSON_PROPERTY_WHITE_LABELING_ENABLED,
   FeaturesInfo.JSON_PROPERTY_TWO_FA_ENABLED,
-  FeaturesInfo.JSON_PROPERTY_EMAIL_ENABLED
+  FeaturesInfo.JSON_PROPERTY_EMAIL_ENABLED,
+  FeaturesInfo.JSON_PROPERTY_NOTIFICATION_ENABLED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FeaturesInfo {
-  public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
-  @javax.annotation.Nullable
-  private Boolean whiteLabelingEnabled;
-
   public static final String JSON_PROPERTY_SMS_ENABLED = "smsEnabled";
   @javax.annotation.Nullable
   private Boolean smsEnabled;
@@ -56,9 +52,9 @@ public class FeaturesInfo {
   @javax.annotation.Nullable
   private Boolean oauthEnabled;
 
-  public static final String JSON_PROPERTY_NOTIFICATION_ENABLED = "notificationEnabled";
+  public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
   @javax.annotation.Nullable
-  private Boolean notificationEnabled;
+  private Boolean whiteLabelingEnabled;
 
   public static final String JSON_PROPERTY_TWO_FA_ENABLED = "twoFaEnabled";
   @javax.annotation.Nullable
@@ -68,32 +64,12 @@ public class FeaturesInfo {
   @javax.annotation.Nullable
   private Boolean emailEnabled;
 
+  public static final String JSON_PROPERTY_NOTIFICATION_ENABLED = "notificationEnabled";
+  @javax.annotation.Nullable
+  private Boolean notificationEnabled;
+
   public FeaturesInfo() { 
   }
-
-  public FeaturesInfo whiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
-    this.whiteLabelingEnabled = whiteLabelingEnabled;
-    return this;
-  }
-
-  /**
-   * Get whiteLabelingEnabled
-   * @return whiteLabelingEnabled
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getWhiteLabelingEnabled() {
-    return whiteLabelingEnabled;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWhiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
-    this.whiteLabelingEnabled = whiteLabelingEnabled;
-  }
-
 
   public FeaturesInfo smsEnabled(@javax.annotation.Nullable Boolean smsEnabled) {
     this.smsEnabled = smsEnabled;
@@ -143,27 +119,27 @@ public class FeaturesInfo {
   }
 
 
-  public FeaturesInfo notificationEnabled(@javax.annotation.Nullable Boolean notificationEnabled) {
-    this.notificationEnabled = notificationEnabled;
+  public FeaturesInfo whiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+    this.whiteLabelingEnabled = whiteLabelingEnabled;
     return this;
   }
 
   /**
-   * Get notificationEnabled
-   * @return notificationEnabled
+   * Get whiteLabelingEnabled
+   * @return whiteLabelingEnabled
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_ENABLED, required = false)
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getNotificationEnabled() {
-    return notificationEnabled;
+  public Boolean getWhiteLabelingEnabled() {
+    return whiteLabelingEnabled;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_ENABLED, required = false)
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotificationEnabled(@javax.annotation.Nullable Boolean notificationEnabled) {
-    this.notificationEnabled = notificationEnabled;
+  public void setWhiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+    this.whiteLabelingEnabled = whiteLabelingEnabled;
   }
 
 
@@ -215,6 +191,30 @@ public class FeaturesInfo {
   }
 
 
+  public FeaturesInfo notificationEnabled(@javax.annotation.Nullable Boolean notificationEnabled) {
+    this.notificationEnabled = notificationEnabled;
+    return this;
+  }
+
+  /**
+   * Get notificationEnabled
+   * @return notificationEnabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getNotificationEnabled() {
+    return notificationEnabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNotificationEnabled(@javax.annotation.Nullable Boolean notificationEnabled) {
+    this.notificationEnabled = notificationEnabled;
+  }
+
+
   /**
    * Return true if this FeaturesInfo object is equal to o.
    */
@@ -227,29 +227,29 @@ public class FeaturesInfo {
       return false;
     }
     FeaturesInfo featuresInfo = (FeaturesInfo) o;
-    return Objects.equals(this.whiteLabelingEnabled, featuresInfo.whiteLabelingEnabled) &&
-        Objects.equals(this.smsEnabled, featuresInfo.smsEnabled) &&
+    return Objects.equals(this.smsEnabled, featuresInfo.smsEnabled) &&
         Objects.equals(this.oauthEnabled, featuresInfo.oauthEnabled) &&
-        Objects.equals(this.notificationEnabled, featuresInfo.notificationEnabled) &&
+        Objects.equals(this.whiteLabelingEnabled, featuresInfo.whiteLabelingEnabled) &&
         Objects.equals(this.twoFaEnabled, featuresInfo.twoFaEnabled) &&
-        Objects.equals(this.emailEnabled, featuresInfo.emailEnabled);
+        Objects.equals(this.emailEnabled, featuresInfo.emailEnabled) &&
+        Objects.equals(this.notificationEnabled, featuresInfo.notificationEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(whiteLabelingEnabled, smsEnabled, oauthEnabled, notificationEnabled, twoFaEnabled, emailEnabled);
+    return Objects.hash(smsEnabled, oauthEnabled, whiteLabelingEnabled, twoFaEnabled, emailEnabled, notificationEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeaturesInfo {\n");
-    sb.append("    whiteLabelingEnabled: ").append(toIndentedString(whiteLabelingEnabled)).append("\n");
     sb.append("    smsEnabled: ").append(toIndentedString(smsEnabled)).append("\n");
     sb.append("    oauthEnabled: ").append(toIndentedString(oauthEnabled)).append("\n");
-    sb.append("    notificationEnabled: ").append(toIndentedString(notificationEnabled)).append("\n");
+    sb.append("    whiteLabelingEnabled: ").append(toIndentedString(whiteLabelingEnabled)).append("\n");
     sb.append("    twoFaEnabled: ").append(toIndentedString(twoFaEnabled)).append("\n");
     sb.append("    emailEnabled: ").append(toIndentedString(emailEnabled)).append("\n");
+    sb.append("    notificationEnabled: ").append(toIndentedString(notificationEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -297,11 +297,6 @@ public class FeaturesInfo {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `whiteLabelingEnabled` to the URL query string
-    if (getWhiteLabelingEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%swhiteLabelingEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWhiteLabelingEnabled()))));
-    }
-
     // add `smsEnabled` to the URL query string
     if (getSmsEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssmsEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSmsEnabled()))));
@@ -312,9 +307,9 @@ public class FeaturesInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%soauthEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOauthEnabled()))));
     }
 
-    // add `notificationEnabled` to the URL query string
-    if (getNotificationEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%snotificationEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotificationEnabled()))));
+    // add `whiteLabelingEnabled` to the URL query string
+    if (getWhiteLabelingEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%swhiteLabelingEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWhiteLabelingEnabled()))));
     }
 
     // add `twoFaEnabled` to the URL query string
@@ -325,6 +320,11 @@ public class FeaturesInfo {
     // add `emailEnabled` to the URL query string
     if (getEmailEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%semailEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEmailEnabled()))));
+    }
+
+    // add `notificationEnabled` to the URL query string
+    if (getNotificationEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%snotificationEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotificationEnabled()))));
     }
 
     return joiner.toString();
