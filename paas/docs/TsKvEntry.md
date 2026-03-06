@@ -12,11 +12,11 @@
 | **key** | **String** |  | [optional] |
 | **booleanValue** | **Boolean** |  | [optional] |
 | **valueAsString** | **String** |  | [optional] |
+| **longValue** | **Long** |  | [optional] |
+| **doubleValue** | **Double** |  | [optional] |
 | **dataType** | **DataType** |  | [optional] |
 | **jsonValue** | **String** |  | [optional] |
 | **strValue** | **String** |  | [optional] |
-| **longValue** | **Long** |  | [optional] |
-| **doubleValue** | **Double** |  | [optional] |
 | **version** | **Long** |  | [optional] |
 
 

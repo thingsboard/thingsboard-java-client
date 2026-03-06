@@ -379,7 +379,7 @@ public class EntityView {
   }
 
   /**
-   * Additional parameters of the device
+   * Additional parameters of the entity view. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

@@ -41,10 +41,10 @@ import org.thingsboard.client.ApiClient;
  * CustomMobilePage
  */
 @JsonPropertyOrder({
-  CustomMobilePage.JSON_PROPERTY_PATH,
   CustomMobilePage.JSON_PROPERTY_LABEL,
   CustomMobilePage.JSON_PROPERTY_VISIBLE,
-  CustomMobilePage.JSON_PROPERTY_ICON
+  CustomMobilePage.JSON_PROPERTY_ICON,
+  CustomMobilePage.JSON_PROPERTY_PATH
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +54,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class CustomMobilePage extends MobilePage {
-  public static final String JSON_PROPERTY_PATH = "path";
-  @javax.annotation.Nullable
-  private String path;
-
   public static final String JSON_PROPERTY_LABEL = "label";
   @javax.annotation.Nullable
   private String label;
@@ -70,32 +66,12 @@ public class CustomMobilePage extends MobilePage {
   @javax.annotation.Nullable
   private String icon;
 
+  public static final String JSON_PROPERTY_PATH = "path";
+  @javax.annotation.Nullable
+  private String path;
+
   public CustomMobilePage() { 
   }
-
-  public CustomMobilePage path(@javax.annotation.Nullable String path) {
-    this.path = path;
-    return this;
-  }
-
-  /**
-   * Path to custom page
-   * @return path
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PATH, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPath() {
-    return path;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PATH, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPath(@javax.annotation.Nullable String path) {
-    this.path = path;
-  }
-
 
   public CustomMobilePage label(@javax.annotation.Nullable String label) {
     this.label = label;
@@ -169,6 +145,30 @@ public class CustomMobilePage extends MobilePage {
   }
 
 
+  public CustomMobilePage path(@javax.annotation.Nullable String path) {
+    this.path = path;
+    return this;
+  }
+
+  /**
+   * Path to custom page
+   * @return path
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PATH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getPath() {
+    return path;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PATH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPath(@javax.annotation.Nullable String path) {
+    this.path = path;
+  }
+
+
   @Override
   public CustomMobilePage type(@javax.annotation.Nonnull MobilePageType type) {
     this.setType(type);
@@ -187,16 +187,16 @@ public class CustomMobilePage extends MobilePage {
       return false;
     }
     CustomMobilePage customMobilePage = (CustomMobilePage) o;
-    return Objects.equals(this.path, customMobilePage.path) &&
-        Objects.equals(this.label, customMobilePage.label) &&
+    return Objects.equals(this.label, customMobilePage.label) &&
         Objects.equals(this.visible, customMobilePage.visible) &&
         Objects.equals(this.icon, customMobilePage.icon) &&
+        Objects.equals(this.path, customMobilePage.path) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(path, label, visible, icon, super.hashCode());
+    return Objects.hash(label, visible, icon, path, super.hashCode());
   }
 
   @Override
@@ -204,10 +204,10 @@ public class CustomMobilePage extends MobilePage {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomMobilePage {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -265,11 +265,6 @@ public class CustomMobilePage extends MobilePage {
       joiner.add(String.format(java.util.Locale.ROOT, "%svisible%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVisible()))));
     }
 
-    // add `path` to the URL query string
-    if (getPath() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spath%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPath()))));
-    }
-
     // add `label` to the URL query string
     if (getLabel() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slabel%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLabel()))));
@@ -278,6 +273,11 @@ public class CustomMobilePage extends MobilePage {
     // add `icon` to the URL query string
     if (getIcon() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sicon%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIcon()))));
+    }
+
+    // add `path` to the URL query string
+    if (getPath() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spath%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPath()))));
     }
 
     return joiner.toString();

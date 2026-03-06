@@ -51,7 +51,8 @@ import org.thingsboard.client.ApiClient;
   WhiteLabelingParams.JSON_PROPERTY_PLATFORM_VERSION,
   WhiteLabelingParams.JSON_PROPERTY_CUSTOM_CSS,
   WhiteLabelingParams.JSON_PROPERTY_HIDE_CONNECTIVITY_DIALOG,
-  WhiteLabelingParams.JSON_PROPERTY_OVERRIDE_TRENDZ_NAME
+  WhiteLabelingParams.JSON_PROPERTY_OVERRIDE_TRENDZ_NAME,
+  WhiteLabelingParams.JSON_PROPERTY_HIDE_CHAT_BOT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WhiteLabelingParams {
@@ -114,6 +115,10 @@ public class WhiteLabelingParams {
   public static final String JSON_PROPERTY_OVERRIDE_TRENDZ_NAME = "overrideTrendzName";
   @javax.annotation.Nullable
   private Boolean overrideTrendzName;
+
+  public static final String JSON_PROPERTY_HIDE_CHAT_BOT = "hideChatBot";
+  @javax.annotation.Nullable
+  private Boolean hideChatBot;
 
   public WhiteLabelingParams() { 
   }
@@ -476,6 +481,30 @@ public class WhiteLabelingParams {
   }
 
 
+  public WhiteLabelingParams hideChatBot(@javax.annotation.Nullable Boolean hideChatBot) {
+    this.hideChatBot = hideChatBot;
+    return this;
+  }
+
+  /**
+   * Hide chat bot
+   * @return hideChatBot
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_HIDE_CHAT_BOT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getHideChatBot() {
+    return hideChatBot;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_HIDE_CHAT_BOT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHideChatBot(@javax.annotation.Nullable Boolean hideChatBot) {
+    this.hideChatBot = hideChatBot;
+  }
+
+
   /**
    * Return true if this WhiteLabelingParams object is equal to o.
    */
@@ -502,12 +531,13 @@ public class WhiteLabelingParams {
         Objects.equals(this.platformVersion, whiteLabelingParams.platformVersion) &&
         Objects.equals(this.customCss, whiteLabelingParams.customCss) &&
         Objects.equals(this.hideConnectivityDialog, whiteLabelingParams.hideConnectivityDialog) &&
-        Objects.equals(this.overrideTrendzName, whiteLabelingParams.overrideTrendzName);
+        Objects.equals(this.overrideTrendzName, whiteLabelingParams.overrideTrendzName) &&
+        Objects.equals(this.hideChatBot, whiteLabelingParams.hideChatBot);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoImageUrl, logoImageHeight, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName);
+    return Objects.hash(logoImageUrl, logoImageHeight, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot);
   }
 
   @Override
@@ -529,6 +559,7 @@ public class WhiteLabelingParams {
     sb.append("    customCss: ").append(toIndentedString(customCss)).append("\n");
     sb.append("    hideConnectivityDialog: ").append(toIndentedString(hideConnectivityDialog)).append("\n");
     sb.append("    overrideTrendzName: ").append(toIndentedString(overrideTrendzName)).append("\n");
+    sb.append("    hideChatBot: ").append(toIndentedString(hideChatBot)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -649,6 +680,11 @@ public class WhiteLabelingParams {
     // add `overrideTrendzName` to the URL query string
     if (getOverrideTrendzName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%soverrideTrendzName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOverrideTrendzName()))));
+    }
+
+    // add `hideChatBot` to the URL query string
+    if (getHideChatBot() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%shideChatBot%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHideChatBot()))));
     }
 
     return joiner.toString();

@@ -9,9 +9,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **assetType** | **String** |  | [optional] |
 | **assetTypes** | **List\<String\>** |  | [optional] |
 | **assetNameFilter** | **String** |  | [optional] |
+| **assetType** | **String** |  | [optional] |
 
 
 

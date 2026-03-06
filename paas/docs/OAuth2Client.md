@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **OAuth2ClientId** |  | [optional] |
 | **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional info of OAuth2 client (e.g. providerName) | |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional info of OAuth2 client. Must include: 'providerName' (string, name of the OAuth2 provider). | |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] |
 | **customerId** | **CustomerId** | JSON object with Customer Id | [optional] |
 | **title** | **String** | Oauth2 client title | |

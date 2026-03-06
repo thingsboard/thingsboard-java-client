@@ -613,7 +613,7 @@ public class CustomerInfo {
   }
 
   /**
-   * Additional parameters of the device
+   * Additional parameters of the customer. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar), &#39;isPublic&#39; (boolean, whether this is a public customer).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

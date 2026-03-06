@@ -9,13 +9,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **yAxisId** | **String** |  | [optional] |
 | **showInLegend** | **Boolean** |  | [optional] |
 | **seriesType** | **TimeSeriesChartSeriesType** |  | [optional] |
 | **lineSettings** | **LineSeriesSettings** |  | [optional] |
 | **barSettings** | **BarSeriesSettings** |  | [optional] |
 | **comparisonSettings** | **DataKeyComparisonSettings** |  | [optional] |
 | **yaxisId** | **String** |  | [optional] |
-| **yAxisId** | **String** |  | [optional] |
 
 
 

@@ -182,6 +182,12 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
 
 
   @Override
+  public PropagationCalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
+    this.setAiGenerated(aiGenerated);
+    return this;
+  }
+
+  @Override
   public PropagationCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
     this.setOutput(output);
     return this;
@@ -272,6 +278,11 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `aiGenerated` to the URL query string
+    if (getAiGenerated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
+    }
 
     // add `output` to the URL query string
     if (getOutput() != null) {

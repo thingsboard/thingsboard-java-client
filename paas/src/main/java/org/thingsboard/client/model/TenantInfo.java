@@ -654,7 +654,7 @@ public class TenantInfo {
   }
 
   /**
-   * Additional parameters of the device
+   * Additional parameters of the tenant. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

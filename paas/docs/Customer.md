@@ -25,7 +25,7 @@
 | **name** | **String** | Name of the customer. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 | **customerId** | **CustomerId** | JSON object with parent Customer Id | [optional] [readonly] |
 | **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer). | [optional] |
 
 
 
