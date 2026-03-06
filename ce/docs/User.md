@@ -20,7 +20,7 @@ A JSON value representing the User.
 | **phone** | **String** | Phone number of the user | [optional] |
 | **version** | **Long** |  | [optional] |
 | **name** | **String** | Duplicates the email of the user, readonly | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the user | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the user. May include: 'defaultDashboardId' (string, UUID of the default dashboard), 'defaultDashboardFullscreen' (boolean), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean), 'lang' (string, user locale, e.g. 'en_US'), 'authProviderName' (string, name of the authentication provider). | [optional] |
 
 
 

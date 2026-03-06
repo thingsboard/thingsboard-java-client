@@ -9,9 +9,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **edgeType** | **String** |  | [optional] |
 | **edgeTypes** | **List\<String\>** |  | [optional] |
 | **edgeNameFilter** | **String** |  | [optional] |
+| **edgeType** | **String** |  | [optional] |
 
 
 

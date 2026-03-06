@@ -45232,7 +45232,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "uUNiGaibsmdojca25XYNJcReKFDoKI"
+                      "resetToken": "udgDQOpS1Q4ZFEL8qHF9s8cSKQ7d1h"
                     }
                   }
                 }
@@ -45340,7 +45340,7 @@
                       "message": "User password expired!",
                       "errorCode": 15,
                       "timestamp": 1609459200000,
-                      "resetToken": "uUNiGaibsmdojca25XYNJcReKFDoKI"
+                      "resetToken": "udgDQOpS1Q4ZFEL8qHF9s8cSKQ7d1h"
                     }
                   }
                 }
@@ -68252,7 +68252,7 @@
           "telemetry-controller"
         ],
         "summary": "Delete entity attributes (deleteEntityAttributes)",
-        "description": "Delete entity attributes using provided Entity Id, scope and a list of keys. Referencing a non-existing entity Id or invalid entity type will cause an error. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
+        "description": "Delete entity attributes using provided Entity Id, scope and a list of keys. This operation is idempotent: keys that do not exist are silently ignored and the response is still 200 OK. Referencing a non-existing entity Id or invalid entity type will cause an error. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "deleteEntityAttributes",
         "parameters": [
           {
@@ -68310,7 +68310,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Entity attributes was removed for the selected keys in the request. Platform creates an audit log event about entity attributes removal with action type 'ATTRIBUTES_DELETED'.",
+            "description": "Entity attributes were removed for the selected keys in the request (keys that did not exist are silently ignored). Platform creates an audit log event about entity attributes removal with action type 'ATTRIBUTES_DELETED'.",
             "content": {
               "application/json": {
                 "schema": {
@@ -82940,7 +82940,10 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the asset"
+            "description": "Additional parameters of the asset. May include: 'description' (string).",
+            "example": {
+              "description": "Building A asset"
+            }
           }
         },
         "required": [
@@ -83044,7 +83047,10 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the asset"
+            "description": "Additional parameters of the asset. May include: 'description' (string).",
+            "example": {
+              "description": "Building A asset"
+            }
           }
         },
         "required": [
@@ -83236,11 +83242,6 @@
           {
             "type": "object",
             "properties": {
-              "assetType": {
-                "type": "string",
-                "deprecated": true,
-                "writeOnly": true
-              },
               "assetTypes": {
                 "type": "array",
                 "items": {
@@ -83249,6 +83250,11 @@
               },
               "assetNameFilter": {
                 "type": "string"
+              },
+              "assetType": {
+                "type": "string",
+                "deprecated": true,
+                "writeOnly": true
               }
             }
           }
@@ -84121,10 +84127,6 @@
                 "description": "String value representing the server name, identifier or ip address where the platform is running",
                 "example": "ip-172-31-24-152"
               },
-              "isError": {
-                "type": "boolean",
-                "writeOnly": true
-              },
               "errorStr": {
                 "type": "string",
                 "description": "The case insensitive 'contains' filter based on error message",
@@ -84172,6 +84174,10 @@
                 "example": {
                   "x + y": 32
                 }
+              },
+              "isError": {
+                "type": "boolean",
+                "writeOnly": true
               },
               "error": {
                 "type": "boolean"
@@ -84683,11 +84689,6 @@
           {
             "type": "object",
             "properties": {
-              "path": {
-                "type": "string",
-                "description": "Path to custom page",
-                "example": "/alarmDetails/868c7083-032d-4f52-b8b4-7859aebb6a4e"
-              },
               "label": {
                 "type": "string",
                 "description": "Page label",
@@ -84702,6 +84703,11 @@
                 "type": "string",
                 "description": "URL of the page icon",
                 "example": "home_icon"
+              },
+              "path": {
+                "type": "string",
+                "description": "Path to custom page",
+                "example": "/alarmDetails/868c7083-032d-4f52-b8b4-7859aebb6a4e"
               }
             }
           }
@@ -84826,7 +84832,13 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device"
+            "description": "Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer).",
+            "example": {
+              "description": "Regional customer",
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": false,
+              "isPublic": false
+            }
           }
         },
         "required": [
@@ -84889,41 +84901,6 @@
       "Dashboard": {
         "type": "object",
         "properties": {
-          "title": {
-            "type": "string",
-            "description": "Title of the dashboard."
-          },
-          "image": {
-            "type": "string",
-            "description": "Thumbnail picture for rendering of the dashboards in a grid view on mobile devices.",
-            "readOnly": true
-          },
-          "mobileHide": {
-            "type": "boolean",
-            "description": "Hide dashboard from mobile devices. Useful if the dashboard is not designed for small screens.",
-            "readOnly": true
-          },
-          "mobileOrder": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications",
-            "readOnly": true
-          },
-          "configuration": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON."
-          },
-          "name": {
-            "type": "string",
-            "description": "Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard.",
-            "readOnly": true
-          },
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResourceExportData"
-            }
-          },
           "id": {
             "$ref": "#/components/schemas/DashboardId",
             "description": "JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard."
@@ -84940,6 +84917,15 @@
             "description": "JSON object with Tenant Id. Tenant Id of the dashboard can't be changed.",
             "readOnly": true
           },
+          "title": {
+            "type": "string",
+            "description": "Title of the dashboard."
+          },
+          "image": {
+            "type": "string",
+            "description": "Thumbnail picture for rendering of the dashboards in a grid view on mobile devices.",
+            "readOnly": true
+          },
           "assignedCustomers": {
             "type": "array",
             "description": "List of assigned customers with their info.",
@@ -84949,9 +84935,35 @@
             "readOnly": true,
             "uniqueItems": true
           },
+          "mobileHide": {
+            "type": "boolean",
+            "description": "Hide dashboard from mobile devices. Useful if the dashboard is not designed for small screens.",
+            "readOnly": true
+          },
+          "mobileOrder": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications",
+            "readOnly": true
+          },
           "version": {
             "type": "integer",
             "format": "int64"
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResourceExportData"
+            }
+          },
+          "configuration": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON."
+          },
+          "name": {
+            "type": "string",
+            "description": "Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard.",
+            "readOnly": true
           }
         },
         "required": [
@@ -85061,11 +85073,6 @@
           {
             "type": "object",
             "properties": {
-              "dashboardId": {
-                "type": "string",
-                "description": "Dashboard id",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
               "label": {
                 "type": "string",
                 "description": "Page label",
@@ -85080,6 +85087,11 @@
                 "type": "string",
                 "description": "URL of the page icon",
                 "example": "home_icon"
+              },
+              "dashboardId": {
+                "type": "string",
+                "description": "Dashboard id",
+                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
               }
             }
           }
@@ -85198,11 +85210,6 @@
           {
             "type": "object",
             "properties": {
-              "id": {
-                "$ref": "#/components/schemas/DefaultPageId",
-                "description": "Identifier for default page",
-                "example": "HOME"
-              },
               "label": {
                 "type": "string",
                 "description": "Page label",
@@ -85217,6 +85224,11 @@
                 "type": "string",
                 "description": "URL of the page icon",
                 "example": "home_icon"
+              },
+              "id": {
+                "$ref": "#/components/schemas/DefaultPageId",
+                "description": "Identifier for default page",
+                "example": "HOME"
               }
             }
           }
@@ -85675,7 +85687,12 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device"
+            "description": "Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device).",
+            "example": {
+              "gateway": false,
+              "description": "Temperature sensor",
+              "lastConnectedGateway": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
           },
           "deviceData": {
             "$ref": "#/components/schemas/DeviceData",
@@ -85981,7 +85998,12 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device"
+            "description": "Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device).",
+            "example": {
+              "gateway": false,
+              "description": "Temperature sensor",
+              "lastConnectedGateway": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
           },
           "deviceData": {
             "$ref": "#/components/schemas/DeviceData",
@@ -86396,11 +86418,6 @@
           {
             "type": "object",
             "properties": {
-              "deviceType": {
-                "type": "string",
-                "deprecated": true,
-                "writeOnly": true
-              },
               "deviceTypes": {
                 "type": "array",
                 "items": {
@@ -86409,6 +86426,11 @@
               },
               "deviceNameFilter": {
                 "type": "string"
+              },
+              "deviceType": {
+                "type": "string",
+                "deprecated": true,
+                "writeOnly": true
               }
             }
           }
@@ -86791,7 +86813,11 @@
             "format": "int64"
           },
           "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode"
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the edge. May include: 'description' (string).",
+            "example": {
+              "description": "Edge at location A"
+            }
           }
         },
         "required": [
@@ -87112,7 +87138,11 @@
             "type": "boolean"
           },
           "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode"
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the edge. May include: 'description' (string).",
+            "example": {
+              "description": "Edge at location A"
+            }
           }
         },
         "required": [
@@ -87199,11 +87229,6 @@
           {
             "type": "object",
             "properties": {
-              "edgeType": {
-                "type": "string",
-                "deprecated": true,
-                "writeOnly": true
-              },
               "edgeTypes": {
                 "type": "array",
                 "items": {
@@ -87212,6 +87237,11 @@
               },
               "edgeNameFilter": {
                 "type": "string"
+              },
+              "edgeType": {
+                "type": "string",
+                "deprecated": true,
+                "writeOnly": true
               }
             }
           }
@@ -87861,7 +87891,10 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the relation"
+            "description": "Additional parameters of the relation.",
+            "example": {
+              "description": "Power supply connection"
+            }
           }
         },
         "required": [
@@ -87911,7 +87944,10 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the relation"
+            "description": "Additional parameters of the relation.",
+            "example": {
+              "description": "Power supply connection"
+            }
           }
         },
         "required": [
@@ -88189,7 +88225,10 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device"
+            "description": "Additional parameters of the entity view. May include: 'description' (string).",
+            "example": {
+              "description": "Temperature readings view"
+            }
           }
         },
         "required": [
@@ -88299,7 +88338,10 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device"
+            "description": "Additional parameters of the entity view. May include: 'description' (string).",
+            "example": {
+              "description": "Temperature readings view"
+            }
           }
         },
         "required": [
@@ -88377,11 +88419,6 @@
           {
             "type": "object",
             "properties": {
-              "entityViewType": {
-                "type": "string",
-                "deprecated": true,
-                "writeOnly": true
-              },
               "entityViewTypes": {
                 "type": "array",
                 "items": {
@@ -88390,6 +88427,11 @@
               },
               "entityViewNameFilter": {
                 "type": "string"
+              },
+              "entityViewType": {
+                "type": "string",
+                "deprecated": true,
+                "writeOnly": true
               }
             }
           }
@@ -88578,12 +88620,6 @@
       "FeaturesInfo": {
         "type": "object",
         "properties": {
-          "twoFaEnabled": {
-            "type": "boolean"
-          },
-          "emailEnabled": {
-            "type": "boolean"
-          },
           "smsEnabled": {
             "type": "boolean"
           },
@@ -88591,6 +88627,12 @@
             "type": "boolean"
           },
           "notificationEnabled": {
+            "type": "boolean"
+          },
+          "twoFaEnabled": {
+            "type": "boolean"
+          },
+          "emailEnabled": {
             "type": "boolean"
           }
         }
@@ -91287,11 +91329,11 @@
       "NotificationTargetExportData": {
         "type": "object",
         "properties": {
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType"
-          },
           "entity": {
             "$ref": "#/components/schemas/ExportableEntity"
+          },
+          "entityType": {
+            "$ref": "#/components/schemas/EntityType"
           },
           "relations": {
             "type": "array",
@@ -95361,10 +95403,6 @@
                 "description": "String value representing the server name, identifier or ip address where the platform is running",
                 "example": "ip-172-31-24-152"
               },
-              "isError": {
-                "type": "boolean",
-                "writeOnly": true
-              },
               "errorStr": {
                 "type": "string",
                 "description": "The case insensitive 'contains' filter based on error message",
@@ -95373,6 +95411,10 @@
               "message": {
                 "type": "string",
                 "description": "String value representing the message"
+              },
+              "isError": {
+                "type": "boolean",
+                "writeOnly": true
               },
               "error": {
                 "type": "boolean"
@@ -95671,7 +95713,12 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the rule node. Contains 'layoutX' and 'layoutY' properties for visualization."
+            "description": "Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string).",
+            "example": {
+              "layoutX": 320,
+              "layoutY": 160,
+              "description": "Filter temperature data"
+            }
           }
         }
       },
@@ -95687,10 +95734,6 @@
                 "type": "string",
                 "description": "String value representing the server name, identifier or ip address where the platform is running",
                 "example": "ip-172-31-24-152"
-              },
-              "isError": {
-                "type": "boolean",
-                "writeOnly": true
               },
               "errorStr": {
                 "type": "string",
@@ -95741,6 +95784,10 @@
                 "type": "string",
                 "description": "The case insensitive 'contains' filter based on metadata (key and value) for the message.",
                 "example": "deviceName"
+              },
+              "isError": {
+                "type": "boolean",
+                "writeOnly": true
               },
               "error": {
                 "type": "boolean"
@@ -97370,7 +97417,12 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device"
+            "description": "Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar).",
+            "example": {
+              "description": "Main tenant",
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": true
+            }
           }
         },
         "required": [
@@ -97512,7 +97564,12 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device"
+            "description": "Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar).",
+            "example": {
+              "description": "Main tenant",
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": true
+            }
           }
         },
         "required": [
@@ -98313,7 +98370,14 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the user"
+            "description": "Additional parameters of the user. May include: 'defaultDashboardId' (string, UUID of the default dashboard), 'defaultDashboardFullscreen' (boolean), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean), 'lang' (string, user locale, e.g. 'en_US'), 'authProviderName' (string, name of the authentication provider).",
+            "example": {
+              "defaultDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "defaultDashboardFullscreen": false,
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": true,
+              "lang": "en_US"
+            }
           }
         },
         "required": [
@@ -98727,11 +98791,6 @@
           {
             "type": "object",
             "properties": {
-              "url": {
-                "type": "string",
-                "description": "Url",
-                "example": "/url"
-              },
               "label": {
                 "type": "string",
                 "description": "Page label",
@@ -98746,6 +98805,11 @@
                 "type": "string",
                 "description": "URL of the page icon",
                 "example": "home_icon"
+              },
+              "url": {
+                "type": "string",
+                "description": "Url",
+                "example": "/url"
               }
             }
           }

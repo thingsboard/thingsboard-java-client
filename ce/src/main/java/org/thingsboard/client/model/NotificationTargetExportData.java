@@ -44,21 +44,21 @@ import org.thingsboard.client.ApiClient;
  * NotificationTargetExportData
  */
 @JsonPropertyOrder({
-  NotificationTargetExportData.JSON_PROPERTY_ENTITY_TYPE,
   NotificationTargetExportData.JSON_PROPERTY_ENTITY,
+  NotificationTargetExportData.JSON_PROPERTY_ENTITY_TYPE,
   NotificationTargetExportData.JSON_PROPERTY_RELATIONS,
   NotificationTargetExportData.JSON_PROPERTY_ATTRIBUTES,
   NotificationTargetExportData.JSON_PROPERTY_CALCULATED_FIELDS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationTargetExportData {
-  public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @javax.annotation.Nonnull
-  private EntityType entityType;
-
   public static final String JSON_PROPERTY_ENTITY = "entity";
   @javax.annotation.Nullable
   private ExportableEntity entity;
+
+  public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
+  @javax.annotation.Nonnull
+  private EntityType entityType;
 
   public static final String JSON_PROPERTY_RELATIONS = "relations";
   @javax.annotation.Nullable
@@ -74,30 +74,6 @@ public class NotificationTargetExportData {
 
   public NotificationTargetExportData() { 
   }
-
-  public NotificationTargetExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
-    this.entityType = entityType;
-    return this;
-  }
-
-  /**
-   * Get entityType
-   * @return entityType
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public EntityType getEntityType() {
-    return entityType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityType(@javax.annotation.Nonnull EntityType entityType) {
-    this.entityType = entityType;
-  }
-
 
   public NotificationTargetExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
     this.entity = entity;
@@ -120,6 +96,30 @@ public class NotificationTargetExportData {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEntity(@javax.annotation.Nullable ExportableEntity entity) {
     this.entity = entity;
+  }
+
+
+  public NotificationTargetExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.entityType = entityType;
+    return this;
+  }
+
+  /**
+   * Get entityType
+   * @return entityType
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public EntityType getEntityType() {
+    return entityType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEntityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.entityType = entityType;
   }
 
 
@@ -231,8 +231,8 @@ public class NotificationTargetExportData {
       return false;
     }
     NotificationTargetExportData notificationTargetExportData = (NotificationTargetExportData) o;
-    return Objects.equals(this.entityType, notificationTargetExportData.entityType) &&
-        Objects.equals(this.entity, notificationTargetExportData.entity) &&
+    return Objects.equals(this.entity, notificationTargetExportData.entity) &&
+        Objects.equals(this.entityType, notificationTargetExportData.entityType) &&
         Objects.equals(this.relations, notificationTargetExportData.relations) &&
         Objects.equals(this.attributes, notificationTargetExportData.attributes) &&
         Objects.equals(this.calculatedFields, notificationTargetExportData.calculatedFields);
@@ -240,15 +240,15 @@ public class NotificationTargetExportData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, entity, relations, attributes, calculatedFields);
+    return Objects.hash(entity, entityType, relations, attributes, calculatedFields);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationTargetExportData {\n");
-    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
+    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    relations: ").append(toIndentedString(relations)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    calculatedFields: ").append(toIndentedString(calculatedFields)).append("\n");
@@ -299,14 +299,14 @@ public class NotificationTargetExportData {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `entityType` to the URL query string
-    if (getEntityType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
-    }
-
     // add `entity` to the URL query string
     if (getEntity() != null) {
       joiner.add(getEntity().toUrlQueryString(prefix + "entity" + suffix));
+    }
+
+    // add `entityType` to the URL query string
+    if (getEntityType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
     }
 
     // add `relations` to the URL query string

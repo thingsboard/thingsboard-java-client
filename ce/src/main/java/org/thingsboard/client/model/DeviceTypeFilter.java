@@ -42,9 +42,9 @@ import org.thingsboard.client.ApiClient;
  * DeviceTypeFilter
  */
 @JsonPropertyOrder({
-  DeviceTypeFilter.JSON_PROPERTY_DEVICE_TYPE,
   DeviceTypeFilter.JSON_PROPERTY_DEVICE_TYPES,
-  DeviceTypeFilter.JSON_PROPERTY_DEVICE_NAME_FILTER
+  DeviceTypeFilter.JSON_PROPERTY_DEVICE_NAME_FILTER,
+  DeviceTypeFilter.JSON_PROPERTY_DEVICE_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +54,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class DeviceTypeFilter extends EntityFilter {
-  public static final String JSON_PROPERTY_DEVICE_TYPE = "deviceType";
-  @javax.annotation.Nullable
-  private String deviceType;
-
   public static final String JSON_PROPERTY_DEVICE_TYPES = "deviceTypes";
   @javax.annotation.Nullable
   private List<String> deviceTypes = new ArrayList<>();
@@ -66,34 +62,12 @@ public class DeviceTypeFilter extends EntityFilter {
   @javax.annotation.Nullable
   private String deviceNameFilter;
 
+  public static final String JSON_PROPERTY_DEVICE_TYPE = "deviceType";
+  @javax.annotation.Nullable
+  private String deviceType;
+
   public DeviceTypeFilter() { 
   }
-
-  public DeviceTypeFilter deviceType(@javax.annotation.Nullable String deviceType) {
-    this.deviceType = deviceType;
-    return this;
-  }
-
-  /**
-   * Get deviceType
-   * @return deviceType
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDeviceType() {
-    return deviceType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeviceType(@javax.annotation.Nullable String deviceType) {
-    this.deviceType = deviceType;
-  }
-
 
   public DeviceTypeFilter deviceTypes(@javax.annotation.Nullable List<String> deviceTypes) {
     this.deviceTypes = deviceTypes;
@@ -151,6 +125,32 @@ public class DeviceTypeFilter extends EntityFilter {
   }
 
 
+  public DeviceTypeFilter deviceType(@javax.annotation.Nullable String deviceType) {
+    this.deviceType = deviceType;
+    return this;
+  }
+
+  /**
+   * Get deviceType
+   * @return deviceType
+   * @deprecated
+   */
+  @Deprecated
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDeviceType() {
+    return deviceType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeviceType(@javax.annotation.Nullable String deviceType) {
+    this.deviceType = deviceType;
+  }
+
+
   @Override
   public DeviceTypeFilter type(@javax.annotation.Nonnull String type) {
     this.setType(type);
@@ -169,15 +169,15 @@ public class DeviceTypeFilter extends EntityFilter {
       return false;
     }
     DeviceTypeFilter deviceTypeFilter = (DeviceTypeFilter) o;
-    return Objects.equals(this.deviceType, deviceTypeFilter.deviceType) &&
-        Objects.equals(this.deviceTypes, deviceTypeFilter.deviceTypes) &&
+    return Objects.equals(this.deviceTypes, deviceTypeFilter.deviceTypes) &&
         Objects.equals(this.deviceNameFilter, deviceTypeFilter.deviceNameFilter) &&
+        Objects.equals(this.deviceType, deviceTypeFilter.deviceType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deviceType, deviceTypes, deviceNameFilter, super.hashCode());
+    return Objects.hash(deviceTypes, deviceNameFilter, deviceType, super.hashCode());
   }
 
   @Override
@@ -185,9 +185,9 @@ public class DeviceTypeFilter extends EntityFilter {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeviceTypeFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    deviceType: ").append(toIndentedString(deviceType)).append("\n");
     sb.append("    deviceTypes: ").append(toIndentedString(deviceTypes)).append("\n");
     sb.append("    deviceNameFilter: ").append(toIndentedString(deviceNameFilter)).append("\n");
+    sb.append("    deviceType: ").append(toIndentedString(deviceType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -240,11 +240,6 @@ public class DeviceTypeFilter extends EntityFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `deviceType` to the URL query string
-    if (getDeviceType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdeviceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDeviceType()))));
-    }
-
     // add `deviceTypes` to the URL query string
     if (getDeviceTypes() != null) {
       for (int i = 0; i < getDeviceTypes().size(); i++) {
@@ -257,6 +252,11 @@ public class DeviceTypeFilter extends EntityFilter {
     // add `deviceNameFilter` to the URL query string
     if (getDeviceNameFilter() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdeviceNameFilter%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDeviceNameFilter()))));
+    }
+
+    // add `deviceType` to the URL query string
+    if (getDeviceType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdeviceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDeviceType()))));
     }
 
     return joiner.toString();

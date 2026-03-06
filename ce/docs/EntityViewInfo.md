@@ -20,7 +20,7 @@
 | **version** | **Long** |  | [optional] |
 | **customerTitle** | **String** | Title of the Customer that owns the entity view. | [optional] [readonly] |
 | **customerIsPublic** | **Boolean** | Indicates special 'Public' Customer that is auto-generated to use the entity view on public dashboards. | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 
 
 

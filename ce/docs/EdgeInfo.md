@@ -20,7 +20,7 @@
 | **version** | **Long** |  | [optional] |
 | **customerTitle** | **String** |  | [optional] |
 | **customerIsPublic** | **Boolean** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the edge. May include: 'description' (string). | [optional] |
 
 
 

@@ -42,9 +42,9 @@ import org.thingsboard.client.ApiClient;
  * EntityViewTypeFilter
  */
 @JsonPropertyOrder({
-  EntityViewTypeFilter.JSON_PROPERTY_ENTITY_VIEW_TYPE,
   EntityViewTypeFilter.JSON_PROPERTY_ENTITY_VIEW_TYPES,
-  EntityViewTypeFilter.JSON_PROPERTY_ENTITY_VIEW_NAME_FILTER
+  EntityViewTypeFilter.JSON_PROPERTY_ENTITY_VIEW_NAME_FILTER,
+  EntityViewTypeFilter.JSON_PROPERTY_ENTITY_VIEW_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +54,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class EntityViewTypeFilter extends EntityFilter {
-  public static final String JSON_PROPERTY_ENTITY_VIEW_TYPE = "entityViewType";
-  @javax.annotation.Nullable
-  private String entityViewType;
-
   public static final String JSON_PROPERTY_ENTITY_VIEW_TYPES = "entityViewTypes";
   @javax.annotation.Nullable
   private List<String> entityViewTypes = new ArrayList<>();
@@ -66,34 +62,12 @@ public class EntityViewTypeFilter extends EntityFilter {
   @javax.annotation.Nullable
   private String entityViewNameFilter;
 
+  public static final String JSON_PROPERTY_ENTITY_VIEW_TYPE = "entityViewType";
+  @javax.annotation.Nullable
+  private String entityViewType;
+
   public EntityViewTypeFilter() { 
   }
-
-  public EntityViewTypeFilter entityViewType(@javax.annotation.Nullable String entityViewType) {
-    this.entityViewType = entityViewType;
-    return this;
-  }
-
-  /**
-   * Get entityViewType
-   * @return entityViewType
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_VIEW_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEntityViewType() {
-    return entityViewType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_VIEW_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityViewType(@javax.annotation.Nullable String entityViewType) {
-    this.entityViewType = entityViewType;
-  }
-
 
   public EntityViewTypeFilter entityViewTypes(@javax.annotation.Nullable List<String> entityViewTypes) {
     this.entityViewTypes = entityViewTypes;
@@ -151,6 +125,32 @@ public class EntityViewTypeFilter extends EntityFilter {
   }
 
 
+  public EntityViewTypeFilter entityViewType(@javax.annotation.Nullable String entityViewType) {
+    this.entityViewType = entityViewType;
+    return this;
+  }
+
+  /**
+   * Get entityViewType
+   * @return entityViewType
+   * @deprecated
+   */
+  @Deprecated
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_VIEW_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getEntityViewType() {
+    return entityViewType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_VIEW_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntityViewType(@javax.annotation.Nullable String entityViewType) {
+    this.entityViewType = entityViewType;
+  }
+
+
   @Override
   public EntityViewTypeFilter type(@javax.annotation.Nonnull String type) {
     this.setType(type);
@@ -169,15 +169,15 @@ public class EntityViewTypeFilter extends EntityFilter {
       return false;
     }
     EntityViewTypeFilter entityViewTypeFilter = (EntityViewTypeFilter) o;
-    return Objects.equals(this.entityViewType, entityViewTypeFilter.entityViewType) &&
-        Objects.equals(this.entityViewTypes, entityViewTypeFilter.entityViewTypes) &&
+    return Objects.equals(this.entityViewTypes, entityViewTypeFilter.entityViewTypes) &&
         Objects.equals(this.entityViewNameFilter, entityViewTypeFilter.entityViewNameFilter) &&
+        Objects.equals(this.entityViewType, entityViewTypeFilter.entityViewType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityViewType, entityViewTypes, entityViewNameFilter, super.hashCode());
+    return Objects.hash(entityViewTypes, entityViewNameFilter, entityViewType, super.hashCode());
   }
 
   @Override
@@ -185,9 +185,9 @@ public class EntityViewTypeFilter extends EntityFilter {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityViewTypeFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    entityViewType: ").append(toIndentedString(entityViewType)).append("\n");
     sb.append("    entityViewTypes: ").append(toIndentedString(entityViewTypes)).append("\n");
     sb.append("    entityViewNameFilter: ").append(toIndentedString(entityViewNameFilter)).append("\n");
+    sb.append("    entityViewType: ").append(toIndentedString(entityViewType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -240,11 +240,6 @@ public class EntityViewTypeFilter extends EntityFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `entityViewType` to the URL query string
-    if (getEntityViewType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sentityViewType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityViewType()))));
-    }
-
     // add `entityViewTypes` to the URL query string
     if (getEntityViewTypes() != null) {
       for (int i = 0; i < getEntityViewTypes().size(); i++) {
@@ -257,6 +252,11 @@ public class EntityViewTypeFilter extends EntityFilter {
     // add `entityViewNameFilter` to the URL query string
     if (getEntityViewNameFilter() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sentityViewNameFilter%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityViewNameFilter()))));
+    }
+
+    // add `entityViewType` to the URL query string
+    if (getEntityViewType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityViewType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityViewType()))));
     }
 
     return joiner.toString();

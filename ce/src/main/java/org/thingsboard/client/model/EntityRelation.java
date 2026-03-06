@@ -199,7 +199,7 @@ public class EntityRelation {
   }
 
   /**
-   * Additional parameters of the relation
+   * Additional parameters of the relation.
    * @return additionalInfo
    */
   @javax.annotation.Nullable
