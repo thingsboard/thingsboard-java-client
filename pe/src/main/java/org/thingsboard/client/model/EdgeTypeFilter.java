@@ -42,9 +42,9 @@ import org.thingsboard.client.ApiClient;
  * EdgeTypeFilter
  */
 @JsonPropertyOrder({
-  EdgeTypeFilter.JSON_PROPERTY_EDGE_TYPE,
   EdgeTypeFilter.JSON_PROPERTY_EDGE_TYPES,
-  EdgeTypeFilter.JSON_PROPERTY_EDGE_NAME_FILTER
+  EdgeTypeFilter.JSON_PROPERTY_EDGE_NAME_FILTER,
+  EdgeTypeFilter.JSON_PROPERTY_EDGE_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +54,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class EdgeTypeFilter extends EntityFilter {
-  public static final String JSON_PROPERTY_EDGE_TYPE = "edgeType";
-  @javax.annotation.Nullable
-  private String edgeType;
-
   public static final String JSON_PROPERTY_EDGE_TYPES = "edgeTypes";
   @javax.annotation.Nullable
   private List<String> edgeTypes = new ArrayList<>();
@@ -66,34 +62,12 @@ public class EdgeTypeFilter extends EntityFilter {
   @javax.annotation.Nullable
   private String edgeNameFilter;
 
+  public static final String JSON_PROPERTY_EDGE_TYPE = "edgeType";
+  @javax.annotation.Nullable
+  private String edgeType;
+
   public EdgeTypeFilter() { 
   }
-
-  public EdgeTypeFilter edgeType(@javax.annotation.Nullable String edgeType) {
-    this.edgeType = edgeType;
-    return this;
-  }
-
-  /**
-   * Get edgeType
-   * @return edgeType
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_EDGE_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getEdgeType() {
-    return edgeType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_EDGE_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeType(@javax.annotation.Nullable String edgeType) {
-    this.edgeType = edgeType;
-  }
-
 
   public EdgeTypeFilter edgeTypes(@javax.annotation.Nullable List<String> edgeTypes) {
     this.edgeTypes = edgeTypes;
@@ -151,6 +125,32 @@ public class EdgeTypeFilter extends EntityFilter {
   }
 
 
+  public EdgeTypeFilter edgeType(@javax.annotation.Nullable String edgeType) {
+    this.edgeType = edgeType;
+    return this;
+  }
+
+  /**
+   * Get edgeType
+   * @return edgeType
+   * @deprecated
+   */
+  @Deprecated
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_EDGE_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getEdgeType() {
+    return edgeType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EDGE_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEdgeType(@javax.annotation.Nullable String edgeType) {
+    this.edgeType = edgeType;
+  }
+
+
   @Override
   public EdgeTypeFilter type(@javax.annotation.Nonnull String type) {
     this.setType(type);
@@ -169,15 +169,15 @@ public class EdgeTypeFilter extends EntityFilter {
       return false;
     }
     EdgeTypeFilter edgeTypeFilter = (EdgeTypeFilter) o;
-    return Objects.equals(this.edgeType, edgeTypeFilter.edgeType) &&
-        Objects.equals(this.edgeTypes, edgeTypeFilter.edgeTypes) &&
+    return Objects.equals(this.edgeTypes, edgeTypeFilter.edgeTypes) &&
         Objects.equals(this.edgeNameFilter, edgeTypeFilter.edgeNameFilter) &&
+        Objects.equals(this.edgeType, edgeTypeFilter.edgeType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(edgeType, edgeTypes, edgeNameFilter, super.hashCode());
+    return Objects.hash(edgeTypes, edgeNameFilter, edgeType, super.hashCode());
   }
 
   @Override
@@ -185,9 +185,9 @@ public class EdgeTypeFilter extends EntityFilter {
     StringBuilder sb = new StringBuilder();
     sb.append("class EdgeTypeFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    edgeType: ").append(toIndentedString(edgeType)).append("\n");
     sb.append("    edgeTypes: ").append(toIndentedString(edgeTypes)).append("\n");
     sb.append("    edgeNameFilter: ").append(toIndentedString(edgeNameFilter)).append("\n");
+    sb.append("    edgeType: ").append(toIndentedString(edgeType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -240,11 +240,6 @@ public class EdgeTypeFilter extends EntityFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `edgeType` to the URL query string
-    if (getEdgeType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeType()))));
-    }
-
     // add `edgeTypes` to the URL query string
     if (getEdgeTypes() != null) {
       for (int i = 0; i < getEdgeTypes().size(); i++) {
@@ -257,6 +252,11 @@ public class EdgeTypeFilter extends EntityFilter {
     // add `edgeNameFilter` to the URL query string
     if (getEdgeNameFilter() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sedgeNameFilter%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeNameFilter()))));
+    }
+
+    // add `edgeType` to the URL query string
+    if (getEdgeType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeType()))));
     }
 
     return joiner.toString();

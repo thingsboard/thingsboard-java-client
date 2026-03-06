@@ -492,7 +492,7 @@ public class DeviceInfo {
   }
 
   /**
-   * Additional parameters of the device
+   * Additional parameters of the device. May include: &#39;gateway&#39; (boolean, whether the device is a gateway), &#39;description&#39; (string), &#39;lastConnectedGateway&#39; (string, UUID of the last gateway that connected this device).
    * @return additionalInfo
    */
   @javax.annotation.Nullable

@@ -23,7 +23,7 @@
 | **ownerName** | **String** | Owner name | [optional] [readonly] |
 | **groups** | **List\<EntityInfo\>** | Groups | [optional] |
 | **ownerId** | **EntityId** |  | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the edge. May include: 'description' (string). | [optional] |
 
 
 

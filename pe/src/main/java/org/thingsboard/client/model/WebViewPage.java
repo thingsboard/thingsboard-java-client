@@ -41,10 +41,10 @@ import org.thingsboard.client.ApiClient;
  * WebViewPage
  */
 @JsonPropertyOrder({
-  WebViewPage.JSON_PROPERTY_URL,
   WebViewPage.JSON_PROPERTY_LABEL,
   WebViewPage.JSON_PROPERTY_VISIBLE,
-  WebViewPage.JSON_PROPERTY_ICON
+  WebViewPage.JSON_PROPERTY_ICON,
+  WebViewPage.JSON_PROPERTY_URL
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +54,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class WebViewPage extends MobilePage {
-  public static final String JSON_PROPERTY_URL = "url";
-  @javax.annotation.Nullable
-  private String url;
-
   public static final String JSON_PROPERTY_LABEL = "label";
   @javax.annotation.Nullable
   private String label;
@@ -70,32 +66,12 @@ public class WebViewPage extends MobilePage {
   @javax.annotation.Nullable
   private String icon;
 
+  public static final String JSON_PROPERTY_URL = "url";
+  @javax.annotation.Nullable
+  private String url;
+
   public WebViewPage() { 
   }
-
-  public WebViewPage url(@javax.annotation.Nullable String url) {
-    this.url = url;
-    return this;
-  }
-
-  /**
-   * Url
-   * @return url
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getUrl() {
-    return url;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(@javax.annotation.Nullable String url) {
-    this.url = url;
-  }
-
 
   public WebViewPage label(@javax.annotation.Nullable String label) {
     this.label = label;
@@ -169,6 +145,30 @@ public class WebViewPage extends MobilePage {
   }
 
 
+  public WebViewPage url(@javax.annotation.Nullable String url) {
+    this.url = url;
+    return this;
+  }
+
+  /**
+   * Url
+   * @return url
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getUrl() {
+    return url;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUrl(@javax.annotation.Nullable String url) {
+    this.url = url;
+  }
+
+
   @Override
   public WebViewPage type(@javax.annotation.Nonnull MobilePageType type) {
     this.setType(type);
@@ -187,16 +187,16 @@ public class WebViewPage extends MobilePage {
       return false;
     }
     WebViewPage webViewPage = (WebViewPage) o;
-    return Objects.equals(this.url, webViewPage.url) &&
-        Objects.equals(this.label, webViewPage.label) &&
+    return Objects.equals(this.label, webViewPage.label) &&
         Objects.equals(this.visible, webViewPage.visible) &&
         Objects.equals(this.icon, webViewPage.icon) &&
+        Objects.equals(this.url, webViewPage.url) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, label, visible, icon, super.hashCode());
+    return Objects.hash(label, visible, icon, url, super.hashCode());
   }
 
   @Override
@@ -204,10 +204,10 @@ public class WebViewPage extends MobilePage {
     StringBuilder sb = new StringBuilder();
     sb.append("class WebViewPage {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -265,11 +265,6 @@ public class WebViewPage extends MobilePage {
       joiner.add(String.format(java.util.Locale.ROOT, "%svisible%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVisible()))));
     }
 
-    // add `url` to the URL query string
-    if (getUrl() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%surl%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUrl()))));
-    }
-
     // add `label` to the URL query string
     if (getLabel() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slabel%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLabel()))));
@@ -278,6 +273,11 @@ public class WebViewPage extends MobilePage {
     // add `icon` to the URL query string
     if (getIcon() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sicon%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIcon()))));
+    }
+
+    // add `url` to the URL query string
+    if (getUrl() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%surl%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUrl()))));
     }
 
     return joiner.toString();

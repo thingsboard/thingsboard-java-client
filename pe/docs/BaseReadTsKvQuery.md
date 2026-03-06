@@ -7,13 +7,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **id** | **Integer** |  | [optional] |
 | **key** | **String** |  | [optional] |
 | **startTs** | **Long** |  | [optional] |
 | **endTs** | **Long** |  | [optional] |
 | **aggParameters** | **AggregationParams** |  | [optional] |
 | **limit** | **Integer** |  | [optional] |
 | **order** | **String** |  | [optional] |
-| **id** | **Integer** |  | [optional] |
 | **interval** | **Long** |  | [optional] |
 | **aggregation** | **Aggregation** |  | [optional] |
 

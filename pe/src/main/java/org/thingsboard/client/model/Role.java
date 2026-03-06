@@ -292,7 +292,7 @@ public class Role {
   }
 
   /**
-   * Additional parameters of the role
+   * Additional parameters of the role. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
   @javax.annotation.Nullable
