@@ -22,7 +22,7 @@
 | **customerIsPublic** | **Boolean** | Indicates special 'Public' Customer that is auto-generated to use the devices on public dashboards. | [optional] [readonly] |
 | **deviceProfileName** | **String** | Name of the corresponding Device Profile. | [optional] [readonly] |
 | **active** | **Boolean** | Device active flag. | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device). | [optional] |
 | **deviceData** | **DeviceData** | JSON object with content specific to type of transport in the device profile. | [optional] |
 
 

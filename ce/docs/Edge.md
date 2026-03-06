@@ -20,7 +20,7 @@ A JSON value representing the edge.
 | **routingKey** | **String** | Edge routing key ('username') to authorize on cloud | |
 | **secret** | **String** | Edge secret ('password') to authorize on cloud | |
 | **version** | **Long** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the edge. May include: 'description' (string). | [optional] |
 
 
 

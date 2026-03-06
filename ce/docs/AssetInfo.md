@@ -19,7 +19,7 @@
 | **customerTitle** | **String** | Title of the Customer that owns the asset. | [optional] [readonly] |
 | **customerIsPublic** | **Boolean** | Indicates special 'Public' Customer that is auto-generated to use the assets on public dashboards. | [optional] [readonly] |
 | **assetProfileName** | **String** | Name of the corresponding Asset Profile. | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the asset | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the asset. May include: 'description' (string). | [optional] |
 
 
 

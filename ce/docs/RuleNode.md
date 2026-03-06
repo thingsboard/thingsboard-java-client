@@ -19,7 +19,7 @@
 | **configurationVersion** | **Integer** | Version of rule node configuration.  | [optional] |
 | **_configuration** | **com.fasterxml.jackson.databind.JsonNode** | JSON with the rule node configuration. Structure depends on the rule node implementation. | [optional] |
 | **externalId** | **RuleNodeId** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the rule node. Contains 'layoutX' and 'layoutY' properties for visualization. | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string). | [optional] |
 
 
 

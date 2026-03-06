@@ -41,10 +41,10 @@ import org.thingsboard.client.ApiClient;
  * DashboardPage
  */
 @JsonPropertyOrder({
-  DashboardPage.JSON_PROPERTY_DASHBOARD_ID,
   DashboardPage.JSON_PROPERTY_LABEL,
   DashboardPage.JSON_PROPERTY_VISIBLE,
-  DashboardPage.JSON_PROPERTY_ICON
+  DashboardPage.JSON_PROPERTY_ICON,
+  DashboardPage.JSON_PROPERTY_DASHBOARD_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +54,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class DashboardPage extends MobilePage {
-  public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nullable
-  private String dashboardId;
-
   public static final String JSON_PROPERTY_LABEL = "label";
   @javax.annotation.Nullable
   private String label;
@@ -70,32 +66,12 @@ public class DashboardPage extends MobilePage {
   @javax.annotation.Nullable
   private String icon;
 
+  public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
+  @javax.annotation.Nullable
+  private String dashboardId;
+
   public DashboardPage() { 
   }
-
-  public DashboardPage dashboardId(@javax.annotation.Nullable String dashboardId) {
-    this.dashboardId = dashboardId;
-    return this;
-  }
-
-  /**
-   * Dashboard id
-   * @return dashboardId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDashboardId() {
-    return dashboardId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardId(@javax.annotation.Nullable String dashboardId) {
-    this.dashboardId = dashboardId;
-  }
-
 
   public DashboardPage label(@javax.annotation.Nullable String label) {
     this.label = label;
@@ -169,6 +145,30 @@ public class DashboardPage extends MobilePage {
   }
 
 
+  public DashboardPage dashboardId(@javax.annotation.Nullable String dashboardId) {
+    this.dashboardId = dashboardId;
+    return this;
+  }
+
+  /**
+   * Dashboard id
+   * @return dashboardId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDashboardId() {
+    return dashboardId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDashboardId(@javax.annotation.Nullable String dashboardId) {
+    this.dashboardId = dashboardId;
+  }
+
+
   @Override
   public DashboardPage type(@javax.annotation.Nonnull MobilePageType type) {
     this.setType(type);
@@ -187,16 +187,16 @@ public class DashboardPage extends MobilePage {
       return false;
     }
     DashboardPage dashboardPage = (DashboardPage) o;
-    return Objects.equals(this.dashboardId, dashboardPage.dashboardId) &&
-        Objects.equals(this.label, dashboardPage.label) &&
+    return Objects.equals(this.label, dashboardPage.label) &&
         Objects.equals(this.visible, dashboardPage.visible) &&
         Objects.equals(this.icon, dashboardPage.icon) &&
+        Objects.equals(this.dashboardId, dashboardPage.dashboardId) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dashboardId, label, visible, icon, super.hashCode());
+    return Objects.hash(label, visible, icon, dashboardId, super.hashCode());
   }
 
   @Override
@@ -204,10 +204,10 @@ public class DashboardPage extends MobilePage {
     StringBuilder sb = new StringBuilder();
     sb.append("class DashboardPage {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -265,11 +265,6 @@ public class DashboardPage extends MobilePage {
       joiner.add(String.format(java.util.Locale.ROOT, "%svisible%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVisible()))));
     }
 
-    // add `dashboardId` to the URL query string
-    if (getDashboardId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdashboardId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDashboardId()))));
-    }
-
     // add `label` to the URL query string
     if (getLabel() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slabel%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLabel()))));
@@ -278,6 +273,11 @@ public class DashboardPage extends MobilePage {
     // add `icon` to the URL query string
     if (getIcon() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sicon%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIcon()))));
+    }
+
+    // add `dashboardId` to the URL query string
+    if (getDashboardId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdashboardId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDashboardId()))));
     }
 
     return joiner.toString();

@@ -9,9 +9,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **entityViewType** | **String** |  | [optional] |
 | **entityViewTypes** | **List\<String\>** |  | [optional] |
 | **entityViewNameFilter** | **String** |  | [optional] |
+| **entityViewType** | **String** |  | [optional] |
 
 
 

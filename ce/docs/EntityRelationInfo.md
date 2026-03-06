@@ -14,7 +14,7 @@
 | **version** | **Long** |  | [optional] |
 | **fromName** | **String** | Name of the entity for [from] direction. | [optional] [readonly] |
 | **toName** | **String** | Name of the entity for [to] direction. | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the relation | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the relation. | [optional] |
 
 
 

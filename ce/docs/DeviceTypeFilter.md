@@ -9,9 +9,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **deviceType** | **String** |  | [optional] |
 | **deviceTypes** | **List\<String\>** |  | [optional] |
 | **deviceNameFilter** | **String** |  | [optional] |
+| **deviceType** | **String** |  | [optional] |
 
 
 
