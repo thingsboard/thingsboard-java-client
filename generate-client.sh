@@ -43,7 +43,8 @@
 #   1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
 #   2. Runs openapi-generator-cli (Java native HTTP client)
 #   3. Strips auto-generated OpenAPI comment blocks from Java files
-#   4. Copies generated src/main/java/ into the module (replaces previous)
+#   4. Copies generated src/main/java/ and docs/ into the module (replaces previous)
+#   4b. Copies common/src/main/java/ and common/docs/ on top
 #   5. Applies Apache 2.0 license headers via mvn license:format
 #   6. Stages all changes with git add
 #
@@ -54,7 +55,7 @@
 #
 # Replaced on regeneration:
 #   - <edition>/src/main/java/
-#   - <edition>/docs/
+#   - <edition>/docs/  (with common/docs/ overlaid on top)
 #
 # Output log: generate-client.log (overwritten on each run)
 #

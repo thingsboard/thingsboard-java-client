@@ -71,11 +71,13 @@ thingsboard-java-client/
 ├── license-header-template.txt      # License header for generated files
 ├── common/
 │   ├── pom.xml                      # Compiles against CE for IDE support
-│   └── src/main/java/               # Handwritten shared code (ThingsboardClient, etc.)
+│   ├── src/main/java/               # Handwritten shared code (ThingsboardClient, etc.)
+│   └── docs/                        # Handwritten shared docs (tb-examples.md, etc.)
 ├── ce/
 │   ├── pom.xml
 │   ├── spec/openapi.json            # OpenAPI spec (committed)
 │   ├── src/main/java/               # Generated + common sources (committed)
+│   ├── docs/                        # Generated + common docs (committed)
 │   └── target/generated/            # Raw generator output (gitignored)
 ├── pe/
 │   └── (same structure as ce)
@@ -83,8 +85,8 @@ thingsboard-java-client/
     └── (same structure as ce)
 ```
 
-The `common/` module contains handwritten classes shared across all editions (e.g. `ThingsboardClient`).
-It is not a runtime dependency — `generate-client.sh` copies its sources into each edition during generation.
+The `common/` module contains handwritten classes and docs shared across all editions (e.g. `ThingsboardClient`, `tb-examples.md`).
+It is not a runtime dependency — `generate-client.sh` copies its sources and docs into each edition during generation.
 
 ## Client Generation
 
@@ -93,12 +95,10 @@ The `generate-client.sh` script handles the full workflow: generate, post-proces
 
 ### Prerequisites
 
-- Node.js / npm (for `openapi-generator-cli`)
 - Java 25
 - Maven
 - Perl (for post-processing)
-
-The script will auto-install `openapi-generator-cli` via npm if not found.
+- curl (for downloading the generator JAR on first run)
 
 ```
 Usage: ./generate-client.sh [options] <edition> [base-url]
@@ -118,8 +118,8 @@ Options:
 ### Examples
 
 ```bash
-./generate-client.sh ce                            # Generate CE from local spec
-./generate-client.sh all                           # Generate all editions from local specs
+./generate-client.sh ce                             # Generate CE from local spec
+./generate-client.sh all                            # Generate all editions from local specs
 ./generate-client.sh ce http://localhost:8080       # Fetch spec from a running TB, then generate
 ./generate-client.sh --dry-run ce                   # Generate to target/ only, don't touch src/
 ./generate-client.sh --verbose ce                   # Full output, no log filtering
@@ -130,7 +130,7 @@ Options:
 1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
 2. Runs `openapi-generator-cli` (Java native HTTP client)
 3. Strips auto-generated OpenAPI comment blocks from Java files
-4. Copies generated `src/main/java/` into the module, then copies `common/` sources on top
+4. Copies generated `src/main/java/` and `docs/` into the module, then copies `common/` sources and docs on top
 5. Applies Apache 2.0 license headers via `mvn license:format`
 6. Stages all changes with `git add`
 
@@ -139,10 +139,11 @@ Options:
 - `<edition>/pom.xml`
 - `<edition>/src/test/` (tests are never touched)
 - `<edition>/spec/openapi.json` (only updated when `base-url` is provided)
-- `common/` (handwritten shared sources, copied into editions)
+- `common/` (handwritten shared sources and docs, copied into editions)
 
 ### Replaced on regeneration
 
 - `<edition>/src/main/java/`
+- `<edition>/docs/` (with `common/docs/` overlaid on top of generated docs)
 
 Output log: `generate-client.log` (overwritten on each run)
