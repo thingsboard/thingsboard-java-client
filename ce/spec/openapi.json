@@ -88626,13 +88626,13 @@
           "oauthEnabled": {
             "type": "boolean"
           },
-          "notificationEnabled": {
-            "type": "boolean"
-          },
           "twoFaEnabled": {
             "type": "boolean"
           },
           "emailEnabled": {
+            "type": "boolean"
+          },
+          "notificationEnabled": {
             "type": "boolean"
           }
         }
