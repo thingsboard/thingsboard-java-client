@@ -12,9 +12,9 @@
 | **key** | **String** |  | [optional] |
 | **booleanValue** | **Boolean** |  | [optional] |
 | **valueAsString** | **String** |  | [optional] |
-| **strValue** | **String** |  | [optional] |
 | **dataType** | **DataType** |  | [optional] |
 | **jsonValue** | **String** |  | [optional] |
+| **strValue** | **String** |  | [optional] |
 | **longValue** | **Long** |  | [optional] |
 | **doubleValue** | **Double** |  | [optional] |
 | **version** | **Long** |  | [optional] |
