@@ -152,7 +152,7 @@ public class SimpleCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
 
   @Override
-  public SimpleCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
+  public SimpleCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
     this.setOutput(output);
     return this;
   }

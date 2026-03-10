@@ -9,7 +9,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **strategy** | **TimeSeriesOutputStrategy** |  | [optional] |
 
 
 

@@ -82269,29 +82269,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "ADMIN_SETTINGS"
-                ],
-                "example": "ADMIN_SETTINGS",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "AffectedTenantAdministratorsFilter": {
@@ -82490,9 +82469,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "AiModelId": {
@@ -82502,29 +82478,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "Entity type of the AI model",
-                "enum": [
-                  "AI_MODEL"
-                ],
-                "example": "AI_MODEL",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "AiModelType": {
@@ -82730,8 +82685,7 @@
           }
         ],
         "required": [
-          "notifyOn",
-          "triggerType"
+          "notifyOn"
         ]
       },
       "AlarmAssignmentRecipientsConfig": {
@@ -82852,7 +82806,7 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "description": "string",
+            "description": "ID of the entity, time-based UUID v1",
             "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
         },
@@ -82953,9 +82907,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "AlarmCommentRecipientsConfig": {
@@ -83466,29 +83417,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "ALARM"
-                ],
-                "example": "ALARM",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "AlarmInfo": {
@@ -83677,8 +83607,7 @@
           }
         ],
         "required": [
-          "notifyOn",
-          "triggerType"
+          "notifyOn"
         ]
       },
       "AlarmRule": {
@@ -83881,7 +83810,6 @@
           }
         ],
         "required": [
-          "expression",
           "unit",
           "value"
         ]
@@ -83966,8 +83894,7 @@
           }
         ],
         "required": [
-          "count",
-          "expression"
+          "count"
         ]
       },
       "AlarmRuleSchedule": {
@@ -83993,9 +83920,6 @@
           {
             "$ref": "#/components/schemas/AlarmRuleCondition"
           }
-        ],
-        "required": [
-          "expression"
         ]
       },
       "AlarmRuleSpecificTimeSchedule": {
@@ -84191,10 +84115,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -84298,10 +84218,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -84444,29 +84360,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "API_KEY"
-                ],
-                "example": "API_KEY",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "ApiKeyInfo": {
@@ -84544,9 +84439,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "ApiUsageLimitRecipientsConfig": {
@@ -84594,29 +84486,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "API_USAGE_STATE"
-                ],
-                "example": "API_USAGE_STATE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "ApiUsageStateValue": {
@@ -84724,9 +84595,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "AssetId": {
@@ -84736,29 +84604,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "ASSET"
-                ],
-                "example": "ASSET",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "AssetInfo": {
@@ -84899,9 +84746,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "AssetProfileId": {
@@ -84911,29 +84755,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "ASSET_PROFILE"
-                ],
-                "example": "ASSET_PROFILE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "AssetProfileInfo": {
@@ -85180,12 +85003,7 @@
             "$ref": "#/components/schemas/Output"
           },
           {
-            "type": "object",
-            "properties": {
-              "strategy": {
-                "$ref": "#/components/schemas/AttributesOutputStrategy"
-              }
-            }
+            "type": "object"
           }
         ]
       },
@@ -85291,14 +85109,9 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
-            "description": "string",
-            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
+            "format": "uuid"
           }
-        },
-        "required": [
-          "id"
-        ]
+        }
       },
       "AuthenticationProtocol": {
         "type": "string",
@@ -85493,10 +85306,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -85970,9 +85779,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "eventType"
         ]
       },
       "CalculatedFieldId": {
@@ -85982,29 +85788,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "CALCULATED_FIELD"
-                ],
-                "example": "CALCULATED_FIELD",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "CalculatedFieldInfo": {
@@ -86169,9 +85954,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "spec"
         ]
       },
       "CoapDeviceProfileTransportConfiguration": {
@@ -86306,9 +86088,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type"
         ]
       },
       "ComponentClusteringMode": {
@@ -86397,14 +86176,9 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
-            "description": "string",
-            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
+            "format": "uuid"
           }
-        },
-        "required": [
-          "id"
-        ]
+        }
       },
       "ComponentLifecycleEvent": {
         "type": "string",
@@ -86489,11 +86263,6 @@
                 "description": "Page label",
                 "example": "Air quality"
               },
-              "visible": {
-                "type": "boolean",
-                "description": "Indicates if page is visible",
-                "example": true
-              },
               "icon": {
                 "type": "string",
                 "description": "URL of the page icon",
@@ -86506,10 +86275,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type",
-          "visible"
         ]
       },
       "CustomTimeSchedule": {
@@ -86646,9 +86411,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "CustomerId": {
@@ -86658,29 +86420,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "CUSTOMER"
-                ],
-                "example": "CUSTOMER",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "CustomerUsersFilter": {
@@ -86779,9 +86520,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "DashboardId": {
@@ -86791,29 +86529,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "DASHBOARD"
-                ],
-                "example": "DASHBOARD",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "DashboardInfo": {
@@ -86891,11 +86608,6 @@
                 "description": "Page label",
                 "example": "Air quality"
               },
-              "visible": {
-                "type": "boolean",
-                "description": "Indicates if page is visible",
-                "example": true
-              },
               "icon": {
                 "type": "string",
                 "description": "URL of the page icon",
@@ -86908,10 +86620,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type",
-          "visible"
         ]
       },
       "DataType": {
@@ -86988,10 +86696,7 @@
             "$ref": "#/components/schemas/DeviceConfiguration"
           }
         ],
-        "description": "Default device configuration",
-        "required": [
-          "type"
-        ]
+        "description": "Default device configuration"
       },
       "DefaultDeviceProfileConfiguration": {
         "allOf": [
@@ -87028,11 +86733,6 @@
                 "description": "Page label",
                 "example": "Air quality"
               },
-              "visible": {
-                "type": "boolean",
-                "description": "Indicates if page is visible",
-                "example": true
-              },
               "icon": {
                 "type": "string",
                 "description": "URL of the page icon",
@@ -87045,10 +86745,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type",
-          "visible"
         ]
       },
       "DefaultPageId": {
@@ -87553,8 +87249,7 @@
           }
         ],
         "required": [
-          "notifyOn",
-          "triggerType"
+          "notifyOn"
         ]
       },
       "DeviceActivityRecipientsConfig": {
@@ -87655,14 +87350,9 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
-            "description": "string",
-            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
+            "format": "uuid"
           }
-        },
-        "required": [
-          "id"
-        ]
+        }
       },
       "DeviceCredentialsType": {
         "type": "string",
@@ -87706,9 +87396,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "DeviceId": {
@@ -87718,29 +87405,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "DEVICE"
-                ],
-                "example": "DEVICE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "DeviceInfo": {
@@ -88017,9 +87683,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "DeviceProfileId": {
@@ -88029,29 +87692,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "DEVICE_PROFILE"
-                ],
-                "example": "DEVICE_PROFILE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "DeviceProfileInfo": {
@@ -88324,29 +87966,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "DOMAIN"
-                ],
-                "example": "DOMAIN",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "DomainInfo": {
@@ -88439,10 +88060,7 @@
             }
           }
         ],
-        "description": "Dummy job configuration",
-        "required": [
-          "tasksKey"
-        ]
+        "description": "Dummy job configuration"
       },
       "DummyJobResult": {
         "allOf": [
@@ -88689,9 +88307,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "EdgeCommunicationFailureRecipientsConfig": {
@@ -88742,9 +88357,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "EdgeConnectionRecipientsConfig": {
@@ -88853,14 +88465,9 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
-            "description": "string",
-            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
+            "format": "uuid"
           }
-        },
-        "required": [
-          "id"
-        ]
+        }
       },
       "EdgeEventType": {
         "type": "string",
@@ -88903,29 +88510,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "EDGE"
-                ],
-                "example": "EDGE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "EdgeInfo": {
@@ -89167,7 +88753,6 @@
           }
         ],
         "required": [
-          "body",
           "subject"
         ]
       },
@@ -89229,9 +88814,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "EntitiesLimitRecipientsConfig": {
@@ -89283,9 +88865,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "EntityActionRecipientsConfig": {
@@ -89348,8 +88927,7 @@
         "required": [
           "arguments",
           "interval",
-          "metrics",
-          "output"
+          "metrics"
         ]
       },
       "EntityCoordinates": {
@@ -90037,9 +89615,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type"
         ]
       },
       "EntityVersion": {
@@ -90136,9 +89711,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "EntityViewId": {
@@ -90148,29 +89720,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "ENTITY_VIEW"
-                ],
-                "example": "ENTITY_VIEW",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "EntityViewInfo": {
@@ -90365,9 +89916,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "eventType"
         ]
       },
       "EscalatedNotificationRuleRecipientsConfig": {
@@ -90430,14 +89978,9 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
-            "description": "string",
-            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
+            "format": "uuid"
           }
-        },
-        "required": [
-          "id"
-        ]
+        }
       },
       "EventInfo": {
         "type": "object",
@@ -90509,10 +90052,6 @@
               "errorDetails": {
                 "type": "string",
                 "description": "A string containing details about the failure"
-              },
-              "status": {
-                "type": "string",
-                "example": "FAILURE"
               }
             }
           }
@@ -90643,7 +90182,6 @@
         ],
         "required": [
           "entityCoordinates",
-          "output",
           "zoneGroups"
         ]
       },
@@ -90698,10 +90236,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -90813,10 +90347,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -90932,10 +90462,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -91146,29 +90672,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "JOB"
-                ],
-                "example": "JOB",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "JobResult": {
@@ -91440,9 +90945,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "eventType"
         ]
       },
       "LimitedApi": {
@@ -91852,9 +91354,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "body"
         ]
       },
       "MicrosoftTeamsNotificationTargetConfig": {
@@ -91942,10 +91441,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -92133,29 +91628,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "MOBILE_APP_BUNDLE"
-                ],
-                "example": "MOBILE_APP_BUNDLE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "MobileAppBundleInfo": {
@@ -92252,7 +91726,6 @@
           }
         ],
         "required": [
-          "body",
           "subject"
         ]
       },
@@ -92263,29 +91736,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "MOBILE_APP"
-                ],
-                "example": "MOBILE_APP",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "MobileAppNotificationDeliveryMethodConfig": {
@@ -92472,9 +91924,6 @@
           {
             "$ref": "#/components/schemas/NotificationRuleTriggerConfig"
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "NewPlatformVersionRecipientsConfig": {
@@ -92698,29 +92147,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "NOTIFICATION"
-                ],
-                "example": "NOTIFICATION",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "NotificationInfo": {
@@ -92830,29 +92258,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "NOTIFICATION_REQUEST"
-                ],
-                "example": "NOTIFICATION_REQUEST",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "NotificationRequestInfo": {
@@ -93050,9 +92457,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "NotificationRuleId": {
@@ -93062,29 +92466,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "NOTIFICATION_RULE"
-                ],
-                "example": "NOTIFICATION_RULE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "NotificationRuleInfo": {
@@ -93297,9 +92680,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "NotificationTargetId": {
@@ -93309,29 +92689,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "NOTIFICATION_TARGET"
-                ],
-                "example": "NOTIFICATION_TARGET",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "NotificationTemplate": {
@@ -93387,9 +92746,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "NotificationTemplateId": {
@@ -93399,29 +92755,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "NOTIFICATION_TEMPLATE"
-                ],
-                "example": "NOTIFICATION_TEMPLATE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "NotificationType": {
@@ -93635,29 +92970,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "OAUTH2_CLIENT"
-                ],
-                "example": "OAUTH2_CLIENT",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "OAuth2ClientInfo": {
@@ -93798,14 +93112,9 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
-            "description": "string",
-            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
+            "format": "uuid"
           }
-        },
-        "required": [
-          "id"
-        ]
+        }
       },
       "OAuth2CustomMapperConfig": {
         "type": "object",
@@ -94006,10 +93315,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -94121,10 +93426,6 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              },
-              "modelType": {
-                "$ref": "#/components/schemas/AiModelType",
-                "readOnly": true
               }
             }
           },
@@ -94332,9 +93633,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "OtaPackageId": {
@@ -94344,29 +93642,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "OTA_PACKAGE"
-                ],
-                "example": "OTA_PACKAGE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "OtaPackageInfo": {
@@ -96340,7 +95617,6 @@
         ],
         "required": [
           "arguments",
-          "output",
           "relation"
         ]
       },
@@ -96460,7 +95736,7 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "description": "string",
+            "description": "ID of the entity, time-based UUID v1",
             "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
         },
@@ -96547,29 +95823,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "QUEUE"
-                ],
-                "example": "QUEUE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "QueueStats": {
@@ -96603,29 +95858,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "QUEUE_STATS"
-                ],
-                "example": "QUEUE_STATS",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "RPKLwM2MBootstrapServerCredential": {
@@ -96735,9 +95969,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "RateLimitsRecipientsConfig": {
@@ -96822,7 +96053,6 @@
         "required": [
           "arguments",
           "metrics",
-          "output",
           "relation"
         ]
       },
@@ -97185,9 +96415,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "Rpc": {
@@ -97249,29 +96476,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "RPC"
-                ],
-                "example": "RPC",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "RpcStatus": {
@@ -97430,9 +96636,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "eventType"
         ]
       },
       "RuleChainExportData": {
@@ -97448,9 +96651,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "RuleChainId": {
@@ -97460,29 +96660,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "RULE_CHAIN"
-                ],
-                "example": "RULE_CHAIN",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "RuleChainImportResult": {
@@ -97640,9 +96819,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "RuleEngineComponentLifecycleEventRecipientsConfig": {
@@ -97812,9 +96988,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "eventType"
         ]
       },
       "RuleNodeId": {
@@ -97824,29 +96997,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "RULE_NODE"
-                ],
-                "example": "RULE_NODE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "SaveDeviceWithCredentialsRequest": {
@@ -97993,8 +97145,7 @@
           }
         ],
         "required": [
-          "arguments",
-          "output"
+          "arguments"
         ]
       },
       "ScriptLanguage": {
@@ -98062,9 +97213,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "spec"
         ]
       },
       "ShortCustomerInfo": {
@@ -98144,8 +97292,7 @@
           }
         ],
         "required": [
-          "arguments",
-          "output"
+          "arguments"
         ]
       },
       "SingleEntityFilter": {
@@ -98179,9 +97326,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type"
         ]
       },
       "SingleEntityVersionLoadRequest": {
@@ -98200,9 +97344,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type"
         ]
       },
       "SlackConversation": {
@@ -98248,9 +97389,6 @@
           {
             "$ref": "#/components/schemas/DeliveryMethodNotificationTemplate"
           }
-        ],
-        "required": [
-          "body"
         ]
       },
       "SlackNotificationDeliveryMethodConfig": {
@@ -98396,9 +97534,6 @@
           {
             "$ref": "#/components/schemas/DeliveryMethodNotificationTemplate"
           }
-        ],
-        "required": [
-          "body"
         ]
       },
       "SmsProviderConfiguration": {
@@ -98685,9 +97820,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "eventType"
         ]
       },
       "StoreInfo": {
@@ -98772,10 +97904,6 @@
               "generatedContent": {
                 "type": "string",
                 "description": "The text content generated by the model"
-              },
-              "status": {
-                "type": "string",
-                "example": "SUCCESS"
               }
             }
           }
@@ -98861,9 +97989,6 @@
           {
             "$ref": "#/components/schemas/NotificationRuleTriggerConfig"
           }
-        ],
-        "required": [
-          "triggerType"
         ]
       },
       "TaskProcessingFailureRecipientsConfig": {
@@ -99098,9 +98223,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "TbResourceId": {
@@ -99110,29 +98232,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "TB_RESOURCE"
-                ],
-                "example": "TB_RESOURCE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "TbResourceInfo": {
@@ -99370,9 +98471,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "spec"
         ]
       },
       "Tenant": {
@@ -99502,29 +98600,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "TENANT"
-                ],
-                "example": "TENANT",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "TenantInfo": {
@@ -99710,29 +98787,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "TENANT_PROFILE"
-                ],
-                "example": "TENANT_PROFILE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "TenantProfileQueueConfiguration": {
@@ -99883,12 +98939,7 @@
             "$ref": "#/components/schemas/Output"
           },
           {
-            "type": "object",
-            "properties": {
-              "strategy": {
-                "$ref": "#/components/schemas/TimeSeriesOutputStrategy"
-              }
-            }
+            "type": "object"
           }
         ]
       },
@@ -99955,9 +99006,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "spec"
         ]
       },
       "ToServerRpcRequestSnmpCommunicationConfig": {
@@ -99976,9 +99024,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "spec"
         ]
       },
       "Token": {
@@ -100489,29 +99534,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "USER"
-                ],
-                "example": "USER",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "UserListFilter": {
@@ -100830,7 +99854,6 @@
           }
         ],
         "required": [
-          "body",
           "subject"
         ]
       },
@@ -100847,11 +99870,6 @@
                 "description": "Page label",
                 "example": "Air quality"
               },
-              "visible": {
-                "type": "boolean",
-                "description": "Indicates if page is visible",
-                "example": true
-              },
               "icon": {
                 "type": "string",
                 "description": "URL of the page icon",
@@ -100864,10 +99882,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "type",
-          "visible"
         ]
       },
       "WeekInterval": {
@@ -101056,9 +100070,6 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "WidgetTypeId": {
@@ -101068,29 +100079,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "WIDGET_TYPE"
-                ],
-                "example": "WIDGET_TYPE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "WidgetTypeInfo": {
@@ -101253,9 +100243,6 @@
               }
             }
           }
-        ],
-        "required": [
-          "entityType"
         ]
       },
       "WidgetsBundleId": {
@@ -101265,29 +100252,8 @@
             "$ref": "#/components/schemas/EntityId"
           },
           {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "ID of the entity, time-based UUID v1",
-                "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-              },
-              "entityType": {
-                "$ref": "#/components/schemas/EntityType",
-                "description": "string",
-                "enum": [
-                  "WIDGETS_BUNDLE"
-                ],
-                "example": "WIDGETS_BUNDLE",
-                "readOnly": true
-              }
-            }
+            "type": "object"
           }
-        ],
-        "required": [
-          "entityType",
-          "id"
         ]
       },
       "X509CertificateChainProvisionConfiguration": {

@@ -42,8 +42,6 @@ import org.thingsboard.client.ApiClient;
  * QueueId
  */
 @JsonPropertyOrder({
-  QueueId.JSON_PROPERTY_ID,
-  QueueId.JSON_PROPERTY_ENTITY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -53,62 +51,20 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 
 public class QueueId extends EntityId {
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
-  private UUID id;
-
-  public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @javax.annotation.Nonnull
-  private EntityType entityType = EntityType.QUEUE;
-
   public QueueId() { 
   }
 
-  @JsonCreator
-  public QueueId(
-    @JsonProperty(JSON_PROPERTY_ENTITY_TYPE) EntityType entityType
-  ) {
-  this();
-    this.entityType = entityType;
-  }
-
+  @Override
   public QueueId id(@javax.annotation.Nonnull UUID id) {
-    this.id = id;
+    this.setId(id);
     return this;
   }
 
-  /**
-   * ID of the entity, time-based UUID v1
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public UUID getId() {
-    return id;
+  @Override
+  public QueueId entityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.setEntityType(entityType);
+    return this;
   }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull UUID id) {
-    this.id = id;
-  }
-
-
-  /**
-   * string
-   * @return entityType
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public EntityType getEntityType() {
-    return entityType;
-  }
-
-
-
 
   /**
    * Return true if this QueueId object is equal to o.
@@ -121,15 +77,12 @@ public class QueueId extends EntityId {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QueueId queueId = (QueueId) o;
-    return Objects.equals(this.id, queueId.id) &&
-        Objects.equals(this.entityType, queueId.entityType) &&
-        super.equals(o);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, entityType, super.hashCode());
+    return Objects.hash(super.hashCode());
   }
 
   @Override
@@ -137,8 +90,6 @@ public class QueueId extends EntityId {
     StringBuilder sb = new StringBuilder();
     sb.append("class QueueId {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
