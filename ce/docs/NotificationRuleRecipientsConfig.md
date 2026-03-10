@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **triggerType** | **NotificationRuleTriggerType** |  | |
+| **triggerType** | **NotificationRuleTriggerType** |  | [optional] |
 
 
 

@@ -95,7 +95,7 @@ public class EscalatedNotificationRuleRecipientsConfig extends NotificationRuleR
 
 
   @Override
-  public EscalatedNotificationRuleRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public EscalatedNotificationRuleRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

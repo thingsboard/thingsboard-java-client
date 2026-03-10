@@ -42,9 +42,7 @@ public class OtaPackageApiTest extends AbstractApiTest {
 
     private DeviceProfileId getDefaultDeviceProfileId() throws Exception {
         DeviceProfileInfo profileInfo = client.getDefaultDeviceProfileInfo();
-        return new DeviceProfileId()
-                .id(profileInfo.getId().getId())
-                .entityType(EntityType.DEVICE_PROFILE);
+        return (DeviceProfileId)profileInfo.getId();
     }
 
     private SaveOtaPackageInfoRequest buildOtaPackageInfoRequest(

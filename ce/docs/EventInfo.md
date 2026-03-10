@@ -12,7 +12,7 @@
 | **tenantId** | **TenantId** | JSON object with Tenant Id. | [optional] [readonly] |
 | **type** | **String** | Event type | [optional] |
 | **uid** | **String** | string | [optional] |
-| **entityId** | **EntityId** | JSON object with Entity Id for which event is created. | [optional] [readonly] |
+| **entityId** | **EntityId** | JSON object with Entity Id for which event is created. | [optional] |
 | **body** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 

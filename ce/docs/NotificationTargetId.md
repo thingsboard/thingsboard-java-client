@@ -3,12 +3,14 @@
 
 `org.thingsboard.client.model.NotificationTargetId`
 
+**Extends:** **EntityId**
+
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **id** | **UUID** | ID of the entity, time-based UUID v1 | |
-| **entityType** | **EntityType** | string | |
+| **entityType** | **EntityType** | string | [readonly] |
 
 
 

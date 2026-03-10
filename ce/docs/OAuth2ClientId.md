@@ -3,12 +3,14 @@
 
 `org.thingsboard.client.model.OAuth2ClientId`
 
+**Extends:** **EntityId**
+
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **id** | **UUID** | ID of the entity, time-based UUID v1 | |
-| **entityType** | **EntityType** |  | |
+| **entityType** | **EntityType** | string | [readonly] |
 
 
 

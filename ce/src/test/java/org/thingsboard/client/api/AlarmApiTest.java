@@ -62,10 +62,7 @@ public class AlarmApiTest extends AbstractApiTest {
             Alarm alarm = new Alarm();
             alarm.setType(((i % 2 == 0) ? "Temperature Alarm" : "Connection Alarm"));
             alarm.setSeverity(((i % 2 == 0) ? AlarmSeverity.CRITICAL : AlarmSeverity.WARNING));
-            EntityId originator = new EntityId();
-            originator.setEntityType(EntityType.DEVICE);
-            originator.setId((i % 2 == 0) ? createdDevice1.getId().getId() : createdDevice2.getId().getId());
-            alarm.setOriginator(originator);
+            alarm.setOriginator((i % 2 == 0) ? createdDevice1.getId() : createdDevice2.getId());
 
             Alarm createdAlarm = client.saveAlarm(alarm);
             assertNotNull(createdAlarm);

@@ -52,10 +52,7 @@ public class AlarmCommentApiTest extends AbstractApiTest {
         Alarm alarm = new Alarm();
         alarm.setType("Temperature Alarm");
         alarm.setSeverity(AlarmSeverity.CRITICAL);
-        EntityId originator = new EntityId();
-        originator.setEntityType(EntityType.DEVICE);
-        originator.setId(createdDevice.getId().getId());
-        alarm.setOriginator(originator);
+        alarm.setOriginator(createdDevice.getId());
 
         Alarm createdAlarm = client.saveAlarm(alarm);
         String alarmId = createdAlarm.getId().getId().toString();
