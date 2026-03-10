@@ -94,7 +94,7 @@ public class TaskProcessingFailureRecipientsConfig extends NotificationRuleRecip
 
 
   @Override
-  public TaskProcessingFailureRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public TaskProcessingFailureRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

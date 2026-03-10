@@ -40,8 +40,7 @@ import org.thingsboard.client.ApiClient;
  * Success
  */
 @JsonPropertyOrder({
-  Success.JSON_PROPERTY_GENERATED_CONTENT,
-  Success.JSON_PROPERTY_STATUS
+  Success.JSON_PROPERTY_GENERATED_CONTENT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +53,6 @@ public class Success extends TbChatResponse {
   public static final String JSON_PROPERTY_GENERATED_CONTENT = "generatedContent";
   @javax.annotation.Nullable
   private String generatedContent;
-
-  public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
-  private String status;
 
   public Success() { 
   }
@@ -86,29 +81,11 @@ public class Success extends TbChatResponse {
   }
 
 
-  public Success status(@javax.annotation.Nullable String status) {
-    this.status = status;
+  @Override
+  public Success status(@javax.annotation.Nonnull String status) {
+    this.setStatus(status);
     return this;
   }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getStatus() {
-    return status;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
-  }
-
 
   /**
    * Return true if this Success object is equal to o.
@@ -123,13 +100,12 @@ public class Success extends TbChatResponse {
     }
     Success success = (Success) o;
     return Objects.equals(this.generatedContent, success.generatedContent) &&
-        Objects.equals(this.status, success.status) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(generatedContent, status, super.hashCode());
+    return Objects.hash(generatedContent, super.hashCode());
   }
 
   @Override
@@ -138,7 +114,6 @@ public class Success extends TbChatResponse {
     sb.append("class Success {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    generatedContent: ").append(toIndentedString(generatedContent)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

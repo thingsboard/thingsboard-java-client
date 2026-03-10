@@ -18,9 +18,9 @@
 | **firmwareId** | **OtaPackageId** | JSON object with Ota Package Id. | [optional] |
 | **softwareId** | **OtaPackageId** | JSON object with Ota Package Id. | [optional] |
 | **version** | **Long** |  | [optional] |
-| **deviceData** | **DeviceData** | JSON object with content specific to type of transport in the device profile. | [optional] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device). | [optional] |
+| **deviceData** | **DeviceData** | JSON object with content specific to type of transport in the device profile. | [optional] |
 
 
 

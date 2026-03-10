@@ -38,14 +38,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EntityRelationApiTest extends AbstractApiTest {
 
-    private EntityId entityId(Device device) {
-        return new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE);
-    }
-
-    private EntityId entityId(Asset asset) {
-        return new EntityId().id(asset.getId().getId()).entityType(EntityType.ASSET);
-    }
-
     @Test
     void testEntityRelationLifecycle() throws ApiException {
         long timestamp = System.currentTimeMillis();
@@ -78,8 +70,8 @@ public class EntityRelationApiTest extends AbstractApiTest {
 
         // create relations: building -> Contains -> floor, floor -> Contains -> device1/device2/device3
         EntityRelation buildingToFloor = new EntityRelation();
-        buildingToFloor.setFrom(entityId(building));
-        buildingToFloor.setTo(entityId(floor));
+        buildingToFloor.setFrom(building.getId());
+        buildingToFloor.setTo(floor.getId());
         buildingToFloor.setType("Contains");
         buildingToFloor.setTypeGroup(RelationTypeGroup.COMMON);
         EntityRelation savedRelation = client
@@ -88,17 +80,17 @@ public class EntityRelationApiTest extends AbstractApiTest {
         assertEquals("Contains", savedRelation.getType());
 
         client.saveRelation(new EntityRelation()
-                .from(entityId(floor))
-                .to(entityId(device1))
+                .from(floor.getId())
+                .to(device1.getId())
                 .type("Contains")
                 .typeGroup(RelationTypeGroup.COMMON));
         client.saveRelation(new EntityRelation()
-                .from(entityId(floor))
-                .to(entityId(device2))
+                .from(floor.getId())
+                .to(device2.getId())
                 .type("Contains").typeGroup(RelationTypeGroup.COMMON));
         client.saveRelation(new EntityRelation()
-                .from(entityId(floor))
-                .to(entityId(device3))
+                .from(floor.getId())
+                .to(device3.getId())
                 .type("Manages")
                 .typeGroup(RelationTypeGroup.COMMON));
 

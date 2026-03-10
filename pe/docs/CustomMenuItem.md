@@ -17,7 +17,6 @@
 | **hideDashboardToolbar** | **Boolean** | Hide the dashboard toolbar | [optional] |
 | **url** | **String** | URL to open in the iframe, when user clicks the menu item | [optional] |
 | **setAccessToken** | **Boolean** | Set the access token of the current user to a new dashboard | [optional] |
-| **visible** | **Boolean** | Mark if menu item is visible for user | [optional] |
 | **pages** | **List\<CustomMenuItem\>** | List of child menu items | [optional] |
 
 

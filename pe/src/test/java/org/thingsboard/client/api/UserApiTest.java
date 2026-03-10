@@ -230,7 +230,7 @@ public class UserApiTest extends AbstractApiTest {
 
         Alarm alarm = client.saveAlarm(new Alarm()
                 .type("TestAlarm")
-                .originator(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE))
+                .originator(device.getId())
                 .severity(AlarmSeverity.WARNING)
                 .acknowledged(false)
                 .cleared(false));

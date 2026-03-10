@@ -94,7 +94,7 @@ public class DeviceActivityRecipientsConfig extends NotificationRuleRecipientsCo
 
 
   @Override
-  public DeviceActivityRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public DeviceActivityRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

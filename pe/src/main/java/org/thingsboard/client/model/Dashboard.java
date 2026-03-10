@@ -129,8 +129,7 @@ public class Dashboard {
     @JsonProperty(JSON_PROPERTY_IMAGE) String image, 
     @JsonProperty(JSON_PROPERTY_MOBILE_HIDE) Boolean mobileHide, 
     @JsonProperty(JSON_PROPERTY_MOBILE_ORDER) Integer mobileOrder, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_NAME) String name
   ) {
   this();
     this.createdTime = createdTime;
@@ -139,7 +138,6 @@ public class Dashboard {
     this.mobileHide = mobileHide;
     this.mobileOrder = mobileOrder;
     this.name = name;
-    this.ownerId = ownerId;
   }
 
   public Dashboard id(@javax.annotation.Nullable DashboardId id) {
@@ -411,6 +409,11 @@ public class Dashboard {
 
 
 
+  public Dashboard ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -423,6 +426,11 @@ public class Dashboard {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   /**

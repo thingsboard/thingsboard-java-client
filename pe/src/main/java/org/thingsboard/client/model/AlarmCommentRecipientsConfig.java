@@ -94,7 +94,7 @@ public class AlarmCommentRecipientsConfig extends NotificationRuleRecipientsConf
 
 
   @Override
-  public AlarmCommentRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public AlarmCommentRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

@@ -59,9 +59,9 @@ import org.thingsboard.client.ApiClient;
   DeviceInfo.JSON_PROPERTY_OWNER_NAME,
   DeviceInfo.JSON_PROPERTY_GROUPS,
   DeviceInfo.JSON_PROPERTY_ACTIVE,
-  DeviceInfo.JSON_PROPERTY_DEVICE_DATA,
   DeviceInfo.JSON_PROPERTY_OWNER_ID,
-  DeviceInfo.JSON_PROPERTY_ADDITIONAL_INFO
+  DeviceInfo.JSON_PROPERTY_ADDITIONAL_INFO,
+  DeviceInfo.JSON_PROPERTY_DEVICE_DATA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceInfo {
@@ -121,10 +121,6 @@ public class DeviceInfo {
   @javax.annotation.Nullable
   private Boolean active;
 
-  public static final String JSON_PROPERTY_DEVICE_DATA = "deviceData";
-  @javax.annotation.Nullable
-  private DeviceData deviceData;
-
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @javax.annotation.Nullable
   private EntityId ownerId;
@@ -132,6 +128,10 @@ public class DeviceInfo {
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
+  public static final String JSON_PROPERTY_DEVICE_DATA = "deviceData";
+  @javax.annotation.Nullable
+  private DeviceData deviceData;
 
   public DeviceInfo() { 
   }
@@ -142,8 +142,7 @@ public class DeviceInfo {
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
-    @JsonProperty(JSON_PROPERTY_ACTIVE) Boolean active, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_ACTIVE) Boolean active
   ) {
   this();
     this.createdTime = createdTime;
@@ -151,7 +150,6 @@ public class DeviceInfo {
     this.customerId = customerId;
     this.ownerName = ownerName;
     this.active = active;
-    this.ownerId = ownerId;
   }
 
   public DeviceInfo id(@javax.annotation.Nullable DeviceId id) {
@@ -448,29 +446,10 @@ public class DeviceInfo {
 
 
 
-  public DeviceInfo deviceData(@javax.annotation.Nullable DeviceData deviceData) {
-    this.deviceData = deviceData;
+  public DeviceInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
     return this;
   }
-
-  /**
-   * JSON object with content specific to type of transport in the device profile.
-   * @return deviceData
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DeviceData getDeviceData() {
-    return deviceData;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeviceData(@javax.annotation.Nullable DeviceData deviceData) {
-    this.deviceData = deviceData;
-  }
-
 
   /**
    * JSON object with Customer or Tenant Id
@@ -484,6 +463,11 @@ public class DeviceInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   public DeviceInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
@@ -507,6 +491,30 @@ public class DeviceInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
+  }
+
+
+  public DeviceInfo deviceData(@javax.annotation.Nullable DeviceData deviceData) {
+    this.deviceData = deviceData;
+    return this;
+  }
+
+  /**
+   * JSON object with content specific to type of transport in the device profile.
+   * @return deviceData
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DeviceData getDeviceData() {
+    return deviceData;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeviceData(@javax.annotation.Nullable DeviceData deviceData) {
+    this.deviceData = deviceData;
   }
 
 
@@ -536,14 +544,14 @@ public class DeviceInfo {
         Objects.equals(this.ownerName, deviceInfo.ownerName) &&
         Objects.equals(this.groups, deviceInfo.groups) &&
         Objects.equals(this.active, deviceInfo.active) &&
-        Objects.equals(this.deviceData, deviceInfo.deviceData) &&
         Objects.equals(this.ownerId, deviceInfo.ownerId) &&
-        Objects.equals(this.additionalInfo, deviceInfo.additionalInfo);
+        Objects.equals(this.additionalInfo, deviceInfo.additionalInfo) &&
+        Objects.equals(this.deviceData, deviceInfo.deviceData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, name, type, label, deviceProfileId, firmwareId, softwareId, version, ownerName, groups, active, deviceData, ownerId, additionalInfo);
+    return Objects.hash(id, createdTime, tenantId, customerId, name, type, label, deviceProfileId, firmwareId, softwareId, version, ownerName, groups, active, ownerId, additionalInfo, deviceData);
   }
 
   @Override
@@ -564,9 +572,9 @@ public class DeviceInfo {
     sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
     sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
-    sb.append("    deviceData: ").append(toIndentedString(deviceData)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    deviceData: ").append(toIndentedString(deviceData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -689,11 +697,6 @@ public class DeviceInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sactive%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getActive()))));
     }
 
-    // add `deviceData` to the URL query string
-    if (getDeviceData() != null) {
-      joiner.add(getDeviceData().toUrlQueryString(prefix + "deviceData" + suffix));
-    }
-
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
@@ -702,6 +705,11 @@ public class DeviceInfo {
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
+    // add `deviceData` to the URL query string
+    if (getDeviceData() != null) {
+      joiner.add(getDeviceData().toUrlQueryString(prefix + "deviceData" + suffix));
     }
 
     return joiner.toString();

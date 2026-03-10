@@ -20,7 +20,7 @@
 | **resources** | **List\<ResourceExportData\>** |  | [optional] |
 | **_configuration** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **name** | **String** | Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard. | [optional] [readonly] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
 
 
 

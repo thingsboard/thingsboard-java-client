@@ -22,7 +22,7 @@ A JSON value representing the edge.
 | **edgeLicenseKey** | **String** | Edge license key obtained from license portal | |
 | **cloudEndpoint** | **String** | Edge uses this cloud URL to activate and periodically check it's license | |
 | **version** | **Long** |  | [optional] |
-| **ownerId** | **EntityId** |  | [optional] [readonly] |
+| **ownerId** | **EntityId** |  | [optional] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the edge. May include: 'description' (string). | [optional] |
 
 

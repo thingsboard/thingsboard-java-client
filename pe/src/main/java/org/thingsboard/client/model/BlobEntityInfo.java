@@ -134,8 +134,7 @@ public class BlobEntityInfo {
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
-    @JsonProperty(JSON_PROPERTY_CONTENT_TYPE) ContentTypeEnum contentType, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_CONTENT_TYPE) ContentTypeEnum contentType
   ) {
   this();
     this.createdTime = createdTime;
@@ -144,7 +143,6 @@ public class BlobEntityInfo {
     this.name = name;
     this.type = type;
     this.contentType = contentType;
-    this.ownerId = ownerId;
   }
 
   public BlobEntityInfo id(@javax.annotation.Nullable BlobEntityId id) {
@@ -255,6 +253,11 @@ public class BlobEntityInfo {
 
 
 
+  public BlobEntityInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -267,6 +270,11 @@ public class BlobEntityInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   public BlobEntityInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {

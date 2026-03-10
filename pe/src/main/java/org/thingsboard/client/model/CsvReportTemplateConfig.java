@@ -83,7 +83,7 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
-  public CsvReportTemplateConfig components(@javax.annotation.Nonnull List<ReportComponent> components) {
+  public CsvReportTemplateConfig components(@javax.annotation.Nullable List<ReportComponent> components) {
     this.setComponents(components);
     return this;
   }

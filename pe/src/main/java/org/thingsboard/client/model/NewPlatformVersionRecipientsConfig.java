@@ -94,7 +94,7 @@ public class NewPlatformVersionRecipientsConfig extends NotificationRuleRecipien
 
 
   @Override
-  public NewPlatformVersionRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public NewPlatformVersionRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

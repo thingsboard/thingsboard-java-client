@@ -11,7 +11,7 @@
 | **createdTime** | **Long** | Timestamp of the auditLog creation, in milliseconds | [optional] [readonly] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] [readonly] |
 | **customerId** | **CustomerId** | JSON object with Customer Id | [optional] [readonly] |
-| **entityId** | **EntityId** | JSON object with Entity id | [optional] [readonly] |
+| **entityId** | **EntityId** | JSON object with Entity id | [optional] |
 | **entityName** | **String** | Name of the logged entity | [optional] [readonly] |
 | **userId** | **UserId** | JSON object with User id. | [optional] [readonly] |
 | **userName** | **String** | Unique user name(email) of the user that performed some action on logged entity | [optional] [readonly] |

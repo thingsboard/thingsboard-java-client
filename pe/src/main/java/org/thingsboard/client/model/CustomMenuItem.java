@@ -53,7 +53,6 @@ import org.thingsboard.client.ApiClient;
   CustomMenuItem.JSON_PROPERTY_HIDE_DASHBOARD_TOOLBAR,
   CustomMenuItem.JSON_PROPERTY_URL,
   CustomMenuItem.JSON_PROPERTY_SET_ACCESS_TOKEN,
-  CustomMenuItem.JSON_PROPERTY_VISIBLE,
   CustomMenuItem.JSON_PROPERTY_PAGES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -95,10 +94,6 @@ public class CustomMenuItem extends MenuItem {
   public static final String JSON_PROPERTY_SET_ACCESS_TOKEN = "setAccessToken";
   @javax.annotation.Nullable
   private Boolean setAccessToken;
-
-  public static final String JSON_PROPERTY_VISIBLE = "visible";
-  @javax.annotation.Nullable
-  private Boolean visible;
 
   public static final String JSON_PROPERTY_PAGES = "pages";
   @javax.annotation.Nullable
@@ -299,30 +294,6 @@ public class CustomMenuItem extends MenuItem {
   }
 
 
-  public CustomMenuItem visible(@javax.annotation.Nullable Boolean visible) {
-    this.visible = visible;
-    return this;
-  }
-
-  /**
-   * Mark if menu item is visible for user
-   * @return visible
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getVisible() {
-    return visible;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVisible(@javax.annotation.Nullable Boolean visible) {
-    this.visible = visible;
-  }
-
-
   public CustomMenuItem pages(@javax.annotation.Nullable List<CustomMenuItem> pages) {
     this.pages = pages;
     return this;
@@ -361,6 +332,12 @@ public class CustomMenuItem extends MenuItem {
     return this;
   }
 
+  @Override
+  public CustomMenuItem visible(@javax.annotation.Nullable Boolean visible) {
+    this.setVisible(visible);
+    return this;
+  }
+
   /**
    * Return true if this CustomMenuItem object is equal to o.
    */
@@ -381,14 +358,13 @@ public class CustomMenuItem extends MenuItem {
         Objects.equals(this.hideDashboardToolbar, customMenuItem.hideDashboardToolbar) &&
         Objects.equals(this.url, customMenuItem.url) &&
         Objects.equals(this.setAccessToken, customMenuItem.setAccessToken) &&
-        Objects.equals(this.visible, customMenuItem.visible) &&
         Objects.equals(this.pages, customMenuItem.pages) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, icon, menuItemType, linkType, dashboardId, hideDashboardToolbar, url, setAccessToken, visible, pages, super.hashCode());
+    return Objects.hash(name, icon, menuItemType, linkType, dashboardId, hideDashboardToolbar, url, setAccessToken, pages, super.hashCode());
   }
 
   @Override
@@ -404,7 +380,6 @@ public class CustomMenuItem extends MenuItem {
     sb.append("    hideDashboardToolbar: ").append(toIndentedString(hideDashboardToolbar)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    setAccessToken: ").append(toIndentedString(setAccessToken)).append("\n");
-    sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -68,13 +68,13 @@ import org.thingsboard.client.ApiClient;
 
 public class NotificationRuleRecipientsConfig {
   public static final String JSON_PROPERTY_TRIGGER_TYPE = "triggerType";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private NotificationRuleTriggerType triggerType;
 
   public NotificationRuleRecipientsConfig() { 
   }
 
-  public NotificationRuleRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public NotificationRuleRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.triggerType = triggerType;
     return this;
   }
@@ -83,17 +83,17 @@ public class NotificationRuleRecipientsConfig {
    * Get triggerType
    * @return triggerType
    */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationRuleTriggerType getTriggerType() {
     return triggerType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTriggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  @JsonProperty(value = JSON_PROPERTY_TRIGGER_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTriggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.triggerType = triggerType;
   }
 

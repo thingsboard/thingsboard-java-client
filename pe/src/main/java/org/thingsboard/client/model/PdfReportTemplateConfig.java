@@ -261,7 +261,7 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
-  public PdfReportTemplateConfig components(@javax.annotation.Nonnull List<ReportComponent> components) {
+  public PdfReportTemplateConfig components(@javax.annotation.Nullable List<ReportComponent> components) {
     this.setComponents(components);
     return this;
   }

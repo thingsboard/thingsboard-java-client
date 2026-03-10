@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **whiteLabelingEnabled** | **Boolean** |  | [optional] |
 | **smsEnabled** | **Boolean** |  | [optional] |
 | **oauthEnabled** | **Boolean** |  | [optional] |
+| **whiteLabelingEnabled** | **Boolean** |  | [optional] |
+| **notificationEnabled** | **Boolean** |  | [optional] |
 | **twoFaEnabled** | **Boolean** |  | [optional] |
 | **emailEnabled** | **Boolean** |  | [optional] |
-| **notificationEnabled** | **Boolean** |  | [optional] |
 
 
 

@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **id** | **EntityId** | Entity Id object | [readonly] |
+| **id** | **EntityId** | Entity Id object | |
 | **name** | **String** | Name of the entity | [readonly] |
 
 

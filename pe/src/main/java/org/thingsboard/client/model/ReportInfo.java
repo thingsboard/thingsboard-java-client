@@ -111,12 +111,10 @@ public class ReportInfo {
 
   @JsonCreator
   public ReportInfo(
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime
   ) {
   this();
     this.createdTime = createdTime;
-    this.ownerId = ownerId;
   }
 
   public ReportInfo id(@javax.annotation.Nullable ReportId id) {
@@ -373,6 +371,11 @@ public class ReportInfo {
   }
 
 
+  public ReportInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -385,6 +388,11 @@ public class ReportInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   /**
