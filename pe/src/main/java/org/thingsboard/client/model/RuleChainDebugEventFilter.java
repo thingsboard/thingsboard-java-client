@@ -44,8 +44,8 @@ import org.thingsboard.client.ApiClient;
   RuleChainDebugEventFilter.JSON_PROPERTY_SERVER,
   RuleChainDebugEventFilter.JSON_PROPERTY_ERROR_STR,
   RuleChainDebugEventFilter.JSON_PROPERTY_MESSAGE,
-  RuleChainDebugEventFilter.JSON_PROPERTY_IS_ERROR,
-  RuleChainDebugEventFilter.JSON_PROPERTY_ERROR
+  RuleChainDebugEventFilter.JSON_PROPERTY_ERROR,
+  RuleChainDebugEventFilter.JSON_PROPERTY_IS_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -67,13 +67,13 @@ public class RuleChainDebugEventFilter extends EventFilter {
   @javax.annotation.Nullable
   private String message;
 
-  public static final String JSON_PROPERTY_IS_ERROR = "isError";
-  @javax.annotation.Nullable
-  private Boolean isError;
-
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
   private Boolean error;
+
+  public static final String JSON_PROPERTY_IS_ERROR = "isError";
+  @javax.annotation.Nullable
+  private Boolean isError;
 
   public RuleChainDebugEventFilter() { 
   }
@@ -150,30 +150,6 @@ public class RuleChainDebugEventFilter extends EventFilter {
   }
 
 
-  public RuleChainDebugEventFilter isError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-    return this;
-  }
-
-  /**
-   * Get isError
-   * @return isError
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsError() {
-    return isError;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-  }
-
-
   public RuleChainDebugEventFilter error(@javax.annotation.Nullable Boolean error) {
     this.error = error;
     return this;
@@ -195,6 +171,30 @@ public class RuleChainDebugEventFilter extends EventFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setError(@javax.annotation.Nullable Boolean error) {
     this.error = error;
+  }
+
+
+  public RuleChainDebugEventFilter isError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
+    return this;
+  }
+
+  /**
+   * Get isError
+   * @return isError
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsError() {
+    return isError;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
   }
 
 
@@ -225,14 +225,14 @@ public class RuleChainDebugEventFilter extends EventFilter {
     return Objects.equals(this.server, ruleChainDebugEventFilter.server) &&
         Objects.equals(this.errorStr, ruleChainDebugEventFilter.errorStr) &&
         Objects.equals(this.message, ruleChainDebugEventFilter.message) &&
-        Objects.equals(this.isError, ruleChainDebugEventFilter.isError) &&
         Objects.equals(this.error, ruleChainDebugEventFilter.error) &&
+        Objects.equals(this.isError, ruleChainDebugEventFilter.isError) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(server, errorStr, message, isError, error, super.hashCode());
+    return Objects.hash(server, errorStr, message, error, isError, super.hashCode());
   }
 
   @Override
@@ -243,8 +243,8 @@ public class RuleChainDebugEventFilter extends EventFilter {
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
     sb.append("    errorStr: ").append(toIndentedString(errorStr)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -317,14 +317,14 @@ public class RuleChainDebugEventFilter extends EventFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
     }
 
-    // add `isError` to the URL query string
-    if (getIsError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
-    }
-
     // add `error` to the URL query string
     if (getError() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
+    }
+
+    // add `isError` to the URL query string
+    if (getIsError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
     }
 
     return joiner.toString();

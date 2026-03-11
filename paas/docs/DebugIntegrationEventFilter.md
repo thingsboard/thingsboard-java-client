@@ -14,8 +14,8 @@
 | **type** | **String** |  | [optional] |
 | **message** | **String** |  | [optional] |
 | **statusIntegration** | **String** |  | [optional] |
-| **isError** | **Boolean** |  | [optional] |
 | **error** | **Boolean** |  | [optional] |
+| **isError** | **Boolean** |  | [optional] |
 
 
 

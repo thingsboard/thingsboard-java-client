@@ -35,36 +35,60 @@ import org.thingsboard.client.ApiClient;
  * FeaturesInfo
  */
 @JsonPropertyOrder({
+  FeaturesInfo.JSON_PROPERTY_EMAIL_ENABLED,
   FeaturesInfo.JSON_PROPERTY_SMS_ENABLED,
-  FeaturesInfo.JSON_PROPERTY_OAUTH_ENABLED,
   FeaturesInfo.JSON_PROPERTY_NOTIFICATION_ENABLED,
-  FeaturesInfo.JSON_PROPERTY_TWO_FA_ENABLED,
-  FeaturesInfo.JSON_PROPERTY_EMAIL_ENABLED
+  FeaturesInfo.JSON_PROPERTY_OAUTH_ENABLED,
+  FeaturesInfo.JSON_PROPERTY_TWO_FA_ENABLED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FeaturesInfo {
+  public static final String JSON_PROPERTY_EMAIL_ENABLED = "emailEnabled";
+  @javax.annotation.Nullable
+  private Boolean emailEnabled;
+
   public static final String JSON_PROPERTY_SMS_ENABLED = "smsEnabled";
   @javax.annotation.Nullable
   private Boolean smsEnabled;
-
-  public static final String JSON_PROPERTY_OAUTH_ENABLED = "oauthEnabled";
-  @javax.annotation.Nullable
-  private Boolean oauthEnabled;
 
   public static final String JSON_PROPERTY_NOTIFICATION_ENABLED = "notificationEnabled";
   @javax.annotation.Nullable
   private Boolean notificationEnabled;
 
+  public static final String JSON_PROPERTY_OAUTH_ENABLED = "oauthEnabled";
+  @javax.annotation.Nullable
+  private Boolean oauthEnabled;
+
   public static final String JSON_PROPERTY_TWO_FA_ENABLED = "twoFaEnabled";
   @javax.annotation.Nullable
   private Boolean twoFaEnabled;
 
-  public static final String JSON_PROPERTY_EMAIL_ENABLED = "emailEnabled";
-  @javax.annotation.Nullable
-  private Boolean emailEnabled;
-
   public FeaturesInfo() { 
   }
+
+  public FeaturesInfo emailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
+    this.emailEnabled = emailEnabled;
+    return this;
+  }
+
+  /**
+   * Get emailEnabled
+   * @return emailEnabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getEmailEnabled() {
+    return emailEnabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
+    this.emailEnabled = emailEnabled;
+  }
+
 
   public FeaturesInfo smsEnabled(@javax.annotation.Nullable Boolean smsEnabled) {
     this.smsEnabled = smsEnabled;
@@ -87,30 +111,6 @@ public class FeaturesInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSmsEnabled(@javax.annotation.Nullable Boolean smsEnabled) {
     this.smsEnabled = smsEnabled;
-  }
-
-
-  public FeaturesInfo oauthEnabled(@javax.annotation.Nullable Boolean oauthEnabled) {
-    this.oauthEnabled = oauthEnabled;
-    return this;
-  }
-
-  /**
-   * Get oauthEnabled
-   * @return oauthEnabled
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_OAUTH_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getOauthEnabled() {
-    return oauthEnabled;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_OAUTH_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauthEnabled(@javax.annotation.Nullable Boolean oauthEnabled) {
-    this.oauthEnabled = oauthEnabled;
   }
 
 
@@ -138,6 +138,30 @@ public class FeaturesInfo {
   }
 
 
+  public FeaturesInfo oauthEnabled(@javax.annotation.Nullable Boolean oauthEnabled) {
+    this.oauthEnabled = oauthEnabled;
+    return this;
+  }
+
+  /**
+   * Get oauthEnabled
+   * @return oauthEnabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_OAUTH_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getOauthEnabled() {
+    return oauthEnabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_OAUTH_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOauthEnabled(@javax.annotation.Nullable Boolean oauthEnabled) {
+    this.oauthEnabled = oauthEnabled;
+  }
+
+
   public FeaturesInfo twoFaEnabled(@javax.annotation.Nullable Boolean twoFaEnabled) {
     this.twoFaEnabled = twoFaEnabled;
     return this;
@@ -162,30 +186,6 @@ public class FeaturesInfo {
   }
 
 
-  public FeaturesInfo emailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
-    this.emailEnabled = emailEnabled;
-    return this;
-  }
-
-  /**
-   * Get emailEnabled
-   * @return emailEnabled
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEmailEnabled() {
-    return emailEnabled;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
-    this.emailEnabled = emailEnabled;
-  }
-
-
   /**
    * Return true if this FeaturesInfo object is equal to o.
    */
@@ -198,27 +198,27 @@ public class FeaturesInfo {
       return false;
     }
     FeaturesInfo featuresInfo = (FeaturesInfo) o;
-    return Objects.equals(this.smsEnabled, featuresInfo.smsEnabled) &&
-        Objects.equals(this.oauthEnabled, featuresInfo.oauthEnabled) &&
+    return Objects.equals(this.emailEnabled, featuresInfo.emailEnabled) &&
+        Objects.equals(this.smsEnabled, featuresInfo.smsEnabled) &&
         Objects.equals(this.notificationEnabled, featuresInfo.notificationEnabled) &&
-        Objects.equals(this.twoFaEnabled, featuresInfo.twoFaEnabled) &&
-        Objects.equals(this.emailEnabled, featuresInfo.emailEnabled);
+        Objects.equals(this.oauthEnabled, featuresInfo.oauthEnabled) &&
+        Objects.equals(this.twoFaEnabled, featuresInfo.twoFaEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(smsEnabled, oauthEnabled, notificationEnabled, twoFaEnabled, emailEnabled);
+    return Objects.hash(emailEnabled, smsEnabled, notificationEnabled, oauthEnabled, twoFaEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeaturesInfo {\n");
-    sb.append("    smsEnabled: ").append(toIndentedString(smsEnabled)).append("\n");
-    sb.append("    oauthEnabled: ").append(toIndentedString(oauthEnabled)).append("\n");
-    sb.append("    notificationEnabled: ").append(toIndentedString(notificationEnabled)).append("\n");
-    sb.append("    twoFaEnabled: ").append(toIndentedString(twoFaEnabled)).append("\n");
     sb.append("    emailEnabled: ").append(toIndentedString(emailEnabled)).append("\n");
+    sb.append("    smsEnabled: ").append(toIndentedString(smsEnabled)).append("\n");
+    sb.append("    notificationEnabled: ").append(toIndentedString(notificationEnabled)).append("\n");
+    sb.append("    oauthEnabled: ").append(toIndentedString(oauthEnabled)).append("\n");
+    sb.append("    twoFaEnabled: ").append(toIndentedString(twoFaEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -266,14 +266,14 @@ public class FeaturesInfo {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `emailEnabled` to the URL query string
+    if (getEmailEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%semailEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEmailEnabled()))));
+    }
+
     // add `smsEnabled` to the URL query string
     if (getSmsEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssmsEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSmsEnabled()))));
-    }
-
-    // add `oauthEnabled` to the URL query string
-    if (getOauthEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%soauthEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOauthEnabled()))));
     }
 
     // add `notificationEnabled` to the URL query string
@@ -281,14 +281,14 @@ public class FeaturesInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%snotificationEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNotificationEnabled()))));
     }
 
+    // add `oauthEnabled` to the URL query string
+    if (getOauthEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%soauthEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOauthEnabled()))));
+    }
+
     // add `twoFaEnabled` to the URL query string
     if (getTwoFaEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stwoFaEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTwoFaEnabled()))));
-    }
-
-    // add `emailEnabled` to the URL query string
-    if (getEmailEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%semailEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEmailEnabled()))));
     }
 
     return joiner.toString();

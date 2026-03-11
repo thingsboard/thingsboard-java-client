@@ -39,8 +39,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   ErrorComponentAllOfExceptionCause.JSON_PROPERTY_STACK_TRACE,
-  ErrorComponentAllOfExceptionCause.JSON_PROPERTY_MESSAGE,
-  ErrorComponentAllOfExceptionCause.JSON_PROPERTY_LOCALIZED_MESSAGE
+  ErrorComponentAllOfExceptionCause.JSON_PROPERTY_LOCALIZED_MESSAGE,
+  ErrorComponentAllOfExceptionCause.JSON_PROPERTY_MESSAGE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ErrorComponentAllOfExceptionCause {
@@ -48,13 +48,13 @@ public class ErrorComponentAllOfExceptionCause {
   @javax.annotation.Nullable
   private List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
-  private String message;
-
   public static final String JSON_PROPERTY_LOCALIZED_MESSAGE = "localizedMessage";
   @javax.annotation.Nullable
   private String localizedMessage;
+
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nullable
+  private String message;
 
   public ErrorComponentAllOfExceptionCause() { 
   }
@@ -91,30 +91,6 @@ public class ErrorComponentAllOfExceptionCause {
   }
 
 
-  public ErrorComponentAllOfExceptionCause message(@javax.annotation.Nullable String message) {
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * Get message
-   * @return message
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMessage() {
-    return message;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
-  }
-
-
   public ErrorComponentAllOfExceptionCause localizedMessage(@javax.annotation.Nullable String localizedMessage) {
     this.localizedMessage = localizedMessage;
     return this;
@@ -139,6 +115,30 @@ public class ErrorComponentAllOfExceptionCause {
   }
 
 
+  public ErrorComponentAllOfExceptionCause message(@javax.annotation.Nullable String message) {
+    this.message = message;
+    return this;
+  }
+
+  /**
+   * Get message
+   * @return message
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getMessage() {
+    return message;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMessage(@javax.annotation.Nullable String message) {
+    this.message = message;
+  }
+
+
   /**
    * Return true if this ErrorComponent_allOf_exception_cause object is equal to o.
    */
@@ -152,13 +152,13 @@ public class ErrorComponentAllOfExceptionCause {
     }
     ErrorComponentAllOfExceptionCause errorComponentAllOfExceptionCause = (ErrorComponentAllOfExceptionCause) o;
     return Objects.equals(this.stackTrace, errorComponentAllOfExceptionCause.stackTrace) &&
-        Objects.equals(this.message, errorComponentAllOfExceptionCause.message) &&
-        Objects.equals(this.localizedMessage, errorComponentAllOfExceptionCause.localizedMessage);
+        Objects.equals(this.localizedMessage, errorComponentAllOfExceptionCause.localizedMessage) &&
+        Objects.equals(this.message, errorComponentAllOfExceptionCause.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(stackTrace, message, localizedMessage);
+    return Objects.hash(stackTrace, localizedMessage, message);
   }
 
   @Override
@@ -166,8 +166,8 @@ public class ErrorComponentAllOfExceptionCause {
     StringBuilder sb = new StringBuilder();
     sb.append("class ErrorComponentAllOfExceptionCause {\n");
     sb.append("    stackTrace: ").append(toIndentedString(stackTrace)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    localizedMessage: ").append(toIndentedString(localizedMessage)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,14 +225,14 @@ public class ErrorComponentAllOfExceptionCause {
       }
     }
 
-    // add `message` to the URL query string
-    if (getMessage() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
-    }
-
     // add `localizedMessage` to the URL query string
     if (getLocalizedMessage() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slocalizedMessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLocalizedMessage()))));
+    }
+
+    // add `message` to the URL query string
+    if (getMessage() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
     }
 
     return joiner.toString();

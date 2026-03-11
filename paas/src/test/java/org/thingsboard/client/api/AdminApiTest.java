@@ -88,7 +88,7 @@ public class AdminApiTest extends AbstractApiTest {
         FeaturesInfo featuresInfo = client.getFeaturesInfo();
         assertNotNull(featuresInfo);
         assertFalse(featuresInfo.getSmsEnabled());
-        assertTrue(featuresInfo.getOauthEnabled());
+        assertFalse(featuresInfo.getOauthEnabled());
 
         // check updates
         UpdateMessage updateMessage = client.checkUpdates();

@@ -52,10 +52,10 @@ import org.thingsboard.client.ApiClient;
   IntegrationInfo.JSON_PROPERTY_DEBUG_SETTINGS,
   IntegrationInfo.JSON_PROPERTY_ENABLED,
   IntegrationInfo.JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS,
+  IntegrationInfo.JSON_PROPERTY_EDGE_TEMPLATE,
   IntegrationInfo.JSON_PROPERTY_VERSION,
   IntegrationInfo.JSON_PROPERTY_STATUS,
   IntegrationInfo.JSON_PROPERTY_STATS,
-  IntegrationInfo.JSON_PROPERTY_EDGE_TEMPLATE,
   IntegrationInfo.JSON_PROPERTY_REMOTE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -96,6 +96,10 @@ public class IntegrationInfo {
   @javax.annotation.Nullable
   private Boolean allowCreateDevicesOrAssets;
 
+  public static final String JSON_PROPERTY_EDGE_TEMPLATE = "edgeTemplate";
+  @javax.annotation.Nullable
+  private Boolean edgeTemplate;
+
   public static final String JSON_PROPERTY_VERSION = "version";
   @javax.annotation.Nullable
   private Long version;
@@ -106,10 +110,6 @@ public class IntegrationInfo {
 
   public static final String JSON_PROPERTY_STATS = "stats";
   private JsonNullable<Object> stats = JsonNullable.<Object>of(null);
-
-  public static final String JSON_PROPERTY_EDGE_TEMPLATE = "edgeTemplate";
-  @javax.annotation.Nullable
-  private Boolean edgeTemplate;
 
   public static final String JSON_PROPERTY_REMOTE = "remote";
   @javax.annotation.Nullable
@@ -326,6 +326,30 @@ public class IntegrationInfo {
   }
 
 
+  public IntegrationInfo edgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+    this.edgeTemplate = edgeTemplate;
+    return this;
+  }
+
+  /**
+   * Boolean flag that specifies that is regular or edge template integration
+   * @return edgeTemplate
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getEdgeTemplate() {
+    return edgeTemplate;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEdgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+    this.edgeTemplate = edgeTemplate;
+  }
+
+
   public IntegrationInfo version(@javax.annotation.Nullable Long version) {
     this.version = version;
     return this;
@@ -406,30 +430,6 @@ public class IntegrationInfo {
   }
 
 
-  public IntegrationInfo edgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
-    this.edgeTemplate = edgeTemplate;
-    return this;
-  }
-
-  /**
-   * Boolean flag that specifies that is regular or edge template integration
-   * @return edgeTemplate
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEdgeTemplate() {
-    return edgeTemplate;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
-    this.edgeTemplate = edgeTemplate;
-  }
-
-
   public IntegrationInfo remote(@javax.annotation.Nullable Boolean remote) {
     this.remote = remote;
     return this;
@@ -475,10 +475,10 @@ public class IntegrationInfo {
         Objects.equals(this.debugSettings, integrationInfo.debugSettings) &&
         Objects.equals(this.enabled, integrationInfo.enabled) &&
         Objects.equals(this.allowCreateDevicesOrAssets, integrationInfo.allowCreateDevicesOrAssets) &&
+        Objects.equals(this.edgeTemplate, integrationInfo.edgeTemplate) &&
         Objects.equals(this.version, integrationInfo.version) &&
         Objects.equals(this.status, integrationInfo.status) &&
         equalsNullable(this.stats, integrationInfo.stats) &&
-        Objects.equals(this.edgeTemplate, integrationInfo.edgeTemplate) &&
         Objects.equals(this.remote, integrationInfo.remote);
   }
 
@@ -488,7 +488,7 @@ public class IntegrationInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, name, type, debugMode, debugSettings, enabled, allowCreateDevicesOrAssets, version, status, hashCodeNullable(stats), edgeTemplate, remote);
+    return Objects.hash(id, createdTime, tenantId, name, type, debugMode, debugSettings, enabled, allowCreateDevicesOrAssets, edgeTemplate, version, status, hashCodeNullable(stats), remote);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -511,10 +511,10 @@ public class IntegrationInfo {
     sb.append("    debugSettings: ").append(toIndentedString(debugSettings)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    allowCreateDevicesOrAssets: ").append(toIndentedString(allowCreateDevicesOrAssets)).append("\n");
+    sb.append("    edgeTemplate: ").append(toIndentedString(edgeTemplate)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
-    sb.append("    edgeTemplate: ").append(toIndentedString(edgeTemplate)).append("\n");
     sb.append("    remote: ").append(toIndentedString(remote)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -608,6 +608,11 @@ public class IntegrationInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sallowCreateDevicesOrAssets%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAllowCreateDevicesOrAssets()))));
     }
 
+    // add `edgeTemplate` to the URL query string
+    if (getEdgeTemplate() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeTemplate%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeTemplate()))));
+    }
+
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
@@ -621,11 +626,6 @@ public class IntegrationInfo {
     // add `stats` to the URL query string
     if (getStats() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstats%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStats()))));
-    }
-
-    // add `edgeTemplate` to the URL query string
-    if (getEdgeTemplate() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeTemplate%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeTemplate()))));
     }
 
     // add `remote` to the URL query string

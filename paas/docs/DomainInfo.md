@@ -15,7 +15,7 @@
 | **oauth2Enabled** | **Boolean** | Whether OAuth2 settings are enabled or not | [optional] |
 | **propagateToEdge** | **Boolean** | Whether OAuth2 settings are enabled on Edge or not | [optional] |
 | **oauth2ClientInfos** | **List\<OAuth2ClientInfo\>** | List of available oauth2 clients | [optional] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
 
 
 

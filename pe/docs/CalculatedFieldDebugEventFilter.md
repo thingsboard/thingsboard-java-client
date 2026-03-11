@@ -17,8 +17,8 @@
 | **msgType** | **String** | String value representing the message type | [optional] |
 | **arguments** | **String** | String value representing the arguments that were used in the calculation performed | [optional] |
 | **result** | **String** | String value representing the result of a calculation | [optional] |
-| **isError** | **Boolean** |  | [optional] |
 | **error** | **Boolean** |  | [optional] |
+| **isError** | **Boolean** |  | [optional] |
 
 
 ### Enum: EntityTypeEnum

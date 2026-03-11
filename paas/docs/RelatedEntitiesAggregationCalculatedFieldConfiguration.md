@@ -9,13 +9,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **relation** | **RelationPathLevel** |  | |
 | **arguments** | **Map\<String, Argument\>** |  | |
 | **deduplicationIntervalInSec** | **Long** |  | [optional] |
 | **metrics** | **Map\<String, AggMetric\>** |  | |
-| **useLatestTs** | **Boolean** |  | [optional] |
-| **scheduledUpdateInterval** | **Integer** |  | [optional] |
+| **relation** | **RelationPathLevel** |  | |
 | **scheduledUpdateEnabled** | **Boolean** |  | [optional] |
+| **scheduledUpdateInterval** | **Integer** |  | [optional] |
+| **useLatestTs** | **Boolean** |  | [optional] |
 
 
 

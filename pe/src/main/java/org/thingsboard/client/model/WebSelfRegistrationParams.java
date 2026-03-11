@@ -52,9 +52,9 @@ import org.thingsboard.client.ApiClient;
  * WebSelfRegistrationParams
  */
 @JsonPropertyOrder({
+  WebSelfRegistrationParams.JSON_PROPERTY_DOMAIN_ID,
   WebSelfRegistrationParams.JSON_PROPERTY_PRIVACY_POLICY,
-  WebSelfRegistrationParams.JSON_PROPERTY_TERMS_OF_USE,
-  WebSelfRegistrationParams.JSON_PROPERTY_DOMAIN_ID
+  WebSelfRegistrationParams.JSON_PROPERTY_TERMS_OF_USE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -64,6 +64,10 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class WebSelfRegistrationParams extends SelfRegistrationParams {
+  public static final String JSON_PROPERTY_DOMAIN_ID = "domainId";
+  @javax.annotation.Nonnull
+  private DomainId domainId;
+
   public static final String JSON_PROPERTY_PRIVACY_POLICY = "privacyPolicy";
   @javax.annotation.Nullable
   private String privacyPolicy;
@@ -72,12 +76,32 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   @javax.annotation.Nullable
   private String termsOfUse;
 
-  public static final String JSON_PROPERTY_DOMAIN_ID = "domainId";
-  @javax.annotation.Nonnull
-  private DomainId domainId;
-
   public WebSelfRegistrationParams() { 
   }
+
+  public WebSelfRegistrationParams domainId(@javax.annotation.Nonnull DomainId domainId) {
+    this.domainId = domainId;
+    return this;
+  }
+
+  /**
+   * Domain name for self registration URL. Typically this matches the domain name from the Login White Labeling page.
+   * @return domainId
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public DomainId getDomainId() {
+    return domainId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDomainId(@javax.annotation.Nonnull DomainId domainId) {
+    this.domainId = domainId;
+  }
+
 
   public WebSelfRegistrationParams privacyPolicy(@javax.annotation.Nullable String privacyPolicy) {
     this.privacyPolicy = privacyPolicy;
@@ -127,45 +151,9 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   }
 
 
-  public WebSelfRegistrationParams domainId(@javax.annotation.Nonnull DomainId domainId) {
-    this.domainId = domainId;
-    return this;
-  }
-
-  /**
-   * Domain name for self registration URL. Typically this matches the domain name from the Login White Labeling page.
-   * @return domainId
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DOMAIN_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public DomainId getDomainId() {
-    return domainId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DOMAIN_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDomainId(@javax.annotation.Nonnull DomainId domainId) {
-    this.domainId = domainId;
-  }
-
-
   @Override
   public WebSelfRegistrationParams type(@javax.annotation.Nonnull SelfRegistrationType type) {
     this.setType(type);
-    return this;
-  }
-
-  @Override
-  public WebSelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.setShowPrivacyPolicy(showPrivacyPolicy);
-    return this;
-  }
-
-  @Override
-  public WebSelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.setShowTermsOfUse(showTermsOfUse);
     return this;
   }
 
@@ -176,8 +164,8 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
-  public WebSelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
-    this.setHomeDashboard(homeDashboard);
+  public WebSelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
+    this.setCaptcha(captcha);
     return this;
   }
 
@@ -194,20 +182,32 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
-  public WebSelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
-    this.setDefaultDashboard(defaultDashboard);
-    return this;
-  }
-
-  @Override
   public WebSelfRegistrationParams customerTitlePrefix(@javax.annotation.Nullable String customerTitlePrefix) {
     this.setCustomerTitlePrefix(customerTitlePrefix);
     return this;
   }
 
   @Override
-  public WebSelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
-    this.setCustomMenuId(customMenuId);
+  public WebSelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+    this.setShowPrivacyPolicy(showPrivacyPolicy);
+    return this;
+  }
+
+  @Override
+  public WebSelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+    this.setShowTermsOfUse(showTermsOfUse);
+    return this;
+  }
+
+  @Override
+  public WebSelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
+    this.setDefaultDashboard(defaultDashboard);
+    return this;
+  }
+
+  @Override
+  public WebSelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
+    this.setHomeDashboard(homeDashboard);
     return this;
   }
 
@@ -218,8 +218,8 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
-  public WebSelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
-    this.setCaptcha(captcha);
+  public WebSelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+    this.setCustomMenuId(customMenuId);
     return this;
   }
 
@@ -235,15 +235,15 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
       return false;
     }
     WebSelfRegistrationParams webSelfRegistrationParams = (WebSelfRegistrationParams) o;
-    return Objects.equals(this.privacyPolicy, webSelfRegistrationParams.privacyPolicy) &&
+    return Objects.equals(this.domainId, webSelfRegistrationParams.domainId) &&
+        Objects.equals(this.privacyPolicy, webSelfRegistrationParams.privacyPolicy) &&
         Objects.equals(this.termsOfUse, webSelfRegistrationParams.termsOfUse) &&
-        Objects.equals(this.domainId, webSelfRegistrationParams.domainId) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(privacyPolicy, termsOfUse, domainId, super.hashCode());
+    return Objects.hash(domainId, privacyPolicy, termsOfUse, super.hashCode());
   }
 
   @Override
@@ -251,9 +251,9 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
     StringBuilder sb = new StringBuilder();
     sb.append("class WebSelfRegistrationParams {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    domainId: ").append(toIndentedString(domainId)).append("\n");
     sb.append("    privacyPolicy: ").append(toIndentedString(privacyPolicy)).append("\n");
     sb.append("    termsOfUse: ").append(toIndentedString(termsOfUse)).append("\n");
-    sb.append("    domainId: ").append(toIndentedString(domainId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -301,6 +301,26 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
+    // add `enabled` to the URL query string
+    if (getEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
+    }
+
+    // add `title` to the URL query string
+    if (getTitle() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
+    }
+
+    // add `captcha` to the URL query string
+    if (getCaptcha() != null) {
+      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    }
+
     // add `permissions` to the URL query string
     if (getPermissions() != null) {
       for (int i = 0; i < getPermissions().size(); i++) {
@@ -309,36 +329,6 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
-    // add `showPrivacyPolicy` to the URL query string
-    if (getShowPrivacyPolicy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
-    }
-
-    // add `showTermsOfUse` to the URL query string
-    if (getShowTermsOfUse() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
-    }
-
-    // add `title` to the URL query string
-    if (getTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
-    }
-
-    // add `enabled` to the URL query string
-    if (getEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
-    }
-
-    // add `homeDashboard` to the URL query string
-    if (getHomeDashboard() != null) {
-      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
     // add `notificationRecipient` to the URL query string
@@ -356,19 +346,29 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
       }
     }
 
-    // add `defaultDashboard` to the URL query string
-    if (getDefaultDashboard() != null) {
-      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
-    }
-
     // add `customerTitlePrefix` to the URL query string
     if (getCustomerTitlePrefix() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitlePrefix%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitlePrefix()))));
     }
 
-    // add `customMenuId` to the URL query string
-    if (getCustomMenuId() != null) {
-      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    // add `showPrivacyPolicy` to the URL query string
+    if (getShowPrivacyPolicy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
+    }
+
+    // add `showTermsOfUse` to the URL query string
+    if (getShowTermsOfUse() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
+    }
+
+    // add `defaultDashboard` to the URL query string
+    if (getDefaultDashboard() != null) {
+      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
+    }
+
+    // add `homeDashboard` to the URL query string
+    if (getHomeDashboard() != null) {
+      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
     // add `customerGroupId` to the URL query string
@@ -376,9 +376,14 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
       joiner.add(getCustomerGroupId().toUrlQueryString(prefix + "customerGroupId" + suffix));
     }
 
-    // add `captcha` to the URL query string
-    if (getCaptcha() != null) {
-      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    // add `customMenuId` to the URL query string
+    if (getCustomMenuId() != null) {
+      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    }
+
+    // add `domainId` to the URL query string
+    if (getDomainId() != null) {
+      joiner.add(getDomainId().toUrlQueryString(prefix + "domainId" + suffix));
     }
 
     // add `privacyPolicy` to the URL query string
@@ -389,11 +394,6 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
     // add `termsOfUse` to the URL query string
     if (getTermsOfUse() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTermsOfUse()))));
-    }
-
-    // add `domainId` to the URL query string
-    if (getDomainId() != null) {
-      joiner.add(getDomainId().toUrlQueryString(prefix + "domainId" + suffix));
     }
 
     return joiner.toString();

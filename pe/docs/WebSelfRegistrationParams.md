@@ -9,9 +9,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **domainId** | **DomainId** | Domain name for self registration URL. Typically this matches the domain name from the Login White Labeling page. | |
 | **privacyPolicy** | **String** | Privacy policy text. Supports HTML. | [optional] |
 | **termsOfUse** | **String** | Terms of User text. Supports HTML. | [optional] |
-| **domainId** | **DomainId** | Domain name for self registration URL. Typically this matches the domain name from the Login White Labeling page. | |
 
 
 

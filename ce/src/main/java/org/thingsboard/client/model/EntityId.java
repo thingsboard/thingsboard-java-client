@@ -41,8 +41,8 @@ import org.thingsboard.client.ApiClient;
  * EntityId
  */
 @JsonPropertyOrder({
-  EntityId.JSON_PROPERTY_ID,
-  EntityId.JSON_PROPERTY_ENTITY_TYPE
+  EntityId.JSON_PROPERTY_ENTITY_TYPE,
+  EntityId.JSON_PROPERTY_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -90,40 +90,16 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class EntityId {
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
-  private UUID id;
-
   public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
   @javax.annotation.Nonnull
   private EntityType entityType;
 
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
+  private UUID id;
+
   public EntityId() { 
   }
-
-  public EntityId id(@javax.annotation.Nonnull UUID id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * ID of the entity, time-based UUID v1
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public UUID getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull UUID id) {
-    this.id = id;
-  }
-
 
   public EntityId entityType(@javax.annotation.Nonnull EntityType entityType) {
     this.entityType = entityType;
@@ -149,6 +125,30 @@ public class EntityId {
   }
 
 
+  public EntityId id(@javax.annotation.Nonnull UUID id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * ID of the entity, time-based UUID v1
+   * @return id
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public UUID getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setId(@javax.annotation.Nonnull UUID id) {
+    this.id = id;
+  }
+
+
   /**
    * Return true if this EntityId object is equal to o.
    */
@@ -161,21 +161,21 @@ public class EntityId {
       return false;
     }
     EntityId entityId = (EntityId) o;
-    return Objects.equals(this.id, entityId.id) &&
-        Objects.equals(this.entityType, entityId.entityType);
+    return Objects.equals(this.entityType, entityId.entityType) &&
+        Objects.equals(this.id, entityId.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, entityType);
+    return Objects.hash(entityType, id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityId {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -223,14 +223,14 @@ public class EntityId {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
-    }
-
     // add `entityType` to the URL query string
     if (getEntityType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
+    }
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     return joiner.toString();

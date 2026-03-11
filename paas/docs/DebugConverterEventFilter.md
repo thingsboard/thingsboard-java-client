@@ -15,8 +15,8 @@
 | **in** | **String** |  | [optional] |
 | **out** | **String** |  | [optional] |
 | **metadata** | **String** |  | [optional] |
-| **isError** | **Boolean** |  | [optional] |
 | **error** | **Boolean** |  | [optional] |
+| **isError** | **Boolean** |  | [optional] |
 
 
 

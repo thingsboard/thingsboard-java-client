@@ -50,20 +50,20 @@ import org.thingsboard.client.ApiClient;
  * SelfRegistrationParams
  */
 @JsonPropertyOrder({
-  SelfRegistrationParams.JSON_PROPERTY_PERMISSIONS,
   SelfRegistrationParams.JSON_PROPERTY_TYPE,
-  SelfRegistrationParams.JSON_PROPERTY_SHOW_PRIVACY_POLICY,
-  SelfRegistrationParams.JSON_PROPERTY_SHOW_TERMS_OF_USE,
-  SelfRegistrationParams.JSON_PROPERTY_TITLE,
   SelfRegistrationParams.JSON_PROPERTY_ENABLED,
-  SelfRegistrationParams.JSON_PROPERTY_HOME_DASHBOARD,
+  SelfRegistrationParams.JSON_PROPERTY_TITLE,
+  SelfRegistrationParams.JSON_PROPERTY_CAPTCHA,
+  SelfRegistrationParams.JSON_PROPERTY_PERMISSIONS,
   SelfRegistrationParams.JSON_PROPERTY_NOTIFICATION_RECIPIENT,
   SelfRegistrationParams.JSON_PROPERTY_SIGN_UP_FIELDS,
-  SelfRegistrationParams.JSON_PROPERTY_DEFAULT_DASHBOARD,
   SelfRegistrationParams.JSON_PROPERTY_CUSTOMER_TITLE_PREFIX,
-  SelfRegistrationParams.JSON_PROPERTY_CUSTOM_MENU_ID,
+  SelfRegistrationParams.JSON_PROPERTY_SHOW_PRIVACY_POLICY,
+  SelfRegistrationParams.JSON_PROPERTY_SHOW_TERMS_OF_USE,
+  SelfRegistrationParams.JSON_PROPERTY_DEFAULT_DASHBOARD,
+  SelfRegistrationParams.JSON_PROPERTY_HOME_DASHBOARD,
   SelfRegistrationParams.JSON_PROPERTY_CUSTOMER_GROUP_ID,
-  SelfRegistrationParams.JSON_PROPERTY_CAPTCHA
+  SelfRegistrationParams.JSON_PROPERTY_CUSTOM_MENU_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -77,33 +77,25 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class SelfRegistrationParams {
-  public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
-  @javax.annotation.Nullable
-  private List<GroupPermission> permissions = new ArrayList<>();
-
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nonnull
   private SelfRegistrationType type;
-
-  public static final String JSON_PROPERTY_SHOW_PRIVACY_POLICY = "showPrivacyPolicy";
-  @javax.annotation.Nullable
-  private Boolean showPrivacyPolicy;
-
-  public static final String JSON_PROPERTY_SHOW_TERMS_OF_USE = "showTermsOfUse";
-  @javax.annotation.Nullable
-  private Boolean showTermsOfUse;
-
-  public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
-  private String title;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   @javax.annotation.Nullable
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_HOME_DASHBOARD = "homeDashboard";
+  public static final String JSON_PROPERTY_TITLE = "title";
   @javax.annotation.Nullable
-  private HomeDashboardParams homeDashboard;
+  private String title;
+
+  public static final String JSON_PROPERTY_CAPTCHA = "captcha";
+  @javax.annotation.Nullable
+  private CaptchaParams captcha;
+
+  public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
+  @javax.annotation.Nullable
+  private List<GroupPermission> permissions = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTIFICATION_RECIPIENT = "notificationRecipient";
   @javax.annotation.Nullable
@@ -113,28 +105,132 @@ public class SelfRegistrationParams {
   @javax.annotation.Nullable
   private List<SignUpField> signUpFields = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_DEFAULT_DASHBOARD = "defaultDashboard";
-  @javax.annotation.Nullable
-  private DefaultDashboardParams defaultDashboard;
-
   public static final String JSON_PROPERTY_CUSTOMER_TITLE_PREFIX = "customerTitlePrefix";
   @javax.annotation.Nullable
   private String customerTitlePrefix;
 
-  public static final String JSON_PROPERTY_CUSTOM_MENU_ID = "customMenuId";
+  public static final String JSON_PROPERTY_SHOW_PRIVACY_POLICY = "showPrivacyPolicy";
   @javax.annotation.Nullable
-  private CustomMenuId customMenuId;
+  private Boolean showPrivacyPolicy;
+
+  public static final String JSON_PROPERTY_SHOW_TERMS_OF_USE = "showTermsOfUse";
+  @javax.annotation.Nullable
+  private Boolean showTermsOfUse;
+
+  public static final String JSON_PROPERTY_DEFAULT_DASHBOARD = "defaultDashboard";
+  @javax.annotation.Nullable
+  private DefaultDashboardParams defaultDashboard;
+
+  public static final String JSON_PROPERTY_HOME_DASHBOARD = "homeDashboard";
+  @javax.annotation.Nullable
+  private HomeDashboardParams homeDashboard;
 
   public static final String JSON_PROPERTY_CUSTOMER_GROUP_ID = "customerGroupId";
   @javax.annotation.Nullable
   private EntityGroupId customerGroupId;
 
-  public static final String JSON_PROPERTY_CAPTCHA = "captcha";
+  public static final String JSON_PROPERTY_CUSTOM_MENU_ID = "customMenuId";
   @javax.annotation.Nullable
-  private CaptchaParams captcha;
+  private CustomMenuId customMenuId;
 
   public SelfRegistrationParams() { 
   }
+
+  public SelfRegistrationParams type(@javax.annotation.Nonnull SelfRegistrationType type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public SelfRegistrationType getType() {
+    return type;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@javax.annotation.Nonnull SelfRegistrationType type) {
+    this.type = type;
+  }
+
+
+  public SelfRegistrationParams enabled(@javax.annotation.Nullable Boolean enabled) {
+    this.enabled = enabled;
+    return this;
+  }
+
+  /**
+   * Get enabled
+   * @return enabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getEnabled() {
+    return enabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+    this.enabled = enabled;
+  }
+
+
+  public SelfRegistrationParams title(@javax.annotation.Nullable String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * Get title
+   * @return title
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTitle() {
+    return title;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTitle(@javax.annotation.Nullable String title) {
+    this.title = title;
+  }
+
+
+  public SelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
+    this.captcha = captcha;
+    return this;
+  }
+
+  /**
+   * Get captcha
+   * @return captcha
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CaptchaParams getCaptcha() {
+    return captcha;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCaptcha(@javax.annotation.Nullable CaptchaParams captcha) {
+    this.captcha = captcha;
+  }
+
 
   public SelfRegistrationParams permissions(@javax.annotation.Nullable List<GroupPermission> permissions) {
     this.permissions = permissions;
@@ -165,150 +261,6 @@ public class SelfRegistrationParams {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPermissions(@javax.annotation.Nullable List<GroupPermission> permissions) {
     this.permissions = permissions;
-  }
-
-
-  public SelfRegistrationParams type(@javax.annotation.Nonnull SelfRegistrationType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public SelfRegistrationType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull SelfRegistrationType type) {
-    this.type = type;
-  }
-
-
-  public SelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.showPrivacyPolicy = showPrivacyPolicy;
-    return this;
-  }
-
-  /**
-   * Get showPrivacyPolicy
-   * @return showPrivacyPolicy
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getShowPrivacyPolicy() {
-    return showPrivacyPolicy;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.showPrivacyPolicy = showPrivacyPolicy;
-  }
-
-
-  public SelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.showTermsOfUse = showTermsOfUse;
-    return this;
-  }
-
-  /**
-   * Get showTermsOfUse
-   * @return showTermsOfUse
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getShowTermsOfUse() {
-    return showTermsOfUse;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.showTermsOfUse = showTermsOfUse;
-  }
-
-
-  public SelfRegistrationParams title(@javax.annotation.Nullable String title) {
-    this.title = title;
-    return this;
-  }
-
-  /**
-   * Get title
-   * @return title
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTitle() {
-    return title;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
-    this.title = title;
-  }
-
-
-  public SelfRegistrationParams enabled(@javax.annotation.Nullable Boolean enabled) {
-    this.enabled = enabled;
-    return this;
-  }
-
-  /**
-   * Get enabled
-   * @return enabled
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
-    this.enabled = enabled;
-  }
-
-
-  public SelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
-    this.homeDashboard = homeDashboard;
-    return this;
-  }
-
-  /**
-   * Get homeDashboard
-   * @return homeDashboard
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public HomeDashboardParams getHomeDashboard() {
-    return homeDashboard;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHomeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
-    this.homeDashboard = homeDashboard;
   }
 
 
@@ -368,30 +320,6 @@ public class SelfRegistrationParams {
   }
 
 
-  public SelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
-    this.defaultDashboard = defaultDashboard;
-    return this;
-  }
-
-  /**
-   * Get defaultDashboard
-   * @return defaultDashboard
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DefaultDashboardParams getDefaultDashboard() {
-    return defaultDashboard;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
-    this.defaultDashboard = defaultDashboard;
-  }
-
-
   public SelfRegistrationParams customerTitlePrefix(@javax.annotation.Nullable String customerTitlePrefix) {
     this.customerTitlePrefix = customerTitlePrefix;
     return this;
@@ -416,27 +344,99 @@ public class SelfRegistrationParams {
   }
 
 
-  public SelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
-    this.customMenuId = customMenuId;
+  public SelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+    this.showPrivacyPolicy = showPrivacyPolicy;
     return this;
   }
 
   /**
-   * Get customMenuId
-   * @return customMenuId
+   * Get showPrivacyPolicy
+   * @return showPrivacyPolicy
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
+  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public CustomMenuId getCustomMenuId() {
-    return customMenuId;
+  public Boolean getShowPrivacyPolicy() {
+    return showPrivacyPolicy;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
+  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
-    this.customMenuId = customMenuId;
+  public void setShowPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+    this.showPrivacyPolicy = showPrivacyPolicy;
+  }
+
+
+  public SelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+    this.showTermsOfUse = showTermsOfUse;
+    return this;
+  }
+
+  /**
+   * Get showTermsOfUse
+   * @return showTermsOfUse
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getShowTermsOfUse() {
+    return showTermsOfUse;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setShowTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+    this.showTermsOfUse = showTermsOfUse;
+  }
+
+
+  public SelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
+    this.defaultDashboard = defaultDashboard;
+    return this;
+  }
+
+  /**
+   * Get defaultDashboard
+   * @return defaultDashboard
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DefaultDashboardParams getDefaultDashboard() {
+    return defaultDashboard;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDefaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
+    this.defaultDashboard = defaultDashboard;
+  }
+
+
+  public SelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
+    this.homeDashboard = homeDashboard;
+    return this;
+  }
+
+  /**
+   * Get homeDashboard
+   * @return homeDashboard
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public HomeDashboardParams getHomeDashboard() {
+    return homeDashboard;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHomeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
+    this.homeDashboard = homeDashboard;
   }
 
 
@@ -464,27 +464,27 @@ public class SelfRegistrationParams {
   }
 
 
-  public SelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
-    this.captcha = captcha;
+  public SelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+    this.customMenuId = customMenuId;
     return this;
   }
 
   /**
-   * Get captcha
-   * @return captcha
+   * Get customMenuId
+   * @return customMenuId
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = false)
+  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public CaptchaParams getCaptcha() {
-    return captcha;
+  public CustomMenuId getCustomMenuId() {
+    return customMenuId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = false)
+  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCaptcha(@javax.annotation.Nullable CaptchaParams captcha) {
-    this.captcha = captcha;
+  public void setCustomMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+    this.customMenuId = customMenuId;
   }
 
 
@@ -500,45 +500,45 @@ public class SelfRegistrationParams {
       return false;
     }
     SelfRegistrationParams selfRegistrationParams = (SelfRegistrationParams) o;
-    return Objects.equals(this.permissions, selfRegistrationParams.permissions) &&
-        Objects.equals(this.type, selfRegistrationParams.type) &&
-        Objects.equals(this.showPrivacyPolicy, selfRegistrationParams.showPrivacyPolicy) &&
-        Objects.equals(this.showTermsOfUse, selfRegistrationParams.showTermsOfUse) &&
-        Objects.equals(this.title, selfRegistrationParams.title) &&
+    return Objects.equals(this.type, selfRegistrationParams.type) &&
         Objects.equals(this.enabled, selfRegistrationParams.enabled) &&
-        Objects.equals(this.homeDashboard, selfRegistrationParams.homeDashboard) &&
+        Objects.equals(this.title, selfRegistrationParams.title) &&
+        Objects.equals(this.captcha, selfRegistrationParams.captcha) &&
+        Objects.equals(this.permissions, selfRegistrationParams.permissions) &&
         Objects.equals(this.notificationRecipient, selfRegistrationParams.notificationRecipient) &&
         Objects.equals(this.signUpFields, selfRegistrationParams.signUpFields) &&
-        Objects.equals(this.defaultDashboard, selfRegistrationParams.defaultDashboard) &&
         Objects.equals(this.customerTitlePrefix, selfRegistrationParams.customerTitlePrefix) &&
-        Objects.equals(this.customMenuId, selfRegistrationParams.customMenuId) &&
+        Objects.equals(this.showPrivacyPolicy, selfRegistrationParams.showPrivacyPolicy) &&
+        Objects.equals(this.showTermsOfUse, selfRegistrationParams.showTermsOfUse) &&
+        Objects.equals(this.defaultDashboard, selfRegistrationParams.defaultDashboard) &&
+        Objects.equals(this.homeDashboard, selfRegistrationParams.homeDashboard) &&
         Objects.equals(this.customerGroupId, selfRegistrationParams.customerGroupId) &&
-        Objects.equals(this.captcha, selfRegistrationParams.captcha);
+        Objects.equals(this.customMenuId, selfRegistrationParams.customMenuId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(permissions, type, showPrivacyPolicy, showTermsOfUse, title, enabled, homeDashboard, notificationRecipient, signUpFields, defaultDashboard, customerTitlePrefix, customMenuId, customerGroupId, captcha);
+    return Objects.hash(type, enabled, title, captcha, permissions, notificationRecipient, signUpFields, customerTitlePrefix, showPrivacyPolicy, showTermsOfUse, defaultDashboard, homeDashboard, customerGroupId, customMenuId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SelfRegistrationParams {\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    showPrivacyPolicy: ").append(toIndentedString(showPrivacyPolicy)).append("\n");
-    sb.append("    showTermsOfUse: ").append(toIndentedString(showTermsOfUse)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    homeDashboard: ").append(toIndentedString(homeDashboard)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    captcha: ").append(toIndentedString(captcha)).append("\n");
+    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    notificationRecipient: ").append(toIndentedString(notificationRecipient)).append("\n");
     sb.append("    signUpFields: ").append(toIndentedString(signUpFields)).append("\n");
-    sb.append("    defaultDashboard: ").append(toIndentedString(defaultDashboard)).append("\n");
     sb.append("    customerTitlePrefix: ").append(toIndentedString(customerTitlePrefix)).append("\n");
-    sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
+    sb.append("    showPrivacyPolicy: ").append(toIndentedString(showPrivacyPolicy)).append("\n");
+    sb.append("    showTermsOfUse: ").append(toIndentedString(showTermsOfUse)).append("\n");
+    sb.append("    defaultDashboard: ").append(toIndentedString(defaultDashboard)).append("\n");
+    sb.append("    homeDashboard: ").append(toIndentedString(homeDashboard)).append("\n");
     sb.append("    customerGroupId: ").append(toIndentedString(customerGroupId)).append("\n");
-    sb.append("    captcha: ").append(toIndentedString(captcha)).append("\n");
+    sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -586,6 +586,26 @@ public class SelfRegistrationParams {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
+    // add `enabled` to the URL query string
+    if (getEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
+    }
+
+    // add `title` to the URL query string
+    if (getTitle() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
+    }
+
+    // add `captcha` to the URL query string
+    if (getCaptcha() != null) {
+      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    }
+
     // add `permissions` to the URL query string
     if (getPermissions() != null) {
       for (int i = 0; i < getPermissions().size(); i++) {
@@ -594,36 +614,6 @@ public class SelfRegistrationParams {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
-    // add `showPrivacyPolicy` to the URL query string
-    if (getShowPrivacyPolicy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
-    }
-
-    // add `showTermsOfUse` to the URL query string
-    if (getShowTermsOfUse() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
-    }
-
-    // add `title` to the URL query string
-    if (getTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
-    }
-
-    // add `enabled` to the URL query string
-    if (getEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
-    }
-
-    // add `homeDashboard` to the URL query string
-    if (getHomeDashboard() != null) {
-      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
     // add `notificationRecipient` to the URL query string
@@ -641,19 +631,29 @@ public class SelfRegistrationParams {
       }
     }
 
-    // add `defaultDashboard` to the URL query string
-    if (getDefaultDashboard() != null) {
-      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
-    }
-
     // add `customerTitlePrefix` to the URL query string
     if (getCustomerTitlePrefix() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitlePrefix%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitlePrefix()))));
     }
 
-    // add `customMenuId` to the URL query string
-    if (getCustomMenuId() != null) {
-      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    // add `showPrivacyPolicy` to the URL query string
+    if (getShowPrivacyPolicy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
+    }
+
+    // add `showTermsOfUse` to the URL query string
+    if (getShowTermsOfUse() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
+    }
+
+    // add `defaultDashboard` to the URL query string
+    if (getDefaultDashboard() != null) {
+      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
+    }
+
+    // add `homeDashboard` to the URL query string
+    if (getHomeDashboard() != null) {
+      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
     // add `customerGroupId` to the URL query string
@@ -661,9 +661,9 @@ public class SelfRegistrationParams {
       joiner.add(getCustomerGroupId().toUrlQueryString(prefix + "customerGroupId" + suffix));
     }
 
-    // add `captcha` to the URL query string
-    if (getCaptcha() != null) {
-      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    // add `customMenuId` to the URL query string
+    if (getCustomMenuId() != null) {
+      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
     }
 
     return joiner.toString();

@@ -48,7 +48,6 @@ import org.thingsboard.client.ApiClient;
   HomeMenuItem.JSON_PROPERTY_ID,
   HomeMenuItem.JSON_PROPERTY_NAME,
   HomeMenuItem.JSON_PROPERTY_ICON,
-  HomeMenuItem.JSON_PROPERTY_VISIBLE,
   HomeMenuItem.JSON_PROPERTY_PAGES,
   HomeMenuItem.JSON_PROPERTY_HOME_TYPE,
   HomeMenuItem.JSON_PROPERTY_DASHBOARD_ID,
@@ -73,10 +72,6 @@ public class HomeMenuItem extends MenuItem {
   public static final String JSON_PROPERTY_ICON = "icon";
   @javax.annotation.Nullable
   private String icon;
-
-  public static final String JSON_PROPERTY_VISIBLE = "visible";
-  @javax.annotation.Nullable
-  private Boolean visible;
 
   public static final String JSON_PROPERTY_PAGES = "pages";
   @javax.annotation.Nullable
@@ -164,30 +159,6 @@ public class HomeMenuItem extends MenuItem {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIcon(@javax.annotation.Nullable String icon) {
     this.icon = icon;
-  }
-
-
-  public HomeMenuItem visible(@javax.annotation.Nullable Boolean visible) {
-    this.visible = visible;
-    return this;
-  }
-
-  /**
-   * Mark if menu item is visible for user
-   * @return visible
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getVisible() {
-    return visible;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVisible(@javax.annotation.Nullable Boolean visible) {
-    this.visible = visible;
   }
 
 
@@ -301,6 +272,12 @@ public class HomeMenuItem extends MenuItem {
     return this;
   }
 
+  @Override
+  public HomeMenuItem visible(@javax.annotation.Nullable Boolean visible) {
+    this.setVisible(visible);
+    return this;
+  }
+
   /**
    * Return true if this HomeMenuItem object is equal to o.
    */
@@ -316,7 +293,6 @@ public class HomeMenuItem extends MenuItem {
     return Objects.equals(this.id, homeMenuItem.id) &&
         Objects.equals(this.name, homeMenuItem.name) &&
         Objects.equals(this.icon, homeMenuItem.icon) &&
-        Objects.equals(this.visible, homeMenuItem.visible) &&
         Objects.equals(this.pages, homeMenuItem.pages) &&
         Objects.equals(this.homeType, homeMenuItem.homeType) &&
         Objects.equals(this.dashboardId, homeMenuItem.dashboardId) &&
@@ -326,7 +302,7 @@ public class HomeMenuItem extends MenuItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, icon, visible, pages, homeType, dashboardId, hideDashboardToolbar, super.hashCode());
+    return Objects.hash(id, name, icon, pages, homeType, dashboardId, hideDashboardToolbar, super.hashCode());
   }
 
   @Override
@@ -337,7 +313,6 @@ public class HomeMenuItem extends MenuItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
-    sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("    homeType: ").append(toIndentedString(homeType)).append("\n");
     sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");

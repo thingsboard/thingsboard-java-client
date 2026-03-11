@@ -35,24 +35,32 @@ import org.thingsboard.client.ApiClient;
  * OtaPackageData
  */
 @JsonPropertyOrder({
-  OtaPackageData.JSON_PROPERTY_SHORT,
   OtaPackageData.JSON_PROPERTY_CHAR,
+  OtaPackageData.JSON_PROPERTY_DIRECT,
+  OtaPackageData.JSON_PROPERTY_DOUBLE,
+  OtaPackageData.JSON_PROPERTY_FLOAT,
   OtaPackageData.JSON_PROPERTY_INT,
   OtaPackageData.JSON_PROPERTY_LONG,
-  OtaPackageData.JSON_PROPERTY_FLOAT,
-  OtaPackageData.JSON_PROPERTY_DOUBLE,
-  OtaPackageData.JSON_PROPERTY_DIRECT,
-  OtaPackageData.JSON_PROPERTY_READ_ONLY
+  OtaPackageData.JSON_PROPERTY_READ_ONLY,
+  OtaPackageData.JSON_PROPERTY_SHORT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OtaPackageData {
-  public static final String JSON_PROPERTY_SHORT = "short";
-  @javax.annotation.Nullable
-  private Integer _short;
-
   public static final String JSON_PROPERTY_CHAR = "char";
   @javax.annotation.Nullable
   private String _char;
+
+  public static final String JSON_PROPERTY_DIRECT = "direct";
+  @javax.annotation.Nullable
+  private Boolean direct;
+
+  public static final String JSON_PROPERTY_DOUBLE = "double";
+  @javax.annotation.Nullable
+  private Double _double;
+
+  public static final String JSON_PROPERTY_FLOAT = "float";
+  @javax.annotation.Nullable
+  private Float _float;
 
   public static final String JSON_PROPERTY_INT = "int";
   @javax.annotation.Nullable
@@ -62,48 +70,16 @@ public class OtaPackageData {
   @javax.annotation.Nullable
   private Long _long;
 
-  public static final String JSON_PROPERTY_FLOAT = "float";
-  @javax.annotation.Nullable
-  private Float _float;
-
-  public static final String JSON_PROPERTY_DOUBLE = "double";
-  @javax.annotation.Nullable
-  private Double _double;
-
-  public static final String JSON_PROPERTY_DIRECT = "direct";
-  @javax.annotation.Nullable
-  private Boolean direct;
-
   public static final String JSON_PROPERTY_READ_ONLY = "readOnly";
   @javax.annotation.Nullable
   private Boolean readOnly;
 
+  public static final String JSON_PROPERTY_SHORT = "short";
+  @javax.annotation.Nullable
+  private Integer _short;
+
   public OtaPackageData() { 
   }
-
-  public OtaPackageData _short(@javax.annotation.Nullable Integer _short) {
-    this._short = _short;
-    return this;
-  }
-
-  /**
-   * Get _short
-   * @return _short
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SHORT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getShort() {
-    return _short;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SHORT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShort(@javax.annotation.Nullable Integer _short) {
-    this._short = _short;
-  }
-
 
   public OtaPackageData _char(@javax.annotation.Nullable String _char) {
     this._char = _char;
@@ -126,6 +102,78 @@ public class OtaPackageData {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChar(@javax.annotation.Nullable String _char) {
     this._char = _char;
+  }
+
+
+  public OtaPackageData direct(@javax.annotation.Nullable Boolean direct) {
+    this.direct = direct;
+    return this;
+  }
+
+  /**
+   * Get direct
+   * @return direct
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DIRECT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getDirect() {
+    return direct;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DIRECT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDirect(@javax.annotation.Nullable Boolean direct) {
+    this.direct = direct;
+  }
+
+
+  public OtaPackageData _double(@javax.annotation.Nullable Double _double) {
+    this._double = _double;
+    return this;
+  }
+
+  /**
+   * Get _double
+   * @return _double
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DOUBLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getDouble() {
+    return _double;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DOUBLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDouble(@javax.annotation.Nullable Double _double) {
+    this._double = _double;
+  }
+
+
+  public OtaPackageData _float(@javax.annotation.Nullable Float _float) {
+    this._float = _float;
+    return this;
+  }
+
+  /**
+   * Get _float
+   * @return _float
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_FLOAT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Float getFloat() {
+    return _float;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_FLOAT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFloat(@javax.annotation.Nullable Float _float) {
+    this._float = _float;
   }
 
 
@@ -177,78 +225,6 @@ public class OtaPackageData {
   }
 
 
-  public OtaPackageData _float(@javax.annotation.Nullable Float _float) {
-    this._float = _float;
-    return this;
-  }
-
-  /**
-   * Get _float
-   * @return _float
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_FLOAT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Float getFloat() {
-    return _float;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_FLOAT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFloat(@javax.annotation.Nullable Float _float) {
-    this._float = _float;
-  }
-
-
-  public OtaPackageData _double(@javax.annotation.Nullable Double _double) {
-    this._double = _double;
-    return this;
-  }
-
-  /**
-   * Get _double
-   * @return _double
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DOUBLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getDouble() {
-    return _double;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DOUBLE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDouble(@javax.annotation.Nullable Double _double) {
-    this._double = _double;
-  }
-
-
-  public OtaPackageData direct(@javax.annotation.Nullable Boolean direct) {
-    this.direct = direct;
-    return this;
-  }
-
-  /**
-   * Get direct
-   * @return direct
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DIRECT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getDirect() {
-    return direct;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DIRECT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDirect(@javax.annotation.Nullable Boolean direct) {
-    this.direct = direct;
-  }
-
-
   public OtaPackageData readOnly(@javax.annotation.Nullable Boolean readOnly) {
     this.readOnly = readOnly;
     return this;
@@ -273,6 +249,30 @@ public class OtaPackageData {
   }
 
 
+  public OtaPackageData _short(@javax.annotation.Nullable Integer _short) {
+    this._short = _short;
+    return this;
+  }
+
+  /**
+   * Get _short
+   * @return _short
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SHORT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getShort() {
+    return _short;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SHORT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setShort(@javax.annotation.Nullable Integer _short) {
+    this._short = _short;
+  }
+
+
   /**
    * Return true if this OtaPackage_data object is equal to o.
    */
@@ -285,33 +285,33 @@ public class OtaPackageData {
       return false;
     }
     OtaPackageData otaPackageData = (OtaPackageData) o;
-    return Objects.equals(this._short, otaPackageData._short) &&
-        Objects.equals(this._char, otaPackageData._char) &&
+    return Objects.equals(this._char, otaPackageData._char) &&
+        Objects.equals(this.direct, otaPackageData.direct) &&
+        Objects.equals(this._double, otaPackageData._double) &&
+        Objects.equals(this._float, otaPackageData._float) &&
         Objects.equals(this._int, otaPackageData._int) &&
         Objects.equals(this._long, otaPackageData._long) &&
-        Objects.equals(this._float, otaPackageData._float) &&
-        Objects.equals(this._double, otaPackageData._double) &&
-        Objects.equals(this.direct, otaPackageData.direct) &&
-        Objects.equals(this.readOnly, otaPackageData.readOnly);
+        Objects.equals(this.readOnly, otaPackageData.readOnly) &&
+        Objects.equals(this._short, otaPackageData._short);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_short, _char, _int, _long, _float, _double, direct, readOnly);
+    return Objects.hash(_char, direct, _double, _float, _int, _long, readOnly, _short);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OtaPackageData {\n");
-    sb.append("    _short: ").append(toIndentedString(_short)).append("\n");
     sb.append("    _char: ").append(toIndentedString(_char)).append("\n");
+    sb.append("    direct: ").append(toIndentedString(direct)).append("\n");
+    sb.append("    _double: ").append(toIndentedString(_double)).append("\n");
+    sb.append("    _float: ").append(toIndentedString(_float)).append("\n");
     sb.append("    _int: ").append(toIndentedString(_int)).append("\n");
     sb.append("    _long: ").append(toIndentedString(_long)).append("\n");
-    sb.append("    _float: ").append(toIndentedString(_float)).append("\n");
-    sb.append("    _double: ").append(toIndentedString(_double)).append("\n");
-    sb.append("    direct: ").append(toIndentedString(direct)).append("\n");
     sb.append("    readOnly: ").append(toIndentedString(readOnly)).append("\n");
+    sb.append("    _short: ").append(toIndentedString(_short)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -359,14 +359,24 @@ public class OtaPackageData {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `short` to the URL query string
-    if (getShort() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshort%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShort()))));
-    }
-
     // add `char` to the URL query string
     if (getChar() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%schar%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getChar()))));
+    }
+
+    // add `direct` to the URL query string
+    if (getDirect() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdirect%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDirect()))));
+    }
+
+    // add `double` to the URL query string
+    if (getDouble() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdouble%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDouble()))));
+    }
+
+    // add `float` to the URL query string
+    if (getFloat() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sfloat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFloat()))));
     }
 
     // add `int` to the URL query string
@@ -379,24 +389,14 @@ public class OtaPackageData {
       joiner.add(String.format(java.util.Locale.ROOT, "%slong%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLong()))));
     }
 
-    // add `float` to the URL query string
-    if (getFloat() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sfloat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFloat()))));
-    }
-
-    // add `double` to the URL query string
-    if (getDouble() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdouble%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDouble()))));
-    }
-
-    // add `direct` to the URL query string
-    if (getDirect() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdirect%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDirect()))));
-    }
-
     // add `readOnly` to the URL query string
     if (getReadOnly() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sreadOnly%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getReadOnly()))));
+    }
+
+    // add `short` to the URL query string
+    if (getShort() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshort%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShort()))));
     }
 
     return joiner.toString();

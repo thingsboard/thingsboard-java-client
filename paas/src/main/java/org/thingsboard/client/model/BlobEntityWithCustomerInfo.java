@@ -145,8 +145,7 @@ public class BlobEntityWithCustomerInfo {
     @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_TYPE) String type, 
     @JsonProperty(JSON_PROPERTY_CONTENT_TYPE) ContentTypeEnum contentType, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_IS_PUBLIC) Boolean customerIsPublic, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_CUSTOMER_IS_PUBLIC) Boolean customerIsPublic
   ) {
   this();
     this.createdTime = createdTime;
@@ -156,7 +155,6 @@ public class BlobEntityWithCustomerInfo {
     this.type = type;
     this.contentType = contentType;
     this.customerIsPublic = customerIsPublic;
-    this.ownerId = ownerId;
   }
 
   public BlobEntityWithCustomerInfo id(@javax.annotation.Nullable BlobEntityId id) {
@@ -305,6 +303,11 @@ public class BlobEntityWithCustomerInfo {
 
 
 
+  public BlobEntityWithCustomerInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -317,6 +320,11 @@ public class BlobEntityWithCustomerInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   public BlobEntityWithCustomerInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {

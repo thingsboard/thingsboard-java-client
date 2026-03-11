@@ -53,7 +53,7 @@ public class QrCodeSettingsId {
   }
 
   /**
-   * ID of the entity, time-based UUID v1
+   * string
    * @return id
    */
   @javax.annotation.Nonnull

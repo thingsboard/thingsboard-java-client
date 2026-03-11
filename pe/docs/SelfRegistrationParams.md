@@ -7,20 +7,20 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **permissions** | **List\<GroupPermission\>** |  | [optional] |
 | **type** | **SelfRegistrationType** |  | |
-| **showPrivacyPolicy** | **Boolean** |  | [optional] |
-| **showTermsOfUse** | **Boolean** |  | [optional] |
-| **title** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
-| **homeDashboard** | **HomeDashboardParams** |  | [optional] |
+| **title** | **String** |  | [optional] |
+| **captcha** | **CaptchaParams** |  | [optional] |
+| **permissions** | **List\<GroupPermission\>** |  | [optional] |
 | **notificationRecipient** | **NotificationTargetId** |  | [optional] |
 | **signUpFields** | **List\<SignUpField\>** |  | [optional] |
-| **defaultDashboard** | **DefaultDashboardParams** |  | [optional] |
 | **customerTitlePrefix** | **String** |  | [optional] |
-| **customMenuId** | **CustomMenuId** |  | [optional] |
+| **showPrivacyPolicy** | **Boolean** |  | [optional] |
+| **showTermsOfUse** | **Boolean** |  | [optional] |
+| **defaultDashboard** | **DefaultDashboardParams** |  | [optional] |
+| **homeDashboard** | **HomeDashboardParams** |  | [optional] |
 | **customerGroupId** | **EntityGroupId** |  | [optional] |
-| **captcha** | **CaptchaParams** |  | [optional] |
+| **customMenuId** | **CustomMenuId** |  | [optional] |
 
 
 

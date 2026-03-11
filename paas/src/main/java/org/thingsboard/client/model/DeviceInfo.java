@@ -142,8 +142,7 @@ public class DeviceInfo {
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
-    @JsonProperty(JSON_PROPERTY_ACTIVE) Boolean active, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_ACTIVE) Boolean active
   ) {
   this();
     this.createdTime = createdTime;
@@ -151,7 +150,6 @@ public class DeviceInfo {
     this.customerId = customerId;
     this.ownerName = ownerName;
     this.active = active;
-    this.ownerId = ownerId;
   }
 
   public DeviceInfo id(@javax.annotation.Nullable DeviceId id) {
@@ -472,6 +470,11 @@ public class DeviceInfo {
   }
 
 
+  public DeviceInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -484,6 +487,11 @@ public class DeviceInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   public DeviceInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {

@@ -53,8 +53,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   MobileSelfRegistrationParams.JSON_PROPERTY_PRIVACY_POLICY,
-  MobileSelfRegistrationParams.JSON_PROPERTY_TERMS_OF_USE,
-  MobileSelfRegistrationParams.JSON_PROPERTY_REDIRECT
+  MobileSelfRegistrationParams.JSON_PROPERTY_REDIRECT,
+  MobileSelfRegistrationParams.JSON_PROPERTY_TERMS_OF_USE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -68,13 +68,13 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   @javax.annotation.Nullable
   private String privacyPolicy;
 
-  public static final String JSON_PROPERTY_TERMS_OF_USE = "termsOfUse";
-  @javax.annotation.Nullable
-  private String termsOfUse;
-
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
   @javax.annotation.Nonnull
   private MobileRedirectParams redirect;
+
+  public static final String JSON_PROPERTY_TERMS_OF_USE = "termsOfUse";
+  @javax.annotation.Nullable
+  private String termsOfUse;
 
   public MobileSelfRegistrationParams() { 
   }
@@ -103,30 +103,6 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
 
-  public MobileSelfRegistrationParams termsOfUse(@javax.annotation.Nullable String termsOfUse) {
-    this.termsOfUse = termsOfUse;
-    return this;
-  }
-
-  /**
-   * Terms of User text. Supports HTML.
-   * @return termsOfUse
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTermsOfUse() {
-    return termsOfUse;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTermsOfUse(@javax.annotation.Nullable String termsOfUse) {
-    this.termsOfUse = termsOfUse;
-  }
-
-
   public MobileSelfRegistrationParams redirect(@javax.annotation.Nonnull MobileRedirectParams redirect) {
     this.redirect = redirect;
     return this;
@@ -151,21 +127,33 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
 
+  public MobileSelfRegistrationParams termsOfUse(@javax.annotation.Nullable String termsOfUse) {
+    this.termsOfUse = termsOfUse;
+    return this;
+  }
+
+  /**
+   * Terms of User text. Supports HTML.
+   * @return termsOfUse
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTermsOfUse() {
+    return termsOfUse;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTermsOfUse(@javax.annotation.Nullable String termsOfUse) {
+    this.termsOfUse = termsOfUse;
+  }
+
+
   @Override
   public MobileSelfRegistrationParams type(@javax.annotation.Nonnull SelfRegistrationType type) {
     this.setType(type);
-    return this;
-  }
-
-  @Override
-  public MobileSelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.setShowPrivacyPolicy(showPrivacyPolicy);
-    return this;
-  }
-
-  @Override
-  public MobileSelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.setShowTermsOfUse(showTermsOfUse);
     return this;
   }
 
@@ -176,8 +164,8 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
-  public MobileSelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
-    this.setHomeDashboard(homeDashboard);
+  public MobileSelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
+    this.setCaptcha(captcha);
     return this;
   }
 
@@ -194,20 +182,32 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
-  public MobileSelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
-    this.setDefaultDashboard(defaultDashboard);
-    return this;
-  }
-
-  @Override
   public MobileSelfRegistrationParams customerTitlePrefix(@javax.annotation.Nullable String customerTitlePrefix) {
     this.setCustomerTitlePrefix(customerTitlePrefix);
     return this;
   }
 
   @Override
-  public MobileSelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
-    this.setCustomMenuId(customMenuId);
+  public MobileSelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+    this.setShowPrivacyPolicy(showPrivacyPolicy);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+    this.setShowTermsOfUse(showTermsOfUse);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
+    this.setDefaultDashboard(defaultDashboard);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
+    this.setHomeDashboard(homeDashboard);
     return this;
   }
 
@@ -218,8 +218,8 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
-  public MobileSelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
-    this.setCaptcha(captcha);
+  public MobileSelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+    this.setCustomMenuId(customMenuId);
     return this;
   }
 
@@ -236,14 +236,14 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
     }
     MobileSelfRegistrationParams mobileSelfRegistrationParams = (MobileSelfRegistrationParams) o;
     return Objects.equals(this.privacyPolicy, mobileSelfRegistrationParams.privacyPolicy) &&
-        Objects.equals(this.termsOfUse, mobileSelfRegistrationParams.termsOfUse) &&
         Objects.equals(this.redirect, mobileSelfRegistrationParams.redirect) &&
+        Objects.equals(this.termsOfUse, mobileSelfRegistrationParams.termsOfUse) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(privacyPolicy, termsOfUse, redirect, super.hashCode());
+    return Objects.hash(privacyPolicy, redirect, termsOfUse, super.hashCode());
   }
 
   @Override
@@ -252,8 +252,8 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
     sb.append("class MobileSelfRegistrationParams {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    privacyPolicy: ").append(toIndentedString(privacyPolicy)).append("\n");
-    sb.append("    termsOfUse: ").append(toIndentedString(termsOfUse)).append("\n");
     sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
+    sb.append("    termsOfUse: ").append(toIndentedString(termsOfUse)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -301,6 +301,26 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
+    // add `enabled` to the URL query string
+    if (getEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
+    }
+
+    // add `title` to the URL query string
+    if (getTitle() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
+    }
+
+    // add `captcha` to the URL query string
+    if (getCaptcha() != null) {
+      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    }
+
     // add `permissions` to the URL query string
     if (getPermissions() != null) {
       for (int i = 0; i < getPermissions().size(); i++) {
@@ -309,36 +329,6 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
-    // add `showPrivacyPolicy` to the URL query string
-    if (getShowPrivacyPolicy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
-    }
-
-    // add `showTermsOfUse` to the URL query string
-    if (getShowTermsOfUse() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
-    }
-
-    // add `title` to the URL query string
-    if (getTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
-    }
-
-    // add `enabled` to the URL query string
-    if (getEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
-    }
-
-    // add `homeDashboard` to the URL query string
-    if (getHomeDashboard() != null) {
-      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
     // add `notificationRecipient` to the URL query string
@@ -356,19 +346,29 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       }
     }
 
-    // add `defaultDashboard` to the URL query string
-    if (getDefaultDashboard() != null) {
-      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
-    }
-
     // add `customerTitlePrefix` to the URL query string
     if (getCustomerTitlePrefix() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitlePrefix%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitlePrefix()))));
     }
 
-    // add `customMenuId` to the URL query string
-    if (getCustomMenuId() != null) {
-      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    // add `showPrivacyPolicy` to the URL query string
+    if (getShowPrivacyPolicy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
+    }
+
+    // add `showTermsOfUse` to the URL query string
+    if (getShowTermsOfUse() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
+    }
+
+    // add `defaultDashboard` to the URL query string
+    if (getDefaultDashboard() != null) {
+      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
+    }
+
+    // add `homeDashboard` to the URL query string
+    if (getHomeDashboard() != null) {
+      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
     // add `customerGroupId` to the URL query string
@@ -376,9 +376,9 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       joiner.add(getCustomerGroupId().toUrlQueryString(prefix + "customerGroupId" + suffix));
     }
 
-    // add `captcha` to the URL query string
-    if (getCaptcha() != null) {
-      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    // add `customMenuId` to the URL query string
+    if (getCustomMenuId() != null) {
+      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
     }
 
     // add `privacyPolicy` to the URL query string
@@ -386,14 +386,14 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       joiner.add(String.format(java.util.Locale.ROOT, "%sprivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPrivacyPolicy()))));
     }
 
-    // add `termsOfUse` to the URL query string
-    if (getTermsOfUse() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTermsOfUse()))));
-    }
-
     // add `redirect` to the URL query string
     if (getRedirect() != null) {
       joiner.add(getRedirect().toUrlQueryString(prefix + "redirect" + suffix));
+    }
+
+    // add `termsOfUse` to the URL query string
+    if (getTermsOfUse() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTermsOfUse()))));
     }
 
     return joiner.toString();

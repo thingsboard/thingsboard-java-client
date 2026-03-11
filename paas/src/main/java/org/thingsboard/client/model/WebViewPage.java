@@ -42,7 +42,6 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   WebViewPage.JSON_PROPERTY_LABEL,
-  WebViewPage.JSON_PROPERTY_VISIBLE,
   WebViewPage.JSON_PROPERTY_ICON,
   WebViewPage.JSON_PROPERTY_URL
 })
@@ -57,10 +56,6 @@ public class WebViewPage extends MobilePage {
   public static final String JSON_PROPERTY_LABEL = "label";
   @javax.annotation.Nullable
   private String label;
-
-  public static final String JSON_PROPERTY_VISIBLE = "visible";
-  @javax.annotation.Nonnull
-  private Boolean visible;
 
   public static final String JSON_PROPERTY_ICON = "icon";
   @javax.annotation.Nullable
@@ -94,30 +89,6 @@ public class WebViewPage extends MobilePage {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLabel(@javax.annotation.Nullable String label) {
     this.label = label;
-  }
-
-
-  public WebViewPage visible(@javax.annotation.Nonnull Boolean visible) {
-    this.visible = visible;
-    return this;
-  }
-
-  /**
-   * Indicates if page is visible
-   * @return visible
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Boolean getVisible() {
-    return visible;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVisible(@javax.annotation.Nonnull Boolean visible) {
-    this.visible = visible;
   }
 
 
@@ -175,6 +146,12 @@ public class WebViewPage extends MobilePage {
     return this;
   }
 
+  @Override
+  public WebViewPage visible(@javax.annotation.Nullable Boolean visible) {
+    this.setVisible(visible);
+    return this;
+  }
+
   /**
    * Return true if this WebViewPage object is equal to o.
    */
@@ -188,7 +165,6 @@ public class WebViewPage extends MobilePage {
     }
     WebViewPage webViewPage = (WebViewPage) o;
     return Objects.equals(this.label, webViewPage.label) &&
-        Objects.equals(this.visible, webViewPage.visible) &&
         Objects.equals(this.icon, webViewPage.icon) &&
         Objects.equals(this.url, webViewPage.url) &&
         super.equals(o);
@@ -196,7 +172,7 @@ public class WebViewPage extends MobilePage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, visible, icon, url, super.hashCode());
+    return Objects.hash(label, icon, url, super.hashCode());
   }
 
   @Override
@@ -205,7 +181,6 @@ public class WebViewPage extends MobilePage {
     sb.append("class WebViewPage {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
-    sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");

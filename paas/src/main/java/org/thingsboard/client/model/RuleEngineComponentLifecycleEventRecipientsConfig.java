@@ -94,7 +94,7 @@ public class RuleEngineComponentLifecycleEventRecipientsConfig extends Notificat
 
 
   @Override
-  public RuleEngineComponentLifecycleEventRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public RuleEngineComponentLifecycleEventRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

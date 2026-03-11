@@ -10,8 +10,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **privacyPolicy** | **String** | Privacy policy text. Supports HTML. | [optional] |
-| **termsOfUse** | **String** | Terms of User text. Supports HTML. | [optional] |
 | **redirect** | **MobileRedirectParams** | Mobile redirect params. | |
+| **termsOfUse** | **String** | Terms of User text. Supports HTML. | [optional] |
 
 
 

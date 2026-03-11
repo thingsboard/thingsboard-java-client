@@ -18,7 +18,7 @@
 | **templateInfo** | **EntityInfo** |  | [optional] |
 | **customerTitle** | **String** |  | [optional] |
 | **userName** | **String** |  | [optional] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
 
 
 

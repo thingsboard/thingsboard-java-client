@@ -8,11 +8,11 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **format** | **TbReportFormat** | Report format | |
-| **entityAliases** | **List\<EntityAlias\>** |  | [optional] |
 | **filters** | **List\<Filter\>** |  | [optional] |
 | **namePattern** | **String** |  | [optional] |
 | **components** | **List\<ReportComponent\>** |  | [optional] |
 | **timeDataPattern** | **String** |  | [optional] |
+| **entityAliases** | **List\<EntityAlias\>** |  | [optional] |
 
 
 

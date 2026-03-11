@@ -10,10 +10,10 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **arguments** | **Map\<String, Argument\>** |  | |
-| **metrics** | **Map\<String, AggMetric\>** |  | |
 | **interval** | **AggInterval** |  | |
-| **watermark** | **Watermark** |  | [optional] |
+| **metrics** | **Map\<String, AggMetric\>** |  | |
 | **produceIntermediateResult** | **Boolean** |  | [optional] |
+| **watermark** | **Watermark** |  | [optional] |
 
 
 

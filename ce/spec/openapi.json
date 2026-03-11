@@ -82806,7 +82806,7 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "description": "ID of the entity, time-based UUID v1",
+            "description": "string",
             "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
         },
@@ -85109,9 +85109,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "string",
+            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "AuthenticationProtocol": {
         "type": "string",
@@ -85770,12 +85775,12 @@
                   "x + y": 32
                 }
               },
+              "error": {
+                "type": "boolean"
+              },
               "isError": {
                 "type": "boolean",
                 "writeOnly": true
-              },
-              "error": {
-                "type": "boolean"
               }
             }
           }
@@ -86176,9 +86181,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "string",
+            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "ComponentLifecycleEvent": {
         "type": "string",
@@ -86446,22 +86456,6 @@
       "Dashboard": {
         "type": "object",
         "properties": {
-          "id": {
-            "$ref": "#/components/schemas/DashboardId",
-            "description": "JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard."
-          },
-          "createdTime": {
-            "type": "integer",
-            "format": "int64",
-            "description": "Timestamp of the dashboard creation, in milliseconds",
-            "example": 1609459200000,
-            "readOnly": true
-          },
-          "tenantId": {
-            "$ref": "#/components/schemas/TenantId",
-            "description": "JSON object with Tenant Id. Tenant Id of the dashboard can't be changed.",
-            "readOnly": true
-          },
           "title": {
             "type": "string",
             "description": "Title of the dashboard."
@@ -86470,15 +86464,6 @@
             "type": "string",
             "description": "Thumbnail picture for rendering of the dashboards in a grid view on mobile devices.",
             "readOnly": true
-          },
-          "assignedCustomers": {
-            "type": "array",
-            "description": "List of assigned customers with their info.",
-            "items": {
-              "$ref": "#/components/schemas/ShortCustomerInfo"
-            },
-            "readOnly": true,
-            "uniqueItems": true
           },
           "mobileHide": {
             "type": "boolean",
@@ -86491,16 +86476,6 @@
             "description": "Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications",
             "readOnly": true
           },
-          "version": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResourceExportData"
-            }
-          },
           "configuration": {
             "$ref": "#/components/schemas/JsonNode",
             "description": "JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON."
@@ -86509,6 +86484,41 @@
             "type": "string",
             "description": "Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard.",
             "readOnly": true
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResourceExportData"
+            }
+          },
+          "assignedCustomers": {
+            "type": "array",
+            "description": "List of assigned customers with their info.",
+            "items": {
+              "$ref": "#/components/schemas/ShortCustomerInfo"
+            },
+            "readOnly": true,
+            "uniqueItems": true
+          },
+          "createdTime": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp of the dashboard creation, in milliseconds",
+            "example": 1609459200000,
+            "readOnly": true
+          },
+          "id": {
+            "$ref": "#/components/schemas/DashboardId",
+            "description": "JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard."
+          },
+          "tenantId": {
+            "$ref": "#/components/schemas/TenantId",
+            "description": "JSON object with Tenant Id. Tenant Id of the dashboard can't be changed.",
+            "readOnly": true
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
           }
         },
         "required": [
@@ -87350,9 +87360,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "string",
+            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "DeviceCredentialsType": {
         "type": "string",
@@ -88465,9 +88480,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "string",
+            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "EdgeEventType": {
         "type": "string",
@@ -89217,15 +89237,15 @@
           }
         },
         "properties": {
+          "entityType": {
+            "$ref": "#/components/schemas/EntityType",
+            "example": "DEVICE"
+          },
           "id": {
             "type": "string",
             "format": "uuid",
             "description": "ID of the entity, time-based UUID v1",
             "example": "784f394c-42b6-435a-983c-b7beff2784f9"
-          },
-          "entityType": {
-            "$ref": "#/components/schemas/EntityType",
-            "example": "DEVICE"
           }
         },
         "required": [
@@ -89978,9 +89998,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "string",
+            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "EventInfo": {
         "type": "object",
@@ -90060,19 +90085,19 @@
       "FeaturesInfo": {
         "type": "object",
         "properties": {
-          "smsEnabled": {
+          "emailEnabled": {
             "type": "boolean"
           },
-          "oauthEnabled": {
+          "smsEnabled": {
             "type": "boolean"
           },
           "notificationEnabled": {
             "type": "boolean"
           },
-          "twoFaEnabled": {
+          "oauthEnabled": {
             "type": "boolean"
           },
-          "emailEnabled": {
+          "twoFaEnabled": {
             "type": "boolean"
           }
         }
@@ -91375,19 +91400,19 @@
               "useOldApi": {
                 "type": "boolean"
               },
-              "id": {
-
-              },
-              "title": {
-                "type": "string"
-              },
               "email": {
                 "type": "string"
               },
               "firstName": {
                 "type": "string"
               },
+              "id": {
+
+              },
               "lastName": {
+                "type": "string"
+              },
+              "title": {
                 "type": "string"
               }
             }
@@ -93112,9 +93137,14 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "description": "string",
+            "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
-        }
+        },
+        "required": [
+          "id"
+        ]
       },
       "OAuth2CustomMapperConfig": {
         "type": "object",
@@ -93586,12 +93616,19 @@
           "data": {
             "type": "object",
             "properties": {
-              "short": {
-                "type": "integer",
-                "format": "int32"
-              },
               "char": {
                 "type": "string"
+              },
+              "direct": {
+                "type": "boolean"
+              },
+              "double": {
+                "type": "number",
+                "format": "double"
+              },
+              "float": {
+                "type": "number",
+                "format": "float"
               },
               "int": {
                 "type": "integer",
@@ -93601,19 +93638,12 @@
                 "type": "integer",
                 "format": "int64"
               },
-              "float": {
-                "type": "number",
-                "format": "float"
-              },
-              "double": {
-                "type": "number",
-                "format": "double"
-              },
-              "direct": {
-                "type": "boolean"
-              },
               "readOnly": {
                 "type": "boolean"
+              },
+              "short": {
+                "type": "integer",
+                "format": "int32"
               }
             }
           },
@@ -95736,7 +95766,7 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "description": "ID of the entity, time-based UUID v1",
+            "description": "string",
             "example": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
         },
@@ -96627,12 +96657,12 @@
                 "type": "string",
                 "description": "String value representing the message"
               },
+              "error": {
+                "type": "boolean"
+              },
               "isError": {
                 "type": "boolean",
                 "writeOnly": true
-              },
-              "error": {
-                "type": "boolean"
               }
             }
           }
@@ -96979,12 +97009,12 @@
                 "description": "The case insensitive 'contains' filter based on metadata (key and value) for the message.",
                 "example": "deviceName"
               },
+              "error": {
+                "type": "boolean"
+              },
               "isError": {
                 "type": "boolean",
                 "writeOnly": true
-              },
-              "error": {
-                "type": "boolean"
               }
             }
           }
@@ -98191,11 +98221,11 @@
           "public": {
             "type": "boolean"
           },
-          "publicLink": {
+          "link": {
             "type": "string",
             "readOnly": true
           },
-          "link": {
+          "publicLink": {
             "type": "string",
             "readOnly": true
           }
@@ -98302,11 +98332,11 @@
           "public": {
             "type": "boolean"
           },
-          "publicLink": {
+          "link": {
             "type": "string",
             "readOnly": true
           },
-          "link": {
+          "publicLink": {
             "type": "string",
             "readOnly": true
           }

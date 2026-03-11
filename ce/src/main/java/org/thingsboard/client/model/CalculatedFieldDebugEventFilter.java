@@ -49,8 +49,8 @@ import org.thingsboard.client.ApiClient;
   CalculatedFieldDebugEventFilter.JSON_PROPERTY_MSG_TYPE,
   CalculatedFieldDebugEventFilter.JSON_PROPERTY_ARGUMENTS,
   CalculatedFieldDebugEventFilter.JSON_PROPERTY_RESULT,
-  CalculatedFieldDebugEventFilter.JSON_PROPERTY_IS_ERROR,
-  CalculatedFieldDebugEventFilter.JSON_PROPERTY_ERROR
+  CalculatedFieldDebugEventFilter.JSON_PROPERTY_ERROR,
+  CalculatedFieldDebugEventFilter.JSON_PROPERTY_IS_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -125,13 +125,13 @@ public class CalculatedFieldDebugEventFilter extends EventFilter {
   @javax.annotation.Nullable
   private String result;
 
-  public static final String JSON_PROPERTY_IS_ERROR = "isError";
-  @javax.annotation.Nullable
-  private Boolean isError;
-
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
   private Boolean error;
+
+  public static final String JSON_PROPERTY_IS_ERROR = "isError";
+  @javax.annotation.Nullable
+  private Boolean isError;
 
   public CalculatedFieldDebugEventFilter() { 
   }
@@ -328,30 +328,6 @@ public class CalculatedFieldDebugEventFilter extends EventFilter {
   }
 
 
-  public CalculatedFieldDebugEventFilter isError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-    return this;
-  }
-
-  /**
-   * Get isError
-   * @return isError
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsError() {
-    return isError;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-  }
-
-
   public CalculatedFieldDebugEventFilter error(@javax.annotation.Nullable Boolean error) {
     this.error = error;
     return this;
@@ -373,6 +349,30 @@ public class CalculatedFieldDebugEventFilter extends EventFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setError(@javax.annotation.Nullable Boolean error) {
     this.error = error;
+  }
+
+
+  public CalculatedFieldDebugEventFilter isError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
+    return this;
+  }
+
+  /**
+   * Get isError
+   * @return isError
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsError() {
+    return isError;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
   }
 
 
@@ -408,14 +408,14 @@ public class CalculatedFieldDebugEventFilter extends EventFilter {
         Objects.equals(this.msgType, calculatedFieldDebugEventFilter.msgType) &&
         Objects.equals(this.arguments, calculatedFieldDebugEventFilter.arguments) &&
         Objects.equals(this.result, calculatedFieldDebugEventFilter.result) &&
-        Objects.equals(this.isError, calculatedFieldDebugEventFilter.isError) &&
         Objects.equals(this.error, calculatedFieldDebugEventFilter.error) &&
+        Objects.equals(this.isError, calculatedFieldDebugEventFilter.isError) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(server, errorStr, entityId, entityType, msgId, msgType, arguments, result, isError, error, super.hashCode());
+    return Objects.hash(server, errorStr, entityId, entityType, msgId, msgType, arguments, result, error, isError, super.hashCode());
   }
 
   @Override
@@ -431,8 +431,8 @@ public class CalculatedFieldDebugEventFilter extends EventFilter {
     sb.append("    msgType: ").append(toIndentedString(msgType)).append("\n");
     sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
-    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -530,14 +530,14 @@ public class CalculatedFieldDebugEventFilter extends EventFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%sresult%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResult()))));
     }
 
-    // add `isError` to the URL query string
-    if (getIsError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
-    }
-
     // add `error` to the URL query string
     if (getError() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
+    }
+
+    // add `isError` to the URL query string
+    if (getIsError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
     }
 
     return joiner.toString();

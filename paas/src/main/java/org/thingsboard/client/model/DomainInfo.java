@@ -95,12 +95,10 @@ public class DomainInfo {
 
   @JsonCreator
   public DomainInfo(
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime
   ) {
   this();
     this.createdTime = createdTime;
-    this.ownerId = ownerId;
   }
 
   public DomainInfo id(@javax.annotation.Nullable DomainId id) {
@@ -293,6 +291,11 @@ public class DomainInfo {
   }
 
 
+  public DomainInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -305,6 +308,11 @@ public class DomainInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   /**

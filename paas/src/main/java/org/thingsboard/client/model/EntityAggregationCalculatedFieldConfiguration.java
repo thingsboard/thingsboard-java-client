@@ -48,10 +48,10 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_ARGUMENTS,
-  EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_METRICS,
   EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_INTERVAL,
-  EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_WATERMARK,
-  EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_PRODUCE_INTERMEDIATE_RESULT
+  EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_METRICS,
+  EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_PRODUCE_INTERMEDIATE_RESULT,
+  EntityAggregationCalculatedFieldConfiguration.JSON_PROPERTY_WATERMARK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -65,21 +65,21 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
   @javax.annotation.Nonnull
   private Map<String, Argument> arguments = new HashMap<>();
 
-  public static final String JSON_PROPERTY_METRICS = "metrics";
-  @javax.annotation.Nonnull
-  private Map<String, AggMetric> metrics = new HashMap<>();
-
   public static final String JSON_PROPERTY_INTERVAL = "interval";
   @javax.annotation.Nonnull
   private AggInterval interval;
 
-  public static final String JSON_PROPERTY_WATERMARK = "watermark";
-  @javax.annotation.Nullable
-  private Watermark watermark;
+  public static final String JSON_PROPERTY_METRICS = "metrics";
+  @javax.annotation.Nonnull
+  private Map<String, AggMetric> metrics = new HashMap<>();
 
   public static final String JSON_PROPERTY_PRODUCE_INTERMEDIATE_RESULT = "produceIntermediateResult";
   @javax.annotation.Nullable
   private Boolean produceIntermediateResult;
+
+  public static final String JSON_PROPERTY_WATERMARK = "watermark";
+  @javax.annotation.Nullable
+  private Watermark watermark;
 
   public EntityAggregationCalculatedFieldConfiguration() { 
   }
@@ -116,6 +116,30 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
   }
 
 
+  public EntityAggregationCalculatedFieldConfiguration interval(@javax.annotation.Nonnull AggInterval interval) {
+    this.interval = interval;
+    return this;
+  }
+
+  /**
+   * Get interval
+   * @return interval
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AggInterval getInterval() {
+    return interval;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setInterval(@javax.annotation.Nonnull AggInterval interval) {
+    this.interval = interval;
+  }
+
+
   public EntityAggregationCalculatedFieldConfiguration metrics(@javax.annotation.Nonnull Map<String, AggMetric> metrics) {
     this.metrics = metrics;
     return this;
@@ -148,27 +172,27 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
   }
 
 
-  public EntityAggregationCalculatedFieldConfiguration interval(@javax.annotation.Nonnull AggInterval interval) {
-    this.interval = interval;
+  public EntityAggregationCalculatedFieldConfiguration produceIntermediateResult(@javax.annotation.Nullable Boolean produceIntermediateResult) {
+    this.produceIntermediateResult = produceIntermediateResult;
     return this;
   }
 
   /**
-   * Get interval
-   * @return interval
+   * Get produceIntermediateResult
+   * @return produceIntermediateResult
    */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public AggInterval getInterval() {
-    return interval;
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PRODUCE_INTERMEDIATE_RESULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getProduceIntermediateResult() {
+    return produceIntermediateResult;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInterval(@javax.annotation.Nonnull AggInterval interval) {
-    this.interval = interval;
+  @JsonProperty(value = JSON_PROPERTY_PRODUCE_INTERMEDIATE_RESULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProduceIntermediateResult(@javax.annotation.Nullable Boolean produceIntermediateResult) {
+    this.produceIntermediateResult = produceIntermediateResult;
   }
 
 
@@ -196,39 +220,15 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
   }
 
 
-  public EntityAggregationCalculatedFieldConfiguration produceIntermediateResult(@javax.annotation.Nullable Boolean produceIntermediateResult) {
-    this.produceIntermediateResult = produceIntermediateResult;
+  @Override
+  public EntityAggregationCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
+    this.setOutput(output);
     return this;
   }
-
-  /**
-   * Get produceIntermediateResult
-   * @return produceIntermediateResult
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PRODUCE_INTERMEDIATE_RESULT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getProduceIntermediateResult() {
-    return produceIntermediateResult;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PRODUCE_INTERMEDIATE_RESULT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProduceIntermediateResult(@javax.annotation.Nullable Boolean produceIntermediateResult) {
-    this.produceIntermediateResult = produceIntermediateResult;
-  }
-
 
   @Override
   public EntityAggregationCalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
     this.setAiGenerated(aiGenerated);
-    return this;
-  }
-
-  @Override
-  public EntityAggregationCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
-    this.setOutput(output);
     return this;
   }
 
@@ -251,16 +251,16 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
     }
     EntityAggregationCalculatedFieldConfiguration entityAggregationCalculatedFieldConfiguration = (EntityAggregationCalculatedFieldConfiguration) o;
     return Objects.equals(this.arguments, entityAggregationCalculatedFieldConfiguration.arguments) &&
-        Objects.equals(this.metrics, entityAggregationCalculatedFieldConfiguration.metrics) &&
         Objects.equals(this.interval, entityAggregationCalculatedFieldConfiguration.interval) &&
-        Objects.equals(this.watermark, entityAggregationCalculatedFieldConfiguration.watermark) &&
+        Objects.equals(this.metrics, entityAggregationCalculatedFieldConfiguration.metrics) &&
         Objects.equals(this.produceIntermediateResult, entityAggregationCalculatedFieldConfiguration.produceIntermediateResult) &&
+        Objects.equals(this.watermark, entityAggregationCalculatedFieldConfiguration.watermark) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(arguments, metrics, interval, watermark, produceIntermediateResult, super.hashCode());
+    return Objects.hash(arguments, interval, metrics, produceIntermediateResult, watermark, super.hashCode());
   }
 
   @Override
@@ -269,10 +269,10 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
     sb.append("class EntityAggregationCalculatedFieldConfiguration {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
-    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
-    sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
+    sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
     sb.append("    produceIntermediateResult: ").append(toIndentedString(produceIntermediateResult)).append("\n");
+    sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -320,14 +320,14 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `aiGenerated` to the URL query string
-    if (getAiGenerated() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
+    }
+
+    // add `aiGenerated` to the URL query string
+    if (getAiGenerated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
     }
 
     // add `type` to the URL query string
@@ -345,6 +345,11 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
       }
     }
 
+    // add `interval` to the URL query string
+    if (getInterval() != null) {
+      joiner.add(getInterval().toUrlQueryString(prefix + "interval" + suffix));
+    }
+
     // add `metrics` to the URL query string
     if (getMetrics() != null) {
       for (String _key : getMetrics().keySet()) {
@@ -355,19 +360,14 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
       }
     }
 
-    // add `interval` to the URL query string
-    if (getInterval() != null) {
-      joiner.add(getInterval().toUrlQueryString(prefix + "interval" + suffix));
+    // add `produceIntermediateResult` to the URL query string
+    if (getProduceIntermediateResult() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sproduceIntermediateResult%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getProduceIntermediateResult()))));
     }
 
     // add `watermark` to the URL query string
     if (getWatermark() != null) {
       joiner.add(getWatermark().toUrlQueryString(prefix + "watermark" + suffix));
-    }
-
-    // add `produceIntermediateResult` to the URL query string
-    if (getProduceIntermediateResult() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sproduceIntermediateResult%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getProduceIntermediateResult()))));
     }
 
     return joiner.toString();

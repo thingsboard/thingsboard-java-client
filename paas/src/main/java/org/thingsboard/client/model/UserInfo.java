@@ -134,14 +134,12 @@ public class UserInfo {
   public UserInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_NAME) String name
   ) {
   this();
     this.createdTime = createdTime;
     this.ownerName = ownerName;
     this.name = name;
-    this.ownerId = ownerId;
   }
 
   public UserInfo id(@javax.annotation.Nullable UserId id) {
@@ -458,6 +456,11 @@ public class UserInfo {
 
 
 
+  public UserInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+    return this;
+  }
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -470,6 +473,11 @@ public class UserInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+    this.ownerId = ownerId;
+  }
 
 
   public UserInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {

@@ -46,8 +46,8 @@ import org.thingsboard.client.ApiClient;
   DebugIntegrationEventFilter.JSON_PROPERTY_TYPE,
   DebugIntegrationEventFilter.JSON_PROPERTY_MESSAGE,
   DebugIntegrationEventFilter.JSON_PROPERTY_STATUS_INTEGRATION,
-  DebugIntegrationEventFilter.JSON_PROPERTY_IS_ERROR,
-  DebugIntegrationEventFilter.JSON_PROPERTY_ERROR
+  DebugIntegrationEventFilter.JSON_PROPERTY_ERROR,
+  DebugIntegrationEventFilter.JSON_PROPERTY_IS_ERROR
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -77,13 +77,13 @@ public class DebugIntegrationEventFilter extends EventFilter {
   @javax.annotation.Nullable
   private String statusIntegration;
 
-  public static final String JSON_PROPERTY_IS_ERROR = "isError";
-  @javax.annotation.Nullable
-  private Boolean isError;
-
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
   private Boolean error;
+
+  public static final String JSON_PROPERTY_IS_ERROR = "isError";
+  @javax.annotation.Nullable
+  private Boolean isError;
 
   public DebugIntegrationEventFilter() { 
   }
@@ -208,30 +208,6 @@ public class DebugIntegrationEventFilter extends EventFilter {
   }
 
 
-  public DebugIntegrationEventFilter isError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-    return this;
-  }
-
-  /**
-   * Get isError
-   * @return isError
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsError() {
-    return isError;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-  }
-
-
   public DebugIntegrationEventFilter error(@javax.annotation.Nullable Boolean error) {
     this.error = error;
     return this;
@@ -253,6 +229,30 @@ public class DebugIntegrationEventFilter extends EventFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setError(@javax.annotation.Nullable Boolean error) {
     this.error = error;
+  }
+
+
+  public DebugIntegrationEventFilter isError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
+    return this;
+  }
+
+  /**
+   * Get isError
+   * @return isError
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsError() {
+    return isError;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsError(@javax.annotation.Nullable Boolean isError) {
+    this.isError = isError;
   }
 
 
@@ -285,14 +285,14 @@ public class DebugIntegrationEventFilter extends EventFilter {
         Objects.equals(this.type, debugIntegrationEventFilter.type) &&
         Objects.equals(this.message, debugIntegrationEventFilter.message) &&
         Objects.equals(this.statusIntegration, debugIntegrationEventFilter.statusIntegration) &&
-        Objects.equals(this.isError, debugIntegrationEventFilter.isError) &&
         Objects.equals(this.error, debugIntegrationEventFilter.error) &&
+        Objects.equals(this.isError, debugIntegrationEventFilter.isError) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(server, errorStr, type, message, statusIntegration, isError, error, super.hashCode());
+    return Objects.hash(server, errorStr, type, message, statusIntegration, error, isError, super.hashCode());
   }
 
   @Override
@@ -305,8 +305,8 @@ public class DebugIntegrationEventFilter extends EventFilter {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    statusIntegration: ").append(toIndentedString(statusIntegration)).append("\n");
-    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,14 +389,14 @@ public class DebugIntegrationEventFilter extends EventFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstatusIntegration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatusIntegration()))));
     }
 
-    // add `isError` to the URL query string
-    if (getIsError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
-    }
-
     // add `error` to the URL query string
     if (getError() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
+    }
+
+    // add `isError` to the URL query string
+    if (getIsError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
     }
 
     return joiner.toString();

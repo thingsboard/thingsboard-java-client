@@ -19,8 +19,8 @@
 | **relationType** | **String** | String value representing the type of message routing | [optional] |
 | **dataSearch** | **String** | The case insensitive 'contains' filter based on data (key and value) for the message. | [optional] |
 | **metadataSearch** | **String** | The case insensitive 'contains' filter based on metadata (key and value) for the message. | [optional] |
-| **isError** | **Boolean** |  | [optional] |
 | **error** | **Boolean** |  | [optional] |
+| **isError** | **Boolean** |  | [optional] |
 
 
 ### Enum: MsgDirectionTypeEnum
