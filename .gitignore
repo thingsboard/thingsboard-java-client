@@ -23,4 +23,5 @@ pom.xml.versionsBackup
 */.run/**
 .run/**
 .run
-.claude/
+.claude
+.planning

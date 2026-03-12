@@ -41,6 +41,7 @@ import java.util.logging.Level;
  *   <li>Automatic token refresh before expiry</li>
  *   <li>Automatic re-login when the refresh token expires</li>
  *   <li>Client-server clock skew compensation</li>
+ *   <li>Automatic retry on HTTP 429 (Too Many Requests) with exponential backoff</li>
  * </ul>
  *
  * <pre>{@code
@@ -54,6 +55,22 @@ import java.util.logging.Level;
  * ThingsboardClient client = ThingsboardClient.builder()
  *         .url("http://localhost:8080")
  *         .apiKey("your-api-key")
+ *         .build();
+ *
+ * // Tuning rate-limit retry behaviour (retry is enabled by default)
+ * ThingsboardClient client = ThingsboardClient.builder()
+ *         .url("http://localhost:8080")
+ *         .credentials("tenant@thingsboard.org", "password")
+ *         .maxRetries(5)
+ *         .initialRetryDelayMs(500L)
+ *         .maxRetryDelayMs(60_000L)
+ *         .build();
+ *
+ * // Disable rate-limit retry
+ * ThingsboardClient client = ThingsboardClient.builder()
+ *         .url("http://localhost:8080")
+ *         .credentials("tenant@thingsboard.org", "password")
+ *         .retryOnRateLimit(false)
  *         .build();
  *
  * // All generated API methods are available directly
@@ -96,6 +113,10 @@ public class ThingsboardClient extends ThingsboardApi {
         private String username;
         private String password;
         private String apiKey;
+        private boolean retryOnRateLimit = true;
+        private int maxRetries = 3;
+        private long initialRetryDelayMs = 1000L;
+        private long maxRetryDelayMs = 30_000L;
 
         private Builder() {}
 
@@ -115,21 +136,80 @@ public class ThingsboardClient extends ThingsboardApi {
             return this;
         }
 
+        /**
+         * Enables or disables automatic retry on rate-limit (HTTP 429) responses.
+         * Enabled by default.
+         */
+        public Builder retryOnRateLimit(boolean retryOnRateLimit) {
+            this.retryOnRateLimit = retryOnRateLimit;
+            return this;
+        }
+
+        /**
+         * Maximum number of retry attempts after an HTTP 429 response.
+         * Default: 3.
+         */
+        public Builder maxRetries(int maxRetries) {
+            this.maxRetries = maxRetries;
+            return this;
+        }
+
+        /**
+         * Initial backoff delay in milliseconds for the first retry.
+         * Subsequent retries use exponential backoff with ±20% jitter.
+         * Default: 1000 ms.
+         */
+        public Builder initialRetryDelayMs(long initialRetryDelayMs) {
+            this.initialRetryDelayMs = initialRetryDelayMs;
+            return this;
+        }
+
+        /**
+         * Maximum backoff delay in milliseconds. The computed delay is capped at this value.
+         * Default: 30 000 ms.
+         */
+        public Builder maxRetryDelayMs(long maxRetryDelayMs) {
+            this.maxRetryDelayMs = maxRetryDelayMs;
+            return this;
+        }
+
         public ThingsboardClient build() throws ApiException {
             if (url == null) {
                 throw new IllegalArgumentException("url is required");
             }
-            if (apiKey != null) {
-                return new ThingsboardClient(new AuthManager(url, AuthType.API_KEY, apiKey));
-            }
-            AuthManager auth = new AuthManager(url, AuthType.JWT, null);
+            ApiClient apiClient = retryOnRateLimit
+                    ? new RetryableApiClient(maxRetries, initialRetryDelayMs, maxRetryDelayMs)
+                    : new ApiClient();
+            AuthType authType = apiKey != null ? AuthType.API_KEY : AuthType.JWT;
+            AuthManager auth = new AuthManager(url, authType, apiKey, apiClient);
             ThingsboardClient client = new ThingsboardClient(auth);
-            if (username != null) {
+            if (authType == AuthType.JWT && username != null) {
                 client.login(username, password);
             }
             return client;
         }
 
+    }
+
+    /**
+     * ApiClient subclass that wraps every built HttpClient with retry-on-429 logic.
+     */
+    private static class RetryableApiClient extends ApiClient {
+
+        private final int maxRetries;
+        private final long initialDelayMs;
+        private final long maxDelayMs;
+
+        RetryableApiClient(int maxRetries, long initialDelayMs, long maxDelayMs) {
+            this.maxRetries = maxRetries;
+            this.initialDelayMs = initialDelayMs;
+            this.maxDelayMs = maxDelayMs;
+        }
+
+        @Override
+        public HttpClient getHttpClient() {
+            return RetryingHttpClient.wrap(super.getHttpClient(), maxRetries, initialDelayMs, maxDelayMs);
+        }
     }
 
     /**
@@ -178,9 +258,9 @@ public class ThingsboardClient extends ThingsboardApi {
         private volatile String password;
         private volatile boolean refreshing;
 
-        AuthManager(String url, AuthType authType, String apiKey) {
+        AuthManager(String url, AuthType authType, String apiKey, ApiClient apiClient) {
             this.authType = authType;
-            this.apiClient = new ApiClient();
+            this.apiClient = apiClient;
             apiClient.updateBaseUri(url);
             this.baseUrl = apiClient.getBaseUri();
             this.httpClient = apiClient.getHttpClient();
