@@ -51,12 +51,12 @@ import org.thingsboard.client.ApiClient;
   IntegrationInfo.JSON_PROPERTY_DEBUG_MODE,
   IntegrationInfo.JSON_PROPERTY_DEBUG_SETTINGS,
   IntegrationInfo.JSON_PROPERTY_ENABLED,
-  IntegrationInfo.JSON_PROPERTY_REMOTE,
   IntegrationInfo.JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS,
-  IntegrationInfo.JSON_PROPERTY_EDGE_TEMPLATE,
   IntegrationInfo.JSON_PROPERTY_VERSION,
   IntegrationInfo.JSON_PROPERTY_STATUS,
-  IntegrationInfo.JSON_PROPERTY_STATS
+  IntegrationInfo.JSON_PROPERTY_STATS,
+  IntegrationInfo.JSON_PROPERTY_EDGE_TEMPLATE,
+  IntegrationInfo.JSON_PROPERTY_REMOTE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class IntegrationInfo {
@@ -92,17 +92,9 @@ public class IntegrationInfo {
   @javax.annotation.Nullable
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_REMOTE = "remote";
-  @javax.annotation.Nullable
-  private Boolean remote;
-
   public static final String JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS = "allowCreateDevicesOrAssets";
   @javax.annotation.Nullable
   private Boolean allowCreateDevicesOrAssets;
-
-  public static final String JSON_PROPERTY_EDGE_TEMPLATE = "edgeTemplate";
-  @javax.annotation.Nullable
-  private Boolean edgeTemplate;
 
   public static final String JSON_PROPERTY_VERSION = "version";
   @javax.annotation.Nullable
@@ -114,6 +106,14 @@ public class IntegrationInfo {
 
   public static final String JSON_PROPERTY_STATS = "stats";
   private JsonNullable<Object> stats = JsonNullable.<Object>of(null);
+
+  public static final String JSON_PROPERTY_EDGE_TEMPLATE = "edgeTemplate";
+  @javax.annotation.Nullable
+  private Boolean edgeTemplate;
+
+  public static final String JSON_PROPERTY_REMOTE = "remote";
+  @javax.annotation.Nullable
+  private Boolean remote;
 
   public IntegrationInfo() { 
   }
@@ -302,30 +302,6 @@ public class IntegrationInfo {
   }
 
 
-  public IntegrationInfo remote(@javax.annotation.Nullable Boolean remote) {
-    this.remote = remote;
-    return this;
-  }
-
-  /**
-   * Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core
-   * @return remote
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getRemote() {
-    return remote;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRemote(@javax.annotation.Nullable Boolean remote) {
-    this.remote = remote;
-  }
-
-
   public IntegrationInfo allowCreateDevicesOrAssets(@javax.annotation.Nullable Boolean allowCreateDevicesOrAssets) {
     this.allowCreateDevicesOrAssets = allowCreateDevicesOrAssets;
     return this;
@@ -347,30 +323,6 @@ public class IntegrationInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAllowCreateDevicesOrAssets(@javax.annotation.Nullable Boolean allowCreateDevicesOrAssets) {
     this.allowCreateDevicesOrAssets = allowCreateDevicesOrAssets;
-  }
-
-
-  public IntegrationInfo edgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
-    this.edgeTemplate = edgeTemplate;
-    return this;
-  }
-
-  /**
-   * Boolean flag that specifies that is regular or edge template integration
-   * @return edgeTemplate
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEdgeTemplate() {
-    return edgeTemplate;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
-    this.edgeTemplate = edgeTemplate;
   }
 
 
@@ -454,6 +406,54 @@ public class IntegrationInfo {
   }
 
 
+  public IntegrationInfo edgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+    this.edgeTemplate = edgeTemplate;
+    return this;
+  }
+
+  /**
+   * Boolean flag that specifies that is regular or edge template integration
+   * @return edgeTemplate
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getEdgeTemplate() {
+    return edgeTemplate;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEdgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+    this.edgeTemplate = edgeTemplate;
+  }
+
+
+  public IntegrationInfo remote(@javax.annotation.Nullable Boolean remote) {
+    this.remote = remote;
+    return this;
+  }
+
+  /**
+   * Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core
+   * @return remote
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getRemote() {
+    return remote;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRemote(@javax.annotation.Nullable Boolean remote) {
+    this.remote = remote;
+  }
+
+
   /**
    * Return true if this IntegrationInfo object is equal to o.
    */
@@ -474,12 +474,12 @@ public class IntegrationInfo {
         Objects.equals(this.debugMode, integrationInfo.debugMode) &&
         Objects.equals(this.debugSettings, integrationInfo.debugSettings) &&
         Objects.equals(this.enabled, integrationInfo.enabled) &&
-        Objects.equals(this.remote, integrationInfo.remote) &&
         Objects.equals(this.allowCreateDevicesOrAssets, integrationInfo.allowCreateDevicesOrAssets) &&
-        Objects.equals(this.edgeTemplate, integrationInfo.edgeTemplate) &&
         Objects.equals(this.version, integrationInfo.version) &&
         Objects.equals(this.status, integrationInfo.status) &&
-        equalsNullable(this.stats, integrationInfo.stats);
+        equalsNullable(this.stats, integrationInfo.stats) &&
+        Objects.equals(this.edgeTemplate, integrationInfo.edgeTemplate) &&
+        Objects.equals(this.remote, integrationInfo.remote);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -488,7 +488,7 @@ public class IntegrationInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, name, type, debugMode, debugSettings, enabled, remote, allowCreateDevicesOrAssets, edgeTemplate, version, status, hashCodeNullable(stats));
+    return Objects.hash(id, createdTime, tenantId, name, type, debugMode, debugSettings, enabled, allowCreateDevicesOrAssets, version, status, hashCodeNullable(stats), edgeTemplate, remote);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -510,12 +510,12 @@ public class IntegrationInfo {
     sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
     sb.append("    debugSettings: ").append(toIndentedString(debugSettings)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    remote: ").append(toIndentedString(remote)).append("\n");
     sb.append("    allowCreateDevicesOrAssets: ").append(toIndentedString(allowCreateDevicesOrAssets)).append("\n");
-    sb.append("    edgeTemplate: ").append(toIndentedString(edgeTemplate)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
+    sb.append("    edgeTemplate: ").append(toIndentedString(edgeTemplate)).append("\n");
+    sb.append("    remote: ").append(toIndentedString(remote)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -603,19 +603,9 @@ public class IntegrationInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
     }
 
-    // add `remote` to the URL query string
-    if (getRemote() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sremote%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getRemote()))));
-    }
-
     // add `allowCreateDevicesOrAssets` to the URL query string
     if (getAllowCreateDevicesOrAssets() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sallowCreateDevicesOrAssets%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAllowCreateDevicesOrAssets()))));
-    }
-
-    // add `edgeTemplate` to the URL query string
-    if (getEdgeTemplate() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeTemplate%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeTemplate()))));
     }
 
     // add `version` to the URL query string
@@ -631,6 +621,16 @@ public class IntegrationInfo {
     // add `stats` to the URL query string
     if (getStats() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstats%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStats()))));
+    }
+
+    // add `edgeTemplate` to the URL query string
+    if (getEdgeTemplate() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeTemplate%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeTemplate()))));
+    }
+
+    // add `remote` to the URL query string
+    if (getRemote() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sremote%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getRemote()))));
     }
 
     return joiner.toString();

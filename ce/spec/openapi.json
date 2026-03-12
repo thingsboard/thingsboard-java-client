@@ -96163,6 +96163,9 @@
               "rootEntity": {
                 "$ref": "#/components/schemas/AliasEntityId"
               },
+              "multiRoot": {
+                "type": "boolean"
+              },
               "multiRootEntitiesType": {
                 "$ref": "#/components/schemas/EntityType"
               },
@@ -96197,9 +96200,6 @@
               },
               "defaultStateEntity": {
                 "$ref": "#/components/schemas/AliasEntityId"
-              },
-              "multiRoot": {
-                "type": "boolean"
               }
             }
           }
@@ -97258,10 +97258,7 @@
           },
           "isPublic": {
             "type": "boolean",
-            "writeOnly": true
-          },
-          "public": {
-            "type": "boolean"
+            "description": "Indicates special 'Public' customer used to embed dashboards on public websites."
           }
         }
       },
@@ -97964,7 +97961,8 @@
             }
           },
           "monolith": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "Is monolith."
           }
         }
       },

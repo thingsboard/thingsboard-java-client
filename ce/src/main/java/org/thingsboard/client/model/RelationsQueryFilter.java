@@ -50,6 +50,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   RelationsQueryFilter.JSON_PROPERTY_ROOT_ENTITY,
+  RelationsQueryFilter.JSON_PROPERTY_MULTI_ROOT,
   RelationsQueryFilter.JSON_PROPERTY_MULTI_ROOT_ENTITIES_TYPE,
   RelationsQueryFilter.JSON_PROPERTY_MULTI_ROOT_ENTITY_IDS,
   RelationsQueryFilter.JSON_PROPERTY_DIRECTION,
@@ -58,8 +59,7 @@ import org.thingsboard.client.ApiClient;
   RelationsQueryFilter.JSON_PROPERTY_FETCH_LAST_LEVEL_ONLY,
   RelationsQueryFilter.JSON_PROPERTY_NEGATE,
   RelationsQueryFilter.JSON_PROPERTY_ROOT_STATE_ENTITY,
-  RelationsQueryFilter.JSON_PROPERTY_DEFAULT_STATE_ENTITY,
-  RelationsQueryFilter.JSON_PROPERTY_MULTI_ROOT
+  RelationsQueryFilter.JSON_PROPERTY_DEFAULT_STATE_ENTITY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -72,6 +72,10 @@ public class RelationsQueryFilter extends EntityFilter {
   public static final String JSON_PROPERTY_ROOT_ENTITY = "rootEntity";
   @javax.annotation.Nullable
   private AliasEntityId rootEntity;
+
+  public static final String JSON_PROPERTY_MULTI_ROOT = "multiRoot";
+  @javax.annotation.Nullable
+  private Boolean multiRoot;
 
   public static final String JSON_PROPERTY_MULTI_ROOT_ENTITIES_TYPE = "multiRootEntitiesType";
   @javax.annotation.Nullable
@@ -109,10 +113,6 @@ public class RelationsQueryFilter extends EntityFilter {
   @javax.annotation.Nullable
   private AliasEntityId defaultStateEntity;
 
-  public static final String JSON_PROPERTY_MULTI_ROOT = "multiRoot";
-  @javax.annotation.Nullable
-  private Boolean multiRoot;
-
   public RelationsQueryFilter() { 
   }
 
@@ -137,6 +137,30 @@ public class RelationsQueryFilter extends EntityFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRootEntity(@javax.annotation.Nullable AliasEntityId rootEntity) {
     this.rootEntity = rootEntity;
+  }
+
+
+  public RelationsQueryFilter multiRoot(@javax.annotation.Nullable Boolean multiRoot) {
+    this.multiRoot = multiRoot;
+    return this;
+  }
+
+  /**
+   * Get multiRoot
+   * @return multiRoot
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MULTI_ROOT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getMultiRoot() {
+    return multiRoot;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MULTI_ROOT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMultiRoot(@javax.annotation.Nullable Boolean multiRoot) {
+    this.multiRoot = multiRoot;
   }
 
 
@@ -373,30 +397,6 @@ public class RelationsQueryFilter extends EntityFilter {
   }
 
 
-  public RelationsQueryFilter multiRoot(@javax.annotation.Nullable Boolean multiRoot) {
-    this.multiRoot = multiRoot;
-    return this;
-  }
-
-  /**
-   * Get multiRoot
-   * @return multiRoot
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_MULTI_ROOT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getMultiRoot() {
-    return multiRoot;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_MULTI_ROOT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMultiRoot(@javax.annotation.Nullable Boolean multiRoot) {
-    this.multiRoot = multiRoot;
-  }
-
-
   @Override
   public RelationsQueryFilter type(@javax.annotation.Nonnull String type) {
     this.setType(type);
@@ -416,6 +416,7 @@ public class RelationsQueryFilter extends EntityFilter {
     }
     RelationsQueryFilter relationsQueryFilter = (RelationsQueryFilter) o;
     return Objects.equals(this.rootEntity, relationsQueryFilter.rootEntity) &&
+        Objects.equals(this.multiRoot, relationsQueryFilter.multiRoot) &&
         Objects.equals(this.multiRootEntitiesType, relationsQueryFilter.multiRootEntitiesType) &&
         Objects.equals(this.multiRootEntityIds, relationsQueryFilter.multiRootEntityIds) &&
         Objects.equals(this.direction, relationsQueryFilter.direction) &&
@@ -425,13 +426,12 @@ public class RelationsQueryFilter extends EntityFilter {
         Objects.equals(this.negate, relationsQueryFilter.negate) &&
         Objects.equals(this.rootStateEntity, relationsQueryFilter.rootStateEntity) &&
         Objects.equals(this.defaultStateEntity, relationsQueryFilter.defaultStateEntity) &&
-        Objects.equals(this.multiRoot, relationsQueryFilter.multiRoot) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rootEntity, multiRootEntitiesType, multiRootEntityIds, direction, filters, maxLevel, fetchLastLevelOnly, negate, rootStateEntity, defaultStateEntity, multiRoot, super.hashCode());
+    return Objects.hash(rootEntity, multiRoot, multiRootEntitiesType, multiRootEntityIds, direction, filters, maxLevel, fetchLastLevelOnly, negate, rootStateEntity, defaultStateEntity, super.hashCode());
   }
 
   @Override
@@ -440,6 +440,7 @@ public class RelationsQueryFilter extends EntityFilter {
     sb.append("class RelationsQueryFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    rootEntity: ").append(toIndentedString(rootEntity)).append("\n");
+    sb.append("    multiRoot: ").append(toIndentedString(multiRoot)).append("\n");
     sb.append("    multiRootEntitiesType: ").append(toIndentedString(multiRootEntitiesType)).append("\n");
     sb.append("    multiRootEntityIds: ").append(toIndentedString(multiRootEntityIds)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
@@ -449,7 +450,6 @@ public class RelationsQueryFilter extends EntityFilter {
     sb.append("    negate: ").append(toIndentedString(negate)).append("\n");
     sb.append("    rootStateEntity: ").append(toIndentedString(rootStateEntity)).append("\n");
     sb.append("    defaultStateEntity: ").append(toIndentedString(defaultStateEntity)).append("\n");
-    sb.append("    multiRoot: ").append(toIndentedString(multiRoot)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -507,6 +507,11 @@ public class RelationsQueryFilter extends EntityFilter {
       joiner.add(getRootEntity().toUrlQueryString(prefix + "rootEntity" + suffix));
     }
 
+    // add `multiRoot` to the URL query string
+    if (getMultiRoot() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smultiRoot%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMultiRoot()))));
+    }
+
     // add `multiRootEntitiesType` to the URL query string
     if (getMultiRootEntitiesType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smultiRootEntitiesType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMultiRootEntitiesType()))));
@@ -561,11 +566,6 @@ public class RelationsQueryFilter extends EntityFilter {
     // add `defaultStateEntity` to the URL query string
     if (getDefaultStateEntity() != null) {
       joiner.add(getDefaultStateEntity().toUrlQueryString(prefix + "defaultStateEntity" + suffix));
-    }
-
-    // add `multiRoot` to the URL query string
-    if (getMultiRoot() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smultiRoot%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMultiRoot()))));
     }
 
     return joiner.toString();
