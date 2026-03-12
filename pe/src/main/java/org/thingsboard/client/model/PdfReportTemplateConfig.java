@@ -50,12 +50,12 @@ import org.thingsboard.client.ApiClient;
  * PdfReportTemplateConfig
  */
 @JsonPropertyOrder({
-  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_SIZE,
-  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_ORIENTATION,
-  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_MARGINS,
-  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_BACKGROUND,
+  PdfReportTemplateConfig.JSON_PROPERTY_FOOTER,
   PdfReportTemplateConfig.JSON_PROPERTY_HEADER,
-  PdfReportTemplateConfig.JSON_PROPERTY_FOOTER
+  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_BACKGROUND,
+  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_MARGINS,
+  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_ORIENTATION,
+  PdfReportTemplateConfig.JSON_PROPERTY_PAGE_SIZE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -65,126 +65,54 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "format", visible = true)
 
 public class PdfReportTemplateConfig extends ReportTemplateConfig {
-  public static final String JSON_PROPERTY_PAGE_SIZE = "pageSize";
+  public static final String JSON_PROPERTY_FOOTER = "footer";
   @javax.annotation.Nullable
-  private PageSize pageSize;
-
-  public static final String JSON_PROPERTY_PAGE_ORIENTATION = "pageOrientation";
-  @javax.annotation.Nullable
-  private PageOrientation pageOrientation;
-
-  public static final String JSON_PROPERTY_PAGE_MARGINS = "pageMargins";
-  @javax.annotation.Nullable
-  private Insets pageMargins;
-
-  public static final String JSON_PROPERTY_PAGE_BACKGROUND = "pageBackground";
-  @javax.annotation.Nullable
-  private String pageBackground;
+  private HeaderFooter footer;
 
   public static final String JSON_PROPERTY_HEADER = "header";
   @javax.annotation.Nullable
   private HeaderFooter header;
 
-  public static final String JSON_PROPERTY_FOOTER = "footer";
+  public static final String JSON_PROPERTY_PAGE_BACKGROUND = "pageBackground";
   @javax.annotation.Nullable
-  private HeaderFooter footer;
+  private String pageBackground;
+
+  public static final String JSON_PROPERTY_PAGE_MARGINS = "pageMargins";
+  @javax.annotation.Nullable
+  private Insets pageMargins;
+
+  public static final String JSON_PROPERTY_PAGE_ORIENTATION = "pageOrientation";
+  @javax.annotation.Nullable
+  private PageOrientation pageOrientation;
+
+  public static final String JSON_PROPERTY_PAGE_SIZE = "pageSize";
+  @javax.annotation.Nullable
+  private PageSize pageSize;
 
   public PdfReportTemplateConfig() { 
   }
 
-  public PdfReportTemplateConfig pageSize(@javax.annotation.Nullable PageSize pageSize) {
-    this.pageSize = pageSize;
+  public PdfReportTemplateConfig footer(@javax.annotation.Nullable HeaderFooter footer) {
+    this.footer = footer;
     return this;
   }
 
   /**
-   * Get pageSize
-   * @return pageSize
+   * Get footer
+   * @return footer
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_FOOTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public PageSize getPageSize() {
-    return pageSize;
+  public HeaderFooter getFooter() {
+    return footer;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_FOOTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageSize(@javax.annotation.Nullable PageSize pageSize) {
-    this.pageSize = pageSize;
-  }
-
-
-  public PdfReportTemplateConfig pageOrientation(@javax.annotation.Nullable PageOrientation pageOrientation) {
-    this.pageOrientation = pageOrientation;
-    return this;
-  }
-
-  /**
-   * Get pageOrientation
-   * @return pageOrientation
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PAGE_ORIENTATION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public PageOrientation getPageOrientation() {
-    return pageOrientation;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PAGE_ORIENTATION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageOrientation(@javax.annotation.Nullable PageOrientation pageOrientation) {
-    this.pageOrientation = pageOrientation;
-  }
-
-
-  public PdfReportTemplateConfig pageMargins(@javax.annotation.Nullable Insets pageMargins) {
-    this.pageMargins = pageMargins;
-    return this;
-  }
-
-  /**
-   * Get pageMargins
-   * @return pageMargins
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PAGE_MARGINS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Insets getPageMargins() {
-    return pageMargins;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PAGE_MARGINS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageMargins(@javax.annotation.Nullable Insets pageMargins) {
-    this.pageMargins = pageMargins;
-  }
-
-
-  public PdfReportTemplateConfig pageBackground(@javax.annotation.Nullable String pageBackground) {
-    this.pageBackground = pageBackground;
-    return this;
-  }
-
-  /**
-   * Get pageBackground
-   * @return pageBackground
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PAGE_BACKGROUND, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getPageBackground() {
-    return pageBackground;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PAGE_BACKGROUND, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageBackground(@javax.annotation.Nullable String pageBackground) {
-    this.pageBackground = pageBackground;
+  public void setFooter(@javax.annotation.Nullable HeaderFooter footer) {
+    this.footer = footer;
   }
 
 
@@ -212,51 +140,105 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   }
 
 
-  public PdfReportTemplateConfig footer(@javax.annotation.Nullable HeaderFooter footer) {
-    this.footer = footer;
+  public PdfReportTemplateConfig pageBackground(@javax.annotation.Nullable String pageBackground) {
+    this.pageBackground = pageBackground;
     return this;
   }
 
   /**
-   * Get footer
-   * @return footer
+   * Get pageBackground
+   * @return pageBackground
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_FOOTER, required = false)
+  @JsonProperty(value = JSON_PROPERTY_PAGE_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public HeaderFooter getFooter() {
-    return footer;
+  public String getPageBackground() {
+    return pageBackground;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_FOOTER, required = false)
+  @JsonProperty(value = JSON_PROPERTY_PAGE_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFooter(@javax.annotation.Nullable HeaderFooter footer) {
-    this.footer = footer;
+  public void setPageBackground(@javax.annotation.Nullable String pageBackground) {
+    this.pageBackground = pageBackground;
   }
 
 
-  @Override
-  public PdfReportTemplateConfig format(@javax.annotation.Nonnull TbReportFormat format) {
-    this.setFormat(format);
+  public PdfReportTemplateConfig pageMargins(@javax.annotation.Nullable Insets pageMargins) {
+    this.pageMargins = pageMargins;
     return this;
   }
 
-  @Override
-  public PdfReportTemplateConfig filters(@javax.annotation.Nullable List<Filter> filters) {
-    this.setFilters(filters);
+  /**
+   * Get pageMargins
+   * @return pageMargins
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PAGE_MARGINS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Insets getPageMargins() {
+    return pageMargins;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PAGE_MARGINS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPageMargins(@javax.annotation.Nullable Insets pageMargins) {
+    this.pageMargins = pageMargins;
+  }
+
+
+  public PdfReportTemplateConfig pageOrientation(@javax.annotation.Nullable PageOrientation pageOrientation) {
+    this.pageOrientation = pageOrientation;
     return this;
   }
+
+  /**
+   * Get pageOrientation
+   * @return pageOrientation
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PAGE_ORIENTATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public PageOrientation getPageOrientation() {
+    return pageOrientation;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PAGE_ORIENTATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPageOrientation(@javax.annotation.Nullable PageOrientation pageOrientation) {
+    this.pageOrientation = pageOrientation;
+  }
+
+
+  public PdfReportTemplateConfig pageSize(@javax.annotation.Nullable PageSize pageSize) {
+    this.pageSize = pageSize;
+    return this;
+  }
+
+  /**
+   * Get pageSize
+   * @return pageSize
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public PageSize getPageSize() {
+    return pageSize;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPageSize(@javax.annotation.Nullable PageSize pageSize) {
+    this.pageSize = pageSize;
+  }
+
 
   @Override
   public PdfReportTemplateConfig namePattern(@javax.annotation.Nullable String namePattern) {
     this.setNamePattern(namePattern);
-    return this;
-  }
-
-  @Override
-  public PdfReportTemplateConfig components(@javax.annotation.Nullable List<ReportComponent> components) {
-    this.setComponents(components);
     return this;
   }
 
@@ -267,8 +249,26 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
+  public PdfReportTemplateConfig format(@javax.annotation.Nonnull TbReportFormat format) {
+    this.setFormat(format);
+    return this;
+  }
+
+  @Override
   public PdfReportTemplateConfig entityAliases(@javax.annotation.Nullable List<EntityAlias> entityAliases) {
     this.setEntityAliases(entityAliases);
+    return this;
+  }
+
+  @Override
+  public PdfReportTemplateConfig filters(@javax.annotation.Nullable List<Filter> filters) {
+    this.setFilters(filters);
+    return this;
+  }
+
+  @Override
+  public PdfReportTemplateConfig components(@javax.annotation.Nullable List<ReportComponent> components) {
+    this.setComponents(components);
     return this;
   }
 
@@ -284,18 +284,18 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
       return false;
     }
     PdfReportTemplateConfig pdfReportTemplateConfig = (PdfReportTemplateConfig) o;
-    return Objects.equals(this.pageSize, pdfReportTemplateConfig.pageSize) &&
-        Objects.equals(this.pageOrientation, pdfReportTemplateConfig.pageOrientation) &&
-        Objects.equals(this.pageMargins, pdfReportTemplateConfig.pageMargins) &&
-        Objects.equals(this.pageBackground, pdfReportTemplateConfig.pageBackground) &&
+    return Objects.equals(this.footer, pdfReportTemplateConfig.footer) &&
         Objects.equals(this.header, pdfReportTemplateConfig.header) &&
-        Objects.equals(this.footer, pdfReportTemplateConfig.footer) &&
+        Objects.equals(this.pageBackground, pdfReportTemplateConfig.pageBackground) &&
+        Objects.equals(this.pageMargins, pdfReportTemplateConfig.pageMargins) &&
+        Objects.equals(this.pageOrientation, pdfReportTemplateConfig.pageOrientation) &&
+        Objects.equals(this.pageSize, pdfReportTemplateConfig.pageSize) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pageSize, pageOrientation, pageMargins, pageBackground, header, footer, super.hashCode());
+    return Objects.hash(footer, header, pageBackground, pageMargins, pageOrientation, pageSize, super.hashCode());
   }
 
   @Override
@@ -303,12 +303,12 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class PdfReportTemplateConfig {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
-    sb.append("    pageOrientation: ").append(toIndentedString(pageOrientation)).append("\n");
-    sb.append("    pageMargins: ").append(toIndentedString(pageMargins)).append("\n");
-    sb.append("    pageBackground: ").append(toIndentedString(pageBackground)).append("\n");
-    sb.append("    header: ").append(toIndentedString(header)).append("\n");
     sb.append("    footer: ").append(toIndentedString(footer)).append("\n");
+    sb.append("    header: ").append(toIndentedString(header)).append("\n");
+    sb.append("    pageBackground: ").append(toIndentedString(pageBackground)).append("\n");
+    sb.append("    pageMargins: ").append(toIndentedString(pageMargins)).append("\n");
+    sb.append("    pageOrientation: ").append(toIndentedString(pageOrientation)).append("\n");
+    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -356,39 +356,19 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `format` to the URL query string
-    if (getFormat() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFormat()))));
-    }
-
-    // add `filters` to the URL query string
-    if (getFilters() != null) {
-      for (int i = 0; i < getFilters().size(); i++) {
-        if (getFilters().get(i) != null) {
-          joiner.add(getFilters().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sfilters%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
-    }
-
     // add `namePattern` to the URL query string
     if (getNamePattern() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%snamePattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getNamePattern()))));
     }
 
-    // add `components` to the URL query string
-    if (getComponents() != null) {
-      for (int i = 0; i < getComponents().size(); i++) {
-        if (getComponents().get(i) != null) {
-          joiner.add(getComponents().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%scomponents%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
-    }
-
     // add `timeDataPattern` to the URL query string
     if (getTimeDataPattern() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stimeDataPattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeDataPattern()))));
+    }
+
+    // add `format` to the URL query string
+    if (getFormat() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFormat()))));
     }
 
     // add `entityAliases` to the URL query string
@@ -401,24 +381,29 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
       }
     }
 
-    // add `pageSize` to the URL query string
-    if (getPageSize() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spageSize%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageSize()))));
+    // add `filters` to the URL query string
+    if (getFilters() != null) {
+      for (int i = 0; i < getFilters().size(); i++) {
+        if (getFilters().get(i) != null) {
+          joiner.add(getFilters().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sfilters%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
-    // add `pageOrientation` to the URL query string
-    if (getPageOrientation() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spageOrientation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageOrientation()))));
+    // add `components` to the URL query string
+    if (getComponents() != null) {
+      for (int i = 0; i < getComponents().size(); i++) {
+        if (getComponents().get(i) != null) {
+          joiner.add(getComponents().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%scomponents%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
-    // add `pageMargins` to the URL query string
-    if (getPageMargins() != null) {
-      joiner.add(getPageMargins().toUrlQueryString(prefix + "pageMargins" + suffix));
-    }
-
-    // add `pageBackground` to the URL query string
-    if (getPageBackground() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spageBackground%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageBackground()))));
+    // add `footer` to the URL query string
+    if (getFooter() != null) {
+      joiner.add(getFooter().toUrlQueryString(prefix + "footer" + suffix));
     }
 
     // add `header` to the URL query string
@@ -426,9 +411,24 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
       joiner.add(getHeader().toUrlQueryString(prefix + "header" + suffix));
     }
 
-    // add `footer` to the URL query string
-    if (getFooter() != null) {
-      joiner.add(getFooter().toUrlQueryString(prefix + "footer" + suffix));
+    // add `pageBackground` to the URL query string
+    if (getPageBackground() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spageBackground%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageBackground()))));
+    }
+
+    // add `pageMargins` to the URL query string
+    if (getPageMargins() != null) {
+      joiner.add(getPageMargins().toUrlQueryString(prefix + "pageMargins" + suffix));
+    }
+
+    // add `pageOrientation` to the URL query string
+    if (getPageOrientation() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spageOrientation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageOrientation()))));
+    }
+
+    // add `pageSize` to the URL query string
+    if (getPageSize() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spageSize%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageSize()))));
     }
 
     return joiner.toString();

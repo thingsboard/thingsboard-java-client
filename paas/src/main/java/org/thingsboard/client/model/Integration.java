@@ -48,6 +48,7 @@ import org.thingsboard.client.ApiClient;
   Integration.JSON_PROPERTY_DEBUG_MODE,
   Integration.JSON_PROPERTY_DEBUG_SETTINGS,
   Integration.JSON_PROPERTY_ENABLED,
+  Integration.JSON_PROPERTY_REMOTE,
   Integration.JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS,
   Integration.JSON_PROPERTY_EDGE_TEMPLATE,
   Integration.JSON_PROPERTY_VERSION,
@@ -56,8 +57,7 @@ import org.thingsboard.client.ApiClient;
   Integration.JSON_PROPERTY_ROUTING_KEY,
   Integration.JSON_PROPERTY_SECRET,
   Integration.JSON_PROPERTY_CONFIGURATION,
-  Integration.JSON_PROPERTY_ADDITIONAL_INFO,
-  Integration.JSON_PROPERTY_REMOTE
+  Integration.JSON_PROPERTY_ADDITIONAL_INFO
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Integration {
@@ -92,6 +92,10 @@ public class Integration {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   @javax.annotation.Nullable
   private Boolean enabled;
+
+  public static final String JSON_PROPERTY_REMOTE = "remote";
+  @javax.annotation.Nullable
+  private Boolean remote;
 
   public static final String JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS = "allowCreateDevicesOrAssets";
   @javax.annotation.Nullable
@@ -128,10 +132,6 @@ public class Integration {
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
-
-  public static final String JSON_PROPERTY_REMOTE = "remote";
-  @javax.annotation.Nullable
-  private Boolean remote;
 
   public Integration() { 
   }
@@ -317,6 +317,30 @@ public class Integration {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
     this.enabled = enabled;
+  }
+
+
+  public Integration remote(@javax.annotation.Nullable Boolean remote) {
+    this.remote = remote;
+    return this;
+  }
+
+  /**
+   * Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core
+   * @return remote
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getRemote() {
+    return remote;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRemote(@javax.annotation.Nullable Boolean remote) {
+    this.remote = remote;
   }
 
 
@@ -536,30 +560,6 @@ public class Integration {
   }
 
 
-  public Integration remote(@javax.annotation.Nullable Boolean remote) {
-    this.remote = remote;
-    return this;
-  }
-
-  /**
-   * Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core
-   * @return remote
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getRemote() {
-    return remote;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRemote(@javax.annotation.Nullable Boolean remote) {
-    this.remote = remote;
-  }
-
-
   /**
    * Return true if this Integration object is equal to o.
    */
@@ -580,6 +580,7 @@ public class Integration {
         Objects.equals(this.debugMode, integration.debugMode) &&
         Objects.equals(this.debugSettings, integration.debugSettings) &&
         Objects.equals(this.enabled, integration.enabled) &&
+        Objects.equals(this.remote, integration.remote) &&
         Objects.equals(this.allowCreateDevicesOrAssets, integration.allowCreateDevicesOrAssets) &&
         Objects.equals(this.edgeTemplate, integration.edgeTemplate) &&
         Objects.equals(this.version, integration.version) &&
@@ -588,13 +589,12 @@ public class Integration {
         Objects.equals(this.routingKey, integration.routingKey) &&
         Objects.equals(this.secret, integration.secret) &&
         Objects.equals(this._configuration, integration._configuration) &&
-        Objects.equals(this.additionalInfo, integration.additionalInfo) &&
-        Objects.equals(this.remote, integration.remote);
+        Objects.equals(this.additionalInfo, integration.additionalInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, name, type, debugMode, debugSettings, enabled, allowCreateDevicesOrAssets, edgeTemplate, version, defaultConverterId, downlinkConverterId, routingKey, secret, _configuration, additionalInfo, remote);
+    return Objects.hash(id, createdTime, tenantId, name, type, debugMode, debugSettings, enabled, remote, allowCreateDevicesOrAssets, edgeTemplate, version, defaultConverterId, downlinkConverterId, routingKey, secret, _configuration, additionalInfo);
   }
 
   @Override
@@ -609,6 +609,7 @@ public class Integration {
     sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
     sb.append("    debugSettings: ").append(toIndentedString(debugSettings)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    remote: ").append(toIndentedString(remote)).append("\n");
     sb.append("    allowCreateDevicesOrAssets: ").append(toIndentedString(allowCreateDevicesOrAssets)).append("\n");
     sb.append("    edgeTemplate: ").append(toIndentedString(edgeTemplate)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -618,7 +619,6 @@ public class Integration {
     sb.append("    secret: ").append(toIndentedString(secret)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
-    sb.append("    remote: ").append(toIndentedString(remote)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -706,6 +706,11 @@ public class Integration {
       joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
     }
 
+    // add `remote` to the URL query string
+    if (getRemote() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sremote%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getRemote()))));
+    }
+
     // add `allowCreateDevicesOrAssets` to the URL query string
     if (getAllowCreateDevicesOrAssets() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sallowCreateDevicesOrAssets%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAllowCreateDevicesOrAssets()))));
@@ -749,11 +754,6 @@ public class Integration {
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
-    }
-
-    // add `remote` to the URL query string
-    if (getRemote() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sremote%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getRemote()))));
     }
 
     return joiner.toString();

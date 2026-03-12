@@ -17,6 +17,7 @@ A JSON value representing the integration.
 | **debugMode** | **Boolean** | Enable/disable debug.  | [optional] |
 | **debugSettings** | **DebugSettings** | Debug settings object. | [optional] |
 | **enabled** | **Boolean** | Boolean flag to enable/disable the integration | [optional] |
+| **remote** | **Boolean** | Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core | [optional] |
 | **allowCreateDevicesOrAssets** | **Boolean** | Boolean flag to allow/disallow the integration to create devices or assets that send message and do not exist in the system yet | [optional] |
 | **edgeTemplate** | **Boolean** | Boolean flag that specifies that is regular or edge template integration | [optional] |
 | **version** | **Long** |  | [optional] |
@@ -26,7 +27,6 @@ A JSON value representing the integration.
 | **secret** | **String** | String value used by the remote integrations. Remote integration uses this value along with the 'routingKey' for kind of security and validation to be able to connect to the platform using Grpc | [optional] |
 | **_configuration** | **com.fasterxml.jackson.databind.JsonNode** | JSON object representing integration configuration. Each integration type has specific configuration with the connectivity parameters (like 'host' and 'port' for MQTT type or 'baseUrl' for HTTP based type, etc.) and other important parameters dependent on the integration type | |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the integration | [optional] |
-| **remote** | **Boolean** | Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core | [optional] |
 
 
 
