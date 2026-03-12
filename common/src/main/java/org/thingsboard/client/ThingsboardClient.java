@@ -23,14 +23,21 @@ import org.thingsboard.client.model.LoginRequest;
 import org.thingsboard.client.model.LoginResponse;
 
 import java.io.InputStream;
+import java.net.Authenticator;
+import java.net.CookieHandler;
+import java.net.ProxySelector;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.util.Base64;
 import java.util.Map;
+import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLParameters;
 
 /**
  * High-level ThingsBoard REST API client with automatic authentication management.
@@ -41,6 +48,7 @@ import java.util.logging.Level;
  *   <li>Automatic token refresh before expiry</li>
  *   <li>Automatic re-login when the refresh token expires</li>
  *   <li>Client-server clock skew compensation</li>
+ *   <li>Automatic retry on HTTP 429 (Too Many Requests) with exponential backoff</li>
  * </ul>
  *
  * <pre>{@code
@@ -54,6 +62,22 @@ import java.util.logging.Level;
  * ThingsboardClient client = ThingsboardClient.builder()
  *         .url("http://localhost:8080")
  *         .apiKey("your-api-key")
+ *         .build();
+ *
+ * // Tuning rate-limit retry behaviour (retry is enabled by default)
+ * ThingsboardClient client = ThingsboardClient.builder()
+ *         .url("http://localhost:8080")
+ *         .credentials("tenant@thingsboard.org", "password")
+ *         .maxRetries(5)
+ *         .initialRetryDelayMs(500L)
+ *         .maxRetryDelayMs(60_000L)
+ *         .build();
+ *
+ * // Disable retry entirely
+ * ThingsboardClient client = ThingsboardClient.builder()
+ *         .url("http://localhost:8080")
+ *         .credentials("tenant@thingsboard.org", "password")
+ *         .retryEnabled(false)
  *         .build();
  *
  * // All generated API methods are available directly
@@ -96,6 +120,10 @@ public class ThingsboardClient extends ThingsboardApi {
         private String username;
         private String password;
         private String apiKey;
+        private boolean retryEnabled = true;
+        private int maxRetries = 3;
+        private long initialRetryDelayMs = 1000L;
+        private long maxRetryDelayMs = 30_000L;
 
         private Builder() {}
 
@@ -115,19 +143,140 @@ public class ThingsboardClient extends ThingsboardApi {
             return this;
         }
 
+        /**
+         * Enables or disables automatic retry on HTTP 429 responses.
+         * Retry is enabled by default.
+         */
+        public Builder retryEnabled(boolean retryEnabled) {
+            this.retryEnabled = retryEnabled;
+            return this;
+        }
+
+        /**
+         * Maximum number of retry attempts after an HTTP 429 response.
+         * Default: 3.
+         */
+        public Builder maxRetries(int maxRetries) {
+            this.maxRetries = maxRetries;
+            return this;
+        }
+
+        /**
+         * Initial backoff delay in milliseconds for the first retry.
+         * Subsequent retries use exponential backoff with ±20% jitter.
+         * Default: 1000 ms.
+         */
+        public Builder initialRetryDelayMs(long initialRetryDelayMs) {
+            this.initialRetryDelayMs = initialRetryDelayMs;
+            return this;
+        }
+
+        /**
+         * Maximum backoff delay in milliseconds. The computed delay is capped at this value.
+         * Default: 30 000 ms.
+         */
+        public Builder maxRetryDelayMs(long maxRetryDelayMs) {
+            this.maxRetryDelayMs = maxRetryDelayMs;
+            return this;
+        }
+
         public ThingsboardClient build() throws ApiException {
             if (url == null) {
                 throw new IllegalArgumentException("url is required");
             }
             if (apiKey != null) {
-                return new ThingsboardClient(new AuthManager(url, AuthType.API_KEY, apiKey));
+                AuthManager auth = new AuthManager(url, AuthType.API_KEY, apiKey);
+                installRetryingClient(auth);
+                return new ThingsboardClient(auth);
             }
             AuthManager auth = new AuthManager(url, AuthType.JWT, null);
+            installRetryingClient(auth);
             ThingsboardClient client = new ThingsboardClient(auth);
             if (username != null) {
                 client.login(username, password);
             }
             return client;
+        }
+
+        private void installRetryingClient(AuthManager auth) {
+            if (!retryEnabled) {
+                return;
+            }
+            // Replace the HttpClient already captured by AuthManager for raw auth calls
+            RetryingHttpClient retrying = RetryingHttpClient.wrap(
+                    auth.httpClient, maxRetries, initialRetryDelayMs, maxRetryDelayMs);
+            auth.httpClient = retrying;
+
+            // Replace the ApiClient's builder so that ThingsboardApi (constructed next)
+            // also gets a RetryingHttpClient when it calls apiClient.getHttpClient()
+            HttpClient.Builder realBuilder = auth.apiClient.builder;
+            auth.apiClient.builder = new HttpClient.Builder() {
+                @Override
+                public HttpClient build() {
+                    return RetryingHttpClient.wrap(
+                            realBuilder.build(), maxRetries, initialRetryDelayMs, maxRetryDelayMs);
+                }
+
+                @Override
+                public HttpClient.Builder cookieHandler(CookieHandler cookieHandler) {
+                    realBuilder.cookieHandler(cookieHandler);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder connectTimeout(Duration duration) {
+                    realBuilder.connectTimeout(duration);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder sslContext(SSLContext sslContext) {
+                    realBuilder.sslContext(sslContext);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder sslParameters(SSLParameters sslParameters) {
+                    realBuilder.sslParameters(sslParameters);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder executor(Executor executor) {
+                    realBuilder.executor(executor);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder followRedirects(HttpClient.Redirect policy) {
+                    realBuilder.followRedirects(policy);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder version(HttpClient.Version version) {
+                    realBuilder.version(version);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder proxy(ProxySelector proxySelector) {
+                    realBuilder.proxy(proxySelector);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder authenticator(java.net.Authenticator authenticator) {
+                    realBuilder.authenticator(authenticator);
+                    return this;
+                }
+
+                @Override
+                public HttpClient.Builder priority(int priority) {
+                    realBuilder.priority(priority);
+                    return this;
+                }
+            };
         }
 
     }
@@ -169,7 +318,7 @@ public class ThingsboardClient extends ThingsboardApi {
 
         final ApiClient apiClient;
         private final AuthType authType;
-        private final HttpClient httpClient;
+        HttpClient httpClient;  // package-private and non-final so Builder can replace with RetryingHttpClient
         private final ObjectMapper objectMapper;
         private final String baseUrl;
 
