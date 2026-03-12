@@ -163,7 +163,8 @@ public class RetryingHttpClient extends HttpClient {
             }
         }
         // Exponential backoff: initialDelayMs * 2^(attempt-1), capped at maxDelayMs
-        long base = Math.min(initialDelayMs * (1L << (attempt - 1)), maxDelayMs);
+        int shift = Math.min(attempt - 1, 30); // prevent long overflow on large attempt values
+        long base = Math.min(initialDelayMs * (1L << shift), maxDelayMs);
         // ±20% jitter
         double jitter = (random.nextDouble() * 0.4) - 0.2; // range [-0.2, 0.2]
         return Math.max(0, Math.round(base * (1.0 + jitter)));

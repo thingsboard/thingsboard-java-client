@@ -23,21 +23,14 @@ import org.thingsboard.client.model.LoginRequest;
 import org.thingsboard.client.model.LoginResponse;
 
 import java.io.InputStream;
-import java.net.Authenticator;
-import java.net.CookieHandler;
-import java.net.ProxySelector;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.time.Duration;
 import java.util.Base64;
 import java.util.Map;
-import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLParameters;
 
 /**
  * High-level ThingsBoard REST API client with automatic authentication management.
@@ -73,11 +66,11 @@ import javax.net.ssl.SSLParameters;
  *         .maxRetryDelayMs(60_000L)
  *         .build();
  *
- * // Disable retry entirely
+ * // Disable rate-limit retry
  * ThingsboardClient client = ThingsboardClient.builder()
  *         .url("http://localhost:8080")
  *         .credentials("tenant@thingsboard.org", "password")
- *         .retryEnabled(false)
+ *         .retryOnRateLimit(false)
  *         .build();
  *
  * // All generated API methods are available directly
@@ -120,7 +113,7 @@ public class ThingsboardClient extends ThingsboardApi {
         private String username;
         private String password;
         private String apiKey;
-        private boolean retryEnabled = true;
+        private boolean retryOnRateLimit = true;
         private int maxRetries = 3;
         private long initialRetryDelayMs = 1000L;
         private long maxRetryDelayMs = 30_000L;
@@ -144,11 +137,11 @@ public class ThingsboardClient extends ThingsboardApi {
         }
 
         /**
-         * Enables or disables automatic retry on HTTP 429 responses.
-         * Retry is enabled by default.
+         * Enables or disables automatic retry on rate-limit (HTTP 429) responses.
+         * Enabled by default.
          */
-        public Builder retryEnabled(boolean retryEnabled) {
-            this.retryEnabled = retryEnabled;
+        public Builder retryOnRateLimit(boolean retryOnRateLimit) {
+            this.retryOnRateLimit = retryOnRateLimit;
             return this;
         }
 
@@ -184,101 +177,39 @@ public class ThingsboardClient extends ThingsboardApi {
             if (url == null) {
                 throw new IllegalArgumentException("url is required");
             }
-            if (apiKey != null) {
-                AuthManager auth = new AuthManager(url, AuthType.API_KEY, apiKey);
-                installRetryingClient(auth);
-                return new ThingsboardClient(auth);
-            }
-            AuthManager auth = new AuthManager(url, AuthType.JWT, null);
-            installRetryingClient(auth);
+            ApiClient apiClient = retryOnRateLimit
+                    ? new RetryableApiClient(maxRetries, initialRetryDelayMs, maxRetryDelayMs)
+                    : new ApiClient();
+            AuthType authType = apiKey != null ? AuthType.API_KEY : AuthType.JWT;
+            AuthManager auth = new AuthManager(url, authType, apiKey, apiClient);
             ThingsboardClient client = new ThingsboardClient(auth);
-            if (username != null) {
+            if (authType == AuthType.JWT && username != null) {
                 client.login(username, password);
             }
             return client;
         }
 
-        private void installRetryingClient(AuthManager auth) {
-            if (!retryEnabled) {
-                return;
-            }
-            // Replace the HttpClient already captured by AuthManager for raw auth calls
-            RetryingHttpClient retrying = RetryingHttpClient.wrap(
-                    auth.httpClient, maxRetries, initialRetryDelayMs, maxRetryDelayMs);
-            auth.httpClient = retrying;
+    }
 
-            // Replace the ApiClient's builder so that ThingsboardApi (constructed next)
-            // also gets a RetryingHttpClient when it calls apiClient.getHttpClient()
-            HttpClient.Builder realBuilder = auth.apiClient.builder;
-            auth.apiClient.builder = new HttpClient.Builder() {
-                @Override
-                public HttpClient build() {
-                    return RetryingHttpClient.wrap(
-                            realBuilder.build(), maxRetries, initialRetryDelayMs, maxRetryDelayMs);
-                }
+    /**
+     * ApiClient subclass that wraps every built HttpClient with retry-on-429 logic.
+     */
+    private static class RetryableApiClient extends ApiClient {
 
-                @Override
-                public HttpClient.Builder cookieHandler(CookieHandler cookieHandler) {
-                    realBuilder.cookieHandler(cookieHandler);
-                    return this;
-                }
+        private final int maxRetries;
+        private final long initialDelayMs;
+        private final long maxDelayMs;
 
-                @Override
-                public HttpClient.Builder connectTimeout(Duration duration) {
-                    realBuilder.connectTimeout(duration);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder sslContext(SSLContext sslContext) {
-                    realBuilder.sslContext(sslContext);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder sslParameters(SSLParameters sslParameters) {
-                    realBuilder.sslParameters(sslParameters);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder executor(Executor executor) {
-                    realBuilder.executor(executor);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder followRedirects(HttpClient.Redirect policy) {
-                    realBuilder.followRedirects(policy);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder version(HttpClient.Version version) {
-                    realBuilder.version(version);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder proxy(ProxySelector proxySelector) {
-                    realBuilder.proxy(proxySelector);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder authenticator(java.net.Authenticator authenticator) {
-                    realBuilder.authenticator(authenticator);
-                    return this;
-                }
-
-                @Override
-                public HttpClient.Builder priority(int priority) {
-                    realBuilder.priority(priority);
-                    return this;
-                }
-            };
+        RetryableApiClient(int maxRetries, long initialDelayMs, long maxDelayMs) {
+            this.maxRetries = maxRetries;
+            this.initialDelayMs = initialDelayMs;
+            this.maxDelayMs = maxDelayMs;
         }
 
+        @Override
+        public HttpClient getHttpClient() {
+            return RetryingHttpClient.wrap(super.getHttpClient(), maxRetries, initialDelayMs, maxDelayMs);
+        }
     }
 
     /**
@@ -318,7 +249,7 @@ public class ThingsboardClient extends ThingsboardApi {
 
         final ApiClient apiClient;
         private final AuthType authType;
-        HttpClient httpClient;  // package-private and non-final so Builder can replace with RetryingHttpClient
+        private final HttpClient httpClient;
         private final ObjectMapper objectMapper;
         private final String baseUrl;
 
@@ -327,9 +258,9 @@ public class ThingsboardClient extends ThingsboardApi {
         private volatile String password;
         private volatile boolean refreshing;
 
-        AuthManager(String url, AuthType authType, String apiKey) {
+        AuthManager(String url, AuthType authType, String apiKey, ApiClient apiClient) {
             this.authType = authType;
-            this.apiClient = new ApiClient();
+            this.apiClient = apiClient;
             apiClient.updateBaseUri(url);
             this.baseUrl = apiClient.getBaseUri();
             this.httpClient = apiClient.getHttpClient();
