@@ -103,6 +103,7 @@ public class RetryingHttpClient extends HttpClient {
             long delayMs = computeDelay(response, attempt);
             log.log(Level.WARNING, "HTTP {0} received, retrying in {1}ms (attempt {2}/{3})",
                     new Object[]{response.statusCode(), delayMs, attempt, maxRetries});
+            closeBody(response);
             Thread.sleep(delayMs);
 
             response = delegate.send(request, responseBodyHandler);
@@ -121,6 +122,8 @@ public class RetryingHttpClient extends HttpClient {
         return sendAsyncWithRetry(request, responseBodyHandler, 1);
     }
 
+    // Push-promise variant delegates without retry: server-push semantics are incompatible
+    // with request-level retry, and this overload is not used by the generated API code.
     @Override
     public <T> CompletableFuture<HttpResponse<T>> sendAsync(
             HttpRequest request,
@@ -138,11 +141,25 @@ public class RetryingHttpClient extends HttpClient {
             long delayMs = computeDelay(response, attempt);
             log.log(Level.WARNING, "HTTP {0} received, retrying in {1}ms (attempt {2}/{3})",
                     new Object[]{response.statusCode(), delayMs, attempt, maxRetries});
+            closeBody(response);
             Executor delayedExecutor = CompletableFuture.delayedExecutor(
                     delayMs, java.util.concurrent.TimeUnit.MILLISECONDS);
             return CompletableFuture.supplyAsync(() -> null, delayedExecutor)
                     .thenCompose(ignored -> sendAsyncWithRetry(request, responseBodyHandler, attempt + 1));
         });
+    }
+
+    /**
+     * Closes the response body if it is {@link AutoCloseable} (e.g. {@code InputStream}-backed responses)
+     * to free the underlying connection before retrying.
+     */
+    private static <T> void closeBody(HttpResponse<T> response) {
+        if (response.body() instanceof AutoCloseable c) {
+            try {
+                c.close();
+            } catch (Exception ignored) {
+            }
+        }
     }
 
     /**
@@ -165,9 +182,9 @@ public class RetryingHttpClient extends HttpClient {
         // Exponential backoff: initialDelayMs * 2^(attempt-1), capped at maxDelayMs
         int shift = Math.min(attempt - 1, 30); // prevent long overflow on large attempt values
         long base = Math.min(initialDelayMs * (1L << shift), maxDelayMs);
-        // ±20% jitter
+        // ±20% jitter, clamped so maxDelayMs remains a hard ceiling
         double jitter = (random.nextDouble() * 0.4) - 0.2; // range [-0.2, 0.2]
-        return Math.max(0, Math.round(base * (1.0 + jitter)));
+        return Math.min(maxDelayMs, Math.max(0, Math.round(base * (1.0 + jitter))));
     }
 
     // -------------------------------------------------------------------------

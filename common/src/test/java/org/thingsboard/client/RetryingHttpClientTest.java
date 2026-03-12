@@ -42,13 +42,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Unit tests for {@link RetryingHttpClient}.
- *
- * <p>These tests are pure unit tests — no running ThingsBoard instance is required.
- * All HTTP interactions are handled by a hand-rolled {@link StubHttpClient} stub
- * that returns pre-programmed sequences of status codes.
- */
 class RetryingHttpClientTest {
 
     // Reusable no-op request to pass into send()
@@ -56,10 +49,6 @@ class RetryingHttpClientTest {
             .uri(URI.create("http://localhost/test"))
             .GET()
             .build();
-
-    // ---------------------------------------------------------------------------
-    // Tests
-    // ---------------------------------------------------------------------------
 
     @Test
     void testNoRetryOn200() throws Exception {
@@ -183,15 +172,33 @@ class RetryingHttpClientTest {
         }
 
         // Remaining abstract methods — minimal no-op implementations
-        @Override public Optional<CookieHandler> cookieHandler() { return Optional.empty(); }
-        @Override public Optional<Duration> connectTimeout() { return Optional.empty(); }
-        @Override public Redirect followRedirects() { return Redirect.NORMAL; }
-        @Override public Optional<ProxySelector> proxy() { return Optional.empty(); }
-        @Override public SSLContext sslContext() { try { return SSLContext.getDefault(); } catch (Exception e) { throw new RuntimeException(e); } }
-        @Override public SSLParameters sslParameters() { return new SSLParameters(); }
-        @Override public Optional<Authenticator> authenticator() { return Optional.empty(); }
-        @Override public Version version() { return Version.HTTP_1_1; }
-        @Override public Optional<Executor> executor() { return Optional.empty(); }
+        @Override
+        public Optional<CookieHandler> cookieHandler() {return Optional.empty();}
+
+        @Override
+        public Optional<Duration> connectTimeout() {return Optional.empty();}
+
+        @Override
+        public Redirect followRedirects() {return Redirect.NORMAL;}
+
+        @Override
+        public Optional<ProxySelector> proxy() {return Optional.empty();}
+
+        @Override
+        public SSLContext sslContext() {try {return SSLContext.getDefault();} catch (Exception e) {throw new RuntimeException(e);}}
+
+        @Override
+        public SSLParameters sslParameters() {return new SSLParameters();}
+
+        @Override
+        public Optional<Authenticator> authenticator() {return Optional.empty();}
+
+        @Override
+        public Version version() {return Version.HTTP_1_1;}
+
+        @Override
+        public Optional<Executor> executor() {return Optional.empty();}
+
     }
 
     /**
@@ -207,14 +214,30 @@ class RetryingHttpClientTest {
             this.headers = HttpHeaders.of(headers, (k, v) -> true);
         }
 
-        @Override public int statusCode() { return statusCode; }
-        @Override public HttpHeaders headers() { return headers; }
-        @Override public InputStream body() { return InputStream.nullInputStream(); }
-        @Override public HttpRequest request() { return DUMMY_REQUEST; }
-        @Override public Optional<HttpResponse<InputStream>> previousResponse() { return Optional.empty(); }
-        @Override public Optional<SSLSession> sslSession() { return Optional.empty(); }
-        @Override public URI uri() { return DUMMY_REQUEST.uri(); }
-        @Override public HttpClient.Version version() { return HttpClient.Version.HTTP_1_1; }
+        @Override
+        public int statusCode() {return statusCode;}
+
+        @Override
+        public HttpHeaders headers() {return headers;}
+
+        @Override
+        public InputStream body() {return InputStream.nullInputStream();}
+
+        @Override
+        public HttpRequest request() {return DUMMY_REQUEST;}
+
+        @Override
+        public Optional<HttpResponse<InputStream>> previousResponse() {return Optional.empty();}
+
+        @Override
+        public Optional<SSLSession> sslSession() {return Optional.empty();}
+
+        @Override
+        public URI uri() {return DUMMY_REQUEST.uri();}
+
+        @Override
+        public HttpClient.Version version() {return HttpClient.Version.HTTP_1_1;}
+
     }
 
 }
