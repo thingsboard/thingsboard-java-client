@@ -37,6 +37,7 @@ void removeEntitiesFromEntityGroup(@Nonnull String entityGroupId, @Nonnull List<
 EntityGroupInfo saveEntityGroup(@Nonnull EntityGroup entityGroup) // Create Or Update Entity Group (saveEntityGroup)
 void shareEntityGroup(@Nonnull String entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest) // Share the Entity Group (shareEntityGroup)
 void shareEntityGroupToChildOwnerUserGroup(@Nonnull String entityGroupId, @Nonnull String userGroupId, @Nonnull String roleId) // Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup)
+void shareEntityGroupToChildOwnerUserGroupV2(@Nonnull UUID entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest) // Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroupV2)
 EntityGroup unassignEntityGroupFromEdge(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String entityGroupId) // Unassign entity group from edge (unassignEntityGroupFromEdge)
 ```
 
@@ -939,6 +940,31 @@ Share the entity group with specified user group using specified role.   Availab
 | **entityGroupId** | **String** | A string value representing the Entity Group Id that you would like to share. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **userGroupId** | **String** | A string value representing the Entity(User) Group Id that you would like to share with. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **roleId** | **String** | A string value representing the Role Id that describes set of permissions you would like to share (read, write, etc). For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
+
+
+## shareEntityGroupToChildOwnerUserGroupV2
+
+```
+void shareEntityGroupToChildOwnerUserGroupV2(@Nonnull UUID entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest)
+```
+
+**POST** `/api/v2/entityGroup/{entityGroupId}/share`
+
+Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroupV2)
+
+Share the entity group with specified user group using specified role.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **UUID** | A uuid value representing the Entity Group Id that you would like to share. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **shareGroupRequest** | **ShareGroupRequest** |  | |
 
 ### Return type
 
