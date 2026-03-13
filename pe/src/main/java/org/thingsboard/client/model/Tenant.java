@@ -39,6 +39,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   Tenant.JSON_PROPERTY_ID,
   Tenant.JSON_PROPERTY_CREATED_TIME,
+  Tenant.JSON_PROPERTY_ADDITIONAL_INFO,
   Tenant.JSON_PROPERTY_COUNTRY,
   Tenant.JSON_PROPERTY_STATE,
   Tenant.JSON_PROPERTY_CITY,
@@ -51,8 +52,7 @@ import org.thingsboard.client.ApiClient;
   Tenant.JSON_PROPERTY_REGION,
   Tenant.JSON_PROPERTY_TENANT_PROFILE_ID,
   Tenant.JSON_PROPERTY_VERSION,
-  Tenant.JSON_PROPERTY_NAME,
-  Tenant.JSON_PROPERTY_ADDITIONAL_INFO
+  Tenant.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Tenant {
@@ -63,6 +63,10 @@ public class Tenant {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @javax.annotation.Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
   @javax.annotation.Nullable
@@ -116,10 +120,6 @@ public class Tenant {
   @javax.annotation.Nullable
   private String name;
 
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
-
   public Tenant() { 
   }
 
@@ -169,6 +169,30 @@ public class Tenant {
   }
 
 
+
+
+  public Tenant additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the tenant. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar).
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public Tenant country(@javax.annotation.Nullable String country) {
@@ -473,30 +497,6 @@ public class Tenant {
 
 
 
-  public Tenant additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the tenant. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar).
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this Tenant object is equal to o.
    */
@@ -511,6 +511,7 @@ public class Tenant {
     Tenant tenant = (Tenant) o;
     return Objects.equals(this.id, tenant.id) &&
         Objects.equals(this.createdTime, tenant.createdTime) &&
+        Objects.equals(this.additionalInfo, tenant.additionalInfo) &&
         Objects.equals(this.country, tenant.country) &&
         Objects.equals(this.state, tenant.state) &&
         Objects.equals(this.city, tenant.city) &&
@@ -523,13 +524,12 @@ public class Tenant {
         Objects.equals(this.region, tenant.region) &&
         Objects.equals(this.tenantProfileId, tenant.tenantProfileId) &&
         Objects.equals(this.version, tenant.version) &&
-        Objects.equals(this.name, tenant.name) &&
-        Objects.equals(this.additionalInfo, tenant.additionalInfo);
+        Objects.equals(this.name, tenant.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, region, tenantProfileId, version, name, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, country, state, city, address, address2, zip, phone, email, title, region, tenantProfileId, version, name);
   }
 
   @Override
@@ -538,6 +538,7 @@ public class Tenant {
     sb.append("class Tenant {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
@@ -551,7 +552,6 @@ public class Tenant {
     sb.append("    tenantProfileId: ").append(toIndentedString(tenantProfileId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -607,6 +607,11 @@ public class Tenant {
     // add `createdTime` to the URL query string
     if (getCreatedTime() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `country` to the URL query string
@@ -672,11 +677,6 @@ public class Tenant {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

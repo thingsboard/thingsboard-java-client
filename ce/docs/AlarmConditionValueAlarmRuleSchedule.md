@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **staticValue** | **AlarmRuleSchedule** |  | [optional] |
 | **dynamicValueArgument** | **String** |  | [optional] |
+| **staticValue** | **AlarmRuleSchedule** |  | [optional] |
 
 
 

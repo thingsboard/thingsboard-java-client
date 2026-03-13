@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **type** | **String** |  | |
 | **output** | **Output** |  | [optional] |
 | **aiGenerated** | **Boolean** |  | [optional] |
-| **type** | **String** |  | |
 
 
 

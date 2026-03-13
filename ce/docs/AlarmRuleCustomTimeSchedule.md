@@ -9,8 +9,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **timezone** | **String** |  | [optional] |
 | **items** | **List\<AlarmRuleCustomTimeScheduleItem\>** |  | [optional] |
+| **timezone** | **String** |  | [optional] |
 
 
 

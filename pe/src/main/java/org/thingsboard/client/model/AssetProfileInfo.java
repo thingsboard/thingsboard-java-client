@@ -39,20 +39,16 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   AssetProfileInfo.JSON_PROPERTY_ID,
-  AssetProfileInfo.JSON_PROPERTY_TENANT_ID,
   AssetProfileInfo.JSON_PROPERTY_NAME,
   AssetProfileInfo.JSON_PROPERTY_IMAGE,
-  AssetProfileInfo.JSON_PROPERTY_DEFAULT_DASHBOARD_ID
+  AssetProfileInfo.JSON_PROPERTY_DEFAULT_DASHBOARD_ID,
+  AssetProfileInfo.JSON_PROPERTY_TENANT_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AssetProfileInfo {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
   private EntityId id;
-
-  public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
-  private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -65,6 +61,10 @@ public class AssetProfileInfo {
   public static final String JSON_PROPERTY_DEFAULT_DASHBOARD_ID = "defaultDashboardId";
   @javax.annotation.Nullable
   private DashboardId defaultDashboardId;
+
+  public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
+  @javax.annotation.Nullable
+  private TenantId tenantId;
 
   public AssetProfileInfo() { 
   }
@@ -90,30 +90,6 @@ public class AssetProfileInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(@javax.annotation.Nullable EntityId id) {
     this.id = id;
-  }
-
-
-  public AssetProfileInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
-    return this;
-  }
-
-  /**
-   * Tenant id.
-   * @return tenantId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TenantId getTenantId() {
-    return tenantId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
   }
 
 
@@ -189,6 +165,30 @@ public class AssetProfileInfo {
   }
 
 
+  public AssetProfileInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
+    this.tenantId = tenantId;
+    return this;
+  }
+
+  /**
+   * Tenant id.
+   * @return tenantId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TenantId getTenantId() {
+    return tenantId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+    this.tenantId = tenantId;
+  }
+
+
   /**
    * Return true if this AssetProfileInfo object is equal to o.
    */
@@ -202,15 +202,15 @@ public class AssetProfileInfo {
     }
     AssetProfileInfo assetProfileInfo = (AssetProfileInfo) o;
     return Objects.equals(this.id, assetProfileInfo.id) &&
-        Objects.equals(this.tenantId, assetProfileInfo.tenantId) &&
         Objects.equals(this.name, assetProfileInfo.name) &&
         Objects.equals(this.image, assetProfileInfo.image) &&
-        Objects.equals(this.defaultDashboardId, assetProfileInfo.defaultDashboardId);
+        Objects.equals(this.defaultDashboardId, assetProfileInfo.defaultDashboardId) &&
+        Objects.equals(this.tenantId, assetProfileInfo.tenantId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tenantId, name, image, defaultDashboardId);
+    return Objects.hash(id, name, image, defaultDashboardId, tenantId);
   }
 
   @Override
@@ -218,10 +218,10 @@ public class AssetProfileInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class AssetProfileInfo {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    defaultDashboardId: ").append(toIndentedString(defaultDashboardId)).append("\n");
+    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -274,11 +274,6 @@ public class AssetProfileInfo {
       joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
     }
 
-    // add `tenantId` to the URL query string
-    if (getTenantId() != null) {
-      joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
-    }
-
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
@@ -292,6 +287,11 @@ public class AssetProfileInfo {
     // add `defaultDashboardId` to the URL query string
     if (getDefaultDashboardId() != null) {
       joiner.add(getDefaultDashboardId().toUrlQueryString(prefix + "defaultDashboardId" + suffix));
+    }
+
+    // add `tenantId` to the URL query string
+    if (getTenantId() != null) {
+      joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
     return joiner.toString();

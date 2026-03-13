@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **defaultValue** | **Integer** |  | [optional] |
-| **userValue** | **Integer** |  | [optional] |
 | **dynamicValue** | **DynamicValueInteger** |  | [optional] |
+| **userValue** | **Integer** |  | [optional] |
 
 
 

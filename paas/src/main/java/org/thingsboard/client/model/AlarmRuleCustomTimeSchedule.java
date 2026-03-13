@@ -43,8 +43,8 @@ import org.thingsboard.client.ApiClient;
  * AlarmRuleCustomTimeSchedule
  */
 @JsonPropertyOrder({
-  AlarmRuleCustomTimeSchedule.JSON_PROPERTY_TIMEZONE,
-  AlarmRuleCustomTimeSchedule.JSON_PROPERTY_ITEMS
+  AlarmRuleCustomTimeSchedule.JSON_PROPERTY_ITEMS,
+  AlarmRuleCustomTimeSchedule.JSON_PROPERTY_TIMEZONE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,40 +54,16 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
-  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
-  @javax.annotation.Nullable
-  private String timezone;
-
   public static final String JSON_PROPERTY_ITEMS = "items";
   @javax.annotation.Nullable
   private List<AlarmRuleCustomTimeScheduleItem> items = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
+  @javax.annotation.Nullable
+  private String timezone;
+
   public AlarmRuleCustomTimeSchedule() { 
   }
-
-  public AlarmRuleCustomTimeSchedule timezone(@javax.annotation.Nullable String timezone) {
-    this.timezone = timezone;
-    return this;
-  }
-
-  /**
-   * Get timezone
-   * @return timezone
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTimezone() {
-    return timezone;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimezone(@javax.annotation.Nullable String timezone) {
-    this.timezone = timezone;
-  }
-
 
   public AlarmRuleCustomTimeSchedule items(@javax.annotation.Nullable List<AlarmRuleCustomTimeScheduleItem> items) {
     this.items = items;
@@ -121,6 +97,30 @@ public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
   }
 
 
+  public AlarmRuleCustomTimeSchedule timezone(@javax.annotation.Nullable String timezone) {
+    this.timezone = timezone;
+    return this;
+  }
+
+  /**
+   * Get timezone
+   * @return timezone
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTimezone(@javax.annotation.Nullable String timezone) {
+    this.timezone = timezone;
+  }
+
+
   @Override
   public AlarmRuleCustomTimeSchedule type(@javax.annotation.Nonnull String type) {
     this.setType(type);
@@ -139,14 +139,14 @@ public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
       return false;
     }
     AlarmRuleCustomTimeSchedule alarmRuleCustomTimeSchedule = (AlarmRuleCustomTimeSchedule) o;
-    return Objects.equals(this.timezone, alarmRuleCustomTimeSchedule.timezone) &&
-        Objects.equals(this.items, alarmRuleCustomTimeSchedule.items) &&
+    return Objects.equals(this.items, alarmRuleCustomTimeSchedule.items) &&
+        Objects.equals(this.timezone, alarmRuleCustomTimeSchedule.timezone) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(timezone, items, super.hashCode());
+    return Objects.hash(items, timezone, super.hashCode());
   }
 
   @Override
@@ -154,8 +154,8 @@ public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmRuleCustomTimeSchedule {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -208,11 +208,6 @@ public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `timezone` to the URL query string
-    if (getTimezone() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
-    }
-
     // add `items` to the URL query string
     if (getItems() != null) {
       for (int i = 0; i < getItems().size(); i++) {
@@ -221,6 +216,11 @@ public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `timezone` to the URL query string
+    if (getTimezone() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
     }
 
     return joiner.toString();

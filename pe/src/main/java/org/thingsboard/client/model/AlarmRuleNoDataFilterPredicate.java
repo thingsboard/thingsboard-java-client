@@ -42,8 +42,8 @@ import org.thingsboard.client.ApiClient;
  * AlarmRuleNoDataFilterPredicate
  */
 @JsonPropertyOrder({
-  AlarmRuleNoDataFilterPredicate.JSON_PROPERTY_UNIT,
-  AlarmRuleNoDataFilterPredicate.JSON_PROPERTY_DURATION
+  AlarmRuleNoDataFilterPredicate.JSON_PROPERTY_DURATION,
+  AlarmRuleNoDataFilterPredicate.JSON_PROPERTY_UNIT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -53,40 +53,16 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate {
-  public static final String JSON_PROPERTY_UNIT = "unit";
-  @javax.annotation.Nonnull
-  private TimeUnit unit;
-
   public static final String JSON_PROPERTY_DURATION = "duration";
   @javax.annotation.Nonnull
   private AlarmConditionValueLong duration;
 
+  public static final String JSON_PROPERTY_UNIT = "unit";
+  @javax.annotation.Nonnull
+  private TimeUnit unit;
+
   public AlarmRuleNoDataFilterPredicate() { 
   }
-
-  public AlarmRuleNoDataFilterPredicate unit(@javax.annotation.Nonnull TimeUnit unit) {
-    this.unit = unit;
-    return this;
-  }
-
-  /**
-   * Get unit
-   * @return unit
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public TimeUnit getUnit() {
-    return unit;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUnit(@javax.annotation.Nonnull TimeUnit unit) {
-    this.unit = unit;
-  }
-
 
   public AlarmRuleNoDataFilterPredicate duration(@javax.annotation.Nonnull AlarmConditionValueLong duration) {
     this.duration = duration;
@@ -112,6 +88,30 @@ public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate 
   }
 
 
+  public AlarmRuleNoDataFilterPredicate unit(@javax.annotation.Nonnull TimeUnit unit) {
+    this.unit = unit;
+    return this;
+  }
+
+  /**
+   * Get unit
+   * @return unit
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public TimeUnit getUnit() {
+    return unit;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUnit(@javax.annotation.Nonnull TimeUnit unit) {
+    this.unit = unit;
+  }
+
+
   @Override
   public AlarmRuleNoDataFilterPredicate type(@javax.annotation.Nonnull String type) {
     this.setType(type);
@@ -130,14 +130,14 @@ public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate 
       return false;
     }
     AlarmRuleNoDataFilterPredicate alarmRuleNoDataFilterPredicate = (AlarmRuleNoDataFilterPredicate) o;
-    return Objects.equals(this.unit, alarmRuleNoDataFilterPredicate.unit) &&
-        Objects.equals(this.duration, alarmRuleNoDataFilterPredicate.duration) &&
+    return Objects.equals(this.duration, alarmRuleNoDataFilterPredicate.duration) &&
+        Objects.equals(this.unit, alarmRuleNoDataFilterPredicate.unit) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unit, duration, super.hashCode());
+    return Objects.hash(duration, unit, super.hashCode());
   }
 
   @Override
@@ -145,8 +145,8 @@ public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate 
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmRuleNoDataFilterPredicate {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -199,14 +199,14 @@ public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate 
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `unit` to the URL query string
-    if (getUnit() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sunit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUnit()))));
-    }
-
     // add `duration` to the URL query string
     if (getDuration() != null) {
       joiner.add(getDuration().toUrlQueryString(prefix + "duration" + suffix));
+    }
+
+    // add `unit` to the URL query string
+    if (getUnit() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sunit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUnit()))));
     }
 
     return joiner.toString();

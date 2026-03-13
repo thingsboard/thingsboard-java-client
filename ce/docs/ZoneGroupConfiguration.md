@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **refEntityId** | **EntityId** |  | [optional] |
+| **refDynamicSourceConfiguration** | **CfArgumentDynamicSourceConfiguration** |  | [optional] |
 | **perimeterKeyName** | **String** |  | |
 | **reportStrategy** | **GeofencingReportStrategy** |  | |
 | **createRelationsWithMatchedZones** | **Boolean** |  | [optional] |
-| **refEntityId** | **EntityId** |  | [optional] |
-| **refDynamicSourceConfiguration** | **CfArgumentDynamicSourceConfiguration** |  | [optional] |
 | **relationType** | **String** |  | [optional] |
 | **direction** | **EntitySearchDirection** |  | [optional] |
 

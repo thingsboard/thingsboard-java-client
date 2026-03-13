@@ -22,9 +22,9 @@
 | **checksumAlgorithm** | **ChecksumAlgorithm** | OTA Package checksum algorithm. | [optional] [readonly] |
 | **checksum** | **String** | OTA Package checksum. | [optional] [readonly] |
 | **dataSize** | **Long** | OTA Package data size. | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | OTA Package description. | [optional] |
 | **data** | **byte[]** |  | [optional] |
 | **name** | **String** |  | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | OTA Package description. | [optional] |
 
 
 

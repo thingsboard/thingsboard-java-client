@@ -47,6 +47,7 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartThreshold.JSON_PROPERTY_ENTITY_KEY_TYPE,
   TimeSeriesChartThreshold.JSON_PROPERTY_ENTITY_ALIAS,
   TimeSeriesChartThreshold.JSON_PROPERTY_ENTITY_KEY,
+  TimeSeriesChartThreshold.JSON_PROPERTY_Y_AXIS_ID,
   TimeSeriesChartThreshold.JSON_PROPERTY_UNITS,
   TimeSeriesChartThreshold.JSON_PROPERTY_DECIMALS,
   TimeSeriesChartThreshold.JSON_PROPERTY_LINE_COLOR,
@@ -62,8 +63,7 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartThreshold.JSON_PROPERTY_LABEL_COLOR,
   TimeSeriesChartThreshold.JSON_PROPERTY_ENABLE_LABEL_BACKGROUND,
   TimeSeriesChartThreshold.JSON_PROPERTY_LABEL_BACKGROUND,
-  TimeSeriesChartThreshold.JSON_PROPERTY_YAXIS_ID,
-  TimeSeriesChartThreshold.JSON_PROPERTY_Y_AXIS_ID
+  TimeSeriesChartThreshold.JSON_PROPERTY_YAXIS_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartThreshold {
@@ -94,6 +94,10 @@ public class TimeSeriesChartThreshold {
   public static final String JSON_PROPERTY_ENTITY_KEY = "entityKey";
   @javax.annotation.Nullable
   private String entityKey;
+
+  public static final String JSON_PROPERTY_Y_AXIS_ID = "yAxisId";
+  @javax.annotation.Nullable
+  private String yAxisId;
 
   public static final String JSON_PROPERTY_UNITS = "units";
   @javax.annotation.Nullable
@@ -158,10 +162,6 @@ public class TimeSeriesChartThreshold {
   public static final String JSON_PROPERTY_YAXIS_ID = "yaxisId";
   @javax.annotation.Nullable
   private String yaxisId;
-
-  public static final String JSON_PROPERTY_Y_AXIS_ID = "yAxisId";
-  @javax.annotation.Nullable
-  private String yAxisId;
 
   public TimeSeriesChartThreshold() { 
   }
@@ -331,6 +331,30 @@ public class TimeSeriesChartThreshold {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEntityKey(@javax.annotation.Nullable String entityKey) {
     this.entityKey = entityKey;
+  }
+
+
+  public TimeSeriesChartThreshold yAxisId(@javax.annotation.Nullable String yAxisId) {
+    this.yAxisId = yAxisId;
+    return this;
+  }
+
+  /**
+   * Get yAxisId
+   * @return yAxisId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getyAxisId() {
+    return yAxisId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setyAxisId(@javax.annotation.Nullable String yAxisId) {
+    this.yAxisId = yAxisId;
   }
 
 
@@ -718,30 +742,6 @@ public class TimeSeriesChartThreshold {
   }
 
 
-  public TimeSeriesChartThreshold yAxisId(@javax.annotation.Nullable String yAxisId) {
-    this.yAxisId = yAxisId;
-    return this;
-  }
-
-  /**
-   * Get yAxisId
-   * @return yAxisId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getyAxisId() {
-    return yAxisId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setyAxisId(@javax.annotation.Nullable String yAxisId) {
-    this.yAxisId = yAxisId;
-  }
-
-
   /**
    * Return true if this TimeSeriesChartThreshold object is equal to o.
    */
@@ -761,6 +761,7 @@ public class TimeSeriesChartThreshold {
         Objects.equals(this.entityKeyType, timeSeriesChartThreshold.entityKeyType) &&
         Objects.equals(this.entityAlias, timeSeriesChartThreshold.entityAlias) &&
         Objects.equals(this.entityKey, timeSeriesChartThreshold.entityKey) &&
+        Objects.equals(this.yAxisId, timeSeriesChartThreshold.yAxisId) &&
         Objects.equals(this.units, timeSeriesChartThreshold.units) &&
         Objects.equals(this.decimals, timeSeriesChartThreshold.decimals) &&
         Objects.equals(this.lineColor, timeSeriesChartThreshold.lineColor) &&
@@ -776,13 +777,12 @@ public class TimeSeriesChartThreshold {
         Objects.equals(this.labelColor, timeSeriesChartThreshold.labelColor) &&
         Objects.equals(this.enableLabelBackground, timeSeriesChartThreshold.enableLabelBackground) &&
         Objects.equals(this.labelBackground, timeSeriesChartThreshold.labelBackground) &&
-        Objects.equals(this.yaxisId, timeSeriesChartThreshold.yaxisId) &&
-        Objects.equals(this.yAxisId, timeSeriesChartThreshold.yAxisId);
+        Objects.equals(this.yaxisId, timeSeriesChartThreshold.yaxisId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, value, latestKeyType, latestKey, entityKeyType, entityAlias, entityKey, units, decimals, lineColor, lineType, lineWidth, startSymbol, startSymbolSize, endSymbol, endSymbolSize, showLabel, labelPosition, labelFont, labelColor, enableLabelBackground, labelBackground, yaxisId, yAxisId);
+    return Objects.hash(type, value, latestKeyType, latestKey, entityKeyType, entityAlias, entityKey, yAxisId, units, decimals, lineColor, lineType, lineWidth, startSymbol, startSymbolSize, endSymbol, endSymbolSize, showLabel, labelPosition, labelFont, labelColor, enableLabelBackground, labelBackground, yaxisId);
   }
 
   @Override
@@ -796,6 +796,7 @@ public class TimeSeriesChartThreshold {
     sb.append("    entityKeyType: ").append(toIndentedString(entityKeyType)).append("\n");
     sb.append("    entityAlias: ").append(toIndentedString(entityAlias)).append("\n");
     sb.append("    entityKey: ").append(toIndentedString(entityKey)).append("\n");
+    sb.append("    yAxisId: ").append(toIndentedString(yAxisId)).append("\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    decimals: ").append(toIndentedString(decimals)).append("\n");
     sb.append("    lineColor: ").append(toIndentedString(lineColor)).append("\n");
@@ -812,7 +813,6 @@ public class TimeSeriesChartThreshold {
     sb.append("    enableLabelBackground: ").append(toIndentedString(enableLabelBackground)).append("\n");
     sb.append("    labelBackground: ").append(toIndentedString(labelBackground)).append("\n");
     sb.append("    yaxisId: ").append(toIndentedString(yaxisId)).append("\n");
-    sb.append("    yAxisId: ").append(toIndentedString(yAxisId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -895,6 +895,11 @@ public class TimeSeriesChartThreshold {
       joiner.add(String.format(java.util.Locale.ROOT, "%sentityKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityKey()))));
     }
 
+    // add `yAxisId` to the URL query string
+    if (getyAxisId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%syAxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getyAxisId()))));
+    }
+
     // add `units` to the URL query string
     if (getUnits() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sunits%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUnits()))));
@@ -973,11 +978,6 @@ public class TimeSeriesChartThreshold {
     // add `yaxisId` to the URL query string
     if (getYaxisId() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%syaxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getYaxisId()))));
-    }
-
-    // add `yAxisId` to the URL query string
-    if (getyAxisId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%syAxisId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getyAxisId()))));
     }
 
     return joiner.toString();

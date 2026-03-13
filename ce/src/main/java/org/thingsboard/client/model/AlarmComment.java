@@ -39,16 +39,24 @@ import org.thingsboard.client.ApiClient;
  * AlarmComment
  */
 @JsonPropertyOrder({
+  AlarmComment.JSON_PROPERTY_ID,
+  AlarmComment.JSON_PROPERTY_CREATED_TIME,
   AlarmComment.JSON_PROPERTY_ALARM_ID,
   AlarmComment.JSON_PROPERTY_USER_ID,
   AlarmComment.JSON_PROPERTY_TYPE,
   AlarmComment.JSON_PROPERTY_COMMENT,
-  AlarmComment.JSON_PROPERTY_ID,
-  AlarmComment.JSON_PROPERTY_CREATED_TIME,
   AlarmComment.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmComment {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private AlarmCommentId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
   public static final String JSON_PROPERTY_ALARM_ID = "alarmId";
   @javax.annotation.Nullable
   private AlarmId alarmId;
@@ -65,14 +73,6 @@ public class AlarmComment {
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode comment;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private AlarmCommentId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
   private String name;
@@ -82,17 +82,55 @@ public class AlarmComment {
 
   @JsonCreator
   public AlarmComment(
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_ALARM_ID) AlarmId alarmId, 
     @JsonProperty(JSON_PROPERTY_USER_ID) UserId userId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_NAME) String name
   ) {
   this();
+    this.createdTime = createdTime;
     this.alarmId = alarmId;
     this.userId = userId;
-    this.createdTime = createdTime;
     this.name = name;
   }
+
+  public AlarmComment id(@javax.annotation.Nullable AlarmCommentId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * JSON object with the alarm comment Id. Specify this field to update the alarm comment. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmCommentId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable AlarmCommentId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Timestamp of the alarm comment creation, in milliseconds
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
 
   /**
    * JSON object with Alarm id.
@@ -170,44 +208,6 @@ public class AlarmComment {
   }
 
 
-  public AlarmComment id(@javax.annotation.Nullable AlarmCommentId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * JSON object with the alarm comment Id. Specify this field to update the alarm comment. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm.
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmCommentId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AlarmCommentId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Timestamp of the alarm comment creation, in milliseconds
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * representing comment text
    * @return name
@@ -234,30 +234,30 @@ public class AlarmComment {
       return false;
     }
     AlarmComment alarmComment = (AlarmComment) o;
-    return Objects.equals(this.alarmId, alarmComment.alarmId) &&
+    return Objects.equals(this.id, alarmComment.id) &&
+        Objects.equals(this.createdTime, alarmComment.createdTime) &&
+        Objects.equals(this.alarmId, alarmComment.alarmId) &&
         Objects.equals(this.userId, alarmComment.userId) &&
         Objects.equals(this.type, alarmComment.type) &&
         Objects.equals(this.comment, alarmComment.comment) &&
-        Objects.equals(this.id, alarmComment.id) &&
-        Objects.equals(this.createdTime, alarmComment.createdTime) &&
         Objects.equals(this.name, alarmComment.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(alarmId, userId, type, comment, id, createdTime, name);
+    return Objects.hash(id, createdTime, alarmId, userId, type, comment, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmComment {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    alarmId: ").append(toIndentedString(alarmId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    comment: ").append(toIndentedString(comment)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -306,6 +306,16 @@ public class AlarmComment {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
     // add `alarmId` to the URL query string
     if (getAlarmId() != null) {
       joiner.add(getAlarmId().toUrlQueryString(prefix + "alarmId" + suffix));
@@ -324,16 +334,6 @@ public class AlarmComment {
     // add `comment` to the URL query string
     if (getComment() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scomment%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComment()))));
-    }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
     // add `name` to the URL query string

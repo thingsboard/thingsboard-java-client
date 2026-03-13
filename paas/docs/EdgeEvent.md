@@ -16,8 +16,8 @@
 | **entityId** | **UUID** |  | [optional] |
 | **uid** | **String** |  | [optional] |
 | **type** | **EdgeEventType** |  | [optional] |
-| **entityGroupId** | **UUID** |  | [optional] |
 | **body** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **entityGroupId** | **UUID** |  | [optional] |
 
 
 

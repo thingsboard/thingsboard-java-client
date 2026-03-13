@@ -38,19 +38,15 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   BulkImportResultAsset.JSON_PROPERTY_CREATED,
-  BulkImportResultAsset.JSON_PROPERTY_UPDATED,
   BulkImportResultAsset.JSON_PROPERTY_ERRORS,
-  BulkImportResultAsset.JSON_PROPERTY_ERRORS_LIST
+  BulkImportResultAsset.JSON_PROPERTY_ERRORS_LIST,
+  BulkImportResultAsset.JSON_PROPERTY_UPDATED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportResultAsset {
   public static final String JSON_PROPERTY_CREATED = "created";
   @javax.annotation.Nullable
   private Integer created;
-
-  public static final String JSON_PROPERTY_UPDATED = "updated";
-  @javax.annotation.Nullable
-  private Integer updated;
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @javax.annotation.Nullable
@@ -59,6 +55,10 @@ public class BulkImportResultAsset {
   public static final String JSON_PROPERTY_ERRORS_LIST = "errorsList";
   @javax.annotation.Nullable
   private List<String> errorsList = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_UPDATED = "updated";
+  @javax.annotation.Nullable
+  private Integer updated;
 
   public BulkImportResultAsset() { 
   }
@@ -84,30 +84,6 @@ public class BulkImportResultAsset {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCreated(@javax.annotation.Nullable Integer created) {
     this.created = created;
-  }
-
-
-  public BulkImportResultAsset updated(@javax.annotation.Nullable Integer updated) {
-    this.updated = updated;
-    return this;
-  }
-
-  /**
-   * Get updated
-   * @return updated
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getUpdated() {
-    return updated;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
-    this.updated = updated;
   }
 
 
@@ -167,6 +143,30 @@ public class BulkImportResultAsset {
   }
 
 
+  public BulkImportResultAsset updated(@javax.annotation.Nullable Integer updated) {
+    this.updated = updated;
+    return this;
+  }
+
+  /**
+   * Get updated
+   * @return updated
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getUpdated() {
+    return updated;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+    this.updated = updated;
+  }
+
+
   /**
    * Return true if this BulkImportResultAsset object is equal to o.
    */
@@ -180,14 +180,14 @@ public class BulkImportResultAsset {
     }
     BulkImportResultAsset bulkImportResultAsset = (BulkImportResultAsset) o;
     return Objects.equals(this.created, bulkImportResultAsset.created) &&
-        Objects.equals(this.updated, bulkImportResultAsset.updated) &&
         Objects.equals(this.errors, bulkImportResultAsset.errors) &&
-        Objects.equals(this.errorsList, bulkImportResultAsset.errorsList);
+        Objects.equals(this.errorsList, bulkImportResultAsset.errorsList) &&
+        Objects.equals(this.updated, bulkImportResultAsset.updated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, updated, errors, errorsList);
+    return Objects.hash(created, errors, errorsList, updated);
   }
 
   @Override
@@ -195,9 +195,9 @@ public class BulkImportResultAsset {
     StringBuilder sb = new StringBuilder();
     sb.append("class BulkImportResultAsset {\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    errorsList: ").append(toIndentedString(errorsList)).append("\n");
+    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -250,11 +250,6 @@ public class BulkImportResultAsset {
       joiner.add(String.format(java.util.Locale.ROOT, "%screated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreated()))));
     }
 
-    // add `updated` to the URL query string
-    if (getUpdated() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%supdated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUpdated()))));
-    }
-
     // add `errors` to the URL query string
     if (getErrors() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serrors%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrors()))));
@@ -267,6 +262,11 @@ public class BulkImportResultAsset {
             "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
             ApiClient.urlEncode(ApiClient.valueToString(getErrorsList().get(i)))));
       }
+    }
+
+    // add `updated` to the URL query string
+    if (getUpdated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%supdated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUpdated()))));
     }
 
     return joiner.toString();

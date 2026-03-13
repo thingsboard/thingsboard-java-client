@@ -35,45 +35,21 @@ import org.thingsboard.client.ApiClient;
  * AlarmConditionValueInteger
  */
 @JsonPropertyOrder({
-  AlarmConditionValueInteger.JSON_PROPERTY_STATIC_VALUE,
-  AlarmConditionValueInteger.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT
+  AlarmConditionValueInteger.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT,
+  AlarmConditionValueInteger.JSON_PROPERTY_STATIC_VALUE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmConditionValueInteger {
-  public static final String JSON_PROPERTY_STATIC_VALUE = "staticValue";
-  @javax.annotation.Nullable
-  private Integer staticValue;
-
   public static final String JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT = "dynamicValueArgument";
   @javax.annotation.Nullable
   private String dynamicValueArgument;
 
+  public static final String JSON_PROPERTY_STATIC_VALUE = "staticValue";
+  @javax.annotation.Nullable
+  private Integer staticValue;
+
   public AlarmConditionValueInteger() { 
   }
-
-  public AlarmConditionValueInteger staticValue(@javax.annotation.Nullable Integer staticValue) {
-    this.staticValue = staticValue;
-    return this;
-  }
-
-  /**
-   * Get staticValue
-   * @return staticValue
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getStaticValue() {
-    return staticValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStaticValue(@javax.annotation.Nullable Integer staticValue) {
-    this.staticValue = staticValue;
-  }
-
 
   public AlarmConditionValueInteger dynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
     this.dynamicValueArgument = dynamicValueArgument;
@@ -99,6 +75,30 @@ public class AlarmConditionValueInteger {
   }
 
 
+  public AlarmConditionValueInteger staticValue(@javax.annotation.Nullable Integer staticValue) {
+    this.staticValue = staticValue;
+    return this;
+  }
+
+  /**
+   * Get staticValue
+   * @return staticValue
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getStaticValue() {
+    return staticValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStaticValue(@javax.annotation.Nullable Integer staticValue) {
+    this.staticValue = staticValue;
+  }
+
+
   /**
    * Return true if this AlarmConditionValueInteger object is equal to o.
    */
@@ -111,21 +111,21 @@ public class AlarmConditionValueInteger {
       return false;
     }
     AlarmConditionValueInteger alarmConditionValueInteger = (AlarmConditionValueInteger) o;
-    return Objects.equals(this.staticValue, alarmConditionValueInteger.staticValue) &&
-        Objects.equals(this.dynamicValueArgument, alarmConditionValueInteger.dynamicValueArgument);
+    return Objects.equals(this.dynamicValueArgument, alarmConditionValueInteger.dynamicValueArgument) &&
+        Objects.equals(this.staticValue, alarmConditionValueInteger.staticValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(staticValue, dynamicValueArgument);
+    return Objects.hash(dynamicValueArgument, staticValue);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmConditionValueInteger {\n");
-    sb.append("    staticValue: ").append(toIndentedString(staticValue)).append("\n");
     sb.append("    dynamicValueArgument: ").append(toIndentedString(dynamicValueArgument)).append("\n");
+    sb.append("    staticValue: ").append(toIndentedString(staticValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -173,14 +173,14 @@ public class AlarmConditionValueInteger {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `staticValue` to the URL query string
-    if (getStaticValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstaticValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStaticValue()))));
-    }
-
     // add `dynamicValueArgument` to the URL query string
     if (getDynamicValueArgument() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdynamicValueArgument%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDynamicValueArgument()))));
+    }
+
+    // add `staticValue` to the URL query string
+    if (getStaticValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstaticValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStaticValue()))));
     }
 
     return joiner.toString();

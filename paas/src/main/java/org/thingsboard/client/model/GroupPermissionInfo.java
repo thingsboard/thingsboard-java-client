@@ -56,9 +56,9 @@ import org.thingsboard.client.ApiClient;
   GroupPermissionInfo.JSON_PROPERTY_USER_GROUP_NAME,
   GroupPermissionInfo.JSON_PROPERTY_USER_GROUP_OWNER_ID,
   GroupPermissionInfo.JSON_PROPERTY_USER_GROUP_OWNER_NAME,
-  GroupPermissionInfo.JSON_PROPERTY_READ_ONLY,
   GroupPermissionInfo.JSON_PROPERTY_NAME,
-  GroupPermissionInfo.JSON_PROPERTY_PUBLIC
+  GroupPermissionInfo.JSON_PROPERTY_PUBLIC,
+  GroupPermissionInfo.JSON_PROPERTY_READ_ONLY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class GroupPermissionInfo {
@@ -118,10 +118,6 @@ public class GroupPermissionInfo {
   @javax.annotation.Nullable
   private String userGroupOwnerName;
 
-  public static final String JSON_PROPERTY_READ_ONLY = "readOnly";
-  @javax.annotation.Nullable
-  private Boolean readOnly;
-
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
   private String name;
@@ -129,6 +125,10 @@ public class GroupPermissionInfo {
   public static final String JSON_PROPERTY_PUBLIC = "public";
   @javax.annotation.Nullable
   private Boolean _public;
+
+  public static final String JSON_PROPERTY_READ_ONLY = "readOnly";
+  @javax.annotation.Nullable
+  private Boolean readOnly;
 
   public GroupPermissionInfo() { 
   }
@@ -453,30 +453,6 @@ public class GroupPermissionInfo {
   }
 
 
-  public GroupPermissionInfo readOnly(@javax.annotation.Nullable Boolean readOnly) {
-    this.readOnly = readOnly;
-    return this;
-  }
-
-  /**
-   * Get readOnly
-   * @return readOnly
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getReadOnly() {
-    return readOnly;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadOnly(@javax.annotation.Nullable Boolean readOnly) {
-    this.readOnly = readOnly;
-  }
-
-
   /**
    * Name of the Group Permissions. Auto-generated
    * @return name
@@ -515,6 +491,30 @@ public class GroupPermissionInfo {
   }
 
 
+  public GroupPermissionInfo readOnly(@javax.annotation.Nullable Boolean readOnly) {
+    this.readOnly = readOnly;
+    return this;
+  }
+
+  /**
+   * Get readOnly
+   * @return readOnly
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getReadOnly() {
+    return readOnly;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReadOnly(@javax.annotation.Nullable Boolean readOnly) {
+    this.readOnly = readOnly;
+  }
+
+
   /**
    * Return true if this GroupPermissionInfo object is equal to o.
    */
@@ -541,14 +541,14 @@ public class GroupPermissionInfo {
         Objects.equals(this.userGroupName, groupPermissionInfo.userGroupName) &&
         Objects.equals(this.userGroupOwnerId, groupPermissionInfo.userGroupOwnerId) &&
         Objects.equals(this.userGroupOwnerName, groupPermissionInfo.userGroupOwnerName) &&
-        Objects.equals(this.readOnly, groupPermissionInfo.readOnly) &&
         Objects.equals(this.name, groupPermissionInfo.name) &&
-        Objects.equals(this._public, groupPermissionInfo._public);
+        Objects.equals(this._public, groupPermissionInfo._public) &&
+        Objects.equals(this.readOnly, groupPermissionInfo.readOnly);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, userGroupId, roleId, entityGroupId, entityGroupType, role, entityGroupName, entityGroupOwnerId, entityGroupOwnerName, userGroupName, userGroupOwnerId, userGroupOwnerName, readOnly, name, _public);
+    return Objects.hash(id, createdTime, tenantId, userGroupId, roleId, entityGroupId, entityGroupType, role, entityGroupName, entityGroupOwnerId, entityGroupOwnerName, userGroupName, userGroupOwnerId, userGroupOwnerName, name, _public, readOnly);
   }
 
   @Override
@@ -569,9 +569,9 @@ public class GroupPermissionInfo {
     sb.append("    userGroupName: ").append(toIndentedString(userGroupName)).append("\n");
     sb.append("    userGroupOwnerId: ").append(toIndentedString(userGroupOwnerId)).append("\n");
     sb.append("    userGroupOwnerName: ").append(toIndentedString(userGroupOwnerName)).append("\n");
-    sb.append("    readOnly: ").append(toIndentedString(readOnly)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
+    sb.append("    readOnly: ").append(toIndentedString(readOnly)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -689,11 +689,6 @@ public class GroupPermissionInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%suserGroupOwnerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUserGroupOwnerName()))));
     }
 
-    // add `readOnly` to the URL query string
-    if (getReadOnly() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sreadOnly%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getReadOnly()))));
-    }
-
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
@@ -702,6 +697,11 @@ public class GroupPermissionInfo {
     // add `public` to the URL query string
     if (getPublic() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublic()))));
+    }
+
+    // add `readOnly` to the URL query string
+    if (getReadOnly() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sreadOnly%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getReadOnly()))));
     }
 
     return joiner.toString();

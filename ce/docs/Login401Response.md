@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **status** | **Integer** | HTTP Response Status Code | [optional] [readonly] |
-| **message** | **String** | Error message | [optional] [readonly] |
 | **errorCode** | **ThingsboardErrorCode** |  | [optional] |
+| **message** | **String** | Error message | [optional] [readonly] |
+| **status** | **Integer** | HTTP Response Status Code | [optional] [readonly] |
 | **timestamp** | **Long** | Timestamp | [optional] [readonly] |
 | **resetToken** | **String** | Password reset token | [optional] [readonly] |
 

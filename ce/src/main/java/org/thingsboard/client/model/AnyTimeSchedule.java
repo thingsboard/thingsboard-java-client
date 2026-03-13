@@ -55,14 +55,14 @@ public class AnyTimeSchedule extends AlarmSchedule {
   }
 
   @Override
-  public AnyTimeSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
-    this.setType(type);
+  public AnyTimeSchedule dynamicValue(@javax.annotation.Nullable DynamicValueString dynamicValue) {
+    this.setDynamicValue(dynamicValue);
     return this;
   }
 
   @Override
-  public AnyTimeSchedule dynamicValue(@javax.annotation.Nullable DynamicValueString dynamicValue) {
-    this.setDynamicValue(dynamicValue);
+  public AnyTimeSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
+    this.setType(type);
     return this;
   }
 
@@ -137,14 +137,14 @@ public class AnyTimeSchedule extends AlarmSchedule {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `dynamicValue` to the URL query string
     if (getDynamicValue() != null) {
       joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     return joiner.toString();

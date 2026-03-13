@@ -23,8 +23,8 @@ A JSON value representing the tenant.
 | **region** | **String** | Geo region of the tenant | [optional] |
 | **tenantProfileId** | **TenantProfileId** | JSON object with Tenant Profile Id | [optional] |
 | **version** | **Long** |  | [optional] |
-| **name** | **String** | Name of the tenant. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar). | [optional] |
+| **name** | **String** | Name of the tenant. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 
 
 

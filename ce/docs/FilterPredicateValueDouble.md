@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **defaultValue** | **Double** |  | [optional] |
-| **userValue** | **Double** |  | [optional] |
 | **dynamicValue** | **DynamicValueDouble** |  | [optional] |
+| **userValue** | **Double** |  | [optional] |
 
 
 

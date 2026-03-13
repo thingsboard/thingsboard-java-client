@@ -8,8 +8,8 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **stackTrace** | **List\<ErrorComponentAllOfExceptionCauseStackTrace\>** |  | [optional] |
-| **localizedMessage** | **String** |  | [optional] |
 | **message** | **String** |  | [optional] |
+| **localizedMessage** | **String** |  | [optional] |
 
 
 

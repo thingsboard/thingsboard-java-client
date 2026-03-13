@@ -39,8 +39,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   AliasEntityId.JSON_PROPERTY_ALIAS_ENTITY_TYPE,
-  AliasEntityId.JSON_PROPERTY_ID,
-  AliasEntityId.JSON_PROPERTY_ENTITY_TYPE
+  AliasEntityId.JSON_PROPERTY_ENTITY_TYPE,
+  AliasEntityId.JSON_PROPERTY_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AliasEntityId {
@@ -48,13 +48,13 @@ public class AliasEntityId {
   @javax.annotation.Nullable
   private AliasEntityType aliasEntityType;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
-  private UUID id;
-
   public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
   @javax.annotation.Nonnull
   private EntityType entityType;
+
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
+  private UUID id;
 
   public AliasEntityId() { 
   }
@@ -83,30 +83,6 @@ public class AliasEntityId {
   }
 
 
-  public AliasEntityId id(@javax.annotation.Nonnull UUID id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * ID of the entity, time-based UUID v1
-   * @return id
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public UUID getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull UUID id) {
-    this.id = id;
-  }
-
-
   public AliasEntityId entityType(@javax.annotation.Nonnull EntityType entityType) {
     this.entityType = entityType;
     return this;
@@ -131,6 +107,30 @@ public class AliasEntityId {
   }
 
 
+  public AliasEntityId id(@javax.annotation.Nonnull UUID id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * ID of the entity, time-based UUID v1
+   * @return id
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public UUID getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setId(@javax.annotation.Nonnull UUID id) {
+    this.id = id;
+  }
+
+
   /**
    * Return true if this AliasEntityId object is equal to o.
    */
@@ -144,13 +144,13 @@ public class AliasEntityId {
     }
     AliasEntityId aliasEntityId = (AliasEntityId) o;
     return Objects.equals(this.aliasEntityType, aliasEntityId.aliasEntityType) &&
-        Objects.equals(this.id, aliasEntityId.id) &&
-        Objects.equals(this.entityType, aliasEntityId.entityType);
+        Objects.equals(this.entityType, aliasEntityId.entityType) &&
+        Objects.equals(this.id, aliasEntityId.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aliasEntityType, id, entityType);
+    return Objects.hash(aliasEntityType, entityType, id);
   }
 
   @Override
@@ -158,8 +158,8 @@ public class AliasEntityId {
     StringBuilder sb = new StringBuilder();
     sb.append("class AliasEntityId {\n");
     sb.append("    aliasEntityType: ").append(toIndentedString(aliasEntityType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -212,14 +212,14 @@ public class AliasEntityId {
       joiner.add(String.format(java.util.Locale.ROOT, "%saliasEntityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAliasEntityType()))));
     }
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
-    }
-
     // add `entityType` to the URL query string
     if (getEntityType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
+    }
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     return joiner.toString();

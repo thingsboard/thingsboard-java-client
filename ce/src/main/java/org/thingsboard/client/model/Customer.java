@@ -50,8 +50,8 @@ import org.thingsboard.client.ApiClient;
   Customer.JSON_PROPERTY_TITLE,
   Customer.JSON_PROPERTY_TENANT_ID,
   Customer.JSON_PROPERTY_VERSION,
-  Customer.JSON_PROPERTY_NAME,
-  Customer.JSON_PROPERTY_ADDITIONAL_INFO
+  Customer.JSON_PROPERTY_ADDITIONAL_INFO,
+  Customer.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Customer {
@@ -107,13 +107,13 @@ public class Customer {
   @javax.annotation.Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
-  private String name;
-
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
+  private String name;
 
   public Customer() { 
   }
@@ -430,20 +430,6 @@ public class Customer {
   }
 
 
-  /**
-   * Name of the customer. Read-only, duplicated from title for backward compatibility
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-
-
-
   public Customer additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
@@ -466,6 +452,20 @@ public class Customer {
   public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
+
+
+  /**
+   * Name of the customer. Read-only, duplicated from title for backward compatibility
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+
 
 
   /**
@@ -493,13 +493,13 @@ public class Customer {
         Objects.equals(this.title, customer.title) &&
         Objects.equals(this.tenantId, customer.tenantId) &&
         Objects.equals(this.version, customer.version) &&
-        Objects.equals(this.name, customer.name) &&
-        Objects.equals(this.additionalInfo, customer.additionalInfo);
+        Objects.equals(this.additionalInfo, customer.additionalInfo) &&
+        Objects.equals(this.name, customer.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, tenantId, version, name, additionalInfo);
+    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, tenantId, version, additionalInfo, name);
   }
 
   @Override
@@ -519,8 +519,8 @@ public class Customer {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -633,14 +633,14 @@ public class Customer {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     return joiner.toString();

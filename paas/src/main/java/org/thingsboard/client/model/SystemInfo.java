@@ -38,21 +38,45 @@ import org.thingsboard.client.ApiClient;
  * SystemInfo
  */
 @JsonPropertyOrder({
-  SystemInfo.JSON_PROPERTY_SYSTEM_DATA,
-  SystemInfo.JSON_PROPERTY_MONOLITH
+  SystemInfo.JSON_PROPERTY_MONOLITH,
+  SystemInfo.JSON_PROPERTY_SYSTEM_DATA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SystemInfo {
-  public static final String JSON_PROPERTY_SYSTEM_DATA = "systemData";
-  @javax.annotation.Nullable
-  private List<SystemInfoData> systemData = new ArrayList<>();
-
   public static final String JSON_PROPERTY_MONOLITH = "monolith";
   @javax.annotation.Nullable
   private Boolean monolith;
 
+  public static final String JSON_PROPERTY_SYSTEM_DATA = "systemData";
+  @javax.annotation.Nullable
+  private List<SystemInfoData> systemData = new ArrayList<>();
+
   public SystemInfo() { 
   }
+
+  public SystemInfo monolith(@javax.annotation.Nullable Boolean monolith) {
+    this.monolith = monolith;
+    return this;
+  }
+
+  /**
+   * Is monolith.
+   * @return monolith
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MONOLITH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getMonolith() {
+    return monolith;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MONOLITH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMonolith(@javax.annotation.Nullable Boolean monolith) {
+    this.monolith = monolith;
+  }
+
 
   public SystemInfo systemData(@javax.annotation.Nullable List<SystemInfoData> systemData) {
     this.systemData = systemData;
@@ -86,30 +110,6 @@ public class SystemInfo {
   }
 
 
-  public SystemInfo monolith(@javax.annotation.Nullable Boolean monolith) {
-    this.monolith = monolith;
-    return this;
-  }
-
-  /**
-   * Is monolith.
-   * @return monolith
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_MONOLITH, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getMonolith() {
-    return monolith;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_MONOLITH, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonolith(@javax.annotation.Nullable Boolean monolith) {
-    this.monolith = monolith;
-  }
-
-
   /**
    * Return true if this SystemInfo object is equal to o.
    */
@@ -122,21 +122,21 @@ public class SystemInfo {
       return false;
     }
     SystemInfo systemInfo = (SystemInfo) o;
-    return Objects.equals(this.systemData, systemInfo.systemData) &&
-        Objects.equals(this.monolith, systemInfo.monolith);
+    return Objects.equals(this.monolith, systemInfo.monolith) &&
+        Objects.equals(this.systemData, systemInfo.systemData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(systemData, monolith);
+    return Objects.hash(monolith, systemData);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SystemInfo {\n");
-    sb.append("    systemData: ").append(toIndentedString(systemData)).append("\n");
     sb.append("    monolith: ").append(toIndentedString(monolith)).append("\n");
+    sb.append("    systemData: ").append(toIndentedString(systemData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -184,6 +184,11 @@ public class SystemInfo {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `monolith` to the URL query string
+    if (getMonolith() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smonolith%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMonolith()))));
+    }
+
     // add `systemData` to the URL query string
     if (getSystemData() != null) {
       for (int i = 0; i < getSystemData().size(); i++) {
@@ -192,11 +197,6 @@ public class SystemInfo {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `monolith` to the URL query string
-    if (getMonolith() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smonolith%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMonolith()))));
     }
 
     return joiner.toString();

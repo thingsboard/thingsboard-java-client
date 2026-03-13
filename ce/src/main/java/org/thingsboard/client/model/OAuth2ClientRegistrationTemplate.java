@@ -54,8 +54,8 @@ import org.thingsboard.client.ApiClient;
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_LOGIN_BUTTON_ICON,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_LOGIN_BUTTON_LABEL,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_HELP_LINK,
-  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_NAME,
-  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_ADDITIONAL_INFO
+  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_ADDITIONAL_INFO,
+  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2ClientRegistrationTemplate {
@@ -119,13 +119,13 @@ public class OAuth2ClientRegistrationTemplate {
   @javax.annotation.Nullable
   private String helpLink;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
-  private String name;
-
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
+  private String name;
 
   public OAuth2ClientRegistrationTemplate() { 
   }
@@ -496,30 +496,6 @@ public class OAuth2ClientRegistrationTemplate {
   }
 
 
-  public OAuth2ClientRegistrationTemplate name(@javax.annotation.Nullable String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
-    this.name = name;
-  }
-
-
   public OAuth2ClientRegistrationTemplate additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
@@ -541,6 +517,30 @@ public class OAuth2ClientRegistrationTemplate {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
+  }
+
+
+  public OAuth2ClientRegistrationTemplate name(@javax.annotation.Nullable String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
   }
 
 
@@ -571,13 +571,13 @@ public class OAuth2ClientRegistrationTemplate {
         Objects.equals(this.loginButtonIcon, oauth2ClientRegistrationTemplate.loginButtonIcon) &&
         Objects.equals(this.loginButtonLabel, oauth2ClientRegistrationTemplate.loginButtonLabel) &&
         Objects.equals(this.helpLink, oauth2ClientRegistrationTemplate.helpLink) &&
-        Objects.equals(this.name, oauth2ClientRegistrationTemplate.name) &&
-        Objects.equals(this.additionalInfo, oauth2ClientRegistrationTemplate.additionalInfo);
+        Objects.equals(this.additionalInfo, oauth2ClientRegistrationTemplate.additionalInfo) &&
+        Objects.equals(this.name, oauth2ClientRegistrationTemplate.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, providerId, mapperConfig, authorizationUri, accessTokenUri, scope, userInfoUri, userNameAttributeName, jwkSetUri, clientAuthenticationMethod, comment, loginButtonIcon, loginButtonLabel, helpLink, name, additionalInfo);
+    return Objects.hash(id, createdTime, providerId, mapperConfig, authorizationUri, accessTokenUri, scope, userInfoUri, userNameAttributeName, jwkSetUri, clientAuthenticationMethod, comment, loginButtonIcon, loginButtonLabel, helpLink, additionalInfo, name);
   }
 
   @Override
@@ -599,8 +599,8 @@ public class OAuth2ClientRegistrationTemplate {
     sb.append("    loginButtonIcon: ").append(toIndentedString(loginButtonIcon)).append("\n");
     sb.append("    loginButtonLabel: ").append(toIndentedString(loginButtonLabel)).append("\n");
     sb.append("    helpLink: ").append(toIndentedString(helpLink)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -727,14 +727,14 @@ public class OAuth2ClientRegistrationTemplate {
       joiner.add(String.format(java.util.Locale.ROOT, "%shelpLink%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHelpLink()))));
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     return joiner.toString();

@@ -42,9 +42,9 @@ import org.thingsboard.client.ApiClient;
   EntityRelationInfo.JSON_PROPERTY_TYPE,
   EntityRelationInfo.JSON_PROPERTY_TYPE_GROUP,
   EntityRelationInfo.JSON_PROPERTY_VERSION,
+  EntityRelationInfo.JSON_PROPERTY_ADDITIONAL_INFO,
   EntityRelationInfo.JSON_PROPERTY_FROM_NAME,
-  EntityRelationInfo.JSON_PROPERTY_TO_NAME,
-  EntityRelationInfo.JSON_PROPERTY_ADDITIONAL_INFO
+  EntityRelationInfo.JSON_PROPERTY_TO_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityRelationInfo {
@@ -68,6 +68,10 @@ public class EntityRelationInfo {
   @javax.annotation.Nullable
   private Long version;
 
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
   public static final String JSON_PROPERTY_FROM_NAME = "fromName";
   @javax.annotation.Nullable
   private String fromName;
@@ -75,10 +79,6 @@ public class EntityRelationInfo {
   public static final String JSON_PROPERTY_TO_NAME = "toName";
   @javax.annotation.Nullable
   private String toName;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public EntityRelationInfo() { 
   }
@@ -213,6 +213,30 @@ public class EntityRelationInfo {
   }
 
 
+  public EntityRelationInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the relation.
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
+
+
   /**
    * Name of the entity for [from] direction.
    * @return fromName
@@ -241,30 +265,6 @@ public class EntityRelationInfo {
 
 
 
-  public EntityRelationInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the relation.
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this EntityRelationInfo object is equal to o.
    */
@@ -282,14 +282,14 @@ public class EntityRelationInfo {
         Objects.equals(this.type, entityRelationInfo.type) &&
         Objects.equals(this.typeGroup, entityRelationInfo.typeGroup) &&
         Objects.equals(this.version, entityRelationInfo.version) &&
+        Objects.equals(this.additionalInfo, entityRelationInfo.additionalInfo) &&
         Objects.equals(this.fromName, entityRelationInfo.fromName) &&
-        Objects.equals(this.toName, entityRelationInfo.toName) &&
-        Objects.equals(this.additionalInfo, entityRelationInfo.additionalInfo);
+        Objects.equals(this.toName, entityRelationInfo.toName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(from, to, type, typeGroup, version, fromName, toName, additionalInfo);
+    return Objects.hash(from, to, type, typeGroup, version, additionalInfo, fromName, toName);
   }
 
   @Override
@@ -301,9 +301,9 @@ public class EntityRelationInfo {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    typeGroup: ").append(toIndentedString(typeGroup)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    fromName: ").append(toIndentedString(fromName)).append("\n");
     sb.append("    toName: ").append(toIndentedString(toName)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -376,6 +376,11 @@ public class EntityRelationInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `fromName` to the URL query string
     if (getFromName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sfromName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFromName()))));
@@ -384,11 +389,6 @@ public class EntityRelationInfo {
     // add `toName` to the URL query string
     if (getToName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stoName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getToName()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

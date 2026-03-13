@@ -37,8 +37,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   FilterPredicateValueLong.JSON_PROPERTY_DEFAULT_VALUE,
-  FilterPredicateValueLong.JSON_PROPERTY_USER_VALUE,
-  FilterPredicateValueLong.JSON_PROPERTY_DYNAMIC_VALUE
+  FilterPredicateValueLong.JSON_PROPERTY_DYNAMIC_VALUE,
+  FilterPredicateValueLong.JSON_PROPERTY_USER_VALUE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FilterPredicateValueLong {
@@ -46,13 +46,13 @@ public class FilterPredicateValueLong {
   @javax.annotation.Nullable
   private Long defaultValue;
 
-  public static final String JSON_PROPERTY_USER_VALUE = "userValue";
-  @javax.annotation.Nullable
-  private Long userValue;
-
   public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
   @javax.annotation.Nullable
   private DynamicValueLong dynamicValue;
+
+  public static final String JSON_PROPERTY_USER_VALUE = "userValue";
+  @javax.annotation.Nullable
+  private Long userValue;
 
   public FilterPredicateValueLong() { 
   }
@@ -81,30 +81,6 @@ public class FilterPredicateValueLong {
   }
 
 
-  public FilterPredicateValueLong userValue(@javax.annotation.Nullable Long userValue) {
-    this.userValue = userValue;
-    return this;
-  }
-
-  /**
-   * Get userValue
-   * @return userValue
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getUserValue() {
-    return userValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserValue(@javax.annotation.Nullable Long userValue) {
-    this.userValue = userValue;
-  }
-
-
   public FilterPredicateValueLong dynamicValue(@javax.annotation.Nullable DynamicValueLong dynamicValue) {
     this.dynamicValue = dynamicValue;
     return this;
@@ -129,6 +105,30 @@ public class FilterPredicateValueLong {
   }
 
 
+  public FilterPredicateValueLong userValue(@javax.annotation.Nullable Long userValue) {
+    this.userValue = userValue;
+    return this;
+  }
+
+  /**
+   * Get userValue
+   * @return userValue
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getUserValue() {
+    return userValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserValue(@javax.annotation.Nullable Long userValue) {
+    this.userValue = userValue;
+  }
+
+
   /**
    * Return true if this FilterPredicateValueLong object is equal to o.
    */
@@ -142,13 +142,13 @@ public class FilterPredicateValueLong {
     }
     FilterPredicateValueLong filterPredicateValueLong = (FilterPredicateValueLong) o;
     return Objects.equals(this.defaultValue, filterPredicateValueLong.defaultValue) &&
-        Objects.equals(this.userValue, filterPredicateValueLong.userValue) &&
-        Objects.equals(this.dynamicValue, filterPredicateValueLong.dynamicValue);
+        Objects.equals(this.dynamicValue, filterPredicateValueLong.dynamicValue) &&
+        Objects.equals(this.userValue, filterPredicateValueLong.userValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultValue, userValue, dynamicValue);
+    return Objects.hash(defaultValue, dynamicValue, userValue);
   }
 
   @Override
@@ -156,8 +156,8 @@ public class FilterPredicateValueLong {
     StringBuilder sb = new StringBuilder();
     sb.append("class FilterPredicateValueLong {\n");
     sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
-    sb.append("    userValue: ").append(toIndentedString(userValue)).append("\n");
     sb.append("    dynamicValue: ").append(toIndentedString(dynamicValue)).append("\n");
+    sb.append("    userValue: ").append(toIndentedString(userValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -210,14 +210,14 @@ public class FilterPredicateValueLong {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdefaultValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefaultValue()))));
     }
 
-    // add `userValue` to the URL query string
-    if (getUserValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%suserValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUserValue()))));
-    }
-
     // add `dynamicValue` to the URL query string
     if (getDynamicValue() != null) {
       joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
+    }
+
+    // add `userValue` to the URL query string
+    if (getUserValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%suserValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUserValue()))));
     }
 
     return joiner.toString();

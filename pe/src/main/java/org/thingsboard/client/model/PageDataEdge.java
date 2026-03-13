@@ -39,9 +39,9 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   PageDataEdge.JSON_PROPERTY_DATA,
-  PageDataEdge.JSON_PROPERTY_TOTAL_PAGES,
+  PageDataEdge.JSON_PROPERTY_HAS_NEXT,
   PageDataEdge.JSON_PROPERTY_TOTAL_ELEMENTS,
-  PageDataEdge.JSON_PROPERTY_HAS_NEXT
+  PageDataEdge.JSON_PROPERTY_TOTAL_PAGES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PageDataEdge {
@@ -49,31 +49,31 @@ public class PageDataEdge {
   @javax.annotation.Nullable
   private List<Edge> data = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_TOTAL_PAGES = "totalPages";
+  public static final String JSON_PROPERTY_HAS_NEXT = "hasNext";
   @javax.annotation.Nullable
-  private Integer totalPages;
+  private Boolean hasNext;
 
   public static final String JSON_PROPERTY_TOTAL_ELEMENTS = "totalElements";
   @javax.annotation.Nullable
   private Long totalElements;
 
-  public static final String JSON_PROPERTY_HAS_NEXT = "hasNext";
+  public static final String JSON_PROPERTY_TOTAL_PAGES = "totalPages";
   @javax.annotation.Nullable
-  private Boolean hasNext;
+  private Integer totalPages;
 
   public PageDataEdge() { 
   }
 
   @JsonCreator
   public PageDataEdge(
-    @JsonProperty(JSON_PROPERTY_TOTAL_PAGES) Integer totalPages, 
+    @JsonProperty(JSON_PROPERTY_HAS_NEXT) Boolean hasNext, 
     @JsonProperty(JSON_PROPERTY_TOTAL_ELEMENTS) Long totalElements, 
-    @JsonProperty(JSON_PROPERTY_HAS_NEXT) Boolean hasNext
+    @JsonProperty(JSON_PROPERTY_TOTAL_PAGES) Integer totalPages
   ) {
   this();
-    this.totalPages = totalPages;
-    this.totalElements = totalElements;
     this.hasNext = hasNext;
+    this.totalElements = totalElements;
+    this.totalPages = totalPages;
   }
 
   public PageDataEdge data(@javax.annotation.Nullable List<Edge> data) {
@@ -109,14 +109,14 @@ public class PageDataEdge {
 
 
   /**
-   * Total number of available pages. Calculated based on the &#39;pageSize&#39; request parameter and total number of entities that match search criteria
-   * @return totalPages
+   * &#39;false&#39; value indicates the end of the result set
+   * @return hasNext
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TOTAL_PAGES, required = false)
+  @JsonProperty(value = JSON_PROPERTY_HAS_NEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getTotalPages() {
-    return totalPages;
+  public Boolean getHasNext() {
+    return hasNext;
   }
 
 
@@ -137,14 +137,14 @@ public class PageDataEdge {
 
 
   /**
-   * &#39;false&#39; value indicates the end of the result set
-   * @return hasNext
+   * Total number of available pages. Calculated based on the &#39;pageSize&#39; request parameter and total number of entities that match search criteria
+   * @return totalPages
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_HAS_NEXT, required = false)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getHasNext() {
-    return hasNext;
+  public Integer getTotalPages() {
+    return totalPages;
   }
 
 
@@ -163,14 +163,14 @@ public class PageDataEdge {
     }
     PageDataEdge pageDataEdge = (PageDataEdge) o;
     return Objects.equals(this.data, pageDataEdge.data) &&
-        Objects.equals(this.totalPages, pageDataEdge.totalPages) &&
+        Objects.equals(this.hasNext, pageDataEdge.hasNext) &&
         Objects.equals(this.totalElements, pageDataEdge.totalElements) &&
-        Objects.equals(this.hasNext, pageDataEdge.hasNext);
+        Objects.equals(this.totalPages, pageDataEdge.totalPages);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, totalPages, totalElements, hasNext);
+    return Objects.hash(data, hasNext, totalElements, totalPages);
   }
 
   @Override
@@ -178,9 +178,9 @@ public class PageDataEdge {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageDataEdge {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
-    sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
     sb.append("    hasNext: ").append(toIndentedString(hasNext)).append("\n");
+    sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
+    sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -238,9 +238,9 @@ public class PageDataEdge {
       }
     }
 
-    // add `totalPages` to the URL query string
-    if (getTotalPages() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stotalPages%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalPages()))));
+    // add `hasNext` to the URL query string
+    if (getHasNext() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%shasNext%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasNext()))));
     }
 
     // add `totalElements` to the URL query string
@@ -248,9 +248,9 @@ public class PageDataEdge {
       joiner.add(String.format(java.util.Locale.ROOT, "%stotalElements%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalElements()))));
     }
 
-    // add `hasNext` to the URL query string
-    if (getHasNext() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%shasNext%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasNext()))));
+    // add `totalPages` to the URL query string
+    if (getTotalPages() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stotalPages%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalPages()))));
     }
 
     return joiner.toString();

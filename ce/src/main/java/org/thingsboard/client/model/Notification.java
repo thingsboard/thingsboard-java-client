@@ -42,6 +42,8 @@ import org.thingsboard.client.ApiClient;
  * Notification
  */
 @JsonPropertyOrder({
+  Notification.JSON_PROPERTY_ID,
+  Notification.JSON_PROPERTY_CREATED_TIME,
   Notification.JSON_PROPERTY_REQUEST_ID,
   Notification.JSON_PROPERTY_RECIPIENT_ID,
   Notification.JSON_PROPERTY_TYPE,
@@ -50,12 +52,18 @@ import org.thingsboard.client.ApiClient;
   Notification.JSON_PROPERTY_TEXT,
   Notification.JSON_PROPERTY_ADDITIONAL_CONFIG,
   Notification.JSON_PROPERTY_INFO,
-  Notification.JSON_PROPERTY_STATUS,
-  Notification.JSON_PROPERTY_ID,
-  Notification.JSON_PROPERTY_CREATED_TIME
+  Notification.JSON_PROPERTY_STATUS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Notification {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private NotificationId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
   @javax.annotation.Nullable
   private NotificationRequestId requestId;
@@ -92,14 +100,6 @@ public class Notification {
   @javax.annotation.Nullable
   private NotificationStatus status;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private NotificationId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public Notification() { 
   }
 
@@ -110,6 +110,44 @@ public class Notification {
   this();
     this.createdTime = createdTime;
   }
+
+  public Notification id(@javax.annotation.Nullable NotificationId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public NotificationId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable NotificationId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Entity creation timestamp in milliseconds since Unix epoch
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
 
   public Notification requestId(@javax.annotation.Nullable NotificationRequestId requestId) {
     this.requestId = requestId;
@@ -327,44 +365,6 @@ public class Notification {
   }
 
 
-  public Notification id(@javax.annotation.Nullable NotificationId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public NotificationId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable NotificationId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Entity creation timestamp in milliseconds since Unix epoch
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * Return true if this Notification object is equal to o.
    */
@@ -377,7 +377,9 @@ public class Notification {
       return false;
     }
     Notification notification = (Notification) o;
-    return Objects.equals(this.requestId, notification.requestId) &&
+    return Objects.equals(this.id, notification.id) &&
+        Objects.equals(this.createdTime, notification.createdTime) &&
+        Objects.equals(this.requestId, notification.requestId) &&
         Objects.equals(this.recipientId, notification.recipientId) &&
         Objects.equals(this.type, notification.type) &&
         Objects.equals(this.deliveryMethod, notification.deliveryMethod) &&
@@ -385,20 +387,20 @@ public class Notification {
         Objects.equals(this.text, notification.text) &&
         Objects.equals(this.additionalConfig, notification.additionalConfig) &&
         Objects.equals(this.info, notification.info) &&
-        Objects.equals(this.status, notification.status) &&
-        Objects.equals(this.id, notification.id) &&
-        Objects.equals(this.createdTime, notification.createdTime);
+        Objects.equals(this.status, notification.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(requestId, recipientId, type, deliveryMethod, subject, text, additionalConfig, info, status, id, createdTime);
+    return Objects.hash(id, createdTime, requestId, recipientId, type, deliveryMethod, subject, text, additionalConfig, info, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Notification {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    recipientId: ").append(toIndentedString(recipientId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -408,8 +410,6 @@ public class Notification {
     sb.append("    additionalConfig: ").append(toIndentedString(additionalConfig)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -457,6 +457,16 @@ public class Notification {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
     // add `requestId` to the URL query string
     if (getRequestId() != null) {
       joiner.add(getRequestId().toUrlQueryString(prefix + "requestId" + suffix));
@@ -500,16 +510,6 @@ public class Notification {
     // add `status` to the URL query string
     if (getStatus() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
-    }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
     return joiner.toString();

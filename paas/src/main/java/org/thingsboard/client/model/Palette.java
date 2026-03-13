@@ -38,8 +38,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   Palette.JSON_PROPERTY_TYPE,
-  Palette.JSON_PROPERTY_COLORS,
-  Palette.JSON_PROPERTY_EXTENDS
+  Palette.JSON_PROPERTY_EXTENDS,
+  Palette.JSON_PROPERTY_COLORS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Palette {
@@ -47,13 +47,13 @@ public class Palette {
   @javax.annotation.Nonnull
   private String type;
 
-  public static final String JSON_PROPERTY_COLORS = "colors";
-  @javax.annotation.Nullable
-  private Map<String, String> colors = new HashMap<>();
-
   public static final String JSON_PROPERTY_EXTENDS = "extends";
   @javax.annotation.Nullable
   private String _extends;
+
+  public static final String JSON_PROPERTY_COLORS = "colors";
+  @javax.annotation.Nullable
+  private Map<String, String> colors = new HashMap<>();
 
   public Palette() { 
   }
@@ -79,6 +79,30 @@ public class Palette {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
+  }
+
+
+  public Palette _extends(@javax.annotation.Nullable String _extends) {
+    this._extends = _extends;
+    return this;
+  }
+
+  /**
+   * Pre-defined palette name that the custom palette extends
+   * @return _extends
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_EXTENDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getExtends() {
+    return _extends;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EXTENDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExtends(@javax.annotation.Nullable String _extends) {
+    this._extends = _extends;
   }
 
 
@@ -114,30 +138,6 @@ public class Palette {
   }
 
 
-  public Palette _extends(@javax.annotation.Nullable String _extends) {
-    this._extends = _extends;
-    return this;
-  }
-
-  /**
-   * Pre-defined palette name that the custom palette extends
-   * @return _extends
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_EXTENDS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getExtends() {
-    return _extends;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_EXTENDS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExtends(@javax.annotation.Nullable String _extends) {
-    this._extends = _extends;
-  }
-
-
   /**
    * Return true if this Palette object is equal to o.
    */
@@ -151,13 +151,13 @@ public class Palette {
     }
     Palette palette = (Palette) o;
     return Objects.equals(this.type, palette.type) &&
-        Objects.equals(this.colors, palette.colors) &&
-        Objects.equals(this._extends, palette._extends);
+        Objects.equals(this._extends, palette._extends) &&
+        Objects.equals(this.colors, palette.colors);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, colors, _extends);
+    return Objects.hash(type, _extends, colors);
   }
 
   @Override
@@ -165,8 +165,8 @@ public class Palette {
     StringBuilder sb = new StringBuilder();
     sb.append("class Palette {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    colors: ").append(toIndentedString(colors)).append("\n");
     sb.append("    _extends: ").append(toIndentedString(_extends)).append("\n");
+    sb.append("    colors: ").append(toIndentedString(colors)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -219,6 +219,11 @@ public class Palette {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
+    // add `extends` to the URL query string
+    if (getExtends() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sextends%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getExtends()))));
+    }
+
     // add `colors` to the URL query string
     if (getColors() != null) {
       for (String _key : getColors().keySet()) {
@@ -226,11 +231,6 @@ public class Palette {
             "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
             getColors().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getColors().get(_key)))));
       }
-    }
-
-    // add `extends` to the URL query string
-    if (getExtends() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sextends%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getExtends()))));
     }
 
     return joiner.toString();

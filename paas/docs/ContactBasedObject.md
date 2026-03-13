@@ -7,18 +7,18 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **id** | **Object** |  | [optional] |
-| **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
-| **country** | **String** |  | [optional] |
-| **state** | **String** |  | [optional] |
-| **city** | **String** |  | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **address** | **String** |  | [optional] |
 | **address2** | **String** |  | [optional] |
-| **zip** | **String** |  | [optional] |
-| **phone** | **String** |  | [optional] |
+| **city** | **String** |  | [optional] |
+| **country** | **String** |  | [optional] |
+| **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 | **email** | **String** |  | [optional] |
+| **id** | **Object** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **phone** | **String** |  | [optional] |
+| **state** | **String** |  | [optional] |
+| **zip** | **String** |  | [optional] |
 
 
 

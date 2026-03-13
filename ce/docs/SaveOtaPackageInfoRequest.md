@@ -25,8 +25,8 @@ A JSON value representing the OTA Package.
 | **checksum** | **String** | OTA Package checksum. | [optional] [readonly] |
 | **dataSize** | **Long** | OTA Package data size. | [optional] [readonly] |
 | **usesUrl** | **Boolean** | Indicates OTA Package uses url. Should be 'true' if uses url or 'false' if will be used data. | [optional] [readonly] |
-| **name** | **String** |  | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | OTA Package description. | [optional] |
+| **name** | **String** |  | [optional] [readonly] |
 
 
 

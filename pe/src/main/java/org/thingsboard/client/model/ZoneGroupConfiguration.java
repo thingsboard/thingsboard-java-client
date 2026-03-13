@@ -39,16 +39,24 @@ import org.thingsboard.client.ApiClient;
  * ZoneGroupConfiguration
  */
 @JsonPropertyOrder({
+  ZoneGroupConfiguration.JSON_PROPERTY_REF_ENTITY_ID,
+  ZoneGroupConfiguration.JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION,
   ZoneGroupConfiguration.JSON_PROPERTY_PERIMETER_KEY_NAME,
   ZoneGroupConfiguration.JSON_PROPERTY_REPORT_STRATEGY,
   ZoneGroupConfiguration.JSON_PROPERTY_CREATE_RELATIONS_WITH_MATCHED_ZONES,
-  ZoneGroupConfiguration.JSON_PROPERTY_REF_ENTITY_ID,
-  ZoneGroupConfiguration.JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION,
   ZoneGroupConfiguration.JSON_PROPERTY_RELATION_TYPE,
   ZoneGroupConfiguration.JSON_PROPERTY_DIRECTION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ZoneGroupConfiguration {
+  public static final String JSON_PROPERTY_REF_ENTITY_ID = "refEntityId";
+  @javax.annotation.Nullable
+  private EntityId refEntityId;
+
+  public static final String JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION = "refDynamicSourceConfiguration";
+  @javax.annotation.Nullable
+  private CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration;
+
   public static final String JSON_PROPERTY_PERIMETER_KEY_NAME = "perimeterKeyName";
   @javax.annotation.Nonnull
   private String perimeterKeyName;
@@ -61,14 +69,6 @@ public class ZoneGroupConfiguration {
   @javax.annotation.Nullable
   private Boolean createRelationsWithMatchedZones;
 
-  public static final String JSON_PROPERTY_REF_ENTITY_ID = "refEntityId";
-  @javax.annotation.Nullable
-  private EntityId refEntityId;
-
-  public static final String JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION = "refDynamicSourceConfiguration";
-  @javax.annotation.Nullable
-  private CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration;
-
   public static final String JSON_PROPERTY_RELATION_TYPE = "relationType";
   @javax.annotation.Nullable
   private String relationType;
@@ -79,6 +79,54 @@ public class ZoneGroupConfiguration {
 
   public ZoneGroupConfiguration() { 
   }
+
+  public ZoneGroupConfiguration refEntityId(@javax.annotation.Nullable EntityId refEntityId) {
+    this.refEntityId = refEntityId;
+    return this;
+  }
+
+  /**
+   * Get refEntityId
+   * @return refEntityId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getRefEntityId() {
+    return refEntityId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRefEntityId(@javax.annotation.Nullable EntityId refEntityId) {
+    this.refEntityId = refEntityId;
+  }
+
+
+  public ZoneGroupConfiguration refDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
+    this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
+    return this;
+  }
+
+  /**
+   * Get refDynamicSourceConfiguration
+   * @return refDynamicSourceConfiguration
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CfArgumentDynamicSourceConfiguration getRefDynamicSourceConfiguration() {
+    return refDynamicSourceConfiguration;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRefDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
+    this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
+  }
+
 
   public ZoneGroupConfiguration perimeterKeyName(@javax.annotation.Nonnull String perimeterKeyName) {
     this.perimeterKeyName = perimeterKeyName;
@@ -152,54 +200,6 @@ public class ZoneGroupConfiguration {
   }
 
 
-  public ZoneGroupConfiguration refEntityId(@javax.annotation.Nullable EntityId refEntityId) {
-    this.refEntityId = refEntityId;
-    return this;
-  }
-
-  /**
-   * Get refEntityId
-   * @return refEntityId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityId getRefEntityId() {
-    return refEntityId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefEntityId(@javax.annotation.Nullable EntityId refEntityId) {
-    this.refEntityId = refEntityId;
-  }
-
-
-  public ZoneGroupConfiguration refDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
-    this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
-    return this;
-  }
-
-  /**
-   * Get refDynamicSourceConfiguration
-   * @return refDynamicSourceConfiguration
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public CfArgumentDynamicSourceConfiguration getRefDynamicSourceConfiguration() {
-    return refDynamicSourceConfiguration;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
-    this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
-  }
-
-
   public ZoneGroupConfiguration relationType(@javax.annotation.Nullable String relationType) {
     this.relationType = relationType;
     return this;
@@ -260,29 +260,29 @@ public class ZoneGroupConfiguration {
       return false;
     }
     ZoneGroupConfiguration zoneGroupConfiguration = (ZoneGroupConfiguration) o;
-    return Objects.equals(this.perimeterKeyName, zoneGroupConfiguration.perimeterKeyName) &&
+    return Objects.equals(this.refEntityId, zoneGroupConfiguration.refEntityId) &&
+        Objects.equals(this.refDynamicSourceConfiguration, zoneGroupConfiguration.refDynamicSourceConfiguration) &&
+        Objects.equals(this.perimeterKeyName, zoneGroupConfiguration.perimeterKeyName) &&
         Objects.equals(this.reportStrategy, zoneGroupConfiguration.reportStrategy) &&
         Objects.equals(this.createRelationsWithMatchedZones, zoneGroupConfiguration.createRelationsWithMatchedZones) &&
-        Objects.equals(this.refEntityId, zoneGroupConfiguration.refEntityId) &&
-        Objects.equals(this.refDynamicSourceConfiguration, zoneGroupConfiguration.refDynamicSourceConfiguration) &&
         Objects.equals(this.relationType, zoneGroupConfiguration.relationType) &&
         Objects.equals(this.direction, zoneGroupConfiguration.direction);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(perimeterKeyName, reportStrategy, createRelationsWithMatchedZones, refEntityId, refDynamicSourceConfiguration, relationType, direction);
+    return Objects.hash(refEntityId, refDynamicSourceConfiguration, perimeterKeyName, reportStrategy, createRelationsWithMatchedZones, relationType, direction);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ZoneGroupConfiguration {\n");
+    sb.append("    refEntityId: ").append(toIndentedString(refEntityId)).append("\n");
+    sb.append("    refDynamicSourceConfiguration: ").append(toIndentedString(refDynamicSourceConfiguration)).append("\n");
     sb.append("    perimeterKeyName: ").append(toIndentedString(perimeterKeyName)).append("\n");
     sb.append("    reportStrategy: ").append(toIndentedString(reportStrategy)).append("\n");
     sb.append("    createRelationsWithMatchedZones: ").append(toIndentedString(createRelationsWithMatchedZones)).append("\n");
-    sb.append("    refEntityId: ").append(toIndentedString(refEntityId)).append("\n");
-    sb.append("    refDynamicSourceConfiguration: ").append(toIndentedString(refDynamicSourceConfiguration)).append("\n");
     sb.append("    relationType: ").append(toIndentedString(relationType)).append("\n");
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("}");
@@ -332,6 +332,16 @@ public class ZoneGroupConfiguration {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `refEntityId` to the URL query string
+    if (getRefEntityId() != null) {
+      joiner.add(getRefEntityId().toUrlQueryString(prefix + "refEntityId" + suffix));
+    }
+
+    // add `refDynamicSourceConfiguration` to the URL query string
+    if (getRefDynamicSourceConfiguration() != null) {
+      joiner.add(getRefDynamicSourceConfiguration().toUrlQueryString(prefix + "refDynamicSourceConfiguration" + suffix));
+    }
+
     // add `perimeterKeyName` to the URL query string
     if (getPerimeterKeyName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sperimeterKeyName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPerimeterKeyName()))));
@@ -345,16 +355,6 @@ public class ZoneGroupConfiguration {
     // add `createRelationsWithMatchedZones` to the URL query string
     if (getCreateRelationsWithMatchedZones() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%screateRelationsWithMatchedZones%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreateRelationsWithMatchedZones()))));
-    }
-
-    // add `refEntityId` to the URL query string
-    if (getRefEntityId() != null) {
-      joiner.add(getRefEntityId().toUrlQueryString(prefix + "refEntityId" + suffix));
-    }
-
-    // add `refDynamicSourceConfiguration` to the URL query string
-    if (getRefDynamicSourceConfiguration() != null) {
-      joiner.add(getRefDynamicSourceConfiguration().toUrlQueryString(prefix + "refDynamicSourceConfiguration" + suffix));
     }
 
     // add `relationType` to the URL query string

@@ -182,7 +182,7 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
 
 
   @Override
-  public GeofencingCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
+  public GeofencingCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
     this.setOutput(output);
     return this;
   }

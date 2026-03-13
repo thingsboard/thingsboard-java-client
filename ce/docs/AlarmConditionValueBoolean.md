@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **staticValue** | **Boolean** |  | [optional] |
 | **dynamicValueArgument** | **String** |  | [optional] |
+| **staticValue** | **Boolean** |  | [optional] |
 
 
 

@@ -21,9 +21,9 @@
 | **userGroupName** | **String** | User Group Name. | [optional] |
 | **userGroupOwnerId** | **EntityId** | User Group Owner Id (Tenant or Customer). | [optional] |
 | **userGroupOwnerName** | **String** | Name of the user group owner (Tenant or Customer title). | [optional] |
-| **readOnly** | **Boolean** |  | [optional] |
 | **name** | **String** | Name of the Group Permissions. Auto-generated | [optional] [readonly] |
 | **_public** | **Boolean** |  | [optional] |
+| **readOnly** | **Boolean** |  | [optional] |
 
 
 
