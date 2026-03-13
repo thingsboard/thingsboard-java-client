@@ -152,8 +152,8 @@ tb.deleteEntityTimeseries("DEVICE", deviceId,
 // Create an alarm
 Alarm alarm = new Alarm();
 alarm.setType("High Temperature");
-alarm.setOriginator(new EntityId().entityType(EntityId.EntityTypeEnum.DEVICE).id(deviceId));
-alarm.setSeverity(Alarm.SeverityEnum.CRITICAL);
+alarm.setOriginator(new DeviceId().id(deviceId));
+alarm.setSeverity(AlarmSeverity.CRITICAL);
 Alarm saved = tb.saveAlarm(alarm);
 
 // Get alarm by ID
@@ -171,10 +171,10 @@ tb.clearAlarm(alarmId);
 ```java
 // Create a relation
 EntityRelation relation = new EntityRelation();
-relation.setFrom(new EntityId().entityType(EntityId.EntityTypeEnum.ASSET).id(assetId));
-relation.setTo(new EntityId().entityType(EntityId.EntityTypeEnum.DEVICE).id(deviceId));
+relation.setFrom(new AssetId().id(assetId));
+relation.setTo(new DeviceId().id(deviceId));
 relation.setType("Contains");
-relation.setTypeGroup(EntityRelation.TypeGroupEnum.COMMON);
+relation.setTypeGroup(RelationTypeGroup.COMMON);
 tb.saveRelation(relation);
 ```
 
@@ -268,12 +268,9 @@ List<Role> roles = page.getData();
 ```java
 // Grant a user group access to an entity group via a role
 GroupPermission gp = new GroupPermission();
-gp.setUserGroupId(new EntityGroupId()
-        .id(UUID.fromString(userGroupId)).entityType(EntityType.ENTITY_GROUP));
-gp.setEntityGroupId(new EntityGroupId()
-        .id(UUID.fromString(deviceGroupId)).entityType(EntityType.ENTITY_GROUP));
-gp.setRoleId(new RoleId()
-        .id(UUID.fromString(roleId)).entityType(EntityType.ROLE));
+gp.setUserGroupId(new EntityGroupId().id(UUID.fromString(userGroupId)));
+gp.setEntityGroupId(new EntityGroupId().id(UUID.fromString(deviceGroupId)));
+gp.setRoleId(new RoleId().id(UUID.fromString(roleId)));
 GroupPermission saved = tb.saveGroupPermission(gp);
 
 // List permissions for an entity group
@@ -327,8 +324,7 @@ String userGroupId = allUsers.getId().getId().toString();
 User user = new User();
 user.setEmail("operator@acme-west.com");
 user.setAuthority(Authority.CUSTOMER_USER);
-user.setCustomerId(new CustomerId()
-        .id(UUID.fromString(subId)).entityType(EntityType.CUSTOMER));
+user.setCustomerId(new CustomerId().id(UUID.fromString(subId)));
 User savedUser = tb.saveUser(user, "false", userGroupId, null);
 
 // List users in a user group (paginated)
