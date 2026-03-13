@@ -87,10 +87,12 @@ public class Domain {
 
   @JsonCreator
   public Domain(
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
+    this.ownerId = ownerId;
   }
 
   public Domain id(@javax.annotation.Nullable DomainId id) {
@@ -251,11 +253,6 @@ public class Domain {
   }
 
 
-  public Domain ownerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-    return this;
-  }
-
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -268,11 +265,6 @@ public class Domain {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-  }
 
 
   /**

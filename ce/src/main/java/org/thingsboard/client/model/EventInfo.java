@@ -82,11 +82,13 @@ public class EventInfo {
   @JsonCreator
   public EventInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
-    @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId
+    @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
+    @JsonProperty(JSON_PROPERTY_ENTITY_ID) EntityId entityId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
+    this.entityId = entityId;
   }
 
   public EventInfo id(@javax.annotation.Nullable EventId id) {
@@ -189,11 +191,6 @@ public class EventInfo {
   }
 
 
-  public EventInfo entityId(@javax.annotation.Nullable EntityId entityId) {
-    this.entityId = entityId;
-    return this;
-  }
-
   /**
    * JSON object with Entity Id for which event is created.
    * @return entityId
@@ -206,11 +203,6 @@ public class EventInfo {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityId(@javax.annotation.Nullable EntityId entityId) {
-    this.entityId = entityId;
-  }
 
 
   public EventInfo body(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode body) {

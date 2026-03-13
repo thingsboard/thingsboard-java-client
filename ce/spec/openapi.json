@@ -7498,7 +7498,7 @@
           "api-key-controller"
         ],
         "summary": "Save API key for user (saveApiKey)",
-        "description": "Creates an API key for the given user and returns the token ONCE as 'ApiKey \u003Cvalue\u003E'.\n\nAvailable for any authorized user. ",
+        "description": "Creates an API key for the given user and returns the token ONCE as 'ApiKey {value}'.\n\nAvailable for any authorized user. ",
         "operationId": "saveApiKey",
         "requestBody": {
           "content": {
@@ -25551,7 +25551,7 @@
           "device-controller"
         ],
         "summary": "Create Device (saveDevice) with credentials ",
-        "description": "Create or update the Device. When creating device, platform generates Device Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). Requires to provide the Device Credentials object as well as an existing device profile ID or use \"default\".\nYou may find the example of device with different type of credentials below: \n\n- Credentials type: \u003Cb\u003E\"Access token\"\u003C/b\u003E with \u003Cb\u003Edevice profile ID\u003C/b\u003E below: \n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_AccessToken\",\n    \"label\":\"Label_DeviceWithCredantial_AccessToken\",\n    \"deviceProfileId\":{\n      \"id\":\"9d9588c0-06c9-11ee-b618-19be30fdeb60\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"ACCESS_TOKEN\",\n    \"credentialsId\": \"6hmxew8pmmzng4e3une2\"\n   }\n}\n```\n\n- Credentials type: \u003Cb\u003E\"Access token\"\u003C/b\u003E with  \u003Cb\u003Edevice profile default\u003C/b\u003E below: \n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_AccessToken_Default\",\n    \"label\":\"Label_DeviceWithCredantial_AccessToken_Default\",\n    \"type\": \"default\"\n   },\n  \"credentials\": {\n    \"credentialsType\": \"ACCESS_TOKEN\",\n    \"credentialsId\": \"6hmxew8pmmzng4e3une3\"\n   }\n}\n```\n\n- Credentials type: \u003Cb\u003E\"X509\"\u003C/b\u003E with \u003Cb\u003Edevice profile ID\u003C/b\u003E below: \n\nNote: \u003Cb\u003EcredentialsId\u003C/b\u003E -  format \u003Cb\u003ESha3Hash\u003C/b\u003E, \u003Cb\u003EcertificateValue\u003C/b\u003E - format \u003Cb\u003EPEM\u003C/b\u003E (with \"--BEGIN CERTIFICATE----\" and  -\"----END CERTIFICATE-\").\n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_X509_Certificate\",\n    \"label\":\"Label_DeviceWithCredantial_X509_Certificate\",\n    \"deviceProfileId\":{\n      \"id\":\"9d9588c0-06c9-11ee-b618-19be30fdeb60\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"X509_CERTIFICATE\",\n    \"credentialsId\": \"84f5911765abba1f96bf4165604e9e90338fc6214081a8e623b6ff9669aedb27\",\n    \"credentialsValue\": \"-----BEGIN CERTIFICATE----- MIICMTCCAdegAwIBAgIUI9dBuwN6pTtK6uZ03rkiCwV4wEYwCgYIKoZIzj0EAwIwbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlQ2VydGlmaWNhdGVAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MB4XDTIzMDMyOTE0NTYxN1oXDTI0MDMyODE0NTYxN1owbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlQ2VydGlmaWNhdGVAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE9Zo791qKQiGNBm11r4ZGxh+w+ossZL3xc46ufq5QckQHP7zkD2XDAcmP5GvdkM1sBFN9AWaCkQfNnWmfERsOOKNTMFEwHQYDVR0OBBYEFFFc5uyCyglQoZiKhzXzMcQ3BKORMB8GA1UdIwQYMBaAFFFc5uyCyglQoZiKhzXzMcQ3BKORMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwIDSAAwRQIhANbA9CuhoOifZMMmqkpuld+65CR+ItKdXeRAhLMZuccuAiB0FSQB34zMutXrZj1g8Gl5OkE7YryFHbei1z0SveHR8g== -----END CERTIFICATE-----\"\n   }\n}\n```\n\n- Credentials type: \u003Cb\u003E\"MQTT_BASIC\"\u003C/b\u003E with \u003Cb\u003Edevice profile ID\u003C/b\u003E below: \n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_MQTT_Basic\",\n    \"label\":\"Label_DeviceWithCredantial_MQTT_Basic\",\n    \"deviceProfileId\":{\n      \"id\":\"9d9588c0-06c9-11ee-b618-19be30fdeb60\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"MQTT_BASIC\",\n    \"credentialsValue\": \"{\\\"clientId\\\":\\\"5euh5nzm34bjjh1efmlt\\\",\\\"userName\\\":\\\"onasd1lgwasmjl7v2v7h\\\",\\\"password\\\":\\\"b9xtm4ny8kt9zewaga5o\\\"}\"\n   }\n}\n```\n\n- You may find the example of \u003Cb\u003ELwM2M\u003C/b\u003E device and \u003Cb\u003ERPK\u003C/b\u003E credentials below: \n\nNote: LwM2M device - only existing device profile ID (Transport configuration -\u003E Transport type: \"LWM2M\".\n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_LwRpk00000000\",\n    \"label\":\"Label_LwRpk00000000\",\n    \"deviceProfileId\":{\n      \"id\":\"a660bd50-10ef-11ee-8737-b5634e73c779\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"LWM2M_CREDENTIALS\",\n    \"credentialsId\": \"LwRpk00000000\",\n    \"credentialsValue\":\n       \"{\\\"client\\\":{ \\\"endpoint\\\":\\\"LwRpk00000000\\\", \\\"securityConfigClientMode\\\":\\\"RPK\\\", \\\"key\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\"   }, \\\"bootstrap\\\":{ \\\"bootstrapServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}, \\\"lwm2mServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}} }\"\n   }\n}\n```\n\nRemove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Device entity. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
+        "description": "Create or update the Device. When creating device, platform generates Device Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). Requires to provide the Device Credentials object as well as an existing device profile ID or use \"default\".\nYou may find the example of device with different type of credentials below: \n\n- Credentials type: **\"Access token\"** with **device profile ID** below: \n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_AccessToken\",\n    \"label\":\"Label_DeviceWithCredantial_AccessToken\",\n    \"deviceProfileId\":{\n      \"id\":\"9d9588c0-06c9-11ee-b618-19be30fdeb60\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"ACCESS_TOKEN\",\n    \"credentialsId\": \"6hmxew8pmmzng4e3une2\"\n   }\n}\n```\n\n- Credentials type: **\"Access token\"** with  **device profile default** below: \n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_AccessToken_Default\",\n    \"label\":\"Label_DeviceWithCredantial_AccessToken_Default\",\n    \"type\": \"default\"\n   },\n  \"credentials\": {\n    \"credentialsType\": \"ACCESS_TOKEN\",\n    \"credentialsId\": \"6hmxew8pmmzng4e3une3\"\n   }\n}\n```\n\n- Credentials type: **\"X509\"** with **device profile ID** below: \n\nNote: **credentialsId** -  format **Sha3Hash**, **certificateValue** - format **PEM** (with \"--BEGIN CERTIFICATE----\" and  -\"----END CERTIFICATE-\").\n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_X509_Certificate\",\n    \"label\":\"Label_DeviceWithCredantial_X509_Certificate\",\n    \"deviceProfileId\":{\n      \"id\":\"9d9588c0-06c9-11ee-b618-19be30fdeb60\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"X509_CERTIFICATE\",\n    \"credentialsId\": \"84f5911765abba1f96bf4165604e9e90338fc6214081a8e623b6ff9669aedb27\",\n    \"credentialsValue\": \"-----BEGIN CERTIFICATE----- MIICMTCCAdegAwIBAgIUI9dBuwN6pTtK6uZ03rkiCwV4wEYwCgYIKoZIzj0EAwIwbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlQ2VydGlmaWNhdGVAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MB4XDTIzMDMyOTE0NTYxN1oXDTI0MDMyODE0NTYxN1owbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlQ2VydGlmaWNhdGVAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE9Zo791qKQiGNBm11r4ZGxh+w+ossZL3xc46ufq5QckQHP7zkD2XDAcmP5GvdkM1sBFN9AWaCkQfNnWmfERsOOKNTMFEwHQYDVR0OBBYEFFFc5uyCyglQoZiKhzXzMcQ3BKORMB8GA1UdIwQYMBaAFFFc5uyCyglQoZiKhzXzMcQ3BKORMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwIDSAAwRQIhANbA9CuhoOifZMMmqkpuld+65CR+ItKdXeRAhLMZuccuAiB0FSQB34zMutXrZj1g8Gl5OkE7YryFHbei1z0SveHR8g== -----END CERTIFICATE-----\"\n   }\n}\n```\n\n- Credentials type: **\"MQTT_BASIC\"** with **device profile ID** below: \n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_DeviceWithCredantial_MQTT_Basic\",\n    \"label\":\"Label_DeviceWithCredantial_MQTT_Basic\",\n    \"deviceProfileId\":{\n      \"id\":\"9d9588c0-06c9-11ee-b618-19be30fdeb60\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"MQTT_BASIC\",\n    \"credentialsValue\": \"{\\\"clientId\\\":\\\"5euh5nzm34bjjh1efmlt\\\",\\\"userName\\\":\\\"onasd1lgwasmjl7v2v7h\\\",\\\"password\\\":\\\"b9xtm4ny8kt9zewaga5o\\\"}\"\n   }\n}\n```\n\n- You may find the example of **LwM2M** device and **RPK** credentials below: \n\nNote: LwM2M device - only existing device profile ID (Transport configuration -\u003E Transport type: \"LWM2M\".\n\n```json\n{\n  \"device\": {\n    \"name\":\"Name_LwRpk00000000\",\n    \"label\":\"Label_LwRpk00000000\",\n    \"deviceProfileId\":{\n      \"id\":\"a660bd50-10ef-11ee-8737-b5634e73c779\",\n      \"entityType\":\"DEVICE_PROFILE\"\n     }\n   },\n  \"credentials\": {\n    \"credentialsType\": \"LWM2M_CREDENTIALS\",\n    \"credentialsId\": \"LwRpk00000000\",\n    \"credentialsValue\":\n       \"{\\\"client\\\":{ \\\"endpoint\\\":\\\"LwRpk00000000\\\", \\\"securityConfigClientMode\\\":\\\"RPK\\\", \\\"key\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\"   }, \\\"bootstrap\\\":{ \\\"bootstrapServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}, \\\"lwm2mServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}} }\"\n   }\n}\n```\n\nRemove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Device entity. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "saveDeviceWithCredentials",
         "parameters": [
           {
@@ -25873,7 +25873,7 @@
           "device-controller"
         ],
         "summary": "Update device credentials (updateDeviceCredentials)",
-        "description": "During device creation, platform generates random 'ACCESS_TOKEN' credentials. \" +\nUse this method to update the device credentials. First use 'getDeviceCredentialsByDeviceId' to get the credentials id and value.\nThen use current method to update the credentials type and value. It is not possible to create multiple device credentials for the same device.\nThe structure of device credentials id and value is simple for the 'ACCESS_TOKEN' but is much more complex for the 'MQTT_BASIC' or 'LWM2M_CREDENTIALS'.\nYou may find the example of device with different type of credentials below: \n\n- Credentials type: \u003Cb\u003E\"Access token\"\u003C/b\u003E with \u003Cb\u003Edevice ID\u003C/b\u003E and with \u003Cb\u003Edevice ID\u003C/b\u003E below: \n\n```json\n{\n  \"id\": {\n    \"id\":\"c886a090-168d-11ee-87c9-6f157dbc816a\"\n   },\n  \"deviceId\": {\n    \"id\":\"c5fb3ac0-168d-11ee-87c9-6f157dbc816a\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"ACCESS_TOKEN\",\n  \"credentialsId\": \"6hmxew8pmmzng4e3une4\"\n}\n```\n\n- Credentials type: \u003Cb\u003E\"X509\"\u003C/b\u003E with \u003Cb\u003Edevice profile ID\u003C/b\u003E below: \n\nNote: \u003Cb\u003EcredentialsId\u003C/b\u003E -  format \u003Cb\u003ESha3Hash\u003C/b\u003E, \u003Cb\u003EcertificateValue\u003C/b\u003E - format \u003Cb\u003EPEM\u003C/b\u003E (with \"--BEGIN CERTIFICATE----\" and  -\"----END CERTIFICATE-\").\n\n```json\n{\n  \"id\": {\n    \"id\":\"309bd9c0-14f4-11ee-9fc9-d9b7463abb63\"\n   },\n  \"deviceId\": {\n    \"id\":\"3092b200-14f4-11ee-9fc9-d9b7463abb63\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"X509_CERTIFICATE\",\n  \"credentialsId\": \"6b8adb49015500e51a527acd332b51684ab9b49b4ade03a9582a44c455e2e9b6\",\n  \"credentialsValue\": \"-----BEGIN CERTIFICATE----- MIICMTCCAdegAwIBAgIUUEKxS9hTz4l+oLUMF0LV6TC/gCIwCgYIKoZIzj0EAwIwbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlUHJvZmlsZUNlcnRAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MB4XDTIzMDMyOTE0NTczNloXDTI0MDMyODE0NTczNlowbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlUHJvZmlsZUNlcnRAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECMlWO72krDoUL9FQjUmSCetkhaEGJUfQkdSfkLSNa0GyAEIMbfmzI4zITeapunu4rGet3EMyLydQzuQanBicp6NTMFEwHQYDVR0OBBYEFHpZ78tPnztNii4Da/yCw6mhEIL3MB8GA1UdIwQYMBaAFHpZ78tPnztNii4Da/yCw6mhEIL3MA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwIDSAAwRQIgJ7qyMFqNcwSYkH6o+UlQXzLWfwZbNjVk+aR7foAZNGsCIQDsd7v3WQIGHiArfZeDs1DLEDuV/2h6L+ZNoGNhEKL+1A== -----END CERTIFICATE-----\"\n}\n```\n\n- Credentials type: \u003Cb\u003E\"MQTT_BASIC\"\u003C/b\u003E with \u003Cb\u003Edevice profile ID\u003C/b\u003E below: \n\n```json\n{\n  \"id\": {\n    \"id\":\"d877ffb0-14f5-11ee-9fc9-d9b7463abb63\"\n   },\n  \"deviceId\": {\n    \"id\":\"d875dcd0-14f5-11ee-9fc9-d9b7463abb63\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"MQTT_BASIC\",\n  \"credentialsValue\": \"{\\\"clientId\\\":\\\"juy03yv4owqxcmqhqtvk\\\",\\\"userName\\\":\\\"ov19fxca0cyjn7lm7w7u\\\",\\\"password\\\":\\\"twy94he114dfi9usyk1o\\\"}\"\n}\n```\n\n- You may find the example of \u003Cb\u003ELwM2M\u003C/b\u003E device and \u003Cb\u003ERPK\u003C/b\u003E credentials below: \n\nNote: LwM2M device - only existing device profile ID (Transport configuration -\u003E Transport type: \"LWM2M\".\n\n```json\n{\n  \"id\": {\n    \"id\":\"e238d4d0-1689-11ee-98c6-1713c1be5a8e\"\n   },\n  \"deviceId\": {\n    \"id\":\"e232e160-1689-11ee-98c6-1713c1be5a8e\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"LWM2M_CREDENTIALS\",\n  \"credentialsId\": \"LwRpk00000000\",\n  \"credentialsValue\":\n       \"{\\\"client\\\":{ \\\"endpoint\\\":\\\"LwRpk00000000\\\", \\\"securityConfigClientMode\\\":\\\"RPK\\\", \\\"key\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEdvBZZ2vQRK9wgDhctj6B1c7bxR3Z0wYg1+YdoYFnVUKWb+rIfTTyYK9tmQJx5Vlb5fxdLnVv1RJOPiwsLIQbAA==\\\"   }, \\\"bootstrap\\\":{ \\\"bootstrapServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}, \\\"lwm2mServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}} }\"\n}\n```\n\nUpdate to real value:\n - 'id' (this is id of Device Credentials -\u003E  \"Get Device Credentials (getDeviceCredentialsByDeviceId)\",\n - 'deviceId.id' (this is id of Device).\nRemove 'tenantId' and optionally 'customerId' from the request body example (below) to create new Device entity.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "During device creation, platform generates random 'ACCESS_TOKEN' credentials. \" +\nUse this method to update the device credentials. First use 'getDeviceCredentialsByDeviceId' to get the credentials id and value.\nThen use current method to update the credentials type and value. It is not possible to create multiple device credentials for the same device.\nThe structure of device credentials id and value is simple for the 'ACCESS_TOKEN' but is much more complex for the 'MQTT_BASIC' or 'LWM2M_CREDENTIALS'.\nYou may find the example of device with different type of credentials below: \n\n- Credentials type: **\"Access token\"** with **device ID** and with **device ID** below: \n\n```json\n{\n  \"id\": {\n    \"id\":\"c886a090-168d-11ee-87c9-6f157dbc816a\"\n   },\n  \"deviceId\": {\n    \"id\":\"c5fb3ac0-168d-11ee-87c9-6f157dbc816a\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"ACCESS_TOKEN\",\n  \"credentialsId\": \"6hmxew8pmmzng4e3une4\"\n}\n```\n\n- Credentials type: **\"X509\"** with **device profile ID** below: \n\nNote: **credentialsId** -  format **Sha3Hash**, **certificateValue** - format **PEM** (with \"--BEGIN CERTIFICATE----\" and  -\"----END CERTIFICATE-\").\n\n```json\n{\n  \"id\": {\n    \"id\":\"309bd9c0-14f4-11ee-9fc9-d9b7463abb63\"\n   },\n  \"deviceId\": {\n    \"id\":\"3092b200-14f4-11ee-9fc9-d9b7463abb63\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"X509_CERTIFICATE\",\n  \"credentialsId\": \"6b8adb49015500e51a527acd332b51684ab9b49b4ade03a9582a44c455e2e9b6\",\n  \"credentialsValue\": \"-----BEGIN CERTIFICATE----- MIICMTCCAdegAwIBAgIUUEKxS9hTz4l+oLUMF0LV6TC/gCIwCgYIKoZIzj0EAwIwbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlUHJvZmlsZUNlcnRAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MB4XDTIzMDMyOTE0NTczNloXDTI0MDMyODE0NTczNlowbjELMAkGA1UEBhMCVVMxETAPBgNVBAgMCE5ldyBZb3JrMRowGAYDVQQKDBFUaGluZ3NCb2FyZCwgSW5jLjEwMC4GA1UEAwwnZGV2aWNlUHJvZmlsZUNlcnRAWDUwOVByb3Zpc2lvblN0cmF0ZWd5MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECMlWO72krDoUL9FQjUmSCetkhaEGJUfQkdSfkLSNa0GyAEIMbfmzI4zITeapunu4rGet3EMyLydQzuQanBicp6NTMFEwHQYDVR0OBBYEFHpZ78tPnztNii4Da/yCw6mhEIL3MB8GA1UdIwQYMBaAFHpZ78tPnztNii4Da/yCw6mhEIL3MA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwIDSAAwRQIgJ7qyMFqNcwSYkH6o+UlQXzLWfwZbNjVk+aR7foAZNGsCIQDsd7v3WQIGHiArfZeDs1DLEDuV/2h6L+ZNoGNhEKL+1A== -----END CERTIFICATE-----\"\n}\n```\n\n- Credentials type: **\"MQTT_BASIC\"** with **device profile ID** below: \n\n```json\n{\n  \"id\": {\n    \"id\":\"d877ffb0-14f5-11ee-9fc9-d9b7463abb63\"\n   },\n  \"deviceId\": {\n    \"id\":\"d875dcd0-14f5-11ee-9fc9-d9b7463abb63\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"MQTT_BASIC\",\n  \"credentialsValue\": \"{\\\"clientId\\\":\\\"juy03yv4owqxcmqhqtvk\\\",\\\"userName\\\":\\\"ov19fxca0cyjn7lm7w7u\\\",\\\"password\\\":\\\"twy94he114dfi9usyk1o\\\"}\"\n}\n```\n\n- You may find the example of **LwM2M** device and **RPK** credentials below: \n\nNote: LwM2M device - only existing device profile ID (Transport configuration -\u003E Transport type: \"LWM2M\".\n\n```json\n{\n  \"id\": {\n    \"id\":\"e238d4d0-1689-11ee-98c6-1713c1be5a8e\"\n   },\n  \"deviceId\": {\n    \"id\":\"e232e160-1689-11ee-98c6-1713c1be5a8e\",\n    \"entityType\":\"DEVICE\"\n   },\n  \"credentialsType\": \"LWM2M_CREDENTIALS\",\n  \"credentialsId\": \"LwRpk00000000\",\n  \"credentialsValue\":\n       \"{\\\"client\\\":{ \\\"endpoint\\\":\\\"LwRpk00000000\\\", \\\"securityConfigClientMode\\\":\\\"RPK\\\", \\\"key\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEdvBZZ2vQRK9wgDhctj6B1c7bxR3Z0wYg1+YdoYFnVUKWb+rIfTTyYK9tmQJx5Vlb5fxdLnVv1RJOPiwsLIQbAA==\\\"   }, \\\"bootstrap\\\":{ \\\"bootstrapServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}, \\\"lwm2mServer\\\":{ \\\"securityMode\\\":\\\"RPK\\\", \\\"clientPublicKeyOrId\\\":\\\"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUEBxNl/RcYJNm8mk91CyVXoIJiROYDlXcSSqK6e5bDHwOW4ZiN2lNnXalyF0Jxw8MbAytnDMERXyAja5VEMeVQ==\\\", \\\"clientSecretKey\\\":\\\"MIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgd9GAx7yZW37autew5KZykn4IgRpge/tZSjnudnZJnMahRANCAARQQHE2X9Fxgk2byaT3ULJVeggmJE5gOVdxJKorp7lsMfA5bhmI3aU2ddqXIXQnHDwxsDK2cMwRFfICNrlUQx5V\\\"}} }\"\n}\n```\n\nUpdate to real value:\n - 'id' (this is id of Device Credentials -\u003E  \"Get Device Credentials (getDeviceCredentialsByDeviceId)\",\n - 'deviceId.id' (this is id of Device).\nRemove 'tenantId' and optionally 'customerId' from the request body example (below) to create new Device entity.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
         "operationId": "updateDeviceCredentials",
         "requestBody": {
           "content": {
@@ -36799,7 +36799,7 @@
           "entities-version-control-controller"
         ],
         "summary": "List entity versions (listEntityVersions)",
-        "description": "Returns list of versions for a specific entity in a concrete branch. \nYou need to specify external id of an entity to list versions for. This is `externalId` property of an entity, or otherwise if not set - simply id of this entity. \nIf specified branch does not exist - empty page data will be returned. \n\nEach version info item has timestamp, id, name and author. Version id can then be used to restore the version. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. \n\nResponse example: \n```json\n{\n  \"data\": [\n    {\n      \"timestamp\": 1655198593000,\n      \"id\": \"fd82625bdd7d6131cf8027b44ee967012ecaf990\",\n      \"name\": \"Devices and assets - v2.0\",\n      \"author\": \"John Doe \u003Cjohndoe@gmail.com\u003E\"\n    },\n    {\n      \"timestamp\": 1655198528000,\n      \"id\": \"682adcffa9c8a2f863af6f00c4850323acbd4219\",\n      \"name\": \"Update my device\",\n      \"author\": \"John Doe \u003Cjohndoe@gmail.com\u003E\"\n    },\n    {\n      \"timestamp\": 1655198280000,\n      \"id\": \"d2a6087c2b30e18cc55e7cdda345a8d0dfb959a4\",\n      \"name\": \"Devices and assets - v1.0\",\n      \"author\": \"John Doe \u003Cjohndoe@gmail.com\u003E\"\n    }\n  ],\n  \"totalPages\": 1,\n  \"totalElements\": 3,\n  \"hasNext\": false\n}\n```\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "Returns list of versions for a specific entity in a concrete branch. \nYou need to specify external id of an entity to list versions for. This is `externalId` property of an entity, or otherwise if not set - simply id of this entity. \nIf specified branch does not exist - empty page data will be returned. \n\nEach version info item has timestamp, id, name and author. Version id can then be used to restore the version. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. \n\nResponse example: \n```json\n{\n  \"data\": [\n    {\n      \"timestamp\": 1655198593000,\n      \"id\": \"fd82625bdd7d6131cf8027b44ee967012ecaf990\",\n      \"name\": \"Devices and assets - v2.0\",\n      \"author\": \"John Doe (johndoe@gmail.com)\"\n    },\n    {\n      \"timestamp\": 1655198528000,\n      \"id\": \"682adcffa9c8a2f863af6f00c4850323acbd4219\",\n      \"name\": \"Update my device\",\n      \"author\": \"John Doe (johndoe@gmail.com)\"\n    },\n    {\n      \"timestamp\": 1655198280000,\n      \"id\": \"d2a6087c2b30e18cc55e7cdda345a8d0dfb959a4\",\n      \"name\": \"Devices and assets - v1.0\",\n      \"author\": \"John Doe (johndoe@gmail.com)\"\n    }\n  ],\n  \"totalPages\": 1,\n  \"totalElements\": 3,\n  \"hasNext\": false\n}\n```\n\nAvailable for users with 'TENANT_ADMIN' authority.",
         "operationId": "listEntityVersions",
         "parameters": [
           {
@@ -82560,7 +82560,8 @@
             "example": 1634115928465
           },
           "details": {
-            "$ref": "#/components/schemas/JsonNode"
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object with alarm details"
           },
           "propagate": {
             "type": "boolean",
@@ -83249,6 +83250,10 @@
             "description": "Timestamp of the alarm assignment, in milliseconds",
             "example": 1634115928465
           },
+          "details": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object with alarm details"
+          },
           "propagate": {
             "type": "boolean",
             "description": "Propagation flag to specify if alarm should be propagated to parent entities of alarm originator",
@@ -83301,9 +83306,6 @@
             "description": "status of the Alarm",
             "example": "ACTIVE_UNACK",
             "readOnly": true
-          },
-          "details": {
-            "$ref": "#/components/schemas/JsonNode"
           }
         },
         "required": [
@@ -83503,6 +83505,10 @@
             "description": "Timestamp of the alarm assignment, in milliseconds",
             "example": 1634115928465
           },
+          "details": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object with alarm details"
+          },
           "propagate": {
             "type": "boolean",
             "description": "Propagation flag to specify if alarm should be propagated to parent entities of alarm originator",
@@ -83555,9 +83561,6 @@
             "description": "status of the Alarm",
             "example": "ACTIVE_UNACK",
             "readOnly": true
-          },
-          "details": {
-            "$ref": "#/components/schemas/JsonNode"
           }
         },
         "required": [
@@ -85057,7 +85060,8 @@
           },
           "entityId": {
             "$ref": "#/components/schemas/EntityId",
-            "description": "JSON object with Entity id"
+            "description": "JSON object with Entity id",
+            "readOnly": true
           },
           "entityName": {
             "type": "string",
@@ -85682,6 +85686,10 @@
           "version": {
             "type": "integer",
             "format": "int64"
+          },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the calculated field"
           }
         },
         "required": [
@@ -85726,6 +85734,14 @@
                 "type": "string",
                 "description": "String value representing the server name, identifier or ip address where the platform is running",
                 "example": "ip-172-31-24-152"
+              },
+              "isError": {
+                "type": "boolean",
+                "description": "Boolean value to filter the errors",
+                "enum": [
+                  "false",
+                  "true"
+                ]
               },
               "errorStr": {
                 "type": "string",
@@ -85774,13 +85790,6 @@
                 "example": {
                   "x + y": 32
                 }
-              },
-              "error": {
-                "type": "boolean"
-              },
-              "isError": {
-                "type": "boolean",
-                "writeOnly": true
               }
             }
           }
@@ -85845,6 +85854,10 @@
           "version": {
             "type": "integer",
             "format": "int64"
+          },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the calculated field"
           },
           "entityName": {
             "type": "string"
@@ -86456,9 +86469,30 @@
       "Dashboard": {
         "type": "object",
         "properties": {
+          "id": {
+            "$ref": "#/components/schemas/DashboardId",
+            "description": "JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard."
+          },
+          "createdTime": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp of the dashboard creation, in milliseconds",
+            "example": 1609459200000,
+            "readOnly": true
+          },
+          "tenantId": {
+            "$ref": "#/components/schemas/TenantId",
+            "description": "JSON object with Tenant Id. Tenant Id of the dashboard can't be changed.",
+            "readOnly": true
+          },
           "title": {
             "type": "string",
             "description": "Title of the dashboard."
+          },
+          "name": {
+            "type": "string",
+            "description": "Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard.",
+            "readOnly": true
           },
           "image": {
             "type": "string",
@@ -86476,21 +86510,6 @@
             "description": "Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications",
             "readOnly": true
           },
-          "configuration": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON."
-          },
-          "name": {
-            "type": "string",
-            "description": "Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard.",
-            "readOnly": true
-          },
-          "resources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ResourceExportData"
-            }
-          },
           "assignedCustomers": {
             "type": "array",
             "description": "List of assigned customers with their info.",
@@ -86500,21 +86519,15 @@
             "readOnly": true,
             "uniqueItems": true
           },
-          "createdTime": {
-            "type": "integer",
-            "format": "int64",
-            "description": "Timestamp of the dashboard creation, in milliseconds",
-            "example": 1609459200000,
-            "readOnly": true
+          "configuration": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON."
           },
-          "id": {
-            "$ref": "#/components/schemas/DashboardId",
-            "description": "JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard."
-          },
-          "tenantId": {
-            "$ref": "#/components/schemas/TenantId",
-            "description": "JSON object with Tenant Id. Tenant Id of the dashboard can't be changed.",
-            "readOnly": true
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResourceExportData"
+            }
           },
           "version": {
             "type": "integer",
@@ -88520,7 +88533,8 @@
           "OAUTH2_CLIENT",
           "DOMAIN",
           "CALCULATED_FIELD",
-          "AI_MODEL"
+          "AI_MODEL",
+          "API_KEY"
         ]
       },
       "EdgeId": {
@@ -90037,7 +90051,8 @@
           },
           "entityId": {
             "$ref": "#/components/schemas/EntityId",
-            "description": "JSON object with Entity Id for which event is created."
+            "description": "JSON object with Entity Id for which event is created.",
+            "readOnly": true
           },
           "body": {
             "$ref": "#/components/schemas/JsonNode"
@@ -93614,38 +93629,8 @@
             "readOnly": true
           },
           "data": {
-            "type": "object",
-            "properties": {
-              "char": {
-                "type": "string"
-              },
-              "direct": {
-                "type": "boolean"
-              },
-              "double": {
-                "type": "number",
-                "format": "double"
-              },
-              "float": {
-                "type": "number",
-                "format": "float"
-              },
-              "int": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "long": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "readOnly": {
-                "type": "boolean"
-              },
-              "short": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
+            "type": "string",
+            "format": "byte"
           },
           "name": {
             "type": "string",
@@ -96648,6 +96633,14 @@
                 "description": "String value representing the server name, identifier or ip address where the platform is running",
                 "example": "ip-172-31-24-152"
               },
+              "isError": {
+                "type": "boolean",
+                "description": "Boolean value to filter the errors",
+                "enum": [
+                  "false",
+                  "true"
+                ]
+              },
               "errorStr": {
                 "type": "string",
                 "description": "The case insensitive 'contains' filter based on error message",
@@ -96656,13 +96649,6 @@
               "message": {
                 "type": "string",
                 "description": "String value representing the message"
-              },
-              "error": {
-                "type": "boolean"
-              },
-              "isError": {
-                "type": "boolean",
-                "writeOnly": true
               }
             }
           }
@@ -96959,6 +96945,14 @@
                 "description": "String value representing the server name, identifier or ip address where the platform is running",
                 "example": "ip-172-31-24-152"
               },
+              "isError": {
+                "type": "boolean",
+                "description": "Boolean value to filter the errors",
+                "enum": [
+                  "false",
+                  "true"
+                ]
+              },
               "errorStr": {
                 "type": "string",
                 "description": "The case insensitive 'contains' filter based on error message",
@@ -97008,13 +97002,6 @@
                 "type": "string",
                 "description": "The case insensitive 'contains' filter based on metadata (key and value) for the message.",
                 "example": "deviceName"
-              },
-              "error": {
-                "type": "boolean"
-              },
-              "isError": {
-                "type": "boolean",
-                "writeOnly": true
               }
             }
           }

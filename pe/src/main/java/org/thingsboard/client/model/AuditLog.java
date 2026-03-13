@@ -113,6 +113,7 @@ public class AuditLog {
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
+    @JsonProperty(JSON_PROPERTY_ENTITY_ID) EntityId entityId, 
     @JsonProperty(JSON_PROPERTY_ENTITY_NAME) String entityName, 
     @JsonProperty(JSON_PROPERTY_USER_ID) UserId userId, 
     @JsonProperty(JSON_PROPERTY_USER_NAME) String userName, 
@@ -125,6 +126,7 @@ public class AuditLog {
     this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
+    this.entityId = entityId;
     this.entityName = entityName;
     this.userId = userId;
     this.userName = userName;
@@ -200,11 +202,6 @@ public class AuditLog {
 
 
 
-  public AuditLog entityId(@javax.annotation.Nullable EntityId entityId) {
-    this.entityId = entityId;
-    return this;
-  }
-
   /**
    * JSON object with Entity id
    * @return entityId
@@ -217,11 +214,6 @@ public class AuditLog {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityId(@javax.annotation.Nullable EntityId entityId) {
-    this.entityId = entityId;
-  }
 
 
   /**

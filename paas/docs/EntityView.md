@@ -20,7 +20,7 @@ A JSON object representing the entity view.
 | **version** | **Long** |  | [optional] |
 | **id** | **EntityViewId** | JSON object with the Entity View Id. Specify this field to update the Entity View. Referencing non-existing Entity View Id will cause error. Omit this field to create new Entity View. | [optional] |
 | **createdTime** | **Long** | Timestamp of the Entity View creation, in milliseconds | [optional] [readonly] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 
 

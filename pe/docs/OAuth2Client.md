@@ -27,7 +27,7 @@
 | **loginButtonIcon** | **String** | Log in button icon for OAuth2 provider | [optional] |
 | **platforms** | **List\<PlatformType\>** | List of platforms for which usage of the OAuth2 client is allowed (empty for all allowed) | [optional] |
 | **name** | **String** |  | [optional] [readonly] |
-| **ownerId** | **EntityId** |  | [optional] |
+| **ownerId** | **EntityId** |  | [optional] [readonly] |
 
 
 

@@ -54,15 +54,12 @@ public class ShortEntityView {
 
   @JsonCreator
   public ShortEntityView(
+    @JsonProperty(JSON_PROPERTY_ID) EntityId id, 
     @JsonProperty(JSON_PROPERTY_NAME) String name
   ) {
   this();
-    this.name = name;
-  }
-
-  public ShortEntityView id(@javax.annotation.Nonnull EntityId id) {
     this.id = id;
-    return this;
+    this.name = name;
   }
 
   /**
@@ -77,11 +74,6 @@ public class ShortEntityView {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull EntityId id) {
-    this.id = id;
-  }
 
 
   /**

@@ -15,7 +15,7 @@
 | **format** | **TbReportFormat** |  | |
 | **name** | **String** |  | |
 | **userId** | **UserId** |  | |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 
 
 

@@ -140,7 +140,8 @@ public class EdgeInfo {
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_ROOT_RULE_CHAIN_ID) RuleChainId rootRuleChainId, 
-    @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName
+    @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
@@ -148,6 +149,7 @@ public class EdgeInfo {
     this.customerId = customerId;
     this.rootRuleChainId = rootRuleChainId;
     this.ownerName = ownerName;
+    this.ownerId = ownerId;
   }
 
   public EdgeInfo id(@javax.annotation.Nullable EdgeId id) {
@@ -468,11 +470,6 @@ public class EdgeInfo {
   }
 
 
-  public EdgeInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-    return this;
-  }
-
   /**
    * Get ownerId
    * @return ownerId
@@ -485,11 +482,6 @@ public class EdgeInfo {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-  }
 
 
   public EdgeInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {

@@ -16,7 +16,7 @@
 | **label** | **String** | Label that may be used in widgets | [optional] |
 | **assetProfileId** | **AssetProfileId** | JSON object with Asset Profile Id. | [optional] |
 | **version** | **Long** |  | [optional] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the asset. May include: 'description' (string). | [optional] |
 
 

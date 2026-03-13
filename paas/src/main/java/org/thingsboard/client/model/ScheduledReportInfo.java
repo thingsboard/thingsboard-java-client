@@ -126,17 +126,21 @@ public class ScheduledReportInfo {
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
+    @JsonProperty(JSON_PROPERTY_ORIGINATOR_ID) EntityId originatorId, 
     @JsonProperty(JSON_PROPERTY_TEMPLATE_INFO) EntityInfo templateInfo, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_TITLE) String customerTitle, 
-    @JsonProperty(JSON_PROPERTY_USER_NAME) String userName
+    @JsonProperty(JSON_PROPERTY_USER_NAME) String userName, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
+    this.originatorId = originatorId;
     this.templateInfo = templateInfo;
     this.customerTitle = customerTitle;
     this.userName = userName;
+    this.ownerId = ownerId;
   }
 
   public ScheduledReportInfo id(@javax.annotation.Nullable SchedulerEventId id) {
@@ -205,11 +209,6 @@ public class ScheduledReportInfo {
 
 
 
-  public ScheduledReportInfo originatorId(@javax.annotation.Nullable EntityId originatorId) {
-    this.originatorId = originatorId;
-    return this;
-  }
-
   /**
    * JSON object with Originator Id
    * @return originatorId
@@ -222,11 +221,6 @@ public class ScheduledReportInfo {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ORIGINATOR_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOriginatorId(@javax.annotation.Nullable EntityId originatorId) {
-    this.originatorId = originatorId;
-  }
 
 
   public ScheduledReportInfo name(@javax.annotation.Nullable String name) {
@@ -391,11 +385,6 @@ public class ScheduledReportInfo {
 
 
 
-  public ScheduledReportInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-    return this;
-  }
-
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -408,11 +397,6 @@ public class ScheduledReportInfo {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-  }
 
 
   public ScheduledReportInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {

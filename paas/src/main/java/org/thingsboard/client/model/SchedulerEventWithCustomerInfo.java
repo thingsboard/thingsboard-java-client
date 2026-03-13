@@ -127,13 +127,17 @@ public class SchedulerEventWithCustomerInfo {
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_IS_PUBLIC) Boolean customerIsPublic
+    @JsonProperty(JSON_PROPERTY_ORIGINATOR_ID) EntityId originatorId, 
+    @JsonProperty(JSON_PROPERTY_CUSTOMER_IS_PUBLIC) Boolean customerIsPublic, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
+    this.originatorId = originatorId;
     this.customerIsPublic = customerIsPublic;
+    this.ownerId = ownerId;
   }
 
   public SchedulerEventWithCustomerInfo id(@javax.annotation.Nullable SchedulerEventId id) {
@@ -202,11 +206,6 @@ public class SchedulerEventWithCustomerInfo {
 
 
 
-  public SchedulerEventWithCustomerInfo originatorId(@javax.annotation.Nullable EntityId originatorId) {
-    this.originatorId = originatorId;
-    return this;
-  }
-
   /**
    * JSON object with Originator Id
    * @return originatorId
@@ -219,11 +218,6 @@ public class SchedulerEventWithCustomerInfo {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ORIGINATOR_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOriginatorId(@javax.annotation.Nullable EntityId originatorId) {
-    this.originatorId = originatorId;
-  }
 
 
   public SchedulerEventWithCustomerInfo name(@javax.annotation.Nullable String name) {
@@ -416,11 +410,6 @@ public class SchedulerEventWithCustomerInfo {
   }
 
 
-  public SchedulerEventWithCustomerInfo ownerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-    return this;
-  }
-
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -433,11 +422,6 @@ public class SchedulerEventWithCustomerInfo {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-  }
 
 
   public SchedulerEventWithCustomerInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {

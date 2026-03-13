@@ -29,7 +29,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.ChecksumAlgorithm;
 import org.thingsboard.client.model.DeviceProfileId;
-import org.thingsboard.client.model.OtaPackageData;
 import org.thingsboard.client.model.OtaPackageId;
 import org.thingsboard.client.model.OtaPackageType;
 import org.thingsboard.client.model.TenantId;
@@ -124,7 +123,7 @@ public class OtaPackage {
 
   public static final String JSON_PROPERTY_DATA = "data";
   @javax.annotation.Nullable
-  private OtaPackageData data;
+  private byte[] data;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -433,7 +432,7 @@ public class OtaPackage {
 
 
 
-  public OtaPackage data(@javax.annotation.Nullable OtaPackageData data) {
+  public OtaPackage data(@javax.annotation.Nullable byte[] data) {
     this.data = data;
     return this;
   }
@@ -445,14 +444,14 @@ public class OtaPackage {
   @javax.annotation.Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public OtaPackageData getData() {
+  public byte[] getData() {
     return data;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(@javax.annotation.Nullable OtaPackageData data) {
+  public void setData(@javax.annotation.Nullable byte[] data) {
     this.data = data;
   }
 
@@ -522,14 +521,14 @@ public class OtaPackage {
         Objects.equals(this.checksumAlgorithm, otaPackage.checksumAlgorithm) &&
         Objects.equals(this.checksum, otaPackage.checksum) &&
         Objects.equals(this.dataSize, otaPackage.dataSize) &&
-        Objects.equals(this.data, otaPackage.data) &&
+        Arrays.equals(this.data, otaPackage.data) &&
         Objects.equals(this.name, otaPackage.name) &&
         Objects.equals(this.additionalInfo, otaPackage.additionalInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, deviceProfileId, type, title, version, tag, url, hasData, fileName, contentType, checksumAlgorithm, checksum, dataSize, data, name, additionalInfo);
+    return Objects.hash(id, createdTime, tenantId, deviceProfileId, type, title, version, tag, url, hasData, fileName, contentType, checksumAlgorithm, checksum, dataSize, Arrays.hashCode(data), name, additionalInfo);
   }
 
   @Override
@@ -678,7 +677,7 @@ public class OtaPackage {
 
     // add `data` to the URL query string
     if (getData() != null) {
-      joiner.add(getData().toUrlQueryString(prefix + "data" + suffix));
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdata%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getData()))));
     }
 
     // add `name` to the URL query string

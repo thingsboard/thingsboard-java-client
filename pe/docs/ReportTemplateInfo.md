@@ -17,7 +17,7 @@
 | **description** | **String** | Description | [optional] |
 | **version** | **Long** |  | [optional] |
 | **ownerName** | **String** | Owner name | [optional] [readonly] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 
 
 

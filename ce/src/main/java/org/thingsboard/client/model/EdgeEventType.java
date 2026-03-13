@@ -88,7 +88,9 @@ public enum EdgeEventType {
   
   CALCULATED_FIELD("CALCULATED_FIELD"),
   
-  AI_MODEL("AI_MODEL");
+  AI_MODEL("AI_MODEL"),
+  
+  API_KEY("API_KEY");
 
   private String value;
 

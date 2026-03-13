@@ -19,7 +19,7 @@ A JSON value representing the Report Template.
 | **description** | **String** | Description | [optional] |
 | **version** | **Long** |  | [optional] |
 | **_configuration** | **ReportTemplateConfig** | a JSON value with report template configuration | |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 
 
 

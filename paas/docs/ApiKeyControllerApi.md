@@ -99,7 +99,7 @@ ApiKey saveApiKey(@Nonnull ApiKeyInfo apiKeyInfo)
 
 Save API key for user (saveApiKey)
 
-Creates an API key for the given user and returns the token ONCE as 'ApiKey <value>'.  Available for any authorized user. 
+Creates an API key for the given user and returns the token ONCE as 'ApiKey {value}'.  Available for any authorized user. 
 
 
 ### Parameters

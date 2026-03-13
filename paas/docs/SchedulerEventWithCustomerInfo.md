@@ -11,7 +11,7 @@
 | **createdTime** | **Long** | Timestamp of the scheduler event creation, in milliseconds | [optional] [readonly] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] [readonly] |
 | **customerId** | **CustomerId** | JSON object with Customer Id | [optional] [readonly] |
-| **originatorId** | **EntityId** | JSON object with Originator Id | [optional] |
+| **originatorId** | **EntityId** | JSON object with Originator Id | [optional] [readonly] |
 | **name** | **String** | scheduler event name | [optional] |
 | **type** | **String** | scheduler event type | [optional] |
 | **schedule** | **com.fasterxml.jackson.databind.JsonNode** | a JSON value with schedule time configuration | [optional] |
@@ -20,7 +20,7 @@
 | **customerTitle** | **String** | Title of the customer | [optional] |
 | **customerIsPublic** | **Boolean** | Parameter that specifies if customer is public | [optional] [readonly] |
 | **timestamps** | **List\<Long\>** |  | [optional] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the scheduler event | [optional] |
 
 

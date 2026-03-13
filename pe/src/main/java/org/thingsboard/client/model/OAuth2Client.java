@@ -157,11 +157,13 @@ public class OAuth2Client {
   @JsonCreator
   public OAuth2Client(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.name = name;
+    this.ownerId = ownerId;
   }
 
   public OAuth2Client id(@javax.annotation.Nullable OAuth2ClientId id) {
@@ -640,11 +642,6 @@ public class OAuth2Client {
 
 
 
-  public OAuth2Client ownerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-    return this;
-  }
-
   /**
    * Get ownerId
    * @return ownerId
@@ -657,11 +654,6 @@ public class OAuth2Client {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
-    this.ownerId = ownerId;
-  }
 
 
   /**

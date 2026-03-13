@@ -14,7 +14,7 @@
 | **name** | **String** | blob entity name | [optional] [readonly] |
 | **type** | **String** | blob entity type | [optional] [readonly] |
 | **contentType** | **ContentTypeEnum** | blob content type | [optional] [readonly] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the blob entity | [optional] |
 
 

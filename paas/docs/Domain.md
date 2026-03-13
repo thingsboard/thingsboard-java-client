@@ -16,7 +16,7 @@ A JSON value representing the Domain.
 | **name** | **String** | Domain name. Cannot be empty | |
 | **oauth2Enabled** | **Boolean** | Whether OAuth2 settings are enabled or not | [optional] |
 | **propagateToEdge** | **Boolean** | Whether OAuth2 settings are enabled on Edge or not | [optional] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 
 
 

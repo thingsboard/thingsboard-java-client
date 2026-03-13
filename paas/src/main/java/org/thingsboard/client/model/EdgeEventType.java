@@ -118,7 +118,9 @@ public enum EdgeEventType {
   
   REPORT_TEMPLATE("REPORT_TEMPLATE"),
   
-  AI_MODEL("AI_MODEL");
+  AI_MODEL("AI_MODEL"),
+  
+  API_KEY("API_KEY");
 
   private String value;
 
