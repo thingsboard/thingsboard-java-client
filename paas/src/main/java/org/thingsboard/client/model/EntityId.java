@@ -58,9 +58,11 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = ApiUsageStateId.class, name = "API_USAGE_STATE"),
   @JsonSubTypes.Type(value = AssetId.class, name = "ASSET"),
   @JsonSubTypes.Type(value = AssetProfileId.class, name = "ASSET_PROFILE"),
+  @JsonSubTypes.Type(value = BillingCustomerId.class, name = "BILLING_CUSTOMER"),
   @JsonSubTypes.Type(value = BlobEntityId.class, name = "BLOB_ENTITY"),
   @JsonSubTypes.Type(value = CalculatedFieldId.class, name = "CALCULATED_FIELD"),
   @JsonSubTypes.Type(value = ConverterId.class, name = "CONVERTER"),
+  @JsonSubTypes.Type(value = CouponId.class, name = "COUPON"),
   @JsonSubTypes.Type(value = CustomerId.class, name = "CUSTOMER"),
   @JsonSubTypes.Type(value = DashboardId.class, name = "DASHBOARD"),
   @JsonSubTypes.Type(value = DeviceId.class, name = "DEVICE"),
@@ -81,6 +83,7 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = NotificationTemplateId.class, name = "NOTIFICATION_TEMPLATE"),
   @JsonSubTypes.Type(value = OAuth2ClientId.class, name = "OAUTH2_CLIENT"),
   @JsonSubTypes.Type(value = OtaPackageId.class, name = "OTA_PACKAGE"),
+  @JsonSubTypes.Type(value = ProductId.class, name = "PRODUCT"),
   @JsonSubTypes.Type(value = QueueId.class, name = "QUEUE"),
   @JsonSubTypes.Type(value = QueueStatsId.class, name = "QUEUE_STATS"),
   @JsonSubTypes.Type(value = ReportId.class, name = "REPORT"),
@@ -91,6 +94,9 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = RuleNodeId.class, name = "RULE_NODE"),
   @JsonSubTypes.Type(value = SchedulerEventId.class, name = "SCHEDULER_EVENT"),
   @JsonSubTypes.Type(value = SecretId.class, name = "SECRET"),
+  @JsonSubTypes.Type(value = SubscriptionId.class, name = "SUBSCRIPTION"),
+  @JsonSubTypes.Type(value = SubscriptionAddonId.class, name = "SUBSCRIPTION_ADDON"),
+  @JsonSubTypes.Type(value = SubscriptionPlanId.class, name = "SUBSCRIPTION_PLAN"),
   @JsonSubTypes.Type(value = TbResourceId.class, name = "TB_RESOURCE"),
   @JsonSubTypes.Type(value = TenantId.class, name = "TENANT"),
   @JsonSubTypes.Type(value = TenantProfileId.class, name = "TENANT_PROFILE"),
@@ -255,9 +261,11 @@ static {
   mappings.put("API_USAGE_STATE", ApiUsageStateId.class);
   mappings.put("ASSET", AssetId.class);
   mappings.put("ASSET_PROFILE", AssetProfileId.class);
+  mappings.put("BILLING_CUSTOMER", BillingCustomerId.class);
   mappings.put("BLOB_ENTITY", BlobEntityId.class);
   mappings.put("CALCULATED_FIELD", CalculatedFieldId.class);
   mappings.put("CONVERTER", ConverterId.class);
+  mappings.put("COUPON", CouponId.class);
   mappings.put("CUSTOMER", CustomerId.class);
   mappings.put("DASHBOARD", DashboardId.class);
   mappings.put("DEVICE", DeviceId.class);
@@ -278,6 +286,7 @@ static {
   mappings.put("NOTIFICATION_TEMPLATE", NotificationTemplateId.class);
   mappings.put("OAUTH2_CLIENT", OAuth2ClientId.class);
   mappings.put("OTA_PACKAGE", OtaPackageId.class);
+  mappings.put("PRODUCT", ProductId.class);
   mappings.put("QUEUE", QueueId.class);
   mappings.put("QUEUE_STATS", QueueStatsId.class);
   mappings.put("REPORT", ReportId.class);
@@ -288,6 +297,9 @@ static {
   mappings.put("RULE_NODE", RuleNodeId.class);
   mappings.put("SCHEDULER_EVENT", SchedulerEventId.class);
   mappings.put("SECRET", SecretId.class);
+  mappings.put("SUBSCRIPTION", SubscriptionId.class);
+  mappings.put("SUBSCRIPTION_ADDON", SubscriptionAddonId.class);
+  mappings.put("SUBSCRIPTION_PLAN", SubscriptionPlanId.class);
   mappings.put("TB_RESOURCE", TbResourceId.class);
   mappings.put("TENANT", TenantId.class);
   mappings.put("TENANT_PROFILE", TenantProfileId.class);

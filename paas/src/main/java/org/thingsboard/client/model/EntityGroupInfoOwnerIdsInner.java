@@ -35,9 +35,11 @@ import org.thingsboard.client.model.ApiKeyId;
 import org.thingsboard.client.model.ApiUsageStateId;
 import org.thingsboard.client.model.AssetId;
 import org.thingsboard.client.model.AssetProfileId;
+import org.thingsboard.client.model.BillingCustomerId;
 import org.thingsboard.client.model.BlobEntityId;
 import org.thingsboard.client.model.CalculatedFieldId;
 import org.thingsboard.client.model.ConverterId;
+import org.thingsboard.client.model.CouponId;
 import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.DashboardId;
 import org.thingsboard.client.model.DeviceId;
@@ -59,6 +61,7 @@ import org.thingsboard.client.model.NotificationTargetId;
 import org.thingsboard.client.model.NotificationTemplateId;
 import org.thingsboard.client.model.OAuth2ClientId;
 import org.thingsboard.client.model.OtaPackageId;
+import org.thingsboard.client.model.ProductId;
 import org.thingsboard.client.model.QueueId;
 import org.thingsboard.client.model.QueueStatsId;
 import org.thingsboard.client.model.ReportId;
@@ -69,6 +72,9 @@ import org.thingsboard.client.model.RuleChainId;
 import org.thingsboard.client.model.RuleNodeId;
 import org.thingsboard.client.model.SchedulerEventId;
 import org.thingsboard.client.model.SecretId;
+import org.thingsboard.client.model.SubscriptionAddonId;
+import org.thingsboard.client.model.SubscriptionId;
+import org.thingsboard.client.model.SubscriptionPlanId;
 import org.thingsboard.client.model.TbResourceId;
 import org.thingsboard.client.model.TenantId;
 import org.thingsboard.client.model.TenantProfileId;
@@ -321,6 +327,32 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
                 log.log(Level.FINER, "Input data does not match schema 'AssetProfileId'", e);
             }
 
+            // deserialize BillingCustomerId
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (BillingCustomerId.class.equals(Integer.class) || BillingCustomerId.class.equals(Long.class) || BillingCustomerId.class.equals(Float.class) || BillingCustomerId.class.equals(Double.class) || BillingCustomerId.class.equals(Boolean.class) || BillingCustomerId.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((BillingCustomerId.class.equals(Integer.class) || BillingCustomerId.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((BillingCustomerId.class.equals(Float.class) || BillingCustomerId.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (BillingCustomerId.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (BillingCustomerId.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(BillingCustomerId.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'BillingCustomerId'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'BillingCustomerId'", e);
+            }
+
             // deserialize BlobEntityId
             try {
                 boolean attemptParsing = true;
@@ -397,6 +429,32 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
             } catch (Exception e) {
                 // deserialization failed, continue
                 log.log(Level.FINER, "Input data does not match schema 'ConverterId'", e);
+            }
+
+            // deserialize CouponId
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (CouponId.class.equals(Integer.class) || CouponId.class.equals(Long.class) || CouponId.class.equals(Float.class) || CouponId.class.equals(Double.class) || CouponId.class.equals(Boolean.class) || CouponId.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((CouponId.class.equals(Integer.class) || CouponId.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((CouponId.class.equals(Float.class) || CouponId.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (CouponId.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (CouponId.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(CouponId.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'CouponId'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'CouponId'", e);
             }
 
             // deserialize CustomerId
@@ -919,6 +977,32 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
                 log.log(Level.FINER, "Input data does not match schema 'OtaPackageId'", e);
             }
 
+            // deserialize ProductId
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (ProductId.class.equals(Integer.class) || ProductId.class.equals(Long.class) || ProductId.class.equals(Float.class) || ProductId.class.equals(Double.class) || ProductId.class.equals(Boolean.class) || ProductId.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((ProductId.class.equals(Integer.class) || ProductId.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((ProductId.class.equals(Float.class) || ProductId.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (ProductId.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (ProductId.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(ProductId.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'ProductId'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'ProductId'", e);
+            }
+
             // deserialize QueueId
             try {
                 boolean attemptParsing = true;
@@ -1179,6 +1263,84 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
                 log.log(Level.FINER, "Input data does not match schema 'SecretId'", e);
             }
 
+            // deserialize SubscriptionAddonId
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (SubscriptionAddonId.class.equals(Integer.class) || SubscriptionAddonId.class.equals(Long.class) || SubscriptionAddonId.class.equals(Float.class) || SubscriptionAddonId.class.equals(Double.class) || SubscriptionAddonId.class.equals(Boolean.class) || SubscriptionAddonId.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((SubscriptionAddonId.class.equals(Integer.class) || SubscriptionAddonId.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((SubscriptionAddonId.class.equals(Float.class) || SubscriptionAddonId.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (SubscriptionAddonId.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (SubscriptionAddonId.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(SubscriptionAddonId.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'SubscriptionAddonId'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'SubscriptionAddonId'", e);
+            }
+
+            // deserialize SubscriptionId
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (SubscriptionId.class.equals(Integer.class) || SubscriptionId.class.equals(Long.class) || SubscriptionId.class.equals(Float.class) || SubscriptionId.class.equals(Double.class) || SubscriptionId.class.equals(Boolean.class) || SubscriptionId.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((SubscriptionId.class.equals(Integer.class) || SubscriptionId.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((SubscriptionId.class.equals(Float.class) || SubscriptionId.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (SubscriptionId.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (SubscriptionId.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(SubscriptionId.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'SubscriptionId'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'SubscriptionId'", e);
+            }
+
+            // deserialize SubscriptionPlanId
+            try {
+                boolean attemptParsing = true;
+                // ensure that we respect type coercion as set on the client ObjectMapper
+                if (SubscriptionPlanId.class.equals(Integer.class) || SubscriptionPlanId.class.equals(Long.class) || SubscriptionPlanId.class.equals(Float.class) || SubscriptionPlanId.class.equals(Double.class) || SubscriptionPlanId.class.equals(Boolean.class) || SubscriptionPlanId.class.equals(String.class)) {
+                    attemptParsing = typeCoercion;
+                    if (!attemptParsing) {
+                        attemptParsing |= ((SubscriptionPlanId.class.equals(Integer.class) || SubscriptionPlanId.class.equals(Long.class)) && token == JsonToken.VALUE_NUMBER_INT);
+                        attemptParsing |= ((SubscriptionPlanId.class.equals(Float.class) || SubscriptionPlanId.class.equals(Double.class)) && token == JsonToken.VALUE_NUMBER_FLOAT);
+                        attemptParsing |= (SubscriptionPlanId.class.equals(Boolean.class) && (token == JsonToken.VALUE_FALSE || token == JsonToken.VALUE_TRUE));
+                        attemptParsing |= (SubscriptionPlanId.class.equals(String.class) && token == JsonToken.VALUE_STRING);
+                    }
+                }
+                if (attemptParsing) {
+                    deserialized = tree.traverse(jp.getCodec()).readValueAs(SubscriptionPlanId.class);
+                    // TODO: there is no validation against JSON schema constraints
+                    // (min, max, enum, pattern...), this does not perform a strict JSON
+                    // validation, which means the 'match' count may be higher than it should be.
+                    match++;
+                    log.log(Level.FINER, "Input data matches schema 'SubscriptionPlanId'");
+                }
+            } catch (Exception e) {
+                // deserialization failed, continue
+                log.log(Level.FINER, "Input data does not match schema 'SubscriptionPlanId'", e);
+            }
+
             // deserialize TbResourceId
             try {
                 boolean attemptParsing = true;
@@ -1394,6 +1556,11 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public EntityGroupInfoOwnerIdsInner(BillingCustomerId o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public EntityGroupInfoOwnerIdsInner(BlobEntityId o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -1405,6 +1572,11 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
     }
 
     public EntityGroupInfoOwnerIdsInner(ConverterId o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EntityGroupInfoOwnerIdsInner(CouponId o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
     }
@@ -1509,6 +1681,11 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public EntityGroupInfoOwnerIdsInner(ProductId o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public EntityGroupInfoOwnerIdsInner(QueueId o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -1559,6 +1736,21 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public EntityGroupInfoOwnerIdsInner(SubscriptionAddonId o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EntityGroupInfoOwnerIdsInner(SubscriptionId o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    public EntityGroupInfoOwnerIdsInner(SubscriptionPlanId o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public EntityGroupInfoOwnerIdsInner(TbResourceId o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -1597,9 +1789,11 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         schemas.put("ApiUsageStateId", ApiUsageStateId.class);
         schemas.put("AssetId", AssetId.class);
         schemas.put("AssetProfileId", AssetProfileId.class);
+        schemas.put("BillingCustomerId", BillingCustomerId.class);
         schemas.put("BlobEntityId", BlobEntityId.class);
         schemas.put("CalculatedFieldId", CalculatedFieldId.class);
         schemas.put("ConverterId", ConverterId.class);
+        schemas.put("CouponId", CouponId.class);
         schemas.put("CustomerId", CustomerId.class);
         schemas.put("DashboardId", DashboardId.class);
         schemas.put("DeviceId", DeviceId.class);
@@ -1620,6 +1814,7 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         schemas.put("NotificationTemplateId", NotificationTemplateId.class);
         schemas.put("OAuth2ClientId", OAuth2ClientId.class);
         schemas.put("OtaPackageId", OtaPackageId.class);
+        schemas.put("ProductId", ProductId.class);
         schemas.put("QueueId", QueueId.class);
         schemas.put("QueueStatsId", QueueStatsId.class);
         schemas.put("ReportId", ReportId.class);
@@ -1630,6 +1825,9 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         schemas.put("RuleNodeId", RuleNodeId.class);
         schemas.put("SchedulerEventId", SchedulerEventId.class);
         schemas.put("SecretId", SecretId.class);
+        schemas.put("SubscriptionAddonId", SubscriptionAddonId.class);
+        schemas.put("SubscriptionId", SubscriptionId.class);
+        schemas.put("SubscriptionPlanId", SubscriptionPlanId.class);
         schemas.put("TbResourceId", TbResourceId.class);
         schemas.put("TenantId", TenantId.class);
         schemas.put("TenantProfileId", TenantProfileId.class);
@@ -1647,7 +1845,7 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BlobEntityId, CalculatedFieldId, ConverterId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId
+     * AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BillingCustomerId, BlobEntityId, CalculatedFieldId, ConverterId, CouponId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, ProductId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, SubscriptionAddonId, SubscriptionId, SubscriptionPlanId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId
      *
      * It could be an instance of the 'oneOf' schemas.
      * The oneOf child schemas may themselves be a composed schema (allOf, anyOf, oneOf).
@@ -1689,6 +1887,11 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
             return;
         }
 
+        if (JSON.isInstanceOf(BillingCustomerId.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (JSON.isInstanceOf(BlobEntityId.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
@@ -1700,6 +1903,11 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         }
 
         if (JSON.isInstanceOf(ConverterId.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(CouponId.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
         }
@@ -1804,6 +2012,11 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
             return;
         }
 
+        if (JSON.isInstanceOf(ProductId.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (JSON.isInstanceOf(QueueId.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
@@ -1854,6 +2067,21 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
             return;
         }
 
+        if (JSON.isInstanceOf(SubscriptionAddonId.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(SubscriptionId.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        if (JSON.isInstanceOf(SubscriptionPlanId.class, instance, new HashSet<Class<?>>())) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (JSON.isInstanceOf(TbResourceId.class, instance, new HashSet<Class<?>>())) {
             super.setActualInstance(instance);
             return;
@@ -1884,14 +2112,14 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BlobEntityId, CalculatedFieldId, ConverterId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId");
+        throw new RuntimeException("Invalid instance type. Must be AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BillingCustomerId, BlobEntityId, CalculatedFieldId, ConverterId, CouponId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, ProductId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, SubscriptionAddonId, SubscriptionId, SubscriptionPlanId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BlobEntityId, CalculatedFieldId, ConverterId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId
+     * AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BillingCustomerId, BlobEntityId, CalculatedFieldId, ConverterId, CouponId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, ProductId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, SubscriptionAddonId, SubscriptionId, SubscriptionPlanId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId
      *
-     * @return The actual instance (AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BlobEntityId, CalculatedFieldId, ConverterId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId)
+     * @return The actual instance (AdminSettingsId, AiModelId, AlarmId, ApiKeyId, ApiUsageStateId, AssetId, AssetProfileId, BillingCustomerId, BlobEntityId, CalculatedFieldId, ConverterId, CouponId, CustomerId, DashboardId, DeviceId, DeviceProfileId, DomainId, EdgeId, EntityGroupId, EntityViewId, GroupPermissionId, IntegrationId, JobId, MobileAppBundleId, MobileAppId, NotificationId, NotificationRequestId, NotificationRuleId, NotificationTargetId, NotificationTemplateId, OAuth2ClientId, OtaPackageId, ProductId, QueueId, QueueStatsId, ReportId, ReportTemplateId, RoleId, RpcId, RuleChainId, RuleNodeId, SchedulerEventId, SecretId, SubscriptionAddonId, SubscriptionId, SubscriptionPlanId, TbResourceId, TenantId, TenantProfileId, UserId, WidgetTypeId, WidgetsBundleId)
      */
     @Override
     public Object getActualInstance() {
@@ -1976,6 +2204,17 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `BillingCustomerId`. If the actual instance is not `BillingCustomerId`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `BillingCustomerId`
+     * @throws ClassCastException if the instance is not `BillingCustomerId`
+     */
+    public BillingCustomerId getBillingCustomerId() throws ClassCastException {
+        return (BillingCustomerId)super.getActualInstance();
+    }
+
+    /**
      * Get the actual instance of `BlobEntityId`. If the actual instance is not `BlobEntityId`,
      * the ClassCastException will be thrown.
      *
@@ -2006,6 +2245,17 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
      */
     public ConverterId getConverterId() throws ClassCastException {
         return (ConverterId)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `CouponId`. If the actual instance is not `CouponId`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `CouponId`
+     * @throws ClassCastException if the instance is not `CouponId`
+     */
+    public CouponId getCouponId() throws ClassCastException {
+        return (CouponId)super.getActualInstance();
     }
 
     /**
@@ -2229,6 +2479,17 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
     }
 
     /**
+     * Get the actual instance of `ProductId`. If the actual instance is not `ProductId`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ProductId`
+     * @throws ClassCastException if the instance is not `ProductId`
+     */
+    public ProductId getProductId() throws ClassCastException {
+        return (ProductId)super.getActualInstance();
+    }
+
+    /**
      * Get the actual instance of `QueueId`. If the actual instance is not `QueueId`,
      * the ClassCastException will be thrown.
      *
@@ -2336,6 +2597,39 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
      */
     public SecretId getSecretId() throws ClassCastException {
         return (SecretId)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `SubscriptionAddonId`. If the actual instance is not `SubscriptionAddonId`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `SubscriptionAddonId`
+     * @throws ClassCastException if the instance is not `SubscriptionAddonId`
+     */
+    public SubscriptionAddonId getSubscriptionAddonId() throws ClassCastException {
+        return (SubscriptionAddonId)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `SubscriptionId`. If the actual instance is not `SubscriptionId`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `SubscriptionId`
+     * @throws ClassCastException if the instance is not `SubscriptionId`
+     */
+    public SubscriptionId getSubscriptionId() throws ClassCastException {
+        return (SubscriptionId)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `SubscriptionPlanId`. If the actual instance is not `SubscriptionPlanId`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `SubscriptionPlanId`
+     * @throws ClassCastException if the instance is not `SubscriptionPlanId`
+     */
+    public SubscriptionPlanId getSubscriptionPlanId() throws ClassCastException {
+        return (SubscriptionPlanId)super.getActualInstance();
     }
 
     /**
@@ -2480,237 +2774,273 @@ public class EntityGroupInfoOwnerIdsInner extends AbstractOpenApiSchema {
         }
         return joiner.toString();
     }
+    if (getActualInstance() instanceof BillingCustomerId) {
+        if (getActualInstance() != null) {
+          joiner.add(((BillingCustomerId)getActualInstance()).toUrlQueryString(prefix + "one_of_7" + suffix));
+        }
+        return joiner.toString();
+    }
     if (getActualInstance() instanceof BlobEntityId) {
         if (getActualInstance() != null) {
-          joiner.add(((BlobEntityId)getActualInstance()).toUrlQueryString(prefix + "one_of_7" + suffix));
+          joiner.add(((BlobEntityId)getActualInstance()).toUrlQueryString(prefix + "one_of_8" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof CalculatedFieldId) {
         if (getActualInstance() != null) {
-          joiner.add(((CalculatedFieldId)getActualInstance()).toUrlQueryString(prefix + "one_of_8" + suffix));
+          joiner.add(((CalculatedFieldId)getActualInstance()).toUrlQueryString(prefix + "one_of_9" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof ConverterId) {
         if (getActualInstance() != null) {
-          joiner.add(((ConverterId)getActualInstance()).toUrlQueryString(prefix + "one_of_9" + suffix));
+          joiner.add(((ConverterId)getActualInstance()).toUrlQueryString(prefix + "one_of_10" + suffix));
+        }
+        return joiner.toString();
+    }
+    if (getActualInstance() instanceof CouponId) {
+        if (getActualInstance() != null) {
+          joiner.add(((CouponId)getActualInstance()).toUrlQueryString(prefix + "one_of_11" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof CustomerId) {
         if (getActualInstance() != null) {
-          joiner.add(((CustomerId)getActualInstance()).toUrlQueryString(prefix + "one_of_10" + suffix));
+          joiner.add(((CustomerId)getActualInstance()).toUrlQueryString(prefix + "one_of_12" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof DashboardId) {
         if (getActualInstance() != null) {
-          joiner.add(((DashboardId)getActualInstance()).toUrlQueryString(prefix + "one_of_11" + suffix));
+          joiner.add(((DashboardId)getActualInstance()).toUrlQueryString(prefix + "one_of_13" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof DeviceId) {
         if (getActualInstance() != null) {
-          joiner.add(((DeviceId)getActualInstance()).toUrlQueryString(prefix + "one_of_12" + suffix));
+          joiner.add(((DeviceId)getActualInstance()).toUrlQueryString(prefix + "one_of_14" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof DeviceProfileId) {
         if (getActualInstance() != null) {
-          joiner.add(((DeviceProfileId)getActualInstance()).toUrlQueryString(prefix + "one_of_13" + suffix));
+          joiner.add(((DeviceProfileId)getActualInstance()).toUrlQueryString(prefix + "one_of_15" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof DomainId) {
         if (getActualInstance() != null) {
-          joiner.add(((DomainId)getActualInstance()).toUrlQueryString(prefix + "one_of_14" + suffix));
+          joiner.add(((DomainId)getActualInstance()).toUrlQueryString(prefix + "one_of_16" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof EdgeId) {
         if (getActualInstance() != null) {
-          joiner.add(((EdgeId)getActualInstance()).toUrlQueryString(prefix + "one_of_15" + suffix));
+          joiner.add(((EdgeId)getActualInstance()).toUrlQueryString(prefix + "one_of_17" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof EntityGroupId) {
         if (getActualInstance() != null) {
-          joiner.add(((EntityGroupId)getActualInstance()).toUrlQueryString(prefix + "one_of_16" + suffix));
+          joiner.add(((EntityGroupId)getActualInstance()).toUrlQueryString(prefix + "one_of_18" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof EntityViewId) {
         if (getActualInstance() != null) {
-          joiner.add(((EntityViewId)getActualInstance()).toUrlQueryString(prefix + "one_of_17" + suffix));
+          joiner.add(((EntityViewId)getActualInstance()).toUrlQueryString(prefix + "one_of_19" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof GroupPermissionId) {
         if (getActualInstance() != null) {
-          joiner.add(((GroupPermissionId)getActualInstance()).toUrlQueryString(prefix + "one_of_18" + suffix));
+          joiner.add(((GroupPermissionId)getActualInstance()).toUrlQueryString(prefix + "one_of_20" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof IntegrationId) {
         if (getActualInstance() != null) {
-          joiner.add(((IntegrationId)getActualInstance()).toUrlQueryString(prefix + "one_of_19" + suffix));
+          joiner.add(((IntegrationId)getActualInstance()).toUrlQueryString(prefix + "one_of_21" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof JobId) {
         if (getActualInstance() != null) {
-          joiner.add(((JobId)getActualInstance()).toUrlQueryString(prefix + "one_of_20" + suffix));
+          joiner.add(((JobId)getActualInstance()).toUrlQueryString(prefix + "one_of_22" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof MobileAppBundleId) {
         if (getActualInstance() != null) {
-          joiner.add(((MobileAppBundleId)getActualInstance()).toUrlQueryString(prefix + "one_of_21" + suffix));
+          joiner.add(((MobileAppBundleId)getActualInstance()).toUrlQueryString(prefix + "one_of_23" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof MobileAppId) {
         if (getActualInstance() != null) {
-          joiner.add(((MobileAppId)getActualInstance()).toUrlQueryString(prefix + "one_of_22" + suffix));
+          joiner.add(((MobileAppId)getActualInstance()).toUrlQueryString(prefix + "one_of_24" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof NotificationId) {
         if (getActualInstance() != null) {
-          joiner.add(((NotificationId)getActualInstance()).toUrlQueryString(prefix + "one_of_23" + suffix));
+          joiner.add(((NotificationId)getActualInstance()).toUrlQueryString(prefix + "one_of_25" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof NotificationRequestId) {
         if (getActualInstance() != null) {
-          joiner.add(((NotificationRequestId)getActualInstance()).toUrlQueryString(prefix + "one_of_24" + suffix));
+          joiner.add(((NotificationRequestId)getActualInstance()).toUrlQueryString(prefix + "one_of_26" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof NotificationRuleId) {
         if (getActualInstance() != null) {
-          joiner.add(((NotificationRuleId)getActualInstance()).toUrlQueryString(prefix + "one_of_25" + suffix));
+          joiner.add(((NotificationRuleId)getActualInstance()).toUrlQueryString(prefix + "one_of_27" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof NotificationTargetId) {
         if (getActualInstance() != null) {
-          joiner.add(((NotificationTargetId)getActualInstance()).toUrlQueryString(prefix + "one_of_26" + suffix));
+          joiner.add(((NotificationTargetId)getActualInstance()).toUrlQueryString(prefix + "one_of_28" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof NotificationTemplateId) {
         if (getActualInstance() != null) {
-          joiner.add(((NotificationTemplateId)getActualInstance()).toUrlQueryString(prefix + "one_of_27" + suffix));
+          joiner.add(((NotificationTemplateId)getActualInstance()).toUrlQueryString(prefix + "one_of_29" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof OAuth2ClientId) {
         if (getActualInstance() != null) {
-          joiner.add(((OAuth2ClientId)getActualInstance()).toUrlQueryString(prefix + "one_of_28" + suffix));
+          joiner.add(((OAuth2ClientId)getActualInstance()).toUrlQueryString(prefix + "one_of_30" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof OtaPackageId) {
         if (getActualInstance() != null) {
-          joiner.add(((OtaPackageId)getActualInstance()).toUrlQueryString(prefix + "one_of_29" + suffix));
+          joiner.add(((OtaPackageId)getActualInstance()).toUrlQueryString(prefix + "one_of_31" + suffix));
+        }
+        return joiner.toString();
+    }
+    if (getActualInstance() instanceof ProductId) {
+        if (getActualInstance() != null) {
+          joiner.add(((ProductId)getActualInstance()).toUrlQueryString(prefix + "one_of_32" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof QueueId) {
         if (getActualInstance() != null) {
-          joiner.add(((QueueId)getActualInstance()).toUrlQueryString(prefix + "one_of_30" + suffix));
+          joiner.add(((QueueId)getActualInstance()).toUrlQueryString(prefix + "one_of_33" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof QueueStatsId) {
         if (getActualInstance() != null) {
-          joiner.add(((QueueStatsId)getActualInstance()).toUrlQueryString(prefix + "one_of_31" + suffix));
+          joiner.add(((QueueStatsId)getActualInstance()).toUrlQueryString(prefix + "one_of_34" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof ReportId) {
         if (getActualInstance() != null) {
-          joiner.add(((ReportId)getActualInstance()).toUrlQueryString(prefix + "one_of_32" + suffix));
+          joiner.add(((ReportId)getActualInstance()).toUrlQueryString(prefix + "one_of_35" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof ReportTemplateId) {
         if (getActualInstance() != null) {
-          joiner.add(((ReportTemplateId)getActualInstance()).toUrlQueryString(prefix + "one_of_33" + suffix));
+          joiner.add(((ReportTemplateId)getActualInstance()).toUrlQueryString(prefix + "one_of_36" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof RoleId) {
         if (getActualInstance() != null) {
-          joiner.add(((RoleId)getActualInstance()).toUrlQueryString(prefix + "one_of_34" + suffix));
+          joiner.add(((RoleId)getActualInstance()).toUrlQueryString(prefix + "one_of_37" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof RpcId) {
         if (getActualInstance() != null) {
-          joiner.add(((RpcId)getActualInstance()).toUrlQueryString(prefix + "one_of_35" + suffix));
+          joiner.add(((RpcId)getActualInstance()).toUrlQueryString(prefix + "one_of_38" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof RuleChainId) {
         if (getActualInstance() != null) {
-          joiner.add(((RuleChainId)getActualInstance()).toUrlQueryString(prefix + "one_of_36" + suffix));
+          joiner.add(((RuleChainId)getActualInstance()).toUrlQueryString(prefix + "one_of_39" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof RuleNodeId) {
         if (getActualInstance() != null) {
-          joiner.add(((RuleNodeId)getActualInstance()).toUrlQueryString(prefix + "one_of_37" + suffix));
+          joiner.add(((RuleNodeId)getActualInstance()).toUrlQueryString(prefix + "one_of_40" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof SchedulerEventId) {
         if (getActualInstance() != null) {
-          joiner.add(((SchedulerEventId)getActualInstance()).toUrlQueryString(prefix + "one_of_38" + suffix));
+          joiner.add(((SchedulerEventId)getActualInstance()).toUrlQueryString(prefix + "one_of_41" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof SecretId) {
         if (getActualInstance() != null) {
-          joiner.add(((SecretId)getActualInstance()).toUrlQueryString(prefix + "one_of_39" + suffix));
+          joiner.add(((SecretId)getActualInstance()).toUrlQueryString(prefix + "one_of_42" + suffix));
+        }
+        return joiner.toString();
+    }
+    if (getActualInstance() instanceof SubscriptionAddonId) {
+        if (getActualInstance() != null) {
+          joiner.add(((SubscriptionAddonId)getActualInstance()).toUrlQueryString(prefix + "one_of_43" + suffix));
+        }
+        return joiner.toString();
+    }
+    if (getActualInstance() instanceof SubscriptionId) {
+        if (getActualInstance() != null) {
+          joiner.add(((SubscriptionId)getActualInstance()).toUrlQueryString(prefix + "one_of_44" + suffix));
+        }
+        return joiner.toString();
+    }
+    if (getActualInstance() instanceof SubscriptionPlanId) {
+        if (getActualInstance() != null) {
+          joiner.add(((SubscriptionPlanId)getActualInstance()).toUrlQueryString(prefix + "one_of_45" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof TbResourceId) {
         if (getActualInstance() != null) {
-          joiner.add(((TbResourceId)getActualInstance()).toUrlQueryString(prefix + "one_of_40" + suffix));
+          joiner.add(((TbResourceId)getActualInstance()).toUrlQueryString(prefix + "one_of_46" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof TenantId) {
         if (getActualInstance() != null) {
-          joiner.add(((TenantId)getActualInstance()).toUrlQueryString(prefix + "one_of_41" + suffix));
+          joiner.add(((TenantId)getActualInstance()).toUrlQueryString(prefix + "one_of_47" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof TenantProfileId) {
         if (getActualInstance() != null) {
-          joiner.add(((TenantProfileId)getActualInstance()).toUrlQueryString(prefix + "one_of_42" + suffix));
+          joiner.add(((TenantProfileId)getActualInstance()).toUrlQueryString(prefix + "one_of_48" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof UserId) {
         if (getActualInstance() != null) {
-          joiner.add(((UserId)getActualInstance()).toUrlQueryString(prefix + "one_of_43" + suffix));
+          joiner.add(((UserId)getActualInstance()).toUrlQueryString(prefix + "one_of_49" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof WidgetTypeId) {
         if (getActualInstance() != null) {
-          joiner.add(((WidgetTypeId)getActualInstance()).toUrlQueryString(prefix + "one_of_44" + suffix));
+          joiner.add(((WidgetTypeId)getActualInstance()).toUrlQueryString(prefix + "one_of_50" + suffix));
         }
         return joiner.toString();
     }
     if (getActualInstance() instanceof WidgetsBundleId) {
         if (getActualInstance() != null) {
-          joiner.add(((WidgetsBundleId)getActualInstance()).toUrlQueryString(prefix + "one_of_45" + suffix));
+          joiner.add(((WidgetsBundleId)getActualInstance()).toUrlQueryString(prefix + "one_of_51" + suffix));
         }
         return joiner.toString();
     }

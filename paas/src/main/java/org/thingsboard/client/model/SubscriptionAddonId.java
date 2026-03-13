@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * BillingCustomerId
+ * SubscriptionAddonId
  */
 @JsonPropertyOrder({
 })
@@ -50,24 +50,24 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 
-public class BillingCustomerId extends EntityId {
-  public BillingCustomerId() { 
+public class SubscriptionAddonId extends EntityId {
+  public SubscriptionAddonId() { 
   }
 
   @Override
-  public BillingCustomerId id(@javax.annotation.Nonnull UUID id) {
+  public SubscriptionAddonId id(@javax.annotation.Nonnull UUID id) {
     this.setId(id);
     return this;
   }
 
   @Override
-  public BillingCustomerId entityType(@javax.annotation.Nonnull EntityType entityType) {
+  public SubscriptionAddonId entityType(@javax.annotation.Nonnull EntityType entityType) {
     this.setEntityType(entityType);
     return this;
   }
 
   /**
-   * Return true if this BillingCustomerId object is equal to o.
+   * Return true if this SubscriptionAddonId object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -88,7 +88,7 @@ public class BillingCustomerId extends EntityId {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BillingCustomerId {\n");
+    sb.append("class SubscriptionAddonId {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
@@ -152,8 +152,8 @@ public class BillingCustomerId extends EntityId {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("BillingCustomerId", BillingCustomerId.class);
-  JSON.registerDiscriminator(BillingCustomerId.class, "entityType", mappings);
+  mappings.put("SubscriptionAddonId", SubscriptionAddonId.class);
+  JSON.registerDiscriminator(SubscriptionAddonId.class, "entityType", mappings);
 }
 }
 

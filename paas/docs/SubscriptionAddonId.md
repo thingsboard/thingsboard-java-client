@@ -1,7 +1,7 @@
 
-# SubscriptionPlanId
+# SubscriptionAddonId
 
-`org.thingsboard.client.model.SubscriptionPlanId`
+`org.thingsboard.client.model.SubscriptionAddonId`
 
 **Extends:** **EntityId**
 
