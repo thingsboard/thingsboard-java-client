@@ -41,9 +41,9 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   ErrorComponentAllOfException.JSON_PROPERTY_CAUSE,
   ErrorComponentAllOfException.JSON_PROPERTY_STACK_TRACE,
+  ErrorComponentAllOfException.JSON_PROPERTY_LOCALIZED_MESSAGE,
   ErrorComponentAllOfException.JSON_PROPERTY_MESSAGE,
-  ErrorComponentAllOfException.JSON_PROPERTY_SUPPRESSED,
-  ErrorComponentAllOfException.JSON_PROPERTY_LOCALIZED_MESSAGE
+  ErrorComponentAllOfException.JSON_PROPERTY_SUPPRESSED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ErrorComponentAllOfException {
@@ -55,6 +55,10 @@ public class ErrorComponentAllOfException {
   @javax.annotation.Nullable
   private List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_LOCALIZED_MESSAGE = "localizedMessage";
+  @javax.annotation.Nullable
+  private String localizedMessage;
+
   public static final String JSON_PROPERTY_MESSAGE = "message";
   @javax.annotation.Nullable
   private String message;
@@ -62,10 +66,6 @@ public class ErrorComponentAllOfException {
   public static final String JSON_PROPERTY_SUPPRESSED = "suppressed";
   @javax.annotation.Nullable
   private List<ErrorComponentAllOfExceptionCause> suppressed = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_LOCALIZED_MESSAGE = "localizedMessage";
-  @javax.annotation.Nullable
-  private String localizedMessage;
 
   public ErrorComponentAllOfException() { 
   }
@@ -126,6 +126,30 @@ public class ErrorComponentAllOfException {
   }
 
 
+  public ErrorComponentAllOfException localizedMessage(@javax.annotation.Nullable String localizedMessage) {
+    this.localizedMessage = localizedMessage;
+    return this;
+  }
+
+  /**
+   * Get localizedMessage
+   * @return localizedMessage
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLocalizedMessage() {
+    return localizedMessage;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLocalizedMessage(@javax.annotation.Nullable String localizedMessage) {
+    this.localizedMessage = localizedMessage;
+  }
+
+
   public ErrorComponentAllOfException message(@javax.annotation.Nullable String message) {
     this.message = message;
     return this;
@@ -182,30 +206,6 @@ public class ErrorComponentAllOfException {
   }
 
 
-  public ErrorComponentAllOfException localizedMessage(@javax.annotation.Nullable String localizedMessage) {
-    this.localizedMessage = localizedMessage;
-    return this;
-  }
-
-  /**
-   * Get localizedMessage
-   * @return localizedMessage
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLocalizedMessage() {
-    return localizedMessage;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocalizedMessage(@javax.annotation.Nullable String localizedMessage) {
-    this.localizedMessage = localizedMessage;
-  }
-
-
   /**
    * Return true if this ErrorComponent_allOf_exception object is equal to o.
    */
@@ -220,14 +220,14 @@ public class ErrorComponentAllOfException {
     ErrorComponentAllOfException errorComponentAllOfException = (ErrorComponentAllOfException) o;
     return Objects.equals(this.cause, errorComponentAllOfException.cause) &&
         Objects.equals(this.stackTrace, errorComponentAllOfException.stackTrace) &&
+        Objects.equals(this.localizedMessage, errorComponentAllOfException.localizedMessage) &&
         Objects.equals(this.message, errorComponentAllOfException.message) &&
-        Objects.equals(this.suppressed, errorComponentAllOfException.suppressed) &&
-        Objects.equals(this.localizedMessage, errorComponentAllOfException.localizedMessage);
+        Objects.equals(this.suppressed, errorComponentAllOfException.suppressed);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cause, stackTrace, message, suppressed, localizedMessage);
+    return Objects.hash(cause, stackTrace, localizedMessage, message, suppressed);
   }
 
   @Override
@@ -236,9 +236,9 @@ public class ErrorComponentAllOfException {
     sb.append("class ErrorComponentAllOfException {\n");
     sb.append("    cause: ").append(toIndentedString(cause)).append("\n");
     sb.append("    stackTrace: ").append(toIndentedString(stackTrace)).append("\n");
+    sb.append("    localizedMessage: ").append(toIndentedString(localizedMessage)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    suppressed: ").append(toIndentedString(suppressed)).append("\n");
-    sb.append("    localizedMessage: ").append(toIndentedString(localizedMessage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -301,6 +301,11 @@ public class ErrorComponentAllOfException {
       }
     }
 
+    // add `localizedMessage` to the URL query string
+    if (getLocalizedMessage() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slocalizedMessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLocalizedMessage()))));
+    }
+
     // add `message` to the URL query string
     if (getMessage() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
@@ -314,11 +319,6 @@ public class ErrorComponentAllOfException {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `localizedMessage` to the URL query string
-    if (getLocalizedMessage() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slocalizedMessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLocalizedMessage()))));
     }
 
     return joiner.toString();

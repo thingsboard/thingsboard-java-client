@@ -9,12 +9,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **pageSize** | **PageSize** |  | [optional] |
-| **pageOrientation** | **PageOrientation** |  | [optional] |
-| **pageMargins** | **Insets** |  | [optional] |
-| **pageBackground** | **String** |  | [optional] |
-| **header** | **HeaderFooter** |  | [optional] |
 | **footer** | **HeaderFooter** |  | [optional] |
+| **header** | **HeaderFooter** |  | [optional] |
+| **pageBackground** | **String** |  | [optional] |
+| **pageMargins** | **Insets** |  | [optional] |
+| **pageOrientation** | **PageOrientation** |  | [optional] |
+| **pageSize** | **PageSize** |  | [optional] |
 
 
 

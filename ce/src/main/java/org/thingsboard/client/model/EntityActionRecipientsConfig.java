@@ -94,7 +94,7 @@ public class EntityActionRecipientsConfig extends NotificationRuleRecipientsConf
 
 
   @Override
-  public EntityActionRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public EntityActionRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

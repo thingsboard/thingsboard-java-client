@@ -123,7 +123,7 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
 
   @Override
-  public ScriptCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
+  public ScriptCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
     this.setOutput(output);
     return this;
   }

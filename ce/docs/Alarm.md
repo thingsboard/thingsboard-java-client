@@ -20,7 +20,7 @@
 | **ackTs** | **Long** | Timestamp of the alarm acknowledgement, in milliseconds | [optional] |
 | **clearTs** | **Long** | Timestamp of the alarm clearing, in milliseconds | [optional] |
 | **assignTs** | **Long** | Timestamp of the alarm assignment, in milliseconds | [optional] |
-| **details** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **details** | **com.fasterxml.jackson.databind.JsonNode** | JSON object with alarm details | [optional] |
 | **propagate** | **Boolean** | Propagation flag to specify if alarm should be propagated to parent entities of alarm originator | [optional] |
 | **propagateToOwner** | **Boolean** | Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) of alarm originator | [optional] |
 | **propagateToTenant** | **Boolean** | Propagation flag to specify if alarm should be propagated to the tenant entity | [optional] |

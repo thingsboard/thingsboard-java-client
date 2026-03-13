@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **aiGenerated** | **Boolean** |  | [optional] |
 | **output** | **Output** |  | [optional] |
+| **aiGenerated** | **Boolean** |  | [optional] |
 | **type** | **String** |  | |
 
 

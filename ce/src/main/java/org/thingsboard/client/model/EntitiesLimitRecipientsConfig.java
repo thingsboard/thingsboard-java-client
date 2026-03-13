@@ -94,7 +94,7 @@ public class EntitiesLimitRecipientsConfig extends NotificationRuleRecipientsCon
 
 
   @Override
-  public EntitiesLimitRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public EntitiesLimitRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

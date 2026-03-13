@@ -40,8 +40,7 @@ import org.thingsboard.client.ApiClient;
  * Failure
  */
 @JsonPropertyOrder({
-  Failure.JSON_PROPERTY_ERROR_DETAILS,
-  Failure.JSON_PROPERTY_STATUS
+  Failure.JSON_PROPERTY_ERROR_DETAILS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,10 +53,6 @@ public class Failure extends TbChatResponse {
   public static final String JSON_PROPERTY_ERROR_DETAILS = "errorDetails";
   @javax.annotation.Nullable
   private String errorDetails;
-
-  public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
-  private String status;
 
   public Failure() { 
   }
@@ -86,29 +81,11 @@ public class Failure extends TbChatResponse {
   }
 
 
-  public Failure status(@javax.annotation.Nullable String status) {
-    this.status = status;
+  @Override
+  public Failure status(@javax.annotation.Nonnull String status) {
+    this.setStatus(status);
     return this;
   }
-
-  /**
-   * Get status
-   * @return status
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getStatus() {
-    return status;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@javax.annotation.Nullable String status) {
-    this.status = status;
-  }
-
 
   /**
    * Return true if this Failure object is equal to o.
@@ -123,13 +100,12 @@ public class Failure extends TbChatResponse {
     }
     Failure failure = (Failure) o;
     return Objects.equals(this.errorDetails, failure.errorDetails) &&
-        Objects.equals(this.status, failure.status) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errorDetails, status, super.hashCode());
+    return Objects.hash(errorDetails, super.hashCode());
   }
 
   @Override
@@ -138,7 +114,6 @@ public class Failure extends TbChatResponse {
     sb.append("class Failure {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

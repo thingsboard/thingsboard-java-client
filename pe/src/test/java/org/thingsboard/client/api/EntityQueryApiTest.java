@@ -316,8 +316,8 @@ public class EntityQueryApiTest extends AbstractApiTest {
         for (int i = 0; i < 3; i++) {
             Asset child = client.saveAsset(new Asset().name(QUERY_TEST_PREFIX + "asqChild_" + ts + "_" + i).type(childType), null, null, null, null, null);
             EntityRelation rel = new EntityRelation();
-            rel.setFrom(new EntityId().id(root.getId().getId()).entityType(EntityType.ASSET));
-            rel.setTo(new EntityId().id(child.getId().getId()).entityType(EntityType.ASSET));
+            rel.setFrom(root.getId());
+            rel.setTo(child.getId());
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
             client.saveRelation(rel);
@@ -349,8 +349,8 @@ public class EntityQueryApiTest extends AbstractApiTest {
         for (int i = 0; i < 2; i++) {
             Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "dsqDev_" + ts + "_" + i).type(deviceType), null, null, null, null, null, null);
             EntityRelation rel = new EntityRelation();
-            rel.setFrom(new EntityId().id(root.getId().getId()).entityType(EntityType.ASSET));
-            rel.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
+            rel.setFrom(root.getId());
+            rel.setTo(device.getId());
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
             client.saveRelation(rel);
@@ -419,8 +419,8 @@ public class EntityQueryApiTest extends AbstractApiTest {
                     .edgeLicenseKey("licenseKey")
                     .cloudEndpoint("http://localhost:8080"), null, null);
             EntityRelation rel = new EntityRelation();
-            rel.setFrom(new EntityId().id(root.getId().getId()).entityType(EntityType.ASSET));
-            rel.setTo(new EntityId().id(edge.getId().getId()).entityType(EntityType.EDGE));
+            rel.setFrom(root.getId());
+            rel.setTo(edge.getId());
             rel.setType("Manages");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
             client.saveRelation(rel);
@@ -453,7 +453,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             client.saveEntityView(new EntityView()
                             .name(QUERY_TEST_PREFIX + "evt_" + ts + "_" + i)
                             .type(viewType)
-                            .entityId(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE)),
+                            .entityId(device.getId()),
                     null, null, null, null, null);
         }
 
@@ -479,11 +479,11 @@ public class EntityQueryApiTest extends AbstractApiTest {
             EntityView ev = client.saveEntityView(new EntityView()
                             .name(QUERY_TEST_PREFIX + "evsq_" + ts + "_" + i)
                             .type(viewType)
-                            .entityId(new EntityId().id(rootDevice.getId().getId()).entityType(EntityType.DEVICE)),
+                            .entityId(rootDevice.getId()),
                     null, null, null, null, null);
             EntityRelation rel = new EntityRelation();
-            rel.setFrom(new EntityId().id(rootDevice.getId().getId()).entityType(EntityType.DEVICE));
-            rel.setTo(new EntityId().id(ev.getId().getId()).entityType(EntityType.ENTITY_VIEW));
+            rel.setFrom(rootDevice.getId());
+            rel.setTo(ev.getId());
             rel.setType("HasView");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
             client.saveRelation(rel);
@@ -514,8 +514,8 @@ public class EntityQueryApiTest extends AbstractApiTest {
         for (int i = 0; i < 2; i++) {
             Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "rqfDev_" + ts + "_" + i).type("sensor"), null, null, null, null, null, null);
             EntityRelation rel = new EntityRelation();
-            rel.setFrom(new EntityId().id(root.getId().getId()).entityType(EntityType.ASSET));
-            rel.setTo(new EntityId().id(device.getId().getId()).entityType(EntityType.DEVICE));
+            rel.setFrom(root.getId());
+            rel.setTo(device.getId());
             rel.setType("Contains");
             rel.setTypeGroup(RelationTypeGroup.COMMON);
             client.saveRelation(rel);
@@ -654,7 +654,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
                 .entityFilter(new EntitiesByGroupNameFilter()
                         .groupType(EntityType.DEVICE)
                         .entityGroupNameFilter(groupName)
-                        .ownerId(new EntityId().id(savedTenant.getId().getId()).entityType(EntityType.TENANT)))
+                        .ownerId(savedTenant.getId()))
                 .pageLink(pageLink(10))
                 .addEntityFieldsItem(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"));
 

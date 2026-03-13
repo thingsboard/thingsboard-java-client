@@ -52,22 +52,9 @@ import org.thingsboard.client.ApiClient;
  * MobileSelfRegistrationParams
  */
 @JsonPropertyOrder({
-  MobileSelfRegistrationParams.JSON_PROPERTY_ENABLED,
-  MobileSelfRegistrationParams.JSON_PROPERTY_TITLE,
-  MobileSelfRegistrationParams.JSON_PROPERTY_CAPTCHA,
-  MobileSelfRegistrationParams.JSON_PROPERTY_SIGN_UP_FIELDS,
-  MobileSelfRegistrationParams.JSON_PROPERTY_SHOW_PRIVACY_POLICY,
-  MobileSelfRegistrationParams.JSON_PROPERTY_SHOW_TERMS_OF_USE,
-  MobileSelfRegistrationParams.JSON_PROPERTY_NOTIFICATION_RECIPIENT,
-  MobileSelfRegistrationParams.JSON_PROPERTY_CUSTOMER_TITLE_PREFIX,
-  MobileSelfRegistrationParams.JSON_PROPERTY_CUSTOMER_GROUP_ID,
-  MobileSelfRegistrationParams.JSON_PROPERTY_PERMISSIONS,
-  MobileSelfRegistrationParams.JSON_PROPERTY_DEFAULT_DASHBOARD,
-  MobileSelfRegistrationParams.JSON_PROPERTY_HOME_DASHBOARD,
-  MobileSelfRegistrationParams.JSON_PROPERTY_CUSTOM_MENU_ID,
   MobileSelfRegistrationParams.JSON_PROPERTY_PRIVACY_POLICY,
-  MobileSelfRegistrationParams.JSON_PROPERTY_TERMS_OF_USE,
-  MobileSelfRegistrationParams.JSON_PROPERTY_REDIRECT
+  MobileSelfRegistrationParams.JSON_PROPERTY_REDIRECT,
+  MobileSelfRegistrationParams.JSON_PROPERTY_TERMS_OF_USE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -77,400 +64,20 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class MobileSelfRegistrationParams extends SelfRegistrationParams {
-  public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
-  private Boolean enabled;
-
-  public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nonnull
-  private String title;
-
-  public static final String JSON_PROPERTY_CAPTCHA = "captcha";
-  @javax.annotation.Nonnull
-  private CaptchaParams captcha;
-
-  public static final String JSON_PROPERTY_SIGN_UP_FIELDS = "signUpFields";
-  @javax.annotation.Nonnull
-  private List<SignUpField> signUpFields = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SHOW_PRIVACY_POLICY = "showPrivacyPolicy";
-  @javax.annotation.Nullable
-  private Boolean showPrivacyPolicy;
-
-  public static final String JSON_PROPERTY_SHOW_TERMS_OF_USE = "showTermsOfUse";
-  @javax.annotation.Nullable
-  private Boolean showTermsOfUse;
-
-  public static final String JSON_PROPERTY_NOTIFICATION_RECIPIENT = "notificationRecipient";
-  @javax.annotation.Nullable
-  private NotificationTargetId notificationRecipient;
-
-  public static final String JSON_PROPERTY_CUSTOMER_TITLE_PREFIX = "customerTitlePrefix";
-  @javax.annotation.Nullable
-  private String customerTitlePrefix;
-
-  public static final String JSON_PROPERTY_CUSTOMER_GROUP_ID = "customerGroupId";
-  @javax.annotation.Nullable
-  private EntityGroupId customerGroupId;
-
-  public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
-  @javax.annotation.Nonnull
-  private List<GroupPermission> permissions = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_DEFAULT_DASHBOARD = "defaultDashboard";
-  @javax.annotation.Nullable
-  private DefaultDashboardParams defaultDashboard;
-
-  public static final String JSON_PROPERTY_HOME_DASHBOARD = "homeDashboard";
-  @javax.annotation.Nullable
-  private HomeDashboardParams homeDashboard;
-
-  public static final String JSON_PROPERTY_CUSTOM_MENU_ID = "customMenuId";
-  @javax.annotation.Nullable
-  private CustomMenuId customMenuId;
-
   public static final String JSON_PROPERTY_PRIVACY_POLICY = "privacyPolicy";
   @javax.annotation.Nullable
   private String privacyPolicy;
-
-  public static final String JSON_PROPERTY_TERMS_OF_USE = "termsOfUse";
-  @javax.annotation.Nullable
-  private String termsOfUse;
 
   public static final String JSON_PROPERTY_REDIRECT = "redirect";
   @javax.annotation.Nonnull
   private MobileRedirectParams redirect;
 
+  public static final String JSON_PROPERTY_TERMS_OF_USE = "termsOfUse";
+  @javax.annotation.Nullable
+  private String termsOfUse;
+
   public MobileSelfRegistrationParams() { 
   }
-
-  public MobileSelfRegistrationParams enabled(@javax.annotation.Nullable Boolean enabled) {
-    this.enabled = enabled;
-    return this;
-  }
-
-  /**
-   * Indicates if self-registration is allowed via sign-up form
-   * @return enabled
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEnabled() {
-    return enabled;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
-    this.enabled = enabled;
-  }
-
-
-  public MobileSelfRegistrationParams title(@javax.annotation.Nonnull String title) {
-    this.title = title;
-    return this;
-  }
-
-  /**
-   * The text message to appear on login form
-   * @return title
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getTitle() {
-    return title;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTitle(@javax.annotation.Nonnull String title) {
-    this.title = title;
-  }
-
-
-  public MobileSelfRegistrationParams captcha(@javax.annotation.Nonnull CaptchaParams captcha) {
-    this.captcha = captcha;
-    return this;
-  }
-
-  /**
-   * Captcha site key for &#39;I&#39;m not a robot&#39; validation
-   * @return captcha
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public CaptchaParams getCaptcha() {
-    return captcha;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCaptcha(@javax.annotation.Nonnull CaptchaParams captcha) {
-    this.captcha = captcha;
-  }
-
-
-  public MobileSelfRegistrationParams signUpFields(@javax.annotation.Nonnull List<SignUpField> signUpFields) {
-    this.signUpFields = signUpFields;
-    return this;
-  }
-
-  public MobileSelfRegistrationParams addSignUpFieldsItem(SignUpField signUpFieldsItem) {
-    if (this.signUpFields == null) {
-      this.signUpFields = new ArrayList<>();
-    }
-    this.signUpFields.add(signUpFieldsItem);
-    return this;
-  }
-
-  /**
-   * List of sign-up form fields
-   * @return signUpFields
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_SIGN_UP_FIELDS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<SignUpField> getSignUpFields() {
-    return signUpFields;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SIGN_UP_FIELDS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSignUpFields(@javax.annotation.Nonnull List<SignUpField> signUpFields) {
-    this.signUpFields = signUpFields;
-  }
-
-
-  public MobileSelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.showPrivacyPolicy = showPrivacyPolicy;
-    return this;
-  }
-
-  /**
-   * Show or hide &#39;Privacy Policy&#39;
-   * @return showPrivacyPolicy
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getShowPrivacyPolicy() {
-    return showPrivacyPolicy;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
-    this.showPrivacyPolicy = showPrivacyPolicy;
-  }
-
-
-  public MobileSelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.showTermsOfUse = showTermsOfUse;
-    return this;
-  }
-
-  /**
-   * Show or hide &#39;Terms of Use&#39;
-   * @return showTermsOfUse
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getShowTermsOfUse() {
-    return showTermsOfUse;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
-    this.showTermsOfUse = showTermsOfUse;
-  }
-
-
-  public MobileSelfRegistrationParams notificationRecipient(@javax.annotation.Nullable NotificationTargetId notificationRecipient) {
-    this.notificationRecipient = notificationRecipient;
-    return this;
-  }
-
-  /**
-   * Recipient to use for notifications when new user self-registered.
-   * @return notificationRecipient
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_RECIPIENT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public NotificationTargetId getNotificationRecipient() {
-    return notificationRecipient;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_RECIPIENT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotificationRecipient(@javax.annotation.Nullable NotificationTargetId notificationRecipient) {
-    this.notificationRecipient = notificationRecipient;
-  }
-
-
-  public MobileSelfRegistrationParams customerTitlePrefix(@javax.annotation.Nullable String customerTitlePrefix) {
-    this.customerTitlePrefix = customerTitlePrefix;
-    return this;
-  }
-
-  /**
-   * Prefix to add to created customer
-   * @return customerTitlePrefix
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE_PREFIX, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCustomerTitlePrefix() {
-    return customerTitlePrefix;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE_PREFIX, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerTitlePrefix(@javax.annotation.Nullable String customerTitlePrefix) {
-    this.customerTitlePrefix = customerTitlePrefix;
-  }
-
-
-  public MobileSelfRegistrationParams customerGroupId(@javax.annotation.Nullable EntityGroupId customerGroupId) {
-    this.customerGroupId = customerGroupId;
-    return this;
-  }
-
-  /**
-   * Id of the customer group customer wil be added to.
-   * @return customerGroupId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_GROUP_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityGroupId getCustomerGroupId() {
-    return customerGroupId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_GROUP_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerGroupId(@javax.annotation.Nullable EntityGroupId customerGroupId) {
-    this.customerGroupId = customerGroupId;
-  }
-
-
-  public MobileSelfRegistrationParams permissions(@javax.annotation.Nonnull List<GroupPermission> permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
-  public MobileSelfRegistrationParams addPermissionsItem(GroupPermission permissionsItem) {
-    if (this.permissions == null) {
-      this.permissions = new ArrayList<>();
-    }
-    this.permissions.add(permissionsItem);
-    return this;
-  }
-
-  /**
-   * Group Permissions to assign for the new customer user.
-   * @return permissions
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<GroupPermission> getPermissions() {
-    return permissions;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPermissions(@javax.annotation.Nonnull List<GroupPermission> permissions) {
-    this.permissions = permissions;
-  }
-
-
-  public MobileSelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
-    this.defaultDashboard = defaultDashboard;
-    return this;
-  }
-
-  /**
-   * Default dashboard params
-   * @return defaultDashboard
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DefaultDashboardParams getDefaultDashboard() {
-    return defaultDashboard;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
-    this.defaultDashboard = defaultDashboard;
-  }
-
-
-  public MobileSelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
-    this.homeDashboard = homeDashboard;
-    return this;
-  }
-
-  /**
-   * Home dashboard params
-   * @return homeDashboard
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public HomeDashboardParams getHomeDashboard() {
-    return homeDashboard;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHomeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
-    this.homeDashboard = homeDashboard;
-  }
-
-
-  public MobileSelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
-    this.customMenuId = customMenuId;
-    return this;
-  }
-
-  /**
-   * Custom menu id
-   * @return customMenuId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public CustomMenuId getCustomMenuId() {
-    return customMenuId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
-    this.customMenuId = customMenuId;
-  }
-
 
   public MobileSelfRegistrationParams privacyPolicy(@javax.annotation.Nullable String privacyPolicy) {
     this.privacyPolicy = privacyPolicy;
@@ -493,30 +100,6 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPrivacyPolicy(@javax.annotation.Nullable String privacyPolicy) {
     this.privacyPolicy = privacyPolicy;
-  }
-
-
-  public MobileSelfRegistrationParams termsOfUse(@javax.annotation.Nullable String termsOfUse) {
-    this.termsOfUse = termsOfUse;
-    return this;
-  }
-
-  /**
-   * Terms of User text. Supports HTML.
-   * @return termsOfUse
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTermsOfUse() {
-    return termsOfUse;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTermsOfUse(@javax.annotation.Nullable String termsOfUse) {
-    this.termsOfUse = termsOfUse;
   }
 
 
@@ -544,9 +127,99 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
 
+  public MobileSelfRegistrationParams termsOfUse(@javax.annotation.Nullable String termsOfUse) {
+    this.termsOfUse = termsOfUse;
+    return this;
+  }
+
+  /**
+   * Terms of User text. Supports HTML.
+   * @return termsOfUse
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTermsOfUse() {
+    return termsOfUse;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TERMS_OF_USE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTermsOfUse(@javax.annotation.Nullable String termsOfUse) {
+    this.termsOfUse = termsOfUse;
+  }
+
+
   @Override
   public MobileSelfRegistrationParams type(@javax.annotation.Nonnull SelfRegistrationType type) {
     this.setType(type);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams enabled(@javax.annotation.Nullable Boolean enabled) {
+    this.setEnabled(enabled);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
+    this.setCaptcha(captcha);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams notificationRecipient(@javax.annotation.Nullable NotificationTargetId notificationRecipient) {
+    this.setNotificationRecipient(notificationRecipient);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams signUpFields(@javax.annotation.Nullable List<SignUpField> signUpFields) {
+    this.setSignUpFields(signUpFields);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams customerTitlePrefix(@javax.annotation.Nullable String customerTitlePrefix) {
+    this.setCustomerTitlePrefix(customerTitlePrefix);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+    this.setShowPrivacyPolicy(showPrivacyPolicy);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+    this.setShowTermsOfUse(showTermsOfUse);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams defaultDashboard(@javax.annotation.Nullable DefaultDashboardParams defaultDashboard) {
+    this.setDefaultDashboard(defaultDashboard);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams homeDashboard(@javax.annotation.Nullable HomeDashboardParams homeDashboard) {
+    this.setHomeDashboard(homeDashboard);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams customerGroupId(@javax.annotation.Nullable EntityGroupId customerGroupId) {
+    this.setCustomerGroupId(customerGroupId);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+    this.setCustomMenuId(customMenuId);
     return this;
   }
 
@@ -562,28 +235,15 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       return false;
     }
     MobileSelfRegistrationParams mobileSelfRegistrationParams = (MobileSelfRegistrationParams) o;
-    return Objects.equals(this.enabled, mobileSelfRegistrationParams.enabled) &&
-        Objects.equals(this.title, mobileSelfRegistrationParams.title) &&
-        Objects.equals(this.captcha, mobileSelfRegistrationParams.captcha) &&
-        Objects.equals(this.signUpFields, mobileSelfRegistrationParams.signUpFields) &&
-        Objects.equals(this.showPrivacyPolicy, mobileSelfRegistrationParams.showPrivacyPolicy) &&
-        Objects.equals(this.showTermsOfUse, mobileSelfRegistrationParams.showTermsOfUse) &&
-        Objects.equals(this.notificationRecipient, mobileSelfRegistrationParams.notificationRecipient) &&
-        Objects.equals(this.customerTitlePrefix, mobileSelfRegistrationParams.customerTitlePrefix) &&
-        Objects.equals(this.customerGroupId, mobileSelfRegistrationParams.customerGroupId) &&
-        Objects.equals(this.permissions, mobileSelfRegistrationParams.permissions) &&
-        Objects.equals(this.defaultDashboard, mobileSelfRegistrationParams.defaultDashboard) &&
-        Objects.equals(this.homeDashboard, mobileSelfRegistrationParams.homeDashboard) &&
-        Objects.equals(this.customMenuId, mobileSelfRegistrationParams.customMenuId) &&
-        Objects.equals(this.privacyPolicy, mobileSelfRegistrationParams.privacyPolicy) &&
-        Objects.equals(this.termsOfUse, mobileSelfRegistrationParams.termsOfUse) &&
+    return Objects.equals(this.privacyPolicy, mobileSelfRegistrationParams.privacyPolicy) &&
         Objects.equals(this.redirect, mobileSelfRegistrationParams.redirect) &&
+        Objects.equals(this.termsOfUse, mobileSelfRegistrationParams.termsOfUse) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled, title, captcha, signUpFields, showPrivacyPolicy, showTermsOfUse, notificationRecipient, customerTitlePrefix, customerGroupId, permissions, defaultDashboard, homeDashboard, customMenuId, privacyPolicy, termsOfUse, redirect, super.hashCode());
+    return Objects.hash(privacyPolicy, redirect, termsOfUse, super.hashCode());
   }
 
   @Override
@@ -591,22 +251,9 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
     StringBuilder sb = new StringBuilder();
     sb.append("class MobileSelfRegistrationParams {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    captcha: ").append(toIndentedString(captcha)).append("\n");
-    sb.append("    signUpFields: ").append(toIndentedString(signUpFields)).append("\n");
-    sb.append("    showPrivacyPolicy: ").append(toIndentedString(showPrivacyPolicy)).append("\n");
-    sb.append("    showTermsOfUse: ").append(toIndentedString(showTermsOfUse)).append("\n");
-    sb.append("    notificationRecipient: ").append(toIndentedString(notificationRecipient)).append("\n");
-    sb.append("    customerTitlePrefix: ").append(toIndentedString(customerTitlePrefix)).append("\n");
-    sb.append("    customerGroupId: ").append(toIndentedString(customerGroupId)).append("\n");
-    sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
-    sb.append("    defaultDashboard: ").append(toIndentedString(defaultDashboard)).append("\n");
-    sb.append("    homeDashboard: ").append(toIndentedString(homeDashboard)).append("\n");
-    sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
     sb.append("    privacyPolicy: ").append(toIndentedString(privacyPolicy)).append("\n");
-    sb.append("    termsOfUse: ").append(toIndentedString(termsOfUse)).append("\n");
     sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
+    sb.append("    termsOfUse: ").append(toIndentedString(termsOfUse)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -654,6 +301,26 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
+    // add `enabled` to the URL query string
+    if (getEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
+    }
+
+    // add `title` to the URL query string
+    if (getTitle() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
+    }
+
+    // add `captcha` to the URL query string
+    if (getCaptcha() != null) {
+      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
+    }
+
     // add `permissions` to the URL query string
     if (getPermissions() != null) {
       for (int i = 0; i < getPermissions().size(); i++) {
@@ -664,44 +331,9 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       }
     }
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
-    // add `showPrivacyPolicy` to the URL query string
-    if (getShowPrivacyPolicy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
-    }
-
-    // add `showTermsOfUse` to the URL query string
-    if (getShowTermsOfUse() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
-    }
-
-    // add `title` to the URL query string
-    if (getTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
-    }
-
-    // add `enabled` to the URL query string
-    if (getEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
-    }
-
-    // add `homeDashboard` to the URL query string
-    if (getHomeDashboard() != null) {
-      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
-    }
-
     // add `notificationRecipient` to the URL query string
     if (getNotificationRecipient() != null) {
       joiner.add(getNotificationRecipient().toUrlQueryString(prefix + "notificationRecipient" + suffix));
-    }
-
-    // add `captcha` to the URL query string
-    if (getCaptcha() != null) {
-      joiner.add(getCaptcha().toUrlQueryString(prefix + "captcha" + suffix));
     }
 
     // add `signUpFields` to the URL query string
@@ -714,19 +346,29 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       }
     }
 
-    // add `defaultDashboard` to the URL query string
-    if (getDefaultDashboard() != null) {
-      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
-    }
-
     // add `customerTitlePrefix` to the URL query string
     if (getCustomerTitlePrefix() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitlePrefix%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitlePrefix()))));
     }
 
-    // add `customMenuId` to the URL query string
-    if (getCustomMenuId() != null) {
-      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    // add `showPrivacyPolicy` to the URL query string
+    if (getShowPrivacyPolicy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowPrivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowPrivacyPolicy()))));
+    }
+
+    // add `showTermsOfUse` to the URL query string
+    if (getShowTermsOfUse() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowTermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowTermsOfUse()))));
+    }
+
+    // add `defaultDashboard` to the URL query string
+    if (getDefaultDashboard() != null) {
+      joiner.add(getDefaultDashboard().toUrlQueryString(prefix + "defaultDashboard" + suffix));
+    }
+
+    // add `homeDashboard` to the URL query string
+    if (getHomeDashboard() != null) {
+      joiner.add(getHomeDashboard().toUrlQueryString(prefix + "homeDashboard" + suffix));
     }
 
     // add `customerGroupId` to the URL query string
@@ -734,19 +376,24 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
       joiner.add(getCustomerGroupId().toUrlQueryString(prefix + "customerGroupId" + suffix));
     }
 
+    // add `customMenuId` to the URL query string
+    if (getCustomMenuId() != null) {
+      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    }
+
     // add `privacyPolicy` to the URL query string
     if (getPrivacyPolicy() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sprivacyPolicy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPrivacyPolicy()))));
     }
 
-    // add `termsOfUse` to the URL query string
-    if (getTermsOfUse() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTermsOfUse()))));
-    }
-
     // add `redirect` to the URL query string
     if (getRedirect() != null) {
       joiner.add(getRedirect().toUrlQueryString(prefix + "redirect" + suffix));
+    }
+
+    // add `termsOfUse` to the URL query string
+    if (getTermsOfUse() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stermsOfUse%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTermsOfUse()))));
     }
 
     return joiner.toString();

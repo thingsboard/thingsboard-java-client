@@ -43,7 +43,6 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   DefaultMobilePage.JSON_PROPERTY_LABEL,
-  DefaultMobilePage.JSON_PROPERTY_VISIBLE,
   DefaultMobilePage.JSON_PROPERTY_ICON,
   DefaultMobilePage.JSON_PROPERTY_ID
 })
@@ -58,10 +57,6 @@ public class DefaultMobilePage extends MobilePage {
   public static final String JSON_PROPERTY_LABEL = "label";
   @javax.annotation.Nullable
   private String label;
-
-  public static final String JSON_PROPERTY_VISIBLE = "visible";
-  @javax.annotation.Nonnull
-  private Boolean visible;
 
   public static final String JSON_PROPERTY_ICON = "icon";
   @javax.annotation.Nullable
@@ -95,30 +90,6 @@ public class DefaultMobilePage extends MobilePage {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLabel(@javax.annotation.Nullable String label) {
     this.label = label;
-  }
-
-
-  public DefaultMobilePage visible(@javax.annotation.Nonnull Boolean visible) {
-    this.visible = visible;
-    return this;
-  }
-
-  /**
-   * Indicates if page is visible
-   * @return visible
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Boolean getVisible() {
-    return visible;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVisible(@javax.annotation.Nonnull Boolean visible) {
-    this.visible = visible;
   }
 
 
@@ -176,6 +147,12 @@ public class DefaultMobilePage extends MobilePage {
     return this;
   }
 
+  @Override
+  public DefaultMobilePage visible(@javax.annotation.Nullable Boolean visible) {
+    this.setVisible(visible);
+    return this;
+  }
+
   /**
    * Return true if this DefaultMobilePage object is equal to o.
    */
@@ -189,7 +166,6 @@ public class DefaultMobilePage extends MobilePage {
     }
     DefaultMobilePage defaultMobilePage = (DefaultMobilePage) o;
     return Objects.equals(this.label, defaultMobilePage.label) &&
-        Objects.equals(this.visible, defaultMobilePage.visible) &&
         Objects.equals(this.icon, defaultMobilePage.icon) &&
         Objects.equals(this.id, defaultMobilePage.id) &&
         super.equals(o);
@@ -197,7 +173,7 @@ public class DefaultMobilePage extends MobilePage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, visible, icon, id, super.hashCode());
+    return Objects.hash(label, icon, id, super.hashCode());
   }
 
   @Override
@@ -206,7 +182,6 @@ public class DefaultMobilePage extends MobilePage {
     sb.append("class DefaultMobilePage {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
-    sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");

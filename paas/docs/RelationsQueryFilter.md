@@ -10,6 +10,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **rootEntity** | **AliasEntityId** |  | [optional] |
+| **multiRoot** | **Boolean** |  | [optional] |
 | **multiRootEntitiesType** | **EntityType** |  | [optional] |
 | **multiRootEntityIds** | **Set\<String\>** |  | [optional] |
 | **direction** | **EntitySearchDirection** |  | [optional] |
@@ -19,7 +20,6 @@
 | **negate** | **Boolean** |  | [optional] |
 | **rootStateEntity** | **Boolean** |  | [optional] |
 | **defaultStateEntity** | **AliasEntityId** |  | [optional] |
-| **multiRoot** | **Boolean** |  | [optional] |
 
 
 

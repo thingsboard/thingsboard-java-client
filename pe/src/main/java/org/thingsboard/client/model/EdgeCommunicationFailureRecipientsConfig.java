@@ -94,7 +94,7 @@ public class EdgeCommunicationFailureRecipientsConfig extends NotificationRuleRe
 
 
   @Override
-  public EdgeCommunicationFailureRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public EdgeCommunicationFailureRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

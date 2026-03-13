@@ -51,7 +51,8 @@ import org.thingsboard.client.ApiClient;
   CalculatedField.JSON_PROPERTY_DEBUG_SETTINGS,
   CalculatedField.JSON_PROPERTY_CONFIGURATION_VERSION,
   CalculatedField.JSON_PROPERTY_CONFIGURATION,
-  CalculatedField.JSON_PROPERTY_VERSION
+  CalculatedField.JSON_PROPERTY_VERSION,
+  CalculatedField.JSON_PROPERTY_ADDITIONAL_INFO
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CalculatedField {
@@ -98,6 +99,10 @@ public class CalculatedField {
   public static final String JSON_PROPERTY_VERSION = "version";
   @javax.annotation.Nullable
   private Long version;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public CalculatedField() { 
   }
@@ -366,6 +371,30 @@ public class CalculatedField {
   }
 
 
+  public CalculatedField additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the calculated field
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
+
+
   /**
    * Return true if this CalculatedField object is equal to o.
    */
@@ -388,12 +417,13 @@ public class CalculatedField {
         Objects.equals(this.debugSettings, calculatedField.debugSettings) &&
         Objects.equals(this.configurationVersion, calculatedField.configurationVersion) &&
         Objects.equals(this._configuration, calculatedField._configuration) &&
-        Objects.equals(this.version, calculatedField.version);
+        Objects.equals(this.version, calculatedField.version) &&
+        Objects.equals(this.additionalInfo, calculatedField.additionalInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, entityId, type, name, debugMode, debugSettings, configurationVersion, _configuration, version);
+    return Objects.hash(id, createdTime, tenantId, entityId, type, name, debugMode, debugSettings, configurationVersion, _configuration, version, additionalInfo);
   }
 
   @Override
@@ -411,6 +441,7 @@ public class CalculatedField {
     sb.append("    configurationVersion: ").append(toIndentedString(configurationVersion)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -511,6 +542,11 @@ public class CalculatedField {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

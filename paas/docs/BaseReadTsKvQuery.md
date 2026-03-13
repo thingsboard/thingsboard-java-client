@@ -14,8 +14,8 @@
 | **aggParameters** | **AggregationParams** |  | [optional] |
 | **limit** | **Integer** |  | [optional] |
 | **order** | **String** |  | [optional] |
-| **interval** | **Long** |  | [optional] |
 | **aggregation** | **Aggregation** |  | [optional] |
+| **interval** | **Long** |  | [optional] |
 
 
 

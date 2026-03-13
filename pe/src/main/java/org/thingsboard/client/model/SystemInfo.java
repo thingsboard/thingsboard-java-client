@@ -92,7 +92,7 @@ public class SystemInfo {
   }
 
   /**
-   * Get monolith
+   * Is monolith.
    * @return monolith
    */
   @javax.annotation.Nullable

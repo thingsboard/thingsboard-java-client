@@ -94,7 +94,7 @@ public class ApiUsageLimitRecipientsConfig extends NotificationRuleRecipientsCon
 
 
   @Override
-  public ApiUsageLimitRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public ApiUsageLimitRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

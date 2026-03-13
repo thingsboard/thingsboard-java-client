@@ -48,9 +48,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         EntityView ev = new EntityView();
         ev.setName(EV_PREFIX + "save_" + ts);
         ev.setType("testType");
-        ev.setEntityId(new EntityId()
-                .id(device.getId().getId())
-                .entityType(EntityType.DEVICE));
+        ev.setEntityId(device.getId());
         ev.setKeys(new TelemetryEntityView()
                 .timeseries(List.of("temperature", "humidity"))
                 .attributes(new AttributesEntityView()
@@ -256,9 +254,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         EntityView ev = new EntityView();
         ev.setName(name);
         ev.setType(type);
-        ev.setEntityId(new EntityId()
-                .id(device.getId().getId())
-                .entityType(EntityType.DEVICE));
+        ev.setEntityId(device.getId());
         ev.setKeys(new TelemetryEntityView()
                 .timeseries(List.of("temperature"))
                 .attributes(new AttributesEntityView()

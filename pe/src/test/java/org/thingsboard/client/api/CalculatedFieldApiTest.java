@@ -70,11 +70,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
             CalculatedField cf = new CalculatedField();
             cf.setName(TEST_PREFIX + "CalcField_" + timestamp + "_" + i);
             cf.setType(CalculatedFieldType.SIMPLE);
-
-            EntityId entityId = new EntityId();
-            entityId.setEntityType(EntityType.DEVICE);
-            entityId.setId(createdDevice1.getId().getId());
-            cf.setEntityId(entityId);
+            cf.setEntityId(createdDevice1.getId());
 
             SimpleCalculatedFieldConfiguration config = new SimpleCalculatedFieldConfiguration();
 
@@ -107,11 +103,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
             CalculatedField cf = new CalculatedField();
             cf.setName(TEST_PREFIX + "CalcField2_" + timestamp + "_" + i);
             cf.setType(CalculatedFieldType.SIMPLE);
-
-            EntityId entityId = new EntityId();
-            entityId.setEntityType(EntityType.DEVICE);
-            entityId.setId(createdDevice2.getId().getId());
-            cf.setEntityId(entityId);
+            cf.setEntityId(createdDevice2.getId());
 
             SimpleCalculatedFieldConfiguration config = new SimpleCalculatedFieldConfiguration();
 
@@ -235,10 +227,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
         cf.setName(TEST_PREFIX + "AlarmCalcField_" + timestamp);
         cf.setType(CalculatedFieldType.ALARM);
 
-        EntityId entityId = new EntityId();
-        entityId.setEntityType(EntityType.DEVICE);
-        entityId.setId(createdDevice.getId().getId());
-        cf.setEntityId(entityId);
+        cf.setEntityId(createdDevice.getId());
         cf.setConfiguration(config);
 
         CalculatedField created = client.saveCalculatedField(cf);

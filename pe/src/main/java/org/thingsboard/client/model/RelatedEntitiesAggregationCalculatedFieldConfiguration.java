@@ -278,7 +278,7 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
 
 
   @Override
-  public RelatedEntitiesAggregationCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
+  public RelatedEntitiesAggregationCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
     this.setOutput(output);
     return this;
   }

@@ -38,8 +38,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   ShortCustomerInfo.JSON_PROPERTY_CUSTOMER_ID,
   ShortCustomerInfo.JSON_PROPERTY_TITLE,
-  ShortCustomerInfo.JSON_PROPERTY_IS_PUBLIC,
-  ShortCustomerInfo.JSON_PROPERTY_PUBLIC
+  ShortCustomerInfo.JSON_PROPERTY_IS_PUBLIC
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ShortCustomerInfo {
@@ -54,10 +53,6 @@ public class ShortCustomerInfo {
   public static final String JSON_PROPERTY_IS_PUBLIC = "isPublic";
   @javax.annotation.Nullable
   private Boolean isPublic;
-
-  public static final String JSON_PROPERTY_PUBLIC = "public";
-  @javax.annotation.Nullable
-  private Boolean _public;
 
   public ShortCustomerInfo() { 
   }
@@ -116,7 +111,7 @@ public class ShortCustomerInfo {
   }
 
   /**
-   * Get isPublic
+   * Indicates special &#39;Public&#39; customer used to embed dashboards on public websites.
    * @return isPublic
    */
   @javax.annotation.Nullable
@@ -134,30 +129,6 @@ public class ShortCustomerInfo {
   }
 
 
-  public ShortCustomerInfo _public(@javax.annotation.Nullable Boolean _public) {
-    this._public = _public;
-    return this;
-  }
-
-  /**
-   * Get _public
-   * @return _public
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getPublic() {
-    return _public;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublic(@javax.annotation.Nullable Boolean _public) {
-    this._public = _public;
-  }
-
-
   /**
    * Return true if this ShortCustomerInfo object is equal to o.
    */
@@ -172,13 +143,12 @@ public class ShortCustomerInfo {
     ShortCustomerInfo shortCustomerInfo = (ShortCustomerInfo) o;
     return Objects.equals(this.customerId, shortCustomerInfo.customerId) &&
         Objects.equals(this.title, shortCustomerInfo.title) &&
-        Objects.equals(this.isPublic, shortCustomerInfo.isPublic) &&
-        Objects.equals(this._public, shortCustomerInfo._public);
+        Objects.equals(this.isPublic, shortCustomerInfo.isPublic);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerId, title, isPublic, _public);
+    return Objects.hash(customerId, title, isPublic);
   }
 
   @Override
@@ -188,7 +158,6 @@ public class ShortCustomerInfo {
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
-    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -249,11 +218,6 @@ public class ShortCustomerInfo {
     // add `isPublic` to the URL query string
     if (getIsPublic() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sisPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsPublic()))));
-    }
-
-    // add `public` to the URL query string
-    if (getPublic() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublic()))));
     }
 
     return joiner.toString();

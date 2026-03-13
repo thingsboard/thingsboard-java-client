@@ -94,7 +94,7 @@ public class IntegrationLifecycleEventRecipientsConfig extends NotificationRuleR
 
 
   @Override
-  public IntegrationLifecycleEventRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public IntegrationLifecycleEventRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

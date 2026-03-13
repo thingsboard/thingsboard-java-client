@@ -123,7 +123,7 @@ public class Alarm {
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode details = null;
+  private com.fasterxml.jackson.databind.JsonNode details;
 
   public static final String JSON_PROPERTY_PROPAGATE = "propagate";
   @javax.annotation.Nullable
@@ -474,7 +474,7 @@ public class Alarm {
   }
 
   /**
-   * Get details
+   * JSON object with alarm details
    * @return details
    */
   @javax.annotation.Nullable

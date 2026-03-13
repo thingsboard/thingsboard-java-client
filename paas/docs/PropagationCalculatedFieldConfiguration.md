@@ -9,10 +9,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **applyExpressionToResolvedArguments** | **Boolean** |  | [optional] |
 | **arguments** | **Map\<String, Argument\>** |  | |
 | **expression** | **String** |  | [optional] |
 | **relation** | **RelationPathLevel** |  | |
-| **applyExpressionToResolvedArguments** | **Boolean** |  | [optional] |
 
 
 

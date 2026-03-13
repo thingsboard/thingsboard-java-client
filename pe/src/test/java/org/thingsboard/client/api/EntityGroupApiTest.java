@@ -313,7 +313,7 @@ public class EntityGroupApiTest extends AbstractApiTest {
         String broadGroupId = broadGroup.getId().getId().toString();
         ShareGroupRequest shareRequest = new ShareGroupRequest();
         shareRequest.setAllUserGroup(true);
-        shareRequest.setOwnerId(new EntityId().id(savedCustomer.getId().getId()).entityType(EntityType.CUSTOMER));
+        shareRequest.setOwnerId(savedCustomer.getId());
         client.shareEntityGroup(broadGroupId, shareRequest);
 
         // shareEntityGroupToChildOwnerUserGroup — share with the customer admin group via role

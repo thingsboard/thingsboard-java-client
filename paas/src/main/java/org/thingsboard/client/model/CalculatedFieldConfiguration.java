@@ -40,8 +40,8 @@ import org.thingsboard.client.ApiClient;
  * CalculatedFieldConfiguration
  */
 @JsonPropertyOrder({
-  CalculatedFieldConfiguration.JSON_PROPERTY_AI_GENERATED,
   CalculatedFieldConfiguration.JSON_PROPERTY_OUTPUT,
+  CalculatedFieldConfiguration.JSON_PROPERTY_AI_GENERATED,
   CalculatedFieldConfiguration.JSON_PROPERTY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -61,13 +61,13 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class CalculatedFieldConfiguration {
-  public static final String JSON_PROPERTY_AI_GENERATED = "aiGenerated";
-  @javax.annotation.Nullable
-  private Boolean aiGenerated;
-
   public static final String JSON_PROPERTY_OUTPUT = "output";
   @javax.annotation.Nullable
   private Output output;
+
+  public static final String JSON_PROPERTY_AI_GENERATED = "aiGenerated";
+  @javax.annotation.Nullable
+  private Boolean aiGenerated;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   @javax.annotation.Nonnull
@@ -75,30 +75,6 @@ public class CalculatedFieldConfiguration {
 
   public CalculatedFieldConfiguration() { 
   }
-
-  public CalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
-    this.aiGenerated = aiGenerated;
-    return this;
-  }
-
-  /**
-   * Get aiGenerated
-   * @return aiGenerated
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_AI_GENERATED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getAiGenerated() {
-    return aiGenerated;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_AI_GENERATED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
-    this.aiGenerated = aiGenerated;
-  }
-
 
   public CalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
     this.output = output;
@@ -121,6 +97,30 @@ public class CalculatedFieldConfiguration {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOutput(@javax.annotation.Nullable Output output) {
     this.output = output;
+  }
+
+
+  public CalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
+    this.aiGenerated = aiGenerated;
+    return this;
+  }
+
+  /**
+   * Get aiGenerated
+   * @return aiGenerated
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_AI_GENERATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getAiGenerated() {
+    return aiGenerated;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AI_GENERATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
+    this.aiGenerated = aiGenerated;
   }
 
 
@@ -160,22 +160,22 @@ public class CalculatedFieldConfiguration {
       return false;
     }
     CalculatedFieldConfiguration calculatedFieldConfiguration = (CalculatedFieldConfiguration) o;
-    return Objects.equals(this.aiGenerated, calculatedFieldConfiguration.aiGenerated) &&
-        Objects.equals(this.output, calculatedFieldConfiguration.output) &&
+    return Objects.equals(this.output, calculatedFieldConfiguration.output) &&
+        Objects.equals(this.aiGenerated, calculatedFieldConfiguration.aiGenerated) &&
         Objects.equals(this.type, calculatedFieldConfiguration.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aiGenerated, output, type);
+    return Objects.hash(output, aiGenerated, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CalculatedFieldConfiguration {\n");
-    sb.append("    aiGenerated: ").append(toIndentedString(aiGenerated)).append("\n");
     sb.append("    output: ").append(toIndentedString(output)).append("\n");
+    sb.append("    aiGenerated: ").append(toIndentedString(aiGenerated)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -224,14 +224,14 @@ public class CalculatedFieldConfiguration {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `aiGenerated` to the URL query string
-    if (getAiGenerated() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
+    }
+
+    // add `aiGenerated` to the URL query string
+    if (getAiGenerated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
     }
 
     // add `type` to the URL query string

@@ -10,13 +10,13 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **arguments** | **Map\<String, Argument\>** |  | |
-| **createRules** | **Map\<String, AlarmRuleDefinition\>** |  | |
 | **clearRule** | **AlarmRuleDefinition** |  | [optional] |
+| **createRules** | **Map\<String, AlarmRuleDefinition\>** |  | |
 | **propagate** | **Boolean** |  | [optional] |
+| **propagateRelationTypes** | **List\<String\>** |  | [optional] |
 | **propagateToOwner** | **Boolean** |  | [optional] |
 | **propagateToOwnerHierarchy** | **Boolean** |  | [optional] |
 | **propagateToTenant** | **Boolean** |  | [optional] |
-| **propagateRelationTypes** | **List\<String\>** |  | [optional] |
 
 
 

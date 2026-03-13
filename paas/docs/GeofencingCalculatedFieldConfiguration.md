@@ -10,9 +10,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **entityCoordinates** | **EntityCoordinates** |  | |
-| **zoneGroups** | **Map\<String, ZoneGroupConfiguration\>** |  | |
 | **scheduledUpdateEnabled** | **Boolean** |  | [optional] |
 | **scheduledUpdateInterval** | **Integer** |  | [optional] |
+| **zoneGroups** | **Map\<String, ZoneGroupConfiguration\>** |  | |
 
 
 

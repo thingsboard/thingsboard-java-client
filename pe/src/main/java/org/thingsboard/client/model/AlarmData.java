@@ -65,6 +65,7 @@ import org.thingsboard.client.ApiClient;
   AlarmData.JSON_PROPERTY_ACK_TS,
   AlarmData.JSON_PROPERTY_CLEAR_TS,
   AlarmData.JSON_PROPERTY_ASSIGN_TS,
+  AlarmData.JSON_PROPERTY_DETAILS,
   AlarmData.JSON_PROPERTY_PROPAGATE,
   AlarmData.JSON_PROPERTY_PROPAGATE_TO_OWNER,
   AlarmData.JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY,
@@ -75,8 +76,7 @@ import org.thingsboard.client.ApiClient;
   AlarmData.JSON_PROPERTY_ORIGINATOR_DISPLAY_NAME,
   AlarmData.JSON_PROPERTY_ASSIGNEE,
   AlarmData.JSON_PROPERTY_NAME,
-  AlarmData.JSON_PROPERTY_STATUS,
-  AlarmData.JSON_PROPERTY_DETAILS
+  AlarmData.JSON_PROPERTY_STATUS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmData {
@@ -148,6 +148,10 @@ public class AlarmData {
   @javax.annotation.Nullable
   private Long assignTs;
 
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode details;
+
   public static final String JSON_PROPERTY_PROPAGATE = "propagate";
   @javax.annotation.Nullable
   private Boolean propagate;
@@ -191,10 +195,6 @@ public class AlarmData {
   public static final String JSON_PROPERTY_STATUS = "status";
   @javax.annotation.Nonnull
   private AlarmStatus status;
-
-  public static final String JSON_PROPERTY_DETAILS = "details";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode details = null;
 
   public AlarmData() { 
   }
@@ -601,6 +601,30 @@ public class AlarmData {
   }
 
 
+  public AlarmData details(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode details) {
+    this.details = details;
+    return this;
+  }
+
+  /**
+   * JSON object with alarm details
+   * @return details
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getDetails() {
+    return details;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDetails(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode details) {
+    this.details = details;
+  }
+
+
   public AlarmData propagate(@javax.annotation.Nullable Boolean propagate) {
     this.propagate = propagate;
     return this;
@@ -853,30 +877,6 @@ public class AlarmData {
 
 
 
-  public AlarmData details(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode details) {
-    this.details = details;
-    return this;
-  }
-
-  /**
-   * Get details
-   * @return details
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getDetails() {
-    return details;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode details) {
-    this.details = details;
-  }
-
-
   /**
    * Return true if this AlarmData object is equal to o.
    */
@@ -906,6 +906,7 @@ public class AlarmData {
         Objects.equals(this.ackTs, alarmData.ackTs) &&
         Objects.equals(this.clearTs, alarmData.clearTs) &&
         Objects.equals(this.assignTs, alarmData.assignTs) &&
+        Objects.equals(this.details, alarmData.details) &&
         Objects.equals(this.propagate, alarmData.propagate) &&
         Objects.equals(this.propagateToOwner, alarmData.propagateToOwner) &&
         Objects.equals(this.propagateToOwnerHierarchy, alarmData.propagateToOwnerHierarchy) &&
@@ -916,13 +917,12 @@ public class AlarmData {
         Objects.equals(this.originatorDisplayName, alarmData.originatorDisplayName) &&
         Objects.equals(this.assignee, alarmData.assignee) &&
         Objects.equals(this.name, alarmData.name) &&
-        Objects.equals(this.status, alarmData.status) &&
-        Objects.equals(this.details, alarmData.details);
+        Objects.equals(this.status, alarmData.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityId, latest, id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, propagate, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, propagateRelationTypes, originatorName, originatorLabel, originatorDisplayName, assignee, name, status, details);
+    return Objects.hash(entityId, latest, id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, propagateRelationTypes, originatorName, originatorLabel, originatorDisplayName, assignee, name, status);
   }
 
   @Override
@@ -946,6 +946,7 @@ public class AlarmData {
     sb.append("    ackTs: ").append(toIndentedString(ackTs)).append("\n");
     sb.append("    clearTs: ").append(toIndentedString(clearTs)).append("\n");
     sb.append("    assignTs: ").append(toIndentedString(assignTs)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    propagate: ").append(toIndentedString(propagate)).append("\n");
     sb.append("    propagateToOwner: ").append(toIndentedString(propagateToOwner)).append("\n");
     sb.append("    propagateToOwnerHierarchy: ").append(toIndentedString(propagateToOwnerHierarchy)).append("\n");
@@ -957,7 +958,6 @@ public class AlarmData {
     sb.append("    assignee: ").append(toIndentedString(assignee)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1094,6 +1094,11 @@ public class AlarmData {
       joiner.add(String.format(java.util.Locale.ROOT, "%sassignTs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAssignTs()))));
     }
 
+    // add `details` to the URL query string
+    if (getDetails() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdetails%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDetails()))));
+    }
+
     // add `propagate` to the URL query string
     if (getPropagate() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spropagate%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagate()))));
@@ -1151,11 +1156,6 @@ public class AlarmData {
     // add `status` to the URL query string
     if (getStatus() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
-    }
-
-    // add `details` to the URL query string
-    if (getDetails() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdetails%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDetails()))));
     }
 
     return joiner.toString();

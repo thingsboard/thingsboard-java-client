@@ -94,7 +94,7 @@ public class RateLimitsRecipientsConfig extends NotificationRuleRecipientsConfig
 
 
   @Override
-  public RateLimitsRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public RateLimitsRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

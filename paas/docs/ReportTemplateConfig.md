@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **namePattern** | **String** |  | [optional] |
+| **timeDataPattern** | **String** |  | [optional] |
 | **format** | **TbReportFormat** | Report format | |
 | **entityAliases** | **List\<EntityAlias\>** |  | [optional] |
 | **filters** | **List\<Filter\>** |  | [optional] |
-| **namePattern** | **String** |  | [optional] |
 | **components** | **List\<ReportComponent\>** |  | [optional] |
-| **timeDataPattern** | **String** |  | [optional] |
 
 
 

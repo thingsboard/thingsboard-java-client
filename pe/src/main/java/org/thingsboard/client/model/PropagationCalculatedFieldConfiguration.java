@@ -182,7 +182,7 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
 
 
   @Override
-  public PropagationCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
+  public PropagationCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
     this.setOutput(output);
     return this;
   }

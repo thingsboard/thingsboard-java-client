@@ -18,6 +18,7 @@
 | **configurationVersion** | **Integer** | Version of calculated field configuration. | [optional] |
 | **_configuration** | **CalculatedFieldConfiguration** |  | |
 | **version** | **Long** |  | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the calculated field | [optional] |
 | **entityName** | **String** |  | [optional] |
 
 

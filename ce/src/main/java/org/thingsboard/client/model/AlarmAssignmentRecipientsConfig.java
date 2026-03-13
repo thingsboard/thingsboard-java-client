@@ -94,7 +94,7 @@ public class AlarmAssignmentRecipientsConfig extends NotificationRuleRecipientsC
 
 
   @Override
-  public AlarmAssignmentRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public AlarmAssignmentRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

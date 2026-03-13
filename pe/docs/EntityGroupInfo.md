@@ -15,7 +15,7 @@
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity group. May include: 'description' (string), 'isPublic' (boolean, whether this group is shared publicly), 'publicCustomerId' (string, UUID of the public customer associated with this group). | [optional] |
 | **_configuration** | **com.fasterxml.jackson.databind.JsonNode** | JSON with the configuration for UI components: list of columns, settings, actions, etc  | [optional] |
 | **version** | **Long** |  | [optional] |
-| **ownerIds** | **Set\<EntityId\>** | List of the entity group owners. | |
+| **ownerIds** | **Set\<EntityGroupInfoOwnerIdsInner\>** | List of the entity group owners. | |
 | **groupAll** | **Boolean** | Indicates special group 'All' that contains all entities and can't be deleted. | [optional] |
 | **edgeGroupAll** | **Boolean** | Indicates special edge group 'All' that contains all entities and can't be deleted. | [optional] [readonly] |
 | **tenantId** | **TenantId** |  | [optional] |

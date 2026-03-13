@@ -10,13 +10,13 @@
 | **ts** | **Long** |  | [optional] |
 | **value** | **Object** |  | [optional] |
 | **key** | **String** |  | [optional] |
+| **doubleValue** | **Double** |  | [optional] |
+| **longValue** | **Long** |  | [optional] |
 | **booleanValue** | **Boolean** |  | [optional] |
 | **valueAsString** | **String** |  | [optional] |
 | **dataType** | **DataType** |  | [optional] |
 | **jsonValue** | **String** |  | [optional] |
 | **strValue** | **String** |  | [optional] |
-| **longValue** | **Long** |  | [optional] |
-| **doubleValue** | **Double** |  | [optional] |
 | **version** | **Long** |  | [optional] |
 
 

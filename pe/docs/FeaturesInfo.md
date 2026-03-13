@@ -8,11 +8,11 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **whiteLabelingEnabled** | **Boolean** |  | [optional] |
+| **emailEnabled** | **Boolean** |  | [optional] |
 | **smsEnabled** | **Boolean** |  | [optional] |
+| **notificationEnabled** | **Boolean** |  | [optional] |
 | **oauthEnabled** | **Boolean** |  | [optional] |
 | **twoFaEnabled** | **Boolean** |  | [optional] |
-| **emailEnabled** | **Boolean** |  | [optional] |
-| **notificationEnabled** | **Boolean** |  | [optional] |
 
 
 

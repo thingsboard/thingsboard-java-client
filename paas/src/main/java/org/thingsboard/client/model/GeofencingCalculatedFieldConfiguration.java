@@ -46,9 +46,9 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_ENTITY_COORDINATES,
-  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_ZONE_GROUPS,
   GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_ENABLED,
-  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL
+  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL,
+  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_ZONE_GROUPS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -62,10 +62,6 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   @javax.annotation.Nonnull
   private EntityCoordinates entityCoordinates;
 
-  public static final String JSON_PROPERTY_ZONE_GROUPS = "zoneGroups";
-  @javax.annotation.Nonnull
-  private Map<String, ZoneGroupConfiguration> zoneGroups = new HashMap<>();
-
   public static final String JSON_PROPERTY_SCHEDULED_UPDATE_ENABLED = "scheduledUpdateEnabled";
   @javax.annotation.Nullable
   private Boolean scheduledUpdateEnabled;
@@ -73,6 +69,10 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   public static final String JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL = "scheduledUpdateInterval";
   @javax.annotation.Nullable
   private Integer scheduledUpdateInterval;
+
+  public static final String JSON_PROPERTY_ZONE_GROUPS = "zoneGroups";
+  @javax.annotation.Nonnull
+  private Map<String, ZoneGroupConfiguration> zoneGroups = new HashMap<>();
 
   public GeofencingCalculatedFieldConfiguration() { 
   }
@@ -98,38 +98,6 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEntityCoordinates(@javax.annotation.Nonnull EntityCoordinates entityCoordinates) {
     this.entityCoordinates = entityCoordinates;
-  }
-
-
-  public GeofencingCalculatedFieldConfiguration zoneGroups(@javax.annotation.Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
-    this.zoneGroups = zoneGroups;
-    return this;
-  }
-
-  public GeofencingCalculatedFieldConfiguration putZoneGroupsItem(String key, ZoneGroupConfiguration zoneGroupsItem) {
-    if (this.zoneGroups == null) {
-      this.zoneGroups = new HashMap<>();
-    }
-    this.zoneGroups.put(key, zoneGroupsItem);
-    return this;
-  }
-
-  /**
-   * Get zoneGroups
-   * @return zoneGroups
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Map<String, ZoneGroupConfiguration> getZoneGroups() {
-    return zoneGroups;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setZoneGroups(@javax.annotation.Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
-    this.zoneGroups = zoneGroups;
   }
 
 
@@ -181,15 +149,47 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   }
 
 
+  public GeofencingCalculatedFieldConfiguration zoneGroups(@javax.annotation.Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
+    this.zoneGroups = zoneGroups;
+    return this;
+  }
+
+  public GeofencingCalculatedFieldConfiguration putZoneGroupsItem(String key, ZoneGroupConfiguration zoneGroupsItem) {
+    if (this.zoneGroups == null) {
+      this.zoneGroups = new HashMap<>();
+    }
+    this.zoneGroups.put(key, zoneGroupsItem);
+    return this;
+  }
+
+  /**
+   * Get zoneGroups
+   * @return zoneGroups
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Map<String, ZoneGroupConfiguration> getZoneGroups() {
+    return zoneGroups;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setZoneGroups(@javax.annotation.Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
+    this.zoneGroups = zoneGroups;
+  }
+
+
   @Override
-  public GeofencingCalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
-    this.setAiGenerated(aiGenerated);
+  public GeofencingCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
+    this.setOutput(output);
     return this;
   }
 
   @Override
-  public GeofencingCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
-    this.setOutput(output);
+  public GeofencingCalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
+    this.setAiGenerated(aiGenerated);
     return this;
   }
 
@@ -212,15 +212,15 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
     }
     GeofencingCalculatedFieldConfiguration geofencingCalculatedFieldConfiguration = (GeofencingCalculatedFieldConfiguration) o;
     return Objects.equals(this.entityCoordinates, geofencingCalculatedFieldConfiguration.entityCoordinates) &&
-        Objects.equals(this.zoneGroups, geofencingCalculatedFieldConfiguration.zoneGroups) &&
         Objects.equals(this.scheduledUpdateEnabled, geofencingCalculatedFieldConfiguration.scheduledUpdateEnabled) &&
         Objects.equals(this.scheduledUpdateInterval, geofencingCalculatedFieldConfiguration.scheduledUpdateInterval) &&
+        Objects.equals(this.zoneGroups, geofencingCalculatedFieldConfiguration.zoneGroups) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityCoordinates, zoneGroups, scheduledUpdateEnabled, scheduledUpdateInterval, super.hashCode());
+    return Objects.hash(entityCoordinates, scheduledUpdateEnabled, scheduledUpdateInterval, zoneGroups, super.hashCode());
   }
 
   @Override
@@ -229,9 +229,9 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
     sb.append("class GeofencingCalculatedFieldConfiguration {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    entityCoordinates: ").append(toIndentedString(entityCoordinates)).append("\n");
-    sb.append("    zoneGroups: ").append(toIndentedString(zoneGroups)).append("\n");
     sb.append("    scheduledUpdateEnabled: ").append(toIndentedString(scheduledUpdateEnabled)).append("\n");
     sb.append("    scheduledUpdateInterval: ").append(toIndentedString(scheduledUpdateInterval)).append("\n");
+    sb.append("    zoneGroups: ").append(toIndentedString(zoneGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -279,14 +279,14 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `aiGenerated` to the URL query string
-    if (getAiGenerated() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
+    }
+
+    // add `aiGenerated` to the URL query string
+    if (getAiGenerated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
     }
 
     // add `type` to the URL query string
@@ -299,16 +299,6 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
       joiner.add(getEntityCoordinates().toUrlQueryString(prefix + "entityCoordinates" + suffix));
     }
 
-    // add `zoneGroups` to the URL query string
-    if (getZoneGroups() != null) {
-      for (String _key : getZoneGroups().keySet()) {
-        if (getZoneGroups().get(_key) != null) {
-          joiner.add(getZoneGroups().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%szoneGroups%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
-        }
-      }
-    }
-
     // add `scheduledUpdateEnabled` to the URL query string
     if (getScheduledUpdateEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateEnabled()))));
@@ -317,6 +307,16 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
     // add `scheduledUpdateInterval` to the URL query string
     if (getScheduledUpdateInterval() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateInterval%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateInterval()))));
+    }
+
+    // add `zoneGroups` to the URL query string
+    if (getZoneGroups() != null) {
+      for (String _key : getZoneGroups().keySet()) {
+        if (getZoneGroups().get(_key) != null) {
+          joiner.add(getZoneGroups().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%szoneGroups%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
+      }
     }
 
     return joiner.toString();

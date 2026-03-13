@@ -50,16 +50,16 @@ import org.thingsboard.client.ApiClient;
   Dashboard.JSON_PROPERTY_CREATED_TIME,
   Dashboard.JSON_PROPERTY_TENANT_ID,
   Dashboard.JSON_PROPERTY_CUSTOMER_ID,
+  Dashboard.JSON_PROPERTY_OWNER_ID,
   Dashboard.JSON_PROPERTY_TITLE,
+  Dashboard.JSON_PROPERTY_NAME,
   Dashboard.JSON_PROPERTY_IMAGE,
   Dashboard.JSON_PROPERTY_ASSIGNED_CUSTOMERS,
   Dashboard.JSON_PROPERTY_MOBILE_HIDE,
   Dashboard.JSON_PROPERTY_MOBILE_ORDER,
-  Dashboard.JSON_PROPERTY_VERSION,
-  Dashboard.JSON_PROPERTY_RESOURCES,
   Dashboard.JSON_PROPERTY_CONFIGURATION,
-  Dashboard.JSON_PROPERTY_NAME,
-  Dashboard.JSON_PROPERTY_OWNER_ID
+  Dashboard.JSON_PROPERTY_RESOURCES,
+  Dashboard.JSON_PROPERTY_VERSION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Dashboard {
@@ -79,9 +79,17 @@ public class Dashboard {
   @javax.annotation.Nullable
   private CustomerId customerId;
 
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @javax.annotation.Nullable
+  private EntityId ownerId;
+
   public static final String JSON_PROPERTY_TITLE = "title";
   @javax.annotation.Nullable
   private String title;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
+  private String name;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
   @javax.annotation.Nullable
@@ -99,25 +107,17 @@ public class Dashboard {
   @javax.annotation.Nullable
   private Integer mobileOrder;
 
-  public static final String JSON_PROPERTY_VERSION = "version";
+  public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
   @javax.annotation.Nullable
-  private Long version;
+  private com.fasterxml.jackson.databind.JsonNode _configuration = null;
 
   public static final String JSON_PROPERTY_RESOURCES = "resources";
   @javax.annotation.Nullable
   private List<ResourceExportData> resources = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
+  public static final String JSON_PROPERTY_VERSION = "version";
   @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode _configuration = null;
-
-  public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
-  private String name;
-
-  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
-  private EntityId ownerId;
+  private Long version;
 
   public Dashboard() { 
   }
@@ -126,20 +126,20 @@ public class Dashboard {
   public Dashboard(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId, 
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_IMAGE) String image, 
     @JsonProperty(JSON_PROPERTY_MOBILE_HIDE) Boolean mobileHide, 
-    @JsonProperty(JSON_PROPERTY_MOBILE_ORDER) Integer mobileOrder, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
-    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
+    @JsonProperty(JSON_PROPERTY_MOBILE_ORDER) Integer mobileOrder
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
+    this.ownerId = ownerId;
+    this.name = name;
     this.image = image;
     this.mobileHide = mobileHide;
     this.mobileOrder = mobileOrder;
-    this.name = name;
-    this.ownerId = ownerId;
   }
 
   public Dashboard id(@javax.annotation.Nullable DashboardId id) {
@@ -218,6 +218,20 @@ public class Dashboard {
   }
 
 
+  /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
   public Dashboard title(@javax.annotation.Nullable String title) {
     this.title = title;
     return this;
@@ -240,6 +254,20 @@ public class Dashboard {
   public void setTitle(@javax.annotation.Nullable String title) {
     this.title = title;
   }
+
+
+  /**
+   * Same as title of the dashboard. Read-only field. Update the &#39;title&#39; to change the &#39;name&#39; of the dashboard.
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+
 
 
   /**
@@ -317,27 +345,27 @@ public class Dashboard {
 
 
 
-  public Dashboard version(@javax.annotation.Nullable Long version) {
-    this.version = version;
+  public Dashboard _configuration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+    this._configuration = _configuration;
     return this;
   }
 
   /**
-   * Get version
-   * @return version
+   * Get _configuration
+   * @return _configuration
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getVersion() {
-    return version;
+  public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
+    return _configuration;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
-    this.version = version;
+  public void setConfiguration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+    this._configuration = _configuration;
   }
 
 
@@ -373,56 +401,28 @@ public class Dashboard {
   }
 
 
-  public Dashboard _configuration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
-    this._configuration = _configuration;
+  public Dashboard version(@javax.annotation.Nullable Long version) {
+    this.version = version;
     return this;
   }
 
   /**
-   * Get _configuration
-   * @return _configuration
+   * Get version
+   * @return version
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
+  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
-    return _configuration;
+  public Long getVersion() {
+    return version;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
+  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
-    this._configuration = _configuration;
+  public void setVersion(@javax.annotation.Nullable Long version) {
+    this.version = version;
   }
-
-
-  /**
-   * Same as title of the dashboard. Read-only field. Update the &#39;title&#39; to change the &#39;name&#39; of the dashboard.
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-
-
-
-  /**
-   * JSON object with Customer or Tenant Id
-   * @return ownerId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityId getOwnerId() {
-    return ownerId;
-  }
-
-
 
 
   /**
@@ -441,21 +441,21 @@ public class Dashboard {
         Objects.equals(this.createdTime, dashboard.createdTime) &&
         Objects.equals(this.tenantId, dashboard.tenantId) &&
         Objects.equals(this.customerId, dashboard.customerId) &&
+        Objects.equals(this.ownerId, dashboard.ownerId) &&
         Objects.equals(this.title, dashboard.title) &&
+        Objects.equals(this.name, dashboard.name) &&
         Objects.equals(this.image, dashboard.image) &&
         Objects.equals(this.assignedCustomers, dashboard.assignedCustomers) &&
         Objects.equals(this.mobileHide, dashboard.mobileHide) &&
         Objects.equals(this.mobileOrder, dashboard.mobileOrder) &&
-        Objects.equals(this.version, dashboard.version) &&
-        Objects.equals(this.resources, dashboard.resources) &&
         Objects.equals(this._configuration, dashboard._configuration) &&
-        Objects.equals(this.name, dashboard.name) &&
-        Objects.equals(this.ownerId, dashboard.ownerId);
+        Objects.equals(this.resources, dashboard.resources) &&
+        Objects.equals(this.version, dashboard.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, title, image, assignedCustomers, mobileHide, mobileOrder, version, resources, _configuration, name, ownerId);
+    return Objects.hash(id, createdTime, tenantId, customerId, ownerId, title, name, image, assignedCustomers, mobileHide, mobileOrder, _configuration, resources, version);
   }
 
   @Override
@@ -466,16 +466,16 @@ public class Dashboard {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    assignedCustomers: ").append(toIndentedString(assignedCustomers)).append("\n");
     sb.append("    mobileHide: ").append(toIndentedString(mobileHide)).append("\n");
     sb.append("    mobileOrder: ").append(toIndentedString(mobileOrder)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -543,9 +543,19 @@ public class Dashboard {
       joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
     }
 
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
+    }
+
     // add `title` to the URL query string
     if (getTitle() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     // add `image` to the URL query string
@@ -575,9 +585,9 @@ public class Dashboard {
       joiner.add(String.format(java.util.Locale.ROOT, "%smobileOrder%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileOrder()))));
     }
 
-    // add `version` to the URL query string
-    if (getVersion() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
+    // add `configuration` to the URL query string
+    if (getConfiguration() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sconfiguration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConfiguration()))));
     }
 
     // add `resources` to the URL query string
@@ -590,19 +600,9 @@ public class Dashboard {
       }
     }
 
-    // add `configuration` to the URL query string
-    if (getConfiguration() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sconfiguration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConfiguration()))));
-    }
-
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
-    // add `ownerId` to the URL query string
-    if (getOwnerId() != null) {
-      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
+    // add `version` to the URL query string
+    if (getVersion() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
     return joiner.toString();

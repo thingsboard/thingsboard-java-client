@@ -94,7 +94,7 @@ public class ResourceShortageRecipientsConfig extends NotificationRuleRecipients
 
 
   @Override
-  public ResourceShortageRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public ResourceShortageRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

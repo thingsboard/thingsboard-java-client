@@ -42,6 +42,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   RuleNodeDebugEventFilter.JSON_PROPERTY_SERVER,
+  RuleNodeDebugEventFilter.JSON_PROPERTY_IS_ERROR,
   RuleNodeDebugEventFilter.JSON_PROPERTY_ERROR_STR,
   RuleNodeDebugEventFilter.JSON_PROPERTY_MSG_DIRECTION_TYPE,
   RuleNodeDebugEventFilter.JSON_PROPERTY_ENTITY_ID,
@@ -50,9 +51,7 @@ import org.thingsboard.client.ApiClient;
   RuleNodeDebugEventFilter.JSON_PROPERTY_MSG_TYPE,
   RuleNodeDebugEventFilter.JSON_PROPERTY_RELATION_TYPE,
   RuleNodeDebugEventFilter.JSON_PROPERTY_DATA_SEARCH,
-  RuleNodeDebugEventFilter.JSON_PROPERTY_METADATA_SEARCH,
-  RuleNodeDebugEventFilter.JSON_PROPERTY_IS_ERROR,
-  RuleNodeDebugEventFilter.JSON_PROPERTY_ERROR
+  RuleNodeDebugEventFilter.JSON_PROPERTY_METADATA_SEARCH
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -65,6 +64,45 @@ public class RuleNodeDebugEventFilter extends EventFilter {
   public static final String JSON_PROPERTY_SERVER = "server";
   @javax.annotation.Nullable
   private String server;
+
+  /**
+   * Boolean value to filter the errors
+   */
+  public enum IsErrorEnum {
+    FALSE(Boolean.valueOf("false")),
+    
+    TRUE(Boolean.valueOf("true"));
+
+    private Boolean value;
+
+    IsErrorEnum(Boolean value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public Boolean getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static IsErrorEnum fromValue(Boolean value) {
+      for (IsErrorEnum b : IsErrorEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_IS_ERROR = "isError";
+  @javax.annotation.Nullable
+  private IsErrorEnum isError;
 
   public static final String JSON_PROPERTY_ERROR_STR = "errorStr";
   @javax.annotation.Nullable
@@ -170,14 +208,6 @@ public class RuleNodeDebugEventFilter extends EventFilter {
   @javax.annotation.Nullable
   private String metadataSearch;
 
-  public static final String JSON_PROPERTY_IS_ERROR = "isError";
-  @javax.annotation.Nullable
-  private Boolean isError;
-
-  public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
-  private Boolean error;
-
   public RuleNodeDebugEventFilter() { 
   }
 
@@ -202,6 +232,30 @@ public class RuleNodeDebugEventFilter extends EventFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setServer(@javax.annotation.Nullable String server) {
     this.server = server;
+  }
+
+
+  public RuleNodeDebugEventFilter isError(@javax.annotation.Nullable IsErrorEnum isError) {
+    this.isError = isError;
+    return this;
+  }
+
+  /**
+   * Boolean value to filter the errors
+   * @return isError
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public IsErrorEnum getIsError() {
+    return isError;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsError(@javax.annotation.Nullable IsErrorEnum isError) {
+    this.isError = isError;
   }
 
 
@@ -421,54 +475,6 @@ public class RuleNodeDebugEventFilter extends EventFilter {
   }
 
 
-  public RuleNodeDebugEventFilter isError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-    return this;
-  }
-
-  /**
-   * Get isError
-   * @return isError
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsError() {
-    return isError;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-  }
-
-
-  public RuleNodeDebugEventFilter error(@javax.annotation.Nullable Boolean error) {
-    this.error = error;
-    return this;
-  }
-
-  /**
-   * Get error
-   * @return error
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getError() {
-    return error;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable Boolean error) {
-    this.error = error;
-  }
-
-
   @Override
   public RuleNodeDebugEventFilter eventType(@javax.annotation.Nonnull EventType eventType) {
     this.setEventType(eventType);
@@ -494,6 +500,7 @@ public class RuleNodeDebugEventFilter extends EventFilter {
     }
     RuleNodeDebugEventFilter ruleNodeDebugEventFilter = (RuleNodeDebugEventFilter) o;
     return Objects.equals(this.server, ruleNodeDebugEventFilter.server) &&
+        Objects.equals(this.isError, ruleNodeDebugEventFilter.isError) &&
         Objects.equals(this.errorStr, ruleNodeDebugEventFilter.errorStr) &&
         Objects.equals(this.msgDirectionType, ruleNodeDebugEventFilter.msgDirectionType) &&
         Objects.equals(this.entityId, ruleNodeDebugEventFilter.entityId) &&
@@ -503,14 +510,12 @@ public class RuleNodeDebugEventFilter extends EventFilter {
         Objects.equals(this.relationType, ruleNodeDebugEventFilter.relationType) &&
         Objects.equals(this.dataSearch, ruleNodeDebugEventFilter.dataSearch) &&
         Objects.equals(this.metadataSearch, ruleNodeDebugEventFilter.metadataSearch) &&
-        Objects.equals(this.isError, ruleNodeDebugEventFilter.isError) &&
-        Objects.equals(this.error, ruleNodeDebugEventFilter.error) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(server, errorStr, msgDirectionType, entityId, entityType, msgId, msgType, relationType, dataSearch, metadataSearch, isError, error, super.hashCode());
+    return Objects.hash(server, isError, errorStr, msgDirectionType, entityId, entityType, msgId, msgType, relationType, dataSearch, metadataSearch, super.hashCode());
   }
 
   @Override
@@ -519,6 +524,7 @@ public class RuleNodeDebugEventFilter extends EventFilter {
     sb.append("class RuleNodeDebugEventFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    errorStr: ").append(toIndentedString(errorStr)).append("\n");
     sb.append("    msgDirectionType: ").append(toIndentedString(msgDirectionType)).append("\n");
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
@@ -528,8 +534,6 @@ public class RuleNodeDebugEventFilter extends EventFilter {
     sb.append("    relationType: ").append(toIndentedString(relationType)).append("\n");
     sb.append("    dataSearch: ").append(toIndentedString(dataSearch)).append("\n");
     sb.append("    metadataSearch: ").append(toIndentedString(metadataSearch)).append("\n");
-    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -592,6 +596,11 @@ public class RuleNodeDebugEventFilter extends EventFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%sserver%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getServer()))));
     }
 
+    // add `isError` to the URL query string
+    if (getIsError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
+    }
+
     // add `errorStr` to the URL query string
     if (getErrorStr() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serrorStr%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorStr()))));
@@ -635,16 +644,6 @@ public class RuleNodeDebugEventFilter extends EventFilter {
     // add `metadataSearch` to the URL query string
     if (getMetadataSearch() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smetadataSearch%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMetadataSearch()))));
-    }
-
-    // add `isError` to the URL query string
-    if (getIsError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
-    }
-
-    // add `error` to the URL query string
-    if (getError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
     }
 
     return joiner.toString();

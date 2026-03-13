@@ -94,7 +94,7 @@ public class EdgeConnectionRecipientsConfig extends NotificationRuleRecipientsCo
 
 
   @Override
-  public EdgeConnectionRecipientsConfig triggerType(@javax.annotation.Nonnull NotificationRuleTriggerType triggerType) {
+  public EdgeConnectionRecipientsConfig triggerType(@javax.annotation.Nullable NotificationRuleTriggerType triggerType) {
     this.setTriggerType(triggerType);
     return this;
   }

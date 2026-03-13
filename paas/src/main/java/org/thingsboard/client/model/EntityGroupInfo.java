@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.thingsboard.client.model.EntityGroupId;
+import org.thingsboard.client.model.EntityGroupInfoOwnerIdsInner;
 import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.EntityType;
 import org.thingsboard.client.model.TenantId;
@@ -226,7 +227,7 @@ public class EntityGroupInfo {
 
   public static final String JSON_PROPERTY_OWNER_IDS = "ownerIds";
   @javax.annotation.Nonnull
-  private Set<EntityId> ownerIds = new LinkedHashSet<>();
+  private Set<EntityGroupInfoOwnerIdsInner> ownerIds = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_GROUP_ALL = "groupAll";
   @javax.annotation.Nullable
@@ -435,12 +436,12 @@ public class EntityGroupInfo {
   }
 
 
-  public EntityGroupInfo ownerIds(@javax.annotation.Nonnull Set<EntityId> ownerIds) {
+  public EntityGroupInfo ownerIds(@javax.annotation.Nonnull Set<EntityGroupInfoOwnerIdsInner> ownerIds) {
     this.ownerIds = ownerIds;
     return this;
   }
 
-  public EntityGroupInfo addOwnerIdsItem(EntityId ownerIdsItem) {
+  public EntityGroupInfo addOwnerIdsItem(EntityGroupInfoOwnerIdsInner ownerIdsItem) {
     if (this.ownerIds == null) {
       this.ownerIds = new LinkedHashSet<>();
     }
@@ -455,7 +456,7 @@ public class EntityGroupInfo {
   @javax.annotation.Nonnull
   @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Set<EntityId> getOwnerIds() {
+  public Set<EntityGroupInfoOwnerIdsInner> getOwnerIds() {
     return ownerIds;
   }
 
@@ -463,7 +464,7 @@ public class EntityGroupInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOwnerIds(@javax.annotation.Nonnull Set<EntityId> ownerIds) {
+  public void setOwnerIds(@javax.annotation.Nonnull Set<EntityGroupInfoOwnerIdsInner> ownerIds) {
     this.ownerIds = ownerIds;
   }
 
@@ -667,7 +668,7 @@ public class EntityGroupInfo {
     // add `ownerIds` to the URL query string
     if (getOwnerIds() != null) {
       int i = 0;
-      for (EntityId _item : getOwnerIds()) {
+      for (EntityGroupInfoOwnerIdsInner _item : getOwnerIds()) {
         if (_item != null) {
           joiner.add(_item.toUrlQueryString(String.format(java.util.Locale.ROOT, "%sownerIds%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));

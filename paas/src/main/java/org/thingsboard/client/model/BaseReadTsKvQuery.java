@@ -44,8 +44,8 @@ import org.thingsboard.client.ApiClient;
   BaseReadTsKvQuery.JSON_PROPERTY_AGG_PARAMETERS,
   BaseReadTsKvQuery.JSON_PROPERTY_LIMIT,
   BaseReadTsKvQuery.JSON_PROPERTY_ORDER,
-  BaseReadTsKvQuery.JSON_PROPERTY_INTERVAL,
-  BaseReadTsKvQuery.JSON_PROPERTY_AGGREGATION
+  BaseReadTsKvQuery.JSON_PROPERTY_AGGREGATION,
+  BaseReadTsKvQuery.JSON_PROPERTY_INTERVAL
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BaseReadTsKvQuery {
@@ -77,13 +77,13 @@ public class BaseReadTsKvQuery {
   @javax.annotation.Nullable
   private String order;
 
-  public static final String JSON_PROPERTY_INTERVAL = "interval";
-  @javax.annotation.Nullable
-  private Long interval;
-
   public static final String JSON_PROPERTY_AGGREGATION = "aggregation";
   @javax.annotation.Nullable
   private Aggregation aggregation;
+
+  public static final String JSON_PROPERTY_INTERVAL = "interval";
+  @javax.annotation.Nullable
+  private Long interval;
 
   public BaseReadTsKvQuery() { 
   }
@@ -256,30 +256,6 @@ public class BaseReadTsKvQuery {
   }
 
 
-  public BaseReadTsKvQuery interval(@javax.annotation.Nullable Long interval) {
-    this.interval = interval;
-    return this;
-  }
-
-  /**
-   * Get interval
-   * @return interval
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getInterval() {
-    return interval;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInterval(@javax.annotation.Nullable Long interval) {
-    this.interval = interval;
-  }
-
-
   public BaseReadTsKvQuery aggregation(@javax.annotation.Nullable Aggregation aggregation) {
     this.aggregation = aggregation;
     return this;
@@ -304,6 +280,30 @@ public class BaseReadTsKvQuery {
   }
 
 
+  public BaseReadTsKvQuery interval(@javax.annotation.Nullable Long interval) {
+    this.interval = interval;
+    return this;
+  }
+
+  /**
+   * Get interval
+   * @return interval
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getInterval() {
+    return interval;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInterval(@javax.annotation.Nullable Long interval) {
+    this.interval = interval;
+  }
+
+
   /**
    * Return true if this BaseReadTsKvQuery object is equal to o.
    */
@@ -323,13 +323,13 @@ public class BaseReadTsKvQuery {
         Objects.equals(this.aggParameters, baseReadTsKvQuery.aggParameters) &&
         Objects.equals(this.limit, baseReadTsKvQuery.limit) &&
         Objects.equals(this.order, baseReadTsKvQuery.order) &&
-        Objects.equals(this.interval, baseReadTsKvQuery.interval) &&
-        Objects.equals(this.aggregation, baseReadTsKvQuery.aggregation);
+        Objects.equals(this.aggregation, baseReadTsKvQuery.aggregation) &&
+        Objects.equals(this.interval, baseReadTsKvQuery.interval);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, key, startTs, endTs, aggParameters, limit, order, interval, aggregation);
+    return Objects.hash(id, key, startTs, endTs, aggParameters, limit, order, aggregation, interval);
   }
 
   @Override
@@ -343,8 +343,8 @@ public class BaseReadTsKvQuery {
     sb.append("    aggParameters: ").append(toIndentedString(aggParameters)).append("\n");
     sb.append("    limit: ").append(toIndentedString(limit)).append("\n");
     sb.append("    order: ").append(toIndentedString(order)).append("\n");
-    sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    aggregation: ").append(toIndentedString(aggregation)).append("\n");
+    sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -427,14 +427,14 @@ public class BaseReadTsKvQuery {
       joiner.add(String.format(java.util.Locale.ROOT, "%sorder%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOrder()))));
     }
 
-    // add `interval` to the URL query string
-    if (getInterval() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sinterval%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getInterval()))));
-    }
-
     // add `aggregation` to the URL query string
     if (getAggregation() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%saggregation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAggregation()))));
+    }
+
+    // add `interval` to the URL query string
+    if (getInterval() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sinterval%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getInterval()))));
     }
 
     return joiner.toString();

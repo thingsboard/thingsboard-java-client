@@ -42,12 +42,11 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   DebugIntegrationEventFilter.JSON_PROPERTY_SERVER,
+  DebugIntegrationEventFilter.JSON_PROPERTY_IS_ERROR,
   DebugIntegrationEventFilter.JSON_PROPERTY_ERROR_STR,
   DebugIntegrationEventFilter.JSON_PROPERTY_TYPE,
   DebugIntegrationEventFilter.JSON_PROPERTY_MESSAGE,
-  DebugIntegrationEventFilter.JSON_PROPERTY_STATUS_INTEGRATION,
-  DebugIntegrationEventFilter.JSON_PROPERTY_IS_ERROR,
-  DebugIntegrationEventFilter.JSON_PROPERTY_ERROR
+  DebugIntegrationEventFilter.JSON_PROPERTY_STATUS_INTEGRATION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -60,6 +59,45 @@ public class DebugIntegrationEventFilter extends EventFilter {
   public static final String JSON_PROPERTY_SERVER = "server";
   @javax.annotation.Nullable
   private String server;
+
+  /**
+   * Boolean value to filter the errors
+   */
+  public enum IsErrorEnum {
+    FALSE(Boolean.valueOf("false")),
+    
+    TRUE(Boolean.valueOf("true"));
+
+    private Boolean value;
+
+    IsErrorEnum(Boolean value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public Boolean getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static IsErrorEnum fromValue(Boolean value) {
+      for (IsErrorEnum b : IsErrorEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_IS_ERROR = "isError";
+  @javax.annotation.Nullable
+  private IsErrorEnum isError;
 
   public static final String JSON_PROPERTY_ERROR_STR = "errorStr";
   @javax.annotation.Nullable
@@ -76,14 +114,6 @@ public class DebugIntegrationEventFilter extends EventFilter {
   public static final String JSON_PROPERTY_STATUS_INTEGRATION = "statusIntegration";
   @javax.annotation.Nullable
   private String statusIntegration;
-
-  public static final String JSON_PROPERTY_IS_ERROR = "isError";
-  @javax.annotation.Nullable
-  private Boolean isError;
-
-  public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
-  private Boolean error;
 
   public DebugIntegrationEventFilter() { 
   }
@@ -109,6 +139,30 @@ public class DebugIntegrationEventFilter extends EventFilter {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setServer(@javax.annotation.Nullable String server) {
     this.server = server;
+  }
+
+
+  public DebugIntegrationEventFilter isError(@javax.annotation.Nullable IsErrorEnum isError) {
+    this.isError = isError;
+    return this;
+  }
+
+  /**
+   * Boolean value to filter the errors
+   * @return isError
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public IsErrorEnum getIsError() {
+    return isError;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsError(@javax.annotation.Nullable IsErrorEnum isError) {
+    this.isError = isError;
   }
 
 
@@ -208,54 +262,6 @@ public class DebugIntegrationEventFilter extends EventFilter {
   }
 
 
-  public DebugIntegrationEventFilter isError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-    return this;
-  }
-
-  /**
-   * Get isError
-   * @return isError
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsError() {
-    return isError;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IS_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsError(@javax.annotation.Nullable Boolean isError) {
-    this.isError = isError;
-  }
-
-
-  public DebugIntegrationEventFilter error(@javax.annotation.Nullable Boolean error) {
-    this.error = error;
-    return this;
-  }
-
-  /**
-   * Get error
-   * @return error
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getError() {
-    return error;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable Boolean error) {
-    this.error = error;
-  }
-
-
   @Override
   public DebugIntegrationEventFilter eventType(@javax.annotation.Nonnull EventType eventType) {
     this.setEventType(eventType);
@@ -281,18 +287,17 @@ public class DebugIntegrationEventFilter extends EventFilter {
     }
     DebugIntegrationEventFilter debugIntegrationEventFilter = (DebugIntegrationEventFilter) o;
     return Objects.equals(this.server, debugIntegrationEventFilter.server) &&
+        Objects.equals(this.isError, debugIntegrationEventFilter.isError) &&
         Objects.equals(this.errorStr, debugIntegrationEventFilter.errorStr) &&
         Objects.equals(this.type, debugIntegrationEventFilter.type) &&
         Objects.equals(this.message, debugIntegrationEventFilter.message) &&
         Objects.equals(this.statusIntegration, debugIntegrationEventFilter.statusIntegration) &&
-        Objects.equals(this.isError, debugIntegrationEventFilter.isError) &&
-        Objects.equals(this.error, debugIntegrationEventFilter.error) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(server, errorStr, type, message, statusIntegration, isError, error, super.hashCode());
+    return Objects.hash(server, isError, errorStr, type, message, statusIntegration, super.hashCode());
   }
 
   @Override
@@ -301,12 +306,11 @@ public class DebugIntegrationEventFilter extends EventFilter {
     sb.append("class DebugIntegrationEventFilter {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    server: ").append(toIndentedString(server)).append("\n");
+    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
     sb.append("    errorStr: ").append(toIndentedString(errorStr)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    statusIntegration: ").append(toIndentedString(statusIntegration)).append("\n");
-    sb.append("    isError: ").append(toIndentedString(isError)).append("\n");
-    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -369,6 +373,11 @@ public class DebugIntegrationEventFilter extends EventFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%sserver%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getServer()))));
     }
 
+    // add `isError` to the URL query string
+    if (getIsError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
+    }
+
     // add `errorStr` to the URL query string
     if (getErrorStr() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serrorStr%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorStr()))));
@@ -387,16 +396,6 @@ public class DebugIntegrationEventFilter extends EventFilter {
     // add `statusIntegration` to the URL query string
     if (getStatusIntegration() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstatusIntegration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatusIntegration()))));
-    }
-
-    // add `isError` to the URL query string
-    if (getIsError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisError%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsError()))));
-    }
-
-    // add `error` to the URL query string
-    if (getError() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
     }
 
     return joiner.toString();
