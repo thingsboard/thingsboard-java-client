@@ -8,9 +8,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **created** | **Integer** |  | [optional] |
+| **updated** | **Integer** |  | [optional] |
 | **errors** | **Integer** |  | [optional] |
 | **errorsList** | **List\<String\>** |  | [optional] |
-| **updated** | **Integer** |  | [optional] |
 
 
 

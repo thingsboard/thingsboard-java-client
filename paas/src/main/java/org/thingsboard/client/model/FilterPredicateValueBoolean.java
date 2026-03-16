@@ -37,8 +37,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   FilterPredicateValueBoolean.JSON_PROPERTY_DEFAULT_VALUE,
-  FilterPredicateValueBoolean.JSON_PROPERTY_DYNAMIC_VALUE,
-  FilterPredicateValueBoolean.JSON_PROPERTY_USER_VALUE
+  FilterPredicateValueBoolean.JSON_PROPERTY_USER_VALUE,
+  FilterPredicateValueBoolean.JSON_PROPERTY_DYNAMIC_VALUE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FilterPredicateValueBoolean {
@@ -46,13 +46,13 @@ public class FilterPredicateValueBoolean {
   @javax.annotation.Nullable
   private Boolean defaultValue;
 
-  public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
-  @javax.annotation.Nullable
-  private DynamicValueBoolean dynamicValue;
-
   public static final String JSON_PROPERTY_USER_VALUE = "userValue";
   @javax.annotation.Nullable
   private Boolean userValue;
+
+  public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
+  @javax.annotation.Nullable
+  private DynamicValueBoolean dynamicValue;
 
   public FilterPredicateValueBoolean() { 
   }
@@ -81,30 +81,6 @@ public class FilterPredicateValueBoolean {
   }
 
 
-  public FilterPredicateValueBoolean dynamicValue(@javax.annotation.Nullable DynamicValueBoolean dynamicValue) {
-    this.dynamicValue = dynamicValue;
-    return this;
-  }
-
-  /**
-   * Get dynamicValue
-   * @return dynamicValue
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DynamicValueBoolean getDynamicValue() {
-    return dynamicValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValue(@javax.annotation.Nullable DynamicValueBoolean dynamicValue) {
-    this.dynamicValue = dynamicValue;
-  }
-
-
   public FilterPredicateValueBoolean userValue(@javax.annotation.Nullable Boolean userValue) {
     this.userValue = userValue;
     return this;
@@ -129,6 +105,30 @@ public class FilterPredicateValueBoolean {
   }
 
 
+  public FilterPredicateValueBoolean dynamicValue(@javax.annotation.Nullable DynamicValueBoolean dynamicValue) {
+    this.dynamicValue = dynamicValue;
+    return this;
+  }
+
+  /**
+   * Get dynamicValue
+   * @return dynamicValue
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DynamicValueBoolean getDynamicValue() {
+    return dynamicValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDynamicValue(@javax.annotation.Nullable DynamicValueBoolean dynamicValue) {
+    this.dynamicValue = dynamicValue;
+  }
+
+
   /**
    * Return true if this FilterPredicateValueBoolean object is equal to o.
    */
@@ -142,13 +142,13 @@ public class FilterPredicateValueBoolean {
     }
     FilterPredicateValueBoolean filterPredicateValueBoolean = (FilterPredicateValueBoolean) o;
     return Objects.equals(this.defaultValue, filterPredicateValueBoolean.defaultValue) &&
-        Objects.equals(this.dynamicValue, filterPredicateValueBoolean.dynamicValue) &&
-        Objects.equals(this.userValue, filterPredicateValueBoolean.userValue);
+        Objects.equals(this.userValue, filterPredicateValueBoolean.userValue) &&
+        Objects.equals(this.dynamicValue, filterPredicateValueBoolean.dynamicValue);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultValue, dynamicValue, userValue);
+    return Objects.hash(defaultValue, userValue, dynamicValue);
   }
 
   @Override
@@ -156,8 +156,8 @@ public class FilterPredicateValueBoolean {
     StringBuilder sb = new StringBuilder();
     sb.append("class FilterPredicateValueBoolean {\n");
     sb.append("    defaultValue: ").append(toIndentedString(defaultValue)).append("\n");
-    sb.append("    dynamicValue: ").append(toIndentedString(dynamicValue)).append("\n");
     sb.append("    userValue: ").append(toIndentedString(userValue)).append("\n");
+    sb.append("    dynamicValue: ").append(toIndentedString(dynamicValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -210,14 +210,14 @@ public class FilterPredicateValueBoolean {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdefaultValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefaultValue()))));
     }
 
-    // add `dynamicValue` to the URL query string
-    if (getDynamicValue() != null) {
-      joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
-    }
-
     // add `userValue` to the URL query string
     if (getUserValue() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%suserValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUserValue()))));
+    }
+
+    // add `dynamicValue` to the URL query string
+    if (getDynamicValue() != null) {
+      joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
     }
 
     return joiner.toString();

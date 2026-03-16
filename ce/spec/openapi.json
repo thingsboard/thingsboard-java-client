@@ -83050,57 +83050,57 @@
       "AlarmConditionValueBoolean": {
         "type": "object",
         "properties": {
-          "dynamicValueArgument": {
-            "type": "string"
-          },
           "staticValue": {
             "type": "boolean"
+          },
+          "dynamicValueArgument": {
+            "type": "string"
           }
         }
       },
       "AlarmConditionValueDouble": {
         "type": "object",
         "properties": {
-          "dynamicValueArgument": {
-            "type": "string"
-          },
           "staticValue": {
             "type": "number",
             "format": "double"
+          },
+          "dynamicValueArgument": {
+            "type": "string"
           }
         }
       },
       "AlarmConditionValueInteger": {
         "type": "object",
         "properties": {
-          "dynamicValueArgument": {
-            "type": "string"
-          },
           "staticValue": {
             "type": "integer",
             "format": "int32"
+          },
+          "dynamicValueArgument": {
+            "type": "string"
           }
         }
       },
       "AlarmConditionValueLong": {
         "type": "object",
         "properties": {
-          "dynamicValueArgument": {
-            "type": "string"
-          },
           "staticValue": {
             "type": "integer",
             "format": "int64"
+          },
+          "dynamicValueArgument": {
+            "type": "string"
           }
         }
       },
       "AlarmConditionValueString": {
         "type": "object",
         "properties": {
-          "dynamicValueArgument": {
+          "staticValue": {
             "type": "string"
           },
-          "staticValue": {
+          "dynamicValueArgument": {
             "type": "string"
           }
         }
@@ -85554,6 +85554,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "updated": {
+            "type": "integer",
+            "format": "int32"
+          },
           "errors": {
             "type": "integer",
             "format": "int32"
@@ -85563,10 +85567,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "updated": {
-            "type": "integer",
-            "format": "int32"
           }
         }
       },
@@ -85577,6 +85577,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "updated": {
+            "type": "integer",
+            "format": "int32"
+          },
           "errors": {
             "type": "integer",
             "format": "int32"
@@ -85586,10 +85590,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "updated": {
-            "type": "integer",
-            "format": "int32"
           }
         }
       },
@@ -85600,6 +85600,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "updated": {
+            "type": "integer",
+            "format": "int32"
+          },
           "errors": {
             "type": "integer",
             "format": "int32"
@@ -85609,10 +85613,6 @@
             "items": {
               "type": "string"
             }
-          },
-          "updated": {
-            "type": "integer",
-            "format": "int32"
           }
         }
       },
@@ -88156,71 +88156,71 @@
       "DynamicValueBoolean": {
         "type": "object",
         "properties": {
-          "inherit": {
-            "type": "boolean"
-          },
           "resolvedValue": {
             "type": "boolean"
+          },
+          "sourceType": {
+            "$ref": "#/components/schemas/DynamicValueSourceType"
           },
           "sourceAttribute": {
             "type": "string"
           },
-          "sourceType": {
-            "$ref": "#/components/schemas/DynamicValueSourceType"
+          "inherit": {
+            "type": "boolean"
           }
         }
       },
       "DynamicValueDouble": {
         "type": "object",
         "properties": {
-          "inherit": {
-            "type": "boolean"
-          },
           "resolvedValue": {
             "type": "number",
             "format": "double"
           },
+          "sourceType": {
+            "$ref": "#/components/schemas/DynamicValueSourceType"
+          },
           "sourceAttribute": {
             "type": "string"
           },
-          "sourceType": {
-            "$ref": "#/components/schemas/DynamicValueSourceType"
+          "inherit": {
+            "type": "boolean"
           }
         }
       },
       "DynamicValueInteger": {
         "type": "object",
         "properties": {
-          "inherit": {
-            "type": "boolean"
-          },
           "resolvedValue": {
             "type": "integer",
             "format": "int32"
           },
+          "sourceType": {
+            "$ref": "#/components/schemas/DynamicValueSourceType"
+          },
           "sourceAttribute": {
             "type": "string"
           },
-          "sourceType": {
-            "$ref": "#/components/schemas/DynamicValueSourceType"
+          "inherit": {
+            "type": "boolean"
           }
         }
       },
       "DynamicValueLong": {
         "type": "object",
         "properties": {
-          "inherit": {
-            "type": "boolean"
-          },
           "resolvedValue": {
             "type": "integer",
             "format": "int64"
           },
+          "sourceType": {
+            "$ref": "#/components/schemas/DynamicValueSourceType"
+          },
           "sourceAttribute": {
             "type": "string"
           },
-          "sourceType": {
-            "$ref": "#/components/schemas/DynamicValueSourceType"
+          "inherit": {
+            "type": "boolean"
           }
         }
       },
@@ -88236,17 +88236,17 @@
       "DynamicValueString": {
         "type": "object",
         "properties": {
-          "inherit": {
-            "type": "boolean"
-          },
           "resolvedValue": {
-            "type": "string"
-          },
-          "sourceAttribute": {
             "type": "string"
           },
           "sourceType": {
             "$ref": "#/components/schemas/DynamicValueSourceType"
+          },
+          "sourceAttribute": {
+            "type": "string"
+          },
+          "inherit": {
+            "type": "boolean"
           }
         }
       },
@@ -90129,11 +90129,11 @@
           "defaultValue": {
             "type": "boolean"
           },
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueBoolean"
-          },
           "userValue": {
             "type": "boolean"
+          },
+          "dynamicValue": {
+            "$ref": "#/components/schemas/DynamicValueBoolean"
           }
         }
       },
@@ -90144,12 +90144,12 @@
             "type": "number",
             "format": "double"
           },
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueDouble"
-          },
           "userValue": {
             "type": "number",
             "format": "double"
+          },
+          "dynamicValue": {
+            "$ref": "#/components/schemas/DynamicValueDouble"
           }
         }
       },
@@ -90160,12 +90160,12 @@
             "type": "integer",
             "format": "int32"
           },
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueInteger"
-          },
           "userValue": {
             "type": "integer",
             "format": "int32"
+          },
+          "dynamicValue": {
+            "$ref": "#/components/schemas/DynamicValueInteger"
           }
         }
       },
@@ -90176,12 +90176,12 @@
             "type": "integer",
             "format": "int64"
           },
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueLong"
-          },
           "userValue": {
             "type": "integer",
             "format": "int64"
+          },
+          "dynamicValue": {
+            "$ref": "#/components/schemas/DynamicValueLong"
           }
         }
       },
@@ -90191,11 +90191,11 @@
           "defaultValue": {
             "type": "string"
           },
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueString"
-          },
           "userValue": {
             "type": "string"
+          },
+          "dynamicValue": {
+            "$ref": "#/components/schemas/DynamicValueString"
           }
         }
       },
@@ -93951,9 +93951,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -93962,10 +93963,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -93981,9 +93981,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -93992,10 +93993,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94011,9 +94011,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94022,10 +94023,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94041,9 +94041,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94052,10 +94053,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94071,9 +94071,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94082,10 +94083,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94101,9 +94101,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94112,10 +94113,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94131,9 +94131,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94142,10 +94143,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94161,9 +94161,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94172,10 +94173,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94191,9 +94191,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94202,10 +94203,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94221,9 +94221,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94232,10 +94233,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94251,9 +94251,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94262,10 +94263,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94281,9 +94281,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94292,10 +94293,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94311,9 +94311,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94322,10 +94323,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94341,9 +94341,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94352,10 +94353,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94371,9 +94371,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94382,10 +94383,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94401,9 +94401,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94412,10 +94413,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94431,9 +94431,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94442,10 +94443,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94461,9 +94461,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94472,10 +94473,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94491,9 +94491,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94502,10 +94503,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94521,9 +94521,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94532,10 +94533,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94551,9 +94551,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94562,10 +94563,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94581,9 +94581,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94592,10 +94593,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94611,9 +94611,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94622,10 +94623,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94641,9 +94641,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94652,10 +94653,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94671,9 +94671,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94682,10 +94683,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94701,9 +94701,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94712,10 +94713,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94731,9 +94731,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94742,10 +94743,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94761,9 +94761,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94772,10 +94773,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94791,9 +94791,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94802,10 +94803,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94821,9 +94821,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94832,10 +94833,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94851,9 +94851,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94862,10 +94863,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94881,9 +94881,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94892,10 +94893,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94911,9 +94911,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94922,10 +94923,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94941,9 +94941,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94952,10 +94953,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -94971,9 +94971,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -94982,10 +94983,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95001,9 +95001,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95012,10 +95013,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95031,9 +95031,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95042,10 +95043,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95061,9 +95061,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95072,10 +95073,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95091,9 +95091,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95102,10 +95103,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95121,9 +95121,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95132,10 +95133,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95151,9 +95151,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95162,10 +95163,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95181,9 +95181,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95192,10 +95193,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95211,9 +95211,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95222,10 +95223,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95241,9 +95241,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95252,10 +95253,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95271,9 +95271,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95282,10 +95283,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95301,9 +95301,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95312,10 +95313,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95331,9 +95331,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95342,10 +95343,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95361,9 +95361,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95372,10 +95373,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95391,9 +95391,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95402,10 +95403,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95421,9 +95421,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95432,10 +95433,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }
@@ -95451,9 +95451,10 @@
             },
             "readOnly": true
           },
-          "hasNext": {
-            "type": "boolean",
-            "description": "'false' value indicates the end of the result set",
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
             "readOnly": true
           },
           "totalElements": {
@@ -95462,10 +95463,9 @@
             "description": "Total number of elements in all available pages",
             "readOnly": true
           },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
             "readOnly": true
           }
         }

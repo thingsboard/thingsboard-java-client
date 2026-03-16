@@ -35,45 +35,21 @@ import org.thingsboard.client.ApiClient;
  * AlarmConditionValueString
  */
 @JsonPropertyOrder({
-  AlarmConditionValueString.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT,
-  AlarmConditionValueString.JSON_PROPERTY_STATIC_VALUE
+  AlarmConditionValueString.JSON_PROPERTY_STATIC_VALUE,
+  AlarmConditionValueString.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmConditionValueString {
-  public static final String JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT = "dynamicValueArgument";
-  @javax.annotation.Nullable
-  private String dynamicValueArgument;
-
   public static final String JSON_PROPERTY_STATIC_VALUE = "staticValue";
   @javax.annotation.Nullable
   private String staticValue;
 
+  public static final String JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT = "dynamicValueArgument";
+  @javax.annotation.Nullable
+  private String dynamicValueArgument;
+
   public AlarmConditionValueString() { 
   }
-
-  public AlarmConditionValueString dynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
-    this.dynamicValueArgument = dynamicValueArgument;
-    return this;
-  }
-
-  /**
-   * Get dynamicValueArgument
-   * @return dynamicValueArgument
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDynamicValueArgument() {
-    return dynamicValueArgument;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
-    this.dynamicValueArgument = dynamicValueArgument;
-  }
-
 
   public AlarmConditionValueString staticValue(@javax.annotation.Nullable String staticValue) {
     this.staticValue = staticValue;
@@ -99,6 +75,30 @@ public class AlarmConditionValueString {
   }
 
 
+  public AlarmConditionValueString dynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
+    this.dynamicValueArgument = dynamicValueArgument;
+    return this;
+  }
+
+  /**
+   * Get dynamicValueArgument
+   * @return dynamicValueArgument
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getDynamicValueArgument() {
+    return dynamicValueArgument;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
+    this.dynamicValueArgument = dynamicValueArgument;
+  }
+
+
   /**
    * Return true if this AlarmConditionValueString object is equal to o.
    */
@@ -111,21 +111,21 @@ public class AlarmConditionValueString {
       return false;
     }
     AlarmConditionValueString alarmConditionValueString = (AlarmConditionValueString) o;
-    return Objects.equals(this.dynamicValueArgument, alarmConditionValueString.dynamicValueArgument) &&
-        Objects.equals(this.staticValue, alarmConditionValueString.staticValue);
+    return Objects.equals(this.staticValue, alarmConditionValueString.staticValue) &&
+        Objects.equals(this.dynamicValueArgument, alarmConditionValueString.dynamicValueArgument);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dynamicValueArgument, staticValue);
+    return Objects.hash(staticValue, dynamicValueArgument);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmConditionValueString {\n");
-    sb.append("    dynamicValueArgument: ").append(toIndentedString(dynamicValueArgument)).append("\n");
     sb.append("    staticValue: ").append(toIndentedString(staticValue)).append("\n");
+    sb.append("    dynamicValueArgument: ").append(toIndentedString(dynamicValueArgument)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -173,14 +173,14 @@ public class AlarmConditionValueString {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `dynamicValueArgument` to the URL query string
-    if (getDynamicValueArgument() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdynamicValueArgument%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDynamicValueArgument()))));
-    }
-
     // add `staticValue` to the URL query string
     if (getStaticValue() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstaticValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStaticValue()))));
+    }
+
+    // add `dynamicValueArgument` to the URL query string
+    if (getDynamicValueArgument() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdynamicValueArgument%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDynamicValueArgument()))));
     }
 
     return joiner.toString();

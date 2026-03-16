@@ -36,55 +36,31 @@ import org.thingsboard.client.ApiClient;
  * DynamicValueInteger
  */
 @JsonPropertyOrder({
-  DynamicValueInteger.JSON_PROPERTY_INHERIT,
   DynamicValueInteger.JSON_PROPERTY_RESOLVED_VALUE,
+  DynamicValueInteger.JSON_PROPERTY_SOURCE_TYPE,
   DynamicValueInteger.JSON_PROPERTY_SOURCE_ATTRIBUTE,
-  DynamicValueInteger.JSON_PROPERTY_SOURCE_TYPE
+  DynamicValueInteger.JSON_PROPERTY_INHERIT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DynamicValueInteger {
-  public static final String JSON_PROPERTY_INHERIT = "inherit";
-  @javax.annotation.Nullable
-  private Boolean inherit;
-
   public static final String JSON_PROPERTY_RESOLVED_VALUE = "resolvedValue";
   @javax.annotation.Nullable
   private Integer resolvedValue;
-
-  public static final String JSON_PROPERTY_SOURCE_ATTRIBUTE = "sourceAttribute";
-  @javax.annotation.Nullable
-  private String sourceAttribute;
 
   public static final String JSON_PROPERTY_SOURCE_TYPE = "sourceType";
   @javax.annotation.Nullable
   private DynamicValueSourceType sourceType;
 
+  public static final String JSON_PROPERTY_SOURCE_ATTRIBUTE = "sourceAttribute";
+  @javax.annotation.Nullable
+  private String sourceAttribute;
+
+  public static final String JSON_PROPERTY_INHERIT = "inherit";
+  @javax.annotation.Nullable
+  private Boolean inherit;
+
   public DynamicValueInteger() { 
   }
-
-  public DynamicValueInteger inherit(@javax.annotation.Nullable Boolean inherit) {
-    this.inherit = inherit;
-    return this;
-  }
-
-  /**
-   * Get inherit
-   * @return inherit
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_INHERIT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getInherit() {
-    return inherit;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_INHERIT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInherit(@javax.annotation.Nullable Boolean inherit) {
-    this.inherit = inherit;
-  }
-
 
   public DynamicValueInteger resolvedValue(@javax.annotation.Nullable Integer resolvedValue) {
     this.resolvedValue = resolvedValue;
@@ -107,30 +83,6 @@ public class DynamicValueInteger {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResolvedValue(@javax.annotation.Nullable Integer resolvedValue) {
     this.resolvedValue = resolvedValue;
-  }
-
-
-  public DynamicValueInteger sourceAttribute(@javax.annotation.Nullable String sourceAttribute) {
-    this.sourceAttribute = sourceAttribute;
-    return this;
-  }
-
-  /**
-   * Get sourceAttribute
-   * @return sourceAttribute
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SOURCE_ATTRIBUTE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getSourceAttribute() {
-    return sourceAttribute;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SOURCE_ATTRIBUTE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceAttribute(@javax.annotation.Nullable String sourceAttribute) {
-    this.sourceAttribute = sourceAttribute;
   }
 
 
@@ -158,6 +110,54 @@ public class DynamicValueInteger {
   }
 
 
+  public DynamicValueInteger sourceAttribute(@javax.annotation.Nullable String sourceAttribute) {
+    this.sourceAttribute = sourceAttribute;
+    return this;
+  }
+
+  /**
+   * Get sourceAttribute
+   * @return sourceAttribute
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SOURCE_ATTRIBUTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getSourceAttribute() {
+    return sourceAttribute;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SOURCE_ATTRIBUTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSourceAttribute(@javax.annotation.Nullable String sourceAttribute) {
+    this.sourceAttribute = sourceAttribute;
+  }
+
+
+  public DynamicValueInteger inherit(@javax.annotation.Nullable Boolean inherit) {
+    this.inherit = inherit;
+    return this;
+  }
+
+  /**
+   * Get inherit
+   * @return inherit
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_INHERIT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getInherit() {
+    return inherit;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_INHERIT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInherit(@javax.annotation.Nullable Boolean inherit) {
+    this.inherit = inherit;
+  }
+
+
   /**
    * Return true if this DynamicValueInteger object is equal to o.
    */
@@ -170,25 +170,25 @@ public class DynamicValueInteger {
       return false;
     }
     DynamicValueInteger dynamicValueInteger = (DynamicValueInteger) o;
-    return Objects.equals(this.inherit, dynamicValueInteger.inherit) &&
-        Objects.equals(this.resolvedValue, dynamicValueInteger.resolvedValue) &&
+    return Objects.equals(this.resolvedValue, dynamicValueInteger.resolvedValue) &&
+        Objects.equals(this.sourceType, dynamicValueInteger.sourceType) &&
         Objects.equals(this.sourceAttribute, dynamicValueInteger.sourceAttribute) &&
-        Objects.equals(this.sourceType, dynamicValueInteger.sourceType);
+        Objects.equals(this.inherit, dynamicValueInteger.inherit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inherit, resolvedValue, sourceAttribute, sourceType);
+    return Objects.hash(resolvedValue, sourceType, sourceAttribute, inherit);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DynamicValueInteger {\n");
-    sb.append("    inherit: ").append(toIndentedString(inherit)).append("\n");
     sb.append("    resolvedValue: ").append(toIndentedString(resolvedValue)).append("\n");
-    sb.append("    sourceAttribute: ").append(toIndentedString(sourceAttribute)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
+    sb.append("    sourceAttribute: ").append(toIndentedString(sourceAttribute)).append("\n");
+    sb.append("    inherit: ").append(toIndentedString(inherit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -236,14 +236,14 @@ public class DynamicValueInteger {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `inherit` to the URL query string
-    if (getInherit() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sinherit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getInherit()))));
-    }
-
     // add `resolvedValue` to the URL query string
     if (getResolvedValue() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sresolvedValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResolvedValue()))));
+    }
+
+    // add `sourceType` to the URL query string
+    if (getSourceType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssourceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceType()))));
     }
 
     // add `sourceAttribute` to the URL query string
@@ -251,9 +251,9 @@ public class DynamicValueInteger {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssourceAttribute%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceAttribute()))));
     }
 
-    // add `sourceType` to the URL query string
-    if (getSourceType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%ssourceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceType()))));
+    // add `inherit` to the URL query string
+    if (getInherit() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sinherit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getInherit()))));
     }
 
     return joiner.toString();

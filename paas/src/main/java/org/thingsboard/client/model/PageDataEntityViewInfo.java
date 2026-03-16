@@ -39,9 +39,9 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   PageDataEntityViewInfo.JSON_PROPERTY_DATA,
-  PageDataEntityViewInfo.JSON_PROPERTY_HAS_NEXT,
+  PageDataEntityViewInfo.JSON_PROPERTY_TOTAL_PAGES,
   PageDataEntityViewInfo.JSON_PROPERTY_TOTAL_ELEMENTS,
-  PageDataEntityViewInfo.JSON_PROPERTY_TOTAL_PAGES
+  PageDataEntityViewInfo.JSON_PROPERTY_HAS_NEXT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PageDataEntityViewInfo {
@@ -49,31 +49,31 @@ public class PageDataEntityViewInfo {
   @javax.annotation.Nullable
   private List<EntityViewInfo> data = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_HAS_NEXT = "hasNext";
+  public static final String JSON_PROPERTY_TOTAL_PAGES = "totalPages";
   @javax.annotation.Nullable
-  private Boolean hasNext;
+  private Integer totalPages;
 
   public static final String JSON_PROPERTY_TOTAL_ELEMENTS = "totalElements";
   @javax.annotation.Nullable
   private Long totalElements;
 
-  public static final String JSON_PROPERTY_TOTAL_PAGES = "totalPages";
+  public static final String JSON_PROPERTY_HAS_NEXT = "hasNext";
   @javax.annotation.Nullable
-  private Integer totalPages;
+  private Boolean hasNext;
 
   public PageDataEntityViewInfo() { 
   }
 
   @JsonCreator
   public PageDataEntityViewInfo(
-    @JsonProperty(JSON_PROPERTY_HAS_NEXT) Boolean hasNext, 
+    @JsonProperty(JSON_PROPERTY_TOTAL_PAGES) Integer totalPages, 
     @JsonProperty(JSON_PROPERTY_TOTAL_ELEMENTS) Long totalElements, 
-    @JsonProperty(JSON_PROPERTY_TOTAL_PAGES) Integer totalPages
+    @JsonProperty(JSON_PROPERTY_HAS_NEXT) Boolean hasNext
   ) {
   this();
-    this.hasNext = hasNext;
-    this.totalElements = totalElements;
     this.totalPages = totalPages;
+    this.totalElements = totalElements;
+    this.hasNext = hasNext;
   }
 
   public PageDataEntityViewInfo data(@javax.annotation.Nullable List<EntityViewInfo> data) {
@@ -109,14 +109,14 @@ public class PageDataEntityViewInfo {
 
 
   /**
-   * &#39;false&#39; value indicates the end of the result set
-   * @return hasNext
+   * Total number of available pages. Calculated based on the &#39;pageSize&#39; request parameter and total number of entities that match search criteria
+   * @return totalPages
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_HAS_NEXT, required = false)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getHasNext() {
-    return hasNext;
+  public Integer getTotalPages() {
+    return totalPages;
   }
 
 
@@ -137,14 +137,14 @@ public class PageDataEntityViewInfo {
 
 
   /**
-   * Total number of available pages. Calculated based on the &#39;pageSize&#39; request parameter and total number of entities that match search criteria
-   * @return totalPages
+   * &#39;false&#39; value indicates the end of the result set
+   * @return hasNext
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TOTAL_PAGES, required = false)
+  @JsonProperty(value = JSON_PROPERTY_HAS_NEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getTotalPages() {
-    return totalPages;
+  public Boolean getHasNext() {
+    return hasNext;
   }
 
 
@@ -163,14 +163,14 @@ public class PageDataEntityViewInfo {
     }
     PageDataEntityViewInfo pageDataEntityViewInfo = (PageDataEntityViewInfo) o;
     return Objects.equals(this.data, pageDataEntityViewInfo.data) &&
-        Objects.equals(this.hasNext, pageDataEntityViewInfo.hasNext) &&
+        Objects.equals(this.totalPages, pageDataEntityViewInfo.totalPages) &&
         Objects.equals(this.totalElements, pageDataEntityViewInfo.totalElements) &&
-        Objects.equals(this.totalPages, pageDataEntityViewInfo.totalPages);
+        Objects.equals(this.hasNext, pageDataEntityViewInfo.hasNext);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(data, hasNext, totalElements, totalPages);
+    return Objects.hash(data, totalPages, totalElements, hasNext);
   }
 
   @Override
@@ -178,9 +178,9 @@ public class PageDataEntityViewInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class PageDataEntityViewInfo {\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    hasNext: ").append(toIndentedString(hasNext)).append("\n");
-    sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
+    sb.append("    totalElements: ").append(toIndentedString(totalElements)).append("\n");
+    sb.append("    hasNext: ").append(toIndentedString(hasNext)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -238,9 +238,9 @@ public class PageDataEntityViewInfo {
       }
     }
 
-    // add `hasNext` to the URL query string
-    if (getHasNext() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%shasNext%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasNext()))));
+    // add `totalPages` to the URL query string
+    if (getTotalPages() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stotalPages%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalPages()))));
     }
 
     // add `totalElements` to the URL query string
@@ -248,9 +248,9 @@ public class PageDataEntityViewInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%stotalElements%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalElements()))));
     }
 
-    // add `totalPages` to the URL query string
-    if (getTotalPages() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stotalPages%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalPages()))));
+    // add `hasNext` to the URL query string
+    if (getHasNext() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%shasNext%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasNext()))));
     }
 
     return joiner.toString();
