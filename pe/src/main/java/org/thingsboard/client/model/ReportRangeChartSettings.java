@@ -429,14 +429,14 @@ public class ReportRangeChartSettings extends ReportTimeSeriesChartSettings {
   }
 
   @Override
-  public ReportRangeChartSettings xaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
-    this.setXaxis(xaxis);
+  public ReportRangeChartSettings yaxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yaxes) {
+    this.setYaxes(yaxes);
     return this;
   }
 
   @Override
-  public ReportRangeChartSettings yaxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yaxes) {
-    this.setYaxes(yaxes);
+  public ReportRangeChartSettings xaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
+    this.setXaxis(xaxis);
     return this;
   }
 
@@ -664,11 +664,6 @@ public class ReportRangeChartSettings extends ReportTimeSeriesChartSettings {
       joiner.add(String.format(java.util.Locale.ROOT, "%slegendValueColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendValueColor()))));
     }
 
-    // add `xaxis` to the URL query string
-    if (getXaxis() != null) {
-      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
-    }
-
     // add `yaxes` to the URL query string
     if (getYaxes() != null) {
       for (String _key : getYaxes().keySet()) {
@@ -677,6 +672,11 @@ public class ReportRangeChartSettings extends ReportTimeSeriesChartSettings {
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
         }
       }
+    }
+
+    // add `xaxis` to the URL query string
+    if (getXaxis() != null) {
+      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
     }
 
     // add `thresholds` to the URL query string
