@@ -56,8 +56,8 @@ import org.thingsboard.client.ApiClient;
   SaveOtaPackageInfoRequest.JSON_PROPERTY_CHECKSUM,
   SaveOtaPackageInfoRequest.JSON_PROPERTY_DATA_SIZE,
   SaveOtaPackageInfoRequest.JSON_PROPERTY_USES_URL,
-  SaveOtaPackageInfoRequest.JSON_PROPERTY_NAME,
-  SaveOtaPackageInfoRequest.JSON_PROPERTY_ADDITIONAL_INFO
+  SaveOtaPackageInfoRequest.JSON_PROPERTY_ADDITIONAL_INFO,
+  SaveOtaPackageInfoRequest.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SaveOtaPackageInfoRequest {
@@ -125,13 +125,13 @@ public class SaveOtaPackageInfoRequest {
   @javax.annotation.Nullable
   private Boolean usesUrl;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
-  private String name;
-
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
+  private String name;
 
   public SaveOtaPackageInfoRequest() { 
   }
@@ -448,20 +448,6 @@ public class SaveOtaPackageInfoRequest {
 
 
 
-  /**
-   * Get name
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-
-
-
   public SaveOtaPackageInfoRequest additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
@@ -484,6 +470,20 @@ public class SaveOtaPackageInfoRequest {
   public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
+
+
+  /**
+   * Get name
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+
 
 
   /**
@@ -514,13 +514,13 @@ public class SaveOtaPackageInfoRequest {
         Objects.equals(this.checksum, saveOtaPackageInfoRequest.checksum) &&
         Objects.equals(this.dataSize, saveOtaPackageInfoRequest.dataSize) &&
         Objects.equals(this.usesUrl, saveOtaPackageInfoRequest.usesUrl) &&
-        Objects.equals(this.name, saveOtaPackageInfoRequest.name) &&
-        Objects.equals(this.additionalInfo, saveOtaPackageInfoRequest.additionalInfo);
+        Objects.equals(this.additionalInfo, saveOtaPackageInfoRequest.additionalInfo) &&
+        Objects.equals(this.name, saveOtaPackageInfoRequest.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, deviceProfileId, type, title, version, tag, url, hasData, fileName, contentType, checksumAlgorithm, checksum, dataSize, usesUrl, name, additionalInfo);
+    return Objects.hash(id, createdTime, tenantId, deviceProfileId, type, title, version, tag, url, hasData, fileName, contentType, checksumAlgorithm, checksum, dataSize, usesUrl, additionalInfo, name);
   }
 
   @Override
@@ -543,8 +543,8 @@ public class SaveOtaPackageInfoRequest {
     sb.append("    checksum: ").append(toIndentedString(checksum)).append("\n");
     sb.append("    dataSize: ").append(toIndentedString(dataSize)).append("\n");
     sb.append("    usesUrl: ").append(toIndentedString(usesUrl)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -672,14 +672,14 @@ public class SaveOtaPackageInfoRequest {
       joiner.add(String.format(java.util.Locale.ROOT, "%susesUrl%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUsesUrl()))));
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     return joiner.toString();

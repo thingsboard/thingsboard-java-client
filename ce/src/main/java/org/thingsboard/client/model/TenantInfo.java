@@ -52,8 +52,8 @@ import org.thingsboard.client.ApiClient;
   TenantInfo.JSON_PROPERTY_TENANT_PROFILE_ID,
   TenantInfo.JSON_PROPERTY_VERSION,
   TenantInfo.JSON_PROPERTY_TENANT_PROFILE_NAME,
-  TenantInfo.JSON_PROPERTY_NAME,
-  TenantInfo.JSON_PROPERTY_ADDITIONAL_INFO
+  TenantInfo.JSON_PROPERTY_ADDITIONAL_INFO,
+  TenantInfo.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantInfo {
@@ -117,13 +117,13 @@ public class TenantInfo {
   @javax.annotation.Nullable
   private String tenantProfileName;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
-  private String name;
-
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
+  private String name;
 
   public TenantInfo() { 
   }
@@ -488,20 +488,6 @@ public class TenantInfo {
   }
 
 
-  /**
-   * Name of the tenant. Read-only, duplicated from title for backward compatibility
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-
-
-
   public TenantInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
@@ -524,6 +510,20 @@ public class TenantInfo {
   public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
+
+
+  /**
+   * Name of the tenant. Read-only, duplicated from title for backward compatibility
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+
 
 
   /**
@@ -553,13 +553,13 @@ public class TenantInfo {
         Objects.equals(this.tenantProfileId, tenantInfo.tenantProfileId) &&
         Objects.equals(this.version, tenantInfo.version) &&
         Objects.equals(this.tenantProfileName, tenantInfo.tenantProfileName) &&
-        Objects.equals(this.name, tenantInfo.name) &&
-        Objects.equals(this.additionalInfo, tenantInfo.additionalInfo);
+        Objects.equals(this.additionalInfo, tenantInfo.additionalInfo) &&
+        Objects.equals(this.name, tenantInfo.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, region, tenantProfileId, version, tenantProfileName, name, additionalInfo);
+    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, region, tenantProfileId, version, tenantProfileName, additionalInfo, name);
   }
 
   @Override
@@ -581,8 +581,8 @@ public class TenantInfo {
     sb.append("    tenantProfileId: ").append(toIndentedString(tenantProfileId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    tenantProfileName: ").append(toIndentedString(tenantProfileName)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -705,14 +705,14 @@ public class TenantInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%stenantProfileName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTenantProfileName()))));
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     return joiner.toString();

@@ -41,6 +41,11 @@ import org.thingsboard.client.ApiClient;
  * AlarmDataPageLink
  */
 @JsonPropertyOrder({
+  AlarmDataPageLink.JSON_PROPERTY_PAGE_SIZE,
+  AlarmDataPageLink.JSON_PROPERTY_PAGE,
+  AlarmDataPageLink.JSON_PROPERTY_TEXT_SEARCH,
+  AlarmDataPageLink.JSON_PROPERTY_SORT_ORDER,
+  AlarmDataPageLink.JSON_PROPERTY_DYNAMIC,
   AlarmDataPageLink.JSON_PROPERTY_START_TS,
   AlarmDataPageLink.JSON_PROPERTY_END_TS,
   AlarmDataPageLink.JSON_PROPERTY_TIME_WINDOW,
@@ -48,15 +53,30 @@ import org.thingsboard.client.ApiClient;
   AlarmDataPageLink.JSON_PROPERTY_STATUS_LIST,
   AlarmDataPageLink.JSON_PROPERTY_SEVERITY_LIST,
   AlarmDataPageLink.JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS,
-  AlarmDataPageLink.JSON_PROPERTY_ASSIGNEE_ID,
-  AlarmDataPageLink.JSON_PROPERTY_PAGE_SIZE,
-  AlarmDataPageLink.JSON_PROPERTY_PAGE,
-  AlarmDataPageLink.JSON_PROPERTY_TEXT_SEARCH,
-  AlarmDataPageLink.JSON_PROPERTY_SORT_ORDER,
-  AlarmDataPageLink.JSON_PROPERTY_DYNAMIC
+  AlarmDataPageLink.JSON_PROPERTY_ASSIGNEE_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmDataPageLink {
+  public static final String JSON_PROPERTY_PAGE_SIZE = "pageSize";
+  @javax.annotation.Nullable
+  private Integer pageSize;
+
+  public static final String JSON_PROPERTY_PAGE = "page";
+  @javax.annotation.Nullable
+  private Integer page;
+
+  public static final String JSON_PROPERTY_TEXT_SEARCH = "textSearch";
+  @javax.annotation.Nullable
+  private String textSearch;
+
+  public static final String JSON_PROPERTY_SORT_ORDER = "sortOrder";
+  @javax.annotation.Nullable
+  private EntityDataSortOrder sortOrder;
+
+  public static final String JSON_PROPERTY_DYNAMIC = "dynamic";
+  @javax.annotation.Nullable
+  private Boolean dynamic;
+
   public static final String JSON_PROPERTY_START_TS = "startTs";
   @javax.annotation.Nullable
   private Long startTs;
@@ -89,28 +109,128 @@ public class AlarmDataPageLink {
   @javax.annotation.Nullable
   private UserId assigneeId;
 
-  public static final String JSON_PROPERTY_PAGE_SIZE = "pageSize";
-  @javax.annotation.Nullable
-  private Integer pageSize;
-
-  public static final String JSON_PROPERTY_PAGE = "page";
-  @javax.annotation.Nullable
-  private Integer page;
-
-  public static final String JSON_PROPERTY_TEXT_SEARCH = "textSearch";
-  @javax.annotation.Nullable
-  private String textSearch;
-
-  public static final String JSON_PROPERTY_SORT_ORDER = "sortOrder";
-  @javax.annotation.Nullable
-  private EntityDataSortOrder sortOrder;
-
-  public static final String JSON_PROPERTY_DYNAMIC = "dynamic";
-  @javax.annotation.Nullable
-  private Boolean dynamic;
-
   public AlarmDataPageLink() { 
   }
+
+  public AlarmDataPageLink pageSize(@javax.annotation.Nullable Integer pageSize) {
+    this.pageSize = pageSize;
+    return this;
+  }
+
+  /**
+   * Get pageSize
+   * @return pageSize
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getPageSize() {
+    return pageSize;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPageSize(@javax.annotation.Nullable Integer pageSize) {
+    this.pageSize = pageSize;
+  }
+
+
+  public AlarmDataPageLink page(@javax.annotation.Nullable Integer page) {
+    this.page = page;
+    return this;
+  }
+
+  /**
+   * Get page
+   * @return page
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getPage() {
+    return page;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPage(@javax.annotation.Nullable Integer page) {
+    this.page = page;
+  }
+
+
+  public AlarmDataPageLink textSearch(@javax.annotation.Nullable String textSearch) {
+    this.textSearch = textSearch;
+    return this;
+  }
+
+  /**
+   * Get textSearch
+   * @return textSearch
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTextSearch() {
+    return textSearch;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTextSearch(@javax.annotation.Nullable String textSearch) {
+    this.textSearch = textSearch;
+  }
+
+
+  public AlarmDataPageLink sortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
+    this.sortOrder = sortOrder;
+    return this;
+  }
+
+  /**
+   * Get sortOrder
+   * @return sortOrder
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityDataSortOrder getSortOrder() {
+    return sortOrder;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
+    this.sortOrder = sortOrder;
+  }
+
+
+  public AlarmDataPageLink dynamic(@javax.annotation.Nullable Boolean dynamic) {
+    this.dynamic = dynamic;
+    return this;
+  }
+
+  /**
+   * Get dynamic
+   * @return dynamic
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getDynamic() {
+    return dynamic;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDynamic(@javax.annotation.Nullable Boolean dynamic) {
+    this.dynamic = dynamic;
+  }
+
 
   public AlarmDataPageLink startTs(@javax.annotation.Nullable Long startTs) {
     this.startTs = startTs;
@@ -328,126 +448,6 @@ public class AlarmDataPageLink {
   }
 
 
-  public AlarmDataPageLink pageSize(@javax.annotation.Nullable Integer pageSize) {
-    this.pageSize = pageSize;
-    return this;
-  }
-
-  /**
-   * Get pageSize
-   * @return pageSize
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getPageSize() {
-    return pageSize;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageSize(@javax.annotation.Nullable Integer pageSize) {
-    this.pageSize = pageSize;
-  }
-
-
-  public AlarmDataPageLink page(@javax.annotation.Nullable Integer page) {
-    this.page = page;
-    return this;
-  }
-
-  /**
-   * Get page
-   * @return page
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getPage() {
-    return page;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPage(@javax.annotation.Nullable Integer page) {
-    this.page = page;
-  }
-
-
-  public AlarmDataPageLink textSearch(@javax.annotation.Nullable String textSearch) {
-    this.textSearch = textSearch;
-    return this;
-  }
-
-  /**
-   * Get textSearch
-   * @return textSearch
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTextSearch() {
-    return textSearch;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTextSearch(@javax.annotation.Nullable String textSearch) {
-    this.textSearch = textSearch;
-  }
-
-
-  public AlarmDataPageLink sortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
-    this.sortOrder = sortOrder;
-    return this;
-  }
-
-  /**
-   * Get sortOrder
-   * @return sortOrder
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityDataSortOrder getSortOrder() {
-    return sortOrder;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
-    this.sortOrder = sortOrder;
-  }
-
-
-  public AlarmDataPageLink dynamic(@javax.annotation.Nullable Boolean dynamic) {
-    this.dynamic = dynamic;
-    return this;
-  }
-
-  /**
-   * Get dynamic
-   * @return dynamic
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getDynamic() {
-    return dynamic;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamic(@javax.annotation.Nullable Boolean dynamic) {
-    this.dynamic = dynamic;
-  }
-
-
   /**
    * Return true if this AlarmDataPageLink object is equal to o.
    */
@@ -460,30 +460,35 @@ public class AlarmDataPageLink {
       return false;
     }
     AlarmDataPageLink alarmDataPageLink = (AlarmDataPageLink) o;
-    return Objects.equals(this.startTs, alarmDataPageLink.startTs) &&
+    return Objects.equals(this.pageSize, alarmDataPageLink.pageSize) &&
+        Objects.equals(this.page, alarmDataPageLink.page) &&
+        Objects.equals(this.textSearch, alarmDataPageLink.textSearch) &&
+        Objects.equals(this.sortOrder, alarmDataPageLink.sortOrder) &&
+        Objects.equals(this.dynamic, alarmDataPageLink.dynamic) &&
+        Objects.equals(this.startTs, alarmDataPageLink.startTs) &&
         Objects.equals(this.endTs, alarmDataPageLink.endTs) &&
         Objects.equals(this.timeWindow, alarmDataPageLink.timeWindow) &&
         Objects.equals(this.typeList, alarmDataPageLink.typeList) &&
         Objects.equals(this.statusList, alarmDataPageLink.statusList) &&
         Objects.equals(this.severityList, alarmDataPageLink.severityList) &&
         Objects.equals(this.searchPropagatedAlarms, alarmDataPageLink.searchPropagatedAlarms) &&
-        Objects.equals(this.assigneeId, alarmDataPageLink.assigneeId) &&
-        Objects.equals(this.pageSize, alarmDataPageLink.pageSize) &&
-        Objects.equals(this.page, alarmDataPageLink.page) &&
-        Objects.equals(this.textSearch, alarmDataPageLink.textSearch) &&
-        Objects.equals(this.sortOrder, alarmDataPageLink.sortOrder) &&
-        Objects.equals(this.dynamic, alarmDataPageLink.dynamic);
+        Objects.equals(this.assigneeId, alarmDataPageLink.assigneeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTs, endTs, timeWindow, typeList, statusList, severityList, searchPropagatedAlarms, assigneeId, pageSize, page, textSearch, sortOrder, dynamic);
+    return Objects.hash(pageSize, page, textSearch, sortOrder, dynamic, startTs, endTs, timeWindow, typeList, statusList, severityList, searchPropagatedAlarms, assigneeId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmDataPageLink {\n");
+    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
+    sb.append("    page: ").append(toIndentedString(page)).append("\n");
+    sb.append("    textSearch: ").append(toIndentedString(textSearch)).append("\n");
+    sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
+    sb.append("    dynamic: ").append(toIndentedString(dynamic)).append("\n");
     sb.append("    startTs: ").append(toIndentedString(startTs)).append("\n");
     sb.append("    endTs: ").append(toIndentedString(endTs)).append("\n");
     sb.append("    timeWindow: ").append(toIndentedString(timeWindow)).append("\n");
@@ -492,11 +497,6 @@ public class AlarmDataPageLink {
     sb.append("    severityList: ").append(toIndentedString(severityList)).append("\n");
     sb.append("    searchPropagatedAlarms: ").append(toIndentedString(searchPropagatedAlarms)).append("\n");
     sb.append("    assigneeId: ").append(toIndentedString(assigneeId)).append("\n");
-    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
-    sb.append("    page: ").append(toIndentedString(page)).append("\n");
-    sb.append("    textSearch: ").append(toIndentedString(textSearch)).append("\n");
-    sb.append("    sortOrder: ").append(toIndentedString(sortOrder)).append("\n");
-    sb.append("    dynamic: ").append(toIndentedString(dynamic)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -543,6 +543,31 @@ public class AlarmDataPageLink {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `pageSize` to the URL query string
+    if (getPageSize() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spageSize%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageSize()))));
+    }
+
+    // add `page` to the URL query string
+    if (getPage() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPage()))));
+    }
+
+    // add `textSearch` to the URL query string
+    if (getTextSearch() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stextSearch%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTextSearch()))));
+    }
+
+    // add `sortOrder` to the URL query string
+    if (getSortOrder() != null) {
+      joiner.add(getSortOrder().toUrlQueryString(prefix + "sortOrder" + suffix));
+    }
+
+    // add `dynamic` to the URL query string
+    if (getDynamic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdynamic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDynamic()))));
+    }
 
     // add `startTs` to the URL query string
     if (getStartTs() != null) {
@@ -598,31 +623,6 @@ public class AlarmDataPageLink {
     // add `assigneeId` to the URL query string
     if (getAssigneeId() != null) {
       joiner.add(getAssigneeId().toUrlQueryString(prefix + "assigneeId" + suffix));
-    }
-
-    // add `pageSize` to the URL query string
-    if (getPageSize() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spageSize%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPageSize()))));
-    }
-
-    // add `page` to the URL query string
-    if (getPage() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPage()))));
-    }
-
-    // add `textSearch` to the URL query string
-    if (getTextSearch() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stextSearch%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTextSearch()))));
-    }
-
-    // add `sortOrder` to the URL query string
-    if (getSortOrder() != null) {
-      joiner.add(getSortOrder().toUrlQueryString(prefix + "sortOrder" + suffix));
-    }
-
-    // add `dynamic` to the URL query string
-    if (getDynamic() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdynamic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDynamic()))));
     }
 
     return joiner.toString();

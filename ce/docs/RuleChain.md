@@ -18,8 +18,8 @@ A JSON value representing the rule chain.
 | **root** | **Boolean** | Indicates root rule chain. The root rule chain process messages from all devices and entities by default. User may configure default rule chain per device profile. | [optional] |
 | **debugMode** | **Boolean** | Reserved for future usage. | [optional] |
 | **version** | **Long** |  | [optional] |
-| **_configuration** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **_configuration** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 
 

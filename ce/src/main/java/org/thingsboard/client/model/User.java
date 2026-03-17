@@ -49,8 +49,8 @@ import org.thingsboard.client.ApiClient;
   User.JSON_PROPERTY_LAST_NAME,
   User.JSON_PROPERTY_PHONE,
   User.JSON_PROPERTY_VERSION,
-  User.JSON_PROPERTY_NAME,
-  User.JSON_PROPERTY_ADDITIONAL_INFO
+  User.JSON_PROPERTY_ADDITIONAL_INFO,
+  User.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class User {
@@ -94,13 +94,13 @@ public class User {
   @javax.annotation.Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
-  private String name;
-
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
+  private String name;
 
   public User() { 
   }
@@ -345,20 +345,6 @@ public class User {
   }
 
 
-  /**
-   * Duplicates the email of the user, readonly
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-
-
-
   public User additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
@@ -384,6 +370,20 @@ public class User {
 
 
   /**
+   * Duplicates the email of the user, readonly
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+
+
+
+  /**
    * Return true if this User object is equal to o.
    */
   @Override
@@ -405,13 +405,13 @@ public class User {
         Objects.equals(this.lastName, user.lastName) &&
         Objects.equals(this.phone, user.phone) &&
         Objects.equals(this.version, user.version) &&
-        Objects.equals(this.name, user.name) &&
-        Objects.equals(this.additionalInfo, user.additionalInfo);
+        Objects.equals(this.additionalInfo, user.additionalInfo) &&
+        Objects.equals(this.name, user.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, email, authority, firstName, lastName, phone, version, name, additionalInfo);
+    return Objects.hash(id, createdTime, tenantId, customerId, email, authority, firstName, lastName, phone, version, additionalInfo, name);
   }
 
   @Override
@@ -428,8 +428,8 @@ public class User {
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -527,14 +527,14 @@ public class User {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     return joiner.toString();

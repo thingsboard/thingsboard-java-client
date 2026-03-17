@@ -9,9 +9,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **ignoreCase** | **Boolean** |  | [optional] |
 | **operation** | **StringOperation** |  | |
 | **value** | **AlarmConditionValueString** |  | |
-| **ignoreCase** | **Boolean** |  | [optional] |
 
 
 

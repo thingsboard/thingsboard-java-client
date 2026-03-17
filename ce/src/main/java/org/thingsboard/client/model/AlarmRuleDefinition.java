@@ -37,19 +37,19 @@ import org.thingsboard.client.ApiClient;
  * AlarmRuleDefinition
  */
 @JsonPropertyOrder({
-  AlarmRuleDefinition.JSON_PROPERTY_CONDITION,
   AlarmRuleDefinition.JSON_PROPERTY_ALARM_DETAILS,
+  AlarmRuleDefinition.JSON_PROPERTY_CONDITION,
   AlarmRuleDefinition.JSON_PROPERTY_DASHBOARD_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmRuleDefinition {
-  public static final String JSON_PROPERTY_CONDITION = "condition";
-  @javax.annotation.Nonnull
-  private AlarmRuleCondition condition;
-
   public static final String JSON_PROPERTY_ALARM_DETAILS = "alarmDetails";
   @javax.annotation.Nullable
   private String alarmDetails;
+
+  public static final String JSON_PROPERTY_CONDITION = "condition";
+  @javax.annotation.Nonnull
+  private AlarmRuleCondition condition;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
   @javax.annotation.Nullable
@@ -57,30 +57,6 @@ public class AlarmRuleDefinition {
 
   public AlarmRuleDefinition() { 
   }
-
-  public AlarmRuleDefinition condition(@javax.annotation.Nonnull AlarmRuleCondition condition) {
-    this.condition = condition;
-    return this;
-  }
-
-  /**
-   * Get condition
-   * @return condition
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public AlarmRuleCondition getCondition() {
-    return condition;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCondition(@javax.annotation.Nonnull AlarmRuleCondition condition) {
-    this.condition = condition;
-  }
-
 
   public AlarmRuleDefinition alarmDetails(@javax.annotation.Nullable String alarmDetails) {
     this.alarmDetails = alarmDetails;
@@ -103,6 +79,30 @@ public class AlarmRuleDefinition {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAlarmDetails(@javax.annotation.Nullable String alarmDetails) {
     this.alarmDetails = alarmDetails;
+  }
+
+
+  public AlarmRuleDefinition condition(@javax.annotation.Nonnull AlarmRuleCondition condition) {
+    this.condition = condition;
+    return this;
+  }
+
+  /**
+   * Get condition
+   * @return condition
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AlarmRuleCondition getCondition() {
+    return condition;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCondition(@javax.annotation.Nonnull AlarmRuleCondition condition) {
+    this.condition = condition;
   }
 
 
@@ -142,22 +142,22 @@ public class AlarmRuleDefinition {
       return false;
     }
     AlarmRuleDefinition alarmRuleDefinition = (AlarmRuleDefinition) o;
-    return Objects.equals(this.condition, alarmRuleDefinition.condition) &&
-        Objects.equals(this.alarmDetails, alarmRuleDefinition.alarmDetails) &&
+    return Objects.equals(this.alarmDetails, alarmRuleDefinition.alarmDetails) &&
+        Objects.equals(this.condition, alarmRuleDefinition.condition) &&
         Objects.equals(this.dashboardId, alarmRuleDefinition.dashboardId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(condition, alarmDetails, dashboardId);
+    return Objects.hash(alarmDetails, condition, dashboardId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmRuleDefinition {\n");
-    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    alarmDetails: ").append(toIndentedString(alarmDetails)).append("\n");
+    sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -206,14 +206,14 @@ public class AlarmRuleDefinition {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `condition` to the URL query string
-    if (getCondition() != null) {
-      joiner.add(getCondition().toUrlQueryString(prefix + "condition" + suffix));
-    }
-
     // add `alarmDetails` to the URL query string
     if (getAlarmDetails() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%salarmDetails%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAlarmDetails()))));
+    }
+
+    // add `condition` to the URL query string
+    if (getCondition() != null) {
+      joiner.add(getCondition().toUrlQueryString(prefix + "condition" + suffix));
     }
 
     // add `dashboardId` to the URL query string

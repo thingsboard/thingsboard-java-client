@@ -22,8 +22,8 @@
 | **loginButtonIcon** | **String** | Default log in button icon for OAuth2 provider | [optional] |
 | **loginButtonLabel** | **String** | Default OAuth2 provider label | [optional] |
 | **helpLink** | **String** | Help link for OAuth2 provider | [optional] |
-| **name** | **String** |  | [optional] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **name** | **String** |  | [optional] |
 
 
 
