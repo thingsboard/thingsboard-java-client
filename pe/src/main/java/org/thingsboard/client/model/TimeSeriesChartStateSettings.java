@@ -39,9 +39,9 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartStateSettings.JSON_PROPERTY_LABEL,
   TimeSeriesChartStateSettings.JSON_PROPERTY_VALUE,
   TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_TYPE,
+  TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_VALUE,
   TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_RANGE_FROM,
-  TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_RANGE_TO,
-  TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_VALUE
+  TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_RANGE_TO
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartStateSettings {
@@ -57,6 +57,10 @@ public class TimeSeriesChartStateSettings {
   @javax.annotation.Nullable
   private TimeSeriesChartStateSourceType sourceType;
 
+  public static final String JSON_PROPERTY_SOURCE_VALUE = "sourceValue";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode sourceValue = null;
+
   public static final String JSON_PROPERTY_SOURCE_RANGE_FROM = "sourceRangeFrom";
   @javax.annotation.Nullable
   private Double sourceRangeFrom;
@@ -64,10 +68,6 @@ public class TimeSeriesChartStateSettings {
   public static final String JSON_PROPERTY_SOURCE_RANGE_TO = "sourceRangeTo";
   @javax.annotation.Nullable
   private Double sourceRangeTo;
-
-  public static final String JSON_PROPERTY_SOURCE_VALUE = "sourceValue";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode sourceValue = null;
 
   public TimeSeriesChartStateSettings() { 
   }
@@ -144,6 +144,30 @@ public class TimeSeriesChartStateSettings {
   }
 
 
+  public TimeSeriesChartStateSettings sourceValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
+    this.sourceValue = sourceValue;
+    return this;
+  }
+
+  /**
+   * Get sourceValue
+   * @return sourceValue
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SOURCE_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getSourceValue() {
+    return sourceValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SOURCE_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSourceValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
+    this.sourceValue = sourceValue;
+  }
+
+
   public TimeSeriesChartStateSettings sourceRangeFrom(@javax.annotation.Nullable Double sourceRangeFrom) {
     this.sourceRangeFrom = sourceRangeFrom;
     return this;
@@ -192,30 +216,6 @@ public class TimeSeriesChartStateSettings {
   }
 
 
-  public TimeSeriesChartStateSettings sourceValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
-    this.sourceValue = sourceValue;
-    return this;
-  }
-
-  /**
-   * Get sourceValue
-   * @return sourceValue
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SOURCE_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getSourceValue() {
-    return sourceValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SOURCE_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
-    this.sourceValue = sourceValue;
-  }
-
-
   /**
    * Return true if this TimeSeriesChartStateSettings object is equal to o.
    */
@@ -231,14 +231,14 @@ public class TimeSeriesChartStateSettings {
     return Objects.equals(this.label, timeSeriesChartStateSettings.label) &&
         Objects.equals(this.value, timeSeriesChartStateSettings.value) &&
         Objects.equals(this.sourceType, timeSeriesChartStateSettings.sourceType) &&
+        Objects.equals(this.sourceValue, timeSeriesChartStateSettings.sourceValue) &&
         Objects.equals(this.sourceRangeFrom, timeSeriesChartStateSettings.sourceRangeFrom) &&
-        Objects.equals(this.sourceRangeTo, timeSeriesChartStateSettings.sourceRangeTo) &&
-        Objects.equals(this.sourceValue, timeSeriesChartStateSettings.sourceValue);
+        Objects.equals(this.sourceRangeTo, timeSeriesChartStateSettings.sourceRangeTo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, value, sourceType, sourceRangeFrom, sourceRangeTo, sourceValue);
+    return Objects.hash(label, value, sourceType, sourceValue, sourceRangeFrom, sourceRangeTo);
   }
 
   @Override
@@ -248,9 +248,9 @@ public class TimeSeriesChartStateSettings {
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
+    sb.append("    sourceValue: ").append(toIndentedString(sourceValue)).append("\n");
     sb.append("    sourceRangeFrom: ").append(toIndentedString(sourceRangeFrom)).append("\n");
     sb.append("    sourceRangeTo: ").append(toIndentedString(sourceRangeTo)).append("\n");
-    sb.append("    sourceValue: ").append(toIndentedString(sourceValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,6 +313,11 @@ public class TimeSeriesChartStateSettings {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssourceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceType()))));
     }
 
+    // add `sourceValue` to the URL query string
+    if (getSourceValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssourceValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceValue()))));
+    }
+
     // add `sourceRangeFrom` to the URL query string
     if (getSourceRangeFrom() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssourceRangeFrom%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceRangeFrom()))));
@@ -321,11 +326,6 @@ public class TimeSeriesChartStateSettings {
     // add `sourceRangeTo` to the URL query string
     if (getSourceRangeTo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssourceRangeTo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceRangeTo()))));
-    }
-
-    // add `sourceValue` to the URL query string
-    if (getSourceValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%ssourceValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceValue()))));
     }
 
     return joiner.toString();

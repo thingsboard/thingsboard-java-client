@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **OAuth2ClientRegistrationTemplateId** |  | [optional] |
 | **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **providerId** | **String** | OAuth2 provider identifier (e.g. its name) | |
 | **mapperConfig** | **OAuth2MapperConfig** | Default config for mapping OAuth2 log in response to platform entities | [optional] |
 | **authorizationUri** | **String** | Default authorization URI of the OAuth2 provider | [optional] |
@@ -23,7 +24,6 @@
 | **loginButtonLabel** | **String** | Default OAuth2 provider label | [optional] |
 | **helpLink** | **String** | Help link for OAuth2 provider | [optional] |
 | **name** | **String** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 
 

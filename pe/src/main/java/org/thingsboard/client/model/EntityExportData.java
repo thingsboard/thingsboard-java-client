@@ -48,11 +48,11 @@ import org.thingsboard.client.ApiClient;
  * Base export container for ThingsBoard entities
  */
 @JsonPropertyOrder({
-  EntityExportData.JSON_PROPERTY_ENTITY_TYPE,
   EntityExportData.JSON_PROPERTY_ENTITY,
   EntityExportData.JSON_PROPERTY_RELATIONS,
   EntityExportData.JSON_PROPERTY_ATTRIBUTES,
-  EntityExportData.JSON_PROPERTY_CALCULATED_FIELDS
+  EntityExportData.JSON_PROPERTY_CALCULATED_FIELDS,
+  EntityExportData.JSON_PROPERTY_ENTITY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -86,10 +86,6 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class EntityExportData {
-  public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @javax.annotation.Nonnull
-  private EntityType entityType;
-
   public static final String JSON_PROPERTY_ENTITY = "entity";
   @javax.annotation.Nullable
   private ExportableEntity entity;
@@ -106,32 +102,12 @@ public class EntityExportData {
   @javax.annotation.Nullable
   private List<CalculatedField> calculatedFields = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
+  @javax.annotation.Nonnull
+  private EntityType entityType;
+
   public EntityExportData() { 
   }
-
-  public EntityExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
-    this.entityType = entityType;
-    return this;
-  }
-
-  /**
-   * Get entityType
-   * @return entityType
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public EntityType getEntityType() {
-    return entityType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityType(@javax.annotation.Nonnull EntityType entityType) {
-    this.entityType = entityType;
-  }
-
 
   public EntityExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
     this.entity = entity;
@@ -253,6 +229,30 @@ public class EntityExportData {
   }
 
 
+  public EntityExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.entityType = entityType;
+    return this;
+  }
+
+  /**
+   * Get entityType
+   * @return entityType
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public EntityType getEntityType() {
+    return entityType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEntityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.entityType = entityType;
+  }
+
+
   /**
    * Return true if this EntityExportData object is equal to o.
    */
@@ -265,27 +265,27 @@ public class EntityExportData {
       return false;
     }
     EntityExportData entityExportData = (EntityExportData) o;
-    return Objects.equals(this.entityType, entityExportData.entityType) &&
-        Objects.equals(this.entity, entityExportData.entity) &&
+    return Objects.equals(this.entity, entityExportData.entity) &&
         Objects.equals(this.relations, entityExportData.relations) &&
         Objects.equals(this.attributes, entityExportData.attributes) &&
-        Objects.equals(this.calculatedFields, entityExportData.calculatedFields);
+        Objects.equals(this.calculatedFields, entityExportData.calculatedFields) &&
+        Objects.equals(this.entityType, entityExportData.entityType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, entity, relations, attributes, calculatedFields);
+    return Objects.hash(entity, relations, attributes, calculatedFields, entityType);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityExportData {\n");
-    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
     sb.append("    relations: ").append(toIndentedString(relations)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    calculatedFields: ").append(toIndentedString(calculatedFields)).append("\n");
+    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -333,11 +333,6 @@ public class EntityExportData {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `entityType` to the URL query string
-    if (getEntityType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
-    }
-
     // add `entity` to the URL query string
     if (getEntity() != null) {
       joiner.add(getEntity().toUrlQueryString(prefix + "entity" + suffix));
@@ -370,6 +365,11 @@ public class EntityExportData {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `entityType` to the URL query string
+    if (getEntityType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
     }
 
     return joiner.toString();

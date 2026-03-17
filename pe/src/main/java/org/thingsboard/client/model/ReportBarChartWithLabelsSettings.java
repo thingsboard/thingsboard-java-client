@@ -441,8 +441,50 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
   }
 
   @Override
+  public ReportBarChartWithLabelsSettings thresholds(@javax.annotation.Nullable List<TimeSeriesChartThreshold> thresholds) {
+    this.setThresholds(thresholds);
+    return this;
+  }
+
+  @Override
   public ReportBarChartWithLabelsSettings stack(@javax.annotation.Nullable Boolean stack) {
     this.setStack(stack);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings grid(@javax.annotation.Nullable TimeSeriesChartGridSettings grid) {
+    this.setGrid(grid);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings yAxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yAxes) {
+    this.setyAxes(yAxes);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings xAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xAxis) {
+    this.setxAxis(xAxis);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings barWidthSettings(@javax.annotation.Nullable TimeSeriesChartBarWidthSettings barWidthSettings) {
+    this.setBarWidthSettings(barWidthSettings);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings noAggregationBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings) {
+    this.setNoAggregationBarWidthSettings(noAggregationBarWidthSettings);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings states(@javax.annotation.Nullable List<TimeSeriesChartStateSettings> states) {
+    this.setStates(states);
     return this;
   }
 
@@ -461,6 +503,12 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
   @Override
   public ReportBarChartWithLabelsSettings comparisonCustomIntervalValue(@javax.annotation.Nullable Long comparisonCustomIntervalValue) {
     this.setComparisonCustomIntervalValue(comparisonCustomIntervalValue);
+    return this;
+  }
+
+  @Override
+  public ReportBarChartWithLabelsSettings comparisonXAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings comparisonXAxis) {
+    this.setComparisonXAxis(comparisonXAxis);
     return this;
   }
 
@@ -507,8 +555,8 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
   }
 
   @Override
-  public ReportBarChartWithLabelsSettings yaxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yaxes) {
-    this.setYaxes(yaxes);
+  public ReportBarChartWithLabelsSettings legendConfig(@javax.annotation.Nullable LegendConfig legendConfig) {
+    this.setLegendConfig(legendConfig);
     return this;
   }
 
@@ -519,56 +567,8 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
   }
 
   @Override
-  public ReportBarChartWithLabelsSettings thresholds(@javax.annotation.Nullable List<TimeSeriesChartThreshold> thresholds) {
-    this.setThresholds(thresholds);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings grid(@javax.annotation.Nullable TimeSeriesChartGridSettings grid) {
-    this.setGrid(grid);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings yAxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yAxes) {
-    this.setyAxes(yAxes);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings xAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xAxis) {
-    this.setxAxis(xAxis);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings barWidthSettings(@javax.annotation.Nullable TimeSeriesChartBarWidthSettings barWidthSettings) {
-    this.setBarWidthSettings(barWidthSettings);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings noAggregationBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings) {
-    this.setNoAggregationBarWidthSettings(noAggregationBarWidthSettings);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings states(@javax.annotation.Nullable List<TimeSeriesChartStateSettings> states) {
-    this.setStates(states);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings comparisonXAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings comparisonXAxis) {
-    this.setComparisonXAxis(comparisonXAxis);
-    return this;
-  }
-
-  @Override
-  public ReportBarChartWithLabelsSettings legendConfig(@javax.annotation.Nullable LegendConfig legendConfig) {
-    this.setLegendConfig(legendConfig);
+  public ReportBarChartWithLabelsSettings yaxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yaxes) {
+    this.setYaxes(yaxes);
     return this;
   }
 
@@ -693,76 +693,6 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
       joiner.add(String.format(java.util.Locale.ROOT, "%stitleAlignment%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitleAlignment()))));
     }
 
-    // add `stack` to the URL query string
-    if (getStack() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstack%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStack()))));
-    }
-
-    // add `comparisonEnabled` to the URL query string
-    if (getComparisonEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonEnabled()))));
-    }
-
-    // add `timeForComparison` to the URL query string
-    if (getTimeForComparison() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimeForComparison%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeForComparison()))));
-    }
-
-    // add `comparisonCustomIntervalValue` to the URL query string
-    if (getComparisonCustomIntervalValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonCustomIntervalValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonCustomIntervalValue()))));
-    }
-
-    // add `showLegend` to the URL query string
-    if (getShowLegend() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowLegend%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowLegend()))));
-    }
-
-    // add `legendColumnTitleFont` to the URL query string
-    if (getLegendColumnTitleFont() != null) {
-      joiner.add(getLegendColumnTitleFont().toUrlQueryString(prefix + "legendColumnTitleFont" + suffix));
-    }
-
-    // add `legendColumnTitleColor` to the URL query string
-    if (getLegendColumnTitleColor() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slegendColumnTitleColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendColumnTitleColor()))));
-    }
-
-    // add `legendLabelFont` to the URL query string
-    if (getLegendLabelFont() != null) {
-      joiner.add(getLegendLabelFont().toUrlQueryString(prefix + "legendLabelFont" + suffix));
-    }
-
-    // add `legendLabelColor` to the URL query string
-    if (getLegendLabelColor() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slegendLabelColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendLabelColor()))));
-    }
-
-    // add `legendValueFont` to the URL query string
-    if (getLegendValueFont() != null) {
-      joiner.add(getLegendValueFont().toUrlQueryString(prefix + "legendValueFont" + suffix));
-    }
-
-    // add `legendValueColor` to the URL query string
-    if (getLegendValueColor() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slegendValueColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendValueColor()))));
-    }
-
-    // add `yaxes` to the URL query string
-    if (getYaxes() != null) {
-      for (String _key : getYaxes().keySet()) {
-        if (getYaxes().get(_key) != null) {
-          joiner.add(getYaxes().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%syaxes%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
-        }
-      }
-    }
-
-    // add `xaxis` to the URL query string
-    if (getXaxis() != null) {
-      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
-    }
-
     // add `thresholds` to the URL query string
     if (getThresholds() != null) {
       for (int i = 0; i < getThresholds().size(); i++) {
@@ -771,6 +701,11 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `stack` to the URL query string
+    if (getStack() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstack%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStack()))));
     }
 
     // add `grid` to the URL query string
@@ -813,14 +748,79 @@ public class ReportBarChartWithLabelsSettings extends ReportTimeSeriesChartSetti
       }
     }
 
+    // add `comparisonEnabled` to the URL query string
+    if (getComparisonEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonEnabled()))));
+    }
+
+    // add `timeForComparison` to the URL query string
+    if (getTimeForComparison() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimeForComparison%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeForComparison()))));
+    }
+
+    // add `comparisonCustomIntervalValue` to the URL query string
+    if (getComparisonCustomIntervalValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonCustomIntervalValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonCustomIntervalValue()))));
+    }
+
     // add `comparisonXAxis` to the URL query string
     if (getComparisonXAxis() != null) {
       joiner.add(getComparisonXAxis().toUrlQueryString(prefix + "comparisonXAxis" + suffix));
     }
 
+    // add `showLegend` to the URL query string
+    if (getShowLegend() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowLegend%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowLegend()))));
+    }
+
+    // add `legendColumnTitleFont` to the URL query string
+    if (getLegendColumnTitleFont() != null) {
+      joiner.add(getLegendColumnTitleFont().toUrlQueryString(prefix + "legendColumnTitleFont" + suffix));
+    }
+
+    // add `legendColumnTitleColor` to the URL query string
+    if (getLegendColumnTitleColor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slegendColumnTitleColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendColumnTitleColor()))));
+    }
+
+    // add `legendLabelFont` to the URL query string
+    if (getLegendLabelFont() != null) {
+      joiner.add(getLegendLabelFont().toUrlQueryString(prefix + "legendLabelFont" + suffix));
+    }
+
+    // add `legendLabelColor` to the URL query string
+    if (getLegendLabelColor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slegendLabelColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendLabelColor()))));
+    }
+
+    // add `legendValueFont` to the URL query string
+    if (getLegendValueFont() != null) {
+      joiner.add(getLegendValueFont().toUrlQueryString(prefix + "legendValueFont" + suffix));
+    }
+
+    // add `legendValueColor` to the URL query string
+    if (getLegendValueColor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slegendValueColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendValueColor()))));
+    }
+
     // add `legendConfig` to the URL query string
     if (getLegendConfig() != null) {
       joiner.add(getLegendConfig().toUrlQueryString(prefix + "legendConfig" + suffix));
+    }
+
+    // add `xaxis` to the URL query string
+    if (getXaxis() != null) {
+      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
+    }
+
+    // add `yaxes` to the URL query string
+    if (getYaxes() != null) {
+      for (String _key : getYaxes().keySet()) {
+        if (getYaxes().get(_key) != null) {
+          joiner.add(getYaxes().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%syaxes%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
+      }
     }
 
     // add `showBarLabel` to the URL query string

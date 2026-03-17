@@ -221,7 +221,7 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
 
 
   @Override
-  public EntityAggregationCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
+  public EntityAggregationCalculatedFieldConfiguration output(@javax.annotation.Nonnull Output output) {
     this.setOutput(output);
     return this;
   }

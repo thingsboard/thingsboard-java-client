@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **username** | **String** | User email | |
 | **password** | **String** | User password | |
+| **username** | **String** | User email | |
 
 
 

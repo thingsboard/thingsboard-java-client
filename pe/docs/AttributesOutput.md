@@ -9,6 +9,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **strategy** | **AttributesOutputStrategy** |  | [optional] |
 
 
 

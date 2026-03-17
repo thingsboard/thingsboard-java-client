@@ -42,6 +42,8 @@ import org.thingsboard.client.ApiClient;
  * A JSON value representing the alarm count query.
  */
 @JsonPropertyOrder({
+  AlarmCountQuery.JSON_PROPERTY_ENTITY_FILTER,
+  AlarmCountQuery.JSON_PROPERTY_KEY_FILTERS,
   AlarmCountQuery.JSON_PROPERTY_START_TS,
   AlarmCountQuery.JSON_PROPERTY_END_TS,
   AlarmCountQuery.JSON_PROPERTY_TIME_WINDOW,
@@ -49,12 +51,18 @@ import org.thingsboard.client.ApiClient;
   AlarmCountQuery.JSON_PROPERTY_STATUS_LIST,
   AlarmCountQuery.JSON_PROPERTY_SEVERITY_LIST,
   AlarmCountQuery.JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS,
-  AlarmCountQuery.JSON_PROPERTY_ASSIGNEE_ID,
-  AlarmCountQuery.JSON_PROPERTY_ENTITY_FILTER,
-  AlarmCountQuery.JSON_PROPERTY_KEY_FILTERS
+  AlarmCountQuery.JSON_PROPERTY_ASSIGNEE_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmCountQuery {
+  public static final String JSON_PROPERTY_ENTITY_FILTER = "entityFilter";
+  @javax.annotation.Nullable
+  private EntityFilter entityFilter;
+
+  public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
+  @javax.annotation.Nullable
+  private List<KeyFilter> keyFilters = new ArrayList<>();
+
   public static final String JSON_PROPERTY_START_TS = "startTs";
   @javax.annotation.Nullable
   private Long startTs;
@@ -87,16 +95,64 @@ public class AlarmCountQuery {
   @javax.annotation.Nullable
   private UserId assigneeId;
 
-  public static final String JSON_PROPERTY_ENTITY_FILTER = "entityFilter";
-  @javax.annotation.Nullable
-  private EntityFilter entityFilter;
-
-  public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
-  @javax.annotation.Nullable
-  private List<KeyFilter> keyFilters = new ArrayList<>();
-
   public AlarmCountQuery() { 
   }
+
+  public AlarmCountQuery entityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+    this.entityFilter = entityFilter;
+    return this;
+  }
+
+  /**
+   * Get entityFilter
+   * @return entityFilter
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityFilter getEntityFilter() {
+    return entityFilter;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+    this.entityFilter = entityFilter;
+  }
+
+
+  public AlarmCountQuery keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+    this.keyFilters = keyFilters;
+    return this;
+  }
+
+  public AlarmCountQuery addKeyFiltersItem(KeyFilter keyFiltersItem) {
+    if (this.keyFilters == null) {
+      this.keyFilters = new ArrayList<>();
+    }
+    this.keyFilters.add(keyFiltersItem);
+    return this;
+  }
+
+  /**
+   * Get keyFilters
+   * @return keyFilters
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<KeyFilter> getKeyFilters() {
+    return keyFilters;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+    this.keyFilters = keyFilters;
+  }
+
 
   public AlarmCountQuery startTs(@javax.annotation.Nullable Long startTs) {
     this.startTs = startTs;
@@ -314,62 +370,6 @@ public class AlarmCountQuery {
   }
 
 
-  public AlarmCountQuery entityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
-    this.entityFilter = entityFilter;
-    return this;
-  }
-
-  /**
-   * Get entityFilter
-   * @return entityFilter
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityFilter getEntityFilter() {
-    return entityFilter;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
-    this.entityFilter = entityFilter;
-  }
-
-
-  public AlarmCountQuery keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
-    this.keyFilters = keyFilters;
-    return this;
-  }
-
-  public AlarmCountQuery addKeyFiltersItem(KeyFilter keyFiltersItem) {
-    if (this.keyFilters == null) {
-      this.keyFilters = new ArrayList<>();
-    }
-    this.keyFilters.add(keyFiltersItem);
-    return this;
-  }
-
-  /**
-   * Get keyFilters
-   * @return keyFilters
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<KeyFilter> getKeyFilters() {
-    return keyFilters;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
-    this.keyFilters = keyFilters;
-  }
-
-
   /**
    * Return true if this AlarmCountQuery object is equal to o.
    */
@@ -382,27 +382,29 @@ public class AlarmCountQuery {
       return false;
     }
     AlarmCountQuery alarmCountQuery = (AlarmCountQuery) o;
-    return Objects.equals(this.startTs, alarmCountQuery.startTs) &&
+    return Objects.equals(this.entityFilter, alarmCountQuery.entityFilter) &&
+        Objects.equals(this.keyFilters, alarmCountQuery.keyFilters) &&
+        Objects.equals(this.startTs, alarmCountQuery.startTs) &&
         Objects.equals(this.endTs, alarmCountQuery.endTs) &&
         Objects.equals(this.timeWindow, alarmCountQuery.timeWindow) &&
         Objects.equals(this.typeList, alarmCountQuery.typeList) &&
         Objects.equals(this.statusList, alarmCountQuery.statusList) &&
         Objects.equals(this.severityList, alarmCountQuery.severityList) &&
         Objects.equals(this.searchPropagatedAlarms, alarmCountQuery.searchPropagatedAlarms) &&
-        Objects.equals(this.assigneeId, alarmCountQuery.assigneeId) &&
-        Objects.equals(this.entityFilter, alarmCountQuery.entityFilter) &&
-        Objects.equals(this.keyFilters, alarmCountQuery.keyFilters);
+        Objects.equals(this.assigneeId, alarmCountQuery.assigneeId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startTs, endTs, timeWindow, typeList, statusList, severityList, searchPropagatedAlarms, assigneeId, entityFilter, keyFilters);
+    return Objects.hash(entityFilter, keyFilters, startTs, endTs, timeWindow, typeList, statusList, severityList, searchPropagatedAlarms, assigneeId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmCountQuery {\n");
+    sb.append("    entityFilter: ").append(toIndentedString(entityFilter)).append("\n");
+    sb.append("    keyFilters: ").append(toIndentedString(keyFilters)).append("\n");
     sb.append("    startTs: ").append(toIndentedString(startTs)).append("\n");
     sb.append("    endTs: ").append(toIndentedString(endTs)).append("\n");
     sb.append("    timeWindow: ").append(toIndentedString(timeWindow)).append("\n");
@@ -411,8 +413,6 @@ public class AlarmCountQuery {
     sb.append("    severityList: ").append(toIndentedString(severityList)).append("\n");
     sb.append("    searchPropagatedAlarms: ").append(toIndentedString(searchPropagatedAlarms)).append("\n");
     sb.append("    assigneeId: ").append(toIndentedString(assigneeId)).append("\n");
-    sb.append("    entityFilter: ").append(toIndentedString(entityFilter)).append("\n");
-    sb.append("    keyFilters: ").append(toIndentedString(keyFilters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -459,6 +459,21 @@ public class AlarmCountQuery {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `entityFilter` to the URL query string
+    if (getEntityFilter() != null) {
+      joiner.add(getEntityFilter().toUrlQueryString(prefix + "entityFilter" + suffix));
+    }
+
+    // add `keyFilters` to the URL query string
+    if (getKeyFilters() != null) {
+      for (int i = 0; i < getKeyFilters().size(); i++) {
+        if (getKeyFilters().get(i) != null) {
+          joiner.add(getKeyFilters().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%skeyFilters%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
 
     // add `startTs` to the URL query string
     if (getStartTs() != null) {
@@ -514,21 +529,6 @@ public class AlarmCountQuery {
     // add `assigneeId` to the URL query string
     if (getAssigneeId() != null) {
       joiner.add(getAssigneeId().toUrlQueryString(prefix + "assigneeId" + suffix));
-    }
-
-    // add `entityFilter` to the URL query string
-    if (getEntityFilter() != null) {
-      joiner.add(getEntityFilter().toUrlQueryString(prefix + "entityFilter" + suffix));
-    }
-
-    // add `keyFilters` to the URL query string
-    if (getKeyFilters() != null) {
-      for (int i = 0; i < getKeyFilters().size(); i++) {
-        if (getKeyFilters().get(i) != null) {
-          joiner.add(getKeyFilters().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%skeyFilters%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
     }
 
     return joiner.toString();

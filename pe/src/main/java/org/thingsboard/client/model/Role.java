@@ -40,19 +40,31 @@ import org.thingsboard.client.ApiClient;
  * A JSON value representing the role.
  */
 @JsonPropertyOrder({
+  Role.JSON_PROPERTY_ID,
+  Role.JSON_PROPERTY_CREATED_TIME,
+  Role.JSON_PROPERTY_ADDITIONAL_INFO,
   Role.JSON_PROPERTY_TENANT_ID,
   Role.JSON_PROPERTY_CUSTOMER_ID,
   Role.JSON_PROPERTY_NAME,
   Role.JSON_PROPERTY_TYPE,
   Role.JSON_PROPERTY_PERMISSIONS,
   Role.JSON_PROPERTY_VERSION,
-  Role.JSON_PROPERTY_ID,
-  Role.JSON_PROPERTY_CREATED_TIME,
-  Role.JSON_PROPERTY_OWNER_ID,
-  Role.JSON_PROPERTY_ADDITIONAL_INFO
+  Role.JSON_PROPERTY_OWNER_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Role {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private RoleId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @javax.annotation.Nonnull
   private TenantId tenantId;
@@ -77,38 +89,88 @@ public class Role {
   @javax.annotation.Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private RoleId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @javax.annotation.Nullable
   private EntityId ownerId;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Role() { 
   }
 
   @JsonCreator
   public Role(
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
+    this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
-    this.createdTime = createdTime;
     this.ownerId = ownerId;
   }
+
+  public Role id(@javax.annotation.Nullable RoleId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * JSON object with the Role Id. Specify this field to update the Role. Referencing non-existing Role Id will cause error. Omit this field to create new Role.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public RoleId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable RoleId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Timestamp of the role creation, in milliseconds
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
+
+  public Role additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the role. May include: &#39;description&#39; (string).
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
+
 
   /**
    * JSON object with Tenant Id.
@@ -234,44 +296,6 @@ public class Role {
   }
 
 
-  public Role id(@javax.annotation.Nullable RoleId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * JSON object with the Role Id. Specify this field to update the Role. Referencing non-existing Role Id will cause error. Omit this field to create new Role.
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public RoleId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable RoleId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Timestamp of the role creation, in milliseconds
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -286,30 +310,6 @@ public class Role {
 
 
 
-  public Role additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the role. May include: &#39;description&#39; (string).
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this Role object is equal to o.
    */
@@ -322,37 +322,37 @@ public class Role {
       return false;
     }
     Role role = (Role) o;
-    return Objects.equals(this.tenantId, role.tenantId) &&
+    return Objects.equals(this.id, role.id) &&
+        Objects.equals(this.createdTime, role.createdTime) &&
+        Objects.equals(this.additionalInfo, role.additionalInfo) &&
+        Objects.equals(this.tenantId, role.tenantId) &&
         Objects.equals(this.customerId, role.customerId) &&
         Objects.equals(this.name, role.name) &&
         Objects.equals(this.type, role.type) &&
         Objects.equals(this.permissions, role.permissions) &&
         Objects.equals(this.version, role.version) &&
-        Objects.equals(this.id, role.id) &&
-        Objects.equals(this.createdTime, role.createdTime) &&
-        Objects.equals(this.ownerId, role.ownerId) &&
-        Objects.equals(this.additionalInfo, role.additionalInfo);
+        Objects.equals(this.ownerId, role.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenantId, customerId, name, type, permissions, version, id, createdTime, ownerId, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, permissions, version, ownerId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Role {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -400,6 +400,21 @@ public class Role {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -430,24 +445,9 @@ public class Role {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
-    }
-
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

@@ -41,8 +41,8 @@ import org.thingsboard.client.ApiClient;
  * ReportComponent
  */
 @JsonPropertyOrder({
-  ReportComponent.JSON_PROPERTY_TYPE,
-  ReportComponent.JSON_PROPERTY_SUB_TYPE
+  ReportComponent.JSON_PROPERTY_SUB_TYPE,
+  ReportComponent.JSON_PROPERTY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -68,40 +68,16 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class ReportComponent {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
-  private ReportComponentType type;
-
   public static final String JSON_PROPERTY_SUB_TYPE = "subType";
   @javax.annotation.Nonnull
   private ReportComponentSubType subType;
 
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
+  private ReportComponentType type;
+
   public ReportComponent() { 
   }
-
-  public ReportComponent type(@javax.annotation.Nonnull ReportComponentType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public ReportComponentType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull ReportComponentType type) {
-    this.type = type;
-  }
-
 
   public ReportComponent subType(@javax.annotation.Nonnull ReportComponentSubType subType) {
     this.subType = subType;
@@ -127,6 +103,30 @@ public class ReportComponent {
   }
 
 
+  public ReportComponent type(@javax.annotation.Nonnull ReportComponentType type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public ReportComponentType getType() {
+    return type;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@javax.annotation.Nonnull ReportComponentType type) {
+    this.type = type;
+  }
+
+
   /**
    * Return true if this ReportComponent object is equal to o.
    */
@@ -139,21 +139,21 @@ public class ReportComponent {
       return false;
     }
     ReportComponent reportComponent = (ReportComponent) o;
-    return Objects.equals(this.type, reportComponent.type) &&
-        Objects.equals(this.subType, reportComponent.subType);
+    return Objects.equals(this.subType, reportComponent.subType) &&
+        Objects.equals(this.type, reportComponent.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, subType);
+    return Objects.hash(subType, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReportComponent {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    subType: ").append(toIndentedString(subType)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -201,14 +201,14 @@ public class ReportComponent {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `subType` to the URL query string
     if (getSubType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssubType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubType()))));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     return joiner.toString();
