@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **CustomerId** | JSON object with the customer Id. Specify this field to update the customer. Referencing non-existing customer Id will cause error. Omit this field to create new customer. | [optional] |
 | **createdTime** | **Long** | Timestamp of the customer creation, in milliseconds | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer). | [optional] |
 | **country** | **String** | Country | [optional] |
 | **state** | **String** | State | [optional] |
 | **city** | **String** | City | [optional] |
@@ -22,10 +23,9 @@
 | **parentCustomerId** | **CustomerId** | JSON object with parent Customer Id | [optional] |
 | **version** | **Long** |  | [optional] |
 | **customMenuId** | **CustomMenuId** |  | [optional] |
-| **name** | **String** | Name of the customer. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 | **customerId** | **CustomerId** | JSON object with parent Customer Id | [optional] [readonly] |
+| **name** | **String** | Name of the customer. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 | **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer). | [optional] |
 
 
 

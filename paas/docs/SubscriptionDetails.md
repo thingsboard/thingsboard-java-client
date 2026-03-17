@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **SubscriptionId** |  | [optional] |
 | **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **externalId** | **String** |  | [optional] |
 | **tenantId** | **TenantId** |  | [optional] |
 | **billingCustomerId** | **BillingCustomerId** |  | [optional] |
@@ -33,7 +34,6 @@
 | **items** | **SubscriptionItems** |  | [optional] |
 | **discount** | **Discount** |  | [optional] |
 | **name** | **String** |  | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 
 

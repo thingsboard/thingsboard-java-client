@@ -9,11 +9,11 @@ Base export container for ThingsBoard entities
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **entityType** | **EntityType** |  | |
 | **entity** | **ExportableEntity** |  | [optional] |
 | **relations** | **List\<EntityRelation\>** |  | [optional] |
 | **attributes** | **Map\<String, List<AttributeExportData>\>** | Map of attributes where key is the scope of attributes and value is the list of attributes for that scope | [optional] |
 | **calculatedFields** | **List\<CalculatedField\>** |  | [optional] |
+| **entityType** | **EntityType** |  | |
 
 
 

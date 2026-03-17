@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **condition** | **AlarmRuleCondition** |  | |
 | **alarmDetails** | **String** |  | [optional] |
+| **condition** | **AlarmRuleCondition** |  | |
 | **dashboardId** | **DashboardId** |  | [optional] |
 
 

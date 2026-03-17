@@ -38,35 +38,35 @@ import org.thingsboard.client.ApiClient;
  * ThingsboardErrorResponse
  */
 @JsonPropertyOrder({
-  ThingsboardErrorResponse.JSON_PROPERTY_MESSAGE,
   ThingsboardErrorResponse.JSON_PROPERTY_ERROR_CODE,
+  ThingsboardErrorResponse.JSON_PROPERTY_MESSAGE,
   ThingsboardErrorResponse.JSON_PROPERTY_STATUS,
-  ThingsboardErrorResponse.JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE,
   ThingsboardErrorResponse.JSON_PROPERTY_SUBSCRIPTION_ENTRY,
+  ThingsboardErrorResponse.JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE,
   ThingsboardErrorResponse.JSON_PROPERTY_SUBSCRIPTION_VALUE,
   ThingsboardErrorResponse.JSON_PROPERTY_TIMESTAMP
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ThingsboardErrorResponse {
-  public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
-  private String message;
-
   public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
   @javax.annotation.Nullable
   private ThingsboardErrorCode errorCode;
+
+  public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nullable
+  private String message;
 
   public static final String JSON_PROPERTY_STATUS = "status";
   @javax.annotation.Nullable
   private Integer status;
 
-  public static final String JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE = "subscriptionErrorCode";
-  @javax.annotation.Nullable
-  private SubscriptionExceptionErrorCode subscriptionErrorCode;
-
   public static final String JSON_PROPERTY_SUBSCRIPTION_ENTRY = "subscriptionEntry";
   @javax.annotation.Nullable
   private SubscriptionEntry subscriptionEntry;
+
+  public static final String JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE = "subscriptionErrorCode";
+  @javax.annotation.Nullable
+  private SubscriptionExceptionErrorCode subscriptionErrorCode;
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_VALUE = "subscriptionValue";
   @javax.annotation.Nullable
@@ -90,20 +90,6 @@ public class ThingsboardErrorResponse {
     this.status = status;
     this.timestamp = timestamp;
   }
-
-  /**
-   * Error message
-   * @return message
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMessage() {
-    return message;
-  }
-
-
-
 
   public ThingsboardErrorResponse errorCode(@javax.annotation.Nullable ThingsboardErrorCode errorCode) {
     this.errorCode = errorCode;
@@ -130,6 +116,20 @@ public class ThingsboardErrorResponse {
 
 
   /**
+   * Error message
+   * @return message
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getMessage() {
+    return message;
+  }
+
+
+
+
+  /**
    * HTTP Response Status Code
    * @return status
    */
@@ -141,30 +141,6 @@ public class ThingsboardErrorResponse {
   }
 
 
-
-
-  public ThingsboardErrorResponse subscriptionErrorCode(@javax.annotation.Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
-    this.subscriptionErrorCode = subscriptionErrorCode;
-    return this;
-  }
-
-  /**
-   * Get subscriptionErrorCode
-   * @return subscriptionErrorCode
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public SubscriptionExceptionErrorCode getSubscriptionErrorCode() {
-    return subscriptionErrorCode;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubscriptionErrorCode(@javax.annotation.Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
-    this.subscriptionErrorCode = subscriptionErrorCode;
-  }
 
 
   public ThingsboardErrorResponse subscriptionEntry(@javax.annotation.Nullable SubscriptionEntry subscriptionEntry) {
@@ -188,6 +164,30 @@ public class ThingsboardErrorResponse {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSubscriptionEntry(@javax.annotation.Nullable SubscriptionEntry subscriptionEntry) {
     this.subscriptionEntry = subscriptionEntry;
+  }
+
+
+  public ThingsboardErrorResponse subscriptionErrorCode(@javax.annotation.Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
+    this.subscriptionErrorCode = subscriptionErrorCode;
+    return this;
+  }
+
+  /**
+   * Get subscriptionErrorCode
+   * @return subscriptionErrorCode
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public SubscriptionExceptionErrorCode getSubscriptionErrorCode() {
+    return subscriptionErrorCode;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSubscriptionErrorCode(@javax.annotation.Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
+    this.subscriptionErrorCode = subscriptionErrorCode;
   }
 
 
@@ -241,29 +241,29 @@ public class ThingsboardErrorResponse {
       return false;
     }
     ThingsboardErrorResponse thingsboardErrorResponse = (ThingsboardErrorResponse) o;
-    return Objects.equals(this.message, thingsboardErrorResponse.message) &&
-        Objects.equals(this.errorCode, thingsboardErrorResponse.errorCode) &&
+    return Objects.equals(this.errorCode, thingsboardErrorResponse.errorCode) &&
+        Objects.equals(this.message, thingsboardErrorResponse.message) &&
         Objects.equals(this.status, thingsboardErrorResponse.status) &&
-        Objects.equals(this.subscriptionErrorCode, thingsboardErrorResponse.subscriptionErrorCode) &&
         Objects.equals(this.subscriptionEntry, thingsboardErrorResponse.subscriptionEntry) &&
+        Objects.equals(this.subscriptionErrorCode, thingsboardErrorResponse.subscriptionErrorCode) &&
         Objects.equals(this.subscriptionValue, thingsboardErrorResponse.subscriptionValue) &&
         Objects.equals(this.timestamp, thingsboardErrorResponse.timestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, errorCode, status, subscriptionErrorCode, subscriptionEntry, subscriptionValue, timestamp);
+    return Objects.hash(errorCode, message, status, subscriptionEntry, subscriptionErrorCode, subscriptionValue, timestamp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ThingsboardErrorResponse {\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    subscriptionErrorCode: ").append(toIndentedString(subscriptionErrorCode)).append("\n");
     sb.append("    subscriptionEntry: ").append(toIndentedString(subscriptionEntry)).append("\n");
+    sb.append("    subscriptionErrorCode: ").append(toIndentedString(subscriptionErrorCode)).append("\n");
     sb.append("    subscriptionValue: ").append(toIndentedString(subscriptionValue)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");
@@ -313,14 +313,14 @@ public class ThingsboardErrorResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `message` to the URL query string
-    if (getMessage() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
-    }
-
     // add `errorCode` to the URL query string
     if (getErrorCode() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorCode()))));
+    }
+
+    // add `message` to the URL query string
+    if (getMessage() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
     }
 
     // add `status` to the URL query string
@@ -328,14 +328,14 @@ public class ThingsboardErrorResponse {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
     }
 
-    // add `subscriptionErrorCode` to the URL query string
-    if (getSubscriptionErrorCode() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%ssubscriptionErrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubscriptionErrorCode()))));
-    }
-
     // add `subscriptionEntry` to the URL query string
     if (getSubscriptionEntry() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssubscriptionEntry%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubscriptionEntry()))));
+    }
+
+    // add `subscriptionErrorCode` to the URL query string
+    if (getSubscriptionErrorCode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssubscriptionErrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubscriptionErrorCode()))));
     }
 
     // add `subscriptionValue` to the URL query string

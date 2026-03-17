@@ -40,6 +40,9 @@ import org.thingsboard.client.ApiClient;
  * A JSON object representing the entity view.
  */
 @JsonPropertyOrder({
+  EntityView.JSON_PROPERTY_ID,
+  EntityView.JSON_PROPERTY_CREATED_TIME,
+  EntityView.JSON_PROPERTY_ADDITIONAL_INFO,
   EntityView.JSON_PROPERTY_ENTITY_ID,
   EntityView.JSON_PROPERTY_TENANT_ID,
   EntityView.JSON_PROPERTY_CUSTOMER_ID,
@@ -49,13 +52,22 @@ import org.thingsboard.client.ApiClient;
   EntityView.JSON_PROPERTY_START_TIME_MS,
   EntityView.JSON_PROPERTY_END_TIME_MS,
   EntityView.JSON_PROPERTY_VERSION,
-  EntityView.JSON_PROPERTY_ID,
-  EntityView.JSON_PROPERTY_CREATED_TIME,
-  EntityView.JSON_PROPERTY_OWNER_ID,
-  EntityView.JSON_PROPERTY_ADDITIONAL_INFO
+  EntityView.JSON_PROPERTY_OWNER_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityView {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private EntityViewId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
   @javax.annotation.Nonnull
   private EntityId entityId;
@@ -92,38 +104,88 @@ public class EntityView {
   @javax.annotation.Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private EntityViewId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @javax.annotation.Nullable
   private EntityId ownerId;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public EntityView() { 
   }
 
   @JsonCreator
   public EntityView(
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
+    this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
-    this.createdTime = createdTime;
     this.ownerId = ownerId;
   }
+
+  public EntityView id(@javax.annotation.Nullable EntityViewId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * JSON object with the Entity View Id. Specify this field to update the Entity View. Referencing non-existing Entity View Id will cause error. Omit this field to create new Entity View.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityViewId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable EntityViewId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Timestamp of the Entity View creation, in milliseconds
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
+
+  public EntityView additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the entity view. May include: &#39;description&#39; (string).
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
+
 
   public EntityView entityId(@javax.annotation.Nonnull EntityId entityId) {
     this.entityId = entityId;
@@ -321,44 +383,6 @@ public class EntityView {
   }
 
 
-  public EntityView id(@javax.annotation.Nullable EntityViewId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * JSON object with the Entity View Id. Specify this field to update the Entity View. Referencing non-existing Entity View Id will cause error. Omit this field to create new Entity View.
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityViewId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EntityViewId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Timestamp of the Entity View creation, in milliseconds
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -373,30 +397,6 @@ public class EntityView {
 
 
 
-  public EntityView additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the entity view. May include: &#39;description&#39; (string).
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this EntityView object is equal to o.
    */
@@ -409,7 +409,10 @@ public class EntityView {
       return false;
     }
     EntityView entityView = (EntityView) o;
-    return Objects.equals(this.entityId, entityView.entityId) &&
+    return Objects.equals(this.id, entityView.id) &&
+        Objects.equals(this.createdTime, entityView.createdTime) &&
+        Objects.equals(this.additionalInfo, entityView.additionalInfo) &&
+        Objects.equals(this.entityId, entityView.entityId) &&
         Objects.equals(this.tenantId, entityView.tenantId) &&
         Objects.equals(this.customerId, entityView.customerId) &&
         Objects.equals(this.name, entityView.name) &&
@@ -418,21 +421,21 @@ public class EntityView {
         Objects.equals(this.startTimeMs, entityView.startTimeMs) &&
         Objects.equals(this.endTimeMs, entityView.endTimeMs) &&
         Objects.equals(this.version, entityView.version) &&
-        Objects.equals(this.id, entityView.id) &&
-        Objects.equals(this.createdTime, entityView.createdTime) &&
-        Objects.equals(this.ownerId, entityView.ownerId) &&
-        Objects.equals(this.additionalInfo, entityView.additionalInfo);
+        Objects.equals(this.ownerId, entityView.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version, id, createdTime, ownerId, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version, ownerId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityView {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
@@ -442,10 +445,7 @@ public class EntityView {
     sb.append("    startTimeMs: ").append(toIndentedString(startTimeMs)).append("\n");
     sb.append("    endTimeMs: ").append(toIndentedString(endTimeMs)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -493,6 +493,21 @@ public class EntityView {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `entityId` to the URL query string
     if (getEntityId() != null) {
       joiner.add(getEntityId().toUrlQueryString(prefix + "entityId" + suffix));
@@ -538,24 +553,9 @@ public class EntityView {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
-    }
-
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

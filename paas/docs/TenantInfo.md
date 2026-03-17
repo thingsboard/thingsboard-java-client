@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **TenantId** | JSON object with the tenant Id. Specify this field to update the tenant. Referencing non-existing tenant Id will cause error. Omit this field to create new tenant. | [optional] |
 | **createdTime** | **Long** | Timestamp of the tenant creation, in milliseconds | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar). | [optional] |
 | **country** | **String** | Country | [optional] |
 | **state** | **String** | State | [optional] |
 | **city** | **String** | City | [optional] |
@@ -24,11 +25,10 @@
 | **active** | **Boolean** |  | [optional] |
 | **lastInactiveTs** | **Long** |  | [optional] |
 | **currentPeriodStartTs** | **Long** |  | [optional] |
+| **addonData** | **TenantAddonData** |  | [optional] |
 | **edgeLicenseVersion** | **Integer** |  | [optional] |
 | **tenantProfileName** | **String** | Tenant Profile name | [optional] |
 | **name** | **String** | Name of the tenant. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
-| **addonData** | **TenantAddonData** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar). | [optional] |
 
 
 

@@ -52,8 +52,8 @@ import org.thingsboard.client.ApiClient;
   EntityGroupInfo.JSON_PROPERTY_CONFIGURATION,
   EntityGroupInfo.JSON_PROPERTY_VERSION,
   EntityGroupInfo.JSON_PROPERTY_OWNER_IDS,
-  EntityGroupInfo.JSON_PROPERTY_GROUP_ALL,
   EntityGroupInfo.JSON_PROPERTY_EDGE_GROUP_ALL,
+  EntityGroupInfo.JSON_PROPERTY_GROUP_ALL,
   EntityGroupInfo.JSON_PROPERTY_TENANT_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -229,13 +229,13 @@ public class EntityGroupInfo {
   @javax.annotation.Nonnull
   private Set<EntityGroupInfoOwnerIdsInner> ownerIds = new LinkedHashSet<>();
 
-  public static final String JSON_PROPERTY_GROUP_ALL = "groupAll";
-  @javax.annotation.Nullable
-  private Boolean groupAll;
-
   public static final String JSON_PROPERTY_EDGE_GROUP_ALL = "edgeGroupAll";
   @javax.annotation.Nullable
   private Boolean edgeGroupAll;
+
+  public static final String JSON_PROPERTY_GROUP_ALL = "groupAll";
+  @javax.annotation.Nullable
+  private Boolean groupAll;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @javax.annotation.Nullable
@@ -469,6 +469,20 @@ public class EntityGroupInfo {
   }
 
 
+  /**
+   * Indicates special edge group &#39;All&#39; that contains all entities and can&#39;t be deleted.
+   * @return edgeGroupAll
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_EDGE_GROUP_ALL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getEdgeGroupAll() {
+    return edgeGroupAll;
+  }
+
+
+
+
   public EntityGroupInfo groupAll(@javax.annotation.Nullable Boolean groupAll) {
     this.groupAll = groupAll;
     return this;
@@ -491,20 +505,6 @@ public class EntityGroupInfo {
   public void setGroupAll(@javax.annotation.Nullable Boolean groupAll) {
     this.groupAll = groupAll;
   }
-
-
-  /**
-   * Indicates special edge group &#39;All&#39; that contains all entities and can&#39;t be deleted.
-   * @return edgeGroupAll
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_EDGE_GROUP_ALL, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getEdgeGroupAll() {
-    return edgeGroupAll;
-  }
-
-
 
 
   public EntityGroupInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
@@ -552,14 +552,14 @@ public class EntityGroupInfo {
         Objects.equals(this._configuration, entityGroupInfo._configuration) &&
         Objects.equals(this.version, entityGroupInfo.version) &&
         Objects.equals(this.ownerIds, entityGroupInfo.ownerIds) &&
-        Objects.equals(this.groupAll, entityGroupInfo.groupAll) &&
         Objects.equals(this.edgeGroupAll, entityGroupInfo.edgeGroupAll) &&
+        Objects.equals(this.groupAll, entityGroupInfo.groupAll) &&
         Objects.equals(this.tenantId, entityGroupInfo.tenantId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, type, name, ownerId, additionalInfo, _configuration, version, ownerIds, groupAll, edgeGroupAll, tenantId);
+    return Objects.hash(id, createdTime, type, name, ownerId, additionalInfo, _configuration, version, ownerIds, edgeGroupAll, groupAll, tenantId);
   }
 
   @Override
@@ -575,8 +575,8 @@ public class EntityGroupInfo {
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    ownerIds: ").append(toIndentedString(ownerIds)).append("\n");
-    sb.append("    groupAll: ").append(toIndentedString(groupAll)).append("\n");
     sb.append("    edgeGroupAll: ").append(toIndentedString(edgeGroupAll)).append("\n");
+    sb.append("    groupAll: ").append(toIndentedString(groupAll)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -677,14 +677,14 @@ public class EntityGroupInfo {
       i++;
     }
 
-    // add `groupAll` to the URL query string
-    if (getGroupAll() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sgroupAll%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGroupAll()))));
-    }
-
     // add `edgeGroupAll` to the URL query string
     if (getEdgeGroupAll() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sedgeGroupAll%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeGroupAll()))));
+    }
+
+    // add `groupAll` to the URL query string
+    if (getGroupAll() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sgroupAll%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGroupAll()))));
     }
 
     // add `tenantId` to the URL query string

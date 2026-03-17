@@ -41,6 +41,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   SchedulerEventInfo.JSON_PROPERTY_ID,
   SchedulerEventInfo.JSON_PROPERTY_CREATED_TIME,
+  SchedulerEventInfo.JSON_PROPERTY_ADDITIONAL_INFO,
   SchedulerEventInfo.JSON_PROPERTY_TENANT_ID,
   SchedulerEventInfo.JSON_PROPERTY_CUSTOMER_ID,
   SchedulerEventInfo.JSON_PROPERTY_ORIGINATOR_ID,
@@ -49,8 +50,7 @@ import org.thingsboard.client.ApiClient;
   SchedulerEventInfo.JSON_PROPERTY_SCHEDULE,
   SchedulerEventInfo.JSON_PROPERTY_ENABLED,
   SchedulerEventInfo.JSON_PROPERTY_VERSION,
-  SchedulerEventInfo.JSON_PROPERTY_OWNER_ID,
-  SchedulerEventInfo.JSON_PROPERTY_ADDITIONAL_INFO
+  SchedulerEventInfo.JSON_PROPERTY_OWNER_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SchedulerEventInfo {
@@ -61,6 +61,10 @@ public class SchedulerEventInfo {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @javax.annotation.Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @javax.annotation.Nullable
@@ -97,10 +101,6 @@ public class SchedulerEventInfo {
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @javax.annotation.Nullable
   private EntityId ownerId;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public SchedulerEventInfo() { 
   }
@@ -157,6 +157,30 @@ public class SchedulerEventInfo {
   }
 
 
+
+
+  public SchedulerEventInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the scheduler event
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   /**
@@ -335,30 +359,6 @@ public class SchedulerEventInfo {
 
 
 
-  public SchedulerEventInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the scheduler event
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this SchedulerEventInfo object is equal to o.
    */
@@ -373,6 +373,7 @@ public class SchedulerEventInfo {
     SchedulerEventInfo schedulerEventInfo = (SchedulerEventInfo) o;
     return Objects.equals(this.id, schedulerEventInfo.id) &&
         Objects.equals(this.createdTime, schedulerEventInfo.createdTime) &&
+        Objects.equals(this.additionalInfo, schedulerEventInfo.additionalInfo) &&
         Objects.equals(this.tenantId, schedulerEventInfo.tenantId) &&
         Objects.equals(this.customerId, schedulerEventInfo.customerId) &&
         Objects.equals(this.originatorId, schedulerEventInfo.originatorId) &&
@@ -381,13 +382,12 @@ public class SchedulerEventInfo {
         Objects.equals(this.schedule, schedulerEventInfo.schedule) &&
         Objects.equals(this.enabled, schedulerEventInfo.enabled) &&
         Objects.equals(this.version, schedulerEventInfo.version) &&
-        Objects.equals(this.ownerId, schedulerEventInfo.ownerId) &&
-        Objects.equals(this.additionalInfo, schedulerEventInfo.additionalInfo);
+        Objects.equals(this.ownerId, schedulerEventInfo.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, originatorId, name, type, schedule, enabled, version, ownerId, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, originatorId, name, type, schedule, enabled, version, ownerId);
   }
 
   @Override
@@ -396,6 +396,7 @@ public class SchedulerEventInfo {
     sb.append("class SchedulerEventInfo {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    originatorId: ").append(toIndentedString(originatorId)).append("\n");
@@ -405,7 +406,6 @@ public class SchedulerEventInfo {
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -463,6 +463,11 @@ public class SchedulerEventInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -506,11 +511,6 @@ public class SchedulerEventInfo {
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

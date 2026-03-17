@@ -54,9 +54,9 @@ import org.thingsboard.client.ApiClient;
   TbResource.JSON_PROPERTY_DESCRIPTOR,
   TbResource.JSON_PROPERTY_DATA,
   TbResource.JSON_PROPERTY_PREVIEW,
+  TbResource.JSON_PROPERTY_LINK,
   TbResource.JSON_PROPERTY_NAME,
   TbResource.JSON_PROPERTY_PUBLIC,
-  TbResource.JSON_PROPERTY_LINK,
   TbResource.JSON_PROPERTY_PUBLIC_LINK
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -117,6 +117,10 @@ public class TbResource {
   @javax.annotation.Nullable
   private String preview;
 
+  public static final String JSON_PROPERTY_LINK = "link";
+  @javax.annotation.Nullable
+  private String link;
+
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
   private String name;
@@ -124,10 +128,6 @@ public class TbResource {
   public static final String JSON_PROPERTY_PUBLIC = "public";
   @javax.annotation.Nullable
   private Boolean _public;
-
-  public static final String JSON_PROPERTY_LINK = "link";
-  @javax.annotation.Nullable
-  private String link;
 
   public static final String JSON_PROPERTY_PUBLIC_LINK = "publicLink";
   @javax.annotation.Nullable
@@ -142,8 +142,8 @@ public class TbResource {
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_ETAG) String etag, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_LINK) String link, 
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_PUBLIC_LINK) String publicLink
   ) {
   this();
@@ -151,8 +151,8 @@ public class TbResource {
     this.tenantId = tenantId;
     this.customerId = customerId;
     this.etag = etag;
-    this.name = name;
     this.link = link;
+    this.name = name;
     this.publicLink = publicLink;
   }
 
@@ -453,6 +453,20 @@ public class TbResource {
 
 
   /**
+   * Get link
+   * @return link
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getLink() {
+    return link;
+  }
+
+
+
+
+  /**
    * Get name
    * @return name
    */
@@ -488,20 +502,6 @@ public class TbResource {
   public void setPublic(@javax.annotation.Nullable Boolean _public) {
     this._public = _public;
   }
-
-
-  /**
-   * Get link
-   * @return link
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getLink() {
-    return link;
-  }
-
-
 
 
   /**
@@ -544,15 +544,15 @@ public class TbResource {
         Objects.equals(this.descriptor, tbResource.descriptor) &&
         Objects.equals(this.data, tbResource.data) &&
         Objects.equals(this.preview, tbResource.preview) &&
+        Objects.equals(this.link, tbResource.link) &&
         Objects.equals(this.name, tbResource.name) &&
         Objects.equals(this._public, tbResource._public) &&
-        Objects.equals(this.link, tbResource.link) &&
         Objects.equals(this.publicLink, tbResource.publicLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, title, resourceType, resourceSubType, resourceKey, publicResourceKey, etag, fileName, descriptor, data, preview, name, _public, link, publicLink);
+    return Objects.hash(id, createdTime, tenantId, customerId, title, resourceType, resourceSubType, resourceKey, publicResourceKey, etag, fileName, descriptor, data, preview, link, name, _public, publicLink);
   }
 
   @Override
@@ -573,9 +573,9 @@ public class TbResource {
     sb.append("    descriptor: ").append(toIndentedString(descriptor)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    preview: ").append(toIndentedString(preview)).append("\n");
+    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
-    sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    publicLink: ").append(toIndentedString(publicLink)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -694,6 +694,11 @@ public class TbResource {
       joiner.add(String.format(java.util.Locale.ROOT, "%spreview%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPreview()))));
     }
 
+    // add `link` to the URL query string
+    if (getLink() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slink%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLink()))));
+    }
+
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
@@ -702,11 +707,6 @@ public class TbResource {
     // add `public` to the URL query string
     if (getPublic() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublic()))));
-    }
-
-    // add `link` to the URL query string
-    if (getLink() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slink%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLink()))));
     }
 
     // add `publicLink` to the URL query string

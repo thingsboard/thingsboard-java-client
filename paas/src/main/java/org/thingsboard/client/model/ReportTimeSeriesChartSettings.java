@@ -59,10 +59,18 @@ import org.thingsboard.client.ApiClient;
   ReportTimeSeriesChartSettings.JSON_PROPERTY_TITLE_FONT,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_TITLE_COLOR,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_TITLE_ALIGNMENT,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_THRESHOLDS,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_STACK,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_GRID,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_Y_AXES,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_X_AXIS,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_BAR_WIDTH_SETTINGS,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_STATES,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_COMPARISON_ENABLED,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_TIME_FOR_COMPARISON,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_COMPARISON_CUSTOM_INTERVAL_VALUE,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_COMPARISON_X_AXIS,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_SHOW_LEGEND,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_COLUMN_TITLE_FONT,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_COLUMN_TITLE_COLOR,
@@ -70,17 +78,9 @@ import org.thingsboard.client.ApiClient;
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_LABEL_COLOR,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_VALUE_FONT,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_VALUE_COLOR,
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_CONFIG,
   ReportTimeSeriesChartSettings.JSON_PROPERTY_XAXIS,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_YAXES,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_THRESHOLDS,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_GRID,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_Y_AXES,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_X_AXIS,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_BAR_WIDTH_SETTINGS,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_STATES,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_COMPARISON_X_AXIS,
-  ReportTimeSeriesChartSettings.JSON_PROPERTY_LEGEND_CONFIG
+  ReportTimeSeriesChartSettings.JSON_PROPERTY_YAXES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -114,9 +114,37 @@ public class ReportTimeSeriesChartSettings {
   @javax.annotation.Nullable
   private TextAlignment titleAlignment;
 
+  public static final String JSON_PROPERTY_THRESHOLDS = "thresholds";
+  @javax.annotation.Nullable
+  private List<TimeSeriesChartThreshold> thresholds = new ArrayList<>();
+
   public static final String JSON_PROPERTY_STACK = "stack";
   @javax.annotation.Nullable
   private Boolean stack;
+
+  public static final String JSON_PROPERTY_GRID = "grid";
+  @javax.annotation.Nullable
+  private TimeSeriesChartGridSettings grid;
+
+  public static final String JSON_PROPERTY_Y_AXES = "yAxes";
+  @javax.annotation.Nullable
+  private Map<String, TimeSeriesChartYAxisSettings> yAxes = new HashMap<>();
+
+  public static final String JSON_PROPERTY_X_AXIS = "xAxis";
+  @javax.annotation.Nullable
+  private TimeSeriesChartXAxisSettings xAxis;
+
+  public static final String JSON_PROPERTY_BAR_WIDTH_SETTINGS = "barWidthSettings";
+  @javax.annotation.Nullable
+  private TimeSeriesChartBarWidthSettings barWidthSettings;
+
+  public static final String JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS = "noAggregationBarWidthSettings";
+  @javax.annotation.Nullable
+  private TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings;
+
+  public static final String JSON_PROPERTY_STATES = "states";
+  @javax.annotation.Nullable
+  private List<TimeSeriesChartStateSettings> states = new ArrayList<>();
 
   public static final String JSON_PROPERTY_COMPARISON_ENABLED = "comparisonEnabled";
   @javax.annotation.Nullable
@@ -129,6 +157,10 @@ public class ReportTimeSeriesChartSettings {
   public static final String JSON_PROPERTY_COMPARISON_CUSTOM_INTERVAL_VALUE = "comparisonCustomIntervalValue";
   @javax.annotation.Nullable
   private Long comparisonCustomIntervalValue;
+
+  public static final String JSON_PROPERTY_COMPARISON_X_AXIS = "comparisonXAxis";
+  @javax.annotation.Nullable
+  private TimeSeriesChartXAxisSettings comparisonXAxis;
 
   public static final String JSON_PROPERTY_SHOW_LEGEND = "showLegend";
   @javax.annotation.Nullable
@@ -158,6 +190,10 @@ public class ReportTimeSeriesChartSettings {
   @javax.annotation.Nullable
   private String legendValueColor;
 
+  public static final String JSON_PROPERTY_LEGEND_CONFIG = "legendConfig";
+  @javax.annotation.Nullable
+  private LegendConfig legendConfig;
+
   public static final String JSON_PROPERTY_XAXIS = "xaxis";
   @javax.annotation.Nullable
   private TimeSeriesChartXAxisSettings xaxis;
@@ -165,42 +201,6 @@ public class ReportTimeSeriesChartSettings {
   public static final String JSON_PROPERTY_YAXES = "yaxes";
   @javax.annotation.Nullable
   private Map<String, TimeSeriesChartYAxisSettings> yaxes = new HashMap<>();
-
-  public static final String JSON_PROPERTY_THRESHOLDS = "thresholds";
-  @javax.annotation.Nullable
-  private List<TimeSeriesChartThreshold> thresholds = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_GRID = "grid";
-  @javax.annotation.Nullable
-  private TimeSeriesChartGridSettings grid;
-
-  public static final String JSON_PROPERTY_Y_AXES = "yAxes";
-  @javax.annotation.Nullable
-  private Map<String, TimeSeriesChartYAxisSettings> yAxes = new HashMap<>();
-
-  public static final String JSON_PROPERTY_X_AXIS = "xAxis";
-  @javax.annotation.Nullable
-  private TimeSeriesChartXAxisSettings xAxis;
-
-  public static final String JSON_PROPERTY_BAR_WIDTH_SETTINGS = "barWidthSettings";
-  @javax.annotation.Nullable
-  private TimeSeriesChartBarWidthSettings barWidthSettings;
-
-  public static final String JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS = "noAggregationBarWidthSettings";
-  @javax.annotation.Nullable
-  private TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings;
-
-  public static final String JSON_PROPERTY_STATES = "states";
-  @javax.annotation.Nullable
-  private List<TimeSeriesChartStateSettings> states = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_COMPARISON_X_AXIS = "comparisonXAxis";
-  @javax.annotation.Nullable
-  private TimeSeriesChartXAxisSettings comparisonXAxis;
-
-  public static final String JSON_PROPERTY_LEGEND_CONFIG = "legendConfig";
-  @javax.annotation.Nullable
-  private LegendConfig legendConfig;
 
   public ReportTimeSeriesChartSettings() { 
   }
@@ -325,6 +325,38 @@ public class ReportTimeSeriesChartSettings {
   }
 
 
+  public ReportTimeSeriesChartSettings thresholds(@javax.annotation.Nullable List<TimeSeriesChartThreshold> thresholds) {
+    this.thresholds = thresholds;
+    return this;
+  }
+
+  public ReportTimeSeriesChartSettings addThresholdsItem(TimeSeriesChartThreshold thresholdsItem) {
+    if (this.thresholds == null) {
+      this.thresholds = new ArrayList<>();
+    }
+    this.thresholds.add(thresholdsItem);
+    return this;
+  }
+
+  /**
+   * Get thresholds
+   * @return thresholds
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_THRESHOLDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<TimeSeriesChartThreshold> getThresholds() {
+    return thresholds;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_THRESHOLDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setThresholds(@javax.annotation.Nullable List<TimeSeriesChartThreshold> thresholds) {
+    this.thresholds = thresholds;
+  }
+
+
   public ReportTimeSeriesChartSettings stack(@javax.annotation.Nullable Boolean stack) {
     this.stack = stack;
     return this;
@@ -346,6 +378,166 @@ public class ReportTimeSeriesChartSettings {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStack(@javax.annotation.Nullable Boolean stack) {
     this.stack = stack;
+  }
+
+
+  public ReportTimeSeriesChartSettings grid(@javax.annotation.Nullable TimeSeriesChartGridSettings grid) {
+    this.grid = grid;
+    return this;
+  }
+
+  /**
+   * Get grid
+   * @return grid
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_GRID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TimeSeriesChartGridSettings getGrid() {
+    return grid;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GRID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGrid(@javax.annotation.Nullable TimeSeriesChartGridSettings grid) {
+    this.grid = grid;
+  }
+
+
+  public ReportTimeSeriesChartSettings yAxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yAxes) {
+    this.yAxes = yAxes;
+    return this;
+  }
+
+  public ReportTimeSeriesChartSettings putYAxesItem(String key, TimeSeriesChartYAxisSettings yAxesItem) {
+    if (this.yAxes == null) {
+      this.yAxes = new HashMap<>();
+    }
+    this.yAxes.put(key, yAxesItem);
+    return this;
+  }
+
+  /**
+   * Get yAxes
+   * @return yAxes
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_Y_AXES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Map<String, TimeSeriesChartYAxisSettings> getyAxes() {
+    return yAxes;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_Y_AXES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setyAxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yAxes) {
+    this.yAxes = yAxes;
+  }
+
+
+  public ReportTimeSeriesChartSettings xAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xAxis) {
+    this.xAxis = xAxis;
+    return this;
+  }
+
+  /**
+   * Get xAxis
+   * @return xAxis
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_X_AXIS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TimeSeriesChartXAxisSettings getxAxis() {
+    return xAxis;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_X_AXIS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setxAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xAxis) {
+    this.xAxis = xAxis;
+  }
+
+
+  public ReportTimeSeriesChartSettings barWidthSettings(@javax.annotation.Nullable TimeSeriesChartBarWidthSettings barWidthSettings) {
+    this.barWidthSettings = barWidthSettings;
+    return this;
+  }
+
+  /**
+   * Get barWidthSettings
+   * @return barWidthSettings
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TimeSeriesChartBarWidthSettings getBarWidthSettings() {
+    return barWidthSettings;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartBarWidthSettings barWidthSettings) {
+    this.barWidthSettings = barWidthSettings;
+  }
+
+
+  public ReportTimeSeriesChartSettings noAggregationBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings) {
+    this.noAggregationBarWidthSettings = noAggregationBarWidthSettings;
+    return this;
+  }
+
+  /**
+   * Get noAggregationBarWidthSettings
+   * @return noAggregationBarWidthSettings
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TimeSeriesChartNoAggregationBarWidthSettings getNoAggregationBarWidthSettings() {
+    return noAggregationBarWidthSettings;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNoAggregationBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings) {
+    this.noAggregationBarWidthSettings = noAggregationBarWidthSettings;
+  }
+
+
+  public ReportTimeSeriesChartSettings states(@javax.annotation.Nullable List<TimeSeriesChartStateSettings> states) {
+    this.states = states;
+    return this;
+  }
+
+  public ReportTimeSeriesChartSettings addStatesItem(TimeSeriesChartStateSettings statesItem) {
+    if (this.states == null) {
+      this.states = new ArrayList<>();
+    }
+    this.states.add(statesItem);
+    return this;
+  }
+
+  /**
+   * Get states
+   * @return states
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_STATES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<TimeSeriesChartStateSettings> getStates() {
+    return states;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_STATES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStates(@javax.annotation.Nullable List<TimeSeriesChartStateSettings> states) {
+    this.states = states;
   }
 
 
@@ -418,6 +610,30 @@ public class ReportTimeSeriesChartSettings {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setComparisonCustomIntervalValue(@javax.annotation.Nullable Long comparisonCustomIntervalValue) {
     this.comparisonCustomIntervalValue = comparisonCustomIntervalValue;
+  }
+
+
+  public ReportTimeSeriesChartSettings comparisonXAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings comparisonXAxis) {
+    this.comparisonXAxis = comparisonXAxis;
+    return this;
+  }
+
+  /**
+   * Get comparisonXAxis
+   * @return comparisonXAxis
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_COMPARISON_X_AXIS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TimeSeriesChartXAxisSettings getComparisonXAxis() {
+    return comparisonXAxis;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_COMPARISON_X_AXIS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setComparisonXAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings comparisonXAxis) {
+    this.comparisonXAxis = comparisonXAxis;
   }
 
 
@@ -589,6 +805,30 @@ public class ReportTimeSeriesChartSettings {
   }
 
 
+  public ReportTimeSeriesChartSettings legendConfig(@javax.annotation.Nullable LegendConfig legendConfig) {
+    this.legendConfig = legendConfig;
+    return this;
+  }
+
+  /**
+   * Get legendConfig
+   * @return legendConfig
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LEGEND_CONFIG, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public LegendConfig getLegendConfig() {
+    return legendConfig;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LEGEND_CONFIG, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLegendConfig(@javax.annotation.Nullable LegendConfig legendConfig) {
+    this.legendConfig = legendConfig;
+  }
+
+
   public ReportTimeSeriesChartSettings xaxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xaxis) {
     this.xaxis = xaxis;
     return this;
@@ -645,246 +885,6 @@ public class ReportTimeSeriesChartSettings {
   }
 
 
-  public ReportTimeSeriesChartSettings thresholds(@javax.annotation.Nullable List<TimeSeriesChartThreshold> thresholds) {
-    this.thresholds = thresholds;
-    return this;
-  }
-
-  public ReportTimeSeriesChartSettings addThresholdsItem(TimeSeriesChartThreshold thresholdsItem) {
-    if (this.thresholds == null) {
-      this.thresholds = new ArrayList<>();
-    }
-    this.thresholds.add(thresholdsItem);
-    return this;
-  }
-
-  /**
-   * Get thresholds
-   * @return thresholds
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_THRESHOLDS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<TimeSeriesChartThreshold> getThresholds() {
-    return thresholds;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_THRESHOLDS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setThresholds(@javax.annotation.Nullable List<TimeSeriesChartThreshold> thresholds) {
-    this.thresholds = thresholds;
-  }
-
-
-  public ReportTimeSeriesChartSettings grid(@javax.annotation.Nullable TimeSeriesChartGridSettings grid) {
-    this.grid = grid;
-    return this;
-  }
-
-  /**
-   * Get grid
-   * @return grid
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_GRID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TimeSeriesChartGridSettings getGrid() {
-    return grid;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_GRID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrid(@javax.annotation.Nullable TimeSeriesChartGridSettings grid) {
-    this.grid = grid;
-  }
-
-
-  public ReportTimeSeriesChartSettings yAxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yAxes) {
-    this.yAxes = yAxes;
-    return this;
-  }
-
-  public ReportTimeSeriesChartSettings putYAxesItem(String key, TimeSeriesChartYAxisSettings yAxesItem) {
-    if (this.yAxes == null) {
-      this.yAxes = new HashMap<>();
-    }
-    this.yAxes.put(key, yAxesItem);
-    return this;
-  }
-
-  /**
-   * Get yAxes
-   * @return yAxes
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_Y_AXES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Map<String, TimeSeriesChartYAxisSettings> getyAxes() {
-    return yAxes;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_Y_AXES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setyAxes(@javax.annotation.Nullable Map<String, TimeSeriesChartYAxisSettings> yAxes) {
-    this.yAxes = yAxes;
-  }
-
-
-  public ReportTimeSeriesChartSettings xAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xAxis) {
-    this.xAxis = xAxis;
-    return this;
-  }
-
-  /**
-   * Get xAxis
-   * @return xAxis
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_X_AXIS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TimeSeriesChartXAxisSettings getxAxis() {
-    return xAxis;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_X_AXIS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setxAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings xAxis) {
-    this.xAxis = xAxis;
-  }
-
-
-  public ReportTimeSeriesChartSettings barWidthSettings(@javax.annotation.Nullable TimeSeriesChartBarWidthSettings barWidthSettings) {
-    this.barWidthSettings = barWidthSettings;
-    return this;
-  }
-
-  /**
-   * Get barWidthSettings
-   * @return barWidthSettings
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH_SETTINGS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TimeSeriesChartBarWidthSettings getBarWidthSettings() {
-    return barWidthSettings;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH_SETTINGS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartBarWidthSettings barWidthSettings) {
-    this.barWidthSettings = barWidthSettings;
-  }
-
-
-  public ReportTimeSeriesChartSettings noAggregationBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings) {
-    this.noAggregationBarWidthSettings = noAggregationBarWidthSettings;
-    return this;
-  }
-
-  /**
-   * Get noAggregationBarWidthSettings
-   * @return noAggregationBarWidthSettings
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TimeSeriesChartNoAggregationBarWidthSettings getNoAggregationBarWidthSettings() {
-    return noAggregationBarWidthSettings;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_NO_AGGREGATION_BAR_WIDTH_SETTINGS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNoAggregationBarWidthSettings(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthSettings noAggregationBarWidthSettings) {
-    this.noAggregationBarWidthSettings = noAggregationBarWidthSettings;
-  }
-
-
-  public ReportTimeSeriesChartSettings states(@javax.annotation.Nullable List<TimeSeriesChartStateSettings> states) {
-    this.states = states;
-    return this;
-  }
-
-  public ReportTimeSeriesChartSettings addStatesItem(TimeSeriesChartStateSettings statesItem) {
-    if (this.states == null) {
-      this.states = new ArrayList<>();
-    }
-    this.states.add(statesItem);
-    return this;
-  }
-
-  /**
-   * Get states
-   * @return states
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<TimeSeriesChartStateSettings> getStates() {
-    return states;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_STATES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStates(@javax.annotation.Nullable List<TimeSeriesChartStateSettings> states) {
-    this.states = states;
-  }
-
-
-  public ReportTimeSeriesChartSettings comparisonXAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings comparisonXAxis) {
-    this.comparisonXAxis = comparisonXAxis;
-    return this;
-  }
-
-  /**
-   * Get comparisonXAxis
-   * @return comparisonXAxis
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_COMPARISON_X_AXIS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TimeSeriesChartXAxisSettings getComparisonXAxis() {
-    return comparisonXAxis;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_COMPARISON_X_AXIS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setComparisonXAxis(@javax.annotation.Nullable TimeSeriesChartXAxisSettings comparisonXAxis) {
-    this.comparisonXAxis = comparisonXAxis;
-  }
-
-
-  public ReportTimeSeriesChartSettings legendConfig(@javax.annotation.Nullable LegendConfig legendConfig) {
-    this.legendConfig = legendConfig;
-    return this;
-  }
-
-  /**
-   * Get legendConfig
-   * @return legendConfig
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_LEGEND_CONFIG, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public LegendConfig getLegendConfig() {
-    return legendConfig;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_LEGEND_CONFIG, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLegendConfig(@javax.annotation.Nullable LegendConfig legendConfig) {
-    this.legendConfig = legendConfig;
-  }
-
-
   /**
    * Return true if this ReportTimeSeriesChartSettings object is equal to o.
    */
@@ -902,10 +902,18 @@ public class ReportTimeSeriesChartSettings {
         Objects.equals(this.titleFont, reportTimeSeriesChartSettings.titleFont) &&
         Objects.equals(this.titleColor, reportTimeSeriesChartSettings.titleColor) &&
         Objects.equals(this.titleAlignment, reportTimeSeriesChartSettings.titleAlignment) &&
+        Objects.equals(this.thresholds, reportTimeSeriesChartSettings.thresholds) &&
         Objects.equals(this.stack, reportTimeSeriesChartSettings.stack) &&
+        Objects.equals(this.grid, reportTimeSeriesChartSettings.grid) &&
+        Objects.equals(this.yAxes, reportTimeSeriesChartSettings.yAxes) &&
+        Objects.equals(this.xAxis, reportTimeSeriesChartSettings.xAxis) &&
+        Objects.equals(this.barWidthSettings, reportTimeSeriesChartSettings.barWidthSettings) &&
+        Objects.equals(this.noAggregationBarWidthSettings, reportTimeSeriesChartSettings.noAggregationBarWidthSettings) &&
+        Objects.equals(this.states, reportTimeSeriesChartSettings.states) &&
         Objects.equals(this.comparisonEnabled, reportTimeSeriesChartSettings.comparisonEnabled) &&
         Objects.equals(this.timeForComparison, reportTimeSeriesChartSettings.timeForComparison) &&
         Objects.equals(this.comparisonCustomIntervalValue, reportTimeSeriesChartSettings.comparisonCustomIntervalValue) &&
+        Objects.equals(this.comparisonXAxis, reportTimeSeriesChartSettings.comparisonXAxis) &&
         Objects.equals(this.showLegend, reportTimeSeriesChartSettings.showLegend) &&
         Objects.equals(this.legendColumnTitleFont, reportTimeSeriesChartSettings.legendColumnTitleFont) &&
         Objects.equals(this.legendColumnTitleColor, reportTimeSeriesChartSettings.legendColumnTitleColor) &&
@@ -913,22 +921,14 @@ public class ReportTimeSeriesChartSettings {
         Objects.equals(this.legendLabelColor, reportTimeSeriesChartSettings.legendLabelColor) &&
         Objects.equals(this.legendValueFont, reportTimeSeriesChartSettings.legendValueFont) &&
         Objects.equals(this.legendValueColor, reportTimeSeriesChartSettings.legendValueColor) &&
+        Objects.equals(this.legendConfig, reportTimeSeriesChartSettings.legendConfig) &&
         Objects.equals(this.xaxis, reportTimeSeriesChartSettings.xaxis) &&
-        Objects.equals(this.yaxes, reportTimeSeriesChartSettings.yaxes) &&
-        Objects.equals(this.thresholds, reportTimeSeriesChartSettings.thresholds) &&
-        Objects.equals(this.grid, reportTimeSeriesChartSettings.grid) &&
-        Objects.equals(this.yAxes, reportTimeSeriesChartSettings.yAxes) &&
-        Objects.equals(this.xAxis, reportTimeSeriesChartSettings.xAxis) &&
-        Objects.equals(this.barWidthSettings, reportTimeSeriesChartSettings.barWidthSettings) &&
-        Objects.equals(this.noAggregationBarWidthSettings, reportTimeSeriesChartSettings.noAggregationBarWidthSettings) &&
-        Objects.equals(this.states, reportTimeSeriesChartSettings.states) &&
-        Objects.equals(this.comparisonXAxis, reportTimeSeriesChartSettings.comparisonXAxis) &&
-        Objects.equals(this.legendConfig, reportTimeSeriesChartSettings.legendConfig);
+        Objects.equals(this.yaxes, reportTimeSeriesChartSettings.yaxes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(showTitle, title, titleFont, titleColor, titleAlignment, stack, comparisonEnabled, timeForComparison, comparisonCustomIntervalValue, showLegend, legendColumnTitleFont, legendColumnTitleColor, legendLabelFont, legendLabelColor, legendValueFont, legendValueColor, xaxis, yaxes, thresholds, grid, yAxes, xAxis, barWidthSettings, noAggregationBarWidthSettings, states, comparisonXAxis, legendConfig);
+    return Objects.hash(showTitle, title, titleFont, titleColor, titleAlignment, thresholds, stack, grid, yAxes, xAxis, barWidthSettings, noAggregationBarWidthSettings, states, comparisonEnabled, timeForComparison, comparisonCustomIntervalValue, comparisonXAxis, showLegend, legendColumnTitleFont, legendColumnTitleColor, legendLabelFont, legendLabelColor, legendValueFont, legendValueColor, legendConfig, xaxis, yaxes);
   }
 
   @Override
@@ -940,10 +940,18 @@ public class ReportTimeSeriesChartSettings {
     sb.append("    titleFont: ").append(toIndentedString(titleFont)).append("\n");
     sb.append("    titleColor: ").append(toIndentedString(titleColor)).append("\n");
     sb.append("    titleAlignment: ").append(toIndentedString(titleAlignment)).append("\n");
+    sb.append("    thresholds: ").append(toIndentedString(thresholds)).append("\n");
     sb.append("    stack: ").append(toIndentedString(stack)).append("\n");
+    sb.append("    grid: ").append(toIndentedString(grid)).append("\n");
+    sb.append("    yAxes: ").append(toIndentedString(yAxes)).append("\n");
+    sb.append("    xAxis: ").append(toIndentedString(xAxis)).append("\n");
+    sb.append("    barWidthSettings: ").append(toIndentedString(barWidthSettings)).append("\n");
+    sb.append("    noAggregationBarWidthSettings: ").append(toIndentedString(noAggregationBarWidthSettings)).append("\n");
+    sb.append("    states: ").append(toIndentedString(states)).append("\n");
     sb.append("    comparisonEnabled: ").append(toIndentedString(comparisonEnabled)).append("\n");
     sb.append("    timeForComparison: ").append(toIndentedString(timeForComparison)).append("\n");
     sb.append("    comparisonCustomIntervalValue: ").append(toIndentedString(comparisonCustomIntervalValue)).append("\n");
+    sb.append("    comparisonXAxis: ").append(toIndentedString(comparisonXAxis)).append("\n");
     sb.append("    showLegend: ").append(toIndentedString(showLegend)).append("\n");
     sb.append("    legendColumnTitleFont: ").append(toIndentedString(legendColumnTitleFont)).append("\n");
     sb.append("    legendColumnTitleColor: ").append(toIndentedString(legendColumnTitleColor)).append("\n");
@@ -951,17 +959,9 @@ public class ReportTimeSeriesChartSettings {
     sb.append("    legendLabelColor: ").append(toIndentedString(legendLabelColor)).append("\n");
     sb.append("    legendValueFont: ").append(toIndentedString(legendValueFont)).append("\n");
     sb.append("    legendValueColor: ").append(toIndentedString(legendValueColor)).append("\n");
+    sb.append("    legendConfig: ").append(toIndentedString(legendConfig)).append("\n");
     sb.append("    xaxis: ").append(toIndentedString(xaxis)).append("\n");
     sb.append("    yaxes: ").append(toIndentedString(yaxes)).append("\n");
-    sb.append("    thresholds: ").append(toIndentedString(thresholds)).append("\n");
-    sb.append("    grid: ").append(toIndentedString(grid)).append("\n");
-    sb.append("    yAxes: ").append(toIndentedString(yAxes)).append("\n");
-    sb.append("    xAxis: ").append(toIndentedString(xAxis)).append("\n");
-    sb.append("    barWidthSettings: ").append(toIndentedString(barWidthSettings)).append("\n");
-    sb.append("    noAggregationBarWidthSettings: ").append(toIndentedString(noAggregationBarWidthSettings)).append("\n");
-    sb.append("    states: ").append(toIndentedString(states)).append("\n");
-    sb.append("    comparisonXAxis: ").append(toIndentedString(comparisonXAxis)).append("\n");
-    sb.append("    legendConfig: ").append(toIndentedString(legendConfig)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1034,76 +1034,6 @@ public class ReportTimeSeriesChartSettings {
       joiner.add(String.format(java.util.Locale.ROOT, "%stitleAlignment%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitleAlignment()))));
     }
 
-    // add `stack` to the URL query string
-    if (getStack() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstack%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStack()))));
-    }
-
-    // add `comparisonEnabled` to the URL query string
-    if (getComparisonEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonEnabled()))));
-    }
-
-    // add `timeForComparison` to the URL query string
-    if (getTimeForComparison() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimeForComparison%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeForComparison()))));
-    }
-
-    // add `comparisonCustomIntervalValue` to the URL query string
-    if (getComparisonCustomIntervalValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonCustomIntervalValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonCustomIntervalValue()))));
-    }
-
-    // add `showLegend` to the URL query string
-    if (getShowLegend() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sshowLegend%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowLegend()))));
-    }
-
-    // add `legendColumnTitleFont` to the URL query string
-    if (getLegendColumnTitleFont() != null) {
-      joiner.add(getLegendColumnTitleFont().toUrlQueryString(prefix + "legendColumnTitleFont" + suffix));
-    }
-
-    // add `legendColumnTitleColor` to the URL query string
-    if (getLegendColumnTitleColor() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slegendColumnTitleColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendColumnTitleColor()))));
-    }
-
-    // add `legendLabelFont` to the URL query string
-    if (getLegendLabelFont() != null) {
-      joiner.add(getLegendLabelFont().toUrlQueryString(prefix + "legendLabelFont" + suffix));
-    }
-
-    // add `legendLabelColor` to the URL query string
-    if (getLegendLabelColor() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slegendLabelColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendLabelColor()))));
-    }
-
-    // add `legendValueFont` to the URL query string
-    if (getLegendValueFont() != null) {
-      joiner.add(getLegendValueFont().toUrlQueryString(prefix + "legendValueFont" + suffix));
-    }
-
-    // add `legendValueColor` to the URL query string
-    if (getLegendValueColor() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%slegendValueColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendValueColor()))));
-    }
-
-    // add `xaxis` to the URL query string
-    if (getXaxis() != null) {
-      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
-    }
-
-    // add `yaxes` to the URL query string
-    if (getYaxes() != null) {
-      for (String _key : getYaxes().keySet()) {
-        if (getYaxes().get(_key) != null) {
-          joiner.add(getYaxes().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%syaxes%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
-        }
-      }
-    }
-
     // add `thresholds` to the URL query string
     if (getThresholds() != null) {
       for (int i = 0; i < getThresholds().size(); i++) {
@@ -1112,6 +1042,11 @@ public class ReportTimeSeriesChartSettings {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `stack` to the URL query string
+    if (getStack() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstack%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStack()))));
     }
 
     // add `grid` to the URL query string
@@ -1154,14 +1089,79 @@ public class ReportTimeSeriesChartSettings {
       }
     }
 
+    // add `comparisonEnabled` to the URL query string
+    if (getComparisonEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonEnabled()))));
+    }
+
+    // add `timeForComparison` to the URL query string
+    if (getTimeForComparison() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimeForComparison%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimeForComparison()))));
+    }
+
+    // add `comparisonCustomIntervalValue` to the URL query string
+    if (getComparisonCustomIntervalValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scomparisonCustomIntervalValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getComparisonCustomIntervalValue()))));
+    }
+
     // add `comparisonXAxis` to the URL query string
     if (getComparisonXAxis() != null) {
       joiner.add(getComparisonXAxis().toUrlQueryString(prefix + "comparisonXAxis" + suffix));
     }
 
+    // add `showLegend` to the URL query string
+    if (getShowLegend() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sshowLegend%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getShowLegend()))));
+    }
+
+    // add `legendColumnTitleFont` to the URL query string
+    if (getLegendColumnTitleFont() != null) {
+      joiner.add(getLegendColumnTitleFont().toUrlQueryString(prefix + "legendColumnTitleFont" + suffix));
+    }
+
+    // add `legendColumnTitleColor` to the URL query string
+    if (getLegendColumnTitleColor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slegendColumnTitleColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendColumnTitleColor()))));
+    }
+
+    // add `legendLabelFont` to the URL query string
+    if (getLegendLabelFont() != null) {
+      joiner.add(getLegendLabelFont().toUrlQueryString(prefix + "legendLabelFont" + suffix));
+    }
+
+    // add `legendLabelColor` to the URL query string
+    if (getLegendLabelColor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slegendLabelColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendLabelColor()))));
+    }
+
+    // add `legendValueFont` to the URL query string
+    if (getLegendValueFont() != null) {
+      joiner.add(getLegendValueFont().toUrlQueryString(prefix + "legendValueFont" + suffix));
+    }
+
+    // add `legendValueColor` to the URL query string
+    if (getLegendValueColor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%slegendValueColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLegendValueColor()))));
+    }
+
     // add `legendConfig` to the URL query string
     if (getLegendConfig() != null) {
       joiner.add(getLegendConfig().toUrlQueryString(prefix + "legendConfig" + suffix));
+    }
+
+    // add `xaxis` to the URL query string
+    if (getXaxis() != null) {
+      joiner.add(getXaxis().toUrlQueryString(prefix + "xaxis" + suffix));
+    }
+
+    // add `yaxes` to the URL query string
+    if (getYaxes() != null) {
+      for (String _key : getYaxes().keySet()) {
+        if (getYaxes().get(_key) != null) {
+          joiner.add(getYaxes().get(_key).toUrlQueryString(String.format(java.util.Locale.ROOT, "%syaxes%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
+        }
+      }
     }
 
     return joiner.toString();

@@ -14,6 +14,7 @@
 | **entityKeyType** | **String** |  | [optional] |
 | **entityAlias** | **String** |  | [optional] |
 | **entityKey** | **String** |  | [optional] |
+| **yAxisId** | **String** |  | [optional] |
 | **units** | **String** |  | [optional] |
 | **decimals** | **Integer** |  | [optional] |
 | **lineColor** | **String** |  | [optional] |
@@ -30,7 +31,6 @@
 | **enableLabelBackground** | **Boolean** |  | [optional] |
 | **labelBackground** | **String** |  | [optional] |
 | **yaxisId** | **String** |  | [optional] |
-| **yAxisId** | **String** |  | [optional] |
 
 
 

@@ -21,8 +21,8 @@
 | **_configuration** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **resources** | **List\<ResourceExportData\>** |  | [optional] |
 | **version** | **Long** |  | [optional] |
-| **ownerName** | **String** | Owner name | [optional] [readonly] |
 | **groups** | **List\<EntityInfo\>** | Groups | [optional] |
+| **ownerName** | **String** | Owner name | [optional] [readonly] |
 
 
 

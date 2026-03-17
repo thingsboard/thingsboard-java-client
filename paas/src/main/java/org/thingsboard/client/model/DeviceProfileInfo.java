@@ -41,22 +41,18 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   DeviceProfileInfo.JSON_PROPERTY_ID,
-  DeviceProfileInfo.JSON_PROPERTY_TENANT_ID,
   DeviceProfileInfo.JSON_PROPERTY_NAME,
   DeviceProfileInfo.JSON_PROPERTY_IMAGE,
   DeviceProfileInfo.JSON_PROPERTY_DEFAULT_DASHBOARD_ID,
   DeviceProfileInfo.JSON_PROPERTY_TYPE,
-  DeviceProfileInfo.JSON_PROPERTY_TRANSPORT_TYPE
+  DeviceProfileInfo.JSON_PROPERTY_TRANSPORT_TYPE,
+  DeviceProfileInfo.JSON_PROPERTY_TENANT_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceProfileInfo {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
   private EntityId id;
-
-  public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
-  private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -77,6 +73,10 @@ public class DeviceProfileInfo {
   public static final String JSON_PROPERTY_TRANSPORT_TYPE = "transportType";
   @javax.annotation.Nullable
   private DeviceTransportType transportType;
+
+  public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
+  @javax.annotation.Nullable
+  private TenantId tenantId;
 
   public DeviceProfileInfo() { 
   }
@@ -102,30 +102,6 @@ public class DeviceProfileInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(@javax.annotation.Nullable EntityId id) {
     this.id = id;
-  }
-
-
-  public DeviceProfileInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
-    return this;
-  }
-
-  /**
-   * Tenant id.
-   * @return tenantId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public TenantId getTenantId() {
-    return tenantId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
-    this.tenantId = tenantId;
   }
 
 
@@ -249,6 +225,30 @@ public class DeviceProfileInfo {
   }
 
 
+  public DeviceProfileInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
+    this.tenantId = tenantId;
+    return this;
+  }
+
+  /**
+   * Tenant id.
+   * @return tenantId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TenantId getTenantId() {
+    return tenantId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+    this.tenantId = tenantId;
+  }
+
+
   /**
    * Return true if this DeviceProfileInfo object is equal to o.
    */
@@ -262,17 +262,17 @@ public class DeviceProfileInfo {
     }
     DeviceProfileInfo deviceProfileInfo = (DeviceProfileInfo) o;
     return Objects.equals(this.id, deviceProfileInfo.id) &&
-        Objects.equals(this.tenantId, deviceProfileInfo.tenantId) &&
         Objects.equals(this.name, deviceProfileInfo.name) &&
         Objects.equals(this.image, deviceProfileInfo.image) &&
         Objects.equals(this.defaultDashboardId, deviceProfileInfo.defaultDashboardId) &&
         Objects.equals(this.type, deviceProfileInfo.type) &&
-        Objects.equals(this.transportType, deviceProfileInfo.transportType);
+        Objects.equals(this.transportType, deviceProfileInfo.transportType) &&
+        Objects.equals(this.tenantId, deviceProfileInfo.tenantId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tenantId, name, image, defaultDashboardId, type, transportType);
+    return Objects.hash(id, name, image, defaultDashboardId, type, transportType, tenantId);
   }
 
   @Override
@@ -280,12 +280,12 @@ public class DeviceProfileInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class DeviceProfileInfo {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    defaultDashboardId: ").append(toIndentedString(defaultDashboardId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    transportType: ").append(toIndentedString(transportType)).append("\n");
+    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -338,11 +338,6 @@ public class DeviceProfileInfo {
       joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
     }
 
-    // add `tenantId` to the URL query string
-    if (getTenantId() != null) {
-      joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
-    }
-
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
@@ -366,6 +361,11 @@ public class DeviceProfileInfo {
     // add `transportType` to the URL query string
     if (getTransportType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stransportType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTransportType()))));
+    }
+
+    // add `tenantId` to the URL query string
+    if (getTenantId() != null) {
+      joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
     return joiner.toString();

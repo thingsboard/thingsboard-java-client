@@ -7,14 +7,14 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **status** | **Integer** | HTTP Response Status Code | [optional] [readonly] |
-| **message** | **String** | Error message | [optional] [readonly] |
 | **errorCode** | **ThingsboardErrorCode** |  | [optional] |
-| **timestamp** | **Long** | Timestamp | [optional] [readonly] |
-| **subscriptionErrorCode** | **SubscriptionExceptionErrorCode** |  | [optional] |
-| **subscriptionEntry** | **SubscriptionEntry** |  | [optional] |
-| **subscriptionValue** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **message** | **String** | Error message | [optional] [readonly] |
 | **resetToken** | **String** | Password reset token | [optional] [readonly] |
+| **status** | **Integer** | HTTP Response Status Code | [optional] [readonly] |
+| **subscriptionEntry** | **SubscriptionEntry** |  | [optional] |
+| **subscriptionErrorCode** | **SubscriptionExceptionErrorCode** |  | [optional] |
+| **subscriptionValue** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
+| **timestamp** | **Long** | Timestamp | [optional] [readonly] |
 
 
 

@@ -47,10 +47,10 @@ import org.thingsboard.client.ApiClient;
   DomainInfo.JSON_PROPERTY_TENANT_ID,
   DomainInfo.JSON_PROPERTY_CUSTOMER_ID,
   DomainInfo.JSON_PROPERTY_NAME,
-  DomainInfo.JSON_PROPERTY_OAUTH2_ENABLED,
-  DomainInfo.JSON_PROPERTY_PROPAGATE_TO_EDGE,
   DomainInfo.JSON_PROPERTY_OAUTH2_CLIENT_INFOS,
-  DomainInfo.JSON_PROPERTY_OWNER_ID
+  DomainInfo.JSON_PROPERTY_OAUTH2_ENABLED,
+  DomainInfo.JSON_PROPERTY_OWNER_ID,
+  DomainInfo.JSON_PROPERTY_PROPAGATE_TO_EDGE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DomainInfo {
@@ -74,21 +74,21 @@ public class DomainInfo {
   @javax.annotation.Nonnull
   private String name;
 
-  public static final String JSON_PROPERTY_OAUTH2_ENABLED = "oauth2Enabled";
-  @javax.annotation.Nullable
-  private Boolean oauth2Enabled;
-
-  public static final String JSON_PROPERTY_PROPAGATE_TO_EDGE = "propagateToEdge";
-  @javax.annotation.Nullable
-  private Boolean propagateToEdge;
-
   public static final String JSON_PROPERTY_OAUTH2_CLIENT_INFOS = "oauth2ClientInfos";
   @javax.annotation.Nullable
   private List<OAuth2ClientInfo> oauth2ClientInfos = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_OAUTH2_ENABLED = "oauth2Enabled";
+  @javax.annotation.Nullable
+  private Boolean oauth2Enabled;
+
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @javax.annotation.Nullable
   private EntityId ownerId;
+
+  public static final String JSON_PROPERTY_PROPAGATE_TO_EDGE = "propagateToEdge";
+  @javax.annotation.Nullable
+  private Boolean propagateToEdge;
 
   public DomainInfo() { 
   }
@@ -213,54 +213,6 @@ public class DomainInfo {
   }
 
 
-  public DomainInfo oauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
-    this.oauth2Enabled = oauth2Enabled;
-    return this;
-  }
-
-  /**
-   * Whether OAuth2 settings are enabled or not
-   * @return oauth2Enabled
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getOauth2Enabled() {
-    return oauth2Enabled;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
-    this.oauth2Enabled = oauth2Enabled;
-  }
-
-
-  public DomainInfo propagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
-    this.propagateToEdge = propagateToEdge;
-    return this;
-  }
-
-  /**
-   * Whether OAuth2 settings are enabled on Edge or not
-   * @return propagateToEdge
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getPropagateToEdge() {
-    return propagateToEdge;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
-    this.propagateToEdge = propagateToEdge;
-  }
-
-
   public DomainInfo oauth2ClientInfos(@javax.annotation.Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
     this.oauth2ClientInfos = oauth2ClientInfos;
     return this;
@@ -293,6 +245,30 @@ public class DomainInfo {
   }
 
 
+  public DomainInfo oauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+    this.oauth2Enabled = oauth2Enabled;
+    return this;
+  }
+
+  /**
+   * Whether OAuth2 settings are enabled or not
+   * @return oauth2Enabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getOauth2Enabled() {
+    return oauth2Enabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+    this.oauth2Enabled = oauth2Enabled;
+  }
+
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -305,6 +281,30 @@ public class DomainInfo {
   }
 
 
+
+
+  public DomainInfo propagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
+    this.propagateToEdge = propagateToEdge;
+    return this;
+  }
+
+  /**
+   * Whether OAuth2 settings are enabled on Edge or not
+   * @return propagateToEdge
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPropagateToEdge() {
+    return propagateToEdge;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
+    this.propagateToEdge = propagateToEdge;
+  }
 
 
   /**
@@ -324,15 +324,15 @@ public class DomainInfo {
         Objects.equals(this.tenantId, domainInfo.tenantId) &&
         Objects.equals(this.customerId, domainInfo.customerId) &&
         Objects.equals(this.name, domainInfo.name) &&
-        Objects.equals(this.oauth2Enabled, domainInfo.oauth2Enabled) &&
-        Objects.equals(this.propagateToEdge, domainInfo.propagateToEdge) &&
         Objects.equals(this.oauth2ClientInfos, domainInfo.oauth2ClientInfos) &&
-        Objects.equals(this.ownerId, domainInfo.ownerId);
+        Objects.equals(this.oauth2Enabled, domainInfo.oauth2Enabled) &&
+        Objects.equals(this.ownerId, domainInfo.ownerId) &&
+        Objects.equals(this.propagateToEdge, domainInfo.propagateToEdge);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, name, oauth2Enabled, propagateToEdge, oauth2ClientInfos, ownerId);
+    return Objects.hash(id, createdTime, tenantId, customerId, name, oauth2ClientInfos, oauth2Enabled, ownerId, propagateToEdge);
   }
 
   @Override
@@ -344,10 +344,10 @@ public class DomainInfo {
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    oauth2Enabled: ").append(toIndentedString(oauth2Enabled)).append("\n");
-    sb.append("    propagateToEdge: ").append(toIndentedString(propagateToEdge)).append("\n");
     sb.append("    oauth2ClientInfos: ").append(toIndentedString(oauth2ClientInfos)).append("\n");
+    sb.append("    oauth2Enabled: ").append(toIndentedString(oauth2Enabled)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    propagateToEdge: ").append(toIndentedString(propagateToEdge)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -420,16 +420,6 @@ public class DomainInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
-    // add `oauth2Enabled` to the URL query string
-    if (getOauth2Enabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%soauth2Enabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOauth2Enabled()))));
-    }
-
-    // add `propagateToEdge` to the URL query string
-    if (getPropagateToEdge() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spropagateToEdge%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagateToEdge()))));
-    }
-
     // add `oauth2ClientInfos` to the URL query string
     if (getOauth2ClientInfos() != null) {
       for (int i = 0; i < getOauth2ClientInfos().size(); i++) {
@@ -440,9 +430,19 @@ public class DomainInfo {
       }
     }
 
+    // add `oauth2Enabled` to the URL query string
+    if (getOauth2Enabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%soauth2Enabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOauth2Enabled()))));
+    }
+
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
+    }
+
+    // add `propagateToEdge` to the URL query string
+    if (getPropagateToEdge() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spropagateToEdge%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagateToEdge()))));
     }
 
     return joiner.toString();

@@ -41,6 +41,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_ID,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_CREATED_TIME,
+  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_ADDITIONAL_INFO,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_PROVIDER_ID,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_MAPPER_CONFIG,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_AUTHORIZATION_URI,
@@ -54,8 +55,7 @@ import org.thingsboard.client.ApiClient;
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_LOGIN_BUTTON_ICON,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_LOGIN_BUTTON_LABEL,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_HELP_LINK,
-  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_NAME,
-  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_ADDITIONAL_INFO
+  OAuth2ClientRegistrationTemplate.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2ClientRegistrationTemplate {
@@ -66,6 +66,10 @@ public class OAuth2ClientRegistrationTemplate {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @javax.annotation.Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
   @javax.annotation.Nonnull
@@ -123,10 +127,6 @@ public class OAuth2ClientRegistrationTemplate {
   @javax.annotation.Nullable
   private String name;
 
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
-
   public OAuth2ClientRegistrationTemplate() { 
   }
 
@@ -174,6 +174,30 @@ public class OAuth2ClientRegistrationTemplate {
   }
 
 
+
+
+  public OAuth2ClientRegistrationTemplate additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Get additionalInfo
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public OAuth2ClientRegistrationTemplate providerId(@javax.annotation.Nonnull String providerId) {
@@ -520,30 +544,6 @@ public class OAuth2ClientRegistrationTemplate {
   }
 
 
-  public OAuth2ClientRegistrationTemplate additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Get additionalInfo
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this OAuth2ClientRegistrationTemplate object is equal to o.
    */
@@ -558,6 +558,7 @@ public class OAuth2ClientRegistrationTemplate {
     OAuth2ClientRegistrationTemplate oauth2ClientRegistrationTemplate = (OAuth2ClientRegistrationTemplate) o;
     return Objects.equals(this.id, oauth2ClientRegistrationTemplate.id) &&
         Objects.equals(this.createdTime, oauth2ClientRegistrationTemplate.createdTime) &&
+        Objects.equals(this.additionalInfo, oauth2ClientRegistrationTemplate.additionalInfo) &&
         Objects.equals(this.providerId, oauth2ClientRegistrationTemplate.providerId) &&
         Objects.equals(this.mapperConfig, oauth2ClientRegistrationTemplate.mapperConfig) &&
         Objects.equals(this.authorizationUri, oauth2ClientRegistrationTemplate.authorizationUri) &&
@@ -571,13 +572,12 @@ public class OAuth2ClientRegistrationTemplate {
         Objects.equals(this.loginButtonIcon, oauth2ClientRegistrationTemplate.loginButtonIcon) &&
         Objects.equals(this.loginButtonLabel, oauth2ClientRegistrationTemplate.loginButtonLabel) &&
         Objects.equals(this.helpLink, oauth2ClientRegistrationTemplate.helpLink) &&
-        Objects.equals(this.name, oauth2ClientRegistrationTemplate.name) &&
-        Objects.equals(this.additionalInfo, oauth2ClientRegistrationTemplate.additionalInfo);
+        Objects.equals(this.name, oauth2ClientRegistrationTemplate.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, providerId, mapperConfig, authorizationUri, accessTokenUri, scope, userInfoUri, userNameAttributeName, jwkSetUri, clientAuthenticationMethod, comment, loginButtonIcon, loginButtonLabel, helpLink, name, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, providerId, mapperConfig, authorizationUri, accessTokenUri, scope, userInfoUri, userNameAttributeName, jwkSetUri, clientAuthenticationMethod, comment, loginButtonIcon, loginButtonLabel, helpLink, name);
   }
 
   @Override
@@ -586,6 +586,7 @@ public class OAuth2ClientRegistrationTemplate {
     sb.append("class OAuth2ClientRegistrationTemplate {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    providerId: ").append(toIndentedString(providerId)).append("\n");
     sb.append("    mapperConfig: ").append(toIndentedString(mapperConfig)).append("\n");
     sb.append("    authorizationUri: ").append(toIndentedString(authorizationUri)).append("\n");
@@ -600,7 +601,6 @@ public class OAuth2ClientRegistrationTemplate {
     sb.append("    loginButtonLabel: ").append(toIndentedString(loginButtonLabel)).append("\n");
     sb.append("    helpLink: ").append(toIndentedString(helpLink)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -656,6 +656,11 @@ public class OAuth2ClientRegistrationTemplate {
     // add `createdTime` to the URL query string
     if (getCreatedTime() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `providerId` to the URL query string
@@ -730,11 +735,6 @@ public class OAuth2ClientRegistrationTemplate {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

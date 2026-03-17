@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **resolvedValue** | **Long** |  | [optional] |
 | **sourceType** | **DynamicValueSourceType** |  | [optional] |
 | **sourceAttribute** | **String** |  | [optional] |
 | **inherit** | **Boolean** |  | [optional] |
-| **resolvedValue** | **Long** |  | [optional] |
 
 
 

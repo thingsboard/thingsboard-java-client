@@ -36,13 +36,17 @@ import org.thingsboard.client.ApiClient;
  * DynamicValueDouble
  */
 @JsonPropertyOrder({
+  DynamicValueDouble.JSON_PROPERTY_RESOLVED_VALUE,
   DynamicValueDouble.JSON_PROPERTY_SOURCE_TYPE,
   DynamicValueDouble.JSON_PROPERTY_SOURCE_ATTRIBUTE,
-  DynamicValueDouble.JSON_PROPERTY_INHERIT,
-  DynamicValueDouble.JSON_PROPERTY_RESOLVED_VALUE
+  DynamicValueDouble.JSON_PROPERTY_INHERIT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DynamicValueDouble {
+  public static final String JSON_PROPERTY_RESOLVED_VALUE = "resolvedValue";
+  @javax.annotation.Nullable
+  private Double resolvedValue;
+
   public static final String JSON_PROPERTY_SOURCE_TYPE = "sourceType";
   @javax.annotation.Nullable
   private DynamicValueSourceType sourceType;
@@ -55,12 +59,32 @@ public class DynamicValueDouble {
   @javax.annotation.Nullable
   private Boolean inherit;
 
-  public static final String JSON_PROPERTY_RESOLVED_VALUE = "resolvedValue";
-  @javax.annotation.Nullable
-  private Double resolvedValue;
-
   public DynamicValueDouble() { 
   }
+
+  public DynamicValueDouble resolvedValue(@javax.annotation.Nullable Double resolvedValue) {
+    this.resolvedValue = resolvedValue;
+    return this;
+  }
+
+  /**
+   * Get resolvedValue
+   * @return resolvedValue
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_RESOLVED_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Double getResolvedValue() {
+    return resolvedValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_RESOLVED_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setResolvedValue(@javax.annotation.Nullable Double resolvedValue) {
+    this.resolvedValue = resolvedValue;
+  }
+
 
   public DynamicValueDouble sourceType(@javax.annotation.Nullable DynamicValueSourceType sourceType) {
     this.sourceType = sourceType;
@@ -134,30 +158,6 @@ public class DynamicValueDouble {
   }
 
 
-  public DynamicValueDouble resolvedValue(@javax.annotation.Nullable Double resolvedValue) {
-    this.resolvedValue = resolvedValue;
-    return this;
-  }
-
-  /**
-   * Get resolvedValue
-   * @return resolvedValue
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_RESOLVED_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getResolvedValue() {
-    return resolvedValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_RESOLVED_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResolvedValue(@javax.annotation.Nullable Double resolvedValue) {
-    this.resolvedValue = resolvedValue;
-  }
-
-
   /**
    * Return true if this DynamicValueDouble object is equal to o.
    */
@@ -170,25 +170,25 @@ public class DynamicValueDouble {
       return false;
     }
     DynamicValueDouble dynamicValueDouble = (DynamicValueDouble) o;
-    return Objects.equals(this.sourceType, dynamicValueDouble.sourceType) &&
+    return Objects.equals(this.resolvedValue, dynamicValueDouble.resolvedValue) &&
+        Objects.equals(this.sourceType, dynamicValueDouble.sourceType) &&
         Objects.equals(this.sourceAttribute, dynamicValueDouble.sourceAttribute) &&
-        Objects.equals(this.inherit, dynamicValueDouble.inherit) &&
-        Objects.equals(this.resolvedValue, dynamicValueDouble.resolvedValue);
+        Objects.equals(this.inherit, dynamicValueDouble.inherit);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourceType, sourceAttribute, inherit, resolvedValue);
+    return Objects.hash(resolvedValue, sourceType, sourceAttribute, inherit);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DynamicValueDouble {\n");
+    sb.append("    resolvedValue: ").append(toIndentedString(resolvedValue)).append("\n");
     sb.append("    sourceType: ").append(toIndentedString(sourceType)).append("\n");
     sb.append("    sourceAttribute: ").append(toIndentedString(sourceAttribute)).append("\n");
     sb.append("    inherit: ").append(toIndentedString(inherit)).append("\n");
-    sb.append("    resolvedValue: ").append(toIndentedString(resolvedValue)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -236,6 +236,11 @@ public class DynamicValueDouble {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `resolvedValue` to the URL query string
+    if (getResolvedValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sresolvedValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResolvedValue()))));
+    }
+
     // add `sourceType` to the URL query string
     if (getSourceType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssourceType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSourceType()))));
@@ -249,11 +254,6 @@ public class DynamicValueDouble {
     // add `inherit` to the URL query string
     if (getInherit() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sinherit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getInherit()))));
-    }
-
-    // add `resolvedValue` to the URL query string
-    if (getResolvedValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sresolvedValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResolvedValue()))));
     }
 
     return joiner.toString();

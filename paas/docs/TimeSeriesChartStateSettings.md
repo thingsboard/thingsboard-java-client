@@ -10,9 +10,9 @@
 | **label** | **String** |  | [optional] |
 | **value** | **Double** |  | [optional] |
 | **sourceType** | **TimeSeriesChartStateSourceType** |  | [optional] |
+| **sourceValue** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **sourceRangeFrom** | **Double** |  | [optional] |
 | **sourceRangeTo** | **Double** |  | [optional] |
-| **sourceValue** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 
 

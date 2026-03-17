@@ -9,9 +9,9 @@
 |------------ | ------------- | ------------- | -------------|
 | **cause** | **ErrorComponentAllOfExceptionCause** |  | [optional] |
 | **stackTrace** | **List\<ErrorComponentAllOfExceptionCauseStackTrace\>** |  | [optional] |
-| **localizedMessage** | **String** |  | [optional] |
 | **message** | **String** |  | [optional] |
 | **suppressed** | **List\<ErrorComponentAllOfExceptionCause\>** |  | [optional] |
+| **localizedMessage** | **String** |  | [optional] |
 
 
 
