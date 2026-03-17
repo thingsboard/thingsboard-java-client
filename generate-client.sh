@@ -161,6 +161,7 @@ generate() {
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --openapi-normalizer SET_TAGS_FOR_ALL_OPERATIONS=Thingsboard \
+    -t "$SCRIPT_DIR/openapi" \
     2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword" -e "Skipped by.*options supplied by user"; fi
 
   # Run 2 — Per-controller docs only (preserves original tags)
@@ -180,8 +181,27 @@ generate() {
     -t "$SCRIPT_DIR/openapi" \
     2>&1 | if [ "$VERBOSE" = true ]; then cat; else grep -v -e "^\[main\] INFO  o.o.codegen.*writing file" -e "^\[main\] INFO  o.o.c.languages.*Processing operation" -e "Unknown scheme.*loginPassword" -e "Skipped by.*options supplied by user"; fi
 
-  # Strip generated OpenAPI comment block and collapse multiple blank lines
-  find "$output_dir/src" -name "*.java" -exec perl -i -0pe 's|/\*\n \* ThingsBoard REST API.*?\*/\n+||s' {} +
+  # Post-process all generated Java files:
+  #  - strip OpenAPI comment block
+  #  - shorten fully-qualified javax.annotation annotations and add imports
+  find "$output_dir/src" -name "*.java" -exec perl -i -0pe '
+    s|/\*\n \* ThingsBoard REST API.*?\*/\n+||s;
+    s/\@javax\.annotation\.(Nonnull|Nullable|Generated)/\@$1/g;
+    my @n;
+    push @n, "import javax.annotation.Generated;" if /\@Generated/ && !/import javax\.annotation\.Generated/;
+    push @n, "import javax.annotation.Nonnull;" if /\@Nonnull/ && !/import javax\.annotation\.Nonnull/;
+    push @n, "import javax.annotation.Nullable;" if /\@Nullable/ && !/import javax\.annotation\.Nullable/;
+    if (@n) { my $b = join("\n", @n) . "\n"; s/^(import )/$b$1/m || s/(^package [^;]+;\n)/$1$b/m; }
+  ' {} +
+
+  # API class only: remove all blank lines, then restore one between methods,
+  # before constructors, and before the class annotation
+  find "$output_dir/src" -path "*/api/ThingsboardApi.java" -exec perl -i -0pe '
+    s/\n{2,}/\n/g;
+    s/\}\n(  (?:\/\*\*|private |public |protected ))/}\n\n$1/g;
+    s/;\n(  public )/;\n\n$1/g;
+    s/;\n(\@Generated)/;\n\n$1/g;
+  ' {} +
 
   # Make ApiException unchecked (extend RuntimeException instead of Exception)
   perl -i -pe 's/extends Exception/extends RuntimeException/' "$output_dir/src/main/java/org/thingsboard/client/ApiException.java"
