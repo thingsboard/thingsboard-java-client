@@ -43,14 +43,14 @@ import org.thingsboard.client.ApiClient;
   RuleNode.JSON_PROPERTY_RULE_CHAIN_ID,
   RuleNode.JSON_PROPERTY_TYPE,
   RuleNode.JSON_PROPERTY_NAME,
-  RuleNode.JSON_PROPERTY_DEBUG_MODE,
   RuleNode.JSON_PROPERTY_DEBUG_SETTINGS,
   RuleNode.JSON_PROPERTY_SINGLETON_MODE,
   RuleNode.JSON_PROPERTY_QUEUE_NAME,
   RuleNode.JSON_PROPERTY_CONFIGURATION_VERSION,
   RuleNode.JSON_PROPERTY_CONFIGURATION,
   RuleNode.JSON_PROPERTY_EXTERNAL_ID,
-  RuleNode.JSON_PROPERTY_ADDITIONAL_INFO
+  RuleNode.JSON_PROPERTY_ADDITIONAL_INFO,
+  RuleNode.JSON_PROPERTY_DEBUG_MODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleNode {
@@ -73,10 +73,6 @@ public class RuleNode {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
   private String name;
-
-  public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
-  @javax.annotation.Nullable
-  private Boolean debugMode;
 
   public static final String JSON_PROPERTY_DEBUG_SETTINGS = "debugSettings";
   @javax.annotation.Nullable
@@ -105,6 +101,10 @@ public class RuleNode {
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
+
+  public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
+  @javax.annotation.Nullable
+  private Boolean debugMode;
 
   public RuleNode() { 
   }
@@ -216,32 +216,6 @@ public class RuleNode {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
-  }
-
-
-  public RuleNode debugMode(@javax.annotation.Nullable Boolean debugMode) {
-    this.debugMode = debugMode;
-    return this;
-  }
-
-  /**
-   * Get debugMode
-   * @return debugMode
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getDebugMode() {
-    return debugMode;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
-    this.debugMode = debugMode;
   }
 
 
@@ -413,6 +387,32 @@ public class RuleNode {
   }
 
 
+  public RuleNode debugMode(@javax.annotation.Nullable Boolean debugMode) {
+    this.debugMode = debugMode;
+    return this;
+  }
+
+  /**
+   * Get debugMode
+   * @return debugMode
+   * @deprecated
+   */
+  @Deprecated
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getDebugMode() {
+    return debugMode;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
+    this.debugMode = debugMode;
+  }
+
+
   /**
    * Return true if this RuleNode object is equal to o.
    */
@@ -430,19 +430,19 @@ public class RuleNode {
         Objects.equals(this.ruleChainId, ruleNode.ruleChainId) &&
         Objects.equals(this.type, ruleNode.type) &&
         Objects.equals(this.name, ruleNode.name) &&
-        Objects.equals(this.debugMode, ruleNode.debugMode) &&
         Objects.equals(this.debugSettings, ruleNode.debugSettings) &&
         Objects.equals(this.singletonMode, ruleNode.singletonMode) &&
         Objects.equals(this.queueName, ruleNode.queueName) &&
         Objects.equals(this.configurationVersion, ruleNode.configurationVersion) &&
         Objects.equals(this._configuration, ruleNode._configuration) &&
         Objects.equals(this.externalId, ruleNode.externalId) &&
-        Objects.equals(this.additionalInfo, ruleNode.additionalInfo);
+        Objects.equals(this.additionalInfo, ruleNode.additionalInfo) &&
+        Objects.equals(this.debugMode, ruleNode.debugMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, ruleChainId, type, name, debugMode, debugSettings, singletonMode, queueName, configurationVersion, _configuration, externalId, additionalInfo);
+    return Objects.hash(id, createdTime, ruleChainId, type, name, debugSettings, singletonMode, queueName, configurationVersion, _configuration, externalId, additionalInfo, debugMode);
   }
 
   @Override
@@ -454,7 +454,6 @@ public class RuleNode {
     sb.append("    ruleChainId: ").append(toIndentedString(ruleChainId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
     sb.append("    debugSettings: ").append(toIndentedString(debugSettings)).append("\n");
     sb.append("    singletonMode: ").append(toIndentedString(singletonMode)).append("\n");
     sb.append("    queueName: ").append(toIndentedString(queueName)).append("\n");
@@ -462,6 +461,7 @@ public class RuleNode {
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
+    sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -534,11 +534,6 @@ public class RuleNode {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
-    // add `debugMode` to the URL query string
-    if (getDebugMode() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdebugMode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDebugMode()))));
-    }
-
     // add `debugSettings` to the URL query string
     if (getDebugSettings() != null) {
       joiner.add(getDebugSettings().toUrlQueryString(prefix + "debugSettings" + suffix));
@@ -572,6 +567,11 @@ public class RuleNode {
     // add `additionalInfo` to the URL query string
     if (getAdditionalInfo() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
+    // add `debugMode` to the URL query string
+    if (getDebugMode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdebugMode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDebugMode()))));
     }
 
     return joiner.toString();

@@ -37,10 +37,9 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   TwoFaProviderInfo.JSON_PROPERTY_TYPE,
-  TwoFaProviderInfo.JSON_PROPERTY_IS_DEFAULT,
+  TwoFaProviderInfo.JSON_PROPERTY_DEFAULT,
   TwoFaProviderInfo.JSON_PROPERTY_CONTACT,
-  TwoFaProviderInfo.JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD,
-  TwoFaProviderInfo.JSON_PROPERTY_DEFAULT
+  TwoFaProviderInfo.JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TwoFaProviderInfo {
@@ -48,9 +47,9 @@ public class TwoFaProviderInfo {
   @javax.annotation.Nullable
   private TwoFaProviderType type;
 
-  public static final String JSON_PROPERTY_IS_DEFAULT = "isDefault";
+  public static final String JSON_PROPERTY_DEFAULT = "default";
   @javax.annotation.Nullable
-  private Boolean isDefault;
+  private Boolean _default;
 
   public static final String JSON_PROPERTY_CONTACT = "contact";
   @javax.annotation.Nullable
@@ -59,10 +58,6 @@ public class TwoFaProviderInfo {
   public static final String JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD = "minVerificationCodeSendPeriod";
   @javax.annotation.Nullable
   private Integer minVerificationCodeSendPeriod;
-
-  public static final String JSON_PROPERTY_DEFAULT = "default";
-  @javax.annotation.Nullable
-  private Boolean _default;
 
   public TwoFaProviderInfo() { 
   }
@@ -91,27 +86,27 @@ public class TwoFaProviderInfo {
   }
 
 
-  public TwoFaProviderInfo isDefault(@javax.annotation.Nullable Boolean isDefault) {
-    this.isDefault = isDefault;
+  public TwoFaProviderInfo _default(@javax.annotation.Nullable Boolean _default) {
+    this._default = _default;
     return this;
   }
 
   /**
-   * Get isDefault
-   * @return isDefault
+   * Get _default
+   * @return _default
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_DEFAULT, required = false)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsDefault() {
-    return isDefault;
+  public Boolean getDefault() {
+    return _default;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_IS_DEFAULT, required = false)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsDefault(@javax.annotation.Nullable Boolean isDefault) {
-    this.isDefault = isDefault;
+  public void setDefault(@javax.annotation.Nullable Boolean _default) {
+    this._default = _default;
   }
 
 
@@ -163,30 +158,6 @@ public class TwoFaProviderInfo {
   }
 
 
-  public TwoFaProviderInfo _default(@javax.annotation.Nullable Boolean _default) {
-    this._default = _default;
-    return this;
-  }
-
-  /**
-   * Get _default
-   * @return _default
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getDefault() {
-    return _default;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefault(@javax.annotation.Nullable Boolean _default) {
-    this._default = _default;
-  }
-
-
   /**
    * Return true if this TwoFaProviderInfo object is equal to o.
    */
@@ -200,15 +171,14 @@ public class TwoFaProviderInfo {
     }
     TwoFaProviderInfo twoFaProviderInfo = (TwoFaProviderInfo) o;
     return Objects.equals(this.type, twoFaProviderInfo.type) &&
-        Objects.equals(this.isDefault, twoFaProviderInfo.isDefault) &&
+        Objects.equals(this._default, twoFaProviderInfo._default) &&
         Objects.equals(this.contact, twoFaProviderInfo.contact) &&
-        Objects.equals(this.minVerificationCodeSendPeriod, twoFaProviderInfo.minVerificationCodeSendPeriod) &&
-        Objects.equals(this._default, twoFaProviderInfo._default);
+        Objects.equals(this.minVerificationCodeSendPeriod, twoFaProviderInfo.minVerificationCodeSendPeriod);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, isDefault, contact, minVerificationCodeSendPeriod, _default);
+    return Objects.hash(type, _default, contact, minVerificationCodeSendPeriod);
   }
 
   @Override
@@ -216,10 +186,9 @@ public class TwoFaProviderInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class TwoFaProviderInfo {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
+    sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
     sb.append("    contact: ").append(toIndentedString(contact)).append("\n");
     sb.append("    minVerificationCodeSendPeriod: ").append(toIndentedString(minVerificationCodeSendPeriod)).append("\n");
-    sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -272,9 +241,9 @@ public class TwoFaProviderInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `isDefault` to the URL query string
-    if (getIsDefault() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsDefault()))));
+    // add `default` to the URL query string
+    if (getDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefault()))));
     }
 
     // add `contact` to the URL query string
@@ -285,11 +254,6 @@ public class TwoFaProviderInfo {
     // add `minVerificationCodeSendPeriod` to the URL query string
     if (getMinVerificationCodeSendPeriod() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sminVerificationCodeSendPeriod%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMinVerificationCodeSendPeriod()))));
-    }
-
-    // add `default` to the URL query string
-    if (getDefault() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefault()))));
     }
 
     return joiner.toString();

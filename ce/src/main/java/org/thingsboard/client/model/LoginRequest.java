@@ -35,45 +35,21 @@ import org.thingsboard.client.ApiClient;
  * LoginRequest
  */
 @JsonPropertyOrder({
-  LoginRequest.JSON_PROPERTY_USERNAME,
-  LoginRequest.JSON_PROPERTY_PASSWORD
+  LoginRequest.JSON_PROPERTY_PASSWORD,
+  LoginRequest.JSON_PROPERTY_USERNAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LoginRequest {
-  public static final String JSON_PROPERTY_USERNAME = "username";
-  @javax.annotation.Nonnull
-  private String username;
-
   public static final String JSON_PROPERTY_PASSWORD = "password";
   @javax.annotation.Nonnull
   private String password;
 
+  public static final String JSON_PROPERTY_USERNAME = "username";
+  @javax.annotation.Nonnull
+  private String username;
+
   public LoginRequest() { 
   }
-
-  public LoginRequest username(@javax.annotation.Nonnull String username) {
-    this.username = username;
-    return this;
-  }
-
-  /**
-   * User email
-   * @return username
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_USERNAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getUsername() {
-    return username;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_USERNAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUsername(@javax.annotation.Nonnull String username) {
-    this.username = username;
-  }
-
 
   public LoginRequest password(@javax.annotation.Nonnull String password) {
     this.password = password;
@@ -99,6 +75,30 @@ public class LoginRequest {
   }
 
 
+  public LoginRequest username(@javax.annotation.Nonnull String username) {
+    this.username = username;
+    return this;
+  }
+
+  /**
+   * User email
+   * @return username
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_USERNAME, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getUsername() {
+    return username;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USERNAME, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUsername(@javax.annotation.Nonnull String username) {
+    this.username = username;
+  }
+
+
   /**
    * Return true if this LoginRequest object is equal to o.
    */
@@ -111,21 +111,21 @@ public class LoginRequest {
       return false;
     }
     LoginRequest loginRequest = (LoginRequest) o;
-    return Objects.equals(this.username, loginRequest.username) &&
-        Objects.equals(this.password, loginRequest.password);
+    return Objects.equals(this.password, loginRequest.password) &&
+        Objects.equals(this.username, loginRequest.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(username, password);
+    return Objects.hash(password, username);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginRequest {\n");
-    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -173,14 +173,14 @@ public class LoginRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `username` to the URL query string
-    if (getUsername() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%susername%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUsername()))));
-    }
-
     // add `password` to the URL query string
     if (getPassword() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spassword%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPassword()))));
+    }
+
+    // add `username` to the URL query string
+    if (getUsername() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%susername%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUsername()))));
     }
 
     return joiner.toString();

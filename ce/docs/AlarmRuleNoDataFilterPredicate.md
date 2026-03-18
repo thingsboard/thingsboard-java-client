@@ -9,8 +9,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **unit** | **TimeUnit** |  | |
 | **duration** | **AlarmConditionValueLong** |  | |
+| **unit** | **TimeUnit** |  | |
 
 
 

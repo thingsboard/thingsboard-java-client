@@ -7,6 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **id** | **AlarmId** | JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm. | [optional] |
+| **createdTime** | **Long** | Timestamp of the alarm creation, in milliseconds | [optional] [readonly] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] [readonly] |
 | **customerId** | **CustomerId** | JSON object with Customer Id | [optional] [readonly] |
 | **type** | **String** | representing type of the Alarm | |
@@ -25,8 +27,6 @@
 | **propagateToOwner** | **Boolean** | Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) of alarm originator | [optional] |
 | **propagateToTenant** | **Boolean** | Propagation flag to specify if alarm should be propagated to the tenant entity | [optional] |
 | **propagateRelationTypes** | **List\<String\>** | JSON array of relation types that should be used for propagation. By default, 'propagateRelationTypes' array is empty which means that the alarm will be propagated based on any relation type to parent entities. This parameter should be used only in case when 'propagate' parameter is set to true, otherwise, 'propagateRelationTypes' array will be ignored. | [optional] |
-| **id** | **AlarmId** | JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm. | [optional] |
-| **createdTime** | **Long** | Timestamp of the alarm creation, in milliseconds | [optional] [readonly] |
 | **name** | **String** | representing type of the Alarm | [readonly] |
 | **status** | **AlarmStatus** | status of the Alarm | [readonly] |
 

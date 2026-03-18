@@ -12,7 +12,6 @@
 | **ruleChainId** | **RuleChainId** | JSON object with the Rule Chain Id.  | [optional] [readonly] |
 | **type** | **String** | Full Java Class Name of the rule node implementation.  | [optional] |
 | **name** | **String** | User defined name of the rule node. Used on UI and for logging.  | [optional] |
-| **debugMode** | **Boolean** |  | [optional] |
 | **debugSettings** | **DebugSettings** | Debug settings object. | [optional] |
 | **singletonMode** | **Boolean** | Enable/disable singleton mode.  | [optional] |
 | **queueName** | **String** | Queue name.  | [optional] |
@@ -20,6 +19,7 @@
 | **_configuration** | **com.fasterxml.jackson.databind.JsonNode** | JSON with the rule node configuration. Structure depends on the rule node implementation. | [optional] |
 | **externalId** | **RuleNodeId** |  | [optional] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string). | [optional] |
+| **debugMode** | **Boolean** |  | [optional] |
 
 
 

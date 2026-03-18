@@ -38,15 +38,23 @@ import org.thingsboard.client.ApiClient;
  * AiModel
  */
 @JsonPropertyOrder({
+  AiModel.JSON_PROPERTY_ID,
+  AiModel.JSON_PROPERTY_CREATED_TIME,
   AiModel.JSON_PROPERTY_TENANT_ID,
   AiModel.JSON_PROPERTY_VERSION,
   AiModel.JSON_PROPERTY_NAME,
-  AiModel.JSON_PROPERTY_CONFIGURATION,
-  AiModel.JSON_PROPERTY_ID,
-  AiModel.JSON_PROPERTY_CREATED_TIME
+  AiModel.JSON_PROPERTY_CONFIGURATION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AiModel {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private AiModelId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @javax.annotation.Nonnull
   private TenantId tenantId;
@@ -63,28 +71,58 @@ public class AiModel {
   @javax.annotation.Nullable
   private AiModelConfig _configuration;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private AiModelId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public AiModel() { 
   }
 
   @JsonCreator
   public AiModel(
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_VERSION) Long version, 
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime
+    @JsonProperty(JSON_PROPERTY_VERSION) Long version
   ) {
   this();
+    this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.version = version;
-    this.createdTime = createdTime;
   }
+
+  public AiModel id(@javax.annotation.Nullable AiModelId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AiModelId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable AiModelId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Entity creation timestamp in milliseconds since Unix epoch
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
 
   /**
    * JSON object representing the ID of the tenant associated with this AI model
@@ -162,44 +200,6 @@ public class AiModel {
   }
 
 
-  public AiModel id(@javax.annotation.Nullable AiModelId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AiModelId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AiModelId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Entity creation timestamp in milliseconds since Unix epoch
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * Return true if this AiModel object is equal to o.
    */
@@ -212,29 +212,29 @@ public class AiModel {
       return false;
     }
     AiModel aiModel = (AiModel) o;
-    return Objects.equals(this.tenantId, aiModel.tenantId) &&
+    return Objects.equals(this.id, aiModel.id) &&
+        Objects.equals(this.createdTime, aiModel.createdTime) &&
+        Objects.equals(this.tenantId, aiModel.tenantId) &&
         Objects.equals(this.version, aiModel.version) &&
         Objects.equals(this.name, aiModel.name) &&
-        Objects.equals(this._configuration, aiModel._configuration) &&
-        Objects.equals(this.id, aiModel.id) &&
-        Objects.equals(this.createdTime, aiModel.createdTime);
+        Objects.equals(this._configuration, aiModel._configuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenantId, version, name, _configuration, id, createdTime);
+    return Objects.hash(id, createdTime, tenantId, version, name, _configuration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AiModel {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -282,6 +282,16 @@ public class AiModel {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -300,16 +310,6 @@ public class AiModel {
     // add `configuration` to the URL query string
     if (getConfiguration() != null) {
       joiner.add(getConfiguration().toUrlQueryString(prefix + "configuration" + suffix));
-    }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
     return joiner.toString();
