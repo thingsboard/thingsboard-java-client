@@ -65,7 +65,7 @@ public class WidgetTypeApiTest extends AbstractApiTest {
             String name = TEST_PREFIX + "Widget_" + timestamp + "_" + i;
             JsonNode descriptor = createDescriptor("latest");
 
-            WidgetTypeDetails widgetType = new WidgetTypeDetails(null, name, descriptor, null, null);
+            WidgetTypeDetails widgetType = new WidgetTypeDetails(null, null, null, name, descriptor);
             widgetType.setDescription("Test widget " + i);
             widgetType.setDeprecated(false);
             widgetType.setTags(List.of("test", "automated"));
