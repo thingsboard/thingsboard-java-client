@@ -13,12 +13,12 @@
 | **entityId** | **EntityId** |  | [optional] |
 | **type** | **CalculatedFieldType** |  | [optional] |
 | **name** | **String** | User defined name of the calculated field. | [optional] |
-| **debugMode** | **Boolean** |  | [optional] |
 | **debugSettings** | **DebugSettings** | Debug settings object. | [optional] |
 | **configurationVersion** | **Integer** | Version of calculated field configuration. | [optional] |
 | **_configuration** | **CalculatedFieldConfiguration** |  | |
 | **version** | **Long** |  | [optional] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the calculated field | [optional] |
+| **debugMode** | **Boolean** |  | [optional] |
 
 
 

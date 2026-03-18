@@ -92,12 +92,6 @@ public class RuleChainExportData extends EntityExportData {
 
 
   @Override
-  public RuleChainExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public RuleChainExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
     this.setEntity(entity);
     return this;
@@ -118,6 +112,12 @@ public class RuleChainExportData extends EntityExportData {
   @Override
   public RuleChainExportData calculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
+    return this;
+  }
+
+  @Override
+  public RuleChainExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.setEntityType(entityType);
     return this;
   }
 
@@ -195,11 +195,6 @@ public class RuleChainExportData extends EntityExportData {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `entityType` to the URL query string
-    if (getEntityType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
-    }
-
     // add `entity` to the URL query string
     if (getEntity() != null) {
       joiner.add(getEntity().toUrlQueryString(prefix + "entity" + suffix));
@@ -232,6 +227,11 @@ public class RuleChainExportData extends EntityExportData {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `entityType` to the URL query string
+    if (getEntityType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
     }
 
     // add `metaData` to the URL query string

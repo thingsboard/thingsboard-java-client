@@ -36,36 +36,20 @@ import org.thingsboard.client.ApiClient;
  * OtherConfiguration
  */
 @JsonPropertyOrder({
-  OtherConfiguration.JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO,
-  OtherConfiguration.JSON_PROPERTY_FW_UPDATE_STRATEGY,
-  OtherConfiguration.JSON_PROPERTY_SW_UPDATE_STRATEGY,
-  OtherConfiguration.JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT,
   OtherConfiguration.JSON_PROPERTY_POWER_MODE,
   OtherConfiguration.JSON_PROPERTY_PSM_ACTIVITY_TIMER,
   OtherConfiguration.JSON_PROPERTY_EDRX_CYCLE,
   OtherConfiguration.JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW,
+  OtherConfiguration.JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO,
+  OtherConfiguration.JSON_PROPERTY_FW_UPDATE_STRATEGY,
+  OtherConfiguration.JSON_PROPERTY_SW_UPDATE_STRATEGY,
+  OtherConfiguration.JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT,
   OtherConfiguration.JSON_PROPERTY_FW_UPDATE_RESOURCE,
   OtherConfiguration.JSON_PROPERTY_SW_UPDATE_RESOURCE,
   OtherConfiguration.JSON_PROPERTY_DEFAULT_OBJECT_I_D_VER
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OtherConfiguration {
-  public static final String JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO = "useObject19ForOtaInfo";
-  @javax.annotation.Nullable
-  private Boolean useObject19ForOtaInfo;
-
-  public static final String JSON_PROPERTY_FW_UPDATE_STRATEGY = "fwUpdateStrategy";
-  @javax.annotation.Nullable
-  private Integer fwUpdateStrategy;
-
-  public static final String JSON_PROPERTY_SW_UPDATE_STRATEGY = "swUpdateStrategy";
-  @javax.annotation.Nullable
-  private Integer swUpdateStrategy;
-
-  public static final String JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT = "clientOnlyObserveAfterConnect";
-  @javax.annotation.Nullable
-  private Integer clientOnlyObserveAfterConnect;
-
   public static final String JSON_PROPERTY_POWER_MODE = "powerMode";
   @javax.annotation.Nullable
   private PowerMode powerMode;
@@ -82,6 +66,22 @@ public class OtherConfiguration {
   @javax.annotation.Nullable
   private Long pagingTransmissionWindow;
 
+  public static final String JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO = "useObject19ForOtaInfo";
+  @javax.annotation.Nullable
+  private Boolean useObject19ForOtaInfo;
+
+  public static final String JSON_PROPERTY_FW_UPDATE_STRATEGY = "fwUpdateStrategy";
+  @javax.annotation.Nullable
+  private Integer fwUpdateStrategy;
+
+  public static final String JSON_PROPERTY_SW_UPDATE_STRATEGY = "swUpdateStrategy";
+  @javax.annotation.Nullable
+  private Integer swUpdateStrategy;
+
+  public static final String JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT = "clientOnlyObserveAfterConnect";
+  @javax.annotation.Nullable
+  private Integer clientOnlyObserveAfterConnect;
+
   public static final String JSON_PROPERTY_FW_UPDATE_RESOURCE = "fwUpdateResource";
   @javax.annotation.Nullable
   private String fwUpdateResource;
@@ -96,102 +96,6 @@ public class OtherConfiguration {
 
   public OtherConfiguration() { 
   }
-
-  public OtherConfiguration useObject19ForOtaInfo(@javax.annotation.Nullable Boolean useObject19ForOtaInfo) {
-    this.useObject19ForOtaInfo = useObject19ForOtaInfo;
-    return this;
-  }
-
-  /**
-   * Get useObject19ForOtaInfo
-   * @return useObject19ForOtaInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getUseObject19ForOtaInfo() {
-    return useObject19ForOtaInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUseObject19ForOtaInfo(@javax.annotation.Nullable Boolean useObject19ForOtaInfo) {
-    this.useObject19ForOtaInfo = useObject19ForOtaInfo;
-  }
-
-
-  public OtherConfiguration fwUpdateStrategy(@javax.annotation.Nullable Integer fwUpdateStrategy) {
-    this.fwUpdateStrategy = fwUpdateStrategy;
-    return this;
-  }
-
-  /**
-   * Get fwUpdateStrategy
-   * @return fwUpdateStrategy
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_STRATEGY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getFwUpdateStrategy() {
-    return fwUpdateStrategy;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_STRATEGY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFwUpdateStrategy(@javax.annotation.Nullable Integer fwUpdateStrategy) {
-    this.fwUpdateStrategy = fwUpdateStrategy;
-  }
-
-
-  public OtherConfiguration swUpdateStrategy(@javax.annotation.Nullable Integer swUpdateStrategy) {
-    this.swUpdateStrategy = swUpdateStrategy;
-    return this;
-  }
-
-  /**
-   * Get swUpdateStrategy
-   * @return swUpdateStrategy
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_STRATEGY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getSwUpdateStrategy() {
-    return swUpdateStrategy;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_STRATEGY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSwUpdateStrategy(@javax.annotation.Nullable Integer swUpdateStrategy) {
-    this.swUpdateStrategy = swUpdateStrategy;
-  }
-
-
-  public OtherConfiguration clientOnlyObserveAfterConnect(@javax.annotation.Nullable Integer clientOnlyObserveAfterConnect) {
-    this.clientOnlyObserveAfterConnect = clientOnlyObserveAfterConnect;
-    return this;
-  }
-
-  /**
-   * Get clientOnlyObserveAfterConnect
-   * @return clientOnlyObserveAfterConnect
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getClientOnlyObserveAfterConnect() {
-    return clientOnlyObserveAfterConnect;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientOnlyObserveAfterConnect(@javax.annotation.Nullable Integer clientOnlyObserveAfterConnect) {
-    this.clientOnlyObserveAfterConnect = clientOnlyObserveAfterConnect;
-  }
-
 
   public OtherConfiguration powerMode(@javax.annotation.Nullable PowerMode powerMode) {
     this.powerMode = powerMode;
@@ -289,6 +193,102 @@ public class OtherConfiguration {
   }
 
 
+  public OtherConfiguration useObject19ForOtaInfo(@javax.annotation.Nullable Boolean useObject19ForOtaInfo) {
+    this.useObject19ForOtaInfo = useObject19ForOtaInfo;
+    return this;
+  }
+
+  /**
+   * Get useObject19ForOtaInfo
+   * @return useObject19ForOtaInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getUseObject19ForOtaInfo() {
+    return useObject19ForOtaInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUseObject19ForOtaInfo(@javax.annotation.Nullable Boolean useObject19ForOtaInfo) {
+    this.useObject19ForOtaInfo = useObject19ForOtaInfo;
+  }
+
+
+  public OtherConfiguration fwUpdateStrategy(@javax.annotation.Nullable Integer fwUpdateStrategy) {
+    this.fwUpdateStrategy = fwUpdateStrategy;
+    return this;
+  }
+
+  /**
+   * Get fwUpdateStrategy
+   * @return fwUpdateStrategy
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_STRATEGY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getFwUpdateStrategy() {
+    return fwUpdateStrategy;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_STRATEGY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFwUpdateStrategy(@javax.annotation.Nullable Integer fwUpdateStrategy) {
+    this.fwUpdateStrategy = fwUpdateStrategy;
+  }
+
+
+  public OtherConfiguration swUpdateStrategy(@javax.annotation.Nullable Integer swUpdateStrategy) {
+    this.swUpdateStrategy = swUpdateStrategy;
+    return this;
+  }
+
+  /**
+   * Get swUpdateStrategy
+   * @return swUpdateStrategy
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_STRATEGY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getSwUpdateStrategy() {
+    return swUpdateStrategy;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_STRATEGY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSwUpdateStrategy(@javax.annotation.Nullable Integer swUpdateStrategy) {
+    this.swUpdateStrategy = swUpdateStrategy;
+  }
+
+
+  public OtherConfiguration clientOnlyObserveAfterConnect(@javax.annotation.Nullable Integer clientOnlyObserveAfterConnect) {
+    this.clientOnlyObserveAfterConnect = clientOnlyObserveAfterConnect;
+    return this;
+  }
+
+  /**
+   * Get clientOnlyObserveAfterConnect
+   * @return clientOnlyObserveAfterConnect
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getClientOnlyObserveAfterConnect() {
+    return clientOnlyObserveAfterConnect;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClientOnlyObserveAfterConnect(@javax.annotation.Nullable Integer clientOnlyObserveAfterConnect) {
+    this.clientOnlyObserveAfterConnect = clientOnlyObserveAfterConnect;
+  }
+
+
   public OtherConfiguration fwUpdateResource(@javax.annotation.Nullable String fwUpdateResource) {
     this.fwUpdateResource = fwUpdateResource;
     return this;
@@ -373,14 +373,14 @@ public class OtherConfiguration {
       return false;
     }
     OtherConfiguration otherConfiguration = (OtherConfiguration) o;
-    return Objects.equals(this.useObject19ForOtaInfo, otherConfiguration.useObject19ForOtaInfo) &&
-        Objects.equals(this.fwUpdateStrategy, otherConfiguration.fwUpdateStrategy) &&
-        Objects.equals(this.swUpdateStrategy, otherConfiguration.swUpdateStrategy) &&
-        Objects.equals(this.clientOnlyObserveAfterConnect, otherConfiguration.clientOnlyObserveAfterConnect) &&
-        Objects.equals(this.powerMode, otherConfiguration.powerMode) &&
+    return Objects.equals(this.powerMode, otherConfiguration.powerMode) &&
         Objects.equals(this.psmActivityTimer, otherConfiguration.psmActivityTimer) &&
         Objects.equals(this.edrxCycle, otherConfiguration.edrxCycle) &&
         Objects.equals(this.pagingTransmissionWindow, otherConfiguration.pagingTransmissionWindow) &&
+        Objects.equals(this.useObject19ForOtaInfo, otherConfiguration.useObject19ForOtaInfo) &&
+        Objects.equals(this.fwUpdateStrategy, otherConfiguration.fwUpdateStrategy) &&
+        Objects.equals(this.swUpdateStrategy, otherConfiguration.swUpdateStrategy) &&
+        Objects.equals(this.clientOnlyObserveAfterConnect, otherConfiguration.clientOnlyObserveAfterConnect) &&
         Objects.equals(this.fwUpdateResource, otherConfiguration.fwUpdateResource) &&
         Objects.equals(this.swUpdateResource, otherConfiguration.swUpdateResource) &&
         Objects.equals(this.defaultObjectIDVer, otherConfiguration.defaultObjectIDVer);
@@ -388,21 +388,21 @@ public class OtherConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(useObject19ForOtaInfo, fwUpdateStrategy, swUpdateStrategy, clientOnlyObserveAfterConnect, powerMode, psmActivityTimer, edrxCycle, pagingTransmissionWindow, fwUpdateResource, swUpdateResource, defaultObjectIDVer);
+    return Objects.hash(powerMode, psmActivityTimer, edrxCycle, pagingTransmissionWindow, useObject19ForOtaInfo, fwUpdateStrategy, swUpdateStrategy, clientOnlyObserveAfterConnect, fwUpdateResource, swUpdateResource, defaultObjectIDVer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class OtherConfiguration {\n");
-    sb.append("    useObject19ForOtaInfo: ").append(toIndentedString(useObject19ForOtaInfo)).append("\n");
-    sb.append("    fwUpdateStrategy: ").append(toIndentedString(fwUpdateStrategy)).append("\n");
-    sb.append("    swUpdateStrategy: ").append(toIndentedString(swUpdateStrategy)).append("\n");
-    sb.append("    clientOnlyObserveAfterConnect: ").append(toIndentedString(clientOnlyObserveAfterConnect)).append("\n");
     sb.append("    powerMode: ").append(toIndentedString(powerMode)).append("\n");
     sb.append("    psmActivityTimer: ").append(toIndentedString(psmActivityTimer)).append("\n");
     sb.append("    edrxCycle: ").append(toIndentedString(edrxCycle)).append("\n");
     sb.append("    pagingTransmissionWindow: ").append(toIndentedString(pagingTransmissionWindow)).append("\n");
+    sb.append("    useObject19ForOtaInfo: ").append(toIndentedString(useObject19ForOtaInfo)).append("\n");
+    sb.append("    fwUpdateStrategy: ").append(toIndentedString(fwUpdateStrategy)).append("\n");
+    sb.append("    swUpdateStrategy: ").append(toIndentedString(swUpdateStrategy)).append("\n");
+    sb.append("    clientOnlyObserveAfterConnect: ").append(toIndentedString(clientOnlyObserveAfterConnect)).append("\n");
     sb.append("    fwUpdateResource: ").append(toIndentedString(fwUpdateResource)).append("\n");
     sb.append("    swUpdateResource: ").append(toIndentedString(swUpdateResource)).append("\n");
     sb.append("    defaultObjectIDVer: ").append(toIndentedString(defaultObjectIDVer)).append("\n");
@@ -453,26 +453,6 @@ public class OtherConfiguration {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `useObject19ForOtaInfo` to the URL query string
-    if (getUseObject19ForOtaInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%suseObject19ForOtaInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUseObject19ForOtaInfo()))));
-    }
-
-    // add `fwUpdateStrategy` to the URL query string
-    if (getFwUpdateStrategy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sfwUpdateStrategy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFwUpdateStrategy()))));
-    }
-
-    // add `swUpdateStrategy` to the URL query string
-    if (getSwUpdateStrategy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sswUpdateStrategy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSwUpdateStrategy()))));
-    }
-
-    // add `clientOnlyObserveAfterConnect` to the URL query string
-    if (getClientOnlyObserveAfterConnect() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sclientOnlyObserveAfterConnect%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getClientOnlyObserveAfterConnect()))));
-    }
-
     // add `powerMode` to the URL query string
     if (getPowerMode() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spowerMode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPowerMode()))));
@@ -491,6 +471,26 @@ public class OtherConfiguration {
     // add `pagingTransmissionWindow` to the URL query string
     if (getPagingTransmissionWindow() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spagingTransmissionWindow%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPagingTransmissionWindow()))));
+    }
+
+    // add `useObject19ForOtaInfo` to the URL query string
+    if (getUseObject19ForOtaInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%suseObject19ForOtaInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUseObject19ForOtaInfo()))));
+    }
+
+    // add `fwUpdateStrategy` to the URL query string
+    if (getFwUpdateStrategy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sfwUpdateStrategy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFwUpdateStrategy()))));
+    }
+
+    // add `swUpdateStrategy` to the URL query string
+    if (getSwUpdateStrategy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sswUpdateStrategy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSwUpdateStrategy()))));
+    }
+
+    // add `clientOnlyObserveAfterConnect` to the URL query string
+    if (getClientOnlyObserveAfterConnect() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sclientOnlyObserveAfterConnect%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getClientOnlyObserveAfterConnect()))));
     }
 
     // add `fwUpdateResource` to the URL query string

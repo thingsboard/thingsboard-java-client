@@ -8,9 +8,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **argument** | **String** |  | |
-| **valueType** | **EntityKeyValueType** |  | |
 | **operation** | **ComplexOperation** |  | [optional] |
 | **predicates** | **List\<AlarmRuleKeyFilterPredicate\>** |  | |
+| **valueType** | **EntityKeyValueType** |  | |
 
 
 

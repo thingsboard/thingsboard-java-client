@@ -7,6 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **id** | **NotificationId** |  | [optional] |
+| **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 | **requestId** | **NotificationRequestId** |  | [optional] |
 | **recipientId** | **UserId** |  | [optional] |
 | **type** | **NotificationType** |  | [optional] |
@@ -16,8 +18,6 @@
 | **additionalConfig** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **info** | **NotificationInfo** |  | [optional] |
 | **status** | **NotificationStatus** |  | [optional] |
-| **id** | **NotificationId** |  | [optional] |
-| **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 
 
 

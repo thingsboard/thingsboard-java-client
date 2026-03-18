@@ -124,14 +124,14 @@ public class CustomTimeSchedule extends AlarmSchedule {
 
 
   @Override
-  public CustomTimeSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
-    this.setType(type);
+  public CustomTimeSchedule dynamicValue(@javax.annotation.Nullable DynamicValueString dynamicValue) {
+    this.setDynamicValue(dynamicValue);
     return this;
   }
 
   @Override
-  public CustomTimeSchedule dynamicValue(@javax.annotation.Nullable DynamicValueString dynamicValue) {
-    this.setDynamicValue(dynamicValue);
+  public CustomTimeSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
+    this.setType(type);
     return this;
   }
 
@@ -211,14 +211,14 @@ public class CustomTimeSchedule extends AlarmSchedule {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `dynamicValue` to the URL query string
     if (getDynamicValue() != null) {
       joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     // add `timezone` to the URL query string

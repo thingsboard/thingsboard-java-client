@@ -48,6 +48,8 @@ import org.thingsboard.client.ApiClient;
  * NotificationRequest
  */
 @JsonPropertyOrder({
+  NotificationRequest.JSON_PROPERTY_ID,
+  NotificationRequest.JSON_PROPERTY_CREATED_TIME,
   NotificationRequest.JSON_PROPERTY_TENANT_ID,
   NotificationRequest.JSON_PROPERTY_TARGETS,
   NotificationRequest.JSON_PROPERTY_TEMPLATE_ID,
@@ -57,12 +59,18 @@ import org.thingsboard.client.ApiClient;
   NotificationRequest.JSON_PROPERTY_ORIGINATOR_ENTITY_ID,
   NotificationRequest.JSON_PROPERTY_RULE_ID,
   NotificationRequest.JSON_PROPERTY_STATUS,
-  NotificationRequest.JSON_PROPERTY_STATS,
-  NotificationRequest.JSON_PROPERTY_ID,
-  NotificationRequest.JSON_PROPERTY_CREATED_TIME
+  NotificationRequest.JSON_PROPERTY_STATS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequest {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private NotificationRequestId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @javax.annotation.Nullable
   private TenantId tenantId;
@@ -103,14 +111,6 @@ public class NotificationRequest {
   @javax.annotation.Nullable
   private NotificationRequestStats stats;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private NotificationRequestId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public NotificationRequest() { 
   }
 
@@ -121,6 +121,44 @@ public class NotificationRequest {
   this();
     this.createdTime = createdTime;
   }
+
+  public NotificationRequest id(@javax.annotation.Nullable NotificationRequestId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public NotificationRequestId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable NotificationRequestId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Entity creation timestamp in milliseconds since Unix epoch
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
 
   public NotificationRequest tenantId(@javax.annotation.Nullable TenantId tenantId) {
     this.tenantId = tenantId;
@@ -370,44 +408,6 @@ public class NotificationRequest {
   }
 
 
-  public NotificationRequest id(@javax.annotation.Nullable NotificationRequestId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public NotificationRequestId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable NotificationRequestId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Entity creation timestamp in milliseconds since Unix epoch
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * Return true if this NotificationRequest object is equal to o.
    */
@@ -420,7 +420,9 @@ public class NotificationRequest {
       return false;
     }
     NotificationRequest notificationRequest = (NotificationRequest) o;
-    return Objects.equals(this.tenantId, notificationRequest.tenantId) &&
+    return Objects.equals(this.id, notificationRequest.id) &&
+        Objects.equals(this.createdTime, notificationRequest.createdTime) &&
+        Objects.equals(this.tenantId, notificationRequest.tenantId) &&
         Objects.equals(this.targets, notificationRequest.targets) &&
         Objects.equals(this.templateId, notificationRequest.templateId) &&
         Objects.equals(this.template, notificationRequest.template) &&
@@ -429,20 +431,20 @@ public class NotificationRequest {
         Objects.equals(this.originatorEntityId, notificationRequest.originatorEntityId) &&
         Objects.equals(this.ruleId, notificationRequest.ruleId) &&
         Objects.equals(this.status, notificationRequest.status) &&
-        Objects.equals(this.stats, notificationRequest.stats) &&
-        Objects.equals(this.id, notificationRequest.id) &&
-        Objects.equals(this.createdTime, notificationRequest.createdTime);
+        Objects.equals(this.stats, notificationRequest.stats);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenantId, targets, templateId, template, info, additionalConfig, originatorEntityId, ruleId, status, stats, id, createdTime);
+    return Objects.hash(id, createdTime, tenantId, targets, templateId, template, info, additionalConfig, originatorEntityId, ruleId, status, stats);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationRequest {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
@@ -453,8 +455,6 @@ public class NotificationRequest {
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -501,6 +501,16 @@ public class NotificationRequest {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
 
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
@@ -556,16 +566,6 @@ public class NotificationRequest {
     // add `stats` to the URL query string
     if (getStats() != null) {
       joiner.add(getStats().toUrlQueryString(prefix + "stats" + suffix));
-    }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
     return joiner.toString();

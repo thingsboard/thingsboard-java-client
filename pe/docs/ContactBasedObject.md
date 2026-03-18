@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **Object** |  | [optional] |
 | **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **country** | **String** |  | [optional] |
 | **state** | **String** |  | [optional] |
 | **city** | **String** |  | [optional] |
@@ -18,7 +19,6 @@
 | **phone** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 
 

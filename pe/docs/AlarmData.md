@@ -7,8 +7,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **entityId** | **EntityId** |  | [optional] |
-| **latest** | **Map\<String, Map<String, TsValue>\>** |  | [optional] |
 | **id** | **AlarmId** | JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm. | [optional] |
 | **createdTime** | **Long** | Timestamp of the alarm creation, in milliseconds | [optional] [readonly] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] [readonly] |
@@ -34,6 +32,8 @@
 | **originatorLabel** | **String** | Alarm originator label | [optional] |
 | **originatorDisplayName** | **String** | Originator display name | [optional] |
 | **assignee** | **AlarmAssignee** | Alarm assignee | [optional] |
+| **entityId** | **EntityId** |  | [optional] |
+| **latest** | **Map\<String, Map<String, TsValue>\>** |  | [optional] |
 | **name** | **String** | representing type of the Alarm | [readonly] |
 | **status** | **AlarmStatus** | status of the Alarm | [readonly] |
 
