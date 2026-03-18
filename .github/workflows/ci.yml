@@ -41,7 +41,7 @@ jobs:
           cache: maven
 
       - name: Build
-        run: mvn clean install -DskipTests
+        run: mvn clean install
 
   verify-codegen:
     name: Verify codegen
