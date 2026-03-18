@@ -44,6 +44,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   SubscriptionDetails.JSON_PROPERTY_ID,
   SubscriptionDetails.JSON_PROPERTY_CREATED_TIME,
+  SubscriptionDetails.JSON_PROPERTY_ADDITIONAL_INFO,
   SubscriptionDetails.JSON_PROPERTY_EXTERNAL_ID,
   SubscriptionDetails.JSON_PROPERTY_TENANT_ID,
   SubscriptionDetails.JSON_PROPERTY_BILLING_CUSTOMER_ID,
@@ -67,8 +68,7 @@ import org.thingsboard.client.ApiClient;
   SubscriptionDetails.JSON_PROPERTY_EDGE_COUNT_INCLUDED,
   SubscriptionDetails.JSON_PROPERTY_ITEMS,
   SubscriptionDetails.JSON_PROPERTY_DISCOUNT,
-  SubscriptionDetails.JSON_PROPERTY_NAME,
-  SubscriptionDetails.JSON_PROPERTY_ADDITIONAL_INFO
+  SubscriptionDetails.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SubscriptionDetails {
@@ -79,6 +79,10 @@ public class SubscriptionDetails {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @javax.annotation.Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_EXTERNAL_ID = "externalId";
   @javax.annotation.Nullable
@@ -176,10 +180,6 @@ public class SubscriptionDetails {
   @javax.annotation.Nullable
   private String name;
 
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
-
   public SubscriptionDetails() { 
   }
 
@@ -229,6 +229,30 @@ public class SubscriptionDetails {
   }
 
 
+
+
+  public SubscriptionDetails additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Get additionalInfo
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public SubscriptionDetails externalId(@javax.annotation.Nullable String externalId) {
@@ -797,30 +821,6 @@ public class SubscriptionDetails {
 
 
 
-  public SubscriptionDetails additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Get additionalInfo
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this SubscriptionDetails object is equal to o.
    */
@@ -835,6 +835,7 @@ public class SubscriptionDetails {
     SubscriptionDetails subscriptionDetails = (SubscriptionDetails) o;
     return Objects.equals(this.id, subscriptionDetails.id) &&
         Objects.equals(this.createdTime, subscriptionDetails.createdTime) &&
+        Objects.equals(this.additionalInfo, subscriptionDetails.additionalInfo) &&
         Objects.equals(this.externalId, subscriptionDetails.externalId) &&
         Objects.equals(this.tenantId, subscriptionDetails.tenantId) &&
         Objects.equals(this.billingCustomerId, subscriptionDetails.billingCustomerId) &&
@@ -858,13 +859,12 @@ public class SubscriptionDetails {
         Objects.equals(this.edgeCountIncluded, subscriptionDetails.edgeCountIncluded) &&
         Objects.equals(this.items, subscriptionDetails.items) &&
         Objects.equals(this.discount, subscriptionDetails.discount) &&
-        Objects.equals(this.name, subscriptionDetails.name) &&
-        Objects.equals(this.additionalInfo, subscriptionDetails.additionalInfo);
+        Objects.equals(this.name, subscriptionDetails.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, externalId, tenantId, billingCustomerId, subscriptionPlanId, currentPeriodStartTs, currentPeriodEndTs, active, trial, trialEndTs, status, lastPaid, upcomingInvoiceDate, upcomingInvoiceAmountDue, couponId, discountEndDate, subscriptionPlanName, planHasAddons, planUiType, planIsFree, planIsActive, edgeCountIncluded, items, discount, name, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, externalId, tenantId, billingCustomerId, subscriptionPlanId, currentPeriodStartTs, currentPeriodEndTs, active, trial, trialEndTs, status, lastPaid, upcomingInvoiceDate, upcomingInvoiceAmountDue, couponId, discountEndDate, subscriptionPlanName, planHasAddons, planUiType, planIsFree, planIsActive, edgeCountIncluded, items, discount, name);
   }
 
   @Override
@@ -873,6 +873,7 @@ public class SubscriptionDetails {
     sb.append("class SubscriptionDetails {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    billingCustomerId: ").append(toIndentedString(billingCustomerId)).append("\n");
@@ -897,7 +898,6 @@ public class SubscriptionDetails {
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    discount: ").append(toIndentedString(discount)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -953,6 +953,11 @@ public class SubscriptionDetails {
     // add `createdTime` to the URL query string
     if (getCreatedTime() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `externalId` to the URL query string
@@ -1073,11 +1078,6 @@ public class SubscriptionDetails {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

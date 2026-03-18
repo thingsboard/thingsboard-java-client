@@ -41,8 +41,8 @@ import org.thingsboard.client.ApiClient;
   TenantProfile.JSON_PROPERTY_CREATED_TIME,
   TenantProfile.JSON_PROPERTY_NAME,
   TenantProfile.JSON_PROPERTY_DESCRIPTION,
-  TenantProfile.JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE,
   TenantProfile.JSON_PROPERTY_DEFAULT,
+  TenantProfile.JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE,
   TenantProfile.JSON_PROPERTY_PROFILE_DATA
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -63,13 +63,13 @@ public class TenantProfile {
   @javax.annotation.Nullable
   private String description;
 
-  public static final String JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE = "isolatedTbRuleEngine";
-  @javax.annotation.Nullable
-  private Boolean isolatedTbRuleEngine;
-
   public static final String JSON_PROPERTY_DEFAULT = "default";
   @javax.annotation.Nullable
   private Boolean _default;
+
+  public static final String JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE = "isolatedTbRuleEngine";
+  @javax.annotation.Nullable
+  private Boolean isolatedTbRuleEngine;
 
   public static final String JSON_PROPERTY_PROFILE_DATA = "profileData";
   @javax.annotation.Nullable
@@ -172,30 +172,6 @@ public class TenantProfile {
   }
 
 
-  public TenantProfile isolatedTbRuleEngine(@javax.annotation.Nullable Boolean isolatedTbRuleEngine) {
-    this.isolatedTbRuleEngine = isolatedTbRuleEngine;
-    return this;
-  }
-
-  /**
-   * If enabled, will push all messages related to this tenant and processed by the rule engine into separate queue. Useful for complex microservices deployments, to isolate processing of the data for specific tenants
-   * @return isolatedTbRuleEngine
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsolatedTbRuleEngine() {
-    return isolatedTbRuleEngine;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsolatedTbRuleEngine(@javax.annotation.Nullable Boolean isolatedTbRuleEngine) {
-    this.isolatedTbRuleEngine = isolatedTbRuleEngine;
-  }
-
-
   public TenantProfile _default(@javax.annotation.Nullable Boolean _default) {
     this._default = _default;
     return this;
@@ -217,6 +193,30 @@ public class TenantProfile {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDefault(@javax.annotation.Nullable Boolean _default) {
     this._default = _default;
+  }
+
+
+  public TenantProfile isolatedTbRuleEngine(@javax.annotation.Nullable Boolean isolatedTbRuleEngine) {
+    this.isolatedTbRuleEngine = isolatedTbRuleEngine;
+    return this;
+  }
+
+  /**
+   * If enabled, will push all messages related to this tenant and processed by the rule engine into separate queue. Useful for complex microservices deployments, to isolate processing of the data for specific tenants
+   * @return isolatedTbRuleEngine
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsolatedTbRuleEngine() {
+    return isolatedTbRuleEngine;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsolatedTbRuleEngine(@javax.annotation.Nullable Boolean isolatedTbRuleEngine) {
+    this.isolatedTbRuleEngine = isolatedTbRuleEngine;
   }
 
 
@@ -260,14 +260,14 @@ public class TenantProfile {
         Objects.equals(this.createdTime, tenantProfile.createdTime) &&
         Objects.equals(this.name, tenantProfile.name) &&
         Objects.equals(this.description, tenantProfile.description) &&
-        Objects.equals(this.isolatedTbRuleEngine, tenantProfile.isolatedTbRuleEngine) &&
         Objects.equals(this._default, tenantProfile._default) &&
+        Objects.equals(this.isolatedTbRuleEngine, tenantProfile.isolatedTbRuleEngine) &&
         Objects.equals(this.profileData, tenantProfile.profileData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, name, description, isolatedTbRuleEngine, _default, profileData);
+    return Objects.hash(id, createdTime, name, description, _default, isolatedTbRuleEngine, profileData);
   }
 
   @Override
@@ -278,8 +278,8 @@ public class TenantProfile {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    isolatedTbRuleEngine: ").append(toIndentedString(isolatedTbRuleEngine)).append("\n");
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
+    sb.append("    isolatedTbRuleEngine: ").append(toIndentedString(isolatedTbRuleEngine)).append("\n");
     sb.append("    profileData: ").append(toIndentedString(profileData)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -348,14 +348,14 @@ public class TenantProfile {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDescription()))));
     }
 
-    // add `isolatedTbRuleEngine` to the URL query string
-    if (getIsolatedTbRuleEngine() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisolatedTbRuleEngine%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsolatedTbRuleEngine()))));
-    }
-
     // add `default` to the URL query string
     if (getDefault() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefault()))));
+    }
+
+    // add `isolatedTbRuleEngine` to the URL query string
+    if (getIsolatedTbRuleEngine() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisolatedTbRuleEngine%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsolatedTbRuleEngine()))));
     }
 
     // add `profileData` to the URL query string

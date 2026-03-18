@@ -40,19 +40,27 @@ import org.thingsboard.client.ApiClient;
  * A JSON value representing the group permission.
  */
 @JsonPropertyOrder({
+  GroupPermission.JSON_PROPERTY_ID,
+  GroupPermission.JSON_PROPERTY_CREATED_TIME,
   GroupPermission.JSON_PROPERTY_TENANT_ID,
   GroupPermission.JSON_PROPERTY_USER_GROUP_ID,
   GroupPermission.JSON_PROPERTY_ROLE_ID,
   GroupPermission.JSON_PROPERTY_ENTITY_GROUP_ID,
   GroupPermission.JSON_PROPERTY_ENTITY_GROUP_TYPE,
   GroupPermission.JSON_PROPERTY_IS_PUBLIC,
-  GroupPermission.JSON_PROPERTY_ID,
-  GroupPermission.JSON_PROPERTY_CREATED_TIME,
   GroupPermission.JSON_PROPERTY_NAME,
   GroupPermission.JSON_PROPERTY_PUBLIC
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class GroupPermission {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private GroupPermissionId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @javax.annotation.Nullable
   private TenantId tenantId;
@@ -77,14 +85,6 @@ public class GroupPermission {
   @javax.annotation.Nullable
   private Boolean isPublic;
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private GroupPermissionId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
   private String name;
@@ -98,17 +98,55 @@ public class GroupPermission {
 
   @JsonCreator
   public GroupPermission(
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_ENTITY_GROUP_TYPE) EntityType entityGroupType, 
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_NAME) String name
   ) {
   this();
+    this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.entityGroupType = entityGroupType;
-    this.createdTime = createdTime;
     this.name = name;
   }
+
+  public GroupPermission id(@javax.annotation.Nullable GroupPermissionId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * JSON object with the Group Permission Id. Specify this field to update the Group Permission. Referencing non-existing Group Permission Id will cause error. Omit this field to create new Group Permission.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public GroupPermissionId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable GroupPermissionId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Timestamp of the group permission creation, in milliseconds
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
 
   /**
    * JSON object with the Tenant Id.
@@ -234,44 +272,6 @@ public class GroupPermission {
   }
 
 
-  public GroupPermission id(@javax.annotation.Nullable GroupPermissionId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * JSON object with the Group Permission Id. Specify this field to update the Group Permission. Referencing non-existing Group Permission Id will cause error. Omit this field to create new Group Permission.
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public GroupPermissionId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable GroupPermissionId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Timestamp of the group permission creation, in milliseconds
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * Name of the Group Permissions. Auto-generated
    * @return name
@@ -322,35 +322,35 @@ public class GroupPermission {
       return false;
     }
     GroupPermission groupPermission = (GroupPermission) o;
-    return Objects.equals(this.tenantId, groupPermission.tenantId) &&
+    return Objects.equals(this.id, groupPermission.id) &&
+        Objects.equals(this.createdTime, groupPermission.createdTime) &&
+        Objects.equals(this.tenantId, groupPermission.tenantId) &&
         Objects.equals(this.userGroupId, groupPermission.userGroupId) &&
         Objects.equals(this.roleId, groupPermission.roleId) &&
         Objects.equals(this.entityGroupId, groupPermission.entityGroupId) &&
         Objects.equals(this.entityGroupType, groupPermission.entityGroupType) &&
         Objects.equals(this.isPublic, groupPermission.isPublic) &&
-        Objects.equals(this.id, groupPermission.id) &&
-        Objects.equals(this.createdTime, groupPermission.createdTime) &&
         Objects.equals(this.name, groupPermission.name) &&
         Objects.equals(this._public, groupPermission._public);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenantId, userGroupId, roleId, entityGroupId, entityGroupType, isPublic, id, createdTime, name, _public);
+    return Objects.hash(id, createdTime, tenantId, userGroupId, roleId, entityGroupId, entityGroupType, isPublic, name, _public);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GroupPermission {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    userGroupId: ").append(toIndentedString(userGroupId)).append("\n");
     sb.append("    roleId: ").append(toIndentedString(roleId)).append("\n");
     sb.append("    entityGroupId: ").append(toIndentedString(entityGroupId)).append("\n");
     sb.append("    entityGroupType: ").append(toIndentedString(entityGroupType)).append("\n");
     sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("}");
@@ -400,6 +400,16 @@ public class GroupPermission {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -428,16 +438,6 @@ public class GroupPermission {
     // add `isPublic` to the URL query string
     if (getIsPublic() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sisPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsPublic()))));
-    }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
     // add `name` to the URL query string

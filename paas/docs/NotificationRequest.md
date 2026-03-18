@@ -7,6 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **id** | **NotificationRequestId** |  | [optional] |
+| **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 | **tenantId** | **TenantId** |  | [optional] |
 | **targets** | **List\<UUID\>** |  | |
 | **templateId** | **NotificationTemplateId** |  | [optional] |
@@ -17,8 +19,6 @@
 | **ruleId** | **NotificationRuleId** |  | [optional] |
 | **status** | **NotificationRequestStatus** |  | [optional] |
 | **stats** | **NotificationRequestStats** |  | [optional] |
-| **id** | **NotificationRequestId** |  | [optional] |
-| **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 
 
 

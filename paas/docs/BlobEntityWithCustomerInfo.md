@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **BlobEntityId** | JSON object with the blob entity Id. Referencing non-existing blob entity Id will cause error | [optional] |
 | **createdTime** | **Long** | Timestamp of the blob entity creation, in milliseconds | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the blob entity | [optional] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] [readonly] |
 | **customerId** | **CustomerId** | JSON object with Customer Id | [optional] [readonly] |
 | **name** | **String** | blob entity name | [optional] [readonly] |
@@ -17,7 +18,6 @@
 | **customerTitle** | **String** | Title of the customer | [optional] |
 | **customerIsPublic** | **Boolean** | Parameter that specifies if customer is public | [optional] [readonly] |
 | **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the blob entity | [optional] |
 
 
 ### Enum: ContentTypeEnum

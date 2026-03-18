@@ -14,9 +14,9 @@
 | **resourceKey** | **String** |  | [optional] |
 | **fileName** | **String** |  | [optional] |
 | **publicResourceKey** | **String** |  | [optional] |
-| **isPublic** | **Boolean** |  | [optional] |
 | **mediaType** | **String** |  | [optional] |
 | **data** | **String** |  | [optional] |
+| **isPublic** | **Boolean** |  | [optional] |
 | **_public** | **Boolean** |  | [optional] |
 
 

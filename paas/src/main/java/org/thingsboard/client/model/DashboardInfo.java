@@ -61,8 +61,8 @@ import org.thingsboard.client.ApiClient;
   DashboardInfo.JSON_PROPERTY_CONFIGURATION,
   DashboardInfo.JSON_PROPERTY_RESOURCES,
   DashboardInfo.JSON_PROPERTY_VERSION,
-  DashboardInfo.JSON_PROPERTY_OWNER_NAME,
-  DashboardInfo.JSON_PROPERTY_GROUPS
+  DashboardInfo.JSON_PROPERTY_GROUPS,
+  DashboardInfo.JSON_PROPERTY_OWNER_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DashboardInfo {
@@ -122,13 +122,13 @@ public class DashboardInfo {
   @javax.annotation.Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
-  @javax.annotation.Nullable
-  private String ownerName;
-
   public static final String JSON_PROPERTY_GROUPS = "groups";
   @javax.annotation.Nullable
   private List<EntityInfo> groups = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
+  @javax.annotation.Nullable
+  private String ownerName;
 
   public DashboardInfo() { 
   }
@@ -438,20 +438,6 @@ public class DashboardInfo {
   }
 
 
-  /**
-   * Owner name
-   * @return ownerName
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getOwnerName() {
-    return ownerName;
-  }
-
-
-
-
   public DashboardInfo groups(@javax.annotation.Nullable List<EntityInfo> groups) {
     this.groups = groups;
     return this;
@@ -485,6 +471,20 @@ public class DashboardInfo {
 
 
   /**
+   * Owner name
+   * @return ownerName
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getOwnerName() {
+    return ownerName;
+  }
+
+
+
+
+  /**
    * Return true if this DashboardInfo object is equal to o.
    */
   @Override
@@ -510,13 +510,13 @@ public class DashboardInfo {
         Objects.equals(this._configuration, dashboardInfo._configuration) &&
         Objects.equals(this.resources, dashboardInfo.resources) &&
         Objects.equals(this.version, dashboardInfo.version) &&
-        Objects.equals(this.ownerName, dashboardInfo.ownerName) &&
-        Objects.equals(this.groups, dashboardInfo.groups);
+        Objects.equals(this.groups, dashboardInfo.groups) &&
+        Objects.equals(this.ownerName, dashboardInfo.ownerName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, ownerId, title, name, image, assignedCustomers, mobileHide, mobileOrder, _configuration, resources, version, ownerName, groups);
+    return Objects.hash(id, createdTime, tenantId, customerId, ownerId, title, name, image, assignedCustomers, mobileHide, mobileOrder, _configuration, resources, version, groups, ownerName);
   }
 
   @Override
@@ -537,8 +537,8 @@ public class DashboardInfo {
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
     sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -668,11 +668,6 @@ public class DashboardInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `ownerName` to the URL query string
-    if (getOwnerName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sownerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOwnerName()))));
-    }
-
     // add `groups` to the URL query string
     if (getGroups() != null) {
       for (int i = 0; i < getGroups().size(); i++) {
@@ -681,6 +676,11 @@ public class DashboardInfo {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `ownerName` to the URL query string
+    if (getOwnerName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sownerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOwnerName()))));
     }
 
     return joiner.toString();

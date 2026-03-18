@@ -9,6 +9,8 @@ A JSON value representing the alarm count query.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **entityFilter** | **EntityFilter** |  | [optional] |
+| **keyFilters** | **List\<KeyFilter\>** |  | [optional] |
 | **startTs** | **Long** |  | [optional] |
 | **endTs** | **Long** |  | [optional] |
 | **timeWindow** | **Long** |  | [optional] |
@@ -17,8 +19,6 @@ A JSON value representing the alarm count query.
 | **severityList** | **List\<AlarmSeverity\>** |  | [optional] |
 | **searchPropagatedAlarms** | **Boolean** |  | [optional] |
 | **assigneeId** | **UserId** |  | [optional] |
-| **entityFilter** | **EntityFilter** |  | [optional] |
-| **keyFilters** | **List\<KeyFilter\>** |  | [optional] |
 
 
 

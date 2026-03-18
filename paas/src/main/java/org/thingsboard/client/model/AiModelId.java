@@ -55,14 +55,14 @@ public class AiModelId extends EntityId {
   }
 
   @Override
-  public AiModelId id(@javax.annotation.Nonnull UUID id) {
-    this.setId(id);
+  public AiModelId entityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.setEntityType(entityType);
     return this;
   }
 
   @Override
-  public AiModelId entityType(@javax.annotation.Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
+  public AiModelId id(@javax.annotation.Nonnull UUID id) {
+    this.setId(id);
     return this;
   }
 
@@ -137,14 +137,14 @@ public class AiModelId extends EntityId {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
-    }
-
     // add `entityType` to the URL query string
     if (getEntityType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
+    }
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
     }
 
     return joiner.toString();

@@ -7,6 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** |  | [optional] |
+| **page** | **Integer** |  | [optional] |
+| **textSearch** | **String** |  | [optional] |
+| **sortOrder** | **EntityDataSortOrder** |  | [optional] |
+| **dynamic** | **Boolean** |  | [optional] |
 | **startTs** | **Long** |  | [optional] |
 | **endTs** | **Long** |  | [optional] |
 | **timeWindow** | **Long** |  | [optional] |
@@ -15,11 +20,6 @@
 | **severityList** | **List\<AlarmSeverity\>** |  | [optional] |
 | **searchPropagatedAlarms** | **Boolean** |  | [optional] |
 | **assigneeId** | **UserId** |  | [optional] |
-| **pageSize** | **Integer** |  | [optional] |
-| **page** | **Integer** |  | [optional] |
-| **textSearch** | **String** |  | [optional] |
-| **sortOrder** | **EntityDataSortOrder** |  | [optional] |
-| **dynamic** | **Boolean** |  | [optional] |
 
 
 

@@ -9,10 +9,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **timezone** | **String** |  | [optional] |
 | **daysOfWeek** | **Set\<Integer\>** |  | [optional] |
-| **startsOn** | **Long** |  | [optional] |
 | **endsOn** | **Long** |  | [optional] |
+| **startsOn** | **Long** |  | [optional] |
+| **timezone** | **String** |  | [optional] |
 
 
 
