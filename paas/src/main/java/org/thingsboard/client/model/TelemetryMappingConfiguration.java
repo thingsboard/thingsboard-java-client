@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,40 +52,40 @@ import org.thingsboard.client.ApiClient;
   TelemetryMappingConfiguration.JSON_PROPERTY_INIT_ATTR_TEL_AS_OBS_STRATEGY,
   TelemetryMappingConfiguration.JSON_PROPERTY_OBSERVE_STRATEGY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TelemetryMappingConfiguration {
   public static final String JSON_PROPERTY_KEY_NAME = "keyName";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, String> keyName = new HashMap<>();
 
   public static final String JSON_PROPERTY_OBSERVE = "observe";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<String> observe = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ATTRIBUTE = "attribute";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<String> attribute = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_TELEMETRY = "telemetry";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<String> telemetry = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ATTRIBUTE_LWM2M = "attributeLwm2m";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, ObjectAttributes> attributeLwm2m = new HashMap<>();
 
   public static final String JSON_PROPERTY_INIT_ATTR_TEL_AS_OBS_STRATEGY = "initAttrTelAsObsStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean initAttrTelAsObsStrategy;
 
   public static final String JSON_PROPERTY_OBSERVE_STRATEGY = "observeStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private TelemetryObserveStrategy observeStrategy;
 
   public TelemetryMappingConfiguration() { 
   }
 
-  public TelemetryMappingConfiguration keyName(@javax.annotation.Nullable Map<String, String> keyName) {
+  public TelemetryMappingConfiguration keyName(@Nullable Map<String, String> keyName) {
     this.keyName = keyName;
     return this;
   }
@@ -100,7 +102,7 @@ public class TelemetryMappingConfiguration {
    * Map of LwM2M resource paths to telemetry key names
    * @return keyName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, String> getKeyName() {
@@ -110,12 +112,12 @@ public class TelemetryMappingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyName(@javax.annotation.Nullable Map<String, String> keyName) {
+  public void setKeyName(@Nullable Map<String, String> keyName) {
     this.keyName = keyName;
   }
 
 
-  public TelemetryMappingConfiguration observe(@javax.annotation.Nullable Set<String> observe) {
+  public TelemetryMappingConfiguration observe(@Nullable Set<String> observe) {
     this.observe = observe;
     return this;
   }
@@ -132,7 +134,7 @@ public class TelemetryMappingConfiguration {
    * Set of resources to observe
    * @return observe
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OBSERVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<String> getObserve() {
@@ -143,12 +145,12 @@ public class TelemetryMappingConfiguration {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_OBSERVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setObserve(@javax.annotation.Nullable Set<String> observe) {
+  public void setObserve(@Nullable Set<String> observe) {
     this.observe = observe;
   }
 
 
-  public TelemetryMappingConfiguration attribute(@javax.annotation.Nullable Set<String> attribute) {
+  public TelemetryMappingConfiguration attribute(@Nullable Set<String> attribute) {
     this.attribute = attribute;
     return this;
   }
@@ -165,7 +167,7 @@ public class TelemetryMappingConfiguration {
    * Set of attribute keys
    * @return attribute
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<String> getAttribute() {
@@ -176,12 +178,12 @@ public class TelemetryMappingConfiguration {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAttribute(@javax.annotation.Nullable Set<String> attribute) {
+  public void setAttribute(@Nullable Set<String> attribute) {
     this.attribute = attribute;
   }
 
 
-  public TelemetryMappingConfiguration telemetry(@javax.annotation.Nullable Set<String> telemetry) {
+  public TelemetryMappingConfiguration telemetry(@Nullable Set<String> telemetry) {
     this.telemetry = telemetry;
     return this;
   }
@@ -198,7 +200,7 @@ public class TelemetryMappingConfiguration {
    * Set of telemetry keys
    * @return telemetry
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TELEMETRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<String> getTelemetry() {
@@ -209,12 +211,12 @@ public class TelemetryMappingConfiguration {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_TELEMETRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTelemetry(@javax.annotation.Nullable Set<String> telemetry) {
+  public void setTelemetry(@Nullable Set<String> telemetry) {
     this.telemetry = telemetry;
   }
 
 
-  public TelemetryMappingConfiguration attributeLwm2m(@javax.annotation.Nullable Map<String, ObjectAttributes> attributeLwm2m) {
+  public TelemetryMappingConfiguration attributeLwm2m(@Nullable Map<String, ObjectAttributes> attributeLwm2m) {
     this.attributeLwm2m = attributeLwm2m;
     return this;
   }
@@ -231,7 +233,7 @@ public class TelemetryMappingConfiguration {
    * Map of resource paths to specific LwM2M object attributes
    * @return attributeLwm2m
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE_LWM2M, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, ObjectAttributes> getAttributeLwm2m() {
@@ -241,12 +243,12 @@ public class TelemetryMappingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE_LWM2M, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAttributeLwm2m(@javax.annotation.Nullable Map<String, ObjectAttributes> attributeLwm2m) {
+  public void setAttributeLwm2m(@Nullable Map<String, ObjectAttributes> attributeLwm2m) {
     this.attributeLwm2m = attributeLwm2m;
   }
 
 
-  public TelemetryMappingConfiguration initAttrTelAsObsStrategy(@javax.annotation.Nullable Boolean initAttrTelAsObsStrategy) {
+  public TelemetryMappingConfiguration initAttrTelAsObsStrategy(@Nullable Boolean initAttrTelAsObsStrategy) {
     this.initAttrTelAsObsStrategy = initAttrTelAsObsStrategy;
     return this;
   }
@@ -255,7 +257,7 @@ public class TelemetryMappingConfiguration {
    * Get initAttrTelAsObsStrategy
    * @return initAttrTelAsObsStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INIT_ATTR_TEL_AS_OBS_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getInitAttrTelAsObsStrategy() {
@@ -265,12 +267,12 @@ public class TelemetryMappingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_INIT_ATTR_TEL_AS_OBS_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInitAttrTelAsObsStrategy(@javax.annotation.Nullable Boolean initAttrTelAsObsStrategy) {
+  public void setInitAttrTelAsObsStrategy(@Nullable Boolean initAttrTelAsObsStrategy) {
     this.initAttrTelAsObsStrategy = initAttrTelAsObsStrategy;
   }
 
 
-  public TelemetryMappingConfiguration observeStrategy(@javax.annotation.Nullable TelemetryObserveStrategy observeStrategy) {
+  public TelemetryMappingConfiguration observeStrategy(@Nullable TelemetryObserveStrategy observeStrategy) {
     this.observeStrategy = observeStrategy;
     return this;
   }
@@ -279,7 +281,7 @@ public class TelemetryMappingConfiguration {
    * Observation strategy for telemetry
    * @return observeStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OBSERVE_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TelemetryObserveStrategy getObserveStrategy() {
@@ -289,7 +291,7 @@ public class TelemetryMappingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_OBSERVE_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setObserveStrategy(@javax.annotation.Nullable TelemetryObserveStrategy observeStrategy) {
+  public void setObserveStrategy(@Nullable TelemetryObserveStrategy observeStrategy) {
     this.observeStrategy = observeStrategy;
   }
 

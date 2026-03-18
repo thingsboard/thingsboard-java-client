@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   CreateReportRequest.JSON_PROPERTY_FILE,
   CreateReportRequest.JSON_PROPERTY_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CreateReportRequest {
   public static final String JSON_PROPERTY_FILE = "file";
-  @javax.annotation.Nonnull
+  @Nonnull
   private File _file;
 
   public static final String JSON_PROPERTY_INFO = "info";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String info;
 
   public CreateReportRequest() { 
   }
 
-  public CreateReportRequest _file(@javax.annotation.Nonnull File _file) {
+  public CreateReportRequest _file(@Nonnull File _file) {
     this._file = _file;
     return this;
   }
@@ -61,7 +63,7 @@ public class CreateReportRequest {
    * Get _file
    * @return _file
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FILE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public File getFile() {
@@ -71,12 +73,12 @@ public class CreateReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_FILE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFile(@javax.annotation.Nonnull File _file) {
+  public void setFile(@Nonnull File _file) {
     this._file = _file;
   }
 
 
-  public CreateReportRequest info(@javax.annotation.Nonnull String info) {
+  public CreateReportRequest info(@Nonnull String info) {
     this.info = info;
     return this;
   }
@@ -85,7 +87,7 @@ public class CreateReportRequest {
    * Get info
    * @return info
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getInfo() {
@@ -95,7 +97,7 @@ public class CreateReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInfo(@javax.annotation.Nonnull String info) {
+  public void setInfo(@Nonnull String info) {
     this.info = info;
   }
 

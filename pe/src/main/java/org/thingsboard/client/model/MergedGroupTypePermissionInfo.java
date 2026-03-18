@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,20 +43,20 @@ import org.thingsboard.client.ApiClient;
   MergedGroupTypePermissionInfo.JSON_PROPERTY_ENTITY_GROUP_IDS,
   MergedGroupTypePermissionInfo.JSON_PROPERTY_HAS_GENERIC_READ
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MergedGroupTypePermissionInfo {
   public static final String JSON_PROPERTY_ENTITY_GROUP_IDS = "entityGroupIds";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityGroupId> entityGroupIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HAS_GENERIC_READ = "hasGenericRead";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasGenericRead;
 
   public MergedGroupTypePermissionInfo() { 
   }
 
-  public MergedGroupTypePermissionInfo entityGroupIds(@javax.annotation.Nullable List<EntityGroupId> entityGroupIds) {
+  public MergedGroupTypePermissionInfo entityGroupIds(@Nullable List<EntityGroupId> entityGroupIds) {
     this.entityGroupIds = entityGroupIds;
     return this;
   }
@@ -71,7 +73,7 @@ public class MergedGroupTypePermissionInfo {
    * List of Entity Groups in case of group roles are assigned to the user (user group)
    * @return entityGroupIds
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityGroupId> getEntityGroupIds() {
@@ -81,12 +83,12 @@ public class MergedGroupTypePermissionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityGroupIds(@javax.annotation.Nullable List<EntityGroupId> entityGroupIds) {
+  public void setEntityGroupIds(@Nullable List<EntityGroupId> entityGroupIds) {
     this.entityGroupIds = entityGroupIds;
   }
 
 
-  public MergedGroupTypePermissionInfo hasGenericRead(@javax.annotation.Nullable Boolean hasGenericRead) {
+  public MergedGroupTypePermissionInfo hasGenericRead(@Nullable Boolean hasGenericRead) {
     this.hasGenericRead = hasGenericRead;
     return this;
   }
@@ -95,7 +97,7 @@ public class MergedGroupTypePermissionInfo {
    * Indicates if generic permission assigned to the user group.
    * @return hasGenericRead
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_GENERIC_READ, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasGenericRead() {
@@ -105,7 +107,7 @@ public class MergedGroupTypePermissionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_HAS_GENERIC_READ, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasGenericRead(@javax.annotation.Nullable Boolean hasGenericRead) {
+  public void setHasGenericRead(@Nullable Boolean hasGenericRead) {
     this.hasGenericRead = hasGenericRead;
   }
 

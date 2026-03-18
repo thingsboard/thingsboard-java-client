@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -53,42 +56,42 @@ import org.thingsboard.client.ApiClient;
   CustomMenu.JSON_PROPERTY_USER_GROUP_NAMES,
   CustomMenu.JSON_PROPERTY_CONFIG
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomMenu {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomMenuId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
-  @javax.annotation.Nonnull
+  @Nonnull
   private CMScope scope;
 
   public static final String JSON_PROPERTY_ASSIGNEE_TYPE = "assigneeType";
-  @javax.annotation.Nonnull
+  @Nonnull
   private CMAssigneeType assigneeType;
 
   public static final String JSON_PROPERTY_USER_GROUP_NAMES = "userGroupNames";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> userGroupNames = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CONFIG = "config";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomMenuConfig config;
 
   public CustomMenu() { 
@@ -106,7 +109,7 @@ public class CustomMenu {
     this.customerId = customerId;
   }
 
-  public CustomMenu id(@javax.annotation.Nullable CustomMenuId id) {
+  public CustomMenu id(@Nullable CustomMenuId id) {
     this.id = id;
     return this;
   }
@@ -115,7 +118,7 @@ public class CustomMenu {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomMenuId getId() {
@@ -125,7 +128,7 @@ public class CustomMenu {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable CustomMenuId id) {
+  public void setId(@Nullable CustomMenuId id) {
     this.id = id;
   }
 
@@ -134,7 +137,7 @@ public class CustomMenu {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -148,7 +151,7 @@ public class CustomMenu {
    * JSON object with Tenant Id that owns the menu.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -162,7 +165,7 @@ public class CustomMenu {
    * JSON object with Customer Id that owns the menu.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -172,7 +175,7 @@ public class CustomMenu {
 
 
 
-  public CustomMenu name(@javax.annotation.Nonnull String name) {
+  public CustomMenu name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -181,7 +184,7 @@ public class CustomMenu {
    * Custom menu name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -191,12 +194,12 @@ public class CustomMenu {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public CustomMenu scope(@javax.annotation.Nonnull CMScope scope) {
+  public CustomMenu scope(@Nonnull CMScope scope) {
     this.scope = scope;
     return this;
   }
@@ -205,7 +208,7 @@ public class CustomMenu {
    * Custom menu scope. Possible values: SYSTEM, TENANT, CUSTOMER
    * @return scope
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CMScope getScope() {
@@ -215,12 +218,12 @@ public class CustomMenu {
 
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setScope(@javax.annotation.Nonnull CMScope scope) {
+  public void setScope(@Nonnull CMScope scope) {
     this.scope = scope;
   }
 
 
-  public CustomMenu assigneeType(@javax.annotation.Nonnull CMAssigneeType assigneeType) {
+  public CustomMenu assigneeType(@Nonnull CMAssigneeType assigneeType) {
     this.assigneeType = assigneeType;
     return this;
   }
@@ -229,7 +232,7 @@ public class CustomMenu {
    * Custom menu assignee type. Possible values are: All (all users of specified scope), CUSTOMERS (specified customers), USERS (specified list of users), NO_ASSIGN (no assignees), USER_GROUPS (user groups)
    * @return assigneeType
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CMAssigneeType getAssigneeType() {
@@ -239,12 +242,12 @@ public class CustomMenu {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAssigneeType(@javax.annotation.Nonnull CMAssigneeType assigneeType) {
+  public void setAssigneeType(@Nonnull CMAssigneeType assigneeType) {
     this.assigneeType = assigneeType;
   }
 
 
-  public CustomMenu userGroupNames(@javax.annotation.Nullable List<String> userGroupNames) {
+  public CustomMenu userGroupNames(@Nullable List<String> userGroupNames) {
     this.userGroupNames = userGroupNames;
     return this;
   }
@@ -261,7 +264,7 @@ public class CustomMenu {
    * User group names menu is applied to
    * @return userGroupNames
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_GROUP_NAMES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getUserGroupNames() {
@@ -271,12 +274,12 @@ public class CustomMenu {
 
   @JsonProperty(value = JSON_PROPERTY_USER_GROUP_NAMES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserGroupNames(@javax.annotation.Nullable List<String> userGroupNames) {
+  public void setUserGroupNames(@Nullable List<String> userGroupNames) {
     this.userGroupNames = userGroupNames;
   }
 
 
-  public CustomMenu config(@javax.annotation.Nullable CustomMenuConfig config) {
+  public CustomMenu config(@Nullable CustomMenuConfig config) {
     this.config = config;
     return this;
   }
@@ -285,7 +288,7 @@ public class CustomMenu {
    * Custom menu configuration
    * @return config
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomMenuConfig getConfig() {
@@ -295,7 +298,7 @@ public class CustomMenu {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfig(@javax.annotation.Nullable CustomMenuConfig config) {
+  public void setConfig(@Nullable CustomMenuConfig config) {
     this.config = config;
   }
 

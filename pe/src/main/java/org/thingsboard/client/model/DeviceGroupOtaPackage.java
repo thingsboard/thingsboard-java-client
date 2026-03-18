@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,32 +47,32 @@ import org.thingsboard.client.ApiClient;
   DeviceGroupOtaPackage.JSON_PROPERTY_OTA_PACKAGE_ID,
   DeviceGroupOtaPackage.JSON_PROPERTY_OTA_PACKAGE_UPDATE_TIME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceGroupOtaPackage {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID id;
 
   public static final String JSON_PROPERTY_GROUP_ID = "groupId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityGroupId groupId;
 
   public static final String JSON_PROPERTY_OTA_PACKAGE_TYPE = "otaPackageType";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageType otaPackageType;
 
   public static final String JSON_PROPERTY_OTA_PACKAGE_ID = "otaPackageId";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageId otaPackageId;
 
   public static final String JSON_PROPERTY_OTA_PACKAGE_UPDATE_TIME = "otaPackageUpdateTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long otaPackageUpdateTime;
 
   public DeviceGroupOtaPackage() { 
   }
 
-  public DeviceGroupOtaPackage id(@javax.annotation.Nullable UUID id) {
+  public DeviceGroupOtaPackage id(@Nullable UUID id) {
     this.id = id;
     return this;
   }
@@ -79,7 +81,7 @@ public class DeviceGroupOtaPackage {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getId() {
@@ -89,12 +91,12 @@ public class DeviceGroupOtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable UUID id) {
+  public void setId(@Nullable UUID id) {
     this.id = id;
   }
 
 
-  public DeviceGroupOtaPackage groupId(@javax.annotation.Nullable EntityGroupId groupId) {
+  public DeviceGroupOtaPackage groupId(@Nullable EntityGroupId groupId) {
     this.groupId = groupId;
     return this;
   }
@@ -103,7 +105,7 @@ public class DeviceGroupOtaPackage {
    * Get groupId
    * @return groupId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityGroupId getGroupId() {
@@ -113,12 +115,12 @@ public class DeviceGroupOtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroupId(@javax.annotation.Nullable EntityGroupId groupId) {
+  public void setGroupId(@Nullable EntityGroupId groupId) {
     this.groupId = groupId;
   }
 
 
-  public DeviceGroupOtaPackage otaPackageType(@javax.annotation.Nullable OtaPackageType otaPackageType) {
+  public DeviceGroupOtaPackage otaPackageType(@Nullable OtaPackageType otaPackageType) {
     this.otaPackageType = otaPackageType;
     return this;
   }
@@ -127,7 +129,7 @@ public class DeviceGroupOtaPackage {
    * Get otaPackageType
    * @return otaPackageType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OTA_PACKAGE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageType getOtaPackageType() {
@@ -137,12 +139,12 @@ public class DeviceGroupOtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_OTA_PACKAGE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtaPackageType(@javax.annotation.Nullable OtaPackageType otaPackageType) {
+  public void setOtaPackageType(@Nullable OtaPackageType otaPackageType) {
     this.otaPackageType = otaPackageType;
   }
 
 
-  public DeviceGroupOtaPackage otaPackageId(@javax.annotation.Nullable OtaPackageId otaPackageId) {
+  public DeviceGroupOtaPackage otaPackageId(@Nullable OtaPackageId otaPackageId) {
     this.otaPackageId = otaPackageId;
     return this;
   }
@@ -151,7 +153,7 @@ public class DeviceGroupOtaPackage {
    * Get otaPackageId
    * @return otaPackageId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OTA_PACKAGE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageId getOtaPackageId() {
@@ -161,12 +163,12 @@ public class DeviceGroupOtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_OTA_PACKAGE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtaPackageId(@javax.annotation.Nullable OtaPackageId otaPackageId) {
+  public void setOtaPackageId(@Nullable OtaPackageId otaPackageId) {
     this.otaPackageId = otaPackageId;
   }
 
 
-  public DeviceGroupOtaPackage otaPackageUpdateTime(@javax.annotation.Nullable Long otaPackageUpdateTime) {
+  public DeviceGroupOtaPackage otaPackageUpdateTime(@Nullable Long otaPackageUpdateTime) {
     this.otaPackageUpdateTime = otaPackageUpdateTime;
     return this;
   }
@@ -175,7 +177,7 @@ public class DeviceGroupOtaPackage {
    * Get otaPackageUpdateTime
    * @return otaPackageUpdateTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OTA_PACKAGE_UPDATE_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getOtaPackageUpdateTime() {
@@ -185,7 +187,7 @@ public class DeviceGroupOtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_OTA_PACKAGE_UPDATE_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtaPackageUpdateTime(@javax.annotation.Nullable Long otaPackageUpdateTime) {
+  public void setOtaPackageUpdateTime(@Nullable Long otaPackageUpdateTime) {
     this.otaPackageUpdateTime = otaPackageUpdateTime;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   PowerSavingConfiguration.JSON_PROPERTY_EDRX_CYCLE,
   PowerSavingConfiguration.JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PowerSavingConfiguration {
   public static final String JSON_PROPERTY_POWER_MODE = "powerMode";
-  @javax.annotation.Nullable
+  @Nullable
   private PowerMode powerMode;
 
   public static final String JSON_PROPERTY_PSM_ACTIVITY_TIMER = "psmActivityTimer";
-  @javax.annotation.Nullable
+  @Nullable
   private Long psmActivityTimer;
 
   public static final String JSON_PROPERTY_EDRX_CYCLE = "edrxCycle";
-  @javax.annotation.Nullable
+  @Nullable
   private Long edrxCycle;
 
   public static final String JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW = "pagingTransmissionWindow";
-  @javax.annotation.Nullable
+  @Nullable
   private Long pagingTransmissionWindow;
 
   public PowerSavingConfiguration() { 
   }
 
-  public PowerSavingConfiguration powerMode(@javax.annotation.Nullable PowerMode powerMode) {
+  public PowerSavingConfiguration powerMode(@Nullable PowerMode powerMode) {
     this.powerMode = powerMode;
     return this;
   }
@@ -71,7 +73,7 @@ public class PowerSavingConfiguration {
    * Get powerMode
    * @return powerMode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POWER_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public PowerMode getPowerMode() {
@@ -81,12 +83,12 @@ public class PowerSavingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_POWER_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPowerMode(@javax.annotation.Nullable PowerMode powerMode) {
+  public void setPowerMode(@Nullable PowerMode powerMode) {
     this.powerMode = powerMode;
   }
 
 
-  public PowerSavingConfiguration psmActivityTimer(@javax.annotation.Nullable Long psmActivityTimer) {
+  public PowerSavingConfiguration psmActivityTimer(@Nullable Long psmActivityTimer) {
     this.psmActivityTimer = psmActivityTimer;
     return this;
   }
@@ -95,7 +97,7 @@ public class PowerSavingConfiguration {
    * Get psmActivityTimer
    * @return psmActivityTimer
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PSM_ACTIVITY_TIMER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPsmActivityTimer() {
@@ -105,12 +107,12 @@ public class PowerSavingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PSM_ACTIVITY_TIMER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPsmActivityTimer(@javax.annotation.Nullable Long psmActivityTimer) {
+  public void setPsmActivityTimer(@Nullable Long psmActivityTimer) {
     this.psmActivityTimer = psmActivityTimer;
   }
 
 
-  public PowerSavingConfiguration edrxCycle(@javax.annotation.Nullable Long edrxCycle) {
+  public PowerSavingConfiguration edrxCycle(@Nullable Long edrxCycle) {
     this.edrxCycle = edrxCycle;
     return this;
   }
@@ -119,7 +121,7 @@ public class PowerSavingConfiguration {
    * Get edrxCycle
    * @return edrxCycle
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDRX_CYCLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEdrxCycle() {
@@ -129,12 +131,12 @@ public class PowerSavingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_EDRX_CYCLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdrxCycle(@javax.annotation.Nullable Long edrxCycle) {
+  public void setEdrxCycle(@Nullable Long edrxCycle) {
     this.edrxCycle = edrxCycle;
   }
 
 
-  public PowerSavingConfiguration pagingTransmissionWindow(@javax.annotation.Nullable Long pagingTransmissionWindow) {
+  public PowerSavingConfiguration pagingTransmissionWindow(@Nullable Long pagingTransmissionWindow) {
     this.pagingTransmissionWindow = pagingTransmissionWindow;
     return this;
   }
@@ -143,7 +145,7 @@ public class PowerSavingConfiguration {
    * Get pagingTransmissionWindow
    * @return pagingTransmissionWindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPagingTransmissionWindow() {
@@ -153,7 +155,7 @@ public class PowerSavingConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPagingTransmissionWindow(@javax.annotation.Nullable Long pagingTransmissionWindow) {
+  public void setPagingTransmissionWindow(@Nullable Long pagingTransmissionWindow) {
     this.pagingTransmissionWindow = pagingTransmissionWindow;
   }
 

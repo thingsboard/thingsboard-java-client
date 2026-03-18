@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   PaletteSettings.JSON_PROPERTY_PRIMARY_PALETTE,
   PaletteSettings.JSON_PROPERTY_ACCENT_PALETTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PaletteSettings {
   public static final String JSON_PROPERTY_PRIMARY_PALETTE = "primaryPalette";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Palette primaryPalette;
 
   public static final String JSON_PROPERTY_ACCENT_PALETTE = "accentPalette";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Palette accentPalette;
 
   public PaletteSettings() { 
   }
 
-  public PaletteSettings primaryPalette(@javax.annotation.Nonnull Palette primaryPalette) {
+  public PaletteSettings primaryPalette(@Nonnull Palette primaryPalette) {
     this.primaryPalette = primaryPalette;
     return this;
   }
@@ -61,7 +63,7 @@ public class PaletteSettings {
    * Primary palette JSON
    * @return primaryPalette
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PRIMARY_PALETTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Palette getPrimaryPalette() {
@@ -71,12 +73,12 @@ public class PaletteSettings {
 
   @JsonProperty(value = JSON_PROPERTY_PRIMARY_PALETTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrimaryPalette(@javax.annotation.Nonnull Palette primaryPalette) {
+  public void setPrimaryPalette(@Nonnull Palette primaryPalette) {
     this.primaryPalette = primaryPalette;
   }
 
 
-  public PaletteSettings accentPalette(@javax.annotation.Nonnull Palette accentPalette) {
+  public PaletteSettings accentPalette(@Nonnull Palette accentPalette) {
     this.accentPalette = accentPalette;
     return this;
   }
@@ -85,7 +87,7 @@ public class PaletteSettings {
    * Accent palette JSON
    * @return accentPalette
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ACCENT_PALETTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Palette getAccentPalette() {
@@ -95,7 +97,7 @@ public class PaletteSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ACCENT_PALETTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccentPalette(@javax.annotation.Nonnull Palette accentPalette) {
+  public void setAccentPalette(@Nonnull Palette accentPalette) {
     this.accentPalette = accentPalette;
   }
 

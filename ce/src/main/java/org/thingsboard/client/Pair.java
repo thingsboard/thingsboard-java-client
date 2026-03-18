@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 package org.thingsboard.client;
+import javax.annotation.Generated;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Pair {
   private final String name;
   private final String value;

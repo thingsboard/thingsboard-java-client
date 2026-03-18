@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,56 +50,56 @@ import org.thingsboard.client.ApiClient;
   RepositorySettings.JSON_PROPERTY_SHOW_MERGE_COMMITS,
   RepositorySettings.JSON_PROPERTY_LOCAL_ONLY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RepositorySettings {
   public static final String JSON_PROPERTY_REPOSITORY_URI = "repositoryUri";
-  @javax.annotation.Nullable
+  @Nullable
   private String repositoryUri;
 
   public static final String JSON_PROPERTY_AUTH_METHOD = "authMethod";
-  @javax.annotation.Nullable
+  @Nullable
   private RepositoryAuthMethod authMethod;
 
   public static final String JSON_PROPERTY_USERNAME = "username";
-  @javax.annotation.Nullable
+  @Nullable
   private String username;
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
-  @javax.annotation.Nullable
+  @Nullable
   private String password;
 
   public static final String JSON_PROPERTY_PRIVATE_KEY_FILE_NAME = "privateKeyFileName";
-  @javax.annotation.Nullable
+  @Nullable
   private String privateKeyFileName;
 
   public static final String JSON_PROPERTY_PRIVATE_KEY = "privateKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String privateKey;
 
   public static final String JSON_PROPERTY_PRIVATE_KEY_PASSWORD = "privateKeyPassword";
-  @javax.annotation.Nullable
+  @Nullable
   private String privateKeyPassword;
 
   public static final String JSON_PROPERTY_DEFAULT_BRANCH = "defaultBranch";
-  @javax.annotation.Nullable
+  @Nullable
   private String defaultBranch;
 
   public static final String JSON_PROPERTY_READ_ONLY = "readOnly";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean readOnly;
 
   public static final String JSON_PROPERTY_SHOW_MERGE_COMMITS = "showMergeCommits";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showMergeCommits;
 
   public static final String JSON_PROPERTY_LOCAL_ONLY = "localOnly";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean localOnly;
 
   public RepositorySettings() { 
   }
 
-  public RepositorySettings repositoryUri(@javax.annotation.Nullable String repositoryUri) {
+  public RepositorySettings repositoryUri(@Nullable String repositoryUri) {
     this.repositoryUri = repositoryUri;
     return this;
   }
@@ -106,7 +108,7 @@ public class RepositorySettings {
    * Get repositoryUri
    * @return repositoryUri
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REPOSITORY_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRepositoryUri() {
@@ -116,12 +118,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_REPOSITORY_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRepositoryUri(@javax.annotation.Nullable String repositoryUri) {
+  public void setRepositoryUri(@Nullable String repositoryUri) {
     this.repositoryUri = repositoryUri;
   }
 
 
-  public RepositorySettings authMethod(@javax.annotation.Nullable RepositoryAuthMethod authMethod) {
+  public RepositorySettings authMethod(@Nullable RepositoryAuthMethod authMethod) {
     this.authMethod = authMethod;
     return this;
   }
@@ -130,7 +132,7 @@ public class RepositorySettings {
    * Get authMethod
    * @return authMethod
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AUTH_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RepositoryAuthMethod getAuthMethod() {
@@ -140,12 +142,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_AUTH_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthMethod(@javax.annotation.Nullable RepositoryAuthMethod authMethod) {
+  public void setAuthMethod(@Nullable RepositoryAuthMethod authMethod) {
     this.authMethod = authMethod;
   }
 
 
-  public RepositorySettings username(@javax.annotation.Nullable String username) {
+  public RepositorySettings username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -154,7 +156,7 @@ public class RepositorySettings {
    * Get username
    * @return username
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USERNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUsername() {
@@ -164,12 +166,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_USERNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsername(@javax.annotation.Nullable String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
 
-  public RepositorySettings password(@javax.annotation.Nullable String password) {
+  public RepositorySettings password(@Nullable String password) {
     this.password = password;
     return this;
   }
@@ -178,7 +180,7 @@ public class RepositorySettings {
    * Get password
    * @return password
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPassword() {
@@ -188,12 +190,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPassword(@javax.annotation.Nullable String password) {
+  public void setPassword(@Nullable String password) {
     this.password = password;
   }
 
 
-  public RepositorySettings privateKeyFileName(@javax.annotation.Nullable String privateKeyFileName) {
+  public RepositorySettings privateKeyFileName(@Nullable String privateKeyFileName) {
     this.privateKeyFileName = privateKeyFileName;
     return this;
   }
@@ -202,7 +204,7 @@ public class RepositorySettings {
    * Get privateKeyFileName
    * @return privateKeyFileName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PRIVATE_KEY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPrivateKeyFileName() {
@@ -212,12 +214,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_PRIVATE_KEY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPrivateKeyFileName(@javax.annotation.Nullable String privateKeyFileName) {
+  public void setPrivateKeyFileName(@Nullable String privateKeyFileName) {
     this.privateKeyFileName = privateKeyFileName;
   }
 
 
-  public RepositorySettings privateKey(@javax.annotation.Nullable String privateKey) {
+  public RepositorySettings privateKey(@Nullable String privateKey) {
     this.privateKey = privateKey;
     return this;
   }
@@ -226,7 +228,7 @@ public class RepositorySettings {
    * Get privateKey
    * @return privateKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PRIVATE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPrivateKey() {
@@ -236,12 +238,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_PRIVATE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPrivateKey(@javax.annotation.Nullable String privateKey) {
+  public void setPrivateKey(@Nullable String privateKey) {
     this.privateKey = privateKey;
   }
 
 
-  public RepositorySettings privateKeyPassword(@javax.annotation.Nullable String privateKeyPassword) {
+  public RepositorySettings privateKeyPassword(@Nullable String privateKeyPassword) {
     this.privateKeyPassword = privateKeyPassword;
     return this;
   }
@@ -250,7 +252,7 @@ public class RepositorySettings {
    * Get privateKeyPassword
    * @return privateKeyPassword
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PRIVATE_KEY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPrivateKeyPassword() {
@@ -260,12 +262,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_PRIVATE_KEY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPrivateKeyPassword(@javax.annotation.Nullable String privateKeyPassword) {
+  public void setPrivateKeyPassword(@Nullable String privateKeyPassword) {
     this.privateKeyPassword = privateKeyPassword;
   }
 
 
-  public RepositorySettings defaultBranch(@javax.annotation.Nullable String defaultBranch) {
+  public RepositorySettings defaultBranch(@Nullable String defaultBranch) {
     this.defaultBranch = defaultBranch;
     return this;
   }
@@ -274,7 +276,7 @@ public class RepositorySettings {
    * Get defaultBranch
    * @return defaultBranch
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_BRANCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDefaultBranch() {
@@ -284,12 +286,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_BRANCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultBranch(@javax.annotation.Nullable String defaultBranch) {
+  public void setDefaultBranch(@Nullable String defaultBranch) {
     this.defaultBranch = defaultBranch;
   }
 
 
-  public RepositorySettings readOnly(@javax.annotation.Nullable Boolean readOnly) {
+  public RepositorySettings readOnly(@Nullable Boolean readOnly) {
     this.readOnly = readOnly;
     return this;
   }
@@ -298,7 +300,7 @@ public class RepositorySettings {
    * Get readOnly
    * @return readOnly
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getReadOnly() {
@@ -308,12 +310,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadOnly(@javax.annotation.Nullable Boolean readOnly) {
+  public void setReadOnly(@Nullable Boolean readOnly) {
     this.readOnly = readOnly;
   }
 
 
-  public RepositorySettings showMergeCommits(@javax.annotation.Nullable Boolean showMergeCommits) {
+  public RepositorySettings showMergeCommits(@Nullable Boolean showMergeCommits) {
     this.showMergeCommits = showMergeCommits;
     return this;
   }
@@ -322,7 +324,7 @@ public class RepositorySettings {
    * Get showMergeCommits
    * @return showMergeCommits
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_MERGE_COMMITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowMergeCommits() {
@@ -332,12 +334,12 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_MERGE_COMMITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowMergeCommits(@javax.annotation.Nullable Boolean showMergeCommits) {
+  public void setShowMergeCommits(@Nullable Boolean showMergeCommits) {
     this.showMergeCommits = showMergeCommits;
   }
 
 
-  public RepositorySettings localOnly(@javax.annotation.Nullable Boolean localOnly) {
+  public RepositorySettings localOnly(@Nullable Boolean localOnly) {
     this.localOnly = localOnly;
     return this;
   }
@@ -346,7 +348,7 @@ public class RepositorySettings {
    * Get localOnly
    * @return localOnly
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOCAL_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLocalOnly() {
@@ -356,7 +358,7 @@ public class RepositorySettings {
 
   @JsonProperty(value = JSON_PROPERTY_LOCAL_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocalOnly(@javax.annotation.Nullable Boolean localOnly) {
+  public void setLocalOnly(@Nullable Boolean localOnly) {
     this.localOnly = localOnly;
   }
 

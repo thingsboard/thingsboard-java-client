@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,36 +48,36 @@ import org.thingsboard.client.ApiClient;
   RelationsSearchParameters.JSON_PROPERTY_MAX_LEVEL,
   RelationsSearchParameters.JSON_PROPERTY_FETCH_LAST_LEVEL_ONLY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RelationsSearchParameters {
   public static final String JSON_PROPERTY_ROOT_ID = "rootId";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID rootId;
 
   public static final String JSON_PROPERTY_ROOT_TYPE = "rootType";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityType rootType;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
-  @javax.annotation.Nullable
+  @Nullable
   private EntitySearchDirection direction;
 
   public static final String JSON_PROPERTY_RELATION_TYPE_GROUP = "relationTypeGroup";
-  @javax.annotation.Nullable
+  @Nullable
   private RelationTypeGroup relationTypeGroup;
 
   public static final String JSON_PROPERTY_MAX_LEVEL = "maxLevel";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer maxLevel;
 
   public static final String JSON_PROPERTY_FETCH_LAST_LEVEL_ONLY = "fetchLastLevelOnly";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean fetchLastLevelOnly;
 
   public RelationsSearchParameters() { 
   }
 
-  public RelationsSearchParameters rootId(@javax.annotation.Nullable UUID rootId) {
+  public RelationsSearchParameters rootId(@Nullable UUID rootId) {
     this.rootId = rootId;
     return this;
   }
@@ -84,7 +86,7 @@ public class RelationsSearchParameters {
    * Root entity id to start search from.
    * @return rootId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ROOT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getRootId() {
@@ -94,12 +96,12 @@ public class RelationsSearchParameters {
 
   @JsonProperty(value = JSON_PROPERTY_ROOT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRootId(@javax.annotation.Nullable UUID rootId) {
+  public void setRootId(@Nullable UUID rootId) {
     this.rootId = rootId;
   }
 
 
-  public RelationsSearchParameters rootType(@javax.annotation.Nullable EntityType rootType) {
+  public RelationsSearchParameters rootType(@Nullable EntityType rootType) {
     this.rootType = rootType;
     return this;
   }
@@ -108,7 +110,7 @@ public class RelationsSearchParameters {
    * Type of the root entity.
    * @return rootType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ROOT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityType getRootType() {
@@ -118,12 +120,12 @@ public class RelationsSearchParameters {
 
   @JsonProperty(value = JSON_PROPERTY_ROOT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRootType(@javax.annotation.Nullable EntityType rootType) {
+  public void setRootType(@Nullable EntityType rootType) {
     this.rootType = rootType;
   }
 
 
-  public RelationsSearchParameters direction(@javax.annotation.Nullable EntitySearchDirection direction) {
+  public RelationsSearchParameters direction(@Nullable EntitySearchDirection direction) {
     this.direction = direction;
     return this;
   }
@@ -132,7 +134,7 @@ public class RelationsSearchParameters {
    * Type of the root entity.
    * @return direction
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntitySearchDirection getDirection() {
@@ -142,12 +144,12 @@ public class RelationsSearchParameters {
 
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDirection(@javax.annotation.Nullable EntitySearchDirection direction) {
+  public void setDirection(@Nullable EntitySearchDirection direction) {
     this.direction = direction;
   }
 
 
-  public RelationsSearchParameters relationTypeGroup(@javax.annotation.Nullable RelationTypeGroup relationTypeGroup) {
+  public RelationsSearchParameters relationTypeGroup(@Nullable RelationTypeGroup relationTypeGroup) {
     this.relationTypeGroup = relationTypeGroup;
     return this;
   }
@@ -156,7 +158,7 @@ public class RelationsSearchParameters {
    * Type of the relation.
    * @return relationTypeGroup
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE_GROUP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RelationTypeGroup getRelationTypeGroup() {
@@ -166,12 +168,12 @@ public class RelationsSearchParameters {
 
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE_GROUP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelationTypeGroup(@javax.annotation.Nullable RelationTypeGroup relationTypeGroup) {
+  public void setRelationTypeGroup(@Nullable RelationTypeGroup relationTypeGroup) {
     this.relationTypeGroup = relationTypeGroup;
   }
 
 
-  public RelationsSearchParameters maxLevel(@javax.annotation.Nullable Integer maxLevel) {
+  public RelationsSearchParameters maxLevel(@Nullable Integer maxLevel) {
     this.maxLevel = maxLevel;
     return this;
   }
@@ -180,7 +182,7 @@ public class RelationsSearchParameters {
    * Maximum level of the search depth.
    * @return maxLevel
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaxLevel() {
@@ -190,12 +192,12 @@ public class RelationsSearchParameters {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxLevel(@javax.annotation.Nullable Integer maxLevel) {
+  public void setMaxLevel(@Nullable Integer maxLevel) {
     this.maxLevel = maxLevel;
   }
 
 
-  public RelationsSearchParameters fetchLastLevelOnly(@javax.annotation.Nullable Boolean fetchLastLevelOnly) {
+  public RelationsSearchParameters fetchLastLevelOnly(@Nullable Boolean fetchLastLevelOnly) {
     this.fetchLastLevelOnly = fetchLastLevelOnly;
     return this;
   }
@@ -204,7 +206,7 @@ public class RelationsSearchParameters {
    * Fetch entities that match the last level of search. Useful to find Devices that are strictly &#39;maxLevel&#39; relations away from the root entity.
    * @return fetchLastLevelOnly
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FETCH_LAST_LEVEL_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getFetchLastLevelOnly() {
@@ -214,7 +216,7 @@ public class RelationsSearchParameters {
 
   @JsonProperty(value = JSON_PROPERTY_FETCH_LAST_LEVEL_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFetchLastLevelOnly(@javax.annotation.Nullable Boolean fetchLastLevelOnly) {
+  public void setFetchLastLevelOnly(@Nullable Boolean fetchLastLevelOnly) {
     this.fetchLastLevelOnly = fetchLastLevelOnly;
   }
 

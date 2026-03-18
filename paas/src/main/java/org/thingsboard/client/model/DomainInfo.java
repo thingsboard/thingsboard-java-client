@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,42 +55,42 @@ import org.thingsboard.client.ApiClient;
   DomainInfo.JSON_PROPERTY_OWNER_ID,
   DomainInfo.JSON_PROPERTY_PROPAGATE_TO_EDGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DomainInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private DomainId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_OAUTH2_CLIENT_INFOS = "oauth2ClientInfos";
-  @javax.annotation.Nullable
+  @Nullable
   private List<OAuth2ClientInfo> oauth2ClientInfos = new ArrayList<>();
 
   public static final String JSON_PROPERTY_OAUTH2_ENABLED = "oauth2Enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean oauth2Enabled;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_EDGE = "propagateToEdge";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagateToEdge;
 
   public DomainInfo() { 
@@ -103,7 +106,7 @@ public class DomainInfo {
     this.ownerId = ownerId;
   }
 
-  public DomainInfo id(@javax.annotation.Nullable DomainId id) {
+  public DomainInfo id(@Nullable DomainId id) {
     this.id = id;
     return this;
   }
@@ -112,7 +115,7 @@ public class DomainInfo {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DomainId getId() {
@@ -122,7 +125,7 @@ public class DomainInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable DomainId id) {
+  public void setId(@Nullable DomainId id) {
     this.id = id;
   }
 
@@ -131,7 +134,7 @@ public class DomainInfo {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -141,7 +144,7 @@ public class DomainInfo {
 
 
 
-  public DomainInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public DomainInfo tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -150,7 +153,7 @@ public class DomainInfo {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -160,12 +163,12 @@ public class DomainInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public DomainInfo customerId(@javax.annotation.Nullable CustomerId customerId) {
+  public DomainInfo customerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -174,7 +177,7 @@ public class DomainInfo {
    * JSON object with Customer Id
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -184,12 +187,12 @@ public class DomainInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerId(@javax.annotation.Nullable CustomerId customerId) {
+  public void setCustomerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
   }
 
 
-  public DomainInfo name(@javax.annotation.Nonnull String name) {
+  public DomainInfo name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -198,7 +201,7 @@ public class DomainInfo {
    * Domain name. Cannot be empty
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -208,12 +211,12 @@ public class DomainInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public DomainInfo oauth2ClientInfos(@javax.annotation.Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
+  public DomainInfo oauth2ClientInfos(@Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
     this.oauth2ClientInfos = oauth2ClientInfos;
     return this;
   }
@@ -230,7 +233,7 @@ public class DomainInfo {
    * List of available oauth2 clients
    * @return oauth2ClientInfos
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_CLIENT_INFOS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<OAuth2ClientInfo> getOauth2ClientInfos() {
@@ -240,12 +243,12 @@ public class DomainInfo {
 
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_CLIENT_INFOS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth2ClientInfos(@javax.annotation.Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
+  public void setOauth2ClientInfos(@Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
     this.oauth2ClientInfos = oauth2ClientInfos;
   }
 
 
-  public DomainInfo oauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+  public DomainInfo oauth2Enabled(@Nullable Boolean oauth2Enabled) {
     this.oauth2Enabled = oauth2Enabled;
     return this;
   }
@@ -254,7 +257,7 @@ public class DomainInfo {
    * Whether OAuth2 settings are enabled or not
    * @return oauth2Enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getOauth2Enabled() {
@@ -264,7 +267,7 @@ public class DomainInfo {
 
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+  public void setOauth2Enabled(@Nullable Boolean oauth2Enabled) {
     this.oauth2Enabled = oauth2Enabled;
   }
 
@@ -273,7 +276,7 @@ public class DomainInfo {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {
@@ -283,7 +286,7 @@ public class DomainInfo {
 
 
 
-  public DomainInfo propagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
+  public DomainInfo propagateToEdge(@Nullable Boolean propagateToEdge) {
     this.propagateToEdge = propagateToEdge;
     return this;
   }
@@ -292,7 +295,7 @@ public class DomainInfo {
    * Whether OAuth2 settings are enabled on Edge or not
    * @return propagateToEdge
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagateToEdge() {
@@ -302,7 +305,7 @@ public class DomainInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
+  public void setPropagateToEdge(@Nullable Boolean propagateToEdge) {
     this.propagateToEdge = propagateToEdge;
   }
 

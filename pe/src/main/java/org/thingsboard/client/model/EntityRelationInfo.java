@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,38 +49,38 @@ import org.thingsboard.client.ApiClient;
   EntityRelationInfo.JSON_PROPERTY_FROM_NAME,
   EntityRelationInfo.JSON_PROPERTY_TO_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityRelationInfo {
   public static final String JSON_PROPERTY_FROM = "from";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityId from;
 
   public static final String JSON_PROPERTY_TO = "to";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityId to;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String type;
 
   public static final String JSON_PROPERTY_TYPE_GROUP = "typeGroup";
-  @javax.annotation.Nonnull
+  @Nonnull
   private RelationTypeGroup typeGroup;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_FROM_NAME = "fromName";
-  @javax.annotation.Nullable
+  @Nullable
   private String fromName;
 
   public static final String JSON_PROPERTY_TO_NAME = "toName";
-  @javax.annotation.Nullable
+  @Nullable
   private String toName;
 
   public EntityRelationInfo() { 
@@ -93,7 +96,7 @@ public class EntityRelationInfo {
     this.toName = toName;
   }
 
-  public EntityRelationInfo from(@javax.annotation.Nonnull EntityId from) {
+  public EntityRelationInfo from(@Nonnull EntityId from) {
     this.from = from;
     return this;
   }
@@ -102,7 +105,7 @@ public class EntityRelationInfo {
    * JSON object with [from] Entity Id.
    * @return from
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityId getFrom() {
@@ -112,12 +115,12 @@ public class EntityRelationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_FROM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFrom(@javax.annotation.Nonnull EntityId from) {
+  public void setFrom(@Nonnull EntityId from) {
     this.from = from;
   }
 
 
-  public EntityRelationInfo to(@javax.annotation.Nonnull EntityId to) {
+  public EntityRelationInfo to(@Nonnull EntityId to) {
     this.to = to;
     return this;
   }
@@ -126,7 +129,7 @@ public class EntityRelationInfo {
    * JSON object with [to] Entity Id.
    * @return to
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityId getTo() {
@@ -136,12 +139,12 @@ public class EntityRelationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTo(@javax.annotation.Nonnull EntityId to) {
+  public void setTo(@Nonnull EntityId to) {
     this.to = to;
   }
 
 
-  public EntityRelationInfo type(@javax.annotation.Nonnull String type) {
+  public EntityRelationInfo type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -150,7 +153,7 @@ public class EntityRelationInfo {
    * String value of relation type.
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getType() {
@@ -160,12 +163,12 @@ public class EntityRelationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 
 
-  public EntityRelationInfo typeGroup(@javax.annotation.Nonnull RelationTypeGroup typeGroup) {
+  public EntityRelationInfo typeGroup(@Nonnull RelationTypeGroup typeGroup) {
     this.typeGroup = typeGroup;
     return this;
   }
@@ -174,7 +177,7 @@ public class EntityRelationInfo {
    * Represents the type group of the relation.
    * @return typeGroup
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE_GROUP, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RelationTypeGroup getTypeGroup() {
@@ -184,12 +187,12 @@ public class EntityRelationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE_GROUP, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTypeGroup(@javax.annotation.Nonnull RelationTypeGroup typeGroup) {
+  public void setTypeGroup(@Nonnull RelationTypeGroup typeGroup) {
     this.typeGroup = typeGroup;
   }
 
 
-  public EntityRelationInfo version(@javax.annotation.Nullable Long version) {
+  public EntityRelationInfo version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -198,7 +201,7 @@ public class EntityRelationInfo {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -208,12 +211,12 @@ public class EntityRelationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public EntityRelationInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public EntityRelationInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -222,7 +225,7 @@ public class EntityRelationInfo {
    * Additional parameters of the relation.
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -232,7 +235,7 @@ public class EntityRelationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
@@ -241,7 +244,7 @@ public class EntityRelationInfo {
    * Name of the entity for [from] direction.
    * @return fromName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FROM_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFromName() {
@@ -255,7 +258,7 @@ public class EntityRelationInfo {
    * Name of the entity for [to] direction.
    * @return toName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TO_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getToName() {

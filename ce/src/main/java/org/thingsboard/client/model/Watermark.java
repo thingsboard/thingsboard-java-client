@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   Watermark.JSON_PROPERTY_DURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Watermark {
   public static final String JSON_PROPERTY_DURATION = "duration";
-  @javax.annotation.Nullable
+  @Nullable
   private Long duration;
 
   public Watermark() { 
   }
 
-  public Watermark duration(@javax.annotation.Nullable Long duration) {
+  public Watermark duration(@Nullable Long duration) {
     this.duration = duration;
     return this;
   }
@@ -56,7 +58,7 @@ public class Watermark {
    * minimum: 0
    * @return duration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDuration() {
@@ -66,7 +68,7 @@ public class Watermark {
 
   @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDuration(@javax.annotation.Nullable Long duration) {
+  public void setDuration(@Nullable Long duration) {
     this.duration = duration;
   }
 

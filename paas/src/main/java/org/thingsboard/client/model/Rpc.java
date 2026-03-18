@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -49,42 +51,42 @@ import org.thingsboard.client.ApiClient;
   Rpc.JSON_PROPERTY_STATUS,
   Rpc.JSON_PROPERTY_ADDITIONAL_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Rpc {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private RpcId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_DEVICE_ID = "deviceId";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceId deviceId;
 
   public static final String JSON_PROPERTY_EXPIRATION_TIME = "expirationTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long expirationTime;
 
   public static final String JSON_PROPERTY_REQUEST = "request";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode request;
 
   public static final String JSON_PROPERTY_RESPONSE = "response";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode response;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
+  @Nullable
   private RpcStatus status;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Rpc() { 
@@ -112,7 +114,7 @@ public class Rpc {
     this.additionalInfo = additionalInfo;
   }
 
-  public Rpc id(@javax.annotation.Nullable RpcId id) {
+  public Rpc id(@Nullable RpcId id) {
     this.id = id;
     return this;
   }
@@ -121,7 +123,7 @@ public class Rpc {
    * JSON object with the rpc Id. Referencing non-existing rpc Id will cause error.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RpcId getId() {
@@ -131,7 +133,7 @@ public class Rpc {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable RpcId id) {
+  public void setId(@Nullable RpcId id) {
     this.id = id;
   }
 
@@ -140,7 +142,7 @@ public class Rpc {
    * Timestamp of the rpc creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -154,7 +156,7 @@ public class Rpc {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -168,7 +170,7 @@ public class Rpc {
    * JSON object with Device Id.
    * @return deviceId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVICE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceId getDeviceId() {
@@ -182,7 +184,7 @@ public class Rpc {
    * Expiration time of the request.
    * @return expirationTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXPIRATION_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getExpirationTime() {
@@ -196,7 +198,7 @@ public class Rpc {
    * The request body that will be used to send message to device.
    * @return request
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REQUEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getRequest() {
@@ -210,7 +212,7 @@ public class Rpc {
    * The response from the device.
    * @return response
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESPONSE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getResponse() {
@@ -224,7 +226,7 @@ public class Rpc {
    * The current status of the RPC call.
    * @return status
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RpcStatus getStatus() {
@@ -238,7 +240,7 @@ public class Rpc {
    * Additional info used in the rule engine to process the updates to the RPC state.
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {

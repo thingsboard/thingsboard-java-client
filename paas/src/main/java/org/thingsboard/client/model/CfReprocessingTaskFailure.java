@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   CfReprocessingTaskFailure.JSON_PROPERTY_ERROR,
   CfReprocessingTaskFailure.JSON_PROPERTY_ENTITY_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CfReprocessingTaskFailure {
   public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
+  @Nullable
   private String error;
 
   public static final String JSON_PROPERTY_ENTITY_INFO = "entityInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityInfo entityInfo;
 
   public CfReprocessingTaskFailure() { 
   }
 
-  public CfReprocessingTaskFailure error(@javax.annotation.Nullable String error) {
+  public CfReprocessingTaskFailure error(@Nullable String error) {
     this.error = error;
     return this;
   }
@@ -61,7 +63,7 @@ public class CfReprocessingTaskFailure {
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getError() {
@@ -71,12 +73,12 @@ public class CfReprocessingTaskFailure {
 
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable String error) {
+  public void setError(@Nullable String error) {
     this.error = error;
   }
 
 
-  public CfReprocessingTaskFailure entityInfo(@javax.annotation.Nullable EntityInfo entityInfo) {
+  public CfReprocessingTaskFailure entityInfo(@Nullable EntityInfo entityInfo) {
     this.entityInfo = entityInfo;
     return this;
   }
@@ -85,7 +87,7 @@ public class CfReprocessingTaskFailure {
    * Get entityInfo
    * @return entityInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityInfo getEntityInfo() {
@@ -95,7 +97,7 @@ public class CfReprocessingTaskFailure {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityInfo(@javax.annotation.Nullable EntityInfo entityInfo) {
+  public void setEntityInfo(@Nullable EntityInfo entityInfo) {
     this.entityInfo = entityInfo;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -51,34 +53,34 @@ import org.thingsboard.client.ApiClient;
   BlobEntityWithCustomerInfo.JSON_PROPERTY_CUSTOMER_IS_PUBLIC,
   BlobEntityWithCustomerInfo.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BlobEntityWithCustomerInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private BlobEntityId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   /**
@@ -119,19 +121,19 @@ public class BlobEntityWithCustomerInfo {
   }
 
   public static final String JSON_PROPERTY_CONTENT_TYPE = "contentType";
-  @javax.annotation.Nullable
+  @Nullable
   private ContentTypeEnum contentType;
 
   public static final String JSON_PROPERTY_CUSTOMER_TITLE = "customerTitle";
-  @javax.annotation.Nullable
+  @Nullable
   private String customerTitle;
 
   public static final String JSON_PROPERTY_CUSTOMER_IS_PUBLIC = "customerIsPublic";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean customerIsPublic;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public BlobEntityWithCustomerInfo() { 
@@ -159,7 +161,7 @@ public class BlobEntityWithCustomerInfo {
     this.ownerId = ownerId;
   }
 
-  public BlobEntityWithCustomerInfo id(@javax.annotation.Nullable BlobEntityId id) {
+  public BlobEntityWithCustomerInfo id(@Nullable BlobEntityId id) {
     this.id = id;
     return this;
   }
@@ -168,7 +170,7 @@ public class BlobEntityWithCustomerInfo {
    * JSON object with the blob entity Id. Referencing non-existing blob entity Id will cause error
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BlobEntityId getId() {
@@ -178,7 +180,7 @@ public class BlobEntityWithCustomerInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable BlobEntityId id) {
+  public void setId(@Nullable BlobEntityId id) {
     this.id = id;
   }
 
@@ -187,7 +189,7 @@ public class BlobEntityWithCustomerInfo {
    * Timestamp of the blob entity creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -197,7 +199,7 @@ public class BlobEntityWithCustomerInfo {
 
 
 
-  public BlobEntityWithCustomerInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public BlobEntityWithCustomerInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -206,7 +208,7 @@ public class BlobEntityWithCustomerInfo {
    * Additional parameters of the blob entity
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -216,7 +218,7 @@ public class BlobEntityWithCustomerInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
@@ -225,7 +227,7 @@ public class BlobEntityWithCustomerInfo {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -239,7 +241,7 @@ public class BlobEntityWithCustomerInfo {
    * JSON object with Customer Id
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -253,7 +255,7 @@ public class BlobEntityWithCustomerInfo {
    * blob entity name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -267,7 +269,7 @@ public class BlobEntityWithCustomerInfo {
    * blob entity type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -281,7 +283,7 @@ public class BlobEntityWithCustomerInfo {
    * blob content type
    * @return contentType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONTENT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ContentTypeEnum getContentType() {
@@ -291,7 +293,7 @@ public class BlobEntityWithCustomerInfo {
 
 
 
-  public BlobEntityWithCustomerInfo customerTitle(@javax.annotation.Nullable String customerTitle) {
+  public BlobEntityWithCustomerInfo customerTitle(@Nullable String customerTitle) {
     this.customerTitle = customerTitle;
     return this;
   }
@@ -300,7 +302,7 @@ public class BlobEntityWithCustomerInfo {
    * Title of the customer
    * @return customerTitle
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCustomerTitle() {
@@ -310,7 +312,7 @@ public class BlobEntityWithCustomerInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerTitle(@javax.annotation.Nullable String customerTitle) {
+  public void setCustomerTitle(@Nullable String customerTitle) {
     this.customerTitle = customerTitle;
   }
 
@@ -319,7 +321,7 @@ public class BlobEntityWithCustomerInfo {
    * Parameter that specifies if customer is public
    * @return customerIsPublic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_IS_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getCustomerIsPublic() {
@@ -333,7 +335,7 @@ public class BlobEntityWithCustomerInfo {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

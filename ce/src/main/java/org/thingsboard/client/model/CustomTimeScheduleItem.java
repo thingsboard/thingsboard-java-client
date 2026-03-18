@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   CustomTimeScheduleItem.JSON_PROPERTY_ENDS_ON,
   CustomTimeScheduleItem.JSON_PROPERTY_STARTS_ON
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomTimeScheduleItem {
   public static final String JSON_PROPERTY_DAY_OF_WEEK = "dayOfWeek";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer dayOfWeek;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_ENDS_ON = "endsOn";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endsOn;
 
   public static final String JSON_PROPERTY_STARTS_ON = "startsOn";
-  @javax.annotation.Nullable
+  @Nullable
   private Long startsOn;
 
   public CustomTimeScheduleItem() { 
   }
 
-  public CustomTimeScheduleItem dayOfWeek(@javax.annotation.Nullable Integer dayOfWeek) {
+  public CustomTimeScheduleItem dayOfWeek(@Nullable Integer dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
     return this;
   }
@@ -70,7 +72,7 @@ public class CustomTimeScheduleItem {
    * Get dayOfWeek
    * @return dayOfWeek
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDayOfWeek() {
@@ -80,12 +82,12 @@ public class CustomTimeScheduleItem {
 
   @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDayOfWeek(@javax.annotation.Nullable Integer dayOfWeek) {
+  public void setDayOfWeek(@Nullable Integer dayOfWeek) {
     this.dayOfWeek = dayOfWeek;
   }
 
 
-  public CustomTimeScheduleItem enabled(@javax.annotation.Nullable Boolean enabled) {
+  public CustomTimeScheduleItem enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -94,7 +96,7 @@ public class CustomTimeScheduleItem {
    * Get enabled
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -104,12 +106,12 @@ public class CustomTimeScheduleItem {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
 
-  public CustomTimeScheduleItem endsOn(@javax.annotation.Nullable Long endsOn) {
+  public CustomTimeScheduleItem endsOn(@Nullable Long endsOn) {
     this.endsOn = endsOn;
     return this;
   }
@@ -118,7 +120,7 @@ public class CustomTimeScheduleItem {
    * Get endsOn
    * @return endsOn
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndsOn() {
@@ -128,12 +130,12 @@ public class CustomTimeScheduleItem {
 
   @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndsOn(@javax.annotation.Nullable Long endsOn) {
+  public void setEndsOn(@Nullable Long endsOn) {
     this.endsOn = endsOn;
   }
 
 
-  public CustomTimeScheduleItem startsOn(@javax.annotation.Nullable Long startsOn) {
+  public CustomTimeScheduleItem startsOn(@Nullable Long startsOn) {
     this.startsOn = startsOn;
     return this;
   }
@@ -142,7 +144,7 @@ public class CustomTimeScheduleItem {
    * Get startsOn
    * @return startsOn
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STARTS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStartsOn() {
@@ -152,7 +154,7 @@ public class CustomTimeScheduleItem {
 
   @JsonProperty(value = JSON_PROPERTY_STARTS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartsOn(@javax.annotation.Nullable Long startsOn) {
+  public void setStartsOn(@Nullable Long startsOn) {
     this.startsOn = startsOn;
   }
 

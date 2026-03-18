@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   ComparisonTsValue.JSON_PROPERTY_CURRENT,
   ComparisonTsValue.JSON_PROPERTY_PREVIOUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ComparisonTsValue {
   public static final String JSON_PROPERTY_CURRENT = "current";
-  @javax.annotation.Nullable
+  @Nullable
   private TsValue current;
 
   public static final String JSON_PROPERTY_PREVIOUS = "previous";
-  @javax.annotation.Nullable
+  @Nullable
   private TsValue previous;
 
   public ComparisonTsValue() { 
   }
 
-  public ComparisonTsValue current(@javax.annotation.Nullable TsValue current) {
+  public ComparisonTsValue current(@Nullable TsValue current) {
     this.current = current;
     return this;
   }
@@ -61,7 +63,7 @@ public class ComparisonTsValue {
    * Get current
    * @return current
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CURRENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TsValue getCurrent() {
@@ -71,12 +73,12 @@ public class ComparisonTsValue {
 
   @JsonProperty(value = JSON_PROPERTY_CURRENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCurrent(@javax.annotation.Nullable TsValue current) {
+  public void setCurrent(@Nullable TsValue current) {
     this.current = current;
   }
 
 
-  public ComparisonTsValue previous(@javax.annotation.Nullable TsValue previous) {
+  public ComparisonTsValue previous(@Nullable TsValue previous) {
     this.previous = previous;
     return this;
   }
@@ -85,7 +87,7 @@ public class ComparisonTsValue {
    * Get previous
    * @return previous
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREVIOUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TsValue getPrevious() {
@@ -95,7 +97,7 @@ public class ComparisonTsValue {
 
   @JsonProperty(value = JSON_PROPERTY_PREVIOUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPrevious(@javax.annotation.Nullable TsValue previous) {
+  public void setPrevious(@Nullable TsValue previous) {
     this.previous = previous;
   }
 

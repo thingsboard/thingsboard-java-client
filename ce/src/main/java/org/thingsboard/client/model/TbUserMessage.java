@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,16 +42,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   TbUserMessage.JSON_PROPERTY_CONTENTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TbUserMessage {
   public static final String JSON_PROPERTY_CONTENTS = "contents";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<TbContent> contents = new ArrayList<>();
 
   public TbUserMessage() { 
   }
 
-  public TbUserMessage contents(@javax.annotation.Nonnull List<TbContent> contents) {
+  public TbUserMessage contents(@Nonnull List<TbContent> contents) {
     this.contents = contents;
     return this;
   }
@@ -66,7 +68,7 @@ public class TbUserMessage {
    * Get contents
    * @return contents
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONTENTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<TbContent> getContents() {
@@ -76,7 +78,7 @@ public class TbUserMessage {
 
   @JsonProperty(value = JSON_PROPERTY_CONTENTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setContents(@javax.annotation.Nonnull List<TbContent> contents) {
+  public void setContents(@Nonnull List<TbContent> contents) {
     this.contents = contents;
   }
 

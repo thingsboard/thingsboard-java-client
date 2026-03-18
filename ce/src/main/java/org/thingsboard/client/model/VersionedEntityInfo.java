@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,16 +40,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   VersionedEntityInfo.JSON_PROPERTY_EXTERNAL_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionedEntityInfo {
   public static final String JSON_PROPERTY_EXTERNAL_ID = "externalId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId externalId;
 
   public VersionedEntityInfo() { 
   }
 
-  public VersionedEntityInfo externalId(@javax.annotation.Nullable EntityId externalId) {
+  public VersionedEntityInfo externalId(@Nullable EntityId externalId) {
     this.externalId = externalId;
     return this;
   }
@@ -56,7 +58,7 @@ public class VersionedEntityInfo {
    * Get externalId
    * @return externalId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXTERNAL_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getExternalId() {
@@ -66,7 +68,7 @@ public class VersionedEntityInfo {
 
   @JsonProperty(value = JSON_PROPERTY_EXTERNAL_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExternalId(@javax.annotation.Nullable EntityId externalId) {
+  public void setExternalId(@Nullable EntityId externalId) {
     this.externalId = externalId;
   }
 

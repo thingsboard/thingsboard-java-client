@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   ClaimRequest.JSON_PROPERTY_SECRET_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ClaimRequest {
   public static final String JSON_PROPERTY_SECRET_KEY = "secretKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String secretKey;
 
   public ClaimRequest() { 
   }
 
-  public ClaimRequest secretKey(@javax.annotation.Nullable String secretKey) {
+  public ClaimRequest secretKey(@Nullable String secretKey) {
     this.secretKey = secretKey;
     return this;
   }
@@ -55,7 +57,7 @@ public class ClaimRequest {
    * Get secretKey
    * @return secretKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SECRET_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSecretKey() {
@@ -65,7 +67,7 @@ public class ClaimRequest {
 
   @JsonProperty(value = JSON_PROPERTY_SECRET_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSecretKey(@javax.annotation.Nullable String secretKey) {
+  public void setSecretKey(@Nullable String secretKey) {
     this.secretKey = secretKey;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   HomeDashboardInfo.JSON_PROPERTY_DASHBOARD_ID,
   HomeDashboardInfo.JSON_PROPERTY_HIDE_DASHBOARD_TOOLBAR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class HomeDashboardInfo {
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId dashboardId;
 
   public static final String JSON_PROPERTY_HIDE_DASHBOARD_TOOLBAR = "hideDashboardToolbar";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hideDashboardToolbar;
 
   public HomeDashboardInfo() { 
   }
 
-  public HomeDashboardInfo dashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public HomeDashboardInfo dashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
     return this;
   }
@@ -61,7 +63,7 @@ public class HomeDashboardInfo {
    * JSON object with the dashboard Id.
    * @return dashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDashboardId() {
@@ -71,12 +73,12 @@ public class HomeDashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public void setDashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
   }
 
 
-  public HomeDashboardInfo hideDashboardToolbar(@javax.annotation.Nullable Boolean hideDashboardToolbar) {
+  public HomeDashboardInfo hideDashboardToolbar(@Nullable Boolean hideDashboardToolbar) {
     this.hideDashboardToolbar = hideDashboardToolbar;
     return this;
   }
@@ -85,7 +87,7 @@ public class HomeDashboardInfo {
    * Hide dashboard toolbar flag. Useful for rendering dashboards on mobile.
    * @return hideDashboardToolbar
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HIDE_DASHBOARD_TOOLBAR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHideDashboardToolbar() {
@@ -95,7 +97,7 @@ public class HomeDashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_HIDE_DASHBOARD_TOOLBAR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHideDashboardToolbar(@javax.annotation.Nullable Boolean hideDashboardToolbar) {
+  public void setHideDashboardToolbar(@Nullable Boolean hideDashboardToolbar) {
     this.hideDashboardToolbar = hideDashboardToolbar;
   }
 

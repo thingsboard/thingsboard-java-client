@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   EntitySubtype.JSON_PROPERTY_ENTITY_TYPE,
   EntitySubtype.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntitySubtype {
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityType entityType;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public EntitySubtype() { 
   }
 
-  public EntitySubtype tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public EntitySubtype tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -67,7 +69,7 @@ public class EntitySubtype {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -77,12 +79,12 @@ public class EntitySubtype {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public EntitySubtype entityType(@javax.annotation.Nullable EntityType entityType) {
+  public EntitySubtype entityType(@Nullable EntityType entityType) {
     this.entityType = entityType;
     return this;
   }
@@ -91,7 +93,7 @@ public class EntitySubtype {
    * Get entityType
    * @return entityType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityType getEntityType() {
@@ -101,12 +103,12 @@ public class EntitySubtype {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityType(@javax.annotation.Nullable EntityType entityType) {
+  public void setEntityType(@Nullable EntityType entityType) {
     this.entityType = entityType;
   }
 
 
-  public EntitySubtype type(@javax.annotation.Nullable String type) {
+  public EntitySubtype type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -115,7 +117,7 @@ public class EntitySubtype {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -125,7 +127,7 @@ public class EntitySubtype {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 

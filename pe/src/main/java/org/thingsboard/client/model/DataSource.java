@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,40 +50,40 @@ import org.thingsboard.client.ApiClient;
   DataSource.JSON_PROPERTY_LATEST_DATA_KEYS,
   DataSource.JSON_PROPERTY_ALARM_FILTER_CONFIG
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DataSource {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private DataSourceType type;
 
   public static final String JSON_PROPERTY_DEVICE_ID = "deviceId";
-  @javax.annotation.Nullable
+  @Nullable
   private String deviceId;
 
   public static final String JSON_PROPERTY_ENTITY_ALIAS_ID = "entityAliasId";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityAliasId;
 
   public static final String JSON_PROPERTY_FILTER_ID = "filterId";
-  @javax.annotation.Nullable
+  @Nullable
   private String filterId;
 
   public static final String JSON_PROPERTY_DATA_KEYS = "dataKeys";
-  @javax.annotation.Nullable
+  @Nullable
   private List<DataKey> dataKeys = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LATEST_DATA_KEYS = "latestDataKeys";
-  @javax.annotation.Nullable
+  @Nullable
   private List<DataKey> latestDataKeys = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALARM_FILTER_CONFIG = "alarmFilterConfig";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmFilterConfig alarmFilterConfig;
 
   public DataSource() { 
   }
 
-  public DataSource type(@javax.annotation.Nullable DataSourceType type) {
+  public DataSource type(@Nullable DataSourceType type) {
     this.type = type;
     return this;
   }
@@ -90,7 +92,7 @@ public class DataSource {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DataSourceType getType() {
@@ -100,12 +102,12 @@ public class DataSource {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable DataSourceType type) {
+  public void setType(@Nullable DataSourceType type) {
     this.type = type;
   }
 
 
-  public DataSource deviceId(@javax.annotation.Nullable String deviceId) {
+  public DataSource deviceId(@Nullable String deviceId) {
     this.deviceId = deviceId;
     return this;
   }
@@ -114,7 +116,7 @@ public class DataSource {
    * Get deviceId
    * @return deviceId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVICE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDeviceId() {
@@ -124,12 +126,12 @@ public class DataSource {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeviceId(@javax.annotation.Nullable String deviceId) {
+  public void setDeviceId(@Nullable String deviceId) {
     this.deviceId = deviceId;
   }
 
 
-  public DataSource entityAliasId(@javax.annotation.Nullable String entityAliasId) {
+  public DataSource entityAliasId(@Nullable String entityAliasId) {
     this.entityAliasId = entityAliasId;
     return this;
   }
@@ -138,7 +140,7 @@ public class DataSource {
    * Get entityAliasId
    * @return entityAliasId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ALIAS_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityAliasId() {
@@ -148,12 +150,12 @@ public class DataSource {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ALIAS_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityAliasId(@javax.annotation.Nullable String entityAliasId) {
+  public void setEntityAliasId(@Nullable String entityAliasId) {
     this.entityAliasId = entityAliasId;
   }
 
 
-  public DataSource filterId(@javax.annotation.Nullable String filterId) {
+  public DataSource filterId(@Nullable String filterId) {
     this.filterId = filterId;
     return this;
   }
@@ -162,7 +164,7 @@ public class DataSource {
    * Get filterId
    * @return filterId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILTER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFilterId() {
@@ -172,12 +174,12 @@ public class DataSource {
 
   @JsonProperty(value = JSON_PROPERTY_FILTER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilterId(@javax.annotation.Nullable String filterId) {
+  public void setFilterId(@Nullable String filterId) {
     this.filterId = filterId;
   }
 
 
-  public DataSource dataKeys(@javax.annotation.Nullable List<DataKey> dataKeys) {
+  public DataSource dataKeys(@Nullable List<DataKey> dataKeys) {
     this.dataKeys = dataKeys;
     return this;
   }
@@ -194,7 +196,7 @@ public class DataSource {
    * Get dataKeys
    * @return dataKeys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<DataKey> getDataKeys() {
@@ -204,12 +206,12 @@ public class DataSource {
 
   @JsonProperty(value = JSON_PROPERTY_DATA_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDataKeys(@javax.annotation.Nullable List<DataKey> dataKeys) {
+  public void setDataKeys(@Nullable List<DataKey> dataKeys) {
     this.dataKeys = dataKeys;
   }
 
 
-  public DataSource latestDataKeys(@javax.annotation.Nullable List<DataKey> latestDataKeys) {
+  public DataSource latestDataKeys(@Nullable List<DataKey> latestDataKeys) {
     this.latestDataKeys = latestDataKeys;
     return this;
   }
@@ -226,7 +228,7 @@ public class DataSource {
    * Get latestDataKeys
    * @return latestDataKeys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_DATA_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<DataKey> getLatestDataKeys() {
@@ -236,12 +238,12 @@ public class DataSource {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_DATA_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestDataKeys(@javax.annotation.Nullable List<DataKey> latestDataKeys) {
+  public void setLatestDataKeys(@Nullable List<DataKey> latestDataKeys) {
     this.latestDataKeys = latestDataKeys;
   }
 
 
-  public DataSource alarmFilterConfig(@javax.annotation.Nullable AlarmFilterConfig alarmFilterConfig) {
+  public DataSource alarmFilterConfig(@Nullable AlarmFilterConfig alarmFilterConfig) {
     this.alarmFilterConfig = alarmFilterConfig;
     return this;
   }
@@ -250,7 +252,7 @@ public class DataSource {
    * Get alarmFilterConfig
    * @return alarmFilterConfig
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARM_FILTER_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmFilterConfig getAlarmFilterConfig() {
@@ -260,7 +262,7 @@ public class DataSource {
 
   @JsonProperty(value = JSON_PROPERTY_ALARM_FILTER_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarmFilterConfig(@javax.annotation.Nullable AlarmFilterConfig alarmFilterConfig) {
+  public void setAlarmFilterConfig(@Nullable AlarmFilterConfig alarmFilterConfig) {
     this.alarmFilterConfig = alarmFilterConfig;
   }
 

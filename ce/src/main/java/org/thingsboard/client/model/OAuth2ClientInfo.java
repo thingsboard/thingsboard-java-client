@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,30 +48,30 @@ import org.thingsboard.client.ApiClient;
   OAuth2ClientInfo.JSON_PROPERTY_PLATFORMS,
   OAuth2ClientInfo.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2ClientInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private OAuth2ClientId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_PROVIDER_NAME = "providerName";
-  @javax.annotation.Nullable
+  @Nullable
   private String providerName;
 
   public static final String JSON_PROPERTY_PLATFORMS = "platforms";
-  @javax.annotation.Nullable
+  @Nullable
   private List<PlatformType> platforms = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public OAuth2ClientInfo() { 
@@ -85,7 +87,7 @@ public class OAuth2ClientInfo {
     this.name = name;
   }
 
-  public OAuth2ClientInfo id(@javax.annotation.Nullable OAuth2ClientId id) {
+  public OAuth2ClientInfo id(@Nullable OAuth2ClientId id) {
     this.id = id;
     return this;
   }
@@ -94,7 +96,7 @@ public class OAuth2ClientInfo {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OAuth2ClientId getId() {
@@ -104,7 +106,7 @@ public class OAuth2ClientInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable OAuth2ClientId id) {
+  public void setId(@Nullable OAuth2ClientId id) {
     this.id = id;
   }
 
@@ -113,7 +115,7 @@ public class OAuth2ClientInfo {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -123,7 +125,7 @@ public class OAuth2ClientInfo {
 
 
 
-  public OAuth2ClientInfo title(@javax.annotation.Nullable String title) {
+  public OAuth2ClientInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -132,7 +134,7 @@ public class OAuth2ClientInfo {
    * Oauth2 client registration title (e.g. My google)
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -142,12 +144,12 @@ public class OAuth2ClientInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public OAuth2ClientInfo providerName(@javax.annotation.Nullable String providerName) {
+  public OAuth2ClientInfo providerName(@Nullable String providerName) {
     this.providerName = providerName;
     return this;
   }
@@ -156,7 +158,7 @@ public class OAuth2ClientInfo {
    * Oauth2 client provider name (e.g. Google)
    * @return providerName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROVIDER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProviderName() {
@@ -166,12 +168,12 @@ public class OAuth2ClientInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PROVIDER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProviderName(@javax.annotation.Nullable String providerName) {
+  public void setProviderName(@Nullable String providerName) {
     this.providerName = providerName;
   }
 
 
-  public OAuth2ClientInfo platforms(@javax.annotation.Nullable List<PlatformType> platforms) {
+  public OAuth2ClientInfo platforms(@Nullable List<PlatformType> platforms) {
     this.platforms = platforms;
     return this;
   }
@@ -188,7 +190,7 @@ public class OAuth2ClientInfo {
    * List of platforms for which usage of the OAuth2 client is allowed (empty for all allowed)
    * @return platforms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PLATFORMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<PlatformType> getPlatforms() {
@@ -198,7 +200,7 @@ public class OAuth2ClientInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PLATFORMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPlatforms(@javax.annotation.Nullable List<PlatformType> platforms) {
+  public void setPlatforms(@Nullable List<PlatformType> platforms) {
     this.platforms = platforms;
   }
 
@@ -207,7 +209,7 @@ public class OAuth2ClientInfo {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

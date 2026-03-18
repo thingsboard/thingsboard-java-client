@@ -15,6 +15,7 @@
  */
 package org.thingsboard.client;
 
+import javax.annotation.Generated;
 import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
@@ -22,7 +23,7 @@ import java.time.ZonedDateTime;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.Module.SetupContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RFC3339JavaTimeModule extends SimpleModule {
     private static final long serialVersionUID = 1L;
 

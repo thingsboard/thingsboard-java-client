@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -49,50 +51,50 @@ import org.thingsboard.client.ApiClient;
   WidgetsBundle.JSON_PROPERTY_VERSION,
   WidgetsBundle.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WidgetsBundle {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private WidgetsBundleId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_ALIAS = "alias";
-  @javax.annotation.Nullable
+  @Nullable
   private String alias;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_SCADA = "scada";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean scada;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_ORDER = "order";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer order;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public WidgetsBundle() { 
@@ -122,7 +124,7 @@ public class WidgetsBundle {
     this.name = name;
   }
 
-  public WidgetsBundle id(@javax.annotation.Nullable WidgetsBundleId id) {
+  public WidgetsBundle id(@Nullable WidgetsBundleId id) {
     this.id = id;
     return this;
   }
@@ -131,7 +133,7 @@ public class WidgetsBundle {
    * JSON object with the Widget Bundle Id. Specify this field to update the Widget Bundle. Referencing non-existing Widget Bundle Id will cause error. Omit this field to create new Widget Bundle.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public WidgetsBundleId getId() {
@@ -141,7 +143,7 @@ public class WidgetsBundle {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable WidgetsBundleId id) {
+  public void setId(@Nullable WidgetsBundleId id) {
     this.id = id;
   }
 
@@ -150,7 +152,7 @@ public class WidgetsBundle {
    * Timestamp of the Widget Bundle creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -164,7 +166,7 @@ public class WidgetsBundle {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -178,7 +180,7 @@ public class WidgetsBundle {
    * Unique alias that is used in widget types as a reference widget bundle
    * @return alias
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAlias() {
@@ -192,7 +194,7 @@ public class WidgetsBundle {
    * Title used in search and UI
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -206,7 +208,7 @@ public class WidgetsBundle {
    * Relative or external image URL. Replaced with image data URL (Base64) in case of relative URL and &#39;inlineImages&#39; option enabled.
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -220,7 +222,7 @@ public class WidgetsBundle {
    * Whether widgets bundle contains SCADA symbol widget types.
    * @return scada
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCADA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getScada() {
@@ -234,7 +236,7 @@ public class WidgetsBundle {
    * Description
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -248,7 +250,7 @@ public class WidgetsBundle {
    * Order
    * @return order
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getOrder() {
@@ -258,7 +260,7 @@ public class WidgetsBundle {
 
 
 
-  public WidgetsBundle version(@javax.annotation.Nullable Long version) {
+  public WidgetsBundle version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -267,7 +269,7 @@ public class WidgetsBundle {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -277,7 +279,7 @@ public class WidgetsBundle {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -286,7 +288,7 @@ public class WidgetsBundle {
    * Same as title of the Widget Bundle. Read-only field. Update the &#39;title&#39; to change the &#39;name&#39; of the Widget Bundle.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

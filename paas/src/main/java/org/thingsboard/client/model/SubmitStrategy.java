@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   SubmitStrategy.JSON_PROPERTY_TYPE,
   SubmitStrategy.JSON_PROPERTY_BATCH_SIZE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SubmitStrategy {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private SubmitStrategyType type;
 
   public static final String JSON_PROPERTY_BATCH_SIZE = "batchSize";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer batchSize;
 
   public SubmitStrategy() { 
   }
 
-  public SubmitStrategy type(@javax.annotation.Nullable SubmitStrategyType type) {
+  public SubmitStrategy type(@Nullable SubmitStrategyType type) {
     this.type = type;
     return this;
   }
@@ -61,7 +63,7 @@ public class SubmitStrategy {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SubmitStrategyType getType() {
@@ -71,12 +73,12 @@ public class SubmitStrategy {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable SubmitStrategyType type) {
+  public void setType(@Nullable SubmitStrategyType type) {
     this.type = type;
   }
 
 
-  public SubmitStrategy batchSize(@javax.annotation.Nullable Integer batchSize) {
+  public SubmitStrategy batchSize(@Nullable Integer batchSize) {
     this.batchSize = batchSize;
     return this;
   }
@@ -85,7 +87,7 @@ public class SubmitStrategy {
    * Get batchSize
    * @return batchSize
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BATCH_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getBatchSize() {
@@ -95,7 +97,7 @@ public class SubmitStrategy {
 
   @JsonProperty(value = JSON_PROPERTY_BATCH_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBatchSize(@javax.annotation.Nullable Integer batchSize) {
+  public void setBatchSize(@Nullable Integer batchSize) {
     this.batchSize = batchSize;
   }
 

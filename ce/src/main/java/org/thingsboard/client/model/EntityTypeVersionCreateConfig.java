@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,40 +49,40 @@ import org.thingsboard.client.ApiClient;
   EntityTypeVersionCreateConfig.JSON_PROPERTY_ENTITY_IDS,
   EntityTypeVersionCreateConfig.JSON_PROPERTY_ALL_ENTITIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityTypeVersionCreateConfig {
   public static final String JSON_PROPERTY_SAVE_RELATIONS = "saveRelations";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveRelations;
 
   public static final String JSON_PROPERTY_SAVE_ATTRIBUTES = "saveAttributes";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveAttributes;
 
   public static final String JSON_PROPERTY_SAVE_CREDENTIALS = "saveCredentials";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveCredentials;
 
   public static final String JSON_PROPERTY_SAVE_CALCULATED_FIELDS = "saveCalculatedFields";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveCalculatedFields;
 
   public static final String JSON_PROPERTY_SYNC_STRATEGY = "syncStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private SyncStrategy syncStrategy;
 
   public static final String JSON_PROPERTY_ENTITY_IDS = "entityIds";
-  @javax.annotation.Nullable
+  @Nullable
   private List<UUID> entityIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALL_ENTITIES = "allEntities";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean allEntities;
 
   public EntityTypeVersionCreateConfig() { 
   }
 
-  public EntityTypeVersionCreateConfig saveRelations(@javax.annotation.Nullable Boolean saveRelations) {
+  public EntityTypeVersionCreateConfig saveRelations(@Nullable Boolean saveRelations) {
     this.saveRelations = saveRelations;
     return this;
   }
@@ -89,7 +91,7 @@ public class EntityTypeVersionCreateConfig {
    * Get saveRelations
    * @return saveRelations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveRelations() {
@@ -99,12 +101,12 @@ public class EntityTypeVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveRelations(@javax.annotation.Nullable Boolean saveRelations) {
+  public void setSaveRelations(@Nullable Boolean saveRelations) {
     this.saveRelations = saveRelations;
   }
 
 
-  public EntityTypeVersionCreateConfig saveAttributes(@javax.annotation.Nullable Boolean saveAttributes) {
+  public EntityTypeVersionCreateConfig saveAttributes(@Nullable Boolean saveAttributes) {
     this.saveAttributes = saveAttributes;
     return this;
   }
@@ -113,7 +115,7 @@ public class EntityTypeVersionCreateConfig {
    * Get saveAttributes
    * @return saveAttributes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveAttributes() {
@@ -123,12 +125,12 @@ public class EntityTypeVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveAttributes(@javax.annotation.Nullable Boolean saveAttributes) {
+  public void setSaveAttributes(@Nullable Boolean saveAttributes) {
     this.saveAttributes = saveAttributes;
   }
 
 
-  public EntityTypeVersionCreateConfig saveCredentials(@javax.annotation.Nullable Boolean saveCredentials) {
+  public EntityTypeVersionCreateConfig saveCredentials(@Nullable Boolean saveCredentials) {
     this.saveCredentials = saveCredentials;
     return this;
   }
@@ -137,7 +139,7 @@ public class EntityTypeVersionCreateConfig {
    * Get saveCredentials
    * @return saveCredentials
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveCredentials() {
@@ -147,12 +149,12 @@ public class EntityTypeVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveCredentials(@javax.annotation.Nullable Boolean saveCredentials) {
+  public void setSaveCredentials(@Nullable Boolean saveCredentials) {
     this.saveCredentials = saveCredentials;
   }
 
 
-  public EntityTypeVersionCreateConfig saveCalculatedFields(@javax.annotation.Nullable Boolean saveCalculatedFields) {
+  public EntityTypeVersionCreateConfig saveCalculatedFields(@Nullable Boolean saveCalculatedFields) {
     this.saveCalculatedFields = saveCalculatedFields;
     return this;
   }
@@ -161,7 +163,7 @@ public class EntityTypeVersionCreateConfig {
    * Get saveCalculatedFields
    * @return saveCalculatedFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveCalculatedFields() {
@@ -171,12 +173,12 @@ public class EntityTypeVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveCalculatedFields(@javax.annotation.Nullable Boolean saveCalculatedFields) {
+  public void setSaveCalculatedFields(@Nullable Boolean saveCalculatedFields) {
     this.saveCalculatedFields = saveCalculatedFields;
   }
 
 
-  public EntityTypeVersionCreateConfig syncStrategy(@javax.annotation.Nullable SyncStrategy syncStrategy) {
+  public EntityTypeVersionCreateConfig syncStrategy(@Nullable SyncStrategy syncStrategy) {
     this.syncStrategy = syncStrategy;
     return this;
   }
@@ -185,7 +187,7 @@ public class EntityTypeVersionCreateConfig {
    * Get syncStrategy
    * @return syncStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SYNC_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SyncStrategy getSyncStrategy() {
@@ -195,12 +197,12 @@ public class EntityTypeVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SYNC_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSyncStrategy(@javax.annotation.Nullable SyncStrategy syncStrategy) {
+  public void setSyncStrategy(@Nullable SyncStrategy syncStrategy) {
     this.syncStrategy = syncStrategy;
   }
 
 
-  public EntityTypeVersionCreateConfig entityIds(@javax.annotation.Nullable List<UUID> entityIds) {
+  public EntityTypeVersionCreateConfig entityIds(@Nullable List<UUID> entityIds) {
     this.entityIds = entityIds;
     return this;
   }
@@ -217,7 +219,7 @@ public class EntityTypeVersionCreateConfig {
    * Get entityIds
    * @return entityIds
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<UUID> getEntityIds() {
@@ -227,12 +229,12 @@ public class EntityTypeVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityIds(@javax.annotation.Nullable List<UUID> entityIds) {
+  public void setEntityIds(@Nullable List<UUID> entityIds) {
     this.entityIds = entityIds;
   }
 
 
-  public EntityTypeVersionCreateConfig allEntities(@javax.annotation.Nullable Boolean allEntities) {
+  public EntityTypeVersionCreateConfig allEntities(@Nullable Boolean allEntities) {
     this.allEntities = allEntities;
     return this;
   }
@@ -241,7 +243,7 @@ public class EntityTypeVersionCreateConfig {
    * Get allEntities
    * @return allEntities
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALL_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAllEntities() {
@@ -251,7 +253,7 @@ public class EntityTypeVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ALL_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllEntities(@javax.annotation.Nullable Boolean allEntities) {
+  public void setAllEntities(@Nullable Boolean allEntities) {
     this.allEntities = allEntities;
   }
 

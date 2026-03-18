@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -53,50 +56,50 @@ import org.thingsboard.client.ApiClient;
   MobileApp.JSON_PROPERTY_STORE_INFO,
   MobileApp.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MobileApp {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_PKG_NAME = "pkgName";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String pkgName;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_APP_SECRET = "appSecret";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String appSecret;
 
   public static final String JSON_PROPERTY_PLATFORM_TYPE = "platformType";
-  @javax.annotation.Nonnull
+  @Nonnull
   private PlatformType platformType;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nonnull
+  @Nonnull
   private MobileAppStatus status;
 
   public static final String JSON_PROPERTY_VERSION_INFO = "versionInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppVersionInfo versionInfo;
 
   public static final String JSON_PROPERTY_STORE_INFO = "storeInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private StoreInfo storeInfo;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public MobileApp() { 
@@ -112,7 +115,7 @@ public class MobileApp {
     this.name = name;
   }
 
-  public MobileApp id(@javax.annotation.Nullable MobileAppId id) {
+  public MobileApp id(@Nullable MobileAppId id) {
     this.id = id;
     return this;
   }
@@ -121,7 +124,7 @@ public class MobileApp {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppId getId() {
@@ -131,7 +134,7 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable MobileAppId id) {
+  public void setId(@Nullable MobileAppId id) {
     this.id = id;
   }
 
@@ -140,7 +143,7 @@ public class MobileApp {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -150,7 +153,7 @@ public class MobileApp {
 
 
 
-  public MobileApp tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public MobileApp tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -159,7 +162,7 @@ public class MobileApp {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -169,12 +172,12 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public MobileApp pkgName(@javax.annotation.Nonnull String pkgName) {
+  public MobileApp pkgName(@Nonnull String pkgName) {
     this.pkgName = pkgName;
     return this;
   }
@@ -183,7 +186,7 @@ public class MobileApp {
    * Application package name. Cannot be empty
    * @return pkgName
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PKG_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getPkgName() {
@@ -193,12 +196,12 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_PKG_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPkgName(@javax.annotation.Nonnull String pkgName) {
+  public void setPkgName(@Nonnull String pkgName) {
     this.pkgName = pkgName;
   }
 
 
-  public MobileApp title(@javax.annotation.Nullable String title) {
+  public MobileApp title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -207,7 +210,7 @@ public class MobileApp {
    * Application title
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -217,12 +220,12 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public MobileApp appSecret(@javax.annotation.Nonnull String appSecret) {
+  public MobileApp appSecret(@Nonnull String appSecret) {
     this.appSecret = appSecret;
     return this;
   }
@@ -231,7 +234,7 @@ public class MobileApp {
    * Application secret. The length must be at least 16 characters
    * @return appSecret
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_APP_SECRET, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getAppSecret() {
@@ -241,12 +244,12 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_APP_SECRET, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAppSecret(@javax.annotation.Nonnull String appSecret) {
+  public void setAppSecret(@Nonnull String appSecret) {
     this.appSecret = appSecret;
   }
 
 
-  public MobileApp platformType(@javax.annotation.Nonnull PlatformType platformType) {
+  public MobileApp platformType(@Nonnull PlatformType platformType) {
     this.platformType = platformType;
     return this;
   }
@@ -255,7 +258,7 @@ public class MobileApp {
    * Application platform type: ANDROID or IOS
    * @return platformType
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PLATFORM_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public PlatformType getPlatformType() {
@@ -265,12 +268,12 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_PLATFORM_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPlatformType(@javax.annotation.Nonnull PlatformType platformType) {
+  public void setPlatformType(@Nonnull PlatformType platformType) {
     this.platformType = platformType;
   }
 
 
-  public MobileApp status(@javax.annotation.Nonnull MobileAppStatus status) {
+  public MobileApp status(@Nonnull MobileAppStatus status) {
     this.status = status;
     return this;
   }
@@ -279,7 +282,7 @@ public class MobileApp {
    * Application status: PUBLISHED, DEPRECATED, SUSPENDED, DRAFT
    * @return status
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public MobileAppStatus getStatus() {
@@ -289,12 +292,12 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(@javax.annotation.Nonnull MobileAppStatus status) {
+  public void setStatus(@Nonnull MobileAppStatus status) {
     this.status = status;
   }
 
 
-  public MobileApp versionInfo(@javax.annotation.Nullable MobileAppVersionInfo versionInfo) {
+  public MobileApp versionInfo(@Nullable MobileAppVersionInfo versionInfo) {
     this.versionInfo = versionInfo;
     return this;
   }
@@ -303,7 +306,7 @@ public class MobileApp {
    * Application version info
    * @return versionInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppVersionInfo getVersionInfo() {
@@ -313,12 +316,12 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersionInfo(@javax.annotation.Nullable MobileAppVersionInfo versionInfo) {
+  public void setVersionInfo(@Nullable MobileAppVersionInfo versionInfo) {
     this.versionInfo = versionInfo;
   }
 
 
-  public MobileApp storeInfo(@javax.annotation.Nullable StoreInfo storeInfo) {
+  public MobileApp storeInfo(@Nullable StoreInfo storeInfo) {
     this.storeInfo = storeInfo;
     return this;
   }
@@ -327,7 +330,7 @@ public class MobileApp {
    * Application store information
    * @return storeInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STORE_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public StoreInfo getStoreInfo() {
@@ -337,7 +340,7 @@ public class MobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_STORE_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStoreInfo(@javax.annotation.Nullable StoreInfo storeInfo) {
+  public void setStoreInfo(@Nullable StoreInfo storeInfo) {
     this.storeInfo = storeInfo;
   }
 
@@ -346,7 +349,7 @@ public class MobileApp {
    * Mobile app package name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

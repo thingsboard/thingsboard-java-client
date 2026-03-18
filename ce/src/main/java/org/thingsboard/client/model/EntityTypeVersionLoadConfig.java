@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,36 +44,36 @@ import org.thingsboard.client.ApiClient;
   EntityTypeVersionLoadConfig.JSON_PROPERTY_REMOVE_OTHER_ENTITIES,
   EntityTypeVersionLoadConfig.JSON_PROPERTY_FIND_EXISTING_ENTITY_BY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityTypeVersionLoadConfig {
   public static final String JSON_PROPERTY_LOAD_RELATIONS = "loadRelations";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadRelations;
 
   public static final String JSON_PROPERTY_LOAD_ATTRIBUTES = "loadAttributes";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadAttributes;
 
   public static final String JSON_PROPERTY_LOAD_CREDENTIALS = "loadCredentials";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadCredentials;
 
   public static final String JSON_PROPERTY_LOAD_CALCULATED_FIELDS = "loadCalculatedFields";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadCalculatedFields;
 
   public static final String JSON_PROPERTY_REMOVE_OTHER_ENTITIES = "removeOtherEntities";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean removeOtherEntities;
 
   public static final String JSON_PROPERTY_FIND_EXISTING_ENTITY_BY_NAME = "findExistingEntityByName";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean findExistingEntityByName;
 
   public EntityTypeVersionLoadConfig() { 
   }
 
-  public EntityTypeVersionLoadConfig loadRelations(@javax.annotation.Nullable Boolean loadRelations) {
+  public EntityTypeVersionLoadConfig loadRelations(@Nullable Boolean loadRelations) {
     this.loadRelations = loadRelations;
     return this;
   }
@@ -80,7 +82,7 @@ public class EntityTypeVersionLoadConfig {
    * Get loadRelations
    * @return loadRelations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadRelations() {
@@ -90,12 +92,12 @@ public class EntityTypeVersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadRelations(@javax.annotation.Nullable Boolean loadRelations) {
+  public void setLoadRelations(@Nullable Boolean loadRelations) {
     this.loadRelations = loadRelations;
   }
 
 
-  public EntityTypeVersionLoadConfig loadAttributes(@javax.annotation.Nullable Boolean loadAttributes) {
+  public EntityTypeVersionLoadConfig loadAttributes(@Nullable Boolean loadAttributes) {
     this.loadAttributes = loadAttributes;
     return this;
   }
@@ -104,7 +106,7 @@ public class EntityTypeVersionLoadConfig {
    * Get loadAttributes
    * @return loadAttributes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadAttributes() {
@@ -114,12 +116,12 @@ public class EntityTypeVersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadAttributes(@javax.annotation.Nullable Boolean loadAttributes) {
+  public void setLoadAttributes(@Nullable Boolean loadAttributes) {
     this.loadAttributes = loadAttributes;
   }
 
 
-  public EntityTypeVersionLoadConfig loadCredentials(@javax.annotation.Nullable Boolean loadCredentials) {
+  public EntityTypeVersionLoadConfig loadCredentials(@Nullable Boolean loadCredentials) {
     this.loadCredentials = loadCredentials;
     return this;
   }
@@ -128,7 +130,7 @@ public class EntityTypeVersionLoadConfig {
    * Get loadCredentials
    * @return loadCredentials
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadCredentials() {
@@ -138,12 +140,12 @@ public class EntityTypeVersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadCredentials(@javax.annotation.Nullable Boolean loadCredentials) {
+  public void setLoadCredentials(@Nullable Boolean loadCredentials) {
     this.loadCredentials = loadCredentials;
   }
 
 
-  public EntityTypeVersionLoadConfig loadCalculatedFields(@javax.annotation.Nullable Boolean loadCalculatedFields) {
+  public EntityTypeVersionLoadConfig loadCalculatedFields(@Nullable Boolean loadCalculatedFields) {
     this.loadCalculatedFields = loadCalculatedFields;
     return this;
   }
@@ -152,7 +154,7 @@ public class EntityTypeVersionLoadConfig {
    * Get loadCalculatedFields
    * @return loadCalculatedFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadCalculatedFields() {
@@ -162,12 +164,12 @@ public class EntityTypeVersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadCalculatedFields(@javax.annotation.Nullable Boolean loadCalculatedFields) {
+  public void setLoadCalculatedFields(@Nullable Boolean loadCalculatedFields) {
     this.loadCalculatedFields = loadCalculatedFields;
   }
 
 
-  public EntityTypeVersionLoadConfig removeOtherEntities(@javax.annotation.Nullable Boolean removeOtherEntities) {
+  public EntityTypeVersionLoadConfig removeOtherEntities(@Nullable Boolean removeOtherEntities) {
     this.removeOtherEntities = removeOtherEntities;
     return this;
   }
@@ -176,7 +178,7 @@ public class EntityTypeVersionLoadConfig {
    * Get removeOtherEntities
    * @return removeOtherEntities
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REMOVE_OTHER_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getRemoveOtherEntities() {
@@ -186,12 +188,12 @@ public class EntityTypeVersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_REMOVE_OTHER_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRemoveOtherEntities(@javax.annotation.Nullable Boolean removeOtherEntities) {
+  public void setRemoveOtherEntities(@Nullable Boolean removeOtherEntities) {
     this.removeOtherEntities = removeOtherEntities;
   }
 
 
-  public EntityTypeVersionLoadConfig findExistingEntityByName(@javax.annotation.Nullable Boolean findExistingEntityByName) {
+  public EntityTypeVersionLoadConfig findExistingEntityByName(@Nullable Boolean findExistingEntityByName) {
     this.findExistingEntityByName = findExistingEntityByName;
     return this;
   }
@@ -200,7 +202,7 @@ public class EntityTypeVersionLoadConfig {
    * Get findExistingEntityByName
    * @return findExistingEntityByName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIND_EXISTING_ENTITY_BY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getFindExistingEntityByName() {
@@ -210,7 +212,7 @@ public class EntityTypeVersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_FIND_EXISTING_ENTITY_BY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFindExistingEntityByName(@javax.annotation.Nullable Boolean findExistingEntityByName) {
+  public void setFindExistingEntityByName(@Nullable Boolean findExistingEntityByName) {
     this.findExistingEntityByName = findExistingEntityByName;
   }
 

@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,30 +48,30 @@ import org.thingsboard.client.ApiClient;
   SecretInfo.JSON_PROPERTY_TYPE,
   SecretInfo.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SecretInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private SecretId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private SecretType type;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public SecretInfo() { 
@@ -84,7 +87,7 @@ public class SecretInfo {
     this.tenantId = tenantId;
   }
 
-  public SecretInfo id(@javax.annotation.Nullable SecretId id) {
+  public SecretInfo id(@Nullable SecretId id) {
     this.id = id;
     return this;
   }
@@ -93,7 +96,7 @@ public class SecretInfo {
    * JSON object with the Secret Id. Specify this field to update the Secret. Referencing non-existing Secret Id will cause error. Omit this field to create new Secret.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SecretId getId() {
@@ -103,7 +106,7 @@ public class SecretInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable SecretId id) {
+  public void setId(@Nullable SecretId id) {
     this.id = id;
   }
 
@@ -112,7 +115,7 @@ public class SecretInfo {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -126,7 +129,7 @@ public class SecretInfo {
    * JSON object with Tenant Id. Tenant Id of the secret cannot be changed.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -136,7 +139,7 @@ public class SecretInfo {
 
 
 
-  public SecretInfo name(@javax.annotation.Nonnull String name) {
+  public SecretInfo name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -145,7 +148,7 @@ public class SecretInfo {
    * Secret name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -155,12 +158,12 @@ public class SecretInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public SecretInfo type(@javax.annotation.Nonnull SecretType type) {
+  public SecretInfo type(@Nonnull SecretType type) {
     this.type = type;
     return this;
   }
@@ -169,7 +172,7 @@ public class SecretInfo {
    * Secret type.
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public SecretType getType() {
@@ -179,12 +182,12 @@ public class SecretInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull SecretType type) {
+  public void setType(@Nonnull SecretType type) {
     this.type = type;
   }
 
 
-  public SecretInfo description(@javax.annotation.Nullable String description) {
+  public SecretInfo description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -193,7 +196,7 @@ public class SecretInfo {
    * Secret description.
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -203,7 +206,7 @@ public class SecretInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 

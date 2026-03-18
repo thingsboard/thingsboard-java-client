@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,40 +50,40 @@ import org.thingsboard.client.ApiClient;
   ZoneGroupConfiguration.JSON_PROPERTY_RELATION_TYPE,
   ZoneGroupConfiguration.JSON_PROPERTY_DIRECTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ZoneGroupConfiguration {
   public static final String JSON_PROPERTY_REF_ENTITY_ID = "refEntityId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId refEntityId;
 
   public static final String JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION = "refDynamicSourceConfiguration";
-  @javax.annotation.Nullable
+  @Nullable
   private CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration;
 
   public static final String JSON_PROPERTY_PERIMETER_KEY_NAME = "perimeterKeyName";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String perimeterKeyName;
 
   public static final String JSON_PROPERTY_REPORT_STRATEGY = "reportStrategy";
-  @javax.annotation.Nonnull
+  @Nonnull
   private GeofencingReportStrategy reportStrategy;
 
   public static final String JSON_PROPERTY_CREATE_RELATIONS_WITH_MATCHED_ZONES = "createRelationsWithMatchedZones";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean createRelationsWithMatchedZones;
 
   public static final String JSON_PROPERTY_RELATION_TYPE = "relationType";
-  @javax.annotation.Nullable
+  @Nullable
   private String relationType;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
-  @javax.annotation.Nullable
+  @Nullable
   private EntitySearchDirection direction;
 
   public ZoneGroupConfiguration() { 
   }
 
-  public ZoneGroupConfiguration refEntityId(@javax.annotation.Nullable EntityId refEntityId) {
+  public ZoneGroupConfiguration refEntityId(@Nullable EntityId refEntityId) {
     this.refEntityId = refEntityId;
     return this;
   }
@@ -89,7 +92,7 @@ public class ZoneGroupConfiguration {
    * Get refEntityId
    * @return refEntityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getRefEntityId() {
@@ -99,12 +102,12 @@ public class ZoneGroupConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefEntityId(@javax.annotation.Nullable EntityId refEntityId) {
+  public void setRefEntityId(@Nullable EntityId refEntityId) {
     this.refEntityId = refEntityId;
   }
 
 
-  public ZoneGroupConfiguration refDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
+  public ZoneGroupConfiguration refDynamicSourceConfiguration(@Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
     this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
     return this;
   }
@@ -113,7 +116,7 @@ public class ZoneGroupConfiguration {
    * Get refDynamicSourceConfiguration
    * @return refDynamicSourceConfiguration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CfArgumentDynamicSourceConfiguration getRefDynamicSourceConfiguration() {
@@ -123,12 +126,12 @@ public class ZoneGroupConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
+  public void setRefDynamicSourceConfiguration(@Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
     this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
   }
 
 
-  public ZoneGroupConfiguration perimeterKeyName(@javax.annotation.Nonnull String perimeterKeyName) {
+  public ZoneGroupConfiguration perimeterKeyName(@Nonnull String perimeterKeyName) {
     this.perimeterKeyName = perimeterKeyName;
     return this;
   }
@@ -137,7 +140,7 @@ public class ZoneGroupConfiguration {
    * Get perimeterKeyName
    * @return perimeterKeyName
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PERIMETER_KEY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getPerimeterKeyName() {
@@ -147,12 +150,12 @@ public class ZoneGroupConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PERIMETER_KEY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPerimeterKeyName(@javax.annotation.Nonnull String perimeterKeyName) {
+  public void setPerimeterKeyName(@Nonnull String perimeterKeyName) {
     this.perimeterKeyName = perimeterKeyName;
   }
 
 
-  public ZoneGroupConfiguration reportStrategy(@javax.annotation.Nonnull GeofencingReportStrategy reportStrategy) {
+  public ZoneGroupConfiguration reportStrategy(@Nonnull GeofencingReportStrategy reportStrategy) {
     this.reportStrategy = reportStrategy;
     return this;
   }
@@ -161,7 +164,7 @@ public class ZoneGroupConfiguration {
    * Get reportStrategy
    * @return reportStrategy
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_REPORT_STRATEGY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public GeofencingReportStrategy getReportStrategy() {
@@ -171,12 +174,12 @@ public class ZoneGroupConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_REPORT_STRATEGY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setReportStrategy(@javax.annotation.Nonnull GeofencingReportStrategy reportStrategy) {
+  public void setReportStrategy(@Nonnull GeofencingReportStrategy reportStrategy) {
     this.reportStrategy = reportStrategy;
   }
 
 
-  public ZoneGroupConfiguration createRelationsWithMatchedZones(@javax.annotation.Nullable Boolean createRelationsWithMatchedZones) {
+  public ZoneGroupConfiguration createRelationsWithMatchedZones(@Nullable Boolean createRelationsWithMatchedZones) {
     this.createRelationsWithMatchedZones = createRelationsWithMatchedZones;
     return this;
   }
@@ -185,7 +188,7 @@ public class ZoneGroupConfiguration {
    * Get createRelationsWithMatchedZones
    * @return createRelationsWithMatchedZones
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATE_RELATIONS_WITH_MATCHED_ZONES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getCreateRelationsWithMatchedZones() {
@@ -195,12 +198,12 @@ public class ZoneGroupConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_CREATE_RELATIONS_WITH_MATCHED_ZONES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreateRelationsWithMatchedZones(@javax.annotation.Nullable Boolean createRelationsWithMatchedZones) {
+  public void setCreateRelationsWithMatchedZones(@Nullable Boolean createRelationsWithMatchedZones) {
     this.createRelationsWithMatchedZones = createRelationsWithMatchedZones;
   }
 
 
-  public ZoneGroupConfiguration relationType(@javax.annotation.Nullable String relationType) {
+  public ZoneGroupConfiguration relationType(@Nullable String relationType) {
     this.relationType = relationType;
     return this;
   }
@@ -209,7 +212,7 @@ public class ZoneGroupConfiguration {
    * Get relationType
    * @return relationType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRelationType() {
@@ -219,12 +222,12 @@ public class ZoneGroupConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelationType(@javax.annotation.Nullable String relationType) {
+  public void setRelationType(@Nullable String relationType) {
     this.relationType = relationType;
   }
 
 
-  public ZoneGroupConfiguration direction(@javax.annotation.Nullable EntitySearchDirection direction) {
+  public ZoneGroupConfiguration direction(@Nullable EntitySearchDirection direction) {
     this.direction = direction;
     return this;
   }
@@ -233,7 +236,7 @@ public class ZoneGroupConfiguration {
    * Get direction
    * @return direction
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntitySearchDirection getDirection() {
@@ -243,7 +246,7 @@ public class ZoneGroupConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDirection(@javax.annotation.Nullable EntitySearchDirection direction) {
+  public void setDirection(@Nullable EntitySearchDirection direction) {
     this.direction = direction;
   }
 

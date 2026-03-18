@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   AlarmConditionValueAlarmRuleSchedule.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT,
   AlarmConditionValueAlarmRuleSchedule.JSON_PROPERTY_STATIC_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmConditionValueAlarmRuleSchedule {
   public static final String JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT = "dynamicValueArgument";
-  @javax.annotation.Nullable
+  @Nullable
   private String dynamicValueArgument;
 
   public static final String JSON_PROPERTY_STATIC_VALUE = "staticValue";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmRuleSchedule staticValue;
 
   public AlarmConditionValueAlarmRuleSchedule() { 
   }
 
-  public AlarmConditionValueAlarmRuleSchedule dynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
+  public AlarmConditionValueAlarmRuleSchedule dynamicValueArgument(@Nullable String dynamicValueArgument) {
     this.dynamicValueArgument = dynamicValueArgument;
     return this;
   }
@@ -61,7 +63,7 @@ public class AlarmConditionValueAlarmRuleSchedule {
    * Get dynamicValueArgument
    * @return dynamicValueArgument
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDynamicValueArgument() {
@@ -71,12 +73,12 @@ public class AlarmConditionValueAlarmRuleSchedule {
 
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
+  public void setDynamicValueArgument(@Nullable String dynamicValueArgument) {
     this.dynamicValueArgument = dynamicValueArgument;
   }
 
 
-  public AlarmConditionValueAlarmRuleSchedule staticValue(@javax.annotation.Nullable AlarmRuleSchedule staticValue) {
+  public AlarmConditionValueAlarmRuleSchedule staticValue(@Nullable AlarmRuleSchedule staticValue) {
     this.staticValue = staticValue;
     return this;
   }
@@ -85,7 +87,7 @@ public class AlarmConditionValueAlarmRuleSchedule {
    * Get staticValue
    * @return staticValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmRuleSchedule getStaticValue() {
@@ -95,7 +97,7 @@ public class AlarmConditionValueAlarmRuleSchedule {
 
   @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStaticValue(@javax.annotation.Nullable AlarmRuleSchedule staticValue) {
+  public void setStaticValue(@Nullable AlarmRuleSchedule staticValue) {
     this.staticValue = staticValue;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   Filter.JSON_PROPERTY_FILTER,
   Filter.JSON_PROPERTY_KEY_FILTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Filter {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_FILTER = "filter";
-  @javax.annotation.Nullable
+  @Nullable
   private String filter;
 
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
-  @javax.annotation.Nullable
+  @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
 
   public Filter() { 
   }
 
-  public Filter id(@javax.annotation.Nullable String id) {
+  public Filter id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -68,7 +70,7 @@ public class Filter {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -78,12 +80,12 @@ public class Filter {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public Filter filter(@javax.annotation.Nullable String filter) {
+  public Filter filter(@Nullable String filter) {
     this.filter = filter;
     return this;
   }
@@ -92,7 +94,7 @@ public class Filter {
    * Get filter
    * @return filter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFilter() {
@@ -102,12 +104,12 @@ public class Filter {
 
   @JsonProperty(value = JSON_PROPERTY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilter(@javax.annotation.Nullable String filter) {
+  public void setFilter(@Nullable String filter) {
     this.filter = filter;
   }
 
 
-  public Filter keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public Filter keyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
     return this;
   }
@@ -124,7 +126,7 @@ public class Filter {
    * Get keyFilters
    * @return keyFilters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<KeyFilter> getKeyFilters() {
@@ -134,7 +136,7 @@ public class Filter {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   AlarmAssignee.JSON_PROPERTY_LAST_NAME,
   AlarmAssignee.JSON_PROPERTY_EMAIL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmAssignee {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId id;
 
   public static final String JSON_PROPERTY_FIRST_NAME = "firstName";
-  @javax.annotation.Nullable
+  @Nullable
   private String firstName;
 
   public static final String JSON_PROPERTY_LAST_NAME = "lastName";
-  @javax.annotation.Nullable
+  @Nullable
   private String lastName;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nullable
+  @Nullable
   private String email;
 
   public AlarmAssignee() { 
   }
 
-  public AlarmAssignee id(@javax.annotation.Nullable UserId id) {
+  public AlarmAssignee id(@Nullable UserId id) {
     this.id = id;
     return this;
   }
@@ -71,7 +73,7 @@ public class AlarmAssignee {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getId() {
@@ -81,12 +83,12 @@ public class AlarmAssignee {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable UserId id) {
+  public void setId(@Nullable UserId id) {
     this.id = id;
   }
 
 
-  public AlarmAssignee firstName(@javax.annotation.Nullable String firstName) {
+  public AlarmAssignee firstName(@Nullable String firstName) {
     this.firstName = firstName;
     return this;
   }
@@ -95,7 +97,7 @@ public class AlarmAssignee {
    * Get firstName
    * @return firstName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFirstName() {
@@ -105,12 +107,12 @@ public class AlarmAssignee {
 
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirstName(@javax.annotation.Nullable String firstName) {
+  public void setFirstName(@Nullable String firstName) {
     this.firstName = firstName;
   }
 
 
-  public AlarmAssignee lastName(@javax.annotation.Nullable String lastName) {
+  public AlarmAssignee lastName(@Nullable String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -119,7 +121,7 @@ public class AlarmAssignee {
    * Get lastName
    * @return lastName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLastName() {
@@ -129,12 +131,12 @@ public class AlarmAssignee {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastName(@javax.annotation.Nullable String lastName) {
+  public void setLastName(@Nullable String lastName) {
     this.lastName = lastName;
   }
 
 
-  public AlarmAssignee email(@javax.annotation.Nullable String email) {
+  public AlarmAssignee email(@Nullable String email) {
     this.email = email;
     return this;
   }
@@ -143,7 +145,7 @@ public class AlarmAssignee {
    * Get email
    * @return email
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmail() {
@@ -153,7 +155,7 @@ public class AlarmAssignee {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmail(@javax.annotation.Nullable String email) {
+  public void setEmail(@Nullable String email) {
     this.email = email;
   }
 

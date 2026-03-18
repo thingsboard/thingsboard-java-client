@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   ColumnMapping.JSON_PROPERTY_TYPE,
   ColumnMapping.JSON_PROPERTY_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ColumnMapping {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private BulkImportColumnType type;
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public ColumnMapping() { 
   }
 
-  public ColumnMapping type(@javax.annotation.Nullable BulkImportColumnType type) {
+  public ColumnMapping type(@Nullable BulkImportColumnType type) {
     this.type = type;
     return this;
   }
@@ -61,7 +63,7 @@ public class ColumnMapping {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BulkImportColumnType getType() {
@@ -71,12 +73,12 @@ public class ColumnMapping {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable BulkImportColumnType type) {
+  public void setType(@Nullable BulkImportColumnType type) {
     this.type = type;
   }
 
 
-  public ColumnMapping key(@javax.annotation.Nullable String key) {
+  public ColumnMapping key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -85,7 +87,7 @@ public class ColumnMapping {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -95,7 +97,7 @@ public class ColumnMapping {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 

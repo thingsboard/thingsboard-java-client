@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -65,108 +67,108 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartThreshold.JSON_PROPERTY_LABEL_BACKGROUND,
   TimeSeriesChartThreshold.JSON_PROPERTY_YAXIS_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartThreshold {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private ValueSourceType type;
 
   public static final String JSON_PROPERTY_VALUE = "value";
-  @javax.annotation.Nullable
+  @Nullable
   private Double value;
 
   public static final String JSON_PROPERTY_LATEST_KEY_TYPE = "latestKeyType";
-  @javax.annotation.Nullable
+  @Nullable
   private String latestKeyType;
 
   public static final String JSON_PROPERTY_LATEST_KEY = "latestKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String latestKey;
 
   public static final String JSON_PROPERTY_ENTITY_KEY_TYPE = "entityKeyType";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityKeyType;
 
   public static final String JSON_PROPERTY_ENTITY_ALIAS = "entityAlias";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityAlias;
 
   public static final String JSON_PROPERTY_ENTITY_KEY = "entityKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityKey;
 
   public static final String JSON_PROPERTY_Y_AXIS_ID = "yAxisId";
-  @javax.annotation.Nullable
+  @Nullable
   private String yAxisId;
 
   public static final String JSON_PROPERTY_UNITS = "units";
-  @javax.annotation.Nullable
+  @Nullable
   private String units;
 
   public static final String JSON_PROPERTY_DECIMALS = "decimals";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer decimals;
 
   public static final String JSON_PROPERTY_LINE_COLOR = "lineColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String lineColor;
 
   public static final String JSON_PROPERTY_LINE_TYPE = "lineType";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartLineType lineType;
 
   public static final String JSON_PROPERTY_LINE_WIDTH = "lineWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private Float lineWidth;
 
   public static final String JSON_PROPERTY_START_SYMBOL = "startSymbol";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartShape startSymbol;
 
   public static final String JSON_PROPERTY_START_SYMBOL_SIZE = "startSymbolSize";
-  @javax.annotation.Nullable
+  @Nullable
   private Float startSymbolSize;
 
   public static final String JSON_PROPERTY_END_SYMBOL = "endSymbol";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartShape endSymbol;
 
   public static final String JSON_PROPERTY_END_SYMBOL_SIZE = "endSymbolSize";
-  @javax.annotation.Nullable
+  @Nullable
   private Float endSymbolSize;
 
   public static final String JSON_PROPERTY_SHOW_LABEL = "showLabel";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showLabel;
 
   public static final String JSON_PROPERTY_LABEL_POSITION = "labelPosition";
-  @javax.annotation.Nullable
+  @Nullable
   private ThresholdLabelPosition labelPosition;
 
   public static final String JSON_PROPERTY_LABEL_FONT = "labelFont";
-  @javax.annotation.Nullable
+  @Nullable
   private Font labelFont;
 
   public static final String JSON_PROPERTY_LABEL_COLOR = "labelColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String labelColor;
 
   public static final String JSON_PROPERTY_ENABLE_LABEL_BACKGROUND = "enableLabelBackground";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enableLabelBackground;
 
   public static final String JSON_PROPERTY_LABEL_BACKGROUND = "labelBackground";
-  @javax.annotation.Nullable
+  @Nullable
   private String labelBackground;
 
   public static final String JSON_PROPERTY_YAXIS_ID = "yaxisId";
-  @javax.annotation.Nullable
+  @Nullable
   private String yaxisId;
 
   public TimeSeriesChartThreshold() { 
   }
 
-  public TimeSeriesChartThreshold type(@javax.annotation.Nullable ValueSourceType type) {
+  public TimeSeriesChartThreshold type(@Nullable ValueSourceType type) {
     this.type = type;
     return this;
   }
@@ -175,7 +177,7 @@ public class TimeSeriesChartThreshold {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ValueSourceType getType() {
@@ -185,12 +187,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable ValueSourceType type) {
+  public void setType(@Nullable ValueSourceType type) {
     this.type = type;
   }
 
 
-  public TimeSeriesChartThreshold value(@javax.annotation.Nullable Double value) {
+  public TimeSeriesChartThreshold value(@Nullable Double value) {
     this.value = value;
     return this;
   }
@@ -199,7 +201,7 @@ public class TimeSeriesChartThreshold {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getValue() {
@@ -209,12 +211,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValue(@javax.annotation.Nullable Double value) {
+  public void setValue(@Nullable Double value) {
     this.value = value;
   }
 
 
-  public TimeSeriesChartThreshold latestKeyType(@javax.annotation.Nullable String latestKeyType) {
+  public TimeSeriesChartThreshold latestKeyType(@Nullable String latestKeyType) {
     this.latestKeyType = latestKeyType;
     return this;
   }
@@ -223,7 +225,7 @@ public class TimeSeriesChartThreshold {
    * Get latestKeyType
    * @return latestKeyType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_KEY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLatestKeyType() {
@@ -233,12 +235,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_KEY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestKeyType(@javax.annotation.Nullable String latestKeyType) {
+  public void setLatestKeyType(@Nullable String latestKeyType) {
     this.latestKeyType = latestKeyType;
   }
 
 
-  public TimeSeriesChartThreshold latestKey(@javax.annotation.Nullable String latestKey) {
+  public TimeSeriesChartThreshold latestKey(@Nullable String latestKey) {
     this.latestKey = latestKey;
     return this;
   }
@@ -247,7 +249,7 @@ public class TimeSeriesChartThreshold {
    * Get latestKey
    * @return latestKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLatestKey() {
@@ -257,12 +259,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestKey(@javax.annotation.Nullable String latestKey) {
+  public void setLatestKey(@Nullable String latestKey) {
     this.latestKey = latestKey;
   }
 
 
-  public TimeSeriesChartThreshold entityKeyType(@javax.annotation.Nullable String entityKeyType) {
+  public TimeSeriesChartThreshold entityKeyType(@Nullable String entityKeyType) {
     this.entityKeyType = entityKeyType;
     return this;
   }
@@ -271,7 +273,7 @@ public class TimeSeriesChartThreshold {
    * Get entityKeyType
    * @return entityKeyType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_KEY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityKeyType() {
@@ -281,12 +283,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_KEY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityKeyType(@javax.annotation.Nullable String entityKeyType) {
+  public void setEntityKeyType(@Nullable String entityKeyType) {
     this.entityKeyType = entityKeyType;
   }
 
 
-  public TimeSeriesChartThreshold entityAlias(@javax.annotation.Nullable String entityAlias) {
+  public TimeSeriesChartThreshold entityAlias(@Nullable String entityAlias) {
     this.entityAlias = entityAlias;
     return this;
   }
@@ -295,7 +297,7 @@ public class TimeSeriesChartThreshold {
    * Get entityAlias
    * @return entityAlias
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityAlias() {
@@ -305,12 +307,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityAlias(@javax.annotation.Nullable String entityAlias) {
+  public void setEntityAlias(@Nullable String entityAlias) {
     this.entityAlias = entityAlias;
   }
 
 
-  public TimeSeriesChartThreshold entityKey(@javax.annotation.Nullable String entityKey) {
+  public TimeSeriesChartThreshold entityKey(@Nullable String entityKey) {
     this.entityKey = entityKey;
     return this;
   }
@@ -319,7 +321,7 @@ public class TimeSeriesChartThreshold {
    * Get entityKey
    * @return entityKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityKey() {
@@ -329,12 +331,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityKey(@javax.annotation.Nullable String entityKey) {
+  public void setEntityKey(@Nullable String entityKey) {
     this.entityKey = entityKey;
   }
 
 
-  public TimeSeriesChartThreshold yAxisId(@javax.annotation.Nullable String yAxisId) {
+  public TimeSeriesChartThreshold yAxisId(@Nullable String yAxisId) {
     this.yAxisId = yAxisId;
     return this;
   }
@@ -343,7 +345,7 @@ public class TimeSeriesChartThreshold {
    * Get yAxisId
    * @return yAxisId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getyAxisId() {
@@ -353,12 +355,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_Y_AXIS_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setyAxisId(@javax.annotation.Nullable String yAxisId) {
+  public void setyAxisId(@Nullable String yAxisId) {
     this.yAxisId = yAxisId;
   }
 
 
-  public TimeSeriesChartThreshold units(@javax.annotation.Nullable String units) {
+  public TimeSeriesChartThreshold units(@Nullable String units) {
     this.units = units;
     return this;
   }
@@ -367,7 +369,7 @@ public class TimeSeriesChartThreshold {
    * Get units
    * @return units
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UNITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUnits() {
@@ -377,12 +379,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_UNITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUnits(@javax.annotation.Nullable String units) {
+  public void setUnits(@Nullable String units) {
     this.units = units;
   }
 
 
-  public TimeSeriesChartThreshold decimals(@javax.annotation.Nullable Integer decimals) {
+  public TimeSeriesChartThreshold decimals(@Nullable Integer decimals) {
     this.decimals = decimals;
     return this;
   }
@@ -391,7 +393,7 @@ public class TimeSeriesChartThreshold {
    * Get decimals
    * @return decimals
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DECIMALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDecimals() {
@@ -401,12 +403,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_DECIMALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDecimals(@javax.annotation.Nullable Integer decimals) {
+  public void setDecimals(@Nullable Integer decimals) {
     this.decimals = decimals;
   }
 
 
-  public TimeSeriesChartThreshold lineColor(@javax.annotation.Nullable String lineColor) {
+  public TimeSeriesChartThreshold lineColor(@Nullable String lineColor) {
     this.lineColor = lineColor;
     return this;
   }
@@ -415,7 +417,7 @@ public class TimeSeriesChartThreshold {
    * Get lineColor
    * @return lineColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLineColor() {
@@ -425,12 +427,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LINE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLineColor(@javax.annotation.Nullable String lineColor) {
+  public void setLineColor(@Nullable String lineColor) {
     this.lineColor = lineColor;
   }
 
 
-  public TimeSeriesChartThreshold lineType(@javax.annotation.Nullable ChartLineType lineType) {
+  public TimeSeriesChartThreshold lineType(@Nullable ChartLineType lineType) {
     this.lineType = lineType;
     return this;
   }
@@ -439,7 +441,7 @@ public class TimeSeriesChartThreshold {
    * Get lineType
    * @return lineType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartLineType getLineType() {
@@ -449,12 +451,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LINE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLineType(@javax.annotation.Nullable ChartLineType lineType) {
+  public void setLineType(@Nullable ChartLineType lineType) {
     this.lineType = lineType;
   }
 
 
-  public TimeSeriesChartThreshold lineWidth(@javax.annotation.Nullable Float lineWidth) {
+  public TimeSeriesChartThreshold lineWidth(@Nullable Float lineWidth) {
     this.lineWidth = lineWidth;
     return this;
   }
@@ -463,7 +465,7 @@ public class TimeSeriesChartThreshold {
    * Get lineWidth
    * @return lineWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getLineWidth() {
@@ -473,12 +475,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LINE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLineWidth(@javax.annotation.Nullable Float lineWidth) {
+  public void setLineWidth(@Nullable Float lineWidth) {
     this.lineWidth = lineWidth;
   }
 
 
-  public TimeSeriesChartThreshold startSymbol(@javax.annotation.Nullable ChartShape startSymbol) {
+  public TimeSeriesChartThreshold startSymbol(@Nullable ChartShape startSymbol) {
     this.startSymbol = startSymbol;
     return this;
   }
@@ -487,7 +489,7 @@ public class TimeSeriesChartThreshold {
    * Get startSymbol
    * @return startSymbol
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_SYMBOL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartShape getStartSymbol() {
@@ -497,12 +499,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_START_SYMBOL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartSymbol(@javax.annotation.Nullable ChartShape startSymbol) {
+  public void setStartSymbol(@Nullable ChartShape startSymbol) {
     this.startSymbol = startSymbol;
   }
 
 
-  public TimeSeriesChartThreshold startSymbolSize(@javax.annotation.Nullable Float startSymbolSize) {
+  public TimeSeriesChartThreshold startSymbolSize(@Nullable Float startSymbolSize) {
     this.startSymbolSize = startSymbolSize;
     return this;
   }
@@ -511,7 +513,7 @@ public class TimeSeriesChartThreshold {
    * Get startSymbolSize
    * @return startSymbolSize
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_SYMBOL_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getStartSymbolSize() {
@@ -521,12 +523,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_START_SYMBOL_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartSymbolSize(@javax.annotation.Nullable Float startSymbolSize) {
+  public void setStartSymbolSize(@Nullable Float startSymbolSize) {
     this.startSymbolSize = startSymbolSize;
   }
 
 
-  public TimeSeriesChartThreshold endSymbol(@javax.annotation.Nullable ChartShape endSymbol) {
+  public TimeSeriesChartThreshold endSymbol(@Nullable ChartShape endSymbol) {
     this.endSymbol = endSymbol;
     return this;
   }
@@ -535,7 +537,7 @@ public class TimeSeriesChartThreshold {
    * Get endSymbol
    * @return endSymbol
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_SYMBOL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartShape getEndSymbol() {
@@ -545,12 +547,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_END_SYMBOL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndSymbol(@javax.annotation.Nullable ChartShape endSymbol) {
+  public void setEndSymbol(@Nullable ChartShape endSymbol) {
     this.endSymbol = endSymbol;
   }
 
 
-  public TimeSeriesChartThreshold endSymbolSize(@javax.annotation.Nullable Float endSymbolSize) {
+  public TimeSeriesChartThreshold endSymbolSize(@Nullable Float endSymbolSize) {
     this.endSymbolSize = endSymbolSize;
     return this;
   }
@@ -559,7 +561,7 @@ public class TimeSeriesChartThreshold {
    * Get endSymbolSize
    * @return endSymbolSize
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_SYMBOL_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getEndSymbolSize() {
@@ -569,12 +571,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_END_SYMBOL_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndSymbolSize(@javax.annotation.Nullable Float endSymbolSize) {
+  public void setEndSymbolSize(@Nullable Float endSymbolSize) {
     this.endSymbolSize = endSymbolSize;
   }
 
 
-  public TimeSeriesChartThreshold showLabel(@javax.annotation.Nullable Boolean showLabel) {
+  public TimeSeriesChartThreshold showLabel(@Nullable Boolean showLabel) {
     this.showLabel = showLabel;
     return this;
   }
@@ -583,7 +585,7 @@ public class TimeSeriesChartThreshold {
    * Get showLabel
    * @return showLabel
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowLabel() {
@@ -593,12 +595,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowLabel(@javax.annotation.Nullable Boolean showLabel) {
+  public void setShowLabel(@Nullable Boolean showLabel) {
     this.showLabel = showLabel;
   }
 
 
-  public TimeSeriesChartThreshold labelPosition(@javax.annotation.Nullable ThresholdLabelPosition labelPosition) {
+  public TimeSeriesChartThreshold labelPosition(@Nullable ThresholdLabelPosition labelPosition) {
     this.labelPosition = labelPosition;
     return this;
   }
@@ -607,7 +609,7 @@ public class TimeSeriesChartThreshold {
    * Get labelPosition
    * @return labelPosition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ThresholdLabelPosition getLabelPosition() {
@@ -617,12 +619,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelPosition(@javax.annotation.Nullable ThresholdLabelPosition labelPosition) {
+  public void setLabelPosition(@Nullable ThresholdLabelPosition labelPosition) {
     this.labelPosition = labelPosition;
   }
 
 
-  public TimeSeriesChartThreshold labelFont(@javax.annotation.Nullable Font labelFont) {
+  public TimeSeriesChartThreshold labelFont(@Nullable Font labelFont) {
     this.labelFont = labelFont;
     return this;
   }
@@ -631,7 +633,7 @@ public class TimeSeriesChartThreshold {
    * Get labelFont
    * @return labelFont
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Font getLabelFont() {
@@ -641,12 +643,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelFont(@javax.annotation.Nullable Font labelFont) {
+  public void setLabelFont(@Nullable Font labelFont) {
     this.labelFont = labelFont;
   }
 
 
-  public TimeSeriesChartThreshold labelColor(@javax.annotation.Nullable String labelColor) {
+  public TimeSeriesChartThreshold labelColor(@Nullable String labelColor) {
     this.labelColor = labelColor;
     return this;
   }
@@ -655,7 +657,7 @@ public class TimeSeriesChartThreshold {
    * Get labelColor
    * @return labelColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabelColor() {
@@ -665,12 +667,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelColor(@javax.annotation.Nullable String labelColor) {
+  public void setLabelColor(@Nullable String labelColor) {
     this.labelColor = labelColor;
   }
 
 
-  public TimeSeriesChartThreshold enableLabelBackground(@javax.annotation.Nullable Boolean enableLabelBackground) {
+  public TimeSeriesChartThreshold enableLabelBackground(@Nullable Boolean enableLabelBackground) {
     this.enableLabelBackground = enableLabelBackground;
     return this;
   }
@@ -679,7 +681,7 @@ public class TimeSeriesChartThreshold {
    * Get enableLabelBackground
    * @return enableLabelBackground
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLE_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnableLabelBackground() {
@@ -689,12 +691,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLE_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableLabelBackground(@javax.annotation.Nullable Boolean enableLabelBackground) {
+  public void setEnableLabelBackground(@Nullable Boolean enableLabelBackground) {
     this.enableLabelBackground = enableLabelBackground;
   }
 
 
-  public TimeSeriesChartThreshold labelBackground(@javax.annotation.Nullable String labelBackground) {
+  public TimeSeriesChartThreshold labelBackground(@Nullable String labelBackground) {
     this.labelBackground = labelBackground;
     return this;
   }
@@ -703,7 +705,7 @@ public class TimeSeriesChartThreshold {
    * Get labelBackground
    * @return labelBackground
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabelBackground() {
@@ -713,12 +715,12 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelBackground(@javax.annotation.Nullable String labelBackground) {
+  public void setLabelBackground(@Nullable String labelBackground) {
     this.labelBackground = labelBackground;
   }
 
 
-  public TimeSeriesChartThreshold yaxisId(@javax.annotation.Nullable String yaxisId) {
+  public TimeSeriesChartThreshold yaxisId(@Nullable String yaxisId) {
     this.yaxisId = yaxisId;
     return this;
   }
@@ -727,7 +729,7 @@ public class TimeSeriesChartThreshold {
    * Get yaxisId
    * @return yaxisId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_YAXIS_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getYaxisId() {
@@ -737,7 +739,7 @@ public class TimeSeriesChartThreshold {
 
   @JsonProperty(value = JSON_PROPERTY_YAXIS_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setYaxisId(@javax.annotation.Nullable String yaxisId) {
+  public void setYaxisId(@Nullable String yaxisId) {
     this.yaxisId = yaxisId;
   }
 

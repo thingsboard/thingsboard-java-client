@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,32 +45,32 @@ import org.thingsboard.client.ApiClient;
   NotificationRequestStats.JSON_PROPERTY_ERROR,
   NotificationRequestStats.JSON_PROPERTY_TOTAL_SENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequestStats {
   public static final String JSON_PROPERTY_SENT = "sent";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, Integer> sent = new HashMap<>();
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, Map<String, String>> errors = new HashMap<>();
 
   public static final String JSON_PROPERTY_TOTAL_ERRORS = "totalErrors";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer totalErrors;
 
   public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
+  @Nullable
   private String error;
 
   public static final String JSON_PROPERTY_TOTAL_SENT = "totalSent";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer totalSent;
 
   public NotificationRequestStats() { 
   }
 
-  public NotificationRequestStats sent(@javax.annotation.Nullable Map<String, Integer> sent) {
+  public NotificationRequestStats sent(@Nullable Map<String, Integer> sent) {
     this.sent = sent;
     return this;
   }
@@ -85,7 +87,7 @@ public class NotificationRequestStats {
    * Get sent
    * @return sent
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, Integer> getSent() {
@@ -95,12 +97,12 @@ public class NotificationRequestStats {
 
   @JsonProperty(value = JSON_PROPERTY_SENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSent(@javax.annotation.Nullable Map<String, Integer> sent) {
+  public void setSent(@Nullable Map<String, Integer> sent) {
     this.sent = sent;
   }
 
 
-  public NotificationRequestStats errors(@javax.annotation.Nullable Map<String, Map<String, String>> errors) {
+  public NotificationRequestStats errors(@Nullable Map<String, Map<String, String>> errors) {
     this.errors = errors;
     return this;
   }
@@ -117,7 +119,7 @@ public class NotificationRequestStats {
    * Get errors
    * @return errors
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, Map<String, String>> getErrors() {
@@ -127,12 +129,12 @@ public class NotificationRequestStats {
 
   @JsonProperty(value = JSON_PROPERTY_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrors(@javax.annotation.Nullable Map<String, Map<String, String>> errors) {
+  public void setErrors(@Nullable Map<String, Map<String, String>> errors) {
     this.errors = errors;
   }
 
 
-  public NotificationRequestStats totalErrors(@javax.annotation.Nullable Integer totalErrors) {
+  public NotificationRequestStats totalErrors(@Nullable Integer totalErrors) {
     this.totalErrors = totalErrors;
     return this;
   }
@@ -141,7 +143,7 @@ public class NotificationRequestStats {
    * Get totalErrors
    * @return totalErrors
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTotalErrors() {
@@ -151,12 +153,12 @@ public class NotificationRequestStats {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalErrors(@javax.annotation.Nullable Integer totalErrors) {
+  public void setTotalErrors(@Nullable Integer totalErrors) {
     this.totalErrors = totalErrors;
   }
 
 
-  public NotificationRequestStats error(@javax.annotation.Nullable String error) {
+  public NotificationRequestStats error(@Nullable String error) {
     this.error = error;
     return this;
   }
@@ -165,7 +167,7 @@ public class NotificationRequestStats {
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getError() {
@@ -175,12 +177,12 @@ public class NotificationRequestStats {
 
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable String error) {
+  public void setError(@Nullable String error) {
     this.error = error;
   }
 
 
-  public NotificationRequestStats totalSent(@javax.annotation.Nullable Integer totalSent) {
+  public NotificationRequestStats totalSent(@Nullable Integer totalSent) {
     this.totalSent = totalSent;
     return this;
   }
@@ -189,7 +191,7 @@ public class NotificationRequestStats {
    * Get totalSent
    * @return totalSent
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_SENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTotalSent() {
@@ -199,7 +201,7 @@ public class NotificationRequestStats {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_SENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalSent(@javax.annotation.Nullable Integer totalSent) {
+  public void setTotalSent(@Nullable Integer totalSent) {
     this.totalSent = totalSent;
   }
 

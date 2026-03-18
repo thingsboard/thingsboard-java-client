@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,54 +54,54 @@ import org.thingsboard.client.ApiClient;
   Queue.JSON_PROPERTY_SUBMIT_STRATEGY,
   Queue.JSON_PROPERTY_PROCESSING_STRATEGY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Queue {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private QueueId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TOPIC = "topic";
-  @javax.annotation.Nullable
+  @Nullable
   private String topic;
 
   public static final String JSON_PROPERTY_POLL_INTERVAL = "pollInterval";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer pollInterval;
 
   public static final String JSON_PROPERTY_PARTITIONS = "partitions";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer partitions;
 
   public static final String JSON_PROPERTY_CONSUMER_PER_PARTITION = "consumerPerPartition";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean consumerPerPartition;
 
   public static final String JSON_PROPERTY_PACK_PROCESSING_TIMEOUT = "packProcessingTimeout";
-  @javax.annotation.Nullable
+  @Nullable
   private Long packProcessingTimeout;
 
   public static final String JSON_PROPERTY_SUBMIT_STRATEGY = "submitStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private SubmitStrategy submitStrategy;
 
   public static final String JSON_PROPERTY_PROCESSING_STRATEGY = "processingStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private ProcessingStrategy processingStrategy;
 
   public Queue() { 
@@ -113,7 +115,7 @@ public class Queue {
     this.createdTime = createdTime;
   }
 
-  public Queue id(@javax.annotation.Nullable QueueId id) {
+  public Queue id(@Nullable QueueId id) {
     this.id = id;
     return this;
   }
@@ -122,7 +124,7 @@ public class Queue {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public QueueId getId() {
@@ -132,7 +134,7 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable QueueId id) {
+  public void setId(@Nullable QueueId id) {
     this.id = id;
   }
 
@@ -141,7 +143,7 @@ public class Queue {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -151,7 +153,7 @@ public class Queue {
 
 
 
-  public Queue additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Queue additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -160,7 +162,7 @@ public class Queue {
    * Get additionalInfo
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -170,12 +172,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public Queue tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public Queue tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -184,7 +186,7 @@ public class Queue {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -194,12 +196,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public Queue name(@javax.annotation.Nullable String name) {
+  public Queue name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -208,7 +210,7 @@ public class Queue {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -218,12 +220,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public Queue topic(@javax.annotation.Nullable String topic) {
+  public Queue topic(@Nullable String topic) {
     this.topic = topic;
     return this;
   }
@@ -232,7 +234,7 @@ public class Queue {
    * Get topic
    * @return topic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOPIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTopic() {
@@ -242,12 +244,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_TOPIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTopic(@javax.annotation.Nullable String topic) {
+  public void setTopic(@Nullable String topic) {
     this.topic = topic;
   }
 
 
-  public Queue pollInterval(@javax.annotation.Nullable Integer pollInterval) {
+  public Queue pollInterval(@Nullable Integer pollInterval) {
     this.pollInterval = pollInterval;
     return this;
   }
@@ -256,7 +258,7 @@ public class Queue {
    * Get pollInterval
    * @return pollInterval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POLL_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPollInterval() {
@@ -266,12 +268,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_POLL_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPollInterval(@javax.annotation.Nullable Integer pollInterval) {
+  public void setPollInterval(@Nullable Integer pollInterval) {
     this.pollInterval = pollInterval;
   }
 
 
-  public Queue partitions(@javax.annotation.Nullable Integer partitions) {
+  public Queue partitions(@Nullable Integer partitions) {
     this.partitions = partitions;
     return this;
   }
@@ -280,7 +282,7 @@ public class Queue {
    * Get partitions
    * @return partitions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARTITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPartitions() {
@@ -290,12 +292,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_PARTITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPartitions(@javax.annotation.Nullable Integer partitions) {
+  public void setPartitions(@Nullable Integer partitions) {
     this.partitions = partitions;
   }
 
 
-  public Queue consumerPerPartition(@javax.annotation.Nullable Boolean consumerPerPartition) {
+  public Queue consumerPerPartition(@Nullable Boolean consumerPerPartition) {
     this.consumerPerPartition = consumerPerPartition;
     return this;
   }
@@ -304,7 +306,7 @@ public class Queue {
    * Get consumerPerPartition
    * @return consumerPerPartition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONSUMER_PER_PARTITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getConsumerPerPartition() {
@@ -314,12 +316,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_CONSUMER_PER_PARTITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConsumerPerPartition(@javax.annotation.Nullable Boolean consumerPerPartition) {
+  public void setConsumerPerPartition(@Nullable Boolean consumerPerPartition) {
     this.consumerPerPartition = consumerPerPartition;
   }
 
 
-  public Queue packProcessingTimeout(@javax.annotation.Nullable Long packProcessingTimeout) {
+  public Queue packProcessingTimeout(@Nullable Long packProcessingTimeout) {
     this.packProcessingTimeout = packProcessingTimeout;
     return this;
   }
@@ -328,7 +330,7 @@ public class Queue {
    * Get packProcessingTimeout
    * @return packProcessingTimeout
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PACK_PROCESSING_TIMEOUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPackProcessingTimeout() {
@@ -338,12 +340,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_PACK_PROCESSING_TIMEOUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPackProcessingTimeout(@javax.annotation.Nullable Long packProcessingTimeout) {
+  public void setPackProcessingTimeout(@Nullable Long packProcessingTimeout) {
     this.packProcessingTimeout = packProcessingTimeout;
   }
 
 
-  public Queue submitStrategy(@javax.annotation.Nullable SubmitStrategy submitStrategy) {
+  public Queue submitStrategy(@Nullable SubmitStrategy submitStrategy) {
     this.submitStrategy = submitStrategy;
     return this;
   }
@@ -352,7 +354,7 @@ public class Queue {
    * Get submitStrategy
    * @return submitStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUBMIT_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SubmitStrategy getSubmitStrategy() {
@@ -362,12 +364,12 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_SUBMIT_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubmitStrategy(@javax.annotation.Nullable SubmitStrategy submitStrategy) {
+  public void setSubmitStrategy(@Nullable SubmitStrategy submitStrategy) {
     this.submitStrategy = submitStrategy;
   }
 
 
-  public Queue processingStrategy(@javax.annotation.Nullable ProcessingStrategy processingStrategy) {
+  public Queue processingStrategy(@Nullable ProcessingStrategy processingStrategy) {
     this.processingStrategy = processingStrategy;
     return this;
   }
@@ -376,7 +378,7 @@ public class Queue {
    * Get processingStrategy
    * @return processingStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROCESSING_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProcessingStrategy getProcessingStrategy() {
@@ -386,7 +388,7 @@ public class Queue {
 
   @JsonProperty(value = JSON_PROPERTY_PROCESSING_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProcessingStrategy(@javax.annotation.Nullable ProcessingStrategy processingStrategy) {
+  public void setProcessingStrategy(@Nullable ProcessingStrategy processingStrategy) {
     this.processingStrategy = processingStrategy;
   }
 

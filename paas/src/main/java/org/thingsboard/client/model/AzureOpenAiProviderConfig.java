@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   AzureOpenAiProviderConfig.JSON_PROPERTY_SERVICE_VERSION,
   AzureOpenAiProviderConfig.JSON_PROPERTY_API_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AzureOpenAiProviderConfig {
   public static final String JSON_PROPERTY_ENDPOINT = "endpoint";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String endpoint;
 
   public static final String JSON_PROPERTY_SERVICE_VERSION = "serviceVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String serviceVersion;
 
   public static final String JSON_PROPERTY_API_KEY = "apiKey";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String apiKey;
 
   public AzureOpenAiProviderConfig() { 
   }
 
-  public AzureOpenAiProviderConfig endpoint(@javax.annotation.Nonnull String endpoint) {
+  public AzureOpenAiProviderConfig endpoint(@Nonnull String endpoint) {
     this.endpoint = endpoint;
     return this;
   }
@@ -65,7 +68,7 @@ public class AzureOpenAiProviderConfig {
    * Get endpoint
    * @return endpoint
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ENDPOINT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getEndpoint() {
@@ -75,12 +78,12 @@ public class AzureOpenAiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ENDPOINT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEndpoint(@javax.annotation.Nonnull String endpoint) {
+  public void setEndpoint(@Nonnull String endpoint) {
     this.endpoint = endpoint;
   }
 
 
-  public AzureOpenAiProviderConfig serviceVersion(@javax.annotation.Nullable String serviceVersion) {
+  public AzureOpenAiProviderConfig serviceVersion(@Nullable String serviceVersion) {
     this.serviceVersion = serviceVersion;
     return this;
   }
@@ -89,7 +92,7 @@ public class AzureOpenAiProviderConfig {
    * Get serviceVersion
    * @return serviceVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SERVICE_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getServiceVersion() {
@@ -99,12 +102,12 @@ public class AzureOpenAiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SERVICE_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceVersion(@javax.annotation.Nullable String serviceVersion) {
+  public void setServiceVersion(@Nullable String serviceVersion) {
     this.serviceVersion = serviceVersion;
   }
 
 
-  public AzureOpenAiProviderConfig apiKey(@javax.annotation.Nonnull String apiKey) {
+  public AzureOpenAiProviderConfig apiKey(@Nonnull String apiKey) {
     this.apiKey = apiKey;
     return this;
   }
@@ -113,7 +116,7 @@ public class AzureOpenAiProviderConfig {
    * Get apiKey
    * @return apiKey
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getApiKey() {
@@ -123,7 +126,7 @@ public class AzureOpenAiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setApiKey(@javax.annotation.Nonnull String apiKey) {
+  public void setApiKey(@Nonnull String apiKey) {
     this.apiKey = apiKey;
   }
 

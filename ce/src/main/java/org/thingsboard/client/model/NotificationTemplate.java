@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,30 +49,30 @@ import org.thingsboard.client.ApiClient;
   NotificationTemplate.JSON_PROPERTY_NOTIFICATION_TYPE,
   NotificationTemplate.JSON_PROPERTY_CONFIGURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationTemplate {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationTemplateId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_NOTIFICATION_TYPE = "notificationType";
-  @javax.annotation.Nonnull
+  @Nonnull
   private NotificationType notificationType;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nonnull
+  @Nonnull
   private NotificationTemplateConfig _configuration;
 
   public NotificationTemplate() { 
@@ -83,7 +86,7 @@ public class NotificationTemplate {
     this.createdTime = createdTime;
   }
 
-  public NotificationTemplate id(@javax.annotation.Nullable NotificationTemplateId id) {
+  public NotificationTemplate id(@Nullable NotificationTemplateId id) {
     this.id = id;
     return this;
   }
@@ -92,7 +95,7 @@ public class NotificationTemplate {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationTemplateId getId() {
@@ -102,7 +105,7 @@ public class NotificationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable NotificationTemplateId id) {
+  public void setId(@Nullable NotificationTemplateId id) {
     this.id = id;
   }
 
@@ -111,7 +114,7 @@ public class NotificationTemplate {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -121,7 +124,7 @@ public class NotificationTemplate {
 
 
 
-  public NotificationTemplate tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public NotificationTemplate tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -130,7 +133,7 @@ public class NotificationTemplate {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -140,12 +143,12 @@ public class NotificationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public NotificationTemplate name(@javax.annotation.Nonnull String name) {
+  public NotificationTemplate name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -154,7 +157,7 @@ public class NotificationTemplate {
    * Get name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -164,12 +167,12 @@ public class NotificationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public NotificationTemplate notificationType(@javax.annotation.Nonnull NotificationType notificationType) {
+  public NotificationTemplate notificationType(@Nonnull NotificationType notificationType) {
     this.notificationType = notificationType;
     return this;
   }
@@ -178,7 +181,7 @@ public class NotificationTemplate {
    * Get notificationType
    * @return notificationType
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public NotificationType getNotificationType() {
@@ -188,12 +191,12 @@ public class NotificationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNotificationType(@javax.annotation.Nonnull NotificationType notificationType) {
+  public void setNotificationType(@Nonnull NotificationType notificationType) {
     this.notificationType = notificationType;
   }
 
 
-  public NotificationTemplate _configuration(@javax.annotation.Nonnull NotificationTemplateConfig _configuration) {
+  public NotificationTemplate _configuration(@Nonnull NotificationTemplateConfig _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -202,7 +205,7 @@ public class NotificationTemplate {
    * Get _configuration
    * @return _configuration
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public NotificationTemplateConfig getConfiguration() {
@@ -212,7 +215,7 @@ public class NotificationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfiguration(@javax.annotation.Nonnull NotificationTemplateConfig _configuration) {
+  public void setConfiguration(@Nonnull NotificationTemplateConfig _configuration) {
     this._configuration = _configuration;
   }
 

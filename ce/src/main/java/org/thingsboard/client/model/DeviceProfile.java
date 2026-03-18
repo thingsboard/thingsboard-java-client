@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -64,82 +66,82 @@ import org.thingsboard.client.ApiClient;
   DeviceProfile.JSON_PROPERTY_DEFAULT,
   DeviceProfile.JSON_PROPERTY_PROFILE_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceProfile {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileType type;
 
   public static final String JSON_PROPERTY_TRANSPORT_TYPE = "transportType";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceTransportType transportType;
 
   public static final String JSON_PROPERTY_PROVISION_TYPE = "provisionType";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileProvisionType provisionType;
 
   public static final String JSON_PROPERTY_DEFAULT_RULE_CHAIN_ID = "defaultRuleChainId";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainId defaultRuleChainId;
 
   public static final String JSON_PROPERTY_DEFAULT_DASHBOARD_ID = "defaultDashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId defaultDashboardId;
 
   public static final String JSON_PROPERTY_DEFAULT_QUEUE_NAME = "defaultQueueName";
-  @javax.annotation.Nullable
+  @Nullable
   private String defaultQueueName;
 
   public static final String JSON_PROPERTY_PROVISION_DEVICE_KEY = "provisionDeviceKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String provisionDeviceKey;
 
   public static final String JSON_PROPERTY_FIRMWARE_ID = "firmwareId";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageId firmwareId;
 
   public static final String JSON_PROPERTY_SOFTWARE_ID = "softwareId";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageId softwareId;
 
   public static final String JSON_PROPERTY_DEFAULT_EDGE_RULE_CHAIN_ID = "defaultEdgeRuleChainId";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainId defaultEdgeRuleChainId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_DEFAULT = "default";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _default;
 
   public static final String JSON_PROPERTY_PROFILE_DATA = "profileData";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileData profileData;
 
   public DeviceProfile() { 
@@ -155,7 +157,7 @@ public class DeviceProfile {
     this.tenantId = tenantId;
   }
 
-  public DeviceProfile id(@javax.annotation.Nullable DeviceProfileId id) {
+  public DeviceProfile id(@Nullable DeviceProfileId id) {
     this.id = id;
     return this;
   }
@@ -164,7 +166,7 @@ public class DeviceProfile {
    * JSON object with the device profile Id. Specify this field to update the device profile. Referencing non-existing device profile Id will cause error. Omit this field to create new device profile.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileId getId() {
@@ -174,7 +176,7 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable DeviceProfileId id) {
+  public void setId(@Nullable DeviceProfileId id) {
     this.id = id;
   }
 
@@ -183,7 +185,7 @@ public class DeviceProfile {
    * Timestamp of the profile creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -197,7 +199,7 @@ public class DeviceProfile {
    * JSON object with Tenant Id that owns the profile.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -207,7 +209,7 @@ public class DeviceProfile {
 
 
 
-  public DeviceProfile name(@javax.annotation.Nullable String name) {
+  public DeviceProfile name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -216,7 +218,7 @@ public class DeviceProfile {
    * Unique Device Profile Name in scope of Tenant.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -226,12 +228,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public DeviceProfile description(@javax.annotation.Nullable String description) {
+  public DeviceProfile description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -240,7 +242,7 @@ public class DeviceProfile {
    * Device Profile description. 
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -250,12 +252,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
 
-  public DeviceProfile image(@javax.annotation.Nullable String image) {
+  public DeviceProfile image(@Nullable String image) {
     this.image = image;
     return this;
   }
@@ -264,7 +266,7 @@ public class DeviceProfile {
    * Either URL or Base64 data of the icon. Used in the mobile application to visualize set of device profiles in the grid view. 
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -274,12 +276,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImage(@javax.annotation.Nullable String image) {
+  public void setImage(@Nullable String image) {
     this.image = image;
   }
 
 
-  public DeviceProfile type(@javax.annotation.Nullable DeviceProfileType type) {
+  public DeviceProfile type(@Nullable DeviceProfileType type) {
     this.type = type;
     return this;
   }
@@ -288,7 +290,7 @@ public class DeviceProfile {
    * Type of the profile. Always &#39;DEFAULT&#39; for now. Reserved for future use.
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileType getType() {
@@ -298,12 +300,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable DeviceProfileType type) {
+  public void setType(@Nullable DeviceProfileType type) {
     this.type = type;
   }
 
 
-  public DeviceProfile transportType(@javax.annotation.Nullable DeviceTransportType transportType) {
+  public DeviceProfile transportType(@Nullable DeviceTransportType transportType) {
     this.transportType = transportType;
     return this;
   }
@@ -312,7 +314,7 @@ public class DeviceProfile {
    * Type of the transport used to connect the device. Default transport supports HTTP, CoAP and MQTT.
    * @return transportType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceTransportType getTransportType() {
@@ -322,12 +324,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransportType(@javax.annotation.Nullable DeviceTransportType transportType) {
+  public void setTransportType(@Nullable DeviceTransportType transportType) {
     this.transportType = transportType;
   }
 
 
-  public DeviceProfile provisionType(@javax.annotation.Nullable DeviceProfileProvisionType provisionType) {
+  public DeviceProfile provisionType(@Nullable DeviceProfileProvisionType provisionType) {
     this.provisionType = provisionType;
     return this;
   }
@@ -336,7 +338,7 @@ public class DeviceProfile {
    * Provisioning strategy.
    * @return provisionType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROVISION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileProvisionType getProvisionType() {
@@ -346,12 +348,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_PROVISION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProvisionType(@javax.annotation.Nullable DeviceProfileProvisionType provisionType) {
+  public void setProvisionType(@Nullable DeviceProfileProvisionType provisionType) {
     this.provisionType = provisionType;
   }
 
 
-  public DeviceProfile defaultRuleChainId(@javax.annotation.Nullable RuleChainId defaultRuleChainId) {
+  public DeviceProfile defaultRuleChainId(@Nullable RuleChainId defaultRuleChainId) {
     this.defaultRuleChainId = defaultRuleChainId;
     return this;
   }
@@ -360,7 +362,7 @@ public class DeviceProfile {
    * Reference to the rule chain. If present, the specified rule chain will be used to process all messages related to device, including telemetry, attribute updates, etc. Otherwise, the root rule chain will be used to process those messages.
    * @return defaultRuleChainId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainId getDefaultRuleChainId() {
@@ -370,12 +372,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultRuleChainId(@javax.annotation.Nullable RuleChainId defaultRuleChainId) {
+  public void setDefaultRuleChainId(@Nullable RuleChainId defaultRuleChainId) {
     this.defaultRuleChainId = defaultRuleChainId;
   }
 
 
-  public DeviceProfile defaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public DeviceProfile defaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
     return this;
   }
@@ -384,7 +386,7 @@ public class DeviceProfile {
    * Reference to the dashboard. Used in the mobile application to open the default dashboard when user navigates to device details.
    * @return defaultDashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDefaultDashboardId() {
@@ -394,12 +396,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public void setDefaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
   }
 
 
-  public DeviceProfile defaultQueueName(@javax.annotation.Nullable String defaultQueueName) {
+  public DeviceProfile defaultQueueName(@Nullable String defaultQueueName) {
     this.defaultQueueName = defaultQueueName;
     return this;
   }
@@ -408,7 +410,7 @@ public class DeviceProfile {
    * Rule engine queue name. If present, the specified queue will be used to store all unprocessed messages related to device, including telemetry, attribute updates, etc. Otherwise, the &#39;Main&#39; queue will be used to store those messages.
    * @return defaultQueueName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_QUEUE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDefaultQueueName() {
@@ -418,12 +420,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_QUEUE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultQueueName(@javax.annotation.Nullable String defaultQueueName) {
+  public void setDefaultQueueName(@Nullable String defaultQueueName) {
     this.defaultQueueName = defaultQueueName;
   }
 
 
-  public DeviceProfile provisionDeviceKey(@javax.annotation.Nullable String provisionDeviceKey) {
+  public DeviceProfile provisionDeviceKey(@Nullable String provisionDeviceKey) {
     this.provisionDeviceKey = provisionDeviceKey;
     return this;
   }
@@ -432,7 +434,7 @@ public class DeviceProfile {
    * Unique provisioning key used by &#39;Device Provisioning&#39; feature.
    * @return provisionDeviceKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROVISION_DEVICE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getProvisionDeviceKey() {
@@ -442,12 +444,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_PROVISION_DEVICE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProvisionDeviceKey(@javax.annotation.Nullable String provisionDeviceKey) {
+  public void setProvisionDeviceKey(@Nullable String provisionDeviceKey) {
     this.provisionDeviceKey = provisionDeviceKey;
   }
 
 
-  public DeviceProfile firmwareId(@javax.annotation.Nullable OtaPackageId firmwareId) {
+  public DeviceProfile firmwareId(@Nullable OtaPackageId firmwareId) {
     this.firmwareId = firmwareId;
     return this;
   }
@@ -456,7 +458,7 @@ public class DeviceProfile {
    * Reference to the firmware OTA package. If present, the specified package will be used as default device firmware. 
    * @return firmwareId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIRMWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageId getFirmwareId() {
@@ -466,12 +468,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_FIRMWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirmwareId(@javax.annotation.Nullable OtaPackageId firmwareId) {
+  public void setFirmwareId(@Nullable OtaPackageId firmwareId) {
     this.firmwareId = firmwareId;
   }
 
 
-  public DeviceProfile softwareId(@javax.annotation.Nullable OtaPackageId softwareId) {
+  public DeviceProfile softwareId(@Nullable OtaPackageId softwareId) {
     this.softwareId = softwareId;
     return this;
   }
@@ -480,7 +482,7 @@ public class DeviceProfile {
    * Reference to the software OTA package. If present, the specified package will be used as default device software. 
    * @return softwareId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOFTWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageId getSoftwareId() {
@@ -490,12 +492,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_SOFTWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSoftwareId(@javax.annotation.Nullable OtaPackageId softwareId) {
+  public void setSoftwareId(@Nullable OtaPackageId softwareId) {
     this.softwareId = softwareId;
   }
 
 
-  public DeviceProfile defaultEdgeRuleChainId(@javax.annotation.Nullable RuleChainId defaultEdgeRuleChainId) {
+  public DeviceProfile defaultEdgeRuleChainId(@Nullable RuleChainId defaultEdgeRuleChainId) {
     this.defaultEdgeRuleChainId = defaultEdgeRuleChainId;
     return this;
   }
@@ -504,7 +506,7 @@ public class DeviceProfile {
    * Reference to the edge rule chain. If present, the specified edge rule chain will be used on the edge to process all messages related to device, including telemetry, attribute updates, etc. Otherwise, the edge root rule chain will be used to process those messages.
    * @return defaultEdgeRuleChainId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_EDGE_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainId getDefaultEdgeRuleChainId() {
@@ -514,12 +516,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_EDGE_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultEdgeRuleChainId(@javax.annotation.Nullable RuleChainId defaultEdgeRuleChainId) {
+  public void setDefaultEdgeRuleChainId(@Nullable RuleChainId defaultEdgeRuleChainId) {
     this.defaultEdgeRuleChainId = defaultEdgeRuleChainId;
   }
 
 
-  public DeviceProfile version(@javax.annotation.Nullable Long version) {
+  public DeviceProfile version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -528,7 +530,7 @@ public class DeviceProfile {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -538,12 +540,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public DeviceProfile _default(@javax.annotation.Nullable Boolean _default) {
+  public DeviceProfile _default(@Nullable Boolean _default) {
     this._default = _default;
     return this;
   }
@@ -552,7 +554,7 @@ public class DeviceProfile {
    * Used to mark the default profile. Default profile is used when the device profile is not specified during device creation.
    * @return _default
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDefault() {
@@ -562,12 +564,12 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefault(@javax.annotation.Nullable Boolean _default) {
+  public void setDefault(@Nullable Boolean _default) {
     this._default = _default;
   }
 
 
-  public DeviceProfile profileData(@javax.annotation.Nullable DeviceProfileData profileData) {
+  public DeviceProfile profileData(@Nullable DeviceProfileData profileData) {
     this.profileData = profileData;
     return this;
   }
@@ -576,7 +578,7 @@ public class DeviceProfile {
    * Complex JSON object that includes addition device profile configuration (transport, alarm rules, etc).
    * @return profileData
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileData getProfileData() {
@@ -586,7 +588,7 @@ public class DeviceProfile {
 
   @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfileData(@javax.annotation.Nullable DeviceProfileData profileData) {
+  public void setProfileData(@Nullable DeviceProfileData profileData) {
     this.profileData = profileData;
   }
 

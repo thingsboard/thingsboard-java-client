@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,48 +49,48 @@ import org.thingsboard.client.ApiClient;
   Discount.JSON_PROPERTY_END_DATE,
   Discount.JSON_PROPERTY_PACKAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Discount {
   public static final String JSON_PROPERTY_COUPON_CODE = "couponCode";
-  @javax.annotation.Nullable
+  @Nullable
   private String couponCode;
 
   public static final String JSON_PROPERTY_COUPON_VALID = "couponValid";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean couponValid;
 
   public static final String JSON_PROPERTY_AMOUNT_OFF = "amountOff";
-  @javax.annotation.Nullable
+  @Nullable
   private Long amountOff;
 
   public static final String JSON_PROPERTY_PERCENT_OFF = "percentOff";
-  @javax.annotation.Nullable
+  @Nullable
   private Double percentOff;
 
   public static final String JSON_PROPERTY_COUPON_ID = "couponId";
-  @javax.annotation.Nullable
+  @Nullable
   private CouponId couponId;
 
   public static final String JSON_PROPERTY_DURATION = "duration";
-  @javax.annotation.Nullable
+  @Nullable
   private CouponDuration duration;
 
   public static final String JSON_PROPERTY_DURATION_IN_MONTHS = "durationInMonths";
-  @javax.annotation.Nullable
+  @Nullable
   private Long durationInMonths;
 
   public static final String JSON_PROPERTY_END_DATE = "endDate";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endDate;
 
   public static final String JSON_PROPERTY_PACKAGE = "package";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _package;
 
   public Discount() { 
   }
 
-  public Discount couponCode(@javax.annotation.Nullable String couponCode) {
+  public Discount couponCode(@Nullable String couponCode) {
     this.couponCode = couponCode;
     return this;
   }
@@ -97,7 +99,7 @@ public class Discount {
    * Get couponCode
    * @return couponCode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUPON_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCouponCode() {
@@ -107,12 +109,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_COUPON_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCouponCode(@javax.annotation.Nullable String couponCode) {
+  public void setCouponCode(@Nullable String couponCode) {
     this.couponCode = couponCode;
   }
 
 
-  public Discount couponValid(@javax.annotation.Nullable Boolean couponValid) {
+  public Discount couponValid(@Nullable Boolean couponValid) {
     this.couponValid = couponValid;
     return this;
   }
@@ -121,7 +123,7 @@ public class Discount {
    * Get couponValid
    * @return couponValid
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUPON_VALID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getCouponValid() {
@@ -131,12 +133,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_COUPON_VALID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCouponValid(@javax.annotation.Nullable Boolean couponValid) {
+  public void setCouponValid(@Nullable Boolean couponValid) {
     this.couponValid = couponValid;
   }
 
 
-  public Discount amountOff(@javax.annotation.Nullable Long amountOff) {
+  public Discount amountOff(@Nullable Long amountOff) {
     this.amountOff = amountOff;
     return this;
   }
@@ -145,7 +147,7 @@ public class Discount {
    * Get amountOff
    * @return amountOff
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AMOUNT_OFF, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAmountOff() {
@@ -155,12 +157,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_AMOUNT_OFF, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAmountOff(@javax.annotation.Nullable Long amountOff) {
+  public void setAmountOff(@Nullable Long amountOff) {
     this.amountOff = amountOff;
   }
 
 
-  public Discount percentOff(@javax.annotation.Nullable Double percentOff) {
+  public Discount percentOff(@Nullable Double percentOff) {
     this.percentOff = percentOff;
     return this;
   }
@@ -169,7 +171,7 @@ public class Discount {
    * Get percentOff
    * @return percentOff
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PERCENT_OFF, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getPercentOff() {
@@ -179,12 +181,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_PERCENT_OFF, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPercentOff(@javax.annotation.Nullable Double percentOff) {
+  public void setPercentOff(@Nullable Double percentOff) {
     this.percentOff = percentOff;
   }
 
 
-  public Discount couponId(@javax.annotation.Nullable CouponId couponId) {
+  public Discount couponId(@Nullable CouponId couponId) {
     this.couponId = couponId;
     return this;
   }
@@ -193,7 +195,7 @@ public class Discount {
    * Get couponId
    * @return couponId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUPON_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CouponId getCouponId() {
@@ -203,12 +205,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_COUPON_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCouponId(@javax.annotation.Nullable CouponId couponId) {
+  public void setCouponId(@Nullable CouponId couponId) {
     this.couponId = couponId;
   }
 
 
-  public Discount duration(@javax.annotation.Nullable CouponDuration duration) {
+  public Discount duration(@Nullable CouponDuration duration) {
     this.duration = duration;
     return this;
   }
@@ -217,7 +219,7 @@ public class Discount {
    * Get duration
    * @return duration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CouponDuration getDuration() {
@@ -227,12 +229,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDuration(@javax.annotation.Nullable CouponDuration duration) {
+  public void setDuration(@Nullable CouponDuration duration) {
     this.duration = duration;
   }
 
 
-  public Discount durationInMonths(@javax.annotation.Nullable Long durationInMonths) {
+  public Discount durationInMonths(@Nullable Long durationInMonths) {
     this.durationInMonths = durationInMonths;
     return this;
   }
@@ -241,7 +243,7 @@ public class Discount {
    * Get durationInMonths
    * @return durationInMonths
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DURATION_IN_MONTHS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDurationInMonths() {
@@ -251,12 +253,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_DURATION_IN_MONTHS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDurationInMonths(@javax.annotation.Nullable Long durationInMonths) {
+  public void setDurationInMonths(@Nullable Long durationInMonths) {
     this.durationInMonths = durationInMonths;
   }
 
 
-  public Discount endDate(@javax.annotation.Nullable Long endDate) {
+  public Discount endDate(@Nullable Long endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -265,7 +267,7 @@ public class Discount {
    * Get endDate
    * @return endDate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_DATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndDate() {
@@ -275,12 +277,12 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_END_DATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndDate(@javax.annotation.Nullable Long endDate) {
+  public void setEndDate(@Nullable Long endDate) {
     this.endDate = endDate;
   }
 
 
-  public Discount _package(@javax.annotation.Nullable Boolean _package) {
+  public Discount _package(@Nullable Boolean _package) {
     this._package = _package;
     return this;
   }
@@ -289,7 +291,7 @@ public class Discount {
    * Get _package
    * @return _package
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PACKAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPackage() {
@@ -299,7 +301,7 @@ public class Discount {
 
   @JsonProperty(value = JSON_PROPERTY_PACKAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPackage(@javax.annotation.Nullable Boolean _package) {
+  public void setPackage(@Nullable Boolean _package) {
     this._package = _package;
   }
 

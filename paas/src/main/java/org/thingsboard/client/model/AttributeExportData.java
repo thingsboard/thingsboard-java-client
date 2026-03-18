@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,40 +45,40 @@ import org.thingsboard.client.ApiClient;
   AttributeExportData.JSON_PROPERTY_DOUBLE_VALUE,
   AttributeExportData.JSON_PROPERTY_JSON_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AttributeExportData {
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public static final String JSON_PROPERTY_LAST_UPDATE_TS = "lastUpdateTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long lastUpdateTs;
 
   public static final String JSON_PROPERTY_BOOLEAN_VALUE = "booleanValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean booleanValue;
 
   public static final String JSON_PROPERTY_STR_VALUE = "strValue";
-  @javax.annotation.Nullable
+  @Nullable
   private String strValue;
 
   public static final String JSON_PROPERTY_LONG_VALUE = "longValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Long longValue;
 
   public static final String JSON_PROPERTY_DOUBLE_VALUE = "doubleValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Double doubleValue;
 
   public static final String JSON_PROPERTY_JSON_VALUE = "jsonValue";
-  @javax.annotation.Nullable
+  @Nullable
   private String jsonValue;
 
   public AttributeExportData() { 
   }
 
-  public AttributeExportData key(@javax.annotation.Nullable String key) {
+  public AttributeExportData key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -85,7 +87,7 @@ public class AttributeExportData {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -95,12 +97,12 @@ public class AttributeExportData {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
 
-  public AttributeExportData lastUpdateTs(@javax.annotation.Nullable Long lastUpdateTs) {
+  public AttributeExportData lastUpdateTs(@Nullable Long lastUpdateTs) {
     this.lastUpdateTs = lastUpdateTs;
     return this;
   }
@@ -109,7 +111,7 @@ public class AttributeExportData {
    * Get lastUpdateTs
    * @return lastUpdateTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_UPDATE_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getLastUpdateTs() {
@@ -119,12 +121,12 @@ public class AttributeExportData {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_UPDATE_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastUpdateTs(@javax.annotation.Nullable Long lastUpdateTs) {
+  public void setLastUpdateTs(@Nullable Long lastUpdateTs) {
     this.lastUpdateTs = lastUpdateTs;
   }
 
 
-  public AttributeExportData booleanValue(@javax.annotation.Nullable Boolean booleanValue) {
+  public AttributeExportData booleanValue(@Nullable Boolean booleanValue) {
     this.booleanValue = booleanValue;
     return this;
   }
@@ -133,7 +135,7 @@ public class AttributeExportData {
    * Get booleanValue
    * @return booleanValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BOOLEAN_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getBooleanValue() {
@@ -143,12 +145,12 @@ public class AttributeExportData {
 
   @JsonProperty(value = JSON_PROPERTY_BOOLEAN_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBooleanValue(@javax.annotation.Nullable Boolean booleanValue) {
+  public void setBooleanValue(@Nullable Boolean booleanValue) {
     this.booleanValue = booleanValue;
   }
 
 
-  public AttributeExportData strValue(@javax.annotation.Nullable String strValue) {
+  public AttributeExportData strValue(@Nullable String strValue) {
     this.strValue = strValue;
     return this;
   }
@@ -157,7 +159,7 @@ public class AttributeExportData {
    * Get strValue
    * @return strValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STR_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getStrValue() {
@@ -167,12 +169,12 @@ public class AttributeExportData {
 
   @JsonProperty(value = JSON_PROPERTY_STR_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStrValue(@javax.annotation.Nullable String strValue) {
+  public void setStrValue(@Nullable String strValue) {
     this.strValue = strValue;
   }
 
 
-  public AttributeExportData longValue(@javax.annotation.Nullable Long longValue) {
+  public AttributeExportData longValue(@Nullable Long longValue) {
     this.longValue = longValue;
     return this;
   }
@@ -181,7 +183,7 @@ public class AttributeExportData {
    * Get longValue
    * @return longValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getLongValue() {
@@ -191,12 +193,12 @@ public class AttributeExportData {
 
   @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLongValue(@javax.annotation.Nullable Long longValue) {
+  public void setLongValue(@Nullable Long longValue) {
     this.longValue = longValue;
   }
 
 
-  public AttributeExportData doubleValue(@javax.annotation.Nullable Double doubleValue) {
+  public AttributeExportData doubleValue(@Nullable Double doubleValue) {
     this.doubleValue = doubleValue;
     return this;
   }
@@ -205,7 +207,7 @@ public class AttributeExportData {
    * Get doubleValue
    * @return doubleValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getDoubleValue() {
@@ -215,12 +217,12 @@ public class AttributeExportData {
 
   @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDoubleValue(@javax.annotation.Nullable Double doubleValue) {
+  public void setDoubleValue(@Nullable Double doubleValue) {
     this.doubleValue = doubleValue;
   }
 
 
-  public AttributeExportData jsonValue(@javax.annotation.Nullable String jsonValue) {
+  public AttributeExportData jsonValue(@Nullable String jsonValue) {
     this.jsonValue = jsonValue;
     return this;
   }
@@ -229,7 +231,7 @@ public class AttributeExportData {
    * Get jsonValue
    * @return jsonValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_JSON_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getJsonValue() {
@@ -239,7 +241,7 @@ public class AttributeExportData {
 
   @JsonProperty(value = JSON_PROPERTY_JSON_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJsonValue(@javax.annotation.Nullable String jsonValue) {
+  public void setJsonValue(@Nullable String jsonValue) {
     this.jsonValue = jsonValue;
   }
 

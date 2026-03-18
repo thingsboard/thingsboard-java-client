@@ -15,9 +15,10 @@
  */
 package org.thingsboard.client;
 
+import javax.annotation.Generated;
 import java.net.http.HttpHeaders;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ApiException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 

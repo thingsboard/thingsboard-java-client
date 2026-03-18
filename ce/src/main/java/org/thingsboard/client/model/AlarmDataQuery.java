@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,36 +50,36 @@ import org.thingsboard.client.ApiClient;
   AlarmDataQuery.JSON_PROPERTY_LATEST_VALUES,
   AlarmDataQuery.JSON_PROPERTY_ALARM_FIELDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmDataQuery {
   public static final String JSON_PROPERTY_ENTITY_FILTER = "entityFilter";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityFilter entityFilter;
 
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
-  @javax.annotation.Nullable
+  @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PAGE_LINK = "pageLink";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmDataPageLink pageLink;
 
   public static final String JSON_PROPERTY_ENTITY_FIELDS = "entityFields";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityKey> entityFields = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LATEST_VALUES = "latestValues";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityKey> latestValues = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ALARM_FIELDS = "alarmFields";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityKey> alarmFields = new ArrayList<>();
 
   public AlarmDataQuery() { 
   }
 
-  public AlarmDataQuery entityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public AlarmDataQuery entityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
     return this;
   }
@@ -86,7 +88,7 @@ public class AlarmDataQuery {
    * Get entityFilter
    * @return entityFilter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityFilter getEntityFilter() {
@@ -96,12 +98,12 @@ public class AlarmDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public void setEntityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
   }
 
 
-  public AlarmDataQuery keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public AlarmDataQuery keyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
     return this;
   }
@@ -118,7 +120,7 @@ public class AlarmDataQuery {
    * Get keyFilters
    * @return keyFilters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<KeyFilter> getKeyFilters() {
@@ -128,12 +130,12 @@ public class AlarmDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
   }
 
 
-  public AlarmDataQuery pageLink(@javax.annotation.Nullable AlarmDataPageLink pageLink) {
+  public AlarmDataQuery pageLink(@Nullable AlarmDataPageLink pageLink) {
     this.pageLink = pageLink;
     return this;
   }
@@ -142,7 +144,7 @@ public class AlarmDataQuery {
    * Get pageLink
    * @return pageLink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGE_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmDataPageLink getPageLink() {
@@ -152,12 +154,12 @@ public class AlarmDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_PAGE_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageLink(@javax.annotation.Nullable AlarmDataPageLink pageLink) {
+  public void setPageLink(@Nullable AlarmDataPageLink pageLink) {
     this.pageLink = pageLink;
   }
 
 
-  public AlarmDataQuery entityFields(@javax.annotation.Nullable List<EntityKey> entityFields) {
+  public AlarmDataQuery entityFields(@Nullable List<EntityKey> entityFields) {
     this.entityFields = entityFields;
     return this;
   }
@@ -174,7 +176,7 @@ public class AlarmDataQuery {
    * Get entityFields
    * @return entityFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityKey> getEntityFields() {
@@ -184,12 +186,12 @@ public class AlarmDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityFields(@javax.annotation.Nullable List<EntityKey> entityFields) {
+  public void setEntityFields(@Nullable List<EntityKey> entityFields) {
     this.entityFields = entityFields;
   }
 
 
-  public AlarmDataQuery latestValues(@javax.annotation.Nullable List<EntityKey> latestValues) {
+  public AlarmDataQuery latestValues(@Nullable List<EntityKey> latestValues) {
     this.latestValues = latestValues;
     return this;
   }
@@ -206,7 +208,7 @@ public class AlarmDataQuery {
    * Get latestValues
    * @return latestValues
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_VALUES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityKey> getLatestValues() {
@@ -216,12 +218,12 @@ public class AlarmDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_VALUES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestValues(@javax.annotation.Nullable List<EntityKey> latestValues) {
+  public void setLatestValues(@Nullable List<EntityKey> latestValues) {
     this.latestValues = latestValues;
   }
 
 
-  public AlarmDataQuery alarmFields(@javax.annotation.Nullable List<EntityKey> alarmFields) {
+  public AlarmDataQuery alarmFields(@Nullable List<EntityKey> alarmFields) {
     this.alarmFields = alarmFields;
     return this;
   }
@@ -238,7 +240,7 @@ public class AlarmDataQuery {
    * Get alarmFields
    * @return alarmFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARM_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityKey> getAlarmFields() {
@@ -248,7 +250,7 @@ public class AlarmDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ALARM_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarmFields(@javax.annotation.Nullable List<EntityKey> alarmFields) {
+  public void setAlarmFields(@Nullable List<EntityKey> alarmFields) {
     this.alarmFields = alarmFields;
   }
 

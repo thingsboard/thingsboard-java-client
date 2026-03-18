@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,22 +45,22 @@ import org.thingsboard.client.ApiClient;
   PageDataMobileApp.JSON_PROPERTY_TOTAL_ELEMENTS,
   PageDataMobileApp.JSON_PROPERTY_HAS_NEXT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PageDataMobileApp {
   public static final String JSON_PROPERTY_DATA = "data";
-  @javax.annotation.Nullable
+  @Nullable
   private List<MobileApp> data = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTAL_PAGES = "totalPages";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer totalPages;
 
   public static final String JSON_PROPERTY_TOTAL_ELEMENTS = "totalElements";
-  @javax.annotation.Nullable
+  @Nullable
   private Long totalElements;
 
   public static final String JSON_PROPERTY_HAS_NEXT = "hasNext";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasNext;
 
   public PageDataMobileApp() { 
@@ -76,7 +78,7 @@ public class PageDataMobileApp {
     this.hasNext = hasNext;
   }
 
-  public PageDataMobileApp data(@javax.annotation.Nullable List<MobileApp> data) {
+  public PageDataMobileApp data(@Nullable List<MobileApp> data) {
     this.data = data;
     return this;
   }
@@ -93,7 +95,7 @@ public class PageDataMobileApp {
    * Array of the entities
    * @return data
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<MobileApp> getData() {
@@ -103,7 +105,7 @@ public class PageDataMobileApp {
 
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(@javax.annotation.Nullable List<MobileApp> data) {
+  public void setData(@Nullable List<MobileApp> data) {
     this.data = data;
   }
 
@@ -112,7 +114,7 @@ public class PageDataMobileApp {
    * Total number of available pages. Calculated based on the &#39;pageSize&#39; request parameter and total number of entities that match search criteria
    * @return totalPages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTotalPages() {
@@ -126,7 +128,7 @@ public class PageDataMobileApp {
    * Total number of elements in all available pages
    * @return totalElements
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_ELEMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTotalElements() {
@@ -140,7 +142,7 @@ public class PageDataMobileApp {
    * &#39;false&#39; value indicates the end of the result set
    * @return hasNext
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_NEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasNext() {

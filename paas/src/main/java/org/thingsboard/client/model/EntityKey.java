@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   EntityKey.JSON_PROPERTY_TYPE,
   EntityKey.JSON_PROPERTY_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityKey {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityKeyType type;
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public EntityKey() { 
   }
 
-  public EntityKey type(@javax.annotation.Nullable EntityKeyType type) {
+  public EntityKey type(@Nullable EntityKeyType type) {
     this.type = type;
     return this;
   }
@@ -61,7 +63,7 @@ public class EntityKey {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityKeyType getType() {
@@ -71,12 +73,12 @@ public class EntityKey {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable EntityKeyType type) {
+  public void setType(@Nullable EntityKeyType type) {
     this.type = type;
   }
 
 
-  public EntityKey key(@javax.annotation.Nullable String key) {
+  public EntityKey key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -85,7 +87,7 @@ public class EntityKey {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -95,7 +97,7 @@ public class EntityKey {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   DefaultDashboardParams.JSON_PROPERTY_ID,
   DefaultDashboardParams.JSON_PROPERTY_FULLSCREEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DefaultDashboardParams {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_FULLSCREEN = "fullscreen";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean fullscreen;
 
   public DefaultDashboardParams() { 
   }
 
-  public DefaultDashboardParams id(@javax.annotation.Nullable String id) {
+  public DefaultDashboardParams id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -60,7 +62,7 @@ public class DefaultDashboardParams {
    * Default dashboard Id to assign for the new user.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -70,12 +72,12 @@ public class DefaultDashboardParams {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public DefaultDashboardParams fullscreen(@javax.annotation.Nullable Boolean fullscreen) {
+  public DefaultDashboardParams fullscreen(@Nullable Boolean fullscreen) {
     this.fullscreen = fullscreen;
     return this;
   }
@@ -84,7 +86,7 @@ public class DefaultDashboardParams {
    * Set default dashboard to full screen mode.
    * @return fullscreen
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FULLSCREEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getFullscreen() {
@@ -94,7 +96,7 @@ public class DefaultDashboardParams {
 
   @JsonProperty(value = JSON_PROPERTY_FULLSCREEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFullscreen(@javax.annotation.Nullable Boolean fullscreen) {
+  public void setFullscreen(@Nullable Boolean fullscreen) {
     this.fullscreen = fullscreen;
   }
 

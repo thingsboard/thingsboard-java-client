@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -53,52 +55,52 @@ import org.thingsboard.client.ApiClient;
   AlarmCountQuery.JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS,
   AlarmCountQuery.JSON_PROPERTY_ASSIGNEE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmCountQuery {
   public static final String JSON_PROPERTY_ENTITY_FILTER = "entityFilter";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityFilter entityFilter;
 
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
-  @javax.annotation.Nullable
+  @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
 
   public static final String JSON_PROPERTY_START_TS = "startTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long startTs;
 
   public static final String JSON_PROPERTY_END_TS = "endTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endTs;
 
   public static final String JSON_PROPERTY_TIME_WINDOW = "timeWindow";
-  @javax.annotation.Nullable
+  @Nullable
   private Long timeWindow;
 
   public static final String JSON_PROPERTY_TYPE_LIST = "typeList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> typeList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STATUS_LIST = "statusList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<AlarmSearchStatus> statusList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SEVERITY_LIST = "severityList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<AlarmSeverity> severityList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS = "searchPropagatedAlarms";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean searchPropagatedAlarms;
 
   public static final String JSON_PROPERTY_ASSIGNEE_ID = "assigneeId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId assigneeId;
 
   public AlarmCountQuery() { 
   }
 
-  public AlarmCountQuery entityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public AlarmCountQuery entityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
     return this;
   }
@@ -107,7 +109,7 @@ public class AlarmCountQuery {
    * Get entityFilter
    * @return entityFilter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityFilter getEntityFilter() {
@@ -117,12 +119,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public void setEntityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
   }
 
 
-  public AlarmCountQuery keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public AlarmCountQuery keyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
     return this;
   }
@@ -139,7 +141,7 @@ public class AlarmCountQuery {
    * Get keyFilters
    * @return keyFilters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<KeyFilter> getKeyFilters() {
@@ -149,12 +151,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
   }
 
 
-  public AlarmCountQuery startTs(@javax.annotation.Nullable Long startTs) {
+  public AlarmCountQuery startTs(@Nullable Long startTs) {
     this.startTs = startTs;
     return this;
   }
@@ -163,7 +165,7 @@ public class AlarmCountQuery {
    * Get startTs
    * @return startTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStartTs() {
@@ -173,12 +175,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartTs(@javax.annotation.Nullable Long startTs) {
+  public void setStartTs(@Nullable Long startTs) {
     this.startTs = startTs;
   }
 
 
-  public AlarmCountQuery endTs(@javax.annotation.Nullable Long endTs) {
+  public AlarmCountQuery endTs(@Nullable Long endTs) {
     this.endTs = endTs;
     return this;
   }
@@ -187,7 +189,7 @@ public class AlarmCountQuery {
    * Get endTs
    * @return endTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndTs() {
@@ -197,12 +199,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndTs(@javax.annotation.Nullable Long endTs) {
+  public void setEndTs(@Nullable Long endTs) {
     this.endTs = endTs;
   }
 
 
-  public AlarmCountQuery timeWindow(@javax.annotation.Nullable Long timeWindow) {
+  public AlarmCountQuery timeWindow(@Nullable Long timeWindow) {
     this.timeWindow = timeWindow;
     return this;
   }
@@ -211,7 +213,7 @@ public class AlarmCountQuery {
    * Get timeWindow
    * @return timeWindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIME_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTimeWindow() {
@@ -221,12 +223,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_TIME_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimeWindow(@javax.annotation.Nullable Long timeWindow) {
+  public void setTimeWindow(@Nullable Long timeWindow) {
     this.timeWindow = timeWindow;
   }
 
 
-  public AlarmCountQuery typeList(@javax.annotation.Nullable List<String> typeList) {
+  public AlarmCountQuery typeList(@Nullable List<String> typeList) {
     this.typeList = typeList;
     return this;
   }
@@ -243,7 +245,7 @@ public class AlarmCountQuery {
    * Get typeList
    * @return typeList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTypeList() {
@@ -253,12 +255,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTypeList(@javax.annotation.Nullable List<String> typeList) {
+  public void setTypeList(@Nullable List<String> typeList) {
     this.typeList = typeList;
   }
 
 
-  public AlarmCountQuery statusList(@javax.annotation.Nullable List<AlarmSearchStatus> statusList) {
+  public AlarmCountQuery statusList(@Nullable List<AlarmSearchStatus> statusList) {
     this.statusList = statusList;
     return this;
   }
@@ -275,7 +277,7 @@ public class AlarmCountQuery {
    * Get statusList
    * @return statusList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AlarmSearchStatus> getStatusList() {
@@ -285,12 +287,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatusList(@javax.annotation.Nullable List<AlarmSearchStatus> statusList) {
+  public void setStatusList(@Nullable List<AlarmSearchStatus> statusList) {
     this.statusList = statusList;
   }
 
 
-  public AlarmCountQuery severityList(@javax.annotation.Nullable List<AlarmSeverity> severityList) {
+  public AlarmCountQuery severityList(@Nullable List<AlarmSeverity> severityList) {
     this.severityList = severityList;
     return this;
   }
@@ -307,7 +309,7 @@ public class AlarmCountQuery {
    * Get severityList
    * @return severityList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEVERITY_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AlarmSeverity> getSeverityList() {
@@ -317,12 +319,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_SEVERITY_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeverityList(@javax.annotation.Nullable List<AlarmSeverity> severityList) {
+  public void setSeverityList(@Nullable List<AlarmSeverity> severityList) {
     this.severityList = severityList;
   }
 
 
-  public AlarmCountQuery searchPropagatedAlarms(@javax.annotation.Nullable Boolean searchPropagatedAlarms) {
+  public AlarmCountQuery searchPropagatedAlarms(@Nullable Boolean searchPropagatedAlarms) {
     this.searchPropagatedAlarms = searchPropagatedAlarms;
     return this;
   }
@@ -331,7 +333,7 @@ public class AlarmCountQuery {
    * Get searchPropagatedAlarms
    * @return searchPropagatedAlarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSearchPropagatedAlarms() {
@@ -341,12 +343,12 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSearchPropagatedAlarms(@javax.annotation.Nullable Boolean searchPropagatedAlarms) {
+  public void setSearchPropagatedAlarms(@Nullable Boolean searchPropagatedAlarms) {
     this.searchPropagatedAlarms = searchPropagatedAlarms;
   }
 
 
-  public AlarmCountQuery assigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public AlarmCountQuery assigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
     return this;
   }
@@ -355,7 +357,7 @@ public class AlarmCountQuery {
    * Get assigneeId
    * @return assigneeId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getAssigneeId() {
@@ -365,7 +367,7 @@ public class AlarmCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public void setAssigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
   }
 

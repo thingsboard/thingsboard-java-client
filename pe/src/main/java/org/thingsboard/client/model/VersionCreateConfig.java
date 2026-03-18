@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,36 +44,36 @@ import org.thingsboard.client.ApiClient;
   VersionCreateConfig.JSON_PROPERTY_SAVE_PERMISSIONS,
   VersionCreateConfig.JSON_PROPERTY_SAVE_GROUP_ENTITIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionCreateConfig {
   public static final String JSON_PROPERTY_SAVE_RELATIONS = "saveRelations";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveRelations;
 
   public static final String JSON_PROPERTY_SAVE_ATTRIBUTES = "saveAttributes";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveAttributes;
 
   public static final String JSON_PROPERTY_SAVE_CREDENTIALS = "saveCredentials";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveCredentials;
 
   public static final String JSON_PROPERTY_SAVE_CALCULATED_FIELDS = "saveCalculatedFields";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveCalculatedFields;
 
   public static final String JSON_PROPERTY_SAVE_PERMISSIONS = "savePermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean savePermissions;
 
   public static final String JSON_PROPERTY_SAVE_GROUP_ENTITIES = "saveGroupEntities";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveGroupEntities;
 
   public VersionCreateConfig() { 
   }
 
-  public VersionCreateConfig saveRelations(@javax.annotation.Nullable Boolean saveRelations) {
+  public VersionCreateConfig saveRelations(@Nullable Boolean saveRelations) {
     this.saveRelations = saveRelations;
     return this;
   }
@@ -80,7 +82,7 @@ public class VersionCreateConfig {
    * Get saveRelations
    * @return saveRelations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveRelations() {
@@ -90,12 +92,12 @@ public class VersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveRelations(@javax.annotation.Nullable Boolean saveRelations) {
+  public void setSaveRelations(@Nullable Boolean saveRelations) {
     this.saveRelations = saveRelations;
   }
 
 
-  public VersionCreateConfig saveAttributes(@javax.annotation.Nullable Boolean saveAttributes) {
+  public VersionCreateConfig saveAttributes(@Nullable Boolean saveAttributes) {
     this.saveAttributes = saveAttributes;
     return this;
   }
@@ -104,7 +106,7 @@ public class VersionCreateConfig {
    * Get saveAttributes
    * @return saveAttributes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveAttributes() {
@@ -114,12 +116,12 @@ public class VersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveAttributes(@javax.annotation.Nullable Boolean saveAttributes) {
+  public void setSaveAttributes(@Nullable Boolean saveAttributes) {
     this.saveAttributes = saveAttributes;
   }
 
 
-  public VersionCreateConfig saveCredentials(@javax.annotation.Nullable Boolean saveCredentials) {
+  public VersionCreateConfig saveCredentials(@Nullable Boolean saveCredentials) {
     this.saveCredentials = saveCredentials;
     return this;
   }
@@ -128,7 +130,7 @@ public class VersionCreateConfig {
    * Get saveCredentials
    * @return saveCredentials
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveCredentials() {
@@ -138,12 +140,12 @@ public class VersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveCredentials(@javax.annotation.Nullable Boolean saveCredentials) {
+  public void setSaveCredentials(@Nullable Boolean saveCredentials) {
     this.saveCredentials = saveCredentials;
   }
 
 
-  public VersionCreateConfig saveCalculatedFields(@javax.annotation.Nullable Boolean saveCalculatedFields) {
+  public VersionCreateConfig saveCalculatedFields(@Nullable Boolean saveCalculatedFields) {
     this.saveCalculatedFields = saveCalculatedFields;
     return this;
   }
@@ -152,7 +154,7 @@ public class VersionCreateConfig {
    * Get saveCalculatedFields
    * @return saveCalculatedFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveCalculatedFields() {
@@ -162,12 +164,12 @@ public class VersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveCalculatedFields(@javax.annotation.Nullable Boolean saveCalculatedFields) {
+  public void setSaveCalculatedFields(@Nullable Boolean saveCalculatedFields) {
     this.saveCalculatedFields = saveCalculatedFields;
   }
 
 
-  public VersionCreateConfig savePermissions(@javax.annotation.Nullable Boolean savePermissions) {
+  public VersionCreateConfig savePermissions(@Nullable Boolean savePermissions) {
     this.savePermissions = savePermissions;
     return this;
   }
@@ -176,7 +178,7 @@ public class VersionCreateConfig {
    * Get savePermissions
    * @return savePermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSavePermissions() {
@@ -186,12 +188,12 @@ public class VersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSavePermissions(@javax.annotation.Nullable Boolean savePermissions) {
+  public void setSavePermissions(@Nullable Boolean savePermissions) {
     this.savePermissions = savePermissions;
   }
 
 
-  public VersionCreateConfig saveGroupEntities(@javax.annotation.Nullable Boolean saveGroupEntities) {
+  public VersionCreateConfig saveGroupEntities(@Nullable Boolean saveGroupEntities) {
     this.saveGroupEntities = saveGroupEntities;
     return this;
   }
@@ -200,7 +202,7 @@ public class VersionCreateConfig {
    * Get saveGroupEntities
    * @return saveGroupEntities
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_GROUP_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveGroupEntities() {
@@ -210,7 +212,7 @@ public class VersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_GROUP_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveGroupEntities(@javax.annotation.Nullable Boolean saveGroupEntities) {
+  public void setSaveGroupEntities(@Nullable Boolean saveGroupEntities) {
     this.saveGroupEntities = saveGroupEntities;
   }
 

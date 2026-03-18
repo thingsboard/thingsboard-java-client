@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -59,82 +62,82 @@ import org.thingsboard.client.ApiClient;
   Customer.JSON_PROPERTY_NAME,
   Customer.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Customer {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
-  @javax.annotation.Nullable
+  @Nullable
   private String country;
 
   public static final String JSON_PROPERTY_STATE = "state";
-  @javax.annotation.Nullable
+  @Nullable
   private String state;
 
   public static final String JSON_PROPERTY_CITY = "city";
-  @javax.annotation.Nullable
+  @Nullable
   private String city;
 
   public static final String JSON_PROPERTY_ADDRESS = "address";
-  @javax.annotation.Nullable
+  @Nullable
   private String address;
 
   public static final String JSON_PROPERTY_ADDRESS2 = "address2";
-  @javax.annotation.Nullable
+  @Nullable
   private String address2;
 
   public static final String JSON_PROPERTY_ZIP = "zip";
-  @javax.annotation.Nullable
+  @Nullable
   private String zip;
 
   public static final String JSON_PROPERTY_PHONE = "phone";
-  @javax.annotation.Nullable
+  @Nullable
   private String phone;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String email;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String title;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_PARENT_CUSTOMER_ID = "parentCustomerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId parentCustomerId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_CUSTOM_MENU_ID = "customMenuId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomMenuId customMenuId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public Customer() { 
@@ -154,7 +157,7 @@ public class Customer {
     this.ownerId = ownerId;
   }
 
-  public Customer id(@javax.annotation.Nullable CustomerId id) {
+  public Customer id(@Nullable CustomerId id) {
     this.id = id;
     return this;
   }
@@ -163,7 +166,7 @@ public class Customer {
    * JSON object with the customer Id. Specify this field to update the customer. Referencing non-existing customer Id will cause error. Omit this field to create new customer.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getId() {
@@ -173,7 +176,7 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable CustomerId id) {
+  public void setId(@Nullable CustomerId id) {
     this.id = id;
   }
 
@@ -182,7 +185,7 @@ public class Customer {
    * Timestamp of the customer creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -192,7 +195,7 @@ public class Customer {
 
 
 
-  public Customer additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Customer additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -201,7 +204,7 @@ public class Customer {
    * Additional parameters of the customer. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar), &#39;isPublic&#39; (boolean, whether this is a public customer).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -211,12 +214,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public Customer country(@javax.annotation.Nullable String country) {
+  public Customer country(@Nullable String country) {
     this.country = country;
     return this;
   }
@@ -225,7 +228,7 @@ public class Customer {
    * Country
    * @return country
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCountry() {
@@ -235,12 +238,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCountry(@javax.annotation.Nullable String country) {
+  public void setCountry(@Nullable String country) {
     this.country = country;
   }
 
 
-  public Customer state(@javax.annotation.Nullable String state) {
+  public Customer state(@Nullable String state) {
     this.state = state;
     return this;
   }
@@ -249,7 +252,7 @@ public class Customer {
    * State
    * @return state
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getState() {
@@ -259,12 +262,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setState(@javax.annotation.Nullable String state) {
+  public void setState(@Nullable String state) {
     this.state = state;
   }
 
 
-  public Customer city(@javax.annotation.Nullable String city) {
+  public Customer city(@Nullable String city) {
     this.city = city;
     return this;
   }
@@ -273,7 +276,7 @@ public class Customer {
    * City
    * @return city
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCity() {
@@ -283,12 +286,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_CITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCity(@javax.annotation.Nullable String city) {
+  public void setCity(@Nullable String city) {
     this.city = city;
   }
 
 
-  public Customer address(@javax.annotation.Nullable String address) {
+  public Customer address(@Nullable String address) {
     this.address = address;
     return this;
   }
@@ -297,7 +300,7 @@ public class Customer {
    * Address Line 1
    * @return address
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAddress() {
@@ -307,12 +310,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_ADDRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAddress(@javax.annotation.Nullable String address) {
+  public void setAddress(@Nullable String address) {
     this.address = address;
   }
 
 
-  public Customer address2(@javax.annotation.Nullable String address2) {
+  public Customer address2(@Nullable String address2) {
     this.address2 = address2;
     return this;
   }
@@ -321,7 +324,7 @@ public class Customer {
    * Address Line 2
    * @return address2
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDRESS2, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAddress2() {
@@ -331,12 +334,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_ADDRESS2, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAddress2(@javax.annotation.Nullable String address2) {
+  public void setAddress2(@Nullable String address2) {
     this.address2 = address2;
   }
 
 
-  public Customer zip(@javax.annotation.Nullable String zip) {
+  public Customer zip(@Nullable String zip) {
     this.zip = zip;
     return this;
   }
@@ -345,7 +348,7 @@ public class Customer {
    * Zip code
    * @return zip
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getZip() {
@@ -355,12 +358,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setZip(@javax.annotation.Nullable String zip) {
+  public void setZip(@Nullable String zip) {
     this.zip = zip;
   }
 
 
-  public Customer phone(@javax.annotation.Nullable String phone) {
+  public Customer phone(@Nullable String phone) {
     this.phone = phone;
     return this;
   }
@@ -369,7 +372,7 @@ public class Customer {
    * Phone number
    * @return phone
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPhone() {
@@ -379,12 +382,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhone(@javax.annotation.Nullable String phone) {
+  public void setPhone(@Nullable String phone) {
     this.phone = phone;
   }
 
 
-  public Customer email(@javax.annotation.Nonnull String email) {
+  public Customer email(@Nonnull String email) {
     this.email = email;
     return this;
   }
@@ -393,7 +396,7 @@ public class Customer {
    * Email
    * @return email
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getEmail() {
@@ -403,12 +406,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEmail(@javax.annotation.Nonnull String email) {
+  public void setEmail(@Nonnull String email) {
     this.email = email;
   }
 
 
-  public Customer title(@javax.annotation.Nonnull String title) {
+  public Customer title(@Nonnull String title) {
     this.title = title;
     return this;
   }
@@ -417,7 +420,7 @@ public class Customer {
    * Title of the customer
    * @return title
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getTitle() {
@@ -427,12 +430,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTitle(@javax.annotation.Nonnull String title) {
+  public void setTitle(@Nonnull String title) {
     this.title = title;
   }
 
 
-  public Customer tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public Customer tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -441,7 +444,7 @@ public class Customer {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -451,12 +454,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public Customer parentCustomerId(@javax.annotation.Nullable CustomerId parentCustomerId) {
+  public Customer parentCustomerId(@Nullable CustomerId parentCustomerId) {
     this.parentCustomerId = parentCustomerId;
     return this;
   }
@@ -465,7 +468,7 @@ public class Customer {
    * JSON object with parent Customer Id
    * @return parentCustomerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getParentCustomerId() {
@@ -475,12 +478,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParentCustomerId(@javax.annotation.Nullable CustomerId parentCustomerId) {
+  public void setParentCustomerId(@Nullable CustomerId parentCustomerId) {
     this.parentCustomerId = parentCustomerId;
   }
 
 
-  public Customer version(@javax.annotation.Nullable Long version) {
+  public Customer version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -489,7 +492,7 @@ public class Customer {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -499,12 +502,12 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public Customer customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+  public Customer customMenuId(@Nullable CustomMenuId customMenuId) {
     this.customMenuId = customMenuId;
     return this;
   }
@@ -513,7 +516,7 @@ public class Customer {
    * Get customMenuId
    * @return customMenuId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomMenuId getCustomMenuId() {
@@ -523,7 +526,7 @@ public class Customer {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+  public void setCustomMenuId(@Nullable CustomMenuId customMenuId) {
     this.customMenuId = customMenuId;
   }
 
@@ -532,7 +535,7 @@ public class Customer {
    * JSON object with parent Customer Id
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -546,7 +549,7 @@ public class Customer {
    * Name of the customer. Read-only, duplicated from title for backward compatibility
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -560,7 +563,7 @@ public class Customer {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

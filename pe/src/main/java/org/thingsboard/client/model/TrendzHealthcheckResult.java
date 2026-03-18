@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +44,28 @@ import org.thingsboard.client.ApiClient;
   TrendzHealthcheckResult.JSON_PROPERTY_STATUS,
   TrendzHealthcheckResult.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzHealthcheckResult {
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private String version;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private TrendzSynchronizationResultType type;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
+  @Nullable
   private TrendzSynchronizationStatus status;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
+  @Nullable
   private String message;
 
   public TrendzHealthcheckResult() { 
   }
 
-  public TrendzHealthcheckResult version(@javax.annotation.Nullable String version) {
+  public TrendzHealthcheckResult version(@Nullable String version) {
     this.version = version;
     return this;
   }
@@ -72,7 +74,7 @@ public class TrendzHealthcheckResult {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getVersion() {
@@ -82,12 +84,12 @@ public class TrendzHealthcheckResult {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable String version) {
+  public void setVersion(@Nullable String version) {
     this.version = version;
   }
 
 
-  public TrendzHealthcheckResult type(@javax.annotation.Nullable TrendzSynchronizationResultType type) {
+  public TrendzHealthcheckResult type(@Nullable TrendzSynchronizationResultType type) {
     this.type = type;
     return this;
   }
@@ -96,7 +98,7 @@ public class TrendzHealthcheckResult {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TrendzSynchronizationResultType getType() {
@@ -106,12 +108,12 @@ public class TrendzHealthcheckResult {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable TrendzSynchronizationResultType type) {
+  public void setType(@Nullable TrendzSynchronizationResultType type) {
     this.type = type;
   }
 
 
-  public TrendzHealthcheckResult status(@javax.annotation.Nullable TrendzSynchronizationStatus status) {
+  public TrendzHealthcheckResult status(@Nullable TrendzSynchronizationStatus status) {
     this.status = status;
     return this;
   }
@@ -120,7 +122,7 @@ public class TrendzHealthcheckResult {
    * Get status
    * @return status
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TrendzSynchronizationStatus getStatus() {
@@ -130,12 +132,12 @@ public class TrendzHealthcheckResult {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@javax.annotation.Nullable TrendzSynchronizationStatus status) {
+  public void setStatus(@Nullable TrendzSynchronizationStatus status) {
     this.status = status;
   }
 
 
-  public TrendzHealthcheckResult message(@javax.annotation.Nullable String message) {
+  public TrendzHealthcheckResult message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -144,7 +146,7 @@ public class TrendzHealthcheckResult {
    * Get message
    * @return message
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMessage() {
@@ -154,7 +156,7 @@ public class TrendzHealthcheckResult {
 
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(@javax.annotation.Nullable String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

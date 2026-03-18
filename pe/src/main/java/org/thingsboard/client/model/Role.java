@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -51,46 +54,46 @@ import org.thingsboard.client.ApiClient;
   Role.JSON_PROPERTY_VERSION,
   Role.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Role {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private RoleId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private RoleType type;
 
   public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode permissions = null;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public Role() { 
@@ -110,7 +113,7 @@ public class Role {
     this.ownerId = ownerId;
   }
 
-  public Role id(@javax.annotation.Nullable RoleId id) {
+  public Role id(@Nullable RoleId id) {
     this.id = id;
     return this;
   }
@@ -119,7 +122,7 @@ public class Role {
    * JSON object with the Role Id. Specify this field to update the Role. Referencing non-existing Role Id will cause error. Omit this field to create new Role.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RoleId getId() {
@@ -129,7 +132,7 @@ public class Role {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable RoleId id) {
+  public void setId(@Nullable RoleId id) {
     this.id = id;
   }
 
@@ -138,7 +141,7 @@ public class Role {
    * Timestamp of the role creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -148,7 +151,7 @@ public class Role {
 
 
 
-  public Role additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Role additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -157,7 +160,7 @@ public class Role {
    * Additional parameters of the role. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -167,7 +170,7 @@ public class Role {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
@@ -176,7 +179,7 @@ public class Role {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TenantId getTenantId() {
@@ -190,7 +193,7 @@ public class Role {
    * JSON object with Customer Id. 
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -200,7 +203,7 @@ public class Role {
 
 
 
-  public Role name(@javax.annotation.Nonnull String name) {
+  public Role name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -209,7 +212,7 @@ public class Role {
    * Role Name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -219,12 +222,12 @@ public class Role {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public Role type(@javax.annotation.Nonnull RoleType type) {
+  public Role type(@Nonnull RoleType type) {
     this.type = type;
     return this;
   }
@@ -233,7 +236,7 @@ public class Role {
    * Type of the role: generic or group
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RoleType getType() {
@@ -243,12 +246,12 @@ public class Role {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull RoleType type) {
+  public void setType(@Nonnull RoleType type) {
     this.type = type;
   }
 
 
-  public Role permissions(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode permissions) {
+  public Role permissions(@Nullable com.fasterxml.jackson.databind.JsonNode permissions) {
     this.permissions = permissions;
     return this;
   }
@@ -257,7 +260,7 @@ public class Role {
    * Get permissions
    * @return permissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getPermissions() {
@@ -267,12 +270,12 @@ public class Role {
 
   @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPermissions(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode permissions) {
+  public void setPermissions(@Nullable com.fasterxml.jackson.databind.JsonNode permissions) {
     this.permissions = permissions;
   }
 
 
-  public Role version(@javax.annotation.Nullable Long version) {
+  public Role version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -281,7 +284,7 @@ public class Role {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -291,7 +294,7 @@ public class Role {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -300,7 +303,7 @@ public class Role {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

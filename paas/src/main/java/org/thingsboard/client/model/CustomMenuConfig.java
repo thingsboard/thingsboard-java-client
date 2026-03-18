@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,16 +42,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   CustomMenuConfig.JSON_PROPERTY_ITEMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomMenuConfig {
   public static final String JSON_PROPERTY_ITEMS = "items";
-  @javax.annotation.Nullable
+  @Nullable
   private List<MenuItem> items = new ArrayList<>();
 
   public CustomMenuConfig() { 
   }
 
-  public CustomMenuConfig items(@javax.annotation.Nullable List<MenuItem> items) {
+  public CustomMenuConfig items(@Nullable List<MenuItem> items) {
     this.items = items;
     return this;
   }
@@ -66,7 +68,7 @@ public class CustomMenuConfig {
    * Get items
    * @return items
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<MenuItem> getItems() {
@@ -76,7 +78,7 @@ public class CustomMenuConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setItems(@javax.annotation.Nullable List<MenuItem> items) {
+  public void setItems(@Nullable List<MenuItem> items) {
     this.items = items;
   }
 

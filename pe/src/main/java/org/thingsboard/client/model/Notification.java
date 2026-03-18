@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -54,50 +56,50 @@ import org.thingsboard.client.ApiClient;
   Notification.JSON_PROPERTY_INFO,
   Notification.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Notification {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_REQUEST_ID = "requestId";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationRequestId requestId;
 
   public static final String JSON_PROPERTY_RECIPIENT_ID = "recipientId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId recipientId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationType type;
 
   public static final String JSON_PROPERTY_DELIVERY_METHOD = "deliveryMethod";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationDeliveryMethod deliveryMethod;
 
   public static final String JSON_PROPERTY_SUBJECT = "subject";
-  @javax.annotation.Nullable
+  @Nullable
   private String subject;
 
   public static final String JSON_PROPERTY_TEXT = "text";
-  @javax.annotation.Nullable
+  @Nullable
   private String text;
 
   public static final String JSON_PROPERTY_ADDITIONAL_CONFIG = "additionalConfig";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalConfig = null;
 
   public static final String JSON_PROPERTY_INFO = "info";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationInfo info;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationStatus status;
 
   public Notification() { 
@@ -111,7 +113,7 @@ public class Notification {
     this.createdTime = createdTime;
   }
 
-  public Notification id(@javax.annotation.Nullable NotificationId id) {
+  public Notification id(@Nullable NotificationId id) {
     this.id = id;
     return this;
   }
@@ -120,7 +122,7 @@ public class Notification {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationId getId() {
@@ -130,7 +132,7 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable NotificationId id) {
+  public void setId(@Nullable NotificationId id) {
     this.id = id;
   }
 
@@ -139,7 +141,7 @@ public class Notification {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -149,7 +151,7 @@ public class Notification {
 
 
 
-  public Notification requestId(@javax.annotation.Nullable NotificationRequestId requestId) {
+  public Notification requestId(@Nullable NotificationRequestId requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -158,7 +160,7 @@ public class Notification {
    * Get requestId
    * @return requestId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REQUEST_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationRequestId getRequestId() {
@@ -168,12 +170,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_REQUEST_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestId(@javax.annotation.Nullable NotificationRequestId requestId) {
+  public void setRequestId(@Nullable NotificationRequestId requestId) {
     this.requestId = requestId;
   }
 
 
-  public Notification recipientId(@javax.annotation.Nullable UserId recipientId) {
+  public Notification recipientId(@Nullable UserId recipientId) {
     this.recipientId = recipientId;
     return this;
   }
@@ -182,7 +184,7 @@ public class Notification {
    * Get recipientId
    * @return recipientId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RECIPIENT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getRecipientId() {
@@ -192,12 +194,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_RECIPIENT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRecipientId(@javax.annotation.Nullable UserId recipientId) {
+  public void setRecipientId(@Nullable UserId recipientId) {
     this.recipientId = recipientId;
   }
 
 
-  public Notification type(@javax.annotation.Nullable NotificationType type) {
+  public Notification type(@Nullable NotificationType type) {
     this.type = type;
     return this;
   }
@@ -206,7 +208,7 @@ public class Notification {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationType getType() {
@@ -216,12 +218,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable NotificationType type) {
+  public void setType(@Nullable NotificationType type) {
     this.type = type;
   }
 
 
-  public Notification deliveryMethod(@javax.annotation.Nullable NotificationDeliveryMethod deliveryMethod) {
+  public Notification deliveryMethod(@Nullable NotificationDeliveryMethod deliveryMethod) {
     this.deliveryMethod = deliveryMethod;
     return this;
   }
@@ -230,7 +232,7 @@ public class Notification {
    * Get deliveryMethod
    * @return deliveryMethod
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationDeliveryMethod getDeliveryMethod() {
@@ -240,12 +242,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeliveryMethod(@javax.annotation.Nullable NotificationDeliveryMethod deliveryMethod) {
+  public void setDeliveryMethod(@Nullable NotificationDeliveryMethod deliveryMethod) {
     this.deliveryMethod = deliveryMethod;
   }
 
 
-  public Notification subject(@javax.annotation.Nullable String subject) {
+  public Notification subject(@Nullable String subject) {
     this.subject = subject;
     return this;
   }
@@ -254,7 +256,7 @@ public class Notification {
    * Get subject
    * @return subject
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUBJECT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSubject() {
@@ -264,12 +266,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_SUBJECT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubject(@javax.annotation.Nullable String subject) {
+  public void setSubject(@Nullable String subject) {
     this.subject = subject;
   }
 
 
-  public Notification text(@javax.annotation.Nullable String text) {
+  public Notification text(@Nullable String text) {
     this.text = text;
     return this;
   }
@@ -278,7 +280,7 @@ public class Notification {
    * Get text
    * @return text
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getText() {
@@ -288,12 +290,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setText(@javax.annotation.Nullable String text) {
+  public void setText(@Nullable String text) {
     this.text = text;
   }
 
 
-  public Notification additionalConfig(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalConfig) {
+  public Notification additionalConfig(@Nullable com.fasterxml.jackson.databind.JsonNode additionalConfig) {
     this.additionalConfig = additionalConfig;
     return this;
   }
@@ -302,7 +304,7 @@ public class Notification {
    * Get additionalConfig
    * @return additionalConfig
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalConfig() {
@@ -312,12 +314,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalConfig(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalConfig) {
+  public void setAdditionalConfig(@Nullable com.fasterxml.jackson.databind.JsonNode additionalConfig) {
     this.additionalConfig = additionalConfig;
   }
 
 
-  public Notification info(@javax.annotation.Nullable NotificationInfo info) {
+  public Notification info(@Nullable NotificationInfo info) {
     this.info = info;
     return this;
   }
@@ -326,7 +328,7 @@ public class Notification {
    * Get info
    * @return info
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationInfo getInfo() {
@@ -336,12 +338,12 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInfo(@javax.annotation.Nullable NotificationInfo info) {
+  public void setInfo(@Nullable NotificationInfo info) {
     this.info = info;
   }
 
 
-  public Notification status(@javax.annotation.Nullable NotificationStatus status) {
+  public Notification status(@Nullable NotificationStatus status) {
     this.status = status;
     return this;
   }
@@ -350,7 +352,7 @@ public class Notification {
    * Get status
    * @return status
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationStatus getStatus() {
@@ -360,7 +362,7 @@ public class Notification {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@javax.annotation.Nullable NotificationStatus status) {
+  public void setStatus(@Nullable NotificationStatus status) {
     this.status = status;
   }
 

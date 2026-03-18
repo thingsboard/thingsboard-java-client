@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   Vendor.JSON_PROPERTY_NAME,
   Vendor.JSON_PROPERTY_LOGO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Vendor {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_LOGO = "logo";
-  @javax.annotation.Nullable
+  @Nullable
   private String logo;
 
   public Vendor() { 
   }
 
-  public Vendor name(@javax.annotation.Nullable String name) {
+  public Vendor name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -60,7 +62,7 @@ public class Vendor {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -70,12 +72,12 @@ public class Vendor {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public Vendor logo(@javax.annotation.Nullable String logo) {
+  public Vendor logo(@Nullable String logo) {
     this.logo = logo;
     return this;
   }
@@ -84,7 +86,7 @@ public class Vendor {
    * Get logo
    * @return logo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOGO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLogo() {
@@ -94,7 +96,7 @@ public class Vendor {
 
   @JsonProperty(value = JSON_PROPERTY_LOGO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLogo(@javax.annotation.Nullable String logo) {
+  public void setLogo(@Nullable String logo) {
     this.logo = logo;
   }
 

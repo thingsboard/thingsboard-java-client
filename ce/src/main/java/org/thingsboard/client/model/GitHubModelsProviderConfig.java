@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   GitHubModelsProviderConfig.JSON_PROPERTY_PERSONAL_ACCESS_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class GitHubModelsProviderConfig {
   public static final String JSON_PROPERTY_PERSONAL_ACCESS_TOKEN = "personalAccessToken";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String personalAccessToken;
 
   public GitHubModelsProviderConfig() { 
   }
 
-  public GitHubModelsProviderConfig personalAccessToken(@javax.annotation.Nonnull String personalAccessToken) {
+  public GitHubModelsProviderConfig personalAccessToken(@Nonnull String personalAccessToken) {
     this.personalAccessToken = personalAccessToken;
     return this;
   }
@@ -55,7 +57,7 @@ public class GitHubModelsProviderConfig {
    * Get personalAccessToken
    * @return personalAccessToken
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PERSONAL_ACCESS_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getPersonalAccessToken() {
@@ -65,7 +67,7 @@ public class GitHubModelsProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_PERSONAL_ACCESS_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPersonalAccessToken(@javax.annotation.Nonnull String personalAccessToken) {
+  public void setPersonalAccessToken(@Nonnull String personalAccessToken) {
     this.personalAccessToken = personalAccessToken;
   }
 

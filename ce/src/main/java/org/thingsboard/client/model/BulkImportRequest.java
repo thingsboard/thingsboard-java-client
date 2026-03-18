@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   BulkImportRequest.JSON_PROPERTY_FILE,
   BulkImportRequest.JSON_PROPERTY_MAPPING
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportRequest {
   public static final String JSON_PROPERTY_FILE = "file";
-  @javax.annotation.Nullable
+  @Nullable
   private String _file;
 
   public static final String JSON_PROPERTY_MAPPING = "mapping";
-  @javax.annotation.Nullable
+  @Nullable
   private Mapping mapping;
 
   public BulkImportRequest() { 
   }
 
-  public BulkImportRequest _file(@javax.annotation.Nullable String _file) {
+  public BulkImportRequest _file(@Nullable String _file) {
     this._file = _file;
     return this;
   }
@@ -61,7 +63,7 @@ public class BulkImportRequest {
    * Get _file
    * @return _file
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFile() {
@@ -71,12 +73,12 @@ public class BulkImportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_FILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFile(@javax.annotation.Nullable String _file) {
+  public void setFile(@Nullable String _file) {
     this._file = _file;
   }
 
 
-  public BulkImportRequest mapping(@javax.annotation.Nullable Mapping mapping) {
+  public BulkImportRequest mapping(@Nullable Mapping mapping) {
     this.mapping = mapping;
     return this;
   }
@@ -85,7 +87,7 @@ public class BulkImportRequest {
    * Get mapping
    * @return mapping
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAPPING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Mapping getMapping() {
@@ -95,7 +97,7 @@ public class BulkImportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_MAPPING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMapping(@javax.annotation.Nullable Mapping mapping) {
+  public void setMapping(@Nullable Mapping mapping) {
     this.mapping = mapping;
   }
 

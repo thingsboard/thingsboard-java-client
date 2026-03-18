@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,44 +46,44 @@ import org.thingsboard.client.ApiClient;
   ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_CLASS_NAME,
   ErrorComponentAllOfExceptionCauseStackTrace.JSON_PROPERTY_NATIVE_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ErrorComponentAllOfExceptionCauseStackTrace {
   public static final String JSON_PROPERTY_CLASS_LOADER_NAME = "classLoaderName";
-  @javax.annotation.Nullable
+  @Nullable
   private String classLoaderName;
 
   public static final String JSON_PROPERTY_MODULE_NAME = "moduleName";
-  @javax.annotation.Nullable
+  @Nullable
   private String moduleName;
 
   public static final String JSON_PROPERTY_MODULE_VERSION = "moduleVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String moduleVersion;
 
   public static final String JSON_PROPERTY_METHOD_NAME = "methodName";
-  @javax.annotation.Nullable
+  @Nullable
   private String methodName;
 
   public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  @javax.annotation.Nullable
+  @Nullable
   private String fileName;
 
   public static final String JSON_PROPERTY_LINE_NUMBER = "lineNumber";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer lineNumber;
 
   public static final String JSON_PROPERTY_CLASS_NAME = "className";
-  @javax.annotation.Nullable
+  @Nullable
   private String className;
 
   public static final String JSON_PROPERTY_NATIVE_METHOD = "nativeMethod";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean nativeMethod;
 
   public ErrorComponentAllOfExceptionCauseStackTrace() { 
   }
 
-  public ErrorComponentAllOfExceptionCauseStackTrace classLoaderName(@javax.annotation.Nullable String classLoaderName) {
+  public ErrorComponentAllOfExceptionCauseStackTrace classLoaderName(@Nullable String classLoaderName) {
     this.classLoaderName = classLoaderName;
     return this;
   }
@@ -90,7 +92,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get classLoaderName
    * @return classLoaderName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLASS_LOADER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getClassLoaderName() {
@@ -100,12 +102,12 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_CLASS_LOADER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClassLoaderName(@javax.annotation.Nullable String classLoaderName) {
+  public void setClassLoaderName(@Nullable String classLoaderName) {
     this.classLoaderName = classLoaderName;
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace moduleName(@javax.annotation.Nullable String moduleName) {
+  public ErrorComponentAllOfExceptionCauseStackTrace moduleName(@Nullable String moduleName) {
     this.moduleName = moduleName;
     return this;
   }
@@ -114,7 +116,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get moduleName
    * @return moduleName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MODULE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getModuleName() {
@@ -124,12 +126,12 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_MODULE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setModuleName(@javax.annotation.Nullable String moduleName) {
+  public void setModuleName(@Nullable String moduleName) {
     this.moduleName = moduleName;
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace moduleVersion(@javax.annotation.Nullable String moduleVersion) {
+  public ErrorComponentAllOfExceptionCauseStackTrace moduleVersion(@Nullable String moduleVersion) {
     this.moduleVersion = moduleVersion;
     return this;
   }
@@ -138,7 +140,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get moduleVersion
    * @return moduleVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MODULE_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getModuleVersion() {
@@ -148,12 +150,12 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_MODULE_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setModuleVersion(@javax.annotation.Nullable String moduleVersion) {
+  public void setModuleVersion(@Nullable String moduleVersion) {
     this.moduleVersion = moduleVersion;
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace methodName(@javax.annotation.Nullable String methodName) {
+  public ErrorComponentAllOfExceptionCauseStackTrace methodName(@Nullable String methodName) {
     this.methodName = methodName;
     return this;
   }
@@ -162,7 +164,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get methodName
    * @return methodName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_METHOD_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMethodName() {
@@ -172,12 +174,12 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_METHOD_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMethodName(@javax.annotation.Nullable String methodName) {
+  public void setMethodName(@Nullable String methodName) {
     this.methodName = methodName;
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace fileName(@javax.annotation.Nullable String fileName) {
+  public ErrorComponentAllOfExceptionCauseStackTrace fileName(@Nullable String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -186,7 +188,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get fileName
    * @return fileName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFileName() {
@@ -196,12 +198,12 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFileName(@javax.annotation.Nullable String fileName) {
+  public void setFileName(@Nullable String fileName) {
     this.fileName = fileName;
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace lineNumber(@javax.annotation.Nullable Integer lineNumber) {
+  public ErrorComponentAllOfExceptionCauseStackTrace lineNumber(@Nullable Integer lineNumber) {
     this.lineNumber = lineNumber;
     return this;
   }
@@ -210,7 +212,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get lineNumber
    * @return lineNumber
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINE_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getLineNumber() {
@@ -220,12 +222,12 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_LINE_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLineNumber(@javax.annotation.Nullable Integer lineNumber) {
+  public void setLineNumber(@Nullable Integer lineNumber) {
     this.lineNumber = lineNumber;
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace className(@javax.annotation.Nullable String className) {
+  public ErrorComponentAllOfExceptionCauseStackTrace className(@Nullable String className) {
     this.className = className;
     return this;
   }
@@ -234,7 +236,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get className
    * @return className
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLASS_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getClassName() {
@@ -244,12 +246,12 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_CLASS_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClassName(@javax.annotation.Nullable String className) {
+  public void setClassName(@Nullable String className) {
     this.className = className;
   }
 
 
-  public ErrorComponentAllOfExceptionCauseStackTrace nativeMethod(@javax.annotation.Nullable Boolean nativeMethod) {
+  public ErrorComponentAllOfExceptionCauseStackTrace nativeMethod(@Nullable Boolean nativeMethod) {
     this.nativeMethod = nativeMethod;
     return this;
   }
@@ -258,7 +260,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
    * Get nativeMethod
    * @return nativeMethod
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NATIVE_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getNativeMethod() {
@@ -268,7 +270,7 @@ public class ErrorComponentAllOfExceptionCauseStackTrace {
 
   @JsonProperty(value = JSON_PROPERTY_NATIVE_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNativeMethod(@javax.annotation.Nullable Boolean nativeMethod) {
+  public void setNativeMethod(@Nullable Boolean nativeMethod) {
     this.nativeMethod = nativeMethod;
   }
 

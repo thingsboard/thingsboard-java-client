@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   NodeConnectionInfo.JSON_PROPERTY_TO_INDEX,
   NodeConnectionInfo.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NodeConnectionInfo {
   public static final String JSON_PROPERTY_FROM_INDEX = "fromIndex";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer fromIndex;
 
   public static final String JSON_PROPERTY_TO_INDEX = "toIndex";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer toIndex;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String type;
 
   public NodeConnectionInfo() { 
   }
 
-  public NodeConnectionInfo fromIndex(@javax.annotation.Nonnull Integer fromIndex) {
+  public NodeConnectionInfo fromIndex(@Nonnull Integer fromIndex) {
     this.fromIndex = fromIndex;
     return this;
   }
@@ -65,7 +67,7 @@ public class NodeConnectionInfo {
    * Index of rule node in the &#39;nodes&#39; array of the RuleChainMetaData. Indicates the &#39;from&#39; part of the connection.
    * @return fromIndex
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FROM_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getFromIndex() {
@@ -75,12 +77,12 @@ public class NodeConnectionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_FROM_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFromIndex(@javax.annotation.Nonnull Integer fromIndex) {
+  public void setFromIndex(@Nonnull Integer fromIndex) {
     this.fromIndex = fromIndex;
   }
 
 
-  public NodeConnectionInfo toIndex(@javax.annotation.Nonnull Integer toIndex) {
+  public NodeConnectionInfo toIndex(@Nonnull Integer toIndex) {
     this.toIndex = toIndex;
     return this;
   }
@@ -89,7 +91,7 @@ public class NodeConnectionInfo {
    * Index of rule node in the &#39;nodes&#39; array of the RuleChainMetaData. Indicates the &#39;to&#39; part of the connection.
    * @return toIndex
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TO_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getToIndex() {
@@ -99,12 +101,12 @@ public class NodeConnectionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TO_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setToIndex(@javax.annotation.Nonnull Integer toIndex) {
+  public void setToIndex(@Nonnull Integer toIndex) {
     this.toIndex = toIndex;
   }
 
 
-  public NodeConnectionInfo type(@javax.annotation.Nonnull String type) {
+  public NodeConnectionInfo type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -113,7 +115,7 @@ public class NodeConnectionInfo {
    * Type of the relation. Typically indicated the result of processing by the &#39;from&#39; rule node. For example, &#39;Success&#39; or &#39;Failure&#39;
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getType() {
@@ -123,7 +125,7 @@ public class NodeConnectionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 

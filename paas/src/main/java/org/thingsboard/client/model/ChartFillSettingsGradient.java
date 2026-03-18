@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   ChartFillSettingsGradient.JSON_PROPERTY_START,
   ChartFillSettingsGradient.JSON_PROPERTY_END
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ChartFillSettingsGradient {
   public static final String JSON_PROPERTY_START = "start";
-  @javax.annotation.Nullable
+  @Nullable
   private Float start;
 
   public static final String JSON_PROPERTY_END = "end";
-  @javax.annotation.Nullable
+  @Nullable
   private Float end;
 
   public ChartFillSettingsGradient() { 
   }
 
-  public ChartFillSettingsGradient start(@javax.annotation.Nullable Float start) {
+  public ChartFillSettingsGradient start(@Nullable Float start) {
     this.start = start;
     return this;
   }
@@ -60,7 +62,7 @@ public class ChartFillSettingsGradient {
    * Get start
    * @return start
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getStart() {
@@ -70,12 +72,12 @@ public class ChartFillSettingsGradient {
 
   @JsonProperty(value = JSON_PROPERTY_START, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStart(@javax.annotation.Nullable Float start) {
+  public void setStart(@Nullable Float start) {
     this.start = start;
   }
 
 
-  public ChartFillSettingsGradient end(@javax.annotation.Nullable Float end) {
+  public ChartFillSettingsGradient end(@Nullable Float end) {
     this.end = end;
     return this;
   }
@@ -84,7 +86,7 @@ public class ChartFillSettingsGradient {
    * Get end
    * @return end
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getEnd() {
@@ -94,7 +96,7 @@ public class ChartFillSettingsGradient {
 
   @JsonProperty(value = JSON_PROPERTY_END, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnd(@javax.annotation.Nullable Float end) {
+  public void setEnd(@Nullable Float end) {
     this.end = end;
   }
 

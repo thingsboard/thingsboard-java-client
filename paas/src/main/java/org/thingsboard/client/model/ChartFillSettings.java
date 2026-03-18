@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   ChartFillSettings.JSON_PROPERTY_OPACITY,
   ChartFillSettings.JSON_PROPERTY_GRADIENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ChartFillSettings {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartFillType type;
 
   public static final String JSON_PROPERTY_OPACITY = "opacity";
-  @javax.annotation.Nullable
+  @Nullable
   private Float opacity;
 
   public static final String JSON_PROPERTY_GRADIENT = "gradient";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartFillSettingsGradient gradient;
 
   public ChartFillSettings() { 
   }
 
-  public ChartFillSettings type(@javax.annotation.Nullable ChartFillType type) {
+  public ChartFillSettings type(@Nullable ChartFillType type) {
     this.type = type;
     return this;
   }
@@ -67,7 +69,7 @@ public class ChartFillSettings {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartFillType getType() {
@@ -77,12 +79,12 @@ public class ChartFillSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable ChartFillType type) {
+  public void setType(@Nullable ChartFillType type) {
     this.type = type;
   }
 
 
-  public ChartFillSettings opacity(@javax.annotation.Nullable Float opacity) {
+  public ChartFillSettings opacity(@Nullable Float opacity) {
     this.opacity = opacity;
     return this;
   }
@@ -91,7 +93,7 @@ public class ChartFillSettings {
    * Get opacity
    * @return opacity
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getOpacity() {
@@ -101,12 +103,12 @@ public class ChartFillSettings {
 
   @JsonProperty(value = JSON_PROPERTY_OPACITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOpacity(@javax.annotation.Nullable Float opacity) {
+  public void setOpacity(@Nullable Float opacity) {
     this.opacity = opacity;
   }
 
 
-  public ChartFillSettings gradient(@javax.annotation.Nullable ChartFillSettingsGradient gradient) {
+  public ChartFillSettings gradient(@Nullable ChartFillSettingsGradient gradient) {
     this.gradient = gradient;
     return this;
   }
@@ -115,7 +117,7 @@ public class ChartFillSettings {
    * Get gradient
    * @return gradient
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GRADIENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartFillSettingsGradient getGradient() {
@@ -125,7 +127,7 @@ public class ChartFillSettings {
 
   @JsonProperty(value = JSON_PROPERTY_GRADIENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGradient(@javax.annotation.Nullable ChartFillSettingsGradient gradient) {
+  public void setGradient(@Nullable ChartFillSettingsGradient gradient) {
     this.gradient = gradient;
   }
 

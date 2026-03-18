@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,32 +46,32 @@ import org.thingsboard.client.ApiClient;
   CellSettings.JSON_PROPERTY_TEXT_ALIGNMENT,
   CellSettings.JSON_PROPERTY_VERTICAL_ALIGNMENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CellSettings {
   public static final String JSON_PROPERTY_FONT = "font";
-  @javax.annotation.Nullable
+  @Nullable
   private Font font;
 
   public static final String JSON_PROPERTY_COLOR = "color";
-  @javax.annotation.Nullable
+  @Nullable
   private String color;
 
   public static final String JSON_PROPERTY_BACKGROUND_COLOR = "backgroundColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String backgroundColor;
 
   public static final String JSON_PROPERTY_TEXT_ALIGNMENT = "textAlignment";
-  @javax.annotation.Nullable
+  @Nullable
   private TextAlignment textAlignment;
 
   public static final String JSON_PROPERTY_VERTICAL_ALIGNMENT = "verticalAlignment";
-  @javax.annotation.Nullable
+  @Nullable
   private VerticalAlignment verticalAlignment;
 
   public CellSettings() { 
   }
 
-  public CellSettings font(@javax.annotation.Nullable Font font) {
+  public CellSettings font(@Nullable Font font) {
     this.font = font;
     return this;
   }
@@ -78,7 +80,7 @@ public class CellSettings {
    * Get font
    * @return font
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Font getFont() {
@@ -88,12 +90,12 @@ public class CellSettings {
 
   @JsonProperty(value = JSON_PROPERTY_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFont(@javax.annotation.Nullable Font font) {
+  public void setFont(@Nullable Font font) {
     this.font = font;
   }
 
 
-  public CellSettings color(@javax.annotation.Nullable String color) {
+  public CellSettings color(@Nullable String color) {
     this.color = color;
     return this;
   }
@@ -102,7 +104,7 @@ public class CellSettings {
    * Get color
    * @return color
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getColor() {
@@ -112,12 +114,12 @@ public class CellSettings {
 
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColor(@javax.annotation.Nullable String color) {
+  public void setColor(@Nullable String color) {
     this.color = color;
   }
 
 
-  public CellSettings backgroundColor(@javax.annotation.Nullable String backgroundColor) {
+  public CellSettings backgroundColor(@Nullable String backgroundColor) {
     this.backgroundColor = backgroundColor;
     return this;
   }
@@ -126,7 +128,7 @@ public class CellSettings {
    * Get backgroundColor
    * @return backgroundColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BACKGROUND_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBackgroundColor() {
@@ -136,12 +138,12 @@ public class CellSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BACKGROUND_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackgroundColor(@javax.annotation.Nullable String backgroundColor) {
+  public void setBackgroundColor(@Nullable String backgroundColor) {
     this.backgroundColor = backgroundColor;
   }
 
 
-  public CellSettings textAlignment(@javax.annotation.Nullable TextAlignment textAlignment) {
+  public CellSettings textAlignment(@Nullable TextAlignment textAlignment) {
     this.textAlignment = textAlignment;
     return this;
   }
@@ -150,7 +152,7 @@ public class CellSettings {
    * Get textAlignment
    * @return textAlignment
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEXT_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TextAlignment getTextAlignment() {
@@ -160,12 +162,12 @@ public class CellSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TEXT_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTextAlignment(@javax.annotation.Nullable TextAlignment textAlignment) {
+  public void setTextAlignment(@Nullable TextAlignment textAlignment) {
     this.textAlignment = textAlignment;
   }
 
 
-  public CellSettings verticalAlignment(@javax.annotation.Nullable VerticalAlignment verticalAlignment) {
+  public CellSettings verticalAlignment(@Nullable VerticalAlignment verticalAlignment) {
     this.verticalAlignment = verticalAlignment;
     return this;
   }
@@ -174,7 +176,7 @@ public class CellSettings {
    * Get verticalAlignment
    * @return verticalAlignment
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERTICAL_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public VerticalAlignment getVerticalAlignment() {
@@ -184,7 +186,7 @@ public class CellSettings {
 
   @JsonProperty(value = JSON_PROPERTY_VERTICAL_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVerticalAlignment(@javax.annotation.Nullable VerticalAlignment verticalAlignment) {
+  public void setVerticalAlignment(@Nullable VerticalAlignment verticalAlignment) {
     this.verticalAlignment = verticalAlignment;
   }
 

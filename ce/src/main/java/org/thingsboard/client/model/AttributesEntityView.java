@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   AttributesEntityView.JSON_PROPERTY_SS,
   AttributesEntityView.JSON_PROPERTY_SH
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AttributesEntityView {
   public static final String JSON_PROPERTY_CS = "cs";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<String> cs = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SS = "ss";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<String> ss = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SH = "sh";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<String> sh = new ArrayList<>();
 
   public AttributesEntityView() { 
   }
 
-  public AttributesEntityView cs(@javax.annotation.Nonnull List<String> cs) {
+  public AttributesEntityView cs(@Nonnull List<String> cs) {
     this.cs = cs;
     return this;
   }
@@ -75,7 +77,7 @@ public class AttributesEntityView {
    * List of client-side attribute keys to expose
    * @return cs
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<String> getCs() {
@@ -85,12 +87,12 @@ public class AttributesEntityView {
 
   @JsonProperty(value = JSON_PROPERTY_CS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCs(@javax.annotation.Nonnull List<String> cs) {
+  public void setCs(@Nonnull List<String> cs) {
     this.cs = cs;
   }
 
 
-  public AttributesEntityView ss(@javax.annotation.Nonnull List<String> ss) {
+  public AttributesEntityView ss(@Nonnull List<String> ss) {
     this.ss = ss;
     return this;
   }
@@ -107,7 +109,7 @@ public class AttributesEntityView {
    * List of server-side attribute keys to expose
    * @return ss
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_SS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<String> getSs() {
@@ -117,12 +119,12 @@ public class AttributesEntityView {
 
   @JsonProperty(value = JSON_PROPERTY_SS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSs(@javax.annotation.Nonnull List<String> ss) {
+  public void setSs(@Nonnull List<String> ss) {
     this.ss = ss;
   }
 
 
-  public AttributesEntityView sh(@javax.annotation.Nonnull List<String> sh) {
+  public AttributesEntityView sh(@Nonnull List<String> sh) {
     this.sh = sh;
     return this;
   }
@@ -139,7 +141,7 @@ public class AttributesEntityView {
    * List of shared attribute keys to expose
    * @return sh
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_SH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<String> getSh() {
@@ -149,7 +151,7 @@ public class AttributesEntityView {
 
   @JsonProperty(value = JSON_PROPERTY_SH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSh(@javax.annotation.Nonnull List<String> sh) {
+  public void setSh(@Nonnull List<String> sh) {
     this.sh = sh;
   }
 

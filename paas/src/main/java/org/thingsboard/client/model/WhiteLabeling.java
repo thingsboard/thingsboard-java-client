@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,30 +48,30 @@ import org.thingsboard.client.ApiClient;
   WhiteLabeling.JSON_PROPERTY_LEGACY_DOMAIN,
   WhiteLabeling.JSON_PROPERTY_DOMAIN_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WhiteLabeling {
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private WhiteLabelingType type;
 
   public static final String JSON_PROPERTY_SETTINGS = "settings";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode settings = null;
 
   public static final String JSON_PROPERTY_LEGACY_DOMAIN = "legacyDomain";
-  @javax.annotation.Nullable
+  @Nullable
   private String legacyDomain;
 
   public static final String JSON_PROPERTY_DOMAIN_ID = "domainId";
-  @javax.annotation.Nullable
+  @Nullable
   private DomainId domainId;
 
   public WhiteLabeling() { 
@@ -83,7 +85,7 @@ public class WhiteLabeling {
     this.legacyDomain = legacyDomain;
   }
 
-  public WhiteLabeling tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public WhiteLabeling tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -92,7 +94,7 @@ public class WhiteLabeling {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -102,12 +104,12 @@ public class WhiteLabeling {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public WhiteLabeling customerId(@javax.annotation.Nullable CustomerId customerId) {
+  public WhiteLabeling customerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -116,7 +118,7 @@ public class WhiteLabeling {
    * Get customerId
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -126,12 +128,12 @@ public class WhiteLabeling {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerId(@javax.annotation.Nullable CustomerId customerId) {
+  public void setCustomerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
   }
 
 
-  public WhiteLabeling type(@javax.annotation.Nullable WhiteLabelingType type) {
+  public WhiteLabeling type(@Nullable WhiteLabelingType type) {
     this.type = type;
     return this;
   }
@@ -140,7 +142,7 @@ public class WhiteLabeling {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public WhiteLabelingType getType() {
@@ -150,12 +152,12 @@ public class WhiteLabeling {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable WhiteLabelingType type) {
+  public void setType(@Nullable WhiteLabelingType type) {
     this.type = type;
   }
 
 
-  public WhiteLabeling settings(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode settings) {
+  public WhiteLabeling settings(@Nullable com.fasterxml.jackson.databind.JsonNode settings) {
     this.settings = settings;
     return this;
   }
@@ -164,7 +166,7 @@ public class WhiteLabeling {
    * Get settings
    * @return settings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getSettings() {
@@ -174,7 +176,7 @@ public class WhiteLabeling {
 
   @JsonProperty(value = JSON_PROPERTY_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSettings(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode settings) {
+  public void setSettings(@Nullable com.fasterxml.jackson.databind.JsonNode settings) {
     this.settings = settings;
   }
 
@@ -183,7 +185,7 @@ public class WhiteLabeling {
    * Get legacyDomain
    * @return legacyDomain
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LEGACY_DOMAIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLegacyDomain() {
@@ -193,7 +195,7 @@ public class WhiteLabeling {
 
 
 
-  public WhiteLabeling domainId(@javax.annotation.Nullable DomainId domainId) {
+  public WhiteLabeling domainId(@Nullable DomainId domainId) {
     this.domainId = domainId;
     return this;
   }
@@ -202,7 +204,7 @@ public class WhiteLabeling {
    * Get domainId
    * @return domainId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DOMAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DomainId getDomainId() {
@@ -212,7 +214,7 @@ public class WhiteLabeling {
 
   @JsonProperty(value = JSON_PROPERTY_DOMAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDomainId(@javax.annotation.Nullable DomainId domainId) {
+  public void setDomainId(@Nullable DomainId domainId) {
     this.domainId = domainId;
   }
 

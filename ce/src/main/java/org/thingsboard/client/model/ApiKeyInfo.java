@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,38 +50,38 @@ import org.thingsboard.client.ApiClient;
   ApiKeyInfo.JSON_PROPERTY_ENABLED,
   ApiKeyInfo.JSON_PROPERTY_EXPIRED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ApiKeyInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private ApiKeyId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId userId;
 
   public static final String JSON_PROPERTY_EXPIRATION_TIME = "expirationTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long expirationTime;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String description;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_EXPIRED = "expired";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean expired;
 
   public ApiKeyInfo() { 
@@ -96,7 +99,7 @@ public class ApiKeyInfo {
     this.expired = expired;
   }
 
-  public ApiKeyInfo id(@javax.annotation.Nullable ApiKeyId id) {
+  public ApiKeyInfo id(@Nullable ApiKeyId id) {
     this.id = id;
     return this;
   }
@@ -105,7 +108,7 @@ public class ApiKeyInfo {
    * JSON object with the API Key Id. Specify this field to update the API Key. Referencing non-existing API Key Id will cause error. Omit this field to create new API Key.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ApiKeyId getId() {
@@ -115,7 +118,7 @@ public class ApiKeyInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable ApiKeyId id) {
+  public void setId(@Nullable ApiKeyId id) {
     this.id = id;
   }
 
@@ -124,7 +127,7 @@ public class ApiKeyInfo {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -138,7 +141,7 @@ public class ApiKeyInfo {
    * JSON object with Tenant Id. Tenant Id of the API key cannot be changed.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -148,7 +151,7 @@ public class ApiKeyInfo {
 
 
 
-  public ApiKeyInfo userId(@javax.annotation.Nullable UserId userId) {
+  public ApiKeyInfo userId(@Nullable UserId userId) {
     this.userId = userId;
     return this;
   }
@@ -157,7 +160,7 @@ public class ApiKeyInfo {
    * JSON object with User Id. User Id of the API key cannot be changed.
    * @return userId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getUserId() {
@@ -167,12 +170,12 @@ public class ApiKeyInfo {
 
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserId(@javax.annotation.Nullable UserId userId) {
+  public void setUserId(@Nullable UserId userId) {
     this.userId = userId;
   }
 
 
-  public ApiKeyInfo expirationTime(@javax.annotation.Nullable Long expirationTime) {
+  public ApiKeyInfo expirationTime(@Nullable Long expirationTime) {
     this.expirationTime = expirationTime;
     return this;
   }
@@ -181,7 +184,7 @@ public class ApiKeyInfo {
    * Expiration time of the API key.
    * @return expirationTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXPIRATION_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getExpirationTime() {
@@ -191,12 +194,12 @@ public class ApiKeyInfo {
 
   @JsonProperty(value = JSON_PROPERTY_EXPIRATION_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExpirationTime(@javax.annotation.Nullable Long expirationTime) {
+  public void setExpirationTime(@Nullable Long expirationTime) {
     this.expirationTime = expirationTime;
   }
 
 
-  public ApiKeyInfo description(@javax.annotation.Nonnull String description) {
+  public ApiKeyInfo description(@Nonnull String description) {
     this.description = description;
     return this;
   }
@@ -205,7 +208,7 @@ public class ApiKeyInfo {
    * API Key description.
    * @return description
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getDescription() {
@@ -215,12 +218,12 @@ public class ApiKeyInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescription(@javax.annotation.Nonnull String description) {
+  public void setDescription(@Nonnull String description) {
     this.description = description;
   }
 
 
-  public ApiKeyInfo enabled(@javax.annotation.Nullable Boolean enabled) {
+  public ApiKeyInfo enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -229,7 +232,7 @@ public class ApiKeyInfo {
    * Enabled/disabled API key.
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -239,7 +242,7 @@ public class ApiKeyInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
@@ -248,7 +251,7 @@ public class ApiKeyInfo {
    * Indicates if the API key is expired based on current time. Returns false if expirationTime is 0 (no expiry).
    * @return expired
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXPIRED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExpired() {

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,40 +47,40 @@ import org.thingsboard.client.ApiClient;
   Button.JSON_PROPERTY_DASHBOARD_STATE,
   Button.JSON_PROPERTY_SET_ENTITY_ID_IN_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Button {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_TEXT = "text";
-  @javax.annotation.Nullable
+  @Nullable
   private String text;
 
   public static final String JSON_PROPERTY_LINK_TYPE = "linkType";
-  @javax.annotation.Nullable
+  @Nullable
   private LinkType linkType;
 
   public static final String JSON_PROPERTY_LINK = "link";
-  @javax.annotation.Nullable
+  @Nullable
   private String link;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID dashboardId;
 
   public static final String JSON_PROPERTY_DASHBOARD_STATE = "dashboardState";
-  @javax.annotation.Nullable
+  @Nullable
   private String dashboardState;
 
   public static final String JSON_PROPERTY_SET_ENTITY_ID_IN_STATE = "setEntityIdInState";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean setEntityIdInState;
 
   public Button() { 
   }
 
-  public Button enabled(@javax.annotation.Nullable Boolean enabled) {
+  public Button enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -87,7 +89,7 @@ public class Button {
    * Get enabled
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -97,12 +99,12 @@ public class Button {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
 
-  public Button text(@javax.annotation.Nullable String text) {
+  public Button text(@Nullable String text) {
     this.text = text;
     return this;
   }
@@ -111,7 +113,7 @@ public class Button {
    * Get text
    * @return text
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getText() {
@@ -121,12 +123,12 @@ public class Button {
 
   @JsonProperty(value = JSON_PROPERTY_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setText(@javax.annotation.Nullable String text) {
+  public void setText(@Nullable String text) {
     this.text = text;
   }
 
 
-  public Button linkType(@javax.annotation.Nullable LinkType linkType) {
+  public Button linkType(@Nullable LinkType linkType) {
     this.linkType = linkType;
     return this;
   }
@@ -135,7 +137,7 @@ public class Button {
    * Get linkType
    * @return linkType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINK_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LinkType getLinkType() {
@@ -145,12 +147,12 @@ public class Button {
 
   @JsonProperty(value = JSON_PROPERTY_LINK_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLinkType(@javax.annotation.Nullable LinkType linkType) {
+  public void setLinkType(@Nullable LinkType linkType) {
     this.linkType = linkType;
   }
 
 
-  public Button link(@javax.annotation.Nullable String link) {
+  public Button link(@Nullable String link) {
     this.link = link;
     return this;
   }
@@ -159,7 +161,7 @@ public class Button {
    * Get link
    * @return link
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLink() {
@@ -169,12 +171,12 @@ public class Button {
 
   @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLink(@javax.annotation.Nullable String link) {
+  public void setLink(@Nullable String link) {
     this.link = link;
   }
 
 
-  public Button dashboardId(@javax.annotation.Nullable UUID dashboardId) {
+  public Button dashboardId(@Nullable UUID dashboardId) {
     this.dashboardId = dashboardId;
     return this;
   }
@@ -183,7 +185,7 @@ public class Button {
    * Get dashboardId
    * @return dashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getDashboardId() {
@@ -193,12 +195,12 @@ public class Button {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardId(@javax.annotation.Nullable UUID dashboardId) {
+  public void setDashboardId(@Nullable UUID dashboardId) {
     this.dashboardId = dashboardId;
   }
 
 
-  public Button dashboardState(@javax.annotation.Nullable String dashboardState) {
+  public Button dashboardState(@Nullable String dashboardState) {
     this.dashboardState = dashboardState;
     return this;
   }
@@ -207,7 +209,7 @@ public class Button {
    * Get dashboardState
    * @return dashboardState
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDashboardState() {
@@ -217,12 +219,12 @@ public class Button {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardState(@javax.annotation.Nullable String dashboardState) {
+  public void setDashboardState(@Nullable String dashboardState) {
     this.dashboardState = dashboardState;
   }
 
 
-  public Button setEntityIdInState(@javax.annotation.Nullable Boolean setEntityIdInState) {
+  public Button setEntityIdInState(@Nullable Boolean setEntityIdInState) {
     this.setEntityIdInState = setEntityIdInState;
     return this;
   }
@@ -231,7 +233,7 @@ public class Button {
    * Get setEntityIdInState
    * @return setEntityIdInState
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SET_ENTITY_ID_IN_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSetEntityIdInState() {
@@ -241,7 +243,7 @@ public class Button {
 
   @JsonProperty(value = JSON_PROPERTY_SET_ENTITY_ID_IN_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSetEntityIdInState(@javax.annotation.Nullable Boolean setEntityIdInState) {
+  public void setSetEntityIdInState(@Nullable Boolean setEntityIdInState) {
     this.setEntityIdInState = setEntityIdInState;
   }
 

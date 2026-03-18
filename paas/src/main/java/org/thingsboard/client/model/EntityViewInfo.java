@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -59,66 +62,66 @@ import org.thingsboard.client.ApiClient;
   EntityViewInfo.JSON_PROPERTY_GROUPS,
   EntityViewInfo.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityViewInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityViewId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityId entityId;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String type;
 
   public static final String JSON_PROPERTY_KEYS = "keys";
-  @javax.annotation.Nullable
+  @Nullable
   private TelemetryEntityView keys;
 
   public static final String JSON_PROPERTY_START_TIME_MS = "startTimeMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long startTimeMs;
 
   public static final String JSON_PROPERTY_END_TIME_MS = "endTimeMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endTimeMs;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
-  @javax.annotation.Nullable
+  @Nullable
   private String ownerName;
 
   public static final String JSON_PROPERTY_GROUPS = "groups";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityInfo> groups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public EntityViewInfo() { 
@@ -140,7 +143,7 @@ public class EntityViewInfo {
     this.ownerId = ownerId;
   }
 
-  public EntityViewInfo id(@javax.annotation.Nullable EntityViewId id) {
+  public EntityViewInfo id(@Nullable EntityViewId id) {
     this.id = id;
     return this;
   }
@@ -149,7 +152,7 @@ public class EntityViewInfo {
    * JSON object with the Entity View Id. Specify this field to update the Entity View. Referencing non-existing Entity View Id will cause error. Omit this field to create new Entity View.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityViewId getId() {
@@ -159,7 +162,7 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EntityViewId id) {
+  public void setId(@Nullable EntityViewId id) {
     this.id = id;
   }
 
@@ -168,7 +171,7 @@ public class EntityViewInfo {
    * Timestamp of the Entity View creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -178,7 +181,7 @@ public class EntityViewInfo {
 
 
 
-  public EntityViewInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public EntityViewInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -187,7 +190,7 @@ public class EntityViewInfo {
    * Additional parameters of the entity view. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -197,12 +200,12 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public EntityViewInfo entityId(@javax.annotation.Nonnull EntityId entityId) {
+  public EntityViewInfo entityId(@Nonnull EntityId entityId) {
     this.entityId = entityId;
     return this;
   }
@@ -211,7 +214,7 @@ public class EntityViewInfo {
    * JSON object with the referenced Entity Id (Device or Asset).
    * @return entityId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityId getEntityId() {
@@ -221,7 +224,7 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityId(@javax.annotation.Nonnull EntityId entityId) {
+  public void setEntityId(@Nonnull EntityId entityId) {
     this.entityId = entityId;
   }
 
@@ -230,7 +233,7 @@ public class EntityViewInfo {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -244,7 +247,7 @@ public class EntityViewInfo {
    * JSON object with Customer Id. Use &#39;assignEntityViewToCustomer&#39; to change the Customer Id.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -254,7 +257,7 @@ public class EntityViewInfo {
 
 
 
-  public EntityViewInfo name(@javax.annotation.Nonnull String name) {
+  public EntityViewInfo name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -263,7 +266,7 @@ public class EntityViewInfo {
    * Entity View name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -273,12 +276,12 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public EntityViewInfo type(@javax.annotation.Nonnull String type) {
+  public EntityViewInfo type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -287,7 +290,7 @@ public class EntityViewInfo {
    * Device Profile Name
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getType() {
@@ -297,12 +300,12 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 
 
-  public EntityViewInfo keys(@javax.annotation.Nullable TelemetryEntityView keys) {
+  public EntityViewInfo keys(@Nullable TelemetryEntityView keys) {
     this.keys = keys;
     return this;
   }
@@ -311,7 +314,7 @@ public class EntityViewInfo {
    * Set of telemetry and attribute keys to expose via Entity View.
    * @return keys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TelemetryEntityView getKeys() {
@@ -321,12 +324,12 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeys(@javax.annotation.Nullable TelemetryEntityView keys) {
+  public void setKeys(@Nullable TelemetryEntityView keys) {
     this.keys = keys;
   }
 
 
-  public EntityViewInfo startTimeMs(@javax.annotation.Nullable Long startTimeMs) {
+  public EntityViewInfo startTimeMs(@Nullable Long startTimeMs) {
     this.startTimeMs = startTimeMs;
     return this;
   }
@@ -335,7 +338,7 @@ public class EntityViewInfo {
    * Represents the start time of the interval that is used to limit access to target device telemetry. Customer will not be able to see entity telemetry that is outside the specified interval;
    * @return startTimeMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStartTimeMs() {
@@ -345,12 +348,12 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_START_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartTimeMs(@javax.annotation.Nullable Long startTimeMs) {
+  public void setStartTimeMs(@Nullable Long startTimeMs) {
     this.startTimeMs = startTimeMs;
   }
 
 
-  public EntityViewInfo endTimeMs(@javax.annotation.Nullable Long endTimeMs) {
+  public EntityViewInfo endTimeMs(@Nullable Long endTimeMs) {
     this.endTimeMs = endTimeMs;
     return this;
   }
@@ -359,7 +362,7 @@ public class EntityViewInfo {
    * Represents the end time of the interval that is used to limit access to target device telemetry. Customer will not be able to see entity telemetry that is outside the specified interval;
    * @return endTimeMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndTimeMs() {
@@ -369,12 +372,12 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_END_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndTimeMs(@javax.annotation.Nullable Long endTimeMs) {
+  public void setEndTimeMs(@Nullable Long endTimeMs) {
     this.endTimeMs = endTimeMs;
   }
 
 
-  public EntityViewInfo version(@javax.annotation.Nullable Long version) {
+  public EntityViewInfo version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -383,7 +386,7 @@ public class EntityViewInfo {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -393,7 +396,7 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -402,7 +405,7 @@ public class EntityViewInfo {
    * Owner name
    * @return ownerName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getOwnerName() {
@@ -412,7 +415,7 @@ public class EntityViewInfo {
 
 
 
-  public EntityViewInfo groups(@javax.annotation.Nullable List<EntityInfo> groups) {
+  public EntityViewInfo groups(@Nullable List<EntityInfo> groups) {
     this.groups = groups;
     return this;
   }
@@ -429,7 +432,7 @@ public class EntityViewInfo {
    * Groups
    * @return groups
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityInfo> getGroups() {
@@ -439,7 +442,7 @@ public class EntityViewInfo {
 
   @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroups(@javax.annotation.Nullable List<EntityInfo> groups) {
+  public void setGroups(@Nullable List<EntityInfo> groups) {
     this.groups = groups;
   }
 
@@ -448,7 +451,7 @@ public class EntityViewInfo {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

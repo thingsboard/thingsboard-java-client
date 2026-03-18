@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   DataKeyComparisonSettings.JSON_PROPERTY_COMPARISON_VALUES_LABEL,
   DataKeyComparisonSettings.JSON_PROPERTY_COLOR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DataKeyComparisonSettings {
   public static final String JSON_PROPERTY_SHOW_VALUES_FOR_COMPARISON = "showValuesForComparison";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showValuesForComparison;
 
   public static final String JSON_PROPERTY_COMPARISON_VALUES_LABEL = "comparisonValuesLabel";
-  @javax.annotation.Nullable
+  @Nullable
   private String comparisonValuesLabel;
 
   public static final String JSON_PROPERTY_COLOR = "color";
-  @javax.annotation.Nullable
+  @Nullable
   private String color;
 
   public DataKeyComparisonSettings() { 
   }
 
-  public DataKeyComparisonSettings showValuesForComparison(@javax.annotation.Nullable Boolean showValuesForComparison) {
+  public DataKeyComparisonSettings showValuesForComparison(@Nullable Boolean showValuesForComparison) {
     this.showValuesForComparison = showValuesForComparison;
     return this;
   }
@@ -65,7 +67,7 @@ public class DataKeyComparisonSettings {
    * Get showValuesForComparison
    * @return showValuesForComparison
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_VALUES_FOR_COMPARISON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowValuesForComparison() {
@@ -75,12 +77,12 @@ public class DataKeyComparisonSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_VALUES_FOR_COMPARISON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowValuesForComparison(@javax.annotation.Nullable Boolean showValuesForComparison) {
+  public void setShowValuesForComparison(@Nullable Boolean showValuesForComparison) {
     this.showValuesForComparison = showValuesForComparison;
   }
 
 
-  public DataKeyComparisonSettings comparisonValuesLabel(@javax.annotation.Nullable String comparisonValuesLabel) {
+  public DataKeyComparisonSettings comparisonValuesLabel(@Nullable String comparisonValuesLabel) {
     this.comparisonValuesLabel = comparisonValuesLabel;
     return this;
   }
@@ -89,7 +91,7 @@ public class DataKeyComparisonSettings {
    * Get comparisonValuesLabel
    * @return comparisonValuesLabel
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COMPARISON_VALUES_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getComparisonValuesLabel() {
@@ -99,12 +101,12 @@ public class DataKeyComparisonSettings {
 
   @JsonProperty(value = JSON_PROPERTY_COMPARISON_VALUES_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setComparisonValuesLabel(@javax.annotation.Nullable String comparisonValuesLabel) {
+  public void setComparisonValuesLabel(@Nullable String comparisonValuesLabel) {
     this.comparisonValuesLabel = comparisonValuesLabel;
   }
 
 
-  public DataKeyComparisonSettings color(@javax.annotation.Nullable String color) {
+  public DataKeyComparisonSettings color(@Nullable String color) {
     this.color = color;
     return this;
   }
@@ -113,7 +115,7 @@ public class DataKeyComparisonSettings {
    * Get color
    * @return color
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getColor() {
@@ -123,7 +125,7 @@ public class DataKeyComparisonSettings {
 
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColor(@javax.annotation.Nullable String color) {
+  public void setColor(@Nullable String color) {
     this.color = color;
   }
 

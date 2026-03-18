@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,36 +45,36 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_RANGE_FROM,
   TimeSeriesChartStateSettings.JSON_PROPERTY_SOURCE_RANGE_TO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartStateSettings {
   public static final String JSON_PROPERTY_LABEL = "label";
-  @javax.annotation.Nullable
+  @Nullable
   private String label;
 
   public static final String JSON_PROPERTY_VALUE = "value";
-  @javax.annotation.Nullable
+  @Nullable
   private Double value;
 
   public static final String JSON_PROPERTY_SOURCE_TYPE = "sourceType";
-  @javax.annotation.Nullable
+  @Nullable
   private TimeSeriesChartStateSourceType sourceType;
 
   public static final String JSON_PROPERTY_SOURCE_VALUE = "sourceValue";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode sourceValue = null;
 
   public static final String JSON_PROPERTY_SOURCE_RANGE_FROM = "sourceRangeFrom";
-  @javax.annotation.Nullable
+  @Nullable
   private Double sourceRangeFrom;
 
   public static final String JSON_PROPERTY_SOURCE_RANGE_TO = "sourceRangeTo";
-  @javax.annotation.Nullable
+  @Nullable
   private Double sourceRangeTo;
 
   public TimeSeriesChartStateSettings() { 
   }
 
-  public TimeSeriesChartStateSettings label(@javax.annotation.Nullable String label) {
+  public TimeSeriesChartStateSettings label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -81,7 +83,7 @@ public class TimeSeriesChartStateSettings {
    * Get label
    * @return label
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabel() {
@@ -91,12 +93,12 @@ public class TimeSeriesChartStateSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabel(@javax.annotation.Nullable String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
 
-  public TimeSeriesChartStateSettings value(@javax.annotation.Nullable Double value) {
+  public TimeSeriesChartStateSettings value(@Nullable Double value) {
     this.value = value;
     return this;
   }
@@ -105,7 +107,7 @@ public class TimeSeriesChartStateSettings {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getValue() {
@@ -115,12 +117,12 @@ public class TimeSeriesChartStateSettings {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValue(@javax.annotation.Nullable Double value) {
+  public void setValue(@Nullable Double value) {
     this.value = value;
   }
 
 
-  public TimeSeriesChartStateSettings sourceType(@javax.annotation.Nullable TimeSeriesChartStateSourceType sourceType) {
+  public TimeSeriesChartStateSettings sourceType(@Nullable TimeSeriesChartStateSourceType sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -129,7 +131,7 @@ public class TimeSeriesChartStateSettings {
    * Get sourceType
    * @return sourceType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOURCE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TimeSeriesChartStateSourceType getSourceType() {
@@ -139,12 +141,12 @@ public class TimeSeriesChartStateSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SOURCE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceType(@javax.annotation.Nullable TimeSeriesChartStateSourceType sourceType) {
+  public void setSourceType(@Nullable TimeSeriesChartStateSourceType sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public TimeSeriesChartStateSettings sourceValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
+  public TimeSeriesChartStateSettings sourceValue(@Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
     this.sourceValue = sourceValue;
     return this;
   }
@@ -153,7 +155,7 @@ public class TimeSeriesChartStateSettings {
    * Get sourceValue
    * @return sourceValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOURCE_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getSourceValue() {
@@ -163,12 +165,12 @@ public class TimeSeriesChartStateSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SOURCE_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
+  public void setSourceValue(@Nullable com.fasterxml.jackson.databind.JsonNode sourceValue) {
     this.sourceValue = sourceValue;
   }
 
 
-  public TimeSeriesChartStateSettings sourceRangeFrom(@javax.annotation.Nullable Double sourceRangeFrom) {
+  public TimeSeriesChartStateSettings sourceRangeFrom(@Nullable Double sourceRangeFrom) {
     this.sourceRangeFrom = sourceRangeFrom;
     return this;
   }
@@ -177,7 +179,7 @@ public class TimeSeriesChartStateSettings {
    * Get sourceRangeFrom
    * @return sourceRangeFrom
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOURCE_RANGE_FROM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getSourceRangeFrom() {
@@ -187,12 +189,12 @@ public class TimeSeriesChartStateSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SOURCE_RANGE_FROM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceRangeFrom(@javax.annotation.Nullable Double sourceRangeFrom) {
+  public void setSourceRangeFrom(@Nullable Double sourceRangeFrom) {
     this.sourceRangeFrom = sourceRangeFrom;
   }
 
 
-  public TimeSeriesChartStateSettings sourceRangeTo(@javax.annotation.Nullable Double sourceRangeTo) {
+  public TimeSeriesChartStateSettings sourceRangeTo(@Nullable Double sourceRangeTo) {
     this.sourceRangeTo = sourceRangeTo;
     return this;
   }
@@ -201,7 +203,7 @@ public class TimeSeriesChartStateSettings {
    * Get sourceRangeTo
    * @return sourceRangeTo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOURCE_RANGE_TO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getSourceRangeTo() {
@@ -211,7 +213,7 @@ public class TimeSeriesChartStateSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SOURCE_RANGE_TO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceRangeTo(@javax.annotation.Nullable Double sourceRangeTo) {
+  public void setSourceRangeTo(@Nullable Double sourceRangeTo) {
     this.sourceRangeTo = sourceRangeTo;
   }
 

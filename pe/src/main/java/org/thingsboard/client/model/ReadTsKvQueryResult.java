@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   ReadTsKvQueryResult.JSON_PROPERTY_DATA,
   ReadTsKvQueryResult.JSON_PROPERTY_LAST_ENTRY_TS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ReadTsKvQueryResult {
   public static final String JSON_PROPERTY_QUERY_ID = "queryId";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer queryId;
 
   public static final String JSON_PROPERTY_DATA = "data";
-  @javax.annotation.Nullable
+  @Nullable
   private List<TsKvEntry> data = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_ENTRY_TS = "lastEntryTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long lastEntryTs;
 
   public ReadTsKvQueryResult() { 
   }
 
-  public ReadTsKvQueryResult queryId(@javax.annotation.Nullable Integer queryId) {
+  public ReadTsKvQueryResult queryId(@Nullable Integer queryId) {
     this.queryId = queryId;
     return this;
   }
@@ -68,7 +70,7 @@ public class ReadTsKvQueryResult {
    * Get queryId
    * @return queryId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_QUERY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getQueryId() {
@@ -78,12 +80,12 @@ public class ReadTsKvQueryResult {
 
   @JsonProperty(value = JSON_PROPERTY_QUERY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQueryId(@javax.annotation.Nullable Integer queryId) {
+  public void setQueryId(@Nullable Integer queryId) {
     this.queryId = queryId;
   }
 
 
-  public ReadTsKvQueryResult data(@javax.annotation.Nullable List<TsKvEntry> data) {
+  public ReadTsKvQueryResult data(@Nullable List<TsKvEntry> data) {
     this.data = data;
     return this;
   }
@@ -100,7 +102,7 @@ public class ReadTsKvQueryResult {
    * Get data
    * @return data
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<TsKvEntry> getData() {
@@ -110,12 +112,12 @@ public class ReadTsKvQueryResult {
 
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(@javax.annotation.Nullable List<TsKvEntry> data) {
+  public void setData(@Nullable List<TsKvEntry> data) {
     this.data = data;
   }
 
 
-  public ReadTsKvQueryResult lastEntryTs(@javax.annotation.Nullable Long lastEntryTs) {
+  public ReadTsKvQueryResult lastEntryTs(@Nullable Long lastEntryTs) {
     this.lastEntryTs = lastEntryTs;
     return this;
   }
@@ -124,7 +126,7 @@ public class ReadTsKvQueryResult {
    * Get lastEntryTs
    * @return lastEntryTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_ENTRY_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getLastEntryTs() {
@@ -134,7 +136,7 @@ public class ReadTsKvQueryResult {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_ENTRY_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEntryTs(@javax.annotation.Nullable Long lastEntryTs) {
+  public void setLastEntryTs(@Nullable Long lastEntryTs) {
     this.lastEntryTs = lastEntryTs;
   }
 

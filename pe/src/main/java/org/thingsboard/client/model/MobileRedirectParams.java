@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   MobileRedirectParams.JSON_PROPERTY_SCHEME,
   MobileRedirectParams.JSON_PROPERTY_HOST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MobileRedirectParams {
   public static final String JSON_PROPERTY_SCHEME = "scheme";
-  @javax.annotation.Nullable
+  @Nullable
   private String scheme;
 
   public static final String JSON_PROPERTY_HOST = "host";
-  @javax.annotation.Nullable
+  @Nullable
   private String host;
 
   public MobileRedirectParams() { 
   }
 
-  public MobileRedirectParams scheme(@javax.annotation.Nullable String scheme) {
+  public MobileRedirectParams scheme(@Nullable String scheme) {
     this.scheme = scheme;
     return this;
   }
@@ -60,7 +62,7 @@ public class MobileRedirectParams {
    * Mobile application verification settings. Used for callback to mobile application once user is registered.
    * @return scheme
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCHEME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getScheme() {
@@ -70,12 +72,12 @@ public class MobileRedirectParams {
 
   @JsonProperty(value = JSON_PROPERTY_SCHEME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScheme(@javax.annotation.Nullable String scheme) {
+  public void setScheme(@Nullable String scheme) {
     this.scheme = scheme;
   }
 
 
-  public MobileRedirectParams host(@javax.annotation.Nullable String host) {
+  public MobileRedirectParams host(@Nullable String host) {
     this.host = host;
     return this;
   }
@@ -84,7 +86,7 @@ public class MobileRedirectParams {
    * Mobile application verification settings. Used for callback to mobile application once user is registered.
    * @return host
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HOST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getHost() {
@@ -94,7 +96,7 @@ public class MobileRedirectParams {
 
   @JsonProperty(value = JSON_PROPERTY_HOST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHost(@javax.annotation.Nullable String host) {
+  public void setHost(@Nullable String host) {
     this.host = host;
   }
 

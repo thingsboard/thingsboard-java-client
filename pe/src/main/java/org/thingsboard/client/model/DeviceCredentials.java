@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,34 +49,34 @@ import org.thingsboard.client.ApiClient;
   DeviceCredentials.JSON_PROPERTY_CREDENTIALS_VALUE,
   DeviceCredentials.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceCredentials {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @Nonnull
   private DeviceCredentialsId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_DEVICE_ID = "deviceId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private DeviceId deviceId;
 
   public static final String JSON_PROPERTY_CREDENTIALS_TYPE = "credentialsType";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceCredentialsType credentialsType;
 
   public static final String JSON_PROPERTY_CREDENTIALS_ID = "credentialsId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String credentialsId;
 
   public static final String JSON_PROPERTY_CREDENTIALS_VALUE = "credentialsValue";
-  @javax.annotation.Nullable
+  @Nullable
   private String credentialsValue;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public DeviceCredentials() { 
@@ -91,7 +94,7 @@ public class DeviceCredentials {
    * The Id is automatically generated during device creation. Use &#39;getDeviceCredentialsByDeviceId&#39; to obtain the id based on device id. Use &#39;updateDeviceCredentials&#39; to update device credentials. 
    * @return id
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DeviceCredentialsId getId() {
@@ -101,7 +104,7 @@ public class DeviceCredentials {
 
 
 
-  public DeviceCredentials createdTime(@javax.annotation.Nullable Long createdTime) {
+  public DeviceCredentials createdTime(@Nullable Long createdTime) {
     this.createdTime = createdTime;
     return this;
   }
@@ -110,7 +113,7 @@ public class DeviceCredentials {
    * Timestamp of the device credentials creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -120,12 +123,12 @@ public class DeviceCredentials {
 
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreatedTime(@javax.annotation.Nullable Long createdTime) {
+  public void setCreatedTime(@Nullable Long createdTime) {
     this.createdTime = createdTime;
   }
 
 
-  public DeviceCredentials deviceId(@javax.annotation.Nonnull DeviceId deviceId) {
+  public DeviceCredentials deviceId(@Nonnull DeviceId deviceId) {
     this.deviceId = deviceId;
     return this;
   }
@@ -134,7 +137,7 @@ public class DeviceCredentials {
    * JSON object with the device Id.
    * @return deviceId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DEVICE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DeviceId getDeviceId() {
@@ -144,12 +147,12 @@ public class DeviceCredentials {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDeviceId(@javax.annotation.Nonnull DeviceId deviceId) {
+  public void setDeviceId(@Nonnull DeviceId deviceId) {
     this.deviceId = deviceId;
   }
 
 
-  public DeviceCredentials credentialsType(@javax.annotation.Nullable DeviceCredentialsType credentialsType) {
+  public DeviceCredentials credentialsType(@Nullable DeviceCredentialsType credentialsType) {
     this.credentialsType = credentialsType;
     return this;
   }
@@ -158,7 +161,7 @@ public class DeviceCredentials {
    * Type of the credentials
    * @return credentialsType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceCredentialsType getCredentialsType() {
@@ -168,12 +171,12 @@ public class DeviceCredentials {
 
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialsType(@javax.annotation.Nullable DeviceCredentialsType credentialsType) {
+  public void setCredentialsType(@Nullable DeviceCredentialsType credentialsType) {
     this.credentialsType = credentialsType;
   }
 
 
-  public DeviceCredentials credentialsId(@javax.annotation.Nonnull String credentialsId) {
+  public DeviceCredentials credentialsId(@Nonnull String credentialsId) {
     this.credentialsId = credentialsId;
     return this;
   }
@@ -182,7 +185,7 @@ public class DeviceCredentials {
    * Unique Credentials Id per platform instance. Used to lookup credentials from the database. By default, new access token for your device. Depends on the type of the credentials.
    * @return credentialsId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getCredentialsId() {
@@ -192,12 +195,12 @@ public class DeviceCredentials {
 
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialsId(@javax.annotation.Nonnull String credentialsId) {
+  public void setCredentialsId(@Nonnull String credentialsId) {
     this.credentialsId = credentialsId;
   }
 
 
-  public DeviceCredentials credentialsValue(@javax.annotation.Nullable String credentialsValue) {
+  public DeviceCredentials credentialsValue(@Nullable String credentialsValue) {
     this.credentialsValue = credentialsValue;
     return this;
   }
@@ -206,7 +209,7 @@ public class DeviceCredentials {
    * Value of the credentials. Null in case of ACCESS_TOKEN credentials type. Base64 value in case of X509_CERTIFICATE. Complex object in case of MQTT_BASIC and LWM2M_CREDENTIALS
    * @return credentialsValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCredentialsValue() {
@@ -216,12 +219,12 @@ public class DeviceCredentials {
 
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialsValue(@javax.annotation.Nullable String credentialsValue) {
+  public void setCredentialsValue(@Nullable String credentialsValue) {
     this.credentialsValue = credentialsValue;
   }
 
 
-  public DeviceCredentials version(@javax.annotation.Nullable Long version) {
+  public DeviceCredentials version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -230,7 +233,7 @@ public class DeviceCredentials {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -240,7 +243,7 @@ public class DeviceCredentials {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 

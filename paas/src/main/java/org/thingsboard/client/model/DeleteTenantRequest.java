@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   DeleteTenantRequest.JSON_PROPERTY_REASON,
   DeleteTenantRequest.JSON_PROPERTY_ADDITIONAL_NOTES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeleteTenantRequest {
   public static final String JSON_PROPERTY_REASON = "reason";
-  @javax.annotation.Nullable
+  @Nullable
   private String reason;
 
   public static final String JSON_PROPERTY_ADDITIONAL_NOTES = "additionalNotes";
-  @javax.annotation.Nullable
+  @Nullable
   private String additionalNotes;
 
   public DeleteTenantRequest() { 
   }
 
-  public DeleteTenantRequest reason(@javax.annotation.Nullable String reason) {
+  public DeleteTenantRequest reason(@Nullable String reason) {
     this.reason = reason;
     return this;
   }
@@ -60,7 +62,7 @@ public class DeleteTenantRequest {
    * Get reason
    * @return reason
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REASON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getReason() {
@@ -70,12 +72,12 @@ public class DeleteTenantRequest {
 
   @JsonProperty(value = JSON_PROPERTY_REASON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReason(@javax.annotation.Nullable String reason) {
+  public void setReason(@Nullable String reason) {
     this.reason = reason;
   }
 
 
-  public DeleteTenantRequest additionalNotes(@javax.annotation.Nullable String additionalNotes) {
+  public DeleteTenantRequest additionalNotes(@Nullable String additionalNotes) {
     this.additionalNotes = additionalNotes;
     return this;
   }
@@ -84,7 +86,7 @@ public class DeleteTenantRequest {
    * Get additionalNotes
    * @return additionalNotes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_NOTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAdditionalNotes() {
@@ -94,7 +96,7 @@ public class DeleteTenantRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_NOTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalNotes(@javax.annotation.Nullable String additionalNotes) {
+  public void setAdditionalNotes(@Nullable String additionalNotes) {
     this.additionalNotes = additionalNotes;
   }
 

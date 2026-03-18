@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -54,50 +57,50 @@ import org.thingsboard.client.ApiClient;
   ReportTemplate.JSON_PROPERTY_CONFIGURATION,
   ReportTemplate.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ReportTemplate {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private ReportTemplateId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_FORMAT = "format";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TbReportFormat format;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private ReportTemplateType type;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nonnull
+  @Nonnull
   private ReportTemplateConfig _configuration;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public ReportTemplate() { 
@@ -117,7 +120,7 @@ public class ReportTemplate {
     this.ownerId = ownerId;
   }
 
-  public ReportTemplate id(@javax.annotation.Nullable ReportTemplateId id) {
+  public ReportTemplate id(@Nullable ReportTemplateId id) {
     this.id = id;
     return this;
   }
@@ -126,7 +129,7 @@ public class ReportTemplate {
    * JSON object with the report template Id. Specify this field to update the report. Referencing non-existing report template Id will cause error. Omit this field to create new report template
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ReportTemplateId getId() {
@@ -136,7 +139,7 @@ public class ReportTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable ReportTemplateId id) {
+  public void setId(@Nullable ReportTemplateId id) {
     this.id = id;
   }
 
@@ -145,7 +148,7 @@ public class ReportTemplate {
    * Timestamp of the report template creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -159,7 +162,7 @@ public class ReportTemplate {
    * JSON object with Tenant Id. Tenant Id of the report template can&#39;t be changed.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -173,7 +176,7 @@ public class ReportTemplate {
    * JSON object with Customer Id
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -183,7 +186,7 @@ public class ReportTemplate {
 
 
 
-  public ReportTemplate name(@javax.annotation.Nonnull String name) {
+  public ReportTemplate name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -192,7 +195,7 @@ public class ReportTemplate {
    * Report name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -202,12 +205,12 @@ public class ReportTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public ReportTemplate format(@javax.annotation.Nonnull TbReportFormat format) {
+  public ReportTemplate format(@Nonnull TbReportFormat format) {
     this.format = format;
     return this;
   }
@@ -216,7 +219,7 @@ public class ReportTemplate {
    * Report format
    * @return format
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FORMAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TbReportFormat getFormat() {
@@ -226,12 +229,12 @@ public class ReportTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_FORMAT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFormat(@javax.annotation.Nonnull TbReportFormat format) {
+  public void setFormat(@Nonnull TbReportFormat format) {
     this.format = format;
   }
 
 
-  public ReportTemplate type(@javax.annotation.Nonnull ReportTemplateType type) {
+  public ReportTemplate type(@Nonnull ReportTemplateType type) {
     this.type = type;
     return this;
   }
@@ -240,7 +243,7 @@ public class ReportTemplate {
    * Report template type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ReportTemplateType getType() {
@@ -250,12 +253,12 @@ public class ReportTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull ReportTemplateType type) {
+  public void setType(@Nonnull ReportTemplateType type) {
     this.type = type;
   }
 
 
-  public ReportTemplate description(@javax.annotation.Nullable String description) {
+  public ReportTemplate description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -264,7 +267,7 @@ public class ReportTemplate {
    * Description
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -274,12 +277,12 @@ public class ReportTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
 
-  public ReportTemplate version(@javax.annotation.Nullable Long version) {
+  public ReportTemplate version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -288,7 +291,7 @@ public class ReportTemplate {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -298,12 +301,12 @@ public class ReportTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public ReportTemplate _configuration(@javax.annotation.Nonnull ReportTemplateConfig _configuration) {
+  public ReportTemplate _configuration(@Nonnull ReportTemplateConfig _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -312,7 +315,7 @@ public class ReportTemplate {
    * a JSON value with report template configuration
    * @return _configuration
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ReportTemplateConfig getConfiguration() {
@@ -322,7 +325,7 @@ public class ReportTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfiguration(@javax.annotation.Nonnull ReportTemplateConfig _configuration) {
+  public void setConfiguration(@Nonnull ReportTemplateConfig _configuration) {
     this._configuration = _configuration;
   }
 
@@ -331,7 +334,7 @@ public class ReportTemplate {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

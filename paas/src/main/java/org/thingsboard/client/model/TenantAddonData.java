@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -57,96 +59,96 @@ import org.thingsboard.client.ApiClient;
   TenantAddonData.JSON_PROPERTY_WHITE_LABELING_ENABLED,
   TenantAddonData.JSON_PROPERTY_DEFAULT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantAddonData {
   public static final String JSON_PROPERTY_MAX_DEVICES = "maxDevices";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxDevices;
 
   public static final String JSON_PROPERTY_MAX_ASSETS = "maxAssets";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxAssets;
 
   public static final String JSON_PROPERTY_MAX_CUSTOMERS = "maxCustomers";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxCustomers;
 
   public static final String JSON_PROPERTY_MAX_USERS = "maxUsers";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxUsers;
 
   public static final String JSON_PROPERTY_MAX_INTEGRATIONS = "maxIntegrations";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxIntegrations;
 
   public static final String JSON_PROPERTY_MAX_CONVERTERS = "maxConverters";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxConverters;
 
   public static final String JSON_PROPERTY_MAX_CALCULATED_FIELDS_PER_ENTITY = "maxCalculatedFieldsPerEntity";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxCalculatedFieldsPerEntity;
 
   public static final String JSON_PROPERTY_MAX_TRANSPORT_MESSAGES = "maxTransportMessages";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxTransportMessages;
 
   public static final String JSON_PROPERTY_MAX_TRANSPORT_DATA_POINTS = "maxTransportDataPoints";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxTransportDataPoints;
 
   public static final String JSON_PROPERTY_MAX_R_E_EXECUTIONS = "maxREExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxREExecutions;
 
   public static final String JSON_PROPERTY_MAX_J_S_EXECUTIONS = "maxJSExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxJSExecutions;
 
   public static final String JSON_PROPERTY_MAX_D_P_STORAGE_DAYS = "maxDPStorageDays";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxDPStorageDays;
 
   public static final String JSON_PROPERTY_MAX_CREATED_ALARMS = "maxCreatedAlarms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxCreatedAlarms;
 
   public static final String JSON_PROPERTY_MAX_EMAILS = "maxEmails";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxEmails;
 
   public static final String JSON_PROPERTY_MAX_SMS = "maxSms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxSms;
 
   public static final String JSON_PROPERTY_MAX_AI_CREDITS = "maxAiCredits";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxAiCredits;
 
   public static final String JSON_PROPERTY_EDGE_ENABLED = "edgeEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean edgeEnabled;
 
   public static final String JSON_PROPERTY_MAX_EDGES = "maxEdges";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxEdges;
 
   public static final String JSON_PROPERTY_TRENDZ_ENABLED = "trendzEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean trendzEnabled;
 
   public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean whiteLabelingEnabled;
 
   public static final String JSON_PROPERTY_DEFAULT = "default";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _default;
 
   public TenantAddonData() { 
   }
 
-  public TenantAddonData maxDevices(@javax.annotation.Nullable Long maxDevices) {
+  public TenantAddonData maxDevices(@Nullable Long maxDevices) {
     this.maxDevices = maxDevices;
     return this;
   }
@@ -155,7 +157,7 @@ public class TenantAddonData {
    * Get maxDevices
    * @return maxDevices
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxDevices() {
@@ -165,12 +167,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxDevices(@javax.annotation.Nullable Long maxDevices) {
+  public void setMaxDevices(@Nullable Long maxDevices) {
     this.maxDevices = maxDevices;
   }
 
 
-  public TenantAddonData maxAssets(@javax.annotation.Nullable Long maxAssets) {
+  public TenantAddonData maxAssets(@Nullable Long maxAssets) {
     this.maxAssets = maxAssets;
     return this;
   }
@@ -179,7 +181,7 @@ public class TenantAddonData {
    * Get maxAssets
    * @return maxAssets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxAssets() {
@@ -189,12 +191,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxAssets(@javax.annotation.Nullable Long maxAssets) {
+  public void setMaxAssets(@Nullable Long maxAssets) {
     this.maxAssets = maxAssets;
   }
 
 
-  public TenantAddonData maxCustomers(@javax.annotation.Nullable Long maxCustomers) {
+  public TenantAddonData maxCustomers(@Nullable Long maxCustomers) {
     this.maxCustomers = maxCustomers;
     return this;
   }
@@ -203,7 +205,7 @@ public class TenantAddonData {
    * Get maxCustomers
    * @return maxCustomers
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxCustomers() {
@@ -213,12 +215,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxCustomers(@javax.annotation.Nullable Long maxCustomers) {
+  public void setMaxCustomers(@Nullable Long maxCustomers) {
     this.maxCustomers = maxCustomers;
   }
 
 
-  public TenantAddonData maxUsers(@javax.annotation.Nullable Long maxUsers) {
+  public TenantAddonData maxUsers(@Nullable Long maxUsers) {
     this.maxUsers = maxUsers;
     return this;
   }
@@ -227,7 +229,7 @@ public class TenantAddonData {
    * Get maxUsers
    * @return maxUsers
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxUsers() {
@@ -237,12 +239,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxUsers(@javax.annotation.Nullable Long maxUsers) {
+  public void setMaxUsers(@Nullable Long maxUsers) {
     this.maxUsers = maxUsers;
   }
 
 
-  public TenantAddonData maxIntegrations(@javax.annotation.Nullable Long maxIntegrations) {
+  public TenantAddonData maxIntegrations(@Nullable Long maxIntegrations) {
     this.maxIntegrations = maxIntegrations;
     return this;
   }
@@ -251,7 +253,7 @@ public class TenantAddonData {
    * Get maxIntegrations
    * @return maxIntegrations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_INTEGRATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxIntegrations() {
@@ -261,12 +263,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_INTEGRATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxIntegrations(@javax.annotation.Nullable Long maxIntegrations) {
+  public void setMaxIntegrations(@Nullable Long maxIntegrations) {
     this.maxIntegrations = maxIntegrations;
   }
 
 
-  public TenantAddonData maxConverters(@javax.annotation.Nullable Long maxConverters) {
+  public TenantAddonData maxConverters(@Nullable Long maxConverters) {
     this.maxConverters = maxConverters;
     return this;
   }
@@ -275,7 +277,7 @@ public class TenantAddonData {
    * Get maxConverters
    * @return maxConverters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_CONVERTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxConverters() {
@@ -285,12 +287,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_CONVERTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxConverters(@javax.annotation.Nullable Long maxConverters) {
+  public void setMaxConverters(@Nullable Long maxConverters) {
     this.maxConverters = maxConverters;
   }
 
 
-  public TenantAddonData maxCalculatedFieldsPerEntity(@javax.annotation.Nullable Long maxCalculatedFieldsPerEntity) {
+  public TenantAddonData maxCalculatedFieldsPerEntity(@Nullable Long maxCalculatedFieldsPerEntity) {
     this.maxCalculatedFieldsPerEntity = maxCalculatedFieldsPerEntity;
     return this;
   }
@@ -299,7 +301,7 @@ public class TenantAddonData {
    * Get maxCalculatedFieldsPerEntity
    * @return maxCalculatedFieldsPerEntity
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_CALCULATED_FIELDS_PER_ENTITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxCalculatedFieldsPerEntity() {
@@ -309,12 +311,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_CALCULATED_FIELDS_PER_ENTITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxCalculatedFieldsPerEntity(@javax.annotation.Nullable Long maxCalculatedFieldsPerEntity) {
+  public void setMaxCalculatedFieldsPerEntity(@Nullable Long maxCalculatedFieldsPerEntity) {
     this.maxCalculatedFieldsPerEntity = maxCalculatedFieldsPerEntity;
   }
 
 
-  public TenantAddonData maxTransportMessages(@javax.annotation.Nullable Long maxTransportMessages) {
+  public TenantAddonData maxTransportMessages(@Nullable Long maxTransportMessages) {
     this.maxTransportMessages = maxTransportMessages;
     return this;
   }
@@ -323,7 +325,7 @@ public class TenantAddonData {
    * Get maxTransportMessages
    * @return maxTransportMessages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxTransportMessages() {
@@ -333,12 +335,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxTransportMessages(@javax.annotation.Nullable Long maxTransportMessages) {
+  public void setMaxTransportMessages(@Nullable Long maxTransportMessages) {
     this.maxTransportMessages = maxTransportMessages;
   }
 
 
-  public TenantAddonData maxTransportDataPoints(@javax.annotation.Nullable Long maxTransportDataPoints) {
+  public TenantAddonData maxTransportDataPoints(@Nullable Long maxTransportDataPoints) {
     this.maxTransportDataPoints = maxTransportDataPoints;
     return this;
   }
@@ -347,7 +349,7 @@ public class TenantAddonData {
    * Get maxTransportDataPoints
    * @return maxTransportDataPoints
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_TRANSPORT_DATA_POINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxTransportDataPoints() {
@@ -357,12 +359,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_TRANSPORT_DATA_POINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxTransportDataPoints(@javax.annotation.Nullable Long maxTransportDataPoints) {
+  public void setMaxTransportDataPoints(@Nullable Long maxTransportDataPoints) {
     this.maxTransportDataPoints = maxTransportDataPoints;
   }
 
 
-  public TenantAddonData maxREExecutions(@javax.annotation.Nullable Long maxREExecutions) {
+  public TenantAddonData maxREExecutions(@Nullable Long maxREExecutions) {
     this.maxREExecutions = maxREExecutions;
     return this;
   }
@@ -371,7 +373,7 @@ public class TenantAddonData {
    * Get maxREExecutions
    * @return maxREExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_R_E_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxREExecutions() {
@@ -381,12 +383,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_R_E_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxREExecutions(@javax.annotation.Nullable Long maxREExecutions) {
+  public void setMaxREExecutions(@Nullable Long maxREExecutions) {
     this.maxREExecutions = maxREExecutions;
   }
 
 
-  public TenantAddonData maxJSExecutions(@javax.annotation.Nullable Long maxJSExecutions) {
+  public TenantAddonData maxJSExecutions(@Nullable Long maxJSExecutions) {
     this.maxJSExecutions = maxJSExecutions;
     return this;
   }
@@ -395,7 +397,7 @@ public class TenantAddonData {
    * Get maxJSExecutions
    * @return maxJSExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_J_S_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxJSExecutions() {
@@ -405,12 +407,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_J_S_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxJSExecutions(@javax.annotation.Nullable Long maxJSExecutions) {
+  public void setMaxJSExecutions(@Nullable Long maxJSExecutions) {
     this.maxJSExecutions = maxJSExecutions;
   }
 
 
-  public TenantAddonData maxDPStorageDays(@javax.annotation.Nullable Long maxDPStorageDays) {
+  public TenantAddonData maxDPStorageDays(@Nullable Long maxDPStorageDays) {
     this.maxDPStorageDays = maxDPStorageDays;
     return this;
   }
@@ -419,7 +421,7 @@ public class TenantAddonData {
    * Get maxDPStorageDays
    * @return maxDPStorageDays
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_D_P_STORAGE_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxDPStorageDays() {
@@ -429,12 +431,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_D_P_STORAGE_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxDPStorageDays(@javax.annotation.Nullable Long maxDPStorageDays) {
+  public void setMaxDPStorageDays(@Nullable Long maxDPStorageDays) {
     this.maxDPStorageDays = maxDPStorageDays;
   }
 
 
-  public TenantAddonData maxCreatedAlarms(@javax.annotation.Nullable Long maxCreatedAlarms) {
+  public TenantAddonData maxCreatedAlarms(@Nullable Long maxCreatedAlarms) {
     this.maxCreatedAlarms = maxCreatedAlarms;
     return this;
   }
@@ -443,7 +445,7 @@ public class TenantAddonData {
    * Get maxCreatedAlarms
    * @return maxCreatedAlarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_CREATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxCreatedAlarms() {
@@ -453,12 +455,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_CREATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxCreatedAlarms(@javax.annotation.Nullable Long maxCreatedAlarms) {
+  public void setMaxCreatedAlarms(@Nullable Long maxCreatedAlarms) {
     this.maxCreatedAlarms = maxCreatedAlarms;
   }
 
 
-  public TenantAddonData maxEmails(@javax.annotation.Nullable Long maxEmails) {
+  public TenantAddonData maxEmails(@Nullable Long maxEmails) {
     this.maxEmails = maxEmails;
     return this;
   }
@@ -467,7 +469,7 @@ public class TenantAddonData {
    * Get maxEmails
    * @return maxEmails
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxEmails() {
@@ -477,12 +479,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxEmails(@javax.annotation.Nullable Long maxEmails) {
+  public void setMaxEmails(@Nullable Long maxEmails) {
     this.maxEmails = maxEmails;
   }
 
 
-  public TenantAddonData maxSms(@javax.annotation.Nullable Long maxSms) {
+  public TenantAddonData maxSms(@Nullable Long maxSms) {
     this.maxSms = maxSms;
     return this;
   }
@@ -491,7 +493,7 @@ public class TenantAddonData {
    * Get maxSms
    * @return maxSms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxSms() {
@@ -501,12 +503,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxSms(@javax.annotation.Nullable Long maxSms) {
+  public void setMaxSms(@Nullable Long maxSms) {
     this.maxSms = maxSms;
   }
 
 
-  public TenantAddonData maxAiCredits(@javax.annotation.Nullable Long maxAiCredits) {
+  public TenantAddonData maxAiCredits(@Nullable Long maxAiCredits) {
     this.maxAiCredits = maxAiCredits;
     return this;
   }
@@ -515,7 +517,7 @@ public class TenantAddonData {
    * Get maxAiCredits
    * @return maxAiCredits
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxAiCredits() {
@@ -525,12 +527,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxAiCredits(@javax.annotation.Nullable Long maxAiCredits) {
+  public void setMaxAiCredits(@Nullable Long maxAiCredits) {
     this.maxAiCredits = maxAiCredits;
   }
 
 
-  public TenantAddonData edgeEnabled(@javax.annotation.Nullable Boolean edgeEnabled) {
+  public TenantAddonData edgeEnabled(@Nullable Boolean edgeEnabled) {
     this.edgeEnabled = edgeEnabled;
     return this;
   }
@@ -539,7 +541,7 @@ public class TenantAddonData {
    * Get edgeEnabled
    * @return edgeEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEdgeEnabled() {
@@ -549,12 +551,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_EDGE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeEnabled(@javax.annotation.Nullable Boolean edgeEnabled) {
+  public void setEdgeEnabled(@Nullable Boolean edgeEnabled) {
     this.edgeEnabled = edgeEnabled;
   }
 
 
-  public TenantAddonData maxEdges(@javax.annotation.Nullable Long maxEdges) {
+  public TenantAddonData maxEdges(@Nullable Long maxEdges) {
     this.maxEdges = maxEdges;
     return this;
   }
@@ -563,7 +565,7 @@ public class TenantAddonData {
    * Get maxEdges
    * @return maxEdges
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxEdges() {
@@ -573,12 +575,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxEdges(@javax.annotation.Nullable Long maxEdges) {
+  public void setMaxEdges(@Nullable Long maxEdges) {
     this.maxEdges = maxEdges;
   }
 
 
-  public TenantAddonData trendzEnabled(@javax.annotation.Nullable Boolean trendzEnabled) {
+  public TenantAddonData trendzEnabled(@Nullable Boolean trendzEnabled) {
     this.trendzEnabled = trendzEnabled;
     return this;
   }
@@ -587,7 +589,7 @@ public class TenantAddonData {
    * Get trendzEnabled
    * @return trendzEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRENDZ_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getTrendzEnabled() {
@@ -597,12 +599,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_TRENDZ_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTrendzEnabled(@javax.annotation.Nullable Boolean trendzEnabled) {
+  public void setTrendzEnabled(@Nullable Boolean trendzEnabled) {
     this.trendzEnabled = trendzEnabled;
   }
 
 
-  public TenantAddonData whiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+  public TenantAddonData whiteLabelingEnabled(@Nullable Boolean whiteLabelingEnabled) {
     this.whiteLabelingEnabled = whiteLabelingEnabled;
     return this;
   }
@@ -611,7 +613,7 @@ public class TenantAddonData {
    * Get whiteLabelingEnabled
    * @return whiteLabelingEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getWhiteLabelingEnabled() {
@@ -621,12 +623,12 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWhiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+  public void setWhiteLabelingEnabled(@Nullable Boolean whiteLabelingEnabled) {
     this.whiteLabelingEnabled = whiteLabelingEnabled;
   }
 
 
-  public TenantAddonData _default(@javax.annotation.Nullable Boolean _default) {
+  public TenantAddonData _default(@Nullable Boolean _default) {
     this._default = _default;
     return this;
   }
@@ -635,7 +637,7 @@ public class TenantAddonData {
    * Get _default
    * @return _default
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDefault() {
@@ -645,7 +647,7 @@ public class TenantAddonData {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefault(@javax.annotation.Nullable Boolean _default) {
+  public void setDefault(@Nullable Boolean _default) {
     this._default = _default;
   }
 

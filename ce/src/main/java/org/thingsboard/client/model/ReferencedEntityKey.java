@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   ReferencedEntityKey.JSON_PROPERTY_TYPE,
   ReferencedEntityKey.JSON_PROPERTY_SCOPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ReferencedEntityKey {
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private ArgumentType type;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
-  @javax.annotation.Nullable
+  @Nullable
   private AttributeScope scope;
 
   public ReferencedEntityKey() { 
   }
 
-  public ReferencedEntityKey key(@javax.annotation.Nullable String key) {
+  public ReferencedEntityKey key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -67,7 +69,7 @@ public class ReferencedEntityKey {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -77,12 +79,12 @@ public class ReferencedEntityKey {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
 
-  public ReferencedEntityKey type(@javax.annotation.Nullable ArgumentType type) {
+  public ReferencedEntityKey type(@Nullable ArgumentType type) {
     this.type = type;
     return this;
   }
@@ -91,7 +93,7 @@ public class ReferencedEntityKey {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ArgumentType getType() {
@@ -101,12 +103,12 @@ public class ReferencedEntityKey {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable ArgumentType type) {
+  public void setType(@Nullable ArgumentType type) {
     this.type = type;
   }
 
 
-  public ReferencedEntityKey scope(@javax.annotation.Nullable AttributeScope scope) {
+  public ReferencedEntityKey scope(@Nullable AttributeScope scope) {
     this.scope = scope;
     return this;
   }
@@ -115,7 +117,7 @@ public class ReferencedEntityKey {
    * Get scope
    * @return scope
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AttributeScope getScope() {
@@ -125,7 +127,7 @@ public class ReferencedEntityKey {
 
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(@javax.annotation.Nullable AttributeScope scope) {
+  public void setScope(@Nullable AttributeScope scope) {
     this.scope = scope;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -54,58 +56,58 @@ import org.thingsboard.client.ApiClient;
   WidgetTypeInfo.JSON_PROPERTY_WIDGET_TYPE,
   WidgetTypeInfo.JSON_PROPERTY_BUNDLES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WidgetTypeInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private WidgetTypeId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_FQN = "fqn";
-  @javax.annotation.Nullable
+  @Nullable
   private String fqn;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DEPRECATED = "deprecated";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean deprecated;
 
   public static final String JSON_PROPERTY_SCADA = "scada";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean scada;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_TAGS = "tags";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WIDGET_TYPE = "widgetType";
-  @javax.annotation.Nullable
+  @Nullable
   private String widgetType;
 
   public static final String JSON_PROPERTY_BUNDLES = "bundles";
-  @javax.annotation.Nullable
+  @Nullable
   private List<WidgetBundleInfo> bundles = new ArrayList<>();
 
   public WidgetTypeInfo() { 
@@ -131,7 +133,7 @@ public class WidgetTypeInfo {
     this.widgetType = widgetType;
   }
 
-  public WidgetTypeInfo id(@javax.annotation.Nullable WidgetTypeId id) {
+  public WidgetTypeInfo id(@Nullable WidgetTypeId id) {
     this.id = id;
     return this;
   }
@@ -140,7 +142,7 @@ public class WidgetTypeInfo {
    * JSON object with the Widget Type Id. Specify this field to update the Widget Type. Referencing non-existing Widget Type Id will cause error. Omit this field to create new Widget Type.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public WidgetTypeId getId() {
@@ -150,7 +152,7 @@ public class WidgetTypeInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable WidgetTypeId id) {
+  public void setId(@Nullable WidgetTypeId id) {
     this.id = id;
   }
 
@@ -159,7 +161,7 @@ public class WidgetTypeInfo {
    * Timestamp of the Widget Type creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -173,7 +175,7 @@ public class WidgetTypeInfo {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -187,7 +189,7 @@ public class WidgetTypeInfo {
    * Unique FQN that is used in dashboards as a reference widget type
    * @return fqn
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FQN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFqn() {
@@ -201,7 +203,7 @@ public class WidgetTypeInfo {
    * Widget name used in search and UI
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -211,7 +213,7 @@ public class WidgetTypeInfo {
 
 
 
-  public WidgetTypeInfo deprecated(@javax.annotation.Nullable Boolean deprecated) {
+  public WidgetTypeInfo deprecated(@Nullable Boolean deprecated) {
     this.deprecated = deprecated;
     return this;
   }
@@ -220,7 +222,7 @@ public class WidgetTypeInfo {
    * Whether widget type is deprecated.
    * @return deprecated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDeprecated() {
@@ -230,12 +232,12 @@ public class WidgetTypeInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeprecated(@javax.annotation.Nullable Boolean deprecated) {
+  public void setDeprecated(@Nullable Boolean deprecated) {
     this.deprecated = deprecated;
   }
 
 
-  public WidgetTypeInfo scada(@javax.annotation.Nullable Boolean scada) {
+  public WidgetTypeInfo scada(@Nullable Boolean scada) {
     this.scada = scada;
     return this;
   }
@@ -244,7 +246,7 @@ public class WidgetTypeInfo {
    * Whether widget type is SCADA symbol.
    * @return scada
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCADA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getScada() {
@@ -254,12 +256,12 @@ public class WidgetTypeInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SCADA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScada(@javax.annotation.Nullable Boolean scada) {
+  public void setScada(@Nullable Boolean scada) {
     this.scada = scada;
   }
 
 
-  public WidgetTypeInfo version(@javax.annotation.Nullable Long version) {
+  public WidgetTypeInfo version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -268,7 +270,7 @@ public class WidgetTypeInfo {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -278,7 +280,7 @@ public class WidgetTypeInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -287,7 +289,7 @@ public class WidgetTypeInfo {
    * Base64 encoded widget thumbnail
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -301,7 +303,7 @@ public class WidgetTypeInfo {
    * Description of the widget type
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -311,7 +313,7 @@ public class WidgetTypeInfo {
 
 
 
-  public WidgetTypeInfo tags(@javax.annotation.Nullable List<String> tags) {
+  public WidgetTypeInfo tags(@Nullable List<String> tags) {
     this.tags = tags;
     return this;
   }
@@ -328,7 +330,7 @@ public class WidgetTypeInfo {
    * Tags of the widget type
    * @return tags
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTags() {
@@ -338,7 +340,7 @@ public class WidgetTypeInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(@javax.annotation.Nullable List<String> tags) {
+  public void setTags(@Nullable List<String> tags) {
     this.tags = tags;
   }
 
@@ -347,7 +349,7 @@ public class WidgetTypeInfo {
    * Type of the widget (timeseries, latest, control, alarm or static)
    * @return widgetType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WIDGET_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getWidgetType() {
@@ -357,7 +359,7 @@ public class WidgetTypeInfo {
 
 
 
-  public WidgetTypeInfo bundles(@javax.annotation.Nullable List<WidgetBundleInfo> bundles) {
+  public WidgetTypeInfo bundles(@Nullable List<WidgetBundleInfo> bundles) {
     this.bundles = bundles;
     return this;
   }
@@ -374,7 +376,7 @@ public class WidgetTypeInfo {
    * Bundles
    * @return bundles
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BUNDLES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<WidgetBundleInfo> getBundles() {
@@ -384,7 +386,7 @@ public class WidgetTypeInfo {
 
   @JsonProperty(value = JSON_PROPERTY_BUNDLES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBundles(@javax.annotation.Nullable List<WidgetBundleInfo> bundles) {
+  public void setBundles(@Nullable List<WidgetBundleInfo> bundles) {
     this.bundles = bundles;
   }
 

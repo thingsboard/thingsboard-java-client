@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,20 +43,20 @@ import org.thingsboard.client.ApiClient;
   LwM2mInstance.JSON_PROPERTY_ID,
   LwM2mInstance.JSON_PROPERTY_RESOURCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LwM2mInstance {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer id;
 
   public static final String JSON_PROPERTY_RESOURCES = "resources";
-  @javax.annotation.Nullable
+  @Nullable
   private List<LwM2mResourceObserve> resources = new ArrayList<>();
 
   public LwM2mInstance() { 
   }
 
-  public LwM2mInstance id(@javax.annotation.Nullable Integer id) {
+  public LwM2mInstance id(@Nullable Integer id) {
     this.id = id;
     return this;
   }
@@ -63,7 +65,7 @@ public class LwM2mInstance {
    * LwM2M Instance id.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getId() {
@@ -73,12 +75,12 @@ public class LwM2mInstance {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@Nullable Integer id) {
     this.id = id;
   }
 
 
-  public LwM2mInstance resources(@javax.annotation.Nullable List<LwM2mResourceObserve> resources) {
+  public LwM2mInstance resources(@Nullable List<LwM2mResourceObserve> resources) {
     this.resources = resources;
     return this;
   }
@@ -95,7 +97,7 @@ public class LwM2mInstance {
    * LwM2M Resource observe.
    * @return resources
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<LwM2mResourceObserve> getResources() {
@@ -105,7 +107,7 @@ public class LwM2mInstance {
 
   @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResources(@javax.annotation.Nullable List<LwM2mResourceObserve> resources) {
+  public void setResources(@Nullable List<LwM2mResourceObserve> resources) {
     this.resources = resources;
   }
 

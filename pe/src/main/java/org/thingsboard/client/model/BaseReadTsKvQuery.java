@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,48 +49,48 @@ import org.thingsboard.client.ApiClient;
   BaseReadTsKvQuery.JSON_PROPERTY_AGGREGATION,
   BaseReadTsKvQuery.JSON_PROPERTY_INTERVAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BaseReadTsKvQuery {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer id;
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public static final String JSON_PROPERTY_START_TS = "startTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long startTs;
 
   public static final String JSON_PROPERTY_END_TS = "endTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endTs;
 
   public static final String JSON_PROPERTY_AGG_PARAMETERS = "aggParameters";
-  @javax.annotation.Nullable
+  @Nullable
   private AggregationParams aggParameters;
 
   public static final String JSON_PROPERTY_LIMIT = "limit";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer limit;
 
   public static final String JSON_PROPERTY_ORDER = "order";
-  @javax.annotation.Nullable
+  @Nullable
   private String order;
 
   public static final String JSON_PROPERTY_AGGREGATION = "aggregation";
-  @javax.annotation.Nullable
+  @Nullable
   private Aggregation aggregation;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  @javax.annotation.Nullable
+  @Nullable
   private Long interval;
 
   public BaseReadTsKvQuery() { 
   }
 
-  public BaseReadTsKvQuery id(@javax.annotation.Nullable Integer id) {
+  public BaseReadTsKvQuery id(@Nullable Integer id) {
     this.id = id;
     return this;
   }
@@ -97,7 +99,7 @@ public class BaseReadTsKvQuery {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getId() {
@@ -107,12 +109,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@Nullable Integer id) {
     this.id = id;
   }
 
 
-  public BaseReadTsKvQuery key(@javax.annotation.Nullable String key) {
+  public BaseReadTsKvQuery key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -121,7 +123,7 @@ public class BaseReadTsKvQuery {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -131,12 +133,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
 
-  public BaseReadTsKvQuery startTs(@javax.annotation.Nullable Long startTs) {
+  public BaseReadTsKvQuery startTs(@Nullable Long startTs) {
     this.startTs = startTs;
     return this;
   }
@@ -145,7 +147,7 @@ public class BaseReadTsKvQuery {
    * Get startTs
    * @return startTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStartTs() {
@@ -155,12 +157,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartTs(@javax.annotation.Nullable Long startTs) {
+  public void setStartTs(@Nullable Long startTs) {
     this.startTs = startTs;
   }
 
 
-  public BaseReadTsKvQuery endTs(@javax.annotation.Nullable Long endTs) {
+  public BaseReadTsKvQuery endTs(@Nullable Long endTs) {
     this.endTs = endTs;
     return this;
   }
@@ -169,7 +171,7 @@ public class BaseReadTsKvQuery {
    * Get endTs
    * @return endTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndTs() {
@@ -179,12 +181,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndTs(@javax.annotation.Nullable Long endTs) {
+  public void setEndTs(@Nullable Long endTs) {
     this.endTs = endTs;
   }
 
 
-  public BaseReadTsKvQuery aggParameters(@javax.annotation.Nullable AggregationParams aggParameters) {
+  public BaseReadTsKvQuery aggParameters(@Nullable AggregationParams aggParameters) {
     this.aggParameters = aggParameters;
     return this;
   }
@@ -193,7 +195,7 @@ public class BaseReadTsKvQuery {
    * Get aggParameters
    * @return aggParameters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AGG_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AggregationParams getAggParameters() {
@@ -203,12 +205,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_AGG_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAggParameters(@javax.annotation.Nullable AggregationParams aggParameters) {
+  public void setAggParameters(@Nullable AggregationParams aggParameters) {
     this.aggParameters = aggParameters;
   }
 
 
-  public BaseReadTsKvQuery limit(@javax.annotation.Nullable Integer limit) {
+  public BaseReadTsKvQuery limit(@Nullable Integer limit) {
     this.limit = limit;
     return this;
   }
@@ -217,7 +219,7 @@ public class BaseReadTsKvQuery {
    * Get limit
    * @return limit
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LIMIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getLimit() {
@@ -227,12 +229,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_LIMIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@Nullable Integer limit) {
     this.limit = limit;
   }
 
 
-  public BaseReadTsKvQuery order(@javax.annotation.Nullable String order) {
+  public BaseReadTsKvQuery order(@Nullable String order) {
     this.order = order;
     return this;
   }
@@ -241,7 +243,7 @@ public class BaseReadTsKvQuery {
    * Get order
    * @return order
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getOrder() {
@@ -251,12 +253,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrder(@javax.annotation.Nullable String order) {
+  public void setOrder(@Nullable String order) {
     this.order = order;
   }
 
 
-  public BaseReadTsKvQuery aggregation(@javax.annotation.Nullable Aggregation aggregation) {
+  public BaseReadTsKvQuery aggregation(@Nullable Aggregation aggregation) {
     this.aggregation = aggregation;
     return this;
   }
@@ -265,7 +267,7 @@ public class BaseReadTsKvQuery {
    * Get aggregation
    * @return aggregation
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Aggregation getAggregation() {
@@ -275,12 +277,12 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAggregation(@javax.annotation.Nullable Aggregation aggregation) {
+  public void setAggregation(@Nullable Aggregation aggregation) {
     this.aggregation = aggregation;
   }
 
 
-  public BaseReadTsKvQuery interval(@javax.annotation.Nullable Long interval) {
+  public BaseReadTsKvQuery interval(@Nullable Long interval) {
     this.interval = interval;
     return this;
   }
@@ -289,7 +291,7 @@ public class BaseReadTsKvQuery {
    * Get interval
    * @return interval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getInterval() {
@@ -299,7 +301,7 @@ public class BaseReadTsKvQuery {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInterval(@javax.annotation.Nullable Long interval) {
+  public void setInterval(@Nullable Long interval) {
     this.interval = interval;
   }
 

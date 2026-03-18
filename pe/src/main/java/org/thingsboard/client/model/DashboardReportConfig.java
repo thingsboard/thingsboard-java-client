@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,52 +49,52 @@ import org.thingsboard.client.ApiClient;
   DashboardReportConfig.JSON_PROPERTY_USE_CURRENT_USER_CREDENTIALS,
   DashboardReportConfig.JSON_PROPERTY_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DashboardReportConfig {
   public static final String JSON_PROPERTY_BASE_URL = "baseUrl";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String baseUrl;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String dashboardId;
 
   public static final String JSON_PROPERTY_STATE = "state";
-  @javax.annotation.Nullable
+  @Nullable
   private String state;
 
   public static final String JSON_PROPERTY_TIMEZONE = "timezone";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String timezone;
 
   public static final String JSON_PROPERTY_USE_DASHBOARD_TIMEWINDOW = "useDashboardTimewindow";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean useDashboardTimewindow;
 
   public static final String JSON_PROPERTY_TIMEWINDOW = "timewindow";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode timewindow;
 
   public static final String JSON_PROPERTY_NAME_PATTERN = "namePattern";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String namePattern;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public static final String JSON_PROPERTY_USE_CURRENT_USER_CREDENTIALS = "useCurrentUserCredentials";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean useCurrentUserCredentials;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String userId;
 
   public DashboardReportConfig() { 
   }
 
-  public DashboardReportConfig baseUrl(@javax.annotation.Nonnull String baseUrl) {
+  public DashboardReportConfig baseUrl(@Nonnull String baseUrl) {
     this.baseUrl = baseUrl;
     return this;
   }
@@ -100,7 +103,7 @@ public class DashboardReportConfig {
    * Base URL of ThingsBoard UI that should be accessible by Web Report Server.
    * @return baseUrl
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getBaseUrl() {
@@ -110,12 +113,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBaseUrl(@javax.annotation.Nonnull String baseUrl) {
+  public void setBaseUrl(@Nonnull String baseUrl) {
     this.baseUrl = baseUrl;
   }
 
 
-  public DashboardReportConfig dashboardId(@javax.annotation.Nonnull String dashboardId) {
+  public DashboardReportConfig dashboardId(@Nonnull String dashboardId) {
     this.dashboardId = dashboardId;
     return this;
   }
@@ -124,7 +127,7 @@ public class DashboardReportConfig {
    * A string value representing the dashboard id.
    * @return dashboardId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getDashboardId() {
@@ -134,12 +137,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDashboardId(@javax.annotation.Nonnull String dashboardId) {
+  public void setDashboardId(@Nonnull String dashboardId) {
     this.dashboardId = dashboardId;
   }
 
 
-  public DashboardReportConfig state(@javax.annotation.Nullable String state) {
+  public DashboardReportConfig state(@Nullable String state) {
     this.state = state;
     return this;
   }
@@ -148,7 +151,7 @@ public class DashboardReportConfig {
    * Target dashboard state for dashboard report generation.
    * @return state
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getState() {
@@ -158,12 +161,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setState(@javax.annotation.Nullable String state) {
+  public void setState(@Nullable String state) {
     this.state = state;
   }
 
 
-  public DashboardReportConfig timezone(@javax.annotation.Nonnull String timezone) {
+  public DashboardReportConfig timezone(@Nonnull String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -172,7 +175,7 @@ public class DashboardReportConfig {
    * Timezone in which target dashboard will be presented in dashboard report.
    * @return timezone
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getTimezone() {
@@ -182,12 +185,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTimezone(@javax.annotation.Nonnull String timezone) {
+  public void setTimezone(@Nonnull String timezone) {
     this.timezone = timezone;
   }
 
 
-  public DashboardReportConfig useDashboardTimewindow(@javax.annotation.Nullable Boolean useDashboardTimewindow) {
+  public DashboardReportConfig useDashboardTimewindow(@Nullable Boolean useDashboardTimewindow) {
     this.useDashboardTimewindow = useDashboardTimewindow;
     return this;
   }
@@ -196,7 +199,7 @@ public class DashboardReportConfig {
    * If set, timewindow configured in the target dashboard will be used during dashboard report generation.
    * @return useDashboardTimewindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USE_DASHBOARD_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUseDashboardTimewindow() {
@@ -206,12 +209,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_USE_DASHBOARD_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUseDashboardTimewindow(@javax.annotation.Nullable Boolean useDashboardTimewindow) {
+  public void setUseDashboardTimewindow(@Nullable Boolean useDashboardTimewindow) {
     this.useDashboardTimewindow = useDashboardTimewindow;
   }
 
 
-  public DashboardReportConfig timewindow(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode timewindow) {
+  public DashboardReportConfig timewindow(@Nullable com.fasterxml.jackson.databind.JsonNode timewindow) {
     this.timewindow = timewindow;
     return this;
   }
@@ -220,7 +223,7 @@ public class DashboardReportConfig {
    * Specific dashboard timewindow that will be used during dashboard report generation.
    * @return timewindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getTimewindow() {
@@ -230,12 +233,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimewindow(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode timewindow) {
+  public void setTimewindow(@Nullable com.fasterxml.jackson.databind.JsonNode timewindow) {
     this.timewindow = timewindow;
   }
 
 
-  public DashboardReportConfig namePattern(@javax.annotation.Nonnull String namePattern) {
+  public DashboardReportConfig namePattern(@Nonnull String namePattern) {
     this.namePattern = namePattern;
     return this;
   }
@@ -244,7 +247,7 @@ public class DashboardReportConfig {
    * If set, timewindow configured in the target dashboard will be used during dashboard report generation.
    * @return namePattern
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME_PATTERN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getNamePattern() {
@@ -254,12 +257,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_NAME_PATTERN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNamePattern(@javax.annotation.Nonnull String namePattern) {
+  public void setNamePattern(@Nonnull String namePattern) {
     this.namePattern = namePattern;
   }
 
 
-  public DashboardReportConfig type(@javax.annotation.Nullable String type) {
+  public DashboardReportConfig type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -268,7 +271,7 @@ public class DashboardReportConfig {
    * Dashboard report file type, can be PDF | PNG | JPEG.
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -278,12 +281,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
 
-  public DashboardReportConfig useCurrentUserCredentials(@javax.annotation.Nullable Boolean useCurrentUserCredentials) {
+  public DashboardReportConfig useCurrentUserCredentials(@Nullable Boolean useCurrentUserCredentials) {
     this.useCurrentUserCredentials = useCurrentUserCredentials;
     return this;
   }
@@ -292,7 +295,7 @@ public class DashboardReportConfig {
    * If set, credentials of user created this dashboard report configuration will be used to open dashboard UI during dashboard report generation.
    * @return useCurrentUserCredentials
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USE_CURRENT_USER_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUseCurrentUserCredentials() {
@@ -302,12 +305,12 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_USE_CURRENT_USER_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUseCurrentUserCredentials(@javax.annotation.Nullable Boolean useCurrentUserCredentials) {
+  public void setUseCurrentUserCredentials(@Nullable Boolean useCurrentUserCredentials) {
     this.useCurrentUserCredentials = useCurrentUserCredentials;
   }
 
 
-  public DashboardReportConfig userId(@javax.annotation.Nonnull String userId) {
+  public DashboardReportConfig userId(@Nonnull String userId) {
     this.userId = userId;
     return this;
   }
@@ -316,7 +319,7 @@ public class DashboardReportConfig {
    * A string value representing the user id.
    * @return userId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getUserId() {
@@ -326,7 +329,7 @@ public class DashboardReportConfig {
 
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@javax.annotation.Nonnull String userId) {
+  public void setUserId(@Nonnull String userId) {
     this.userId = userId;
   }
 

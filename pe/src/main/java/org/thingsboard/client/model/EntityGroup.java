@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -51,14 +54,14 @@ import org.thingsboard.client.ApiClient;
   EntityGroup.JSON_PROPERTY_GROUP_ALL,
   EntityGroup.JSON_PROPERTY_TENANT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityGroup {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityGroupId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   /**
@@ -185,39 +188,39 @@ public class EntityGroup {
   }
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TypeEnum type;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode _configuration;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_EDGE_GROUP_ALL = "edgeGroupAll";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean edgeGroupAll;
 
   public static final String JSON_PROPERTY_GROUP_ALL = "groupAll";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean groupAll;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public EntityGroup() { 
@@ -233,7 +236,7 @@ public class EntityGroup {
     this.edgeGroupAll = edgeGroupAll;
   }
 
-  public EntityGroup id(@javax.annotation.Nullable EntityGroupId id) {
+  public EntityGroup id(@Nullable EntityGroupId id) {
     this.id = id;
     return this;
   }
@@ -242,7 +245,7 @@ public class EntityGroup {
    * JSON object with the EntityGroupId Id. Specify this field to update the Entity Group. Referencing non-existing Entity Group Id will cause error. Omit this field to create new Entity Group.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityGroupId getId() {
@@ -252,7 +255,7 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EntityGroupId id) {
+  public void setId(@Nullable EntityGroupId id) {
     this.id = id;
   }
 
@@ -261,7 +264,7 @@ public class EntityGroup {
    * Timestamp of the entity group creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -271,7 +274,7 @@ public class EntityGroup {
 
 
 
-  public EntityGroup type(@javax.annotation.Nonnull TypeEnum type) {
+  public EntityGroup type(@Nonnull TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -280,7 +283,7 @@ public class EntityGroup {
    * Get type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TypeEnum getType() {
@@ -290,12 +293,12 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull TypeEnum type) {
+  public void setType(@Nonnull TypeEnum type) {
     this.type = type;
   }
 
 
-  public EntityGroup name(@javax.annotation.Nonnull String name) {
+  public EntityGroup name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -304,7 +307,7 @@ public class EntityGroup {
    * Name of the entity group
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -314,12 +317,12 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public EntityGroup ownerId(@javax.annotation.Nullable EntityId ownerId) {
+  public EntityGroup ownerId(@Nullable EntityId ownerId) {
     this.ownerId = ownerId;
     return this;
   }
@@ -328,7 +331,7 @@ public class EntityGroup {
    * JSON object with the owner of the group - Tenant or Customer Id.
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {
@@ -338,12 +341,12 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+  public void setOwnerId(@Nullable EntityId ownerId) {
     this.ownerId = ownerId;
   }
 
 
-  public EntityGroup additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public EntityGroup additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -352,7 +355,7 @@ public class EntityGroup {
    * Additional parameters of the entity group. May include: &#39;description&#39; (string), &#39;isPublic&#39; (boolean, whether this group is shared publicly), &#39;publicCustomerId&#39; (string, UUID of the public customer associated with this group).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -362,12 +365,12 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public EntityGroup _configuration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public EntityGroup _configuration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -376,7 +379,7 @@ public class EntityGroup {
    * JSON with the configuration for UI components: list of columns, settings, actions, etc 
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
@@ -386,12 +389,12 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public void setConfiguration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public EntityGroup version(@javax.annotation.Nullable Long version) {
+  public EntityGroup version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -400,7 +403,7 @@ public class EntityGroup {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -410,7 +413,7 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -419,7 +422,7 @@ public class EntityGroup {
    * Indicates special edge group &#39;All&#39; that contains all entities and can&#39;t be deleted.
    * @return edgeGroupAll
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_GROUP_ALL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEdgeGroupAll() {
@@ -429,7 +432,7 @@ public class EntityGroup {
 
 
 
-  public EntityGroup groupAll(@javax.annotation.Nullable Boolean groupAll) {
+  public EntityGroup groupAll(@Nullable Boolean groupAll) {
     this.groupAll = groupAll;
     return this;
   }
@@ -438,7 +441,7 @@ public class EntityGroup {
    * Indicates special group &#39;All&#39; that contains all entities and can&#39;t be deleted.
    * @return groupAll
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUP_ALL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getGroupAll() {
@@ -448,12 +451,12 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_GROUP_ALL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroupAll(@javax.annotation.Nullable Boolean groupAll) {
+  public void setGroupAll(@Nullable Boolean groupAll) {
     this.groupAll = groupAll;
   }
 
 
-  public EntityGroup tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public EntityGroup tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -462,7 +465,7 @@ public class EntityGroup {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -472,7 +475,7 @@ public class EntityGroup {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 

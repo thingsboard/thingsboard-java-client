@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,56 +52,56 @@ import org.thingsboard.client.ApiClient;
   TenantSolutionTemplateInfo.JSON_PROPERTY_PREVIEW_WEBM_URL,
   TenantSolutionTemplateInfo.JSON_PROPERTY_INSTALLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantSolutionTemplateInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_LEVEL = "level";
-  @javax.annotation.Nullable
+  @Nullable
   private SolutionTemplateLevel level;
 
   public static final String JSON_PROPERTY_INSTALL_TIMEOUT_MS = "installTimeoutMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long installTimeoutMs;
 
   public static final String JSON_PROPERTY_TENANT_TELEMETRY_KEYS = "tenantTelemetryKeys";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> tenantTelemetryKeys = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TENANT_ATTRIBUTE_KEYS = "tenantAttributeKeys";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> tenantAttributeKeys = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PREVIEW_IMAGE_URL = "previewImageUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String previewImageUrl;
 
   public static final String JSON_PROPERTY_VIDEO_PREVIEW_IMAGE_URL = "videoPreviewImageUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String videoPreviewImageUrl;
 
   public static final String JSON_PROPERTY_PREVIEW_MP4_URL = "previewMp4Url";
-  @javax.annotation.Nullable
+  @Nullable
   private String previewMp4Url;
 
   public static final String JSON_PROPERTY_PREVIEW_WEBM_URL = "previewWebmUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String previewWebmUrl;
 
   public static final String JSON_PROPERTY_INSTALLED = "installed";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean installed;
 
   public TenantSolutionTemplateInfo() { 
   }
 
-  public TenantSolutionTemplateInfo id(@javax.annotation.Nullable String id) {
+  public TenantSolutionTemplateInfo id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -108,7 +110,7 @@ public class TenantSolutionTemplateInfo {
    * ID of the solution template
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -118,12 +120,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public TenantSolutionTemplateInfo title(@javax.annotation.Nullable String title) {
+  public TenantSolutionTemplateInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -132,7 +134,7 @@ public class TenantSolutionTemplateInfo {
    * Template Title
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -142,12 +144,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public TenantSolutionTemplateInfo level(@javax.annotation.Nullable SolutionTemplateLevel level) {
+  public TenantSolutionTemplateInfo level(@Nullable SolutionTemplateLevel level) {
     this.level = level;
     return this;
   }
@@ -156,7 +158,7 @@ public class TenantSolutionTemplateInfo {
    * Level of the subscription that is required to unlock the template
    * @return level
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SolutionTemplateLevel getLevel() {
@@ -166,12 +168,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLevel(@javax.annotation.Nullable SolutionTemplateLevel level) {
+  public void setLevel(@Nullable SolutionTemplateLevel level) {
     this.level = level;
   }
 
 
-  public TenantSolutionTemplateInfo installTimeoutMs(@javax.annotation.Nullable Long installTimeoutMs) {
+  public TenantSolutionTemplateInfo installTimeoutMs(@Nullable Long installTimeoutMs) {
     this.installTimeoutMs = installTimeoutMs;
     return this;
   }
@@ -180,7 +182,7 @@ public class TenantSolutionTemplateInfo {
    * Timeout for the installation UI to wait while template is installing
    * @return installTimeoutMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INSTALL_TIMEOUT_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getInstallTimeoutMs() {
@@ -190,12 +192,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_INSTALL_TIMEOUT_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInstallTimeoutMs(@javax.annotation.Nullable Long installTimeoutMs) {
+  public void setInstallTimeoutMs(@Nullable Long installTimeoutMs) {
     this.installTimeoutMs = installTimeoutMs;
   }
 
 
-  public TenantSolutionTemplateInfo tenantTelemetryKeys(@javax.annotation.Nullable List<String> tenantTelemetryKeys) {
+  public TenantSolutionTemplateInfo tenantTelemetryKeys(@Nullable List<String> tenantTelemetryKeys) {
     this.tenantTelemetryKeys = tenantTelemetryKeys;
     return this;
   }
@@ -212,7 +214,7 @@ public class TenantSolutionTemplateInfo {
    * What keys to delete during template uninstall
    * @return tenantTelemetryKeys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_TELEMETRY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTenantTelemetryKeys() {
@@ -222,12 +224,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_TELEMETRY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantTelemetryKeys(@javax.annotation.Nullable List<String> tenantTelemetryKeys) {
+  public void setTenantTelemetryKeys(@Nullable List<String> tenantTelemetryKeys) {
     this.tenantTelemetryKeys = tenantTelemetryKeys;
   }
 
 
-  public TenantSolutionTemplateInfo tenantAttributeKeys(@javax.annotation.Nullable List<String> tenantAttributeKeys) {
+  public TenantSolutionTemplateInfo tenantAttributeKeys(@Nullable List<String> tenantAttributeKeys) {
     this.tenantAttributeKeys = tenantAttributeKeys;
     return this;
   }
@@ -244,7 +246,7 @@ public class TenantSolutionTemplateInfo {
    * What attributes to delete during template uninstall
    * @return tenantAttributeKeys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ATTRIBUTE_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTenantAttributeKeys() {
@@ -254,12 +256,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ATTRIBUTE_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantAttributeKeys(@javax.annotation.Nullable List<String> tenantAttributeKeys) {
+  public void setTenantAttributeKeys(@Nullable List<String> tenantAttributeKeys) {
     this.tenantAttributeKeys = tenantAttributeKeys;
   }
 
 
-  public TenantSolutionTemplateInfo previewImageUrl(@javax.annotation.Nullable String previewImageUrl) {
+  public TenantSolutionTemplateInfo previewImageUrl(@Nullable String previewImageUrl) {
     this.previewImageUrl = previewImageUrl;
     return this;
   }
@@ -268,7 +270,7 @@ public class TenantSolutionTemplateInfo {
    * URL of the preview image
    * @return previewImageUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREVIEW_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPreviewImageUrl() {
@@ -278,12 +280,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PREVIEW_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreviewImageUrl(@javax.annotation.Nullable String previewImageUrl) {
+  public void setPreviewImageUrl(@Nullable String previewImageUrl) {
     this.previewImageUrl = previewImageUrl;
   }
 
 
-  public TenantSolutionTemplateInfo videoPreviewImageUrl(@javax.annotation.Nullable String videoPreviewImageUrl) {
+  public TenantSolutionTemplateInfo videoPreviewImageUrl(@Nullable String videoPreviewImageUrl) {
     this.videoPreviewImageUrl = videoPreviewImageUrl;
     return this;
   }
@@ -292,7 +294,7 @@ public class TenantSolutionTemplateInfo {
    * Video preview image URL
    * @return videoPreviewImageUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VIDEO_PREVIEW_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getVideoPreviewImageUrl() {
@@ -302,12 +304,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VIDEO_PREVIEW_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVideoPreviewImageUrl(@javax.annotation.Nullable String videoPreviewImageUrl) {
+  public void setVideoPreviewImageUrl(@Nullable String videoPreviewImageUrl) {
     this.videoPreviewImageUrl = videoPreviewImageUrl;
   }
 
 
-  public TenantSolutionTemplateInfo previewMp4Url(@javax.annotation.Nullable String previewMp4Url) {
+  public TenantSolutionTemplateInfo previewMp4Url(@Nullable String previewMp4Url) {
     this.previewMp4Url = previewMp4Url;
     return this;
   }
@@ -316,7 +318,7 @@ public class TenantSolutionTemplateInfo {
    * Video MP4 URL
    * @return previewMp4Url
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREVIEW_MP4_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPreviewMp4Url() {
@@ -326,12 +328,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PREVIEW_MP4_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreviewMp4Url(@javax.annotation.Nullable String previewMp4Url) {
+  public void setPreviewMp4Url(@Nullable String previewMp4Url) {
     this.previewMp4Url = previewMp4Url;
   }
 
 
-  public TenantSolutionTemplateInfo previewWebmUrl(@javax.annotation.Nullable String previewWebmUrl) {
+  public TenantSolutionTemplateInfo previewWebmUrl(@Nullable String previewWebmUrl) {
     this.previewWebmUrl = previewWebmUrl;
     return this;
   }
@@ -340,7 +342,7 @@ public class TenantSolutionTemplateInfo {
    * Video WEBM URL
    * @return previewWebmUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREVIEW_WEBM_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPreviewWebmUrl() {
@@ -350,12 +352,12 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PREVIEW_WEBM_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreviewWebmUrl(@javax.annotation.Nullable String previewWebmUrl) {
+  public void setPreviewWebmUrl(@Nullable String previewWebmUrl) {
     this.previewWebmUrl = previewWebmUrl;
   }
 
 
-  public TenantSolutionTemplateInfo installed(@javax.annotation.Nullable Boolean installed) {
+  public TenantSolutionTemplateInfo installed(@Nullable Boolean installed) {
     this.installed = installed;
     return this;
   }
@@ -364,7 +366,7 @@ public class TenantSolutionTemplateInfo {
    * Indicates that template is already installed for the current tenant
    * @return installed
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INSTALLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getInstalled() {
@@ -374,7 +376,7 @@ public class TenantSolutionTemplateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_INSTALLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInstalled(@javax.annotation.Nullable Boolean installed) {
+  public void setInstalled(@Nullable Boolean installed) {
     this.installed = installed;
   }
 

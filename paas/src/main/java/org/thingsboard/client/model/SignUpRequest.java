@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,32 +46,32 @@ import org.thingsboard.client.ApiClient;
   SignUpRequest.JSON_PROPERTY_PLATFORM,
   SignUpRequest.JSON_PROPERTY_APP_SECRET
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SignUpRequest {
   public static final String JSON_PROPERTY_FIELDS = "fields";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, String> fields = new HashMap<>();
 
   public static final String JSON_PROPERTY_RECAPTCHA_RESPONSE = "recaptchaResponse";
-  @javax.annotation.Nullable
+  @Nullable
   private String recaptchaResponse;
 
   public static final String JSON_PROPERTY_PKG_NAME = "pkgName";
-  @javax.annotation.Nullable
+  @Nullable
   private String pkgName;
 
   public static final String JSON_PROPERTY_PLATFORM = "platform";
-  @javax.annotation.Nullable
+  @Nullable
   private PlatformType platform;
 
   public static final String JSON_PROPERTY_APP_SECRET = "appSecret";
-  @javax.annotation.Nullable
+  @Nullable
   private String appSecret;
 
   public SignUpRequest() { 
   }
 
-  public SignUpRequest fields(@javax.annotation.Nullable Map<String, String> fields) {
+  public SignUpRequest fields(@Nullable Map<String, String> fields) {
     this.fields = fields;
     return this;
   }
@@ -86,7 +88,7 @@ public class SignUpRequest {
    * List of sign-up form fields
    * @return fields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, String> getFields() {
@@ -96,12 +98,12 @@ public class SignUpRequest {
 
   @JsonProperty(value = JSON_PROPERTY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFields(@javax.annotation.Nullable Map<String, String> fields) {
+  public void setFields(@Nullable Map<String, String> fields) {
     this.fields = fields;
   }
 
 
-  public SignUpRequest recaptchaResponse(@javax.annotation.Nullable String recaptchaResponse) {
+  public SignUpRequest recaptchaResponse(@Nullable String recaptchaResponse) {
     this.recaptchaResponse = recaptchaResponse;
     return this;
   }
@@ -110,7 +112,7 @@ public class SignUpRequest {
    * Response from reCAPTCHA validation
    * @return recaptchaResponse
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RECAPTCHA_RESPONSE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRecaptchaResponse() {
@@ -120,12 +122,12 @@ public class SignUpRequest {
 
   @JsonProperty(value = JSON_PROPERTY_RECAPTCHA_RESPONSE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRecaptchaResponse(@javax.annotation.Nullable String recaptchaResponse) {
+  public void setRecaptchaResponse(@Nullable String recaptchaResponse) {
     this.recaptchaResponse = recaptchaResponse;
   }
 
 
-  public SignUpRequest pkgName(@javax.annotation.Nullable String pkgName) {
+  public SignUpRequest pkgName(@Nullable String pkgName) {
     this.pkgName = pkgName;
     return this;
   }
@@ -134,7 +136,7 @@ public class SignUpRequest {
    * For mobile apps only. Mobile app package name
    * @return pkgName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PKG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPkgName() {
@@ -144,12 +146,12 @@ public class SignUpRequest {
 
   @JsonProperty(value = JSON_PROPERTY_PKG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPkgName(@javax.annotation.Nullable String pkgName) {
+  public void setPkgName(@Nullable String pkgName) {
     this.pkgName = pkgName;
   }
 
 
-  public SignUpRequest platform(@javax.annotation.Nullable PlatformType platform) {
+  public SignUpRequest platform(@Nullable PlatformType platform) {
     this.platform = platform;
     return this;
   }
@@ -158,7 +160,7 @@ public class SignUpRequest {
    * For mobile apps only. Mobile app package platform
    * @return platform
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PLATFORM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public PlatformType getPlatform() {
@@ -168,12 +170,12 @@ public class SignUpRequest {
 
   @JsonProperty(value = JSON_PROPERTY_PLATFORM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPlatform(@javax.annotation.Nullable PlatformType platform) {
+  public void setPlatform(@Nullable PlatformType platform) {
     this.platform = platform;
   }
 
 
-  public SignUpRequest appSecret(@javax.annotation.Nullable String appSecret) {
+  public SignUpRequest appSecret(@Nullable String appSecret) {
     this.appSecret = appSecret;
     return this;
   }
@@ -182,7 +184,7 @@ public class SignUpRequest {
    * For mobile apps only. Mobile app secret
    * @return appSecret
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_APP_SECRET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAppSecret() {
@@ -192,7 +194,7 @@ public class SignUpRequest {
 
   @JsonProperty(value = JSON_PROPERTY_APP_SECRET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAppSecret(@javax.annotation.Nullable String appSecret) {
+  public void setAppSecret(@Nullable String appSecret) {
     this.appSecret = appSecret;
   }
 

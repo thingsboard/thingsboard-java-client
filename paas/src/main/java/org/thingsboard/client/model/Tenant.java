@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -60,90 +63,90 @@ import org.thingsboard.client.ApiClient;
   Tenant.JSON_PROPERTY_EDGE_LICENSE_VERSION,
   Tenant.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Tenant {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
-  @javax.annotation.Nullable
+  @Nullable
   private String country;
 
   public static final String JSON_PROPERTY_STATE = "state";
-  @javax.annotation.Nullable
+  @Nullable
   private String state;
 
   public static final String JSON_PROPERTY_CITY = "city";
-  @javax.annotation.Nullable
+  @Nullable
   private String city;
 
   public static final String JSON_PROPERTY_ADDRESS = "address";
-  @javax.annotation.Nullable
+  @Nullable
   private String address;
 
   public static final String JSON_PROPERTY_ADDRESS2 = "address2";
-  @javax.annotation.Nullable
+  @Nullable
   private String address2;
 
   public static final String JSON_PROPERTY_ZIP = "zip";
-  @javax.annotation.Nullable
+  @Nullable
   private String zip;
 
   public static final String JSON_PROPERTY_PHONE = "phone";
-  @javax.annotation.Nullable
+  @Nullable
   private String phone;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nullable
+  @Nullable
   private String email;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String title;
 
   public static final String JSON_PROPERTY_REGION = "region";
-  @javax.annotation.Nullable
+  @Nullable
   private String region;
 
   public static final String JSON_PROPERTY_TENANT_PROFILE_ID = "tenantProfileId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantProfileId tenantProfileId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_ACTIVE = "active";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean active;
 
   public static final String JSON_PROPERTY_LAST_INACTIVE_TS = "lastInactiveTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long lastInactiveTs;
 
   public static final String JSON_PROPERTY_CURRENT_PERIOD_START_TS = "currentPeriodStartTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long currentPeriodStartTs;
 
   public static final String JSON_PROPERTY_ADDON_DATA = "addonData";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantAddonData addonData;
 
   public static final String JSON_PROPERTY_EDGE_LICENSE_VERSION = "edgeLicenseVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer edgeLicenseVersion;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public Tenant() { 
@@ -159,7 +162,7 @@ public class Tenant {
     this.name = name;
   }
 
-  public Tenant id(@javax.annotation.Nullable TenantId id) {
+  public Tenant id(@Nullable TenantId id) {
     this.id = id;
     return this;
   }
@@ -168,7 +171,7 @@ public class Tenant {
    * JSON object with the tenant Id. Specify this field to update the tenant. Referencing non-existing tenant Id will cause error. Omit this field to create new tenant.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getId() {
@@ -178,7 +181,7 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable TenantId id) {
+  public void setId(@Nullable TenantId id) {
     this.id = id;
   }
 
@@ -187,7 +190,7 @@ public class Tenant {
    * Timestamp of the tenant creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -197,7 +200,7 @@ public class Tenant {
 
 
 
-  public Tenant additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Tenant additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -206,7 +209,7 @@ public class Tenant {
    * Additional parameters of the tenant. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -216,12 +219,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public Tenant country(@javax.annotation.Nullable String country) {
+  public Tenant country(@Nullable String country) {
     this.country = country;
     return this;
   }
@@ -230,7 +233,7 @@ public class Tenant {
    * Country
    * @return country
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCountry() {
@@ -240,12 +243,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCountry(@javax.annotation.Nullable String country) {
+  public void setCountry(@Nullable String country) {
     this.country = country;
   }
 
 
-  public Tenant state(@javax.annotation.Nullable String state) {
+  public Tenant state(@Nullable String state) {
     this.state = state;
     return this;
   }
@@ -254,7 +257,7 @@ public class Tenant {
    * State
    * @return state
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getState() {
@@ -264,12 +267,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setState(@javax.annotation.Nullable String state) {
+  public void setState(@Nullable String state) {
     this.state = state;
   }
 
 
-  public Tenant city(@javax.annotation.Nullable String city) {
+  public Tenant city(@Nullable String city) {
     this.city = city;
     return this;
   }
@@ -278,7 +281,7 @@ public class Tenant {
    * City
    * @return city
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCity() {
@@ -288,12 +291,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_CITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCity(@javax.annotation.Nullable String city) {
+  public void setCity(@Nullable String city) {
     this.city = city;
   }
 
 
-  public Tenant address(@javax.annotation.Nullable String address) {
+  public Tenant address(@Nullable String address) {
     this.address = address;
     return this;
   }
@@ -302,7 +305,7 @@ public class Tenant {
    * Address Line 1
    * @return address
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAddress() {
@@ -312,12 +315,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_ADDRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAddress(@javax.annotation.Nullable String address) {
+  public void setAddress(@Nullable String address) {
     this.address = address;
   }
 
 
-  public Tenant address2(@javax.annotation.Nullable String address2) {
+  public Tenant address2(@Nullable String address2) {
     this.address2 = address2;
     return this;
   }
@@ -326,7 +329,7 @@ public class Tenant {
    * Address Line 2
    * @return address2
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDRESS2, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAddress2() {
@@ -336,12 +339,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_ADDRESS2, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAddress2(@javax.annotation.Nullable String address2) {
+  public void setAddress2(@Nullable String address2) {
     this.address2 = address2;
   }
 
 
-  public Tenant zip(@javax.annotation.Nullable String zip) {
+  public Tenant zip(@Nullable String zip) {
     this.zip = zip;
     return this;
   }
@@ -350,7 +353,7 @@ public class Tenant {
    * Zip code
    * @return zip
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getZip() {
@@ -360,12 +363,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setZip(@javax.annotation.Nullable String zip) {
+  public void setZip(@Nullable String zip) {
     this.zip = zip;
   }
 
 
-  public Tenant phone(@javax.annotation.Nullable String phone) {
+  public Tenant phone(@Nullable String phone) {
     this.phone = phone;
     return this;
   }
@@ -374,7 +377,7 @@ public class Tenant {
    * Phone number
    * @return phone
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPhone() {
@@ -384,12 +387,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhone(@javax.annotation.Nullable String phone) {
+  public void setPhone(@Nullable String phone) {
     this.phone = phone;
   }
 
 
-  public Tenant email(@javax.annotation.Nullable String email) {
+  public Tenant email(@Nullable String email) {
     this.email = email;
     return this;
   }
@@ -398,7 +401,7 @@ public class Tenant {
    * Email
    * @return email
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmail() {
@@ -408,12 +411,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmail(@javax.annotation.Nullable String email) {
+  public void setEmail(@Nullable String email) {
     this.email = email;
   }
 
 
-  public Tenant title(@javax.annotation.Nonnull String title) {
+  public Tenant title(@Nonnull String title) {
     this.title = title;
     return this;
   }
@@ -422,7 +425,7 @@ public class Tenant {
    * Title of the tenant
    * @return title
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getTitle() {
@@ -432,12 +435,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTitle(@javax.annotation.Nonnull String title) {
+  public void setTitle(@Nonnull String title) {
     this.title = title;
   }
 
 
-  public Tenant region(@javax.annotation.Nullable String region) {
+  public Tenant region(@Nullable String region) {
     this.region = region;
     return this;
   }
@@ -446,7 +449,7 @@ public class Tenant {
    * Geo region of the tenant
    * @return region
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REGION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRegion() {
@@ -456,12 +459,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_REGION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRegion(@javax.annotation.Nullable String region) {
+  public void setRegion(@Nullable String region) {
     this.region = region;
   }
 
 
-  public Tenant tenantProfileId(@javax.annotation.Nullable TenantProfileId tenantProfileId) {
+  public Tenant tenantProfileId(@Nullable TenantProfileId tenantProfileId) {
     this.tenantProfileId = tenantProfileId;
     return this;
   }
@@ -470,7 +473,7 @@ public class Tenant {
    * JSON object with Tenant Profile Id
    * @return tenantProfileId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantProfileId getTenantProfileId() {
@@ -480,12 +483,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantProfileId(@javax.annotation.Nullable TenantProfileId tenantProfileId) {
+  public void setTenantProfileId(@Nullable TenantProfileId tenantProfileId) {
     this.tenantProfileId = tenantProfileId;
   }
 
 
-  public Tenant version(@javax.annotation.Nullable Long version) {
+  public Tenant version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -494,7 +497,7 @@ public class Tenant {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -504,12 +507,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public Tenant active(@javax.annotation.Nullable Boolean active) {
+  public Tenant active(@Nullable Boolean active) {
     this.active = active;
     return this;
   }
@@ -518,7 +521,7 @@ public class Tenant {
    * Get active
    * @return active
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTIVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getActive() {
@@ -528,12 +531,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_ACTIVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActive(@javax.annotation.Nullable Boolean active) {
+  public void setActive(@Nullable Boolean active) {
     this.active = active;
   }
 
 
-  public Tenant lastInactiveTs(@javax.annotation.Nullable Long lastInactiveTs) {
+  public Tenant lastInactiveTs(@Nullable Long lastInactiveTs) {
     this.lastInactiveTs = lastInactiveTs;
     return this;
   }
@@ -542,7 +545,7 @@ public class Tenant {
    * Get lastInactiveTs
    * @return lastInactiveTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_INACTIVE_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getLastInactiveTs() {
@@ -552,12 +555,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_INACTIVE_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastInactiveTs(@javax.annotation.Nullable Long lastInactiveTs) {
+  public void setLastInactiveTs(@Nullable Long lastInactiveTs) {
     this.lastInactiveTs = lastInactiveTs;
   }
 
 
-  public Tenant currentPeriodStartTs(@javax.annotation.Nullable Long currentPeriodStartTs) {
+  public Tenant currentPeriodStartTs(@Nullable Long currentPeriodStartTs) {
     this.currentPeriodStartTs = currentPeriodStartTs;
     return this;
   }
@@ -566,7 +569,7 @@ public class Tenant {
    * Get currentPeriodStartTs
    * @return currentPeriodStartTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CURRENT_PERIOD_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCurrentPeriodStartTs() {
@@ -576,12 +579,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_CURRENT_PERIOD_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCurrentPeriodStartTs(@javax.annotation.Nullable Long currentPeriodStartTs) {
+  public void setCurrentPeriodStartTs(@Nullable Long currentPeriodStartTs) {
     this.currentPeriodStartTs = currentPeriodStartTs;
   }
 
 
-  public Tenant addonData(@javax.annotation.Nullable TenantAddonData addonData) {
+  public Tenant addonData(@Nullable TenantAddonData addonData) {
     this.addonData = addonData;
     return this;
   }
@@ -590,7 +593,7 @@ public class Tenant {
    * Get addonData
    * @return addonData
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDON_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantAddonData getAddonData() {
@@ -600,12 +603,12 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_ADDON_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAddonData(@javax.annotation.Nullable TenantAddonData addonData) {
+  public void setAddonData(@Nullable TenantAddonData addonData) {
     this.addonData = addonData;
   }
 
 
-  public Tenant edgeLicenseVersion(@javax.annotation.Nullable Integer edgeLicenseVersion) {
+  public Tenant edgeLicenseVersion(@Nullable Integer edgeLicenseVersion) {
     this.edgeLicenseVersion = edgeLicenseVersion;
     return this;
   }
@@ -614,7 +617,7 @@ public class Tenant {
    * Get edgeLicenseVersion
    * @return edgeLicenseVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getEdgeLicenseVersion() {
@@ -624,7 +627,7 @@ public class Tenant {
 
   @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeLicenseVersion(@javax.annotation.Nullable Integer edgeLicenseVersion) {
+  public void setEdgeLicenseVersion(@Nullable Integer edgeLicenseVersion) {
     this.edgeLicenseVersion = edgeLicenseVersion;
   }
 
@@ -633,7 +636,7 @@ public class Tenant {
    * Name of the tenant. Read-only, duplicated from title for backward compatibility
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

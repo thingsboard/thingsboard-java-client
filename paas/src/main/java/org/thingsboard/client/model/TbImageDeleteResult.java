@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,24 +47,24 @@ import org.thingsboard.client.ApiClient;
   TbImageDeleteResult.JSON_PROPERTY_WHITE_LABELING_LIST,
   TbImageDeleteResult.JSON_PROPERTY_REFERENCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TbImageDeleteResult {
   public static final String JSON_PROPERTY_SUCCESS = "success";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean success;
 
   public static final String JSON_PROPERTY_WHITE_LABELING_LIST = "whiteLabelingList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<WhiteLabeling> whiteLabelingList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_REFERENCES = "references";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, List<HasIdObject>> references = new HashMap<>();
 
   public TbImageDeleteResult() { 
   }
 
-  public TbImageDeleteResult success(@javax.annotation.Nullable Boolean success) {
+  public TbImageDeleteResult success(@Nullable Boolean success) {
     this.success = success;
     return this;
   }
@@ -71,7 +73,7 @@ public class TbImageDeleteResult {
    * Get success
    * @return success
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSuccess() {
@@ -81,12 +83,12 @@ public class TbImageDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuccess(@javax.annotation.Nullable Boolean success) {
+  public void setSuccess(@Nullable Boolean success) {
     this.success = success;
   }
 
 
-  public TbImageDeleteResult whiteLabelingList(@javax.annotation.Nullable List<WhiteLabeling> whiteLabelingList) {
+  public TbImageDeleteResult whiteLabelingList(@Nullable List<WhiteLabeling> whiteLabelingList) {
     this.whiteLabelingList = whiteLabelingList;
     return this;
   }
@@ -103,7 +105,7 @@ public class TbImageDeleteResult {
    * Get whiteLabelingList
    * @return whiteLabelingList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<WhiteLabeling> getWhiteLabelingList() {
@@ -113,12 +115,12 @@ public class TbImageDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWhiteLabelingList(@javax.annotation.Nullable List<WhiteLabeling> whiteLabelingList) {
+  public void setWhiteLabelingList(@Nullable List<WhiteLabeling> whiteLabelingList) {
     this.whiteLabelingList = whiteLabelingList;
   }
 
 
-  public TbImageDeleteResult references(@javax.annotation.Nullable Map<String, List<HasIdObject>> references) {
+  public TbImageDeleteResult references(@Nullable Map<String, List<HasIdObject>> references) {
     this.references = references;
     return this;
   }
@@ -135,7 +137,7 @@ public class TbImageDeleteResult {
    * Get references
    * @return references
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REFERENCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, List<HasIdObject>> getReferences() {
@@ -145,7 +147,7 @@ public class TbImageDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_REFERENCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReferences(@javax.annotation.Nullable Map<String, List<HasIdObject>> references) {
+  public void setReferences(@Nullable Map<String, List<HasIdObject>> references) {
     this.references = references;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,40 +50,40 @@ import org.thingsboard.client.ApiClient;
   DeviceProfileInfo.JSON_PROPERTY_TRANSPORT_TYPE,
   DeviceProfileInfo.JSON_PROPERTY_TENANT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceProfileInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_DEFAULT_DASHBOARD_ID = "defaultDashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId defaultDashboardId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileType type;
 
   public static final String JSON_PROPERTY_TRANSPORT_TYPE = "transportType";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceTransportType transportType;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public DeviceProfileInfo() { 
   }
 
-  public DeviceProfileInfo id(@javax.annotation.Nullable EntityId id) {
+  public DeviceProfileInfo id(@Nullable EntityId id) {
     this.id = id;
     return this;
   }
@@ -90,7 +92,7 @@ public class DeviceProfileInfo {
    * JSON object with the entity Id. 
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getId() {
@@ -100,12 +102,12 @@ public class DeviceProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EntityId id) {
+  public void setId(@Nullable EntityId id) {
     this.id = id;
   }
 
 
-  public DeviceProfileInfo name(@javax.annotation.Nullable String name) {
+  public DeviceProfileInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -114,7 +116,7 @@ public class DeviceProfileInfo {
    * Entity Name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -124,12 +126,12 @@ public class DeviceProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public DeviceProfileInfo image(@javax.annotation.Nullable String image) {
+  public DeviceProfileInfo image(@Nullable String image) {
     this.image = image;
     return this;
   }
@@ -138,7 +140,7 @@ public class DeviceProfileInfo {
    * Either URL or Base64 data of the icon. Used in the mobile application to visualize set of device profiles in the grid view. 
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -148,12 +150,12 @@ public class DeviceProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImage(@javax.annotation.Nullable String image) {
+  public void setImage(@Nullable String image) {
     this.image = image;
   }
 
 
-  public DeviceProfileInfo defaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public DeviceProfileInfo defaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
     return this;
   }
@@ -162,7 +164,7 @@ public class DeviceProfileInfo {
    * Reference to the dashboard. Used in the mobile application to open the default dashboard when user navigates to device details.
    * @return defaultDashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDefaultDashboardId() {
@@ -172,12 +174,12 @@ public class DeviceProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public void setDefaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
   }
 
 
-  public DeviceProfileInfo type(@javax.annotation.Nullable DeviceProfileType type) {
+  public DeviceProfileInfo type(@Nullable DeviceProfileType type) {
     this.type = type;
     return this;
   }
@@ -186,7 +188,7 @@ public class DeviceProfileInfo {
    * Type of the profile. Always &#39;DEFAULT&#39; for now. Reserved for future use.
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileType getType() {
@@ -196,12 +198,12 @@ public class DeviceProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable DeviceProfileType type) {
+  public void setType(@Nullable DeviceProfileType type) {
     this.type = type;
   }
 
 
-  public DeviceProfileInfo transportType(@javax.annotation.Nullable DeviceTransportType transportType) {
+  public DeviceProfileInfo transportType(@Nullable DeviceTransportType transportType) {
     this.transportType = transportType;
     return this;
   }
@@ -210,7 +212,7 @@ public class DeviceProfileInfo {
    * Type of the transport used to connect the device. Default transport supports HTTP, CoAP and MQTT.
    * @return transportType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceTransportType getTransportType() {
@@ -220,12 +222,12 @@ public class DeviceProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransportType(@javax.annotation.Nullable DeviceTransportType transportType) {
+  public void setTransportType(@Nullable DeviceTransportType transportType) {
     this.transportType = transportType;
   }
 
 
-  public DeviceProfileInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public DeviceProfileInfo tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -234,7 +236,7 @@ public class DeviceProfileInfo {
    * Tenant id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -244,7 +246,7 @@ public class DeviceProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 

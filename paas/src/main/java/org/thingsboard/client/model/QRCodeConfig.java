@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,32 +44,32 @@ import org.thingsboard.client.ApiClient;
   QRCodeConfig.JSON_PROPERTY_BADGE_POSITION,
   QRCodeConfig.JSON_PROPERTY_QR_CODE_LABEL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class QRCodeConfig {
   public static final String JSON_PROPERTY_SHOW_ON_HOME_PAGE = "showOnHomePage";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showOnHomePage;
 
   public static final String JSON_PROPERTY_BADGE_ENABLED = "badgeEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean badgeEnabled;
 
   public static final String JSON_PROPERTY_QR_CODE_LABEL_ENABLED = "qrCodeLabelEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean qrCodeLabelEnabled;
 
   public static final String JSON_PROPERTY_BADGE_POSITION = "badgePosition";
-  @javax.annotation.Nullable
+  @Nullable
   private BadgePosition badgePosition;
 
   public static final String JSON_PROPERTY_QR_CODE_LABEL = "qrCodeLabel";
-  @javax.annotation.Nullable
+  @Nullable
   private String qrCodeLabel;
 
   public QRCodeConfig() { 
   }
 
-  public QRCodeConfig showOnHomePage(@javax.annotation.Nullable Boolean showOnHomePage) {
+  public QRCodeConfig showOnHomePage(@Nullable Boolean showOnHomePage) {
     this.showOnHomePage = showOnHomePage;
     return this;
   }
@@ -76,7 +78,7 @@ public class QRCodeConfig {
    * Get showOnHomePage
    * @return showOnHomePage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_ON_HOME_PAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowOnHomePage() {
@@ -86,12 +88,12 @@ public class QRCodeConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_ON_HOME_PAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowOnHomePage(@javax.annotation.Nullable Boolean showOnHomePage) {
+  public void setShowOnHomePage(@Nullable Boolean showOnHomePage) {
     this.showOnHomePage = showOnHomePage;
   }
 
 
-  public QRCodeConfig badgeEnabled(@javax.annotation.Nullable Boolean badgeEnabled) {
+  public QRCodeConfig badgeEnabled(@Nullable Boolean badgeEnabled) {
     this.badgeEnabled = badgeEnabled;
     return this;
   }
@@ -100,7 +102,7 @@ public class QRCodeConfig {
    * Get badgeEnabled
    * @return badgeEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BADGE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getBadgeEnabled() {
@@ -110,12 +112,12 @@ public class QRCodeConfig {
 
   @JsonProperty(value = JSON_PROPERTY_BADGE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBadgeEnabled(@javax.annotation.Nullable Boolean badgeEnabled) {
+  public void setBadgeEnabled(@Nullable Boolean badgeEnabled) {
     this.badgeEnabled = badgeEnabled;
   }
 
 
-  public QRCodeConfig qrCodeLabelEnabled(@javax.annotation.Nullable Boolean qrCodeLabelEnabled) {
+  public QRCodeConfig qrCodeLabelEnabled(@Nullable Boolean qrCodeLabelEnabled) {
     this.qrCodeLabelEnabled = qrCodeLabelEnabled;
     return this;
   }
@@ -124,7 +126,7 @@ public class QRCodeConfig {
    * Get qrCodeLabelEnabled
    * @return qrCodeLabelEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_LABEL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getQrCodeLabelEnabled() {
@@ -134,12 +136,12 @@ public class QRCodeConfig {
 
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_LABEL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQrCodeLabelEnabled(@javax.annotation.Nullable Boolean qrCodeLabelEnabled) {
+  public void setQrCodeLabelEnabled(@Nullable Boolean qrCodeLabelEnabled) {
     this.qrCodeLabelEnabled = qrCodeLabelEnabled;
   }
 
 
-  public QRCodeConfig badgePosition(@javax.annotation.Nullable BadgePosition badgePosition) {
+  public QRCodeConfig badgePosition(@Nullable BadgePosition badgePosition) {
     this.badgePosition = badgePosition;
     return this;
   }
@@ -148,7 +150,7 @@ public class QRCodeConfig {
    * Get badgePosition
    * @return badgePosition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BADGE_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public BadgePosition getBadgePosition() {
@@ -158,12 +160,12 @@ public class QRCodeConfig {
 
   @JsonProperty(value = JSON_PROPERTY_BADGE_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBadgePosition(@javax.annotation.Nullable BadgePosition badgePosition) {
+  public void setBadgePosition(@Nullable BadgePosition badgePosition) {
     this.badgePosition = badgePosition;
   }
 
 
-  public QRCodeConfig qrCodeLabel(@javax.annotation.Nullable String qrCodeLabel) {
+  public QRCodeConfig qrCodeLabel(@Nullable String qrCodeLabel) {
     this.qrCodeLabel = qrCodeLabel;
     return this;
   }
@@ -172,7 +174,7 @@ public class QRCodeConfig {
    * Get qrCodeLabel
    * @return qrCodeLabel
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getQrCodeLabel() {
@@ -182,7 +184,7 @@ public class QRCodeConfig {
 
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQrCodeLabel(@javax.annotation.Nullable String qrCodeLabel) {
+  public void setQrCodeLabel(@Nullable String qrCodeLabel) {
     this.qrCodeLabel = qrCodeLabel;
   }
 

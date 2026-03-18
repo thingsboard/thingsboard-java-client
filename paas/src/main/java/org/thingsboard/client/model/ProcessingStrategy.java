@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,32 +44,32 @@ import org.thingsboard.client.ApiClient;
   ProcessingStrategy.JSON_PROPERTY_PAUSE_BETWEEN_RETRIES,
   ProcessingStrategy.JSON_PROPERTY_MAX_PAUSE_BETWEEN_RETRIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ProcessingStrategy {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private ProcessingStrategyType type;
 
   public static final String JSON_PROPERTY_RETRIES = "retries";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer retries;
 
   public static final String JSON_PROPERTY_FAILURE_PERCENTAGE = "failurePercentage";
-  @javax.annotation.Nullable
+  @Nullable
   private Double failurePercentage;
 
   public static final String JSON_PROPERTY_PAUSE_BETWEEN_RETRIES = "pauseBetweenRetries";
-  @javax.annotation.Nullable
+  @Nullable
   private Long pauseBetweenRetries;
 
   public static final String JSON_PROPERTY_MAX_PAUSE_BETWEEN_RETRIES = "maxPauseBetweenRetries";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxPauseBetweenRetries;
 
   public ProcessingStrategy() { 
   }
 
-  public ProcessingStrategy type(@javax.annotation.Nullable ProcessingStrategyType type) {
+  public ProcessingStrategy type(@Nullable ProcessingStrategyType type) {
     this.type = type;
     return this;
   }
@@ -76,7 +78,7 @@ public class ProcessingStrategy {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProcessingStrategyType getType() {
@@ -86,12 +88,12 @@ public class ProcessingStrategy {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable ProcessingStrategyType type) {
+  public void setType(@Nullable ProcessingStrategyType type) {
     this.type = type;
   }
 
 
-  public ProcessingStrategy retries(@javax.annotation.Nullable Integer retries) {
+  public ProcessingStrategy retries(@Nullable Integer retries) {
     this.retries = retries;
     return this;
   }
@@ -100,7 +102,7 @@ public class ProcessingStrategy {
    * Get retries
    * @return retries
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RETRIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getRetries() {
@@ -110,12 +112,12 @@ public class ProcessingStrategy {
 
   @JsonProperty(value = JSON_PROPERTY_RETRIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRetries(@javax.annotation.Nullable Integer retries) {
+  public void setRetries(@Nullable Integer retries) {
     this.retries = retries;
   }
 
 
-  public ProcessingStrategy failurePercentage(@javax.annotation.Nullable Double failurePercentage) {
+  public ProcessingStrategy failurePercentage(@Nullable Double failurePercentage) {
     this.failurePercentage = failurePercentage;
     return this;
   }
@@ -124,7 +126,7 @@ public class ProcessingStrategy {
    * Get failurePercentage
    * @return failurePercentage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FAILURE_PERCENTAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getFailurePercentage() {
@@ -134,12 +136,12 @@ public class ProcessingStrategy {
 
   @JsonProperty(value = JSON_PROPERTY_FAILURE_PERCENTAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFailurePercentage(@javax.annotation.Nullable Double failurePercentage) {
+  public void setFailurePercentage(@Nullable Double failurePercentage) {
     this.failurePercentage = failurePercentage;
   }
 
 
-  public ProcessingStrategy pauseBetweenRetries(@javax.annotation.Nullable Long pauseBetweenRetries) {
+  public ProcessingStrategy pauseBetweenRetries(@Nullable Long pauseBetweenRetries) {
     this.pauseBetweenRetries = pauseBetweenRetries;
     return this;
   }
@@ -148,7 +150,7 @@ public class ProcessingStrategy {
    * Get pauseBetweenRetries
    * @return pauseBetweenRetries
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAUSE_BETWEEN_RETRIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPauseBetweenRetries() {
@@ -158,12 +160,12 @@ public class ProcessingStrategy {
 
   @JsonProperty(value = JSON_PROPERTY_PAUSE_BETWEEN_RETRIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPauseBetweenRetries(@javax.annotation.Nullable Long pauseBetweenRetries) {
+  public void setPauseBetweenRetries(@Nullable Long pauseBetweenRetries) {
     this.pauseBetweenRetries = pauseBetweenRetries;
   }
 
 
-  public ProcessingStrategy maxPauseBetweenRetries(@javax.annotation.Nullable Long maxPauseBetweenRetries) {
+  public ProcessingStrategy maxPauseBetweenRetries(@Nullable Long maxPauseBetweenRetries) {
     this.maxPauseBetweenRetries = maxPauseBetweenRetries;
     return this;
   }
@@ -172,7 +174,7 @@ public class ProcessingStrategy {
    * Get maxPauseBetweenRetries
    * @return maxPauseBetweenRetries
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_PAUSE_BETWEEN_RETRIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxPauseBetweenRetries() {
@@ -182,7 +184,7 @@ public class ProcessingStrategy {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_PAUSE_BETWEEN_RETRIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxPauseBetweenRetries(@javax.annotation.Nullable Long maxPauseBetweenRetries) {
+  public void setMaxPauseBetweenRetries(@Nullable Long maxPauseBetweenRetries) {
     this.maxPauseBetweenRetries = maxPauseBetweenRetries;
   }
 

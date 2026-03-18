@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,40 +47,40 @@ import org.thingsboard.client.ApiClient;
   TrendzUsage.JSON_PROPERTY_METRIC_USAGE,
   TrendzUsage.JSON_PROPERTY_CHAT_USAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzUsage {
   public static final String JSON_PROPERTY_USED = "used";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean used;
 
   public static final String JSON_PROPERTY_ANOMALY_USAGE = "anomalyUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private Entity anomalyUsage;
 
   public static final String JSON_PROPERTY_PREDICTION_USAGE = "predictionUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private Entity predictionUsage;
 
   public static final String JSON_PROPERTY_CALCULATION_USAGE = "calculationUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private Entity calculationUsage;
 
   public static final String JSON_PROPERTY_VIEW_USAGE = "viewUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private SimpleEntity viewUsage;
 
   public static final String JSON_PROPERTY_METRIC_USAGE = "metricUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private SimpleEntity metricUsage;
 
   public static final String JSON_PROPERTY_CHAT_USAGE = "chatUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private SimpleEntity chatUsage;
 
   public TrendzUsage() { 
   }
 
-  public TrendzUsage used(@javax.annotation.Nullable Boolean used) {
+  public TrendzUsage used(@Nullable Boolean used) {
     this.used = used;
     return this;
   }
@@ -87,7 +89,7 @@ public class TrendzUsage {
    * Get used
    * @return used
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUsed() {
@@ -97,12 +99,12 @@ public class TrendzUsage {
 
   @JsonProperty(value = JSON_PROPERTY_USED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsed(@javax.annotation.Nullable Boolean used) {
+  public void setUsed(@Nullable Boolean used) {
     this.used = used;
   }
 
 
-  public TrendzUsage anomalyUsage(@javax.annotation.Nullable Entity anomalyUsage) {
+  public TrendzUsage anomalyUsage(@Nullable Entity anomalyUsage) {
     this.anomalyUsage = anomalyUsage;
     return this;
   }
@@ -111,7 +113,7 @@ public class TrendzUsage {
    * Get anomalyUsage
    * @return anomalyUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ANOMALY_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Entity getAnomalyUsage() {
@@ -121,12 +123,12 @@ public class TrendzUsage {
 
   @JsonProperty(value = JSON_PROPERTY_ANOMALY_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAnomalyUsage(@javax.annotation.Nullable Entity anomalyUsage) {
+  public void setAnomalyUsage(@Nullable Entity anomalyUsage) {
     this.anomalyUsage = anomalyUsage;
   }
 
 
-  public TrendzUsage predictionUsage(@javax.annotation.Nullable Entity predictionUsage) {
+  public TrendzUsage predictionUsage(@Nullable Entity predictionUsage) {
     this.predictionUsage = predictionUsage;
     return this;
   }
@@ -135,7 +137,7 @@ public class TrendzUsage {
    * Get predictionUsage
    * @return predictionUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREDICTION_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Entity getPredictionUsage() {
@@ -145,12 +147,12 @@ public class TrendzUsage {
 
   @JsonProperty(value = JSON_PROPERTY_PREDICTION_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPredictionUsage(@javax.annotation.Nullable Entity predictionUsage) {
+  public void setPredictionUsage(@Nullable Entity predictionUsage) {
     this.predictionUsage = predictionUsage;
   }
 
 
-  public TrendzUsage calculationUsage(@javax.annotation.Nullable Entity calculationUsage) {
+  public TrendzUsage calculationUsage(@Nullable Entity calculationUsage) {
     this.calculationUsage = calculationUsage;
     return this;
   }
@@ -159,7 +161,7 @@ public class TrendzUsage {
    * Get calculationUsage
    * @return calculationUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CALCULATION_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Entity getCalculationUsage() {
@@ -169,12 +171,12 @@ public class TrendzUsage {
 
   @JsonProperty(value = JSON_PROPERTY_CALCULATION_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCalculationUsage(@javax.annotation.Nullable Entity calculationUsage) {
+  public void setCalculationUsage(@Nullable Entity calculationUsage) {
     this.calculationUsage = calculationUsage;
   }
 
 
-  public TrendzUsage viewUsage(@javax.annotation.Nullable SimpleEntity viewUsage) {
+  public TrendzUsage viewUsage(@Nullable SimpleEntity viewUsage) {
     this.viewUsage = viewUsage;
     return this;
   }
@@ -183,7 +185,7 @@ public class TrendzUsage {
    * Get viewUsage
    * @return viewUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VIEW_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SimpleEntity getViewUsage() {
@@ -193,12 +195,12 @@ public class TrendzUsage {
 
   @JsonProperty(value = JSON_PROPERTY_VIEW_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setViewUsage(@javax.annotation.Nullable SimpleEntity viewUsage) {
+  public void setViewUsage(@Nullable SimpleEntity viewUsage) {
     this.viewUsage = viewUsage;
   }
 
 
-  public TrendzUsage metricUsage(@javax.annotation.Nullable SimpleEntity metricUsage) {
+  public TrendzUsage metricUsage(@Nullable SimpleEntity metricUsage) {
     this.metricUsage = metricUsage;
     return this;
   }
@@ -207,7 +209,7 @@ public class TrendzUsage {
    * Get metricUsage
    * @return metricUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_METRIC_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SimpleEntity getMetricUsage() {
@@ -217,12 +219,12 @@ public class TrendzUsage {
 
   @JsonProperty(value = JSON_PROPERTY_METRIC_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetricUsage(@javax.annotation.Nullable SimpleEntity metricUsage) {
+  public void setMetricUsage(@Nullable SimpleEntity metricUsage) {
     this.metricUsage = metricUsage;
   }
 
 
-  public TrendzUsage chatUsage(@javax.annotation.Nullable SimpleEntity chatUsage) {
+  public TrendzUsage chatUsage(@Nullable SimpleEntity chatUsage) {
     this.chatUsage = chatUsage;
     return this;
   }
@@ -231,7 +233,7 @@ public class TrendzUsage {
    * Get chatUsage
    * @return chatUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CHAT_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SimpleEntity getChatUsage() {
@@ -241,7 +243,7 @@ public class TrendzUsage {
 
   @JsonProperty(value = JSON_PROPERTY_CHAT_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChatUsage(@javax.annotation.Nullable SimpleEntity chatUsage) {
+  public void setChatUsage(@Nullable SimpleEntity chatUsage) {
     this.chatUsage = chatUsage;
   }
 

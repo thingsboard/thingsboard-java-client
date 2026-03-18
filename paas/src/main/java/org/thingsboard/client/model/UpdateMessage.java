@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,36 +44,36 @@ import org.thingsboard.client.ApiClient;
   UpdateMessage.JSON_PROPERTY_CURRENT_VERSION_RELEASE_NOTES_URL,
   UpdateMessage.JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UpdateMessage {
   public static final String JSON_PROPERTY_UPDATE_AVAILABLE = "updateAvailable";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean updateAvailable;
 
   public static final String JSON_PROPERTY_CURRENT_VERSION = "currentVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String currentVersion;
 
   public static final String JSON_PROPERTY_LATEST_VERSION = "latestVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String latestVersion;
 
   public static final String JSON_PROPERTY_UPGRADE_INSTRUCTIONS_URL = "upgradeInstructionsUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String upgradeInstructionsUrl;
 
   public static final String JSON_PROPERTY_CURRENT_VERSION_RELEASE_NOTES_URL = "currentVersionReleaseNotesUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String currentVersionReleaseNotesUrl;
 
   public static final String JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES_URL = "latestVersionReleaseNotesUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String latestVersionReleaseNotesUrl;
 
   public UpdateMessage() { 
   }
 
-  public UpdateMessage updateAvailable(@javax.annotation.Nullable Boolean updateAvailable) {
+  public UpdateMessage updateAvailable(@Nullable Boolean updateAvailable) {
     this.updateAvailable = updateAvailable;
     return this;
   }
@@ -80,7 +82,7 @@ public class UpdateMessage {
    * &#39;True&#39; if new platform update is available.
    * @return updateAvailable
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPDATE_AVAILABLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUpdateAvailable() {
@@ -90,12 +92,12 @@ public class UpdateMessage {
 
   @JsonProperty(value = JSON_PROPERTY_UPDATE_AVAILABLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdateAvailable(@javax.annotation.Nullable Boolean updateAvailable) {
+  public void setUpdateAvailable(@Nullable Boolean updateAvailable) {
     this.updateAvailable = updateAvailable;
   }
 
 
-  public UpdateMessage currentVersion(@javax.annotation.Nullable String currentVersion) {
+  public UpdateMessage currentVersion(@Nullable String currentVersion) {
     this.currentVersion = currentVersion;
     return this;
   }
@@ -104,7 +106,7 @@ public class UpdateMessage {
    * Current ThingsBoard version.
    * @return currentVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CURRENT_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCurrentVersion() {
@@ -114,12 +116,12 @@ public class UpdateMessage {
 
   @JsonProperty(value = JSON_PROPERTY_CURRENT_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCurrentVersion(@javax.annotation.Nullable String currentVersion) {
+  public void setCurrentVersion(@Nullable String currentVersion) {
     this.currentVersion = currentVersion;
   }
 
 
-  public UpdateMessage latestVersion(@javax.annotation.Nullable String latestVersion) {
+  public UpdateMessage latestVersion(@Nullable String latestVersion) {
     this.latestVersion = latestVersion;
     return this;
   }
@@ -128,7 +130,7 @@ public class UpdateMessage {
    * Latest ThingsBoard version.
    * @return latestVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLatestVersion() {
@@ -138,12 +140,12 @@ public class UpdateMessage {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestVersion(@javax.annotation.Nullable String latestVersion) {
+  public void setLatestVersion(@Nullable String latestVersion) {
     this.latestVersion = latestVersion;
   }
 
 
-  public UpdateMessage upgradeInstructionsUrl(@javax.annotation.Nullable String upgradeInstructionsUrl) {
+  public UpdateMessage upgradeInstructionsUrl(@Nullable String upgradeInstructionsUrl) {
     this.upgradeInstructionsUrl = upgradeInstructionsUrl;
     return this;
   }
@@ -152,7 +154,7 @@ public class UpdateMessage {
    * Upgrade instructions URL.
    * @return upgradeInstructionsUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPGRADE_INSTRUCTIONS_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUpgradeInstructionsUrl() {
@@ -162,12 +164,12 @@ public class UpdateMessage {
 
   @JsonProperty(value = JSON_PROPERTY_UPGRADE_INSTRUCTIONS_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpgradeInstructionsUrl(@javax.annotation.Nullable String upgradeInstructionsUrl) {
+  public void setUpgradeInstructionsUrl(@Nullable String upgradeInstructionsUrl) {
     this.upgradeInstructionsUrl = upgradeInstructionsUrl;
   }
 
 
-  public UpdateMessage currentVersionReleaseNotesUrl(@javax.annotation.Nullable String currentVersionReleaseNotesUrl) {
+  public UpdateMessage currentVersionReleaseNotesUrl(@Nullable String currentVersionReleaseNotesUrl) {
     this.currentVersionReleaseNotesUrl = currentVersionReleaseNotesUrl;
     return this;
   }
@@ -176,7 +178,7 @@ public class UpdateMessage {
    * Current ThingsBoard version release notes URL.
    * @return currentVersionReleaseNotesUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CURRENT_VERSION_RELEASE_NOTES_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCurrentVersionReleaseNotesUrl() {
@@ -186,12 +188,12 @@ public class UpdateMessage {
 
   @JsonProperty(value = JSON_PROPERTY_CURRENT_VERSION_RELEASE_NOTES_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCurrentVersionReleaseNotesUrl(@javax.annotation.Nullable String currentVersionReleaseNotesUrl) {
+  public void setCurrentVersionReleaseNotesUrl(@Nullable String currentVersionReleaseNotesUrl) {
     this.currentVersionReleaseNotesUrl = currentVersionReleaseNotesUrl;
   }
 
 
-  public UpdateMessage latestVersionReleaseNotesUrl(@javax.annotation.Nullable String latestVersionReleaseNotesUrl) {
+  public UpdateMessage latestVersionReleaseNotesUrl(@Nullable String latestVersionReleaseNotesUrl) {
     this.latestVersionReleaseNotesUrl = latestVersionReleaseNotesUrl;
     return this;
   }
@@ -200,7 +202,7 @@ public class UpdateMessage {
    * Latest ThingsBoard version release notes URL.
    * @return latestVersionReleaseNotesUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLatestVersionReleaseNotesUrl() {
@@ -210,7 +212,7 @@ public class UpdateMessage {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestVersionReleaseNotesUrl(@javax.annotation.Nullable String latestVersionReleaseNotesUrl) {
+  public void setLatestVersionReleaseNotesUrl(@Nullable String latestVersionReleaseNotesUrl) {
     this.latestVersionReleaseNotesUrl = latestVersionReleaseNotesUrl;
   }
 

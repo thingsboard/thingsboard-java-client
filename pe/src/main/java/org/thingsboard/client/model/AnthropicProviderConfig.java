@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   AnthropicProviderConfig.JSON_PROPERTY_API_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AnthropicProviderConfig {
   public static final String JSON_PROPERTY_API_KEY = "apiKey";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String apiKey;
 
   public AnthropicProviderConfig() { 
   }
 
-  public AnthropicProviderConfig apiKey(@javax.annotation.Nonnull String apiKey) {
+  public AnthropicProviderConfig apiKey(@Nonnull String apiKey) {
     this.apiKey = apiKey;
     return this;
   }
@@ -55,7 +57,7 @@ public class AnthropicProviderConfig {
    * Get apiKey
    * @return apiKey
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getApiKey() {
@@ -65,7 +67,7 @@ public class AnthropicProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setApiKey(@javax.annotation.Nonnull String apiKey) {
+  public void setApiKey(@Nonnull String apiKey) {
     this.apiKey = apiKey;
   }
 

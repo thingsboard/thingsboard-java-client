@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   VersionLoadConfig.JSON_PROPERTY_LOAD_CREDENTIALS,
   VersionLoadConfig.JSON_PROPERTY_LOAD_CALCULATED_FIELDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionLoadConfig {
   public static final String JSON_PROPERTY_LOAD_RELATIONS = "loadRelations";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadRelations;
 
   public static final String JSON_PROPERTY_LOAD_ATTRIBUTES = "loadAttributes";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadAttributes;
 
   public static final String JSON_PROPERTY_LOAD_CREDENTIALS = "loadCredentials";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadCredentials;
 
   public static final String JSON_PROPERTY_LOAD_CALCULATED_FIELDS = "loadCalculatedFields";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean loadCalculatedFields;
 
   public VersionLoadConfig() { 
   }
 
-  public VersionLoadConfig loadRelations(@javax.annotation.Nullable Boolean loadRelations) {
+  public VersionLoadConfig loadRelations(@Nullable Boolean loadRelations) {
     this.loadRelations = loadRelations;
     return this;
   }
@@ -70,7 +72,7 @@ public class VersionLoadConfig {
    * Get loadRelations
    * @return loadRelations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadRelations() {
@@ -80,12 +82,12 @@ public class VersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadRelations(@javax.annotation.Nullable Boolean loadRelations) {
+  public void setLoadRelations(@Nullable Boolean loadRelations) {
     this.loadRelations = loadRelations;
   }
 
 
-  public VersionLoadConfig loadAttributes(@javax.annotation.Nullable Boolean loadAttributes) {
+  public VersionLoadConfig loadAttributes(@Nullable Boolean loadAttributes) {
     this.loadAttributes = loadAttributes;
     return this;
   }
@@ -94,7 +96,7 @@ public class VersionLoadConfig {
    * Get loadAttributes
    * @return loadAttributes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadAttributes() {
@@ -104,12 +106,12 @@ public class VersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadAttributes(@javax.annotation.Nullable Boolean loadAttributes) {
+  public void setLoadAttributes(@Nullable Boolean loadAttributes) {
     this.loadAttributes = loadAttributes;
   }
 
 
-  public VersionLoadConfig loadCredentials(@javax.annotation.Nullable Boolean loadCredentials) {
+  public VersionLoadConfig loadCredentials(@Nullable Boolean loadCredentials) {
     this.loadCredentials = loadCredentials;
     return this;
   }
@@ -118,7 +120,7 @@ public class VersionLoadConfig {
    * Get loadCredentials
    * @return loadCredentials
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadCredentials() {
@@ -128,12 +130,12 @@ public class VersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadCredentials(@javax.annotation.Nullable Boolean loadCredentials) {
+  public void setLoadCredentials(@Nullable Boolean loadCredentials) {
     this.loadCredentials = loadCredentials;
   }
 
 
-  public VersionLoadConfig loadCalculatedFields(@javax.annotation.Nullable Boolean loadCalculatedFields) {
+  public VersionLoadConfig loadCalculatedFields(@Nullable Boolean loadCalculatedFields) {
     this.loadCalculatedFields = loadCalculatedFields;
     return this;
   }
@@ -142,7 +144,7 @@ public class VersionLoadConfig {
    * Get loadCalculatedFields
    * @return loadCalculatedFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOAD_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLoadCalculatedFields() {
@@ -152,7 +154,7 @@ public class VersionLoadConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOAD_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoadCalculatedFields(@javax.annotation.Nullable Boolean loadCalculatedFields) {
+  public void setLoadCalculatedFields(@Nullable Boolean loadCalculatedFields) {
     this.loadCalculatedFields = loadCalculatedFields;
   }
 

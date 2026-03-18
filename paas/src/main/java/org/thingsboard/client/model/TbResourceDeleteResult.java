@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,20 +44,20 @@ import org.thingsboard.client.ApiClient;
   TbResourceDeleteResult.JSON_PROPERTY_SUCCESS,
   TbResourceDeleteResult.JSON_PROPERTY_REFERENCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TbResourceDeleteResult {
   public static final String JSON_PROPERTY_SUCCESS = "success";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean success;
 
   public static final String JSON_PROPERTY_REFERENCES = "references";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, List<EntityInfo>> references = new HashMap<>();
 
   public TbResourceDeleteResult() { 
   }
 
-  public TbResourceDeleteResult success(@javax.annotation.Nullable Boolean success) {
+  public TbResourceDeleteResult success(@Nullable Boolean success) {
     this.success = success;
     return this;
   }
@@ -64,7 +66,7 @@ public class TbResourceDeleteResult {
    * Get success
    * @return success
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSuccess() {
@@ -74,12 +76,12 @@ public class TbResourceDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuccess(@javax.annotation.Nullable Boolean success) {
+  public void setSuccess(@Nullable Boolean success) {
     this.success = success;
   }
 
 
-  public TbResourceDeleteResult references(@javax.annotation.Nullable Map<String, List<EntityInfo>> references) {
+  public TbResourceDeleteResult references(@Nullable Map<String, List<EntityInfo>> references) {
     this.references = references;
     return this;
   }
@@ -96,7 +98,7 @@ public class TbResourceDeleteResult {
    * Get references
    * @return references
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REFERENCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, List<EntityInfo>> getReferences() {
@@ -106,7 +108,7 @@ public class TbResourceDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_REFERENCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReferences(@javax.annotation.Nullable Map<String, List<EntityInfo>> references) {
+  public void setReferences(@Nullable Map<String, List<EntityInfo>> references) {
     this.references = references;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,16 +42,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   NotificationSettings.JSON_PROPERTY_DELIVERY_METHODS_CONFIGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationSettings {
   public static final String JSON_PROPERTY_DELIVERY_METHODS_CONFIGS = "deliveryMethodsConfigs";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Map<String, NotificationDeliveryMethodConfig> deliveryMethodsConfigs = new HashMap<>();
 
   public NotificationSettings() { 
   }
 
-  public NotificationSettings deliveryMethodsConfigs(@javax.annotation.Nonnull Map<String, NotificationDeliveryMethodConfig> deliveryMethodsConfigs) {
+  public NotificationSettings deliveryMethodsConfigs(@Nonnull Map<String, NotificationDeliveryMethodConfig> deliveryMethodsConfigs) {
     this.deliveryMethodsConfigs = deliveryMethodsConfigs;
     return this;
   }
@@ -66,7 +68,7 @@ public class NotificationSettings {
    * Get deliveryMethodsConfigs
    * @return deliveryMethodsConfigs
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHODS_CONFIGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Map<String, NotificationDeliveryMethodConfig> getDeliveryMethodsConfigs() {
@@ -76,7 +78,7 @@ public class NotificationSettings {
 
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHODS_CONFIGS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDeliveryMethodsConfigs(@javax.annotation.Nonnull Map<String, NotificationDeliveryMethodConfig> deliveryMethodsConfigs) {
+  public void setDeliveryMethodsConfigs(@Nonnull Map<String, NotificationDeliveryMethodConfig> deliveryMethodsConfigs) {
     this.deliveryMethodsConfigs = deliveryMethodsConfigs;
   }
 

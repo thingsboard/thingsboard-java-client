@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,46 +52,46 @@ import org.thingsboard.client.ApiClient;
   AlarmCommentInfo.JSON_PROPERTY_EMAIL,
   AlarmCommentInfo.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmCommentInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmCommentId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ALARM_ID = "alarmId";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmId alarmId;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId userId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmCommentType type;
 
   public static final String JSON_PROPERTY_COMMENT = "comment";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode comment;
 
   public static final String JSON_PROPERTY_FIRST_NAME = "firstName";
-  @javax.annotation.Nullable
+  @Nullable
   private String firstName;
 
   public static final String JSON_PROPERTY_LAST_NAME = "lastName";
-  @javax.annotation.Nullable
+  @Nullable
   private String lastName;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nullable
+  @Nullable
   private String email;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public AlarmCommentInfo() { 
@@ -109,7 +111,7 @@ public class AlarmCommentInfo {
     this.name = name;
   }
 
-  public AlarmCommentInfo id(@javax.annotation.Nullable AlarmCommentId id) {
+  public AlarmCommentInfo id(@Nullable AlarmCommentId id) {
     this.id = id;
     return this;
   }
@@ -118,7 +120,7 @@ public class AlarmCommentInfo {
    * JSON object with the alarm comment Id. Specify this field to update the alarm comment. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmCommentId getId() {
@@ -128,7 +130,7 @@ public class AlarmCommentInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AlarmCommentId id) {
+  public void setId(@Nullable AlarmCommentId id) {
     this.id = id;
   }
 
@@ -137,7 +139,7 @@ public class AlarmCommentInfo {
    * Timestamp of the alarm comment creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -151,7 +153,7 @@ public class AlarmCommentInfo {
    * JSON object with Alarm id.
    * @return alarmId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARM_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmId getAlarmId() {
@@ -165,7 +167,7 @@ public class AlarmCommentInfo {
    * JSON object with User id.
    * @return userId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getUserId() {
@@ -175,7 +177,7 @@ public class AlarmCommentInfo {
 
 
 
-  public AlarmCommentInfo type(@javax.annotation.Nullable AlarmCommentType type) {
+  public AlarmCommentInfo type(@Nullable AlarmCommentType type) {
     this.type = type;
     return this;
   }
@@ -184,7 +186,7 @@ public class AlarmCommentInfo {
    * Defines origination of comment. System type means comment was created by TB. OTHER type means comment was created by user.
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmCommentType getType() {
@@ -194,12 +196,12 @@ public class AlarmCommentInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable AlarmCommentType type) {
+  public void setType(@Nullable AlarmCommentType type) {
     this.type = type;
   }
 
 
-  public AlarmCommentInfo comment(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode comment) {
+  public AlarmCommentInfo comment(@Nullable com.fasterxml.jackson.databind.JsonNode comment) {
     this.comment = comment;
     return this;
   }
@@ -208,7 +210,7 @@ public class AlarmCommentInfo {
    * JSON object with text of comment.
    * @return comment
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COMMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getComment() {
@@ -218,12 +220,12 @@ public class AlarmCommentInfo {
 
   @JsonProperty(value = JSON_PROPERTY_COMMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setComment(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode comment) {
+  public void setComment(@Nullable com.fasterxml.jackson.databind.JsonNode comment) {
     this.comment = comment;
   }
 
 
-  public AlarmCommentInfo firstName(@javax.annotation.Nullable String firstName) {
+  public AlarmCommentInfo firstName(@Nullable String firstName) {
     this.firstName = firstName;
     return this;
   }
@@ -232,7 +234,7 @@ public class AlarmCommentInfo {
    * User first name
    * @return firstName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFirstName() {
@@ -242,12 +244,12 @@ public class AlarmCommentInfo {
 
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirstName(@javax.annotation.Nullable String firstName) {
+  public void setFirstName(@Nullable String firstName) {
     this.firstName = firstName;
   }
 
 
-  public AlarmCommentInfo lastName(@javax.annotation.Nullable String lastName) {
+  public AlarmCommentInfo lastName(@Nullable String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -256,7 +258,7 @@ public class AlarmCommentInfo {
    * User last name
    * @return lastName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLastName() {
@@ -266,12 +268,12 @@ public class AlarmCommentInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastName(@javax.annotation.Nullable String lastName) {
+  public void setLastName(@Nullable String lastName) {
     this.lastName = lastName;
   }
 
 
-  public AlarmCommentInfo email(@javax.annotation.Nullable String email) {
+  public AlarmCommentInfo email(@Nullable String email) {
     this.email = email;
     return this;
   }
@@ -280,7 +282,7 @@ public class AlarmCommentInfo {
    * User email address
    * @return email
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmail() {
@@ -290,7 +292,7 @@ public class AlarmCommentInfo {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmail(@javax.annotation.Nullable String email) {
+  public void setEmail(@Nullable String email) {
     this.email = email;
   }
 
@@ -299,7 +301,7 @@ public class AlarmCommentInfo {
    * representing comment text
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

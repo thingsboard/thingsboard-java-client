@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   UserActivationLink.JSON_PROPERTY_VALUE,
   UserActivationLink.JSON_PROPERTY_TTL_MS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UserActivationLink {
   public static final String JSON_PROPERTY_VALUE = "value";
-  @javax.annotation.Nullable
+  @Nullable
   private String value;
 
   public static final String JSON_PROPERTY_TTL_MS = "ttlMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long ttlMs;
 
   public UserActivationLink() { 
   }
 
-  public UserActivationLink value(@javax.annotation.Nullable String value) {
+  public UserActivationLink value(@Nullable String value) {
     this.value = value;
     return this;
   }
@@ -60,7 +62,7 @@ public class UserActivationLink {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getValue() {
@@ -70,12 +72,12 @@ public class UserActivationLink {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValue(@javax.annotation.Nullable String value) {
+  public void setValue(@Nullable String value) {
     this.value = value;
   }
 
 
-  public UserActivationLink ttlMs(@javax.annotation.Nullable Long ttlMs) {
+  public UserActivationLink ttlMs(@Nullable Long ttlMs) {
     this.ttlMs = ttlMs;
     return this;
   }
@@ -84,7 +86,7 @@ public class UserActivationLink {
    * Get ttlMs
    * @return ttlMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TTL_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTtlMs() {
@@ -94,7 +96,7 @@ public class UserActivationLink {
 
   @JsonProperty(value = JSON_PROPERTY_TTL_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTtlMs(@javax.annotation.Nullable Long ttlMs) {
+  public void setTtlMs(@Nullable Long ttlMs) {
     this.ttlMs = ttlMs;
   }
 

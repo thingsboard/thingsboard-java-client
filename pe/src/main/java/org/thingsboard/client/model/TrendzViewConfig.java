@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   TrendzViewConfig.JSON_PROPERTY_NAME,
   TrendzViewConfig.JSON_PROPERTY_RUNTIME_FILTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzViewConfig {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_RUNTIME_FILTERS = "runtimeFilters";
-  @javax.annotation.Nullable
+  @Nullable
   private List<Object> runtimeFilters = new ArrayList<>();
 
   public TrendzViewConfig() { 
   }
 
-  public TrendzViewConfig id(@javax.annotation.Nullable UUID id) {
+  public TrendzViewConfig id(@Nullable UUID id) {
     this.id = id;
     return this;
   }
@@ -68,7 +70,7 @@ public class TrendzViewConfig {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getId() {
@@ -78,12 +80,12 @@ public class TrendzViewConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable UUID id) {
+  public void setId(@Nullable UUID id) {
     this.id = id;
   }
 
 
-  public TrendzViewConfig name(@javax.annotation.Nullable String name) {
+  public TrendzViewConfig name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -92,7 +94,7 @@ public class TrendzViewConfig {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -102,12 +104,12 @@ public class TrendzViewConfig {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public TrendzViewConfig runtimeFilters(@javax.annotation.Nullable List<Object> runtimeFilters) {
+  public TrendzViewConfig runtimeFilters(@Nullable List<Object> runtimeFilters) {
     this.runtimeFilters = runtimeFilters;
     return this;
   }
@@ -124,7 +126,7 @@ public class TrendzViewConfig {
    * Get runtimeFilters
    * @return runtimeFilters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RUNTIME_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Object> getRuntimeFilters() {
@@ -134,7 +136,7 @@ public class TrendzViewConfig {
 
   @JsonProperty(value = JSON_PROPERTY_RUNTIME_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRuntimeFilters(@javax.annotation.Nullable List<Object> runtimeFilters) {
+  public void setRuntimeFilters(@Nullable List<Object> runtimeFilters) {
     this.runtimeFilters = runtimeFilters;
   }
 

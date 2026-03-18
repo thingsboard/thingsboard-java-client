@@ -15,12 +15,13 @@
  */
 package org.thingsboard.client;
 
+import javax.annotation.Generated;
 import java.util.Map;
 
 /**
  * Representing a Server configuration.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ServerConfiguration {
     public String URL;
     public String description;

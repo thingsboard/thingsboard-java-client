@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   EdgeInstructions.JSON_PROPERTY_INSTRUCTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdgeInstructions {
   public static final String JSON_PROPERTY_INSTRUCTIONS = "instructions";
-  @javax.annotation.Nullable
+  @Nullable
   private String instructions;
 
   public EdgeInstructions() { 
   }
 
-  public EdgeInstructions instructions(@javax.annotation.Nullable String instructions) {
+  public EdgeInstructions instructions(@Nullable String instructions) {
     this.instructions = instructions;
     return this;
   }
@@ -55,7 +57,7 @@ public class EdgeInstructions {
    * Markdown with install/upgrade instructions
    * @return instructions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INSTRUCTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getInstructions() {
@@ -65,7 +67,7 @@ public class EdgeInstructions {
 
   @JsonProperty(value = JSON_PROPERTY_INSTRUCTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInstructions(@javax.annotation.Nullable String instructions) {
+  public void setInstructions(@Nullable String instructions) {
     this.instructions = instructions;
   }
 

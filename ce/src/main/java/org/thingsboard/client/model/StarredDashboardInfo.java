@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,18 +42,18 @@ import org.thingsboard.client.ApiClient;
   StarredDashboardInfo.JSON_PROPERTY_TITLE,
   StarredDashboardInfo.JSON_PROPERTY_STARRED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class StarredDashboardInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_STARRED_AT = "starredAt";
-  @javax.annotation.Nullable
+  @Nullable
   private Long starredAt;
 
   public StarredDashboardInfo() { 
@@ -69,7 +71,7 @@ public class StarredDashboardInfo {
    * JSON object with Dashboard id.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getId() {
@@ -79,7 +81,7 @@ public class StarredDashboardInfo {
 
 
 
-  public StarredDashboardInfo title(@javax.annotation.Nullable String title) {
+  public StarredDashboardInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -88,7 +90,7 @@ public class StarredDashboardInfo {
    * Title of the dashboard.
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -98,12 +100,12 @@ public class StarredDashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public StarredDashboardInfo starredAt(@javax.annotation.Nullable Long starredAt) {
+  public StarredDashboardInfo starredAt(@Nullable Long starredAt) {
     this.starredAt = starredAt;
     return this;
   }
@@ -112,7 +114,7 @@ public class StarredDashboardInfo {
    * Starred timestamp
    * @return starredAt
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STARRED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStarredAt() {
@@ -122,7 +124,7 @@ public class StarredDashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_STARRED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStarredAt(@javax.annotation.Nullable Long starredAt) {
+  public void setStarredAt(@Nullable Long starredAt) {
     this.starredAt = starredAt;
   }
 

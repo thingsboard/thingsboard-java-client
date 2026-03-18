@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,32 +49,32 @@ import org.thingsboard.client.ApiClient;
   ShareGroupRequest.JSON_PROPERTY_READ_ELSE_WRITE,
   ShareGroupRequest.JSON_PROPERTY_ROLE_IDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ShareGroupRequest {
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public static final String JSON_PROPERTY_ALL_USER_GROUP = "allUserGroup";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Boolean allUserGroup;
 
   public static final String JSON_PROPERTY_USER_GROUP_ID = "userGroupId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityGroupId userGroupId;
 
   public static final String JSON_PROPERTY_READ_ELSE_WRITE = "readElseWrite";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean readElseWrite;
 
   public static final String JSON_PROPERTY_ROLE_IDS = "roleIds";
-  @javax.annotation.Nullable
+  @Nullable
   private List<RoleId> roleIds = new ArrayList<>();
 
   public ShareGroupRequest() { 
   }
 
-  public ShareGroupRequest ownerId(@javax.annotation.Nullable EntityId ownerId) {
+  public ShareGroupRequest ownerId(@Nullable EntityId ownerId) {
     this.ownerId = ownerId;
     return this;
   }
@@ -80,7 +83,7 @@ public class ShareGroupRequest {
    * In case &#39;allUserGroup&#39; is set to true, this property specifies the owner of the user group &#39;All&#39;. Either Tenant or Customer Id.
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {
@@ -90,12 +93,12 @@ public class ShareGroupRequest {
 
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(@javax.annotation.Nullable EntityId ownerId) {
+  public void setOwnerId(@Nullable EntityId ownerId) {
     this.ownerId = ownerId;
   }
 
 
-  public ShareGroupRequest allUserGroup(@javax.annotation.Nonnull Boolean allUserGroup) {
+  public ShareGroupRequest allUserGroup(@Nonnull Boolean allUserGroup) {
     this.allUserGroup = allUserGroup;
     return this;
   }
@@ -104,7 +107,7 @@ public class ShareGroupRequest {
    * Indicate that the group should be shared with user group &#39;All&#39; that belongs to Tenant or Customer (see &#39;ownerId&#39; property description).
    * @return allUserGroup
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ALL_USER_GROUP, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Boolean getAllUserGroup() {
@@ -114,12 +117,12 @@ public class ShareGroupRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ALL_USER_GROUP, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAllUserGroup(@javax.annotation.Nonnull Boolean allUserGroup) {
+  public void setAllUserGroup(@Nonnull Boolean allUserGroup) {
     this.allUserGroup = allUserGroup;
   }
 
 
-  public ShareGroupRequest userGroupId(@javax.annotation.Nullable EntityGroupId userGroupId) {
+  public ShareGroupRequest userGroupId(@Nullable EntityGroupId userGroupId) {
     this.userGroupId = userGroupId;
     return this;
   }
@@ -128,7 +131,7 @@ public class ShareGroupRequest {
    * In case &#39;allUserGroup&#39; is set to false, this property specifies the specific user group that the entity group should be shared with.
    * @return userGroupId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityGroupId getUserGroupId() {
@@ -138,12 +141,12 @@ public class ShareGroupRequest {
 
   @JsonProperty(value = JSON_PROPERTY_USER_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserGroupId(@javax.annotation.Nullable EntityGroupId userGroupId) {
+  public void setUserGroupId(@Nullable EntityGroupId userGroupId) {
     this.userGroupId = userGroupId;
   }
 
 
-  public ShareGroupRequest readElseWrite(@javax.annotation.Nullable Boolean readElseWrite) {
+  public ShareGroupRequest readElseWrite(@Nullable Boolean readElseWrite) {
     this.readElseWrite = readElseWrite;
     return this;
   }
@@ -152,7 +155,7 @@ public class ShareGroupRequest {
    * Used if &#39;roleIds&#39; property is not present. if the value is &#39;true&#39;, creates role with read-only permissions. If the value is &#39;false&#39;, creates role with write permissions.
    * @return readElseWrite
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_ELSE_WRITE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getReadElseWrite() {
@@ -162,12 +165,12 @@ public class ShareGroupRequest {
 
   @JsonProperty(value = JSON_PROPERTY_READ_ELSE_WRITE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadElseWrite(@javax.annotation.Nullable Boolean readElseWrite) {
+  public void setReadElseWrite(@Nullable Boolean readElseWrite) {
     this.readElseWrite = readElseWrite;
   }
 
 
-  public ShareGroupRequest roleIds(@javax.annotation.Nullable List<RoleId> roleIds) {
+  public ShareGroupRequest roleIds(@Nullable List<RoleId> roleIds) {
     this.roleIds = roleIds;
     return this;
   }
@@ -184,7 +187,7 @@ public class ShareGroupRequest {
    * List of group role Ids that should be used to share the entity group with the user group. If not set, the platform will create new role (see &#39;readElseWrite&#39; property description)
    * @return roleIds
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ROLE_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<RoleId> getRoleIds() {
@@ -194,7 +197,7 @@ public class ShareGroupRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ROLE_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRoleIds(@javax.annotation.Nullable List<RoleId> roleIds) {
+  public void setRoleIds(@Nullable List<RoleId> roleIds) {
     this.roleIds = roleIds;
   }
 

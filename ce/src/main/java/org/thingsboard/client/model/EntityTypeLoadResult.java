@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   EntityTypeLoadResult.JSON_PROPERTY_UPDATED,
   EntityTypeLoadResult.JSON_PROPERTY_DELETED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityTypeLoadResult {
   public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityType entityType;
 
   public static final String JSON_PROPERTY_CREATED = "created";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer created;
 
   public static final String JSON_PROPERTY_UPDATED = "updated";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer updated;
 
   public static final String JSON_PROPERTY_DELETED = "deleted";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer deleted;
 
   public EntityTypeLoadResult() { 
   }
 
-  public EntityTypeLoadResult entityType(@javax.annotation.Nullable EntityType entityType) {
+  public EntityTypeLoadResult entityType(@Nullable EntityType entityType) {
     this.entityType = entityType;
     return this;
   }
@@ -71,7 +73,7 @@ public class EntityTypeLoadResult {
    * Get entityType
    * @return entityType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityType getEntityType() {
@@ -81,12 +83,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityType(@javax.annotation.Nullable EntityType entityType) {
+  public void setEntityType(@Nullable EntityType entityType) {
     this.entityType = entityType;
   }
 
 
-  public EntityTypeLoadResult created(@javax.annotation.Nullable Integer created) {
+  public EntityTypeLoadResult created(@Nullable Integer created) {
     this.created = created;
     return this;
   }
@@ -95,7 +97,7 @@ public class EntityTypeLoadResult {
    * Get created
    * @return created
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getCreated() {
@@ -105,12 +107,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@Nullable Integer created) {
     this.created = created;
   }
 
 
-  public EntityTypeLoadResult updated(@javax.annotation.Nullable Integer updated) {
+  public EntityTypeLoadResult updated(@Nullable Integer updated) {
     this.updated = updated;
     return this;
   }
@@ -119,7 +121,7 @@ public class EntityTypeLoadResult {
    * Get updated
    * @return updated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getUpdated() {
@@ -129,12 +131,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@Nullable Integer updated) {
     this.updated = updated;
   }
 
 
-  public EntityTypeLoadResult deleted(@javax.annotation.Nullable Integer deleted) {
+  public EntityTypeLoadResult deleted(@Nullable Integer deleted) {
     this.deleted = deleted;
     return this;
   }
@@ -143,7 +145,7 @@ public class EntityTypeLoadResult {
    * Get deleted
    * @return deleted
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DELETED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDeleted() {
@@ -153,7 +155,7 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_DELETED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeleted(@javax.annotation.Nullable Integer deleted) {
+  public void setDeleted(@Nullable Integer deleted) {
     this.deleted = deleted;
   }
 

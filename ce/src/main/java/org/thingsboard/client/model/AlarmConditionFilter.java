@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,18 +49,18 @@ import org.thingsboard.client.ApiClient;
   AlarmConditionFilter.JSON_PROPERTY_PREDICATE,
   AlarmConditionFilter.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmConditionFilter {
   public static final String JSON_PROPERTY_VALUE_TYPE = "valueType";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityKeyValueType valueType;
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmConditionFilterKey key;
 
   public static final String JSON_PROPERTY_PREDICATE = "predicate";
-  @javax.annotation.Nullable
+  @Nullable
   private KeyFilterPredicate predicate;
 
   public static final String JSON_PROPERTY_VALUE = "value";
@@ -67,7 +69,7 @@ public class AlarmConditionFilter {
   public AlarmConditionFilter() { 
   }
 
-  public AlarmConditionFilter valueType(@javax.annotation.Nullable EntityKeyValueType valueType) {
+  public AlarmConditionFilter valueType(@Nullable EntityKeyValueType valueType) {
     this.valueType = valueType;
     return this;
   }
@@ -76,7 +78,7 @@ public class AlarmConditionFilter {
    * String representation of the type of the value
    * @return valueType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityKeyValueType getValueType() {
@@ -86,12 +88,12 @@ public class AlarmConditionFilter {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValueType(@javax.annotation.Nullable EntityKeyValueType valueType) {
+  public void setValueType(@Nullable EntityKeyValueType valueType) {
     this.valueType = valueType;
   }
 
 
-  public AlarmConditionFilter key(@javax.annotation.Nullable AlarmConditionFilterKey key) {
+  public AlarmConditionFilter key(@Nullable AlarmConditionFilterKey key) {
     this.key = key;
     return this;
   }
@@ -100,7 +102,7 @@ public class AlarmConditionFilter {
    * JSON object for specifying alarm condition by specific key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmConditionFilterKey getKey() {
@@ -110,12 +112,12 @@ public class AlarmConditionFilter {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable AlarmConditionFilterKey key) {
+  public void setKey(@Nullable AlarmConditionFilterKey key) {
     this.key = key;
   }
 
 
-  public AlarmConditionFilter predicate(@javax.annotation.Nullable KeyFilterPredicate predicate) {
+  public AlarmConditionFilter predicate(@Nullable KeyFilterPredicate predicate) {
     this.predicate = predicate;
     return this;
   }
@@ -124,7 +126,7 @@ public class AlarmConditionFilter {
    * JSON object representing filter condition
    * @return predicate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREDICATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public KeyFilterPredicate getPredicate() {
@@ -134,12 +136,12 @@ public class AlarmConditionFilter {
 
   @JsonProperty(value = JSON_PROPERTY_PREDICATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPredicate(@javax.annotation.Nullable KeyFilterPredicate predicate) {
+  public void setPredicate(@Nullable KeyFilterPredicate predicate) {
     this.predicate = predicate;
   }
 
 
-  public AlarmConditionFilter value(@javax.annotation.Nullable Object value) {
+  public AlarmConditionFilter value(@Nullable Object value) {
     this.value = JsonNullable.<Object>of(value);
     return this;
   }
@@ -148,7 +150,7 @@ public class AlarmConditionFilter {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getValue() {
         return value.orElse(null);
@@ -166,7 +168,7 @@ public class AlarmConditionFilter {
     this.value = value;
   }
 
-  public void setValue(@javax.annotation.Nullable Object value) {
+  public void setValue(@Nullable Object value) {
     this.value = JsonNullable.<Object>of(value);
   }
 

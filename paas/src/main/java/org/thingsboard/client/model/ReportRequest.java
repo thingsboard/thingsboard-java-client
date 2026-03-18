@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,40 +52,40 @@ import org.thingsboard.client.ApiClient;
   ReportRequest.JSON_PROPERTY_TARGETS,
   ReportRequest.JSON_PROPERTY_NOTIFICATION_TEMPLATE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ReportRequest {
   public static final String JSON_PROPERTY_REPORT_TEMPLATE_ID = "reportTemplateId";
-  @javax.annotation.Nullable
+  @Nullable
   private ReportTemplateId reportTemplateId;
 
   public static final String JSON_PROPERTY_REPORT_TEMPLATE_CONFIG = "reportTemplateConfig";
-  @javax.annotation.Nullable
+  @Nullable
   private ReportTemplateConfig reportTemplateConfig;
 
   public static final String JSON_PROPERTY_TIMEZONE = "timezone";
-  @javax.annotation.Nullable
+  @Nullable
   private String timezone;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nullable
+  @Nullable
   private String userId;
 
   public static final String JSON_PROPERTY_ORIGINATOR = "originator";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId originator;
 
   public static final String JSON_PROPERTY_TARGETS = "targets";
-  @javax.annotation.Nullable
+  @Nullable
   private List<UUID> targets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NOTIFICATION_TEMPLATE_ID = "notificationTemplateId";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationTemplateId notificationTemplateId;
 
   public ReportRequest() { 
   }
 
-  public ReportRequest reportTemplateId(@javax.annotation.Nullable ReportTemplateId reportTemplateId) {
+  public ReportRequest reportTemplateId(@Nullable ReportTemplateId reportTemplateId) {
     this.reportTemplateId = reportTemplateId;
     return this;
   }
@@ -92,7 +94,7 @@ public class ReportRequest {
    * Json object representing the report template id.
    * @return reportTemplateId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ReportTemplateId getReportTemplateId() {
@@ -102,12 +104,12 @@ public class ReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReportTemplateId(@javax.annotation.Nullable ReportTemplateId reportTemplateId) {
+  public void setReportTemplateId(@Nullable ReportTemplateId reportTemplateId) {
     this.reportTemplateId = reportTemplateId;
   }
 
 
-  public ReportRequest reportTemplateConfig(@javax.annotation.Nullable ReportTemplateConfig reportTemplateConfig) {
+  public ReportRequest reportTemplateConfig(@Nullable ReportTemplateConfig reportTemplateConfig) {
     this.reportTemplateConfig = reportTemplateConfig;
     return this;
   }
@@ -116,7 +118,7 @@ public class ReportRequest {
    * Json object representing the report template config.
    * @return reportTemplateConfig
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ReportTemplateConfig getReportTemplateConfig() {
@@ -126,12 +128,12 @@ public class ReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReportTemplateConfig(@javax.annotation.Nullable ReportTemplateConfig reportTemplateConfig) {
+  public void setReportTemplateConfig(@Nullable ReportTemplateConfig reportTemplateConfig) {
     this.reportTemplateConfig = reportTemplateConfig;
   }
 
 
-  public ReportRequest timezone(@javax.annotation.Nullable String timezone) {
+  public ReportRequest timezone(@Nullable String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -140,7 +142,7 @@ public class ReportRequest {
    * Timezone used for report generation.
    * @return timezone
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTimezone() {
@@ -150,12 +152,12 @@ public class ReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimezone(@javax.annotation.Nullable String timezone) {
+  public void setTimezone(@Nullable String timezone) {
     this.timezone = timezone;
   }
 
 
-  public ReportRequest userId(@javax.annotation.Nullable String userId) {
+  public ReportRequest userId(@Nullable String userId) {
     this.userId = userId;
     return this;
   }
@@ -164,7 +166,7 @@ public class ReportRequest {
    * A string value representing the user id.
    * @return userId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUserId() {
@@ -174,12 +176,12 @@ public class ReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserId(@javax.annotation.Nullable String userId) {
+  public void setUserId(@Nullable String userId) {
     this.userId = userId;
   }
 
 
-  public ReportRequest originator(@javax.annotation.Nullable EntityId originator) {
+  public ReportRequest originator(@Nullable EntityId originator) {
     this.originator = originator;
     return this;
   }
@@ -188,7 +190,7 @@ public class ReportRequest {
    * Json object representing the originator id.
    * @return originator
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ORIGINATOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOriginator() {
@@ -198,12 +200,12 @@ public class ReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ORIGINATOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOriginator(@javax.annotation.Nullable EntityId originator) {
+  public void setOriginator(@Nullable EntityId originator) {
     this.originator = originator;
   }
 
 
-  public ReportRequest targets(@javax.annotation.Nullable List<UUID> targets) {
+  public ReportRequest targets(@Nullable List<UUID> targets) {
     this.targets = targets;
     return this;
   }
@@ -220,7 +222,7 @@ public class ReportRequest {
    * Get targets
    * @return targets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<UUID> getTargets() {
@@ -230,12 +232,12 @@ public class ReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTargets(@javax.annotation.Nullable List<UUID> targets) {
+  public void setTargets(@Nullable List<UUID> targets) {
     this.targets = targets;
   }
 
 
-  public ReportRequest notificationTemplateId(@javax.annotation.Nullable NotificationTemplateId notificationTemplateId) {
+  public ReportRequest notificationTemplateId(@Nullable NotificationTemplateId notificationTemplateId) {
     this.notificationTemplateId = notificationTemplateId;
     return this;
   }
@@ -244,7 +246,7 @@ public class ReportRequest {
    * Get notificationTemplateId
    * @return notificationTemplateId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationTemplateId getNotificationTemplateId() {
@@ -254,7 +256,7 @@ public class ReportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotificationTemplateId(@javax.annotation.Nullable NotificationTemplateId notificationTemplateId) {
+  public void setNotificationTemplateId(@Nullable NotificationTemplateId notificationTemplateId) {
     this.notificationTemplateId = notificationTemplateId;
   }
 

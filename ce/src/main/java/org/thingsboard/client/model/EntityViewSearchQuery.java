@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   EntityViewSearchQuery.JSON_PROPERTY_RELATION_TYPE,
   EntityViewSearchQuery.JSON_PROPERTY_ENTITY_VIEW_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityViewSearchQuery {
   public static final String JSON_PROPERTY_PARAMETERS = "parameters";
-  @javax.annotation.Nullable
+  @Nullable
   private RelationsSearchParameters parameters;
 
   public static final String JSON_PROPERTY_RELATION_TYPE = "relationType";
-  @javax.annotation.Nullable
+  @Nullable
   private String relationType;
 
   public static final String JSON_PROPERTY_ENTITY_VIEW_TYPES = "entityViewTypes";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> entityViewTypes = new ArrayList<>();
 
   public EntityViewSearchQuery() { 
   }
 
-  public EntityViewSearchQuery parameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public EntityViewSearchQuery parameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
     return this;
   }
@@ -68,7 +70,7 @@ public class EntityViewSearchQuery {
    * Main search parameters.
    * @return parameters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RelationsSearchParameters getParameters() {
@@ -78,12 +80,12 @@ public class EntityViewSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public void setParameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
   }
 
 
-  public EntityViewSearchQuery relationType(@javax.annotation.Nullable String relationType) {
+  public EntityViewSearchQuery relationType(@Nullable String relationType) {
     this.relationType = relationType;
     return this;
   }
@@ -92,7 +94,7 @@ public class EntityViewSearchQuery {
    * Type of the relation between root entity and device (e.g. &#39;Contains&#39; or &#39;Manages&#39;).
    * @return relationType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRelationType() {
@@ -102,12 +104,12 @@ public class EntityViewSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelationType(@javax.annotation.Nullable String relationType) {
+  public void setRelationType(@Nullable String relationType) {
     this.relationType = relationType;
   }
 
 
-  public EntityViewSearchQuery entityViewTypes(@javax.annotation.Nullable List<String> entityViewTypes) {
+  public EntityViewSearchQuery entityViewTypes(@Nullable List<String> entityViewTypes) {
     this.entityViewTypes = entityViewTypes;
     return this;
   }
@@ -124,7 +126,7 @@ public class EntityViewSearchQuery {
    * Array of entity view types to filter the related entities (e.g. &#39;Temperature Sensor&#39;, &#39;Smoke Sensor&#39;).
    * @return entityViewTypes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_VIEW_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getEntityViewTypes() {
@@ -134,7 +136,7 @@ public class EntityViewSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_VIEW_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityViewTypes(@javax.annotation.Nullable List<String> entityViewTypes) {
+  public void setEntityViewTypes(@Nullable List<String> entityViewTypes) {
     this.entityViewTypes = entityViewTypes;
   }
 

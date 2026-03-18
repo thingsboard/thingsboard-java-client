@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,52 +48,52 @@ import org.thingsboard.client.ApiClient;
   UserPasswordPolicy.JSON_PROPERTY_PASSWORD_EXPIRATION_PERIOD_DAYS,
   UserPasswordPolicy.JSON_PROPERTY_PASSWORD_REUSE_FREQUENCY_DAYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UserPasswordPolicy {
   public static final String JSON_PROPERTY_MINIMUM_LENGTH = "minimumLength";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer minimumLength;
 
   public static final String JSON_PROPERTY_MAXIMUM_LENGTH = "maximumLength";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer maximumLength;
 
   public static final String JSON_PROPERTY_MINIMUM_UPPERCASE_LETTERS = "minimumUppercaseLetters";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer minimumUppercaseLetters;
 
   public static final String JSON_PROPERTY_MINIMUM_LOWERCASE_LETTERS = "minimumLowercaseLetters";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer minimumLowercaseLetters;
 
   public static final String JSON_PROPERTY_MINIMUM_DIGITS = "minimumDigits";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer minimumDigits;
 
   public static final String JSON_PROPERTY_MINIMUM_SPECIAL_CHARACTERS = "minimumSpecialCharacters";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer minimumSpecialCharacters;
 
   public static final String JSON_PROPERTY_ALLOW_WHITESPACES = "allowWhitespaces";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean allowWhitespaces;
 
   public static final String JSON_PROPERTY_FORCE_USER_TO_RESET_PASSWORD_IF_NOT_VALID = "forceUserToResetPasswordIfNotValid";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean forceUserToResetPasswordIfNotValid;
 
   public static final String JSON_PROPERTY_PASSWORD_EXPIRATION_PERIOD_DAYS = "passwordExpirationPeriodDays";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer passwordExpirationPeriodDays;
 
   public static final String JSON_PROPERTY_PASSWORD_REUSE_FREQUENCY_DAYS = "passwordReuseFrequencyDays";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer passwordReuseFrequencyDays;
 
   public UserPasswordPolicy() { 
   }
 
-  public UserPasswordPolicy minimumLength(@javax.annotation.Nullable Integer minimumLength) {
+  public UserPasswordPolicy minimumLength(@Nullable Integer minimumLength) {
     this.minimumLength = minimumLength;
     return this;
   }
@@ -100,7 +102,7 @@ public class UserPasswordPolicy {
    * Minimum number of symbols in the password.
    * @return minimumLength
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMinimumLength() {
@@ -110,12 +112,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimumLength(@javax.annotation.Nullable Integer minimumLength) {
+  public void setMinimumLength(@Nullable Integer minimumLength) {
     this.minimumLength = minimumLength;
   }
 
 
-  public UserPasswordPolicy maximumLength(@javax.annotation.Nullable Integer maximumLength) {
+  public UserPasswordPolicy maximumLength(@Nullable Integer maximumLength) {
     this.maximumLength = maximumLength;
     return this;
   }
@@ -124,7 +126,7 @@ public class UserPasswordPolicy {
    * Maximum number of symbols in the password.
    * @return maximumLength
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAXIMUM_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaximumLength() {
@@ -134,12 +136,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_MAXIMUM_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximumLength(@javax.annotation.Nullable Integer maximumLength) {
+  public void setMaximumLength(@Nullable Integer maximumLength) {
     this.maximumLength = maximumLength;
   }
 
 
-  public UserPasswordPolicy minimumUppercaseLetters(@javax.annotation.Nullable Integer minimumUppercaseLetters) {
+  public UserPasswordPolicy minimumUppercaseLetters(@Nullable Integer minimumUppercaseLetters) {
     this.minimumUppercaseLetters = minimumUppercaseLetters;
     return this;
   }
@@ -148,7 +150,7 @@ public class UserPasswordPolicy {
    * Minimum number of uppercase letters in the password.
    * @return minimumUppercaseLetters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_UPPERCASE_LETTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMinimumUppercaseLetters() {
@@ -158,12 +160,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_UPPERCASE_LETTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimumUppercaseLetters(@javax.annotation.Nullable Integer minimumUppercaseLetters) {
+  public void setMinimumUppercaseLetters(@Nullable Integer minimumUppercaseLetters) {
     this.minimumUppercaseLetters = minimumUppercaseLetters;
   }
 
 
-  public UserPasswordPolicy minimumLowercaseLetters(@javax.annotation.Nullable Integer minimumLowercaseLetters) {
+  public UserPasswordPolicy minimumLowercaseLetters(@Nullable Integer minimumLowercaseLetters) {
     this.minimumLowercaseLetters = minimumLowercaseLetters;
     return this;
   }
@@ -172,7 +174,7 @@ public class UserPasswordPolicy {
    * Minimum number of lowercase letters in the password.
    * @return minimumLowercaseLetters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_LOWERCASE_LETTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMinimumLowercaseLetters() {
@@ -182,12 +184,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_LOWERCASE_LETTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimumLowercaseLetters(@javax.annotation.Nullable Integer minimumLowercaseLetters) {
+  public void setMinimumLowercaseLetters(@Nullable Integer minimumLowercaseLetters) {
     this.minimumLowercaseLetters = minimumLowercaseLetters;
   }
 
 
-  public UserPasswordPolicy minimumDigits(@javax.annotation.Nullable Integer minimumDigits) {
+  public UserPasswordPolicy minimumDigits(@Nullable Integer minimumDigits) {
     this.minimumDigits = minimumDigits;
     return this;
   }
@@ -196,7 +198,7 @@ public class UserPasswordPolicy {
    * Minimum number of digits in the password.
    * @return minimumDigits
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_DIGITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMinimumDigits() {
@@ -206,12 +208,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_DIGITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimumDigits(@javax.annotation.Nullable Integer minimumDigits) {
+  public void setMinimumDigits(@Nullable Integer minimumDigits) {
     this.minimumDigits = minimumDigits;
   }
 
 
-  public UserPasswordPolicy minimumSpecialCharacters(@javax.annotation.Nullable Integer minimumSpecialCharacters) {
+  public UserPasswordPolicy minimumSpecialCharacters(@Nullable Integer minimumSpecialCharacters) {
     this.minimumSpecialCharacters = minimumSpecialCharacters;
     return this;
   }
@@ -220,7 +222,7 @@ public class UserPasswordPolicy {
    * Minimum number of special in the password.
    * @return minimumSpecialCharacters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_SPECIAL_CHARACTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMinimumSpecialCharacters() {
@@ -230,12 +232,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_MINIMUM_SPECIAL_CHARACTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimumSpecialCharacters(@javax.annotation.Nullable Integer minimumSpecialCharacters) {
+  public void setMinimumSpecialCharacters(@Nullable Integer minimumSpecialCharacters) {
     this.minimumSpecialCharacters = minimumSpecialCharacters;
   }
 
 
-  public UserPasswordPolicy allowWhitespaces(@javax.annotation.Nullable Boolean allowWhitespaces) {
+  public UserPasswordPolicy allowWhitespaces(@Nullable Boolean allowWhitespaces) {
     this.allowWhitespaces = allowWhitespaces;
     return this;
   }
@@ -244,7 +246,7 @@ public class UserPasswordPolicy {
    * Allow whitespaces
    * @return allowWhitespaces
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALLOW_WHITESPACES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAllowWhitespaces() {
@@ -254,12 +256,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_ALLOW_WHITESPACES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowWhitespaces(@javax.annotation.Nullable Boolean allowWhitespaces) {
+  public void setAllowWhitespaces(@Nullable Boolean allowWhitespaces) {
     this.allowWhitespaces = allowWhitespaces;
   }
 
 
-  public UserPasswordPolicy forceUserToResetPasswordIfNotValid(@javax.annotation.Nullable Boolean forceUserToResetPasswordIfNotValid) {
+  public UserPasswordPolicy forceUserToResetPasswordIfNotValid(@Nullable Boolean forceUserToResetPasswordIfNotValid) {
     this.forceUserToResetPasswordIfNotValid = forceUserToResetPasswordIfNotValid;
     return this;
   }
@@ -268,7 +270,7 @@ public class UserPasswordPolicy {
    * Force user to update password if existing one does not pass validation
    * @return forceUserToResetPasswordIfNotValid
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FORCE_USER_TO_RESET_PASSWORD_IF_NOT_VALID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getForceUserToResetPasswordIfNotValid() {
@@ -278,12 +280,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_FORCE_USER_TO_RESET_PASSWORD_IF_NOT_VALID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setForceUserToResetPasswordIfNotValid(@javax.annotation.Nullable Boolean forceUserToResetPasswordIfNotValid) {
+  public void setForceUserToResetPasswordIfNotValid(@Nullable Boolean forceUserToResetPasswordIfNotValid) {
     this.forceUserToResetPasswordIfNotValid = forceUserToResetPasswordIfNotValid;
   }
 
 
-  public UserPasswordPolicy passwordExpirationPeriodDays(@javax.annotation.Nullable Integer passwordExpirationPeriodDays) {
+  public UserPasswordPolicy passwordExpirationPeriodDays(@Nullable Integer passwordExpirationPeriodDays) {
     this.passwordExpirationPeriodDays = passwordExpirationPeriodDays;
     return this;
   }
@@ -292,7 +294,7 @@ public class UserPasswordPolicy {
    * Password expiration period (days). Force expiration of the password.
    * @return passwordExpirationPeriodDays
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_EXPIRATION_PERIOD_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPasswordExpirationPeriodDays() {
@@ -302,12 +304,12 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_EXPIRATION_PERIOD_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPasswordExpirationPeriodDays(@javax.annotation.Nullable Integer passwordExpirationPeriodDays) {
+  public void setPasswordExpirationPeriodDays(@Nullable Integer passwordExpirationPeriodDays) {
     this.passwordExpirationPeriodDays = passwordExpirationPeriodDays;
   }
 
 
-  public UserPasswordPolicy passwordReuseFrequencyDays(@javax.annotation.Nullable Integer passwordReuseFrequencyDays) {
+  public UserPasswordPolicy passwordReuseFrequencyDays(@Nullable Integer passwordReuseFrequencyDays) {
     this.passwordReuseFrequencyDays = passwordReuseFrequencyDays;
     return this;
   }
@@ -316,7 +318,7 @@ public class UserPasswordPolicy {
    * Password reuse frequency (days). Disallow to use the same password for the defined number of days
    * @return passwordReuseFrequencyDays
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_REUSE_FREQUENCY_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPasswordReuseFrequencyDays() {
@@ -326,7 +328,7 @@ public class UserPasswordPolicy {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_REUSE_FREQUENCY_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPasswordReuseFrequencyDays(@javax.annotation.Nullable Integer passwordReuseFrequencyDays) {
+  public void setPasswordReuseFrequencyDays(@Nullable Integer passwordReuseFrequencyDays) {
     this.passwordReuseFrequencyDays = passwordReuseFrequencyDays;
   }
 

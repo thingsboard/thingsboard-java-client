@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   TsValue.JSON_PROPERTY_VALUE,
   TsValue.JSON_PROPERTY_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TsValue {
   public static final String JSON_PROPERTY_TS = "ts";
-  @javax.annotation.Nullable
+  @Nullable
   private Long ts;
 
   public static final String JSON_PROPERTY_VALUE = "value";
-  @javax.annotation.Nullable
+  @Nullable
   private String value;
 
   public static final String JSON_PROPERTY_COUNT = "count";
-  @javax.annotation.Nullable
+  @Nullable
   private Long count;
 
   public TsValue() { 
   }
 
-  public TsValue ts(@javax.annotation.Nullable Long ts) {
+  public TsValue ts(@Nullable Long ts) {
     this.ts = ts;
     return this;
   }
@@ -65,7 +67,7 @@ public class TsValue {
    * Get ts
    * @return ts
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTs() {
@@ -75,12 +77,12 @@ public class TsValue {
 
   @JsonProperty(value = JSON_PROPERTY_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTs(@javax.annotation.Nullable Long ts) {
+  public void setTs(@Nullable Long ts) {
     this.ts = ts;
   }
 
 
-  public TsValue value(@javax.annotation.Nullable String value) {
+  public TsValue value(@Nullable String value) {
     this.value = value;
     return this;
   }
@@ -89,7 +91,7 @@ public class TsValue {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getValue() {
@@ -99,12 +101,12 @@ public class TsValue {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValue(@javax.annotation.Nullable String value) {
+  public void setValue(@Nullable String value) {
     this.value = value;
   }
 
 
-  public TsValue count(@javax.annotation.Nullable Long count) {
+  public TsValue count(@Nullable Long count) {
     this.count = count;
     return this;
   }
@@ -113,7 +115,7 @@ public class TsValue {
    * Get count
    * @return count
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCount() {
@@ -123,7 +125,7 @@ public class TsValue {
 
   @JsonProperty(value = JSON_PROPERTY_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCount(@javax.annotation.Nullable Long count) {
+  public void setCount(@Nullable Long count) {
     this.count = count;
   }
 

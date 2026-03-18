@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,14 +49,14 @@ import org.thingsboard.client.ApiClient;
   HeaderFooter.JSON_PROPERTY_COMPONENTS,
   HeaderFooter.JSON_PROPERTY_FIRST_PAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class HeaderFooter {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_COMPONENTS = "components";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<ReportComponent> components = new ArrayList<>();
 
   public static final String JSON_PROPERTY_FIRST_PAGE = "firstPage";
@@ -62,7 +65,7 @@ public class HeaderFooter {
   public HeaderFooter() { 
   }
 
-  public HeaderFooter enabled(@javax.annotation.Nullable Boolean enabled) {
+  public HeaderFooter enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -71,7 +74,7 @@ public class HeaderFooter {
    * Get enabled
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -81,12 +84,12 @@ public class HeaderFooter {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
 
-  public HeaderFooter components(@javax.annotation.Nonnull List<ReportComponent> components) {
+  public HeaderFooter components(@Nonnull List<ReportComponent> components) {
     this.components = components;
     return this;
   }
@@ -103,7 +106,7 @@ public class HeaderFooter {
    * Get components
    * @return components
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_COMPONENTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<ReportComponent> getComponents() {
@@ -113,12 +116,12 @@ public class HeaderFooter {
 
   @JsonProperty(value = JSON_PROPERTY_COMPONENTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setComponents(@javax.annotation.Nonnull List<ReportComponent> components) {
+  public void setComponents(@Nonnull List<ReportComponent> components) {
     this.components = components;
   }
 
 
-  public HeaderFooter firstPage(@javax.annotation.Nullable Object firstPage) {
+  public HeaderFooter firstPage(@Nullable Object firstPage) {
     this.firstPage = JsonNullable.<Object>of(firstPage);
     return this;
   }
@@ -127,7 +130,7 @@ public class HeaderFooter {
    * Get firstPage
    * @return firstPage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getFirstPage() {
         return firstPage.orElse(null);
@@ -145,7 +148,7 @@ public class HeaderFooter {
     this.firstPage = firstPage;
   }
 
-  public void setFirstPage(@javax.annotation.Nullable Object firstPage) {
+  public void setFirstPage(@Nullable Object firstPage) {
     this.firstPage = JsonNullable.<Object>of(firstPage);
   }
 

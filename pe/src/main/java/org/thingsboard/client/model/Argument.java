@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,36 +47,36 @@ import org.thingsboard.client.ApiClient;
   Argument.JSON_PROPERTY_LIMIT,
   Argument.JSON_PROPERTY_TIME_WINDOW
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Argument {
   public static final String JSON_PROPERTY_REF_ENTITY_ID = "refEntityId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId refEntityId;
 
   public static final String JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION = "refDynamicSourceConfiguration";
-  @javax.annotation.Nullable
+  @Nullable
   private CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration;
 
   public static final String JSON_PROPERTY_REF_ENTITY_KEY = "refEntityKey";
-  @javax.annotation.Nullable
+  @Nullable
   private ReferencedEntityKey refEntityKey;
 
   public static final String JSON_PROPERTY_DEFAULT_VALUE = "defaultValue";
-  @javax.annotation.Nullable
+  @Nullable
   private String defaultValue;
 
   public static final String JSON_PROPERTY_LIMIT = "limit";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer limit;
 
   public static final String JSON_PROPERTY_TIME_WINDOW = "timeWindow";
-  @javax.annotation.Nullable
+  @Nullable
   private Long timeWindow;
 
   public Argument() { 
   }
 
-  public Argument refEntityId(@javax.annotation.Nullable EntityId refEntityId) {
+  public Argument refEntityId(@Nullable EntityId refEntityId) {
     this.refEntityId = refEntityId;
     return this;
   }
@@ -83,7 +85,7 @@ public class Argument {
    * Get refEntityId
    * @return refEntityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getRefEntityId() {
@@ -93,12 +95,12 @@ public class Argument {
 
   @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefEntityId(@javax.annotation.Nullable EntityId refEntityId) {
+  public void setRefEntityId(@Nullable EntityId refEntityId) {
     this.refEntityId = refEntityId;
   }
 
 
-  public Argument refDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
+  public Argument refDynamicSourceConfiguration(@Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
     this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
     return this;
   }
@@ -107,7 +109,7 @@ public class Argument {
    * Get refDynamicSourceConfiguration
    * @return refDynamicSourceConfiguration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CfArgumentDynamicSourceConfiguration getRefDynamicSourceConfiguration() {
@@ -117,12 +119,12 @@ public class Argument {
 
   @JsonProperty(value = JSON_PROPERTY_REF_DYNAMIC_SOURCE_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefDynamicSourceConfiguration(@javax.annotation.Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
+  public void setRefDynamicSourceConfiguration(@Nullable CfArgumentDynamicSourceConfiguration refDynamicSourceConfiguration) {
     this.refDynamicSourceConfiguration = refDynamicSourceConfiguration;
   }
 
 
-  public Argument refEntityKey(@javax.annotation.Nullable ReferencedEntityKey refEntityKey) {
+  public Argument refEntityKey(@Nullable ReferencedEntityKey refEntityKey) {
     this.refEntityKey = refEntityKey;
     return this;
   }
@@ -131,7 +133,7 @@ public class Argument {
    * Get refEntityKey
    * @return refEntityKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ReferencedEntityKey getRefEntityKey() {
@@ -141,12 +143,12 @@ public class Argument {
 
   @JsonProperty(value = JSON_PROPERTY_REF_ENTITY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefEntityKey(@javax.annotation.Nullable ReferencedEntityKey refEntityKey) {
+  public void setRefEntityKey(@Nullable ReferencedEntityKey refEntityKey) {
     this.refEntityKey = refEntityKey;
   }
 
 
-  public Argument defaultValue(@javax.annotation.Nullable String defaultValue) {
+  public Argument defaultValue(@Nullable String defaultValue) {
     this.defaultValue = defaultValue;
     return this;
   }
@@ -155,7 +157,7 @@ public class Argument {
    * Get defaultValue
    * @return defaultValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDefaultValue() {
@@ -165,12 +167,12 @@ public class Argument {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultValue(@javax.annotation.Nullable String defaultValue) {
+  public void setDefaultValue(@Nullable String defaultValue) {
     this.defaultValue = defaultValue;
   }
 
 
-  public Argument limit(@javax.annotation.Nullable Integer limit) {
+  public Argument limit(@Nullable Integer limit) {
     this.limit = limit;
     return this;
   }
@@ -179,7 +181,7 @@ public class Argument {
    * Get limit
    * @return limit
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LIMIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getLimit() {
@@ -189,12 +191,12 @@ public class Argument {
 
   @JsonProperty(value = JSON_PROPERTY_LIMIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLimit(@javax.annotation.Nullable Integer limit) {
+  public void setLimit(@Nullable Integer limit) {
     this.limit = limit;
   }
 
 
-  public Argument timeWindow(@javax.annotation.Nullable Long timeWindow) {
+  public Argument timeWindow(@Nullable Long timeWindow) {
     this.timeWindow = timeWindow;
     return this;
   }
@@ -203,7 +205,7 @@ public class Argument {
    * Get timeWindow
    * @return timeWindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIME_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTimeWindow() {
@@ -213,7 +215,7 @@ public class Argument {
 
   @JsonProperty(value = JSON_PROPERTY_TIME_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimeWindow(@javax.annotation.Nullable Long timeWindow) {
+  public void setTimeWindow(@Nullable Long timeWindow) {
     this.timeWindow = timeWindow;
   }
 

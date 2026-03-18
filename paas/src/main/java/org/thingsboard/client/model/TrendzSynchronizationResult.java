@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +44,28 @@ import org.thingsboard.client.ApiClient;
   TrendzSynchronizationResult.JSON_PROPERTY_TYPE,
   TrendzSynchronizationResult.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzSynchronizationResult {
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private String version;
 
   public static final String JSON_PROPERTY_UPDATED_TS = "updatedTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long updatedTs;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private TrendzSynchronizationResultType type;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
+  @Nullable
   private TrendzSynchronizationStatus status;
 
   public TrendzSynchronizationResult() { 
   }
 
-  public TrendzSynchronizationResult version(@javax.annotation.Nullable String version) {
+  public TrendzSynchronizationResult version(@Nullable String version) {
     this.version = version;
     return this;
   }
@@ -72,7 +74,7 @@ public class TrendzSynchronizationResult {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getVersion() {
@@ -82,12 +84,12 @@ public class TrendzSynchronizationResult {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable String version) {
+  public void setVersion(@Nullable String version) {
     this.version = version;
   }
 
 
-  public TrendzSynchronizationResult updatedTs(@javax.annotation.Nullable Long updatedTs) {
+  public TrendzSynchronizationResult updatedTs(@Nullable Long updatedTs) {
     this.updatedTs = updatedTs;
     return this;
   }
@@ -96,7 +98,7 @@ public class TrendzSynchronizationResult {
    * Get updatedTs
    * @return updatedTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPDATED_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getUpdatedTs() {
@@ -106,12 +108,12 @@ public class TrendzSynchronizationResult {
 
   @JsonProperty(value = JSON_PROPERTY_UPDATED_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdatedTs(@javax.annotation.Nullable Long updatedTs) {
+  public void setUpdatedTs(@Nullable Long updatedTs) {
     this.updatedTs = updatedTs;
   }
 
 
-  public TrendzSynchronizationResult type(@javax.annotation.Nullable TrendzSynchronizationResultType type) {
+  public TrendzSynchronizationResult type(@Nullable TrendzSynchronizationResultType type) {
     this.type = type;
     return this;
   }
@@ -120,7 +122,7 @@ public class TrendzSynchronizationResult {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TrendzSynchronizationResultType getType() {
@@ -130,12 +132,12 @@ public class TrendzSynchronizationResult {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable TrendzSynchronizationResultType type) {
+  public void setType(@Nullable TrendzSynchronizationResultType type) {
     this.type = type;
   }
 
 
-  public TrendzSynchronizationResult status(@javax.annotation.Nullable TrendzSynchronizationStatus status) {
+  public TrendzSynchronizationResult status(@Nullable TrendzSynchronizationStatus status) {
     this.status = status;
     return this;
   }
@@ -144,7 +146,7 @@ public class TrendzSynchronizationResult {
    * Get status
    * @return status
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TrendzSynchronizationStatus getStatus() {
@@ -154,7 +156,7 @@ public class TrendzSynchronizationResult {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@javax.annotation.Nullable TrendzSynchronizationStatus status) {
+  public void setStatus(@Nullable TrendzSynchronizationStatus status) {
     this.status = status;
   }
 

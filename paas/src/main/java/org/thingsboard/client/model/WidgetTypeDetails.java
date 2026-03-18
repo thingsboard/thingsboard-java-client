@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -54,58 +56,58 @@ import org.thingsboard.client.ApiClient;
   WidgetTypeDetails.JSON_PROPERTY_TAGS,
   WidgetTypeDetails.JSON_PROPERTY_RESOURCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WidgetTypeDetails {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private WidgetTypeId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_FQN = "fqn";
-  @javax.annotation.Nullable
+  @Nullable
   private String fqn;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DEPRECATED = "deprecated";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean deprecated;
 
   public static final String JSON_PROPERTY_SCADA = "scada";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean scada;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_DESCRIPTOR = "descriptor";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode descriptor;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_TAGS = "tags";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> tags = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RESOURCES = "resources";
-  @javax.annotation.Nullable
+  @Nullable
   private List<ResourceExportData> resources = new ArrayList<>();
 
   public WidgetTypeDetails() { 
@@ -127,7 +129,7 @@ public class WidgetTypeDetails {
     this.descriptor = descriptor;
   }
 
-  public WidgetTypeDetails id(@javax.annotation.Nullable WidgetTypeId id) {
+  public WidgetTypeDetails id(@Nullable WidgetTypeId id) {
     this.id = id;
     return this;
   }
@@ -136,7 +138,7 @@ public class WidgetTypeDetails {
    * JSON object with the Widget Type Id. Specify this field to update the Widget Type. Referencing non-existing Widget Type Id will cause error. Omit this field to create new Widget Type.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public WidgetTypeId getId() {
@@ -146,7 +148,7 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable WidgetTypeId id) {
+  public void setId(@Nullable WidgetTypeId id) {
     this.id = id;
   }
 
@@ -155,7 +157,7 @@ public class WidgetTypeDetails {
    * Timestamp of the Widget Type creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -169,7 +171,7 @@ public class WidgetTypeDetails {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -183,7 +185,7 @@ public class WidgetTypeDetails {
    * Unique FQN that is used in dashboards as a reference widget type
    * @return fqn
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FQN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFqn() {
@@ -197,7 +199,7 @@ public class WidgetTypeDetails {
    * Widget name used in search and UI
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -207,7 +209,7 @@ public class WidgetTypeDetails {
 
 
 
-  public WidgetTypeDetails deprecated(@javax.annotation.Nullable Boolean deprecated) {
+  public WidgetTypeDetails deprecated(@Nullable Boolean deprecated) {
     this.deprecated = deprecated;
     return this;
   }
@@ -216,7 +218,7 @@ public class WidgetTypeDetails {
    * Whether widget type is deprecated.
    * @return deprecated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDeprecated() {
@@ -226,12 +228,12 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeprecated(@javax.annotation.Nullable Boolean deprecated) {
+  public void setDeprecated(@Nullable Boolean deprecated) {
     this.deprecated = deprecated;
   }
 
 
-  public WidgetTypeDetails scada(@javax.annotation.Nullable Boolean scada) {
+  public WidgetTypeDetails scada(@Nullable Boolean scada) {
     this.scada = scada;
     return this;
   }
@@ -240,7 +242,7 @@ public class WidgetTypeDetails {
    * Whether widget type is SCADA symbol.
    * @return scada
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCADA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getScada() {
@@ -250,12 +252,12 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_SCADA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScada(@javax.annotation.Nullable Boolean scada) {
+  public void setScada(@Nullable Boolean scada) {
     this.scada = scada;
   }
 
 
-  public WidgetTypeDetails version(@javax.annotation.Nullable Long version) {
+  public WidgetTypeDetails version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -264,7 +266,7 @@ public class WidgetTypeDetails {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -274,7 +276,7 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -283,7 +285,7 @@ public class WidgetTypeDetails {
    * Complex JSON object that describes the widget type
    * @return descriptor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getDescriptor() {
@@ -293,7 +295,7 @@ public class WidgetTypeDetails {
 
 
 
-  public WidgetTypeDetails image(@javax.annotation.Nullable String image) {
+  public WidgetTypeDetails image(@Nullable String image) {
     this.image = image;
     return this;
   }
@@ -302,7 +304,7 @@ public class WidgetTypeDetails {
    * Relative or external image URL. Replaced with image data URL (Base64) in case of relative URL and &#39;inlineImages&#39; option enabled.
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -312,12 +314,12 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImage(@javax.annotation.Nullable String image) {
+  public void setImage(@Nullable String image) {
     this.image = image;
   }
 
 
-  public WidgetTypeDetails description(@javax.annotation.Nullable String description) {
+  public WidgetTypeDetails description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -326,7 +328,7 @@ public class WidgetTypeDetails {
    * Description of the widget
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -336,12 +338,12 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
 
-  public WidgetTypeDetails tags(@javax.annotation.Nullable List<String> tags) {
+  public WidgetTypeDetails tags(@Nullable List<String> tags) {
     this.tags = tags;
     return this;
   }
@@ -358,7 +360,7 @@ public class WidgetTypeDetails {
    * Tags of the widget type
    * @return tags
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTags() {
@@ -368,12 +370,12 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_TAGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTags(@javax.annotation.Nullable List<String> tags) {
+  public void setTags(@Nullable List<String> tags) {
     this.tags = tags;
   }
 
 
-  public WidgetTypeDetails resources(@javax.annotation.Nullable List<ResourceExportData> resources) {
+  public WidgetTypeDetails resources(@Nullable List<ResourceExportData> resources) {
     this.resources = resources;
     return this;
   }
@@ -390,7 +392,7 @@ public class WidgetTypeDetails {
    * Get resources
    * @return resources
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ResourceExportData> getResources() {
@@ -400,7 +402,7 @@ public class WidgetTypeDetails {
 
   @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResources(@javax.annotation.Nullable List<ResourceExportData> resources) {
+  public void setResources(@Nullable List<ResourceExportData> resources) {
     this.resources = resources;
   }
 

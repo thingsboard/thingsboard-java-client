@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   Interval.JSON_PROPERTY_INTERVAL,
   Interval.JSON_PROPERTY_INTERVAL_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Interval {
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  @javax.annotation.Nullable
+  @Nullable
   private Long interval;
 
   public static final String JSON_PROPERTY_INTERVAL_TYPE = "intervalType";
-  @javax.annotation.Nullable
+  @Nullable
   private IntervalType intervalType;
 
   public Interval() { 
   }
 
-  public Interval interval(@javax.annotation.Nullable Long interval) {
+  public Interval interval(@Nullable Long interval) {
     this.interval = interval;
     return this;
   }
@@ -61,7 +63,7 @@ public class Interval {
    * Get interval
    * @return interval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getInterval() {
@@ -71,12 +73,12 @@ public class Interval {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInterval(@javax.annotation.Nullable Long interval) {
+  public void setInterval(@Nullable Long interval) {
     this.interval = interval;
   }
 
 
-  public Interval intervalType(@javax.annotation.Nullable IntervalType intervalType) {
+  public Interval intervalType(@Nullable IntervalType intervalType) {
     this.intervalType = intervalType;
     return this;
   }
@@ -85,7 +87,7 @@ public class Interval {
    * Get intervalType
    * @return intervalType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IntervalType getIntervalType() {
@@ -95,7 +97,7 @@ public class Interval {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntervalType(@javax.annotation.Nullable IntervalType intervalType) {
+  public void setIntervalType(@Nullable IntervalType intervalType) {
     this.intervalType = intervalType;
   }
 

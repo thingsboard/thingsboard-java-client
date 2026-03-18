@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,46 +53,46 @@ import org.thingsboard.client.ApiClient;
   Asset.JSON_PROPERTY_VERSION,
   Asset.JSON_PROPERTY_ADDITIONAL_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Asset {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private AssetId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public static final String JSON_PROPERTY_LABEL = "label";
-  @javax.annotation.Nullable
+  @Nullable
   private String label;
 
   public static final String JSON_PROPERTY_ASSET_PROFILE_ID = "assetProfileId";
-  @javax.annotation.Nullable
+  @Nullable
   private AssetProfileId assetProfileId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Asset() { 
@@ -107,7 +110,7 @@ public class Asset {
     this.customerId = customerId;
   }
 
-  public Asset id(@javax.annotation.Nullable AssetId id) {
+  public Asset id(@Nullable AssetId id) {
     this.id = id;
     return this;
   }
@@ -116,7 +119,7 @@ public class Asset {
    * JSON object with the asset Id. Specify this field to update the asset. Referencing non-existing asset Id will cause error. Omit this field to create new asset.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AssetId getId() {
@@ -126,7 +129,7 @@ public class Asset {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AssetId id) {
+  public void setId(@Nullable AssetId id) {
     this.id = id;
   }
 
@@ -135,7 +138,7 @@ public class Asset {
    * Timestamp of the asset creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -149,7 +152,7 @@ public class Asset {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -163,7 +166,7 @@ public class Asset {
    * JSON object with Customer Id. Use &#39;assignAssetToCustomer&#39; to change the Customer Id.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -173,7 +176,7 @@ public class Asset {
 
 
 
-  public Asset name(@javax.annotation.Nonnull String name) {
+  public Asset name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -182,7 +185,7 @@ public class Asset {
    * Unique Asset Name in scope of Tenant
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -192,12 +195,12 @@ public class Asset {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public Asset type(@javax.annotation.Nullable String type) {
+  public Asset type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -206,7 +209,7 @@ public class Asset {
    * Asset type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -216,12 +219,12 @@ public class Asset {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
 
-  public Asset label(@javax.annotation.Nullable String label) {
+  public Asset label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -230,7 +233,7 @@ public class Asset {
    * Label that may be used in widgets
    * @return label
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabel() {
@@ -240,12 +243,12 @@ public class Asset {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabel(@javax.annotation.Nullable String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
 
-  public Asset assetProfileId(@javax.annotation.Nullable AssetProfileId assetProfileId) {
+  public Asset assetProfileId(@Nullable AssetProfileId assetProfileId) {
     this.assetProfileId = assetProfileId;
     return this;
   }
@@ -254,7 +257,7 @@ public class Asset {
    * JSON object with Asset Profile Id.
    * @return assetProfileId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSET_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AssetProfileId getAssetProfileId() {
@@ -264,12 +267,12 @@ public class Asset {
 
   @JsonProperty(value = JSON_PROPERTY_ASSET_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssetProfileId(@javax.annotation.Nullable AssetProfileId assetProfileId) {
+  public void setAssetProfileId(@Nullable AssetProfileId assetProfileId) {
     this.assetProfileId = assetProfileId;
   }
 
 
-  public Asset version(@javax.annotation.Nullable Long version) {
+  public Asset version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -278,7 +281,7 @@ public class Asset {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -288,12 +291,12 @@ public class Asset {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public Asset additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Asset additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -302,7 +305,7 @@ public class Asset {
    * Additional parameters of the asset. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -312,7 +315,7 @@ public class Asset {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 

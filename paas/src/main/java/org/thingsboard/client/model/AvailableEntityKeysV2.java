@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,24 +51,24 @@ import org.thingsboard.client.ApiClient;
   AvailableEntityKeysV2.JSON_PROPERTY_TIMESERIES,
   AvailableEntityKeysV2.JSON_PROPERTY_ATTRIBUTES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AvailableEntityKeysV2 {
   public static final String JSON_PROPERTY_ENTITY_TYPES = "entityTypes";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Set<EntityType> entityTypes = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_TIMESERIES = "timeseries";
-  @javax.annotation.Nullable
+  @Nullable
   private List<KeyInfo> timeseries = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ATTRIBUTES = "attributes";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, List<KeyInfo>> attributes = new HashMap<>();
 
   public AvailableEntityKeysV2() { 
   }
 
-  public AvailableEntityKeysV2 entityTypes(@javax.annotation.Nonnull Set<EntityType> entityTypes) {
+  public AvailableEntityKeysV2 entityTypes(@Nonnull Set<EntityType> entityTypes) {
     this.entityTypes = entityTypes;
     return this;
   }
@@ -82,7 +85,7 @@ public class AvailableEntityKeysV2 {
    * Set of entity types found among the matched entities.
    * @return entityTypes
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Set<EntityType> getEntityTypes() {
@@ -93,12 +96,12 @@ public class AvailableEntityKeysV2 {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityTypes(@javax.annotation.Nonnull Set<EntityType> entityTypes) {
+  public void setEntityTypes(@Nonnull Set<EntityType> entityTypes) {
     this.entityTypes = entityTypes;
   }
 
 
-  public AvailableEntityKeysV2 timeseries(@javax.annotation.Nullable List<KeyInfo> timeseries) {
+  public AvailableEntityKeysV2 timeseries(@Nullable List<KeyInfo> timeseries) {
     this.timeseries = timeseries;
     return this;
   }
@@ -115,7 +118,7 @@ public class AvailableEntityKeysV2 {
    * Get timeseries
    * @return timeseries
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<KeyInfo> getTimeseries() {
@@ -125,12 +128,12 @@ public class AvailableEntityKeysV2 {
 
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimeseries(@javax.annotation.Nullable List<KeyInfo> timeseries) {
+  public void setTimeseries(@Nullable List<KeyInfo> timeseries) {
     this.timeseries = timeseries;
   }
 
 
-  public AvailableEntityKeysV2 attributes(@javax.annotation.Nullable Map<String, List<KeyInfo>> attributes) {
+  public AvailableEntityKeysV2 attributes(@Nullable Map<String, List<KeyInfo>> attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -147,7 +150,7 @@ public class AvailableEntityKeysV2 {
    * Map of attribute scope to the list of unique attribute keys available on the matched entities. Only scopes supported by the matched entity types are included. Omitted when attribute keys were not requested or when none of the requested scopes apply to the matched entity types.
    * @return attributes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, List<KeyInfo>> getAttributes() {
@@ -157,7 +160,7 @@ public class AvailableEntityKeysV2 {
 
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAttributes(@javax.annotation.Nullable Map<String, List<KeyInfo>> attributes) {
+  public void setAttributes(@Nullable Map<String, List<KeyInfo>> attributes) {
     this.attributes = attributes;
   }
 

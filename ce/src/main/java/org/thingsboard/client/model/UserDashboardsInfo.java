@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,20 +44,20 @@ import org.thingsboard.client.ApiClient;
   UserDashboardsInfo.JSON_PROPERTY_LAST,
   UserDashboardsInfo.JSON_PROPERTY_STARRED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UserDashboardsInfo {
   public static final String JSON_PROPERTY_LAST = "last";
-  @javax.annotation.Nullable
+  @Nullable
   private List<LastVisitedDashboardInfo> last = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STARRED = "starred";
-  @javax.annotation.Nullable
+  @Nullable
   private List<StarredDashboardInfo> starred = new ArrayList<>();
 
   public UserDashboardsInfo() { 
   }
 
-  public UserDashboardsInfo last(@javax.annotation.Nullable List<LastVisitedDashboardInfo> last) {
+  public UserDashboardsInfo last(@Nullable List<LastVisitedDashboardInfo> last) {
     this.last = last;
     return this;
   }
@@ -72,7 +74,7 @@ public class UserDashboardsInfo {
    * List of last visited dashboards.
    * @return last
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<LastVisitedDashboardInfo> getLast() {
@@ -82,12 +84,12 @@ public class UserDashboardsInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LAST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLast(@javax.annotation.Nullable List<LastVisitedDashboardInfo> last) {
+  public void setLast(@Nullable List<LastVisitedDashboardInfo> last) {
     this.last = last;
   }
 
 
-  public UserDashboardsInfo starred(@javax.annotation.Nullable List<StarredDashboardInfo> starred) {
+  public UserDashboardsInfo starred(@Nullable List<StarredDashboardInfo> starred) {
     this.starred = starred;
     return this;
   }
@@ -104,7 +106,7 @@ public class UserDashboardsInfo {
    * List of starred dashboards.
    * @return starred
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STARRED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<StarredDashboardInfo> getStarred() {
@@ -114,7 +116,7 @@ public class UserDashboardsInfo {
 
   @JsonProperty(value = JSON_PROPERTY_STARRED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStarred(@javax.annotation.Nullable List<StarredDashboardInfo> starred) {
+  public void setStarred(@Nullable List<StarredDashboardInfo> starred) {
     this.starred = starred;
   }
 

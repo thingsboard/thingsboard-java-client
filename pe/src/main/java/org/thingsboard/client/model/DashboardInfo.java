@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -64,70 +66,70 @@ import org.thingsboard.client.ApiClient;
   DashboardInfo.JSON_PROPERTY_GROUPS,
   DashboardInfo.JSON_PROPERTY_OWNER_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DashboardInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_ASSIGNED_CUSTOMERS = "assignedCustomers";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<ShortCustomerInfo> assignedCustomers = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_MOBILE_HIDE = "mobileHide";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean mobileHide;
 
   public static final String JSON_PROPERTY_MOBILE_ORDER = "mobileOrder";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer mobileOrder;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode _configuration = null;
 
   public static final String JSON_PROPERTY_RESOURCES = "resources";
-  @javax.annotation.Nullable
+  @Nullable
   private List<ResourceExportData> resources = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_GROUPS = "groups";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityInfo> groups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
-  @javax.annotation.Nullable
+  @Nullable
   private String ownerName;
 
   public DashboardInfo() { 
@@ -155,7 +157,7 @@ public class DashboardInfo {
     this.ownerName = ownerName;
   }
 
-  public DashboardInfo id(@javax.annotation.Nullable DashboardId id) {
+  public DashboardInfo id(@Nullable DashboardId id) {
     this.id = id;
     return this;
   }
@@ -164,7 +166,7 @@ public class DashboardInfo {
    * JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getId() {
@@ -174,7 +176,7 @@ public class DashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable DashboardId id) {
+  public void setId(@Nullable DashboardId id) {
     this.id = id;
   }
 
@@ -183,7 +185,7 @@ public class DashboardInfo {
    * Timestamp of the dashboard creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -197,7 +199,7 @@ public class DashboardInfo {
    * JSON object with Tenant Id. Tenant Id of the dashboard can&#39;t be changed.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -207,7 +209,7 @@ public class DashboardInfo {
 
 
 
-  public DashboardInfo customerId(@javax.annotation.Nullable CustomerId customerId) {
+  public DashboardInfo customerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -216,7 +218,7 @@ public class DashboardInfo {
    * JSON object with Customer Id. 
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -226,7 +228,7 @@ public class DashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerId(@javax.annotation.Nullable CustomerId customerId) {
+  public void setCustomerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
   }
 
@@ -235,7 +237,7 @@ public class DashboardInfo {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {
@@ -245,7 +247,7 @@ public class DashboardInfo {
 
 
 
-  public DashboardInfo title(@javax.annotation.Nullable String title) {
+  public DashboardInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -254,7 +256,7 @@ public class DashboardInfo {
    * Title of the dashboard.
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -264,7 +266,7 @@ public class DashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
@@ -273,7 +275,7 @@ public class DashboardInfo {
    * Same as title of the dashboard. Read-only field. Update the &#39;title&#39; to change the &#39;name&#39; of the dashboard.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -287,7 +289,7 @@ public class DashboardInfo {
    * Thumbnail picture for rendering of the dashboards in a grid view on mobile devices.
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -297,7 +299,7 @@ public class DashboardInfo {
 
 
 
-  public DashboardInfo assignedCustomers(@javax.annotation.Nullable Set<ShortCustomerInfo> assignedCustomers) {
+  public DashboardInfo assignedCustomers(@Nullable Set<ShortCustomerInfo> assignedCustomers) {
     this.assignedCustomers = assignedCustomers;
     return this;
   }
@@ -314,7 +316,7 @@ public class DashboardInfo {
    * List of assigned customers with their info.
    * @return assignedCustomers
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGNED_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<ShortCustomerInfo> getAssignedCustomers() {
@@ -325,7 +327,7 @@ public class DashboardInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ASSIGNED_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssignedCustomers(@javax.annotation.Nullable Set<ShortCustomerInfo> assignedCustomers) {
+  public void setAssignedCustomers(@Nullable Set<ShortCustomerInfo> assignedCustomers) {
     this.assignedCustomers = assignedCustomers;
   }
 
@@ -334,7 +336,7 @@ public class DashboardInfo {
    * Hide dashboard from mobile devices. Useful if the dashboard is not designed for small screens.
    * @return mobileHide
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MOBILE_HIDE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getMobileHide() {
@@ -348,7 +350,7 @@ public class DashboardInfo {
    * Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications
    * @return mobileOrder
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MOBILE_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMobileOrder() {
@@ -358,7 +360,7 @@ public class DashboardInfo {
 
 
 
-  public DashboardInfo _configuration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public DashboardInfo _configuration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -367,7 +369,7 @@ public class DashboardInfo {
    * Get _configuration
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
@@ -377,12 +379,12 @@ public class DashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public void setConfiguration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public DashboardInfo resources(@javax.annotation.Nullable List<ResourceExportData> resources) {
+  public DashboardInfo resources(@Nullable List<ResourceExportData> resources) {
     this.resources = resources;
     return this;
   }
@@ -399,7 +401,7 @@ public class DashboardInfo {
    * Get resources
    * @return resources
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ResourceExportData> getResources() {
@@ -409,12 +411,12 @@ public class DashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResources(@javax.annotation.Nullable List<ResourceExportData> resources) {
+  public void setResources(@Nullable List<ResourceExportData> resources) {
     this.resources = resources;
   }
 
 
-  public DashboardInfo version(@javax.annotation.Nullable Long version) {
+  public DashboardInfo version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -423,7 +425,7 @@ public class DashboardInfo {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -433,12 +435,12 @@ public class DashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public DashboardInfo groups(@javax.annotation.Nullable List<EntityInfo> groups) {
+  public DashboardInfo groups(@Nullable List<EntityInfo> groups) {
     this.groups = groups;
     return this;
   }
@@ -455,7 +457,7 @@ public class DashboardInfo {
    * Groups
    * @return groups
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityInfo> getGroups() {
@@ -465,7 +467,7 @@ public class DashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroups(@javax.annotation.Nullable List<EntityInfo> groups) {
+  public void setGroups(@Nullable List<EntityInfo> groups) {
     this.groups = groups;
   }
 
@@ -474,7 +476,7 @@ public class DashboardInfo {
    * Owner name
    * @return ownerName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getOwnerName() {

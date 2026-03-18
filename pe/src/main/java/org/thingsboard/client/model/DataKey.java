@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,56 +52,56 @@ import org.thingsboard.client.ApiClient;
   DataKey.JSON_PROPERTY_POST_FUNC_BODY,
   DataKey.JSON_PROPERTY_SETTINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DataKey {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public static final String JSON_PROPERTY_LABEL = "label";
-  @javax.annotation.Nullable
+  @Nullable
   private String label;
 
   public static final String JSON_PROPERTY_COLOR = "color";
-  @javax.annotation.Nullable
+  @Nullable
   private String color;
 
   public static final String JSON_PROPERTY_DECIMALS = "decimals";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer decimals;
 
   public static final String JSON_PROPERTY_UNITS = "units";
-  @javax.annotation.Nullable
+  @Nullable
   private String units;
 
   public static final String JSON_PROPERTY_AGGREGATION_TYPE = "aggregationType";
-  @javax.annotation.Nullable
+  @Nullable
   private Aggregation aggregationType;
 
   public static final String JSON_PROPERTY_TIMEWINDOW = "timewindow";
-  @javax.annotation.Nullable
+  @Nullable
   private TimeWindowConfiguration timewindow;
 
   public static final String JSON_PROPERTY_USE_POST_PROCESSING = "usePostProcessing";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean usePostProcessing;
 
   public static final String JSON_PROPERTY_POST_FUNC_BODY = "postFuncBody";
-  @javax.annotation.Nullable
+  @Nullable
   private String postFuncBody;
 
   public static final String JSON_PROPERTY_SETTINGS = "settings";
-  @javax.annotation.Nullable
+  @Nullable
   private DataKeySettings settings;
 
   public DataKey() { 
   }
 
-  public DataKey name(@javax.annotation.Nullable String name) {
+  public DataKey name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -108,7 +110,7 @@ public class DataKey {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -118,12 +120,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public DataKey type(@javax.annotation.Nullable String type) {
+  public DataKey type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -132,7 +134,7 @@ public class DataKey {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -142,12 +144,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
 
-  public DataKey label(@javax.annotation.Nullable String label) {
+  public DataKey label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -156,7 +158,7 @@ public class DataKey {
    * Get label
    * @return label
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabel() {
@@ -166,12 +168,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabel(@javax.annotation.Nullable String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
 
-  public DataKey color(@javax.annotation.Nullable String color) {
+  public DataKey color(@Nullable String color) {
     this.color = color;
     return this;
   }
@@ -180,7 +182,7 @@ public class DataKey {
    * Get color
    * @return color
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getColor() {
@@ -190,12 +192,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColor(@javax.annotation.Nullable String color) {
+  public void setColor(@Nullable String color) {
     this.color = color;
   }
 
 
-  public DataKey decimals(@javax.annotation.Nullable Integer decimals) {
+  public DataKey decimals(@Nullable Integer decimals) {
     this.decimals = decimals;
     return this;
   }
@@ -204,7 +206,7 @@ public class DataKey {
    * Get decimals
    * @return decimals
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DECIMALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDecimals() {
@@ -214,12 +216,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_DECIMALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDecimals(@javax.annotation.Nullable Integer decimals) {
+  public void setDecimals(@Nullable Integer decimals) {
     this.decimals = decimals;
   }
 
 
-  public DataKey units(@javax.annotation.Nullable String units) {
+  public DataKey units(@Nullable String units) {
     this.units = units;
     return this;
   }
@@ -228,7 +230,7 @@ public class DataKey {
    * Get units
    * @return units
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UNITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUnits() {
@@ -238,12 +240,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_UNITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUnits(@javax.annotation.Nullable String units) {
+  public void setUnits(@Nullable String units) {
     this.units = units;
   }
 
 
-  public DataKey aggregationType(@javax.annotation.Nullable Aggregation aggregationType) {
+  public DataKey aggregationType(@Nullable Aggregation aggregationType) {
     this.aggregationType = aggregationType;
     return this;
   }
@@ -252,7 +254,7 @@ public class DataKey {
    * Get aggregationType
    * @return aggregationType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Aggregation getAggregationType() {
@@ -262,12 +264,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAggregationType(@javax.annotation.Nullable Aggregation aggregationType) {
+  public void setAggregationType(@Nullable Aggregation aggregationType) {
     this.aggregationType = aggregationType;
   }
 
 
-  public DataKey timewindow(@javax.annotation.Nullable TimeWindowConfiguration timewindow) {
+  public DataKey timewindow(@Nullable TimeWindowConfiguration timewindow) {
     this.timewindow = timewindow;
     return this;
   }
@@ -276,7 +278,7 @@ public class DataKey {
    * Get timewindow
    * @return timewindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TimeWindowConfiguration getTimewindow() {
@@ -286,12 +288,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimewindow(@javax.annotation.Nullable TimeWindowConfiguration timewindow) {
+  public void setTimewindow(@Nullable TimeWindowConfiguration timewindow) {
     this.timewindow = timewindow;
   }
 
 
-  public DataKey usePostProcessing(@javax.annotation.Nullable Boolean usePostProcessing) {
+  public DataKey usePostProcessing(@Nullable Boolean usePostProcessing) {
     this.usePostProcessing = usePostProcessing;
     return this;
   }
@@ -300,7 +302,7 @@ public class DataKey {
    * Get usePostProcessing
    * @return usePostProcessing
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USE_POST_PROCESSING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUsePostProcessing() {
@@ -310,12 +312,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_USE_POST_PROCESSING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsePostProcessing(@javax.annotation.Nullable Boolean usePostProcessing) {
+  public void setUsePostProcessing(@Nullable Boolean usePostProcessing) {
     this.usePostProcessing = usePostProcessing;
   }
 
 
-  public DataKey postFuncBody(@javax.annotation.Nullable String postFuncBody) {
+  public DataKey postFuncBody(@Nullable String postFuncBody) {
     this.postFuncBody = postFuncBody;
     return this;
   }
@@ -324,7 +326,7 @@ public class DataKey {
    * Get postFuncBody
    * @return postFuncBody
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POST_FUNC_BODY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPostFuncBody() {
@@ -334,12 +336,12 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_POST_FUNC_BODY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostFuncBody(@javax.annotation.Nullable String postFuncBody) {
+  public void setPostFuncBody(@Nullable String postFuncBody) {
     this.postFuncBody = postFuncBody;
   }
 
 
-  public DataKey settings(@javax.annotation.Nullable DataKeySettings settings) {
+  public DataKey settings(@Nullable DataKeySettings settings) {
     this.settings = settings;
     return this;
   }
@@ -348,7 +350,7 @@ public class DataKey {
    * Get settings
    * @return settings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DataKeySettings getSettings() {
@@ -358,7 +360,7 @@ public class DataKey {
 
   @JsonProperty(value = JSON_PROPERTY_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSettings(@javax.annotation.Nullable DataKeySettings settings) {
+  public void setSettings(@Nullable DataKeySettings settings) {
     this.settings = settings;
   }
 

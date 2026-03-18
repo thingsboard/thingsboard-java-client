@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,22 +44,22 @@ import org.thingsboard.client.ApiClient;
   PageDataString.JSON_PROPERTY_TOTAL_ELEMENTS,
   PageDataString.JSON_PROPERTY_HAS_NEXT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PageDataString {
   public static final String JSON_PROPERTY_DATA = "data";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> data = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOTAL_PAGES = "totalPages";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer totalPages;
 
   public static final String JSON_PROPERTY_TOTAL_ELEMENTS = "totalElements";
-  @javax.annotation.Nullable
+  @Nullable
   private Long totalElements;
 
   public static final String JSON_PROPERTY_HAS_NEXT = "hasNext";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasNext;
 
   public PageDataString() { 
@@ -75,7 +77,7 @@ public class PageDataString {
     this.hasNext = hasNext;
   }
 
-  public PageDataString data(@javax.annotation.Nullable List<String> data) {
+  public PageDataString data(@Nullable List<String> data) {
     this.data = data;
     return this;
   }
@@ -92,7 +94,7 @@ public class PageDataString {
    * Array of the entities
    * @return data
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getData() {
@@ -102,7 +104,7 @@ public class PageDataString {
 
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(@javax.annotation.Nullable List<String> data) {
+  public void setData(@Nullable List<String> data) {
     this.data = data;
   }
 
@@ -111,7 +113,7 @@ public class PageDataString {
    * Total number of available pages. Calculated based on the &#39;pageSize&#39; request parameter and total number of entities that match search criteria
    * @return totalPages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTotalPages() {
@@ -125,7 +127,7 @@ public class PageDataString {
    * Total number of elements in all available pages
    * @return totalElements
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_ELEMENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTotalElements() {
@@ -139,7 +141,7 @@ public class PageDataString {
    * &#39;false&#39; value indicates the end of the result set
    * @return hasNext
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_NEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasNext() {

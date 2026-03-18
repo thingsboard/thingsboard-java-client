@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,24 +46,24 @@ import org.thingsboard.client.ApiClient;
   LoginMobileInfo.JSON_PROPERTY_STORE_INFO,
   LoginMobileInfo.JSON_PROPERTY_VERSION_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LoginMobileInfo {
   public static final String JSON_PROPERTY_O_AUTH2_CLIENT_LOGIN_INFOS = "oAuth2ClientLoginInfos";
-  @javax.annotation.Nullable
+  @Nullable
   private List<OAuth2ClientLoginInfo> oAuth2ClientLoginInfos = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STORE_INFO = "storeInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private StoreInfo storeInfo;
 
   public static final String JSON_PROPERTY_VERSION_INFO = "versionInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppVersionInfo versionInfo;
 
   public LoginMobileInfo() { 
   }
 
-  public LoginMobileInfo oAuth2ClientLoginInfos(@javax.annotation.Nullable List<OAuth2ClientLoginInfo> oAuth2ClientLoginInfos) {
+  public LoginMobileInfo oAuth2ClientLoginInfos(@Nullable List<OAuth2ClientLoginInfo> oAuth2ClientLoginInfos) {
     this.oAuth2ClientLoginInfos = oAuth2ClientLoginInfos;
     return this;
   }
@@ -78,7 +80,7 @@ public class LoginMobileInfo {
    * Get oAuth2ClientLoginInfos
    * @return oAuth2ClientLoginInfos
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_O_AUTH2_CLIENT_LOGIN_INFOS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<OAuth2ClientLoginInfo> getoAuth2ClientLoginInfos() {
@@ -88,12 +90,12 @@ public class LoginMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_O_AUTH2_CLIENT_LOGIN_INFOS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setoAuth2ClientLoginInfos(@javax.annotation.Nullable List<OAuth2ClientLoginInfo> oAuth2ClientLoginInfos) {
+  public void setoAuth2ClientLoginInfos(@Nullable List<OAuth2ClientLoginInfo> oAuth2ClientLoginInfos) {
     this.oAuth2ClientLoginInfos = oAuth2ClientLoginInfos;
   }
 
 
-  public LoginMobileInfo storeInfo(@javax.annotation.Nullable StoreInfo storeInfo) {
+  public LoginMobileInfo storeInfo(@Nullable StoreInfo storeInfo) {
     this.storeInfo = storeInfo;
     return this;
   }
@@ -102,7 +104,7 @@ public class LoginMobileInfo {
    * Get storeInfo
    * @return storeInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STORE_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public StoreInfo getStoreInfo() {
@@ -112,12 +114,12 @@ public class LoginMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_STORE_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStoreInfo(@javax.annotation.Nullable StoreInfo storeInfo) {
+  public void setStoreInfo(@Nullable StoreInfo storeInfo) {
     this.storeInfo = storeInfo;
   }
 
 
-  public LoginMobileInfo versionInfo(@javax.annotation.Nullable MobileAppVersionInfo versionInfo) {
+  public LoginMobileInfo versionInfo(@Nullable MobileAppVersionInfo versionInfo) {
     this.versionInfo = versionInfo;
     return this;
   }
@@ -126,7 +128,7 @@ public class LoginMobileInfo {
    * Get versionInfo
    * @return versionInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppVersionInfo getVersionInfo() {
@@ -136,7 +138,7 @@ public class LoginMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersionInfo(@javax.annotation.Nullable MobileAppVersionInfo versionInfo) {
+  public void setVersionInfo(@Nullable MobileAppVersionInfo versionInfo) {
     this.versionInfo = versionInfo;
   }
 

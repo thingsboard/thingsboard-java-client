@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,20 +44,20 @@ import org.thingsboard.client.ApiClient;
   EntityRelationsQuery.JSON_PROPERTY_PARAMETERS,
   EntityRelationsQuery.JSON_PROPERTY_FILTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityRelationsQuery {
   public static final String JSON_PROPERTY_PARAMETERS = "parameters";
-  @javax.annotation.Nullable
+  @Nullable
   private RelationsSearchParameters parameters;
 
   public static final String JSON_PROPERTY_FILTERS = "filters";
-  @javax.annotation.Nullable
+  @Nullable
   private List<RelationEntityTypeFilter> filters = new ArrayList<>();
 
   public EntityRelationsQuery() { 
   }
 
-  public EntityRelationsQuery parameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public EntityRelationsQuery parameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
     return this;
   }
@@ -64,7 +66,7 @@ public class EntityRelationsQuery {
    * Main search parameters.
    * @return parameters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RelationsSearchParameters getParameters() {
@@ -74,12 +76,12 @@ public class EntityRelationsQuery {
 
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public void setParameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
   }
 
 
-  public EntityRelationsQuery filters(@javax.annotation.Nullable List<RelationEntityTypeFilter> filters) {
+  public EntityRelationsQuery filters(@Nullable List<RelationEntityTypeFilter> filters) {
     this.filters = filters;
     return this;
   }
@@ -96,7 +98,7 @@ public class EntityRelationsQuery {
    * Main filters.
    * @return filters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<RelationEntityTypeFilter> getFilters() {
@@ -106,7 +108,7 @@ public class EntityRelationsQuery {
 
   @JsonProperty(value = JSON_PROPERTY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilters(@javax.annotation.Nullable List<RelationEntityTypeFilter> filters) {
+  public void setFilters(@Nullable List<RelationEntityTypeFilter> filters) {
     this.filters = filters;
   }
 

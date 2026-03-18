@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   MobileAppVersionInfo.JSON_PROPERTY_LATEST_VERSION,
   MobileAppVersionInfo.JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MobileAppVersionInfo {
   public static final String JSON_PROPERTY_MIN_VERSION = "minVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String minVersion;
 
   public static final String JSON_PROPERTY_MIN_VERSION_RELEASE_NOTES = "minVersionReleaseNotes";
-  @javax.annotation.Nullable
+  @Nullable
   private String minVersionReleaseNotes;
 
   public static final String JSON_PROPERTY_LATEST_VERSION = "latestVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String latestVersion;
 
   public static final String JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES = "latestVersionReleaseNotes";
-  @javax.annotation.Nullable
+  @Nullable
   private String latestVersionReleaseNotes;
 
   public MobileAppVersionInfo() { 
   }
 
-  public MobileAppVersionInfo minVersion(@javax.annotation.Nullable String minVersion) {
+  public MobileAppVersionInfo minVersion(@Nullable String minVersion) {
     this.minVersion = minVersion;
     return this;
   }
@@ -70,7 +72,7 @@ public class MobileAppVersionInfo {
    * Minimum supported version
    * @return minVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MIN_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMinVersion() {
@@ -80,12 +82,12 @@ public class MobileAppVersionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MIN_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinVersion(@javax.annotation.Nullable String minVersion) {
+  public void setMinVersion(@Nullable String minVersion) {
     this.minVersion = minVersion;
   }
 
 
-  public MobileAppVersionInfo minVersionReleaseNotes(@javax.annotation.Nullable String minVersionReleaseNotes) {
+  public MobileAppVersionInfo minVersionReleaseNotes(@Nullable String minVersionReleaseNotes) {
     this.minVersionReleaseNotes = minVersionReleaseNotes;
     return this;
   }
@@ -94,7 +96,7 @@ public class MobileAppVersionInfo {
    * Release notes of minimum supported version
    * @return minVersionReleaseNotes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MIN_VERSION_RELEASE_NOTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMinVersionReleaseNotes() {
@@ -104,12 +106,12 @@ public class MobileAppVersionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MIN_VERSION_RELEASE_NOTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinVersionReleaseNotes(@javax.annotation.Nullable String minVersionReleaseNotes) {
+  public void setMinVersionReleaseNotes(@Nullable String minVersionReleaseNotes) {
     this.minVersionReleaseNotes = minVersionReleaseNotes;
   }
 
 
-  public MobileAppVersionInfo latestVersion(@javax.annotation.Nullable String latestVersion) {
+  public MobileAppVersionInfo latestVersion(@Nullable String latestVersion) {
     this.latestVersion = latestVersion;
     return this;
   }
@@ -118,7 +120,7 @@ public class MobileAppVersionInfo {
    * Latest supported version
    * @return latestVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLatestVersion() {
@@ -128,12 +130,12 @@ public class MobileAppVersionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestVersion(@javax.annotation.Nullable String latestVersion) {
+  public void setLatestVersion(@Nullable String latestVersion) {
     this.latestVersion = latestVersion;
   }
 
 
-  public MobileAppVersionInfo latestVersionReleaseNotes(@javax.annotation.Nullable String latestVersionReleaseNotes) {
+  public MobileAppVersionInfo latestVersionReleaseNotes(@Nullable String latestVersionReleaseNotes) {
     this.latestVersionReleaseNotes = latestVersionReleaseNotes;
     return this;
   }
@@ -142,7 +144,7 @@ public class MobileAppVersionInfo {
    * Release notes of latest supported version
    * @return latestVersionReleaseNotes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLatestVersionReleaseNotes() {
@@ -152,7 +154,7 @@ public class MobileAppVersionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_VERSION_RELEASE_NOTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestVersionReleaseNotes(@javax.annotation.Nullable String latestVersionReleaseNotes) {
+  public void setLatestVersionReleaseNotes(@Nullable String latestVersionReleaseNotes) {
     this.latestVersionReleaseNotes = latestVersionReleaseNotes;
   }
 

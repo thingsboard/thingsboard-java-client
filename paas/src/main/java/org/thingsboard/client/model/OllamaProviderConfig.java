@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   OllamaProviderConfig.JSON_PROPERTY_BASE_URL,
   OllamaProviderConfig.JSON_PROPERTY_AUTH
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OllamaProviderConfig {
   public static final String JSON_PROPERTY_BASE_URL = "baseUrl";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String baseUrl;
 
   public static final String JSON_PROPERTY_AUTH = "auth";
-  @javax.annotation.Nonnull
+  @Nonnull
   private OllamaAuth auth;
 
   public OllamaProviderConfig() { 
   }
 
-  public OllamaProviderConfig baseUrl(@javax.annotation.Nonnull String baseUrl) {
+  public OllamaProviderConfig baseUrl(@Nonnull String baseUrl) {
     this.baseUrl = baseUrl;
     return this;
   }
@@ -61,7 +63,7 @@ public class OllamaProviderConfig {
    * Get baseUrl
    * @return baseUrl
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getBaseUrl() {
@@ -71,12 +73,12 @@ public class OllamaProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setBaseUrl(@javax.annotation.Nonnull String baseUrl) {
+  public void setBaseUrl(@Nonnull String baseUrl) {
     this.baseUrl = baseUrl;
   }
 
 
-  public OllamaProviderConfig auth(@javax.annotation.Nonnull OllamaAuth auth) {
+  public OllamaProviderConfig auth(@Nonnull OllamaAuth auth) {
     this.auth = auth;
     return this;
   }
@@ -85,7 +87,7 @@ public class OllamaProviderConfig {
    * Get auth
    * @return auth
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_AUTH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public OllamaAuth getAuth() {
@@ -95,7 +97,7 @@ public class OllamaProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_AUTH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuth(@javax.annotation.Nonnull OllamaAuth auth) {
+  public void setAuth(@Nonnull OllamaAuth auth) {
     this.auth = auth;
   }
 

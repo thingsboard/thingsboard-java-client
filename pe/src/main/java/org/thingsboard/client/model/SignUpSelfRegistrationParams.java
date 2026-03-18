@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,32 +47,32 @@ import org.thingsboard.client.ApiClient;
   SignUpSelfRegistrationParams.JSON_PROPERTY_SHOW_PRIVACY_POLICY,
   SignUpSelfRegistrationParams.JSON_PROPERTY_SHOW_TERMS_OF_USE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SignUpSelfRegistrationParams {
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_CAPTCHA = "captcha";
-  @javax.annotation.Nullable
+  @Nullable
   private CaptchaParams captcha;
 
   public static final String JSON_PROPERTY_FIELDS = "fields";
-  @javax.annotation.Nullable
+  @Nullable
   private List<SignUpField> fields = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SHOW_PRIVACY_POLICY = "showPrivacyPolicy";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showPrivacyPolicy;
 
   public static final String JSON_PROPERTY_SHOW_TERMS_OF_USE = "showTermsOfUse";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showTermsOfUse;
 
   public SignUpSelfRegistrationParams() { 
   }
 
-  public SignUpSelfRegistrationParams title(@javax.annotation.Nullable String title) {
+  public SignUpSelfRegistrationParams title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -79,7 +81,7 @@ public class SignUpSelfRegistrationParams {
    * Get title
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -89,12 +91,12 @@ public class SignUpSelfRegistrationParams {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public SignUpSelfRegistrationParams captcha(@javax.annotation.Nullable CaptchaParams captcha) {
+  public SignUpSelfRegistrationParams captcha(@Nullable CaptchaParams captcha) {
     this.captcha = captcha;
     return this;
   }
@@ -103,7 +105,7 @@ public class SignUpSelfRegistrationParams {
    * Get captcha
    * @return captcha
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CaptchaParams getCaptcha() {
@@ -113,12 +115,12 @@ public class SignUpSelfRegistrationParams {
 
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCaptcha(@javax.annotation.Nullable CaptchaParams captcha) {
+  public void setCaptcha(@Nullable CaptchaParams captcha) {
     this.captcha = captcha;
   }
 
 
-  public SignUpSelfRegistrationParams fields(@javax.annotation.Nullable List<SignUpField> fields) {
+  public SignUpSelfRegistrationParams fields(@Nullable List<SignUpField> fields) {
     this.fields = fields;
     return this;
   }
@@ -135,7 +137,7 @@ public class SignUpSelfRegistrationParams {
    * Get fields
    * @return fields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<SignUpField> getFields() {
@@ -145,12 +147,12 @@ public class SignUpSelfRegistrationParams {
 
   @JsonProperty(value = JSON_PROPERTY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFields(@javax.annotation.Nullable List<SignUpField> fields) {
+  public void setFields(@Nullable List<SignUpField> fields) {
     this.fields = fields;
   }
 
 
-  public SignUpSelfRegistrationParams showPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+  public SignUpSelfRegistrationParams showPrivacyPolicy(@Nullable Boolean showPrivacyPolicy) {
     this.showPrivacyPolicy = showPrivacyPolicy;
     return this;
   }
@@ -159,7 +161,7 @@ public class SignUpSelfRegistrationParams {
    * Get showPrivacyPolicy
    * @return showPrivacyPolicy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowPrivacyPolicy() {
@@ -169,12 +171,12 @@ public class SignUpSelfRegistrationParams {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_PRIVACY_POLICY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowPrivacyPolicy(@javax.annotation.Nullable Boolean showPrivacyPolicy) {
+  public void setShowPrivacyPolicy(@Nullable Boolean showPrivacyPolicy) {
     this.showPrivacyPolicy = showPrivacyPolicy;
   }
 
 
-  public SignUpSelfRegistrationParams showTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+  public SignUpSelfRegistrationParams showTermsOfUse(@Nullable Boolean showTermsOfUse) {
     this.showTermsOfUse = showTermsOfUse;
     return this;
   }
@@ -183,7 +185,7 @@ public class SignUpSelfRegistrationParams {
    * Get showTermsOfUse
    * @return showTermsOfUse
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowTermsOfUse() {
@@ -193,7 +195,7 @@ public class SignUpSelfRegistrationParams {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_TERMS_OF_USE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowTermsOfUse(@javax.annotation.Nullable Boolean showTermsOfUse) {
+  public void setShowTermsOfUse(@Nullable Boolean showTermsOfUse) {
     this.showTermsOfUse = showTermsOfUse;
   }
 

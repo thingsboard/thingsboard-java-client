@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,38 +49,38 @@ import org.thingsboard.client.ApiClient;
   ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_SUBSCRIPTION_VALUE,
   ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_TIMESTAMP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ThingsboardCredentialsExpiredResponse {
   public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
-  @javax.annotation.Nullable
+  @Nullable
   private ThingsboardErrorCode errorCode;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
+  @Nullable
   private String message;
 
   public static final String JSON_PROPERTY_RESET_TOKEN = "resetToken";
-  @javax.annotation.Nullable
+  @Nullable
   private String resetToken;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer status;
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_ENTRY = "subscriptionEntry";
-  @javax.annotation.Nullable
+  @Nullable
   private SubscriptionEntry subscriptionEntry;
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE = "subscriptionErrorCode";
-  @javax.annotation.Nullable
+  @Nullable
   private SubscriptionExceptionErrorCode subscriptionErrorCode;
 
   public static final String JSON_PROPERTY_SUBSCRIPTION_VALUE = "subscriptionValue";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode subscriptionValue = null;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
-  @javax.annotation.Nullable
+  @Nullable
   private Long timestamp;
 
   public ThingsboardCredentialsExpiredResponse() { 
@@ -98,7 +100,7 @@ public class ThingsboardCredentialsExpiredResponse {
     this.timestamp = timestamp;
   }
 
-  public ThingsboardCredentialsExpiredResponse errorCode(@javax.annotation.Nullable ThingsboardErrorCode errorCode) {
+  public ThingsboardCredentialsExpiredResponse errorCode(@Nullable ThingsboardErrorCode errorCode) {
     this.errorCode = errorCode;
     return this;
   }
@@ -107,7 +109,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * Get errorCode
    * @return errorCode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERROR_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ThingsboardErrorCode getErrorCode() {
@@ -117,7 +119,7 @@ public class ThingsboardCredentialsExpiredResponse {
 
   @JsonProperty(value = JSON_PROPERTY_ERROR_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorCode(@javax.annotation.Nullable ThingsboardErrorCode errorCode) {
+  public void setErrorCode(@Nullable ThingsboardErrorCode errorCode) {
     this.errorCode = errorCode;
   }
 
@@ -126,7 +128,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * Error message
    * @return message
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMessage() {
@@ -140,7 +142,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * Password reset token
    * @return resetToken
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESET_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getResetToken() {
@@ -154,7 +156,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * HTTP Response Status Code
    * @return status
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getStatus() {
@@ -164,7 +166,7 @@ public class ThingsboardCredentialsExpiredResponse {
 
 
 
-  public ThingsboardCredentialsExpiredResponse subscriptionEntry(@javax.annotation.Nullable SubscriptionEntry subscriptionEntry) {
+  public ThingsboardCredentialsExpiredResponse subscriptionEntry(@Nullable SubscriptionEntry subscriptionEntry) {
     this.subscriptionEntry = subscriptionEntry;
     return this;
   }
@@ -173,7 +175,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * Get subscriptionEntry
    * @return subscriptionEntry
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ENTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SubscriptionEntry getSubscriptionEntry() {
@@ -183,12 +185,12 @@ public class ThingsboardCredentialsExpiredResponse {
 
   @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ENTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubscriptionEntry(@javax.annotation.Nullable SubscriptionEntry subscriptionEntry) {
+  public void setSubscriptionEntry(@Nullable SubscriptionEntry subscriptionEntry) {
     this.subscriptionEntry = subscriptionEntry;
   }
 
 
-  public ThingsboardCredentialsExpiredResponse subscriptionErrorCode(@javax.annotation.Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
+  public ThingsboardCredentialsExpiredResponse subscriptionErrorCode(@Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
     this.subscriptionErrorCode = subscriptionErrorCode;
     return this;
   }
@@ -197,7 +199,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * Get subscriptionErrorCode
    * @return subscriptionErrorCode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SubscriptionExceptionErrorCode getSubscriptionErrorCode() {
@@ -207,12 +209,12 @@ public class ThingsboardCredentialsExpiredResponse {
 
   @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubscriptionErrorCode(@javax.annotation.Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
+  public void setSubscriptionErrorCode(@Nullable SubscriptionExceptionErrorCode subscriptionErrorCode) {
     this.subscriptionErrorCode = subscriptionErrorCode;
   }
 
 
-  public ThingsboardCredentialsExpiredResponse subscriptionValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode subscriptionValue) {
+  public ThingsboardCredentialsExpiredResponse subscriptionValue(@Nullable com.fasterxml.jackson.databind.JsonNode subscriptionValue) {
     this.subscriptionValue = subscriptionValue;
     return this;
   }
@@ -221,7 +223,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * Get subscriptionValue
    * @return subscriptionValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getSubscriptionValue() {
@@ -231,7 +233,7 @@ public class ThingsboardCredentialsExpiredResponse {
 
   @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubscriptionValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode subscriptionValue) {
+  public void setSubscriptionValue(@Nullable com.fasterxml.jackson.databind.JsonNode subscriptionValue) {
     this.subscriptionValue = subscriptionValue;
   }
 
@@ -240,7 +242,7 @@ public class ThingsboardCredentialsExpiredResponse {
    * Timestamp
    * @return timestamp
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMESTAMP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTimestamp() {

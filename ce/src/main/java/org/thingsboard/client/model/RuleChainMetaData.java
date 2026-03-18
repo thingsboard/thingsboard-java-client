@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,30 +51,30 @@ import org.thingsboard.client.ApiClient;
   RuleChainMetaData.JSON_PROPERTY_CONNECTIONS,
   RuleChainMetaData.JSON_PROPERTY_RULE_CHAIN_CONNECTIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChainMetaData {
   public static final String JSON_PROPERTY_RULE_CHAIN_ID = "ruleChainId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private RuleChainId ruleChainId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_FIRST_NODE_INDEX = "firstNodeIndex";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer firstNodeIndex;
 
   public static final String JSON_PROPERTY_NODES = "nodes";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<RuleNode> nodes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CONNECTIONS = "connections";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<NodeConnectionInfo> connections = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RULE_CHAIN_CONNECTIONS = "ruleChainConnections";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<RuleChainConnectionInfo> ruleChainConnections = new ArrayList<>();
 
   public RuleChainMetaData() { 
@@ -89,7 +92,7 @@ public class RuleChainMetaData {
    * JSON object with Rule Chain Id.
    * @return ruleChainId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RuleChainId getRuleChainId() {
@@ -99,7 +102,7 @@ public class RuleChainMetaData {
 
 
 
-  public RuleChainMetaData version(@javax.annotation.Nullable Long version) {
+  public RuleChainMetaData version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -108,7 +111,7 @@ public class RuleChainMetaData {
    * Version of the Rule Chain
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -118,12 +121,12 @@ public class RuleChainMetaData {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public RuleChainMetaData firstNodeIndex(@javax.annotation.Nonnull Integer firstNodeIndex) {
+  public RuleChainMetaData firstNodeIndex(@Nonnull Integer firstNodeIndex) {
     this.firstNodeIndex = firstNodeIndex;
     return this;
   }
@@ -132,7 +135,7 @@ public class RuleChainMetaData {
    * Index of the first rule node in the &#39;nodes&#39; list
    * @return firstNodeIndex
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FIRST_NODE_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getFirstNodeIndex() {
@@ -142,12 +145,12 @@ public class RuleChainMetaData {
 
   @JsonProperty(value = JSON_PROPERTY_FIRST_NODE_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFirstNodeIndex(@javax.annotation.Nonnull Integer firstNodeIndex) {
+  public void setFirstNodeIndex(@Nonnull Integer firstNodeIndex) {
     this.firstNodeIndex = firstNodeIndex;
   }
 
 
-  public RuleChainMetaData nodes(@javax.annotation.Nonnull List<RuleNode> nodes) {
+  public RuleChainMetaData nodes(@Nonnull List<RuleNode> nodes) {
     this.nodes = nodes;
     return this;
   }
@@ -164,7 +167,7 @@ public class RuleChainMetaData {
    * List of rule node JSON objects
    * @return nodes
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<RuleNode> getNodes() {
@@ -174,12 +177,12 @@ public class RuleChainMetaData {
 
   @JsonProperty(value = JSON_PROPERTY_NODES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNodes(@javax.annotation.Nonnull List<RuleNode> nodes) {
+  public void setNodes(@Nonnull List<RuleNode> nodes) {
     this.nodes = nodes;
   }
 
 
-  public RuleChainMetaData connections(@javax.annotation.Nonnull List<NodeConnectionInfo> connections) {
+  public RuleChainMetaData connections(@Nonnull List<NodeConnectionInfo> connections) {
     this.connections = connections;
     return this;
   }
@@ -196,7 +199,7 @@ public class RuleChainMetaData {
    * List of JSON objects that represent connections between rule nodes
    * @return connections
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONNECTIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<NodeConnectionInfo> getConnections() {
@@ -206,12 +209,12 @@ public class RuleChainMetaData {
 
   @JsonProperty(value = JSON_PROPERTY_CONNECTIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConnections(@javax.annotation.Nonnull List<NodeConnectionInfo> connections) {
+  public void setConnections(@Nonnull List<NodeConnectionInfo> connections) {
     this.connections = connections;
   }
 
 
-  public RuleChainMetaData ruleChainConnections(@javax.annotation.Nonnull List<RuleChainConnectionInfo> ruleChainConnections) {
+  public RuleChainMetaData ruleChainConnections(@Nonnull List<RuleChainConnectionInfo> ruleChainConnections) {
     this.ruleChainConnections = ruleChainConnections;
     return this;
   }
@@ -228,7 +231,7 @@ public class RuleChainMetaData {
    * List of JSON objects that represent connections between rule nodes and other rule chains.
    * @return ruleChainConnections
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_CONNECTIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<RuleChainConnectionInfo> getRuleChainConnections() {
@@ -238,7 +241,7 @@ public class RuleChainMetaData {
 
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_CONNECTIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRuleChainConnections(@javax.annotation.Nonnull List<RuleChainConnectionInfo> ruleChainConnections) {
+  public void setRuleChainConnections(@Nonnull List<RuleChainConnectionInfo> ruleChainConnections) {
     this.ruleChainConnections = ruleChainConnections;
   }
 

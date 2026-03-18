@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,36 +47,36 @@ import org.thingsboard.client.ApiClient;
   SolutionInstallResponse.JSON_PROPERTY_DETAILS,
   SolutionInstallResponse.JSON_PROPERTY_SUCCESS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SolutionInstallResponse {
   public static final String JSON_PROPERTY_DASHBOARD_GROUP_ID = "dashboardGroupId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityGroupId dashboardGroupId;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId dashboardId;
 
   public static final String JSON_PROPERTY_PUBLIC_ID = "publicId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId publicId;
 
   public static final String JSON_PROPERTY_MAIN_DASHBOARD_PUBLIC = "mainDashboardPublic";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean mainDashboardPublic;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
-  @javax.annotation.Nullable
+  @Nullable
   private String details;
 
   public static final String JSON_PROPERTY_SUCCESS = "success";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean success;
 
   public SolutionInstallResponse() { 
   }
 
-  public SolutionInstallResponse dashboardGroupId(@javax.annotation.Nullable EntityGroupId dashboardGroupId) {
+  public SolutionInstallResponse dashboardGroupId(@Nullable EntityGroupId dashboardGroupId) {
     this.dashboardGroupId = dashboardGroupId;
     return this;
   }
@@ -83,7 +85,7 @@ public class SolutionInstallResponse {
    * Id of the group that contains main dashboard of the solution
    * @return dashboardGroupId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityGroupId getDashboardGroupId() {
@@ -93,12 +95,12 @@ public class SolutionInstallResponse {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardGroupId(@javax.annotation.Nullable EntityGroupId dashboardGroupId) {
+  public void setDashboardGroupId(@Nullable EntityGroupId dashboardGroupId) {
     this.dashboardGroupId = dashboardGroupId;
   }
 
 
-  public SolutionInstallResponse dashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public SolutionInstallResponse dashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
     return this;
   }
@@ -107,7 +109,7 @@ public class SolutionInstallResponse {
    * Id of the main dashboard of the solution
    * @return dashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDashboardId() {
@@ -117,12 +119,12 @@ public class SolutionInstallResponse {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public void setDashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
   }
 
 
-  public SolutionInstallResponse publicId(@javax.annotation.Nullable CustomerId publicId) {
+  public SolutionInstallResponse publicId(@Nullable CustomerId publicId) {
     this.publicId = publicId;
     return this;
   }
@@ -131,7 +133,7 @@ public class SolutionInstallResponse {
    * Id of the public customer if solution has public entities
    * @return publicId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getPublicId() {
@@ -141,12 +143,12 @@ public class SolutionInstallResponse {
 
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublicId(@javax.annotation.Nullable CustomerId publicId) {
+  public void setPublicId(@Nullable CustomerId publicId) {
     this.publicId = publicId;
   }
 
 
-  public SolutionInstallResponse mainDashboardPublic(@javax.annotation.Nullable Boolean mainDashboardPublic) {
+  public SolutionInstallResponse mainDashboardPublic(@Nullable Boolean mainDashboardPublic) {
     this.mainDashboardPublic = mainDashboardPublic;
     return this;
   }
@@ -155,7 +157,7 @@ public class SolutionInstallResponse {
    * Is the main dashboard public
    * @return mainDashboardPublic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAIN_DASHBOARD_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getMainDashboardPublic() {
@@ -165,12 +167,12 @@ public class SolutionInstallResponse {
 
   @JsonProperty(value = JSON_PROPERTY_MAIN_DASHBOARD_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMainDashboardPublic(@javax.annotation.Nullable Boolean mainDashboardPublic) {
+  public void setMainDashboardPublic(@Nullable Boolean mainDashboardPublic) {
     this.mainDashboardPublic = mainDashboardPublic;
   }
 
 
-  public SolutionInstallResponse details(@javax.annotation.Nullable String details) {
+  public SolutionInstallResponse details(@Nullable String details) {
     this.details = details;
     return this;
   }
@@ -179,7 +181,7 @@ public class SolutionInstallResponse {
    * Markdown with solution usage instructions
    * @return details
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDetails() {
@@ -189,12 +191,12 @@ public class SolutionInstallResponse {
 
   @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable String details) {
+  public void setDetails(@Nullable String details) {
     this.details = details;
   }
 
 
-  public SolutionInstallResponse success(@javax.annotation.Nullable Boolean success) {
+  public SolutionInstallResponse success(@Nullable Boolean success) {
     this.success = success;
     return this;
   }
@@ -203,7 +205,7 @@ public class SolutionInstallResponse {
    * Indicates that template was installed successfully
    * @return success
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSuccess() {
@@ -213,7 +215,7 @@ public class SolutionInstallResponse {
 
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuccess(@javax.annotation.Nullable Boolean success) {
+  public void setSuccess(@Nullable Boolean success) {
     this.success = success;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,16 +42,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   MobileLayoutConfig.JSON_PROPERTY_PAGES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MobileLayoutConfig {
   public static final String JSON_PROPERTY_PAGES = "pages";
-  @javax.annotation.Nullable
+  @Nullable
   private List<MobilePage> pages = new ArrayList<>();
 
   public MobileLayoutConfig() { 
   }
 
-  public MobileLayoutConfig pages(@javax.annotation.Nullable List<MobilePage> pages) {
+  public MobileLayoutConfig pages(@Nullable List<MobilePage> pages) {
     this.pages = pages;
     return this;
   }
@@ -66,7 +68,7 @@ public class MobileLayoutConfig {
    * Get pages
    * @return pages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<MobilePage> getPages() {
@@ -76,7 +78,7 @@ public class MobileLayoutConfig {
 
   @JsonProperty(value = JSON_PROPERTY_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPages(@javax.annotation.Nullable List<MobilePage> pages) {
+  public void setPages(@Nullable List<MobilePage> pages) {
     this.pages = pages;
   }
 

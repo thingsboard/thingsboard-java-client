@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   DynamicValueInteger.JSON_PROPERTY_SOURCE_ATTRIBUTE,
   DynamicValueInteger.JSON_PROPERTY_INHERIT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DynamicValueInteger {
   public static final String JSON_PROPERTY_RESOLVED_VALUE = "resolvedValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer resolvedValue;
 
   public static final String JSON_PROPERTY_SOURCE_TYPE = "sourceType";
-  @javax.annotation.Nullable
+  @Nullable
   private DynamicValueSourceType sourceType;
 
   public static final String JSON_PROPERTY_SOURCE_ATTRIBUTE = "sourceAttribute";
-  @javax.annotation.Nullable
+  @Nullable
   private String sourceAttribute;
 
   public static final String JSON_PROPERTY_INHERIT = "inherit";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean inherit;
 
   public DynamicValueInteger() { 
   }
 
-  public DynamicValueInteger resolvedValue(@javax.annotation.Nullable Integer resolvedValue) {
+  public DynamicValueInteger resolvedValue(@Nullable Integer resolvedValue) {
     this.resolvedValue = resolvedValue;
     return this;
   }
@@ -71,7 +73,7 @@ public class DynamicValueInteger {
    * Get resolvedValue
    * @return resolvedValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOLVED_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getResolvedValue() {
@@ -81,12 +83,12 @@ public class DynamicValueInteger {
 
   @JsonProperty(value = JSON_PROPERTY_RESOLVED_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResolvedValue(@javax.annotation.Nullable Integer resolvedValue) {
+  public void setResolvedValue(@Nullable Integer resolvedValue) {
     this.resolvedValue = resolvedValue;
   }
 
 
-  public DynamicValueInteger sourceType(@javax.annotation.Nullable DynamicValueSourceType sourceType) {
+  public DynamicValueInteger sourceType(@Nullable DynamicValueSourceType sourceType) {
     this.sourceType = sourceType;
     return this;
   }
@@ -95,7 +97,7 @@ public class DynamicValueInteger {
    * Get sourceType
    * @return sourceType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOURCE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DynamicValueSourceType getSourceType() {
@@ -105,12 +107,12 @@ public class DynamicValueInteger {
 
   @JsonProperty(value = JSON_PROPERTY_SOURCE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceType(@javax.annotation.Nullable DynamicValueSourceType sourceType) {
+  public void setSourceType(@Nullable DynamicValueSourceType sourceType) {
     this.sourceType = sourceType;
   }
 
 
-  public DynamicValueInteger sourceAttribute(@javax.annotation.Nullable String sourceAttribute) {
+  public DynamicValueInteger sourceAttribute(@Nullable String sourceAttribute) {
     this.sourceAttribute = sourceAttribute;
     return this;
   }
@@ -119,7 +121,7 @@ public class DynamicValueInteger {
    * Get sourceAttribute
    * @return sourceAttribute
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOURCE_ATTRIBUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSourceAttribute() {
@@ -129,12 +131,12 @@ public class DynamicValueInteger {
 
   @JsonProperty(value = JSON_PROPERTY_SOURCE_ATTRIBUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSourceAttribute(@javax.annotation.Nullable String sourceAttribute) {
+  public void setSourceAttribute(@Nullable String sourceAttribute) {
     this.sourceAttribute = sourceAttribute;
   }
 
 
-  public DynamicValueInteger inherit(@javax.annotation.Nullable Boolean inherit) {
+  public DynamicValueInteger inherit(@Nullable Boolean inherit) {
     this.inherit = inherit;
     return this;
   }
@@ -143,7 +145,7 @@ public class DynamicValueInteger {
    * Get inherit
    * @return inherit
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INHERIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getInherit() {
@@ -153,7 +155,7 @@ public class DynamicValueInteger {
 
   @JsonProperty(value = JSON_PROPERTY_INHERIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInherit(@javax.annotation.Nullable Boolean inherit) {
+  public void setInherit(@Nullable Boolean inherit) {
     this.inherit = inherit;
   }
 

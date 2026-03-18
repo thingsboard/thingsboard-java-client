@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,56 +52,56 @@ import org.thingsboard.client.ApiClient;
   BarSeriesSettings.JSON_PROPERTY_LABEL_BACKGROUND,
   BarSeriesSettings.JSON_PROPERTY_BACKGROUND_SETTINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BarSeriesSettings {
   public static final String JSON_PROPERTY_SHOW_BORDER = "showBorder";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showBorder;
 
   public static final String JSON_PROPERTY_BORDER_WIDTH = "borderWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private Float borderWidth;
 
   public static final String JSON_PROPERTY_BORDER_RADIUS = "borderRadius";
-  @javax.annotation.Nullable
+  @Nullable
   private Float borderRadius;
 
   public static final String JSON_PROPERTY_BAR_WIDTH = "barWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private Double barWidth;
 
   public static final String JSON_PROPERTY_SHOW_LABEL = "showLabel";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showLabel;
 
   public static final String JSON_PROPERTY_LABEL_POSITION = "labelPosition";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartLabelPosition labelPosition;
 
   public static final String JSON_PROPERTY_LABEL_FONT = "labelFont";
-  @javax.annotation.Nullable
+  @Nullable
   private Font labelFont;
 
   public static final String JSON_PROPERTY_LABEL_COLOR = "labelColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String labelColor;
 
   public static final String JSON_PROPERTY_ENABLE_LABEL_BACKGROUND = "enableLabelBackground";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enableLabelBackground;
 
   public static final String JSON_PROPERTY_LABEL_BACKGROUND = "labelBackground";
-  @javax.annotation.Nullable
+  @Nullable
   private String labelBackground;
 
   public static final String JSON_PROPERTY_BACKGROUND_SETTINGS = "backgroundSettings";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartFillSettings backgroundSettings;
 
   public BarSeriesSettings() { 
   }
 
-  public BarSeriesSettings showBorder(@javax.annotation.Nullable Boolean showBorder) {
+  public BarSeriesSettings showBorder(@Nullable Boolean showBorder) {
     this.showBorder = showBorder;
     return this;
   }
@@ -108,7 +110,7 @@ public class BarSeriesSettings {
    * Get showBorder
    * @return showBorder
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_BORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowBorder() {
@@ -118,12 +120,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_BORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowBorder(@javax.annotation.Nullable Boolean showBorder) {
+  public void setShowBorder(@Nullable Boolean showBorder) {
     this.showBorder = showBorder;
   }
 
 
-  public BarSeriesSettings borderWidth(@javax.annotation.Nullable Float borderWidth) {
+  public BarSeriesSettings borderWidth(@Nullable Float borderWidth) {
     this.borderWidth = borderWidth;
     return this;
   }
@@ -132,7 +134,7 @@ public class BarSeriesSettings {
    * Get borderWidth
    * @return borderWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BORDER_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getBorderWidth() {
@@ -142,12 +144,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BORDER_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBorderWidth(@javax.annotation.Nullable Float borderWidth) {
+  public void setBorderWidth(@Nullable Float borderWidth) {
     this.borderWidth = borderWidth;
   }
 
 
-  public BarSeriesSettings borderRadius(@javax.annotation.Nullable Float borderRadius) {
+  public BarSeriesSettings borderRadius(@Nullable Float borderRadius) {
     this.borderRadius = borderRadius;
     return this;
   }
@@ -156,7 +158,7 @@ public class BarSeriesSettings {
    * Get borderRadius
    * @return borderRadius
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BORDER_RADIUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getBorderRadius() {
@@ -166,12 +168,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BORDER_RADIUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBorderRadius(@javax.annotation.Nullable Float borderRadius) {
+  public void setBorderRadius(@Nullable Float borderRadius) {
     this.borderRadius = borderRadius;
   }
 
 
-  public BarSeriesSettings barWidth(@javax.annotation.Nullable Double barWidth) {
+  public BarSeriesSettings barWidth(@Nullable Double barWidth) {
     this.barWidth = barWidth;
     return this;
   }
@@ -180,7 +182,7 @@ public class BarSeriesSettings {
    * Get barWidth
    * @return barWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getBarWidth() {
@@ -190,12 +192,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBarWidth(@javax.annotation.Nullable Double barWidth) {
+  public void setBarWidth(@Nullable Double barWidth) {
     this.barWidth = barWidth;
   }
 
 
-  public BarSeriesSettings showLabel(@javax.annotation.Nullable Boolean showLabel) {
+  public BarSeriesSettings showLabel(@Nullable Boolean showLabel) {
     this.showLabel = showLabel;
     return this;
   }
@@ -204,7 +206,7 @@ public class BarSeriesSettings {
    * Get showLabel
    * @return showLabel
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowLabel() {
@@ -214,12 +216,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowLabel(@javax.annotation.Nullable Boolean showLabel) {
+  public void setShowLabel(@Nullable Boolean showLabel) {
     this.showLabel = showLabel;
   }
 
 
-  public BarSeriesSettings labelPosition(@javax.annotation.Nullable ChartLabelPosition labelPosition) {
+  public BarSeriesSettings labelPosition(@Nullable ChartLabelPosition labelPosition) {
     this.labelPosition = labelPosition;
     return this;
   }
@@ -228,7 +230,7 @@ public class BarSeriesSettings {
    * Get labelPosition
    * @return labelPosition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartLabelPosition getLabelPosition() {
@@ -238,12 +240,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelPosition(@javax.annotation.Nullable ChartLabelPosition labelPosition) {
+  public void setLabelPosition(@Nullable ChartLabelPosition labelPosition) {
     this.labelPosition = labelPosition;
   }
 
 
-  public BarSeriesSettings labelFont(@javax.annotation.Nullable Font labelFont) {
+  public BarSeriesSettings labelFont(@Nullable Font labelFont) {
     this.labelFont = labelFont;
     return this;
   }
@@ -252,7 +254,7 @@ public class BarSeriesSettings {
    * Get labelFont
    * @return labelFont
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Font getLabelFont() {
@@ -262,12 +264,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelFont(@javax.annotation.Nullable Font labelFont) {
+  public void setLabelFont(@Nullable Font labelFont) {
     this.labelFont = labelFont;
   }
 
 
-  public BarSeriesSettings labelColor(@javax.annotation.Nullable String labelColor) {
+  public BarSeriesSettings labelColor(@Nullable String labelColor) {
     this.labelColor = labelColor;
     return this;
   }
@@ -276,7 +278,7 @@ public class BarSeriesSettings {
    * Get labelColor
    * @return labelColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabelColor() {
@@ -286,12 +288,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelColor(@javax.annotation.Nullable String labelColor) {
+  public void setLabelColor(@Nullable String labelColor) {
     this.labelColor = labelColor;
   }
 
 
-  public BarSeriesSettings enableLabelBackground(@javax.annotation.Nullable Boolean enableLabelBackground) {
+  public BarSeriesSettings enableLabelBackground(@Nullable Boolean enableLabelBackground) {
     this.enableLabelBackground = enableLabelBackground;
     return this;
   }
@@ -300,7 +302,7 @@ public class BarSeriesSettings {
    * Get enableLabelBackground
    * @return enableLabelBackground
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLE_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnableLabelBackground() {
@@ -310,12 +312,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLE_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableLabelBackground(@javax.annotation.Nullable Boolean enableLabelBackground) {
+  public void setEnableLabelBackground(@Nullable Boolean enableLabelBackground) {
     this.enableLabelBackground = enableLabelBackground;
   }
 
 
-  public BarSeriesSettings labelBackground(@javax.annotation.Nullable String labelBackground) {
+  public BarSeriesSettings labelBackground(@Nullable String labelBackground) {
     this.labelBackground = labelBackground;
     return this;
   }
@@ -324,7 +326,7 @@ public class BarSeriesSettings {
    * Get labelBackground
    * @return labelBackground
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabelBackground() {
@@ -334,12 +336,12 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelBackground(@javax.annotation.Nullable String labelBackground) {
+  public void setLabelBackground(@Nullable String labelBackground) {
     this.labelBackground = labelBackground;
   }
 
 
-  public BarSeriesSettings backgroundSettings(@javax.annotation.Nullable ChartFillSettings backgroundSettings) {
+  public BarSeriesSettings backgroundSettings(@Nullable ChartFillSettings backgroundSettings) {
     this.backgroundSettings = backgroundSettings;
     return this;
   }
@@ -348,7 +350,7 @@ public class BarSeriesSettings {
    * Get backgroundSettings
    * @return backgroundSettings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BACKGROUND_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartFillSettings getBackgroundSettings() {
@@ -358,7 +360,7 @@ public class BarSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BACKGROUND_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackgroundSettings(@javax.annotation.Nullable ChartFillSettings backgroundSettings) {
+  public void setBackgroundSettings(@Nullable ChartFillSettings backgroundSettings) {
     this.backgroundSettings = backgroundSettings;
   }
 

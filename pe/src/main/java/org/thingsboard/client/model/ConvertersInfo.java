@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   ConvertersInfo.JSON_PROPERTY_EXISTING,
   ConvertersInfo.JSON_PROPERTY_KEYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ConvertersInfo {
   public static final String JSON_PROPERTY_LIBRARY = "library";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean library;
 
   public static final String JSON_PROPERTY_EXISTING = "existing";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean existing;
 
   public static final String JSON_PROPERTY_KEYS = "keys";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<String> keys = new LinkedHashSet<>();
 
   public ConvertersInfo() { 
   }
 
-  public ConvertersInfo library(@javax.annotation.Nullable Boolean library) {
+  public ConvertersInfo library(@Nullable Boolean library) {
     this.library = library;
     return this;
   }
@@ -68,7 +70,7 @@ public class ConvertersInfo {
    * Get library
    * @return library
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LIBRARY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getLibrary() {
@@ -78,12 +80,12 @@ public class ConvertersInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LIBRARY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLibrary(@javax.annotation.Nullable Boolean library) {
+  public void setLibrary(@Nullable Boolean library) {
     this.library = library;
   }
 
 
-  public ConvertersInfo existing(@javax.annotation.Nullable Boolean existing) {
+  public ConvertersInfo existing(@Nullable Boolean existing) {
     this.existing = existing;
     return this;
   }
@@ -92,7 +94,7 @@ public class ConvertersInfo {
    * Get existing
    * @return existing
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXISTING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getExisting() {
@@ -102,12 +104,12 @@ public class ConvertersInfo {
 
   @JsonProperty(value = JSON_PROPERTY_EXISTING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExisting(@javax.annotation.Nullable Boolean existing) {
+  public void setExisting(@Nullable Boolean existing) {
     this.existing = existing;
   }
 
 
-  public ConvertersInfo keys(@javax.annotation.Nullable Set<String> keys) {
+  public ConvertersInfo keys(@Nullable Set<String> keys) {
     this.keys = keys;
     return this;
   }
@@ -124,7 +126,7 @@ public class ConvertersInfo {
    * Get keys
    * @return keys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<String> getKeys() {
@@ -135,7 +137,7 @@ public class ConvertersInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeys(@javax.annotation.Nullable Set<String> keys) {
+  public void setKeys(@Nullable Set<String> keys) {
     this.keys = keys;
   }
 

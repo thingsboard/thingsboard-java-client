@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,32 +49,32 @@ import org.thingsboard.client.ApiClient;
   EntityDataQuery.JSON_PROPERTY_ENTITY_FIELDS,
   EntityDataQuery.JSON_PROPERTY_LATEST_VALUES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityDataQuery {
   public static final String JSON_PROPERTY_ENTITY_FILTER = "entityFilter";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityFilter entityFilter;
 
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
-  @javax.annotation.Nullable
+  @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PAGE_LINK = "pageLink";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityDataPageLink pageLink;
 
   public static final String JSON_PROPERTY_ENTITY_FIELDS = "entityFields";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityKey> entityFields = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LATEST_VALUES = "latestValues";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityKey> latestValues = new ArrayList<>();
 
   public EntityDataQuery() { 
   }
 
-  public EntityDataQuery entityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public EntityDataQuery entityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
     return this;
   }
@@ -81,7 +83,7 @@ public class EntityDataQuery {
    * Get entityFilter
    * @return entityFilter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityFilter getEntityFilter() {
@@ -91,12 +93,12 @@ public class EntityDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public void setEntityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
   }
 
 
-  public EntityDataQuery keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public EntityDataQuery keyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
     return this;
   }
@@ -113,7 +115,7 @@ public class EntityDataQuery {
    * Get keyFilters
    * @return keyFilters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<KeyFilter> getKeyFilters() {
@@ -123,12 +125,12 @@ public class EntityDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
   }
 
 
-  public EntityDataQuery pageLink(@javax.annotation.Nullable EntityDataPageLink pageLink) {
+  public EntityDataQuery pageLink(@Nullable EntityDataPageLink pageLink) {
     this.pageLink = pageLink;
     return this;
   }
@@ -137,7 +139,7 @@ public class EntityDataQuery {
    * Get pageLink
    * @return pageLink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGE_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityDataPageLink getPageLink() {
@@ -147,12 +149,12 @@ public class EntityDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_PAGE_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageLink(@javax.annotation.Nullable EntityDataPageLink pageLink) {
+  public void setPageLink(@Nullable EntityDataPageLink pageLink) {
     this.pageLink = pageLink;
   }
 
 
-  public EntityDataQuery entityFields(@javax.annotation.Nullable List<EntityKey> entityFields) {
+  public EntityDataQuery entityFields(@Nullable List<EntityKey> entityFields) {
     this.entityFields = entityFields;
     return this;
   }
@@ -169,7 +171,7 @@ public class EntityDataQuery {
    * Get entityFields
    * @return entityFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityKey> getEntityFields() {
@@ -179,12 +181,12 @@ public class EntityDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityFields(@javax.annotation.Nullable List<EntityKey> entityFields) {
+  public void setEntityFields(@Nullable List<EntityKey> entityFields) {
     this.entityFields = entityFields;
   }
 
 
-  public EntityDataQuery latestValues(@javax.annotation.Nullable List<EntityKey> latestValues) {
+  public EntityDataQuery latestValues(@Nullable List<EntityKey> latestValues) {
     this.latestValues = latestValues;
     return this;
   }
@@ -201,7 +203,7 @@ public class EntityDataQuery {
    * Get latestValues
    * @return latestValues
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST_VALUES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityKey> getLatestValues() {
@@ -211,7 +213,7 @@ public class EntityDataQuery {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST_VALUES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatestValues(@javax.annotation.Nullable List<EntityKey> latestValues) {
+  public void setLatestValues(@Nullable List<EntityKey> latestValues) {
     this.latestValues = latestValues;
   }
 

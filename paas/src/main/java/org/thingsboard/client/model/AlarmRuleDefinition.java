@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   AlarmRuleDefinition.JSON_PROPERTY_CONDITION,
   AlarmRuleDefinition.JSON_PROPERTY_DASHBOARD_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmRuleDefinition {
   public static final String JSON_PROPERTY_ALARM_DETAILS = "alarmDetails";
-  @javax.annotation.Nullable
+  @Nullable
   private String alarmDetails;
 
   public static final String JSON_PROPERTY_CONDITION = "condition";
-  @javax.annotation.Nonnull
+  @Nonnull
   private AlarmRuleCondition condition;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId dashboardId;
 
   public AlarmRuleDefinition() { 
   }
 
-  public AlarmRuleDefinition alarmDetails(@javax.annotation.Nullable String alarmDetails) {
+  public AlarmRuleDefinition alarmDetails(@Nullable String alarmDetails) {
     this.alarmDetails = alarmDetails;
     return this;
   }
@@ -67,7 +70,7 @@ public class AlarmRuleDefinition {
    * Get alarmDetails
    * @return alarmDetails
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARM_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAlarmDetails() {
@@ -77,12 +80,12 @@ public class AlarmRuleDefinition {
 
   @JsonProperty(value = JSON_PROPERTY_ALARM_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarmDetails(@javax.annotation.Nullable String alarmDetails) {
+  public void setAlarmDetails(@Nullable String alarmDetails) {
     this.alarmDetails = alarmDetails;
   }
 
 
-  public AlarmRuleDefinition condition(@javax.annotation.Nonnull AlarmRuleCondition condition) {
+  public AlarmRuleDefinition condition(@Nonnull AlarmRuleCondition condition) {
     this.condition = condition;
     return this;
   }
@@ -91,7 +94,7 @@ public class AlarmRuleDefinition {
    * Get condition
    * @return condition
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AlarmRuleCondition getCondition() {
@@ -101,12 +104,12 @@ public class AlarmRuleDefinition {
 
   @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCondition(@javax.annotation.Nonnull AlarmRuleCondition condition) {
+  public void setCondition(@Nonnull AlarmRuleCondition condition) {
     this.condition = condition;
   }
 
 
-  public AlarmRuleDefinition dashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public AlarmRuleDefinition dashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
     return this;
   }
@@ -115,7 +118,7 @@ public class AlarmRuleDefinition {
    * Get dashboardId
    * @return dashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDashboardId() {
@@ -125,7 +128,7 @@ public class AlarmRuleDefinition {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public void setDashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
   }
 

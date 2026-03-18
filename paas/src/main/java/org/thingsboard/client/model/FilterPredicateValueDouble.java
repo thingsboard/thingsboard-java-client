@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   FilterPredicateValueDouble.JSON_PROPERTY_USER_VALUE,
   FilterPredicateValueDouble.JSON_PROPERTY_DYNAMIC_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FilterPredicateValueDouble {
   public static final String JSON_PROPERTY_DEFAULT_VALUE = "defaultValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Double defaultValue;
 
   public static final String JSON_PROPERTY_USER_VALUE = "userValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Double userValue;
 
   public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
-  @javax.annotation.Nullable
+  @Nullable
   private DynamicValueDouble dynamicValue;
 
   public FilterPredicateValueDouble() { 
   }
 
-  public FilterPredicateValueDouble defaultValue(@javax.annotation.Nullable Double defaultValue) {
+  public FilterPredicateValueDouble defaultValue(@Nullable Double defaultValue) {
     this.defaultValue = defaultValue;
     return this;
   }
@@ -66,7 +68,7 @@ public class FilterPredicateValueDouble {
    * Get defaultValue
    * @return defaultValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getDefaultValue() {
@@ -76,12 +78,12 @@ public class FilterPredicateValueDouble {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultValue(@javax.annotation.Nullable Double defaultValue) {
+  public void setDefaultValue(@Nullable Double defaultValue) {
     this.defaultValue = defaultValue;
   }
 
 
-  public FilterPredicateValueDouble userValue(@javax.annotation.Nullable Double userValue) {
+  public FilterPredicateValueDouble userValue(@Nullable Double userValue) {
     this.userValue = userValue;
     return this;
   }
@@ -90,7 +92,7 @@ public class FilterPredicateValueDouble {
    * Get userValue
    * @return userValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getUserValue() {
@@ -100,12 +102,12 @@ public class FilterPredicateValueDouble {
 
   @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserValue(@javax.annotation.Nullable Double userValue) {
+  public void setUserValue(@Nullable Double userValue) {
     this.userValue = userValue;
   }
 
 
-  public FilterPredicateValueDouble dynamicValue(@javax.annotation.Nullable DynamicValueDouble dynamicValue) {
+  public FilterPredicateValueDouble dynamicValue(@Nullable DynamicValueDouble dynamicValue) {
     this.dynamicValue = dynamicValue;
     return this;
   }
@@ -114,7 +116,7 @@ public class FilterPredicateValueDouble {
    * Get dynamicValue
    * @return dynamicValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DynamicValueDouble getDynamicValue() {
@@ -124,7 +126,7 @@ public class FilterPredicateValueDouble {
 
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValue(@javax.annotation.Nullable DynamicValueDouble dynamicValue) {
+  public void setDynamicValue(@Nullable DynamicValueDouble dynamicValue) {
     this.dynamicValue = dynamicValue;
   }
 

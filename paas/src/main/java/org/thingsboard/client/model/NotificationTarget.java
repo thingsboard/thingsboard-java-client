@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,26 +47,26 @@ import org.thingsboard.client.ApiClient;
   NotificationTarget.JSON_PROPERTY_NAME,
   NotificationTarget.JSON_PROPERTY_CONFIGURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationTarget {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationTargetId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nonnull
+  @Nonnull
   private NotificationTargetConfig _configuration;
 
   public NotificationTarget() { 
@@ -77,7 +80,7 @@ public class NotificationTarget {
     this.createdTime = createdTime;
   }
 
-  public NotificationTarget id(@javax.annotation.Nullable NotificationTargetId id) {
+  public NotificationTarget id(@Nullable NotificationTargetId id) {
     this.id = id;
     return this;
   }
@@ -86,7 +89,7 @@ public class NotificationTarget {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationTargetId getId() {
@@ -96,7 +99,7 @@ public class NotificationTarget {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable NotificationTargetId id) {
+  public void setId(@Nullable NotificationTargetId id) {
     this.id = id;
   }
 
@@ -105,7 +108,7 @@ public class NotificationTarget {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -115,7 +118,7 @@ public class NotificationTarget {
 
 
 
-  public NotificationTarget tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public NotificationTarget tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -124,7 +127,7 @@ public class NotificationTarget {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -134,12 +137,12 @@ public class NotificationTarget {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public NotificationTarget name(@javax.annotation.Nonnull String name) {
+  public NotificationTarget name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -148,7 +151,7 @@ public class NotificationTarget {
    * Get name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -158,12 +161,12 @@ public class NotificationTarget {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public NotificationTarget _configuration(@javax.annotation.Nonnull NotificationTargetConfig _configuration) {
+  public NotificationTarget _configuration(@Nonnull NotificationTargetConfig _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -172,7 +175,7 @@ public class NotificationTarget {
    * Get _configuration
    * @return _configuration
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public NotificationTargetConfig getConfiguration() {
@@ -182,7 +185,7 @@ public class NotificationTarget {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfiguration(@javax.annotation.Nonnull NotificationTargetConfig _configuration) {
+  public void setConfiguration(@Nonnull NotificationTargetConfig _configuration) {
     this._configuration = _configuration;
   }
 

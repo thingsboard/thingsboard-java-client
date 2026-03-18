@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,10 +44,10 @@ import org.thingsboard.client.ApiClient;
   TsData.JSON_PROPERTY_TS,
   TsData.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TsData {
   public static final String JSON_PROPERTY_TS = "ts";
-  @javax.annotation.Nullable
+  @Nullable
   private Long ts;
 
   public static final String JSON_PROPERTY_VALUE = "value";
@@ -66,7 +68,7 @@ public class TsData {
    * Timestamp last updated timeseries, in milliseconds
    * @return ts
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTs() {
@@ -76,7 +78,7 @@ public class TsData {
 
 
 
-  public TsData value(@javax.annotation.Nullable Object value) {
+  public TsData value(@Nullable Object value) {
     this.value = JsonNullable.<Object>of(value);
     return this;
   }
@@ -85,7 +87,7 @@ public class TsData {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getValue() {
         return value.orElse(null);
@@ -103,7 +105,7 @@ public class TsData {
     this.value = value;
   }
 
-  public void setValue(@javax.annotation.Nullable Object value) {
+  public void setValue(@Nullable Object value) {
     this.value = JsonNullable.<Object>of(value);
   }
 

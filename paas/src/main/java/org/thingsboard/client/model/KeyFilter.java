@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   KeyFilter.JSON_PROPERTY_VALUE_TYPE,
   KeyFilter.JSON_PROPERTY_PREDICATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class KeyFilter {
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityKey key;
 
   public static final String JSON_PROPERTY_VALUE_TYPE = "valueType";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityKeyValueType valueType;
 
   public static final String JSON_PROPERTY_PREDICATE = "predicate";
-  @javax.annotation.Nullable
+  @Nullable
   private KeyFilterPredicate predicate;
 
   public KeyFilter() { 
   }
 
-  public KeyFilter key(@javax.annotation.Nullable EntityKey key) {
+  public KeyFilter key(@Nullable EntityKey key) {
     this.key = key;
     return this;
   }
@@ -68,7 +70,7 @@ public class KeyFilter {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityKey getKey() {
@@ -78,12 +80,12 @@ public class KeyFilter {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable EntityKey key) {
+  public void setKey(@Nullable EntityKey key) {
     this.key = key;
   }
 
 
-  public KeyFilter valueType(@javax.annotation.Nullable EntityKeyValueType valueType) {
+  public KeyFilter valueType(@Nullable EntityKeyValueType valueType) {
     this.valueType = valueType;
     return this;
   }
@@ -92,7 +94,7 @@ public class KeyFilter {
    * Get valueType
    * @return valueType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityKeyValueType getValueType() {
@@ -102,12 +104,12 @@ public class KeyFilter {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValueType(@javax.annotation.Nullable EntityKeyValueType valueType) {
+  public void setValueType(@Nullable EntityKeyValueType valueType) {
     this.valueType = valueType;
   }
 
 
-  public KeyFilter predicate(@javax.annotation.Nullable KeyFilterPredicate predicate) {
+  public KeyFilter predicate(@Nullable KeyFilterPredicate predicate) {
     this.predicate = predicate;
     return this;
   }
@@ -116,7 +118,7 @@ public class KeyFilter {
    * Get predicate
    * @return predicate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREDICATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public KeyFilterPredicate getPredicate() {
@@ -126,7 +128,7 @@ public class KeyFilter {
 
   @JsonProperty(value = JSON_PROPERTY_PREDICATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPredicate(@javax.annotation.Nullable KeyFilterPredicate predicate) {
+  public void setPredicate(@Nullable KeyFilterPredicate predicate) {
     this.predicate = predicate;
   }
 

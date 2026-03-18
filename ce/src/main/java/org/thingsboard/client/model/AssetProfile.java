@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,54 +54,54 @@ import org.thingsboard.client.ApiClient;
   AssetProfile.JSON_PROPERTY_VERSION,
   AssetProfile.JSON_PROPERTY_DEFAULT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AssetProfile {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private AssetProfileId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_DEFAULT_RULE_CHAIN_ID = "defaultRuleChainId";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainId defaultRuleChainId;
 
   public static final String JSON_PROPERTY_DEFAULT_DASHBOARD_ID = "defaultDashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId defaultDashboardId;
 
   public static final String JSON_PROPERTY_DEFAULT_QUEUE_NAME = "defaultQueueName";
-  @javax.annotation.Nullable
+  @Nullable
   private String defaultQueueName;
 
   public static final String JSON_PROPERTY_DEFAULT_EDGE_RULE_CHAIN_ID = "defaultEdgeRuleChainId";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainId defaultEdgeRuleChainId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_DEFAULT = "default";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _default;
 
   public AssetProfile() { 
@@ -115,7 +117,7 @@ public class AssetProfile {
     this.tenantId = tenantId;
   }
 
-  public AssetProfile id(@javax.annotation.Nullable AssetProfileId id) {
+  public AssetProfile id(@Nullable AssetProfileId id) {
     this.id = id;
     return this;
   }
@@ -124,7 +126,7 @@ public class AssetProfile {
    * JSON object with the asset profile Id. Specify this field to update the asset profile. Referencing non-existing asset profile Id will cause error. Omit this field to create new asset profile.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AssetProfileId getId() {
@@ -134,7 +136,7 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AssetProfileId id) {
+  public void setId(@Nullable AssetProfileId id) {
     this.id = id;
   }
 
@@ -143,7 +145,7 @@ public class AssetProfile {
    * Timestamp of the profile creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -157,7 +159,7 @@ public class AssetProfile {
    * JSON object with Tenant Id that owns the profile.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -167,7 +169,7 @@ public class AssetProfile {
 
 
 
-  public AssetProfile name(@javax.annotation.Nullable String name) {
+  public AssetProfile name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -176,7 +178,7 @@ public class AssetProfile {
    * Unique Asset Profile Name in scope of Tenant.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -186,12 +188,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public AssetProfile description(@javax.annotation.Nullable String description) {
+  public AssetProfile description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -200,7 +202,7 @@ public class AssetProfile {
    * Asset Profile description. 
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -210,12 +212,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
 
-  public AssetProfile image(@javax.annotation.Nullable String image) {
+  public AssetProfile image(@Nullable String image) {
     this.image = image;
     return this;
   }
@@ -224,7 +226,7 @@ public class AssetProfile {
    * Either URL or Base64 data of the icon. Used in the mobile application to visualize set of asset profiles in the grid view. 
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -234,12 +236,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImage(@javax.annotation.Nullable String image) {
+  public void setImage(@Nullable String image) {
     this.image = image;
   }
 
 
-  public AssetProfile defaultRuleChainId(@javax.annotation.Nullable RuleChainId defaultRuleChainId) {
+  public AssetProfile defaultRuleChainId(@Nullable RuleChainId defaultRuleChainId) {
     this.defaultRuleChainId = defaultRuleChainId;
     return this;
   }
@@ -248,7 +250,7 @@ public class AssetProfile {
    * Reference to the rule chain. If present, the specified rule chain will be used to process all messages related to asset, including asset updates, telemetry, attribute updates, etc. Otherwise, the root rule chain will be used to process those messages.
    * @return defaultRuleChainId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainId getDefaultRuleChainId() {
@@ -258,12 +260,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultRuleChainId(@javax.annotation.Nullable RuleChainId defaultRuleChainId) {
+  public void setDefaultRuleChainId(@Nullable RuleChainId defaultRuleChainId) {
     this.defaultRuleChainId = defaultRuleChainId;
   }
 
 
-  public AssetProfile defaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public AssetProfile defaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
     return this;
   }
@@ -272,7 +274,7 @@ public class AssetProfile {
    * Reference to the dashboard. Used in the mobile application to open the default dashboard when user navigates to asset details.
    * @return defaultDashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDefaultDashboardId() {
@@ -282,12 +284,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public void setDefaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
   }
 
 
-  public AssetProfile defaultQueueName(@javax.annotation.Nullable String defaultQueueName) {
+  public AssetProfile defaultQueueName(@Nullable String defaultQueueName) {
     this.defaultQueueName = defaultQueueName;
     return this;
   }
@@ -296,7 +298,7 @@ public class AssetProfile {
    * Rule engine queue name. If present, the specified queue will be used to store all unprocessed messages related to asset, including asset updates, telemetry, attribute updates, etc. Otherwise, the &#39;Main&#39; queue will be used to store those messages.
    * @return defaultQueueName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_QUEUE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDefaultQueueName() {
@@ -306,12 +308,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_QUEUE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultQueueName(@javax.annotation.Nullable String defaultQueueName) {
+  public void setDefaultQueueName(@Nullable String defaultQueueName) {
     this.defaultQueueName = defaultQueueName;
   }
 
 
-  public AssetProfile defaultEdgeRuleChainId(@javax.annotation.Nullable RuleChainId defaultEdgeRuleChainId) {
+  public AssetProfile defaultEdgeRuleChainId(@Nullable RuleChainId defaultEdgeRuleChainId) {
     this.defaultEdgeRuleChainId = defaultEdgeRuleChainId;
     return this;
   }
@@ -320,7 +322,7 @@ public class AssetProfile {
    * Reference to the edge rule chain. If present, the specified edge rule chain will be used on the edge to process all messages related to asset, including asset updates, telemetry, attribute updates, etc. Otherwise, the edge root rule chain will be used to process those messages.
    * @return defaultEdgeRuleChainId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_EDGE_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainId getDefaultEdgeRuleChainId() {
@@ -330,12 +332,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_EDGE_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultEdgeRuleChainId(@javax.annotation.Nullable RuleChainId defaultEdgeRuleChainId) {
+  public void setDefaultEdgeRuleChainId(@Nullable RuleChainId defaultEdgeRuleChainId) {
     this.defaultEdgeRuleChainId = defaultEdgeRuleChainId;
   }
 
 
-  public AssetProfile version(@javax.annotation.Nullable Long version) {
+  public AssetProfile version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -344,7 +346,7 @@ public class AssetProfile {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -354,12 +356,12 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public AssetProfile _default(@javax.annotation.Nullable Boolean _default) {
+  public AssetProfile _default(@Nullable Boolean _default) {
     this._default = _default;
     return this;
   }
@@ -368,7 +370,7 @@ public class AssetProfile {
    * Used to mark the default profile. Default profile is used when the asset profile is not specified during asset creation.
    * @return _default
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDefault() {
@@ -378,7 +380,7 @@ public class AssetProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefault(@javax.annotation.Nullable Boolean _default) {
+  public void setDefault(@Nullable Boolean _default) {
     this._default = _default;
   }
 

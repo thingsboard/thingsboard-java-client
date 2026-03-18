@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   EntityLoadError.JSON_PROPERTY_TARGET,
   EntityLoadError.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityLoadError {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId source;
 
   public static final String JSON_PROPERTY_TARGET = "target";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId target;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
+  @Nullable
   private String message;
 
   public EntityLoadError() { 
   }
 
-  public EntityLoadError type(@javax.annotation.Nullable String type) {
+  public EntityLoadError type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -71,7 +73,7 @@ public class EntityLoadError {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -81,12 +83,12 @@ public class EntityLoadError {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
 
-  public EntityLoadError source(@javax.annotation.Nullable EntityId source) {
+  public EntityLoadError source(@Nullable EntityId source) {
     this.source = source;
     return this;
   }
@@ -95,7 +97,7 @@ public class EntityLoadError {
    * Get source
    * @return source
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getSource() {
@@ -105,12 +107,12 @@ public class EntityLoadError {
 
   @JsonProperty(value = JSON_PROPERTY_SOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSource(@javax.annotation.Nullable EntityId source) {
+  public void setSource(@Nullable EntityId source) {
     this.source = source;
   }
 
 
-  public EntityLoadError target(@javax.annotation.Nullable EntityId target) {
+  public EntityLoadError target(@Nullable EntityId target) {
     this.target = target;
     return this;
   }
@@ -119,7 +121,7 @@ public class EntityLoadError {
    * Get target
    * @return target
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getTarget() {
@@ -129,12 +131,12 @@ public class EntityLoadError {
 
   @JsonProperty(value = JSON_PROPERTY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTarget(@javax.annotation.Nullable EntityId target) {
+  public void setTarget(@Nullable EntityId target) {
     this.target = target;
   }
 
 
-  public EntityLoadError message(@javax.annotation.Nullable String message) {
+  public EntityLoadError message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -143,7 +145,7 @@ public class EntityLoadError {
    * Get message
    * @return message
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMessage() {
@@ -153,7 +155,7 @@ public class EntityLoadError {
 
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(@javax.annotation.Nullable String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

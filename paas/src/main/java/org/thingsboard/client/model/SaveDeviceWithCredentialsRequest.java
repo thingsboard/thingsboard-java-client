@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,20 +42,20 @@ import org.thingsboard.client.ApiClient;
   SaveDeviceWithCredentialsRequest.JSON_PROPERTY_DEVICE,
   SaveDeviceWithCredentialsRequest.JSON_PROPERTY_CREDENTIALS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SaveDeviceWithCredentialsRequest {
   public static final String JSON_PROPERTY_DEVICE = "device";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Device device;
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
-  @javax.annotation.Nonnull
+  @Nonnull
   private DeviceCredentials credentials;
 
   public SaveDeviceWithCredentialsRequest() { 
   }
 
-  public SaveDeviceWithCredentialsRequest device(@javax.annotation.Nonnull Device device) {
+  public SaveDeviceWithCredentialsRequest device(@Nonnull Device device) {
     this.device = device;
     return this;
   }
@@ -62,7 +64,7 @@ public class SaveDeviceWithCredentialsRequest {
    * The JSON with device entity.
    * @return device
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DEVICE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Device getDevice() {
@@ -72,12 +74,12 @@ public class SaveDeviceWithCredentialsRequest {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDevice(@javax.annotation.Nonnull Device device) {
+  public void setDevice(@Nonnull Device device) {
     this.device = device;
   }
 
 
-  public SaveDeviceWithCredentialsRequest credentials(@javax.annotation.Nonnull DeviceCredentials credentials) {
+  public SaveDeviceWithCredentialsRequest credentials(@Nonnull DeviceCredentials credentials) {
     this.credentials = credentials;
     return this;
   }
@@ -86,7 +88,7 @@ public class SaveDeviceWithCredentialsRequest {
    * The JSON with credentials entity.
    * @return credentials
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DeviceCredentials getCredentials() {
@@ -96,7 +98,7 @@ public class SaveDeviceWithCredentialsRequest {
 
   @JsonProperty(value = JSON_PROPERTY_CREDENTIALS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentials(@javax.annotation.Nonnull DeviceCredentials credentials) {
+  public void setCredentials(@Nonnull DeviceCredentials credentials) {
     this.credentials = credentials;
   }
 

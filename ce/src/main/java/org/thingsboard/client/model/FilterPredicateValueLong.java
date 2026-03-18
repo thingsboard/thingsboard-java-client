@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   FilterPredicateValueLong.JSON_PROPERTY_USER_VALUE,
   FilterPredicateValueLong.JSON_PROPERTY_DYNAMIC_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FilterPredicateValueLong {
   public static final String JSON_PROPERTY_DEFAULT_VALUE = "defaultValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Long defaultValue;
 
   public static final String JSON_PROPERTY_USER_VALUE = "userValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Long userValue;
 
   public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
-  @javax.annotation.Nullable
+  @Nullable
   private DynamicValueLong dynamicValue;
 
   public FilterPredicateValueLong() { 
   }
 
-  public FilterPredicateValueLong defaultValue(@javax.annotation.Nullable Long defaultValue) {
+  public FilterPredicateValueLong defaultValue(@Nullable Long defaultValue) {
     this.defaultValue = defaultValue;
     return this;
   }
@@ -66,7 +68,7 @@ public class FilterPredicateValueLong {
    * Get defaultValue
    * @return defaultValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDefaultValue() {
@@ -76,12 +78,12 @@ public class FilterPredicateValueLong {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultValue(@javax.annotation.Nullable Long defaultValue) {
+  public void setDefaultValue(@Nullable Long defaultValue) {
     this.defaultValue = defaultValue;
   }
 
 
-  public FilterPredicateValueLong userValue(@javax.annotation.Nullable Long userValue) {
+  public FilterPredicateValueLong userValue(@Nullable Long userValue) {
     this.userValue = userValue;
     return this;
   }
@@ -90,7 +92,7 @@ public class FilterPredicateValueLong {
    * Get userValue
    * @return userValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getUserValue() {
@@ -100,12 +102,12 @@ public class FilterPredicateValueLong {
 
   @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserValue(@javax.annotation.Nullable Long userValue) {
+  public void setUserValue(@Nullable Long userValue) {
     this.userValue = userValue;
   }
 
 
-  public FilterPredicateValueLong dynamicValue(@javax.annotation.Nullable DynamicValueLong dynamicValue) {
+  public FilterPredicateValueLong dynamicValue(@Nullable DynamicValueLong dynamicValue) {
     this.dynamicValue = dynamicValue;
     return this;
   }
@@ -114,7 +116,7 @@ public class FilterPredicateValueLong {
    * Get dynamicValue
    * @return dynamicValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DynamicValueLong getDynamicValue() {
@@ -124,7 +126,7 @@ public class FilterPredicateValueLong {
 
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValue(@javax.annotation.Nullable DynamicValueLong dynamicValue) {
+  public void setDynamicValue(@Nullable DynamicValueLong dynamicValue) {
     this.dynamicValue = dynamicValue;
   }
 

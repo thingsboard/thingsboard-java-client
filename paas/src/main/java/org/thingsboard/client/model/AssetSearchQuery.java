@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   AssetSearchQuery.JSON_PROPERTY_RELATION_TYPE,
   AssetSearchQuery.JSON_PROPERTY_ASSET_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AssetSearchQuery {
   public static final String JSON_PROPERTY_PARAMETERS = "parameters";
-  @javax.annotation.Nullable
+  @Nullable
   private RelationsSearchParameters parameters;
 
   public static final String JSON_PROPERTY_RELATION_TYPE = "relationType";
-  @javax.annotation.Nullable
+  @Nullable
   private String relationType;
 
   public static final String JSON_PROPERTY_ASSET_TYPES = "assetTypes";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> assetTypes = new ArrayList<>();
 
   public AssetSearchQuery() { 
   }
 
-  public AssetSearchQuery parameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public AssetSearchQuery parameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
     return this;
   }
@@ -68,7 +70,7 @@ public class AssetSearchQuery {
    * Main search parameters.
    * @return parameters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RelationsSearchParameters getParameters() {
@@ -78,12 +80,12 @@ public class AssetSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public void setParameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
   }
 
 
-  public AssetSearchQuery relationType(@javax.annotation.Nullable String relationType) {
+  public AssetSearchQuery relationType(@Nullable String relationType) {
     this.relationType = relationType;
     return this;
   }
@@ -92,7 +94,7 @@ public class AssetSearchQuery {
    * Type of the relation between root entity and asset (e.g. &#39;Contains&#39; or &#39;Manages&#39;).
    * @return relationType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRelationType() {
@@ -102,12 +104,12 @@ public class AssetSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelationType(@javax.annotation.Nullable String relationType) {
+  public void setRelationType(@Nullable String relationType) {
     this.relationType = relationType;
   }
 
 
-  public AssetSearchQuery assetTypes(@javax.annotation.Nullable List<String> assetTypes) {
+  public AssetSearchQuery assetTypes(@Nullable List<String> assetTypes) {
     this.assetTypes = assetTypes;
     return this;
   }
@@ -124,7 +126,7 @@ public class AssetSearchQuery {
    * Array of asset types to filter the related entities (e.g. &#39;Building&#39;, &#39;Vehicle&#39;).
    * @return assetTypes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSET_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getAssetTypes() {
@@ -134,7 +136,7 @@ public class AssetSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ASSET_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssetTypes(@javax.annotation.Nullable List<String> assetTypes) {
+  public void setAssetTypes(@Nullable List<String> assetTypes) {
     this.assetTypes = assetTypes;
   }
 

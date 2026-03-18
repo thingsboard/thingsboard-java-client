@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   TrendzConfiguration.JSON_PROPERTY_TRENDZ_URL,
   TrendzConfiguration.JSON_PROPERTY_TB_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzConfiguration {
   public static final String JSON_PROPERTY_TRENDZ_URL = "trendzUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String trendzUrl;
 
   public static final String JSON_PROPERTY_TB_URL = "tbUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String tbUrl;
 
   public TrendzConfiguration() { 
   }
 
-  public TrendzConfiguration trendzUrl(@javax.annotation.Nullable String trendzUrl) {
+  public TrendzConfiguration trendzUrl(@Nullable String trendzUrl) {
     this.trendzUrl = trendzUrl;
     return this;
   }
@@ -60,7 +62,7 @@ public class TrendzConfiguration {
    * Get trendzUrl
    * @return trendzUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRENDZ_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTrendzUrl() {
@@ -70,12 +72,12 @@ public class TrendzConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_TRENDZ_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTrendzUrl(@javax.annotation.Nullable String trendzUrl) {
+  public void setTrendzUrl(@Nullable String trendzUrl) {
     this.trendzUrl = trendzUrl;
   }
 
 
-  public TrendzConfiguration tbUrl(@javax.annotation.Nullable String tbUrl) {
+  public TrendzConfiguration tbUrl(@Nullable String tbUrl) {
     this.tbUrl = tbUrl;
     return this;
   }
@@ -84,7 +86,7 @@ public class TrendzConfiguration {
    * Get tbUrl
    * @return tbUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TB_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTbUrl() {
@@ -94,7 +96,7 @@ public class TrendzConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_TB_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTbUrl(@javax.annotation.Nullable String tbUrl) {
+  public void setTbUrl(@Nullable String tbUrl) {
     this.tbUrl = tbUrl;
   }
 

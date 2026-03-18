@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,36 +50,36 @@ import org.thingsboard.client.ApiClient;
   MergedUserPermissions.JSON_PROPERTY_READ_ATTR_PERMISSIONS,
   MergedUserPermissions.JSON_PROPERTY_READ_TS_PERMISSIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MergedUserPermissions {
   public static final String JSON_PROPERTY_GENERIC_PERMISSIONS = "genericPermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, Set<Operation>> genericPermissions = new HashMap<>();
 
   public static final String JSON_PROPERTY_GROUP_PERMISSIONS = "groupPermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, MergedGroupPermissionInfo> groupPermissions = new HashMap<>();
 
   public static final String JSON_PROPERTY_READ_GROUP_PERMISSIONS = "readGroupPermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, MergedGroupTypePermissionInfo> readGroupPermissions = new HashMap<>();
 
   public static final String JSON_PROPERTY_READ_ENTITY_PERMISSIONS = "readEntityPermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, MergedGroupTypePermissionInfo> readEntityPermissions = new HashMap<>();
 
   public static final String JSON_PROPERTY_READ_ATTR_PERMISSIONS = "readAttrPermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, MergedGroupTypePermissionInfo> readAttrPermissions = new HashMap<>();
 
   public static final String JSON_PROPERTY_READ_TS_PERMISSIONS = "readTsPermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, MergedGroupTypePermissionInfo> readTsPermissions = new HashMap<>();
 
   public MergedUserPermissions() { 
   }
 
-  public MergedUserPermissions genericPermissions(@javax.annotation.Nullable Map<String, Set<Operation>> genericPermissions) {
+  public MergedUserPermissions genericPermissions(@Nullable Map<String, Set<Operation>> genericPermissions) {
     this.genericPermissions = genericPermissions;
     return this;
   }
@@ -94,7 +96,7 @@ public class MergedUserPermissions {
    * Map of permissions defined using generic roles (&#39;Customer Administrator&#39;, etc)
    * @return genericPermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GENERIC_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, Set<Operation>> getGenericPermissions() {
@@ -104,12 +106,12 @@ public class MergedUserPermissions {
 
   @JsonProperty(value = JSON_PROPERTY_GENERIC_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGenericPermissions(@javax.annotation.Nullable Map<String, Set<Operation>> genericPermissions) {
+  public void setGenericPermissions(@Nullable Map<String, Set<Operation>> genericPermissions) {
     this.genericPermissions = genericPermissions;
   }
 
 
-  public MergedUserPermissions groupPermissions(@javax.annotation.Nullable Map<String, MergedGroupPermissionInfo> groupPermissions) {
+  public MergedUserPermissions groupPermissions(@Nullable Map<String, MergedGroupPermissionInfo> groupPermissions) {
     this.groupPermissions = groupPermissions;
     return this;
   }
@@ -126,7 +128,7 @@ public class MergedUserPermissions {
    * Map of permissions defined using group roles (&#39;Read&#39; or &#39;Write&#39; access to specific entity group, etc)
    * @return groupPermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUP_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, MergedGroupPermissionInfo> getGroupPermissions() {
@@ -136,12 +138,12 @@ public class MergedUserPermissions {
 
   @JsonProperty(value = JSON_PROPERTY_GROUP_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroupPermissions(@javax.annotation.Nullable Map<String, MergedGroupPermissionInfo> groupPermissions) {
+  public void setGroupPermissions(@Nullable Map<String, MergedGroupPermissionInfo> groupPermissions) {
     this.groupPermissions = groupPermissions;
   }
 
 
-  public MergedUserPermissions readGroupPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readGroupPermissions) {
+  public MergedUserPermissions readGroupPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readGroupPermissions) {
     this.readGroupPermissions = readGroupPermissions;
     return this;
   }
@@ -158,7 +160,7 @@ public class MergedUserPermissions {
    * Map of read permissions per entity type. Used on the UI to enable/disable certain components.
    * @return readGroupPermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_GROUP_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, MergedGroupTypePermissionInfo> getReadGroupPermissions() {
@@ -168,12 +170,12 @@ public class MergedUserPermissions {
 
   @JsonProperty(value = JSON_PROPERTY_READ_GROUP_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadGroupPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readGroupPermissions) {
+  public void setReadGroupPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readGroupPermissions) {
     this.readGroupPermissions = readGroupPermissions;
   }
 
 
-  public MergedUserPermissions readEntityPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readEntityPermissions) {
+  public MergedUserPermissions readEntityPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readEntityPermissions) {
     this.readEntityPermissions = readEntityPermissions;
     return this;
   }
@@ -190,7 +192,7 @@ public class MergedUserPermissions {
    * Map of read permissions per resource. Used on the UI to enable/disable certain components.
    * @return readEntityPermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_ENTITY_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, MergedGroupTypePermissionInfo> getReadEntityPermissions() {
@@ -200,12 +202,12 @@ public class MergedUserPermissions {
 
   @JsonProperty(value = JSON_PROPERTY_READ_ENTITY_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadEntityPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readEntityPermissions) {
+  public void setReadEntityPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readEntityPermissions) {
     this.readEntityPermissions = readEntityPermissions;
   }
 
 
-  public MergedUserPermissions readAttrPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readAttrPermissions) {
+  public MergedUserPermissions readAttrPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readAttrPermissions) {
     this.readAttrPermissions = readAttrPermissions;
     return this;
   }
@@ -222,7 +224,7 @@ public class MergedUserPermissions {
    * Map of read entity attributes permissions per resource. Used on the UI to enable/disable certain tabs.
    * @return readAttrPermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_ATTR_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, MergedGroupTypePermissionInfo> getReadAttrPermissions() {
@@ -232,12 +234,12 @@ public class MergedUserPermissions {
 
   @JsonProperty(value = JSON_PROPERTY_READ_ATTR_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadAttrPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readAttrPermissions) {
+  public void setReadAttrPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readAttrPermissions) {
     this.readAttrPermissions = readAttrPermissions;
   }
 
 
-  public MergedUserPermissions readTsPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readTsPermissions) {
+  public MergedUserPermissions readTsPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readTsPermissions) {
     this.readTsPermissions = readTsPermissions;
     return this;
   }
@@ -254,7 +256,7 @@ public class MergedUserPermissions {
    * Map of read entity time-series permissions per resource. Used on the UI to enable/disable certain tabs.
    * @return readTsPermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_TS_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, MergedGroupTypePermissionInfo> getReadTsPermissions() {
@@ -264,7 +266,7 @@ public class MergedUserPermissions {
 
   @JsonProperty(value = JSON_PROPERTY_READ_TS_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadTsPermissions(@javax.annotation.Nullable Map<String, MergedGroupTypePermissionInfo> readTsPermissions) {
+  public void setReadTsPermissions(@Nullable Map<String, MergedGroupTypePermissionInfo> readTsPermissions) {
     this.readTsPermissions = readTsPermissions;
   }
 

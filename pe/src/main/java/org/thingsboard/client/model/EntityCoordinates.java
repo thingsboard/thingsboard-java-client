@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   EntityCoordinates.JSON_PROPERTY_LATITUDE_KEY_NAME,
   EntityCoordinates.JSON_PROPERTY_LONGITUDE_KEY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityCoordinates {
   public static final String JSON_PROPERTY_LATITUDE_KEY_NAME = "latitudeKeyName";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String latitudeKeyName;
 
   public static final String JSON_PROPERTY_LONGITUDE_KEY_NAME = "longitudeKeyName";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String longitudeKeyName;
 
   public EntityCoordinates() { 
   }
 
-  public EntityCoordinates latitudeKeyName(@javax.annotation.Nonnull String latitudeKeyName) {
+  public EntityCoordinates latitudeKeyName(@Nonnull String latitudeKeyName) {
     this.latitudeKeyName = latitudeKeyName;
     return this;
   }
@@ -60,7 +62,7 @@ public class EntityCoordinates {
    * Get latitudeKeyName
    * @return latitudeKeyName
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_LATITUDE_KEY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getLatitudeKeyName() {
@@ -70,12 +72,12 @@ public class EntityCoordinates {
 
   @JsonProperty(value = JSON_PROPERTY_LATITUDE_KEY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLatitudeKeyName(@javax.annotation.Nonnull String latitudeKeyName) {
+  public void setLatitudeKeyName(@Nonnull String latitudeKeyName) {
     this.latitudeKeyName = latitudeKeyName;
   }
 
 
-  public EntityCoordinates longitudeKeyName(@javax.annotation.Nonnull String longitudeKeyName) {
+  public EntityCoordinates longitudeKeyName(@Nonnull String longitudeKeyName) {
     this.longitudeKeyName = longitudeKeyName;
     return this;
   }
@@ -84,7 +86,7 @@ public class EntityCoordinates {
    * Get longitudeKeyName
    * @return longitudeKeyName
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_LONGITUDE_KEY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getLongitudeKeyName() {
@@ -94,7 +96,7 @@ public class EntityCoordinates {
 
   @JsonProperty(value = JSON_PROPERTY_LONGITUDE_KEY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLongitudeKeyName(@javax.annotation.Nonnull String longitudeKeyName) {
+  public void setLongitudeKeyName(@Nonnull String longitudeKeyName) {
     this.longitudeKeyName = longitudeKeyName;
   }
 

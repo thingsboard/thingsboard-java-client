@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   StoreInfo.JSON_PROPERTY_SHA256_CERT_FINGERPRINTS,
   StoreInfo.JSON_PROPERTY_STORE_LINK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class StoreInfo {
   public static final String JSON_PROPERTY_APP_ID = "appId";
-  @javax.annotation.Nullable
+  @Nullable
   private String appId;
 
   public static final String JSON_PROPERTY_SHA256_CERT_FINGERPRINTS = "sha256CertFingerprints";
-  @javax.annotation.Nullable
+  @Nullable
   private String sha256CertFingerprints;
 
   public static final String JSON_PROPERTY_STORE_LINK = "storeLink";
-  @javax.annotation.Nullable
+  @Nullable
   private String storeLink;
 
   public StoreInfo() { 
   }
 
-  public StoreInfo appId(@javax.annotation.Nullable String appId) {
+  public StoreInfo appId(@Nullable String appId) {
     this.appId = appId;
     return this;
   }
@@ -65,7 +67,7 @@ public class StoreInfo {
    * Get appId
    * @return appId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_APP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAppId() {
@@ -75,12 +77,12 @@ public class StoreInfo {
 
   @JsonProperty(value = JSON_PROPERTY_APP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAppId(@javax.annotation.Nullable String appId) {
+  public void setAppId(@Nullable String appId) {
     this.appId = appId;
   }
 
 
-  public StoreInfo sha256CertFingerprints(@javax.annotation.Nullable String sha256CertFingerprints) {
+  public StoreInfo sha256CertFingerprints(@Nullable String sha256CertFingerprints) {
     this.sha256CertFingerprints = sha256CertFingerprints;
     return this;
   }
@@ -89,7 +91,7 @@ public class StoreInfo {
    * Get sha256CertFingerprints
    * @return sha256CertFingerprints
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHA256_CERT_FINGERPRINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSha256CertFingerprints() {
@@ -99,12 +101,12 @@ public class StoreInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SHA256_CERT_FINGERPRINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSha256CertFingerprints(@javax.annotation.Nullable String sha256CertFingerprints) {
+  public void setSha256CertFingerprints(@Nullable String sha256CertFingerprints) {
     this.sha256CertFingerprints = sha256CertFingerprints;
   }
 
 
-  public StoreInfo storeLink(@javax.annotation.Nullable String storeLink) {
+  public StoreInfo storeLink(@Nullable String storeLink) {
     this.storeLink = storeLink;
     return this;
   }
@@ -113,7 +115,7 @@ public class StoreInfo {
    * Get storeLink
    * @return storeLink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STORE_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getStoreLink() {
@@ -123,7 +125,7 @@ public class StoreInfo {
 
   @JsonProperty(value = JSON_PROPERTY_STORE_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStoreLink(@javax.annotation.Nullable String storeLink) {
+  public void setStoreLink(@Nullable String storeLink) {
     this.storeLink = storeLink;
   }
 

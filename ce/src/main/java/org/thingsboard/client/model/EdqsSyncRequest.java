@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,16 +43,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   EdqsSyncRequest.JSON_PROPERTY_OBJECT_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdqsSyncRequest {
   public static final String JSON_PROPERTY_OBJECT_TYPES = "objectTypes";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<ObjectType> objectTypes = new LinkedHashSet<>();
 
   public EdqsSyncRequest() { 
   }
 
-  public EdqsSyncRequest objectTypes(@javax.annotation.Nullable Set<ObjectType> objectTypes) {
+  public EdqsSyncRequest objectTypes(@Nullable Set<ObjectType> objectTypes) {
     this.objectTypes = objectTypes;
     return this;
   }
@@ -67,7 +69,7 @@ public class EdqsSyncRequest {
    * Get objectTypes
    * @return objectTypes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OBJECT_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<ObjectType> getObjectTypes() {
@@ -78,7 +80,7 @@ public class EdqsSyncRequest {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_OBJECT_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setObjectTypes(@javax.annotation.Nullable Set<ObjectType> objectTypes) {
+  public void setObjectTypes(@Nullable Set<ObjectType> objectTypes) {
     this.objectTypes = objectTypes;
   }
 

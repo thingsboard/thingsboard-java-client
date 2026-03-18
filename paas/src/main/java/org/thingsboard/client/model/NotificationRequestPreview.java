@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,28 +47,28 @@ import org.thingsboard.client.ApiClient;
   NotificationRequestPreview.JSON_PROPERTY_RECIPIENTS_COUNT_BY_TARGET,
   NotificationRequestPreview.JSON_PROPERTY_RECIPIENTS_PREVIEW
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequestPreview {
   public static final String JSON_PROPERTY_PROCESSED_TEMPLATES = "processedTemplates";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, DeliveryMethodNotificationTemplate> processedTemplates = new HashMap<>();
 
   public static final String JSON_PROPERTY_TOTAL_RECIPIENTS_COUNT = "totalRecipientsCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer totalRecipientsCount;
 
   public static final String JSON_PROPERTY_RECIPIENTS_COUNT_BY_TARGET = "recipientsCountByTarget";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, Integer> recipientsCountByTarget = new HashMap<>();
 
   public static final String JSON_PROPERTY_RECIPIENTS_PREVIEW = "recipientsPreview";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> recipientsPreview = new ArrayList<>();
 
   public NotificationRequestPreview() { 
   }
 
-  public NotificationRequestPreview processedTemplates(@javax.annotation.Nullable Map<String, DeliveryMethodNotificationTemplate> processedTemplates) {
+  public NotificationRequestPreview processedTemplates(@Nullable Map<String, DeliveryMethodNotificationTemplate> processedTemplates) {
     this.processedTemplates = processedTemplates;
     return this;
   }
@@ -83,7 +85,7 @@ public class NotificationRequestPreview {
    * Get processedTemplates
    * @return processedTemplates
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROCESSED_TEMPLATES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, DeliveryMethodNotificationTemplate> getProcessedTemplates() {
@@ -93,12 +95,12 @@ public class NotificationRequestPreview {
 
   @JsonProperty(value = JSON_PROPERTY_PROCESSED_TEMPLATES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProcessedTemplates(@javax.annotation.Nullable Map<String, DeliveryMethodNotificationTemplate> processedTemplates) {
+  public void setProcessedTemplates(@Nullable Map<String, DeliveryMethodNotificationTemplate> processedTemplates) {
     this.processedTemplates = processedTemplates;
   }
 
 
-  public NotificationRequestPreview totalRecipientsCount(@javax.annotation.Nullable Integer totalRecipientsCount) {
+  public NotificationRequestPreview totalRecipientsCount(@Nullable Integer totalRecipientsCount) {
     this.totalRecipientsCount = totalRecipientsCount;
     return this;
   }
@@ -107,7 +109,7 @@ public class NotificationRequestPreview {
    * Get totalRecipientsCount
    * @return totalRecipientsCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_RECIPIENTS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTotalRecipientsCount() {
@@ -117,12 +119,12 @@ public class NotificationRequestPreview {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_RECIPIENTS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalRecipientsCount(@javax.annotation.Nullable Integer totalRecipientsCount) {
+  public void setTotalRecipientsCount(@Nullable Integer totalRecipientsCount) {
     this.totalRecipientsCount = totalRecipientsCount;
   }
 
 
-  public NotificationRequestPreview recipientsCountByTarget(@javax.annotation.Nullable Map<String, Integer> recipientsCountByTarget) {
+  public NotificationRequestPreview recipientsCountByTarget(@Nullable Map<String, Integer> recipientsCountByTarget) {
     this.recipientsCountByTarget = recipientsCountByTarget;
     return this;
   }
@@ -139,7 +141,7 @@ public class NotificationRequestPreview {
    * Get recipientsCountByTarget
    * @return recipientsCountByTarget
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RECIPIENTS_COUNT_BY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, Integer> getRecipientsCountByTarget() {
@@ -149,12 +151,12 @@ public class NotificationRequestPreview {
 
   @JsonProperty(value = JSON_PROPERTY_RECIPIENTS_COUNT_BY_TARGET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRecipientsCountByTarget(@javax.annotation.Nullable Map<String, Integer> recipientsCountByTarget) {
+  public void setRecipientsCountByTarget(@Nullable Map<String, Integer> recipientsCountByTarget) {
     this.recipientsCountByTarget = recipientsCountByTarget;
   }
 
 
-  public NotificationRequestPreview recipientsPreview(@javax.annotation.Nullable List<String> recipientsPreview) {
+  public NotificationRequestPreview recipientsPreview(@Nullable List<String> recipientsPreview) {
     this.recipientsPreview = recipientsPreview;
     return this;
   }
@@ -171,7 +173,7 @@ public class NotificationRequestPreview {
    * Get recipientsPreview
    * @return recipientsPreview
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RECIPIENTS_PREVIEW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getRecipientsPreview() {
@@ -181,7 +183,7 @@ public class NotificationRequestPreview {
 
   @JsonProperty(value = JSON_PROPERTY_RECIPIENTS_PREVIEW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRecipientsPreview(@javax.annotation.Nullable List<String> recipientsPreview) {
+  public void setRecipientsPreview(@Nullable List<String> recipientsPreview) {
     this.recipientsPreview = recipientsPreview;
   }
 

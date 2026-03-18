@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   DummyTaskFailure.JSON_PROPERTY_NUMBER,
   DummyTaskFailure.JSON_PROPERTY_FAIL_ALWAYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DummyTaskFailure {
   public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
+  @Nullable
   private String error;
 
   public static final String JSON_PROPERTY_NUMBER = "number";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer number;
 
   public static final String JSON_PROPERTY_FAIL_ALWAYS = "failAlways";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean failAlways;
 
   public DummyTaskFailure() { 
   }
 
-  public DummyTaskFailure error(@javax.annotation.Nullable String error) {
+  public DummyTaskFailure error(@Nullable String error) {
     this.error = error;
     return this;
   }
@@ -65,7 +67,7 @@ public class DummyTaskFailure {
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getError() {
@@ -75,12 +77,12 @@ public class DummyTaskFailure {
 
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable String error) {
+  public void setError(@Nullable String error) {
     this.error = error;
   }
 
 
-  public DummyTaskFailure number(@javax.annotation.Nullable Integer number) {
+  public DummyTaskFailure number(@Nullable Integer number) {
     this.number = number;
     return this;
   }
@@ -89,7 +91,7 @@ public class DummyTaskFailure {
    * Get number
    * @return number
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getNumber() {
@@ -99,12 +101,12 @@ public class DummyTaskFailure {
 
   @JsonProperty(value = JSON_PROPERTY_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNumber(@javax.annotation.Nullable Integer number) {
+  public void setNumber(@Nullable Integer number) {
     this.number = number;
   }
 
 
-  public DummyTaskFailure failAlways(@javax.annotation.Nullable Boolean failAlways) {
+  public DummyTaskFailure failAlways(@Nullable Boolean failAlways) {
     this.failAlways = failAlways;
     return this;
   }
@@ -113,7 +115,7 @@ public class DummyTaskFailure {
    * Get failAlways
    * @return failAlways
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FAIL_ALWAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getFailAlways() {
@@ -123,7 +125,7 @@ public class DummyTaskFailure {
 
   @JsonProperty(value = JSON_PROPERTY_FAIL_ALWAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFailAlways(@javax.annotation.Nullable Boolean failAlways) {
+  public void setFailAlways(@Nullable Boolean failAlways) {
     this.failAlways = failAlways;
   }
 
