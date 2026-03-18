@@ -247,7 +247,7 @@ public class EntityViewApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName(EV_PREFIX + "device_" + suffix);
         device.setType("default");
-        return client.saveDevice(device, null, null, null, null, null);
+        return client.saveDevice(device, null, null, null, null);
     }
 
     private EntityView createEntityView(String name, String type, Device device) throws Exception {

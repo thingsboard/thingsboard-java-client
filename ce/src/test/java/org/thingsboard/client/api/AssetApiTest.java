@@ -42,7 +42,7 @@ public class AssetApiTest extends AbstractApiTest {
             asset.setLabel("Test Asset " + i);
             asset.setType(((i % 2 == 0) ? "default" : "building"));
 
-            Asset createdAsset = client.saveAsset(asset, null, null, null, null);
+            Asset createdAsset = client.saveAsset(asset, null, null, null);
             assertNotNull(createdAsset);
             assertNotNull(createdAsset.getId());
             assertEquals(assetName, createdAsset.getName());
@@ -51,7 +51,7 @@ public class AssetApiTest extends AbstractApiTest {
         }
 
         // find all, check count
-        PageDataAsset allAssets = client.getTenantAssets(100, 0, null, null, null, null, null);
+        PageDataAsset allAssets = client.getTenantAssets(100, 0, null, null, null, null);
 
         assertNotNull(allAssets);
         assertNotNull(allAssets.getData());
@@ -59,7 +59,7 @@ public class AssetApiTest extends AbstractApiTest {
         assertEquals(20, initialSize, "Expected at least 20 assets, but got " + allAssets.getData().size());
 
         //find all with search text, check count
-        PageDataAsset allAssetsBySearchText = client.getTenantAssets(100, 0, null, TEST_PREFIX_2, null, null, null);
+        PageDataAsset allAssetsBySearchText = client.getTenantAssets(100, 0, null, TEST_PREFIX_2, null, null);
         assertEquals(10, allAssetsBySearchText.getData().size(), "Expected exactly 10 test assets");
 
         // find by id
@@ -72,7 +72,7 @@ public class AssetApiTest extends AbstractApiTest {
         client.deleteAsset(assetToDeleteId.toString());
 
         // Verify the asset is deleted
-        PageDataAsset assetsAfterDelete = client.getTenantAssets(100, 0, null, null, null, null, null);
+        PageDataAsset assetsAfterDelete = client.getTenantAssets(100, 0, null, null, null, null);
         assertEquals(initialSize - 1, assetsAfterDelete.getData().size());
 
         assertReturns404(() ->

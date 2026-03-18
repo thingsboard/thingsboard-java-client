@@ -71,7 +71,7 @@ public class EdgeApiTest extends AbstractApiTest {
 
         // get tenant edge infos
         PageDataEdgeInfo edgeInfos = client.getAllEdgeInfos(100, 0, true, "gateway",
-                TEST_PREFIX + "Edge_" + timestamp, null, null, null);
+                TEST_PREFIX + "Edge_" + timestamp, null, null);
         assertEquals(5, edgeInfos.getData().size());
 
         // get edge by id

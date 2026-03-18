@@ -71,7 +71,7 @@ public class AbstractApiTest {
         Customer customer = new Customer();
         customer.setTitle("Java client test customer");
         customer.setTenantId(savedTenant.getId());
-        savedCustomer = client.saveCustomer(customer, null, null, null, null);
+        savedCustomer = client.saveCustomer(customer, null, null, null);
 
         User customerUser = new User();
         customerUser.setAuthority(Authority.CUSTOMER_USER);

@@ -92,13 +92,13 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "temp_" + ts + "_" + i);
             d.setType(type1);
-            client.saveDevice(d, null, null, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null, null, null);
         }
         for (int i = 0; i < 2; i++) {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "hum_" + ts + "_" + i);
             d.setType(type2);
-            client.saveDevice(d, null, null, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null, null, null);
         }
 
         // filter by single device type

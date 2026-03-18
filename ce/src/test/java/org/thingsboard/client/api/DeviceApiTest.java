@@ -45,7 +45,7 @@ public class DeviceApiTest extends AbstractApiTest {
             device.setLabel("Test Device " + i);
             device.setType(((i % 2 == 0) ? "default" : "thermostat"));
 
-            Device createdDevice = client.saveDevice(device, null, null, null, null, null);
+            Device createdDevice = client.saveDevice(device, null, null, null, null);
             assertNotNull(createdDevice);
             assertNotNull(createdDevice.getId());
             assertEquals(deviceName, createdDevice.getName());
