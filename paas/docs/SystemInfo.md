@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **systemData** | **List\<SystemInfoData\>** | System data. | [optional] |
 | **monolith** | **Boolean** | Is monolith. | [optional] |
+| **systemData** | **List\<SystemInfoData\>** | System data. | [optional] |
 
 
 

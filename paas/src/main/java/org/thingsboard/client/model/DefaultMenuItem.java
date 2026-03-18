@@ -46,6 +46,7 @@ import org.thingsboard.client.ApiClient;
   DefaultMenuItem.JSON_PROPERTY_ID,
   DefaultMenuItem.JSON_PROPERTY_NAME,
   DefaultMenuItem.JSON_PROPERTY_ICON,
+  DefaultMenuItem.JSON_PROPERTY_VISIBLE,
   DefaultMenuItem.JSON_PROPERTY_PAGES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -67,6 +68,10 @@ public class DefaultMenuItem extends MenuItem {
   public static final String JSON_PROPERTY_ICON = "icon";
   @javax.annotation.Nullable
   private String icon;
+
+  public static final String JSON_PROPERTY_VISIBLE = "visible";
+  @javax.annotation.Nullable
+  private Boolean visible;
 
   public static final String JSON_PROPERTY_PAGES = "pages";
   @javax.annotation.Nullable
@@ -145,6 +150,30 @@ public class DefaultMenuItem extends MenuItem {
   }
 
 
+  public DefaultMenuItem visible(@javax.annotation.Nullable Boolean visible) {
+    this.visible = visible;
+    return this;
+  }
+
+  /**
+   * Mark if menu item is visible for user
+   * @return visible
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getVisible() {
+    return visible;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_VISIBLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVisible(@javax.annotation.Nullable Boolean visible) {
+    this.visible = visible;
+  }
+
+
   public DefaultMenuItem pages(@javax.annotation.Nullable List<DefaultMenuItem> pages) {
     this.pages = pages;
     return this;
@@ -183,12 +212,6 @@ public class DefaultMenuItem extends MenuItem {
     return this;
   }
 
-  @Override
-  public DefaultMenuItem visible(@javax.annotation.Nullable Boolean visible) {
-    this.setVisible(visible);
-    return this;
-  }
-
   /**
    * Return true if this DefaultMenuItem object is equal to o.
    */
@@ -204,13 +227,14 @@ public class DefaultMenuItem extends MenuItem {
     return Objects.equals(this.id, defaultMenuItem.id) &&
         Objects.equals(this.name, defaultMenuItem.name) &&
         Objects.equals(this.icon, defaultMenuItem.icon) &&
+        Objects.equals(this.visible, defaultMenuItem.visible) &&
         Objects.equals(this.pages, defaultMenuItem.pages) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, icon, pages, super.hashCode());
+    return Objects.hash(id, name, icon, visible, pages, super.hashCode());
   }
 
   @Override
@@ -221,6 +245,7 @@ public class DefaultMenuItem extends MenuItem {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    icon: ").append(toIndentedString(icon)).append("\n");
+    sb.append("    visible: ").append(toIndentedString(visible)).append("\n");
     sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
     sb.append("}");
     return sb.toString();

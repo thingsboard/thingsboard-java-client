@@ -40,9 +40,9 @@ import org.thingsboard.client.ApiClient;
  * CalculatedFieldConfiguration
  */
 @JsonPropertyOrder({
+  CalculatedFieldConfiguration.JSON_PROPERTY_TYPE,
   CalculatedFieldConfiguration.JSON_PROPERTY_OUTPUT,
-  CalculatedFieldConfiguration.JSON_PROPERTY_AI_GENERATED,
-  CalculatedFieldConfiguration.JSON_PROPERTY_TYPE
+  CalculatedFieldConfiguration.JSON_PROPERTY_AI_GENERATED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -61,6 +61,10 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class CalculatedFieldConfiguration {
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
+  private String type;
+
   public static final String JSON_PROPERTY_OUTPUT = "output";
   @javax.annotation.Nullable
   private Output output;
@@ -69,12 +73,32 @@ public class CalculatedFieldConfiguration {
   @javax.annotation.Nullable
   private Boolean aiGenerated;
 
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
-  private String type;
-
   public CalculatedFieldConfiguration() { 
   }
+
+  public CalculatedFieldConfiguration type(@javax.annotation.Nonnull String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getType() {
+    return type;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@javax.annotation.Nonnull String type) {
+    this.type = type;
+  }
+
 
   public CalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
     this.output = output;
@@ -124,30 +148,6 @@ public class CalculatedFieldConfiguration {
   }
 
 
-  public CalculatedFieldConfiguration type(@javax.annotation.Nonnull String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
-    this.type = type;
-  }
-
-
   /**
    * Return true if this CalculatedFieldConfiguration object is equal to o.
    */
@@ -160,23 +160,23 @@ public class CalculatedFieldConfiguration {
       return false;
     }
     CalculatedFieldConfiguration calculatedFieldConfiguration = (CalculatedFieldConfiguration) o;
-    return Objects.equals(this.output, calculatedFieldConfiguration.output) &&
-        Objects.equals(this.aiGenerated, calculatedFieldConfiguration.aiGenerated) &&
-        Objects.equals(this.type, calculatedFieldConfiguration.type);
+    return Objects.equals(this.type, calculatedFieldConfiguration.type) &&
+        Objects.equals(this.output, calculatedFieldConfiguration.output) &&
+        Objects.equals(this.aiGenerated, calculatedFieldConfiguration.aiGenerated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(output, aiGenerated, type);
+    return Objects.hash(type, output, aiGenerated);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CalculatedFieldConfiguration {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    output: ").append(toIndentedString(output)).append("\n");
     sb.append("    aiGenerated: ").append(toIndentedString(aiGenerated)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -224,6 +224,11 @@ public class CalculatedFieldConfiguration {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
@@ -232,11 +237,6 @@ public class CalculatedFieldConfiguration {
     // add `aiGenerated` to the URL query string
     if (getAiGenerated() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
-    }
-
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     return joiner.toString();

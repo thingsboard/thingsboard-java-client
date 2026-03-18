@@ -44,9 +44,9 @@ import org.thingsboard.client.ApiClient;
   ResourceExportData.JSON_PROPERTY_RESOURCE_KEY,
   ResourceExportData.JSON_PROPERTY_FILE_NAME,
   ResourceExportData.JSON_PROPERTY_PUBLIC_RESOURCE_KEY,
-  ResourceExportData.JSON_PROPERTY_IS_PUBLIC,
   ResourceExportData.JSON_PROPERTY_MEDIA_TYPE,
   ResourceExportData.JSON_PROPERTY_DATA,
+  ResourceExportData.JSON_PROPERTY_IS_PUBLIC,
   ResourceExportData.JSON_PROPERTY_PUBLIC
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -79,10 +79,6 @@ public class ResourceExportData {
   @javax.annotation.Nullable
   private String publicResourceKey;
 
-  public static final String JSON_PROPERTY_IS_PUBLIC = "isPublic";
-  @javax.annotation.Nullable
-  private Boolean isPublic;
-
   public static final String JSON_PROPERTY_MEDIA_TYPE = "mediaType";
   @javax.annotation.Nullable
   private String mediaType;
@@ -90,6 +86,10 @@ public class ResourceExportData {
   public static final String JSON_PROPERTY_DATA = "data";
   @javax.annotation.Nullable
   private String data;
+
+  public static final String JSON_PROPERTY_IS_PUBLIC = "isPublic";
+  @javax.annotation.Nullable
+  private Boolean isPublic;
 
   public static final String JSON_PROPERTY_PUBLIC = "public";
   @javax.annotation.Nullable
@@ -266,30 +266,6 @@ public class ResourceExportData {
   }
 
 
-  public ResourceExportData isPublic(@javax.annotation.Nullable Boolean isPublic) {
-    this.isPublic = isPublic;
-    return this;
-  }
-
-  /**
-   * Get isPublic
-   * @return isPublic
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIsPublic() {
-    return isPublic;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsPublic(@javax.annotation.Nullable Boolean isPublic) {
-    this.isPublic = isPublic;
-  }
-
-
   public ResourceExportData mediaType(@javax.annotation.Nullable String mediaType) {
     this.mediaType = mediaType;
     return this;
@@ -338,6 +314,30 @@ public class ResourceExportData {
   }
 
 
+  public ResourceExportData isPublic(@javax.annotation.Nullable Boolean isPublic) {
+    this.isPublic = isPublic;
+    return this;
+  }
+
+  /**
+   * Get isPublic
+   * @return isPublic
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIsPublic() {
+    return isPublic;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsPublic(@javax.annotation.Nullable Boolean isPublic) {
+    this.isPublic = isPublic;
+  }
+
+
   public ResourceExportData _public(@javax.annotation.Nullable Boolean _public) {
     this._public = _public;
     return this;
@@ -381,15 +381,15 @@ public class ResourceExportData {
         Objects.equals(this.resourceKey, resourceExportData.resourceKey) &&
         Objects.equals(this.fileName, resourceExportData.fileName) &&
         Objects.equals(this.publicResourceKey, resourceExportData.publicResourceKey) &&
-        Objects.equals(this.isPublic, resourceExportData.isPublic) &&
         Objects.equals(this.mediaType, resourceExportData.mediaType) &&
         Objects.equals(this.data, resourceExportData.data) &&
+        Objects.equals(this.isPublic, resourceExportData.isPublic) &&
         Objects.equals(this._public, resourceExportData._public);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(link, title, type, subType, resourceKey, fileName, publicResourceKey, isPublic, mediaType, data, _public);
+    return Objects.hash(link, title, type, subType, resourceKey, fileName, publicResourceKey, mediaType, data, isPublic, _public);
   }
 
   @Override
@@ -403,9 +403,9 @@ public class ResourceExportData {
     sb.append("    resourceKey: ").append(toIndentedString(resourceKey)).append("\n");
     sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
     sb.append("    publicResourceKey: ").append(toIndentedString(publicResourceKey)).append("\n");
-    sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    isPublic: ").append(toIndentedString(isPublic)).append("\n");
     sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -489,11 +489,6 @@ public class ResourceExportData {
       joiner.add(String.format(java.util.Locale.ROOT, "%spublicResourceKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublicResourceKey()))));
     }
 
-    // add `isPublic` to the URL query string
-    if (getIsPublic() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sisPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsPublic()))));
-    }
-
     // add `mediaType` to the URL query string
     if (getMediaType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smediaType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMediaType()))));
@@ -502,6 +497,11 @@ public class ResourceExportData {
     // add `data` to the URL query string
     if (getData() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdata%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getData()))));
+    }
+
+    // add `isPublic` to the URL query string
+    if (getIsPublic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sisPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIsPublic()))));
     }
 
     // add `public` to the URL query string

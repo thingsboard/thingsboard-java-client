@@ -36,78 +36,50 @@ import org.thingsboard.client.ApiClient;
  * ThingsboardCredentialsExpiredResponse
  */
 @JsonPropertyOrder({
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_STATUS,
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_MESSAGE,
   ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_ERROR_CODE,
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_TIMESTAMP,
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_RESET_TOKEN
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_MESSAGE,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_RESET_TOKEN,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_STATUS,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_TIMESTAMP
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ThingsboardCredentialsExpiredResponse {
-  public static final String JSON_PROPERTY_STATUS = "status";
+  public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
   @javax.annotation.Nullable
-  private Integer status;
+  private ThingsboardErrorCode errorCode;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
   @javax.annotation.Nullable
   private String message;
 
-  public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
+  public static final String JSON_PROPERTY_RESET_TOKEN = "resetToken";
   @javax.annotation.Nullable
-  private ThingsboardErrorCode errorCode;
+  private String resetToken;
+
+  public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nullable
+  private Integer status;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   @javax.annotation.Nullable
   private Long timestamp;
-
-  public static final String JSON_PROPERTY_RESET_TOKEN = "resetToken";
-  @javax.annotation.Nullable
-  private String resetToken;
 
   public ThingsboardCredentialsExpiredResponse() { 
   }
 
   @JsonCreator
   public ThingsboardCredentialsExpiredResponse(
-    @JsonProperty(JSON_PROPERTY_STATUS) Integer status, 
     @JsonProperty(JSON_PROPERTY_MESSAGE) String message, 
-    @JsonProperty(JSON_PROPERTY_TIMESTAMP) Long timestamp, 
-    @JsonProperty(JSON_PROPERTY_RESET_TOKEN) String resetToken
+    @JsonProperty(JSON_PROPERTY_RESET_TOKEN) String resetToken, 
+    @JsonProperty(JSON_PROPERTY_STATUS) Integer status, 
+    @JsonProperty(JSON_PROPERTY_TIMESTAMP) Long timestamp
   ) {
   this();
-    this.status = status;
     this.message = message;
-    this.timestamp = timestamp;
     this.resetToken = resetToken;
+    this.status = status;
+    this.timestamp = timestamp;
   }
-
-  /**
-   * HTTP Response Status Code
-   * @return status
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getStatus() {
-    return status;
-  }
-
-
-
-
-  /**
-   * Error message
-   * @return message
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMessage() {
-    return message;
-  }
-
-
-
 
   public ThingsboardCredentialsExpiredResponse errorCode(@javax.annotation.Nullable ThingsboardErrorCode errorCode) {
     this.errorCode = errorCode;
@@ -134,14 +106,14 @@ public class ThingsboardCredentialsExpiredResponse {
 
 
   /**
-   * Timestamp
-   * @return timestamp
+   * Error message
+   * @return message
    */
   @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TIMESTAMP, required = false)
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getTimestamp() {
-    return timestamp;
+  public String getMessage() {
+    return message;
   }
 
 
@@ -162,6 +134,34 @@ public class ThingsboardCredentialsExpiredResponse {
 
 
   /**
+   * HTTP Response Status Code
+   * @return status
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getStatus() {
+    return status;
+  }
+
+
+
+
+  /**
+   * Timestamp
+   * @return timestamp
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TIMESTAMP, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getTimestamp() {
+    return timestamp;
+  }
+
+
+
+
+  /**
    * Return true if this ThingsboardCredentialsExpiredResponse object is equal to o.
    */
   @Override
@@ -173,27 +173,27 @@ public class ThingsboardCredentialsExpiredResponse {
       return false;
     }
     ThingsboardCredentialsExpiredResponse thingsboardCredentialsExpiredResponse = (ThingsboardCredentialsExpiredResponse) o;
-    return Objects.equals(this.status, thingsboardCredentialsExpiredResponse.status) &&
+    return Objects.equals(this.errorCode, thingsboardCredentialsExpiredResponse.errorCode) &&
         Objects.equals(this.message, thingsboardCredentialsExpiredResponse.message) &&
-        Objects.equals(this.errorCode, thingsboardCredentialsExpiredResponse.errorCode) &&
-        Objects.equals(this.timestamp, thingsboardCredentialsExpiredResponse.timestamp) &&
-        Objects.equals(this.resetToken, thingsboardCredentialsExpiredResponse.resetToken);
+        Objects.equals(this.resetToken, thingsboardCredentialsExpiredResponse.resetToken) &&
+        Objects.equals(this.status, thingsboardCredentialsExpiredResponse.status) &&
+        Objects.equals(this.timestamp, thingsboardCredentialsExpiredResponse.timestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, message, errorCode, timestamp, resetToken);
+    return Objects.hash(errorCode, message, resetToken, status, timestamp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ThingsboardCredentialsExpiredResponse {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
-    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    resetToken: ").append(toIndentedString(resetToken)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -241,9 +241,9 @@ public class ThingsboardCredentialsExpiredResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `status` to the URL query string
-    if (getStatus() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
+    // add `errorCode` to the URL query string
+    if (getErrorCode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%serrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorCode()))));
     }
 
     // add `message` to the URL query string
@@ -251,19 +251,19 @@ public class ThingsboardCredentialsExpiredResponse {
       joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
     }
 
-    // add `errorCode` to the URL query string
-    if (getErrorCode() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%serrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorCode()))));
+    // add `resetToken` to the URL query string
+    if (getResetToken() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sresetToken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResetToken()))));
+    }
+
+    // add `status` to the URL query string
+    if (getStatus() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
     }
 
     // add `timestamp` to the URL query string
     if (getTimestamp() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stimestamp%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimestamp()))));
-    }
-
-    // add `resetToken` to the URL query string
-    if (getResetToken() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sresetToken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResetToken()))));
     }
 
     return joiner.toString();

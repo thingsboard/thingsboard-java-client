@@ -41,8 +41,8 @@ import org.thingsboard.client.ApiClient;
  * Configuration for alarm schedule
  */
 @JsonPropertyOrder({
-  AlarmSchedule.JSON_PROPERTY_TYPE,
-  AlarmSchedule.JSON_PROPERTY_DYNAMIC_VALUE
+  AlarmSchedule.JSON_PROPERTY_DYNAMIC_VALUE,
+  AlarmSchedule.JSON_PROPERTY_TYPE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -57,40 +57,16 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class AlarmSchedule {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
-  private AlarmScheduleType type;
-
   public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
   @javax.annotation.Nullable
   private DynamicValueString dynamicValue;
 
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nullable
+  private AlarmScheduleType type;
+
   public AlarmSchedule() { 
   }
-
-  public AlarmSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmScheduleType getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable AlarmScheduleType type) {
-    this.type = type;
-  }
-
 
   public AlarmSchedule dynamicValue(@javax.annotation.Nullable DynamicValueString dynamicValue) {
     this.dynamicValue = dynamicValue;
@@ -116,6 +92,30 @@ public class AlarmSchedule {
   }
 
 
+  public AlarmSchedule type(@javax.annotation.Nullable AlarmScheduleType type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmScheduleType getType() {
+    return type;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(@javax.annotation.Nullable AlarmScheduleType type) {
+    this.type = type;
+  }
+
+
   /**
    * Return true if this AlarmSchedule object is equal to o.
    */
@@ -128,21 +128,21 @@ public class AlarmSchedule {
       return false;
     }
     AlarmSchedule alarmSchedule = (AlarmSchedule) o;
-    return Objects.equals(this.type, alarmSchedule.type) &&
-        Objects.equals(this.dynamicValue, alarmSchedule.dynamicValue);
+    return Objects.equals(this.dynamicValue, alarmSchedule.dynamicValue) &&
+        Objects.equals(this.type, alarmSchedule.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, dynamicValue);
+    return Objects.hash(dynamicValue, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmSchedule {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    dynamicValue: ").append(toIndentedString(dynamicValue)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -190,14 +190,14 @@ public class AlarmSchedule {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `dynamicValue` to the URL query string
     if (getDynamicValue() != null) {
       joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     return joiner.toString();

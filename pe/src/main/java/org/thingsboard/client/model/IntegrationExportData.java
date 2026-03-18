@@ -62,12 +62,6 @@ public class IntegrationExportData extends EntityExportData {
   }
 
   @Override
-  public IntegrationExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public IntegrationExportData entity(@javax.annotation.Nullable ExportableEntity entity) {
     this.setEntity(entity);
     return this;
@@ -88,6 +82,12 @@ public class IntegrationExportData extends EntityExportData {
   @Override
   public IntegrationExportData calculatedFields(@javax.annotation.Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
+    return this;
+  }
+
+  @Override
+  public IntegrationExportData entityType(@javax.annotation.Nonnull EntityType entityType) {
+    this.setEntityType(entityType);
     return this;
   }
 
@@ -162,11 +162,6 @@ public class IntegrationExportData extends EntityExportData {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `entityType` to the URL query string
-    if (getEntityType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
-    }
-
     // add `entity` to the URL query string
     if (getEntity() != null) {
       joiner.add(getEntity().toUrlQueryString(prefix + "entity" + suffix));
@@ -199,6 +194,11 @@ public class IntegrationExportData extends EntityExportData {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `entityType` to the URL query string
+    if (getEntityType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
     }
 
     return joiner.toString();

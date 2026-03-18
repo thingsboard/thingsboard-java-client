@@ -123,6 +123,12 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
 
   @Override
+  public ScriptCalculatedFieldConfiguration type(@javax.annotation.Nonnull String type) {
+    this.setType(type);
+    return this;
+  }
+
+  @Override
   public ScriptCalculatedFieldConfiguration output(@javax.annotation.Nullable Output output) {
     this.setOutput(output);
     return this;
@@ -131,12 +137,6 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
   @Override
   public ScriptCalculatedFieldConfiguration aiGenerated(@javax.annotation.Nullable Boolean aiGenerated) {
     this.setAiGenerated(aiGenerated);
-    return this;
-  }
-
-  @Override
-  public ScriptCalculatedFieldConfiguration type(@javax.annotation.Nonnull String type) {
-    this.setType(type);
     return this;
   }
 
@@ -216,6 +216,11 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
@@ -224,11 +229,6 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
     // add `aiGenerated` to the URL query string
     if (getAiGenerated() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
-    }
-
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     // add `arguments` to the URL query string

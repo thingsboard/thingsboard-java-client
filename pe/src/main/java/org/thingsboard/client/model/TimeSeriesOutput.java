@@ -30,9 +30,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
 import org.thingsboard.client.model.AttributeScope;
 import org.thingsboard.client.model.Output;
+import org.thingsboard.client.model.TimeSeriesOutputStrategy;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -42,6 +42,7 @@ import org.thingsboard.client.ApiClient;
  * TimeSeriesOutput
  */
 @JsonPropertyOrder({
+  TimeSeriesOutput.JSON_PROPERTY_STRATEGY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -51,8 +52,36 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class TimeSeriesOutput extends Output {
+  public static final String JSON_PROPERTY_STRATEGY = "strategy";
+  @javax.annotation.Nullable
+  private TimeSeriesOutputStrategy strategy;
+
   public TimeSeriesOutput() { 
   }
+
+  public TimeSeriesOutput strategy(@javax.annotation.Nullable TimeSeriesOutputStrategy strategy) {
+    this.strategy = strategy;
+    return this;
+  }
+
+  /**
+   * Get strategy
+   * @return strategy
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_STRATEGY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TimeSeriesOutputStrategy getStrategy() {
+    return strategy;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_STRATEGY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStrategy(@javax.annotation.Nullable TimeSeriesOutputStrategy strategy) {
+    this.strategy = strategy;
+  }
+
 
   @Override
   public TimeSeriesOutput name(@javax.annotation.Nullable String name) {
@@ -73,12 +102,6 @@ public class TimeSeriesOutput extends Output {
   }
 
   @Override
-  public TimeSeriesOutput strategy(@javax.annotation.Nullable Object strategy) {
-    this.setStrategy(strategy);
-    return this;
-  }
-
-  @Override
   public TimeSeriesOutput type(@javax.annotation.Nonnull String type) {
     this.setType(type);
     return this;
@@ -95,23 +118,14 @@ public class TimeSeriesOutput extends Output {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    TimeSeriesOutput timeSeriesOutput = (TimeSeriesOutput) o;
+    return Objects.equals(this.strategy, timeSeriesOutput.strategy) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(strategy, super.hashCode());
   }
 
   @Override
@@ -119,6 +133,7 @@ public class TimeSeriesOutput extends Output {
     StringBuilder sb = new StringBuilder();
     sb.append("class TimeSeriesOutput {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    strategy: ").append(toIndentedString(strategy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -183,7 +198,7 @@ public class TimeSeriesOutput extends Output {
 
     // add `strategy` to the URL query string
     if (getStrategy() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstrategy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStrategy()))));
+      joiner.add(getStrategy().toUrlQueryString(prefix + "strategy" + suffix));
     }
 
     // add `type` to the URL query string

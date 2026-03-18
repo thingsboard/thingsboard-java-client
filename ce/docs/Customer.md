@@ -20,8 +20,8 @@
 | **title** | **String** | Title of the customer | |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] |
 | **version** | **Long** |  | [optional] |
-| **name** | **String** | Name of the customer. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer). | [optional] |
+| **name** | **String** | Name of the customer. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 
 
 

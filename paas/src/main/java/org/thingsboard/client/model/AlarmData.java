@@ -48,8 +48,6 @@ import org.thingsboard.client.ApiClient;
  * AlarmData
  */
 @JsonPropertyOrder({
-  AlarmData.JSON_PROPERTY_ENTITY_ID,
-  AlarmData.JSON_PROPERTY_LATEST,
   AlarmData.JSON_PROPERTY_ID,
   AlarmData.JSON_PROPERTY_CREATED_TIME,
   AlarmData.JSON_PROPERTY_TENANT_ID,
@@ -75,19 +73,13 @@ import org.thingsboard.client.ApiClient;
   AlarmData.JSON_PROPERTY_ORIGINATOR_LABEL,
   AlarmData.JSON_PROPERTY_ORIGINATOR_DISPLAY_NAME,
   AlarmData.JSON_PROPERTY_ASSIGNEE,
+  AlarmData.JSON_PROPERTY_ENTITY_ID,
+  AlarmData.JSON_PROPERTY_LATEST,
   AlarmData.JSON_PROPERTY_NAME,
   AlarmData.JSON_PROPERTY_STATUS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmData {
-  public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nullable
-  private EntityId entityId;
-
-  public static final String JSON_PROPERTY_LATEST = "latest";
-  @javax.annotation.Nullable
-  private Map<String, Map<String, TsValue>> latest = new HashMap<>();
-
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
   private AlarmId id;
@@ -188,6 +180,14 @@ public class AlarmData {
   @javax.annotation.Nullable
   private AlarmAssignee assignee;
 
+  public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
+  @javax.annotation.Nullable
+  private EntityId entityId;
+
+  public static final String JSON_PROPERTY_LATEST = "latest";
+  @javax.annotation.Nullable
+  private Map<String, Map<String, TsValue>> latest = new HashMap<>();
+
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
   private String name;
@@ -214,62 +214,6 @@ public class AlarmData {
     this.name = name;
     this.status = status;
   }
-
-  public AlarmData entityId(@javax.annotation.Nullable EntityId entityId) {
-    this.entityId = entityId;
-    return this;
-  }
-
-  /**
-   * Get entityId
-   * @return entityId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityId getEntityId() {
-    return entityId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityId(@javax.annotation.Nullable EntityId entityId) {
-    this.entityId = entityId;
-  }
-
-
-  public AlarmData latest(@javax.annotation.Nullable Map<String, Map<String, TsValue>> latest) {
-    this.latest = latest;
-    return this;
-  }
-
-  public AlarmData putLatestItem(String key, Map<String, TsValue> latestItem) {
-    if (this.latest == null) {
-      this.latest = new HashMap<>();
-    }
-    this.latest.put(key, latestItem);
-    return this;
-  }
-
-  /**
-   * Get latest
-   * @return latest
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_LATEST, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Map<String, Map<String, TsValue>> getLatest() {
-    return latest;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_LATEST, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatest(@javax.annotation.Nullable Map<String, Map<String, TsValue>> latest) {
-    this.latest = latest;
-  }
-
 
   public AlarmData id(@javax.annotation.Nullable AlarmId id) {
     this.id = id;
@@ -849,6 +793,62 @@ public class AlarmData {
   }
 
 
+  public AlarmData entityId(@javax.annotation.Nullable EntityId entityId) {
+    this.entityId = entityId;
+    return this;
+  }
+
+  /**
+   * Get entityId
+   * @return entityId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getEntityId() {
+    return entityId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntityId(@javax.annotation.Nullable EntityId entityId) {
+    this.entityId = entityId;
+  }
+
+
+  public AlarmData latest(@javax.annotation.Nullable Map<String, Map<String, TsValue>> latest) {
+    this.latest = latest;
+    return this;
+  }
+
+  public AlarmData putLatestItem(String key, Map<String, TsValue> latestItem) {
+    if (this.latest == null) {
+      this.latest = new HashMap<>();
+    }
+    this.latest.put(key, latestItem);
+    return this;
+  }
+
+  /**
+   * Get latest
+   * @return latest
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_LATEST, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Map<String, Map<String, TsValue>> getLatest() {
+    return latest;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LATEST, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLatest(@javax.annotation.Nullable Map<String, Map<String, TsValue>> latest) {
+    this.latest = latest;
+  }
+
+
   /**
    * representing type of the Alarm
    * @return name
@@ -889,9 +889,7 @@ public class AlarmData {
       return false;
     }
     AlarmData alarmData = (AlarmData) o;
-    return Objects.equals(this.entityId, alarmData.entityId) &&
-        Objects.equals(this.latest, alarmData.latest) &&
-        Objects.equals(this.id, alarmData.id) &&
+    return Objects.equals(this.id, alarmData.id) &&
         Objects.equals(this.createdTime, alarmData.createdTime) &&
         Objects.equals(this.tenantId, alarmData.tenantId) &&
         Objects.equals(this.customerId, alarmData.customerId) &&
@@ -916,21 +914,21 @@ public class AlarmData {
         Objects.equals(this.originatorLabel, alarmData.originatorLabel) &&
         Objects.equals(this.originatorDisplayName, alarmData.originatorDisplayName) &&
         Objects.equals(this.assignee, alarmData.assignee) &&
+        Objects.equals(this.entityId, alarmData.entityId) &&
+        Objects.equals(this.latest, alarmData.latest) &&
         Objects.equals(this.name, alarmData.name) &&
         Objects.equals(this.status, alarmData.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityId, latest, id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, propagateRelationTypes, originatorName, originatorLabel, originatorDisplayName, assignee, name, status);
+    return Objects.hash(id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, propagateRelationTypes, originatorName, originatorLabel, originatorDisplayName, assignee, entityId, latest, name, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmData {\n");
-    sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
-    sb.append("    latest: ").append(toIndentedString(latest)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
@@ -956,6 +954,8 @@ public class AlarmData {
     sb.append("    originatorLabel: ").append(toIndentedString(originatorLabel)).append("\n");
     sb.append("    originatorDisplayName: ").append(toIndentedString(originatorDisplayName)).append("\n");
     sb.append("    assignee: ").append(toIndentedString(assignee)).append("\n");
+    sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
+    sb.append("    latest: ").append(toIndentedString(latest)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
@@ -1004,20 +1004,6 @@ public class AlarmData {
     }
 
     StringJoiner joiner = new StringJoiner("&");
-
-    // add `entityId` to the URL query string
-    if (getEntityId() != null) {
-      joiner.add(getEntityId().toUrlQueryString(prefix + "entityId" + suffix));
-    }
-
-    // add `latest` to the URL query string
-    if (getLatest() != null) {
-      for (String _key : getLatest().keySet()) {
-        joiner.add(String.format(java.util.Locale.ROOT, "%slatest%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
-            getLatest().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getLatest().get(_key)))));
-      }
-    }
 
     // add `id` to the URL query string
     if (getId() != null) {
@@ -1146,6 +1132,20 @@ public class AlarmData {
     // add `assignee` to the URL query string
     if (getAssignee() != null) {
       joiner.add(getAssignee().toUrlQueryString(prefix + "assignee" + suffix));
+    }
+
+    // add `entityId` to the URL query string
+    if (getEntityId() != null) {
+      joiner.add(getEntityId().toUrlQueryString(prefix + "entityId" + suffix));
+    }
+
+    // add `latest` to the URL query string
+    if (getLatest() != null) {
+      for (String _key : getLatest().keySet()) {
+        joiner.add(String.format(java.util.Locale.ROOT, "%slatest%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
+            getLatest().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getLatest().get(_key)))));
+      }
     }
 
     // add `name` to the URL query string

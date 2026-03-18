@@ -50,8 +50,8 @@ import org.thingsboard.client.ApiClient;
   EdgeEvent.JSON_PROPERTY_ENTITY_ID,
   EdgeEvent.JSON_PROPERTY_UID,
   EdgeEvent.JSON_PROPERTY_TYPE,
-  EdgeEvent.JSON_PROPERTY_ENTITY_GROUP_ID,
-  EdgeEvent.JSON_PROPERTY_BODY
+  EdgeEvent.JSON_PROPERTY_BODY,
+  EdgeEvent.JSON_PROPERTY_ENTITY_GROUP_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdgeEvent {
@@ -91,13 +91,13 @@ public class EdgeEvent {
   @javax.annotation.Nullable
   private EdgeEventType type;
 
-  public static final String JSON_PROPERTY_ENTITY_GROUP_ID = "entityGroupId";
-  @javax.annotation.Nullable
-  private UUID entityGroupId;
-
   public static final String JSON_PROPERTY_BODY = "body";
   @javax.annotation.Nullable
   private com.fasterxml.jackson.databind.JsonNode body = null;
+
+  public static final String JSON_PROPERTY_ENTITY_GROUP_ID = "entityGroupId";
+  @javax.annotation.Nullable
+  private UUID entityGroupId;
 
   public EdgeEvent() { 
   }
@@ -316,30 +316,6 @@ public class EdgeEvent {
   }
 
 
-  public EdgeEvent entityGroupId(@javax.annotation.Nullable UUID entityGroupId) {
-    this.entityGroupId = entityGroupId;
-    return this;
-  }
-
-  /**
-   * Get entityGroupId
-   * @return entityGroupId
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public UUID getEntityGroupId() {
-    return entityGroupId;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityGroupId(@javax.annotation.Nullable UUID entityGroupId) {
-    this.entityGroupId = entityGroupId;
-  }
-
-
   public EdgeEvent body(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode body) {
     this.body = body;
     return this;
@@ -364,6 +340,30 @@ public class EdgeEvent {
   }
 
 
+  public EdgeEvent entityGroupId(@javax.annotation.Nullable UUID entityGroupId) {
+    this.entityGroupId = entityGroupId;
+    return this;
+  }
+
+  /**
+   * Get entityGroupId
+   * @return entityGroupId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public UUID getEntityGroupId() {
+    return entityGroupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntityGroupId(@javax.annotation.Nullable UUID entityGroupId) {
+    this.entityGroupId = entityGroupId;
+  }
+
+
   /**
    * Return true if this EdgeEvent object is equal to o.
    */
@@ -385,13 +385,13 @@ public class EdgeEvent {
         Objects.equals(this.entityId, edgeEvent.entityId) &&
         Objects.equals(this.uid, edgeEvent.uid) &&
         Objects.equals(this.type, edgeEvent.type) &&
-        Objects.equals(this.entityGroupId, edgeEvent.entityGroupId) &&
-        Objects.equals(this.body, edgeEvent.body);
+        Objects.equals(this.body, edgeEvent.body) &&
+        Objects.equals(this.entityGroupId, edgeEvent.entityGroupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, seqId, tenantId, edgeId, action, entityId, uid, type, entityGroupId, body);
+    return Objects.hash(id, createdTime, seqId, tenantId, edgeId, action, entityId, uid, type, body, entityGroupId);
   }
 
   @Override
@@ -407,8 +407,8 @@ public class EdgeEvent {
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
     sb.append("    uid: ").append(toIndentedString(uid)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    entityGroupId: ").append(toIndentedString(entityGroupId)).append("\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    entityGroupId: ").append(toIndentedString(entityGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -501,14 +501,14 @@ public class EdgeEvent {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `entityGroupId` to the URL query string
-    if (getEntityGroupId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sentityGroupId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityGroupId()))));
-    }
-
     // add `body` to the URL query string
     if (getBody() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sbody%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getBody()))));
+    }
+
+    // add `entityGroupId` to the URL query string
+    if (getEntityGroupId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityGroupId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityGroupId()))));
     }
 
     return joiner.toString();

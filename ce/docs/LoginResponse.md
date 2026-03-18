@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **token** | **String** | JWT token | |
 | **refreshToken** | **String** | Refresh token | |
+| **token** | **String** | JWT token | |
 
 
 

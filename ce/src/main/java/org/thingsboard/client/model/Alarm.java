@@ -44,6 +44,8 @@ import org.thingsboard.client.ApiClient;
  * Alarm
  */
 @JsonPropertyOrder({
+  Alarm.JSON_PROPERTY_ID,
+  Alarm.JSON_PROPERTY_CREATED_TIME,
   Alarm.JSON_PROPERTY_TENANT_ID,
   Alarm.JSON_PROPERTY_CUSTOMER_ID,
   Alarm.JSON_PROPERTY_TYPE,
@@ -62,13 +64,19 @@ import org.thingsboard.client.ApiClient;
   Alarm.JSON_PROPERTY_PROPAGATE_TO_OWNER,
   Alarm.JSON_PROPERTY_PROPAGATE_TO_TENANT,
   Alarm.JSON_PROPERTY_PROPAGATE_RELATION_TYPES,
-  Alarm.JSON_PROPERTY_ID,
-  Alarm.JSON_PROPERTY_CREATED_TIME,
   Alarm.JSON_PROPERTY_NAME,
   Alarm.JSON_PROPERTY_STATUS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Alarm {
+  public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
+  private AlarmId id;
+
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @javax.annotation.Nullable
+  private Long createdTime;
+
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @javax.annotation.Nullable
   private TenantId tenantId;
@@ -141,14 +149,6 @@ public class Alarm {
   @javax.annotation.Nullable
   private List<String> propagateRelationTypes = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
-  private AlarmId id;
-
-  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
-  private Long createdTime;
-
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
   private String name;
@@ -162,19 +162,57 @@ public class Alarm {
 
   @JsonCreator
   public Alarm(
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_STATUS) AlarmStatus status
   ) {
   this();
+    this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
-    this.createdTime = createdTime;
     this.name = name;
     this.status = status;
   }
+
+  public Alarm id(@javax.annotation.Nullable AlarmId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm.
+   * @return id
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@javax.annotation.Nullable AlarmId id) {
+    this.id = id;
+  }
+
+
+  /**
+   * Timestamp of the alarm creation, in milliseconds
+   * @return createdTime
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+
 
   /**
    * JSON object with Tenant Id
@@ -596,44 +634,6 @@ public class Alarm {
   }
 
 
-  public Alarm id(@javax.annotation.Nullable AlarmId id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm.
-   * @return id
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmId getId() {
-    return id;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AlarmId id) {
-    this.id = id;
-  }
-
-
-  /**
-   * Timestamp of the alarm creation, in milliseconds
-   * @return createdTime
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getCreatedTime() {
-    return createdTime;
-  }
-
-
-
-
   /**
    * representing type of the Alarm
    * @return name
@@ -674,7 +674,9 @@ public class Alarm {
       return false;
     }
     Alarm alarm = (Alarm) o;
-    return Objects.equals(this.tenantId, alarm.tenantId) &&
+    return Objects.equals(this.id, alarm.id) &&
+        Objects.equals(this.createdTime, alarm.createdTime) &&
+        Objects.equals(this.tenantId, alarm.tenantId) &&
         Objects.equals(this.customerId, alarm.customerId) &&
         Objects.equals(this.type, alarm.type) &&
         Objects.equals(this.originator, alarm.originator) &&
@@ -692,21 +694,21 @@ public class Alarm {
         Objects.equals(this.propagateToOwner, alarm.propagateToOwner) &&
         Objects.equals(this.propagateToTenant, alarm.propagateToTenant) &&
         Objects.equals(this.propagateRelationTypes, alarm.propagateRelationTypes) &&
-        Objects.equals(this.id, alarm.id) &&
-        Objects.equals(this.createdTime, alarm.createdTime) &&
         Objects.equals(this.name, alarm.name) &&
         Objects.equals(this.status, alarm.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToTenant, propagateRelationTypes, id, createdTime, name, status);
+    return Objects.hash(id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToTenant, propagateRelationTypes, name, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Alarm {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -725,8 +727,6 @@ public class Alarm {
     sb.append("    propagateToOwner: ").append(toIndentedString(propagateToOwner)).append("\n");
     sb.append("    propagateToTenant: ").append(toIndentedString(propagateToTenant)).append("\n");
     sb.append("    propagateRelationTypes: ").append(toIndentedString(propagateRelationTypes)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
@@ -775,6 +775,16 @@ public class Alarm {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `id` to the URL query string
+    if (getId() != null) {
+      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
+    }
+
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
 
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
@@ -868,16 +878,6 @@ public class Alarm {
             "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
             ApiClient.urlEncode(ApiClient.valueToString(getPropagateRelationTypes().get(i)))));
       }
-    }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
-    }
-
-    // add `createdTime` to the URL query string
-    if (getCreatedTime() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
     // add `name` to the URL query string

@@ -47,13 +47,13 @@ import org.thingsboard.client.ApiClient;
   CalculatedFieldInfo.JSON_PROPERTY_ENTITY_ID,
   CalculatedFieldInfo.JSON_PROPERTY_TYPE,
   CalculatedFieldInfo.JSON_PROPERTY_NAME,
-  CalculatedFieldInfo.JSON_PROPERTY_DEBUG_MODE,
   CalculatedFieldInfo.JSON_PROPERTY_DEBUG_SETTINGS,
   CalculatedFieldInfo.JSON_PROPERTY_CONFIGURATION_VERSION,
   CalculatedFieldInfo.JSON_PROPERTY_CONFIGURATION,
   CalculatedFieldInfo.JSON_PROPERTY_VERSION,
   CalculatedFieldInfo.JSON_PROPERTY_ADDITIONAL_INFO,
-  CalculatedFieldInfo.JSON_PROPERTY_ENTITY_NAME
+  CalculatedFieldInfo.JSON_PROPERTY_ENTITY_NAME,
+  CalculatedFieldInfo.JSON_PROPERTY_DEBUG_MODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CalculatedFieldInfo {
@@ -81,10 +81,6 @@ public class CalculatedFieldInfo {
   @javax.annotation.Nullable
   private String name;
 
-  public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
-  @javax.annotation.Nullable
-  private Boolean debugMode;
-
   public static final String JSON_PROPERTY_DEBUG_SETTINGS = "debugSettings";
   @javax.annotation.Nullable
   private DebugSettings debugSettings;
@@ -108,6 +104,10 @@ public class CalculatedFieldInfo {
   public static final String JSON_PROPERTY_ENTITY_NAME = "entityName";
   @javax.annotation.Nullable
   private String entityName;
+
+  public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
+  @javax.annotation.Nullable
+  private Boolean debugMode;
 
   public CalculatedFieldInfo() { 
   }
@@ -251,32 +251,6 @@ public class CalculatedFieldInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
-  }
-
-
-  public CalculatedFieldInfo debugMode(@javax.annotation.Nullable Boolean debugMode) {
-    this.debugMode = debugMode;
-    return this;
-  }
-
-  /**
-   * Get debugMode
-   * @return debugMode
-   * @deprecated
-   */
-  @Deprecated
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getDebugMode() {
-    return debugMode;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
-    this.debugMode = debugMode;
   }
 
 
@@ -424,6 +398,32 @@ public class CalculatedFieldInfo {
   }
 
 
+  public CalculatedFieldInfo debugMode(@javax.annotation.Nullable Boolean debugMode) {
+    this.debugMode = debugMode;
+    return this;
+  }
+
+  /**
+   * Get debugMode
+   * @return debugMode
+   * @deprecated
+   */
+  @Deprecated
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getDebugMode() {
+    return debugMode;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
+    this.debugMode = debugMode;
+  }
+
+
   /**
    * Return true if this CalculatedFieldInfo object is equal to o.
    */
@@ -442,18 +442,18 @@ public class CalculatedFieldInfo {
         Objects.equals(this.entityId, calculatedFieldInfo.entityId) &&
         Objects.equals(this.type, calculatedFieldInfo.type) &&
         Objects.equals(this.name, calculatedFieldInfo.name) &&
-        Objects.equals(this.debugMode, calculatedFieldInfo.debugMode) &&
         Objects.equals(this.debugSettings, calculatedFieldInfo.debugSettings) &&
         Objects.equals(this.configurationVersion, calculatedFieldInfo.configurationVersion) &&
         Objects.equals(this._configuration, calculatedFieldInfo._configuration) &&
         Objects.equals(this.version, calculatedFieldInfo.version) &&
         Objects.equals(this.additionalInfo, calculatedFieldInfo.additionalInfo) &&
-        Objects.equals(this.entityName, calculatedFieldInfo.entityName);
+        Objects.equals(this.entityName, calculatedFieldInfo.entityName) &&
+        Objects.equals(this.debugMode, calculatedFieldInfo.debugMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, entityId, type, name, debugMode, debugSettings, configurationVersion, _configuration, version, additionalInfo, entityName);
+    return Objects.hash(id, createdTime, tenantId, entityId, type, name, debugSettings, configurationVersion, _configuration, version, additionalInfo, entityName, debugMode);
   }
 
   @Override
@@ -466,13 +466,13 @@ public class CalculatedFieldInfo {
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
     sb.append("    debugSettings: ").append(toIndentedString(debugSettings)).append("\n");
     sb.append("    configurationVersion: ").append(toIndentedString(configurationVersion)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    entityName: ").append(toIndentedString(entityName)).append("\n");
+    sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -550,11 +550,6 @@ public class CalculatedFieldInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
-    // add `debugMode` to the URL query string
-    if (getDebugMode() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdebugMode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDebugMode()))));
-    }
-
     // add `debugSettings` to the URL query string
     if (getDebugSettings() != null) {
       joiner.add(getDebugSettings().toUrlQueryString(prefix + "debugSettings" + suffix));
@@ -583,6 +578,11 @@ public class CalculatedFieldInfo {
     // add `entityName` to the URL query string
     if (getEntityName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sentityName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityName()))));
+    }
+
+    // add `debugMode` to the URL query string
+    if (getDebugMode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdebugMode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDebugMode()))));
     }
 
     return joiner.toString();

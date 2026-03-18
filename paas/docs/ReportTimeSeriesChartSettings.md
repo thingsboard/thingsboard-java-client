@@ -12,10 +12,18 @@
 | **titleFont** | **Font** |  | [optional] |
 | **titleColor** | **String** |  | [optional] |
 | **titleAlignment** | **TextAlignment** |  | [optional] |
+| **thresholds** | **List\<TimeSeriesChartThreshold\>** |  | [optional] |
 | **stack** | **Boolean** |  | [optional] |
+| **grid** | **TimeSeriesChartGridSettings** |  | [optional] |
+| **yAxes** | **Map\<String, TimeSeriesChartYAxisSettings\>** |  | [optional] |
+| **xAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
+| **barWidthSettings** | **TimeSeriesChartBarWidthSettings** |  | [optional] |
+| **noAggregationBarWidthSettings** | **TimeSeriesChartNoAggregationBarWidthSettings** |  | [optional] |
+| **states** | **List\<TimeSeriesChartStateSettings\>** |  | [optional] |
 | **comparisonEnabled** | **Boolean** |  | [optional] |
 | **timeForComparison** | **ComparisonDuration** |  | [optional] |
 | **comparisonCustomIntervalValue** | **Long** |  | [optional] |
+| **comparisonXAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
 | **showLegend** | **Boolean** |  | [optional] |
 | **legendColumnTitleFont** | **Font** |  | [optional] |
 | **legendColumnTitleColor** | **String** |  | [optional] |
@@ -23,17 +31,9 @@
 | **legendLabelColor** | **String** |  | [optional] |
 | **legendValueFont** | **Font** |  | [optional] |
 | **legendValueColor** | **String** |  | [optional] |
+| **legendConfig** | **LegendConfig** |  | [optional] |
 | **xaxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
 | **yaxes** | **Map\<String, TimeSeriesChartYAxisSettings\>** |  | [optional] |
-| **thresholds** | **List\<TimeSeriesChartThreshold\>** |  | [optional] |
-| **grid** | **TimeSeriesChartGridSettings** |  | [optional] |
-| **yAxes** | **Map\<String, TimeSeriesChartYAxisSettings\>** |  | [optional] |
-| **xAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
-| **barWidthSettings** | **TimeSeriesChartBarWidthSettings** |  | [optional] |
-| **noAggregationBarWidthSettings** | **TimeSeriesChartNoAggregationBarWidthSettings** |  | [optional] |
-| **states** | **List\<TimeSeriesChartStateSettings\>** |  | [optional] |
-| **comparisonXAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
-| **legendConfig** | **LegendConfig** |  | [optional] |
 
 
 

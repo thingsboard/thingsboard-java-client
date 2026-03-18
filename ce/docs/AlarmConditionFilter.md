@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **key** | **AlarmConditionFilterKey** | JSON object for specifying alarm condition by specific key | [optional] |
 | **valueType** | **EntityKeyValueType** | String representation of the type of the value | [optional] |
-| **value** | **Object** |  | [optional] |
+| **key** | **AlarmConditionFilterKey** | JSON object for specifying alarm condition by specific key | [optional] |
 | **predicate** | **KeyFilterPredicate** | JSON object representing filter condition | [optional] |
+| **value** | **Object** |  | [optional] |
 
 
 

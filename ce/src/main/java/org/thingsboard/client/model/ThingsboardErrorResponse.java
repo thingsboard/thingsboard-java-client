@@ -36,24 +36,24 @@ import org.thingsboard.client.ApiClient;
  * ThingsboardErrorResponse
  */
 @JsonPropertyOrder({
-  ThingsboardErrorResponse.JSON_PROPERTY_STATUS,
-  ThingsboardErrorResponse.JSON_PROPERTY_MESSAGE,
   ThingsboardErrorResponse.JSON_PROPERTY_ERROR_CODE,
+  ThingsboardErrorResponse.JSON_PROPERTY_MESSAGE,
+  ThingsboardErrorResponse.JSON_PROPERTY_STATUS,
   ThingsboardErrorResponse.JSON_PROPERTY_TIMESTAMP
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ThingsboardErrorResponse {
-  public static final String JSON_PROPERTY_STATUS = "status";
+  public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
   @javax.annotation.Nullable
-  private Integer status;
+  private ThingsboardErrorCode errorCode;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
   @javax.annotation.Nullable
   private String message;
 
-  public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
+  public static final String JSON_PROPERTY_STATUS = "status";
   @javax.annotation.Nullable
-  private ThingsboardErrorCode errorCode;
+  private Integer status;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   @javax.annotation.Nullable
@@ -64,43 +64,15 @@ public class ThingsboardErrorResponse {
 
   @JsonCreator
   public ThingsboardErrorResponse(
-    @JsonProperty(JSON_PROPERTY_STATUS) Integer status, 
     @JsonProperty(JSON_PROPERTY_MESSAGE) String message, 
+    @JsonProperty(JSON_PROPERTY_STATUS) Integer status, 
     @JsonProperty(JSON_PROPERTY_TIMESTAMP) Long timestamp
   ) {
   this();
-    this.status = status;
     this.message = message;
+    this.status = status;
     this.timestamp = timestamp;
   }
-
-  /**
-   * HTTP Response Status Code
-   * @return status
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getStatus() {
-    return status;
-  }
-
-
-
-
-  /**
-   * Error message
-   * @return message
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getMessage() {
-    return message;
-  }
-
-
-
 
   public ThingsboardErrorResponse errorCode(@javax.annotation.Nullable ThingsboardErrorCode errorCode) {
     this.errorCode = errorCode;
@@ -124,6 +96,34 @@ public class ThingsboardErrorResponse {
   public void setErrorCode(@javax.annotation.Nullable ThingsboardErrorCode errorCode) {
     this.errorCode = errorCode;
   }
+
+
+  /**
+   * Error message
+   * @return message
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getMessage() {
+    return message;
+  }
+
+
+
+
+  /**
+   * HTTP Response Status Code
+   * @return status
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getStatus() {
+    return status;
+  }
+
+
 
 
   /**
@@ -152,24 +152,24 @@ public class ThingsboardErrorResponse {
       return false;
     }
     ThingsboardErrorResponse thingsboardErrorResponse = (ThingsboardErrorResponse) o;
-    return Objects.equals(this.status, thingsboardErrorResponse.status) &&
+    return Objects.equals(this.errorCode, thingsboardErrorResponse.errorCode) &&
         Objects.equals(this.message, thingsboardErrorResponse.message) &&
-        Objects.equals(this.errorCode, thingsboardErrorResponse.errorCode) &&
+        Objects.equals(this.status, thingsboardErrorResponse.status) &&
         Objects.equals(this.timestamp, thingsboardErrorResponse.timestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, message, errorCode, timestamp);
+    return Objects.hash(errorCode, message, status, timestamp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ThingsboardErrorResponse {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -218,9 +218,9 @@ public class ThingsboardErrorResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `status` to the URL query string
-    if (getStatus() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
+    // add `errorCode` to the URL query string
+    if (getErrorCode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%serrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorCode()))));
     }
 
     // add `message` to the URL query string
@@ -228,9 +228,9 @@ public class ThingsboardErrorResponse {
       joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
     }
 
-    // add `errorCode` to the URL query string
-    if (getErrorCode() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%serrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorCode()))));
+    // add `status` to the URL query string
+    if (getStatus() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
     }
 
     // add `timestamp` to the URL query string

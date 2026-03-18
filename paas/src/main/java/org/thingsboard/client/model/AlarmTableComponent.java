@@ -379,14 +379,14 @@ public class AlarmTableComponent extends ReportComponent {
 
 
   @Override
-  public AlarmTableComponent type(@javax.annotation.Nonnull ReportComponentType type) {
-    this.setType(type);
+  public AlarmTableComponent subType(@javax.annotation.Nonnull ReportComponentSubType subType) {
+    this.setSubType(subType);
     return this;
   }
 
   @Override
-  public AlarmTableComponent subType(@javax.annotation.Nonnull ReportComponentSubType subType) {
-    this.setSubType(subType);
+  public AlarmTableComponent type(@javax.annotation.Nonnull ReportComponentType type) {
+    this.setType(type);
     return this;
   }
 
@@ -484,14 +484,14 @@ public class AlarmTableComponent extends ReportComponent {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `subType` to the URL query string
     if (getSubType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssubType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubType()))));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     // add `margins` to the URL query string

@@ -11,6 +11,7 @@ A JSON value representing the OTA Package.
 |------------ | ------------- | ------------- | -------------|
 | **id** | **OtaPackageId** | JSON object with the ota package Id. Specify existing ota package Id to update the ota package. Referencing non-existing ota package id will cause error. Omit this field to create new ota package. | [optional] |
 | **createdTime** | **Long** | Timestamp of the ota package creation, in milliseconds | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | OTA Package description. | [optional] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id. Tenant Id of the ota package can't be changed. | [optional] [readonly] |
 | **deviceProfileId** | **DeviceProfileId** | JSON object with Device Profile Id. Device Profile Id of the ota package can't be changed. | [optional] |
 | **type** | **OtaPackageType** | OTA Package type. | [optional] |
@@ -26,7 +27,6 @@ A JSON value representing the OTA Package.
 | **dataSize** | **Long** | OTA Package data size. | [optional] [readonly] |
 | **usesUrl** | **Boolean** | Indicates OTA Package uses url. Should be 'true' if uses url or 'false' if will be used data. | [optional] [readonly] |
 | **name** | **String** |  | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | OTA Package description. | [optional] |
 
 
 

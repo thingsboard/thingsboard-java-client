@@ -44,6 +44,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   CustomerInfo.JSON_PROPERTY_ID,
   CustomerInfo.JSON_PROPERTY_CREATED_TIME,
+  CustomerInfo.JSON_PROPERTY_ADDITIONAL_INFO,
   CustomerInfo.JSON_PROPERTY_COUNTRY,
   CustomerInfo.JSON_PROPERTY_STATE,
   CustomerInfo.JSON_PROPERTY_CITY,
@@ -59,10 +60,9 @@ import org.thingsboard.client.ApiClient;
   CustomerInfo.JSON_PROPERTY_CUSTOM_MENU_ID,
   CustomerInfo.JSON_PROPERTY_OWNER_NAME,
   CustomerInfo.JSON_PROPERTY_GROUPS,
-  CustomerInfo.JSON_PROPERTY_NAME,
   CustomerInfo.JSON_PROPERTY_CUSTOMER_ID,
-  CustomerInfo.JSON_PROPERTY_OWNER_ID,
-  CustomerInfo.JSON_PROPERTY_ADDITIONAL_INFO
+  CustomerInfo.JSON_PROPERTY_NAME,
+  CustomerInfo.JSON_PROPERTY_OWNER_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomerInfo {
@@ -73,6 +73,10 @@ public class CustomerInfo {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @javax.annotation.Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
   @javax.annotation.Nullable
@@ -134,21 +138,17 @@ public class CustomerInfo {
   @javax.annotation.Nullable
   private List<EntityInfo> groups = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
-  private String name;
-
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
   @javax.annotation.Nullable
   private CustomerId customerId;
 
+  public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
+  private String name;
+
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @javax.annotation.Nullable
   private EntityId ownerId;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public CustomerInfo() { 
   }
@@ -157,15 +157,15 @@ public class CustomerInfo {
   public CustomerInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.ownerName = ownerName;
-    this.name = name;
     this.customerId = customerId;
+    this.name = name;
     this.ownerId = ownerId;
   }
 
@@ -205,6 +205,30 @@ public class CustomerInfo {
   }
 
 
+
+
+  public CustomerInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the customer. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar), &#39;isPublic&#39; (boolean, whether this is a public customer).
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public CustomerInfo country(@javax.annotation.Nullable String country) {
@@ -566,20 +590,6 @@ public class CustomerInfo {
 
 
   /**
-   * Name of the customer. Read-only, duplicated from title for backward compatibility
-   * @return name
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
-  }
-
-
-
-
-  /**
    * JSON object with parent Customer Id
    * @return customerId
    */
@@ -588,6 +598,20 @@ public class CustomerInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
     return customerId;
+  }
+
+
+
+
+  /**
+   * Name of the customer. Read-only, duplicated from title for backward compatibility
+   * @return name
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
   }
 
 
@@ -607,30 +631,6 @@ public class CustomerInfo {
 
 
 
-  public CustomerInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the customer. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar), &#39;isPublic&#39; (boolean, whether this is a public customer).
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this CustomerInfo object is equal to o.
    */
@@ -645,6 +645,7 @@ public class CustomerInfo {
     CustomerInfo customerInfo = (CustomerInfo) o;
     return Objects.equals(this.id, customerInfo.id) &&
         Objects.equals(this.createdTime, customerInfo.createdTime) &&
+        Objects.equals(this.additionalInfo, customerInfo.additionalInfo) &&
         Objects.equals(this.country, customerInfo.country) &&
         Objects.equals(this.state, customerInfo.state) &&
         Objects.equals(this.city, customerInfo.city) &&
@@ -660,15 +661,14 @@ public class CustomerInfo {
         Objects.equals(this.customMenuId, customerInfo.customMenuId) &&
         Objects.equals(this.ownerName, customerInfo.ownerName) &&
         Objects.equals(this.groups, customerInfo.groups) &&
-        Objects.equals(this.name, customerInfo.name) &&
         Objects.equals(this.customerId, customerInfo.customerId) &&
-        Objects.equals(this.ownerId, customerInfo.ownerId) &&
-        Objects.equals(this.additionalInfo, customerInfo.additionalInfo);
+        Objects.equals(this.name, customerInfo.name) &&
+        Objects.equals(this.ownerId, customerInfo.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, tenantId, parentCustomerId, version, customMenuId, ownerName, groups, name, customerId, ownerId, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, country, state, city, address, address2, zip, phone, email, title, tenantId, parentCustomerId, version, customMenuId, ownerName, groups, customerId, name, ownerId);
   }
 
   @Override
@@ -677,6 +677,7 @@ public class CustomerInfo {
     sb.append("class CustomerInfo {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
@@ -692,10 +693,9 @@ public class CustomerInfo {
     sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
     sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
     sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -751,6 +751,11 @@ public class CustomerInfo {
     // add `createdTime` to the URL query string
     if (getCreatedTime() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `country` to the URL query string
@@ -833,24 +838,19 @@ public class CustomerInfo {
       }
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
     // add `customerId` to the URL query string
     if (getCustomerId() != null) {
       joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
     }
 
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    }
+
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

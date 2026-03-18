@@ -41,6 +41,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   ContactBasedObject.JSON_PROPERTY_ID,
   ContactBasedObject.JSON_PROPERTY_CREATED_TIME,
+  ContactBasedObject.JSON_PROPERTY_ADDITIONAL_INFO,
   ContactBasedObject.JSON_PROPERTY_COUNTRY,
   ContactBasedObject.JSON_PROPERTY_STATE,
   ContactBasedObject.JSON_PROPERTY_CITY,
@@ -49,8 +50,7 @@ import org.thingsboard.client.ApiClient;
   ContactBasedObject.JSON_PROPERTY_ZIP,
   ContactBasedObject.JSON_PROPERTY_PHONE,
   ContactBasedObject.JSON_PROPERTY_EMAIL,
-  ContactBasedObject.JSON_PROPERTY_NAME,
-  ContactBasedObject.JSON_PROPERTY_ADDITIONAL_INFO
+  ContactBasedObject.JSON_PROPERTY_NAME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ContactBasedObject {
@@ -60,6 +60,10 @@ public class ContactBasedObject {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @javax.annotation.Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @javax.annotation.Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
   @javax.annotation.Nullable
@@ -96,10 +100,6 @@ public class ContactBasedObject {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
   private String name;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public ContactBasedObject() { 
   }
@@ -156,6 +156,30 @@ public class ContactBasedObject {
   }
 
 
+
+
+  public ContactBasedObject additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Get additionalInfo
+   * @return additionalInfo
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public ContactBasedObject country(@javax.annotation.Nullable String country) {
@@ -374,30 +398,6 @@ public class ContactBasedObject {
   }
 
 
-  public ContactBasedObject additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Get additionalInfo
-   * @return additionalInfo
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this ContactBasedObject object is equal to o.
    */
@@ -412,6 +412,7 @@ public class ContactBasedObject {
     ContactBasedObject contactBasedObject = (ContactBasedObject) o;
     return equalsNullable(this.id, contactBasedObject.id) &&
         Objects.equals(this.createdTime, contactBasedObject.createdTime) &&
+        Objects.equals(this.additionalInfo, contactBasedObject.additionalInfo) &&
         Objects.equals(this.country, contactBasedObject.country) &&
         Objects.equals(this.state, contactBasedObject.state) &&
         Objects.equals(this.city, contactBasedObject.city) &&
@@ -420,8 +421,7 @@ public class ContactBasedObject {
         Objects.equals(this.zip, contactBasedObject.zip) &&
         Objects.equals(this.phone, contactBasedObject.phone) &&
         Objects.equals(this.email, contactBasedObject.email) &&
-        Objects.equals(this.name, contactBasedObject.name) &&
-        Objects.equals(this.additionalInfo, contactBasedObject.additionalInfo);
+        Objects.equals(this.name, contactBasedObject.name);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -430,7 +430,7 @@ public class ContactBasedObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(id), createdTime, country, state, city, address, address2, zip, phone, email, name, additionalInfo);
+    return Objects.hash(hashCodeNullable(id), createdTime, additionalInfo, country, state, city, address, address2, zip, phone, email, name);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -446,6 +446,7 @@ public class ContactBasedObject {
     sb.append("class ContactBasedObject {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
@@ -455,7 +456,6 @@ public class ContactBasedObject {
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -513,6 +513,11 @@ public class ContactBasedObject {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `country` to the URL query string
     if (getCountry() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scountry%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCountry()))));
@@ -556,11 +561,6 @@ public class ContactBasedObject {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();
