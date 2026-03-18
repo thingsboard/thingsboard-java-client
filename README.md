@@ -9,6 +9,7 @@ Auto-generated Java REST clients for ThingsBoard, built from OpenAPI specificati
 | `ce` | `thingsboard-ce-client` | Community Edition REST client |
 | `pe` | `thingsboard-pe-client` | Professional Edition REST client |
 | `paas` | `thingsboard-paas-client` | Cloud (PaaS) REST client |
+| `common` | `thingsboard-client-common` | Handwritten shared code (not published separately) |
 
 All modules share the same `org.thingsboard.client` group ID and use the `org.thingsboard.client.api` / `org.thingsboard.client.model` packages.
 
@@ -61,6 +62,23 @@ ThingsboardClient client = ThingsboardClient.builder()
 client.login("tenant@thingsboard.org", "tenant");
 ```
 
+## API Documentation
+
+Each published JAR includes Markdown API documentation bundled under `api-docs/` in the classpath. This covers every controller endpoint (`*ControllerApi.md`) and every model class. To extract the docs from a dependency:
+
+```bash
+jar xf thingsboard-ce-client-4.4.0-SNAPSHOT.jar api-docs/
+```
+
+The same docs are also available in each edition's `docs/` directory in this repository.
+
+## Building
+
+```bash
+mvn compile                    # Build all modules
+mvn compile -pl ce             # Build CE only
+```
+
 ## Project Structure
 
 ```
@@ -77,7 +95,7 @@ thingsboard-java-client/
 │   ├── pom.xml
 │   ├── spec/openapi.json            # OpenAPI spec (committed)
 │   ├── src/main/java/               # Generated + common sources (committed)
-│   ├── docs/                        # Generated + common docs (committed)
+│   ├── docs/                        # Generated API docs + common docs (committed)
 │   └── target/generated/            # Raw generator output (gitignored)
 ├── pe/
 │   └── (same structure as ce)
@@ -147,3 +165,7 @@ Options:
 - `<edition>/docs/` (with `common/docs/` overlaid on top of generated docs)
 
 Output log: `generate-client.log` (overwritten on each run)
+
+## License
+
+This project is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
