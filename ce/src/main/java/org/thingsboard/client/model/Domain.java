@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,30 +47,30 @@ import org.thingsboard.client.ApiClient;
   Domain.JSON_PROPERTY_OAUTH2_ENABLED,
   Domain.JSON_PROPERTY_PROPAGATE_TO_EDGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Domain {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private DomainId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_OAUTH2_ENABLED = "oauth2Enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean oauth2Enabled;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_EDGE = "propagateToEdge";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagateToEdge;
 
   public Domain() { 
@@ -81,7 +84,7 @@ public class Domain {
     this.createdTime = createdTime;
   }
 
-  public Domain id(@javax.annotation.Nullable DomainId id) {
+  public Domain id(@Nullable DomainId id) {
     this.id = id;
     return this;
   }
@@ -90,7 +93,7 @@ public class Domain {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DomainId getId() {
@@ -100,7 +103,7 @@ public class Domain {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable DomainId id) {
+  public void setId(@Nullable DomainId id) {
     this.id = id;
   }
 
@@ -109,7 +112,7 @@ public class Domain {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -119,7 +122,7 @@ public class Domain {
 
 
 
-  public Domain tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public Domain tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -128,7 +131,7 @@ public class Domain {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -138,12 +141,12 @@ public class Domain {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public Domain name(@javax.annotation.Nonnull String name) {
+  public Domain name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -152,7 +155,7 @@ public class Domain {
    * Domain name. Cannot be empty
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -162,12 +165,12 @@ public class Domain {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public Domain oauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+  public Domain oauth2Enabled(@Nullable Boolean oauth2Enabled) {
     this.oauth2Enabled = oauth2Enabled;
     return this;
   }
@@ -176,7 +179,7 @@ public class Domain {
    * Whether OAuth2 settings are enabled or not
    * @return oauth2Enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getOauth2Enabled() {
@@ -186,12 +189,12 @@ public class Domain {
 
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+  public void setOauth2Enabled(@Nullable Boolean oauth2Enabled) {
     this.oauth2Enabled = oauth2Enabled;
   }
 
 
-  public Domain propagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
+  public Domain propagateToEdge(@Nullable Boolean propagateToEdge) {
     this.propagateToEdge = propagateToEdge;
     return this;
   }
@@ -200,7 +203,7 @@ public class Domain {
    * Whether OAuth2 settings are enabled on Edge or not
    * @return propagateToEdge
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagateToEdge() {
@@ -210,7 +213,7 @@ public class Domain {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_EDGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateToEdge(@javax.annotation.Nullable Boolean propagateToEdge) {
+  public void setPropagateToEdge(@Nullable Boolean propagateToEdge) {
     this.propagateToEdge = propagateToEdge;
   }
 

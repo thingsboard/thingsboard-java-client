@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,36 +47,36 @@ import org.thingsboard.client.ApiClient;
   LwM2mObject.JSON_PROPERTY_MANDATORY,
   LwM2mObject.JSON_PROPERTY_INSTANCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LwM2mObject {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer id;
 
   public static final String JSON_PROPERTY_KEY_ID = "keyId";
-  @javax.annotation.Nullable
+  @Nullable
   private String keyId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_MULTIPLE = "multiple";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean multiple;
 
   public static final String JSON_PROPERTY_MANDATORY = "mandatory";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean mandatory;
 
   public static final String JSON_PROPERTY_INSTANCES = "instances";
-  @javax.annotation.Nullable
+  @Nullable
   private List<LwM2mInstance> instances = new ArrayList<>();
 
   public LwM2mObject() { 
   }
 
-  public LwM2mObject id(@javax.annotation.Nullable Integer id) {
+  public LwM2mObject id(@Nullable Integer id) {
     this.id = id;
     return this;
   }
@@ -83,7 +85,7 @@ public class LwM2mObject {
    * LwM2M Object id.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getId() {
@@ -93,12 +95,12 @@ public class LwM2mObject {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@Nullable Integer id) {
     this.id = id;
   }
 
 
-  public LwM2mObject keyId(@javax.annotation.Nullable String keyId) {
+  public LwM2mObject keyId(@Nullable String keyId) {
     this.keyId = keyId;
     return this;
   }
@@ -107,7 +109,7 @@ public class LwM2mObject {
    * LwM2M Object key id.
    * @return keyId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKeyId() {
@@ -117,12 +119,12 @@ public class LwM2mObject {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyId(@javax.annotation.Nullable String keyId) {
+  public void setKeyId(@Nullable String keyId) {
     this.keyId = keyId;
   }
 
 
-  public LwM2mObject name(@javax.annotation.Nullable String name) {
+  public LwM2mObject name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -131,7 +133,7 @@ public class LwM2mObject {
    * LwM2M Object name.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -141,12 +143,12 @@ public class LwM2mObject {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public LwM2mObject multiple(@javax.annotation.Nullable Boolean multiple) {
+  public LwM2mObject multiple(@Nullable Boolean multiple) {
     this.multiple = multiple;
     return this;
   }
@@ -155,7 +157,7 @@ public class LwM2mObject {
    * LwM2M Object multiple.
    * @return multiple
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MULTIPLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getMultiple() {
@@ -165,12 +167,12 @@ public class LwM2mObject {
 
   @JsonProperty(value = JSON_PROPERTY_MULTIPLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMultiple(@javax.annotation.Nullable Boolean multiple) {
+  public void setMultiple(@Nullable Boolean multiple) {
     this.multiple = multiple;
   }
 
 
-  public LwM2mObject mandatory(@javax.annotation.Nullable Boolean mandatory) {
+  public LwM2mObject mandatory(@Nullable Boolean mandatory) {
     this.mandatory = mandatory;
     return this;
   }
@@ -179,7 +181,7 @@ public class LwM2mObject {
    * LwM2M Object mandatory.
    * @return mandatory
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MANDATORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getMandatory() {
@@ -189,12 +191,12 @@ public class LwM2mObject {
 
   @JsonProperty(value = JSON_PROPERTY_MANDATORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMandatory(@javax.annotation.Nullable Boolean mandatory) {
+  public void setMandatory(@Nullable Boolean mandatory) {
     this.mandatory = mandatory;
   }
 
 
-  public LwM2mObject instances(@javax.annotation.Nullable List<LwM2mInstance> instances) {
+  public LwM2mObject instances(@Nullable List<LwM2mInstance> instances) {
     this.instances = instances;
     return this;
   }
@@ -211,7 +213,7 @@ public class LwM2mObject {
    * LwM2M Object instances.
    * @return instances
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<LwM2mInstance> getInstances() {
@@ -221,7 +223,7 @@ public class LwM2mObject {
 
   @JsonProperty(value = JSON_PROPERTY_INSTANCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInstances(@javax.annotation.Nullable List<LwM2mInstance> instances) {
+  public void setInstances(@Nullable List<LwM2mInstance> instances) {
     this.instances = instances;
   }
 

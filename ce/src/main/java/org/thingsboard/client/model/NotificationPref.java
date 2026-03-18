@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,20 +43,20 @@ import org.thingsboard.client.ApiClient;
   NotificationPref.JSON_PROPERTY_ENABLED,
   NotificationPref.JSON_PROPERTY_ENABLED_DELIVERY_METHODS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationPref {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_ENABLED_DELIVERY_METHODS = "enabledDeliveryMethods";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Map<String, Boolean> enabledDeliveryMethods = new HashMap<>();
 
   public NotificationPref() { 
   }
 
-  public NotificationPref enabled(@javax.annotation.Nullable Boolean enabled) {
+  public NotificationPref enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -62,7 +65,7 @@ public class NotificationPref {
    * Get enabled
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -72,12 +75,12 @@ public class NotificationPref {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
 
-  public NotificationPref enabledDeliveryMethods(@javax.annotation.Nonnull Map<String, Boolean> enabledDeliveryMethods) {
+  public NotificationPref enabledDeliveryMethods(@Nonnull Map<String, Boolean> enabledDeliveryMethods) {
     this.enabledDeliveryMethods = enabledDeliveryMethods;
     return this;
   }
@@ -94,7 +97,7 @@ public class NotificationPref {
    * Get enabledDeliveryMethods
    * @return enabledDeliveryMethods
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ENABLED_DELIVERY_METHODS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Map<String, Boolean> getEnabledDeliveryMethods() {
@@ -104,7 +107,7 @@ public class NotificationPref {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED_DELIVERY_METHODS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEnabledDeliveryMethods(@javax.annotation.Nonnull Map<String, Boolean> enabledDeliveryMethods) {
+  public void setEnabledDeliveryMethods(@Nonnull Map<String, Boolean> enabledDeliveryMethods) {
     this.enabledDeliveryMethods = enabledDeliveryMethods;
   }
 

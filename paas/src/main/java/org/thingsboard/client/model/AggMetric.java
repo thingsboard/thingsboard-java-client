@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +44,28 @@ import org.thingsboard.client.ApiClient;
   AggMetric.JSON_PROPERTY_INPUT,
   AggMetric.JSON_PROPERTY_DEFAULT_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AggMetric {
   public static final String JSON_PROPERTY_FUNCTION = "function";
-  @javax.annotation.Nullable
+  @Nullable
   private AggFunction function;
 
   public static final String JSON_PROPERTY_FILTER = "filter";
-  @javax.annotation.Nullable
+  @Nullable
   private String filter;
 
   public static final String JSON_PROPERTY_INPUT = "input";
-  @javax.annotation.Nullable
+  @Nullable
   private AggInput input;
 
   public static final String JSON_PROPERTY_DEFAULT_VALUE = "defaultValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Double defaultValue;
 
   public AggMetric() { 
   }
 
-  public AggMetric function(@javax.annotation.Nullable AggFunction function) {
+  public AggMetric function(@Nullable AggFunction function) {
     this.function = function;
     return this;
   }
@@ -72,7 +74,7 @@ public class AggMetric {
    * Get function
    * @return function
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FUNCTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AggFunction getFunction() {
@@ -82,12 +84,12 @@ public class AggMetric {
 
   @JsonProperty(value = JSON_PROPERTY_FUNCTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFunction(@javax.annotation.Nullable AggFunction function) {
+  public void setFunction(@Nullable AggFunction function) {
     this.function = function;
   }
 
 
-  public AggMetric filter(@javax.annotation.Nullable String filter) {
+  public AggMetric filter(@Nullable String filter) {
     this.filter = filter;
     return this;
   }
@@ -96,7 +98,7 @@ public class AggMetric {
    * Get filter
    * @return filter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFilter() {
@@ -106,12 +108,12 @@ public class AggMetric {
 
   @JsonProperty(value = JSON_PROPERTY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilter(@javax.annotation.Nullable String filter) {
+  public void setFilter(@Nullable String filter) {
     this.filter = filter;
   }
 
 
-  public AggMetric input(@javax.annotation.Nullable AggInput input) {
+  public AggMetric input(@Nullable AggInput input) {
     this.input = input;
     return this;
   }
@@ -120,7 +122,7 @@ public class AggMetric {
    * Get input
    * @return input
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INPUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AggInput getInput() {
@@ -130,12 +132,12 @@ public class AggMetric {
 
   @JsonProperty(value = JSON_PROPERTY_INPUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInput(@javax.annotation.Nullable AggInput input) {
+  public void setInput(@Nullable AggInput input) {
     this.input = input;
   }
 
 
-  public AggMetric defaultValue(@javax.annotation.Nullable Double defaultValue) {
+  public AggMetric defaultValue(@Nullable Double defaultValue) {
     this.defaultValue = defaultValue;
     return this;
   }
@@ -144,7 +146,7 @@ public class AggMetric {
    * Get defaultValue
    * @return defaultValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getDefaultValue() {
@@ -154,7 +156,7 @@ public class AggMetric {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultValue(@javax.annotation.Nullable Double defaultValue) {
+  public void setDefaultValue(@Nullable Double defaultValue) {
     this.defaultValue = defaultValue;
   }
 

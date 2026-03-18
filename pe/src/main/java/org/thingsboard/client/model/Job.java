@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -53,46 +56,46 @@ import org.thingsboard.client.ApiClient;
   Job.JSON_PROPERTY_CONFIGURATION,
   Job.JSON_PROPERTY_RESULT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Job {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private JobId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private JobType type;
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String key;
 
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityId entityId;
 
   public static final String JSON_PROPERTY_ENTITY_NAME = "entityName";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityName;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nonnull
+  @Nonnull
   private JobStatus status;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nonnull
+  @Nonnull
   private JobConfiguration _configuration;
 
   public static final String JSON_PROPERTY_RESULT = "result";
-  @javax.annotation.Nonnull
+  @Nonnull
   private JobResult result;
 
   public Job() { 
@@ -106,7 +109,7 @@ public class Job {
     this.createdTime = createdTime;
   }
 
-  public Job id(@javax.annotation.Nullable JobId id) {
+  public Job id(@Nullable JobId id) {
     this.id = id;
     return this;
   }
@@ -115,7 +118,7 @@ public class Job {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public JobId getId() {
@@ -125,7 +128,7 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable JobId id) {
+  public void setId(@Nullable JobId id) {
     this.id = id;
   }
 
@@ -134,7 +137,7 @@ public class Job {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -144,7 +147,7 @@ public class Job {
 
 
 
-  public Job tenantId(@javax.annotation.Nonnull TenantId tenantId) {
+  public Job tenantId(@Nonnull TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -153,7 +156,7 @@ public class Job {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TenantId getTenantId() {
@@ -163,12 +166,12 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTenantId(@javax.annotation.Nonnull TenantId tenantId) {
+  public void setTenantId(@Nonnull TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public Job type(@javax.annotation.Nonnull JobType type) {
+  public Job type(@Nonnull JobType type) {
     this.type = type;
     return this;
   }
@@ -177,7 +180,7 @@ public class Job {
    * Get type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public JobType getType() {
@@ -187,12 +190,12 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull JobType type) {
+  public void setType(@Nonnull JobType type) {
     this.type = type;
   }
 
 
-  public Job key(@javax.annotation.Nonnull String key) {
+  public Job key(@Nonnull String key) {
     this.key = key;
     return this;
   }
@@ -201,7 +204,7 @@ public class Job {
    * Get key
    * @return key
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getKey() {
@@ -211,12 +214,12 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKey(@javax.annotation.Nonnull String key) {
+  public void setKey(@Nonnull String key) {
     this.key = key;
   }
 
 
-  public Job entityId(@javax.annotation.Nonnull EntityId entityId) {
+  public Job entityId(@Nonnull EntityId entityId) {
     this.entityId = entityId;
     return this;
   }
@@ -225,7 +228,7 @@ public class Job {
    * Get entityId
    * @return entityId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityId getEntityId() {
@@ -235,12 +238,12 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityId(@javax.annotation.Nonnull EntityId entityId) {
+  public void setEntityId(@Nonnull EntityId entityId) {
     this.entityId = entityId;
   }
 
 
-  public Job entityName(@javax.annotation.Nullable String entityName) {
+  public Job entityName(@Nullable String entityName) {
     this.entityName = entityName;
     return this;
   }
@@ -249,7 +252,7 @@ public class Job {
    * Get entityName
    * @return entityName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityName() {
@@ -259,12 +262,12 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityName(@javax.annotation.Nullable String entityName) {
+  public void setEntityName(@Nullable String entityName) {
     this.entityName = entityName;
   }
 
 
-  public Job status(@javax.annotation.Nonnull JobStatus status) {
+  public Job status(@Nonnull JobStatus status) {
     this.status = status;
     return this;
   }
@@ -273,7 +276,7 @@ public class Job {
    * Get status
    * @return status
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public JobStatus getStatus() {
@@ -283,12 +286,12 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(@javax.annotation.Nonnull JobStatus status) {
+  public void setStatus(@Nonnull JobStatus status) {
     this.status = status;
   }
 
 
-  public Job _configuration(@javax.annotation.Nonnull JobConfiguration _configuration) {
+  public Job _configuration(@Nonnull JobConfiguration _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -297,7 +300,7 @@ public class Job {
    * Get _configuration
    * @return _configuration
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public JobConfiguration getConfiguration() {
@@ -307,12 +310,12 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfiguration(@javax.annotation.Nonnull JobConfiguration _configuration) {
+  public void setConfiguration(@Nonnull JobConfiguration _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public Job result(@javax.annotation.Nonnull JobResult result) {
+  public Job result(@Nonnull JobResult result) {
     this.result = result;
     return this;
   }
@@ -321,7 +324,7 @@ public class Job {
    * Get result
    * @return result
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RESULT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public JobResult getResult() {
@@ -331,7 +334,7 @@ public class Job {
 
   @JsonProperty(value = JSON_PROPERTY_RESULT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResult(@javax.annotation.Nonnull JobResult result) {
+  public void setResult(@Nonnull JobResult result) {
     this.result = result;
   }
 

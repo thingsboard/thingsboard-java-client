@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,20 +44,20 @@ import org.thingsboard.client.ApiClient;
   EntityCountQuery.JSON_PROPERTY_ENTITY_FILTER,
   EntityCountQuery.JSON_PROPERTY_KEY_FILTERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityCountQuery {
   public static final String JSON_PROPERTY_ENTITY_FILTER = "entityFilter";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityFilter entityFilter;
 
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
-  @javax.annotation.Nullable
+  @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
 
   public EntityCountQuery() { 
   }
 
-  public EntityCountQuery entityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public EntityCountQuery entityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
     return this;
   }
@@ -64,7 +66,7 @@ public class EntityCountQuery {
    * Get entityFilter
    * @return entityFilter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityFilter getEntityFilter() {
@@ -74,12 +76,12 @@ public class EntityCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityFilter(@javax.annotation.Nullable EntityFilter entityFilter) {
+  public void setEntityFilter(@Nullable EntityFilter entityFilter) {
     this.entityFilter = entityFilter;
   }
 
 
-  public EntityCountQuery keyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public EntityCountQuery keyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
     return this;
   }
@@ -96,7 +98,7 @@ public class EntityCountQuery {
    * Get keyFilters
    * @return keyFilters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<KeyFilter> getKeyFilters() {
@@ -106,7 +108,7 @@ public class EntityCountQuery {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyFilters(@javax.annotation.Nullable List<KeyFilter> keyFilters) {
+  public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
   }
 

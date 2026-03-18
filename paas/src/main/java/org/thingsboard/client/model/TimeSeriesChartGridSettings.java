@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartGridSettings.JSON_PROPERTY_BORDER_WIDTH,
   TimeSeriesChartGridSettings.JSON_PROPERTY_BORDER_COLOR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartGridSettings {
   public static final String JSON_PROPERTY_SHOW = "show";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean show;
 
   public static final String JSON_PROPERTY_BACKGROUND_COLOR = "backgroundColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String backgroundColor;
 
   public static final String JSON_PROPERTY_BORDER_WIDTH = "borderWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private Float borderWidth;
 
   public static final String JSON_PROPERTY_BORDER_COLOR = "borderColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String borderColor;
 
   public TimeSeriesChartGridSettings() { 
   }
 
-  public TimeSeriesChartGridSettings show(@javax.annotation.Nullable Boolean show) {
+  public TimeSeriesChartGridSettings show(@Nullable Boolean show) {
     this.show = show;
     return this;
   }
@@ -70,7 +72,7 @@ public class TimeSeriesChartGridSettings {
    * Get show
    * @return show
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShow() {
@@ -80,12 +82,12 @@ public class TimeSeriesChartGridSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShow(@javax.annotation.Nullable Boolean show) {
+  public void setShow(@Nullable Boolean show) {
     this.show = show;
   }
 
 
-  public TimeSeriesChartGridSettings backgroundColor(@javax.annotation.Nullable String backgroundColor) {
+  public TimeSeriesChartGridSettings backgroundColor(@Nullable String backgroundColor) {
     this.backgroundColor = backgroundColor;
     return this;
   }
@@ -94,7 +96,7 @@ public class TimeSeriesChartGridSettings {
    * Get backgroundColor
    * @return backgroundColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BACKGROUND_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBackgroundColor() {
@@ -104,12 +106,12 @@ public class TimeSeriesChartGridSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BACKGROUND_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackgroundColor(@javax.annotation.Nullable String backgroundColor) {
+  public void setBackgroundColor(@Nullable String backgroundColor) {
     this.backgroundColor = backgroundColor;
   }
 
 
-  public TimeSeriesChartGridSettings borderWidth(@javax.annotation.Nullable Float borderWidth) {
+  public TimeSeriesChartGridSettings borderWidth(@Nullable Float borderWidth) {
     this.borderWidth = borderWidth;
     return this;
   }
@@ -118,7 +120,7 @@ public class TimeSeriesChartGridSettings {
    * Get borderWidth
    * @return borderWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BORDER_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getBorderWidth() {
@@ -128,12 +130,12 @@ public class TimeSeriesChartGridSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BORDER_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBorderWidth(@javax.annotation.Nullable Float borderWidth) {
+  public void setBorderWidth(@Nullable Float borderWidth) {
     this.borderWidth = borderWidth;
   }
 
 
-  public TimeSeriesChartGridSettings borderColor(@javax.annotation.Nullable String borderColor) {
+  public TimeSeriesChartGridSettings borderColor(@Nullable String borderColor) {
     this.borderColor = borderColor;
     return this;
   }
@@ -142,7 +144,7 @@ public class TimeSeriesChartGridSettings {
    * Get borderColor
    * @return borderColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BORDER_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBorderColor() {
@@ -152,7 +154,7 @@ public class TimeSeriesChartGridSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BORDER_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBorderColor(@javax.annotation.Nullable String borderColor) {
+  public void setBorderColor(@Nullable String borderColor) {
     this.borderColor = borderColor;
   }
 

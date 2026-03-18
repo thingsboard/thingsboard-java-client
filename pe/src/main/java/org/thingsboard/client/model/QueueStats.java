@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,26 +45,26 @@ import org.thingsboard.client.ApiClient;
   QueueStats.JSON_PROPERTY_QUEUE_NAME,
   QueueStats.JSON_PROPERTY_SERVICE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class QueueStats {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private QueueStatsId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_QUEUE_NAME = "queueName";
-  @javax.annotation.Nullable
+  @Nullable
   private String queueName;
 
   public static final String JSON_PROPERTY_SERVICE_ID = "serviceId";
-  @javax.annotation.Nullable
+  @Nullable
   private String serviceId;
 
   public QueueStats() { 
@@ -76,7 +78,7 @@ public class QueueStats {
     this.createdTime = createdTime;
   }
 
-  public QueueStats id(@javax.annotation.Nullable QueueStatsId id) {
+  public QueueStats id(@Nullable QueueStatsId id) {
     this.id = id;
     return this;
   }
@@ -85,7 +87,7 @@ public class QueueStats {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public QueueStatsId getId() {
@@ -95,7 +97,7 @@ public class QueueStats {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable QueueStatsId id) {
+  public void setId(@Nullable QueueStatsId id) {
     this.id = id;
   }
 
@@ -104,7 +106,7 @@ public class QueueStats {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -114,7 +116,7 @@ public class QueueStats {
 
 
 
-  public QueueStats tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public QueueStats tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -123,7 +125,7 @@ public class QueueStats {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -133,12 +135,12 @@ public class QueueStats {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public QueueStats queueName(@javax.annotation.Nullable String queueName) {
+  public QueueStats queueName(@Nullable String queueName) {
     this.queueName = queueName;
     return this;
   }
@@ -147,7 +149,7 @@ public class QueueStats {
    * Get queueName
    * @return queueName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_QUEUE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getQueueName() {
@@ -157,12 +159,12 @@ public class QueueStats {
 
   @JsonProperty(value = JSON_PROPERTY_QUEUE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQueueName(@javax.annotation.Nullable String queueName) {
+  public void setQueueName(@Nullable String queueName) {
     this.queueName = queueName;
   }
 
 
-  public QueueStats serviceId(@javax.annotation.Nullable String serviceId) {
+  public QueueStats serviceId(@Nullable String serviceId) {
     this.serviceId = serviceId;
     return this;
   }
@@ -171,7 +173,7 @@ public class QueueStats {
    * Get serviceId
    * @return serviceId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SERVICE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getServiceId() {
@@ -181,7 +183,7 @@ public class QueueStats {
 
   @JsonProperty(value = JSON_PROPERTY_SERVICE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceId(@javax.annotation.Nullable String serviceId) {
+  public void setServiceId(@Nullable String serviceId) {
     this.serviceId = serviceId;
   }
 

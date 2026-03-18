@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   Model.JSON_PROPERTY_INFO,
   Model.JSON_PROPERTY_PHOTO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Model {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_INFO = "info";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode info = null;
 
   public static final String JSON_PROPERTY_PHOTO = "photo";
-  @javax.annotation.Nullable
+  @Nullable
   private String photo;
 
   public Model() { 
   }
 
-  public Model name(@javax.annotation.Nullable String name) {
+  public Model name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -65,7 +67,7 @@ public class Model {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -75,12 +77,12 @@ public class Model {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public Model info(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode info) {
+  public Model info(@Nullable com.fasterxml.jackson.databind.JsonNode info) {
     this.info = info;
     return this;
   }
@@ -89,7 +91,7 @@ public class Model {
    * Get info
    * @return info
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getInfo() {
@@ -99,12 +101,12 @@ public class Model {
 
   @JsonProperty(value = JSON_PROPERTY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode info) {
+  public void setInfo(@Nullable com.fasterxml.jackson.databind.JsonNode info) {
     this.info = info;
   }
 
 
-  public Model photo(@javax.annotation.Nullable String photo) {
+  public Model photo(@Nullable String photo) {
     this.photo = photo;
     return this;
   }
@@ -113,7 +115,7 @@ public class Model {
    * Get photo
    * @return photo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PHOTO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPhoto() {
@@ -123,7 +125,7 @@ public class Model {
 
   @JsonProperty(value = JSON_PROPERTY_PHOTO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhoto(@javax.annotation.Nullable String photo) {
+  public void setPhoto(@Nullable String photo) {
     this.photo = photo;
   }
 

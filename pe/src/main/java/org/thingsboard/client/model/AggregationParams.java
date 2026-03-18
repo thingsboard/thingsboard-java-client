@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +44,28 @@ import org.thingsboard.client.ApiClient;
   AggregationParams.JSON_PROPERTY_TZ_ID,
   AggregationParams.JSON_PROPERTY_INTERVAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AggregationParams {
   public static final String JSON_PROPERTY_AGGREGATION = "aggregation";
-  @javax.annotation.Nullable
+  @Nullable
   private Aggregation aggregation;
 
   public static final String JSON_PROPERTY_INTERVAL_TYPE = "intervalType";
-  @javax.annotation.Nullable
+  @Nullable
   private IntervalType intervalType;
 
   public static final String JSON_PROPERTY_TZ_ID = "tzId";
-  @javax.annotation.Nullable
+  @Nullable
   private String tzId;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  @javax.annotation.Nullable
+  @Nullable
   private Long interval;
 
   public AggregationParams() { 
   }
 
-  public AggregationParams aggregation(@javax.annotation.Nullable Aggregation aggregation) {
+  public AggregationParams aggregation(@Nullable Aggregation aggregation) {
     this.aggregation = aggregation;
     return this;
   }
@@ -72,7 +74,7 @@ public class AggregationParams {
    * Get aggregation
    * @return aggregation
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Aggregation getAggregation() {
@@ -82,12 +84,12 @@ public class AggregationParams {
 
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAggregation(@javax.annotation.Nullable Aggregation aggregation) {
+  public void setAggregation(@Nullable Aggregation aggregation) {
     this.aggregation = aggregation;
   }
 
 
-  public AggregationParams intervalType(@javax.annotation.Nullable IntervalType intervalType) {
+  public AggregationParams intervalType(@Nullable IntervalType intervalType) {
     this.intervalType = intervalType;
     return this;
   }
@@ -96,7 +98,7 @@ public class AggregationParams {
    * Get intervalType
    * @return intervalType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IntervalType getIntervalType() {
@@ -106,12 +108,12 @@ public class AggregationParams {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntervalType(@javax.annotation.Nullable IntervalType intervalType) {
+  public void setIntervalType(@Nullable IntervalType intervalType) {
     this.intervalType = intervalType;
   }
 
 
-  public AggregationParams tzId(@javax.annotation.Nullable String tzId) {
+  public AggregationParams tzId(@Nullable String tzId) {
     this.tzId = tzId;
     return this;
   }
@@ -120,7 +122,7 @@ public class AggregationParams {
    * Get tzId
    * @return tzId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TZ_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTzId() {
@@ -130,12 +132,12 @@ public class AggregationParams {
 
   @JsonProperty(value = JSON_PROPERTY_TZ_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTzId(@javax.annotation.Nullable String tzId) {
+  public void setTzId(@Nullable String tzId) {
     this.tzId = tzId;
   }
 
 
-  public AggregationParams interval(@javax.annotation.Nullable Long interval) {
+  public AggregationParams interval(@Nullable Long interval) {
     this.interval = interval;
     return this;
   }
@@ -144,7 +146,7 @@ public class AggregationParams {
    * Get interval
    * @return interval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getInterval() {
@@ -154,7 +156,7 @@ public class AggregationParams {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInterval(@javax.annotation.Nullable Long interval) {
+  public void setInterval(@Nullable Long interval) {
     this.interval = interval;
   }
 

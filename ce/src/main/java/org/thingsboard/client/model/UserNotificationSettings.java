@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,16 +42,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   UserNotificationSettings.JSON_PROPERTY_PREFS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UserNotificationSettings {
   public static final String JSON_PROPERTY_PREFS = "prefs";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Map<String, NotificationPref> prefs = new HashMap<>();
 
   public UserNotificationSettings() { 
   }
 
-  public UserNotificationSettings prefs(@javax.annotation.Nonnull Map<String, NotificationPref> prefs) {
+  public UserNotificationSettings prefs(@Nonnull Map<String, NotificationPref> prefs) {
     this.prefs = prefs;
     return this;
   }
@@ -66,7 +68,7 @@ public class UserNotificationSettings {
    * Get prefs
    * @return prefs
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PREFS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Map<String, NotificationPref> getPrefs() {
@@ -76,7 +78,7 @@ public class UserNotificationSettings {
 
   @JsonProperty(value = JSON_PROPERTY_PREFS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrefs(@javax.annotation.Nonnull Map<String, NotificationPref> prefs) {
+  public void setPrefs(@Nonnull Map<String, NotificationPref> prefs) {
     this.prefs = prefs;
   }
 

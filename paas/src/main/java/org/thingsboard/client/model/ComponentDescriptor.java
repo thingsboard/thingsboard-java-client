@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,54 +54,54 @@ import org.thingsboard.client.ApiClient;
   ComponentDescriptor.JSON_PROPERTY_HAS_QUEUE_NAME,
   ComponentDescriptor.JSON_PROPERTY_HAS_SECRETS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ComponentDescriptor {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private ComponentDescriptorId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private ComponentType type;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
-  @javax.annotation.Nullable
+  @Nullable
   private ComponentScope scope;
 
   public static final String JSON_PROPERTY_CLUSTERING_MODE = "clusteringMode";
-  @javax.annotation.Nullable
+  @Nullable
   private ComponentClusteringMode clusteringMode;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_CLAZZ = "clazz";
-  @javax.annotation.Nullable
+  @Nullable
   private String clazz;
 
   public static final String JSON_PROPERTY_CONFIGURATION_DESCRIPTOR = "configurationDescriptor";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode configurationDescriptor = null;
 
   public static final String JSON_PROPERTY_CONFIGURATION_VERSION = "configurationVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer configurationVersion;
 
   public static final String JSON_PROPERTY_ACTIONS = "actions";
-  @javax.annotation.Nullable
+  @Nullable
   private String actions;
 
   public static final String JSON_PROPERTY_HAS_QUEUE_NAME = "hasQueueName";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasQueueName;
 
   public static final String JSON_PROPERTY_HAS_SECRETS = "hasSecrets";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasSecrets;
 
   public ComponentDescriptor() { 
@@ -131,7 +133,7 @@ public class ComponentDescriptor {
     this.hasSecrets = hasSecrets;
   }
 
-  public ComponentDescriptor id(@javax.annotation.Nullable ComponentDescriptorId id) {
+  public ComponentDescriptor id(@Nullable ComponentDescriptorId id) {
     this.id = id;
     return this;
   }
@@ -140,7 +142,7 @@ public class ComponentDescriptor {
    * JSON object with the descriptor Id. Specify existing descriptor id to update the descriptor. Referencing non-existing descriptor Id will cause error. Omit this field to create new descriptor.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ComponentDescriptorId getId() {
@@ -150,7 +152,7 @@ public class ComponentDescriptor {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable ComponentDescriptorId id) {
+  public void setId(@Nullable ComponentDescriptorId id) {
     this.id = id;
   }
 
@@ -159,7 +161,7 @@ public class ComponentDescriptor {
    * Timestamp of the descriptor creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -173,7 +175,7 @@ public class ComponentDescriptor {
    * Type of the Rule Node
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ComponentType getType() {
@@ -187,7 +189,7 @@ public class ComponentDescriptor {
    * Scope of the Rule Node. Always set to &#39;TENANT&#39;, since no rule chains on the &#39;SYSTEM&#39; level yet.
    * @return scope
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ComponentScope getScope() {
@@ -201,7 +203,7 @@ public class ComponentDescriptor {
    * Clustering mode of the RuleNode. This mode represents the ability to start Rule Node in multiple microservices.
    * @return clusteringMode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLUSTERING_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ComponentClusteringMode getClusteringMode() {
@@ -215,7 +217,7 @@ public class ComponentDescriptor {
    * Name of the Rule Node. Taken from the @RuleNode annotation.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -229,7 +231,7 @@ public class ComponentDescriptor {
    * Full name of the Java class that implements the Rule Engine Node interface.
    * @return clazz
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLAZZ, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getClazz() {
@@ -239,7 +241,7 @@ public class ComponentDescriptor {
 
 
 
-  public ComponentDescriptor configurationDescriptor(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
+  public ComponentDescriptor configurationDescriptor(@Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
     this.configurationDescriptor = configurationDescriptor;
     return this;
   }
@@ -248,7 +250,7 @@ public class ComponentDescriptor {
    * Get configurationDescriptor
    * @return configurationDescriptor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_DESCRIPTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getConfigurationDescriptor() {
@@ -258,7 +260,7 @@ public class ComponentDescriptor {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_DESCRIPTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigurationDescriptor(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
+  public void setConfigurationDescriptor(@Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
     this.configurationDescriptor = configurationDescriptor;
   }
 
@@ -267,7 +269,7 @@ public class ComponentDescriptor {
    * Rule node configuration version. By default, this value is 0. If the rule node is a versioned node, this value might be greater than 0.
    * @return configurationVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getConfigurationVersion() {
@@ -281,7 +283,7 @@ public class ComponentDescriptor {
    * Rule Node Actions. Deprecated. Always null.
    * @return actions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getActions() {
@@ -295,7 +297,7 @@ public class ComponentDescriptor {
    * Indicates that the RuleNode supports queue name configuration.
    * @return hasQueueName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_QUEUE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasQueueName() {
@@ -309,7 +311,7 @@ public class ComponentDescriptor {
    * Indicates that the RuleNode configuration uses secrets placeholders.
    * @return hasSecrets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_SECRETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasSecrets() {

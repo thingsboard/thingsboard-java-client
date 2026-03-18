@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   HomeDashboardParams.JSON_PROPERTY_ID,
   HomeDashboardParams.JSON_PROPERTY_HIDE_TOOLBAR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class HomeDashboardParams {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_HIDE_TOOLBAR = "hideToolbar";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hideToolbar;
 
   public HomeDashboardParams() { 
   }
 
-  public HomeDashboardParams id(@javax.annotation.Nullable String id) {
+  public HomeDashboardParams id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -60,7 +62,7 @@ public class HomeDashboardParams {
    * Home dashboard Id to assign for the new user.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -70,12 +72,12 @@ public class HomeDashboardParams {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public HomeDashboardParams hideToolbar(@javax.annotation.Nullable Boolean hideToolbar) {
+  public HomeDashboardParams hideToolbar(@Nullable Boolean hideToolbar) {
     this.hideToolbar = hideToolbar;
     return this;
   }
@@ -84,7 +86,7 @@ public class HomeDashboardParams {
    * Indicates if hide toolbar should be hidden.
    * @return hideToolbar
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HIDE_TOOLBAR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHideToolbar() {
@@ -94,7 +96,7 @@ public class HomeDashboardParams {
 
   @JsonProperty(value = JSON_PROPERTY_HIDE_TOOLBAR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHideToolbar(@javax.annotation.Nullable Boolean hideToolbar) {
+  public void setHideToolbar(@Nullable Boolean hideToolbar) {
     this.hideToolbar = hideToolbar;
   }
 

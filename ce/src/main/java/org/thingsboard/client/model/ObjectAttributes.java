@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -53,59 +55,59 @@ import org.thingsboard.client.ApiClient;
   ObjectAttributes.JSON_PROPERTY_EPMIN,
   ObjectAttributes.JSON_PROPERTY_EPMAX
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ObjectAttributes {
   public static final String JSON_PROPERTY_DIM = "dim";
-  @javax.annotation.Nullable
+  @Nullable
   private Long dim;
 
   public static final String JSON_PROPERTY_SSID = "ssid";
-  @javax.annotation.Nullable
+  @Nullable
   private Long ssid;
 
   public static final String JSON_PROPERTY_URI = "uri";
-  @javax.annotation.Nullable
+  @Nullable
   private String uri;
 
   public static final String JSON_PROPERTY_VER = "ver";
   private JsonNullable<Object> ver = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_LWM2M = "lwm2m";
-  @javax.annotation.Nullable
+  @Nullable
   private LwM2mVersion lwm2m;
 
   public static final String JSON_PROPERTY_PMIN = "pmin";
-  @javax.annotation.Nullable
+  @Nullable
   private Long pmin;
 
   public static final String JSON_PROPERTY_PMAX = "pmax";
-  @javax.annotation.Nullable
+  @Nullable
   private Long pmax;
 
   public static final String JSON_PROPERTY_GT = "gt";
-  @javax.annotation.Nullable
+  @Nullable
   private Double gt;
 
   public static final String JSON_PROPERTY_LT = "lt";
-  @javax.annotation.Nullable
+  @Nullable
   private Double lt;
 
   public static final String JSON_PROPERTY_ST = "st";
-  @javax.annotation.Nullable
+  @Nullable
   private Double st;
 
   public static final String JSON_PROPERTY_EPMIN = "epmin";
-  @javax.annotation.Nullable
+  @Nullable
   private Long epmin;
 
   public static final String JSON_PROPERTY_EPMAX = "epmax";
-  @javax.annotation.Nullable
+  @Nullable
   private Long epmax;
 
   public ObjectAttributes() { 
   }
 
-  public ObjectAttributes dim(@javax.annotation.Nullable Long dim) {
+  public ObjectAttributes dim(@Nullable Long dim) {
     this.dim = dim;
     return this;
   }
@@ -114,7 +116,7 @@ public class ObjectAttributes {
    * Get dim
    * @return dim
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DIM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDim() {
@@ -124,12 +126,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_DIM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDim(@javax.annotation.Nullable Long dim) {
+  public void setDim(@Nullable Long dim) {
     this.dim = dim;
   }
 
 
-  public ObjectAttributes ssid(@javax.annotation.Nullable Long ssid) {
+  public ObjectAttributes ssid(@Nullable Long ssid) {
     this.ssid = ssid;
     return this;
   }
@@ -138,7 +140,7 @@ public class ObjectAttributes {
    * Get ssid
    * @return ssid
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SSID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getSsid() {
@@ -148,12 +150,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_SSID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSsid(@javax.annotation.Nullable Long ssid) {
+  public void setSsid(@Nullable Long ssid) {
     this.ssid = ssid;
   }
 
 
-  public ObjectAttributes uri(@javax.annotation.Nullable String uri) {
+  public ObjectAttributes uri(@Nullable String uri) {
     this.uri = uri;
     return this;
   }
@@ -162,7 +164,7 @@ public class ObjectAttributes {
    * Get uri
    * @return uri
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUri() {
@@ -172,12 +174,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUri(@javax.annotation.Nullable String uri) {
+  public void setUri(@Nullable String uri) {
     this.uri = uri;
   }
 
 
-  public ObjectAttributes ver(@javax.annotation.Nullable Object ver) {
+  public ObjectAttributes ver(@Nullable Object ver) {
     this.ver = JsonNullable.<Object>of(ver);
     return this;
   }
@@ -186,7 +188,7 @@ public class ObjectAttributes {
    * Get ver
    * @return ver
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getVer() {
         return ver.orElse(null);
@@ -204,12 +206,12 @@ public class ObjectAttributes {
     this.ver = ver;
   }
 
-  public void setVer(@javax.annotation.Nullable Object ver) {
+  public void setVer(@Nullable Object ver) {
     this.ver = JsonNullable.<Object>of(ver);
   }
 
 
-  public ObjectAttributes lwm2m(@javax.annotation.Nullable LwM2mVersion lwm2m) {
+  public ObjectAttributes lwm2m(@Nullable LwM2mVersion lwm2m) {
     this.lwm2m = lwm2m;
     return this;
   }
@@ -218,7 +220,7 @@ public class ObjectAttributes {
    * Get lwm2m
    * @return lwm2m
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LWM2M, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LwM2mVersion getLwm2m() {
@@ -228,12 +230,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_LWM2M, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLwm2m(@javax.annotation.Nullable LwM2mVersion lwm2m) {
+  public void setLwm2m(@Nullable LwM2mVersion lwm2m) {
     this.lwm2m = lwm2m;
   }
 
 
-  public ObjectAttributes pmin(@javax.annotation.Nullable Long pmin) {
+  public ObjectAttributes pmin(@Nullable Long pmin) {
     this.pmin = pmin;
     return this;
   }
@@ -242,7 +244,7 @@ public class ObjectAttributes {
    * Get pmin
    * @return pmin
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PMIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPmin() {
@@ -252,12 +254,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_PMIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPmin(@javax.annotation.Nullable Long pmin) {
+  public void setPmin(@Nullable Long pmin) {
     this.pmin = pmin;
   }
 
 
-  public ObjectAttributes pmax(@javax.annotation.Nullable Long pmax) {
+  public ObjectAttributes pmax(@Nullable Long pmax) {
     this.pmax = pmax;
     return this;
   }
@@ -266,7 +268,7 @@ public class ObjectAttributes {
    * Get pmax
    * @return pmax
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PMAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPmax() {
@@ -276,12 +278,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_PMAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPmax(@javax.annotation.Nullable Long pmax) {
+  public void setPmax(@Nullable Long pmax) {
     this.pmax = pmax;
   }
 
 
-  public ObjectAttributes gt(@javax.annotation.Nullable Double gt) {
+  public ObjectAttributes gt(@Nullable Double gt) {
     this.gt = gt;
     return this;
   }
@@ -290,7 +292,7 @@ public class ObjectAttributes {
    * Get gt
    * @return gt
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getGt() {
@@ -300,12 +302,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_GT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGt(@javax.annotation.Nullable Double gt) {
+  public void setGt(@Nullable Double gt) {
     this.gt = gt;
   }
 
 
-  public ObjectAttributes lt(@javax.annotation.Nullable Double lt) {
+  public ObjectAttributes lt(@Nullable Double lt) {
     this.lt = lt;
     return this;
   }
@@ -314,7 +316,7 @@ public class ObjectAttributes {
    * Get lt
    * @return lt
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getLt() {
@@ -324,12 +326,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_LT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLt(@javax.annotation.Nullable Double lt) {
+  public void setLt(@Nullable Double lt) {
     this.lt = lt;
   }
 
 
-  public ObjectAttributes st(@javax.annotation.Nullable Double st) {
+  public ObjectAttributes st(@Nullable Double st) {
     this.st = st;
     return this;
   }
@@ -338,7 +340,7 @@ public class ObjectAttributes {
    * Get st
    * @return st
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getSt() {
@@ -348,12 +350,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_ST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSt(@javax.annotation.Nullable Double st) {
+  public void setSt(@Nullable Double st) {
     this.st = st;
   }
 
 
-  public ObjectAttributes epmin(@javax.annotation.Nullable Long epmin) {
+  public ObjectAttributes epmin(@Nullable Long epmin) {
     this.epmin = epmin;
     return this;
   }
@@ -362,7 +364,7 @@ public class ObjectAttributes {
    * Get epmin
    * @return epmin
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EPMIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEpmin() {
@@ -372,12 +374,12 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_EPMIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEpmin(@javax.annotation.Nullable Long epmin) {
+  public void setEpmin(@Nullable Long epmin) {
     this.epmin = epmin;
   }
 
 
-  public ObjectAttributes epmax(@javax.annotation.Nullable Long epmax) {
+  public ObjectAttributes epmax(@Nullable Long epmax) {
     this.epmax = epmax;
     return this;
   }
@@ -386,7 +388,7 @@ public class ObjectAttributes {
    * Get epmax
    * @return epmax
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EPMAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEpmax() {
@@ -396,7 +398,7 @@ public class ObjectAttributes {
 
   @JsonProperty(value = JSON_PROPERTY_EPMAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEpmax(@javax.annotation.Nullable Long epmax) {
+  public void setEpmax(@Nullable Long epmax) {
     this.epmax = epmax;
   }
 

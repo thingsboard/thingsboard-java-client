@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,32 +46,32 @@ import org.thingsboard.client.ApiClient;
   History.JSON_PROPERTY_FIXED_TIMEWINDOW,
   History.JSON_PROPERTY_QUICK_INTERVAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class History {
   public static final String JSON_PROPERTY_HISTORY_TYPE = "historyType";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer historyType;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  @javax.annotation.Nullable
+  @Nullable
   private Interval interval;
 
   public static final String JSON_PROPERTY_TIMEWINDOW_MS = "timewindowMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long timewindowMs;
 
   public static final String JSON_PROPERTY_FIXED_TIMEWINDOW = "fixedTimewindow";
-  @javax.annotation.Nullable
+  @Nullable
   private FixedTimeWindow fixedTimewindow;
 
   public static final String JSON_PROPERTY_QUICK_INTERVAL = "quickInterval";
-  @javax.annotation.Nullable
+  @Nullable
   private QuickTimeInterval quickInterval;
 
   public History() { 
   }
 
-  public History historyType(@javax.annotation.Nullable Integer historyType) {
+  public History historyType(@Nullable Integer historyType) {
     this.historyType = historyType;
     return this;
   }
@@ -78,7 +80,7 @@ public class History {
    * Get historyType
    * @return historyType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HISTORY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getHistoryType() {
@@ -88,12 +90,12 @@ public class History {
 
   @JsonProperty(value = JSON_PROPERTY_HISTORY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHistoryType(@javax.annotation.Nullable Integer historyType) {
+  public void setHistoryType(@Nullable Integer historyType) {
     this.historyType = historyType;
   }
 
 
-  public History interval(@javax.annotation.Nullable Interval interval) {
+  public History interval(@Nullable Interval interval) {
     this.interval = interval;
     return this;
   }
@@ -102,7 +104,7 @@ public class History {
    * Get interval
    * @return interval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Interval getInterval() {
@@ -112,12 +114,12 @@ public class History {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInterval(@javax.annotation.Nullable Interval interval) {
+  public void setInterval(@Nullable Interval interval) {
     this.interval = interval;
   }
 
 
-  public History timewindowMs(@javax.annotation.Nullable Long timewindowMs) {
+  public History timewindowMs(@Nullable Long timewindowMs) {
     this.timewindowMs = timewindowMs;
     return this;
   }
@@ -126,7 +128,7 @@ public class History {
    * Get timewindowMs
    * @return timewindowMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMEWINDOW_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTimewindowMs() {
@@ -136,12 +138,12 @@ public class History {
 
   @JsonProperty(value = JSON_PROPERTY_TIMEWINDOW_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimewindowMs(@javax.annotation.Nullable Long timewindowMs) {
+  public void setTimewindowMs(@Nullable Long timewindowMs) {
     this.timewindowMs = timewindowMs;
   }
 
 
-  public History fixedTimewindow(@javax.annotation.Nullable FixedTimeWindow fixedTimewindow) {
+  public History fixedTimewindow(@Nullable FixedTimeWindow fixedTimewindow) {
     this.fixedTimewindow = fixedTimewindow;
     return this;
   }
@@ -150,7 +152,7 @@ public class History {
    * Get fixedTimewindow
    * @return fixedTimewindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIXED_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public FixedTimeWindow getFixedTimewindow() {
@@ -160,12 +162,12 @@ public class History {
 
   @JsonProperty(value = JSON_PROPERTY_FIXED_TIMEWINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFixedTimewindow(@javax.annotation.Nullable FixedTimeWindow fixedTimewindow) {
+  public void setFixedTimewindow(@Nullable FixedTimeWindow fixedTimewindow) {
     this.fixedTimewindow = fixedTimewindow;
   }
 
 
-  public History quickInterval(@javax.annotation.Nullable QuickTimeInterval quickInterval) {
+  public History quickInterval(@Nullable QuickTimeInterval quickInterval) {
     this.quickInterval = quickInterval;
     return this;
   }
@@ -174,7 +176,7 @@ public class History {
    * Get quickInterval
    * @return quickInterval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_QUICK_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public QuickTimeInterval getQuickInterval() {
@@ -184,7 +186,7 @@ public class History {
 
   @JsonProperty(value = JSON_PROPERTY_QUICK_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQuickInterval(@javax.annotation.Nullable QuickTimeInterval quickInterval) {
+  public void setQuickInterval(@Nullable QuickTimeInterval quickInterval) {
     this.quickInterval = quickInterval;
   }
 

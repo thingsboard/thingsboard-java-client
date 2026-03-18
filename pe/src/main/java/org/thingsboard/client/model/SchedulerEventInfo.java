@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,54 +54,54 @@ import org.thingsboard.client.ApiClient;
   SchedulerEventInfo.JSON_PROPERTY_VERSION,
   SchedulerEventInfo.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SchedulerEventInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private SchedulerEventId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_ORIGINATOR_ID = "originatorId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId originatorId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public static final String JSON_PROPERTY_SCHEDULE = "schedule";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode schedule;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public SchedulerEventInfo() { 
@@ -121,7 +123,7 @@ public class SchedulerEventInfo {
     this.ownerId = ownerId;
   }
 
-  public SchedulerEventInfo id(@javax.annotation.Nullable SchedulerEventId id) {
+  public SchedulerEventInfo id(@Nullable SchedulerEventId id) {
     this.id = id;
     return this;
   }
@@ -130,7 +132,7 @@ public class SchedulerEventInfo {
    * JSON object with the scheduler event Id. Specify this field to update the scheduler event. Referencing non-existing scheduler event Id will cause error. Omit this field to create new scheduler event
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SchedulerEventId getId() {
@@ -140,7 +142,7 @@ public class SchedulerEventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable SchedulerEventId id) {
+  public void setId(@Nullable SchedulerEventId id) {
     this.id = id;
   }
 
@@ -149,7 +151,7 @@ public class SchedulerEventInfo {
    * Timestamp of the scheduler event creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -159,7 +161,7 @@ public class SchedulerEventInfo {
 
 
 
-  public SchedulerEventInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public SchedulerEventInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -168,7 +170,7 @@ public class SchedulerEventInfo {
    * Additional parameters of the scheduler event
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -178,7 +180,7 @@ public class SchedulerEventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
@@ -187,7 +189,7 @@ public class SchedulerEventInfo {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -201,7 +203,7 @@ public class SchedulerEventInfo {
    * JSON object with Customer Id
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -215,7 +217,7 @@ public class SchedulerEventInfo {
    * JSON object with Originator Id
    * @return originatorId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ORIGINATOR_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOriginatorId() {
@@ -225,7 +227,7 @@ public class SchedulerEventInfo {
 
 
 
-  public SchedulerEventInfo name(@javax.annotation.Nullable String name) {
+  public SchedulerEventInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -234,7 +236,7 @@ public class SchedulerEventInfo {
    * scheduler event name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -244,12 +246,12 @@ public class SchedulerEventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public SchedulerEventInfo type(@javax.annotation.Nullable String type) {
+  public SchedulerEventInfo type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -258,7 +260,7 @@ public class SchedulerEventInfo {
    * scheduler event type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -268,12 +270,12 @@ public class SchedulerEventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
 
-  public SchedulerEventInfo schedule(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode schedule) {
+  public SchedulerEventInfo schedule(@Nullable com.fasterxml.jackson.databind.JsonNode schedule) {
     this.schedule = schedule;
     return this;
   }
@@ -282,7 +284,7 @@ public class SchedulerEventInfo {
    * a JSON value with schedule time configuration
    * @return schedule
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getSchedule() {
@@ -292,12 +294,12 @@ public class SchedulerEventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSchedule(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode schedule) {
+  public void setSchedule(@Nullable com.fasterxml.jackson.databind.JsonNode schedule) {
     this.schedule = schedule;
   }
 
 
-  public SchedulerEventInfo enabled(@javax.annotation.Nullable Boolean enabled) {
+  public SchedulerEventInfo enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -306,7 +308,7 @@ public class SchedulerEventInfo {
    * Enable/disable scheduler
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -316,12 +318,12 @@ public class SchedulerEventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
 
-  public SchedulerEventInfo version(@javax.annotation.Nullable Long version) {
+  public SchedulerEventInfo version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -330,7 +332,7 @@ public class SchedulerEventInfo {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -340,7 +342,7 @@ public class SchedulerEventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -349,7 +351,7 @@ public class SchedulerEventInfo {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

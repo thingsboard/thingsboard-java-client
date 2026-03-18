@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,36 +50,36 @@ import org.thingsboard.client.ApiClient;
   EntityData.JSON_PROPERTY_TIMESERIES,
   EntityData.JSON_PROPERTY_AGG_LATEST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityData {
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId entityId;
 
   public static final String JSON_PROPERTY_READ_ATTRS = "readAttrs";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean readAttrs;
 
   public static final String JSON_PROPERTY_READ_TS = "readTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean readTs;
 
   public static final String JSON_PROPERTY_LATEST = "latest";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, Map<String, TsValue>> latest = new HashMap<>();
 
   public static final String JSON_PROPERTY_TIMESERIES = "timeseries";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, List<TsValue>> timeseries = new HashMap<>();
 
   public static final String JSON_PROPERTY_AGG_LATEST = "aggLatest";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, ComparisonTsValue> aggLatest = new HashMap<>();
 
   public EntityData() { 
   }
 
-  public EntityData entityId(@javax.annotation.Nullable EntityId entityId) {
+  public EntityData entityId(@Nullable EntityId entityId) {
     this.entityId = entityId;
     return this;
   }
@@ -86,7 +88,7 @@ public class EntityData {
    * Get entityId
    * @return entityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getEntityId() {
@@ -96,12 +98,12 @@ public class EntityData {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityId(@javax.annotation.Nullable EntityId entityId) {
+  public void setEntityId(@Nullable EntityId entityId) {
     this.entityId = entityId;
   }
 
 
-  public EntityData readAttrs(@javax.annotation.Nullable Boolean readAttrs) {
+  public EntityData readAttrs(@Nullable Boolean readAttrs) {
     this.readAttrs = readAttrs;
     return this;
   }
@@ -110,7 +112,7 @@ public class EntityData {
    * Get readAttrs
    * @return readAttrs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_ATTRS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getReadAttrs() {
@@ -120,12 +122,12 @@ public class EntityData {
 
   @JsonProperty(value = JSON_PROPERTY_READ_ATTRS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadAttrs(@javax.annotation.Nullable Boolean readAttrs) {
+  public void setReadAttrs(@Nullable Boolean readAttrs) {
     this.readAttrs = readAttrs;
   }
 
 
-  public EntityData readTs(@javax.annotation.Nullable Boolean readTs) {
+  public EntityData readTs(@Nullable Boolean readTs) {
     this.readTs = readTs;
     return this;
   }
@@ -134,7 +136,7 @@ public class EntityData {
    * Get readTs
    * @return readTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getReadTs() {
@@ -144,12 +146,12 @@ public class EntityData {
 
   @JsonProperty(value = JSON_PROPERTY_READ_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadTs(@javax.annotation.Nullable Boolean readTs) {
+  public void setReadTs(@Nullable Boolean readTs) {
     this.readTs = readTs;
   }
 
 
-  public EntityData latest(@javax.annotation.Nullable Map<String, Map<String, TsValue>> latest) {
+  public EntityData latest(@Nullable Map<String, Map<String, TsValue>> latest) {
     this.latest = latest;
     return this;
   }
@@ -166,7 +168,7 @@ public class EntityData {
    * Get latest
    * @return latest
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LATEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, Map<String, TsValue>> getLatest() {
@@ -176,12 +178,12 @@ public class EntityData {
 
   @JsonProperty(value = JSON_PROPERTY_LATEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLatest(@javax.annotation.Nullable Map<String, Map<String, TsValue>> latest) {
+  public void setLatest(@Nullable Map<String, Map<String, TsValue>> latest) {
     this.latest = latest;
   }
 
 
-  public EntityData timeseries(@javax.annotation.Nullable Map<String, List<TsValue>> timeseries) {
+  public EntityData timeseries(@Nullable Map<String, List<TsValue>> timeseries) {
     this.timeseries = timeseries;
     return this;
   }
@@ -198,7 +200,7 @@ public class EntityData {
    * Get timeseries
    * @return timeseries
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, List<TsValue>> getTimeseries() {
@@ -208,12 +210,12 @@ public class EntityData {
 
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimeseries(@javax.annotation.Nullable Map<String, List<TsValue>> timeseries) {
+  public void setTimeseries(@Nullable Map<String, List<TsValue>> timeseries) {
     this.timeseries = timeseries;
   }
 
 
-  public EntityData aggLatest(@javax.annotation.Nullable Map<String, ComparisonTsValue> aggLatest) {
+  public EntityData aggLatest(@Nullable Map<String, ComparisonTsValue> aggLatest) {
     this.aggLatest = aggLatest;
     return this;
   }
@@ -230,7 +232,7 @@ public class EntityData {
    * Get aggLatest
    * @return aggLatest
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AGG_LATEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, ComparisonTsValue> getAggLatest() {
@@ -240,7 +242,7 @@ public class EntityData {
 
   @JsonProperty(value = JSON_PROPERTY_AGG_LATEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAggLatest(@javax.annotation.Nullable Map<String, ComparisonTsValue> aggLatest) {
+  public void setAggLatest(@Nullable Map<String, ComparisonTsValue> aggLatest) {
     this.aggLatest = aggLatest;
   }
 

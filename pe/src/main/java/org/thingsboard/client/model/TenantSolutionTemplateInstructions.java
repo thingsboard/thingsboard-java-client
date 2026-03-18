@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,32 +46,32 @@ import org.thingsboard.client.ApiClient;
   TenantSolutionTemplateInstructions.JSON_PROPERTY_MAIN_DASHBOARD_PUBLIC,
   TenantSolutionTemplateInstructions.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantSolutionTemplateInstructions {
   public static final String JSON_PROPERTY_DASHBOARD_GROUP_ID = "dashboardGroupId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityGroupId dashboardGroupId;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId dashboardId;
 
   public static final String JSON_PROPERTY_PUBLIC_ID = "publicId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId publicId;
 
   public static final String JSON_PROPERTY_MAIN_DASHBOARD_PUBLIC = "mainDashboardPublic";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean mainDashboardPublic;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
-  @javax.annotation.Nullable
+  @Nullable
   private String details;
 
   public TenantSolutionTemplateInstructions() { 
   }
 
-  public TenantSolutionTemplateInstructions dashboardGroupId(@javax.annotation.Nullable EntityGroupId dashboardGroupId) {
+  public TenantSolutionTemplateInstructions dashboardGroupId(@Nullable EntityGroupId dashboardGroupId) {
     this.dashboardGroupId = dashboardGroupId;
     return this;
   }
@@ -78,7 +80,7 @@ public class TenantSolutionTemplateInstructions {
    * Id of the group that contains main dashboard of the solution
    * @return dashboardGroupId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityGroupId getDashboardGroupId() {
@@ -88,12 +90,12 @@ public class TenantSolutionTemplateInstructions {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardGroupId(@javax.annotation.Nullable EntityGroupId dashboardGroupId) {
+  public void setDashboardGroupId(@Nullable EntityGroupId dashboardGroupId) {
     this.dashboardGroupId = dashboardGroupId;
   }
 
 
-  public TenantSolutionTemplateInstructions dashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public TenantSolutionTemplateInstructions dashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
     return this;
   }
@@ -102,7 +104,7 @@ public class TenantSolutionTemplateInstructions {
    * Id of the main dashboard of the solution
    * @return dashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDashboardId() {
@@ -112,12 +114,12 @@ public class TenantSolutionTemplateInstructions {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public void setDashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
   }
 
 
-  public TenantSolutionTemplateInstructions publicId(@javax.annotation.Nullable CustomerId publicId) {
+  public TenantSolutionTemplateInstructions publicId(@Nullable CustomerId publicId) {
     this.publicId = publicId;
     return this;
   }
@@ -126,7 +128,7 @@ public class TenantSolutionTemplateInstructions {
    * Id of the public customer if solution has public entities
    * @return publicId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getPublicId() {
@@ -136,12 +138,12 @@ public class TenantSolutionTemplateInstructions {
 
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublicId(@javax.annotation.Nullable CustomerId publicId) {
+  public void setPublicId(@Nullable CustomerId publicId) {
     this.publicId = publicId;
   }
 
 
-  public TenantSolutionTemplateInstructions mainDashboardPublic(@javax.annotation.Nullable Boolean mainDashboardPublic) {
+  public TenantSolutionTemplateInstructions mainDashboardPublic(@Nullable Boolean mainDashboardPublic) {
     this.mainDashboardPublic = mainDashboardPublic;
     return this;
   }
@@ -150,7 +152,7 @@ public class TenantSolutionTemplateInstructions {
    * Is the main dashboard public
    * @return mainDashboardPublic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAIN_DASHBOARD_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getMainDashboardPublic() {
@@ -160,12 +162,12 @@ public class TenantSolutionTemplateInstructions {
 
   @JsonProperty(value = JSON_PROPERTY_MAIN_DASHBOARD_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMainDashboardPublic(@javax.annotation.Nullable Boolean mainDashboardPublic) {
+  public void setMainDashboardPublic(@Nullable Boolean mainDashboardPublic) {
     this.mainDashboardPublic = mainDashboardPublic;
   }
 
 
-  public TenantSolutionTemplateInstructions details(@javax.annotation.Nullable String details) {
+  public TenantSolutionTemplateInstructions details(@Nullable String details) {
     this.details = details;
     return this;
   }
@@ -174,7 +176,7 @@ public class TenantSolutionTemplateInstructions {
    * Markdown with solution usage instructions
    * @return details
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDetails() {
@@ -184,7 +186,7 @@ public class TenantSolutionTemplateInstructions {
 
   @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable String details) {
+  public void setDetails(@Nullable String details) {
     this.details = details;
   }
 

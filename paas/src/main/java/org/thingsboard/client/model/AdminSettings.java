@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,26 +45,26 @@ import org.thingsboard.client.ApiClient;
   AdminSettings.JSON_PROPERTY_KEY,
   AdminSettings.JSON_PROPERTY_JSON_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AdminSettings {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private AdminSettingsId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public static final String JSON_PROPERTY_JSON_VALUE = "jsonValue";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode jsonValue;
 
   public AdminSettings() { 
@@ -78,7 +80,7 @@ public class AdminSettings {
     this.tenantId = tenantId;
   }
 
-  public AdminSettings id(@javax.annotation.Nullable AdminSettingsId id) {
+  public AdminSettings id(@Nullable AdminSettingsId id) {
     this.id = id;
     return this;
   }
@@ -87,7 +89,7 @@ public class AdminSettings {
    * The Id of the Administration Settings, auto-generated, UUID
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AdminSettingsId getId() {
@@ -97,7 +99,7 @@ public class AdminSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AdminSettingsId id) {
+  public void setId(@Nullable AdminSettingsId id) {
     this.id = id;
   }
 
@@ -106,7 +108,7 @@ public class AdminSettings {
    * Timestamp of the settings creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -120,7 +122,7 @@ public class AdminSettings {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -130,7 +132,7 @@ public class AdminSettings {
 
 
 
-  public AdminSettings key(@javax.annotation.Nullable String key) {
+  public AdminSettings key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -139,7 +141,7 @@ public class AdminSettings {
    * The Administration Settings key, (e.g. &#39;general&#39; or &#39;mail&#39;)
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -149,12 +151,12 @@ public class AdminSettings {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
 
-  public AdminSettings jsonValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode jsonValue) {
+  public AdminSettings jsonValue(@Nullable com.fasterxml.jackson.databind.JsonNode jsonValue) {
     this.jsonValue = jsonValue;
     return this;
   }
@@ -163,7 +165,7 @@ public class AdminSettings {
    * JSON representation of the Administration Settings value
    * @return jsonValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_JSON_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getJsonValue() {
@@ -173,7 +175,7 @@ public class AdminSettings {
 
   @JsonProperty(value = JSON_PROPERTY_JSON_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJsonValue(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode jsonValue) {
+  public void setJsonValue(@Nullable com.fasterxml.jackson.databind.JsonNode jsonValue) {
     this.jsonValue = jsonValue;
   }
 

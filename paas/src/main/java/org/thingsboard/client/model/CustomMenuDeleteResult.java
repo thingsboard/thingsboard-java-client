@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,24 +45,24 @@ import org.thingsboard.client.ApiClient;
   CustomMenuDeleteResult.JSON_PROPERTY_ASSIGNEE_TYPE,
   CustomMenuDeleteResult.JSON_PROPERTY_ASSIGNEE_LIST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomMenuDeleteResult {
   public static final String JSON_PROPERTY_SUCCESS = "success";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean success;
 
   public static final String JSON_PROPERTY_ASSIGNEE_TYPE = "assigneeType";
-  @javax.annotation.Nullable
+  @Nullable
   private CMAssigneeType assigneeType;
 
   public static final String JSON_PROPERTY_ASSIGNEE_LIST = "assigneeList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityInfo> assigneeList = new ArrayList<>();
 
   public CustomMenuDeleteResult() { 
   }
 
-  public CustomMenuDeleteResult success(@javax.annotation.Nullable Boolean success) {
+  public CustomMenuDeleteResult success(@Nullable Boolean success) {
     this.success = success;
     return this;
   }
@@ -69,7 +71,7 @@ public class CustomMenuDeleteResult {
    * Get success
    * @return success
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSuccess() {
@@ -79,12 +81,12 @@ public class CustomMenuDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuccess(@javax.annotation.Nullable Boolean success) {
+  public void setSuccess(@Nullable Boolean success) {
     this.success = success;
   }
 
 
-  public CustomMenuDeleteResult assigneeType(@javax.annotation.Nullable CMAssigneeType assigneeType) {
+  public CustomMenuDeleteResult assigneeType(@Nullable CMAssigneeType assigneeType) {
     this.assigneeType = assigneeType;
     return this;
   }
@@ -93,7 +95,7 @@ public class CustomMenuDeleteResult {
    * Get assigneeType
    * @return assigneeType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CMAssigneeType getAssigneeType() {
@@ -103,12 +105,12 @@ public class CustomMenuDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssigneeType(@javax.annotation.Nullable CMAssigneeType assigneeType) {
+  public void setAssigneeType(@Nullable CMAssigneeType assigneeType) {
     this.assigneeType = assigneeType;
   }
 
 
-  public CustomMenuDeleteResult assigneeList(@javax.annotation.Nullable List<EntityInfo> assigneeList) {
+  public CustomMenuDeleteResult assigneeList(@Nullable List<EntityInfo> assigneeList) {
     this.assigneeList = assigneeList;
     return this;
   }
@@ -125,7 +127,7 @@ public class CustomMenuDeleteResult {
    * Get assigneeList
    * @return assigneeList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityInfo> getAssigneeList() {
@@ -135,7 +137,7 @@ public class CustomMenuDeleteResult {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssigneeList(@javax.annotation.Nullable List<EntityInfo> assigneeList) {
+  public void setAssigneeList(@Nullable List<EntityInfo> assigneeList) {
     this.assigneeList = assigneeList;
   }
 

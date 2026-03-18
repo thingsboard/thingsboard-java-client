@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   IntegrationConvertersInfo.JSON_PROPERTY_UPLINK,
   IntegrationConvertersInfo.JSON_PROPERTY_DOWNLINK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class IntegrationConvertersInfo {
   public static final String JSON_PROPERTY_UPLINK = "uplink";
-  @javax.annotation.Nullable
+  @Nullable
   private ConvertersInfo uplink;
 
   public static final String JSON_PROPERTY_DOWNLINK = "downlink";
-  @javax.annotation.Nullable
+  @Nullable
   private ConvertersInfo downlink;
 
   public IntegrationConvertersInfo() { 
   }
 
-  public IntegrationConvertersInfo uplink(@javax.annotation.Nullable ConvertersInfo uplink) {
+  public IntegrationConvertersInfo uplink(@Nullable ConvertersInfo uplink) {
     this.uplink = uplink;
     return this;
   }
@@ -61,7 +63,7 @@ public class IntegrationConvertersInfo {
    * Get uplink
    * @return uplink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPLINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ConvertersInfo getUplink() {
@@ -71,12 +73,12 @@ public class IntegrationConvertersInfo {
 
   @JsonProperty(value = JSON_PROPERTY_UPLINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUplink(@javax.annotation.Nullable ConvertersInfo uplink) {
+  public void setUplink(@Nullable ConvertersInfo uplink) {
     this.uplink = uplink;
   }
 
 
-  public IntegrationConvertersInfo downlink(@javax.annotation.Nullable ConvertersInfo downlink) {
+  public IntegrationConvertersInfo downlink(@Nullable ConvertersInfo downlink) {
     this.downlink = downlink;
     return this;
   }
@@ -85,7 +87,7 @@ public class IntegrationConvertersInfo {
    * Get downlink
    * @return downlink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DOWNLINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ConvertersInfo getDownlink() {
@@ -95,7 +97,7 @@ public class IntegrationConvertersInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DOWNLINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDownlink(@javax.annotation.Nullable ConvertersInfo downlink) {
+  public void setDownlink(@Nullable ConvertersInfo downlink) {
     this.downlink = downlink;
   }
 

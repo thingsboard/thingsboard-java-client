@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -56,62 +59,62 @@ import org.thingsboard.client.ApiClient;
   User.JSON_PROPERTY_NAME,
   User.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class User {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String email;
 
   public static final String JSON_PROPERTY_AUTHORITY = "authority";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Authority authority;
 
   public static final String JSON_PROPERTY_FIRST_NAME = "firstName";
-  @javax.annotation.Nullable
+  @Nullable
   private String firstName;
 
   public static final String JSON_PROPERTY_LAST_NAME = "lastName";
-  @javax.annotation.Nullable
+  @Nullable
   private String lastName;
 
   public static final String JSON_PROPERTY_PHONE = "phone";
-  @javax.annotation.Nullable
+  @Nullable
   private String phone;
 
   public static final String JSON_PROPERTY_CUSTOM_MENU_ID = "customMenuId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomMenuId customMenuId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public User() { 
@@ -129,7 +132,7 @@ public class User {
     this.ownerId = ownerId;
   }
 
-  public User id(@javax.annotation.Nullable UserId id) {
+  public User id(@Nullable UserId id) {
     this.id = id;
     return this;
   }
@@ -138,7 +141,7 @@ public class User {
    * JSON object with the User Id. Specify this field to update the device. Referencing non-existing User Id will cause error. Omit this field to create new customer.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getId() {
@@ -148,7 +151,7 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable UserId id) {
+  public void setId(@Nullable UserId id) {
     this.id = id;
   }
 
@@ -157,7 +160,7 @@ public class User {
    * Timestamp of the user creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -167,7 +170,7 @@ public class User {
 
 
 
-  public User additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public User additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -176,7 +179,7 @@ public class User {
    * Additional parameters of the user. May include: &#39;defaultDashboardId&#39; (string, UUID of the default dashboard), &#39;defaultDashboardFullscreen&#39; (boolean), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean), &#39;lang&#39; (string, user locale, e.g. &#39;en_US&#39;), &#39;authProviderName&#39; (string, name of the authentication provider).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -186,12 +189,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public User tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public User tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -200,7 +203,7 @@ public class User {
    * JSON object with the Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -210,12 +213,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public User customerId(@javax.annotation.Nullable CustomerId customerId) {
+  public User customerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -224,7 +227,7 @@ public class User {
    * JSON object with the Customer Id.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -234,12 +237,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerId(@javax.annotation.Nullable CustomerId customerId) {
+  public void setCustomerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
   }
 
 
-  public User email(@javax.annotation.Nonnull String email) {
+  public User email(@Nonnull String email) {
     this.email = email;
     return this;
   }
@@ -248,7 +251,7 @@ public class User {
    * Email of the user
    * @return email
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getEmail() {
@@ -258,12 +261,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEmail(@javax.annotation.Nonnull String email) {
+  public void setEmail(@Nonnull String email) {
     this.email = email;
   }
 
 
-  public User authority(@javax.annotation.Nonnull Authority authority) {
+  public User authority(@Nonnull Authority authority) {
     this.authority = authority;
     return this;
   }
@@ -272,7 +275,7 @@ public class User {
    * Authority
    * @return authority
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_AUTHORITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Authority getAuthority() {
@@ -282,12 +285,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_AUTHORITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthority(@javax.annotation.Nonnull Authority authority) {
+  public void setAuthority(@Nonnull Authority authority) {
     this.authority = authority;
   }
 
 
-  public User firstName(@javax.annotation.Nullable String firstName) {
+  public User firstName(@Nullable String firstName) {
     this.firstName = firstName;
     return this;
   }
@@ -296,7 +299,7 @@ public class User {
    * First name of the user
    * @return firstName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFirstName() {
@@ -306,12 +309,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirstName(@javax.annotation.Nullable String firstName) {
+  public void setFirstName(@Nullable String firstName) {
     this.firstName = firstName;
   }
 
 
-  public User lastName(@javax.annotation.Nullable String lastName) {
+  public User lastName(@Nullable String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -320,7 +323,7 @@ public class User {
    * Last name of the user
    * @return lastName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLastName() {
@@ -330,12 +333,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastName(@javax.annotation.Nullable String lastName) {
+  public void setLastName(@Nullable String lastName) {
     this.lastName = lastName;
   }
 
 
-  public User phone(@javax.annotation.Nullable String phone) {
+  public User phone(@Nullable String phone) {
     this.phone = phone;
     return this;
   }
@@ -344,7 +347,7 @@ public class User {
    * Phone number of the user
    * @return phone
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPhone() {
@@ -354,12 +357,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhone(@javax.annotation.Nullable String phone) {
+  public void setPhone(@Nullable String phone) {
     this.phone = phone;
   }
 
 
-  public User customMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+  public User customMenuId(@Nullable CustomMenuId customMenuId) {
     this.customMenuId = customMenuId;
     return this;
   }
@@ -368,7 +371,7 @@ public class User {
    * Get customMenuId
    * @return customMenuId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomMenuId getCustomMenuId() {
@@ -378,12 +381,12 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomMenuId(@javax.annotation.Nullable CustomMenuId customMenuId) {
+  public void setCustomMenuId(@Nullable CustomMenuId customMenuId) {
     this.customMenuId = customMenuId;
   }
 
 
-  public User version(@javax.annotation.Nullable Long version) {
+  public User version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -392,7 +395,7 @@ public class User {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -402,7 +405,7 @@ public class User {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -411,7 +414,7 @@ public class User {
    * Duplicates the email of the user, readonly
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -425,7 +428,7 @@ public class User {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

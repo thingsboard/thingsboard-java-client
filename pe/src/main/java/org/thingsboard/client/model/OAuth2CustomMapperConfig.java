@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   OAuth2CustomMapperConfig.JSON_PROPERTY_PASSWORD,
   OAuth2CustomMapperConfig.JSON_PROPERTY_SEND_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2CustomMapperConfig {
   public static final String JSON_PROPERTY_URL = "url";
-  @javax.annotation.Nullable
+  @Nullable
   private String url;
 
   public static final String JSON_PROPERTY_USERNAME = "username";
-  @javax.annotation.Nullable
+  @Nullable
   private String username;
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
-  @javax.annotation.Nullable
+  @Nullable
   private String password;
 
   public static final String JSON_PROPERTY_SEND_TOKEN = "sendToken";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean sendToken;
 
   public OAuth2CustomMapperConfig() { 
   }
 
-  public OAuth2CustomMapperConfig url(@javax.annotation.Nullable String url) {
+  public OAuth2CustomMapperConfig url(@Nullable String url) {
     this.url = url;
     return this;
   }
@@ -70,7 +72,7 @@ public class OAuth2CustomMapperConfig {
    * Get url
    * @return url
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUrl() {
@@ -80,12 +82,12 @@ public class OAuth2CustomMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(@javax.annotation.Nullable String url) {
+  public void setUrl(@Nullable String url) {
     this.url = url;
   }
 
 
-  public OAuth2CustomMapperConfig username(@javax.annotation.Nullable String username) {
+  public OAuth2CustomMapperConfig username(@Nullable String username) {
     this.username = username;
     return this;
   }
@@ -94,7 +96,7 @@ public class OAuth2CustomMapperConfig {
    * Get username
    * @return username
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USERNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUsername() {
@@ -104,12 +106,12 @@ public class OAuth2CustomMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_USERNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsername(@javax.annotation.Nullable String username) {
+  public void setUsername(@Nullable String username) {
     this.username = username;
   }
 
 
-  public OAuth2CustomMapperConfig password(@javax.annotation.Nullable String password) {
+  public OAuth2CustomMapperConfig password(@Nullable String password) {
     this.password = password;
     return this;
   }
@@ -118,7 +120,7 @@ public class OAuth2CustomMapperConfig {
    * Get password
    * @return password
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPassword() {
@@ -128,12 +130,12 @@ public class OAuth2CustomMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPassword(@javax.annotation.Nullable String password) {
+  public void setPassword(@Nullable String password) {
     this.password = password;
   }
 
 
-  public OAuth2CustomMapperConfig sendToken(@javax.annotation.Nullable Boolean sendToken) {
+  public OAuth2CustomMapperConfig sendToken(@Nullable Boolean sendToken) {
     this.sendToken = sendToken;
     return this;
   }
@@ -142,7 +144,7 @@ public class OAuth2CustomMapperConfig {
    * Get sendToken
    * @return sendToken
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEND_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSendToken() {
@@ -152,7 +154,7 @@ public class OAuth2CustomMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SEND_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendToken(@javax.annotation.Nullable Boolean sendToken) {
+  public void setSendToken(@Nullable Boolean sendToken) {
     this.sendToken = sendToken;
   }
 

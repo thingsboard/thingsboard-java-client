@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   OpenAiProviderConfig.JSON_PROPERTY_BASE_URL,
   OpenAiProviderConfig.JSON_PROPERTY_API_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OpenAiProviderConfig {
   public static final String JSON_PROPERTY_BASE_URL = "baseUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String baseUrl;
 
   public static final String JSON_PROPERTY_API_KEY = "apiKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String apiKey;
 
   public OpenAiProviderConfig() { 
   }
 
-  public OpenAiProviderConfig baseUrl(@javax.annotation.Nullable String baseUrl) {
+  public OpenAiProviderConfig baseUrl(@Nullable String baseUrl) {
     this.baseUrl = baseUrl;
     return this;
   }
@@ -60,7 +62,7 @@ public class OpenAiProviderConfig {
    * Get baseUrl
    * @return baseUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBaseUrl() {
@@ -70,12 +72,12 @@ public class OpenAiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBaseUrl(@javax.annotation.Nullable String baseUrl) {
+  public void setBaseUrl(@Nullable String baseUrl) {
     this.baseUrl = baseUrl;
   }
 
 
-  public OpenAiProviderConfig apiKey(@javax.annotation.Nullable String apiKey) {
+  public OpenAiProviderConfig apiKey(@Nullable String apiKey) {
     this.apiKey = apiKey;
     return this;
   }
@@ -84,7 +86,7 @@ public class OpenAiProviderConfig {
    * Get apiKey
    * @return apiKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getApiKey() {
@@ -94,7 +96,7 @@ public class OpenAiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApiKey(@javax.annotation.Nullable String apiKey) {
+  public void setApiKey(@Nullable String apiKey) {
     this.apiKey = apiKey;
   }
 

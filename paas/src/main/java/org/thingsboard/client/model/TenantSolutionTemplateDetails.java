@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -49,52 +51,52 @@ import org.thingsboard.client.ApiClient;
   TenantSolutionTemplateDetails.JSON_PROPERTY_DESCRIPTION,
   TenantSolutionTemplateDetails.JSON_PROPERTY_INSTALLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantSolutionTemplateDetails {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_LEVEL = "level";
-  @javax.annotation.Nullable
+  @Nullable
   private SolutionTemplateLevel level;
 
   public static final String JSON_PROPERTY_INSTALL_TIMEOUT_MS = "installTimeoutMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long installTimeoutMs;
 
   public static final String JSON_PROPERTY_TENANT_TELEMETRY_KEYS = "tenantTelemetryKeys";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> tenantTelemetryKeys = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TENANT_ATTRIBUTE_KEYS = "tenantAttributeKeys";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> tenantAttributeKeys = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IMAGE_URLS = "imageUrls";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> imageUrls = new ArrayList<>();
 
   public static final String JSON_PROPERTY_HIGHLIGHTS = "highlights";
-  @javax.annotation.Nullable
+  @Nullable
   private String highlights;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_INSTALLED = "installed";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean installed;
 
   public TenantSolutionTemplateDetails() { 
   }
 
-  public TenantSolutionTemplateDetails id(@javax.annotation.Nullable String id) {
+  public TenantSolutionTemplateDetails id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -103,7 +105,7 @@ public class TenantSolutionTemplateDetails {
    * ID of the solution template
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -113,12 +115,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public TenantSolutionTemplateDetails title(@javax.annotation.Nullable String title) {
+  public TenantSolutionTemplateDetails title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -127,7 +129,7 @@ public class TenantSolutionTemplateDetails {
    * Template Title
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -137,12 +139,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public TenantSolutionTemplateDetails level(@javax.annotation.Nullable SolutionTemplateLevel level) {
+  public TenantSolutionTemplateDetails level(@Nullable SolutionTemplateLevel level) {
     this.level = level;
     return this;
   }
@@ -151,7 +153,7 @@ public class TenantSolutionTemplateDetails {
    * Level of the subscription that is required to unlock the template
    * @return level
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SolutionTemplateLevel getLevel() {
@@ -161,12 +163,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_LEVEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLevel(@javax.annotation.Nullable SolutionTemplateLevel level) {
+  public void setLevel(@Nullable SolutionTemplateLevel level) {
     this.level = level;
   }
 
 
-  public TenantSolutionTemplateDetails installTimeoutMs(@javax.annotation.Nullable Long installTimeoutMs) {
+  public TenantSolutionTemplateDetails installTimeoutMs(@Nullable Long installTimeoutMs) {
     this.installTimeoutMs = installTimeoutMs;
     return this;
   }
@@ -175,7 +177,7 @@ public class TenantSolutionTemplateDetails {
    * Timeout for the installation UI to wait while template is installing
    * @return installTimeoutMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INSTALL_TIMEOUT_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getInstallTimeoutMs() {
@@ -185,12 +187,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_INSTALL_TIMEOUT_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInstallTimeoutMs(@javax.annotation.Nullable Long installTimeoutMs) {
+  public void setInstallTimeoutMs(@Nullable Long installTimeoutMs) {
     this.installTimeoutMs = installTimeoutMs;
   }
 
 
-  public TenantSolutionTemplateDetails tenantTelemetryKeys(@javax.annotation.Nullable List<String> tenantTelemetryKeys) {
+  public TenantSolutionTemplateDetails tenantTelemetryKeys(@Nullable List<String> tenantTelemetryKeys) {
     this.tenantTelemetryKeys = tenantTelemetryKeys;
     return this;
   }
@@ -207,7 +209,7 @@ public class TenantSolutionTemplateDetails {
    * What keys to delete during template uninstall
    * @return tenantTelemetryKeys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_TELEMETRY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTenantTelemetryKeys() {
@@ -217,12 +219,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_TELEMETRY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantTelemetryKeys(@javax.annotation.Nullable List<String> tenantTelemetryKeys) {
+  public void setTenantTelemetryKeys(@Nullable List<String> tenantTelemetryKeys) {
     this.tenantTelemetryKeys = tenantTelemetryKeys;
   }
 
 
-  public TenantSolutionTemplateDetails tenantAttributeKeys(@javax.annotation.Nullable List<String> tenantAttributeKeys) {
+  public TenantSolutionTemplateDetails tenantAttributeKeys(@Nullable List<String> tenantAttributeKeys) {
     this.tenantAttributeKeys = tenantAttributeKeys;
     return this;
   }
@@ -239,7 +241,7 @@ public class TenantSolutionTemplateDetails {
    * What attributes to delete during template uninstall
    * @return tenantAttributeKeys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ATTRIBUTE_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTenantAttributeKeys() {
@@ -249,12 +251,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ATTRIBUTE_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantAttributeKeys(@javax.annotation.Nullable List<String> tenantAttributeKeys) {
+  public void setTenantAttributeKeys(@Nullable List<String> tenantAttributeKeys) {
     this.tenantAttributeKeys = tenantAttributeKeys;
   }
 
 
-  public TenantSolutionTemplateDetails imageUrls(@javax.annotation.Nullable List<String> imageUrls) {
+  public TenantSolutionTemplateDetails imageUrls(@Nullable List<String> imageUrls) {
     this.imageUrls = imageUrls;
     return this;
   }
@@ -271,7 +273,7 @@ public class TenantSolutionTemplateDetails {
    * Get imageUrls
    * @return imageUrls
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE_URLS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getImageUrls() {
@@ -281,12 +283,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_IMAGE_URLS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImageUrls(@javax.annotation.Nullable List<String> imageUrls) {
+  public void setImageUrls(@Nullable List<String> imageUrls) {
     this.imageUrls = imageUrls;
   }
 
 
-  public TenantSolutionTemplateDetails highlights(@javax.annotation.Nullable String highlights) {
+  public TenantSolutionTemplateDetails highlights(@Nullable String highlights) {
     this.highlights = highlights;
     return this;
   }
@@ -295,7 +297,7 @@ public class TenantSolutionTemplateDetails {
    * Get highlights
    * @return highlights
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HIGHLIGHTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getHighlights() {
@@ -305,12 +307,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_HIGHLIGHTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHighlights(@javax.annotation.Nullable String highlights) {
+  public void setHighlights(@Nullable String highlights) {
     this.highlights = highlights;
   }
 
 
-  public TenantSolutionTemplateDetails description(@javax.annotation.Nullable String description) {
+  public TenantSolutionTemplateDetails description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -319,7 +321,7 @@ public class TenantSolutionTemplateDetails {
    * Get description
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -329,12 +331,12 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
 
-  public TenantSolutionTemplateDetails installed(@javax.annotation.Nullable Boolean installed) {
+  public TenantSolutionTemplateDetails installed(@Nullable Boolean installed) {
     this.installed = installed;
     return this;
   }
@@ -343,7 +345,7 @@ public class TenantSolutionTemplateDetails {
    * Get installed
    * @return installed
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INSTALLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getInstalled() {
@@ -353,7 +355,7 @@ public class TenantSolutionTemplateDetails {
 
   @JsonProperty(value = JSON_PROPERTY_INSTALLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInstalled(@javax.annotation.Nullable Boolean installed) {
+  public void setInstalled(@Nullable Boolean installed) {
     this.installed = installed;
   }
 

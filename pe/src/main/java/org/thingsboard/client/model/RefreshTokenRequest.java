@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,7 +43,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   RefreshTokenRequest.JSON_PROPERTY_REFRESH_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RefreshTokenRequest {
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
   private JsonNullable<Object> refreshToken = JsonNullable.<Object>of(null);
@@ -49,7 +51,7 @@ public class RefreshTokenRequest {
   public RefreshTokenRequest() { 
   }
 
-  public RefreshTokenRequest refreshToken(@javax.annotation.Nullable Object refreshToken) {
+  public RefreshTokenRequest refreshToken(@Nullable Object refreshToken) {
     this.refreshToken = JsonNullable.<Object>of(refreshToken);
     return this;
   }
@@ -58,7 +60,7 @@ public class RefreshTokenRequest {
    * Get refreshToken
    * @return refreshToken
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getRefreshToken() {
         return refreshToken.orElse(null);
@@ -76,7 +78,7 @@ public class RefreshTokenRequest {
     this.refreshToken = refreshToken;
   }
 
-  public void setRefreshToken(@javax.annotation.Nullable Object refreshToken) {
+  public void setRefreshToken(@Nullable Object refreshToken) {
     this.refreshToken = JsonNullable.<Object>of(refreshToken);
   }
 

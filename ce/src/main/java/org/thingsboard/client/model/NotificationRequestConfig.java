@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   NotificationRequestConfig.JSON_PROPERTY_SENDING_DELAY_IN_SEC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequestConfig {
   public static final String JSON_PROPERTY_SENDING_DELAY_IN_SEC = "sendingDelayInSec";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer sendingDelayInSec;
 
   public NotificationRequestConfig() { 
   }
 
-  public NotificationRequestConfig sendingDelayInSec(@javax.annotation.Nullable Integer sendingDelayInSec) {
+  public NotificationRequestConfig sendingDelayInSec(@Nullable Integer sendingDelayInSec) {
     this.sendingDelayInSec = sendingDelayInSec;
     return this;
   }
@@ -56,7 +58,7 @@ public class NotificationRequestConfig {
    * maximum: 604800
    * @return sendingDelayInSec
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SENDING_DELAY_IN_SEC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getSendingDelayInSec() {
@@ -66,7 +68,7 @@ public class NotificationRequestConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SENDING_DELAY_IN_SEC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendingDelayInSec(@javax.annotation.Nullable Integer sendingDelayInSec) {
+  public void setSendingDelayInSec(@Nullable Integer sendingDelayInSec) {
     this.sendingDelayInSec = sendingDelayInSec;
   }
 

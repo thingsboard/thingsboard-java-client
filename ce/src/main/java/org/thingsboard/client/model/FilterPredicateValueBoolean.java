@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   FilterPredicateValueBoolean.JSON_PROPERTY_USER_VALUE,
   FilterPredicateValueBoolean.JSON_PROPERTY_DYNAMIC_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FilterPredicateValueBoolean {
   public static final String JSON_PROPERTY_DEFAULT_VALUE = "defaultValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean defaultValue;
 
   public static final String JSON_PROPERTY_USER_VALUE = "userValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean userValue;
 
   public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
-  @javax.annotation.Nullable
+  @Nullable
   private DynamicValueBoolean dynamicValue;
 
   public FilterPredicateValueBoolean() { 
   }
 
-  public FilterPredicateValueBoolean defaultValue(@javax.annotation.Nullable Boolean defaultValue) {
+  public FilterPredicateValueBoolean defaultValue(@Nullable Boolean defaultValue) {
     this.defaultValue = defaultValue;
     return this;
   }
@@ -66,7 +68,7 @@ public class FilterPredicateValueBoolean {
    * Get defaultValue
    * @return defaultValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDefaultValue() {
@@ -76,12 +78,12 @@ public class FilterPredicateValueBoolean {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultValue(@javax.annotation.Nullable Boolean defaultValue) {
+  public void setDefaultValue(@Nullable Boolean defaultValue) {
     this.defaultValue = defaultValue;
   }
 
 
-  public FilterPredicateValueBoolean userValue(@javax.annotation.Nullable Boolean userValue) {
+  public FilterPredicateValueBoolean userValue(@Nullable Boolean userValue) {
     this.userValue = userValue;
     return this;
   }
@@ -90,7 +92,7 @@ public class FilterPredicateValueBoolean {
    * Get userValue
    * @return userValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUserValue() {
@@ -100,12 +102,12 @@ public class FilterPredicateValueBoolean {
 
   @JsonProperty(value = JSON_PROPERTY_USER_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserValue(@javax.annotation.Nullable Boolean userValue) {
+  public void setUserValue(@Nullable Boolean userValue) {
     this.userValue = userValue;
   }
 
 
-  public FilterPredicateValueBoolean dynamicValue(@javax.annotation.Nullable DynamicValueBoolean dynamicValue) {
+  public FilterPredicateValueBoolean dynamicValue(@Nullable DynamicValueBoolean dynamicValue) {
     this.dynamicValue = dynamicValue;
     return this;
   }
@@ -114,7 +116,7 @@ public class FilterPredicateValueBoolean {
    * Get dynamicValue
    * @return dynamicValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DynamicValueBoolean getDynamicValue() {
@@ -124,7 +126,7 @@ public class FilterPredicateValueBoolean {
 
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValue(@javax.annotation.Nullable DynamicValueBoolean dynamicValue) {
+  public void setDynamicValue(@Nullable DynamicValueBoolean dynamicValue) {
     this.dynamicValue = dynamicValue;
   }
 

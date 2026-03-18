@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   ShortCustomerInfo.JSON_PROPERTY_TITLE,
   ShortCustomerInfo.JSON_PROPERTY_IS_PUBLIC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ShortCustomerInfo {
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_IS_PUBLIC = "isPublic";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean isPublic;
 
   public ShortCustomerInfo() { 
   }
 
-  public ShortCustomerInfo customerId(@javax.annotation.Nullable CustomerId customerId) {
+  public ShortCustomerInfo customerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -66,7 +68,7 @@ public class ShortCustomerInfo {
    * JSON object with the customer Id.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -76,12 +78,12 @@ public class ShortCustomerInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerId(@javax.annotation.Nullable CustomerId customerId) {
+  public void setCustomerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
   }
 
 
-  public ShortCustomerInfo title(@javax.annotation.Nullable String title) {
+  public ShortCustomerInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -90,7 +92,7 @@ public class ShortCustomerInfo {
    * Title of the customer.
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -100,12 +102,12 @@ public class ShortCustomerInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public ShortCustomerInfo isPublic(@javax.annotation.Nullable Boolean isPublic) {
+  public ShortCustomerInfo isPublic(@Nullable Boolean isPublic) {
     this.isPublic = isPublic;
     return this;
   }
@@ -114,7 +116,7 @@ public class ShortCustomerInfo {
    * Indicates special &#39;Public&#39; customer used to embed dashboards on public websites.
    * @return isPublic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getIsPublic() {
@@ -124,7 +126,7 @@ public class ShortCustomerInfo {
 
   @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsPublic(@javax.annotation.Nullable Boolean isPublic) {
+  public void setIsPublic(@Nullable Boolean isPublic) {
     this.isPublic = isPublic;
   }
 

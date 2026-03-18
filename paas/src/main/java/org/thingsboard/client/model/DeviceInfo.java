@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -63,74 +66,74 @@ import org.thingsboard.client.ApiClient;
   DeviceInfo.JSON_PROPERTY_ACTIVE,
   DeviceInfo.JSON_PROPERTY_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public static final String JSON_PROPERTY_LABEL = "label";
-  @javax.annotation.Nullable
+  @Nullable
   private String label;
 
   public static final String JSON_PROPERTY_DEVICE_PROFILE_ID = "deviceProfileId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private DeviceProfileId deviceProfileId;
 
   public static final String JSON_PROPERTY_DEVICE_DATA = "deviceData";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceData deviceData;
 
   public static final String JSON_PROPERTY_FIRMWARE_ID = "firmwareId";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageId firmwareId;
 
   public static final String JSON_PROPERTY_SOFTWARE_ID = "softwareId";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageId softwareId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
-  @javax.annotation.Nullable
+  @Nullable
   private String ownerName;
 
   public static final String JSON_PROPERTY_GROUPS = "groups";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityInfo> groups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ACTIVE = "active";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean active;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId ownerId;
 
   public DeviceInfo() { 
@@ -154,7 +157,7 @@ public class DeviceInfo {
     this.ownerId = ownerId;
   }
 
-  public DeviceInfo id(@javax.annotation.Nullable DeviceId id) {
+  public DeviceInfo id(@Nullable DeviceId id) {
     this.id = id;
     return this;
   }
@@ -163,7 +166,7 @@ public class DeviceInfo {
    * JSON object with the Device Id. Specify this field to update the Device. Referencing non-existing Device Id will cause error. Omit this field to create new Device.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceId getId() {
@@ -173,7 +176,7 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable DeviceId id) {
+  public void setId(@Nullable DeviceId id) {
     this.id = id;
   }
 
@@ -182,7 +185,7 @@ public class DeviceInfo {
    * Timestamp of the device creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -192,7 +195,7 @@ public class DeviceInfo {
 
 
 
-  public DeviceInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public DeviceInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -201,7 +204,7 @@ public class DeviceInfo {
    * Additional parameters of the device. May include: &#39;gateway&#39; (boolean, whether the device is a gateway), &#39;description&#39; (string), &#39;lastConnectedGateway&#39; (string, UUID of the last gateway that connected this device).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -211,7 +214,7 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
@@ -220,7 +223,7 @@ public class DeviceInfo {
    * JSON object with Tenant Id. Use &#39;assignDeviceToTenant&#39; to change the Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -234,7 +237,7 @@ public class DeviceInfo {
    * JSON object with Customer Id. Use &#39;assignDeviceToCustomer&#39; to change the Customer Id.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -244,7 +247,7 @@ public class DeviceInfo {
 
 
 
-  public DeviceInfo name(@javax.annotation.Nullable String name) {
+  public DeviceInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -253,7 +256,7 @@ public class DeviceInfo {
    * Unique Device Name in scope of Tenant
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -263,12 +266,12 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public DeviceInfo type(@javax.annotation.Nullable String type) {
+  public DeviceInfo type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -277,7 +280,7 @@ public class DeviceInfo {
    * Device Profile Name
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -287,12 +290,12 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
 
-  public DeviceInfo label(@javax.annotation.Nullable String label) {
+  public DeviceInfo label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -301,7 +304,7 @@ public class DeviceInfo {
    * Label that may be used in widgets
    * @return label
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabel() {
@@ -311,12 +314,12 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabel(@javax.annotation.Nullable String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
 
-  public DeviceInfo deviceProfileId(@javax.annotation.Nonnull DeviceProfileId deviceProfileId) {
+  public DeviceInfo deviceProfileId(@Nonnull DeviceProfileId deviceProfileId) {
     this.deviceProfileId = deviceProfileId;
     return this;
   }
@@ -325,7 +328,7 @@ public class DeviceInfo {
    * JSON object with Device Profile Id.
    * @return deviceProfileId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DeviceProfileId getDeviceProfileId() {
@@ -335,12 +338,12 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDeviceProfileId(@javax.annotation.Nonnull DeviceProfileId deviceProfileId) {
+  public void setDeviceProfileId(@Nonnull DeviceProfileId deviceProfileId) {
     this.deviceProfileId = deviceProfileId;
   }
 
 
-  public DeviceInfo deviceData(@javax.annotation.Nullable DeviceData deviceData) {
+  public DeviceInfo deviceData(@Nullable DeviceData deviceData) {
     this.deviceData = deviceData;
     return this;
   }
@@ -349,7 +352,7 @@ public class DeviceInfo {
    * JSON object with content specific to type of transport in the device profile.
    * @return deviceData
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceData getDeviceData() {
@@ -359,12 +362,12 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeviceData(@javax.annotation.Nullable DeviceData deviceData) {
+  public void setDeviceData(@Nullable DeviceData deviceData) {
     this.deviceData = deviceData;
   }
 
 
-  public DeviceInfo firmwareId(@javax.annotation.Nullable OtaPackageId firmwareId) {
+  public DeviceInfo firmwareId(@Nullable OtaPackageId firmwareId) {
     this.firmwareId = firmwareId;
     return this;
   }
@@ -373,7 +376,7 @@ public class DeviceInfo {
    * JSON object with Ota Package Id.
    * @return firmwareId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIRMWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageId getFirmwareId() {
@@ -383,12 +386,12 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_FIRMWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirmwareId(@javax.annotation.Nullable OtaPackageId firmwareId) {
+  public void setFirmwareId(@Nullable OtaPackageId firmwareId) {
     this.firmwareId = firmwareId;
   }
 
 
-  public DeviceInfo softwareId(@javax.annotation.Nullable OtaPackageId softwareId) {
+  public DeviceInfo softwareId(@Nullable OtaPackageId softwareId) {
     this.softwareId = softwareId;
     return this;
   }
@@ -397,7 +400,7 @@ public class DeviceInfo {
    * JSON object with Ota Package Id.
    * @return softwareId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SOFTWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageId getSoftwareId() {
@@ -407,12 +410,12 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SOFTWARE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSoftwareId(@javax.annotation.Nullable OtaPackageId softwareId) {
+  public void setSoftwareId(@Nullable OtaPackageId softwareId) {
     this.softwareId = softwareId;
   }
 
 
-  public DeviceInfo version(@javax.annotation.Nullable Long version) {
+  public DeviceInfo version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -421,7 +424,7 @@ public class DeviceInfo {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -431,7 +434,7 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -440,7 +443,7 @@ public class DeviceInfo {
    * Owner name
    * @return ownerName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getOwnerName() {
@@ -450,7 +453,7 @@ public class DeviceInfo {
 
 
 
-  public DeviceInfo groups(@javax.annotation.Nullable List<EntityInfo> groups) {
+  public DeviceInfo groups(@Nullable List<EntityInfo> groups) {
     this.groups = groups;
     return this;
   }
@@ -467,7 +470,7 @@ public class DeviceInfo {
    * Groups
    * @return groups
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityInfo> getGroups() {
@@ -477,7 +480,7 @@ public class DeviceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroups(@javax.annotation.Nullable List<EntityInfo> groups) {
+  public void setGroups(@Nullable List<EntityInfo> groups) {
     this.groups = groups;
   }
 
@@ -486,7 +489,7 @@ public class DeviceInfo {
    * Device active flag.
    * @return active
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTIVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getActive() {
@@ -500,7 +503,7 @@ public class DeviceInfo {
    * JSON object with Customer or Tenant Id
    * @return ownerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOwnerId() {

@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   KeySample.JSON_PROPERTY_TS,
   KeySample.JSON_PROPERTY_VALUE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class KeySample {
   public static final String JSON_PROPERTY_TS = "ts";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Long ts;
 
   public static final String JSON_PROPERTY_VALUE = "value";
-  @javax.annotation.Nullable
+  @Nullable
   private Object value = null;
 
   public KeySample() { 
   }
 
-  public KeySample ts(@javax.annotation.Nonnull Long ts) {
+  public KeySample ts(@Nonnull Long ts) {
     this.ts = ts;
     return this;
   }
@@ -60,7 +63,7 @@ public class KeySample {
    * Timestamp in milliseconds since epoch.
    * @return ts
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Long getTs() {
@@ -70,12 +73,12 @@ public class KeySample {
 
   @JsonProperty(value = JSON_PROPERTY_TS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTs(@javax.annotation.Nonnull Long ts) {
+  public void setTs(@Nonnull Long ts) {
     this.ts = ts;
   }
 
 
-  public KeySample value(@javax.annotation.Nullable Object value) {
+  public KeySample value(@Nullable Object value) {
     this.value = value;
     return this;
   }
@@ -84,7 +87,7 @@ public class KeySample {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Object getValue() {
@@ -94,7 +97,7 @@ public class KeySample {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValue(@javax.annotation.Nullable Object value) {
+  public void setValue(@Nullable Object value) {
     this.value = value;
   }
 

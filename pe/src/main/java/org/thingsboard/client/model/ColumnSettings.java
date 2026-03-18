@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +45,28 @@ import org.thingsboard.client.ApiClient;
   ColumnSettings.JSON_PROPERTY_CELL,
   ColumnSettings.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ColumnSettings {
   public static final String JSON_PROPERTY_COLUMN_WIDTH = "columnWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private String columnWidth;
 
   public static final String JSON_PROPERTY_HEADER = "header";
-  @javax.annotation.Nullable
+  @Nullable
   private CellSettings header;
 
   public static final String JSON_PROPERTY_CELL = "cell";
-  @javax.annotation.Nullable
+  @Nullable
   private CellSettings cell;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private DataKeySettingsType type;
 
   public ColumnSettings() { 
   }
 
-  public ColumnSettings columnWidth(@javax.annotation.Nullable String columnWidth) {
+  public ColumnSettings columnWidth(@Nullable String columnWidth) {
     this.columnWidth = columnWidth;
     return this;
   }
@@ -72,7 +75,7 @@ public class ColumnSettings {
    * Get columnWidth
    * @return columnWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLUMN_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getColumnWidth() {
@@ -82,12 +85,12 @@ public class ColumnSettings {
 
   @JsonProperty(value = JSON_PROPERTY_COLUMN_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColumnWidth(@javax.annotation.Nullable String columnWidth) {
+  public void setColumnWidth(@Nullable String columnWidth) {
     this.columnWidth = columnWidth;
   }
 
 
-  public ColumnSettings header(@javax.annotation.Nullable CellSettings header) {
+  public ColumnSettings header(@Nullable CellSettings header) {
     this.header = header;
     return this;
   }
@@ -96,7 +99,7 @@ public class ColumnSettings {
    * Get header
    * @return header
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HEADER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CellSettings getHeader() {
@@ -106,12 +109,12 @@ public class ColumnSettings {
 
   @JsonProperty(value = JSON_PROPERTY_HEADER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHeader(@javax.annotation.Nullable CellSettings header) {
+  public void setHeader(@Nullable CellSettings header) {
     this.header = header;
   }
 
 
-  public ColumnSettings cell(@javax.annotation.Nullable CellSettings cell) {
+  public ColumnSettings cell(@Nullable CellSettings cell) {
     this.cell = cell;
     return this;
   }
@@ -120,7 +123,7 @@ public class ColumnSettings {
    * Get cell
    * @return cell
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CELL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CellSettings getCell() {
@@ -130,12 +133,12 @@ public class ColumnSettings {
 
   @JsonProperty(value = JSON_PROPERTY_CELL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCell(@javax.annotation.Nullable CellSettings cell) {
+  public void setCell(@Nullable CellSettings cell) {
     this.cell = cell;
   }
 
 
-  public ColumnSettings type(@javax.annotation.Nonnull DataKeySettingsType type) {
+  public ColumnSettings type(@Nonnull DataKeySettingsType type) {
     this.type = type;
     return this;
   }
@@ -144,7 +147,7 @@ public class ColumnSettings {
    * Data key settings type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public DataKeySettingsType getType() {
@@ -154,7 +157,7 @@ public class ColumnSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull DataKeySettingsType type) {
+  public void setType(@Nonnull DataKeySettingsType type) {
     this.type = type;
   }
 

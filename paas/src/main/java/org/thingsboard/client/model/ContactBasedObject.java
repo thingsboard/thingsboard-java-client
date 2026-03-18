@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,53 +54,53 @@ import org.thingsboard.client.ApiClient;
   ContactBasedObject.JSON_PROPERTY_EMAIL,
   ContactBasedObject.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ContactBasedObject {
   public static final String JSON_PROPERTY_ID = "id";
   private JsonNullable<Object> id = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
-  @javax.annotation.Nullable
+  @Nullable
   private String country;
 
   public static final String JSON_PROPERTY_STATE = "state";
-  @javax.annotation.Nullable
+  @Nullable
   private String state;
 
   public static final String JSON_PROPERTY_CITY = "city";
-  @javax.annotation.Nullable
+  @Nullable
   private String city;
 
   public static final String JSON_PROPERTY_ADDRESS = "address";
-  @javax.annotation.Nullable
+  @Nullable
   private String address;
 
   public static final String JSON_PROPERTY_ADDRESS2 = "address2";
-  @javax.annotation.Nullable
+  @Nullable
   private String address2;
 
   public static final String JSON_PROPERTY_ZIP = "zip";
-  @javax.annotation.Nullable
+  @Nullable
   private String zip;
 
   public static final String JSON_PROPERTY_PHONE = "phone";
-  @javax.annotation.Nullable
+  @Nullable
   private String phone;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nullable
+  @Nullable
   private String email;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public ContactBasedObject() { 
@@ -112,7 +114,7 @@ public class ContactBasedObject {
     this.createdTime = createdTime;
   }
 
-  public ContactBasedObject id(@javax.annotation.Nullable Object id) {
+  public ContactBasedObject id(@Nullable Object id) {
     this.id = JsonNullable.<Object>of(id);
     return this;
   }
@@ -121,7 +123,7 @@ public class ContactBasedObject {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getId() {
         return id.orElse(null);
@@ -139,7 +141,7 @@ public class ContactBasedObject {
     this.id = id;
   }
 
-  public void setId(@javax.annotation.Nullable Object id) {
+  public void setId(@Nullable Object id) {
     this.id = JsonNullable.<Object>of(id);
   }
 
@@ -148,7 +150,7 @@ public class ContactBasedObject {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -158,7 +160,7 @@ public class ContactBasedObject {
 
 
 
-  public ContactBasedObject additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public ContactBasedObject additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -167,7 +169,7 @@ public class ContactBasedObject {
    * Get additionalInfo
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -177,12 +179,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public ContactBasedObject country(@javax.annotation.Nullable String country) {
+  public ContactBasedObject country(@Nullable String country) {
     this.country = country;
     return this;
   }
@@ -191,7 +193,7 @@ public class ContactBasedObject {
    * Get country
    * @return country
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCountry() {
@@ -201,12 +203,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCountry(@javax.annotation.Nullable String country) {
+  public void setCountry(@Nullable String country) {
     this.country = country;
   }
 
 
-  public ContactBasedObject state(@javax.annotation.Nullable String state) {
+  public ContactBasedObject state(@Nullable String state) {
     this.state = state;
     return this;
   }
@@ -215,7 +217,7 @@ public class ContactBasedObject {
    * Get state
    * @return state
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getState() {
@@ -225,12 +227,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_STATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setState(@javax.annotation.Nullable String state) {
+  public void setState(@Nullable String state) {
     this.state = state;
   }
 
 
-  public ContactBasedObject city(@javax.annotation.Nullable String city) {
+  public ContactBasedObject city(@Nullable String city) {
     this.city = city;
     return this;
   }
@@ -239,7 +241,7 @@ public class ContactBasedObject {
    * Get city
    * @return city
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCity() {
@@ -249,12 +251,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_CITY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCity(@javax.annotation.Nullable String city) {
+  public void setCity(@Nullable String city) {
     this.city = city;
   }
 
 
-  public ContactBasedObject address(@javax.annotation.Nullable String address) {
+  public ContactBasedObject address(@Nullable String address) {
     this.address = address;
     return this;
   }
@@ -263,7 +265,7 @@ public class ContactBasedObject {
    * Get address
    * @return address
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAddress() {
@@ -273,12 +275,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_ADDRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAddress(@javax.annotation.Nullable String address) {
+  public void setAddress(@Nullable String address) {
     this.address = address;
   }
 
 
-  public ContactBasedObject address2(@javax.annotation.Nullable String address2) {
+  public ContactBasedObject address2(@Nullable String address2) {
     this.address2 = address2;
     return this;
   }
@@ -287,7 +289,7 @@ public class ContactBasedObject {
    * Get address2
    * @return address2
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDRESS2, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAddress2() {
@@ -297,12 +299,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_ADDRESS2, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAddress2(@javax.annotation.Nullable String address2) {
+  public void setAddress2(@Nullable String address2) {
     this.address2 = address2;
   }
 
 
-  public ContactBasedObject zip(@javax.annotation.Nullable String zip) {
+  public ContactBasedObject zip(@Nullable String zip) {
     this.zip = zip;
     return this;
   }
@@ -311,7 +313,7 @@ public class ContactBasedObject {
    * Get zip
    * @return zip
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getZip() {
@@ -321,12 +323,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_ZIP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setZip(@javax.annotation.Nullable String zip) {
+  public void setZip(@Nullable String zip) {
     this.zip = zip;
   }
 
 
-  public ContactBasedObject phone(@javax.annotation.Nullable String phone) {
+  public ContactBasedObject phone(@Nullable String phone) {
     this.phone = phone;
     return this;
   }
@@ -335,7 +337,7 @@ public class ContactBasedObject {
    * Get phone
    * @return phone
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPhone() {
@@ -345,12 +347,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_PHONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhone(@javax.annotation.Nullable String phone) {
+  public void setPhone(@Nullable String phone) {
     this.phone = phone;
   }
 
 
-  public ContactBasedObject email(@javax.annotation.Nullable String email) {
+  public ContactBasedObject email(@Nullable String email) {
     this.email = email;
     return this;
   }
@@ -359,7 +361,7 @@ public class ContactBasedObject {
    * Get email
    * @return email
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmail() {
@@ -369,12 +371,12 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmail(@javax.annotation.Nullable String email) {
+  public void setEmail(@Nullable String email) {
     this.email = email;
   }
 
 
-  public ContactBasedObject name(@javax.annotation.Nullable String name) {
+  public ContactBasedObject name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -383,7 +385,7 @@ public class ContactBasedObject {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -393,7 +395,7 @@ public class ContactBasedObject {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   ResetPasswordRequest.JSON_PROPERTY_RESET_TOKEN,
   ResetPasswordRequest.JSON_PROPERTY_PASSWORD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ResetPasswordRequest {
   public static final String JSON_PROPERTY_RESET_TOKEN = "resetToken";
-  @javax.annotation.Nullable
+  @Nullable
   private String resetToken;
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
-  @javax.annotation.Nullable
+  @Nullable
   private String password;
 
   public ResetPasswordRequest() { 
   }
 
-  public ResetPasswordRequest resetToken(@javax.annotation.Nullable String resetToken) {
+  public ResetPasswordRequest resetToken(@Nullable String resetToken) {
     this.resetToken = resetToken;
     return this;
   }
@@ -60,7 +62,7 @@ public class ResetPasswordRequest {
    * The reset token to verify
    * @return resetToken
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESET_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getResetToken() {
@@ -70,12 +72,12 @@ public class ResetPasswordRequest {
 
   @JsonProperty(value = JSON_PROPERTY_RESET_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResetToken(@javax.annotation.Nullable String resetToken) {
+  public void setResetToken(@Nullable String resetToken) {
     this.resetToken = resetToken;
   }
 
 
-  public ResetPasswordRequest password(@javax.annotation.Nullable String password) {
+  public ResetPasswordRequest password(@Nullable String password) {
     this.password = password;
     return this;
   }
@@ -84,7 +86,7 @@ public class ResetPasswordRequest {
    * The new password to set
    * @return password
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPassword() {
@@ -94,7 +96,7 @@ public class ResetPasswordRequest {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPassword(@javax.annotation.Nullable String password) {
+  public void setPassword(@Nullable String password) {
     this.password = password;
   }
 

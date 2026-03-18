@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartBarWidth.JSON_PROPERTY_RELATIVE_WIDTH,
   TimeSeriesChartBarWidth.JSON_PROPERTY_ABSOLUTE_WIDTH
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartBarWidth {
   public static final String JSON_PROPERTY_RELATIVE = "relative";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean relative;
 
   public static final String JSON_PROPERTY_RELATIVE_WIDTH = "relativeWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private Double relativeWidth;
 
   public static final String JSON_PROPERTY_ABSOLUTE_WIDTH = "absoluteWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private Double absoluteWidth;
 
   public TimeSeriesChartBarWidth() { 
   }
 
-  public TimeSeriesChartBarWidth relative(@javax.annotation.Nullable Boolean relative) {
+  public TimeSeriesChartBarWidth relative(@Nullable Boolean relative) {
     this.relative = relative;
     return this;
   }
@@ -65,7 +67,7 @@ public class TimeSeriesChartBarWidth {
    * Get relative
    * @return relative
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATIVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getRelative() {
@@ -75,12 +77,12 @@ public class TimeSeriesChartBarWidth {
 
   @JsonProperty(value = JSON_PROPERTY_RELATIVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelative(@javax.annotation.Nullable Boolean relative) {
+  public void setRelative(@Nullable Boolean relative) {
     this.relative = relative;
   }
 
 
-  public TimeSeriesChartBarWidth relativeWidth(@javax.annotation.Nullable Double relativeWidth) {
+  public TimeSeriesChartBarWidth relativeWidth(@Nullable Double relativeWidth) {
     this.relativeWidth = relativeWidth;
     return this;
   }
@@ -89,7 +91,7 @@ public class TimeSeriesChartBarWidth {
    * Get relativeWidth
    * @return relativeWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATIVE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getRelativeWidth() {
@@ -99,12 +101,12 @@ public class TimeSeriesChartBarWidth {
 
   @JsonProperty(value = JSON_PROPERTY_RELATIVE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelativeWidth(@javax.annotation.Nullable Double relativeWidth) {
+  public void setRelativeWidth(@Nullable Double relativeWidth) {
     this.relativeWidth = relativeWidth;
   }
 
 
-  public TimeSeriesChartBarWidth absoluteWidth(@javax.annotation.Nullable Double absoluteWidth) {
+  public TimeSeriesChartBarWidth absoluteWidth(@Nullable Double absoluteWidth) {
     this.absoluteWidth = absoluteWidth;
     return this;
   }
@@ -113,7 +115,7 @@ public class TimeSeriesChartBarWidth {
    * Get absoluteWidth
    * @return absoluteWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ABSOLUTE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getAbsoluteWidth() {
@@ -123,7 +125,7 @@ public class TimeSeriesChartBarWidth {
 
   @JsonProperty(value = JSON_PROPERTY_ABSOLUTE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAbsoluteWidth(@javax.annotation.Nullable Double absoluteWidth) {
+  public void setAbsoluteWidth(@Nullable Double absoluteWidth) {
     this.absoluteWidth = absoluteWidth;
   }
 

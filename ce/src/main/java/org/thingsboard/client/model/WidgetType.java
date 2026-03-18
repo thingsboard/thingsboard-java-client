@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,42 +49,42 @@ import org.thingsboard.client.ApiClient;
   WidgetType.JSON_PROPERTY_VERSION,
   WidgetType.JSON_PROPERTY_DESCRIPTOR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WidgetType {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private WidgetTypeId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_FQN = "fqn";
-  @javax.annotation.Nullable
+  @Nullable
   private String fqn;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DEPRECATED = "deprecated";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean deprecated;
 
   public static final String JSON_PROPERTY_SCADA = "scada";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean scada;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_DESCRIPTOR = "descriptor";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode descriptor;
 
   public WidgetType() { 
@@ -104,7 +106,7 @@ public class WidgetType {
     this.descriptor = descriptor;
   }
 
-  public WidgetType id(@javax.annotation.Nullable WidgetTypeId id) {
+  public WidgetType id(@Nullable WidgetTypeId id) {
     this.id = id;
     return this;
   }
@@ -113,7 +115,7 @@ public class WidgetType {
    * JSON object with the Widget Type Id. Specify this field to update the Widget Type. Referencing non-existing Widget Type Id will cause error. Omit this field to create new Widget Type.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public WidgetTypeId getId() {
@@ -123,7 +125,7 @@ public class WidgetType {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable WidgetTypeId id) {
+  public void setId(@Nullable WidgetTypeId id) {
     this.id = id;
   }
 
@@ -132,7 +134,7 @@ public class WidgetType {
    * Timestamp of the Widget Type creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -146,7 +148,7 @@ public class WidgetType {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -160,7 +162,7 @@ public class WidgetType {
    * Unique FQN that is used in dashboards as a reference widget type
    * @return fqn
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FQN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFqn() {
@@ -174,7 +176,7 @@ public class WidgetType {
    * Widget name used in search and UI
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -184,7 +186,7 @@ public class WidgetType {
 
 
 
-  public WidgetType deprecated(@javax.annotation.Nullable Boolean deprecated) {
+  public WidgetType deprecated(@Nullable Boolean deprecated) {
     this.deprecated = deprecated;
     return this;
   }
@@ -193,7 +195,7 @@ public class WidgetType {
    * Whether widget type is deprecated.
    * @return deprecated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDeprecated() {
@@ -203,12 +205,12 @@ public class WidgetType {
 
   @JsonProperty(value = JSON_PROPERTY_DEPRECATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeprecated(@javax.annotation.Nullable Boolean deprecated) {
+  public void setDeprecated(@Nullable Boolean deprecated) {
     this.deprecated = deprecated;
   }
 
 
-  public WidgetType scada(@javax.annotation.Nullable Boolean scada) {
+  public WidgetType scada(@Nullable Boolean scada) {
     this.scada = scada;
     return this;
   }
@@ -217,7 +219,7 @@ public class WidgetType {
    * Whether widget type is SCADA symbol.
    * @return scada
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCADA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getScada() {
@@ -227,12 +229,12 @@ public class WidgetType {
 
   @JsonProperty(value = JSON_PROPERTY_SCADA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScada(@javax.annotation.Nullable Boolean scada) {
+  public void setScada(@Nullable Boolean scada) {
     this.scada = scada;
   }
 
 
-  public WidgetType version(@javax.annotation.Nullable Long version) {
+  public WidgetType version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -241,7 +243,7 @@ public class WidgetType {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -251,7 +253,7 @@ public class WidgetType {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
@@ -260,7 +262,7 @@ public class WidgetType {
    * Complex JSON object that describes the widget type
    * @return descriptor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getDescriptor() {

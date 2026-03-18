@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   AlarmConditionValueInteger.JSON_PROPERTY_STATIC_VALUE,
   AlarmConditionValueInteger.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmConditionValueInteger {
   public static final String JSON_PROPERTY_STATIC_VALUE = "staticValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer staticValue;
 
   public static final String JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT = "dynamicValueArgument";
-  @javax.annotation.Nullable
+  @Nullable
   private String dynamicValueArgument;
 
   public AlarmConditionValueInteger() { 
   }
 
-  public AlarmConditionValueInteger staticValue(@javax.annotation.Nullable Integer staticValue) {
+  public AlarmConditionValueInteger staticValue(@Nullable Integer staticValue) {
     this.staticValue = staticValue;
     return this;
   }
@@ -60,7 +62,7 @@ public class AlarmConditionValueInteger {
    * Get staticValue
    * @return staticValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getStaticValue() {
@@ -70,12 +72,12 @@ public class AlarmConditionValueInteger {
 
   @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStaticValue(@javax.annotation.Nullable Integer staticValue) {
+  public void setStaticValue(@Nullable Integer staticValue) {
     this.staticValue = staticValue;
   }
 
 
-  public AlarmConditionValueInteger dynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
+  public AlarmConditionValueInteger dynamicValueArgument(@Nullable String dynamicValueArgument) {
     this.dynamicValueArgument = dynamicValueArgument;
     return this;
   }
@@ -84,7 +86,7 @@ public class AlarmConditionValueInteger {
    * Get dynamicValueArgument
    * @return dynamicValueArgument
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDynamicValueArgument() {
@@ -94,7 +96,7 @@ public class AlarmConditionValueInteger {
 
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValueArgument(@javax.annotation.Nullable String dynamicValueArgument) {
+  public void setDynamicValueArgument(@Nullable String dynamicValueArgument) {
     this.dynamicValueArgument = dynamicValueArgument;
   }
 

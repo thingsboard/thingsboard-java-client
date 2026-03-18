@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   ErrorComponentAllOfExceptionCause.JSON_PROPERTY_MESSAGE,
   ErrorComponentAllOfExceptionCause.JSON_PROPERTY_LOCALIZED_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ErrorComponentAllOfExceptionCause {
   public static final String JSON_PROPERTY_STACK_TRACE = "stackTrace";
-  @javax.annotation.Nullable
+  @Nullable
   private List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
+  @Nullable
   private String message;
 
   public static final String JSON_PROPERTY_LOCALIZED_MESSAGE = "localizedMessage";
-  @javax.annotation.Nullable
+  @Nullable
   private String localizedMessage;
 
   public ErrorComponentAllOfExceptionCause() { 
   }
 
-  public ErrorComponentAllOfExceptionCause stackTrace(@javax.annotation.Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
+  public ErrorComponentAllOfExceptionCause stackTrace(@Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
     this.stackTrace = stackTrace;
     return this;
   }
@@ -76,7 +78,7 @@ public class ErrorComponentAllOfExceptionCause {
    * Get stackTrace
    * @return stackTrace
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STACK_TRACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ErrorComponentAllOfExceptionCauseStackTrace> getStackTrace() {
@@ -86,12 +88,12 @@ public class ErrorComponentAllOfExceptionCause {
 
   @JsonProperty(value = JSON_PROPERTY_STACK_TRACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStackTrace(@javax.annotation.Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
+  public void setStackTrace(@Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
     this.stackTrace = stackTrace;
   }
 
 
-  public ErrorComponentAllOfExceptionCause message(@javax.annotation.Nullable String message) {
+  public ErrorComponentAllOfExceptionCause message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -100,7 +102,7 @@ public class ErrorComponentAllOfExceptionCause {
    * Get message
    * @return message
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMessage() {
@@ -110,12 +112,12 @@ public class ErrorComponentAllOfExceptionCause {
 
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(@javax.annotation.Nullable String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
 
-  public ErrorComponentAllOfExceptionCause localizedMessage(@javax.annotation.Nullable String localizedMessage) {
+  public ErrorComponentAllOfExceptionCause localizedMessage(@Nullable String localizedMessage) {
     this.localizedMessage = localizedMessage;
     return this;
   }
@@ -124,7 +126,7 @@ public class ErrorComponentAllOfExceptionCause {
    * Get localizedMessage
    * @return localizedMessage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLocalizedMessage() {
@@ -134,7 +136,7 @@ public class ErrorComponentAllOfExceptionCause {
 
   @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocalizedMessage(@javax.annotation.Nullable String localizedMessage) {
+  public void setLocalizedMessage(@Nullable String localizedMessage) {
     this.localizedMessage = localizedMessage;
   }
 

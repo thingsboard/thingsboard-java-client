@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,16 +40,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   QrCodeSettingsId.JSON_PROPERTY_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class QrCodeSettingsId {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @Nonnull
   private UUID id;
 
   public QrCodeSettingsId() { 
   }
 
-  public QrCodeSettingsId id(@javax.annotation.Nonnull UUID id) {
+  public QrCodeSettingsId id(@Nonnull UUID id) {
     this.id = id;
     return this;
   }
@@ -56,7 +58,7 @@ public class QrCodeSettingsId {
    * string
    * @return id
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public UUID getId() {
@@ -66,7 +68,7 @@ public class QrCodeSettingsId {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull UUID id) {
+  public void setId(@Nonnull UUID id) {
     this.id = id;
   }
 

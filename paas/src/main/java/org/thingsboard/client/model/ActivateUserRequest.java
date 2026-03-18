@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   ActivateUserRequest.JSON_PROPERTY_ACTIVATE_TOKEN,
   ActivateUserRequest.JSON_PROPERTY_PASSWORD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ActivateUserRequest {
   public static final String JSON_PROPERTY_ACTIVATE_TOKEN = "activateToken";
-  @javax.annotation.Nullable
+  @Nullable
   private String activateToken;
 
   public static final String JSON_PROPERTY_PASSWORD = "password";
-  @javax.annotation.Nullable
+  @Nullable
   private String password;
 
   public ActivateUserRequest() { 
   }
 
-  public ActivateUserRequest activateToken(@javax.annotation.Nullable String activateToken) {
+  public ActivateUserRequest activateToken(@Nullable String activateToken) {
     this.activateToken = activateToken;
     return this;
   }
@@ -60,7 +62,7 @@ public class ActivateUserRequest {
    * The activate token to verify
    * @return activateToken
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTIVATE_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getActivateToken() {
@@ -70,12 +72,12 @@ public class ActivateUserRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ACTIVATE_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActivateToken(@javax.annotation.Nullable String activateToken) {
+  public void setActivateToken(@Nullable String activateToken) {
     this.activateToken = activateToken;
   }
 
 
-  public ActivateUserRequest password(@javax.annotation.Nullable String password) {
+  public ActivateUserRequest password(@Nullable String password) {
     this.password = password;
     return this;
   }
@@ -84,7 +86,7 @@ public class ActivateUserRequest {
    * The new password to set
    * @return password
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPassword() {
@@ -94,7 +96,7 @@ public class ActivateUserRequest {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPassword(@javax.annotation.Nullable String password) {
+  public void setPassword(@Nullable String password) {
     this.password = password;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,32 +47,32 @@ import org.thingsboard.client.ApiClient;
   ErrorComponentAllOfException.JSON_PROPERTY_SUPPRESSED,
   ErrorComponentAllOfException.JSON_PROPERTY_LOCALIZED_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ErrorComponentAllOfException {
   public static final String JSON_PROPERTY_CAUSE = "cause";
-  @javax.annotation.Nullable
+  @Nullable
   private ErrorComponentAllOfExceptionCause cause;
 
   public static final String JSON_PROPERTY_STACK_TRACE = "stackTrace";
-  @javax.annotation.Nullable
+  @Nullable
   private List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
+  @Nullable
   private String message;
 
   public static final String JSON_PROPERTY_SUPPRESSED = "suppressed";
-  @javax.annotation.Nullable
+  @Nullable
   private List<ErrorComponentAllOfExceptionCause> suppressed = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LOCALIZED_MESSAGE = "localizedMessage";
-  @javax.annotation.Nullable
+  @Nullable
   private String localizedMessage;
 
   public ErrorComponentAllOfException() { 
   }
 
-  public ErrorComponentAllOfException cause(@javax.annotation.Nullable ErrorComponentAllOfExceptionCause cause) {
+  public ErrorComponentAllOfException cause(@Nullable ErrorComponentAllOfExceptionCause cause) {
     this.cause = cause;
     return this;
   }
@@ -79,7 +81,7 @@ public class ErrorComponentAllOfException {
    * Get cause
    * @return cause
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CAUSE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ErrorComponentAllOfExceptionCause getCause() {
@@ -89,12 +91,12 @@ public class ErrorComponentAllOfException {
 
   @JsonProperty(value = JSON_PROPERTY_CAUSE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCause(@javax.annotation.Nullable ErrorComponentAllOfExceptionCause cause) {
+  public void setCause(@Nullable ErrorComponentAllOfExceptionCause cause) {
     this.cause = cause;
   }
 
 
-  public ErrorComponentAllOfException stackTrace(@javax.annotation.Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
+  public ErrorComponentAllOfException stackTrace(@Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
     this.stackTrace = stackTrace;
     return this;
   }
@@ -111,7 +113,7 @@ public class ErrorComponentAllOfException {
    * Get stackTrace
    * @return stackTrace
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STACK_TRACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ErrorComponentAllOfExceptionCauseStackTrace> getStackTrace() {
@@ -121,12 +123,12 @@ public class ErrorComponentAllOfException {
 
   @JsonProperty(value = JSON_PROPERTY_STACK_TRACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStackTrace(@javax.annotation.Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
+  public void setStackTrace(@Nullable List<ErrorComponentAllOfExceptionCauseStackTrace> stackTrace) {
     this.stackTrace = stackTrace;
   }
 
 
-  public ErrorComponentAllOfException message(@javax.annotation.Nullable String message) {
+  public ErrorComponentAllOfException message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -135,7 +137,7 @@ public class ErrorComponentAllOfException {
    * Get message
    * @return message
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMessage() {
@@ -145,12 +147,12 @@ public class ErrorComponentAllOfException {
 
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(@javax.annotation.Nullable String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
 
-  public ErrorComponentAllOfException suppressed(@javax.annotation.Nullable List<ErrorComponentAllOfExceptionCause> suppressed) {
+  public ErrorComponentAllOfException suppressed(@Nullable List<ErrorComponentAllOfExceptionCause> suppressed) {
     this.suppressed = suppressed;
     return this;
   }
@@ -167,7 +169,7 @@ public class ErrorComponentAllOfException {
    * Get suppressed
    * @return suppressed
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUPPRESSED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ErrorComponentAllOfExceptionCause> getSuppressed() {
@@ -177,12 +179,12 @@ public class ErrorComponentAllOfException {
 
   @JsonProperty(value = JSON_PROPERTY_SUPPRESSED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuppressed(@javax.annotation.Nullable List<ErrorComponentAllOfExceptionCause> suppressed) {
+  public void setSuppressed(@Nullable List<ErrorComponentAllOfExceptionCause> suppressed) {
     this.suppressed = suppressed;
   }
 
 
-  public ErrorComponentAllOfException localizedMessage(@javax.annotation.Nullable String localizedMessage) {
+  public ErrorComponentAllOfException localizedMessage(@Nullable String localizedMessage) {
     this.localizedMessage = localizedMessage;
     return this;
   }
@@ -191,7 +193,7 @@ public class ErrorComponentAllOfException {
    * Get localizedMessage
    * @return localizedMessage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLocalizedMessage() {
@@ -201,7 +203,7 @@ public class ErrorComponentAllOfException {
 
   @JsonProperty(value = JSON_PROPERTY_LOCALIZED_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocalizedMessage(@javax.annotation.Nullable String localizedMessage) {
+  public void setLocalizedMessage(@Nullable String localizedMessage) {
     this.localizedMessage = localizedMessage;
   }
 

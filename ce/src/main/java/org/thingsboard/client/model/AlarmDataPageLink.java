@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -55,64 +57,64 @@ import org.thingsboard.client.ApiClient;
   AlarmDataPageLink.JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS,
   AlarmDataPageLink.JSON_PROPERTY_ASSIGNEE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmDataPageLink {
   public static final String JSON_PROPERTY_PAGE_SIZE = "pageSize";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer pageSize;
 
   public static final String JSON_PROPERTY_PAGE = "page";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer page;
 
   public static final String JSON_PROPERTY_TEXT_SEARCH = "textSearch";
-  @javax.annotation.Nullable
+  @Nullable
   private String textSearch;
 
   public static final String JSON_PROPERTY_SORT_ORDER = "sortOrder";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityDataSortOrder sortOrder;
 
   public static final String JSON_PROPERTY_DYNAMIC = "dynamic";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean dynamic;
 
   public static final String JSON_PROPERTY_START_TS = "startTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long startTs;
 
   public static final String JSON_PROPERTY_END_TS = "endTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endTs;
 
   public static final String JSON_PROPERTY_TIME_WINDOW = "timeWindow";
-  @javax.annotation.Nullable
+  @Nullable
   private Long timeWindow;
 
   public static final String JSON_PROPERTY_TYPE_LIST = "typeList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> typeList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STATUS_LIST = "statusList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<AlarmSearchStatus> statusList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SEVERITY_LIST = "severityList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<AlarmSeverity> severityList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS = "searchPropagatedAlarms";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean searchPropagatedAlarms;
 
   public static final String JSON_PROPERTY_ASSIGNEE_ID = "assigneeId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId assigneeId;
 
   public AlarmDataPageLink() { 
   }
 
-  public AlarmDataPageLink pageSize(@javax.annotation.Nullable Integer pageSize) {
+  public AlarmDataPageLink pageSize(@Nullable Integer pageSize) {
     this.pageSize = pageSize;
     return this;
   }
@@ -121,7 +123,7 @@ public class AlarmDataPageLink {
    * Get pageSize
    * @return pageSize
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPageSize() {
@@ -131,12 +133,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageSize(@javax.annotation.Nullable Integer pageSize) {
+  public void setPageSize(@Nullable Integer pageSize) {
     this.pageSize = pageSize;
   }
 
 
-  public AlarmDataPageLink page(@javax.annotation.Nullable Integer page) {
+  public AlarmDataPageLink page(@Nullable Integer page) {
     this.page = page;
     return this;
   }
@@ -145,7 +147,7 @@ public class AlarmDataPageLink {
    * Get page
    * @return page
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPage() {
@@ -155,12 +157,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPage(@javax.annotation.Nullable Integer page) {
+  public void setPage(@Nullable Integer page) {
     this.page = page;
   }
 
 
-  public AlarmDataPageLink textSearch(@javax.annotation.Nullable String textSearch) {
+  public AlarmDataPageLink textSearch(@Nullable String textSearch) {
     this.textSearch = textSearch;
     return this;
   }
@@ -169,7 +171,7 @@ public class AlarmDataPageLink {
    * Get textSearch
    * @return textSearch
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTextSearch() {
@@ -179,12 +181,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTextSearch(@javax.annotation.Nullable String textSearch) {
+  public void setTextSearch(@Nullable String textSearch) {
     this.textSearch = textSearch;
   }
 
 
-  public AlarmDataPageLink sortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
+  public AlarmDataPageLink sortOrder(@Nullable EntityDataSortOrder sortOrder) {
     this.sortOrder = sortOrder;
     return this;
   }
@@ -193,7 +195,7 @@ public class AlarmDataPageLink {
    * Get sortOrder
    * @return sortOrder
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityDataSortOrder getSortOrder() {
@@ -203,12 +205,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
+  public void setSortOrder(@Nullable EntityDataSortOrder sortOrder) {
     this.sortOrder = sortOrder;
   }
 
 
-  public AlarmDataPageLink dynamic(@javax.annotation.Nullable Boolean dynamic) {
+  public AlarmDataPageLink dynamic(@Nullable Boolean dynamic) {
     this.dynamic = dynamic;
     return this;
   }
@@ -217,7 +219,7 @@ public class AlarmDataPageLink {
    * Get dynamic
    * @return dynamic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDynamic() {
@@ -227,12 +229,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamic(@javax.annotation.Nullable Boolean dynamic) {
+  public void setDynamic(@Nullable Boolean dynamic) {
     this.dynamic = dynamic;
   }
 
 
-  public AlarmDataPageLink startTs(@javax.annotation.Nullable Long startTs) {
+  public AlarmDataPageLink startTs(@Nullable Long startTs) {
     this.startTs = startTs;
     return this;
   }
@@ -241,7 +243,7 @@ public class AlarmDataPageLink {
    * Get startTs
    * @return startTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStartTs() {
@@ -251,12 +253,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartTs(@javax.annotation.Nullable Long startTs) {
+  public void setStartTs(@Nullable Long startTs) {
     this.startTs = startTs;
   }
 
 
-  public AlarmDataPageLink endTs(@javax.annotation.Nullable Long endTs) {
+  public AlarmDataPageLink endTs(@Nullable Long endTs) {
     this.endTs = endTs;
     return this;
   }
@@ -265,7 +267,7 @@ public class AlarmDataPageLink {
    * Get endTs
    * @return endTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndTs() {
@@ -275,12 +277,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndTs(@javax.annotation.Nullable Long endTs) {
+  public void setEndTs(@Nullable Long endTs) {
     this.endTs = endTs;
   }
 
 
-  public AlarmDataPageLink timeWindow(@javax.annotation.Nullable Long timeWindow) {
+  public AlarmDataPageLink timeWindow(@Nullable Long timeWindow) {
     this.timeWindow = timeWindow;
     return this;
   }
@@ -289,7 +291,7 @@ public class AlarmDataPageLink {
    * Get timeWindow
    * @return timeWindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIME_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTimeWindow() {
@@ -299,12 +301,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_TIME_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimeWindow(@javax.annotation.Nullable Long timeWindow) {
+  public void setTimeWindow(@Nullable Long timeWindow) {
     this.timeWindow = timeWindow;
   }
 
 
-  public AlarmDataPageLink typeList(@javax.annotation.Nullable List<String> typeList) {
+  public AlarmDataPageLink typeList(@Nullable List<String> typeList) {
     this.typeList = typeList;
     return this;
   }
@@ -321,7 +323,7 @@ public class AlarmDataPageLink {
    * Get typeList
    * @return typeList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTypeList() {
@@ -331,12 +333,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTypeList(@javax.annotation.Nullable List<String> typeList) {
+  public void setTypeList(@Nullable List<String> typeList) {
     this.typeList = typeList;
   }
 
 
-  public AlarmDataPageLink statusList(@javax.annotation.Nullable List<AlarmSearchStatus> statusList) {
+  public AlarmDataPageLink statusList(@Nullable List<AlarmSearchStatus> statusList) {
     this.statusList = statusList;
     return this;
   }
@@ -353,7 +355,7 @@ public class AlarmDataPageLink {
    * Get statusList
    * @return statusList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AlarmSearchStatus> getStatusList() {
@@ -363,12 +365,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatusList(@javax.annotation.Nullable List<AlarmSearchStatus> statusList) {
+  public void setStatusList(@Nullable List<AlarmSearchStatus> statusList) {
     this.statusList = statusList;
   }
 
 
-  public AlarmDataPageLink severityList(@javax.annotation.Nullable List<AlarmSeverity> severityList) {
+  public AlarmDataPageLink severityList(@Nullable List<AlarmSeverity> severityList) {
     this.severityList = severityList;
     return this;
   }
@@ -385,7 +387,7 @@ public class AlarmDataPageLink {
    * Get severityList
    * @return severityList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEVERITY_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AlarmSeverity> getSeverityList() {
@@ -395,12 +397,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_SEVERITY_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeverityList(@javax.annotation.Nullable List<AlarmSeverity> severityList) {
+  public void setSeverityList(@Nullable List<AlarmSeverity> severityList) {
     this.severityList = severityList;
   }
 
 
-  public AlarmDataPageLink searchPropagatedAlarms(@javax.annotation.Nullable Boolean searchPropagatedAlarms) {
+  public AlarmDataPageLink searchPropagatedAlarms(@Nullable Boolean searchPropagatedAlarms) {
     this.searchPropagatedAlarms = searchPropagatedAlarms;
     return this;
   }
@@ -409,7 +411,7 @@ public class AlarmDataPageLink {
    * Get searchPropagatedAlarms
    * @return searchPropagatedAlarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSearchPropagatedAlarms() {
@@ -419,12 +421,12 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSearchPropagatedAlarms(@javax.annotation.Nullable Boolean searchPropagatedAlarms) {
+  public void setSearchPropagatedAlarms(@Nullable Boolean searchPropagatedAlarms) {
     this.searchPropagatedAlarms = searchPropagatedAlarms;
   }
 
 
-  public AlarmDataPageLink assigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public AlarmDataPageLink assigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
     return this;
   }
@@ -433,7 +435,7 @@ public class AlarmDataPageLink {
    * Get assigneeId
    * @return assigneeId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getAssigneeId() {
@@ -443,7 +445,7 @@ public class AlarmDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public void setAssigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
   }
 

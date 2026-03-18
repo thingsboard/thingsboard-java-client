@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,36 +46,36 @@ import org.thingsboard.client.ApiClient;
   TrendzSummary.JSON_PROPERTY_VIEW_SUMMARY_ITEMS,
   TrendzSummary.JSON_PROPERTY_AI_SUMMARY_ITEMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzSummary {
   public static final String JSON_PROPERTY_METRIC_SUMMARY_ITEMS = "metricSummaryItems";
-  @javax.annotation.Nullable
+  @Nullable
   private List<Object> metricSummaryItems = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ANOMALY_MODEL_SUMMARY_ITEMS = "anomalyModelSummaryItems";
-  @javax.annotation.Nullable
+  @Nullable
   private List<Object> anomalyModelSummaryItems = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CALCULATION_FIELD_SUMMARY_ITEMS = "calculationFieldSummaryItems";
-  @javax.annotation.Nullable
+  @Nullable
   private List<Object> calculationFieldSummaryItems = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PREDICTION_MODEL_SUMMARY_ITEMS = "predictionModelSummaryItems";
-  @javax.annotation.Nullable
+  @Nullable
   private List<Object> predictionModelSummaryItems = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VIEW_SUMMARY_ITEMS = "viewSummaryItems";
-  @javax.annotation.Nullable
+  @Nullable
   private List<Object> viewSummaryItems = new ArrayList<>();
 
   public static final String JSON_PROPERTY_AI_SUMMARY_ITEMS = "aiSummaryItems";
-  @javax.annotation.Nullable
+  @Nullable
   private List<Object> aiSummaryItems = new ArrayList<>();
 
   public TrendzSummary() { 
   }
 
-  public TrendzSummary metricSummaryItems(@javax.annotation.Nullable List<Object> metricSummaryItems) {
+  public TrendzSummary metricSummaryItems(@Nullable List<Object> metricSummaryItems) {
     this.metricSummaryItems = metricSummaryItems;
     return this;
   }
@@ -90,7 +92,7 @@ public class TrendzSummary {
    * Get metricSummaryItems
    * @return metricSummaryItems
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_METRIC_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Object> getMetricSummaryItems() {
@@ -100,12 +102,12 @@ public class TrendzSummary {
 
   @JsonProperty(value = JSON_PROPERTY_METRIC_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetricSummaryItems(@javax.annotation.Nullable List<Object> metricSummaryItems) {
+  public void setMetricSummaryItems(@Nullable List<Object> metricSummaryItems) {
     this.metricSummaryItems = metricSummaryItems;
   }
 
 
-  public TrendzSummary anomalyModelSummaryItems(@javax.annotation.Nullable List<Object> anomalyModelSummaryItems) {
+  public TrendzSummary anomalyModelSummaryItems(@Nullable List<Object> anomalyModelSummaryItems) {
     this.anomalyModelSummaryItems = anomalyModelSummaryItems;
     return this;
   }
@@ -122,7 +124,7 @@ public class TrendzSummary {
    * Get anomalyModelSummaryItems
    * @return anomalyModelSummaryItems
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ANOMALY_MODEL_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Object> getAnomalyModelSummaryItems() {
@@ -132,12 +134,12 @@ public class TrendzSummary {
 
   @JsonProperty(value = JSON_PROPERTY_ANOMALY_MODEL_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAnomalyModelSummaryItems(@javax.annotation.Nullable List<Object> anomalyModelSummaryItems) {
+  public void setAnomalyModelSummaryItems(@Nullable List<Object> anomalyModelSummaryItems) {
     this.anomalyModelSummaryItems = anomalyModelSummaryItems;
   }
 
 
-  public TrendzSummary calculationFieldSummaryItems(@javax.annotation.Nullable List<Object> calculationFieldSummaryItems) {
+  public TrendzSummary calculationFieldSummaryItems(@Nullable List<Object> calculationFieldSummaryItems) {
     this.calculationFieldSummaryItems = calculationFieldSummaryItems;
     return this;
   }
@@ -154,7 +156,7 @@ public class TrendzSummary {
    * Get calculationFieldSummaryItems
    * @return calculationFieldSummaryItems
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CALCULATION_FIELD_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Object> getCalculationFieldSummaryItems() {
@@ -164,12 +166,12 @@ public class TrendzSummary {
 
   @JsonProperty(value = JSON_PROPERTY_CALCULATION_FIELD_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCalculationFieldSummaryItems(@javax.annotation.Nullable List<Object> calculationFieldSummaryItems) {
+  public void setCalculationFieldSummaryItems(@Nullable List<Object> calculationFieldSummaryItems) {
     this.calculationFieldSummaryItems = calculationFieldSummaryItems;
   }
 
 
-  public TrendzSummary predictionModelSummaryItems(@javax.annotation.Nullable List<Object> predictionModelSummaryItems) {
+  public TrendzSummary predictionModelSummaryItems(@Nullable List<Object> predictionModelSummaryItems) {
     this.predictionModelSummaryItems = predictionModelSummaryItems;
     return this;
   }
@@ -186,7 +188,7 @@ public class TrendzSummary {
    * Get predictionModelSummaryItems
    * @return predictionModelSummaryItems
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PREDICTION_MODEL_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Object> getPredictionModelSummaryItems() {
@@ -196,12 +198,12 @@ public class TrendzSummary {
 
   @JsonProperty(value = JSON_PROPERTY_PREDICTION_MODEL_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPredictionModelSummaryItems(@javax.annotation.Nullable List<Object> predictionModelSummaryItems) {
+  public void setPredictionModelSummaryItems(@Nullable List<Object> predictionModelSummaryItems) {
     this.predictionModelSummaryItems = predictionModelSummaryItems;
   }
 
 
-  public TrendzSummary viewSummaryItems(@javax.annotation.Nullable List<Object> viewSummaryItems) {
+  public TrendzSummary viewSummaryItems(@Nullable List<Object> viewSummaryItems) {
     this.viewSummaryItems = viewSummaryItems;
     return this;
   }
@@ -218,7 +220,7 @@ public class TrendzSummary {
    * Get viewSummaryItems
    * @return viewSummaryItems
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VIEW_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Object> getViewSummaryItems() {
@@ -228,12 +230,12 @@ public class TrendzSummary {
 
   @JsonProperty(value = JSON_PROPERTY_VIEW_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setViewSummaryItems(@javax.annotation.Nullable List<Object> viewSummaryItems) {
+  public void setViewSummaryItems(@Nullable List<Object> viewSummaryItems) {
     this.viewSummaryItems = viewSummaryItems;
   }
 
 
-  public TrendzSummary aiSummaryItems(@javax.annotation.Nullable List<Object> aiSummaryItems) {
+  public TrendzSummary aiSummaryItems(@Nullable List<Object> aiSummaryItems) {
     this.aiSummaryItems = aiSummaryItems;
     return this;
   }
@@ -250,7 +252,7 @@ public class TrendzSummary {
    * Get aiSummaryItems
    * @return aiSummaryItems
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AI_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<Object> getAiSummaryItems() {
@@ -260,7 +262,7 @@ public class TrendzSummary {
 
   @JsonProperty(value = JSON_PROPERTY_AI_SUMMARY_ITEMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAiSummaryItems(@javax.annotation.Nullable List<Object> aiSummaryItems) {
+  public void setAiSummaryItems(@Nullable List<Object> aiSummaryItems) {
     this.aiSummaryItems = aiSummaryItems;
   }
 

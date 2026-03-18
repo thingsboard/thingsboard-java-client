@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,26 +48,26 @@ import org.thingsboard.client.ApiClient;
   RuleChainOutputLabelsUsage.JSON_PROPERTY_RULE_NODE_NAME,
   RuleChainOutputLabelsUsage.JSON_PROPERTY_LABELS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChainOutputLabelsUsage {
   public static final String JSON_PROPERTY_RULE_CHAIN_ID = "ruleChainId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private RuleChainId ruleChainId;
 
   public static final String JSON_PROPERTY_RULE_NODE_ID = "ruleNodeId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private RuleNodeId ruleNodeId;
 
   public static final String JSON_PROPERTY_RULE_CHAIN_NAME = "ruleChainName";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String ruleChainName;
 
   public static final String JSON_PROPERTY_RULE_NODE_NAME = "ruleNodeName";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String ruleNodeName;
 
   public static final String JSON_PROPERTY_LABELS = "labels";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Set<String> labels = new LinkedHashSet<>();
 
   public RuleChainOutputLabelsUsage() { 
@@ -89,7 +91,7 @@ public class RuleChainOutputLabelsUsage {
    * Rule Chain Id
    * @return ruleChainId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RuleChainId getRuleChainId() {
@@ -103,7 +105,7 @@ public class RuleChainOutputLabelsUsage {
    * Rule Node Id
    * @return ruleNodeId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RULE_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RuleNodeId getRuleNodeId() {
@@ -117,7 +119,7 @@ public class RuleChainOutputLabelsUsage {
    * Rule Chain Name
    * @return ruleChainName
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getRuleChainName() {
@@ -131,7 +133,7 @@ public class RuleChainOutputLabelsUsage {
    * Rule Node Name
    * @return ruleNodeName
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RULE_NODE_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getRuleNodeName() {
@@ -141,7 +143,7 @@ public class RuleChainOutputLabelsUsage {
 
 
 
-  public RuleChainOutputLabelsUsage labels(@javax.annotation.Nonnull Set<String> labels) {
+  public RuleChainOutputLabelsUsage labels(@Nonnull Set<String> labels) {
     this.labels = labels;
     return this;
   }
@@ -158,7 +160,7 @@ public class RuleChainOutputLabelsUsage {
    * Output labels
    * @return labels
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_LABELS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Set<String> getLabels() {
@@ -169,7 +171,7 @@ public class RuleChainOutputLabelsUsage {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_LABELS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLabels(@javax.annotation.Nonnull Set<String> labels) {
+  public void setLabels(@Nonnull Set<String> labels) {
     this.labels = labels;
   }
 

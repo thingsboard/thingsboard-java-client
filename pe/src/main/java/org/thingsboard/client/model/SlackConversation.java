@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,36 +46,36 @@ import org.thingsboard.client.ApiClient;
   SlackConversation.JSON_PROPERTY_EMAIL,
   SlackConversation.JSON_PROPERTY_TITLE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SlackConversation {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private SlackConversationType type;
 
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_WHOLE_NAME = "wholeName";
-  @javax.annotation.Nullable
+  @Nullable
   private String wholeName;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @javax.annotation.Nullable
+  @Nullable
   private String email;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public SlackConversation() { 
   }
 
-  public SlackConversation type(@javax.annotation.Nonnull SlackConversationType type) {
+  public SlackConversation type(@Nonnull SlackConversationType type) {
     this.type = type;
     return this;
   }
@@ -81,7 +84,7 @@ public class SlackConversation {
    * Get type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public SlackConversationType getType() {
@@ -91,12 +94,12 @@ public class SlackConversation {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull SlackConversationType type) {
+  public void setType(@Nonnull SlackConversationType type) {
     this.type = type;
   }
 
 
-  public SlackConversation id(@javax.annotation.Nonnull String id) {
+  public SlackConversation id(@Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -105,7 +108,7 @@ public class SlackConversation {
    * Get id
    * @return id
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getId() {
@@ -115,12 +118,12 @@ public class SlackConversation {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull String id) {
+  public void setId(@Nonnull String id) {
     this.id = id;
   }
 
 
-  public SlackConversation name(@javax.annotation.Nonnull String name) {
+  public SlackConversation name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -129,7 +132,7 @@ public class SlackConversation {
    * Get name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -139,12 +142,12 @@ public class SlackConversation {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public SlackConversation wholeName(@javax.annotation.Nullable String wholeName) {
+  public SlackConversation wholeName(@Nullable String wholeName) {
     this.wholeName = wholeName;
     return this;
   }
@@ -153,7 +156,7 @@ public class SlackConversation {
    * Get wholeName
    * @return wholeName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WHOLE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getWholeName() {
@@ -163,12 +166,12 @@ public class SlackConversation {
 
   @JsonProperty(value = JSON_PROPERTY_WHOLE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWholeName(@javax.annotation.Nullable String wholeName) {
+  public void setWholeName(@Nullable String wholeName) {
     this.wholeName = wholeName;
   }
 
 
-  public SlackConversation email(@javax.annotation.Nullable String email) {
+  public SlackConversation email(@Nullable String email) {
     this.email = email;
     return this;
   }
@@ -177,7 +180,7 @@ public class SlackConversation {
    * Get email
    * @return email
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmail() {
@@ -187,12 +190,12 @@ public class SlackConversation {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmail(@javax.annotation.Nullable String email) {
+  public void setEmail(@Nullable String email) {
     this.email = email;
   }
 
 
-  public SlackConversation title(@javax.annotation.Nullable String title) {
+  public SlackConversation title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -201,7 +204,7 @@ public class SlackConversation {
    * Get title
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -211,7 +214,7 @@ public class SlackConversation {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 

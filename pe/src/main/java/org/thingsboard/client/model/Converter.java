@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -54,58 +57,58 @@ import org.thingsboard.client.ApiClient;
   Converter.JSON_PROPERTY_CONVERTER_VERSION,
   Converter.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Converter {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private ConverterId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private ConverterType type;
 
   public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";
-  @javax.annotation.Nullable
+  @Nullable
   private IntegrationType integrationType;
 
   public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean debugMode;
 
   public static final String JSON_PROPERTY_DEBUG_SETTINGS = "debugSettings";
-  @javax.annotation.Nullable
+  @Nullable
   private DebugSettings debugSettings;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode _configuration;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_EDGE_TEMPLATE = "edgeTemplate";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean edgeTemplate;
 
   public static final String JSON_PROPERTY_CONVERTER_VERSION = "converterVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer converterVersion;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public Converter() { 
@@ -121,7 +124,7 @@ public class Converter {
     this.tenantId = tenantId;
   }
 
-  public Converter id(@javax.annotation.Nullable ConverterId id) {
+  public Converter id(@Nullable ConverterId id) {
     this.id = id;
     return this;
   }
@@ -130,7 +133,7 @@ public class Converter {
    * JSON object with the Converter Id. Specify this field to update the Converter. Referencing non-existing Converter Id will cause error. Omit this field to create new Converter.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ConverterId getId() {
@@ -140,7 +143,7 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable ConverterId id) {
+  public void setId(@Nullable ConverterId id) {
     this.id = id;
   }
 
@@ -149,7 +152,7 @@ public class Converter {
    * Timestamp of the converter creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -163,7 +166,7 @@ public class Converter {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -173,7 +176,7 @@ public class Converter {
 
 
 
-  public Converter name(@javax.annotation.Nonnull String name) {
+  public Converter name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -182,7 +185,7 @@ public class Converter {
    * Unique Converter Name in scope of Tenant
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -192,12 +195,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public Converter type(@javax.annotation.Nonnull ConverterType type) {
+  public Converter type(@Nonnull ConverterType type) {
     this.type = type;
     return this;
   }
@@ -206,7 +209,7 @@ public class Converter {
    * The type of the converter to process incoming or outgoing messages
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ConverterType getType() {
@@ -216,12 +219,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull ConverterType type) {
+  public void setType(@Nonnull ConverterType type) {
     this.type = type;
   }
 
 
-  public Converter integrationType(@javax.annotation.Nullable IntegrationType integrationType) {
+  public Converter integrationType(@Nullable IntegrationType integrationType) {
     this.integrationType = integrationType;
     return this;
   }
@@ -230,7 +233,7 @@ public class Converter {
    * The type of the integration to which the converter is dedicated
    * @return integrationType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTEGRATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IntegrationType getIntegrationType() {
@@ -240,12 +243,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_INTEGRATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntegrationType(@javax.annotation.Nullable IntegrationType integrationType) {
+  public void setIntegrationType(@Nullable IntegrationType integrationType) {
     this.integrationType = integrationType;
   }
 
 
-  public Converter debugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public Converter debugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
     return this;
   }
@@ -256,7 +259,7 @@ public class Converter {
    * @deprecated
    */
   @Deprecated
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDebugMode() {
@@ -266,12 +269,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public void setDebugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
   }
 
 
-  public Converter debugSettings(@javax.annotation.Nullable DebugSettings debugSettings) {
+  public Converter debugSettings(@Nullable DebugSettings debugSettings) {
     this.debugSettings = debugSettings;
     return this;
   }
@@ -280,7 +283,7 @@ public class Converter {
    * Debug settings object.
    * @return debugSettings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEBUG_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DebugSettings getDebugSettings() {
@@ -290,12 +293,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_DEBUG_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugSettings(@javax.annotation.Nullable DebugSettings debugSettings) {
+  public void setDebugSettings(@Nullable DebugSettings debugSettings) {
     this.debugSettings = debugSettings;
   }
 
 
-  public Converter _configuration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public Converter _configuration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -304,7 +307,7 @@ public class Converter {
    * JSON object representing converter configuration. It should contain one of two possible fields: &#39;decoder&#39; or &#39;encoder&#39;. The former is used when the converter has UPLINK type, the latter is used - when DOWNLINK type. It can contain both &#39;decoder&#39; and &#39;encoder&#39; fields, when the correct one is specified for the appropriate converter type, another one can be set to &#39;null&#39;
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
@@ -314,12 +317,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public void setConfiguration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public Converter additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Converter additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -328,7 +331,7 @@ public class Converter {
    * Additional parameters of the converter
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -338,12 +341,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public Converter edgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+  public Converter edgeTemplate(@Nullable Boolean edgeTemplate) {
     this.edgeTemplate = edgeTemplate;
     return this;
   }
@@ -352,7 +355,7 @@ public class Converter {
    * Boolean flag that specifies that is regular or edge template converter
    * @return edgeTemplate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEdgeTemplate() {
@@ -362,12 +365,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+  public void setEdgeTemplate(@Nullable Boolean edgeTemplate) {
     this.edgeTemplate = edgeTemplate;
   }
 
 
-  public Converter converterVersion(@javax.annotation.Nullable Integer converterVersion) {
+  public Converter converterVersion(@Nullable Integer converterVersion) {
     this.converterVersion = converterVersion;
     return this;
   }
@@ -376,7 +379,7 @@ public class Converter {
    * Get converterVersion
    * @return converterVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONVERTER_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getConverterVersion() {
@@ -386,12 +389,12 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_CONVERTER_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConverterVersion(@javax.annotation.Nullable Integer converterVersion) {
+  public void setConverterVersion(@Nullable Integer converterVersion) {
     this.converterVersion = converterVersion;
   }
 
 
-  public Converter version(@javax.annotation.Nullable Long version) {
+  public Converter version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -400,7 +403,7 @@ public class Converter {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -410,7 +413,7 @@ public class Converter {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 

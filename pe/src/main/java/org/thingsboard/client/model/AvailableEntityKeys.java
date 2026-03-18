@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,24 +45,24 @@ import org.thingsboard.client.ApiClient;
   AvailableEntityKeys.JSON_PROPERTY_TIMESERIES,
   AvailableEntityKeys.JSON_PROPERTY_ATTRIBUTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AvailableEntityKeys {
   public static final String JSON_PROPERTY_ENTITY_TYPES = "entityTypes";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Set<EntityType> entityTypes = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_TIMESERIES = "timeseries";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Set<String> timeseries = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ATTRIBUTE = "attribute";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Set<String> attribute = new LinkedHashSet<>();
 
   public AvailableEntityKeys() { 
   }
 
-  public AvailableEntityKeys entityTypes(@javax.annotation.Nonnull Set<EntityType> entityTypes) {
+  public AvailableEntityKeys entityTypes(@Nonnull Set<EntityType> entityTypes) {
     this.entityTypes = entityTypes;
     return this;
   }
@@ -77,7 +79,7 @@ public class AvailableEntityKeys {
    * Set of entity types found among the matched entities.
    * @return entityTypes
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Set<EntityType> getEntityTypes() {
@@ -88,12 +90,12 @@ public class AvailableEntityKeys {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityTypes(@javax.annotation.Nonnull Set<EntityType> entityTypes) {
+  public void setEntityTypes(@Nonnull Set<EntityType> entityTypes) {
     this.entityTypes = entityTypes;
   }
 
 
-  public AvailableEntityKeys timeseries(@javax.annotation.Nonnull Set<String> timeseries) {
+  public AvailableEntityKeys timeseries(@Nonnull Set<String> timeseries) {
     this.timeseries = timeseries;
     return this;
   }
@@ -110,7 +112,7 @@ public class AvailableEntityKeys {
    * Get timeseries
    * @return timeseries
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Set<String> getTimeseries() {
@@ -121,12 +123,12 @@ public class AvailableEntityKeys {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTimeseries(@javax.annotation.Nonnull Set<String> timeseries) {
+  public void setTimeseries(@Nonnull Set<String> timeseries) {
     this.timeseries = timeseries;
   }
 
 
-  public AvailableEntityKeys attribute(@javax.annotation.Nonnull Set<String> attribute) {
+  public AvailableEntityKeys attribute(@Nonnull Set<String> attribute) {
     this.attribute = attribute;
     return this;
   }
@@ -143,7 +145,7 @@ public class AvailableEntityKeys {
    * Get attribute
    * @return attribute
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Set<String> getAttribute() {
@@ -154,7 +156,7 @@ public class AvailableEntityKeys {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAttribute(@javax.annotation.Nonnull Set<String> attribute) {
+  public void setAttribute(@Nonnull Set<String> attribute) {
     this.attribute = attribute;
   }
 

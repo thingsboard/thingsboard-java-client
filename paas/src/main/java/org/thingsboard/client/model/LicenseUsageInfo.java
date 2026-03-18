@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,48 +47,48 @@ import org.thingsboard.client.ApiClient;
   LicenseUsageInfo.JSON_PROPERTY_DASHBOARDS_COUNT,
   LicenseUsageInfo.JSON_PROPERTY_INTEGRATIONS_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LicenseUsageInfo {
   public static final String JSON_PROPERTY_MAX_DEVICES = "maxDevices";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxDevices;
 
   public static final String JSON_PROPERTY_MAX_ASSETS = "maxAssets";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxAssets;
 
   public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean whiteLabelingEnabled;
 
   public static final String JSON_PROPERTY_DEVELOPMENT = "development";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean development;
 
   public static final String JSON_PROPERTY_PLAN = "plan";
-  @javax.annotation.Nullable
+  @Nullable
   private String plan;
 
   public static final String JSON_PROPERTY_DEVICES_COUNT = "devicesCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long devicesCount;
 
   public static final String JSON_PROPERTY_ASSETS_COUNT = "assetsCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long assetsCount;
 
   public static final String JSON_PROPERTY_DASHBOARDS_COUNT = "dashboardsCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long dashboardsCount;
 
   public static final String JSON_PROPERTY_INTEGRATIONS_COUNT = "integrationsCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long integrationsCount;
 
   public LicenseUsageInfo() { 
   }
 
-  public LicenseUsageInfo maxDevices(@javax.annotation.Nullable Long maxDevices) {
+  public LicenseUsageInfo maxDevices(@Nullable Long maxDevices) {
     this.maxDevices = maxDevices;
     return this;
   }
@@ -95,7 +97,7 @@ public class LicenseUsageInfo {
    * Get maxDevices
    * @return maxDevices
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxDevices() {
@@ -105,12 +107,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxDevices(@javax.annotation.Nullable Long maxDevices) {
+  public void setMaxDevices(@Nullable Long maxDevices) {
     this.maxDevices = maxDevices;
   }
 
 
-  public LicenseUsageInfo maxAssets(@javax.annotation.Nullable Long maxAssets) {
+  public LicenseUsageInfo maxAssets(@Nullable Long maxAssets) {
     this.maxAssets = maxAssets;
     return this;
   }
@@ -119,7 +121,7 @@ public class LicenseUsageInfo {
    * Get maxAssets
    * @return maxAssets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxAssets() {
@@ -129,12 +131,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxAssets(@javax.annotation.Nullable Long maxAssets) {
+  public void setMaxAssets(@Nullable Long maxAssets) {
     this.maxAssets = maxAssets;
   }
 
 
-  public LicenseUsageInfo whiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+  public LicenseUsageInfo whiteLabelingEnabled(@Nullable Boolean whiteLabelingEnabled) {
     this.whiteLabelingEnabled = whiteLabelingEnabled;
     return this;
   }
@@ -143,7 +145,7 @@ public class LicenseUsageInfo {
    * Get whiteLabelingEnabled
    * @return whiteLabelingEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getWhiteLabelingEnabled() {
@@ -153,12 +155,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWhiteLabelingEnabled(@javax.annotation.Nullable Boolean whiteLabelingEnabled) {
+  public void setWhiteLabelingEnabled(@Nullable Boolean whiteLabelingEnabled) {
     this.whiteLabelingEnabled = whiteLabelingEnabled;
   }
 
 
-  public LicenseUsageInfo development(@javax.annotation.Nullable Boolean development) {
+  public LicenseUsageInfo development(@Nullable Boolean development) {
     this.development = development;
     return this;
   }
@@ -167,7 +169,7 @@ public class LicenseUsageInfo {
    * Get development
    * @return development
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVELOPMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDevelopment() {
@@ -177,12 +179,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEVELOPMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDevelopment(@javax.annotation.Nullable Boolean development) {
+  public void setDevelopment(@Nullable Boolean development) {
     this.development = development;
   }
 
 
-  public LicenseUsageInfo plan(@javax.annotation.Nullable String plan) {
+  public LicenseUsageInfo plan(@Nullable String plan) {
     this.plan = plan;
     return this;
   }
@@ -191,7 +193,7 @@ public class LicenseUsageInfo {
    * Get plan
    * @return plan
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PLAN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPlan() {
@@ -201,12 +203,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PLAN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPlan(@javax.annotation.Nullable String plan) {
+  public void setPlan(@Nullable String plan) {
     this.plan = plan;
   }
 
 
-  public LicenseUsageInfo devicesCount(@javax.annotation.Nullable Long devicesCount) {
+  public LicenseUsageInfo devicesCount(@Nullable Long devicesCount) {
     this.devicesCount = devicesCount;
     return this;
   }
@@ -215,7 +217,7 @@ public class LicenseUsageInfo {
    * Get devicesCount
    * @return devicesCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVICES_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDevicesCount() {
@@ -225,12 +227,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICES_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDevicesCount(@javax.annotation.Nullable Long devicesCount) {
+  public void setDevicesCount(@Nullable Long devicesCount) {
     this.devicesCount = devicesCount;
   }
 
 
-  public LicenseUsageInfo assetsCount(@javax.annotation.Nullable Long assetsCount) {
+  public LicenseUsageInfo assetsCount(@Nullable Long assetsCount) {
     this.assetsCount = assetsCount;
     return this;
   }
@@ -239,7 +241,7 @@ public class LicenseUsageInfo {
    * Get assetsCount
    * @return assetsCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSETS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAssetsCount() {
@@ -249,12 +251,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ASSETS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssetsCount(@javax.annotation.Nullable Long assetsCount) {
+  public void setAssetsCount(@Nullable Long assetsCount) {
     this.assetsCount = assetsCount;
   }
 
 
-  public LicenseUsageInfo dashboardsCount(@javax.annotation.Nullable Long dashboardsCount) {
+  public LicenseUsageInfo dashboardsCount(@Nullable Long dashboardsCount) {
     this.dashboardsCount = dashboardsCount;
     return this;
   }
@@ -263,7 +265,7 @@ public class LicenseUsageInfo {
    * Get dashboardsCount
    * @return dashboardsCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARDS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDashboardsCount() {
@@ -273,12 +275,12 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARDS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardsCount(@javax.annotation.Nullable Long dashboardsCount) {
+  public void setDashboardsCount(@Nullable Long dashboardsCount) {
     this.dashboardsCount = dashboardsCount;
   }
 
 
-  public LicenseUsageInfo integrationsCount(@javax.annotation.Nullable Long integrationsCount) {
+  public LicenseUsageInfo integrationsCount(@Nullable Long integrationsCount) {
     this.integrationsCount = integrationsCount;
     return this;
   }
@@ -287,7 +289,7 @@ public class LicenseUsageInfo {
    * Get integrationsCount
    * @return integrationsCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTEGRATIONS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getIntegrationsCount() {
@@ -297,7 +299,7 @@ public class LicenseUsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_INTEGRATIONS_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntegrationsCount(@javax.annotation.Nullable Long integrationsCount) {
+  public void setIntegrationsCount(@Nullable Long integrationsCount) {
     this.integrationsCount = integrationsCount;
   }
 

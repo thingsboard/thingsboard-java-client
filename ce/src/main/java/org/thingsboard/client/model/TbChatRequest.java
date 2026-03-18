@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   TbChatRequest.JSON_PROPERTY_USER_MESSAGE,
   TbChatRequest.JSON_PROPERTY_CHAT_MODEL_CONFIG
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TbChatRequest {
   public static final String JSON_PROPERTY_SYSTEM_MESSAGE = "systemMessage";
-  @javax.annotation.Nullable
+  @Nullable
   private String systemMessage;
 
   public static final String JSON_PROPERTY_USER_MESSAGE = "userMessage";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TbUserMessage userMessage;
 
   public static final String JSON_PROPERTY_CHAT_MODEL_CONFIG = "chatModelConfig";
-  @javax.annotation.Nonnull
+  @Nonnull
   private AiModelConfig chatModelConfig;
 
   public TbChatRequest() { 
   }
 
-  public TbChatRequest systemMessage(@javax.annotation.Nullable String systemMessage) {
+  public TbChatRequest systemMessage(@Nullable String systemMessage) {
     this.systemMessage = systemMessage;
     return this;
   }
@@ -67,7 +70,7 @@ public class TbChatRequest {
    * A system-level instruction that frames the user&#39;s input, setting the persona, tone, and constraints for the generated response
    * @return systemMessage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SYSTEM_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSystemMessage() {
@@ -77,12 +80,12 @@ public class TbChatRequest {
 
   @JsonProperty(value = JSON_PROPERTY_SYSTEM_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSystemMessage(@javax.annotation.Nullable String systemMessage) {
+  public void setSystemMessage(@Nullable String systemMessage) {
     this.systemMessage = systemMessage;
   }
 
 
-  public TbChatRequest userMessage(@javax.annotation.Nonnull TbUserMessage userMessage) {
+  public TbChatRequest userMessage(@Nonnull TbUserMessage userMessage) {
     this.userMessage = userMessage;
     return this;
   }
@@ -91,7 +94,7 @@ public class TbChatRequest {
    * The actual user prompt that will be answered by the AI model
    * @return userMessage
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_USER_MESSAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TbUserMessage getUserMessage() {
@@ -101,12 +104,12 @@ public class TbChatRequest {
 
   @JsonProperty(value = JSON_PROPERTY_USER_MESSAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserMessage(@javax.annotation.Nonnull TbUserMessage userMessage) {
+  public void setUserMessage(@Nonnull TbUserMessage userMessage) {
     this.userMessage = userMessage;
   }
 
 
-  public TbChatRequest chatModelConfig(@javax.annotation.Nonnull AiModelConfig chatModelConfig) {
+  public TbChatRequest chatModelConfig(@Nonnull AiModelConfig chatModelConfig) {
     this.chatModelConfig = chatModelConfig;
     return this;
   }
@@ -115,7 +118,7 @@ public class TbChatRequest {
    * Configuration of the AI chat model that should execute the request
    * @return chatModelConfig
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CHAT_MODEL_CONFIG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AiModelConfig getChatModelConfig() {
@@ -125,7 +128,7 @@ public class TbChatRequest {
 
   @JsonProperty(value = JSON_PROPERTY_CHAT_MODEL_CONFIG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setChatModelConfig(@javax.annotation.Nonnull AiModelConfig chatModelConfig) {
+  public void setChatModelConfig(@Nonnull AiModelConfig chatModelConfig) {
     this.chatModelConfig = chatModelConfig;
   }
 

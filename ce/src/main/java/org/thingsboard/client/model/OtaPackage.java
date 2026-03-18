@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -59,78 +61,78 @@ import org.thingsboard.client.ApiClient;
   OtaPackage.JSON_PROPERTY_DATA,
   OtaPackage.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OtaPackage {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_DEVICE_PROFILE_ID = "deviceProfileId";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileId deviceProfileId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private OtaPackageType type;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private String version;
 
   public static final String JSON_PROPERTY_TAG = "tag";
-  @javax.annotation.Nullable
+  @Nullable
   private String tag;
 
   public static final String JSON_PROPERTY_URL = "url";
-  @javax.annotation.Nullable
+  @Nullable
   private String url;
 
   public static final String JSON_PROPERTY_HAS_DATA = "hasData";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasData;
 
   public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  @javax.annotation.Nullable
+  @Nullable
   private String fileName;
 
   public static final String JSON_PROPERTY_CONTENT_TYPE = "contentType";
-  @javax.annotation.Nullable
+  @Nullable
   private String contentType;
 
   public static final String JSON_PROPERTY_CHECKSUM_ALGORITHM = "checksumAlgorithm";
-  @javax.annotation.Nullable
+  @Nullable
   private ChecksumAlgorithm checksumAlgorithm;
 
   public static final String JSON_PROPERTY_CHECKSUM = "checksum";
-  @javax.annotation.Nullable
+  @Nullable
   private String checksum;
 
   public static final String JSON_PROPERTY_DATA_SIZE = "dataSize";
-  @javax.annotation.Nullable
+  @Nullable
   private Long dataSize;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_DATA = "data";
-  @javax.annotation.Nullable
+  @Nullable
   private byte[] data;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public OtaPackage() { 
@@ -162,7 +164,7 @@ public class OtaPackage {
     this.name = name;
   }
 
-  public OtaPackage id(@javax.annotation.Nullable OtaPackageId id) {
+  public OtaPackage id(@Nullable OtaPackageId id) {
     this.id = id;
     return this;
   }
@@ -171,7 +173,7 @@ public class OtaPackage {
    * JSON object with the ota package Id. Specify existing ota package Id to update the ota package. Referencing non-existing ota package id will cause error. Omit this field to create new ota package.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageId getId() {
@@ -181,7 +183,7 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable OtaPackageId id) {
+  public void setId(@Nullable OtaPackageId id) {
     this.id = id;
   }
 
@@ -190,7 +192,7 @@ public class OtaPackage {
    * Timestamp of the ota package creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -204,7 +206,7 @@ public class OtaPackage {
    * JSON object with Tenant Id. Tenant Id of the ota package can&#39;t be changed.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -214,7 +216,7 @@ public class OtaPackage {
 
 
 
-  public OtaPackage deviceProfileId(@javax.annotation.Nullable DeviceProfileId deviceProfileId) {
+  public OtaPackage deviceProfileId(@Nullable DeviceProfileId deviceProfileId) {
     this.deviceProfileId = deviceProfileId;
     return this;
   }
@@ -223,7 +225,7 @@ public class OtaPackage {
    * JSON object with Device Profile Id. Device Profile Id of the ota package can&#39;t be changed.
    * @return deviceProfileId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileId getDeviceProfileId() {
@@ -233,12 +235,12 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeviceProfileId(@javax.annotation.Nullable DeviceProfileId deviceProfileId) {
+  public void setDeviceProfileId(@Nullable DeviceProfileId deviceProfileId) {
     this.deviceProfileId = deviceProfileId;
   }
 
 
-  public OtaPackage type(@javax.annotation.Nullable OtaPackageType type) {
+  public OtaPackage type(@Nullable OtaPackageType type) {
     this.type = type;
     return this;
   }
@@ -247,7 +249,7 @@ public class OtaPackage {
    * OTA Package type.
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OtaPackageType getType() {
@@ -257,12 +259,12 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable OtaPackageType type) {
+  public void setType(@Nullable OtaPackageType type) {
     this.type = type;
   }
 
 
-  public OtaPackage title(@javax.annotation.Nullable String title) {
+  public OtaPackage title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -271,7 +273,7 @@ public class OtaPackage {
    * OTA Package title.
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -281,12 +283,12 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public OtaPackage version(@javax.annotation.Nullable String version) {
+  public OtaPackage version(@Nullable String version) {
     this.version = version;
     return this;
   }
@@ -295,7 +297,7 @@ public class OtaPackage {
    * OTA Package version.
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getVersion() {
@@ -305,7 +307,7 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable String version) {
+  public void setVersion(@Nullable String version) {
     this.version = version;
   }
 
@@ -314,7 +316,7 @@ public class OtaPackage {
    * OTA Package tag.
    * @return tag
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TAG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTag() {
@@ -324,7 +326,7 @@ public class OtaPackage {
 
 
 
-  public OtaPackage url(@javax.annotation.Nullable String url) {
+  public OtaPackage url(@Nullable String url) {
     this.url = url;
     return this;
   }
@@ -333,7 +335,7 @@ public class OtaPackage {
    * OTA Package url.
    * @return url
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUrl() {
@@ -343,7 +345,7 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(@javax.annotation.Nullable String url) {
+  public void setUrl(@Nullable String url) {
     this.url = url;
   }
 
@@ -352,7 +354,7 @@ public class OtaPackage {
    * Indicates OTA Package &#39;has data&#39;. Field is returned from DB (&#39;true&#39; if data exists or url is set).  If OTA Package &#39;has data&#39; is &#39;false&#39; we can not assign the OTA Package to the Device or Device Profile.
    * @return hasData
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasData() {
@@ -366,7 +368,7 @@ public class OtaPackage {
    * OTA Package file name.
    * @return fileName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFileName() {
@@ -380,7 +382,7 @@ public class OtaPackage {
    * OTA Package content type.
    * @return contentType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONTENT_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getContentType() {
@@ -394,7 +396,7 @@ public class OtaPackage {
    * OTA Package checksum algorithm.
    * @return checksumAlgorithm
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CHECKSUM_ALGORITHM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChecksumAlgorithm getChecksumAlgorithm() {
@@ -408,7 +410,7 @@ public class OtaPackage {
    * OTA Package checksum.
    * @return checksum
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CHECKSUM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getChecksum() {
@@ -422,7 +424,7 @@ public class OtaPackage {
    * OTA Package data size.
    * @return dataSize
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDataSize() {
@@ -432,7 +434,7 @@ public class OtaPackage {
 
 
 
-  public OtaPackage additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public OtaPackage additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -441,7 +443,7 @@ public class OtaPackage {
    * OTA Package description.
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -451,12 +453,12 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public OtaPackage data(@javax.annotation.Nullable byte[] data) {
+  public OtaPackage data(@Nullable byte[] data) {
     this.data = data;
     return this;
   }
@@ -465,7 +467,7 @@ public class OtaPackage {
    * Get data
    * @return data
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public byte[] getData() {
@@ -475,7 +477,7 @@ public class OtaPackage {
 
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(@javax.annotation.Nullable byte[] data) {
+  public void setData(@Nullable byte[] data) {
     this.data = data;
   }
 
@@ -484,7 +486,7 @@ public class OtaPackage {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

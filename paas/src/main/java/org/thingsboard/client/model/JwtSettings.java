@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   JwtSettings.JSON_PROPERTY_TOKEN_ISSUER,
   JwtSettings.JSON_PROPERTY_TOKEN_SIGNING_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class JwtSettings {
   public static final String JSON_PROPERTY_TOKEN_EXPIRATION_TIME = "tokenExpirationTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer tokenExpirationTime;
 
   public static final String JSON_PROPERTY_REFRESH_TOKEN_EXP_TIME = "refreshTokenExpTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer refreshTokenExpTime;
 
   public static final String JSON_PROPERTY_TOKEN_ISSUER = "tokenIssuer";
-  @javax.annotation.Nullable
+  @Nullable
   private String tokenIssuer;
 
   public static final String JSON_PROPERTY_TOKEN_SIGNING_KEY = "tokenSigningKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String tokenSigningKey;
 
   public JwtSettings() { 
   }
 
-  public JwtSettings tokenExpirationTime(@javax.annotation.Nullable Integer tokenExpirationTime) {
+  public JwtSettings tokenExpirationTime(@Nullable Integer tokenExpirationTime) {
     this.tokenExpirationTime = tokenExpirationTime;
     return this;
   }
@@ -70,7 +72,7 @@ public class JwtSettings {
    * The JWT will expire after seconds.
    * @return tokenExpirationTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOKEN_EXPIRATION_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTokenExpirationTime() {
@@ -80,12 +82,12 @@ public class JwtSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TOKEN_EXPIRATION_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenExpirationTime(@javax.annotation.Nullable Integer tokenExpirationTime) {
+  public void setTokenExpirationTime(@Nullable Integer tokenExpirationTime) {
     this.tokenExpirationTime = tokenExpirationTime;
   }
 
 
-  public JwtSettings refreshTokenExpTime(@javax.annotation.Nullable Integer refreshTokenExpTime) {
+  public JwtSettings refreshTokenExpTime(@Nullable Integer refreshTokenExpTime) {
     this.refreshTokenExpTime = refreshTokenExpTime;
     return this;
   }
@@ -94,7 +96,7 @@ public class JwtSettings {
    * The JWT can be refreshed during seconds.
    * @return refreshTokenExpTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN_EXP_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getRefreshTokenExpTime() {
@@ -104,12 +106,12 @@ public class JwtSettings {
 
   @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN_EXP_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefreshTokenExpTime(@javax.annotation.Nullable Integer refreshTokenExpTime) {
+  public void setRefreshTokenExpTime(@Nullable Integer refreshTokenExpTime) {
     this.refreshTokenExpTime = refreshTokenExpTime;
   }
 
 
-  public JwtSettings tokenIssuer(@javax.annotation.Nullable String tokenIssuer) {
+  public JwtSettings tokenIssuer(@Nullable String tokenIssuer) {
     this.tokenIssuer = tokenIssuer;
     return this;
   }
@@ -118,7 +120,7 @@ public class JwtSettings {
    * The JWT issuer.
    * @return tokenIssuer
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOKEN_ISSUER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTokenIssuer() {
@@ -128,12 +130,12 @@ public class JwtSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TOKEN_ISSUER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenIssuer(@javax.annotation.Nullable String tokenIssuer) {
+  public void setTokenIssuer(@Nullable String tokenIssuer) {
     this.tokenIssuer = tokenIssuer;
   }
 
 
-  public JwtSettings tokenSigningKey(@javax.annotation.Nullable String tokenSigningKey) {
+  public JwtSettings tokenSigningKey(@Nullable String tokenSigningKey) {
     this.tokenSigningKey = tokenSigningKey;
     return this;
   }
@@ -142,7 +144,7 @@ public class JwtSettings {
    * The JWT key is used to sing token. Base64 encoded.
    * @return tokenSigningKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOKEN_SIGNING_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTokenSigningKey() {
@@ -152,7 +154,7 @@ public class JwtSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TOKEN_SIGNING_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenSigningKey(@javax.annotation.Nullable String tokenSigningKey) {
+  public void setTokenSigningKey(@Nullable String tokenSigningKey) {
     this.tokenSigningKey = tokenSigningKey;
   }
 

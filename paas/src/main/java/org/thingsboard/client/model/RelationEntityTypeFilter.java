@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   RelationEntityTypeFilter.JSON_PROPERTY_ENTITY_TYPES,
   RelationEntityTypeFilter.JSON_PROPERTY_NEGATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RelationEntityTypeFilter {
   public static final String JSON_PROPERTY_RELATION_TYPE = "relationType";
-  @javax.annotation.Nullable
+  @Nullable
   private String relationType;
 
   public static final String JSON_PROPERTY_ENTITY_TYPES = "entityTypes";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityType> entityTypes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NEGATE = "negate";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean negate;
 
   public RelationEntityTypeFilter() { 
   }
 
-  public RelationEntityTypeFilter relationType(@javax.annotation.Nullable String relationType) {
+  public RelationEntityTypeFilter relationType(@Nullable String relationType) {
     this.relationType = relationType;
     return this;
   }
@@ -68,7 +70,7 @@ public class RelationEntityTypeFilter {
    * Type of the relation between root entity and other entity (e.g. &#39;Contains&#39; or &#39;Manages&#39;).
    * @return relationType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRelationType() {
@@ -78,12 +80,12 @@ public class RelationEntityTypeFilter {
 
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelationType(@javax.annotation.Nullable String relationType) {
+  public void setRelationType(@Nullable String relationType) {
     this.relationType = relationType;
   }
 
 
-  public RelationEntityTypeFilter entityTypes(@javax.annotation.Nullable List<EntityType> entityTypes) {
+  public RelationEntityTypeFilter entityTypes(@Nullable List<EntityType> entityTypes) {
     this.entityTypes = entityTypes;
     return this;
   }
@@ -100,7 +102,7 @@ public class RelationEntityTypeFilter {
    * Array of entity types to filter the related entities (e.g. &#39;DEVICE&#39;, &#39;ASSET&#39;).
    * @return entityTypes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityType> getEntityTypes() {
@@ -110,12 +112,12 @@ public class RelationEntityTypeFilter {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityTypes(@javax.annotation.Nullable List<EntityType> entityTypes) {
+  public void setEntityTypes(@Nullable List<EntityType> entityTypes) {
     this.entityTypes = entityTypes;
   }
 
 
-  public RelationEntityTypeFilter negate(@javax.annotation.Nullable Boolean negate) {
+  public RelationEntityTypeFilter negate(@Nullable Boolean negate) {
     this.negate = negate;
     return this;
   }
@@ -124,7 +126,7 @@ public class RelationEntityTypeFilter {
    * Negate relation type between root entity and other entity.
    * @return negate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NEGATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getNegate() {
@@ -134,7 +136,7 @@ public class RelationEntityTypeFilter {
 
   @JsonProperty(value = JSON_PROPERTY_NEGATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNegate(@javax.annotation.Nullable Boolean negate) {
+  public void setNegate(@Nullable Boolean negate) {
     this.negate = negate;
   }
 

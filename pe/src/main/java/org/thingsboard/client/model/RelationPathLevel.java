@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   RelationPathLevel.JSON_PROPERTY_DIRECTION,
   RelationPathLevel.JSON_PROPERTY_RELATION_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RelationPathLevel {
   public static final String JSON_PROPERTY_DIRECTION = "direction";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntitySearchDirection direction;
 
   public static final String JSON_PROPERTY_RELATION_TYPE = "relationType";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String relationType;
 
   public RelationPathLevel() { 
   }
 
-  public RelationPathLevel direction(@javax.annotation.Nonnull EntitySearchDirection direction) {
+  public RelationPathLevel direction(@Nonnull EntitySearchDirection direction) {
     this.direction = direction;
     return this;
   }
@@ -61,7 +63,7 @@ public class RelationPathLevel {
    * Get direction
    * @return direction
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntitySearchDirection getDirection() {
@@ -71,12 +73,12 @@ public class RelationPathLevel {
 
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDirection(@javax.annotation.Nonnull EntitySearchDirection direction) {
+  public void setDirection(@Nonnull EntitySearchDirection direction) {
     this.direction = direction;
   }
 
 
-  public RelationPathLevel relationType(@javax.annotation.Nonnull String relationType) {
+  public RelationPathLevel relationType(@Nonnull String relationType) {
     this.relationType = relationType;
     return this;
   }
@@ -85,7 +87,7 @@ public class RelationPathLevel {
    * Get relationType
    * @return relationType
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getRelationType() {
@@ -95,7 +97,7 @@ public class RelationPathLevel {
 
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRelationType(@javax.annotation.Nonnull String relationType) {
+  public void setRelationType(@Nonnull String relationType) {
     this.relationType = relationType;
   }
 

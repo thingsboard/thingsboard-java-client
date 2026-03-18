@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,20 +43,20 @@ import org.thingsboard.client.ApiClient;
   TelemetryEntityView.JSON_PROPERTY_TIMESERIES,
   TelemetryEntityView.JSON_PROPERTY_ATTRIBUTES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TelemetryEntityView {
   public static final String JSON_PROPERTY_TIMESERIES = "timeseries";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<String> timeseries = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ATTRIBUTES = "attributes";
-  @javax.annotation.Nonnull
+  @Nonnull
   private AttributesEntityView attributes;
 
   public TelemetryEntityView() { 
   }
 
-  public TelemetryEntityView timeseries(@javax.annotation.Nonnull List<String> timeseries) {
+  public TelemetryEntityView timeseries(@Nonnull List<String> timeseries) {
     this.timeseries = timeseries;
     return this;
   }
@@ -71,7 +73,7 @@ public class TelemetryEntityView {
    * List of time-series data keys to expose
    * @return timeseries
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<String> getTimeseries() {
@@ -81,12 +83,12 @@ public class TelemetryEntityView {
 
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTimeseries(@javax.annotation.Nonnull List<String> timeseries) {
+  public void setTimeseries(@Nonnull List<String> timeseries) {
     this.timeseries = timeseries;
   }
 
 
-  public TelemetryEntityView attributes(@javax.annotation.Nonnull AttributesEntityView attributes) {
+  public TelemetryEntityView attributes(@Nonnull AttributesEntityView attributes) {
     this.attributes = attributes;
     return this;
   }
@@ -95,7 +97,7 @@ public class TelemetryEntityView {
    * JSON object with attributes to expose
    * @return attributes
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AttributesEntityView getAttributes() {
@@ -105,7 +107,7 @@ public class TelemetryEntityView {
 
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAttributes(@javax.annotation.Nonnull AttributesEntityView attributes) {
+  public void setAttributes(@Nonnull AttributesEntityView attributes) {
     this.attributes = attributes;
   }
 

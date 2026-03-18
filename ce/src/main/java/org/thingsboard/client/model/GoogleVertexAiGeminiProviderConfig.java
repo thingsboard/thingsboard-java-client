@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   GoogleVertexAiGeminiProviderConfig.JSON_PROPERTY_LOCATION,
   GoogleVertexAiGeminiProviderConfig.JSON_PROPERTY_SERVICE_ACCOUNT_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class GoogleVertexAiGeminiProviderConfig {
   public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String fileName;
 
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String projectId;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String location;
 
   public static final String JSON_PROPERTY_SERVICE_ACCOUNT_KEY = "serviceAccountKey";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String serviceAccountKey;
 
   public GoogleVertexAiGeminiProviderConfig() { 
   }
 
-  public GoogleVertexAiGeminiProviderConfig fileName(@javax.annotation.Nonnull String fileName) {
+  public GoogleVertexAiGeminiProviderConfig fileName(@Nonnull String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -70,7 +72,7 @@ public class GoogleVertexAiGeminiProviderConfig {
    * Get fileName
    * @return fileName
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getFileName() {
@@ -80,12 +82,12 @@ public class GoogleVertexAiGeminiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFileName(@javax.annotation.Nonnull String fileName) {
+  public void setFileName(@Nonnull String fileName) {
     this.fileName = fileName;
   }
 
 
-  public GoogleVertexAiGeminiProviderConfig projectId(@javax.annotation.Nonnull String projectId) {
+  public GoogleVertexAiGeminiProviderConfig projectId(@Nonnull String projectId) {
     this.projectId = projectId;
     return this;
   }
@@ -94,7 +96,7 @@ public class GoogleVertexAiGeminiProviderConfig {
    * Get projectId
    * @return projectId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getProjectId() {
@@ -104,12 +106,12 @@ public class GoogleVertexAiGeminiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(@javax.annotation.Nonnull String projectId) {
+  public void setProjectId(@Nonnull String projectId) {
     this.projectId = projectId;
   }
 
 
-  public GoogleVertexAiGeminiProviderConfig location(@javax.annotation.Nonnull String location) {
+  public GoogleVertexAiGeminiProviderConfig location(@Nonnull String location) {
     this.location = location;
     return this;
   }
@@ -118,7 +120,7 @@ public class GoogleVertexAiGeminiProviderConfig {
    * Get location
    * @return location
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_LOCATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getLocation() {
@@ -128,12 +130,12 @@ public class GoogleVertexAiGeminiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LOCATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLocation(@javax.annotation.Nonnull String location) {
+  public void setLocation(@Nonnull String location) {
     this.location = location;
   }
 
 
-  public GoogleVertexAiGeminiProviderConfig serviceAccountKey(@javax.annotation.Nonnull String serviceAccountKey) {
+  public GoogleVertexAiGeminiProviderConfig serviceAccountKey(@Nonnull String serviceAccountKey) {
     this.serviceAccountKey = serviceAccountKey;
     return this;
   }
@@ -142,7 +144,7 @@ public class GoogleVertexAiGeminiProviderConfig {
    * Get serviceAccountKey
    * @return serviceAccountKey
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_SERVICE_ACCOUNT_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getServiceAccountKey() {
@@ -152,7 +154,7 @@ public class GoogleVertexAiGeminiProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SERVICE_ACCOUNT_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setServiceAccountKey(@javax.annotation.Nonnull String serviceAccountKey) {
+  public void setServiceAccountKey(@Nonnull String serviceAccountKey) {
     this.serviceAccountKey = serviceAccountKey;
   }
 

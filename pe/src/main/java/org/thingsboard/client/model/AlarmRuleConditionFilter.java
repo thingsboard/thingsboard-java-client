@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,28 +48,28 @@ import org.thingsboard.client.ApiClient;
   AlarmRuleConditionFilter.JSON_PROPERTY_PREDICATES,
   AlarmRuleConditionFilter.JSON_PROPERTY_VALUE_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmRuleConditionFilter {
   public static final String JSON_PROPERTY_ARGUMENT = "argument";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String argument;
 
   public static final String JSON_PROPERTY_OPERATION = "operation";
-  @javax.annotation.Nullable
+  @Nullable
   private ComplexOperation operation;
 
   public static final String JSON_PROPERTY_PREDICATES = "predicates";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<AlarmRuleKeyFilterPredicate> predicates = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VALUE_TYPE = "valueType";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityKeyValueType valueType;
 
   public AlarmRuleConditionFilter() { 
   }
 
-  public AlarmRuleConditionFilter argument(@javax.annotation.Nonnull String argument) {
+  public AlarmRuleConditionFilter argument(@Nonnull String argument) {
     this.argument = argument;
     return this;
   }
@@ -75,7 +78,7 @@ public class AlarmRuleConditionFilter {
    * Get argument
    * @return argument
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ARGUMENT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getArgument() {
@@ -85,12 +88,12 @@ public class AlarmRuleConditionFilter {
 
   @JsonProperty(value = JSON_PROPERTY_ARGUMENT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setArgument(@javax.annotation.Nonnull String argument) {
+  public void setArgument(@Nonnull String argument) {
     this.argument = argument;
   }
 
 
-  public AlarmRuleConditionFilter operation(@javax.annotation.Nullable ComplexOperation operation) {
+  public AlarmRuleConditionFilter operation(@Nullable ComplexOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -99,7 +102,7 @@ public class AlarmRuleConditionFilter {
    * Get operation
    * @return operation
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ComplexOperation getOperation() {
@@ -109,12 +112,12 @@ public class AlarmRuleConditionFilter {
 
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOperation(@javax.annotation.Nullable ComplexOperation operation) {
+  public void setOperation(@Nullable ComplexOperation operation) {
     this.operation = operation;
   }
 
 
-  public AlarmRuleConditionFilter predicates(@javax.annotation.Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
+  public AlarmRuleConditionFilter predicates(@Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
     this.predicates = predicates;
     return this;
   }
@@ -131,7 +134,7 @@ public class AlarmRuleConditionFilter {
    * Get predicates
    * @return predicates
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PREDICATES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<AlarmRuleKeyFilterPredicate> getPredicates() {
@@ -141,12 +144,12 @@ public class AlarmRuleConditionFilter {
 
   @JsonProperty(value = JSON_PROPERTY_PREDICATES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPredicates(@javax.annotation.Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
+  public void setPredicates(@Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
     this.predicates = predicates;
   }
 
 
-  public AlarmRuleConditionFilter valueType(@javax.annotation.Nonnull EntityKeyValueType valueType) {
+  public AlarmRuleConditionFilter valueType(@Nonnull EntityKeyValueType valueType) {
     this.valueType = valueType;
     return this;
   }
@@ -155,7 +158,7 @@ public class AlarmRuleConditionFilter {
    * Get valueType
    * @return valueType
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityKeyValueType getValueType() {
@@ -165,7 +168,7 @@ public class AlarmRuleConditionFilter {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValueType(@javax.annotation.Nonnull EntityKeyValueType valueType) {
+  public void setValueType(@Nonnull EntityKeyValueType valueType) {
     this.valueType = valueType;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   FixedTimeWindow.JSON_PROPERTY_START_TIME_MS,
   FixedTimeWindow.JSON_PROPERTY_END_TIME_MS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FixedTimeWindow {
   public static final String JSON_PROPERTY_START_TIME_MS = "startTimeMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long startTimeMs;
 
   public static final String JSON_PROPERTY_END_TIME_MS = "endTimeMs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endTimeMs;
 
   public FixedTimeWindow() { 
   }
 
-  public FixedTimeWindow startTimeMs(@javax.annotation.Nullable Long startTimeMs) {
+  public FixedTimeWindow startTimeMs(@Nullable Long startTimeMs) {
     this.startTimeMs = startTimeMs;
     return this;
   }
@@ -60,7 +62,7 @@ public class FixedTimeWindow {
    * Get startTimeMs
    * @return startTimeMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStartTimeMs() {
@@ -70,12 +72,12 @@ public class FixedTimeWindow {
 
   @JsonProperty(value = JSON_PROPERTY_START_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartTimeMs(@javax.annotation.Nullable Long startTimeMs) {
+  public void setStartTimeMs(@Nullable Long startTimeMs) {
     this.startTimeMs = startTimeMs;
   }
 
 
-  public FixedTimeWindow endTimeMs(@javax.annotation.Nullable Long endTimeMs) {
+  public FixedTimeWindow endTimeMs(@Nullable Long endTimeMs) {
     this.endTimeMs = endTimeMs;
     return this;
   }
@@ -84,7 +86,7 @@ public class FixedTimeWindow {
    * Get endTimeMs
    * @return endTimeMs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndTimeMs() {
@@ -94,7 +96,7 @@ public class FixedTimeWindow {
 
   @JsonProperty(value = JSON_PROPERTY_END_TIME_MS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndTimeMs(@javax.annotation.Nullable Long endTimeMs) {
+  public void setEndTimeMs(@Nullable Long endTimeMs) {
     this.endTimeMs = endTimeMs;
   }
 

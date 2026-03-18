@@ -15,6 +15,7 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
 import java.util.Objects;
 import java.lang.reflect.Type;
 import java.util.Map;
@@ -24,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Abstract class for oneOf,anyOf schemas defined in OpenAPI spec
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public abstract class AbstractOpenApiSchema {
 
     // store the actual instance of the schema/object

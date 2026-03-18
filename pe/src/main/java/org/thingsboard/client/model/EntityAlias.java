@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   EntityAlias.JSON_PROPERTY_ALIAS,
   EntityAlias.JSON_PROPERTY_FILTER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityAlias {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_ALIAS = "alias";
-  @javax.annotation.Nullable
+  @Nullable
   private String alias;
 
   public static final String JSON_PROPERTY_FILTER = "filter";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityFilter filter;
 
   public EntityAlias() { 
   }
 
-  public EntityAlias id(@javax.annotation.Nullable String id) {
+  public EntityAlias id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -66,7 +68,7 @@ public class EntityAlias {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -76,12 +78,12 @@ public class EntityAlias {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public EntityAlias alias(@javax.annotation.Nullable String alias) {
+  public EntityAlias alias(@Nullable String alias) {
     this.alias = alias;
     return this;
   }
@@ -90,7 +92,7 @@ public class EntityAlias {
    * Get alias
    * @return alias
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAlias() {
@@ -100,12 +102,12 @@ public class EntityAlias {
 
   @JsonProperty(value = JSON_PROPERTY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlias(@javax.annotation.Nullable String alias) {
+  public void setAlias(@Nullable String alias) {
     this.alias = alias;
   }
 
 
-  public EntityAlias filter(@javax.annotation.Nullable EntityFilter filter) {
+  public EntityAlias filter(@Nullable EntityFilter filter) {
     this.filter = filter;
     return this;
   }
@@ -114,7 +116,7 @@ public class EntityAlias {
    * Get filter
    * @return filter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityFilter getFilter() {
@@ -124,7 +126,7 @@ public class EntityAlias {
 
   @JsonProperty(value = JSON_PROPERTY_FILTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilter(@javax.annotation.Nullable EntityFilter filter) {
+  public void setFilter(@Nullable EntityFilter filter) {
     this.filter = filter;
   }
 

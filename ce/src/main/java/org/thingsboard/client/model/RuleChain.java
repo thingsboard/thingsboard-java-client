@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -51,50 +54,50 @@ import org.thingsboard.client.ApiClient;
   RuleChain.JSON_PROPERTY_ADDITIONAL_INFO,
   RuleChain.JSON_PROPERTY_CONFIGURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChain {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainType type;
 
   public static final String JSON_PROPERTY_FIRST_RULE_NODE_ID = "firstRuleNodeId";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleNodeId firstRuleNodeId;
 
   public static final String JSON_PROPERTY_ROOT = "root";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean root;
 
   public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean debugMode;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode _configuration = null;
 
   public RuleChain() { 
@@ -110,7 +113,7 @@ public class RuleChain {
     this.tenantId = tenantId;
   }
 
-  public RuleChain id(@javax.annotation.Nullable RuleChainId id) {
+  public RuleChain id(@Nullable RuleChainId id) {
     this.id = id;
     return this;
   }
@@ -119,7 +122,7 @@ public class RuleChain {
    * JSON object with the Rule Chain Id. Specify this field to update the Rule Chain. Referencing non-existing Rule Chain Id will cause error. Omit this field to create new rule chain.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainId getId() {
@@ -129,7 +132,7 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable RuleChainId id) {
+  public void setId(@Nullable RuleChainId id) {
     this.id = id;
   }
 
@@ -138,7 +141,7 @@ public class RuleChain {
    * Timestamp of the rule chain creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -152,7 +155,7 @@ public class RuleChain {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TenantId getTenantId() {
@@ -162,7 +165,7 @@ public class RuleChain {
 
 
 
-  public RuleChain name(@javax.annotation.Nonnull String name) {
+  public RuleChain name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -171,7 +174,7 @@ public class RuleChain {
    * Rule Chain name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -181,12 +184,12 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public RuleChain type(@javax.annotation.Nullable RuleChainType type) {
+  public RuleChain type(@Nullable RuleChainType type) {
     this.type = type;
     return this;
   }
@@ -195,7 +198,7 @@ public class RuleChain {
    * Rule Chain type. &#39;EDGE&#39; rule chains are processing messages on the edge devices only.
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainType getType() {
@@ -205,12 +208,12 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable RuleChainType type) {
+  public void setType(@Nullable RuleChainType type) {
     this.type = type;
   }
 
 
-  public RuleChain firstRuleNodeId(@javax.annotation.Nullable RuleNodeId firstRuleNodeId) {
+  public RuleChain firstRuleNodeId(@Nullable RuleNodeId firstRuleNodeId) {
     this.firstRuleNodeId = firstRuleNodeId;
     return this;
   }
@@ -219,7 +222,7 @@ public class RuleChain {
    * JSON object with Rule Chain Id. Pointer to the first rule node that should receive all messages pushed to this rule chain.
    * @return firstRuleNodeId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIRST_RULE_NODE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleNodeId getFirstRuleNodeId() {
@@ -229,12 +232,12 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_FIRST_RULE_NODE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirstRuleNodeId(@javax.annotation.Nullable RuleNodeId firstRuleNodeId) {
+  public void setFirstRuleNodeId(@Nullable RuleNodeId firstRuleNodeId) {
     this.firstRuleNodeId = firstRuleNodeId;
   }
 
 
-  public RuleChain root(@javax.annotation.Nullable Boolean root) {
+  public RuleChain root(@Nullable Boolean root) {
     this.root = root;
     return this;
   }
@@ -243,7 +246,7 @@ public class RuleChain {
    * Indicates root rule chain. The root rule chain process messages from all devices and entities by default. User may configure default rule chain per device profile.
    * @return root
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ROOT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getRoot() {
@@ -253,12 +256,12 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_ROOT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRoot(@javax.annotation.Nullable Boolean root) {
+  public void setRoot(@Nullable Boolean root) {
     this.root = root;
   }
 
 
-  public RuleChain debugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public RuleChain debugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
     return this;
   }
@@ -267,7 +270,7 @@ public class RuleChain {
    * Reserved for future usage.
    * @return debugMode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDebugMode() {
@@ -277,12 +280,12 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public void setDebugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
   }
 
 
-  public RuleChain version(@javax.annotation.Nullable Long version) {
+  public RuleChain version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -291,7 +294,7 @@ public class RuleChain {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -301,12 +304,12 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public RuleChain additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public RuleChain additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -315,7 +318,7 @@ public class RuleChain {
    * Get additionalInfo
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -325,12 +328,12 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public RuleChain _configuration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public RuleChain _configuration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -339,7 +342,7 @@ public class RuleChain {
    * Get _configuration
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
@@ -349,7 +352,7 @@ public class RuleChain {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public void setConfiguration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
   }
 

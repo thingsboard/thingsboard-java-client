@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,20 +42,20 @@ import org.thingsboard.client.ApiClient;
   DeviceData.JSON_PROPERTY_CONFIGURATION,
   DeviceData.JSON_PROPERTY_TRANSPORT_CONFIGURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceData {
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceConfiguration _configuration;
 
   public static final String JSON_PROPERTY_TRANSPORT_CONFIGURATION = "transportConfiguration";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceTransportConfiguration transportConfiguration;
 
   public DeviceData() { 
   }
 
-  public DeviceData _configuration(@javax.annotation.Nullable DeviceConfiguration _configuration) {
+  public DeviceData _configuration(@Nullable DeviceConfiguration _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -62,7 +64,7 @@ public class DeviceData {
    * Device configuration for device profile type. DEFAULT is only supported value for now
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceConfiguration getConfiguration() {
@@ -72,12 +74,12 @@ public class DeviceData {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable DeviceConfiguration _configuration) {
+  public void setConfiguration(@Nullable DeviceConfiguration _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public DeviceData transportConfiguration(@javax.annotation.Nullable DeviceTransportConfiguration transportConfiguration) {
+  public DeviceData transportConfiguration(@Nullable DeviceTransportConfiguration transportConfiguration) {
     this.transportConfiguration = transportConfiguration;
     return this;
   }
@@ -86,7 +88,7 @@ public class DeviceData {
    * Device transport configuration used to connect the device
    * @return transportConfiguration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceTransportConfiguration getTransportConfiguration() {
@@ -96,7 +98,7 @@ public class DeviceData {
 
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransportConfiguration(@javax.annotation.Nullable DeviceTransportConfiguration transportConfiguration) {
+  public void setTransportConfiguration(@Nullable DeviceTransportConfiguration transportConfiguration) {
     this.transportConfiguration = transportConfiguration;
   }
 

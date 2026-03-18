@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -54,70 +56,70 @@ import org.thingsboard.client.ApiClient;
   WhiteLabelingParams.JSON_PROPERTY_OVERRIDE_TRENDZ_NAME,
   WhiteLabelingParams.JSON_PROPERTY_HIDE_CHAT_BOT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class WhiteLabelingParams {
   public static final String JSON_PROPERTY_LOGO_IMAGE_URL = "logoImageUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String logoImageUrl;
 
   public static final String JSON_PROPERTY_LOGO_IMAGE_HEIGHT = "logoImageHeight";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer logoImageHeight;
 
   public static final String JSON_PROPERTY_APP_TITLE = "appTitle";
-  @javax.annotation.Nullable
+  @Nullable
   private String appTitle;
 
   public static final String JSON_PROPERTY_FAVICON = "favicon";
-  @javax.annotation.Nullable
+  @Nullable
   private Favicon favicon;
 
   public static final String JSON_PROPERTY_PALETTE_SETTINGS = "paletteSettings";
-  @javax.annotation.Nullable
+  @Nullable
   private PaletteSettings paletteSettings;
 
   public static final String JSON_PROPERTY_HELP_LINK_BASE_URL = "helpLinkBaseUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String helpLinkBaseUrl;
 
   public static final String JSON_PROPERTY_UI_HELP_BASE_URL = "uiHelpBaseUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String uiHelpBaseUrl;
 
   public static final String JSON_PROPERTY_ENABLE_HELP_LINKS = "enableHelpLinks";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enableHelpLinks;
 
   public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean whiteLabelingEnabled;
 
   public static final String JSON_PROPERTY_SHOW_NAME_VERSION = "showNameVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showNameVersion;
 
   public static final String JSON_PROPERTY_PLATFORM_NAME = "platformName";
-  @javax.annotation.Nullable
+  @Nullable
   private String platformName;
 
   public static final String JSON_PROPERTY_PLATFORM_VERSION = "platformVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String platformVersion;
 
   public static final String JSON_PROPERTY_CUSTOM_CSS = "customCss";
-  @javax.annotation.Nullable
+  @Nullable
   private String customCss;
 
   public static final String JSON_PROPERTY_HIDE_CONNECTIVITY_DIALOG = "hideConnectivityDialog";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hideConnectivityDialog;
 
   public static final String JSON_PROPERTY_OVERRIDE_TRENDZ_NAME = "overrideTrendzName";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean overrideTrendzName;
 
   public static final String JSON_PROPERTY_HIDE_CHAT_BOT = "hideChatBot";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hideChatBot;
 
   public WhiteLabelingParams() { 
@@ -131,7 +133,7 @@ public class WhiteLabelingParams {
     this.whiteLabelingEnabled = whiteLabelingEnabled;
   }
 
-  public WhiteLabelingParams logoImageUrl(@javax.annotation.Nullable String logoImageUrl) {
+  public WhiteLabelingParams logoImageUrl(@Nullable String logoImageUrl) {
     this.logoImageUrl = logoImageUrl;
     return this;
   }
@@ -140,7 +142,7 @@ public class WhiteLabelingParams {
    * Logo image URL
    * @return logoImageUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOGO_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLogoImageUrl() {
@@ -150,12 +152,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_LOGO_IMAGE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLogoImageUrl(@javax.annotation.Nullable String logoImageUrl) {
+  public void setLogoImageUrl(@Nullable String logoImageUrl) {
     this.logoImageUrl = logoImageUrl;
   }
 
 
-  public WhiteLabelingParams logoImageHeight(@javax.annotation.Nullable Integer logoImageHeight) {
+  public WhiteLabelingParams logoImageHeight(@Nullable Integer logoImageHeight) {
     this.logoImageHeight = logoImageHeight;
     return this;
   }
@@ -164,7 +166,7 @@ public class WhiteLabelingParams {
    * The height of a logo container. Logo image will be automatically scaled.
    * @return logoImageHeight
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOGO_IMAGE_HEIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getLogoImageHeight() {
@@ -174,12 +176,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_LOGO_IMAGE_HEIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLogoImageHeight(@javax.annotation.Nullable Integer logoImageHeight) {
+  public void setLogoImageHeight(@Nullable Integer logoImageHeight) {
     this.logoImageHeight = logoImageHeight;
   }
 
 
-  public WhiteLabelingParams appTitle(@javax.annotation.Nullable String appTitle) {
+  public WhiteLabelingParams appTitle(@Nullable String appTitle) {
     this.appTitle = appTitle;
     return this;
   }
@@ -188,7 +190,7 @@ public class WhiteLabelingParams {
    * White-labeled name of the platform
    * @return appTitle
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_APP_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAppTitle() {
@@ -198,12 +200,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_APP_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAppTitle(@javax.annotation.Nullable String appTitle) {
+  public void setAppTitle(@Nullable String appTitle) {
     this.appTitle = appTitle;
   }
 
 
-  public WhiteLabelingParams favicon(@javax.annotation.Nullable Favicon favicon) {
+  public WhiteLabelingParams favicon(@Nullable Favicon favicon) {
     this.favicon = favicon;
     return this;
   }
@@ -212,7 +214,7 @@ public class WhiteLabelingParams {
    * JSON object that contains website icon url and type
    * @return favicon
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FAVICON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Favicon getFavicon() {
@@ -222,12 +224,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_FAVICON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFavicon(@javax.annotation.Nullable Favicon favicon) {
+  public void setFavicon(@Nullable Favicon favicon) {
     this.favicon = favicon;
   }
 
 
-  public WhiteLabelingParams paletteSettings(@javax.annotation.Nullable PaletteSettings paletteSettings) {
+  public WhiteLabelingParams paletteSettings(@Nullable PaletteSettings paletteSettings) {
     this.paletteSettings = paletteSettings;
     return this;
   }
@@ -236,7 +238,7 @@ public class WhiteLabelingParams {
    * Complex JSON that describes structure of the Angular Material Palette. See [theming](https://material.angular.io/guide/theming) for more details
    * @return paletteSettings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PALETTE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public PaletteSettings getPaletteSettings() {
@@ -246,12 +248,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_PALETTE_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPaletteSettings(@javax.annotation.Nullable PaletteSettings paletteSettings) {
+  public void setPaletteSettings(@Nullable PaletteSettings paletteSettings) {
     this.paletteSettings = paletteSettings;
   }
 
 
-  public WhiteLabelingParams helpLinkBaseUrl(@javax.annotation.Nullable String helpLinkBaseUrl) {
+  public WhiteLabelingParams helpLinkBaseUrl(@Nullable String helpLinkBaseUrl) {
     this.helpLinkBaseUrl = helpLinkBaseUrl;
     return this;
   }
@@ -260,7 +262,7 @@ public class WhiteLabelingParams {
    * Base URL for help link
    * @return helpLinkBaseUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HELP_LINK_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getHelpLinkBaseUrl() {
@@ -270,12 +272,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_HELP_LINK_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHelpLinkBaseUrl(@javax.annotation.Nullable String helpLinkBaseUrl) {
+  public void setHelpLinkBaseUrl(@Nullable String helpLinkBaseUrl) {
     this.helpLinkBaseUrl = helpLinkBaseUrl;
   }
 
 
-  public WhiteLabelingParams uiHelpBaseUrl(@javax.annotation.Nullable String uiHelpBaseUrl) {
+  public WhiteLabelingParams uiHelpBaseUrl(@Nullable String uiHelpBaseUrl) {
     this.uiHelpBaseUrl = uiHelpBaseUrl;
     return this;
   }
@@ -284,7 +286,7 @@ public class WhiteLabelingParams {
    * Base URL for the repository with the UI help components (markdown)
    * @return uiHelpBaseUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UI_HELP_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUiHelpBaseUrl() {
@@ -294,12 +296,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_UI_HELP_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUiHelpBaseUrl(@javax.annotation.Nullable String uiHelpBaseUrl) {
+  public void setUiHelpBaseUrl(@Nullable String uiHelpBaseUrl) {
     this.uiHelpBaseUrl = uiHelpBaseUrl;
   }
 
 
-  public WhiteLabelingParams enableHelpLinks(@javax.annotation.Nullable Boolean enableHelpLinks) {
+  public WhiteLabelingParams enableHelpLinks(@Nullable Boolean enableHelpLinks) {
     this.enableHelpLinks = enableHelpLinks;
     return this;
   }
@@ -308,7 +310,7 @@ public class WhiteLabelingParams {
    * Enable or Disable help links
    * @return enableHelpLinks
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLE_HELP_LINKS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnableHelpLinks() {
@@ -318,7 +320,7 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLE_HELP_LINKS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableHelpLinks(@javax.annotation.Nullable Boolean enableHelpLinks) {
+  public void setEnableHelpLinks(@Nullable Boolean enableHelpLinks) {
     this.enableHelpLinks = enableHelpLinks;
   }
 
@@ -327,7 +329,7 @@ public class WhiteLabelingParams {
    * Enable white-labeling
    * @return whiteLabelingEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getWhiteLabelingEnabled() {
@@ -337,7 +339,7 @@ public class WhiteLabelingParams {
 
 
 
-  public WhiteLabelingParams showNameVersion(@javax.annotation.Nullable Boolean showNameVersion) {
+  public WhiteLabelingParams showNameVersion(@Nullable Boolean showNameVersion) {
     this.showNameVersion = showNameVersion;
     return this;
   }
@@ -346,7 +348,7 @@ public class WhiteLabelingParams {
    * Show platform name and version on UI and login screen
    * @return showNameVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_NAME_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowNameVersion() {
@@ -356,12 +358,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_NAME_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowNameVersion(@javax.annotation.Nullable Boolean showNameVersion) {
+  public void setShowNameVersion(@Nullable Boolean showNameVersion) {
     this.showNameVersion = showNameVersion;
   }
 
 
-  public WhiteLabelingParams platformName(@javax.annotation.Nullable String platformName) {
+  public WhiteLabelingParams platformName(@Nullable String platformName) {
     this.platformName = platformName;
     return this;
   }
@@ -370,7 +372,7 @@ public class WhiteLabelingParams {
    * White-labeled platform name
    * @return platformName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PLATFORM_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPlatformName() {
@@ -380,12 +382,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_PLATFORM_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPlatformName(@javax.annotation.Nullable String platformName) {
+  public void setPlatformName(@Nullable String platformName) {
     this.platformName = platformName;
   }
 
 
-  public WhiteLabelingParams platformVersion(@javax.annotation.Nullable String platformVersion) {
+  public WhiteLabelingParams platformVersion(@Nullable String platformVersion) {
     this.platformVersion = platformVersion;
     return this;
   }
@@ -394,7 +396,7 @@ public class WhiteLabelingParams {
    * White-labeled platform version
    * @return platformVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PLATFORM_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPlatformVersion() {
@@ -404,12 +406,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_PLATFORM_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPlatformVersion(@javax.annotation.Nullable String platformVersion) {
+  public void setPlatformVersion(@Nullable String platformVersion) {
     this.platformVersion = platformVersion;
   }
 
 
-  public WhiteLabelingParams customCss(@javax.annotation.Nullable String customCss) {
+  public WhiteLabelingParams customCss(@Nullable String customCss) {
     this.customCss = customCss;
     return this;
   }
@@ -418,7 +420,7 @@ public class WhiteLabelingParams {
    * Custom CSS content
    * @return customCss
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOM_CSS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCustomCss() {
@@ -428,12 +430,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOM_CSS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomCss(@javax.annotation.Nullable String customCss) {
+  public void setCustomCss(@Nullable String customCss) {
     this.customCss = customCss;
   }
 
 
-  public WhiteLabelingParams hideConnectivityDialog(@javax.annotation.Nullable Boolean hideConnectivityDialog) {
+  public WhiteLabelingParams hideConnectivityDialog(@Nullable Boolean hideConnectivityDialog) {
     this.hideConnectivityDialog = hideConnectivityDialog;
     return this;
   }
@@ -442,7 +444,7 @@ public class WhiteLabelingParams {
    * Hide device connectivity dialog
    * @return hideConnectivityDialog
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HIDE_CONNECTIVITY_DIALOG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHideConnectivityDialog() {
@@ -452,12 +454,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_HIDE_CONNECTIVITY_DIALOG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHideConnectivityDialog(@javax.annotation.Nullable Boolean hideConnectivityDialog) {
+  public void setHideConnectivityDialog(@Nullable Boolean hideConnectivityDialog) {
     this.hideConnectivityDialog = hideConnectivityDialog;
   }
 
 
-  public WhiteLabelingParams overrideTrendzName(@javax.annotation.Nullable Boolean overrideTrendzName) {
+  public WhiteLabelingParams overrideTrendzName(@Nullable Boolean overrideTrendzName) {
     this.overrideTrendzName = overrideTrendzName;
     return this;
   }
@@ -466,7 +468,7 @@ public class WhiteLabelingParams {
    * Override Trendz Add-on name
    * @return overrideTrendzName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OVERRIDE_TRENDZ_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getOverrideTrendzName() {
@@ -476,12 +478,12 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_OVERRIDE_TRENDZ_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOverrideTrendzName(@javax.annotation.Nullable Boolean overrideTrendzName) {
+  public void setOverrideTrendzName(@Nullable Boolean overrideTrendzName) {
     this.overrideTrendzName = overrideTrendzName;
   }
 
 
-  public WhiteLabelingParams hideChatBot(@javax.annotation.Nullable Boolean hideChatBot) {
+  public WhiteLabelingParams hideChatBot(@Nullable Boolean hideChatBot) {
     this.hideChatBot = hideChatBot;
     return this;
   }
@@ -490,7 +492,7 @@ public class WhiteLabelingParams {
    * Hide chat bot
    * @return hideChatBot
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HIDE_CHAT_BOT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHideChatBot() {
@@ -500,7 +502,7 @@ public class WhiteLabelingParams {
 
   @JsonProperty(value = JSON_PROPERTY_HIDE_CHAT_BOT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHideChatBot(@javax.annotation.Nullable Boolean hideChatBot) {
+  public void setHideChatBot(@Nullable Boolean hideChatBot) {
     this.hideChatBot = hideChatBot;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   Entity.JSON_PROPERTY_ACTIVE_COUNT,
   Entity.JSON_PROPERTY_TOTAL_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Entity {
   public static final String JSON_PROPERTY_USED = "used";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean used;
 
   public static final String JSON_PROPERTY_ACTIVE_COUNT = "activeCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long activeCount;
 
   public static final String JSON_PROPERTY_TOTAL_COUNT = "totalCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long totalCount;
 
   public Entity() { 
   }
 
-  public Entity used(@javax.annotation.Nullable Boolean used) {
+  public Entity used(@Nullable Boolean used) {
     this.used = used;
     return this;
   }
@@ -65,7 +67,7 @@ public class Entity {
    * Get used
    * @return used
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUsed() {
@@ -75,12 +77,12 @@ public class Entity {
 
   @JsonProperty(value = JSON_PROPERTY_USED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsed(@javax.annotation.Nullable Boolean used) {
+  public void setUsed(@Nullable Boolean used) {
     this.used = used;
   }
 
 
-  public Entity activeCount(@javax.annotation.Nullable Long activeCount) {
+  public Entity activeCount(@Nullable Long activeCount) {
     this.activeCount = activeCount;
     return this;
   }
@@ -89,7 +91,7 @@ public class Entity {
    * Get activeCount
    * @return activeCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTIVE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getActiveCount() {
@@ -99,12 +101,12 @@ public class Entity {
 
   @JsonProperty(value = JSON_PROPERTY_ACTIVE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActiveCount(@javax.annotation.Nullable Long activeCount) {
+  public void setActiveCount(@Nullable Long activeCount) {
     this.activeCount = activeCount;
   }
 
 
-  public Entity totalCount(@javax.annotation.Nullable Long totalCount) {
+  public Entity totalCount(@Nullable Long totalCount) {
     this.totalCount = totalCount;
     return this;
   }
@@ -113,7 +115,7 @@ public class Entity {
    * Get totalCount
    * @return totalCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTotalCount() {
@@ -123,7 +125,7 @@ public class Entity {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalCount(@javax.annotation.Nullable Long totalCount) {
+  public void setTotalCount(@Nullable Long totalCount) {
     this.totalCount = totalCount;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   JwtPair.JSON_PROPERTY_REFRESH_TOKEN,
   JwtPair.JSON_PROPERTY_SCOPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class JwtPair {
   public static final String JSON_PROPERTY_TOKEN = "token";
-  @javax.annotation.Nullable
+  @Nullable
   private String token;
 
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
-  @javax.annotation.Nullable
+  @Nullable
   private String refreshToken;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
-  @javax.annotation.Nullable
+  @Nullable
   private Authority scope;
 
   public JwtPair() { 
   }
 
-  public JwtPair token(@javax.annotation.Nullable String token) {
+  public JwtPair token(@Nullable String token) {
     this.token = token;
     return this;
   }
@@ -66,7 +68,7 @@ public class JwtPair {
    * The JWT Access Token. Used to perform API calls.
    * @return token
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getToken() {
@@ -76,12 +78,12 @@ public class JwtPair {
 
   @JsonProperty(value = JSON_PROPERTY_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setToken(@javax.annotation.Nullable String token) {
+  public void setToken(@Nullable String token) {
     this.token = token;
   }
 
 
-  public JwtPair refreshToken(@javax.annotation.Nullable String refreshToken) {
+  public JwtPair refreshToken(@Nullable String refreshToken) {
     this.refreshToken = refreshToken;
     return this;
   }
@@ -90,7 +92,7 @@ public class JwtPair {
    * The JWT Refresh Token. Used to get new JWT Access Token if old one has expired.
    * @return refreshToken
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRefreshToken() {
@@ -100,12 +102,12 @@ public class JwtPair {
 
   @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefreshToken(@javax.annotation.Nullable String refreshToken) {
+  public void setRefreshToken(@Nullable String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
 
-  public JwtPair scope(@javax.annotation.Nullable Authority scope) {
+  public JwtPair scope(@Nullable Authority scope) {
     this.scope = scope;
     return this;
   }
@@ -114,7 +116,7 @@ public class JwtPair {
    * Get scope
    * @return scope
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Authority getScope() {
@@ -124,7 +126,7 @@ public class JwtPair {
 
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(@javax.annotation.Nullable Authority scope) {
+  public void setScope(@Nullable Authority scope) {
     this.scope = scope;
   }
 

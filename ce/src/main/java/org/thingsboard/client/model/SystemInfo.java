@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,20 +43,20 @@ import org.thingsboard.client.ApiClient;
   SystemInfo.JSON_PROPERTY_MONOLITH,
   SystemInfo.JSON_PROPERTY_SYSTEM_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SystemInfo {
   public static final String JSON_PROPERTY_MONOLITH = "monolith";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean monolith;
 
   public static final String JSON_PROPERTY_SYSTEM_DATA = "systemData";
-  @javax.annotation.Nullable
+  @Nullable
   private List<SystemInfoData> systemData = new ArrayList<>();
 
   public SystemInfo() { 
   }
 
-  public SystemInfo monolith(@javax.annotation.Nullable Boolean monolith) {
+  public SystemInfo monolith(@Nullable Boolean monolith) {
     this.monolith = monolith;
     return this;
   }
@@ -63,7 +65,7 @@ public class SystemInfo {
    * Is monolith.
    * @return monolith
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MONOLITH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getMonolith() {
@@ -73,12 +75,12 @@ public class SystemInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MONOLITH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMonolith(@javax.annotation.Nullable Boolean monolith) {
+  public void setMonolith(@Nullable Boolean monolith) {
     this.monolith = monolith;
   }
 
 
-  public SystemInfo systemData(@javax.annotation.Nullable List<SystemInfoData> systemData) {
+  public SystemInfo systemData(@Nullable List<SystemInfoData> systemData) {
     this.systemData = systemData;
     return this;
   }
@@ -95,7 +97,7 @@ public class SystemInfo {
    * System data.
    * @return systemData
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SYSTEM_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<SystemInfoData> getSystemData() {
@@ -105,7 +107,7 @@ public class SystemInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SYSTEM_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSystemData(@javax.annotation.Nullable List<SystemInfoData> systemData) {
+  public void setSystemData(@Nullable List<SystemInfoData> systemData) {
     this.systemData = systemData;
   }
 

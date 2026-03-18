@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   TwoFaProviderInfo.JSON_PROPERTY_CONTACT,
   TwoFaProviderInfo.JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TwoFaProviderInfo {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private TwoFaProviderType type;
 
   public static final String JSON_PROPERTY_DEFAULT = "default";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _default;
 
   public static final String JSON_PROPERTY_CONTACT = "contact";
-  @javax.annotation.Nullable
+  @Nullable
   private String contact;
 
   public static final String JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD = "minVerificationCodeSendPeriod";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer minVerificationCodeSendPeriod;
 
   public TwoFaProviderInfo() { 
   }
 
-  public TwoFaProviderInfo type(@javax.annotation.Nullable TwoFaProviderType type) {
+  public TwoFaProviderInfo type(@Nullable TwoFaProviderType type) {
     this.type = type;
     return this;
   }
@@ -71,7 +73,7 @@ public class TwoFaProviderInfo {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TwoFaProviderType getType() {
@@ -81,12 +83,12 @@ public class TwoFaProviderInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable TwoFaProviderType type) {
+  public void setType(@Nullable TwoFaProviderType type) {
     this.type = type;
   }
 
 
-  public TwoFaProviderInfo _default(@javax.annotation.Nullable Boolean _default) {
+  public TwoFaProviderInfo _default(@Nullable Boolean _default) {
     this._default = _default;
     return this;
   }
@@ -95,7 +97,7 @@ public class TwoFaProviderInfo {
    * Get _default
    * @return _default
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDefault() {
@@ -105,12 +107,12 @@ public class TwoFaProviderInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefault(@javax.annotation.Nullable Boolean _default) {
+  public void setDefault(@Nullable Boolean _default) {
     this._default = _default;
   }
 
 
-  public TwoFaProviderInfo contact(@javax.annotation.Nullable String contact) {
+  public TwoFaProviderInfo contact(@Nullable String contact) {
     this.contact = contact;
     return this;
   }
@@ -119,7 +121,7 @@ public class TwoFaProviderInfo {
    * Get contact
    * @return contact
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONTACT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getContact() {
@@ -129,12 +131,12 @@ public class TwoFaProviderInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CONTACT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContact(@javax.annotation.Nullable String contact) {
+  public void setContact(@Nullable String contact) {
     this.contact = contact;
   }
 
 
-  public TwoFaProviderInfo minVerificationCodeSendPeriod(@javax.annotation.Nullable Integer minVerificationCodeSendPeriod) {
+  public TwoFaProviderInfo minVerificationCodeSendPeriod(@Nullable Integer minVerificationCodeSendPeriod) {
     this.minVerificationCodeSendPeriod = minVerificationCodeSendPeriod;
     return this;
   }
@@ -143,7 +145,7 @@ public class TwoFaProviderInfo {
    * Get minVerificationCodeSendPeriod
    * @return minVerificationCodeSendPeriod
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMinVerificationCodeSendPeriod() {
@@ -153,7 +155,7 @@ public class TwoFaProviderInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinVerificationCodeSendPeriod(@javax.annotation.Nullable Integer minVerificationCodeSendPeriod) {
+  public void setMinVerificationCodeSendPeriod(@Nullable Integer minVerificationCodeSendPeriod) {
     this.minVerificationCodeSendPeriod = minVerificationCodeSendPeriod;
   }
 

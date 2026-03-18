@@ -70,13 +70,13 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "temp_" + ts + "_" + i);
             d.setType(type1);
-            client.saveDevice(d, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null);
         }
         for (int i = 0; i < 2; i++) {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "hum_" + ts + "_" + i);
             d.setType(type2);
-            client.saveDevice(d, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null);
         }
 
         // filter by single device type
@@ -126,7 +126,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Device d = new Device();
             d.setName(prefix + "_" + i);
             d.setType("default");
-            client.saveDevice(d, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null);
         }
 
         EntityDataQuery query = new EntityDataQuery()
@@ -146,9 +146,9 @@ public class EntityQueryApiTest extends AbstractApiTest {
     void testFindByEntityListFilter() throws Exception {
         long ts = System.currentTimeMillis();
 
-        Device d1 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_1").type("default"), null, null, null, null, null);
-        Device d2 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_2").type("default"), null, null, null, null, null);
-        client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_3").type("default"), null, null, null, null, null);
+        Device d1 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_1").type("default"), null, null, null, null);
+        Device d2 = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_2").type("default"), null, null, null, null);
+        client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "list_" + ts + "_3").type("default"), null, null, null, null);
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new EntityListFilter()
@@ -173,7 +173,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
     @Test
     void testFindBySingleEntityFilter() throws Exception {
         long ts = System.currentTimeMillis();
-        Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "single_" + ts).type("default"), null, null, null, null, null);
+        Device device = client.saveDevice(new Device().name(QUERY_TEST_PREFIX + "single_" + ts).type("default"), null, null, null, null);
 
         EntityDataQuery query = new EntityDataQuery()
                 .entityFilter(new SingleEntityFilter()
@@ -219,8 +219,8 @@ public class EntityQueryApiTest extends AbstractApiTest {
         String matchName = QUERY_TEST_PREFIX + "kf_match_" + ts;
         String noMatchName = QUERY_TEST_PREFIX + "kf_other_" + ts;
 
-        client.saveDevice(new Device().name(matchName).type("default"), null, null, null, null, null);
-        client.saveDevice(new Device().name(noMatchName).type("default"), null, null, null, null, null);
+        client.saveDevice(new Device().name(matchName).type("default"), null, null, null, null);
+        client.saveDevice(new Device().name(noMatchName).type("default"), null, null, null, null);
 
         KeyFilter nameKeyFilter = new KeyFilter()
                 .key(new EntityKey().type(EntityKeyType.ENTITY_FIELD).key("name"))
@@ -251,7 +251,7 @@ public class EntityQueryApiTest extends AbstractApiTest {
             Device d = new Device();
             d.setName(QUERY_TEST_PREFIX + "page_" + ts + "_" + i);
             d.setType("default");
-            client.saveDevice(d, null, null, null, null, null);
+            client.saveDevice(d, null, null, null, null);
         }
 
         EntityDataPageLink smallPage = new EntityDataPageLink()

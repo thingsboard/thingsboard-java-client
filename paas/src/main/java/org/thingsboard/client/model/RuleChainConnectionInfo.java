@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   RuleChainConnectionInfo.JSON_PROPERTY_ADDITIONAL_INFO,
   RuleChainConnectionInfo.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChainConnectionInfo {
   public static final String JSON_PROPERTY_FROM_INDEX = "fromIndex";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer fromIndex;
 
   public static final String JSON_PROPERTY_TARGET_RULE_CHAIN_ID = "targetRuleChainId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private RuleChainId targetRuleChainId;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nonnull
+  @Nonnull
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String type;
 
   public RuleChainConnectionInfo() { 
   }
 
-  public RuleChainConnectionInfo fromIndex(@javax.annotation.Nonnull Integer fromIndex) {
+  public RuleChainConnectionInfo fromIndex(@Nonnull Integer fromIndex) {
     this.fromIndex = fromIndex;
     return this;
   }
@@ -71,7 +73,7 @@ public class RuleChainConnectionInfo {
    * Index of rule node in the &#39;nodes&#39; array of the RuleChainMetaData. Indicates the &#39;from&#39; part of the connection.
    * @return fromIndex
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FROM_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getFromIndex() {
@@ -81,12 +83,12 @@ public class RuleChainConnectionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_FROM_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFromIndex(@javax.annotation.Nonnull Integer fromIndex) {
+  public void setFromIndex(@Nonnull Integer fromIndex) {
     this.fromIndex = fromIndex;
   }
 
 
-  public RuleChainConnectionInfo targetRuleChainId(@javax.annotation.Nonnull RuleChainId targetRuleChainId) {
+  public RuleChainConnectionInfo targetRuleChainId(@Nonnull RuleChainId targetRuleChainId) {
     this.targetRuleChainId = targetRuleChainId;
     return this;
   }
@@ -95,7 +97,7 @@ public class RuleChainConnectionInfo {
    * JSON object with the Rule Chain Id.
    * @return targetRuleChainId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TARGET_RULE_CHAIN_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public RuleChainId getTargetRuleChainId() {
@@ -105,12 +107,12 @@ public class RuleChainConnectionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TARGET_RULE_CHAIN_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTargetRuleChainId(@javax.annotation.Nonnull RuleChainId targetRuleChainId) {
+  public void setTargetRuleChainId(@Nonnull RuleChainId targetRuleChainId) {
     this.targetRuleChainId = targetRuleChainId;
   }
 
 
-  public RuleChainConnectionInfo additionalInfo(@javax.annotation.Nonnull com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public RuleChainConnectionInfo additionalInfo(@Nonnull com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -119,7 +121,7 @@ public class RuleChainConnectionInfo {
    * JSON object with the additional information about the connection.
    * @return additionalInfo
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -129,12 +131,12 @@ public class RuleChainConnectionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAdditionalInfo(@javax.annotation.Nonnull com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nonnull com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public RuleChainConnectionInfo type(@javax.annotation.Nonnull String type) {
+  public RuleChainConnectionInfo type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -143,7 +145,7 @@ public class RuleChainConnectionInfo {
    * Type of the relation. Typically indicated the result of processing by the &#39;from&#39; rule node. For example, &#39;Success&#39; or &#39;Failure&#39;
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getType() {
@@ -153,7 +155,7 @@ public class RuleChainConnectionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 

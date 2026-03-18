@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -55,58 +58,58 @@ import org.thingsboard.client.ApiClient;
   CalculatedFieldInfo.JSON_PROPERTY_ENTITY_NAME,
   CalculatedFieldInfo.JSON_PROPERTY_DEBUG_MODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CalculatedFieldInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private CalculatedFieldId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId entityId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private CalculatedFieldType type;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DEBUG_SETTINGS = "debugSettings";
-  @javax.annotation.Nullable
+  @Nullable
   private DebugSettings debugSettings;
 
   public static final String JSON_PROPERTY_CONFIGURATION_VERSION = "configurationVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer configurationVersion;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nonnull
+  @Nonnull
   private CalculatedFieldConfiguration _configuration;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_ENTITY_NAME = "entityName";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityName;
 
   public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean debugMode;
 
   public CalculatedFieldInfo() { 
@@ -120,7 +123,7 @@ public class CalculatedFieldInfo {
     this.createdTime = createdTime;
   }
 
-  public CalculatedFieldInfo id(@javax.annotation.Nullable CalculatedFieldId id) {
+  public CalculatedFieldInfo id(@Nullable CalculatedFieldId id) {
     this.id = id;
     return this;
   }
@@ -129,7 +132,7 @@ public class CalculatedFieldInfo {
    * JSON object with the Calculated Field Id. Referencing non-existing Calculated Field Id will cause error.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CalculatedFieldId getId() {
@@ -139,7 +142,7 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable CalculatedFieldId id) {
+  public void setId(@Nullable CalculatedFieldId id) {
     this.id = id;
   }
 
@@ -148,7 +151,7 @@ public class CalculatedFieldInfo {
    * Timestamp of the calculated field creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -158,7 +161,7 @@ public class CalculatedFieldInfo {
 
 
 
-  public CalculatedFieldInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public CalculatedFieldInfo tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -167,7 +170,7 @@ public class CalculatedFieldInfo {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -177,12 +180,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public CalculatedFieldInfo entityId(@javax.annotation.Nullable EntityId entityId) {
+  public CalculatedFieldInfo entityId(@Nullable EntityId entityId) {
     this.entityId = entityId;
     return this;
   }
@@ -191,7 +194,7 @@ public class CalculatedFieldInfo {
    * Get entityId
    * @return entityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getEntityId() {
@@ -201,12 +204,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityId(@javax.annotation.Nullable EntityId entityId) {
+  public void setEntityId(@Nullable EntityId entityId) {
     this.entityId = entityId;
   }
 
 
-  public CalculatedFieldInfo type(@javax.annotation.Nullable CalculatedFieldType type) {
+  public CalculatedFieldInfo type(@Nullable CalculatedFieldType type) {
     this.type = type;
     return this;
   }
@@ -215,7 +218,7 @@ public class CalculatedFieldInfo {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CalculatedFieldType getType() {
@@ -225,12 +228,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable CalculatedFieldType type) {
+  public void setType(@Nullable CalculatedFieldType type) {
     this.type = type;
   }
 
 
-  public CalculatedFieldInfo name(@javax.annotation.Nullable String name) {
+  public CalculatedFieldInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -239,7 +242,7 @@ public class CalculatedFieldInfo {
    * User defined name of the calculated field.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -249,12 +252,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public CalculatedFieldInfo debugSettings(@javax.annotation.Nullable DebugSettings debugSettings) {
+  public CalculatedFieldInfo debugSettings(@Nullable DebugSettings debugSettings) {
     this.debugSettings = debugSettings;
     return this;
   }
@@ -263,7 +266,7 @@ public class CalculatedFieldInfo {
    * Debug settings object.
    * @return debugSettings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEBUG_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DebugSettings getDebugSettings() {
@@ -273,12 +276,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEBUG_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugSettings(@javax.annotation.Nullable DebugSettings debugSettings) {
+  public void setDebugSettings(@Nullable DebugSettings debugSettings) {
     this.debugSettings = debugSettings;
   }
 
 
-  public CalculatedFieldInfo configurationVersion(@javax.annotation.Nullable Integer configurationVersion) {
+  public CalculatedFieldInfo configurationVersion(@Nullable Integer configurationVersion) {
     this.configurationVersion = configurationVersion;
     return this;
   }
@@ -287,7 +290,7 @@ public class CalculatedFieldInfo {
    * Version of calculated field configuration.
    * @return configurationVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getConfigurationVersion() {
@@ -297,12 +300,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigurationVersion(@javax.annotation.Nullable Integer configurationVersion) {
+  public void setConfigurationVersion(@Nullable Integer configurationVersion) {
     this.configurationVersion = configurationVersion;
   }
 
 
-  public CalculatedFieldInfo _configuration(@javax.annotation.Nonnull CalculatedFieldConfiguration _configuration) {
+  public CalculatedFieldInfo _configuration(@Nonnull CalculatedFieldConfiguration _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -311,7 +314,7 @@ public class CalculatedFieldInfo {
    * Get _configuration
    * @return _configuration
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public CalculatedFieldConfiguration getConfiguration() {
@@ -321,12 +324,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfiguration(@javax.annotation.Nonnull CalculatedFieldConfiguration _configuration) {
+  public void setConfiguration(@Nonnull CalculatedFieldConfiguration _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public CalculatedFieldInfo version(@javax.annotation.Nullable Long version) {
+  public CalculatedFieldInfo version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -335,7 +338,7 @@ public class CalculatedFieldInfo {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -345,12 +348,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public CalculatedFieldInfo additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public CalculatedFieldInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -359,7 +362,7 @@ public class CalculatedFieldInfo {
    * Additional parameters of the calculated field
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -369,12 +372,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public CalculatedFieldInfo entityName(@javax.annotation.Nullable String entityName) {
+  public CalculatedFieldInfo entityName(@Nullable String entityName) {
     this.entityName = entityName;
     return this;
   }
@@ -383,7 +386,7 @@ public class CalculatedFieldInfo {
    * Get entityName
    * @return entityName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityName() {
@@ -393,12 +396,12 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityName(@javax.annotation.Nullable String entityName) {
+  public void setEntityName(@Nullable String entityName) {
     this.entityName = entityName;
   }
 
 
-  public CalculatedFieldInfo debugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public CalculatedFieldInfo debugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
     return this;
   }
@@ -409,7 +412,7 @@ public class CalculatedFieldInfo {
    * @deprecated
    */
   @Deprecated
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDebugMode() {
@@ -419,7 +422,7 @@ public class CalculatedFieldInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public void setDebugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
   }
 

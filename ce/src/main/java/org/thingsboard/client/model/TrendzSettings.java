@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   TrendzSettings.JSON_PROPERTY_BASE_URL,
   TrendzSettings.JSON_PROPERTY_API_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzSettings {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_BASE_URL = "baseUrl";
-  @javax.annotation.Nullable
+  @Nullable
   private String baseUrl;
 
   public static final String JSON_PROPERTY_API_KEY = "apiKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String apiKey;
 
   public TrendzSettings() { 
   }
 
-  public TrendzSettings enabled(@javax.annotation.Nullable Boolean enabled) {
+  public TrendzSettings enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -65,7 +67,7 @@ public class TrendzSettings {
    * Get enabled
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -75,12 +77,12 @@ public class TrendzSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
 
-  public TrendzSettings baseUrl(@javax.annotation.Nullable String baseUrl) {
+  public TrendzSettings baseUrl(@Nullable String baseUrl) {
     this.baseUrl = baseUrl;
     return this;
   }
@@ -89,7 +91,7 @@ public class TrendzSettings {
    * Get baseUrl
    * @return baseUrl
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBaseUrl() {
@@ -99,12 +101,12 @@ public class TrendzSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BASE_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBaseUrl(@javax.annotation.Nullable String baseUrl) {
+  public void setBaseUrl(@Nullable String baseUrl) {
     this.baseUrl = baseUrl;
   }
 
 
-  public TrendzSettings apiKey(@javax.annotation.Nullable String apiKey) {
+  public TrendzSettings apiKey(@Nullable String apiKey) {
     this.apiKey = apiKey;
     return this;
   }
@@ -113,7 +115,7 @@ public class TrendzSettings {
    * Get apiKey
    * @return apiKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getApiKey() {
@@ -123,7 +125,7 @@ public class TrendzSettings {
 
   @JsonProperty(value = JSON_PROPERTY_API_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApiKey(@javax.annotation.Nullable String apiKey) {
+  public void setApiKey(@Nullable String apiKey) {
     this.apiKey = apiKey;
   }
 

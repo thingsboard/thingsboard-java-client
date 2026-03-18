@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -51,50 +54,50 @@ import org.thingsboard.client.ApiClient;
   QrCodeSettings.JSON_PROPERTY_GOOGLE_PLAY_LINK,
   QrCodeSettings.JSON_PROPERTY_APP_STORE_LINK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class QrCodeSettings {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private QrCodeSettingsId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_USE_SYSTEM_SETTINGS = "useSystemSettings";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean useSystemSettings;
 
   public static final String JSON_PROPERTY_USE_DEFAULT_APP = "useDefaultApp";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean useDefaultApp;
 
   public static final String JSON_PROPERTY_MOBILE_APP_BUNDLE_ID = "mobileAppBundleId";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppBundleId mobileAppBundleId;
 
   public static final String JSON_PROPERTY_QR_CODE_CONFIG = "qrCodeConfig";
-  @javax.annotation.Nonnull
+  @Nonnull
   private QRCodeConfig qrCodeConfig;
 
   public static final String JSON_PROPERTY_ANDROID_ENABLED = "androidEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean androidEnabled;
 
   public static final String JSON_PROPERTY_IOS_ENABLED = "iosEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean iosEnabled;
 
   public static final String JSON_PROPERTY_GOOGLE_PLAY_LINK = "googlePlayLink";
-  @javax.annotation.Nullable
+  @Nullable
   private String googlePlayLink;
 
   public static final String JSON_PROPERTY_APP_STORE_LINK = "appStoreLink";
-  @javax.annotation.Nullable
+  @Nullable
   private String appStoreLink;
 
   public QrCodeSettings() { 
@@ -114,7 +117,7 @@ public class QrCodeSettings {
     this.appStoreLink = appStoreLink;
   }
 
-  public QrCodeSettings id(@javax.annotation.Nullable QrCodeSettingsId id) {
+  public QrCodeSettings id(@Nullable QrCodeSettingsId id) {
     this.id = id;
     return this;
   }
@@ -123,7 +126,7 @@ public class QrCodeSettings {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public QrCodeSettingsId getId() {
@@ -133,7 +136,7 @@ public class QrCodeSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable QrCodeSettingsId id) {
+  public void setId(@Nullable QrCodeSettingsId id) {
     this.id = id;
   }
 
@@ -142,7 +145,7 @@ public class QrCodeSettings {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -156,7 +159,7 @@ public class QrCodeSettings {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -166,7 +169,7 @@ public class QrCodeSettings {
 
 
 
-  public QrCodeSettings useSystemSettings(@javax.annotation.Nullable Boolean useSystemSettings) {
+  public QrCodeSettings useSystemSettings(@Nullable Boolean useSystemSettings) {
     this.useSystemSettings = useSystemSettings;
     return this;
   }
@@ -175,7 +178,7 @@ public class QrCodeSettings {
    * Use settings from system level
    * @return useSystemSettings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USE_SYSTEM_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUseSystemSettings() {
@@ -185,12 +188,12 @@ public class QrCodeSettings {
 
   @JsonProperty(value = JSON_PROPERTY_USE_SYSTEM_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUseSystemSettings(@javax.annotation.Nullable Boolean useSystemSettings) {
+  public void setUseSystemSettings(@Nullable Boolean useSystemSettings) {
     this.useSystemSettings = useSystemSettings;
   }
 
 
-  public QrCodeSettings useDefaultApp(@javax.annotation.Nullable Boolean useDefaultApp) {
+  public QrCodeSettings useDefaultApp(@Nullable Boolean useDefaultApp) {
     this.useDefaultApp = useDefaultApp;
     return this;
   }
@@ -199,7 +202,7 @@ public class QrCodeSettings {
    * Type of application: true means use default Thingsboard app
    * @return useDefaultApp
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USE_DEFAULT_APP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUseDefaultApp() {
@@ -209,12 +212,12 @@ public class QrCodeSettings {
 
   @JsonProperty(value = JSON_PROPERTY_USE_DEFAULT_APP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUseDefaultApp(@javax.annotation.Nullable Boolean useDefaultApp) {
+  public void setUseDefaultApp(@Nullable Boolean useDefaultApp) {
     this.useDefaultApp = useDefaultApp;
   }
 
 
-  public QrCodeSettings mobileAppBundleId(@javax.annotation.Nullable MobileAppBundleId mobileAppBundleId) {
+  public QrCodeSettings mobileAppBundleId(@Nullable MobileAppBundleId mobileAppBundleId) {
     this.mobileAppBundleId = mobileAppBundleId;
     return this;
   }
@@ -223,7 +226,7 @@ public class QrCodeSettings {
    * Mobile app bundle.
    * @return mobileAppBundleId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MOBILE_APP_BUNDLE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppBundleId getMobileAppBundleId() {
@@ -233,12 +236,12 @@ public class QrCodeSettings {
 
   @JsonProperty(value = JSON_PROPERTY_MOBILE_APP_BUNDLE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMobileAppBundleId(@javax.annotation.Nullable MobileAppBundleId mobileAppBundleId) {
+  public void setMobileAppBundleId(@Nullable MobileAppBundleId mobileAppBundleId) {
     this.mobileAppBundleId = mobileAppBundleId;
   }
 
 
-  public QrCodeSettings qrCodeConfig(@javax.annotation.Nonnull QRCodeConfig qrCodeConfig) {
+  public QrCodeSettings qrCodeConfig(@Nonnull QRCodeConfig qrCodeConfig) {
     this.qrCodeConfig = qrCodeConfig;
     return this;
   }
@@ -247,7 +250,7 @@ public class QrCodeSettings {
    * QR code config configuration.
    * @return qrCodeConfig
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_CONFIG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public QRCodeConfig getQrCodeConfig() {
@@ -257,12 +260,12 @@ public class QrCodeSettings {
 
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_CONFIG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setQrCodeConfig(@javax.annotation.Nonnull QRCodeConfig qrCodeConfig) {
+  public void setQrCodeConfig(@Nonnull QRCodeConfig qrCodeConfig) {
     this.qrCodeConfig = qrCodeConfig;
   }
 
 
-  public QrCodeSettings androidEnabled(@javax.annotation.Nullable Boolean androidEnabled) {
+  public QrCodeSettings androidEnabled(@Nullable Boolean androidEnabled) {
     this.androidEnabled = androidEnabled;
     return this;
   }
@@ -271,7 +274,7 @@ public class QrCodeSettings {
    * Indicates if google play link is available
    * @return androidEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ANDROID_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAndroidEnabled() {
@@ -281,12 +284,12 @@ public class QrCodeSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ANDROID_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAndroidEnabled(@javax.annotation.Nullable Boolean androidEnabled) {
+  public void setAndroidEnabled(@Nullable Boolean androidEnabled) {
     this.androidEnabled = androidEnabled;
   }
 
 
-  public QrCodeSettings iosEnabled(@javax.annotation.Nullable Boolean iosEnabled) {
+  public QrCodeSettings iosEnabled(@Nullable Boolean iosEnabled) {
     this.iosEnabled = iosEnabled;
     return this;
   }
@@ -295,7 +298,7 @@ public class QrCodeSettings {
    * Indicates if apple store link is available
    * @return iosEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IOS_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getIosEnabled() {
@@ -305,7 +308,7 @@ public class QrCodeSettings {
 
   @JsonProperty(value = JSON_PROPERTY_IOS_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIosEnabled(@javax.annotation.Nullable Boolean iosEnabled) {
+  public void setIosEnabled(@Nullable Boolean iosEnabled) {
     this.iosEnabled = iosEnabled;
   }
 
@@ -314,7 +317,7 @@ public class QrCodeSettings {
    * Get googlePlayLink
    * @return googlePlayLink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GOOGLE_PLAY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getGooglePlayLink() {
@@ -328,7 +331,7 @@ public class QrCodeSettings {
    * Get appStoreLink
    * @return appStoreLink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_APP_STORE_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAppStoreLink() {

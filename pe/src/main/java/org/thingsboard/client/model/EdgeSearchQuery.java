@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   EdgeSearchQuery.JSON_PROPERTY_RELATION_TYPE,
   EdgeSearchQuery.JSON_PROPERTY_EDGE_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdgeSearchQuery {
   public static final String JSON_PROPERTY_PARAMETERS = "parameters";
-  @javax.annotation.Nullable
+  @Nullable
   private RelationsSearchParameters parameters;
 
   public static final String JSON_PROPERTY_RELATION_TYPE = "relationType";
-  @javax.annotation.Nullable
+  @Nullable
   private String relationType;
 
   public static final String JSON_PROPERTY_EDGE_TYPES = "edgeTypes";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> edgeTypes = new ArrayList<>();
 
   public EdgeSearchQuery() { 
   }
 
-  public EdgeSearchQuery parameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public EdgeSearchQuery parameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
     return this;
   }
@@ -68,7 +70,7 @@ public class EdgeSearchQuery {
    * Main search parameters.
    * @return parameters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RelationsSearchParameters getParameters() {
@@ -78,12 +80,12 @@ public class EdgeSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_PARAMETERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParameters(@javax.annotation.Nullable RelationsSearchParameters parameters) {
+  public void setParameters(@Nullable RelationsSearchParameters parameters) {
     this.parameters = parameters;
   }
 
 
-  public EdgeSearchQuery relationType(@javax.annotation.Nullable String relationType) {
+  public EdgeSearchQuery relationType(@Nullable String relationType) {
     this.relationType = relationType;
     return this;
   }
@@ -92,7 +94,7 @@ public class EdgeSearchQuery {
    * Type of the relation between root entity and edge (e.g. &#39;Contains&#39; or &#39;Manages&#39;).
    * @return relationType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRelationType() {
@@ -102,12 +104,12 @@ public class EdgeSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_RELATION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRelationType(@javax.annotation.Nullable String relationType) {
+  public void setRelationType(@Nullable String relationType) {
     this.relationType = relationType;
   }
 
 
-  public EdgeSearchQuery edgeTypes(@javax.annotation.Nullable List<String> edgeTypes) {
+  public EdgeSearchQuery edgeTypes(@Nullable List<String> edgeTypes) {
     this.edgeTypes = edgeTypes;
     return this;
   }
@@ -124,7 +126,7 @@ public class EdgeSearchQuery {
    * Array of edge types to filter the related entities (e.g. &#39;Silos&#39;, &#39;Stores&#39;).
    * @return edgeTypes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getEdgeTypes() {
@@ -134,7 +136,7 @@ public class EdgeSearchQuery {
 
   @JsonProperty(value = JSON_PROPERTY_EDGE_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeTypes(@javax.annotation.Nullable List<String> edgeTypes) {
+  public void setEdgeTypes(@Nullable List<String> edgeTypes) {
     this.edgeTypes = edgeTypes;
   }
 

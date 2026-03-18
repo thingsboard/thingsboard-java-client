@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   OAuth2ClientLoginInfo.JSON_PROPERTY_ICON,
   OAuth2ClientLoginInfo.JSON_PROPERTY_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2ClientLoginInfo {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_ICON = "icon";
-  @javax.annotation.Nullable
+  @Nullable
   private String icon;
 
   public static final String JSON_PROPERTY_URL = "url";
-  @javax.annotation.Nullable
+  @Nullable
   private String url;
 
   public OAuth2ClientLoginInfo() { 
   }
 
-  public OAuth2ClientLoginInfo name(@javax.annotation.Nullable String name) {
+  public OAuth2ClientLoginInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -65,7 +67,7 @@ public class OAuth2ClientLoginInfo {
    * OAuth2 client name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -75,12 +77,12 @@ public class OAuth2ClientLoginInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public OAuth2ClientLoginInfo icon(@javax.annotation.Nullable String icon) {
+  public OAuth2ClientLoginInfo icon(@Nullable String icon) {
     this.icon = icon;
     return this;
   }
@@ -89,7 +91,7 @@ public class OAuth2ClientLoginInfo {
    * Name of the icon, displayed on OAuth2 log in button
    * @return icon
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ICON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getIcon() {
@@ -99,12 +101,12 @@ public class OAuth2ClientLoginInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ICON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIcon(@javax.annotation.Nullable String icon) {
+  public void setIcon(@Nullable String icon) {
     this.icon = icon;
   }
 
 
-  public OAuth2ClientLoginInfo url(@javax.annotation.Nullable String url) {
+  public OAuth2ClientLoginInfo url(@Nullable String url) {
     this.url = url;
     return this;
   }
@@ -113,7 +115,7 @@ public class OAuth2ClientLoginInfo {
    * URI for OAuth2 log in. On HTTP GET request to this URI, it redirects to the OAuth2 provider page
    * @return url
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUrl() {
@@ -123,7 +125,7 @@ public class OAuth2ClientLoginInfo {
 
   @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(@javax.annotation.Nullable String url) {
+  public void setUrl(@Nullable String url) {
     this.url = url;
   }
 

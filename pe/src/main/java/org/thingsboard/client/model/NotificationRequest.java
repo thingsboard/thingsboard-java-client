@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -61,54 +64,54 @@ import org.thingsboard.client.ApiClient;
   NotificationRequest.JSON_PROPERTY_STATUS,
   NotificationRequest.JSON_PROPERTY_STATS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequest {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationRequestId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_TARGETS = "targets";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<UUID> targets = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEMPLATE_ID = "templateId";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationTemplateId templateId;
 
   public static final String JSON_PROPERTY_TEMPLATE = "template";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationTemplate template;
 
   public static final String JSON_PROPERTY_INFO = "info";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationInfo info;
 
   public static final String JSON_PROPERTY_ADDITIONAL_CONFIG = "additionalConfig";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationRequestConfig additionalConfig;
 
   public static final String JSON_PROPERTY_ORIGINATOR_ENTITY_ID = "originatorEntityId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId originatorEntityId;
 
   public static final String JSON_PROPERTY_RULE_ID = "ruleId";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationRuleId ruleId;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationRequestStatus status;
 
   public static final String JSON_PROPERTY_STATS = "stats";
-  @javax.annotation.Nullable
+  @Nullable
   private NotificationRequestStats stats;
 
   public NotificationRequest() { 
@@ -122,7 +125,7 @@ public class NotificationRequest {
     this.createdTime = createdTime;
   }
 
-  public NotificationRequest id(@javax.annotation.Nullable NotificationRequestId id) {
+  public NotificationRequest id(@Nullable NotificationRequestId id) {
     this.id = id;
     return this;
   }
@@ -131,7 +134,7 @@ public class NotificationRequest {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationRequestId getId() {
@@ -141,7 +144,7 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable NotificationRequestId id) {
+  public void setId(@Nullable NotificationRequestId id) {
     this.id = id;
   }
 
@@ -150,7 +153,7 @@ public class NotificationRequest {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -160,7 +163,7 @@ public class NotificationRequest {
 
 
 
-  public NotificationRequest tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public NotificationRequest tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -169,7 +172,7 @@ public class NotificationRequest {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -179,12 +182,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public NotificationRequest targets(@javax.annotation.Nonnull List<UUID> targets) {
+  public NotificationRequest targets(@Nonnull List<UUID> targets) {
     this.targets = targets;
     return this;
   }
@@ -201,7 +204,7 @@ public class NotificationRequest {
    * Get targets
    * @return targets
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<UUID> getTargets() {
@@ -211,12 +214,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_TARGETS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTargets(@javax.annotation.Nonnull List<UUID> targets) {
+  public void setTargets(@Nonnull List<UUID> targets) {
     this.targets = targets;
   }
 
 
-  public NotificationRequest templateId(@javax.annotation.Nullable NotificationTemplateId templateId) {
+  public NotificationRequest templateId(@Nullable NotificationTemplateId templateId) {
     this.templateId = templateId;
     return this;
   }
@@ -225,7 +228,7 @@ public class NotificationRequest {
    * Get templateId
    * @return templateId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationTemplateId getTemplateId() {
@@ -235,12 +238,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTemplateId(@javax.annotation.Nullable NotificationTemplateId templateId) {
+  public void setTemplateId(@Nullable NotificationTemplateId templateId) {
     this.templateId = templateId;
   }
 
 
-  public NotificationRequest template(@javax.annotation.Nullable NotificationTemplate template) {
+  public NotificationRequest template(@Nullable NotificationTemplate template) {
     this.template = template;
     return this;
   }
@@ -249,7 +252,7 @@ public class NotificationRequest {
    * Get template
    * @return template
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEMPLATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationTemplate getTemplate() {
@@ -259,12 +262,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_TEMPLATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTemplate(@javax.annotation.Nullable NotificationTemplate template) {
+  public void setTemplate(@Nullable NotificationTemplate template) {
     this.template = template;
   }
 
 
-  public NotificationRequest info(@javax.annotation.Nullable NotificationInfo info) {
+  public NotificationRequest info(@Nullable NotificationInfo info) {
     this.info = info;
     return this;
   }
@@ -273,7 +276,7 @@ public class NotificationRequest {
    * Get info
    * @return info
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationInfo getInfo() {
@@ -283,12 +286,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInfo(@javax.annotation.Nullable NotificationInfo info) {
+  public void setInfo(@Nullable NotificationInfo info) {
     this.info = info;
   }
 
 
-  public NotificationRequest additionalConfig(@javax.annotation.Nullable NotificationRequestConfig additionalConfig) {
+  public NotificationRequest additionalConfig(@Nullable NotificationRequestConfig additionalConfig) {
     this.additionalConfig = additionalConfig;
     return this;
   }
@@ -297,7 +300,7 @@ public class NotificationRequest {
    * Get additionalConfig
    * @return additionalConfig
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationRequestConfig getAdditionalConfig() {
@@ -307,12 +310,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalConfig(@javax.annotation.Nullable NotificationRequestConfig additionalConfig) {
+  public void setAdditionalConfig(@Nullable NotificationRequestConfig additionalConfig) {
     this.additionalConfig = additionalConfig;
   }
 
 
-  public NotificationRequest originatorEntityId(@javax.annotation.Nullable EntityId originatorEntityId) {
+  public NotificationRequest originatorEntityId(@Nullable EntityId originatorEntityId) {
     this.originatorEntityId = originatorEntityId;
     return this;
   }
@@ -321,7 +324,7 @@ public class NotificationRequest {
    * Get originatorEntityId
    * @return originatorEntityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ORIGINATOR_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getOriginatorEntityId() {
@@ -331,12 +334,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ORIGINATOR_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOriginatorEntityId(@javax.annotation.Nullable EntityId originatorEntityId) {
+  public void setOriginatorEntityId(@Nullable EntityId originatorEntityId) {
     this.originatorEntityId = originatorEntityId;
   }
 
 
-  public NotificationRequest ruleId(@javax.annotation.Nullable NotificationRuleId ruleId) {
+  public NotificationRequest ruleId(@Nullable NotificationRuleId ruleId) {
     this.ruleId = ruleId;
     return this;
   }
@@ -345,7 +348,7 @@ public class NotificationRequest {
    * Get ruleId
    * @return ruleId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RULE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationRuleId getRuleId() {
@@ -355,12 +358,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_RULE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRuleId(@javax.annotation.Nullable NotificationRuleId ruleId) {
+  public void setRuleId(@Nullable NotificationRuleId ruleId) {
     this.ruleId = ruleId;
   }
 
 
-  public NotificationRequest status(@javax.annotation.Nullable NotificationRequestStatus status) {
+  public NotificationRequest status(@Nullable NotificationRequestStatus status) {
     this.status = status;
     return this;
   }
@@ -369,7 +372,7 @@ public class NotificationRequest {
    * Get status
    * @return status
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationRequestStatus getStatus() {
@@ -379,12 +382,12 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@javax.annotation.Nullable NotificationRequestStatus status) {
+  public void setStatus(@Nullable NotificationRequestStatus status) {
     this.status = status;
   }
 
 
-  public NotificationRequest stats(@javax.annotation.Nullable NotificationRequestStats stats) {
+  public NotificationRequest stats(@Nullable NotificationRequestStats stats) {
     this.stats = stats;
     return this;
   }
@@ -393,7 +396,7 @@ public class NotificationRequest {
    * Get stats
    * @return stats
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public NotificationRequestStats getStats() {
@@ -403,7 +406,7 @@ public class NotificationRequest {
 
   @JsonProperty(value = JSON_PROPERTY_STATS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStats(@javax.annotation.Nullable NotificationRequestStats stats) {
+  public void setStats(@Nullable NotificationRequestStats stats) {
     this.stats = stats;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   EntityDataInfo.JSON_PROPERTY_HAS_CREDENTIALS,
   EntityDataInfo.JSON_PROPERTY_HAS_CALCULATED_FIELDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityDataInfo {
   public static final String JSON_PROPERTY_HAS_RELATIONS = "hasRelations";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasRelations;
 
   public static final String JSON_PROPERTY_HAS_ATTRIBUTES = "hasAttributes";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasAttributes;
 
   public static final String JSON_PROPERTY_HAS_CREDENTIALS = "hasCredentials";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasCredentials;
 
   public static final String JSON_PROPERTY_HAS_CALCULATED_FIELDS = "hasCalculatedFields";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean hasCalculatedFields;
 
   public EntityDataInfo() { 
   }
 
-  public EntityDataInfo hasRelations(@javax.annotation.Nullable Boolean hasRelations) {
+  public EntityDataInfo hasRelations(@Nullable Boolean hasRelations) {
     this.hasRelations = hasRelations;
     return this;
   }
@@ -70,7 +72,7 @@ public class EntityDataInfo {
    * Get hasRelations
    * @return hasRelations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasRelations() {
@@ -80,12 +82,12 @@ public class EntityDataInfo {
 
   @JsonProperty(value = JSON_PROPERTY_HAS_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasRelations(@javax.annotation.Nullable Boolean hasRelations) {
+  public void setHasRelations(@Nullable Boolean hasRelations) {
     this.hasRelations = hasRelations;
   }
 
 
-  public EntityDataInfo hasAttributes(@javax.annotation.Nullable Boolean hasAttributes) {
+  public EntityDataInfo hasAttributes(@Nullable Boolean hasAttributes) {
     this.hasAttributes = hasAttributes;
     return this;
   }
@@ -94,7 +96,7 @@ public class EntityDataInfo {
    * Get hasAttributes
    * @return hasAttributes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasAttributes() {
@@ -104,12 +106,12 @@ public class EntityDataInfo {
 
   @JsonProperty(value = JSON_PROPERTY_HAS_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasAttributes(@javax.annotation.Nullable Boolean hasAttributes) {
+  public void setHasAttributes(@Nullable Boolean hasAttributes) {
     this.hasAttributes = hasAttributes;
   }
 
 
-  public EntityDataInfo hasCredentials(@javax.annotation.Nullable Boolean hasCredentials) {
+  public EntityDataInfo hasCredentials(@Nullable Boolean hasCredentials) {
     this.hasCredentials = hasCredentials;
     return this;
   }
@@ -118,7 +120,7 @@ public class EntityDataInfo {
    * Get hasCredentials
    * @return hasCredentials
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasCredentials() {
@@ -128,12 +130,12 @@ public class EntityDataInfo {
 
   @JsonProperty(value = JSON_PROPERTY_HAS_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasCredentials(@javax.annotation.Nullable Boolean hasCredentials) {
+  public void setHasCredentials(@Nullable Boolean hasCredentials) {
     this.hasCredentials = hasCredentials;
   }
 
 
-  public EntityDataInfo hasCalculatedFields(@javax.annotation.Nullable Boolean hasCalculatedFields) {
+  public EntityDataInfo hasCalculatedFields(@Nullable Boolean hasCalculatedFields) {
     this.hasCalculatedFields = hasCalculatedFields;
     return this;
   }
@@ -142,7 +144,7 @@ public class EntityDataInfo {
    * Get hasCalculatedFields
    * @return hasCalculatedFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HAS_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHasCalculatedFields() {
@@ -152,7 +154,7 @@ public class EntityDataInfo {
 
   @JsonProperty(value = JSON_PROPERTY_HAS_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHasCalculatedFields(@javax.annotation.Nullable Boolean hasCalculatedFields) {
+  public void setHasCalculatedFields(@Nullable Boolean hasCalculatedFields) {
     this.hasCalculatedFields = hasCalculatedFields;
   }
 

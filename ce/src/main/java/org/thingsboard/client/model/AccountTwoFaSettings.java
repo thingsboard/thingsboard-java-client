@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,16 +42,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   AccountTwoFaSettings.JSON_PROPERTY_CONFIGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AccountTwoFaSettings {
   public static final String JSON_PROPERTY_CONFIGS = "configs";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, TwoFaAccountConfig> configs = new HashMap<>();
 
   public AccountTwoFaSettings() { 
   }
 
-  public AccountTwoFaSettings configs(@javax.annotation.Nullable Map<String, TwoFaAccountConfig> configs) {
+  public AccountTwoFaSettings configs(@Nullable Map<String, TwoFaAccountConfig> configs) {
     this.configs = configs;
     return this;
   }
@@ -66,7 +68,7 @@ public class AccountTwoFaSettings {
    * Get configs
    * @return configs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, TwoFaAccountConfig> getConfigs() {
@@ -76,7 +78,7 @@ public class AccountTwoFaSettings {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigs(@javax.annotation.Nullable Map<String, TwoFaAccountConfig> configs) {
+  public void setConfigs(@Nullable Map<String, TwoFaAccountConfig> configs) {
     this.configs = configs;
   }
 

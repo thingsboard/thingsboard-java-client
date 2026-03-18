@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   SignUpField.JSON_PROPERTY_LABEL,
   SignUpField.JSON_PROPERTY_REQUIRED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SignUpField {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @Nonnull
   private SignUpFieldId id;
 
   public static final String JSON_PROPERTY_LABEL = "label";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String label;
 
   public static final String JSON_PROPERTY_REQUIRED = "required";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean required;
 
   public SignUpField() { 
   }
 
-  public SignUpField id(@javax.annotation.Nonnull SignUpFieldId id) {
+  public SignUpField id(@Nonnull SignUpFieldId id) {
     this.id = id;
     return this;
   }
@@ -66,7 +69,7 @@ public class SignUpField {
    * Signup field id
    * @return id
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public SignUpFieldId getId() {
@@ -76,12 +79,12 @@ public class SignUpField {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull SignUpFieldId id) {
+  public void setId(@Nonnull SignUpFieldId id) {
     this.id = id;
   }
 
 
-  public SignUpField label(@javax.annotation.Nonnull String label) {
+  public SignUpField label(@Nonnull String label) {
     this.label = label;
     return this;
   }
@@ -90,7 +93,7 @@ public class SignUpField {
    * Signup field label
    * @return label
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getLabel() {
@@ -100,12 +103,12 @@ public class SignUpField {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLabel(@javax.annotation.Nonnull String label) {
+  public void setLabel(@Nonnull String label) {
     this.label = label;
   }
 
 
-  public SignUpField required(@javax.annotation.Nullable Boolean required) {
+  public SignUpField required(@Nullable Boolean required) {
     this.required = required;
     return this;
   }
@@ -114,7 +117,7 @@ public class SignUpField {
    * Indicates if field is required
    * @return required
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REQUIRED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getRequired() {
@@ -124,7 +127,7 @@ public class SignUpField {
 
   @JsonProperty(value = JSON_PROPERTY_REQUIRED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequired(@javax.annotation.Nullable Boolean required) {
+  public void setRequired(@Nullable Boolean required) {
     this.required = required;
   }
 

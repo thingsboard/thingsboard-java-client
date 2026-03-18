@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +44,28 @@ import org.thingsboard.client.ApiClient;
   Font.JSON_PROPERTY_STYLE,
   Font.JSON_PROPERTY_FAMILY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Font {
   public static final String JSON_PROPERTY_SIZE = "size";
-  @javax.annotation.Nullable
+  @Nullable
   private Float size;
 
   public static final String JSON_PROPERTY_WEIGHT = "weight";
-  @javax.annotation.Nullable
+  @Nullable
   private FontWeight weight;
 
   public static final String JSON_PROPERTY_STYLE = "style";
-  @javax.annotation.Nullable
+  @Nullable
   private FontStyle style;
 
   public static final String JSON_PROPERTY_FAMILY = "family";
-  @javax.annotation.Nullable
+  @Nullable
   private String family;
 
   public Font() { 
   }
 
-  public Font size(@javax.annotation.Nullable Float size) {
+  public Font size(@Nullable Float size) {
     this.size = size;
     return this;
   }
@@ -72,7 +74,7 @@ public class Font {
    * Get size
    * @return size
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getSize() {
@@ -82,12 +84,12 @@ public class Font {
 
   @JsonProperty(value = JSON_PROPERTY_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSize(@javax.annotation.Nullable Float size) {
+  public void setSize(@Nullable Float size) {
     this.size = size;
   }
 
 
-  public Font weight(@javax.annotation.Nullable FontWeight weight) {
+  public Font weight(@Nullable FontWeight weight) {
     this.weight = weight;
     return this;
   }
@@ -96,7 +98,7 @@ public class Font {
    * Get weight
    * @return weight
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WEIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public FontWeight getWeight() {
@@ -106,12 +108,12 @@ public class Font {
 
   @JsonProperty(value = JSON_PROPERTY_WEIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWeight(@javax.annotation.Nullable FontWeight weight) {
+  public void setWeight(@Nullable FontWeight weight) {
     this.weight = weight;
   }
 
 
-  public Font style(@javax.annotation.Nullable FontStyle style) {
+  public Font style(@Nullable FontStyle style) {
     this.style = style;
     return this;
   }
@@ -120,7 +122,7 @@ public class Font {
    * Get style
    * @return style
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STYLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public FontStyle getStyle() {
@@ -130,12 +132,12 @@ public class Font {
 
   @JsonProperty(value = JSON_PROPERTY_STYLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStyle(@javax.annotation.Nullable FontStyle style) {
+  public void setStyle(@Nullable FontStyle style) {
     this.style = style;
   }
 
 
-  public Font family(@javax.annotation.Nullable String family) {
+  public Font family(@Nullable String family) {
     this.family = family;
     return this;
   }
@@ -144,7 +146,7 @@ public class Font {
    * Get family
    * @return family
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FAMILY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFamily() {
@@ -154,7 +156,7 @@ public class Font {
 
   @JsonProperty(value = JSON_PROPERTY_FAMILY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFamily(@javax.annotation.Nullable String family) {
+  public void setFamily(@Nullable String family) {
     this.family = family;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   CaptchaClientParams.JSON_PROPERTY_CAPTCHA_VERSION,
   CaptchaClientParams.JSON_PROPERTY_CAPTCHA_ACTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CaptchaClientParams {
   public static final String JSON_PROPERTY_CAPTCHA_SITE_KEY = "captchaSiteKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String captchaSiteKey;
 
   public static final String JSON_PROPERTY_CAPTCHA_VERSION = "captchaVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private String captchaVersion;
 
   public static final String JSON_PROPERTY_CAPTCHA_ACTION = "captchaAction";
-  @javax.annotation.Nullable
+  @Nullable
   private String captchaAction;
 
   public CaptchaClientParams() { 
   }
 
-  public CaptchaClientParams captchaSiteKey(@javax.annotation.Nullable String captchaSiteKey) {
+  public CaptchaClientParams captchaSiteKey(@Nullable String captchaSiteKey) {
     this.captchaSiteKey = captchaSiteKey;
     return this;
   }
@@ -65,7 +67,7 @@ public class CaptchaClientParams {
    * Get captchaSiteKey
    * @return captchaSiteKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA_SITE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCaptchaSiteKey() {
@@ -75,12 +77,12 @@ public class CaptchaClientParams {
 
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA_SITE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCaptchaSiteKey(@javax.annotation.Nullable String captchaSiteKey) {
+  public void setCaptchaSiteKey(@Nullable String captchaSiteKey) {
     this.captchaSiteKey = captchaSiteKey;
   }
 
 
-  public CaptchaClientParams captchaVersion(@javax.annotation.Nullable String captchaVersion) {
+  public CaptchaClientParams captchaVersion(@Nullable String captchaVersion) {
     this.captchaVersion = captchaVersion;
     return this;
   }
@@ -89,7 +91,7 @@ public class CaptchaClientParams {
    * Get captchaVersion
    * @return captchaVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCaptchaVersion() {
@@ -99,12 +101,12 @@ public class CaptchaClientParams {
 
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCaptchaVersion(@javax.annotation.Nullable String captchaVersion) {
+  public void setCaptchaVersion(@Nullable String captchaVersion) {
     this.captchaVersion = captchaVersion;
   }
 
 
-  public CaptchaClientParams captchaAction(@javax.annotation.Nullable String captchaAction) {
+  public CaptchaClientParams captchaAction(@Nullable String captchaAction) {
     this.captchaAction = captchaAction;
     return this;
   }
@@ -113,7 +115,7 @@ public class CaptchaClientParams {
    * Get captchaAction
    * @return captchaAction
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA_ACTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCaptchaAction() {
@@ -123,7 +125,7 @@ public class CaptchaClientParams {
 
   @JsonProperty(value = JSON_PROPERTY_CAPTCHA_ACTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCaptchaAction(@javax.annotation.Nullable String captchaAction) {
+  public void setCaptchaAction(@Nullable String captchaAction) {
     this.captchaAction = captchaAction;
   }
 

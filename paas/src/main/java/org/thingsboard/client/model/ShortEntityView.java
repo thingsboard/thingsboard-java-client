@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,14 +41,14 @@ import org.thingsboard.client.ApiClient;
   ShortEntityView.JSON_PROPERTY_ID,
   ShortEntityView.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ShortEntityView {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityId id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public ShortEntityView() { 
@@ -66,7 +68,7 @@ public class ShortEntityView {
    * Entity Id object
    * @return id
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityId getId() {
@@ -80,7 +82,7 @@ public class ShortEntityView {
    * Name of the entity
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {

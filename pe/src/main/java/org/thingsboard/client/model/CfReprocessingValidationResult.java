@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   CfReprocessingValidationResult.JSON_PROPERTY_MESSAGE,
   CfReprocessingValidationResult.JSON_PROPERTY_LAST_JOB_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CfReprocessingValidationResult {
   public static final String JSON_PROPERTY_IS_VALID = "isValid";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean isValid;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
+  @Nullable
   private String message;
 
   public static final String JSON_PROPERTY_LAST_JOB_STATUS = "lastJobStatus";
-  @javax.annotation.Nullable
+  @Nullable
   private JobStatus lastJobStatus;
 
   public CfReprocessingValidationResult() { 
   }
 
-  public CfReprocessingValidationResult isValid(@javax.annotation.Nullable Boolean isValid) {
+  public CfReprocessingValidationResult isValid(@Nullable Boolean isValid) {
     this.isValid = isValid;
     return this;
   }
@@ -66,7 +68,7 @@ public class CfReprocessingValidationResult {
    * Get isValid
    * @return isValid
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IS_VALID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getIsValid() {
@@ -76,12 +78,12 @@ public class CfReprocessingValidationResult {
 
   @JsonProperty(value = JSON_PROPERTY_IS_VALID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsValid(@javax.annotation.Nullable Boolean isValid) {
+  public void setIsValid(@Nullable Boolean isValid) {
     this.isValid = isValid;
   }
 
 
-  public CfReprocessingValidationResult message(@javax.annotation.Nullable String message) {
+  public CfReprocessingValidationResult message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -90,7 +92,7 @@ public class CfReprocessingValidationResult {
    * Get message
    * @return message
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMessage() {
@@ -100,12 +102,12 @@ public class CfReprocessingValidationResult {
 
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(@javax.annotation.Nullable String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 
 
-  public CfReprocessingValidationResult lastJobStatus(@javax.annotation.Nullable JobStatus lastJobStatus) {
+  public CfReprocessingValidationResult lastJobStatus(@Nullable JobStatus lastJobStatus) {
     this.lastJobStatus = lastJobStatus;
     return this;
   }
@@ -114,7 +116,7 @@ public class CfReprocessingValidationResult {
    * Get lastJobStatus
    * @return lastJobStatus
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_JOB_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public JobStatus getLastJobStatus() {
@@ -124,7 +126,7 @@ public class CfReprocessingValidationResult {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_JOB_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastJobStatus(@javax.annotation.Nullable JobStatus lastJobStatus) {
+  public void setLastJobStatus(@Nullable JobStatus lastJobStatus) {
     this.lastJobStatus = lastJobStatus;
   }
 

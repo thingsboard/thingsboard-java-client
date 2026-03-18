@@ -15,6 +15,7 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -57,7 +58,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import org.thingsboard.client.ApiClient;
 import org.thingsboard.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonDeserialize(using = Login401Response.Login401ResponseDeserializer.class)
 @JsonSerialize(using = Login401Response.Login401ResponseSerializer.class)
 public class Login401Response extends AbstractOpenApiSchema {

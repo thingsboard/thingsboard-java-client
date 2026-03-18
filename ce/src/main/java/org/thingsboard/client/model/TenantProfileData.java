@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,20 +44,20 @@ import org.thingsboard.client.ApiClient;
   TenantProfileData.JSON_PROPERTY_CONFIGURATION,
   TenantProfileData.JSON_PROPERTY_QUEUE_CONFIGURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantProfileData {
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantProfileConfiguration _configuration;
 
   public static final String JSON_PROPERTY_QUEUE_CONFIGURATION = "queueConfiguration";
-  @javax.annotation.Nullable
+  @Nullable
   private List<TenantProfileQueueConfiguration> queueConfiguration = new ArrayList<>();
 
   public TenantProfileData() { 
   }
 
-  public TenantProfileData _configuration(@javax.annotation.Nullable TenantProfileConfiguration _configuration) {
+  public TenantProfileData _configuration(@Nullable TenantProfileConfiguration _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -64,7 +66,7 @@ public class TenantProfileData {
    * Complex JSON object that contains profile settings: max devices, max assets, rate limits, etc.
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantProfileConfiguration getConfiguration() {
@@ -74,12 +76,12 @@ public class TenantProfileData {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable TenantProfileConfiguration _configuration) {
+  public void setConfiguration(@Nullable TenantProfileConfiguration _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public TenantProfileData queueConfiguration(@javax.annotation.Nullable List<TenantProfileQueueConfiguration> queueConfiguration) {
+  public TenantProfileData queueConfiguration(@Nullable List<TenantProfileQueueConfiguration> queueConfiguration) {
     this.queueConfiguration = queueConfiguration;
     return this;
   }
@@ -96,7 +98,7 @@ public class TenantProfileData {
    * JSON array of queue configuration per tenant profile
    * @return queueConfiguration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_QUEUE_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<TenantProfileQueueConfiguration> getQueueConfiguration() {
@@ -106,7 +108,7 @@ public class TenantProfileData {
 
   @JsonProperty(value = JSON_PROPERTY_QUEUE_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQueueConfiguration(@javax.annotation.Nullable List<TenantProfileQueueConfiguration> queueConfiguration) {
+  public void setQueueConfiguration(@Nullable List<TenantProfileQueueConfiguration> queueConfiguration) {
     this.queueConfiguration = queueConfiguration;
   }
 

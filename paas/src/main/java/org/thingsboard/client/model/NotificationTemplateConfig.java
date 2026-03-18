@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,32 +49,32 @@ import org.thingsboard.client.ApiClient;
   NotificationTemplateConfig.JSON_PROPERTY_USER_ID,
   NotificationTemplateConfig.JSON_PROPERTY_TIMEZONE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationTemplateConfig {
   public static final String JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES = "deliveryMethodsTemplates";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates = new HashMap<>();
 
   public static final String JSON_PROPERTY_ATTACH_REPORT = "attachReport";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean attachReport;
 
   public static final String JSON_PROPERTY_REPORT_TEMPLATE_ID = "reportTemplateId";
-  @javax.annotation.Nullable
+  @Nullable
   private ReportTemplateId reportTemplateId;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId userId;
 
   public static final String JSON_PROPERTY_TIMEZONE = "timezone";
-  @javax.annotation.Nullable
+  @Nullable
   private String timezone;
 
   public NotificationTemplateConfig() { 
   }
 
-  public NotificationTemplateConfig deliveryMethodsTemplates(@javax.annotation.Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
+  public NotificationTemplateConfig deliveryMethodsTemplates(@Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
     this.deliveryMethodsTemplates = deliveryMethodsTemplates;
     return this;
   }
@@ -88,7 +91,7 @@ public class NotificationTemplateConfig {
    * Get deliveryMethodsTemplates
    * @return deliveryMethodsTemplates
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Map<String, DeliveryMethodNotificationTemplate> getDeliveryMethodsTemplates() {
@@ -98,12 +101,12 @@ public class NotificationTemplateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDeliveryMethodsTemplates(@javax.annotation.Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
+  public void setDeliveryMethodsTemplates(@Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
     this.deliveryMethodsTemplates = deliveryMethodsTemplates;
   }
 
 
-  public NotificationTemplateConfig attachReport(@javax.annotation.Nullable Boolean attachReport) {
+  public NotificationTemplateConfig attachReport(@Nullable Boolean attachReport) {
     this.attachReport = attachReport;
     return this;
   }
@@ -112,7 +115,7 @@ public class NotificationTemplateConfig {
    * Get attachReport
    * @return attachReport
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ATTACH_REPORT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAttachReport() {
@@ -122,12 +125,12 @@ public class NotificationTemplateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ATTACH_REPORT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAttachReport(@javax.annotation.Nullable Boolean attachReport) {
+  public void setAttachReport(@Nullable Boolean attachReport) {
     this.attachReport = attachReport;
   }
 
 
-  public NotificationTemplateConfig reportTemplateId(@javax.annotation.Nullable ReportTemplateId reportTemplateId) {
+  public NotificationTemplateConfig reportTemplateId(@Nullable ReportTemplateId reportTemplateId) {
     this.reportTemplateId = reportTemplateId;
     return this;
   }
@@ -136,7 +139,7 @@ public class NotificationTemplateConfig {
    * Get reportTemplateId
    * @return reportTemplateId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ReportTemplateId getReportTemplateId() {
@@ -146,12 +149,12 @@ public class NotificationTemplateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReportTemplateId(@javax.annotation.Nullable ReportTemplateId reportTemplateId) {
+  public void setReportTemplateId(@Nullable ReportTemplateId reportTemplateId) {
     this.reportTemplateId = reportTemplateId;
   }
 
 
-  public NotificationTemplateConfig userId(@javax.annotation.Nullable UserId userId) {
+  public NotificationTemplateConfig userId(@Nullable UserId userId) {
     this.userId = userId;
     return this;
   }
@@ -160,7 +163,7 @@ public class NotificationTemplateConfig {
    * Get userId
    * @return userId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getUserId() {
@@ -170,12 +173,12 @@ public class NotificationTemplateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserId(@javax.annotation.Nullable UserId userId) {
+  public void setUserId(@Nullable UserId userId) {
     this.userId = userId;
   }
 
 
-  public NotificationTemplateConfig timezone(@javax.annotation.Nullable String timezone) {
+  public NotificationTemplateConfig timezone(@Nullable String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -184,7 +187,7 @@ public class NotificationTemplateConfig {
    * Get timezone
    * @return timezone
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTimezone() {
@@ -194,7 +197,7 @@ public class NotificationTemplateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimezone(@javax.annotation.Nullable String timezone) {
+  public void setTimezone(@Nullable String timezone) {
     this.timezone = timezone;
   }
 

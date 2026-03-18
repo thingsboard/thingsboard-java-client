@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,16 +42,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   NotificationTemplateConfig.JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationTemplateConfig {
   public static final String JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES = "deliveryMethodsTemplates";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates = new HashMap<>();
 
   public NotificationTemplateConfig() { 
   }
 
-  public NotificationTemplateConfig deliveryMethodsTemplates(@javax.annotation.Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
+  public NotificationTemplateConfig deliveryMethodsTemplates(@Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
     this.deliveryMethodsTemplates = deliveryMethodsTemplates;
     return this;
   }
@@ -66,7 +68,7 @@ public class NotificationTemplateConfig {
    * Get deliveryMethodsTemplates
    * @return deliveryMethodsTemplates
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Map<String, DeliveryMethodNotificationTemplate> getDeliveryMethodsTemplates() {
@@ -76,7 +78,7 @@ public class NotificationTemplateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDeliveryMethodsTemplates(@javax.annotation.Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
+  public void setDeliveryMethodsTemplates(@Nonnull Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates) {
     this.deliveryMethodsTemplates = deliveryMethodsTemplates;
   }
 

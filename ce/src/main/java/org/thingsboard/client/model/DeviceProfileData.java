@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,28 +48,28 @@ import org.thingsboard.client.ApiClient;
   DeviceProfileData.JSON_PROPERTY_PROVISION_CONFIGURATION,
   DeviceProfileData.JSON_PROPERTY_ALARMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceProfileData {
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileConfiguration _configuration;
 
   public static final String JSON_PROPERTY_TRANSPORT_CONFIGURATION = "transportConfiguration";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileTransportConfiguration transportConfiguration;
 
   public static final String JSON_PROPERTY_PROVISION_CONFIGURATION = "provisionConfiguration";
-  @javax.annotation.Nullable
+  @Nullable
   private DeviceProfileProvisionConfiguration provisionConfiguration;
 
   public static final String JSON_PROPERTY_ALARMS = "alarms";
-  @javax.annotation.Nullable
+  @Nullable
   private List<DeviceProfileAlarm> alarms = new ArrayList<>();
 
   public DeviceProfileData() { 
   }
 
-  public DeviceProfileData _configuration(@javax.annotation.Nullable DeviceProfileConfiguration _configuration) {
+  public DeviceProfileData _configuration(@Nullable DeviceProfileConfiguration _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -76,7 +78,7 @@ public class DeviceProfileData {
    * JSON object of device profile configuration
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileConfiguration getConfiguration() {
@@ -86,12 +88,12 @@ public class DeviceProfileData {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable DeviceProfileConfiguration _configuration) {
+  public void setConfiguration(@Nullable DeviceProfileConfiguration _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public DeviceProfileData transportConfiguration(@javax.annotation.Nullable DeviceProfileTransportConfiguration transportConfiguration) {
+  public DeviceProfileData transportConfiguration(@Nullable DeviceProfileTransportConfiguration transportConfiguration) {
     this.transportConfiguration = transportConfiguration;
     return this;
   }
@@ -100,7 +102,7 @@ public class DeviceProfileData {
    * JSON object of device profile transport configuration
    * @return transportConfiguration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileTransportConfiguration getTransportConfiguration() {
@@ -110,12 +112,12 @@ public class DeviceProfileData {
 
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransportConfiguration(@javax.annotation.Nullable DeviceProfileTransportConfiguration transportConfiguration) {
+  public void setTransportConfiguration(@Nullable DeviceProfileTransportConfiguration transportConfiguration) {
     this.transportConfiguration = transportConfiguration;
   }
 
 
-  public DeviceProfileData provisionConfiguration(@javax.annotation.Nullable DeviceProfileProvisionConfiguration provisionConfiguration) {
+  public DeviceProfileData provisionConfiguration(@Nullable DeviceProfileProvisionConfiguration provisionConfiguration) {
     this.provisionConfiguration = provisionConfiguration;
     return this;
   }
@@ -124,7 +126,7 @@ public class DeviceProfileData {
    * JSON object of provisioning strategy type per device profile
    * @return provisionConfiguration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROVISION_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileProvisionConfiguration getProvisionConfiguration() {
@@ -134,12 +136,12 @@ public class DeviceProfileData {
 
   @JsonProperty(value = JSON_PROPERTY_PROVISION_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProvisionConfiguration(@javax.annotation.Nullable DeviceProfileProvisionConfiguration provisionConfiguration) {
+  public void setProvisionConfiguration(@Nullable DeviceProfileProvisionConfiguration provisionConfiguration) {
     this.provisionConfiguration = provisionConfiguration;
   }
 
 
-  public DeviceProfileData alarms(@javax.annotation.Nullable List<DeviceProfileAlarm> alarms) {
+  public DeviceProfileData alarms(@Nullable List<DeviceProfileAlarm> alarms) {
     this.alarms = alarms;
     return this;
   }
@@ -156,7 +158,7 @@ public class DeviceProfileData {
    * Get alarms
    * @return alarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<DeviceProfileAlarm> getAlarms() {
@@ -166,7 +168,7 @@ public class DeviceProfileData {
 
   @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarms(@javax.annotation.Nullable List<DeviceProfileAlarm> alarms) {
+  public void setAlarms(@Nullable List<DeviceProfileAlarm> alarms) {
     this.alarms = alarms;
   }
 

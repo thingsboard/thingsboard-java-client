@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,40 +46,40 @@ import org.thingsboard.client.ApiClient;
   EntityTypeLoadResult.JSON_PROPERTY_GROUPS_UPDATED,
   EntityTypeLoadResult.JSON_PROPERTY_GROUPS_DELETED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityTypeLoadResult {
   public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityType entityType;
 
   public static final String JSON_PROPERTY_CREATED = "created";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer created;
 
   public static final String JSON_PROPERTY_UPDATED = "updated";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer updated;
 
   public static final String JSON_PROPERTY_DELETED = "deleted";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer deleted;
 
   public static final String JSON_PROPERTY_GROUPS_CREATED = "groupsCreated";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer groupsCreated;
 
   public static final String JSON_PROPERTY_GROUPS_UPDATED = "groupsUpdated";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer groupsUpdated;
 
   public static final String JSON_PROPERTY_GROUPS_DELETED = "groupsDeleted";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer groupsDeleted;
 
   public EntityTypeLoadResult() { 
   }
 
-  public EntityTypeLoadResult entityType(@javax.annotation.Nullable EntityType entityType) {
+  public EntityTypeLoadResult entityType(@Nullable EntityType entityType) {
     this.entityType = entityType;
     return this;
   }
@@ -86,7 +88,7 @@ public class EntityTypeLoadResult {
    * Get entityType
    * @return entityType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityType getEntityType() {
@@ -96,12 +98,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityType(@javax.annotation.Nullable EntityType entityType) {
+  public void setEntityType(@Nullable EntityType entityType) {
     this.entityType = entityType;
   }
 
 
-  public EntityTypeLoadResult created(@javax.annotation.Nullable Integer created) {
+  public EntityTypeLoadResult created(@Nullable Integer created) {
     this.created = created;
     return this;
   }
@@ -110,7 +112,7 @@ public class EntityTypeLoadResult {
    * Get created
    * @return created
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getCreated() {
@@ -120,12 +122,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@Nullable Integer created) {
     this.created = created;
   }
 
 
-  public EntityTypeLoadResult updated(@javax.annotation.Nullable Integer updated) {
+  public EntityTypeLoadResult updated(@Nullable Integer updated) {
     this.updated = updated;
     return this;
   }
@@ -134,7 +136,7 @@ public class EntityTypeLoadResult {
    * Get updated
    * @return updated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getUpdated() {
@@ -144,12 +146,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@Nullable Integer updated) {
     this.updated = updated;
   }
 
 
-  public EntityTypeLoadResult deleted(@javax.annotation.Nullable Integer deleted) {
+  public EntityTypeLoadResult deleted(@Nullable Integer deleted) {
     this.deleted = deleted;
     return this;
   }
@@ -158,7 +160,7 @@ public class EntityTypeLoadResult {
    * Get deleted
    * @return deleted
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DELETED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDeleted() {
@@ -168,12 +170,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_DELETED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeleted(@javax.annotation.Nullable Integer deleted) {
+  public void setDeleted(@Nullable Integer deleted) {
     this.deleted = deleted;
   }
 
 
-  public EntityTypeLoadResult groupsCreated(@javax.annotation.Nullable Integer groupsCreated) {
+  public EntityTypeLoadResult groupsCreated(@Nullable Integer groupsCreated) {
     this.groupsCreated = groupsCreated;
     return this;
   }
@@ -182,7 +184,7 @@ public class EntityTypeLoadResult {
    * Get groupsCreated
    * @return groupsCreated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUPS_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getGroupsCreated() {
@@ -192,12 +194,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_GROUPS_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroupsCreated(@javax.annotation.Nullable Integer groupsCreated) {
+  public void setGroupsCreated(@Nullable Integer groupsCreated) {
     this.groupsCreated = groupsCreated;
   }
 
 
-  public EntityTypeLoadResult groupsUpdated(@javax.annotation.Nullable Integer groupsUpdated) {
+  public EntityTypeLoadResult groupsUpdated(@Nullable Integer groupsUpdated) {
     this.groupsUpdated = groupsUpdated;
     return this;
   }
@@ -206,7 +208,7 @@ public class EntityTypeLoadResult {
    * Get groupsUpdated
    * @return groupsUpdated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUPS_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getGroupsUpdated() {
@@ -216,12 +218,12 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_GROUPS_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroupsUpdated(@javax.annotation.Nullable Integer groupsUpdated) {
+  public void setGroupsUpdated(@Nullable Integer groupsUpdated) {
     this.groupsUpdated = groupsUpdated;
   }
 
 
-  public EntityTypeLoadResult groupsDeleted(@javax.annotation.Nullable Integer groupsDeleted) {
+  public EntityTypeLoadResult groupsDeleted(@Nullable Integer groupsDeleted) {
     this.groupsDeleted = groupsDeleted;
     return this;
   }
@@ -230,7 +232,7 @@ public class EntityTypeLoadResult {
    * Get groupsDeleted
    * @return groupsDeleted
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUPS_DELETED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getGroupsDeleted() {
@@ -240,7 +242,7 @@ public class EntityTypeLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_GROUPS_DELETED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroupsDeleted(@javax.annotation.Nullable Integer groupsDeleted) {
+  public void setGroupsDeleted(@Nullable Integer groupsDeleted) {
     this.groupsDeleted = groupsDeleted;
   }
 

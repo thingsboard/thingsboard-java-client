@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   TrendzViewConfigLite.JSON_PROPERTY_ID,
   TrendzViewConfigLite.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TrendzViewConfigLite {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public TrendzViewConfigLite() { 
   }
 
-  public TrendzViewConfigLite id(@javax.annotation.Nullable UUID id) {
+  public TrendzViewConfigLite id(@Nullable UUID id) {
     this.id = id;
     return this;
   }
@@ -61,7 +63,7 @@ public class TrendzViewConfigLite {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getId() {
@@ -71,12 +73,12 @@ public class TrendzViewConfigLite {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable UUID id) {
+  public void setId(@Nullable UUID id) {
     this.id = id;
   }
 
 
-  public TrendzViewConfigLite name(@javax.annotation.Nullable String name) {
+  public TrendzViewConfigLite name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -85,7 +87,7 @@ public class TrendzViewConfigLite {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -95,7 +97,7 @@ public class TrendzViewConfigLite {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

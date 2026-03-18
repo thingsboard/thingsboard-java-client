@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -49,44 +51,44 @@ import org.thingsboard.client.ApiClient;
   DeviceProfileAlarm.JSON_PROPERTY_PROPAGATE_TO_TENANT,
   DeviceProfileAlarm.JSON_PROPERTY_PROPAGATE_RELATION_TYPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceProfileAlarm {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_ALARM_TYPE = "alarmType";
-  @javax.annotation.Nullable
+  @Nullable
   private String alarmType;
 
   public static final String JSON_PROPERTY_CREATE_RULES = "createRules";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, AlarmRule> createRules = new HashMap<>();
 
   public static final String JSON_PROPERTY_CLEAR_RULE = "clearRule";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmRule clearRule;
 
   public static final String JSON_PROPERTY_PROPAGATE = "propagate";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagate;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER = "propagateToOwner";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagateToOwner;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_TENANT = "propagateToTenant";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagateToTenant;
 
   public static final String JSON_PROPERTY_PROPAGATE_RELATION_TYPES = "propagateRelationTypes";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> propagateRelationTypes = new ArrayList<>();
 
   public DeviceProfileAlarm() { 
   }
 
-  public DeviceProfileAlarm id(@javax.annotation.Nullable String id) {
+  public DeviceProfileAlarm id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -95,7 +97,7 @@ public class DeviceProfileAlarm {
    * String value representing the alarm rule id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -105,12 +107,12 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public DeviceProfileAlarm alarmType(@javax.annotation.Nullable String alarmType) {
+  public DeviceProfileAlarm alarmType(@Nullable String alarmType) {
     this.alarmType = alarmType;
     return this;
   }
@@ -119,7 +121,7 @@ public class DeviceProfileAlarm {
    * String value representing type of the alarm
    * @return alarmType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARM_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAlarmType() {
@@ -129,12 +131,12 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_ALARM_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarmType(@javax.annotation.Nullable String alarmType) {
+  public void setAlarmType(@Nullable String alarmType) {
     this.alarmType = alarmType;
   }
 
 
-  public DeviceProfileAlarm createRules(@javax.annotation.Nullable Map<String, AlarmRule> createRules) {
+  public DeviceProfileAlarm createRules(@Nullable Map<String, AlarmRule> createRules) {
     this.createRules = createRules;
     return this;
   }
@@ -151,7 +153,7 @@ public class DeviceProfileAlarm {
    * Complex JSON object representing create alarm rules. The unique create alarm rule can be created for each alarm severity type. There can be 5 create alarm rules configured per a single alarm type. See method implementation notes and AlarmRule model for more details
    * @return createRules
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATE_RULES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, AlarmRule> getCreateRules() {
@@ -161,12 +163,12 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_CREATE_RULES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreateRules(@javax.annotation.Nullable Map<String, AlarmRule> createRules) {
+  public void setCreateRules(@Nullable Map<String, AlarmRule> createRules) {
     this.createRules = createRules;
   }
 
 
-  public DeviceProfileAlarm clearRule(@javax.annotation.Nullable AlarmRule clearRule) {
+  public DeviceProfileAlarm clearRule(@Nullable AlarmRule clearRule) {
     this.clearRule = clearRule;
     return this;
   }
@@ -175,7 +177,7 @@ public class DeviceProfileAlarm {
    * JSON object representing clear alarm rule
    * @return clearRule
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmRule getClearRule() {
@@ -185,12 +187,12 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClearRule(@javax.annotation.Nullable AlarmRule clearRule) {
+  public void setClearRule(@Nullable AlarmRule clearRule) {
     this.clearRule = clearRule;
   }
 
 
-  public DeviceProfileAlarm propagate(@javax.annotation.Nullable Boolean propagate) {
+  public DeviceProfileAlarm propagate(@Nullable Boolean propagate) {
     this.propagate = propagate;
     return this;
   }
@@ -199,7 +201,7 @@ public class DeviceProfileAlarm {
    * Propagation flag to specify if alarm should be propagated to parent entities of alarm originator
    * @return propagate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagate() {
@@ -209,12 +211,12 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagate(@javax.annotation.Nullable Boolean propagate) {
+  public void setPropagate(@Nullable Boolean propagate) {
     this.propagate = propagate;
   }
 
 
-  public DeviceProfileAlarm propagateToOwner(@javax.annotation.Nullable Boolean propagateToOwner) {
+  public DeviceProfileAlarm propagateToOwner(@Nullable Boolean propagateToOwner) {
     this.propagateToOwner = propagateToOwner;
     return this;
   }
@@ -223,7 +225,7 @@ public class DeviceProfileAlarm {
    * Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) of alarm originator
    * @return propagateToOwner
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagateToOwner() {
@@ -233,12 +235,12 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateToOwner(@javax.annotation.Nullable Boolean propagateToOwner) {
+  public void setPropagateToOwner(@Nullable Boolean propagateToOwner) {
     this.propagateToOwner = propagateToOwner;
   }
 
 
-  public DeviceProfileAlarm propagateToTenant(@javax.annotation.Nullable Boolean propagateToTenant) {
+  public DeviceProfileAlarm propagateToTenant(@Nullable Boolean propagateToTenant) {
     this.propagateToTenant = propagateToTenant;
     return this;
   }
@@ -247,7 +249,7 @@ public class DeviceProfileAlarm {
    * Propagation flag to specify if alarm should be propagated to the tenant entity
    * @return propagateToTenant
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_TENANT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagateToTenant() {
@@ -257,12 +259,12 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_TENANT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateToTenant(@javax.annotation.Nullable Boolean propagateToTenant) {
+  public void setPropagateToTenant(@Nullable Boolean propagateToTenant) {
     this.propagateToTenant = propagateToTenant;
   }
 
 
-  public DeviceProfileAlarm propagateRelationTypes(@javax.annotation.Nullable List<String> propagateRelationTypes) {
+  public DeviceProfileAlarm propagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
     this.propagateRelationTypes = propagateRelationTypes;
     return this;
   }
@@ -279,7 +281,7 @@ public class DeviceProfileAlarm {
    * JSON array of relation types that should be used for propagation. By default, &#39;propagateRelationTypes&#39; array is empty which means that the alarm will be propagated based on any relation type to parent entities. This parameter should be used only in case when &#39;propagate&#39; parameter is set to true, otherwise, &#39;propagateRelationTypes&#39; array will be ignored.
    * @return propagateRelationTypes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getPropagateRelationTypes() {
@@ -289,7 +291,7 @@ public class DeviceProfileAlarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateRelationTypes(@javax.annotation.Nullable List<String> propagateRelationTypes) {
+  public void setPropagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
     this.propagateRelationTypes = propagateRelationTypes;
   }
 

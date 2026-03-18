@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,24 +45,24 @@ import org.thingsboard.client.ApiClient;
   AliasEntityId.JSON_PROPERTY_ENTITY_TYPE,
   AliasEntityId.JSON_PROPERTY_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AliasEntityId {
   public static final String JSON_PROPERTY_ALIAS_ENTITY_TYPE = "aliasEntityType";
-  @javax.annotation.Nullable
+  @Nullable
   private AliasEntityType aliasEntityType;
 
   public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityType entityType;
 
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nonnull
+  @Nonnull
   private UUID id;
 
   public AliasEntityId() { 
   }
 
-  public AliasEntityId aliasEntityType(@javax.annotation.Nullable AliasEntityType aliasEntityType) {
+  public AliasEntityId aliasEntityType(@Nullable AliasEntityType aliasEntityType) {
     this.aliasEntityType = aliasEntityType;
     return this;
   }
@@ -68,7 +71,7 @@ public class AliasEntityId {
    * Get aliasEntityType
    * @return aliasEntityType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALIAS_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AliasEntityType getAliasEntityType() {
@@ -78,12 +81,12 @@ public class AliasEntityId {
 
   @JsonProperty(value = JSON_PROPERTY_ALIAS_ENTITY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAliasEntityType(@javax.annotation.Nullable AliasEntityType aliasEntityType) {
+  public void setAliasEntityType(@Nullable AliasEntityType aliasEntityType) {
     this.aliasEntityType = aliasEntityType;
   }
 
 
-  public AliasEntityId entityType(@javax.annotation.Nonnull EntityType entityType) {
+  public AliasEntityId entityType(@Nonnull EntityType entityType) {
     this.entityType = entityType;
     return this;
   }
@@ -92,7 +95,7 @@ public class AliasEntityId {
    * Get entityType
    * @return entityType
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityType getEntityType() {
@@ -102,12 +105,12 @@ public class AliasEntityId {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityType(@javax.annotation.Nonnull EntityType entityType) {
+  public void setEntityType(@Nonnull EntityType entityType) {
     this.entityType = entityType;
   }
 
 
-  public AliasEntityId id(@javax.annotation.Nonnull UUID id) {
+  public AliasEntityId id(@Nonnull UUID id) {
     this.id = id;
     return this;
   }
@@ -116,7 +119,7 @@ public class AliasEntityId {
    * ID of the entity, time-based UUID v1
    * @return id
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public UUID getId() {
@@ -126,7 +129,7 @@ public class AliasEntityId {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@javax.annotation.Nonnull UUID id) {
+  public void setId(@Nonnull UUID id) {
     this.id = id;
   }
 

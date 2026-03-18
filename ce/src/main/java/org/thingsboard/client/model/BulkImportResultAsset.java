@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +44,28 @@ import org.thingsboard.client.ApiClient;
   BulkImportResultAsset.JSON_PROPERTY_ERRORS,
   BulkImportResultAsset.JSON_PROPERTY_ERRORS_LIST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportResultAsset {
   public static final String JSON_PROPERTY_CREATED = "created";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer created;
 
   public static final String JSON_PROPERTY_UPDATED = "updated";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer updated;
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer errors;
 
   public static final String JSON_PROPERTY_ERRORS_LIST = "errorsList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> errorsList = new ArrayList<>();
 
   public BulkImportResultAsset() { 
   }
 
-  public BulkImportResultAsset created(@javax.annotation.Nullable Integer created) {
+  public BulkImportResultAsset created(@Nullable Integer created) {
     this.created = created;
     return this;
   }
@@ -72,7 +74,7 @@ public class BulkImportResultAsset {
    * Get created
    * @return created
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getCreated() {
@@ -82,12 +84,12 @@ public class BulkImportResultAsset {
 
   @JsonProperty(value = JSON_PROPERTY_CREATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreated(@javax.annotation.Nullable Integer created) {
+  public void setCreated(@Nullable Integer created) {
     this.created = created;
   }
 
 
-  public BulkImportResultAsset updated(@javax.annotation.Nullable Integer updated) {
+  public BulkImportResultAsset updated(@Nullable Integer updated) {
     this.updated = updated;
     return this;
   }
@@ -96,7 +98,7 @@ public class BulkImportResultAsset {
    * Get updated
    * @return updated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getUpdated() {
@@ -106,12 +108,12 @@ public class BulkImportResultAsset {
 
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdated(@javax.annotation.Nullable Integer updated) {
+  public void setUpdated(@Nullable Integer updated) {
     this.updated = updated;
   }
 
 
-  public BulkImportResultAsset errors(@javax.annotation.Nullable Integer errors) {
+  public BulkImportResultAsset errors(@Nullable Integer errors) {
     this.errors = errors;
     return this;
   }
@@ -120,7 +122,7 @@ public class BulkImportResultAsset {
    * Get errors
    * @return errors
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getErrors() {
@@ -130,12 +132,12 @@ public class BulkImportResultAsset {
 
   @JsonProperty(value = JSON_PROPERTY_ERRORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrors(@javax.annotation.Nullable Integer errors) {
+  public void setErrors(@Nullable Integer errors) {
     this.errors = errors;
   }
 
 
-  public BulkImportResultAsset errorsList(@javax.annotation.Nullable List<String> errorsList) {
+  public BulkImportResultAsset errorsList(@Nullable List<String> errorsList) {
     this.errorsList = errorsList;
     return this;
   }
@@ -152,7 +154,7 @@ public class BulkImportResultAsset {
    * Get errorsList
    * @return errorsList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERRORS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getErrorsList() {
@@ -162,7 +164,7 @@ public class BulkImportResultAsset {
 
   @JsonProperty(value = JSON_PROPERTY_ERRORS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorsList(@javax.annotation.Nullable List<String> errorsList) {
+  public void setErrorsList(@Nullable List<String> errorsList) {
     this.errorsList = errorsList;
   }
 

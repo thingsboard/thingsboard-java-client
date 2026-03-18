@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   SimpleEntity.JSON_PROPERTY_USED,
   SimpleEntity.JSON_PROPERTY_TOTAL_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SimpleEntity {
   public static final String JSON_PROPERTY_USED = "used";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean used;
 
   public static final String JSON_PROPERTY_TOTAL_COUNT = "totalCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long totalCount;
 
   public SimpleEntity() { 
   }
 
-  public SimpleEntity used(@javax.annotation.Nullable Boolean used) {
+  public SimpleEntity used(@Nullable Boolean used) {
     this.used = used;
     return this;
   }
@@ -60,7 +62,7 @@ public class SimpleEntity {
    * Get used
    * @return used
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUsed() {
@@ -70,12 +72,12 @@ public class SimpleEntity {
 
   @JsonProperty(value = JSON_PROPERTY_USED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsed(@javax.annotation.Nullable Boolean used) {
+  public void setUsed(@Nullable Boolean used) {
     this.used = used;
   }
 
 
-  public SimpleEntity totalCount(@javax.annotation.Nullable Long totalCount) {
+  public SimpleEntity totalCount(@Nullable Long totalCount) {
     this.totalCount = totalCount;
     return this;
   }
@@ -84,7 +86,7 @@ public class SimpleEntity {
    * Get totalCount
    * @return totalCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTotalCount() {
@@ -94,7 +96,7 @@ public class SimpleEntity {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalCount(@javax.annotation.Nullable Long totalCount) {
+  public void setTotalCount(@Nullable Long totalCount) {
     this.totalCount = totalCount;
   }
 

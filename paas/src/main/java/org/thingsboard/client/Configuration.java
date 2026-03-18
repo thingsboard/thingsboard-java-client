@@ -15,11 +15,12 @@
  */
 package org.thingsboard.client;
 
+import javax.annotation.Generated;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Configuration {
   public static final String VERSION = "4.4.0PE-SNAPSHOT";
 

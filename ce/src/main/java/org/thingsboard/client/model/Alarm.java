@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -67,94 +70,94 @@ import org.thingsboard.client.ApiClient;
   Alarm.JSON_PROPERTY_NAME,
   Alarm.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Alarm {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String type;
 
   public static final String JSON_PROPERTY_ORIGINATOR = "originator";
-  @javax.annotation.Nonnull
+  @Nonnull
   private EntityId originator;
 
   public static final String JSON_PROPERTY_SEVERITY = "severity";
-  @javax.annotation.Nonnull
+  @Nonnull
   private AlarmSeverity severity;
 
   public static final String JSON_PROPERTY_ACKNOWLEDGED = "acknowledged";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Boolean acknowledged;
 
   public static final String JSON_PROPERTY_CLEARED = "cleared";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Boolean cleared;
 
   public static final String JSON_PROPERTY_ASSIGNEE_ID = "assigneeId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId assigneeId;
 
   public static final String JSON_PROPERTY_START_TS = "startTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long startTs;
 
   public static final String JSON_PROPERTY_END_TS = "endTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long endTs;
 
   public static final String JSON_PROPERTY_ACK_TS = "ackTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long ackTs;
 
   public static final String JSON_PROPERTY_CLEAR_TS = "clearTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long clearTs;
 
   public static final String JSON_PROPERTY_ASSIGN_TS = "assignTs";
-  @javax.annotation.Nullable
+  @Nullable
   private Long assignTs;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode details;
 
   public static final String JSON_PROPERTY_PROPAGATE = "propagate";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagate;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER = "propagateToOwner";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagateToOwner;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_TENANT = "propagateToTenant";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean propagateToTenant;
 
   public static final String JSON_PROPERTY_PROPAGATE_RELATION_TYPES = "propagateRelationTypes";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> propagateRelationTypes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nonnull
+  @Nonnull
   private AlarmStatus status;
 
   public Alarm() { 
@@ -176,7 +179,7 @@ public class Alarm {
     this.status = status;
   }
 
-  public Alarm id(@javax.annotation.Nullable AlarmId id) {
+  public Alarm id(@Nullable AlarmId id) {
     this.id = id;
     return this;
   }
@@ -185,7 +188,7 @@ public class Alarm {
    * JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmId getId() {
@@ -195,7 +198,7 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AlarmId id) {
+  public void setId(@Nullable AlarmId id) {
     this.id = id;
   }
 
@@ -204,7 +207,7 @@ public class Alarm {
    * Timestamp of the alarm creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -218,7 +221,7 @@ public class Alarm {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -232,7 +235,7 @@ public class Alarm {
    * JSON object with Customer Id
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -242,7 +245,7 @@ public class Alarm {
 
 
 
-  public Alarm type(@javax.annotation.Nonnull String type) {
+  public Alarm type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -251,7 +254,7 @@ public class Alarm {
    * representing type of the Alarm
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getType() {
@@ -261,12 +264,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 
 
-  public Alarm originator(@javax.annotation.Nonnull EntityId originator) {
+  public Alarm originator(@Nonnull EntityId originator) {
     this.originator = originator;
     return this;
   }
@@ -275,7 +278,7 @@ public class Alarm {
    * JSON object with alarm originator id
    * @return originator
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ORIGINATOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityId getOriginator() {
@@ -285,12 +288,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_ORIGINATOR, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOriginator(@javax.annotation.Nonnull EntityId originator) {
+  public void setOriginator(@Nonnull EntityId originator) {
     this.originator = originator;
   }
 
 
-  public Alarm severity(@javax.annotation.Nonnull AlarmSeverity severity) {
+  public Alarm severity(@Nonnull AlarmSeverity severity) {
     this.severity = severity;
     return this;
   }
@@ -299,7 +302,7 @@ public class Alarm {
    * Alarm severity
    * @return severity
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_SEVERITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AlarmSeverity getSeverity() {
@@ -309,12 +312,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_SEVERITY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSeverity(@javax.annotation.Nonnull AlarmSeverity severity) {
+  public void setSeverity(@Nonnull AlarmSeverity severity) {
     this.severity = severity;
   }
 
 
-  public Alarm acknowledged(@javax.annotation.Nonnull Boolean acknowledged) {
+  public Alarm acknowledged(@Nonnull Boolean acknowledged) {
     this.acknowledged = acknowledged;
     return this;
   }
@@ -323,7 +326,7 @@ public class Alarm {
    * Acknowledged
    * @return acknowledged
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ACKNOWLEDGED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Boolean getAcknowledged() {
@@ -333,12 +336,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_ACKNOWLEDGED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAcknowledged(@javax.annotation.Nonnull Boolean acknowledged) {
+  public void setAcknowledged(@Nonnull Boolean acknowledged) {
     this.acknowledged = acknowledged;
   }
 
 
-  public Alarm cleared(@javax.annotation.Nonnull Boolean cleared) {
+  public Alarm cleared(@Nonnull Boolean cleared) {
     this.cleared = cleared;
     return this;
   }
@@ -347,7 +350,7 @@ public class Alarm {
    * Cleared
    * @return cleared
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CLEARED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Boolean getCleared() {
@@ -357,12 +360,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_CLEARED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCleared(@javax.annotation.Nonnull Boolean cleared) {
+  public void setCleared(@Nonnull Boolean cleared) {
     this.cleared = cleared;
   }
 
 
-  public Alarm assigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public Alarm assigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
     return this;
   }
@@ -371,7 +374,7 @@ public class Alarm {
    * Alarm assignee user id
    * @return assigneeId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getAssigneeId() {
@@ -381,12 +384,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public void setAssigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
   }
 
 
-  public Alarm startTs(@javax.annotation.Nullable Long startTs) {
+  public Alarm startTs(@Nullable Long startTs) {
     this.startTs = startTs;
     return this;
   }
@@ -395,7 +398,7 @@ public class Alarm {
    * Timestamp of the alarm start time, in milliseconds
    * @return startTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStartTs() {
@@ -405,12 +408,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStartTs(@javax.annotation.Nullable Long startTs) {
+  public void setStartTs(@Nullable Long startTs) {
     this.startTs = startTs;
   }
 
 
-  public Alarm endTs(@javax.annotation.Nullable Long endTs) {
+  public Alarm endTs(@Nullable Long endTs) {
     this.endTs = endTs;
     return this;
   }
@@ -419,7 +422,7 @@ public class Alarm {
    * Timestamp of the alarm end time(last time update), in milliseconds
    * @return endTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEndTs() {
@@ -429,12 +432,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndTs(@javax.annotation.Nullable Long endTs) {
+  public void setEndTs(@Nullable Long endTs) {
     this.endTs = endTs;
   }
 
 
-  public Alarm ackTs(@javax.annotation.Nullable Long ackTs) {
+  public Alarm ackTs(@Nullable Long ackTs) {
     this.ackTs = ackTs;
     return this;
   }
@@ -443,7 +446,7 @@ public class Alarm {
    * Timestamp of the alarm acknowledgement, in milliseconds
    * @return ackTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACK_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAckTs() {
@@ -453,12 +456,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_ACK_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAckTs(@javax.annotation.Nullable Long ackTs) {
+  public void setAckTs(@Nullable Long ackTs) {
     this.ackTs = ackTs;
   }
 
 
-  public Alarm clearTs(@javax.annotation.Nullable Long clearTs) {
+  public Alarm clearTs(@Nullable Long clearTs) {
     this.clearTs = clearTs;
     return this;
   }
@@ -467,7 +470,7 @@ public class Alarm {
    * Timestamp of the alarm clearing, in milliseconds
    * @return clearTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLEAR_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getClearTs() {
@@ -477,12 +480,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_CLEAR_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClearTs(@javax.annotation.Nullable Long clearTs) {
+  public void setClearTs(@Nullable Long clearTs) {
     this.clearTs = clearTs;
   }
 
 
-  public Alarm assignTs(@javax.annotation.Nullable Long assignTs) {
+  public Alarm assignTs(@Nullable Long assignTs) {
     this.assignTs = assignTs;
     return this;
   }
@@ -491,7 +494,7 @@ public class Alarm {
    * Timestamp of the alarm assignment, in milliseconds
    * @return assignTs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGN_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAssignTs() {
@@ -501,12 +504,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGN_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssignTs(@javax.annotation.Nullable Long assignTs) {
+  public void setAssignTs(@Nullable Long assignTs) {
     this.assignTs = assignTs;
   }
 
 
-  public Alarm details(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode details) {
+  public Alarm details(@Nullable com.fasterxml.jackson.databind.JsonNode details) {
     this.details = details;
     return this;
   }
@@ -515,7 +518,7 @@ public class Alarm {
    * JSON object with alarm details
    * @return details
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getDetails() {
@@ -525,12 +528,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode details) {
+  public void setDetails(@Nullable com.fasterxml.jackson.databind.JsonNode details) {
     this.details = details;
   }
 
 
-  public Alarm propagate(@javax.annotation.Nullable Boolean propagate) {
+  public Alarm propagate(@Nullable Boolean propagate) {
     this.propagate = propagate;
     return this;
   }
@@ -539,7 +542,7 @@ public class Alarm {
    * Propagation flag to specify if alarm should be propagated to parent entities of alarm originator
    * @return propagate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagate() {
@@ -549,12 +552,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagate(@javax.annotation.Nullable Boolean propagate) {
+  public void setPropagate(@Nullable Boolean propagate) {
     this.propagate = propagate;
   }
 
 
-  public Alarm propagateToOwner(@javax.annotation.Nullable Boolean propagateToOwner) {
+  public Alarm propagateToOwner(@Nullable Boolean propagateToOwner) {
     this.propagateToOwner = propagateToOwner;
     return this;
   }
@@ -563,7 +566,7 @@ public class Alarm {
    * Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) of alarm originator
    * @return propagateToOwner
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagateToOwner() {
@@ -573,12 +576,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateToOwner(@javax.annotation.Nullable Boolean propagateToOwner) {
+  public void setPropagateToOwner(@Nullable Boolean propagateToOwner) {
     this.propagateToOwner = propagateToOwner;
   }
 
 
-  public Alarm propagateToTenant(@javax.annotation.Nullable Boolean propagateToTenant) {
+  public Alarm propagateToTenant(@Nullable Boolean propagateToTenant) {
     this.propagateToTenant = propagateToTenant;
     return this;
   }
@@ -587,7 +590,7 @@ public class Alarm {
    * Propagation flag to specify if alarm should be propagated to the tenant entity
    * @return propagateToTenant
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_TENANT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPropagateToTenant() {
@@ -597,12 +600,12 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_TENANT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateToTenant(@javax.annotation.Nullable Boolean propagateToTenant) {
+  public void setPropagateToTenant(@Nullable Boolean propagateToTenant) {
     this.propagateToTenant = propagateToTenant;
   }
 
 
-  public Alarm propagateRelationTypes(@javax.annotation.Nullable List<String> propagateRelationTypes) {
+  public Alarm propagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
     this.propagateRelationTypes = propagateRelationTypes;
     return this;
   }
@@ -619,7 +622,7 @@ public class Alarm {
    * JSON array of relation types that should be used for propagation. By default, &#39;propagateRelationTypes&#39; array is empty which means that the alarm will be propagated based on any relation type to parent entities. This parameter should be used only in case when &#39;propagate&#39; parameter is set to true, otherwise, &#39;propagateRelationTypes&#39; array will be ignored.
    * @return propagateRelationTypes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getPropagateRelationTypes() {
@@ -629,7 +632,7 @@ public class Alarm {
 
   @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateRelationTypes(@javax.annotation.Nullable List<String> propagateRelationTypes) {
+  public void setPropagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
     this.propagateRelationTypes = propagateRelationTypes;
   }
 
@@ -638,7 +641,7 @@ public class Alarm {
    * representing type of the Alarm
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -652,7 +655,7 @@ public class Alarm {
    * status of the Alarm
    * @return status
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AlarmStatus getStatus() {

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,20 +44,20 @@ import org.thingsboard.client.ApiClient;
   RuleChainData.JSON_PROPERTY_RULE_CHAINS,
   RuleChainData.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChainData {
   public static final String JSON_PROPERTY_RULE_CHAINS = "ruleChains";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<RuleChain> ruleChains = new ArrayList<>();
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<RuleChainMetaData> metadata = new ArrayList<>();
 
   public RuleChainData() { 
   }
 
-  public RuleChainData ruleChains(@javax.annotation.Nonnull List<RuleChain> ruleChains) {
+  public RuleChainData ruleChains(@Nonnull List<RuleChain> ruleChains) {
     this.ruleChains = ruleChains;
     return this;
   }
@@ -72,7 +74,7 @@ public class RuleChainData {
    * List of the Rule Chain objects.
    * @return ruleChains
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAINS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<RuleChain> getRuleChains() {
@@ -82,12 +84,12 @@ public class RuleChainData {
 
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAINS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRuleChains(@javax.annotation.Nonnull List<RuleChain> ruleChains) {
+  public void setRuleChains(@Nonnull List<RuleChain> ruleChains) {
     this.ruleChains = ruleChains;
   }
 
 
-  public RuleChainData metadata(@javax.annotation.Nonnull List<RuleChainMetaData> metadata) {
+  public RuleChainData metadata(@Nonnull List<RuleChainMetaData> metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -104,7 +106,7 @@ public class RuleChainData {
    * List of the Rule Chain metadata objects.
    * @return metadata
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_METADATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<RuleChainMetaData> getMetadata() {
@@ -114,7 +116,7 @@ public class RuleChainData {
 
   @JsonProperty(value = JSON_PROPERTY_METADATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMetadata(@javax.annotation.Nonnull List<RuleChainMetaData> metadata) {
+  public void setMetadata(@Nonnull List<RuleChainMetaData> metadata) {
     this.metadata = metadata;
   }
 

@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -59,78 +62,78 @@ import org.thingsboard.client.ApiClient;
   Integration.JSON_PROPERTY_CONFIGURATION,
   Integration.JSON_PROPERTY_ADDITIONAL_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Integration {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private IntegrationId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private IntegrationType type;
 
   public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean debugMode;
 
   public static final String JSON_PROPERTY_DEBUG_SETTINGS = "debugSettings";
-  @javax.annotation.Nullable
+  @Nullable
   private DebugSettings debugSettings;
 
   public static final String JSON_PROPERTY_ENABLED = "enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enabled;
 
   public static final String JSON_PROPERTY_REMOTE = "remote";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean remote;
 
   public static final String JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS = "allowCreateDevicesOrAssets";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean allowCreateDevicesOrAssets;
 
   public static final String JSON_PROPERTY_EDGE_TEMPLATE = "edgeTemplate";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean edgeTemplate;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_DEFAULT_CONVERTER_ID = "defaultConverterId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private ConverterId defaultConverterId;
 
   public static final String JSON_PROPERTY_DOWNLINK_CONVERTER_ID = "downlinkConverterId";
-  @javax.annotation.Nullable
+  @Nullable
   private ConverterId downlinkConverterId;
 
   public static final String JSON_PROPERTY_ROUTING_KEY = "routingKey";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String routingKey;
 
   public static final String JSON_PROPERTY_SECRET = "secret";
-  @javax.annotation.Nullable
+  @Nullable
   private String secret;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nonnull
+  @Nonnull
   private com.fasterxml.jackson.databind.JsonNode _configuration;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Integration() { 
@@ -146,7 +149,7 @@ public class Integration {
     this.tenantId = tenantId;
   }
 
-  public Integration id(@javax.annotation.Nullable IntegrationId id) {
+  public Integration id(@Nullable IntegrationId id) {
     this.id = id;
     return this;
   }
@@ -155,7 +158,7 @@ public class Integration {
    * JSON object with the Integration Id. Specify this field to update the Integration. Referencing non-existing Integration Id will cause error. Omit this field to create new Integration.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public IntegrationId getId() {
@@ -165,7 +168,7 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable IntegrationId id) {
+  public void setId(@Nullable IntegrationId id) {
     this.id = id;
   }
 
@@ -174,7 +177,7 @@ public class Integration {
    * Timestamp of the integration creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -188,7 +191,7 @@ public class Integration {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -198,7 +201,7 @@ public class Integration {
 
 
 
-  public Integration name(@javax.annotation.Nonnull String name) {
+  public Integration name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -207,7 +210,7 @@ public class Integration {
    * Integration Name
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -217,12 +220,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public Integration type(@javax.annotation.Nonnull IntegrationType type) {
+  public Integration type(@Nonnull IntegrationType type) {
     this.type = type;
     return this;
   }
@@ -231,7 +234,7 @@ public class Integration {
    * The type of the integration
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public IntegrationType getType() {
@@ -241,12 +244,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull IntegrationType type) {
+  public void setType(@Nonnull IntegrationType type) {
     this.type = type;
   }
 
 
-  public Integration debugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public Integration debugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
     return this;
   }
@@ -257,7 +260,7 @@ public class Integration {
    * @deprecated
    */
   @Deprecated
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDebugMode() {
@@ -267,12 +270,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_DEBUG_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugMode(@javax.annotation.Nullable Boolean debugMode) {
+  public void setDebugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
   }
 
 
-  public Integration debugSettings(@javax.annotation.Nullable DebugSettings debugSettings) {
+  public Integration debugSettings(@Nullable DebugSettings debugSettings) {
     this.debugSettings = debugSettings;
     return this;
   }
@@ -281,7 +284,7 @@ public class Integration {
    * Debug settings object.
    * @return debugSettings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEBUG_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DebugSettings getDebugSettings() {
@@ -291,12 +294,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_DEBUG_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugSettings(@javax.annotation.Nullable DebugSettings debugSettings) {
+  public void setDebugSettings(@Nullable DebugSettings debugSettings) {
     this.debugSettings = debugSettings;
   }
 
 
-  public Integration enabled(@javax.annotation.Nullable Boolean enabled) {
+  public Integration enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
     return this;
   }
@@ -305,7 +308,7 @@ public class Integration {
    * Boolean flag to enable/disable the integration
    * @return enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnabled() {
@@ -315,12 +318,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnabled(@javax.annotation.Nullable Boolean enabled) {
+  public void setEnabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
   }
 
 
-  public Integration remote(@javax.annotation.Nullable Boolean remote) {
+  public Integration remote(@Nullable Boolean remote) {
     this.remote = remote;
     return this;
   }
@@ -329,7 +332,7 @@ public class Integration {
    * Boolean flag to enable/disable the integration to be executed remotely. Remote integration is launched in a separate microservice. Local integration is executed by the platform core
    * @return remote
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getRemote() {
@@ -339,12 +342,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_REMOTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRemote(@javax.annotation.Nullable Boolean remote) {
+  public void setRemote(@Nullable Boolean remote) {
     this.remote = remote;
   }
 
 
-  public Integration allowCreateDevicesOrAssets(@javax.annotation.Nullable Boolean allowCreateDevicesOrAssets) {
+  public Integration allowCreateDevicesOrAssets(@Nullable Boolean allowCreateDevicesOrAssets) {
     this.allowCreateDevicesOrAssets = allowCreateDevicesOrAssets;
     return this;
   }
@@ -353,7 +356,7 @@ public class Integration {
    * Boolean flag to allow/disallow the integration to create devices or assets that send message and do not exist in the system yet
    * @return allowCreateDevicesOrAssets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAllowCreateDevicesOrAssets() {
@@ -363,12 +366,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_ALLOW_CREATE_DEVICES_OR_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowCreateDevicesOrAssets(@javax.annotation.Nullable Boolean allowCreateDevicesOrAssets) {
+  public void setAllowCreateDevicesOrAssets(@Nullable Boolean allowCreateDevicesOrAssets) {
     this.allowCreateDevicesOrAssets = allowCreateDevicesOrAssets;
   }
 
 
-  public Integration edgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+  public Integration edgeTemplate(@Nullable Boolean edgeTemplate) {
     this.edgeTemplate = edgeTemplate;
     return this;
   }
@@ -377,7 +380,7 @@ public class Integration {
    * Boolean flag that specifies that is regular or edge template integration
    * @return edgeTemplate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEdgeTemplate() {
@@ -387,12 +390,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_EDGE_TEMPLATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeTemplate(@javax.annotation.Nullable Boolean edgeTemplate) {
+  public void setEdgeTemplate(@Nullable Boolean edgeTemplate) {
     this.edgeTemplate = edgeTemplate;
   }
 
 
-  public Integration version(@javax.annotation.Nullable Long version) {
+  public Integration version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -401,7 +404,7 @@ public class Integration {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -411,12 +414,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public Integration defaultConverterId(@javax.annotation.Nonnull ConverterId defaultConverterId) {
+  public Integration defaultConverterId(@Nonnull ConverterId defaultConverterId) {
     this.defaultConverterId = defaultConverterId;
     return this;
   }
@@ -425,7 +428,7 @@ public class Integration {
    * JSON object with the Uplink Converter Id
    * @return defaultConverterId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_CONVERTER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public ConverterId getDefaultConverterId() {
@@ -435,12 +438,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_CONVERTER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDefaultConverterId(@javax.annotation.Nonnull ConverterId defaultConverterId) {
+  public void setDefaultConverterId(@Nonnull ConverterId defaultConverterId) {
     this.defaultConverterId = defaultConverterId;
   }
 
 
-  public Integration downlinkConverterId(@javax.annotation.Nullable ConverterId downlinkConverterId) {
+  public Integration downlinkConverterId(@Nullable ConverterId downlinkConverterId) {
     this.downlinkConverterId = downlinkConverterId;
     return this;
   }
@@ -449,7 +452,7 @@ public class Integration {
    * JSON object with the Downlink Converter Id
    * @return downlinkConverterId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DOWNLINK_CONVERTER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ConverterId getDownlinkConverterId() {
@@ -459,12 +462,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_DOWNLINK_CONVERTER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDownlinkConverterId(@javax.annotation.Nullable ConverterId downlinkConverterId) {
+  public void setDownlinkConverterId(@Nullable ConverterId downlinkConverterId) {
     this.downlinkConverterId = downlinkConverterId;
   }
 
 
-  public Integration routingKey(@javax.annotation.Nonnull String routingKey) {
+  public Integration routingKey(@Nonnull String routingKey) {
     this.routingKey = routingKey;
     return this;
   }
@@ -473,7 +476,7 @@ public class Integration {
    * String value used by HTTP based integrations for the base URL construction and by the remote integrations. Remote integration uses this value along with the &#39;secret&#39; for kind of security and validation to be able to connect to the platform using Grpc
    * @return routingKey
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ROUTING_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getRoutingKey() {
@@ -483,12 +486,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_ROUTING_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRoutingKey(@javax.annotation.Nonnull String routingKey) {
+  public void setRoutingKey(@Nonnull String routingKey) {
     this.routingKey = routingKey;
   }
 
 
-  public Integration secret(@javax.annotation.Nullable String secret) {
+  public Integration secret(@Nullable String secret) {
     this.secret = secret;
     return this;
   }
@@ -497,7 +500,7 @@ public class Integration {
    * String value used by the remote integrations. Remote integration uses this value along with the &#39;routingKey&#39; for kind of security and validation to be able to connect to the platform using Grpc
    * @return secret
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SECRET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSecret() {
@@ -507,12 +510,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_SECRET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSecret(@javax.annotation.Nullable String secret) {
+  public void setSecret(@Nullable String secret) {
     this.secret = secret;
   }
 
 
-  public Integration _configuration(@javax.annotation.Nonnull com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public Integration _configuration(@Nonnull com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -521,7 +524,7 @@ public class Integration {
    * JSON object representing integration configuration. Each integration type has specific configuration with the connectivity parameters (like &#39;host&#39; and &#39;port&#39; for MQTT type or &#39;baseUrl&#39; for HTTP based type, etc.) and other important parameters dependent on the integration type
    * @return _configuration
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
@@ -531,12 +534,12 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfiguration(@javax.annotation.Nonnull com.fasterxml.jackson.databind.JsonNode _configuration) {
+  public void setConfiguration(@Nonnull com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
   }
 
 
-  public Integration additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Integration additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -545,7 +548,7 @@ public class Integration {
    * Additional parameters of the integration
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -555,7 +558,7 @@ public class Integration {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 

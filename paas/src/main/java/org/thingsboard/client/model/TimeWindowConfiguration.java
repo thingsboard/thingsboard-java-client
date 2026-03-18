@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   TimeWindowConfiguration.JSON_PROPERTY_AGGREGATION,
   TimeWindowConfiguration.JSON_PROPERTY_TIMEZONE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeWindowConfiguration {
   public static final String JSON_PROPERTY_HISTORY = "history";
-  @javax.annotation.Nullable
+  @Nullable
   private History history;
 
   public static final String JSON_PROPERTY_AGGREGATION = "aggregation";
-  @javax.annotation.Nullable
+  @Nullable
   private AggregationConfiguration aggregation;
 
   public static final String JSON_PROPERTY_TIMEZONE = "timezone";
-  @javax.annotation.Nullable
+  @Nullable
   private String timezone;
 
   public TimeWindowConfiguration() { 
   }
 
-  public TimeWindowConfiguration history(@javax.annotation.Nullable History history) {
+  public TimeWindowConfiguration history(@Nullable History history) {
     this.history = history;
     return this;
   }
@@ -67,7 +69,7 @@ public class TimeWindowConfiguration {
    * Get history
    * @return history
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HISTORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public History getHistory() {
@@ -77,12 +79,12 @@ public class TimeWindowConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_HISTORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHistory(@javax.annotation.Nullable History history) {
+  public void setHistory(@Nullable History history) {
     this.history = history;
   }
 
 
-  public TimeWindowConfiguration aggregation(@javax.annotation.Nullable AggregationConfiguration aggregation) {
+  public TimeWindowConfiguration aggregation(@Nullable AggregationConfiguration aggregation) {
     this.aggregation = aggregation;
     return this;
   }
@@ -91,7 +93,7 @@ public class TimeWindowConfiguration {
    * Get aggregation
    * @return aggregation
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AggregationConfiguration getAggregation() {
@@ -101,12 +103,12 @@ public class TimeWindowConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_AGGREGATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAggregation(@javax.annotation.Nullable AggregationConfiguration aggregation) {
+  public void setAggregation(@Nullable AggregationConfiguration aggregation) {
     this.aggregation = aggregation;
   }
 
 
-  public TimeWindowConfiguration timezone(@javax.annotation.Nullable String timezone) {
+  public TimeWindowConfiguration timezone(@Nullable String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -115,7 +117,7 @@ public class TimeWindowConfiguration {
    * Get timezone
    * @return timezone
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTimezone() {
@@ -125,7 +127,7 @@ public class TimeWindowConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimezone(@javax.annotation.Nullable String timezone) {
+  public void setTimezone(@Nullable String timezone) {
     this.timezone = timezone;
   }
 

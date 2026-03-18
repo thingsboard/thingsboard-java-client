@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,20 +43,20 @@ import org.thingsboard.client.ApiClient;
   NotificationRequestConfig.JSON_PROPERTY_SENDING_DELAY_IN_SEC,
   NotificationRequestConfig.JSON_PROPERTY_REPORTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequestConfig {
   public static final String JSON_PROPERTY_SENDING_DELAY_IN_SEC = "sendingDelayInSec";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer sendingDelayInSec;
 
   public static final String JSON_PROPERTY_REPORTS = "reports";
-  @javax.annotation.Nullable
+  @Nullable
   private List<ReportId> reports = new ArrayList<>();
 
   public NotificationRequestConfig() { 
   }
 
-  public NotificationRequestConfig sendingDelayInSec(@javax.annotation.Nullable Integer sendingDelayInSec) {
+  public NotificationRequestConfig sendingDelayInSec(@Nullable Integer sendingDelayInSec) {
     this.sendingDelayInSec = sendingDelayInSec;
     return this;
   }
@@ -64,7 +66,7 @@ public class NotificationRequestConfig {
    * maximum: 604800
    * @return sendingDelayInSec
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SENDING_DELAY_IN_SEC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getSendingDelayInSec() {
@@ -74,12 +76,12 @@ public class NotificationRequestConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SENDING_DELAY_IN_SEC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSendingDelayInSec(@javax.annotation.Nullable Integer sendingDelayInSec) {
+  public void setSendingDelayInSec(@Nullable Integer sendingDelayInSec) {
     this.sendingDelayInSec = sendingDelayInSec;
   }
 
 
-  public NotificationRequestConfig reports(@javax.annotation.Nullable List<ReportId> reports) {
+  public NotificationRequestConfig reports(@Nullable List<ReportId> reports) {
     this.reports = reports;
     return this;
   }
@@ -96,7 +98,7 @@ public class NotificationRequestConfig {
    * Get reports
    * @return reports
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ReportId> getReports() {
@@ -106,7 +108,7 @@ public class NotificationRequestConfig {
 
   @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReports(@javax.annotation.Nullable List<ReportId> reports) {
+  public void setReports(@Nullable List<ReportId> reports) {
     this.reports = reports;
   }
 

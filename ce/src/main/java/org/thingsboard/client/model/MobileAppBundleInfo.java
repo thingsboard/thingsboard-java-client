@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -57,62 +60,62 @@ import org.thingsboard.client.ApiClient;
   MobileAppBundleInfo.JSON_PROPERTY_QR_CODE_ENABLED,
   MobileAppBundleInfo.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MobileAppBundleInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppBundleId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String title;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_ANDROID_APP_ID = "androidAppId";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppId androidAppId;
 
   public static final String JSON_PROPERTY_IOS_APP_ID = "iosAppId";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppId iosAppId;
 
   public static final String JSON_PROPERTY_LAYOUT_CONFIG = "layoutConfig";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileLayoutConfig layoutConfig;
 
   public static final String JSON_PROPERTY_OAUTH2_ENABLED = "oauth2Enabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean oauth2Enabled;
 
   public static final String JSON_PROPERTY_ANDROID_PKG_NAME = "androidPkgName";
-  @javax.annotation.Nullable
+  @Nullable
   private String androidPkgName;
 
   public static final String JSON_PROPERTY_IOS_PKG_NAME = "iosPkgName";
-  @javax.annotation.Nullable
+  @Nullable
   private String iosPkgName;
 
   public static final String JSON_PROPERTY_OAUTH2_CLIENT_INFOS = "oauth2ClientInfos";
-  @javax.annotation.Nullable
+  @Nullable
   private List<OAuth2ClientInfo> oauth2ClientInfos = new ArrayList<>();
 
   public static final String JSON_PROPERTY_QR_CODE_ENABLED = "qrCodeEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean qrCodeEnabled;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public MobileAppBundleInfo() { 
@@ -128,7 +131,7 @@ public class MobileAppBundleInfo {
     this.name = name;
   }
 
-  public MobileAppBundleInfo id(@javax.annotation.Nullable MobileAppBundleId id) {
+  public MobileAppBundleInfo id(@Nullable MobileAppBundleId id) {
     this.id = id;
     return this;
   }
@@ -137,7 +140,7 @@ public class MobileAppBundleInfo {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppBundleId getId() {
@@ -147,7 +150,7 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable MobileAppBundleId id) {
+  public void setId(@Nullable MobileAppBundleId id) {
     this.id = id;
   }
 
@@ -156,7 +159,7 @@ public class MobileAppBundleInfo {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -166,7 +169,7 @@ public class MobileAppBundleInfo {
 
 
 
-  public MobileAppBundleInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public MobileAppBundleInfo tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -175,7 +178,7 @@ public class MobileAppBundleInfo {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -185,12 +188,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public MobileAppBundleInfo title(@javax.annotation.Nonnull String title) {
+  public MobileAppBundleInfo title(@Nonnull String title) {
     this.title = title;
     return this;
   }
@@ -199,7 +202,7 @@ public class MobileAppBundleInfo {
    * Application bundle title. Cannot be empty
    * @return title
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getTitle() {
@@ -209,12 +212,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTitle(@javax.annotation.Nonnull String title) {
+  public void setTitle(@Nonnull String title) {
     this.title = title;
   }
 
 
-  public MobileAppBundleInfo description(@javax.annotation.Nullable String description) {
+  public MobileAppBundleInfo description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -223,7 +226,7 @@ public class MobileAppBundleInfo {
    * Application bundle description.
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -233,12 +236,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
 
-  public MobileAppBundleInfo androidAppId(@javax.annotation.Nullable MobileAppId androidAppId) {
+  public MobileAppBundleInfo androidAppId(@Nullable MobileAppId androidAppId) {
     this.androidAppId = androidAppId;
     return this;
   }
@@ -247,7 +250,7 @@ public class MobileAppBundleInfo {
    * Android application id
    * @return androidAppId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ANDROID_APP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppId getAndroidAppId() {
@@ -257,12 +260,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ANDROID_APP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAndroidAppId(@javax.annotation.Nullable MobileAppId androidAppId) {
+  public void setAndroidAppId(@Nullable MobileAppId androidAppId) {
     this.androidAppId = androidAppId;
   }
 
 
-  public MobileAppBundleInfo iosAppId(@javax.annotation.Nullable MobileAppId iosAppId) {
+  public MobileAppBundleInfo iosAppId(@Nullable MobileAppId iosAppId) {
     this.iosAppId = iosAppId;
     return this;
   }
@@ -271,7 +274,7 @@ public class MobileAppBundleInfo {
    * IOS application id
    * @return iosAppId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IOS_APP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppId getIosAppId() {
@@ -281,12 +284,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_IOS_APP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIosAppId(@javax.annotation.Nullable MobileAppId iosAppId) {
+  public void setIosAppId(@Nullable MobileAppId iosAppId) {
     this.iosAppId = iosAppId;
   }
 
 
-  public MobileAppBundleInfo layoutConfig(@javax.annotation.Nullable MobileLayoutConfig layoutConfig) {
+  public MobileAppBundleInfo layoutConfig(@Nullable MobileLayoutConfig layoutConfig) {
     this.layoutConfig = layoutConfig;
     return this;
   }
@@ -295,7 +298,7 @@ public class MobileAppBundleInfo {
    * Application layout configuration
    * @return layoutConfig
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAYOUT_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileLayoutConfig getLayoutConfig() {
@@ -305,12 +308,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LAYOUT_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLayoutConfig(@javax.annotation.Nullable MobileLayoutConfig layoutConfig) {
+  public void setLayoutConfig(@Nullable MobileLayoutConfig layoutConfig) {
     this.layoutConfig = layoutConfig;
   }
 
 
-  public MobileAppBundleInfo oauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+  public MobileAppBundleInfo oauth2Enabled(@Nullable Boolean oauth2Enabled) {
     this.oauth2Enabled = oauth2Enabled;
     return this;
   }
@@ -319,7 +322,7 @@ public class MobileAppBundleInfo {
    * Whether OAuth2 settings are enabled or not
    * @return oauth2Enabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getOauth2Enabled() {
@@ -329,12 +332,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth2Enabled(@javax.annotation.Nullable Boolean oauth2Enabled) {
+  public void setOauth2Enabled(@Nullable Boolean oauth2Enabled) {
     this.oauth2Enabled = oauth2Enabled;
   }
 
 
-  public MobileAppBundleInfo androidPkgName(@javax.annotation.Nullable String androidPkgName) {
+  public MobileAppBundleInfo androidPkgName(@Nullable String androidPkgName) {
     this.androidPkgName = androidPkgName;
     return this;
   }
@@ -343,7 +346,7 @@ public class MobileAppBundleInfo {
    * Android package name
    * @return androidPkgName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ANDROID_PKG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAndroidPkgName() {
@@ -353,12 +356,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ANDROID_PKG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAndroidPkgName(@javax.annotation.Nullable String androidPkgName) {
+  public void setAndroidPkgName(@Nullable String androidPkgName) {
     this.androidPkgName = androidPkgName;
   }
 
 
-  public MobileAppBundleInfo iosPkgName(@javax.annotation.Nullable String iosPkgName) {
+  public MobileAppBundleInfo iosPkgName(@Nullable String iosPkgName) {
     this.iosPkgName = iosPkgName;
     return this;
   }
@@ -367,7 +370,7 @@ public class MobileAppBundleInfo {
    * IOS package name
    * @return iosPkgName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IOS_PKG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getIosPkgName() {
@@ -377,12 +380,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_IOS_PKG_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIosPkgName(@javax.annotation.Nullable String iosPkgName) {
+  public void setIosPkgName(@Nullable String iosPkgName) {
     this.iosPkgName = iosPkgName;
   }
 
 
-  public MobileAppBundleInfo oauth2ClientInfos(@javax.annotation.Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
+  public MobileAppBundleInfo oauth2ClientInfos(@Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
     this.oauth2ClientInfos = oauth2ClientInfos;
     return this;
   }
@@ -399,7 +402,7 @@ public class MobileAppBundleInfo {
    * List of available oauth2 clients
    * @return oauth2ClientInfos
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_CLIENT_INFOS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<OAuth2ClientInfo> getOauth2ClientInfos() {
@@ -409,12 +412,12 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_OAUTH2_CLIENT_INFOS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauth2ClientInfos(@javax.annotation.Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
+  public void setOauth2ClientInfos(@Nullable List<OAuth2ClientInfo> oauth2ClientInfos) {
     this.oauth2ClientInfos = oauth2ClientInfos;
   }
 
 
-  public MobileAppBundleInfo qrCodeEnabled(@javax.annotation.Nullable Boolean qrCodeEnabled) {
+  public MobileAppBundleInfo qrCodeEnabled(@Nullable Boolean qrCodeEnabled) {
     this.qrCodeEnabled = qrCodeEnabled;
     return this;
   }
@@ -423,7 +426,7 @@ public class MobileAppBundleInfo {
    * Indicates if qr code is available for bundle
    * @return qrCodeEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getQrCodeEnabled() {
@@ -433,7 +436,7 @@ public class MobileAppBundleInfo {
 
   @JsonProperty(value = JSON_PROPERTY_QR_CODE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQrCodeEnabled(@javax.annotation.Nullable Boolean qrCodeEnabled) {
+  public void setQrCodeEnabled(@Nullable Boolean qrCodeEnabled) {
     this.qrCodeEnabled = qrCodeEnabled;
   }
 
@@ -442,7 +445,7 @@ public class MobileAppBundleInfo {
    * Mobile app bundle title
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {

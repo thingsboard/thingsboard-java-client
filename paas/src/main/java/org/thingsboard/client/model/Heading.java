@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,36 +47,36 @@ import org.thingsboard.client.ApiClient;
   Heading.JSON_PROPERTY_VERTICAL_ALIGNMENT,
   Heading.JSON_PROPERTY_HEIGHT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Heading {
   public static final String JSON_PROPERTY_TEXT = "text";
-  @javax.annotation.Nullable
+  @Nullable
   private String text;
 
   public static final String JSON_PROPERTY_FONT = "font";
-  @javax.annotation.Nullable
+  @Nullable
   private Font font;
 
   public static final String JSON_PROPERTY_COLOR = "color";
-  @javax.annotation.Nullable
+  @Nullable
   private String color;
 
   public static final String JSON_PROPERTY_TEXT_ALIGNMENT = "textAlignment";
-  @javax.annotation.Nullable
+  @Nullable
   private TextAlignment textAlignment;
 
   public static final String JSON_PROPERTY_VERTICAL_ALIGNMENT = "verticalAlignment";
-  @javax.annotation.Nullable
+  @Nullable
   private VerticalAlignment verticalAlignment;
 
   public static final String JSON_PROPERTY_HEIGHT = "height";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer height;
 
   public Heading() { 
   }
 
-  public Heading text(@javax.annotation.Nullable String text) {
+  public Heading text(@Nullable String text) {
     this.text = text;
     return this;
   }
@@ -83,7 +85,7 @@ public class Heading {
    * Get text
    * @return text
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getText() {
@@ -93,12 +95,12 @@ public class Heading {
 
   @JsonProperty(value = JSON_PROPERTY_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setText(@javax.annotation.Nullable String text) {
+  public void setText(@Nullable String text) {
     this.text = text;
   }
 
 
-  public Heading font(@javax.annotation.Nullable Font font) {
+  public Heading font(@Nullable Font font) {
     this.font = font;
     return this;
   }
@@ -107,7 +109,7 @@ public class Heading {
    * Get font
    * @return font
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Font getFont() {
@@ -117,12 +119,12 @@ public class Heading {
 
   @JsonProperty(value = JSON_PROPERTY_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFont(@javax.annotation.Nullable Font font) {
+  public void setFont(@Nullable Font font) {
     this.font = font;
   }
 
 
-  public Heading color(@javax.annotation.Nullable String color) {
+  public Heading color(@Nullable String color) {
     this.color = color;
     return this;
   }
@@ -131,7 +133,7 @@ public class Heading {
    * Get color
    * @return color
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getColor() {
@@ -141,12 +143,12 @@ public class Heading {
 
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColor(@javax.annotation.Nullable String color) {
+  public void setColor(@Nullable String color) {
     this.color = color;
   }
 
 
-  public Heading textAlignment(@javax.annotation.Nullable TextAlignment textAlignment) {
+  public Heading textAlignment(@Nullable TextAlignment textAlignment) {
     this.textAlignment = textAlignment;
     return this;
   }
@@ -155,7 +157,7 @@ public class Heading {
    * Get textAlignment
    * @return textAlignment
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEXT_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TextAlignment getTextAlignment() {
@@ -165,12 +167,12 @@ public class Heading {
 
   @JsonProperty(value = JSON_PROPERTY_TEXT_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTextAlignment(@javax.annotation.Nullable TextAlignment textAlignment) {
+  public void setTextAlignment(@Nullable TextAlignment textAlignment) {
     this.textAlignment = textAlignment;
   }
 
 
-  public Heading verticalAlignment(@javax.annotation.Nullable VerticalAlignment verticalAlignment) {
+  public Heading verticalAlignment(@Nullable VerticalAlignment verticalAlignment) {
     this.verticalAlignment = verticalAlignment;
     return this;
   }
@@ -179,7 +181,7 @@ public class Heading {
    * Get verticalAlignment
    * @return verticalAlignment
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERTICAL_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public VerticalAlignment getVerticalAlignment() {
@@ -189,12 +191,12 @@ public class Heading {
 
   @JsonProperty(value = JSON_PROPERTY_VERTICAL_ALIGNMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVerticalAlignment(@javax.annotation.Nullable VerticalAlignment verticalAlignment) {
+  public void setVerticalAlignment(@Nullable VerticalAlignment verticalAlignment) {
     this.verticalAlignment = verticalAlignment;
   }
 
 
-  public Heading height(@javax.annotation.Nullable Integer height) {
+  public Heading height(@Nullable Integer height) {
     this.height = height;
     return this;
   }
@@ -203,7 +205,7 @@ public class Heading {
    * Get height
    * @return height
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HEIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getHeight() {
@@ -213,7 +215,7 @@ public class Heading {
 
   @JsonProperty(value = JSON_PROPERTY_HEIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHeight(@javax.annotation.Nullable Integer height) {
+  public void setHeight(@Nullable Integer height) {
     this.height = height;
   }
 

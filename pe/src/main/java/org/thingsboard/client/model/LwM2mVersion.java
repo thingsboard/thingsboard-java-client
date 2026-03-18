@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   LwM2mVersion.JSON_PROPERTY_SUPPORTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LwM2mVersion {
   public static final String JSON_PROPERTY_SUPPORTED = "supported";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean supported;
 
   public LwM2mVersion() { 
   }
 
-  public LwM2mVersion supported(@javax.annotation.Nullable Boolean supported) {
+  public LwM2mVersion supported(@Nullable Boolean supported) {
     this.supported = supported;
     return this;
   }
@@ -55,7 +57,7 @@ public class LwM2mVersion {
    * Get supported
    * @return supported
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSupported() {
@@ -65,7 +67,7 @@ public class LwM2mVersion {
 
   @JsonProperty(value = JSON_PROPERTY_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSupported(@javax.annotation.Nullable Boolean supported) {
+  public void setSupported(@Nullable Boolean supported) {
     this.supported = supported;
   }
 

@@ -46,12 +46,12 @@ public class EntityRelationApiTest extends AbstractApiTest {
         Asset building = new Asset();
         building.setName(TEST_PREFIX + "Building_" + timestamp);
         building.setType("building");
-        building = client.saveAsset(building, null, null, null, null);
+        building = client.saveAsset(building, null, null, null);
 
         Asset floor = new Asset();
         floor.setName(TEST_PREFIX + "Floor_" + timestamp);
         floor.setType("floor");
-        floor = client.saveAsset(floor, null, null, null, null);
+        floor = client.saveAsset(floor, null, null, null);
 
         Device device1 = new Device();
         device1.setName(TEST_PREFIX + "Sensor_" + timestamp + "_1");

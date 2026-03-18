@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,54 +55,54 @@ import org.thingsboard.client.ApiClient;
   Edge.JSON_PROPERTY_VERSION,
   Edge.JSON_PROPERTY_ADDITIONAL_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Edge {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private EdgeId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_ROOT_RULE_CHAIN_ID = "rootRuleChainId";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainId rootRuleChainId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String type;
 
   public static final String JSON_PROPERTY_LABEL = "label";
-  @javax.annotation.Nullable
+  @Nullable
   private String label;
 
   public static final String JSON_PROPERTY_ROUTING_KEY = "routingKey";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String routingKey;
 
   public static final String JSON_PROPERTY_SECRET = "secret";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String secret;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Edge() { 
@@ -119,7 +122,7 @@ public class Edge {
     this.rootRuleChainId = rootRuleChainId;
   }
 
-  public Edge id(@javax.annotation.Nullable EdgeId id) {
+  public Edge id(@Nullable EdgeId id) {
     this.id = id;
     return this;
   }
@@ -128,7 +131,7 @@ public class Edge {
    * JSON object with the Edge Id. Specify this field to update the Edge. Referencing non-existing Edge Id will cause error. Omit this field to create new Edge.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdgeId getId() {
@@ -138,7 +141,7 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EdgeId id) {
+  public void setId(@Nullable EdgeId id) {
     this.id = id;
   }
 
@@ -147,7 +150,7 @@ public class Edge {
    * Timestamp of the edge creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -161,7 +164,7 @@ public class Edge {
    * JSON object with Tenant Id. Use &#39;assignDeviceToTenant&#39; to change the Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -175,7 +178,7 @@ public class Edge {
    * JSON object with Customer Id. Use &#39;assignEdgeToCustomer&#39; to change the Customer Id.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -189,7 +192,7 @@ public class Edge {
    * JSON object with Root Rule Chain Id. Use &#39;setEdgeRootRuleChain&#39; to change the Root Rule Chain Id.
    * @return rootRuleChainId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ROOT_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainId getRootRuleChainId() {
@@ -199,7 +202,7 @@ public class Edge {
 
 
 
-  public Edge name(@javax.annotation.Nonnull String name) {
+  public Edge name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -208,7 +211,7 @@ public class Edge {
    * Unique Edge Name in scope of Tenant
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -218,12 +221,12 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public Edge type(@javax.annotation.Nonnull String type) {
+  public Edge type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -232,7 +235,7 @@ public class Edge {
    * Edge type
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getType() {
@@ -242,12 +245,12 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 
 
-  public Edge label(@javax.annotation.Nullable String label) {
+  public Edge label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -256,7 +259,7 @@ public class Edge {
    * Label that may be used in widgets
    * @return label
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabel() {
@@ -266,12 +269,12 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabel(@javax.annotation.Nullable String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
 
-  public Edge routingKey(@javax.annotation.Nonnull String routingKey) {
+  public Edge routingKey(@Nonnull String routingKey) {
     this.routingKey = routingKey;
     return this;
   }
@@ -280,7 +283,7 @@ public class Edge {
    * Edge routing key (&#39;username&#39;) to authorize on cloud
    * @return routingKey
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ROUTING_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getRoutingKey() {
@@ -290,12 +293,12 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_ROUTING_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRoutingKey(@javax.annotation.Nonnull String routingKey) {
+  public void setRoutingKey(@Nonnull String routingKey) {
     this.routingKey = routingKey;
   }
 
 
-  public Edge secret(@javax.annotation.Nonnull String secret) {
+  public Edge secret(@Nonnull String secret) {
     this.secret = secret;
     return this;
   }
@@ -304,7 +307,7 @@ public class Edge {
    * Edge secret (&#39;password&#39;) to authorize on cloud
    * @return secret
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_SECRET, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getSecret() {
@@ -314,12 +317,12 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_SECRET, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSecret(@javax.annotation.Nonnull String secret) {
+  public void setSecret(@Nonnull String secret) {
     this.secret = secret;
   }
 
 
-  public Edge version(@javax.annotation.Nullable Long version) {
+  public Edge version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -328,7 +331,7 @@ public class Edge {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -338,12 +341,12 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 
 
-  public Edge additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public Edge additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -352,7 +355,7 @@ public class Edge {
    * Additional parameters of the edge. May include: &#39;description&#39; (string).
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -362,7 +365,7 @@ public class Edge {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 

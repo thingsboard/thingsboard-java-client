@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,32 +46,32 @@ import org.thingsboard.client.ApiClient;
   AssetProfileInfo.JSON_PROPERTY_DEFAULT_DASHBOARD_ID,
   AssetProfileInfo.JSON_PROPERTY_TENANT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AssetProfileInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
-  @javax.annotation.Nullable
+  @Nullable
   private String image;
 
   public static final String JSON_PROPERTY_DEFAULT_DASHBOARD_ID = "defaultDashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId defaultDashboardId;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public AssetProfileInfo() { 
   }
 
-  public AssetProfileInfo id(@javax.annotation.Nullable EntityId id) {
+  public AssetProfileInfo id(@Nullable EntityId id) {
     this.id = id;
     return this;
   }
@@ -78,7 +80,7 @@ public class AssetProfileInfo {
    * JSON object with the entity Id. 
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getId() {
@@ -88,12 +90,12 @@ public class AssetProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EntityId id) {
+  public void setId(@Nullable EntityId id) {
     this.id = id;
   }
 
 
-  public AssetProfileInfo name(@javax.annotation.Nullable String name) {
+  public AssetProfileInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -102,7 +104,7 @@ public class AssetProfileInfo {
    * Entity Name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -112,12 +114,12 @@ public class AssetProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public AssetProfileInfo image(@javax.annotation.Nullable String image) {
+  public AssetProfileInfo image(@Nullable String image) {
     this.image = image;
     return this;
   }
@@ -126,7 +128,7 @@ public class AssetProfileInfo {
    * Either URL or Base64 data of the icon. Used in the mobile application to visualize set of asset profiles in the grid view. 
    * @return image
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
@@ -136,12 +138,12 @@ public class AssetProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_IMAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setImage(@javax.annotation.Nullable String image) {
+  public void setImage(@Nullable String image) {
     this.image = image;
   }
 
 
-  public AssetProfileInfo defaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public AssetProfileInfo defaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
     return this;
   }
@@ -150,7 +152,7 @@ public class AssetProfileInfo {
    * Reference to the dashboard. Used in the mobile application to open the default dashboard when user navigates to asset details.
    * @return defaultDashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDefaultDashboardId() {
@@ -160,12 +162,12 @@ public class AssetProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultDashboardId(@javax.annotation.Nullable DashboardId defaultDashboardId) {
+  public void setDefaultDashboardId(@Nullable DashboardId defaultDashboardId) {
     this.defaultDashboardId = defaultDashboardId;
   }
 
 
-  public AssetProfileInfo tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public AssetProfileInfo tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -174,7 +176,7 @@ public class AssetProfileInfo {
    * Tenant id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -184,7 +186,7 @@ public class AssetProfileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,56 +50,56 @@ import org.thingsboard.client.ApiClient;
   OtherConfiguration.JSON_PROPERTY_SW_UPDATE_RESOURCE,
   OtherConfiguration.JSON_PROPERTY_DEFAULT_OBJECT_I_D_VER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OtherConfiguration {
   public static final String JSON_PROPERTY_POWER_MODE = "powerMode";
-  @javax.annotation.Nullable
+  @Nullable
   private PowerMode powerMode;
 
   public static final String JSON_PROPERTY_PSM_ACTIVITY_TIMER = "psmActivityTimer";
-  @javax.annotation.Nullable
+  @Nullable
   private Long psmActivityTimer;
 
   public static final String JSON_PROPERTY_EDRX_CYCLE = "edrxCycle";
-  @javax.annotation.Nullable
+  @Nullable
   private Long edrxCycle;
 
   public static final String JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW = "pagingTransmissionWindow";
-  @javax.annotation.Nullable
+  @Nullable
   private Long pagingTransmissionWindow;
 
   public static final String JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO = "useObject19ForOtaInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean useObject19ForOtaInfo;
 
   public static final String JSON_PROPERTY_FW_UPDATE_STRATEGY = "fwUpdateStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer fwUpdateStrategy;
 
   public static final String JSON_PROPERTY_SW_UPDATE_STRATEGY = "swUpdateStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer swUpdateStrategy;
 
   public static final String JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT = "clientOnlyObserveAfterConnect";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer clientOnlyObserveAfterConnect;
 
   public static final String JSON_PROPERTY_FW_UPDATE_RESOURCE = "fwUpdateResource";
-  @javax.annotation.Nullable
+  @Nullable
   private String fwUpdateResource;
 
   public static final String JSON_PROPERTY_SW_UPDATE_RESOURCE = "swUpdateResource";
-  @javax.annotation.Nullable
+  @Nullable
   private String swUpdateResource;
 
   public static final String JSON_PROPERTY_DEFAULT_OBJECT_I_D_VER = "defaultObjectIDVer";
-  @javax.annotation.Nullable
+  @Nullable
   private String defaultObjectIDVer;
 
   public OtherConfiguration() { 
   }
 
-  public OtherConfiguration powerMode(@javax.annotation.Nullable PowerMode powerMode) {
+  public OtherConfiguration powerMode(@Nullable PowerMode powerMode) {
     this.powerMode = powerMode;
     return this;
   }
@@ -106,7 +108,7 @@ public class OtherConfiguration {
    * Get powerMode
    * @return powerMode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POWER_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public PowerMode getPowerMode() {
@@ -116,12 +118,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_POWER_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPowerMode(@javax.annotation.Nullable PowerMode powerMode) {
+  public void setPowerMode(@Nullable PowerMode powerMode) {
     this.powerMode = powerMode;
   }
 
 
-  public OtherConfiguration psmActivityTimer(@javax.annotation.Nullable Long psmActivityTimer) {
+  public OtherConfiguration psmActivityTimer(@Nullable Long psmActivityTimer) {
     this.psmActivityTimer = psmActivityTimer;
     return this;
   }
@@ -130,7 +132,7 @@ public class OtherConfiguration {
    * Get psmActivityTimer
    * @return psmActivityTimer
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PSM_ACTIVITY_TIMER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPsmActivityTimer() {
@@ -140,12 +142,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PSM_ACTIVITY_TIMER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPsmActivityTimer(@javax.annotation.Nullable Long psmActivityTimer) {
+  public void setPsmActivityTimer(@Nullable Long psmActivityTimer) {
     this.psmActivityTimer = psmActivityTimer;
   }
 
 
-  public OtherConfiguration edrxCycle(@javax.annotation.Nullable Long edrxCycle) {
+  public OtherConfiguration edrxCycle(@Nullable Long edrxCycle) {
     this.edrxCycle = edrxCycle;
     return this;
   }
@@ -154,7 +156,7 @@ public class OtherConfiguration {
    * Get edrxCycle
    * @return edrxCycle
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDRX_CYCLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEdrxCycle() {
@@ -164,12 +166,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_EDRX_CYCLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdrxCycle(@javax.annotation.Nullable Long edrxCycle) {
+  public void setEdrxCycle(@Nullable Long edrxCycle) {
     this.edrxCycle = edrxCycle;
   }
 
 
-  public OtherConfiguration pagingTransmissionWindow(@javax.annotation.Nullable Long pagingTransmissionWindow) {
+  public OtherConfiguration pagingTransmissionWindow(@Nullable Long pagingTransmissionWindow) {
     this.pagingTransmissionWindow = pagingTransmissionWindow;
     return this;
   }
@@ -178,7 +180,7 @@ public class OtherConfiguration {
    * Get pagingTransmissionWindow
    * @return pagingTransmissionWindow
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPagingTransmissionWindow() {
@@ -188,12 +190,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PAGING_TRANSMISSION_WINDOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPagingTransmissionWindow(@javax.annotation.Nullable Long pagingTransmissionWindow) {
+  public void setPagingTransmissionWindow(@Nullable Long pagingTransmissionWindow) {
     this.pagingTransmissionWindow = pagingTransmissionWindow;
   }
 
 
-  public OtherConfiguration useObject19ForOtaInfo(@javax.annotation.Nullable Boolean useObject19ForOtaInfo) {
+  public OtherConfiguration useObject19ForOtaInfo(@Nullable Boolean useObject19ForOtaInfo) {
     this.useObject19ForOtaInfo = useObject19ForOtaInfo;
     return this;
   }
@@ -202,7 +204,7 @@ public class OtherConfiguration {
    * Get useObject19ForOtaInfo
    * @return useObject19ForOtaInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUseObject19ForOtaInfo() {
@@ -212,12 +214,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_USE_OBJECT19_FOR_OTA_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUseObject19ForOtaInfo(@javax.annotation.Nullable Boolean useObject19ForOtaInfo) {
+  public void setUseObject19ForOtaInfo(@Nullable Boolean useObject19ForOtaInfo) {
     this.useObject19ForOtaInfo = useObject19ForOtaInfo;
   }
 
 
-  public OtherConfiguration fwUpdateStrategy(@javax.annotation.Nullable Integer fwUpdateStrategy) {
+  public OtherConfiguration fwUpdateStrategy(@Nullable Integer fwUpdateStrategy) {
     this.fwUpdateStrategy = fwUpdateStrategy;
     return this;
   }
@@ -226,7 +228,7 @@ public class OtherConfiguration {
    * Get fwUpdateStrategy
    * @return fwUpdateStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getFwUpdateStrategy() {
@@ -236,12 +238,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFwUpdateStrategy(@javax.annotation.Nullable Integer fwUpdateStrategy) {
+  public void setFwUpdateStrategy(@Nullable Integer fwUpdateStrategy) {
     this.fwUpdateStrategy = fwUpdateStrategy;
   }
 
 
-  public OtherConfiguration swUpdateStrategy(@javax.annotation.Nullable Integer swUpdateStrategy) {
+  public OtherConfiguration swUpdateStrategy(@Nullable Integer swUpdateStrategy) {
     this.swUpdateStrategy = swUpdateStrategy;
     return this;
   }
@@ -250,7 +252,7 @@ public class OtherConfiguration {
    * Get swUpdateStrategy
    * @return swUpdateStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getSwUpdateStrategy() {
@@ -260,12 +262,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSwUpdateStrategy(@javax.annotation.Nullable Integer swUpdateStrategy) {
+  public void setSwUpdateStrategy(@Nullable Integer swUpdateStrategy) {
     this.swUpdateStrategy = swUpdateStrategy;
   }
 
 
-  public OtherConfiguration clientOnlyObserveAfterConnect(@javax.annotation.Nullable Integer clientOnlyObserveAfterConnect) {
+  public OtherConfiguration clientOnlyObserveAfterConnect(@Nullable Integer clientOnlyObserveAfterConnect) {
     this.clientOnlyObserveAfterConnect = clientOnlyObserveAfterConnect;
     return this;
   }
@@ -274,7 +276,7 @@ public class OtherConfiguration {
    * Get clientOnlyObserveAfterConnect
    * @return clientOnlyObserveAfterConnect
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getClientOnlyObserveAfterConnect() {
@@ -284,12 +286,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_CLIENT_ONLY_OBSERVE_AFTER_CONNECT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientOnlyObserveAfterConnect(@javax.annotation.Nullable Integer clientOnlyObserveAfterConnect) {
+  public void setClientOnlyObserveAfterConnect(@Nullable Integer clientOnlyObserveAfterConnect) {
     this.clientOnlyObserveAfterConnect = clientOnlyObserveAfterConnect;
   }
 
 
-  public OtherConfiguration fwUpdateResource(@javax.annotation.Nullable String fwUpdateResource) {
+  public OtherConfiguration fwUpdateResource(@Nullable String fwUpdateResource) {
     this.fwUpdateResource = fwUpdateResource;
     return this;
   }
@@ -298,7 +300,7 @@ public class OtherConfiguration {
    * Get fwUpdateResource
    * @return fwUpdateResource
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_RESOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFwUpdateResource() {
@@ -308,12 +310,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_FW_UPDATE_RESOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFwUpdateResource(@javax.annotation.Nullable String fwUpdateResource) {
+  public void setFwUpdateResource(@Nullable String fwUpdateResource) {
     this.fwUpdateResource = fwUpdateResource;
   }
 
 
-  public OtherConfiguration swUpdateResource(@javax.annotation.Nullable String swUpdateResource) {
+  public OtherConfiguration swUpdateResource(@Nullable String swUpdateResource) {
     this.swUpdateResource = swUpdateResource;
     return this;
   }
@@ -322,7 +324,7 @@ public class OtherConfiguration {
    * Get swUpdateResource
    * @return swUpdateResource
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_RESOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSwUpdateResource() {
@@ -332,12 +334,12 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_SW_UPDATE_RESOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSwUpdateResource(@javax.annotation.Nullable String swUpdateResource) {
+  public void setSwUpdateResource(@Nullable String swUpdateResource) {
     this.swUpdateResource = swUpdateResource;
   }
 
 
-  public OtherConfiguration defaultObjectIDVer(@javax.annotation.Nullable String defaultObjectIDVer) {
+  public OtherConfiguration defaultObjectIDVer(@Nullable String defaultObjectIDVer) {
     this.defaultObjectIDVer = defaultObjectIDVer;
     return this;
   }
@@ -346,7 +348,7 @@ public class OtherConfiguration {
    * Get defaultObjectIDVer
    * @return defaultObjectIDVer
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_OBJECT_I_D_VER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDefaultObjectIDVer() {
@@ -356,7 +358,7 @@ public class OtherConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_OBJECT_I_D_VER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultObjectIDVer(@javax.annotation.Nullable String defaultObjectIDVer) {
+  public void setDefaultObjectIDVer(@Nullable String defaultObjectIDVer) {
     this.defaultObjectIDVer = defaultObjectIDVer;
   }
 

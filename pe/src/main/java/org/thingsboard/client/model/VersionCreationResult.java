@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,36 +45,36 @@ import org.thingsboard.client.ApiClient;
   VersionCreationResult.JSON_PROPERTY_ERROR,
   VersionCreationResult.JSON_PROPERTY_DONE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionCreationResult {
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityVersion version;
 
   public static final String JSON_PROPERTY_ADDED = "added";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer added;
 
   public static final String JSON_PROPERTY_MODIFIED = "modified";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer modified;
 
   public static final String JSON_PROPERTY_REMOVED = "removed";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer removed;
 
   public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
+  @Nullable
   private String error;
 
   public static final String JSON_PROPERTY_DONE = "done";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean done;
 
   public VersionCreationResult() { 
   }
 
-  public VersionCreationResult version(@javax.annotation.Nullable EntityVersion version) {
+  public VersionCreationResult version(@Nullable EntityVersion version) {
     this.version = version;
     return this;
   }
@@ -81,7 +83,7 @@ public class VersionCreationResult {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityVersion getVersion() {
@@ -91,12 +93,12 @@ public class VersionCreationResult {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable EntityVersion version) {
+  public void setVersion(@Nullable EntityVersion version) {
     this.version = version;
   }
 
 
-  public VersionCreationResult added(@javax.annotation.Nullable Integer added) {
+  public VersionCreationResult added(@Nullable Integer added) {
     this.added = added;
     return this;
   }
@@ -105,7 +107,7 @@ public class VersionCreationResult {
    * Get added
    * @return added
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getAdded() {
@@ -115,12 +117,12 @@ public class VersionCreationResult {
 
   @JsonProperty(value = JSON_PROPERTY_ADDED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdded(@javax.annotation.Nullable Integer added) {
+  public void setAdded(@Nullable Integer added) {
     this.added = added;
   }
 
 
-  public VersionCreationResult modified(@javax.annotation.Nullable Integer modified) {
+  public VersionCreationResult modified(@Nullable Integer modified) {
     this.modified = modified;
     return this;
   }
@@ -129,7 +131,7 @@ public class VersionCreationResult {
    * Get modified
    * @return modified
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MODIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getModified() {
@@ -139,12 +141,12 @@ public class VersionCreationResult {
 
   @JsonProperty(value = JSON_PROPERTY_MODIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setModified(@javax.annotation.Nullable Integer modified) {
+  public void setModified(@Nullable Integer modified) {
     this.modified = modified;
   }
 
 
-  public VersionCreationResult removed(@javax.annotation.Nullable Integer removed) {
+  public VersionCreationResult removed(@Nullable Integer removed) {
     this.removed = removed;
     return this;
   }
@@ -153,7 +155,7 @@ public class VersionCreationResult {
    * Get removed
    * @return removed
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REMOVED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getRemoved() {
@@ -163,12 +165,12 @@ public class VersionCreationResult {
 
   @JsonProperty(value = JSON_PROPERTY_REMOVED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRemoved(@javax.annotation.Nullable Integer removed) {
+  public void setRemoved(@Nullable Integer removed) {
     this.removed = removed;
   }
 
 
-  public VersionCreationResult error(@javax.annotation.Nullable String error) {
+  public VersionCreationResult error(@Nullable String error) {
     this.error = error;
     return this;
   }
@@ -177,7 +179,7 @@ public class VersionCreationResult {
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getError() {
@@ -187,12 +189,12 @@ public class VersionCreationResult {
 
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable String error) {
+  public void setError(@Nullable String error) {
     this.error = error;
   }
 
 
-  public VersionCreationResult done(@javax.annotation.Nullable Boolean done) {
+  public VersionCreationResult done(@Nullable Boolean done) {
     this.done = done;
     return this;
   }
@@ -201,7 +203,7 @@ public class VersionCreationResult {
    * Get done
    * @return done
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDone() {
@@ -211,7 +213,7 @@ public class VersionCreationResult {
 
   @JsonProperty(value = JSON_PROPERTY_DONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDone(@javax.annotation.Nullable Boolean done) {
+  public void setDone(@Nullable Boolean done) {
     this.done = done;
   }
 

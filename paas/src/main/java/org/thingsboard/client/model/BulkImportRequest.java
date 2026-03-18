@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,28 +44,28 @@ import org.thingsboard.client.ApiClient;
   BulkImportRequest.JSON_PROPERTY_CUSTOMER_ID,
   BulkImportRequest.JSON_PROPERTY_ENTITY_GROUP_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportRequest {
   public static final String JSON_PROPERTY_FILE = "file";
-  @javax.annotation.Nullable
+  @Nullable
   private String _file;
 
   public static final String JSON_PROPERTY_MAPPING = "mapping";
-  @javax.annotation.Nullable
+  @Nullable
   private Mapping mapping;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_ENTITY_GROUP_ID = "entityGroupId";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityGroupId;
 
   public BulkImportRequest() { 
   }
 
-  public BulkImportRequest _file(@javax.annotation.Nullable String _file) {
+  public BulkImportRequest _file(@Nullable String _file) {
     this._file = _file;
     return this;
   }
@@ -72,7 +74,7 @@ public class BulkImportRequest {
    * Get _file
    * @return _file
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFile() {
@@ -82,12 +84,12 @@ public class BulkImportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_FILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFile(@javax.annotation.Nullable String _file) {
+  public void setFile(@Nullable String _file) {
     this._file = _file;
   }
 
 
-  public BulkImportRequest mapping(@javax.annotation.Nullable Mapping mapping) {
+  public BulkImportRequest mapping(@Nullable Mapping mapping) {
     this.mapping = mapping;
     return this;
   }
@@ -96,7 +98,7 @@ public class BulkImportRequest {
    * Get mapping
    * @return mapping
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAPPING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Mapping getMapping() {
@@ -106,12 +108,12 @@ public class BulkImportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_MAPPING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMapping(@javax.annotation.Nullable Mapping mapping) {
+  public void setMapping(@Nullable Mapping mapping) {
     this.mapping = mapping;
   }
 
 
-  public BulkImportRequest customerId(@javax.annotation.Nullable CustomerId customerId) {
+  public BulkImportRequest customerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
     return this;
   }
@@ -120,7 +122,7 @@ public class BulkImportRequest {
    * Get customerId
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -130,12 +132,12 @@ public class BulkImportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerId(@javax.annotation.Nullable CustomerId customerId) {
+  public void setCustomerId(@Nullable CustomerId customerId) {
     this.customerId = customerId;
   }
 
 
-  public BulkImportRequest entityGroupId(@javax.annotation.Nullable String entityGroupId) {
+  public BulkImportRequest entityGroupId(@Nullable String entityGroupId) {
     this.entityGroupId = entityGroupId;
     return this;
   }
@@ -144,7 +146,7 @@ public class BulkImportRequest {
    * Get entityGroupId
    * @return entityGroupId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityGroupId() {
@@ -154,7 +156,7 @@ public class BulkImportRequest {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityGroupId(@javax.annotation.Nullable String entityGroupId) {
+  public void setEntityGroupId(@Nullable String entityGroupId) {
     this.entityGroupId = entityGroupId;
   }
 

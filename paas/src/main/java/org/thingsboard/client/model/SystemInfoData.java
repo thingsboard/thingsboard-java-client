@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,44 +46,44 @@ import org.thingsboard.client.ApiClient;
   SystemInfoData.JSON_PROPERTY_DISC_USAGE,
   SystemInfoData.JSON_PROPERTY_TOTAL_DISC_SPACE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SystemInfoData {
   public static final String JSON_PROPERTY_SERVICE_ID = "serviceId";
-  @javax.annotation.Nullable
+  @Nullable
   private String serviceId;
 
   public static final String JSON_PROPERTY_SERVICE_TYPE = "serviceType";
-  @javax.annotation.Nullable
+  @Nullable
   private String serviceType;
 
   public static final String JSON_PROPERTY_CPU_USAGE = "cpuUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private Long cpuUsage;
 
   public static final String JSON_PROPERTY_CPU_COUNT = "cpuCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long cpuCount;
 
   public static final String JSON_PROPERTY_MEMORY_USAGE = "memoryUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private Long memoryUsage;
 
   public static final String JSON_PROPERTY_TOTAL_MEMORY = "totalMemory";
-  @javax.annotation.Nullable
+  @Nullable
   private Long totalMemory;
 
   public static final String JSON_PROPERTY_DISC_USAGE = "discUsage";
-  @javax.annotation.Nullable
+  @Nullable
   private Long discUsage;
 
   public static final String JSON_PROPERTY_TOTAL_DISC_SPACE = "totalDiscSpace";
-  @javax.annotation.Nullable
+  @Nullable
   private Long totalDiscSpace;
 
   public SystemInfoData() { 
   }
 
-  public SystemInfoData serviceId(@javax.annotation.Nullable String serviceId) {
+  public SystemInfoData serviceId(@Nullable String serviceId) {
     this.serviceId = serviceId;
     return this;
   }
@@ -90,7 +92,7 @@ public class SystemInfoData {
    * Service Id.
    * @return serviceId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SERVICE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getServiceId() {
@@ -100,12 +102,12 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_SERVICE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceId(@javax.annotation.Nullable String serviceId) {
+  public void setServiceId(@Nullable String serviceId) {
     this.serviceId = serviceId;
   }
 
 
-  public SystemInfoData serviceType(@javax.annotation.Nullable String serviceType) {
+  public SystemInfoData serviceType(@Nullable String serviceType) {
     this.serviceType = serviceType;
     return this;
   }
@@ -114,7 +116,7 @@ public class SystemInfoData {
    * Service type.
    * @return serviceType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SERVICE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getServiceType() {
@@ -124,12 +126,12 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_SERVICE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceType(@javax.annotation.Nullable String serviceType) {
+  public void setServiceType(@Nullable String serviceType) {
     this.serviceType = serviceType;
   }
 
 
-  public SystemInfoData cpuUsage(@javax.annotation.Nullable Long cpuUsage) {
+  public SystemInfoData cpuUsage(@Nullable Long cpuUsage) {
     this.cpuUsage = cpuUsage;
     return this;
   }
@@ -138,7 +140,7 @@ public class SystemInfoData {
    * CPU usage, in percent.
    * @return cpuUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CPU_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCpuUsage() {
@@ -148,12 +150,12 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_CPU_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCpuUsage(@javax.annotation.Nullable Long cpuUsage) {
+  public void setCpuUsage(@Nullable Long cpuUsage) {
     this.cpuUsage = cpuUsage;
   }
 
 
-  public SystemInfoData cpuCount(@javax.annotation.Nullable Long cpuCount) {
+  public SystemInfoData cpuCount(@Nullable Long cpuCount) {
     this.cpuCount = cpuCount;
     return this;
   }
@@ -162,7 +164,7 @@ public class SystemInfoData {
    * Total CPU usage.
    * @return cpuCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CPU_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCpuCount() {
@@ -172,12 +174,12 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_CPU_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCpuCount(@javax.annotation.Nullable Long cpuCount) {
+  public void setCpuCount(@Nullable Long cpuCount) {
     this.cpuCount = cpuCount;
   }
 
 
-  public SystemInfoData memoryUsage(@javax.annotation.Nullable Long memoryUsage) {
+  public SystemInfoData memoryUsage(@Nullable Long memoryUsage) {
     this.memoryUsage = memoryUsage;
     return this;
   }
@@ -186,7 +188,7 @@ public class SystemInfoData {
    * Memory usage, in percent.
    * @return memoryUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MEMORY_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMemoryUsage() {
@@ -196,12 +198,12 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_MEMORY_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMemoryUsage(@javax.annotation.Nullable Long memoryUsage) {
+  public void setMemoryUsage(@Nullable Long memoryUsage) {
     this.memoryUsage = memoryUsage;
   }
 
 
-  public SystemInfoData totalMemory(@javax.annotation.Nullable Long totalMemory) {
+  public SystemInfoData totalMemory(@Nullable Long totalMemory) {
     this.totalMemory = totalMemory;
     return this;
   }
@@ -210,7 +212,7 @@ public class SystemInfoData {
    * Total memory in bytes.
    * @return totalMemory
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_MEMORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTotalMemory() {
@@ -220,12 +222,12 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_MEMORY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalMemory(@javax.annotation.Nullable Long totalMemory) {
+  public void setTotalMemory(@Nullable Long totalMemory) {
     this.totalMemory = totalMemory;
   }
 
 
-  public SystemInfoData discUsage(@javax.annotation.Nullable Long discUsage) {
+  public SystemInfoData discUsage(@Nullable Long discUsage) {
     this.discUsage = discUsage;
     return this;
   }
@@ -234,7 +236,7 @@ public class SystemInfoData {
    * Disk usage, in percent.
    * @return discUsage
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DISC_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDiscUsage() {
@@ -244,12 +246,12 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_DISC_USAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDiscUsage(@javax.annotation.Nullable Long discUsage) {
+  public void setDiscUsage(@Nullable Long discUsage) {
     this.discUsage = discUsage;
   }
 
 
-  public SystemInfoData totalDiscSpace(@javax.annotation.Nullable Long totalDiscSpace) {
+  public SystemInfoData totalDiscSpace(@Nullable Long totalDiscSpace) {
     this.totalDiscSpace = totalDiscSpace;
     return this;
   }
@@ -258,7 +260,7 @@ public class SystemInfoData {
    * Total disc space in bytes.
    * @return totalDiscSpace
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOTAL_DISC_SPACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTotalDiscSpace() {
@@ -268,7 +270,7 @@ public class SystemInfoData {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_DISC_SPACE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalDiscSpace(@javax.annotation.Nullable Long totalDiscSpace) {
+  public void setTotalDiscSpace(@Nullable Long totalDiscSpace) {
     this.totalDiscSpace = totalDiscSpace;
   }
 

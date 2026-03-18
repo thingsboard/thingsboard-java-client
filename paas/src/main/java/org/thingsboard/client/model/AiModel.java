@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,30 +48,30 @@ import org.thingsboard.client.ApiClient;
   AiModel.JSON_PROPERTY_NAME,
   AiModel.JSON_PROPERTY_CONFIGURATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AiModel {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private AiModelId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Long version = 1l;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
-  @javax.annotation.Nullable
+  @Nullable
   private AiModelConfig _configuration;
 
   public AiModel() { 
@@ -86,7 +89,7 @@ public class AiModel {
     this.version = version;
   }
 
-  public AiModel id(@javax.annotation.Nullable AiModelId id) {
+  public AiModel id(@Nullable AiModelId id) {
     this.id = id;
     return this;
   }
@@ -95,7 +98,7 @@ public class AiModel {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AiModelId getId() {
@@ -105,7 +108,7 @@ public class AiModel {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AiModelId id) {
+  public void setId(@Nullable AiModelId id) {
     this.id = id;
   }
 
@@ -114,7 +117,7 @@ public class AiModel {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -128,7 +131,7 @@ public class AiModel {
    * JSON object representing the ID of the tenant associated with this AI model
    * @return tenantId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TenantId getTenantId() {
@@ -142,7 +145,7 @@ public class AiModel {
    * Version of the AI model record; increments automatically whenever the record is changed
    * @return version
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Long getVersion() {
@@ -152,7 +155,7 @@ public class AiModel {
 
 
 
-  public AiModel name(@javax.annotation.Nonnull String name) {
+  public AiModel name(@Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -161,7 +164,7 @@ public class AiModel {
    * Display name for this AI model configuration; not the technical model identifier
    * @return name
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getName() {
@@ -171,12 +174,12 @@ public class AiModel {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  public void setName(@Nonnull String name) {
     this.name = name;
   }
 
 
-  public AiModel _configuration(@javax.annotation.Nullable AiModelConfig _configuration) {
+  public AiModel _configuration(@Nullable AiModelConfig _configuration) {
     this._configuration = _configuration;
     return this;
   }
@@ -185,7 +188,7 @@ public class AiModel {
    * Configuration of the AI model
    * @return _configuration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AiModelConfig getConfiguration() {
@@ -195,7 +198,7 @@ public class AiModel {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfiguration(@javax.annotation.Nullable AiModelConfig _configuration) {
+  public void setConfiguration(@Nullable AiModelConfig _configuration) {
     this._configuration = _configuration;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   RepositorySettingsInfo.JSON_PROPERTY_CONFIGURED,
   RepositorySettingsInfo.JSON_PROPERTY_READ_ONLY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RepositorySettingsInfo {
   public static final String JSON_PROPERTY_CONFIGURED = "configured";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean configured;
 
   public static final String JSON_PROPERTY_READ_ONLY = "readOnly";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean readOnly;
 
   public RepositorySettingsInfo() { 
   }
 
-  public RepositorySettingsInfo configured(@javax.annotation.Nullable Boolean configured) {
+  public RepositorySettingsInfo configured(@Nullable Boolean configured) {
     this.configured = configured;
     return this;
   }
@@ -60,7 +62,7 @@ public class RepositorySettingsInfo {
    * Get configured
    * @return configured
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONFIGURED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getConfigured() {
@@ -70,12 +72,12 @@ public class RepositorySettingsInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CONFIGURED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigured(@javax.annotation.Nullable Boolean configured) {
+  public void setConfigured(@Nullable Boolean configured) {
     this.configured = configured;
   }
 
 
-  public RepositorySettingsInfo readOnly(@javax.annotation.Nullable Boolean readOnly) {
+  public RepositorySettingsInfo readOnly(@Nullable Boolean readOnly) {
     this.readOnly = readOnly;
     return this;
   }
@@ -84,7 +86,7 @@ public class RepositorySettingsInfo {
    * Get readOnly
    * @return readOnly
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getReadOnly() {
@@ -94,7 +96,7 @@ public class RepositorySettingsInfo {
 
   @JsonProperty(value = JSON_PROPERTY_READ_ONLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReadOnly(@javax.annotation.Nullable Boolean readOnly) {
+  public void setReadOnly(@Nullable Boolean readOnly) {
     this.readOnly = readOnly;
   }
 

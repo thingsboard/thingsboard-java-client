@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -57,74 +60,74 @@ import org.thingsboard.client.ApiClient;
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_ADDITIONAL_INFO,
   OAuth2ClientRegistrationTemplate.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2ClientRegistrationTemplate {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private OAuth2ClientRegistrationTemplateId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_PROVIDER_ID = "providerId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String providerId;
 
   public static final String JSON_PROPERTY_MAPPER_CONFIG = "mapperConfig";
-  @javax.annotation.Nullable
+  @Nullable
   private OAuth2MapperConfig mapperConfig;
 
   public static final String JSON_PROPERTY_AUTHORIZATION_URI = "authorizationUri";
-  @javax.annotation.Nullable
+  @Nullable
   private String authorizationUri;
 
   public static final String JSON_PROPERTY_ACCESS_TOKEN_URI = "accessTokenUri";
-  @javax.annotation.Nullable
+  @Nullable
   private String accessTokenUri;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> scope = new ArrayList<>();
 
   public static final String JSON_PROPERTY_USER_INFO_URI = "userInfoUri";
-  @javax.annotation.Nullable
+  @Nullable
   private String userInfoUri;
 
   public static final String JSON_PROPERTY_USER_NAME_ATTRIBUTE_NAME = "userNameAttributeName";
-  @javax.annotation.Nullable
+  @Nullable
   private String userNameAttributeName;
 
   public static final String JSON_PROPERTY_JWK_SET_URI = "jwkSetUri";
-  @javax.annotation.Nullable
+  @Nullable
   private String jwkSetUri;
 
   public static final String JSON_PROPERTY_CLIENT_AUTHENTICATION_METHOD = "clientAuthenticationMethod";
-  @javax.annotation.Nullable
+  @Nullable
   private String clientAuthenticationMethod;
 
   public static final String JSON_PROPERTY_COMMENT = "comment";
-  @javax.annotation.Nullable
+  @Nullable
   private String comment;
 
   public static final String JSON_PROPERTY_LOGIN_BUTTON_ICON = "loginButtonIcon";
-  @javax.annotation.Nullable
+  @Nullable
   private String loginButtonIcon;
 
   public static final String JSON_PROPERTY_LOGIN_BUTTON_LABEL = "loginButtonLabel";
-  @javax.annotation.Nullable
+  @Nullable
   private String loginButtonLabel;
 
   public static final String JSON_PROPERTY_HELP_LINK = "helpLink";
-  @javax.annotation.Nullable
+  @Nullable
   private String helpLink;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public OAuth2ClientRegistrationTemplate() { 
@@ -138,7 +141,7 @@ public class OAuth2ClientRegistrationTemplate {
     this.createdTime = createdTime;
   }
 
-  public OAuth2ClientRegistrationTemplate id(@javax.annotation.Nullable OAuth2ClientRegistrationTemplateId id) {
+  public OAuth2ClientRegistrationTemplate id(@Nullable OAuth2ClientRegistrationTemplateId id) {
     this.id = id;
     return this;
   }
@@ -147,7 +150,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OAuth2ClientRegistrationTemplateId getId() {
@@ -157,7 +160,7 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable OAuth2ClientRegistrationTemplateId id) {
+  public void setId(@Nullable OAuth2ClientRegistrationTemplateId id) {
     this.id = id;
   }
 
@@ -166,7 +169,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -176,7 +179,7 @@ public class OAuth2ClientRegistrationTemplate {
 
 
 
-  public OAuth2ClientRegistrationTemplate providerId(@javax.annotation.Nonnull String providerId) {
+  public OAuth2ClientRegistrationTemplate providerId(@Nonnull String providerId) {
     this.providerId = providerId;
     return this;
   }
@@ -185,7 +188,7 @@ public class OAuth2ClientRegistrationTemplate {
    * OAuth2 provider identifier (e.g. its name)
    * @return providerId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PROVIDER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getProviderId() {
@@ -195,12 +198,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_PROVIDER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProviderId(@javax.annotation.Nonnull String providerId) {
+  public void setProviderId(@Nonnull String providerId) {
     this.providerId = providerId;
   }
 
 
-  public OAuth2ClientRegistrationTemplate mapperConfig(@javax.annotation.Nullable OAuth2MapperConfig mapperConfig) {
+  public OAuth2ClientRegistrationTemplate mapperConfig(@Nullable OAuth2MapperConfig mapperConfig) {
     this.mapperConfig = mapperConfig;
     return this;
   }
@@ -209,7 +212,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default config for mapping OAuth2 log in response to platform entities
    * @return mapperConfig
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAPPER_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OAuth2MapperConfig getMapperConfig() {
@@ -219,12 +222,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_MAPPER_CONFIG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMapperConfig(@javax.annotation.Nullable OAuth2MapperConfig mapperConfig) {
+  public void setMapperConfig(@Nullable OAuth2MapperConfig mapperConfig) {
     this.mapperConfig = mapperConfig;
   }
 
 
-  public OAuth2ClientRegistrationTemplate authorizationUri(@javax.annotation.Nullable String authorizationUri) {
+  public OAuth2ClientRegistrationTemplate authorizationUri(@Nullable String authorizationUri) {
     this.authorizationUri = authorizationUri;
     return this;
   }
@@ -233,7 +236,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default authorization URI of the OAuth2 provider
    * @return authorizationUri
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AUTHORIZATION_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAuthorizationUri() {
@@ -243,12 +246,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_AUTHORIZATION_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthorizationUri(@javax.annotation.Nullable String authorizationUri) {
+  public void setAuthorizationUri(@Nullable String authorizationUri) {
     this.authorizationUri = authorizationUri;
   }
 
 
-  public OAuth2ClientRegistrationTemplate accessTokenUri(@javax.annotation.Nullable String accessTokenUri) {
+  public OAuth2ClientRegistrationTemplate accessTokenUri(@Nullable String accessTokenUri) {
     this.accessTokenUri = accessTokenUri;
     return this;
   }
@@ -257,7 +260,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default access token URI of the OAuth2 provider
    * @return accessTokenUri
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACCESS_TOKEN_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAccessTokenUri() {
@@ -267,12 +270,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_ACCESS_TOKEN_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAccessTokenUri(@javax.annotation.Nullable String accessTokenUri) {
+  public void setAccessTokenUri(@Nullable String accessTokenUri) {
     this.accessTokenUri = accessTokenUri;
   }
 
 
-  public OAuth2ClientRegistrationTemplate scope(@javax.annotation.Nullable List<String> scope) {
+  public OAuth2ClientRegistrationTemplate scope(@Nullable List<String> scope) {
     this.scope = scope;
     return this;
   }
@@ -289,7 +292,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default OAuth scopes that will be requested from OAuth2 platform
    * @return scope
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getScope() {
@@ -299,12 +302,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(@javax.annotation.Nullable List<String> scope) {
+  public void setScope(@Nullable List<String> scope) {
     this.scope = scope;
   }
 
 
-  public OAuth2ClientRegistrationTemplate userInfoUri(@javax.annotation.Nullable String userInfoUri) {
+  public OAuth2ClientRegistrationTemplate userInfoUri(@Nullable String userInfoUri) {
     this.userInfoUri = userInfoUri;
     return this;
   }
@@ -313,7 +316,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default user info URI of the OAuth2 provider
    * @return userInfoUri
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_INFO_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUserInfoUri() {
@@ -323,12 +326,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_USER_INFO_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserInfoUri(@javax.annotation.Nullable String userInfoUri) {
+  public void setUserInfoUri(@Nullable String userInfoUri) {
     this.userInfoUri = userInfoUri;
   }
 
 
-  public OAuth2ClientRegistrationTemplate userNameAttributeName(@javax.annotation.Nullable String userNameAttributeName) {
+  public OAuth2ClientRegistrationTemplate userNameAttributeName(@Nullable String userNameAttributeName) {
     this.userNameAttributeName = userNameAttributeName;
     return this;
   }
@@ -337,7 +340,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default name of the username attribute in OAuth2 provider log in response
    * @return userNameAttributeName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_NAME_ATTRIBUTE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUserNameAttributeName() {
@@ -347,12 +350,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_USER_NAME_ATTRIBUTE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserNameAttributeName(@javax.annotation.Nullable String userNameAttributeName) {
+  public void setUserNameAttributeName(@Nullable String userNameAttributeName) {
     this.userNameAttributeName = userNameAttributeName;
   }
 
 
-  public OAuth2ClientRegistrationTemplate jwkSetUri(@javax.annotation.Nullable String jwkSetUri) {
+  public OAuth2ClientRegistrationTemplate jwkSetUri(@Nullable String jwkSetUri) {
     this.jwkSetUri = jwkSetUri;
     return this;
   }
@@ -361,7 +364,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default JSON Web Key URI of the OAuth2 provider
    * @return jwkSetUri
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_JWK_SET_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getJwkSetUri() {
@@ -371,12 +374,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_JWK_SET_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJwkSetUri(@javax.annotation.Nullable String jwkSetUri) {
+  public void setJwkSetUri(@Nullable String jwkSetUri) {
     this.jwkSetUri = jwkSetUri;
   }
 
 
-  public OAuth2ClientRegistrationTemplate clientAuthenticationMethod(@javax.annotation.Nullable String clientAuthenticationMethod) {
+  public OAuth2ClientRegistrationTemplate clientAuthenticationMethod(@Nullable String clientAuthenticationMethod) {
     this.clientAuthenticationMethod = clientAuthenticationMethod;
     return this;
   }
@@ -385,7 +388,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default client authentication method to use: &#39;BASIC&#39; or &#39;POST&#39;
    * @return clientAuthenticationMethod
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLIENT_AUTHENTICATION_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getClientAuthenticationMethod() {
@@ -395,12 +398,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_CLIENT_AUTHENTICATION_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientAuthenticationMethod(@javax.annotation.Nullable String clientAuthenticationMethod) {
+  public void setClientAuthenticationMethod(@Nullable String clientAuthenticationMethod) {
     this.clientAuthenticationMethod = clientAuthenticationMethod;
   }
 
 
-  public OAuth2ClientRegistrationTemplate comment(@javax.annotation.Nullable String comment) {
+  public OAuth2ClientRegistrationTemplate comment(@Nullable String comment) {
     this.comment = comment;
     return this;
   }
@@ -409,7 +412,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Comment for OAuth2 provider
    * @return comment
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COMMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getComment() {
@@ -419,12 +422,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_COMMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setComment(@javax.annotation.Nullable String comment) {
+  public void setComment(@Nullable String comment) {
     this.comment = comment;
   }
 
 
-  public OAuth2ClientRegistrationTemplate loginButtonIcon(@javax.annotation.Nullable String loginButtonIcon) {
+  public OAuth2ClientRegistrationTemplate loginButtonIcon(@Nullable String loginButtonIcon) {
     this.loginButtonIcon = loginButtonIcon;
     return this;
   }
@@ -433,7 +436,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default log in button icon for OAuth2 provider
    * @return loginButtonIcon
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOGIN_BUTTON_ICON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLoginButtonIcon() {
@@ -443,12 +446,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_LOGIN_BUTTON_ICON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoginButtonIcon(@javax.annotation.Nullable String loginButtonIcon) {
+  public void setLoginButtonIcon(@Nullable String loginButtonIcon) {
     this.loginButtonIcon = loginButtonIcon;
   }
 
 
-  public OAuth2ClientRegistrationTemplate loginButtonLabel(@javax.annotation.Nullable String loginButtonLabel) {
+  public OAuth2ClientRegistrationTemplate loginButtonLabel(@Nullable String loginButtonLabel) {
     this.loginButtonLabel = loginButtonLabel;
     return this;
   }
@@ -457,7 +460,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Default OAuth2 provider label
    * @return loginButtonLabel
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOGIN_BUTTON_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLoginButtonLabel() {
@@ -467,12 +470,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_LOGIN_BUTTON_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLoginButtonLabel(@javax.annotation.Nullable String loginButtonLabel) {
+  public void setLoginButtonLabel(@Nullable String loginButtonLabel) {
     this.loginButtonLabel = loginButtonLabel;
   }
 
 
-  public OAuth2ClientRegistrationTemplate helpLink(@javax.annotation.Nullable String helpLink) {
+  public OAuth2ClientRegistrationTemplate helpLink(@Nullable String helpLink) {
     this.helpLink = helpLink;
     return this;
   }
@@ -481,7 +484,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Help link for OAuth2 provider
    * @return helpLink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HELP_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getHelpLink() {
@@ -491,12 +494,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_HELP_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHelpLink(@javax.annotation.Nullable String helpLink) {
+  public void setHelpLink(@Nullable String helpLink) {
     this.helpLink = helpLink;
   }
 
 
-  public OAuth2ClientRegistrationTemplate additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public OAuth2ClientRegistrationTemplate additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -505,7 +508,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Get additionalInfo
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -515,12 +518,12 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 
 
-  public OAuth2ClientRegistrationTemplate name(@javax.annotation.Nullable String name) {
+  public OAuth2ClientRegistrationTemplate name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -529,7 +532,7 @@ public class OAuth2ClientRegistrationTemplate {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -539,7 +542,7 @@ public class OAuth2ClientRegistrationTemplate {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 

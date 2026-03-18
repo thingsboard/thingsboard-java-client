@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -55,54 +57,54 @@ import org.thingsboard.client.ApiClient;
   AuditLog.JSON_PROPERTY_ACTION_STATUS,
   AuditLog.JSON_PROPERTY_ACTION_FAILURE_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AuditLog {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private AuditLogId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId entityId;
 
   public static final String JSON_PROPERTY_ENTITY_NAME = "entityName";
-  @javax.annotation.Nullable
+  @Nullable
   private String entityName;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId userId;
 
   public static final String JSON_PROPERTY_USER_NAME = "userName";
-  @javax.annotation.Nullable
+  @Nullable
   private String userName;
 
   public static final String JSON_PROPERTY_ACTION_TYPE = "actionType";
-  @javax.annotation.Nullable
+  @Nullable
   private ActionType actionType;
 
   public static final String JSON_PROPERTY_ACTION_DATA = "actionData";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode actionData;
 
   public static final String JSON_PROPERTY_ACTION_STATUS = "actionStatus";
-  @javax.annotation.Nullable
+  @Nullable
   private ActionStatus actionStatus;
 
   public static final String JSON_PROPERTY_ACTION_FAILURE_DETAILS = "actionFailureDetails";
-  @javax.annotation.Nullable
+  @Nullable
   private String actionFailureDetails;
 
   public AuditLog() { 
@@ -136,7 +138,7 @@ public class AuditLog {
     this.actionFailureDetails = actionFailureDetails;
   }
 
-  public AuditLog id(@javax.annotation.Nullable AuditLogId id) {
+  public AuditLog id(@Nullable AuditLogId id) {
     this.id = id;
     return this;
   }
@@ -145,7 +147,7 @@ public class AuditLog {
    * JSON object with the auditLog Id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AuditLogId getId() {
@@ -155,7 +157,7 @@ public class AuditLog {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable AuditLogId id) {
+  public void setId(@Nullable AuditLogId id) {
     this.id = id;
   }
 
@@ -164,7 +166,7 @@ public class AuditLog {
    * Timestamp of the auditLog creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -178,7 +180,7 @@ public class AuditLog {
    * JSON object with Tenant Id
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -192,7 +194,7 @@ public class AuditLog {
    * JSON object with Customer Id
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -206,7 +208,7 @@ public class AuditLog {
    * JSON object with Entity id
    * @return entityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getEntityId() {
@@ -220,7 +222,7 @@ public class AuditLog {
    * Name of the logged entity
    * @return entityName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEntityName() {
@@ -234,7 +236,7 @@ public class AuditLog {
    * JSON object with User id.
    * @return userId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getUserId() {
@@ -248,7 +250,7 @@ public class AuditLog {
    * Unique user name(email) of the user that performed some action on logged entity
    * @return userName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUserName() {
@@ -262,7 +264,7 @@ public class AuditLog {
    * String represented Action type
    * @return actionType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTION_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ActionType getActionType() {
@@ -276,7 +278,7 @@ public class AuditLog {
    * JsonNode represented action data
    * @return actionData
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTION_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getActionData() {
@@ -290,7 +292,7 @@ public class AuditLog {
    * String represented Action status
    * @return actionStatus
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTION_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ActionStatus getActionStatus() {
@@ -304,7 +306,7 @@ public class AuditLog {
    * Failure action details info. An empty string in case of action status type &#39;SUCCESS&#39;, otherwise includes stack trace of the caused exception.
    * @return actionFailureDetails
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTION_FAILURE_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getActionFailureDetails() {

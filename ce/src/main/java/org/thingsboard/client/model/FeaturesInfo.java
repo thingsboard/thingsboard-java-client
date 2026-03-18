@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,32 +43,32 @@ import org.thingsboard.client.ApiClient;
   FeaturesInfo.JSON_PROPERTY_OAUTH_ENABLED,
   FeaturesInfo.JSON_PROPERTY_TWO_FA_ENABLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FeaturesInfo {
   public static final String JSON_PROPERTY_EMAIL_ENABLED = "emailEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean emailEnabled;
 
   public static final String JSON_PROPERTY_SMS_ENABLED = "smsEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean smsEnabled;
 
   public static final String JSON_PROPERTY_NOTIFICATION_ENABLED = "notificationEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean notificationEnabled;
 
   public static final String JSON_PROPERTY_OAUTH_ENABLED = "oauthEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean oauthEnabled;
 
   public static final String JSON_PROPERTY_TWO_FA_ENABLED = "twoFaEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean twoFaEnabled;
 
   public FeaturesInfo() { 
   }
 
-  public FeaturesInfo emailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
+  public FeaturesInfo emailEnabled(@Nullable Boolean emailEnabled) {
     this.emailEnabled = emailEnabled;
     return this;
   }
@@ -75,7 +77,7 @@ public class FeaturesInfo {
    * Get emailEnabled
    * @return emailEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEmailEnabled() {
@@ -85,12 +87,12 @@ public class FeaturesInfo {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailEnabled(@javax.annotation.Nullable Boolean emailEnabled) {
+  public void setEmailEnabled(@Nullable Boolean emailEnabled) {
     this.emailEnabled = emailEnabled;
   }
 
 
-  public FeaturesInfo smsEnabled(@javax.annotation.Nullable Boolean smsEnabled) {
+  public FeaturesInfo smsEnabled(@Nullable Boolean smsEnabled) {
     this.smsEnabled = smsEnabled;
     return this;
   }
@@ -99,7 +101,7 @@ public class FeaturesInfo {
    * Get smsEnabled
    * @return smsEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SMS_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSmsEnabled() {
@@ -109,12 +111,12 @@ public class FeaturesInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SMS_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSmsEnabled(@javax.annotation.Nullable Boolean smsEnabled) {
+  public void setSmsEnabled(@Nullable Boolean smsEnabled) {
     this.smsEnabled = smsEnabled;
   }
 
 
-  public FeaturesInfo notificationEnabled(@javax.annotation.Nullable Boolean notificationEnabled) {
+  public FeaturesInfo notificationEnabled(@Nullable Boolean notificationEnabled) {
     this.notificationEnabled = notificationEnabled;
     return this;
   }
@@ -123,7 +125,7 @@ public class FeaturesInfo {
    * Get notificationEnabled
    * @return notificationEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getNotificationEnabled() {
@@ -133,12 +135,12 @@ public class FeaturesInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NOTIFICATION_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotificationEnabled(@javax.annotation.Nullable Boolean notificationEnabled) {
+  public void setNotificationEnabled(@Nullable Boolean notificationEnabled) {
     this.notificationEnabled = notificationEnabled;
   }
 
 
-  public FeaturesInfo oauthEnabled(@javax.annotation.Nullable Boolean oauthEnabled) {
+  public FeaturesInfo oauthEnabled(@Nullable Boolean oauthEnabled) {
     this.oauthEnabled = oauthEnabled;
     return this;
   }
@@ -147,7 +149,7 @@ public class FeaturesInfo {
    * Get oauthEnabled
    * @return oauthEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OAUTH_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getOauthEnabled() {
@@ -157,12 +159,12 @@ public class FeaturesInfo {
 
   @JsonProperty(value = JSON_PROPERTY_OAUTH_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOauthEnabled(@javax.annotation.Nullable Boolean oauthEnabled) {
+  public void setOauthEnabled(@Nullable Boolean oauthEnabled) {
     this.oauthEnabled = oauthEnabled;
   }
 
 
-  public FeaturesInfo twoFaEnabled(@javax.annotation.Nullable Boolean twoFaEnabled) {
+  public FeaturesInfo twoFaEnabled(@Nullable Boolean twoFaEnabled) {
     this.twoFaEnabled = twoFaEnabled;
     return this;
   }
@@ -171,7 +173,7 @@ public class FeaturesInfo {
    * Get twoFaEnabled
    * @return twoFaEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TWO_FA_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getTwoFaEnabled() {
@@ -181,7 +183,7 @@ public class FeaturesInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TWO_FA_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTwoFaEnabled(@javax.annotation.Nullable Boolean twoFaEnabled) {
+  public void setTwoFaEnabled(@Nullable Boolean twoFaEnabled) {
     this.twoFaEnabled = twoFaEnabled;
   }
 

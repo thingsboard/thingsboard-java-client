@@ -59,12 +59,12 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
         Device device1 = new Device();
         device1.setName("CalcFieldDevice1_" + timestamp);
         device1.setType("default");
-        Device createdDevice1 = client.saveDevice(device1, null, null, null, null, null);
+        Device createdDevice1 = client.saveDevice(device1, null, null, null, null);
 
         Device device2 = new Device();
         device2.setName("CalcFieldDevice2_" + timestamp);
         device2.setType("default");
-        Device createdDevice2 = client.saveDevice(device2, null, null, null, null, null);
+        Device createdDevice2 = client.saveDevice(device2, null, null, null, null);
 
         // create calculated fields on device1
         for (int i = 0; i < 5; i++) {
@@ -184,7 +184,7 @@ public class CalculatedFieldApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName("AlarmCalcFieldDevice_" + timestamp);
         device.setType("default");
-        Device createdDevice = client.saveDevice(device, null, null, null, null, null);
+        Device createdDevice = client.saveDevice(device, null, null, null, null);
 
         // build the alarm calculated field configuration
         AlarmCalculatedFieldConfiguration config = new AlarmCalculatedFieldConfiguration();

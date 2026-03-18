@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -65,128 +67,128 @@ import org.thingsboard.client.ApiClient;
   UsageInfo.JSON_PROPERTY_AI_CREDITS,
   UsageInfo.JSON_PROPERTY_MAX_AI_CREDITS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UsageInfo {
   public static final String JSON_PROPERTY_DEVICES = "devices";
-  @javax.annotation.Nullable
+  @Nullable
   private Long devices;
 
   public static final String JSON_PROPERTY_MAX_DEVICES = "maxDevices";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxDevices;
 
   public static final String JSON_PROPERTY_ASSETS = "assets";
-  @javax.annotation.Nullable
+  @Nullable
   private Long assets;
 
   public static final String JSON_PROPERTY_MAX_ASSETS = "maxAssets";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxAssets;
 
   public static final String JSON_PROPERTY_CUSTOMERS = "customers";
-  @javax.annotation.Nullable
+  @Nullable
   private Long customers;
 
   public static final String JSON_PROPERTY_MAX_CUSTOMERS = "maxCustomers";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxCustomers;
 
   public static final String JSON_PROPERTY_USERS = "users";
-  @javax.annotation.Nullable
+  @Nullable
   private Long users;
 
   public static final String JSON_PROPERTY_MAX_USERS = "maxUsers";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxUsers;
 
   public static final String JSON_PROPERTY_DASHBOARDS = "dashboards";
-  @javax.annotation.Nullable
+  @Nullable
   private Long dashboards;
 
   public static final String JSON_PROPERTY_MAX_DASHBOARDS = "maxDashboards";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxDashboards;
 
   public static final String JSON_PROPERTY_EDGES = "edges";
-  @javax.annotation.Nullable
+  @Nullable
   private Long edges;
 
   public static final String JSON_PROPERTY_MAX_EDGES = "maxEdges";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxEdges;
 
   public static final String JSON_PROPERTY_TRANSPORT_MESSAGES = "transportMessages";
-  @javax.annotation.Nullable
+  @Nullable
   private Long transportMessages;
 
   public static final String JSON_PROPERTY_MAX_TRANSPORT_MESSAGES = "maxTransportMessages";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxTransportMessages;
 
   public static final String JSON_PROPERTY_JS_EXECUTIONS = "jsExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long jsExecutions;
 
   public static final String JSON_PROPERTY_TBEL_EXECUTIONS = "tbelExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long tbelExecutions;
 
   public static final String JSON_PROPERTY_MAX_JS_EXECUTIONS = "maxJsExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxJsExecutions;
 
   public static final String JSON_PROPERTY_MAX_TBEL_EXECUTIONS = "maxTbelExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxTbelExecutions;
 
   public static final String JSON_PROPERTY_EMAILS = "emails";
-  @javax.annotation.Nullable
+  @Nullable
   private Long emails;
 
   public static final String JSON_PROPERTY_MAX_EMAILS = "maxEmails";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxEmails;
 
   public static final String JSON_PROPERTY_SMS = "sms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long sms;
 
   public static final String JSON_PROPERTY_MAX_SMS = "maxSms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxSms;
 
   public static final String JSON_PROPERTY_SMS_ENABLED = "smsEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean smsEnabled;
 
   public static final String JSON_PROPERTY_ALARMS = "alarms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long alarms;
 
   public static final String JSON_PROPERTY_MAX_ALARMS = "maxAlarms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxAlarms;
 
   public static final String JSON_PROPERTY_REPORTS = "reports";
-  @javax.annotation.Nullable
+  @Nullable
   private Long reports;
 
   public static final String JSON_PROPERTY_MAX_REPORTS = "maxReports";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxReports;
 
   public static final String JSON_PROPERTY_AI_CREDITS = "aiCredits";
-  @javax.annotation.Nullable
+  @Nullable
   private Long aiCredits;
 
   public static final String JSON_PROPERTY_MAX_AI_CREDITS = "maxAiCredits";
-  @javax.annotation.Nullable
+  @Nullable
   private Long maxAiCredits;
 
   public UsageInfo() { 
   }
 
-  public UsageInfo devices(@javax.annotation.Nullable Long devices) {
+  public UsageInfo devices(@Nullable Long devices) {
     this.devices = devices;
     return this;
   }
@@ -195,7 +197,7 @@ public class UsageInfo {
    * Get devices
    * @return devices
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDevices() {
@@ -205,12 +207,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDevices(@javax.annotation.Nullable Long devices) {
+  public void setDevices(@Nullable Long devices) {
     this.devices = devices;
   }
 
 
-  public UsageInfo maxDevices(@javax.annotation.Nullable Long maxDevices) {
+  public UsageInfo maxDevices(@Nullable Long maxDevices) {
     this.maxDevices = maxDevices;
     return this;
   }
@@ -219,7 +221,7 @@ public class UsageInfo {
    * Get maxDevices
    * @return maxDevices
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxDevices() {
@@ -229,12 +231,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxDevices(@javax.annotation.Nullable Long maxDevices) {
+  public void setMaxDevices(@Nullable Long maxDevices) {
     this.maxDevices = maxDevices;
   }
 
 
-  public UsageInfo assets(@javax.annotation.Nullable Long assets) {
+  public UsageInfo assets(@Nullable Long assets) {
     this.assets = assets;
     return this;
   }
@@ -243,7 +245,7 @@ public class UsageInfo {
    * Get assets
    * @return assets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAssets() {
@@ -253,12 +255,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssets(@javax.annotation.Nullable Long assets) {
+  public void setAssets(@Nullable Long assets) {
     this.assets = assets;
   }
 
 
-  public UsageInfo maxAssets(@javax.annotation.Nullable Long maxAssets) {
+  public UsageInfo maxAssets(@Nullable Long maxAssets) {
     this.maxAssets = maxAssets;
     return this;
   }
@@ -267,7 +269,7 @@ public class UsageInfo {
    * Get maxAssets
    * @return maxAssets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxAssets() {
@@ -277,12 +279,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxAssets(@javax.annotation.Nullable Long maxAssets) {
+  public void setMaxAssets(@Nullable Long maxAssets) {
     this.maxAssets = maxAssets;
   }
 
 
-  public UsageInfo customers(@javax.annotation.Nullable Long customers) {
+  public UsageInfo customers(@Nullable Long customers) {
     this.customers = customers;
     return this;
   }
@@ -291,7 +293,7 @@ public class UsageInfo {
    * Get customers
    * @return customers
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCustomers() {
@@ -301,12 +303,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomers(@javax.annotation.Nullable Long customers) {
+  public void setCustomers(@Nullable Long customers) {
     this.customers = customers;
   }
 
 
-  public UsageInfo maxCustomers(@javax.annotation.Nullable Long maxCustomers) {
+  public UsageInfo maxCustomers(@Nullable Long maxCustomers) {
     this.maxCustomers = maxCustomers;
     return this;
   }
@@ -315,7 +317,7 @@ public class UsageInfo {
    * Get maxCustomers
    * @return maxCustomers
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxCustomers() {
@@ -325,12 +327,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxCustomers(@javax.annotation.Nullable Long maxCustomers) {
+  public void setMaxCustomers(@Nullable Long maxCustomers) {
     this.maxCustomers = maxCustomers;
   }
 
 
-  public UsageInfo users(@javax.annotation.Nullable Long users) {
+  public UsageInfo users(@Nullable Long users) {
     this.users = users;
     return this;
   }
@@ -339,7 +341,7 @@ public class UsageInfo {
    * Get users
    * @return users
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getUsers() {
@@ -349,12 +351,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsers(@javax.annotation.Nullable Long users) {
+  public void setUsers(@Nullable Long users) {
     this.users = users;
   }
 
 
-  public UsageInfo maxUsers(@javax.annotation.Nullable Long maxUsers) {
+  public UsageInfo maxUsers(@Nullable Long maxUsers) {
     this.maxUsers = maxUsers;
     return this;
   }
@@ -363,7 +365,7 @@ public class UsageInfo {
    * Get maxUsers
    * @return maxUsers
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxUsers() {
@@ -373,12 +375,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxUsers(@javax.annotation.Nullable Long maxUsers) {
+  public void setMaxUsers(@Nullable Long maxUsers) {
     this.maxUsers = maxUsers;
   }
 
 
-  public UsageInfo dashboards(@javax.annotation.Nullable Long dashboards) {
+  public UsageInfo dashboards(@Nullable Long dashboards) {
     this.dashboards = dashboards;
     return this;
   }
@@ -387,7 +389,7 @@ public class UsageInfo {
    * Get dashboards
    * @return dashboards
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDashboards() {
@@ -397,12 +399,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboards(@javax.annotation.Nullable Long dashboards) {
+  public void setDashboards(@Nullable Long dashboards) {
     this.dashboards = dashboards;
   }
 
 
-  public UsageInfo maxDashboards(@javax.annotation.Nullable Long maxDashboards) {
+  public UsageInfo maxDashboards(@Nullable Long maxDashboards) {
     this.maxDashboards = maxDashboards;
     return this;
   }
@@ -411,7 +413,7 @@ public class UsageInfo {
    * Get maxDashboards
    * @return maxDashboards
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_DASHBOARDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxDashboards() {
@@ -421,12 +423,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_DASHBOARDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxDashboards(@javax.annotation.Nullable Long maxDashboards) {
+  public void setMaxDashboards(@Nullable Long maxDashboards) {
     this.maxDashboards = maxDashboards;
   }
 
 
-  public UsageInfo edges(@javax.annotation.Nullable Long edges) {
+  public UsageInfo edges(@Nullable Long edges) {
     this.edges = edges;
     return this;
   }
@@ -435,7 +437,7 @@ public class UsageInfo {
    * Get edges
    * @return edges
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEdges() {
@@ -445,12 +447,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdges(@javax.annotation.Nullable Long edges) {
+  public void setEdges(@Nullable Long edges) {
     this.edges = edges;
   }
 
 
-  public UsageInfo maxEdges(@javax.annotation.Nullable Long maxEdges) {
+  public UsageInfo maxEdges(@Nullable Long maxEdges) {
     this.maxEdges = maxEdges;
     return this;
   }
@@ -459,7 +461,7 @@ public class UsageInfo {
    * Get maxEdges
    * @return maxEdges
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxEdges() {
@@ -469,12 +471,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxEdges(@javax.annotation.Nullable Long maxEdges) {
+  public void setMaxEdges(@Nullable Long maxEdges) {
     this.maxEdges = maxEdges;
   }
 
 
-  public UsageInfo transportMessages(@javax.annotation.Nullable Long transportMessages) {
+  public UsageInfo transportMessages(@Nullable Long transportMessages) {
     this.transportMessages = transportMessages;
     return this;
   }
@@ -483,7 +485,7 @@ public class UsageInfo {
    * Get transportMessages
    * @return transportMessages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTransportMessages() {
@@ -493,12 +495,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransportMessages(@javax.annotation.Nullable Long transportMessages) {
+  public void setTransportMessages(@Nullable Long transportMessages) {
     this.transportMessages = transportMessages;
   }
 
 
-  public UsageInfo maxTransportMessages(@javax.annotation.Nullable Long maxTransportMessages) {
+  public UsageInfo maxTransportMessages(@Nullable Long maxTransportMessages) {
     this.maxTransportMessages = maxTransportMessages;
     return this;
   }
@@ -507,7 +509,7 @@ public class UsageInfo {
    * Get maxTransportMessages
    * @return maxTransportMessages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxTransportMessages() {
@@ -517,12 +519,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxTransportMessages(@javax.annotation.Nullable Long maxTransportMessages) {
+  public void setMaxTransportMessages(@Nullable Long maxTransportMessages) {
     this.maxTransportMessages = maxTransportMessages;
   }
 
 
-  public UsageInfo jsExecutions(@javax.annotation.Nullable Long jsExecutions) {
+  public UsageInfo jsExecutions(@Nullable Long jsExecutions) {
     this.jsExecutions = jsExecutions;
     return this;
   }
@@ -531,7 +533,7 @@ public class UsageInfo {
    * Get jsExecutions
    * @return jsExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_JS_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getJsExecutions() {
@@ -541,12 +543,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_JS_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJsExecutions(@javax.annotation.Nullable Long jsExecutions) {
+  public void setJsExecutions(@Nullable Long jsExecutions) {
     this.jsExecutions = jsExecutions;
   }
 
 
-  public UsageInfo tbelExecutions(@javax.annotation.Nullable Long tbelExecutions) {
+  public UsageInfo tbelExecutions(@Nullable Long tbelExecutions) {
     this.tbelExecutions = tbelExecutions;
     return this;
   }
@@ -555,7 +557,7 @@ public class UsageInfo {
    * Get tbelExecutions
    * @return tbelExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TBEL_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTbelExecutions() {
@@ -565,12 +567,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TBEL_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTbelExecutions(@javax.annotation.Nullable Long tbelExecutions) {
+  public void setTbelExecutions(@Nullable Long tbelExecutions) {
     this.tbelExecutions = tbelExecutions;
   }
 
 
-  public UsageInfo maxJsExecutions(@javax.annotation.Nullable Long maxJsExecutions) {
+  public UsageInfo maxJsExecutions(@Nullable Long maxJsExecutions) {
     this.maxJsExecutions = maxJsExecutions;
     return this;
   }
@@ -579,7 +581,7 @@ public class UsageInfo {
    * Get maxJsExecutions
    * @return maxJsExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_JS_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxJsExecutions() {
@@ -589,12 +591,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_JS_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxJsExecutions(@javax.annotation.Nullable Long maxJsExecutions) {
+  public void setMaxJsExecutions(@Nullable Long maxJsExecutions) {
     this.maxJsExecutions = maxJsExecutions;
   }
 
 
-  public UsageInfo maxTbelExecutions(@javax.annotation.Nullable Long maxTbelExecutions) {
+  public UsageInfo maxTbelExecutions(@Nullable Long maxTbelExecutions) {
     this.maxTbelExecutions = maxTbelExecutions;
     return this;
   }
@@ -603,7 +605,7 @@ public class UsageInfo {
    * Get maxTbelExecutions
    * @return maxTbelExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_TBEL_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxTbelExecutions() {
@@ -613,12 +615,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_TBEL_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxTbelExecutions(@javax.annotation.Nullable Long maxTbelExecutions) {
+  public void setMaxTbelExecutions(@Nullable Long maxTbelExecutions) {
     this.maxTbelExecutions = maxTbelExecutions;
   }
 
 
-  public UsageInfo emails(@javax.annotation.Nullable Long emails) {
+  public UsageInfo emails(@Nullable Long emails) {
     this.emails = emails;
     return this;
   }
@@ -627,7 +629,7 @@ public class UsageInfo {
    * Get emails
    * @return emails
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEmails() {
@@ -637,12 +639,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmails(@javax.annotation.Nullable Long emails) {
+  public void setEmails(@Nullable Long emails) {
     this.emails = emails;
   }
 
 
-  public UsageInfo maxEmails(@javax.annotation.Nullable Long maxEmails) {
+  public UsageInfo maxEmails(@Nullable Long maxEmails) {
     this.maxEmails = maxEmails;
     return this;
   }
@@ -651,7 +653,7 @@ public class UsageInfo {
    * Get maxEmails
    * @return maxEmails
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxEmails() {
@@ -661,12 +663,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxEmails(@javax.annotation.Nullable Long maxEmails) {
+  public void setMaxEmails(@Nullable Long maxEmails) {
     this.maxEmails = maxEmails;
   }
 
 
-  public UsageInfo sms(@javax.annotation.Nullable Long sms) {
+  public UsageInfo sms(@Nullable Long sms) {
     this.sms = sms;
     return this;
   }
@@ -675,7 +677,7 @@ public class UsageInfo {
    * Get sms
    * @return sms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getSms() {
@@ -685,12 +687,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSms(@javax.annotation.Nullable Long sms) {
+  public void setSms(@Nullable Long sms) {
     this.sms = sms;
   }
 
 
-  public UsageInfo maxSms(@javax.annotation.Nullable Long maxSms) {
+  public UsageInfo maxSms(@Nullable Long maxSms) {
     this.maxSms = maxSms;
     return this;
   }
@@ -699,7 +701,7 @@ public class UsageInfo {
    * Get maxSms
    * @return maxSms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxSms() {
@@ -709,12 +711,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxSms(@javax.annotation.Nullable Long maxSms) {
+  public void setMaxSms(@Nullable Long maxSms) {
     this.maxSms = maxSms;
   }
 
 
-  public UsageInfo smsEnabled(@javax.annotation.Nullable Boolean smsEnabled) {
+  public UsageInfo smsEnabled(@Nullable Boolean smsEnabled) {
     this.smsEnabled = smsEnabled;
     return this;
   }
@@ -723,7 +725,7 @@ public class UsageInfo {
    * Get smsEnabled
    * @return smsEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SMS_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSmsEnabled() {
@@ -733,12 +735,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SMS_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSmsEnabled(@javax.annotation.Nullable Boolean smsEnabled) {
+  public void setSmsEnabled(@Nullable Boolean smsEnabled) {
     this.smsEnabled = smsEnabled;
   }
 
 
-  public UsageInfo alarms(@javax.annotation.Nullable Long alarms) {
+  public UsageInfo alarms(@Nullable Long alarms) {
     this.alarms = alarms;
     return this;
   }
@@ -747,7 +749,7 @@ public class UsageInfo {
    * Get alarms
    * @return alarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAlarms() {
@@ -757,12 +759,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarms(@javax.annotation.Nullable Long alarms) {
+  public void setAlarms(@Nullable Long alarms) {
     this.alarms = alarms;
   }
 
 
-  public UsageInfo maxAlarms(@javax.annotation.Nullable Long maxAlarms) {
+  public UsageInfo maxAlarms(@Nullable Long maxAlarms) {
     this.maxAlarms = maxAlarms;
     return this;
   }
@@ -771,7 +773,7 @@ public class UsageInfo {
    * Get maxAlarms
    * @return maxAlarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxAlarms() {
@@ -781,12 +783,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxAlarms(@javax.annotation.Nullable Long maxAlarms) {
+  public void setMaxAlarms(@Nullable Long maxAlarms) {
     this.maxAlarms = maxAlarms;
   }
 
 
-  public UsageInfo reports(@javax.annotation.Nullable Long reports) {
+  public UsageInfo reports(@Nullable Long reports) {
     this.reports = reports;
     return this;
   }
@@ -795,7 +797,7 @@ public class UsageInfo {
    * Get reports
    * @return reports
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getReports() {
@@ -805,12 +807,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReports(@javax.annotation.Nullable Long reports) {
+  public void setReports(@Nullable Long reports) {
     this.reports = reports;
   }
 
 
-  public UsageInfo maxReports(@javax.annotation.Nullable Long maxReports) {
+  public UsageInfo maxReports(@Nullable Long maxReports) {
     this.maxReports = maxReports;
     return this;
   }
@@ -819,7 +821,7 @@ public class UsageInfo {
    * Get maxReports
    * @return maxReports
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxReports() {
@@ -829,12 +831,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxReports(@javax.annotation.Nullable Long maxReports) {
+  public void setMaxReports(@Nullable Long maxReports) {
     this.maxReports = maxReports;
   }
 
 
-  public UsageInfo aiCredits(@javax.annotation.Nullable Long aiCredits) {
+  public UsageInfo aiCredits(@Nullable Long aiCredits) {
     this.aiCredits = aiCredits;
     return this;
   }
@@ -843,7 +845,7 @@ public class UsageInfo {
    * Get aiCredits
    * @return aiCredits
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAiCredits() {
@@ -853,12 +855,12 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAiCredits(@javax.annotation.Nullable Long aiCredits) {
+  public void setAiCredits(@Nullable Long aiCredits) {
     this.aiCredits = aiCredits;
   }
 
 
-  public UsageInfo maxAiCredits(@javax.annotation.Nullable Long maxAiCredits) {
+  public UsageInfo maxAiCredits(@Nullable Long maxAiCredits) {
     this.maxAiCredits = maxAiCredits;
     return this;
   }
@@ -867,7 +869,7 @@ public class UsageInfo {
    * Get maxAiCredits
    * @return maxAiCredits
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getMaxAiCredits() {
@@ -877,7 +879,7 @@ public class UsageInfo {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxAiCredits(@javax.annotation.Nullable Long maxAiCredits) {
+  public void setMaxAiCredits(@Nullable Long maxAiCredits) {
     this.maxAiCredits = maxAiCredits;
   }
 

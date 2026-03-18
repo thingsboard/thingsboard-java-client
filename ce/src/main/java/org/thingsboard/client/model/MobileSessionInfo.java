@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -37,16 +39,16 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   MobileSessionInfo.JSON_PROPERTY_FCM_TOKEN_TIMESTAMP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class MobileSessionInfo {
   public static final String JSON_PROPERTY_FCM_TOKEN_TIMESTAMP = "fcmTokenTimestamp";
-  @javax.annotation.Nullable
+  @Nullable
   private Long fcmTokenTimestamp;
 
   public MobileSessionInfo() { 
   }
 
-  public MobileSessionInfo fcmTokenTimestamp(@javax.annotation.Nullable Long fcmTokenTimestamp) {
+  public MobileSessionInfo fcmTokenTimestamp(@Nullable Long fcmTokenTimestamp) {
     this.fcmTokenTimestamp = fcmTokenTimestamp;
     return this;
   }
@@ -55,7 +57,7 @@ public class MobileSessionInfo {
    * Get fcmTokenTimestamp
    * @return fcmTokenTimestamp
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FCM_TOKEN_TIMESTAMP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getFcmTokenTimestamp() {
@@ -65,7 +67,7 @@ public class MobileSessionInfo {
 
   @JsonProperty(value = JSON_PROPERTY_FCM_TOKEN_TIMESTAMP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFcmTokenTimestamp(@javax.annotation.Nullable Long fcmTokenTimestamp) {
+  public void setFcmTokenTimestamp(@Nullable Long fcmTokenTimestamp) {
     this.fcmTokenTimestamp = fcmTokenTimestamp;
   }
 

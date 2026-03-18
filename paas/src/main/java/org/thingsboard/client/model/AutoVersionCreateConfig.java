@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,40 +45,40 @@ import org.thingsboard.client.ApiClient;
   AutoVersionCreateConfig.JSON_PROPERTY_SAVE_GROUP_ENTITIES,
   AutoVersionCreateConfig.JSON_PROPERTY_BRANCH
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AutoVersionCreateConfig {
   public static final String JSON_PROPERTY_SAVE_RELATIONS = "saveRelations";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveRelations;
 
   public static final String JSON_PROPERTY_SAVE_ATTRIBUTES = "saveAttributes";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveAttributes;
 
   public static final String JSON_PROPERTY_SAVE_CREDENTIALS = "saveCredentials";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveCredentials;
 
   public static final String JSON_PROPERTY_SAVE_CALCULATED_FIELDS = "saveCalculatedFields";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveCalculatedFields;
 
   public static final String JSON_PROPERTY_SAVE_PERMISSIONS = "savePermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean savePermissions;
 
   public static final String JSON_PROPERTY_SAVE_GROUP_ENTITIES = "saveGroupEntities";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean saveGroupEntities;
 
   public static final String JSON_PROPERTY_BRANCH = "branch";
-  @javax.annotation.Nullable
+  @Nullable
   private String branch;
 
   public AutoVersionCreateConfig() { 
   }
 
-  public AutoVersionCreateConfig saveRelations(@javax.annotation.Nullable Boolean saveRelations) {
+  public AutoVersionCreateConfig saveRelations(@Nullable Boolean saveRelations) {
     this.saveRelations = saveRelations;
     return this;
   }
@@ -85,7 +87,7 @@ public class AutoVersionCreateConfig {
    * Get saveRelations
    * @return saveRelations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveRelations() {
@@ -95,12 +97,12 @@ public class AutoVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_RELATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveRelations(@javax.annotation.Nullable Boolean saveRelations) {
+  public void setSaveRelations(@Nullable Boolean saveRelations) {
     this.saveRelations = saveRelations;
   }
 
 
-  public AutoVersionCreateConfig saveAttributes(@javax.annotation.Nullable Boolean saveAttributes) {
+  public AutoVersionCreateConfig saveAttributes(@Nullable Boolean saveAttributes) {
     this.saveAttributes = saveAttributes;
     return this;
   }
@@ -109,7 +111,7 @@ public class AutoVersionCreateConfig {
    * Get saveAttributes
    * @return saveAttributes
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveAttributes() {
@@ -119,12 +121,12 @@ public class AutoVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_ATTRIBUTES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveAttributes(@javax.annotation.Nullable Boolean saveAttributes) {
+  public void setSaveAttributes(@Nullable Boolean saveAttributes) {
     this.saveAttributes = saveAttributes;
   }
 
 
-  public AutoVersionCreateConfig saveCredentials(@javax.annotation.Nullable Boolean saveCredentials) {
+  public AutoVersionCreateConfig saveCredentials(@Nullable Boolean saveCredentials) {
     this.saveCredentials = saveCredentials;
     return this;
   }
@@ -133,7 +135,7 @@ public class AutoVersionCreateConfig {
    * Get saveCredentials
    * @return saveCredentials
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveCredentials() {
@@ -143,12 +145,12 @@ public class AutoVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveCredentials(@javax.annotation.Nullable Boolean saveCredentials) {
+  public void setSaveCredentials(@Nullable Boolean saveCredentials) {
     this.saveCredentials = saveCredentials;
   }
 
 
-  public AutoVersionCreateConfig saveCalculatedFields(@javax.annotation.Nullable Boolean saveCalculatedFields) {
+  public AutoVersionCreateConfig saveCalculatedFields(@Nullable Boolean saveCalculatedFields) {
     this.saveCalculatedFields = saveCalculatedFields;
     return this;
   }
@@ -157,7 +159,7 @@ public class AutoVersionCreateConfig {
    * Get saveCalculatedFields
    * @return saveCalculatedFields
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveCalculatedFields() {
@@ -167,12 +169,12 @@ public class AutoVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_CALCULATED_FIELDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveCalculatedFields(@javax.annotation.Nullable Boolean saveCalculatedFields) {
+  public void setSaveCalculatedFields(@Nullable Boolean saveCalculatedFields) {
     this.saveCalculatedFields = saveCalculatedFields;
   }
 
 
-  public AutoVersionCreateConfig savePermissions(@javax.annotation.Nullable Boolean savePermissions) {
+  public AutoVersionCreateConfig savePermissions(@Nullable Boolean savePermissions) {
     this.savePermissions = savePermissions;
     return this;
   }
@@ -181,7 +183,7 @@ public class AutoVersionCreateConfig {
    * Get savePermissions
    * @return savePermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSavePermissions() {
@@ -191,12 +193,12 @@ public class AutoVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSavePermissions(@javax.annotation.Nullable Boolean savePermissions) {
+  public void setSavePermissions(@Nullable Boolean savePermissions) {
     this.savePermissions = savePermissions;
   }
 
 
-  public AutoVersionCreateConfig saveGroupEntities(@javax.annotation.Nullable Boolean saveGroupEntities) {
+  public AutoVersionCreateConfig saveGroupEntities(@Nullable Boolean saveGroupEntities) {
     this.saveGroupEntities = saveGroupEntities;
     return this;
   }
@@ -205,7 +207,7 @@ public class AutoVersionCreateConfig {
    * Get saveGroupEntities
    * @return saveGroupEntities
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAVE_GROUP_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSaveGroupEntities() {
@@ -215,12 +217,12 @@ public class AutoVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SAVE_GROUP_ENTITIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSaveGroupEntities(@javax.annotation.Nullable Boolean saveGroupEntities) {
+  public void setSaveGroupEntities(@Nullable Boolean saveGroupEntities) {
     this.saveGroupEntities = saveGroupEntities;
   }
 
 
-  public AutoVersionCreateConfig branch(@javax.annotation.Nullable String branch) {
+  public AutoVersionCreateConfig branch(@Nullable String branch) {
     this.branch = branch;
     return this;
   }
@@ -229,7 +231,7 @@ public class AutoVersionCreateConfig {
    * Get branch
    * @return branch
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BRANCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBranch() {
@@ -239,7 +241,7 @@ public class AutoVersionCreateConfig {
 
   @JsonProperty(value = JSON_PROPERTY_BRANCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBranch(@javax.annotation.Nullable String branch) {
+  public void setBranch(@Nullable String branch) {
     this.branch = branch;
   }
 

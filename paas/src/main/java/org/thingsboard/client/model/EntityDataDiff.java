@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   EntityDataDiff.JSON_PROPERTY_CURRENT_VERSION,
   EntityDataDiff.JSON_PROPERTY_OTHER_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityDataDiff {
   public static final String JSON_PROPERTY_CURRENT_VERSION = "currentVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityExportData currentVersion;
 
   public static final String JSON_PROPERTY_OTHER_VERSION = "otherVersion";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityExportData otherVersion;
 
   public EntityDataDiff() { 
   }
 
-  public EntityDataDiff currentVersion(@javax.annotation.Nullable EntityExportData currentVersion) {
+  public EntityDataDiff currentVersion(@Nullable EntityExportData currentVersion) {
     this.currentVersion = currentVersion;
     return this;
   }
@@ -61,7 +63,7 @@ public class EntityDataDiff {
    * Get currentVersion
    * @return currentVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CURRENT_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityExportData getCurrentVersion() {
@@ -71,12 +73,12 @@ public class EntityDataDiff {
 
   @JsonProperty(value = JSON_PROPERTY_CURRENT_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCurrentVersion(@javax.annotation.Nullable EntityExportData currentVersion) {
+  public void setCurrentVersion(@Nullable EntityExportData currentVersion) {
     this.currentVersion = currentVersion;
   }
 
 
-  public EntityDataDiff otherVersion(@javax.annotation.Nullable EntityExportData otherVersion) {
+  public EntityDataDiff otherVersion(@Nullable EntityExportData otherVersion) {
     this.otherVersion = otherVersion;
     return this;
   }
@@ -85,7 +87,7 @@ public class EntityDataDiff {
    * Get otherVersion
    * @return otherVersion
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OTHER_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityExportData getOtherVersion() {
@@ -95,7 +97,7 @@ public class EntityDataDiff {
 
   @JsonProperty(value = JSON_PROPERTY_OTHER_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOtherVersion(@javax.annotation.Nullable EntityExportData otherVersion) {
+  public void setOtherVersion(@Nullable EntityExportData otherVersion) {
     this.otherVersion = otherVersion;
   }
 

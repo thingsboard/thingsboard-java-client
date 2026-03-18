@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,32 +47,32 @@ import org.thingsboard.client.ApiClient;
   UserMobileInfo.JSON_PROPERTY_HOME_DASHBOARD_INFO,
   UserMobileInfo.JSON_PROPERTY_PAGES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UserMobileInfo {
   public static final String JSON_PROPERTY_USER = "user";
-  @javax.annotation.Nullable
+  @Nullable
   private User user;
 
   public static final String JSON_PROPERTY_STORE_INFO = "storeInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private StoreInfo storeInfo;
 
   public static final String JSON_PROPERTY_VERSION_INFO = "versionInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private MobileAppVersionInfo versionInfo;
 
   public static final String JSON_PROPERTY_HOME_DASHBOARD_INFO = "homeDashboardInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private HomeDashboardInfo homeDashboardInfo;
 
   public static final String JSON_PROPERTY_PAGES = "pages";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode pages = null;
 
   public UserMobileInfo() { 
   }
 
-  public UserMobileInfo user(@javax.annotation.Nullable User user) {
+  public UserMobileInfo user(@Nullable User user) {
     this.user = user;
     return this;
   }
@@ -79,7 +81,7 @@ public class UserMobileInfo {
    * Get user
    * @return user
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public User getUser() {
@@ -89,12 +91,12 @@ public class UserMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_USER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUser(@javax.annotation.Nullable User user) {
+  public void setUser(@Nullable User user) {
     this.user = user;
   }
 
 
-  public UserMobileInfo storeInfo(@javax.annotation.Nullable StoreInfo storeInfo) {
+  public UserMobileInfo storeInfo(@Nullable StoreInfo storeInfo) {
     this.storeInfo = storeInfo;
     return this;
   }
@@ -103,7 +105,7 @@ public class UserMobileInfo {
    * Get storeInfo
    * @return storeInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STORE_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public StoreInfo getStoreInfo() {
@@ -113,12 +115,12 @@ public class UserMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_STORE_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStoreInfo(@javax.annotation.Nullable StoreInfo storeInfo) {
+  public void setStoreInfo(@Nullable StoreInfo storeInfo) {
     this.storeInfo = storeInfo;
   }
 
 
-  public UserMobileInfo versionInfo(@javax.annotation.Nullable MobileAppVersionInfo versionInfo) {
+  public UserMobileInfo versionInfo(@Nullable MobileAppVersionInfo versionInfo) {
     this.versionInfo = versionInfo;
     return this;
   }
@@ -127,7 +129,7 @@ public class UserMobileInfo {
    * Get versionInfo
    * @return versionInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MobileAppVersionInfo getVersionInfo() {
@@ -137,12 +139,12 @@ public class UserMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersionInfo(@javax.annotation.Nullable MobileAppVersionInfo versionInfo) {
+  public void setVersionInfo(@Nullable MobileAppVersionInfo versionInfo) {
     this.versionInfo = versionInfo;
   }
 
 
-  public UserMobileInfo homeDashboardInfo(@javax.annotation.Nullable HomeDashboardInfo homeDashboardInfo) {
+  public UserMobileInfo homeDashboardInfo(@Nullable HomeDashboardInfo homeDashboardInfo) {
     this.homeDashboardInfo = homeDashboardInfo;
     return this;
   }
@@ -151,7 +153,7 @@ public class UserMobileInfo {
    * Get homeDashboardInfo
    * @return homeDashboardInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public HomeDashboardInfo getHomeDashboardInfo() {
@@ -161,12 +163,12 @@ public class UserMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_HOME_DASHBOARD_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHomeDashboardInfo(@javax.annotation.Nullable HomeDashboardInfo homeDashboardInfo) {
+  public void setHomeDashboardInfo(@Nullable HomeDashboardInfo homeDashboardInfo) {
     this.homeDashboardInfo = homeDashboardInfo;
   }
 
 
-  public UserMobileInfo pages(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode pages) {
+  public UserMobileInfo pages(@Nullable com.fasterxml.jackson.databind.JsonNode pages) {
     this.pages = pages;
     return this;
   }
@@ -175,7 +177,7 @@ public class UserMobileInfo {
    * Get pages
    * @return pages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getPages() {
@@ -185,7 +187,7 @@ public class UserMobileInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPages(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode pages) {
+  public void setPages(@Nullable com.fasterxml.jackson.databind.JsonNode pages) {
     this.pages = pages;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,22 +43,22 @@ import org.thingsboard.client.ApiClient;
   LastVisitedDashboardInfo.JSON_PROPERTY_STARRED,
   LastVisitedDashboardInfo.JSON_PROPERTY_LAST_VISITED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LastVisitedDashboardInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID id;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_STARRED = "starred";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean starred;
 
   public static final String JSON_PROPERTY_LAST_VISITED = "lastVisited";
-  @javax.annotation.Nullable
+  @Nullable
   private Long lastVisited;
 
   public LastVisitedDashboardInfo() { 
@@ -74,7 +76,7 @@ public class LastVisitedDashboardInfo {
    * JSON object with Dashboard id.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getId() {
@@ -84,7 +86,7 @@ public class LastVisitedDashboardInfo {
 
 
 
-  public LastVisitedDashboardInfo title(@javax.annotation.Nullable String title) {
+  public LastVisitedDashboardInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -93,7 +95,7 @@ public class LastVisitedDashboardInfo {
    * Title of the dashboard.
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -103,12 +105,12 @@ public class LastVisitedDashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public LastVisitedDashboardInfo starred(@javax.annotation.Nullable Boolean starred) {
+  public LastVisitedDashboardInfo starred(@Nullable Boolean starred) {
     this.starred = starred;
     return this;
   }
@@ -117,7 +119,7 @@ public class LastVisitedDashboardInfo {
    * Starred flag
    * @return starred
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STARRED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getStarred() {
@@ -127,12 +129,12 @@ public class LastVisitedDashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_STARRED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStarred(@javax.annotation.Nullable Boolean starred) {
+  public void setStarred(@Nullable Boolean starred) {
     this.starred = starred;
   }
 
 
-  public LastVisitedDashboardInfo lastVisited(@javax.annotation.Nullable Long lastVisited) {
+  public LastVisitedDashboardInfo lastVisited(@Nullable Long lastVisited) {
     this.lastVisited = lastVisited;
     return this;
   }
@@ -141,7 +143,7 @@ public class LastVisitedDashboardInfo {
    * Last visit timestamp
    * @return lastVisited
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_VISITED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getLastVisited() {
@@ -151,7 +153,7 @@ public class LastVisitedDashboardInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_VISITED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastVisited(@javax.annotation.Nullable Long lastVisited) {
+  public void setLastVisited(@Nullable Long lastVisited) {
     this.lastVisited = lastVisited;
   }
 

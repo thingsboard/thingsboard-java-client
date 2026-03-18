@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -49,52 +52,52 @@ import org.thingsboard.client.ApiClient;
   OAuth2BasicMapperConfig.JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN,
   OAuth2BasicMapperConfig.JSON_PROPERTY_USER_GROUPS_NAME_PATTERN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2BasicMapperConfig {
   public static final String JSON_PROPERTY_EMAIL_ATTRIBUTE_KEY = "emailAttributeKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String emailAttributeKey;
 
   public static final String JSON_PROPERTY_FIRST_NAME_ATTRIBUTE_KEY = "firstNameAttributeKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String firstNameAttributeKey;
 
   public static final String JSON_PROPERTY_LAST_NAME_ATTRIBUTE_KEY = "lastNameAttributeKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String lastNameAttributeKey;
 
   public static final String JSON_PROPERTY_TENANT_NAME_STRATEGY = "tenantNameStrategy";
-  @javax.annotation.Nonnull
+  @Nonnull
   private TenantNameStrategyType tenantNameStrategy;
 
   public static final String JSON_PROPERTY_TENANT_NAME_PATTERN = "tenantNamePattern";
-  @javax.annotation.Nullable
+  @Nullable
   private String tenantNamePattern;
 
   public static final String JSON_PROPERTY_CUSTOMER_NAME_PATTERN = "customerNamePattern";
-  @javax.annotation.Nullable
+  @Nullable
   private String customerNamePattern;
 
   public static final String JSON_PROPERTY_DEFAULT_DASHBOARD_NAME = "defaultDashboardName";
-  @javax.annotation.Nullable
+  @Nullable
   private String defaultDashboardName;
 
   public static final String JSON_PROPERTY_ALWAYS_FULL_SCREEN = "alwaysFullScreen";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean alwaysFullScreen;
 
   public static final String JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN = "parentCustomerNamePattern";
-  @javax.annotation.Nullable
+  @Nullable
   private String parentCustomerNamePattern;
 
   public static final String JSON_PROPERTY_USER_GROUPS_NAME_PATTERN = "userGroupsNamePattern";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> userGroupsNamePattern = new ArrayList<>();
 
   public OAuth2BasicMapperConfig() { 
   }
 
-  public OAuth2BasicMapperConfig emailAttributeKey(@javax.annotation.Nullable String emailAttributeKey) {
+  public OAuth2BasicMapperConfig emailAttributeKey(@Nullable String emailAttributeKey) {
     this.emailAttributeKey = emailAttributeKey;
     return this;
   }
@@ -103,7 +106,7 @@ public class OAuth2BasicMapperConfig {
    * Email attribute key of OAuth2 principal attributes. Must be specified for BASIC mapper type and cannot be specified for GITHUB type
    * @return emailAttributeKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL_ATTRIBUTE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmailAttributeKey() {
@@ -113,12 +116,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL_ATTRIBUTE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailAttributeKey(@javax.annotation.Nullable String emailAttributeKey) {
+  public void setEmailAttributeKey(@Nullable String emailAttributeKey) {
     this.emailAttributeKey = emailAttributeKey;
   }
 
 
-  public OAuth2BasicMapperConfig firstNameAttributeKey(@javax.annotation.Nullable String firstNameAttributeKey) {
+  public OAuth2BasicMapperConfig firstNameAttributeKey(@Nullable String firstNameAttributeKey) {
     this.firstNameAttributeKey = firstNameAttributeKey;
     return this;
   }
@@ -127,7 +130,7 @@ public class OAuth2BasicMapperConfig {
    * First name attribute key
    * @return firstNameAttributeKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME_ATTRIBUTE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFirstNameAttributeKey() {
@@ -137,12 +140,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_FIRST_NAME_ATTRIBUTE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFirstNameAttributeKey(@javax.annotation.Nullable String firstNameAttributeKey) {
+  public void setFirstNameAttributeKey(@Nullable String firstNameAttributeKey) {
     this.firstNameAttributeKey = firstNameAttributeKey;
   }
 
 
-  public OAuth2BasicMapperConfig lastNameAttributeKey(@javax.annotation.Nullable String lastNameAttributeKey) {
+  public OAuth2BasicMapperConfig lastNameAttributeKey(@Nullable String lastNameAttributeKey) {
     this.lastNameAttributeKey = lastNameAttributeKey;
     return this;
   }
@@ -151,7 +154,7 @@ public class OAuth2BasicMapperConfig {
    * Last name attribute key
    * @return lastNameAttributeKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME_ATTRIBUTE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLastNameAttributeKey() {
@@ -161,12 +164,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_LAST_NAME_ATTRIBUTE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastNameAttributeKey(@javax.annotation.Nullable String lastNameAttributeKey) {
+  public void setLastNameAttributeKey(@Nullable String lastNameAttributeKey) {
     this.lastNameAttributeKey = lastNameAttributeKey;
   }
 
 
-  public OAuth2BasicMapperConfig tenantNameStrategy(@javax.annotation.Nonnull TenantNameStrategyType tenantNameStrategy) {
+  public OAuth2BasicMapperConfig tenantNameStrategy(@Nonnull TenantNameStrategyType tenantNameStrategy) {
     this.tenantNameStrategy = tenantNameStrategy;
     return this;
   }
@@ -175,7 +178,7 @@ public class OAuth2BasicMapperConfig {
    * Tenant naming strategy. For DOMAIN type, domain for tenant name will be taken from the email (substring before &#39;@&#39;)
    * @return tenantNameStrategy
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TENANT_NAME_STRATEGY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public TenantNameStrategyType getTenantNameStrategy() {
@@ -185,12 +188,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_NAME_STRATEGY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTenantNameStrategy(@javax.annotation.Nonnull TenantNameStrategyType tenantNameStrategy) {
+  public void setTenantNameStrategy(@Nonnull TenantNameStrategyType tenantNameStrategy) {
     this.tenantNameStrategy = tenantNameStrategy;
   }
 
 
-  public OAuth2BasicMapperConfig tenantNamePattern(@javax.annotation.Nullable String tenantNamePattern) {
+  public OAuth2BasicMapperConfig tenantNamePattern(@Nullable String tenantNamePattern) {
     this.tenantNamePattern = tenantNamePattern;
     return this;
   }
@@ -199,7 +202,7 @@ public class OAuth2BasicMapperConfig {
    * Tenant name pattern for CUSTOM naming strategy. OAuth2 attributes in the pattern can be used by enclosing attribute key in &#39;%{&#39; and &#39;}&#39;
    * @return tenantNamePattern
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTenantNamePattern() {
@@ -209,12 +212,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantNamePattern(@javax.annotation.Nullable String tenantNamePattern) {
+  public void setTenantNamePattern(@Nullable String tenantNamePattern) {
     this.tenantNamePattern = tenantNamePattern;
   }
 
 
-  public OAuth2BasicMapperConfig customerNamePattern(@javax.annotation.Nullable String customerNamePattern) {
+  public OAuth2BasicMapperConfig customerNamePattern(@Nullable String customerNamePattern) {
     this.customerNamePattern = customerNamePattern;
     return this;
   }
@@ -223,7 +226,7 @@ public class OAuth2BasicMapperConfig {
    * Customer name pattern. When creating a user on the first OAuth2 log in, if specified, customer name will be used to create or find existing customer in the platform and assign customerId to the user
    * @return customerNamePattern
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCustomerNamePattern() {
@@ -233,12 +236,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerNamePattern(@javax.annotation.Nullable String customerNamePattern) {
+  public void setCustomerNamePattern(@Nullable String customerNamePattern) {
     this.customerNamePattern = customerNamePattern;
   }
 
 
-  public OAuth2BasicMapperConfig defaultDashboardName(@javax.annotation.Nullable String defaultDashboardName) {
+  public OAuth2BasicMapperConfig defaultDashboardName(@Nullable String defaultDashboardName) {
     this.defaultDashboardName = defaultDashboardName;
     return this;
   }
@@ -247,7 +250,7 @@ public class OAuth2BasicMapperConfig {
    * Name of the tenant&#39;s dashboard to set as default dashboard for newly created user
    * @return defaultDashboardName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDefaultDashboardName() {
@@ -257,12 +260,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_DASHBOARD_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultDashboardName(@javax.annotation.Nullable String defaultDashboardName) {
+  public void setDefaultDashboardName(@Nullable String defaultDashboardName) {
     this.defaultDashboardName = defaultDashboardName;
   }
 
 
-  public OAuth2BasicMapperConfig alwaysFullScreen(@javax.annotation.Nullable Boolean alwaysFullScreen) {
+  public OAuth2BasicMapperConfig alwaysFullScreen(@Nullable Boolean alwaysFullScreen) {
     this.alwaysFullScreen = alwaysFullScreen;
     return this;
   }
@@ -271,7 +274,7 @@ public class OAuth2BasicMapperConfig {
    * Whether default dashboard should be open in full screen
    * @return alwaysFullScreen
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALWAYS_FULL_SCREEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAlwaysFullScreen() {
@@ -281,12 +284,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ALWAYS_FULL_SCREEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlwaysFullScreen(@javax.annotation.Nullable Boolean alwaysFullScreen) {
+  public void setAlwaysFullScreen(@Nullable Boolean alwaysFullScreen) {
     this.alwaysFullScreen = alwaysFullScreen;
   }
 
 
-  public OAuth2BasicMapperConfig parentCustomerNamePattern(@javax.annotation.Nullable String parentCustomerNamePattern) {
+  public OAuth2BasicMapperConfig parentCustomerNamePattern(@Nullable String parentCustomerNamePattern) {
     this.parentCustomerNamePattern = parentCustomerNamePattern;
     return this;
   }
@@ -295,7 +298,7 @@ public class OAuth2BasicMapperConfig {
    * Get parentCustomerNamePattern
    * @return parentCustomerNamePattern
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getParentCustomerNamePattern() {
@@ -305,12 +308,12 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParentCustomerNamePattern(@javax.annotation.Nullable String parentCustomerNamePattern) {
+  public void setParentCustomerNamePattern(@Nullable String parentCustomerNamePattern) {
     this.parentCustomerNamePattern = parentCustomerNamePattern;
   }
 
 
-  public OAuth2BasicMapperConfig userGroupsNamePattern(@javax.annotation.Nullable List<String> userGroupsNamePattern) {
+  public OAuth2BasicMapperConfig userGroupsNamePattern(@Nullable List<String> userGroupsNamePattern) {
     this.userGroupsNamePattern = userGroupsNamePattern;
     return this;
   }
@@ -327,7 +330,7 @@ public class OAuth2BasicMapperConfig {
    * Get userGroupsNamePattern
    * @return userGroupsNamePattern
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_GROUPS_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getUserGroupsNamePattern() {
@@ -337,7 +340,7 @@ public class OAuth2BasicMapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_USER_GROUPS_NAME_PATTERN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserGroupsNamePattern(@javax.annotation.Nullable List<String> userGroupsNamePattern) {
+  public void setUserGroupsNamePattern(@Nullable List<String> userGroupsNamePattern) {
     this.userGroupsNamePattern = userGroupsNamePattern;
   }
 

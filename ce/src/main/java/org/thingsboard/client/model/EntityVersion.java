@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   EntityVersion.JSON_PROPERTY_NAME,
   EntityVersion.JSON_PROPERTY_AUTHOR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityVersion {
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
-  @javax.annotation.Nullable
+  @Nullable
   private Long timestamp;
 
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_AUTHOR = "author";
-  @javax.annotation.Nullable
+  @Nullable
   private String author;
 
   public EntityVersion() { 
   }
 
-  public EntityVersion timestamp(@javax.annotation.Nullable Long timestamp) {
+  public EntityVersion timestamp(@Nullable Long timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -70,7 +72,7 @@ public class EntityVersion {
    * Get timestamp
    * @return timestamp
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TIMESTAMP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTimestamp() {
@@ -80,12 +82,12 @@ public class EntityVersion {
 
   @JsonProperty(value = JSON_PROPERTY_TIMESTAMP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimestamp(@javax.annotation.Nullable Long timestamp) {
+  public void setTimestamp(@Nullable Long timestamp) {
     this.timestamp = timestamp;
   }
 
 
-  public EntityVersion id(@javax.annotation.Nullable String id) {
+  public EntityVersion id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -94,7 +96,7 @@ public class EntityVersion {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -104,12 +106,12 @@ public class EntityVersion {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public EntityVersion name(@javax.annotation.Nullable String name) {
+  public EntityVersion name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -118,7 +120,7 @@ public class EntityVersion {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -128,12 +130,12 @@ public class EntityVersion {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public EntityVersion author(@javax.annotation.Nullable String author) {
+  public EntityVersion author(@Nullable String author) {
     this.author = author;
     return this;
   }
@@ -142,7 +144,7 @@ public class EntityVersion {
    * Get author
    * @return author
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AUTHOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAuthor() {
@@ -152,7 +154,7 @@ public class EntityVersion {
 
   @JsonProperty(value = JSON_PROPERTY_AUTHOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthor(@javax.annotation.Nullable String author) {
+  public void setAuthor(@Nullable String author) {
     this.author = author;
   }
 

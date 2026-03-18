@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   AmazonBedrockProviderConfig.JSON_PROPERTY_ACCESS_KEY_ID,
   AmazonBedrockProviderConfig.JSON_PROPERTY_SECRET_ACCESS_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AmazonBedrockProviderConfig {
   public static final String JSON_PROPERTY_REGION = "region";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String region;
 
   public static final String JSON_PROPERTY_ACCESS_KEY_ID = "accessKeyId";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String accessKeyId;
 
   public static final String JSON_PROPERTY_SECRET_ACCESS_KEY = "secretAccessKey";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String secretAccessKey;
 
   public AmazonBedrockProviderConfig() { 
   }
 
-  public AmazonBedrockProviderConfig region(@javax.annotation.Nonnull String region) {
+  public AmazonBedrockProviderConfig region(@Nonnull String region) {
     this.region = region;
     return this;
   }
@@ -65,7 +67,7 @@ public class AmazonBedrockProviderConfig {
    * Get region
    * @return region
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_REGION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getRegion() {
@@ -75,12 +77,12 @@ public class AmazonBedrockProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_REGION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRegion(@javax.annotation.Nonnull String region) {
+  public void setRegion(@Nonnull String region) {
     this.region = region;
   }
 
 
-  public AmazonBedrockProviderConfig accessKeyId(@javax.annotation.Nonnull String accessKeyId) {
+  public AmazonBedrockProviderConfig accessKeyId(@Nonnull String accessKeyId) {
     this.accessKeyId = accessKeyId;
     return this;
   }
@@ -89,7 +91,7 @@ public class AmazonBedrockProviderConfig {
    * Get accessKeyId
    * @return accessKeyId
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_ACCESS_KEY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getAccessKeyId() {
@@ -99,12 +101,12 @@ public class AmazonBedrockProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ACCESS_KEY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccessKeyId(@javax.annotation.Nonnull String accessKeyId) {
+  public void setAccessKeyId(@Nonnull String accessKeyId) {
     this.accessKeyId = accessKeyId;
   }
 
 
-  public AmazonBedrockProviderConfig secretAccessKey(@javax.annotation.Nonnull String secretAccessKey) {
+  public AmazonBedrockProviderConfig secretAccessKey(@Nonnull String secretAccessKey) {
     this.secretAccessKey = secretAccessKey;
     return this;
   }
@@ -113,7 +115,7 @@ public class AmazonBedrockProviderConfig {
    * Get secretAccessKey
    * @return secretAccessKey
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_SECRET_ACCESS_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getSecretAccessKey() {
@@ -123,7 +125,7 @@ public class AmazonBedrockProviderConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SECRET_ACCESS_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSecretAccessKey(@javax.annotation.Nonnull String secretAccessKey) {
+  public void setSecretAccessKey(@Nonnull String secretAccessKey) {
     this.secretAccessKey = secretAccessKey;
   }
 

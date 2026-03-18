@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,24 +45,24 @@ import org.thingsboard.client.ApiClient;
   VersionLoadResult.JSON_PROPERTY_ERROR,
   VersionLoadResult.JSON_PROPERTY_DONE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionLoadResult {
   public static final String JSON_PROPERTY_RESULT = "result";
-  @javax.annotation.Nullable
+  @Nullable
   private List<EntityTypeLoadResult> result = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityLoadError error;
 
   public static final String JSON_PROPERTY_DONE = "done";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean done;
 
   public VersionLoadResult() { 
   }
 
-  public VersionLoadResult result(@javax.annotation.Nullable List<EntityTypeLoadResult> result) {
+  public VersionLoadResult result(@Nullable List<EntityTypeLoadResult> result) {
     this.result = result;
     return this;
   }
@@ -77,7 +79,7 @@ public class VersionLoadResult {
    * Get result
    * @return result
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<EntityTypeLoadResult> getResult() {
@@ -87,12 +89,12 @@ public class VersionLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_RESULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResult(@javax.annotation.Nullable List<EntityTypeLoadResult> result) {
+  public void setResult(@Nullable List<EntityTypeLoadResult> result) {
     this.result = result;
   }
 
 
-  public VersionLoadResult error(@javax.annotation.Nullable EntityLoadError error) {
+  public VersionLoadResult error(@Nullable EntityLoadError error) {
     this.error = error;
     return this;
   }
@@ -101,7 +103,7 @@ public class VersionLoadResult {
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityLoadError getError() {
@@ -111,12 +113,12 @@ public class VersionLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable EntityLoadError error) {
+  public void setError(@Nullable EntityLoadError error) {
     this.error = error;
   }
 
 
-  public VersionLoadResult done(@javax.annotation.Nullable Boolean done) {
+  public VersionLoadResult done(@Nullable Boolean done) {
     this.done = done;
     return this;
   }
@@ -125,7 +127,7 @@ public class VersionLoadResult {
    * Get done
    * @return done
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDone() {
@@ -135,7 +137,7 @@ public class VersionLoadResult {
 
   @JsonProperty(value = JSON_PROPERTY_DONE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDone(@javax.annotation.Nullable Boolean done) {
+  public void setDone(@Nullable Boolean done) {
     this.done = done;
   }
 

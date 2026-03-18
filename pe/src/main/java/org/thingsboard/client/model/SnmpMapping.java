@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   SnmpMapping.JSON_PROPERTY_KEY,
   SnmpMapping.JSON_PROPERTY_DATA_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SnmpMapping {
   public static final String JSON_PROPERTY_OID = "oid";
-  @javax.annotation.Nullable
+  @Nullable
   private String oid;
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public static final String JSON_PROPERTY_DATA_TYPE = "dataType";
-  @javax.annotation.Nullable
+  @Nullable
   private DataType dataType;
 
   public SnmpMapping() { 
   }
 
-  public SnmpMapping oid(@javax.annotation.Nullable String oid) {
+  public SnmpMapping oid(@Nullable String oid) {
     this.oid = oid;
     return this;
   }
@@ -66,7 +68,7 @@ public class SnmpMapping {
    * Get oid
    * @return oid
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getOid() {
@@ -76,12 +78,12 @@ public class SnmpMapping {
 
   @JsonProperty(value = JSON_PROPERTY_OID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOid(@javax.annotation.Nullable String oid) {
+  public void setOid(@Nullable String oid) {
     this.oid = oid;
   }
 
 
-  public SnmpMapping key(@javax.annotation.Nullable String key) {
+  public SnmpMapping key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -90,7 +92,7 @@ public class SnmpMapping {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -100,12 +102,12 @@ public class SnmpMapping {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
 
-  public SnmpMapping dataType(@javax.annotation.Nullable DataType dataType) {
+  public SnmpMapping dataType(@Nullable DataType dataType) {
     this.dataType = dataType;
     return this;
   }
@@ -114,7 +116,7 @@ public class SnmpMapping {
    * Get dataType
    * @return dataType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DataType getDataType() {
@@ -124,7 +126,7 @@ public class SnmpMapping {
 
   @JsonProperty(value = JSON_PROPERTY_DATA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDataType(@javax.annotation.Nullable DataType dataType) {
+  public void setDataType(@Nullable DataType dataType) {
     this.dataType = dataType;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -60,100 +62,100 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartYAxisSettings.JSON_PROPERTY_MIN,
   TimeSeriesChartYAxisSettings.JSON_PROPERTY_MAX
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartYAxisSettings {
   public static final String JSON_PROPERTY_SHOW = "show";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean show;
 
   public static final String JSON_PROPERTY_LABEL = "label";
-  @javax.annotation.Nullable
+  @Nullable
   private String label;
 
   public static final String JSON_PROPERTY_LABEL_FONT = "labelFont";
-  @javax.annotation.Nullable
+  @Nullable
   private Font labelFont;
 
   public static final String JSON_PROPERTY_LABEL_COLOR = "labelColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String labelColor;
 
   public static final String JSON_PROPERTY_POSITION = "position";
-  @javax.annotation.Nullable
+  @Nullable
   private AxisPosition position;
 
   public static final String JSON_PROPERTY_SHOW_TICK_LABELS = "showTickLabels";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showTickLabels;
 
   public static final String JSON_PROPERTY_TICK_LABEL_FONT = "tickLabelFont";
-  @javax.annotation.Nullable
+  @Nullable
   private Font tickLabelFont;
 
   public static final String JSON_PROPERTY_TICK_LABEL_COLOR = "tickLabelColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String tickLabelColor;
 
   public static final String JSON_PROPERTY_SHOW_TICKS = "showTicks";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showTicks;
 
   public static final String JSON_PROPERTY_TICKS_COLOR = "ticksColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String ticksColor;
 
   public static final String JSON_PROPERTY_SHOW_LINE = "showLine";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showLine;
 
   public static final String JSON_PROPERTY_LINE_COLOR = "lineColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String lineColor;
 
   public static final String JSON_PROPERTY_SHOW_SPLIT_LINES = "showSplitLines";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showSplitLines;
 
   public static final String JSON_PROPERTY_SPLIT_LINES_COLOR = "splitLinesColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String splitLinesColor;
 
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private String id;
 
   public static final String JSON_PROPERTY_ORDER = "order";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer order;
 
   public static final String JSON_PROPERTY_UNITS = "units";
-  @javax.annotation.Nullable
+  @Nullable
   private String units;
 
   public static final String JSON_PROPERTY_DECIMALS = "decimals";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer decimals;
 
   public static final String JSON_PROPERTY_INTERVAL = "interval";
-  @javax.annotation.Nullable
+  @Nullable
   private Double interval;
 
   public static final String JSON_PROPERTY_SPLIT_NUMBER = "splitNumber";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer splitNumber;
 
   public static final String JSON_PROPERTY_MIN = "min";
-  @javax.annotation.Nullable
+  @Nullable
   private Double min;
 
   public static final String JSON_PROPERTY_MAX = "max";
-  @javax.annotation.Nullable
+  @Nullable
   private Double max;
 
   public TimeSeriesChartYAxisSettings() { 
   }
 
-  public TimeSeriesChartYAxisSettings show(@javax.annotation.Nullable Boolean show) {
+  public TimeSeriesChartYAxisSettings show(@Nullable Boolean show) {
     this.show = show;
     return this;
   }
@@ -162,7 +164,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get show
    * @return show
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShow() {
@@ -172,12 +174,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShow(@javax.annotation.Nullable Boolean show) {
+  public void setShow(@Nullable Boolean show) {
     this.show = show;
   }
 
 
-  public TimeSeriesChartYAxisSettings label(@javax.annotation.Nullable String label) {
+  public TimeSeriesChartYAxisSettings label(@Nullable String label) {
     this.label = label;
     return this;
   }
@@ -186,7 +188,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get label
    * @return label
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabel() {
@@ -196,12 +198,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabel(@javax.annotation.Nullable String label) {
+  public void setLabel(@Nullable String label) {
     this.label = label;
   }
 
 
-  public TimeSeriesChartYAxisSettings labelFont(@javax.annotation.Nullable Font labelFont) {
+  public TimeSeriesChartYAxisSettings labelFont(@Nullable Font labelFont) {
     this.labelFont = labelFont;
     return this;
   }
@@ -210,7 +212,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get labelFont
    * @return labelFont
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Font getLabelFont() {
@@ -220,12 +222,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelFont(@javax.annotation.Nullable Font labelFont) {
+  public void setLabelFont(@Nullable Font labelFont) {
     this.labelFont = labelFont;
   }
 
 
-  public TimeSeriesChartYAxisSettings labelColor(@javax.annotation.Nullable String labelColor) {
+  public TimeSeriesChartYAxisSettings labelColor(@Nullable String labelColor) {
     this.labelColor = labelColor;
     return this;
   }
@@ -234,7 +236,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get labelColor
    * @return labelColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLabelColor() {
@@ -244,12 +246,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLabelColor(@javax.annotation.Nullable String labelColor) {
+  public void setLabelColor(@Nullable String labelColor) {
     this.labelColor = labelColor;
   }
 
 
-  public TimeSeriesChartYAxisSettings position(@javax.annotation.Nullable AxisPosition position) {
+  public TimeSeriesChartYAxisSettings position(@Nullable AxisPosition position) {
     this.position = position;
     return this;
   }
@@ -258,7 +260,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get position
    * @return position
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AxisPosition getPosition() {
@@ -268,12 +270,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPosition(@javax.annotation.Nullable AxisPosition position) {
+  public void setPosition(@Nullable AxisPosition position) {
     this.position = position;
   }
 
 
-  public TimeSeriesChartYAxisSettings showTickLabels(@javax.annotation.Nullable Boolean showTickLabels) {
+  public TimeSeriesChartYAxisSettings showTickLabels(@Nullable Boolean showTickLabels) {
     this.showTickLabels = showTickLabels;
     return this;
   }
@@ -282,7 +284,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get showTickLabels
    * @return showTickLabels
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_TICK_LABELS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowTickLabels() {
@@ -292,12 +294,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_TICK_LABELS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowTickLabels(@javax.annotation.Nullable Boolean showTickLabels) {
+  public void setShowTickLabels(@Nullable Boolean showTickLabels) {
     this.showTickLabels = showTickLabels;
   }
 
 
-  public TimeSeriesChartYAxisSettings tickLabelFont(@javax.annotation.Nullable Font tickLabelFont) {
+  public TimeSeriesChartYAxisSettings tickLabelFont(@Nullable Font tickLabelFont) {
     this.tickLabelFont = tickLabelFont;
     return this;
   }
@@ -306,7 +308,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get tickLabelFont
    * @return tickLabelFont
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TICK_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Font getTickLabelFont() {
@@ -316,12 +318,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TICK_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTickLabelFont(@javax.annotation.Nullable Font tickLabelFont) {
+  public void setTickLabelFont(@Nullable Font tickLabelFont) {
     this.tickLabelFont = tickLabelFont;
   }
 
 
-  public TimeSeriesChartYAxisSettings tickLabelColor(@javax.annotation.Nullable String tickLabelColor) {
+  public TimeSeriesChartYAxisSettings tickLabelColor(@Nullable String tickLabelColor) {
     this.tickLabelColor = tickLabelColor;
     return this;
   }
@@ -330,7 +332,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get tickLabelColor
    * @return tickLabelColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TICK_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTickLabelColor() {
@@ -340,12 +342,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TICK_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTickLabelColor(@javax.annotation.Nullable String tickLabelColor) {
+  public void setTickLabelColor(@Nullable String tickLabelColor) {
     this.tickLabelColor = tickLabelColor;
   }
 
 
-  public TimeSeriesChartYAxisSettings showTicks(@javax.annotation.Nullable Boolean showTicks) {
+  public TimeSeriesChartYAxisSettings showTicks(@Nullable Boolean showTicks) {
     this.showTicks = showTicks;
     return this;
   }
@@ -354,7 +356,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get showTicks
    * @return showTicks
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_TICKS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowTicks() {
@@ -364,12 +366,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_TICKS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowTicks(@javax.annotation.Nullable Boolean showTicks) {
+  public void setShowTicks(@Nullable Boolean showTicks) {
     this.showTicks = showTicks;
   }
 
 
-  public TimeSeriesChartYAxisSettings ticksColor(@javax.annotation.Nullable String ticksColor) {
+  public TimeSeriesChartYAxisSettings ticksColor(@Nullable String ticksColor) {
     this.ticksColor = ticksColor;
     return this;
   }
@@ -378,7 +380,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get ticksColor
    * @return ticksColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TICKS_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTicksColor() {
@@ -388,12 +390,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TICKS_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTicksColor(@javax.annotation.Nullable String ticksColor) {
+  public void setTicksColor(@Nullable String ticksColor) {
     this.ticksColor = ticksColor;
   }
 
 
-  public TimeSeriesChartYAxisSettings showLine(@javax.annotation.Nullable Boolean showLine) {
+  public TimeSeriesChartYAxisSettings showLine(@Nullable Boolean showLine) {
     this.showLine = showLine;
     return this;
   }
@@ -402,7 +404,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get showLine
    * @return showLine
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_LINE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowLine() {
@@ -412,12 +414,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_LINE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowLine(@javax.annotation.Nullable Boolean showLine) {
+  public void setShowLine(@Nullable Boolean showLine) {
     this.showLine = showLine;
   }
 
 
-  public TimeSeriesChartYAxisSettings lineColor(@javax.annotation.Nullable String lineColor) {
+  public TimeSeriesChartYAxisSettings lineColor(@Nullable String lineColor) {
     this.lineColor = lineColor;
     return this;
   }
@@ -426,7 +428,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get lineColor
    * @return lineColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLineColor() {
@@ -436,12 +438,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LINE_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLineColor(@javax.annotation.Nullable String lineColor) {
+  public void setLineColor(@Nullable String lineColor) {
     this.lineColor = lineColor;
   }
 
 
-  public TimeSeriesChartYAxisSettings showSplitLines(@javax.annotation.Nullable Boolean showSplitLines) {
+  public TimeSeriesChartYAxisSettings showSplitLines(@Nullable Boolean showSplitLines) {
     this.showSplitLines = showSplitLines;
     return this;
   }
@@ -450,7 +452,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get showSplitLines
    * @return showSplitLines
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_SPLIT_LINES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowSplitLines() {
@@ -460,12 +462,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_SPLIT_LINES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowSplitLines(@javax.annotation.Nullable Boolean showSplitLines) {
+  public void setShowSplitLines(@Nullable Boolean showSplitLines) {
     this.showSplitLines = showSplitLines;
   }
 
 
-  public TimeSeriesChartYAxisSettings splitLinesColor(@javax.annotation.Nullable String splitLinesColor) {
+  public TimeSeriesChartYAxisSettings splitLinesColor(@Nullable String splitLinesColor) {
     this.splitLinesColor = splitLinesColor;
     return this;
   }
@@ -474,7 +476,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get splitLinesColor
    * @return splitLinesColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SPLIT_LINES_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSplitLinesColor() {
@@ -484,12 +486,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SPLIT_LINES_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSplitLinesColor(@javax.annotation.Nullable String splitLinesColor) {
+  public void setSplitLinesColor(@Nullable String splitLinesColor) {
     this.splitLinesColor = splitLinesColor;
   }
 
 
-  public TimeSeriesChartYAxisSettings id(@javax.annotation.Nullable String id) {
+  public TimeSeriesChartYAxisSettings id(@Nullable String id) {
     this.id = id;
     return this;
   }
@@ -498,7 +500,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getId() {
@@ -508,12 +510,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable String id) {
+  public void setId(@Nullable String id) {
     this.id = id;
   }
 
 
-  public TimeSeriesChartYAxisSettings order(@javax.annotation.Nullable Integer order) {
+  public TimeSeriesChartYAxisSettings order(@Nullable Integer order) {
     this.order = order;
     return this;
   }
@@ -522,7 +524,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get order
    * @return order
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getOrder() {
@@ -532,12 +534,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOrder(@javax.annotation.Nullable Integer order) {
+  public void setOrder(@Nullable Integer order) {
     this.order = order;
   }
 
 
-  public TimeSeriesChartYAxisSettings units(@javax.annotation.Nullable String units) {
+  public TimeSeriesChartYAxisSettings units(@Nullable String units) {
     this.units = units;
     return this;
   }
@@ -546,7 +548,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get units
    * @return units
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UNITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUnits() {
@@ -556,12 +558,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_UNITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUnits(@javax.annotation.Nullable String units) {
+  public void setUnits(@Nullable String units) {
     this.units = units;
   }
 
 
-  public TimeSeriesChartYAxisSettings decimals(@javax.annotation.Nullable Integer decimals) {
+  public TimeSeriesChartYAxisSettings decimals(@Nullable Integer decimals) {
     this.decimals = decimals;
     return this;
   }
@@ -570,7 +572,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get decimals
    * @return decimals
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DECIMALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDecimals() {
@@ -580,12 +582,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_DECIMALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDecimals(@javax.annotation.Nullable Integer decimals) {
+  public void setDecimals(@Nullable Integer decimals) {
     this.decimals = decimals;
   }
 
 
-  public TimeSeriesChartYAxisSettings interval(@javax.annotation.Nullable Double interval) {
+  public TimeSeriesChartYAxisSettings interval(@Nullable Double interval) {
     this.interval = interval;
     return this;
   }
@@ -594,7 +596,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get interval
    * @return interval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getInterval() {
@@ -604,12 +606,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInterval(@javax.annotation.Nullable Double interval) {
+  public void setInterval(@Nullable Double interval) {
     this.interval = interval;
   }
 
 
-  public TimeSeriesChartYAxisSettings splitNumber(@javax.annotation.Nullable Integer splitNumber) {
+  public TimeSeriesChartYAxisSettings splitNumber(@Nullable Integer splitNumber) {
     this.splitNumber = splitNumber;
     return this;
   }
@@ -618,7 +620,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get splitNumber
    * @return splitNumber
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SPLIT_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getSplitNumber() {
@@ -628,12 +630,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SPLIT_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSplitNumber(@javax.annotation.Nullable Integer splitNumber) {
+  public void setSplitNumber(@Nullable Integer splitNumber) {
     this.splitNumber = splitNumber;
   }
 
 
-  public TimeSeriesChartYAxisSettings min(@javax.annotation.Nullable Double min) {
+  public TimeSeriesChartYAxisSettings min(@Nullable Double min) {
     this.min = min;
     return this;
   }
@@ -642,7 +644,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get min
    * @return min
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getMin() {
@@ -652,12 +654,12 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_MIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMin(@javax.annotation.Nullable Double min) {
+  public void setMin(@Nullable Double min) {
     this.min = min;
   }
 
 
-  public TimeSeriesChartYAxisSettings max(@javax.annotation.Nullable Double max) {
+  public TimeSeriesChartYAxisSettings max(@Nullable Double max) {
     this.max = max;
     return this;
   }
@@ -666,7 +668,7 @@ public class TimeSeriesChartYAxisSettings {
    * Get max
    * @return max
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getMax() {
@@ -676,7 +678,7 @@ public class TimeSeriesChartYAxisSettings {
 
   @JsonProperty(value = JSON_PROPERTY_MAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMax(@javax.annotation.Nullable Double max) {
+  public void setMax(@Nullable Double max) {
     this.max = max;
   }
 

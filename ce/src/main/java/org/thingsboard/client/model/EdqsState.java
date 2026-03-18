@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   EdqsState.JSON_PROPERTY_SYNC_STATUS,
   EdqsState.JSON_PROPERTY_API_MODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdqsState {
   public static final String JSON_PROPERTY_EDQS_READY = "edqsReady";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean edqsReady;
 
   public static final String JSON_PROPERTY_SYNC_STATUS = "syncStatus";
-  @javax.annotation.Nullable
+  @Nullable
   private EdqsSyncStatus syncStatus;
 
   public static final String JSON_PROPERTY_API_MODE = "apiMode";
-  @javax.annotation.Nullable
+  @Nullable
   private EdqsApiMode apiMode;
 
   public EdqsState() { 
   }
 
-  public EdqsState edqsReady(@javax.annotation.Nullable Boolean edqsReady) {
+  public EdqsState edqsReady(@Nullable Boolean edqsReady) {
     this.edqsReady = edqsReady;
     return this;
   }
@@ -67,7 +69,7 @@ public class EdqsState {
    * Get edqsReady
    * @return edqsReady
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDQS_READY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEdqsReady() {
@@ -77,12 +79,12 @@ public class EdqsState {
 
   @JsonProperty(value = JSON_PROPERTY_EDQS_READY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdqsReady(@javax.annotation.Nullable Boolean edqsReady) {
+  public void setEdqsReady(@Nullable Boolean edqsReady) {
     this.edqsReady = edqsReady;
   }
 
 
-  public EdqsState syncStatus(@javax.annotation.Nullable EdqsSyncStatus syncStatus) {
+  public EdqsState syncStatus(@Nullable EdqsSyncStatus syncStatus) {
     this.syncStatus = syncStatus;
     return this;
   }
@@ -91,7 +93,7 @@ public class EdqsState {
    * Get syncStatus
    * @return syncStatus
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SYNC_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdqsSyncStatus getSyncStatus() {
@@ -101,12 +103,12 @@ public class EdqsState {
 
   @JsonProperty(value = JSON_PROPERTY_SYNC_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSyncStatus(@javax.annotation.Nullable EdqsSyncStatus syncStatus) {
+  public void setSyncStatus(@Nullable EdqsSyncStatus syncStatus) {
     this.syncStatus = syncStatus;
   }
 
 
-  public EdqsState apiMode(@javax.annotation.Nullable EdqsApiMode apiMode) {
+  public EdqsState apiMode(@Nullable EdqsApiMode apiMode) {
     this.apiMode = apiMode;
     return this;
   }
@@ -115,7 +117,7 @@ public class EdqsState {
    * Get apiMode
    * @return apiMode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_API_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdqsApiMode getApiMode() {
@@ -125,7 +127,7 @@ public class EdqsState {
 
   @JsonProperty(value = JSON_PROPERTY_API_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApiMode(@javax.annotation.Nullable EdqsApiMode apiMode) {
+  public void setApiMode(@Nullable EdqsApiMode apiMode) {
     this.apiMode = apiMode;
   }
 

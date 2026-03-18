@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,34 +48,34 @@ import org.thingsboard.client.ApiClient;
   EventInfo.JSON_PROPERTY_ENTITY_ID,
   EventInfo.JSON_PROPERTY_BODY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EventInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private EventId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private String type;
 
   public static final String JSON_PROPERTY_UID = "uid";
-  @javax.annotation.Nullable
+  @Nullable
   private String uid;
 
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId entityId;
 
   public static final String JSON_PROPERTY_BODY = "body";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode body = null;
 
   public EventInfo() { 
@@ -91,7 +93,7 @@ public class EventInfo {
     this.entityId = entityId;
   }
 
-  public EventInfo id(@javax.annotation.Nullable EventId id) {
+  public EventInfo id(@Nullable EventId id) {
     this.id = id;
     return this;
   }
@@ -100,7 +102,7 @@ public class EventInfo {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EventId getId() {
@@ -110,7 +112,7 @@ public class EventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EventId id) {
+  public void setId(@Nullable EventId id) {
     this.id = id;
   }
 
@@ -119,7 +121,7 @@ public class EventInfo {
    * Timestamp of the event creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -133,7 +135,7 @@ public class EventInfo {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -143,7 +145,7 @@ public class EventInfo {
 
 
 
-  public EventInfo type(@javax.annotation.Nullable String type) {
+  public EventInfo type(@Nullable String type) {
     this.type = type;
     return this;
   }
@@ -152,7 +154,7 @@ public class EventInfo {
    * Event type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getType() {
@@ -162,12 +164,12 @@ public class EventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable String type) {
+  public void setType(@Nullable String type) {
     this.type = type;
   }
 
 
-  public EventInfo uid(@javax.annotation.Nullable String uid) {
+  public EventInfo uid(@Nullable String uid) {
     this.uid = uid;
     return this;
   }
@@ -176,7 +178,7 @@ public class EventInfo {
    * string
    * @return uid
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUid() {
@@ -186,7 +188,7 @@ public class EventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_UID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUid(@javax.annotation.Nullable String uid) {
+  public void setUid(@Nullable String uid) {
     this.uid = uid;
   }
 
@@ -195,7 +197,7 @@ public class EventInfo {
    * JSON object with Entity Id for which event is created.
    * @return entityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getEntityId() {
@@ -205,7 +207,7 @@ public class EventInfo {
 
 
 
-  public EventInfo body(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode body) {
+  public EventInfo body(@Nullable com.fasterxml.jackson.databind.JsonNode body) {
     this.body = body;
     return this;
   }
@@ -214,7 +216,7 @@ public class EventInfo {
    * Get body
    * @return body
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BODY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getBody() {
@@ -224,7 +226,7 @@ public class EventInfo {
 
   @JsonProperty(value = JSON_PROPERTY_BODY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBody(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode body) {
+  public void setBody(@Nullable com.fasterxml.jackson.databind.JsonNode body) {
     this.body = body;
   }
 

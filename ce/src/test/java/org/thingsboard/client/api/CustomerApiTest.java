@@ -83,7 +83,7 @@ public class CustomerApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName("CustomerTestDevice_" + timestamp);
         device.setType("default");
-        Device createdDevice = client.saveDevice(device, null, null, null, null, null);
+        Device createdDevice = client.saveDevice(device, null, null, null, null);
 
         String customerId = createdCustomers.get(0).getId().getId().toString();
         client.assignDeviceToCustomer(customerId, createdDevice.getId().getId().toString());

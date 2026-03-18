@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +44,24 @@ import org.thingsboard.client.ApiClient;
   Palette.JSON_PROPERTY_EXTENDS,
   Palette.JSON_PROPERTY_COLORS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Palette {
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String type;
 
   public static final String JSON_PROPERTY_EXTENDS = "extends";
-  @javax.annotation.Nullable
+  @Nullable
   private String _extends;
 
   public static final String JSON_PROPERTY_COLORS = "colors";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, String> colors = new HashMap<>();
 
   public Palette() { 
   }
 
-  public Palette type(@javax.annotation.Nonnull String type) {
+  public Palette type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -67,7 +70,7 @@ public class Palette {
    * Name of the pre-defined palette, or &#39;custom&#39;
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getType() {
@@ -77,12 +80,12 @@ public class Palette {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull String type) {
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 
 
-  public Palette _extends(@javax.annotation.Nullable String _extends) {
+  public Palette _extends(@Nullable String _extends) {
     this._extends = _extends;
     return this;
   }
@@ -91,7 +94,7 @@ public class Palette {
    * Pre-defined palette name that the custom palette extends
    * @return _extends
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXTENDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getExtends() {
@@ -101,12 +104,12 @@ public class Palette {
 
   @JsonProperty(value = JSON_PROPERTY_EXTENDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExtends(@javax.annotation.Nullable String _extends) {
+  public void setExtends(@Nullable String _extends) {
     this._extends = _extends;
   }
 
 
-  public Palette colors(@javax.annotation.Nullable Map<String, String> colors) {
+  public Palette colors(@Nullable Map<String, String> colors) {
     this.colors = colors;
     return this;
   }
@@ -123,7 +126,7 @@ public class Palette {
    * Mapping of hue identifier number to the rgb(a) color code
    * @return colors
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, String> getColors() {
@@ -133,7 +136,7 @@ public class Palette {
 
   @JsonProperty(value = JSON_PROPERTY_COLORS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColors(@javax.annotation.Nullable Map<String, String> colors) {
+  public void setColors(@Nullable Map<String, String> colors) {
     this.colors = colors;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -49,56 +51,56 @@ import org.thingsboard.client.ApiClient;
   ResourceExportData.JSON_PROPERTY_IS_PUBLIC,
   ResourceExportData.JSON_PROPERTY_PUBLIC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ResourceExportData {
   public static final String JSON_PROPERTY_LINK = "link";
-  @javax.annotation.Nullable
+  @Nullable
   private String link;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private ResourceType type;
 
   public static final String JSON_PROPERTY_SUB_TYPE = "subType";
-  @javax.annotation.Nullable
+  @Nullable
   private ResourceSubType subType;
 
   public static final String JSON_PROPERTY_RESOURCE_KEY = "resourceKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String resourceKey;
 
   public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  @javax.annotation.Nullable
+  @Nullable
   private String fileName;
 
   public static final String JSON_PROPERTY_PUBLIC_RESOURCE_KEY = "publicResourceKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String publicResourceKey;
 
   public static final String JSON_PROPERTY_MEDIA_TYPE = "mediaType";
-  @javax.annotation.Nullable
+  @Nullable
   private String mediaType;
 
   public static final String JSON_PROPERTY_DATA = "data";
-  @javax.annotation.Nullable
+  @Nullable
   private String data;
 
   public static final String JSON_PROPERTY_IS_PUBLIC = "isPublic";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean isPublic;
 
   public static final String JSON_PROPERTY_PUBLIC = "public";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _public;
 
   public ResourceExportData() { 
   }
 
-  public ResourceExportData link(@javax.annotation.Nullable String link) {
+  public ResourceExportData link(@Nullable String link) {
     this.link = link;
     return this;
   }
@@ -107,7 +109,7 @@ public class ResourceExportData {
    * Get link
    * @return link
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLink() {
@@ -117,12 +119,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLink(@javax.annotation.Nullable String link) {
+  public void setLink(@Nullable String link) {
     this.link = link;
   }
 
 
-  public ResourceExportData title(@javax.annotation.Nullable String title) {
+  public ResourceExportData title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -131,7 +133,7 @@ public class ResourceExportData {
    * Get title
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -141,12 +143,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public ResourceExportData type(@javax.annotation.Nullable ResourceType type) {
+  public ResourceExportData type(@Nullable ResourceType type) {
     this.type = type;
     return this;
   }
@@ -155,7 +157,7 @@ public class ResourceExportData {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ResourceType getType() {
@@ -165,12 +167,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable ResourceType type) {
+  public void setType(@Nullable ResourceType type) {
     this.type = type;
   }
 
 
-  public ResourceExportData subType(@javax.annotation.Nullable ResourceSubType subType) {
+  public ResourceExportData subType(@Nullable ResourceSubType subType) {
     this.subType = subType;
     return this;
   }
@@ -179,7 +181,7 @@ public class ResourceExportData {
    * Get subType
    * @return subType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUB_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ResourceSubType getSubType() {
@@ -189,12 +191,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_SUB_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubType(@javax.annotation.Nullable ResourceSubType subType) {
+  public void setSubType(@Nullable ResourceSubType subType) {
     this.subType = subType;
   }
 
 
-  public ResourceExportData resourceKey(@javax.annotation.Nullable String resourceKey) {
+  public ResourceExportData resourceKey(@Nullable String resourceKey) {
     this.resourceKey = resourceKey;
     return this;
   }
@@ -203,7 +205,7 @@ public class ResourceExportData {
    * Get resourceKey
    * @return resourceKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getResourceKey() {
@@ -213,12 +215,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResourceKey(@javax.annotation.Nullable String resourceKey) {
+  public void setResourceKey(@Nullable String resourceKey) {
     this.resourceKey = resourceKey;
   }
 
 
-  public ResourceExportData fileName(@javax.annotation.Nullable String fileName) {
+  public ResourceExportData fileName(@Nullable String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -227,7 +229,7 @@ public class ResourceExportData {
    * Get fileName
    * @return fileName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFileName() {
@@ -237,12 +239,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFileName(@javax.annotation.Nullable String fileName) {
+  public void setFileName(@Nullable String fileName) {
     this.fileName = fileName;
   }
 
 
-  public ResourceExportData publicResourceKey(@javax.annotation.Nullable String publicResourceKey) {
+  public ResourceExportData publicResourceKey(@Nullable String publicResourceKey) {
     this.publicResourceKey = publicResourceKey;
     return this;
   }
@@ -251,7 +253,7 @@ public class ResourceExportData {
    * Get publicResourceKey
    * @return publicResourceKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPublicResourceKey() {
@@ -261,12 +263,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublicResourceKey(@javax.annotation.Nullable String publicResourceKey) {
+  public void setPublicResourceKey(@Nullable String publicResourceKey) {
     this.publicResourceKey = publicResourceKey;
   }
 
 
-  public ResourceExportData mediaType(@javax.annotation.Nullable String mediaType) {
+  public ResourceExportData mediaType(@Nullable String mediaType) {
     this.mediaType = mediaType;
     return this;
   }
@@ -275,7 +277,7 @@ public class ResourceExportData {
    * Get mediaType
    * @return mediaType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MEDIA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMediaType() {
@@ -285,12 +287,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_MEDIA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMediaType(@javax.annotation.Nullable String mediaType) {
+  public void setMediaType(@Nullable String mediaType) {
     this.mediaType = mediaType;
   }
 
 
-  public ResourceExportData data(@javax.annotation.Nullable String data) {
+  public ResourceExportData data(@Nullable String data) {
     this.data = data;
     return this;
   }
@@ -299,7 +301,7 @@ public class ResourceExportData {
    * Get data
    * @return data
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getData() {
@@ -309,12 +311,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(@javax.annotation.Nullable String data) {
+  public void setData(@Nullable String data) {
     this.data = data;
   }
 
 
-  public ResourceExportData isPublic(@javax.annotation.Nullable Boolean isPublic) {
+  public ResourceExportData isPublic(@Nullable Boolean isPublic) {
     this.isPublic = isPublic;
     return this;
   }
@@ -323,7 +325,7 @@ public class ResourceExportData {
    * Get isPublic
    * @return isPublic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getIsPublic() {
@@ -333,12 +335,12 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_IS_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsPublic(@javax.annotation.Nullable Boolean isPublic) {
+  public void setIsPublic(@Nullable Boolean isPublic) {
     this.isPublic = isPublic;
   }
 
 
-  public ResourceExportData _public(@javax.annotation.Nullable Boolean _public) {
+  public ResourceExportData _public(@Nullable Boolean _public) {
     this._public = _public;
     return this;
   }
@@ -347,7 +349,7 @@ public class ResourceExportData {
    * Get _public
    * @return _public
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPublic() {
@@ -357,7 +359,7 @@ public class ResourceExportData {
 
   @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublic(@javax.annotation.Nullable Boolean _public) {
+  public void setPublic(@Nullable Boolean _public) {
     this._public = _public;
   }
 

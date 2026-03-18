@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,24 +43,24 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartNoAggregationBarWidthSettings.JSON_PROPERTY_GROUP_WIDTH,
   TimeSeriesChartNoAggregationBarWidthSettings.JSON_PROPERTY_BAR_WIDTH
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartNoAggregationBarWidthSettings {
   public static final String JSON_PROPERTY_STRATEGY = "strategy";
-  @javax.annotation.Nullable
+  @Nullable
   private TimeSeriesChartNoAggregationBarWidthStrategy strategy;
 
   public static final String JSON_PROPERTY_GROUP_WIDTH = "groupWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private TimeSeriesChartBarWidth groupWidth;
 
   public static final String JSON_PROPERTY_BAR_WIDTH = "barWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private TimeSeriesChartBarWidth barWidth;
 
   public TimeSeriesChartNoAggregationBarWidthSettings() { 
   }
 
-  public TimeSeriesChartNoAggregationBarWidthSettings strategy(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthStrategy strategy) {
+  public TimeSeriesChartNoAggregationBarWidthSettings strategy(@Nullable TimeSeriesChartNoAggregationBarWidthStrategy strategy) {
     this.strategy = strategy;
     return this;
   }
@@ -67,7 +69,7 @@ public class TimeSeriesChartNoAggregationBarWidthSettings {
    * Get strategy
    * @return strategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TimeSeriesChartNoAggregationBarWidthStrategy getStrategy() {
@@ -77,12 +79,12 @@ public class TimeSeriesChartNoAggregationBarWidthSettings {
 
   @JsonProperty(value = JSON_PROPERTY_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStrategy(@javax.annotation.Nullable TimeSeriesChartNoAggregationBarWidthStrategy strategy) {
+  public void setStrategy(@Nullable TimeSeriesChartNoAggregationBarWidthStrategy strategy) {
     this.strategy = strategy;
   }
 
 
-  public TimeSeriesChartNoAggregationBarWidthSettings groupWidth(@javax.annotation.Nullable TimeSeriesChartBarWidth groupWidth) {
+  public TimeSeriesChartNoAggregationBarWidthSettings groupWidth(@Nullable TimeSeriesChartBarWidth groupWidth) {
     this.groupWidth = groupWidth;
     return this;
   }
@@ -91,7 +93,7 @@ public class TimeSeriesChartNoAggregationBarWidthSettings {
    * Get groupWidth
    * @return groupWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_GROUP_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TimeSeriesChartBarWidth getGroupWidth() {
@@ -101,12 +103,12 @@ public class TimeSeriesChartNoAggregationBarWidthSettings {
 
   @JsonProperty(value = JSON_PROPERTY_GROUP_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroupWidth(@javax.annotation.Nullable TimeSeriesChartBarWidth groupWidth) {
+  public void setGroupWidth(@Nullable TimeSeriesChartBarWidth groupWidth) {
     this.groupWidth = groupWidth;
   }
 
 
-  public TimeSeriesChartNoAggregationBarWidthSettings barWidth(@javax.annotation.Nullable TimeSeriesChartBarWidth barWidth) {
+  public TimeSeriesChartNoAggregationBarWidthSettings barWidth(@Nullable TimeSeriesChartBarWidth barWidth) {
     this.barWidth = barWidth;
     return this;
   }
@@ -115,7 +117,7 @@ public class TimeSeriesChartNoAggregationBarWidthSettings {
    * Get barWidth
    * @return barWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TimeSeriesChartBarWidth getBarWidth() {
@@ -125,7 +127,7 @@ public class TimeSeriesChartNoAggregationBarWidthSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BAR_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBarWidth(@javax.annotation.Nullable TimeSeriesChartBarWidth barWidth) {
+  public void setBarWidth(@Nullable TimeSeriesChartBarWidth barWidth) {
     this.barWidth = barWidth;
   }
 

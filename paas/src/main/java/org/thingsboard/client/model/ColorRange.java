@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   ColorRange.JSON_PROPERTY_TO,
   ColorRange.JSON_PROPERTY_COLOR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ColorRange {
   public static final String JSON_PROPERTY_FROM = "from";
-  @javax.annotation.Nullable
+  @Nullable
   private Double from;
 
   public static final String JSON_PROPERTY_TO = "to";
-  @javax.annotation.Nullable
+  @Nullable
   private Double to;
 
   public static final String JSON_PROPERTY_COLOR = "color";
-  @javax.annotation.Nullable
+  @Nullable
   private String color;
 
   public ColorRange() { 
   }
 
-  public ColorRange from(@javax.annotation.Nullable Double from) {
+  public ColorRange from(@Nullable Double from) {
     this.from = from;
     return this;
   }
@@ -65,7 +67,7 @@ public class ColorRange {
    * Get from
    * @return from
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FROM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getFrom() {
@@ -75,12 +77,12 @@ public class ColorRange {
 
   @JsonProperty(value = JSON_PROPERTY_FROM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrom(@javax.annotation.Nullable Double from) {
+  public void setFrom(@Nullable Double from) {
     this.from = from;
   }
 
 
-  public ColorRange to(@javax.annotation.Nullable Double to) {
+  public ColorRange to(@Nullable Double to) {
     this.to = to;
     return this;
   }
@@ -89,7 +91,7 @@ public class ColorRange {
    * Get to
    * @return to
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getTo() {
@@ -99,12 +101,12 @@ public class ColorRange {
 
   @JsonProperty(value = JSON_PROPERTY_TO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTo(@javax.annotation.Nullable Double to) {
+  public void setTo(@Nullable Double to) {
     this.to = to;
   }
 
 
-  public ColorRange color(@javax.annotation.Nullable String color) {
+  public ColorRange color(@Nullable String color) {
     this.color = color;
     return this;
   }
@@ -113,7 +115,7 @@ public class ColorRange {
    * Get color
    * @return color
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getColor() {
@@ -123,7 +125,7 @@ public class ColorRange {
 
   @JsonProperty(value = JSON_PROPERTY_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColor(@javax.annotation.Nullable String color) {
+  public void setColor(@Nullable String color) {
     this.color = color;
   }
 

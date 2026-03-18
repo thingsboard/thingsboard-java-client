@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   ToCoreEdqsRequest.JSON_PROPERTY_SYNC_REQUEST,
   ToCoreEdqsRequest.JSON_PROPERTY_API_ENABLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ToCoreEdqsRequest {
   public static final String JSON_PROPERTY_SYNC_REQUEST = "syncRequest";
-  @javax.annotation.Nullable
+  @Nullable
   private EdqsSyncRequest syncRequest;
 
   public static final String JSON_PROPERTY_API_ENABLED = "apiEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean apiEnabled;
 
   public ToCoreEdqsRequest() { 
   }
 
-  public ToCoreEdqsRequest syncRequest(@javax.annotation.Nullable EdqsSyncRequest syncRequest) {
+  public ToCoreEdqsRequest syncRequest(@Nullable EdqsSyncRequest syncRequest) {
     this.syncRequest = syncRequest;
     return this;
   }
@@ -61,7 +63,7 @@ public class ToCoreEdqsRequest {
    * Get syncRequest
    * @return syncRequest
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SYNC_REQUEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdqsSyncRequest getSyncRequest() {
@@ -71,12 +73,12 @@ public class ToCoreEdqsRequest {
 
   @JsonProperty(value = JSON_PROPERTY_SYNC_REQUEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSyncRequest(@javax.annotation.Nullable EdqsSyncRequest syncRequest) {
+  public void setSyncRequest(@Nullable EdqsSyncRequest syncRequest) {
     this.syncRequest = syncRequest;
   }
 
 
-  public ToCoreEdqsRequest apiEnabled(@javax.annotation.Nullable Boolean apiEnabled) {
+  public ToCoreEdqsRequest apiEnabled(@Nullable Boolean apiEnabled) {
     this.apiEnabled = apiEnabled;
     return this;
   }
@@ -85,7 +87,7 @@ public class ToCoreEdqsRequest {
    * Get apiEnabled
    * @return apiEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_API_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getApiEnabled() {
@@ -95,7 +97,7 @@ public class ToCoreEdqsRequest {
 
   @JsonProperty(value = JSON_PROPERTY_API_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApiEnabled(@javax.annotation.Nullable Boolean apiEnabled) {
+  public void setApiEnabled(@Nullable Boolean apiEnabled) {
     this.apiEnabled = apiEnabled;
   }
 

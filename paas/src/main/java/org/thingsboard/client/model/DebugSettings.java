@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,24 +41,24 @@ import org.thingsboard.client.ApiClient;
   DebugSettings.JSON_PROPERTY_ALL_ENABLED,
   DebugSettings.JSON_PROPERTY_ALL_ENABLED_UNTIL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DebugSettings {
   public static final String JSON_PROPERTY_FAILURES_ENABLED = "failuresEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean failuresEnabled;
 
   public static final String JSON_PROPERTY_ALL_ENABLED = "allEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean allEnabled;
 
   public static final String JSON_PROPERTY_ALL_ENABLED_UNTIL = "allEnabledUntil";
-  @javax.annotation.Nullable
+  @Nullable
   private Long allEnabledUntil;
 
   public DebugSettings() { 
   }
 
-  public DebugSettings failuresEnabled(@javax.annotation.Nullable Boolean failuresEnabled) {
+  public DebugSettings failuresEnabled(@Nullable Boolean failuresEnabled) {
     this.failuresEnabled = failuresEnabled;
     return this;
   }
@@ -65,7 +67,7 @@ public class DebugSettings {
    * Debug failures. 
    * @return failuresEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FAILURES_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getFailuresEnabled() {
@@ -75,12 +77,12 @@ public class DebugSettings {
 
   @JsonProperty(value = JSON_PROPERTY_FAILURES_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFailuresEnabled(@javax.annotation.Nullable Boolean failuresEnabled) {
+  public void setFailuresEnabled(@Nullable Boolean failuresEnabled) {
     this.failuresEnabled = failuresEnabled;
   }
 
 
-  public DebugSettings allEnabled(@javax.annotation.Nullable Boolean allEnabled) {
+  public DebugSettings allEnabled(@Nullable Boolean allEnabled) {
     this.allEnabled = allEnabled;
     return this;
   }
@@ -89,7 +91,7 @@ public class DebugSettings {
    * Debug All. Used as a trigger for updating debugAllUntil.
    * @return allEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAllEnabled() {
@@ -99,12 +101,12 @@ public class DebugSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ALL_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllEnabled(@javax.annotation.Nullable Boolean allEnabled) {
+  public void setAllEnabled(@Nullable Boolean allEnabled) {
     this.allEnabled = allEnabled;
   }
 
 
-  public DebugSettings allEnabledUntil(@javax.annotation.Nullable Long allEnabledUntil) {
+  public DebugSettings allEnabledUntil(@Nullable Long allEnabledUntil) {
     this.allEnabledUntil = allEnabledUntil;
     return this;
   }
@@ -113,7 +115,7 @@ public class DebugSettings {
    * Timestamp of the end time for the processing debug events.
    * @return allEnabledUntil
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALL_ENABLED_UNTIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAllEnabledUntil() {
@@ -123,7 +125,7 @@ public class DebugSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ALL_ENABLED_UNTIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllEnabledUntil(@javax.annotation.Nullable Long allEnabledUntil) {
+  public void setAllEnabledUntil(@Nullable Long allEnabledUntil) {
     this.allEnabledUntil = allEnabledUntil;
   }
 

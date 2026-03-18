@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,28 +45,28 @@ import org.thingsboard.client.ApiClient;
   Mapping.JSON_PROPERTY_UPDATE,
   Mapping.JSON_PROPERTY_HEADER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Mapping {
   public static final String JSON_PROPERTY_COLUMNS = "columns";
-  @javax.annotation.Nullable
+  @Nullable
   private List<ColumnMapping> columns = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DELIMITER = "delimiter";
-  @javax.annotation.Nullable
+  @Nullable
   private String delimiter;
 
   public static final String JSON_PROPERTY_UPDATE = "update";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean update;
 
   public static final String JSON_PROPERTY_HEADER = "header";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean header;
 
   public Mapping() { 
   }
 
-  public Mapping columns(@javax.annotation.Nullable List<ColumnMapping> columns) {
+  public Mapping columns(@Nullable List<ColumnMapping> columns) {
     this.columns = columns;
     return this;
   }
@@ -81,7 +83,7 @@ public class Mapping {
    * Get columns
    * @return columns
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLUMNS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<ColumnMapping> getColumns() {
@@ -91,12 +93,12 @@ public class Mapping {
 
   @JsonProperty(value = JSON_PROPERTY_COLUMNS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColumns(@javax.annotation.Nullable List<ColumnMapping> columns) {
+  public void setColumns(@Nullable List<ColumnMapping> columns) {
     this.columns = columns;
   }
 
 
-  public Mapping delimiter(@javax.annotation.Nullable String delimiter) {
+  public Mapping delimiter(@Nullable String delimiter) {
     this.delimiter = delimiter;
     return this;
   }
@@ -105,7 +107,7 @@ public class Mapping {
    * Get delimiter
    * @return delimiter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DELIMITER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDelimiter() {
@@ -115,12 +117,12 @@ public class Mapping {
 
   @JsonProperty(value = JSON_PROPERTY_DELIMITER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDelimiter(@javax.annotation.Nullable String delimiter) {
+  public void setDelimiter(@Nullable String delimiter) {
     this.delimiter = delimiter;
   }
 
 
-  public Mapping update(@javax.annotation.Nullable Boolean update) {
+  public Mapping update(@Nullable Boolean update) {
     this.update = update;
     return this;
   }
@@ -129,7 +131,7 @@ public class Mapping {
    * Get update
    * @return update
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPDATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUpdate() {
@@ -139,12 +141,12 @@ public class Mapping {
 
   @JsonProperty(value = JSON_PROPERTY_UPDATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdate(@javax.annotation.Nullable Boolean update) {
+  public void setUpdate(@Nullable Boolean update) {
     this.update = update;
   }
 
 
-  public Mapping header(@javax.annotation.Nullable Boolean header) {
+  public Mapping header(@Nullable Boolean header) {
     this.header = header;
     return this;
   }
@@ -153,7 +155,7 @@ public class Mapping {
    * Get header
    * @return header
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HEADER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getHeader() {
@@ -163,7 +165,7 @@ public class Mapping {
 
   @JsonProperty(value = JSON_PROPERTY_HEADER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHeader(@javax.annotation.Nullable Boolean header) {
+  public void setHeader(@Nullable Boolean header) {
     this.header = header;
   }
 

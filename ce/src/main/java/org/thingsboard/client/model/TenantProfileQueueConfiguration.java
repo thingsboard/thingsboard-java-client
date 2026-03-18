@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -47,48 +49,48 @@ import org.thingsboard.client.ApiClient;
   TenantProfileQueueConfiguration.JSON_PROPERTY_PROCESSING_STRATEGY,
   TenantProfileQueueConfiguration.JSON_PROPERTY_ADDITIONAL_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantProfileQueueConfiguration {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TOPIC = "topic";
-  @javax.annotation.Nullable
+  @Nullable
   private String topic;
 
   public static final String JSON_PROPERTY_POLL_INTERVAL = "pollInterval";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer pollInterval;
 
   public static final String JSON_PROPERTY_PARTITIONS = "partitions";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer partitions;
 
   public static final String JSON_PROPERTY_CONSUMER_PER_PARTITION = "consumerPerPartition";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean consumerPerPartition;
 
   public static final String JSON_PROPERTY_PACK_PROCESSING_TIMEOUT = "packProcessingTimeout";
-  @javax.annotation.Nullable
+  @Nullable
   private Long packProcessingTimeout;
 
   public static final String JSON_PROPERTY_SUBMIT_STRATEGY = "submitStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private SubmitStrategy submitStrategy;
 
   public static final String JSON_PROPERTY_PROCESSING_STRATEGY = "processingStrategy";
-  @javax.annotation.Nullable
+  @Nullable
   private ProcessingStrategy processingStrategy;
 
   public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public TenantProfileQueueConfiguration() { 
   }
 
-  public TenantProfileQueueConfiguration name(@javax.annotation.Nullable String name) {
+  public TenantProfileQueueConfiguration name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -97,7 +99,7 @@ public class TenantProfileQueueConfiguration {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -107,12 +109,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public TenantProfileQueueConfiguration topic(@javax.annotation.Nullable String topic) {
+  public TenantProfileQueueConfiguration topic(@Nullable String topic) {
     this.topic = topic;
     return this;
   }
@@ -121,7 +123,7 @@ public class TenantProfileQueueConfiguration {
    * Get topic
    * @return topic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOPIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTopic() {
@@ -131,12 +133,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_TOPIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTopic(@javax.annotation.Nullable String topic) {
+  public void setTopic(@Nullable String topic) {
     this.topic = topic;
   }
 
 
-  public TenantProfileQueueConfiguration pollInterval(@javax.annotation.Nullable Integer pollInterval) {
+  public TenantProfileQueueConfiguration pollInterval(@Nullable Integer pollInterval) {
     this.pollInterval = pollInterval;
     return this;
   }
@@ -145,7 +147,7 @@ public class TenantProfileQueueConfiguration {
    * Get pollInterval
    * @return pollInterval
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POLL_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPollInterval() {
@@ -155,12 +157,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_POLL_INTERVAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPollInterval(@javax.annotation.Nullable Integer pollInterval) {
+  public void setPollInterval(@Nullable Integer pollInterval) {
     this.pollInterval = pollInterval;
   }
 
 
-  public TenantProfileQueueConfiguration partitions(@javax.annotation.Nullable Integer partitions) {
+  public TenantProfileQueueConfiguration partitions(@Nullable Integer partitions) {
     this.partitions = partitions;
     return this;
   }
@@ -169,7 +171,7 @@ public class TenantProfileQueueConfiguration {
    * Get partitions
    * @return partitions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PARTITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPartitions() {
@@ -179,12 +181,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PARTITIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPartitions(@javax.annotation.Nullable Integer partitions) {
+  public void setPartitions(@Nullable Integer partitions) {
     this.partitions = partitions;
   }
 
 
-  public TenantProfileQueueConfiguration consumerPerPartition(@javax.annotation.Nullable Boolean consumerPerPartition) {
+  public TenantProfileQueueConfiguration consumerPerPartition(@Nullable Boolean consumerPerPartition) {
     this.consumerPerPartition = consumerPerPartition;
     return this;
   }
@@ -193,7 +195,7 @@ public class TenantProfileQueueConfiguration {
    * Get consumerPerPartition
    * @return consumerPerPartition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONSUMER_PER_PARTITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getConsumerPerPartition() {
@@ -203,12 +205,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_CONSUMER_PER_PARTITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConsumerPerPartition(@javax.annotation.Nullable Boolean consumerPerPartition) {
+  public void setConsumerPerPartition(@Nullable Boolean consumerPerPartition) {
     this.consumerPerPartition = consumerPerPartition;
   }
 
 
-  public TenantProfileQueueConfiguration packProcessingTimeout(@javax.annotation.Nullable Long packProcessingTimeout) {
+  public TenantProfileQueueConfiguration packProcessingTimeout(@Nullable Long packProcessingTimeout) {
     this.packProcessingTimeout = packProcessingTimeout;
     return this;
   }
@@ -217,7 +219,7 @@ public class TenantProfileQueueConfiguration {
    * Get packProcessingTimeout
    * @return packProcessingTimeout
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PACK_PROCESSING_TIMEOUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getPackProcessingTimeout() {
@@ -227,12 +229,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PACK_PROCESSING_TIMEOUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPackProcessingTimeout(@javax.annotation.Nullable Long packProcessingTimeout) {
+  public void setPackProcessingTimeout(@Nullable Long packProcessingTimeout) {
     this.packProcessingTimeout = packProcessingTimeout;
   }
 
 
-  public TenantProfileQueueConfiguration submitStrategy(@javax.annotation.Nullable SubmitStrategy submitStrategy) {
+  public TenantProfileQueueConfiguration submitStrategy(@Nullable SubmitStrategy submitStrategy) {
     this.submitStrategy = submitStrategy;
     return this;
   }
@@ -241,7 +243,7 @@ public class TenantProfileQueueConfiguration {
    * Get submitStrategy
    * @return submitStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SUBMIT_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SubmitStrategy getSubmitStrategy() {
@@ -251,12 +253,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_SUBMIT_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubmitStrategy(@javax.annotation.Nullable SubmitStrategy submitStrategy) {
+  public void setSubmitStrategy(@Nullable SubmitStrategy submitStrategy) {
     this.submitStrategy = submitStrategy;
   }
 
 
-  public TenantProfileQueueConfiguration processingStrategy(@javax.annotation.Nullable ProcessingStrategy processingStrategy) {
+  public TenantProfileQueueConfiguration processingStrategy(@Nullable ProcessingStrategy processingStrategy) {
     this.processingStrategy = processingStrategy;
     return this;
   }
@@ -265,7 +267,7 @@ public class TenantProfileQueueConfiguration {
    * Get processingStrategy
    * @return processingStrategy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROCESSING_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ProcessingStrategy getProcessingStrategy() {
@@ -275,12 +277,12 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_PROCESSING_STRATEGY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProcessingStrategy(@javax.annotation.Nullable ProcessingStrategy processingStrategy) {
+  public void setProcessingStrategy(@Nullable ProcessingStrategy processingStrategy) {
     this.processingStrategy = processingStrategy;
   }
 
 
-  public TenantProfileQueueConfiguration additionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public TenantProfileQueueConfiguration additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
     return this;
   }
@@ -289,7 +291,7 @@ public class TenantProfileQueueConfiguration {
    * Get additionalInfo
    * @return additionalInfo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
@@ -299,7 +301,7 @@ public class TenantProfileQueueConfiguration {
 
   @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
     this.additionalInfo = additionalInfo;
   }
 

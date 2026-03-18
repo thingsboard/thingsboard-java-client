@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,32 +47,32 @@ import org.thingsboard.client.ApiClient;
   OAuth2MapperConfig.JSON_PROPERTY_BASIC,
   OAuth2MapperConfig.JSON_PROPERTY_CUSTOM
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2MapperConfig {
   public static final String JSON_PROPERTY_ALLOW_USER_CREATION = "allowUserCreation";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean allowUserCreation;
 
   public static final String JSON_PROPERTY_ACTIVATE_USER = "activateUser";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean activateUser;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nonnull
+  @Nonnull
   private MapperType type;
 
   public static final String JSON_PROPERTY_BASIC = "basic";
-  @javax.annotation.Nullable
+  @Nullable
   private OAuth2BasicMapperConfig basic;
 
   public static final String JSON_PROPERTY_CUSTOM = "custom";
-  @javax.annotation.Nullable
+  @Nullable
   private OAuth2CustomMapperConfig custom;
 
   public OAuth2MapperConfig() { 
   }
 
-  public OAuth2MapperConfig allowUserCreation(@javax.annotation.Nullable Boolean allowUserCreation) {
+  public OAuth2MapperConfig allowUserCreation(@Nullable Boolean allowUserCreation) {
     this.allowUserCreation = allowUserCreation;
     return this;
   }
@@ -78,7 +81,7 @@ public class OAuth2MapperConfig {
    * Whether user should be created if not yet present on the platform after successful authentication
    * @return allowUserCreation
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALLOW_USER_CREATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAllowUserCreation() {
@@ -88,12 +91,12 @@ public class OAuth2MapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ALLOW_USER_CREATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowUserCreation(@javax.annotation.Nullable Boolean allowUserCreation) {
+  public void setAllowUserCreation(@Nullable Boolean allowUserCreation) {
     this.allowUserCreation = allowUserCreation;
   }
 
 
-  public OAuth2MapperConfig activateUser(@javax.annotation.Nullable Boolean activateUser) {
+  public OAuth2MapperConfig activateUser(@Nullable Boolean activateUser) {
     this.activateUser = activateUser;
     return this;
   }
@@ -102,7 +105,7 @@ public class OAuth2MapperConfig {
    * Whether user credentials should be activated when user is created after successful authentication
    * @return activateUser
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTIVATE_USER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getActivateUser() {
@@ -112,12 +115,12 @@ public class OAuth2MapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ACTIVATE_USER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActivateUser(@javax.annotation.Nullable Boolean activateUser) {
+  public void setActivateUser(@Nullable Boolean activateUser) {
     this.activateUser = activateUser;
   }
 
 
-  public OAuth2MapperConfig type(@javax.annotation.Nonnull MapperType type) {
+  public OAuth2MapperConfig type(@Nonnull MapperType type) {
     this.type = type;
     return this;
   }
@@ -126,7 +129,7 @@ public class OAuth2MapperConfig {
    * Type of OAuth2 mapper. Depending on this param, different mapper config fields must be specified
    * @return type
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public MapperType getType() {
@@ -136,12 +139,12 @@ public class OAuth2MapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@javax.annotation.Nonnull MapperType type) {
+  public void setType(@Nonnull MapperType type) {
     this.type = type;
   }
 
 
-  public OAuth2MapperConfig basic(@javax.annotation.Nullable OAuth2BasicMapperConfig basic) {
+  public OAuth2MapperConfig basic(@Nullable OAuth2BasicMapperConfig basic) {
     this.basic = basic;
     return this;
   }
@@ -150,7 +153,7 @@ public class OAuth2MapperConfig {
    * Mapper config for BASIC and GITHUB mapper types
    * @return basic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BASIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OAuth2BasicMapperConfig getBasic() {
@@ -160,12 +163,12 @@ public class OAuth2MapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_BASIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBasic(@javax.annotation.Nullable OAuth2BasicMapperConfig basic) {
+  public void setBasic(@Nullable OAuth2BasicMapperConfig basic) {
     this.basic = basic;
   }
 
 
-  public OAuth2MapperConfig custom(@javax.annotation.Nullable OAuth2CustomMapperConfig custom) {
+  public OAuth2MapperConfig custom(@Nullable OAuth2CustomMapperConfig custom) {
     this.custom = custom;
     return this;
   }
@@ -174,7 +177,7 @@ public class OAuth2MapperConfig {
    * Mapper config for CUSTOM mapper type
    * @return custom
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public OAuth2CustomMapperConfig getCustom() {
@@ -184,7 +187,7 @@ public class OAuth2MapperConfig {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustom(@javax.annotation.Nullable OAuth2CustomMapperConfig custom) {
+  public void setCustom(@Nullable OAuth2CustomMapperConfig custom) {
     this.custom = custom;
   }
 

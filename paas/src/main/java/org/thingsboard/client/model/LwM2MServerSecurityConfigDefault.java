@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,62 +52,62 @@ import org.thingsboard.client.ApiClient;
   LwM2MServerSecurityConfigDefault.JSON_PROPERTY_SECURITY_HOST,
   LwM2MServerSecurityConfigDefault.JSON_PROPERTY_SECURITY_PORT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LwM2MServerSecurityConfigDefault {
   public static final String JSON_PROPERTY_SHORT_SERVER_ID = "shortServerId";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer shortServerId;
 
   public static final String JSON_PROPERTY_BOOTSTRAP_SERVER_IS = "bootstrapServerIs";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean bootstrapServerIs;
 
   public static final String JSON_PROPERTY_HOST = "host";
-  @javax.annotation.Nullable
+  @Nullable
   private String host;
 
   public static final String JSON_PROPERTY_PORT = "port";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer port;
 
   public static final String JSON_PROPERTY_CLIENT_HOLD_OFF_TIME = "clientHoldOffTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer clientHoldOffTime;
 
   public static final String JSON_PROPERTY_SERVER_PUBLIC_KEY = "serverPublicKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String serverPublicKey;
 
   public static final String JSON_PROPERTY_SERVER_CERTIFICATE = "serverCertificate";
-  @javax.annotation.Nullable
+  @Nullable
   private String serverCertificate;
 
   public static final String JSON_PROPERTY_BOOTSTRAP_SERVER_ACCOUNT_TIMEOUT = "bootstrapServerAccountTimeout";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer bootstrapServerAccountTimeout;
 
   public static final String JSON_PROPERTY_LIFETIME = "lifetime";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer lifetime;
 
   public static final String JSON_PROPERTY_DEFAULT_MIN_PERIOD = "defaultMinPeriod";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer defaultMinPeriod;
 
   public static final String JSON_PROPERTY_NOTIF_IF_DISABLED = "notifIfDisabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean notifIfDisabled;
 
   public static final String JSON_PROPERTY_BINDING = "binding";
-  @javax.annotation.Nullable
+  @Nullable
   private String binding;
 
   public static final String JSON_PROPERTY_SECURITY_HOST = "securityHost";
-  @javax.annotation.Nullable
+  @Nullable
   private String securityHost;
 
   public static final String JSON_PROPERTY_SECURITY_PORT = "securityPort";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer securityPort;
 
   public LwM2MServerSecurityConfigDefault() { 
@@ -149,7 +151,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of &#39;false&#39;. The values ID:0 and ID:65535 values MUST NOT be used for identifying the LwM2M Server.
    * @return shortServerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHORT_SERVER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getShortServerId() {
@@ -163,7 +165,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Is Bootstrap Server or Lwm2m Server. The LwM2M Client MAY be configured to use one or more LwM2M Server Account(s). The LwM2M Client MUST have at most one LwM2M Bootstrap-Server Account. (*) The LwM2M client MUST have at least one LwM2M server account after completing the boot sequence specified.
    * @return bootstrapServerIs
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BOOTSTRAP_SERVER_IS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getBootstrapServerIs() {
@@ -177,7 +179,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Host for &#39;No Security&#39; mode
    * @return host
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_HOST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getHost() {
@@ -191,7 +193,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Port for  Lwm2m Server: &#39;No Security&#39; mode: Lwm2m Server or Bootstrap Server
    * @return port
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PORT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPort() {
@@ -205,7 +207,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Client Hold Off Time. The number of seconds to wait before initiating a Client Initiated Bootstrap once the LwM2M Client has determined it should initiate this bootstrap mode. (This information is relevant for use with a Bootstrap-Server only.)
    * @return clientHoldOffTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLIENT_HOLD_OFF_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getClientHoldOffTime() {
@@ -219,7 +221,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Server Public Key for &#39;Security&#39; mode (DTLS): RPK or X509. Format: base64 encoded
    * @return serverPublicKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SERVER_PUBLIC_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getServerPublicKey() {
@@ -233,7 +235,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Server Public Key for &#39;Security&#39; mode (DTLS): X509. Format: base64 encoded
    * @return serverCertificate
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SERVER_CERTIFICATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getServerCertificate() {
@@ -247,7 +249,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Bootstrap Server Account Timeout (If the value is set to 0, or if this resource is not instantiated, the Bootstrap-Server Account lifetime is infinite.)
    * @return bootstrapServerAccountTimeout
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BOOTSTRAP_SERVER_ACCOUNT_TIMEOUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getBootstrapServerAccountTimeout() {
@@ -261,7 +263,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Specify the lifetime of the registration in seconds.
    * @return lifetime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LIFETIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getLifetime() {
@@ -275,7 +277,7 @@ public class LwM2MServerSecurityConfigDefault {
    * The default value the LwM2M Client should use for the Minimum Period of an Observation in the absence of this parameter being included in an Observation. If this Resource doesn’t exist, the default value is 0.
    * @return defaultMinPeriod
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT_MIN_PERIOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getDefaultMinPeriod() {
@@ -289,7 +291,7 @@ public class LwM2MServerSecurityConfigDefault {
    * If true, the LwM2M Client stores “Notify” operations to the LwM2M Server while the LwM2M Server account is disabled or the LwM2M Client is offline. After the LwM2M Server account is enabled or the LwM2M Client is online, the LwM2M Client reports the stored “Notify” operations to the Server. If false, the LwM2M Client discards all the “Notify” operations or temporarily disables the Observe function while the LwM2M Server is disabled or the LwM2M Client is offline. The default value is true.
    * @return notifIfDisabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NOTIF_IF_DISABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getNotifIfDisabled() {
@@ -303,7 +305,7 @@ public class LwM2MServerSecurityConfigDefault {
    * This Resource defines the transport binding configured for the LwM2M Client. If the LwM2M Client supports the binding specified in this Resource, the LwM2M Client MUST use that transport for the Current Binding Mode.
    * @return binding
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BINDING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getBinding() {
@@ -317,7 +319,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Host for &#39;Security&#39; mode (DTLS)
    * @return securityHost
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SECURITY_HOST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSecurityHost() {
@@ -331,7 +333,7 @@ public class LwM2MServerSecurityConfigDefault {
    * Port for &#39;Security&#39; mode (DTLS): Lwm2m Server or Bootstrap Server
    * @return securityPort
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SECURITY_PORT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getSecurityPort() {

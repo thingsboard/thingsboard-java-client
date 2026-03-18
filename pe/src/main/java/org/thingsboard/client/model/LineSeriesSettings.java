@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -58,76 +60,76 @@ import org.thingsboard.client.ApiClient;
   LineSeriesSettings.JSON_PROPERTY_POINT_SIZE,
   LineSeriesSettings.JSON_PROPERTY_FILL_AREA_SETTINGS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LineSeriesSettings {
   public static final String JSON_PROPERTY_SHOW_LINE = "showLine";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showLine;
 
   public static final String JSON_PROPERTY_STEP = "step";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean step;
 
   public static final String JSON_PROPERTY_STEP_TYPE = "stepType";
-  @javax.annotation.Nullable
+  @Nullable
   private LineSeriesStepType stepType;
 
   public static final String JSON_PROPERTY_SMOOTH = "smooth";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean smooth;
 
   public static final String JSON_PROPERTY_LINE_TYPE = "lineType";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartLineType lineType;
 
   public static final String JSON_PROPERTY_LINE_WIDTH = "lineWidth";
-  @javax.annotation.Nullable
+  @Nullable
   private Float lineWidth;
 
   public static final String JSON_PROPERTY_SHOW_POINTS = "showPoints";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showPoints;
 
   public static final String JSON_PROPERTY_SHOW_POINT_LABEL = "showPointLabel";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showPointLabel;
 
   public static final String JSON_PROPERTY_POINT_LABEL_POSITION = "pointLabelPosition";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartLabelPosition pointLabelPosition;
 
   public static final String JSON_PROPERTY_POINT_LABEL_FONT = "pointLabelFont";
-  @javax.annotation.Nullable
+  @Nullable
   private Font pointLabelFont;
 
   public static final String JSON_PROPERTY_POINT_LABEL_COLOR = "pointLabelColor";
-  @javax.annotation.Nullable
+  @Nullable
   private String pointLabelColor;
 
   public static final String JSON_PROPERTY_ENABLE_POINT_LABEL_BACKGROUND = "enablePointLabelBackground";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enablePointLabelBackground;
 
   public static final String JSON_PROPERTY_POINT_LABEL_BACKGROUND = "pointLabelBackground";
-  @javax.annotation.Nullable
+  @Nullable
   private String pointLabelBackground;
 
   public static final String JSON_PROPERTY_POINT_SHAPE = "pointShape";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartShape pointShape;
 
   public static final String JSON_PROPERTY_POINT_SIZE = "pointSize";
-  @javax.annotation.Nullable
+  @Nullable
   private Float pointSize;
 
   public static final String JSON_PROPERTY_FILL_AREA_SETTINGS = "fillAreaSettings";
-  @javax.annotation.Nullable
+  @Nullable
   private ChartFillSettings fillAreaSettings;
 
   public LineSeriesSettings() { 
   }
 
-  public LineSeriesSettings showLine(@javax.annotation.Nullable Boolean showLine) {
+  public LineSeriesSettings showLine(@Nullable Boolean showLine) {
     this.showLine = showLine;
     return this;
   }
@@ -136,7 +138,7 @@ public class LineSeriesSettings {
    * Get showLine
    * @return showLine
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_LINE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowLine() {
@@ -146,12 +148,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_LINE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowLine(@javax.annotation.Nullable Boolean showLine) {
+  public void setShowLine(@Nullable Boolean showLine) {
     this.showLine = showLine;
   }
 
 
-  public LineSeriesSettings step(@javax.annotation.Nullable Boolean step) {
+  public LineSeriesSettings step(@Nullable Boolean step) {
     this.step = step;
     return this;
   }
@@ -160,7 +162,7 @@ public class LineSeriesSettings {
    * Get step
    * @return step
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STEP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getStep() {
@@ -170,12 +172,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_STEP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStep(@javax.annotation.Nullable Boolean step) {
+  public void setStep(@Nullable Boolean step) {
     this.step = step;
   }
 
 
-  public LineSeriesSettings stepType(@javax.annotation.Nullable LineSeriesStepType stepType) {
+  public LineSeriesSettings stepType(@Nullable LineSeriesStepType stepType) {
     this.stepType = stepType;
     return this;
   }
@@ -184,7 +186,7 @@ public class LineSeriesSettings {
    * Get stepType
    * @return stepType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STEP_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LineSeriesStepType getStepType() {
@@ -194,12 +196,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_STEP_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStepType(@javax.annotation.Nullable LineSeriesStepType stepType) {
+  public void setStepType(@Nullable LineSeriesStepType stepType) {
     this.stepType = stepType;
   }
 
 
-  public LineSeriesSettings smooth(@javax.annotation.Nullable Boolean smooth) {
+  public LineSeriesSettings smooth(@Nullable Boolean smooth) {
     this.smooth = smooth;
     return this;
   }
@@ -208,7 +210,7 @@ public class LineSeriesSettings {
    * Get smooth
    * @return smooth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SMOOTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSmooth() {
@@ -218,12 +220,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SMOOTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSmooth(@javax.annotation.Nullable Boolean smooth) {
+  public void setSmooth(@Nullable Boolean smooth) {
     this.smooth = smooth;
   }
 
 
-  public LineSeriesSettings lineType(@javax.annotation.Nullable ChartLineType lineType) {
+  public LineSeriesSettings lineType(@Nullable ChartLineType lineType) {
     this.lineType = lineType;
     return this;
   }
@@ -232,7 +234,7 @@ public class LineSeriesSettings {
    * Get lineType
    * @return lineType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartLineType getLineType() {
@@ -242,12 +244,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LINE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLineType(@javax.annotation.Nullable ChartLineType lineType) {
+  public void setLineType(@Nullable ChartLineType lineType) {
     this.lineType = lineType;
   }
 
 
-  public LineSeriesSettings lineWidth(@javax.annotation.Nullable Float lineWidth) {
+  public LineSeriesSettings lineWidth(@Nullable Float lineWidth) {
     this.lineWidth = lineWidth;
     return this;
   }
@@ -256,7 +258,7 @@ public class LineSeriesSettings {
    * Get lineWidth
    * @return lineWidth
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getLineWidth() {
@@ -266,12 +268,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_LINE_WIDTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLineWidth(@javax.annotation.Nullable Float lineWidth) {
+  public void setLineWidth(@Nullable Float lineWidth) {
     this.lineWidth = lineWidth;
   }
 
 
-  public LineSeriesSettings showPoints(@javax.annotation.Nullable Boolean showPoints) {
+  public LineSeriesSettings showPoints(@Nullable Boolean showPoints) {
     this.showPoints = showPoints;
     return this;
   }
@@ -280,7 +282,7 @@ public class LineSeriesSettings {
    * Get showPoints
    * @return showPoints
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_POINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowPoints() {
@@ -290,12 +292,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_POINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowPoints(@javax.annotation.Nullable Boolean showPoints) {
+  public void setShowPoints(@Nullable Boolean showPoints) {
     this.showPoints = showPoints;
   }
 
 
-  public LineSeriesSettings showPointLabel(@javax.annotation.Nullable Boolean showPointLabel) {
+  public LineSeriesSettings showPointLabel(@Nullable Boolean showPointLabel) {
     this.showPointLabel = showPointLabel;
     return this;
   }
@@ -304,7 +306,7 @@ public class LineSeriesSettings {
    * Get showPointLabel
    * @return showPointLabel
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_POINT_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowPointLabel() {
@@ -314,12 +316,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_POINT_LABEL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowPointLabel(@javax.annotation.Nullable Boolean showPointLabel) {
+  public void setShowPointLabel(@Nullable Boolean showPointLabel) {
     this.showPointLabel = showPointLabel;
   }
 
 
-  public LineSeriesSettings pointLabelPosition(@javax.annotation.Nullable ChartLabelPosition pointLabelPosition) {
+  public LineSeriesSettings pointLabelPosition(@Nullable ChartLabelPosition pointLabelPosition) {
     this.pointLabelPosition = pointLabelPosition;
     return this;
   }
@@ -328,7 +330,7 @@ public class LineSeriesSettings {
    * Get pointLabelPosition
    * @return pointLabelPosition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartLabelPosition getPointLabelPosition() {
@@ -338,12 +340,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPointLabelPosition(@javax.annotation.Nullable ChartLabelPosition pointLabelPosition) {
+  public void setPointLabelPosition(@Nullable ChartLabelPosition pointLabelPosition) {
     this.pointLabelPosition = pointLabelPosition;
   }
 
 
-  public LineSeriesSettings pointLabelFont(@javax.annotation.Nullable Font pointLabelFont) {
+  public LineSeriesSettings pointLabelFont(@Nullable Font pointLabelFont) {
     this.pointLabelFont = pointLabelFont;
     return this;
   }
@@ -352,7 +354,7 @@ public class LineSeriesSettings {
    * Get pointLabelFont
    * @return pointLabelFont
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Font getPointLabelFont() {
@@ -362,12 +364,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_FONT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPointLabelFont(@javax.annotation.Nullable Font pointLabelFont) {
+  public void setPointLabelFont(@Nullable Font pointLabelFont) {
     this.pointLabelFont = pointLabelFont;
   }
 
 
-  public LineSeriesSettings pointLabelColor(@javax.annotation.Nullable String pointLabelColor) {
+  public LineSeriesSettings pointLabelColor(@Nullable String pointLabelColor) {
     this.pointLabelColor = pointLabelColor;
     return this;
   }
@@ -376,7 +378,7 @@ public class LineSeriesSettings {
    * Get pointLabelColor
    * @return pointLabelColor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPointLabelColor() {
@@ -386,12 +388,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPointLabelColor(@javax.annotation.Nullable String pointLabelColor) {
+  public void setPointLabelColor(@Nullable String pointLabelColor) {
     this.pointLabelColor = pointLabelColor;
   }
 
 
-  public LineSeriesSettings enablePointLabelBackground(@javax.annotation.Nullable Boolean enablePointLabelBackground) {
+  public LineSeriesSettings enablePointLabelBackground(@Nullable Boolean enablePointLabelBackground) {
     this.enablePointLabelBackground = enablePointLabelBackground;
     return this;
   }
@@ -400,7 +402,7 @@ public class LineSeriesSettings {
    * Get enablePointLabelBackground
    * @return enablePointLabelBackground
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENABLE_POINT_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnablePointLabelBackground() {
@@ -410,12 +412,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ENABLE_POINT_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnablePointLabelBackground(@javax.annotation.Nullable Boolean enablePointLabelBackground) {
+  public void setEnablePointLabelBackground(@Nullable Boolean enablePointLabelBackground) {
     this.enablePointLabelBackground = enablePointLabelBackground;
   }
 
 
-  public LineSeriesSettings pointLabelBackground(@javax.annotation.Nullable String pointLabelBackground) {
+  public LineSeriesSettings pointLabelBackground(@Nullable String pointLabelBackground) {
     this.pointLabelBackground = pointLabelBackground;
     return this;
   }
@@ -424,7 +426,7 @@ public class LineSeriesSettings {
    * Get pointLabelBackground
    * @return pointLabelBackground
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPointLabelBackground() {
@@ -434,12 +436,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_POINT_LABEL_BACKGROUND, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPointLabelBackground(@javax.annotation.Nullable String pointLabelBackground) {
+  public void setPointLabelBackground(@Nullable String pointLabelBackground) {
     this.pointLabelBackground = pointLabelBackground;
   }
 
 
-  public LineSeriesSettings pointShape(@javax.annotation.Nullable ChartShape pointShape) {
+  public LineSeriesSettings pointShape(@Nullable ChartShape pointShape) {
     this.pointShape = pointShape;
     return this;
   }
@@ -448,7 +450,7 @@ public class LineSeriesSettings {
    * Get pointShape
    * @return pointShape
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POINT_SHAPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartShape getPointShape() {
@@ -458,12 +460,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_POINT_SHAPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPointShape(@javax.annotation.Nullable ChartShape pointShape) {
+  public void setPointShape(@Nullable ChartShape pointShape) {
     this.pointShape = pointShape;
   }
 
 
-  public LineSeriesSettings pointSize(@javax.annotation.Nullable Float pointSize) {
+  public LineSeriesSettings pointSize(@Nullable Float pointSize) {
     this.pointSize = pointSize;
     return this;
   }
@@ -472,7 +474,7 @@ public class LineSeriesSettings {
    * Get pointSize
    * @return pointSize
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POINT_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Float getPointSize() {
@@ -482,12 +484,12 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_POINT_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPointSize(@javax.annotation.Nullable Float pointSize) {
+  public void setPointSize(@Nullable Float pointSize) {
     this.pointSize = pointSize;
   }
 
 
-  public LineSeriesSettings fillAreaSettings(@javax.annotation.Nullable ChartFillSettings fillAreaSettings) {
+  public LineSeriesSettings fillAreaSettings(@Nullable ChartFillSettings fillAreaSettings) {
     this.fillAreaSettings = fillAreaSettings;
     return this;
   }
@@ -496,7 +498,7 @@ public class LineSeriesSettings {
    * Get fillAreaSettings
    * @return fillAreaSettings
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILL_AREA_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ChartFillSettings getFillAreaSettings() {
@@ -506,7 +508,7 @@ public class LineSeriesSettings {
 
   @JsonProperty(value = JSON_PROPERTY_FILL_AREA_SETTINGS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFillAreaSettings(@javax.annotation.Nullable ChartFillSettings fillAreaSettings) {
+  public void setFillAreaSettings(@Nullable ChartFillSettings fillAreaSettings) {
     this.fillAreaSettings = fillAreaSettings;
   }
 

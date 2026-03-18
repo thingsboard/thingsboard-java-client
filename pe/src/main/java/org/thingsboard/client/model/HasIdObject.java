@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,7 +43,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   HasIdObject.JSON_PROPERTY_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class HasIdObject {
   public static final String JSON_PROPERTY_ID = "id";
   private JsonNullable<Object> id = JsonNullable.<Object>of(null);
@@ -49,7 +51,7 @@ public class HasIdObject {
   public HasIdObject() { 
   }
 
-  public HasIdObject id(@javax.annotation.Nullable Object id) {
+  public HasIdObject id(@Nullable Object id) {
     this.id = JsonNullable.<Object>of(id);
     return this;
   }
@@ -58,7 +60,7 @@ public class HasIdObject {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getId() {
         return id.orElse(null);
@@ -76,7 +78,7 @@ public class HasIdObject {
     this.id = id;
   }
 
-  public void setId(@javax.annotation.Nullable Object id) {
+  public void setId(@Nullable Object id) {
     this.id = JsonNullable.<Object>of(id);
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,28 +42,28 @@ import org.thingsboard.client.ApiClient;
   Insets.JSON_PROPERTY_TOP,
   Insets.JSON_PROPERTY_BOTTOM
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Insets {
   public static final String JSON_PROPERTY_LEFT = "left";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer left;
 
   public static final String JSON_PROPERTY_RIGHT = "right";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer right;
 
   public static final String JSON_PROPERTY_TOP = "top";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer top;
 
   public static final String JSON_PROPERTY_BOTTOM = "bottom";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer bottom;
 
   public Insets() { 
   }
 
-  public Insets left(@javax.annotation.Nullable Integer left) {
+  public Insets left(@Nullable Integer left) {
     this.left = left;
     return this;
   }
@@ -70,7 +72,7 @@ public class Insets {
    * Get left
    * @return left
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LEFT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getLeft() {
@@ -80,12 +82,12 @@ public class Insets {
 
   @JsonProperty(value = JSON_PROPERTY_LEFT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLeft(@javax.annotation.Nullable Integer left) {
+  public void setLeft(@Nullable Integer left) {
     this.left = left;
   }
 
 
-  public Insets right(@javax.annotation.Nullable Integer right) {
+  public Insets right(@Nullable Integer right) {
     this.right = right;
     return this;
   }
@@ -94,7 +96,7 @@ public class Insets {
    * Get right
    * @return right
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getRight() {
@@ -104,12 +106,12 @@ public class Insets {
 
   @JsonProperty(value = JSON_PROPERTY_RIGHT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRight(@javax.annotation.Nullable Integer right) {
+  public void setRight(@Nullable Integer right) {
     this.right = right;
   }
 
 
-  public Insets top(@javax.annotation.Nullable Integer top) {
+  public Insets top(@Nullable Integer top) {
     this.top = top;
     return this;
   }
@@ -118,7 +120,7 @@ public class Insets {
    * Get top
    * @return top
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TOP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getTop() {
@@ -128,12 +130,12 @@ public class Insets {
 
   @JsonProperty(value = JSON_PROPERTY_TOP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTop(@javax.annotation.Nullable Integer top) {
+  public void setTop(@Nullable Integer top) {
     this.top = top;
   }
 
 
-  public Insets bottom(@javax.annotation.Nullable Integer bottom) {
+  public Insets bottom(@Nullable Integer bottom) {
     this.bottom = bottom;
     return this;
   }
@@ -142,7 +144,7 @@ public class Insets {
    * Get bottom
    * @return bottom
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BOTTOM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getBottom() {
@@ -152,7 +154,7 @@ public class Insets {
 
   @JsonProperty(value = JSON_PROPERTY_BOTTOM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBottom(@javax.annotation.Nullable Integer bottom) {
+  public void setBottom(@Nullable Integer bottom) {
     this.bottom = bottom;
   }
 

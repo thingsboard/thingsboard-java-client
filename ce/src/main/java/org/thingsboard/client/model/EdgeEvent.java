@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,46 +54,46 @@ import org.thingsboard.client.ApiClient;
   EdgeEvent.JSON_PROPERTY_TYPE,
   EdgeEvent.JSON_PROPERTY_BODY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdgeEvent {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private EdgeEventId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_SEQ_ID = "seqId";
-  @javax.annotation.Nullable
+  @Nullable
   private Long seqId;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_EDGE_ID = "edgeId";
-  @javax.annotation.Nullable
+  @Nullable
   private EdgeId edgeId;
 
   public static final String JSON_PROPERTY_ACTION = "action";
-  @javax.annotation.Nullable
+  @Nullable
   private EdgeEventActionType action;
 
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
-  @javax.annotation.Nullable
+  @Nullable
   private UUID entityId;
 
   public static final String JSON_PROPERTY_UID = "uid";
-  @javax.annotation.Nullable
+  @Nullable
   private String uid;
 
   public static final String JSON_PROPERTY_TYPE = "type";
-  @javax.annotation.Nullable
+  @Nullable
   private EdgeEventType type;
 
   public static final String JSON_PROPERTY_BODY = "body";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode body = null;
 
   public EdgeEvent() { 
@@ -105,7 +107,7 @@ public class EdgeEvent {
     this.createdTime = createdTime;
   }
 
-  public EdgeEvent id(@javax.annotation.Nullable EdgeEventId id) {
+  public EdgeEvent id(@Nullable EdgeEventId id) {
     this.id = id;
     return this;
   }
@@ -114,7 +116,7 @@ public class EdgeEvent {
    * Get id
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdgeEventId getId() {
@@ -124,7 +126,7 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable EdgeEventId id) {
+  public void setId(@Nullable EdgeEventId id) {
     this.id = id;
   }
 
@@ -133,7 +135,7 @@ public class EdgeEvent {
    * Entity creation timestamp in milliseconds since Unix epoch
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -143,7 +145,7 @@ public class EdgeEvent {
 
 
 
-  public EdgeEvent seqId(@javax.annotation.Nullable Long seqId) {
+  public EdgeEvent seqId(@Nullable Long seqId) {
     this.seqId = seqId;
     return this;
   }
@@ -152,7 +154,7 @@ public class EdgeEvent {
    * Get seqId
    * @return seqId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEQ_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getSeqId() {
@@ -162,12 +164,12 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_SEQ_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeqId(@javax.annotation.Nullable Long seqId) {
+  public void setSeqId(@Nullable Long seqId) {
     this.seqId = seqId;
   }
 
 
-  public EdgeEvent tenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public EdgeEvent tenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
     return this;
   }
@@ -176,7 +178,7 @@ public class EdgeEvent {
    * Get tenantId
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -186,12 +188,12 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTenantId(@javax.annotation.Nullable TenantId tenantId) {
+  public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
   }
 
 
-  public EdgeEvent edgeId(@javax.annotation.Nullable EdgeId edgeId) {
+  public EdgeEvent edgeId(@Nullable EdgeId edgeId) {
     this.edgeId = edgeId;
     return this;
   }
@@ -200,7 +202,7 @@ public class EdgeEvent {
    * Get edgeId
    * @return edgeId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdgeId getEdgeId() {
@@ -210,12 +212,12 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_EDGE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeId(@javax.annotation.Nullable EdgeId edgeId) {
+  public void setEdgeId(@Nullable EdgeId edgeId) {
     this.edgeId = edgeId;
   }
 
 
-  public EdgeEvent action(@javax.annotation.Nullable EdgeEventActionType action) {
+  public EdgeEvent action(@Nullable EdgeEventActionType action) {
     this.action = action;
     return this;
   }
@@ -224,7 +226,7 @@ public class EdgeEvent {
    * Get action
    * @return action
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdgeEventActionType getAction() {
@@ -234,12 +236,12 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_ACTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAction(@javax.annotation.Nullable EdgeEventActionType action) {
+  public void setAction(@Nullable EdgeEventActionType action) {
     this.action = action;
   }
 
 
-  public EdgeEvent entityId(@javax.annotation.Nullable UUID entityId) {
+  public EdgeEvent entityId(@Nullable UUID entityId) {
     this.entityId = entityId;
     return this;
   }
@@ -248,7 +250,7 @@ public class EdgeEvent {
    * Get entityId
    * @return entityId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UUID getEntityId() {
@@ -258,12 +260,12 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_ENTITY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityId(@javax.annotation.Nullable UUID entityId) {
+  public void setEntityId(@Nullable UUID entityId) {
     this.entityId = entityId;
   }
 
 
-  public EdgeEvent uid(@javax.annotation.Nullable String uid) {
+  public EdgeEvent uid(@Nullable String uid) {
     this.uid = uid;
     return this;
   }
@@ -272,7 +274,7 @@ public class EdgeEvent {
    * Get uid
    * @return uid
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUid() {
@@ -282,12 +284,12 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_UID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUid(@javax.annotation.Nullable String uid) {
+  public void setUid(@Nullable String uid) {
     this.uid = uid;
   }
 
 
-  public EdgeEvent type(@javax.annotation.Nullable EdgeEventType type) {
+  public EdgeEvent type(@Nullable EdgeEventType type) {
     this.type = type;
     return this;
   }
@@ -296,7 +298,7 @@ public class EdgeEvent {
    * Get type
    * @return type
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EdgeEventType getType() {
@@ -306,12 +308,12 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@javax.annotation.Nullable EdgeEventType type) {
+  public void setType(@Nullable EdgeEventType type) {
     this.type = type;
   }
 
 
-  public EdgeEvent body(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode body) {
+  public EdgeEvent body(@Nullable com.fasterxml.jackson.databind.JsonNode body) {
     this.body = body;
     return this;
   }
@@ -320,7 +322,7 @@ public class EdgeEvent {
    * Get body
    * @return body
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BODY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getBody() {
@@ -330,7 +332,7 @@ public class EdgeEvent {
 
   @JsonProperty(value = JSON_PROPERTY_BODY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBody(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode body) {
+  public void setBody(@Nullable com.fasterxml.jackson.databind.JsonNode body) {
     this.body = body;
   }
 

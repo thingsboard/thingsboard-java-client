@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   ChangePasswordRequest.JSON_PROPERTY_CURRENT_PASSWORD,
   ChangePasswordRequest.JSON_PROPERTY_NEW_PASSWORD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ChangePasswordRequest {
   public static final String JSON_PROPERTY_CURRENT_PASSWORD = "currentPassword";
-  @javax.annotation.Nullable
+  @Nullable
   private String currentPassword;
 
   public static final String JSON_PROPERTY_NEW_PASSWORD = "newPassword";
-  @javax.annotation.Nullable
+  @Nullable
   private String newPassword;
 
   public ChangePasswordRequest() { 
   }
 
-  public ChangePasswordRequest currentPassword(@javax.annotation.Nullable String currentPassword) {
+  public ChangePasswordRequest currentPassword(@Nullable String currentPassword) {
     this.currentPassword = currentPassword;
     return this;
   }
@@ -60,7 +62,7 @@ public class ChangePasswordRequest {
    * The old password
    * @return currentPassword
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CURRENT_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCurrentPassword() {
@@ -70,12 +72,12 @@ public class ChangePasswordRequest {
 
   @JsonProperty(value = JSON_PROPERTY_CURRENT_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCurrentPassword(@javax.annotation.Nullable String currentPassword) {
+  public void setCurrentPassword(@Nullable String currentPassword) {
     this.currentPassword = currentPassword;
   }
 
 
-  public ChangePasswordRequest newPassword(@javax.annotation.Nullable String newPassword) {
+  public ChangePasswordRequest newPassword(@Nullable String newPassword) {
     this.newPassword = newPassword;
     return this;
   }
@@ -84,7 +86,7 @@ public class ChangePasswordRequest {
    * The new password
    * @return newPassword
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NEW_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNewPassword() {
@@ -94,7 +96,7 @@ public class ChangePasswordRequest {
 
   @JsonProperty(value = JSON_PROPERTY_NEW_PASSWORD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNewPassword(@javax.annotation.Nullable String newPassword) {
+  public void setNewPassword(@Nullable String newPassword) {
     this.newPassword = newPassword;
   }
 

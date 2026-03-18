@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   LoginRequest.JSON_PROPERTY_PASSWORD,
   LoginRequest.JSON_PROPERTY_USERNAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LoginRequest {
   public static final String JSON_PROPERTY_PASSWORD = "password";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String password;
 
   public static final String JSON_PROPERTY_USERNAME = "username";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String username;
 
   public LoginRequest() { 
   }
 
-  public LoginRequest password(@javax.annotation.Nonnull String password) {
+  public LoginRequest password(@Nonnull String password) {
     this.password = password;
     return this;
   }
@@ -60,7 +62,7 @@ public class LoginRequest {
    * User password
    * @return password
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getPassword() {
@@ -70,12 +72,12 @@ public class LoginRequest {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPassword(@javax.annotation.Nonnull String password) {
+  public void setPassword(@Nonnull String password) {
     this.password = password;
   }
 
 
-  public LoginRequest username(@javax.annotation.Nonnull String username) {
+  public LoginRequest username(@Nonnull String username) {
     this.username = username;
     return this;
   }
@@ -84,7 +86,7 @@ public class LoginRequest {
    * User email
    * @return username
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_USERNAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getUsername() {
@@ -94,7 +96,7 @@ public class LoginRequest {
 
   @JsonProperty(value = JSON_PROPERTY_USERNAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUsername(@javax.annotation.Nonnull String username) {
+  public void setUsername(@Nonnull String username) {
     this.username = username;
   }
 

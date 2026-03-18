@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,55 +54,55 @@ import org.thingsboard.client.ApiClient;
   TsKvEntry.JSON_PROPERTY_STR_VALUE,
   TsKvEntry.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TsKvEntry {
   public static final String JSON_PROPERTY_TS = "ts";
-  @javax.annotation.Nullable
+  @Nullable
   private Long ts;
 
   public static final String JSON_PROPERTY_VALUE = "value";
   private JsonNullable<Object> value = JsonNullable.<Object>of(null);
 
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private String key;
 
   public static final String JSON_PROPERTY_DOUBLE_VALUE = "doubleValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Double doubleValue;
 
   public static final String JSON_PROPERTY_LONG_VALUE = "longValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Long longValue;
 
   public static final String JSON_PROPERTY_BOOLEAN_VALUE = "booleanValue";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean booleanValue;
 
   public static final String JSON_PROPERTY_VALUE_AS_STRING = "valueAsString";
-  @javax.annotation.Nullable
+  @Nullable
   private String valueAsString;
 
   public static final String JSON_PROPERTY_DATA_TYPE = "dataType";
-  @javax.annotation.Nullable
+  @Nullable
   private DataType dataType;
 
   public static final String JSON_PROPERTY_JSON_VALUE = "jsonValue";
-  @javax.annotation.Nullable
+  @Nullable
   private String jsonValue;
 
   public static final String JSON_PROPERTY_STR_VALUE = "strValue";
-  @javax.annotation.Nullable
+  @Nullable
   private String strValue;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @javax.annotation.Nullable
+  @Nullable
   private Long version;
 
   public TsKvEntry() { 
   }
 
-  public TsKvEntry ts(@javax.annotation.Nullable Long ts) {
+  public TsKvEntry ts(@Nullable Long ts) {
     this.ts = ts;
     return this;
   }
@@ -109,7 +111,7 @@ public class TsKvEntry {
    * Get ts
    * @return ts
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTs() {
@@ -119,12 +121,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_TS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTs(@javax.annotation.Nullable Long ts) {
+  public void setTs(@Nullable Long ts) {
     this.ts = ts;
   }
 
 
-  public TsKvEntry value(@javax.annotation.Nullable Object value) {
+  public TsKvEntry value(@Nullable Object value) {
     this.value = JsonNullable.<Object>of(value);
     return this;
   }
@@ -133,7 +135,7 @@ public class TsKvEntry {
    * Get value
    * @return value
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getValue() {
         return value.orElse(null);
@@ -151,12 +153,12 @@ public class TsKvEntry {
     this.value = value;
   }
 
-  public void setValue(@javax.annotation.Nullable Object value) {
+  public void setValue(@Nullable Object value) {
     this.value = JsonNullable.<Object>of(value);
   }
 
 
-  public TsKvEntry key(@javax.annotation.Nullable String key) {
+  public TsKvEntry key(@Nullable String key) {
     this.key = key;
     return this;
   }
@@ -165,7 +167,7 @@ public class TsKvEntry {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKey() {
@@ -175,12 +177,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable String key) {
+  public void setKey(@Nullable String key) {
     this.key = key;
   }
 
 
-  public TsKvEntry doubleValue(@javax.annotation.Nullable Double doubleValue) {
+  public TsKvEntry doubleValue(@Nullable Double doubleValue) {
     this.doubleValue = doubleValue;
     return this;
   }
@@ -189,7 +191,7 @@ public class TsKvEntry {
    * Get doubleValue
    * @return doubleValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getDoubleValue() {
@@ -199,12 +201,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_DOUBLE_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDoubleValue(@javax.annotation.Nullable Double doubleValue) {
+  public void setDoubleValue(@Nullable Double doubleValue) {
     this.doubleValue = doubleValue;
   }
 
 
-  public TsKvEntry longValue(@javax.annotation.Nullable Long longValue) {
+  public TsKvEntry longValue(@Nullable Long longValue) {
     this.longValue = longValue;
     return this;
   }
@@ -213,7 +215,7 @@ public class TsKvEntry {
    * Get longValue
    * @return longValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getLongValue() {
@@ -223,12 +225,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_LONG_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLongValue(@javax.annotation.Nullable Long longValue) {
+  public void setLongValue(@Nullable Long longValue) {
     this.longValue = longValue;
   }
 
 
-  public TsKvEntry booleanValue(@javax.annotation.Nullable Boolean booleanValue) {
+  public TsKvEntry booleanValue(@Nullable Boolean booleanValue) {
     this.booleanValue = booleanValue;
     return this;
   }
@@ -237,7 +239,7 @@ public class TsKvEntry {
    * Get booleanValue
    * @return booleanValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BOOLEAN_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getBooleanValue() {
@@ -247,12 +249,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_BOOLEAN_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBooleanValue(@javax.annotation.Nullable Boolean booleanValue) {
+  public void setBooleanValue(@Nullable Boolean booleanValue) {
     this.booleanValue = booleanValue;
   }
 
 
-  public TsKvEntry valueAsString(@javax.annotation.Nullable String valueAsString) {
+  public TsKvEntry valueAsString(@Nullable String valueAsString) {
     this.valueAsString = valueAsString;
     return this;
   }
@@ -261,7 +263,7 @@ public class TsKvEntry {
    * Get valueAsString
    * @return valueAsString
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VALUE_AS_STRING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getValueAsString() {
@@ -271,12 +273,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_VALUE_AS_STRING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValueAsString(@javax.annotation.Nullable String valueAsString) {
+  public void setValueAsString(@Nullable String valueAsString) {
     this.valueAsString = valueAsString;
   }
 
 
-  public TsKvEntry dataType(@javax.annotation.Nullable DataType dataType) {
+  public TsKvEntry dataType(@Nullable DataType dataType) {
     this.dataType = dataType;
     return this;
   }
@@ -285,7 +287,7 @@ public class TsKvEntry {
    * Get dataType
    * @return dataType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DATA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DataType getDataType() {
@@ -295,12 +297,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_DATA_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDataType(@javax.annotation.Nullable DataType dataType) {
+  public void setDataType(@Nullable DataType dataType) {
     this.dataType = dataType;
   }
 
 
-  public TsKvEntry jsonValue(@javax.annotation.Nullable String jsonValue) {
+  public TsKvEntry jsonValue(@Nullable String jsonValue) {
     this.jsonValue = jsonValue;
     return this;
   }
@@ -309,7 +311,7 @@ public class TsKvEntry {
    * Get jsonValue
    * @return jsonValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_JSON_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getJsonValue() {
@@ -319,12 +321,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_JSON_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJsonValue(@javax.annotation.Nullable String jsonValue) {
+  public void setJsonValue(@Nullable String jsonValue) {
     this.jsonValue = jsonValue;
   }
 
 
-  public TsKvEntry strValue(@javax.annotation.Nullable String strValue) {
+  public TsKvEntry strValue(@Nullable String strValue) {
     this.strValue = strValue;
     return this;
   }
@@ -333,7 +335,7 @@ public class TsKvEntry {
    * Get strValue
    * @return strValue
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STR_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getStrValue() {
@@ -343,12 +345,12 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_STR_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStrValue(@javax.annotation.Nullable String strValue) {
+  public void setStrValue(@Nullable String strValue) {
     this.strValue = strValue;
   }
 
 
-  public TsKvEntry version(@javax.annotation.Nullable Long version) {
+  public TsKvEntry version(@Nullable Long version) {
     this.version = version;
     return this;
   }
@@ -357,7 +359,7 @@ public class TsKvEntry {
    * Get version
    * @return version
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
@@ -367,7 +369,7 @@ public class TsKvEntry {
 
   @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@javax.annotation.Nullable Long version) {
+  public void setVersion(@Nullable Long version) {
     this.version = version;
   }
 

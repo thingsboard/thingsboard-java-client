@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -56,92 +58,92 @@ import org.thingsboard.client.ApiClient;
   SubscriptionUsage.JSON_PROPERTY_REPORTS,
   SubscriptionUsage.JSON_PROPERTY_AI_CREDITS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SubscriptionUsage {
   public static final String JSON_PROPERTY_DEVICES = "devices";
-  @javax.annotation.Nullable
+  @Nullable
   private Long devices;
 
   public static final String JSON_PROPERTY_ASSETS = "assets";
-  @javax.annotation.Nullable
+  @Nullable
   private Long assets;
 
   public static final String JSON_PROPERTY_CUSTOMERS = "customers";
-  @javax.annotation.Nullable
+  @Nullable
   private Long customers;
 
   public static final String JSON_PROPERTY_USERS = "users";
-  @javax.annotation.Nullable
+  @Nullable
   private Long users;
 
   public static final String JSON_PROPERTY_DASHBOARDS = "dashboards";
-  @javax.annotation.Nullable
+  @Nullable
   private Long dashboards;
 
   public static final String JSON_PROPERTY_RULE_CHAINS = "ruleChains";
-  @javax.annotation.Nullable
+  @Nullable
   private Long ruleChains;
 
   public static final String JSON_PROPERTY_INTEGRATIONS = "integrations";
-  @javax.annotation.Nullable
+  @Nullable
   private Long integrations;
 
   public static final String JSON_PROPERTY_CONVERTERS = "converters";
-  @javax.annotation.Nullable
+  @Nullable
   private Long converters;
 
   public static final String JSON_PROPERTY_SCHEDULER_EVENTS = "schedulerEvents";
-  @javax.annotation.Nullable
+  @Nullable
   private Long schedulerEvents;
 
   public static final String JSON_PROPERTY_EDGES = "edges";
-  @javax.annotation.Nullable
+  @Nullable
   private Long edges;
 
   public static final String JSON_PROPERTY_TRANSPORT_MESSAGES = "transportMessages";
-  @javax.annotation.Nullable
+  @Nullable
   private Long transportMessages;
 
   public static final String JSON_PROPERTY_TRANSPORT_DATA_POINTS = "transportDataPoints";
-  @javax.annotation.Nullable
+  @Nullable
   private Long transportDataPoints;
 
   public static final String JSON_PROPERTY_RE_EXECUTIONS = "reExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long reExecutions;
 
   public static final String JSON_PROPERTY_JS_EXECUTIONS = "jsExecutions";
-  @javax.annotation.Nullable
+  @Nullable
   private Long jsExecutions;
 
   public static final String JSON_PROPERTY_DP_STORAGE_DAYS = "dpStorageDays";
-  @javax.annotation.Nullable
+  @Nullable
   private Long dpStorageDays;
 
   public static final String JSON_PROPERTY_EMAILS = "emails";
-  @javax.annotation.Nullable
+  @Nullable
   private Long emails;
 
   public static final String JSON_PROPERTY_SMS = "sms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long sms;
 
   public static final String JSON_PROPERTY_ALARMS = "alarms";
-  @javax.annotation.Nullable
+  @Nullable
   private Long alarms;
 
   public static final String JSON_PROPERTY_REPORTS = "reports";
-  @javax.annotation.Nullable
+  @Nullable
   private Long reports;
 
   public static final String JSON_PROPERTY_AI_CREDITS = "aiCredits";
-  @javax.annotation.Nullable
+  @Nullable
   private Long aiCredits;
 
   public SubscriptionUsage() { 
   }
 
-  public SubscriptionUsage devices(@javax.annotation.Nullable Long devices) {
+  public SubscriptionUsage devices(@Nullable Long devices) {
     this.devices = devices;
     return this;
   }
@@ -150,7 +152,7 @@ public class SubscriptionUsage {
    * Get devices
    * @return devices
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDevices() {
@@ -160,12 +162,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_DEVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDevices(@javax.annotation.Nullable Long devices) {
+  public void setDevices(@Nullable Long devices) {
     this.devices = devices;
   }
 
 
-  public SubscriptionUsage assets(@javax.annotation.Nullable Long assets) {
+  public SubscriptionUsage assets(@Nullable Long assets) {
     this.assets = assets;
     return this;
   }
@@ -174,7 +176,7 @@ public class SubscriptionUsage {
    * Get assets
    * @return assets
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAssets() {
@@ -184,12 +186,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_ASSETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssets(@javax.annotation.Nullable Long assets) {
+  public void setAssets(@Nullable Long assets) {
     this.assets = assets;
   }
 
 
-  public SubscriptionUsage customers(@javax.annotation.Nullable Long customers) {
+  public SubscriptionUsage customers(@Nullable Long customers) {
     this.customers = customers;
     return this;
   }
@@ -198,7 +200,7 @@ public class SubscriptionUsage {
    * Get customers
    * @return customers
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCustomers() {
@@ -208,12 +210,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomers(@javax.annotation.Nullable Long customers) {
+  public void setCustomers(@Nullable Long customers) {
     this.customers = customers;
   }
 
 
-  public SubscriptionUsage users(@javax.annotation.Nullable Long users) {
+  public SubscriptionUsage users(@Nullable Long users) {
     this.users = users;
     return this;
   }
@@ -222,7 +224,7 @@ public class SubscriptionUsage {
    * Get users
    * @return users
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getUsers() {
@@ -232,12 +234,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsers(@javax.annotation.Nullable Long users) {
+  public void setUsers(@Nullable Long users) {
     this.users = users;
   }
 
 
-  public SubscriptionUsage dashboards(@javax.annotation.Nullable Long dashboards) {
+  public SubscriptionUsage dashboards(@Nullable Long dashboards) {
     this.dashboards = dashboards;
     return this;
   }
@@ -246,7 +248,7 @@ public class SubscriptionUsage {
    * Get dashboards
    * @return dashboards
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDashboards() {
@@ -256,12 +258,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboards(@javax.annotation.Nullable Long dashboards) {
+  public void setDashboards(@Nullable Long dashboards) {
     this.dashboards = dashboards;
   }
 
 
-  public SubscriptionUsage ruleChains(@javax.annotation.Nullable Long ruleChains) {
+  public SubscriptionUsage ruleChains(@Nullable Long ruleChains) {
     this.ruleChains = ruleChains;
     return this;
   }
@@ -270,7 +272,7 @@ public class SubscriptionUsage {
    * Get ruleChains
    * @return ruleChains
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAINS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getRuleChains() {
@@ -280,12 +282,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAINS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRuleChains(@javax.annotation.Nullable Long ruleChains) {
+  public void setRuleChains(@Nullable Long ruleChains) {
     this.ruleChains = ruleChains;
   }
 
 
-  public SubscriptionUsage integrations(@javax.annotation.Nullable Long integrations) {
+  public SubscriptionUsage integrations(@Nullable Long integrations) {
     this.integrations = integrations;
     return this;
   }
@@ -294,7 +296,7 @@ public class SubscriptionUsage {
    * Get integrations
    * @return integrations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTEGRATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getIntegrations() {
@@ -304,12 +306,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_INTEGRATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntegrations(@javax.annotation.Nullable Long integrations) {
+  public void setIntegrations(@Nullable Long integrations) {
     this.integrations = integrations;
   }
 
 
-  public SubscriptionUsage converters(@javax.annotation.Nullable Long converters) {
+  public SubscriptionUsage converters(@Nullable Long converters) {
     this.converters = converters;
     return this;
   }
@@ -318,7 +320,7 @@ public class SubscriptionUsage {
    * Get converters
    * @return converters
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONVERTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getConverters() {
@@ -328,12 +330,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_CONVERTERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConverters(@javax.annotation.Nullable Long converters) {
+  public void setConverters(@Nullable Long converters) {
     this.converters = converters;
   }
 
 
-  public SubscriptionUsage schedulerEvents(@javax.annotation.Nullable Long schedulerEvents) {
+  public SubscriptionUsage schedulerEvents(@Nullable Long schedulerEvents) {
     this.schedulerEvents = schedulerEvents;
     return this;
   }
@@ -342,7 +344,7 @@ public class SubscriptionUsage {
    * Get schedulerEvents
    * @return schedulerEvents
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCHEDULER_EVENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getSchedulerEvents() {
@@ -352,12 +354,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_SCHEDULER_EVENTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSchedulerEvents(@javax.annotation.Nullable Long schedulerEvents) {
+  public void setSchedulerEvents(@Nullable Long schedulerEvents) {
     this.schedulerEvents = schedulerEvents;
   }
 
 
-  public SubscriptionUsage edges(@javax.annotation.Nullable Long edges) {
+  public SubscriptionUsage edges(@Nullable Long edges) {
     this.edges = edges;
     return this;
   }
@@ -366,7 +368,7 @@ public class SubscriptionUsage {
    * Get edges
    * @return edges
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEdges() {
@@ -376,12 +378,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_EDGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdges(@javax.annotation.Nullable Long edges) {
+  public void setEdges(@Nullable Long edges) {
     this.edges = edges;
   }
 
 
-  public SubscriptionUsage transportMessages(@javax.annotation.Nullable Long transportMessages) {
+  public SubscriptionUsage transportMessages(@Nullable Long transportMessages) {
     this.transportMessages = transportMessages;
     return this;
   }
@@ -390,7 +392,7 @@ public class SubscriptionUsage {
    * Get transportMessages
    * @return transportMessages
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTransportMessages() {
@@ -400,12 +402,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_MESSAGES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransportMessages(@javax.annotation.Nullable Long transportMessages) {
+  public void setTransportMessages(@Nullable Long transportMessages) {
     this.transportMessages = transportMessages;
   }
 
 
-  public SubscriptionUsage transportDataPoints(@javax.annotation.Nullable Long transportDataPoints) {
+  public SubscriptionUsage transportDataPoints(@Nullable Long transportDataPoints) {
     this.transportDataPoints = transportDataPoints;
     return this;
   }
@@ -414,7 +416,7 @@ public class SubscriptionUsage {
    * Get transportDataPoints
    * @return transportDataPoints
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_DATA_POINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTransportDataPoints() {
@@ -424,12 +426,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_TRANSPORT_DATA_POINTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTransportDataPoints(@javax.annotation.Nullable Long transportDataPoints) {
+  public void setTransportDataPoints(@Nullable Long transportDataPoints) {
     this.transportDataPoints = transportDataPoints;
   }
 
 
-  public SubscriptionUsage reExecutions(@javax.annotation.Nullable Long reExecutions) {
+  public SubscriptionUsage reExecutions(@Nullable Long reExecutions) {
     this.reExecutions = reExecutions;
     return this;
   }
@@ -438,7 +440,7 @@ public class SubscriptionUsage {
    * Get reExecutions
    * @return reExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RE_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getReExecutions() {
@@ -448,12 +450,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_RE_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReExecutions(@javax.annotation.Nullable Long reExecutions) {
+  public void setReExecutions(@Nullable Long reExecutions) {
     this.reExecutions = reExecutions;
   }
 
 
-  public SubscriptionUsage jsExecutions(@javax.annotation.Nullable Long jsExecutions) {
+  public SubscriptionUsage jsExecutions(@Nullable Long jsExecutions) {
     this.jsExecutions = jsExecutions;
     return this;
   }
@@ -462,7 +464,7 @@ public class SubscriptionUsage {
    * Get jsExecutions
    * @return jsExecutions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_JS_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getJsExecutions() {
@@ -472,12 +474,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_JS_EXECUTIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJsExecutions(@javax.annotation.Nullable Long jsExecutions) {
+  public void setJsExecutions(@Nullable Long jsExecutions) {
     this.jsExecutions = jsExecutions;
   }
 
 
-  public SubscriptionUsage dpStorageDays(@javax.annotation.Nullable Long dpStorageDays) {
+  public SubscriptionUsage dpStorageDays(@Nullable Long dpStorageDays) {
     this.dpStorageDays = dpStorageDays;
     return this;
   }
@@ -486,7 +488,7 @@ public class SubscriptionUsage {
    * Get dpStorageDays
    * @return dpStorageDays
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DP_STORAGE_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getDpStorageDays() {
@@ -496,12 +498,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_DP_STORAGE_DAYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDpStorageDays(@javax.annotation.Nullable Long dpStorageDays) {
+  public void setDpStorageDays(@Nullable Long dpStorageDays) {
     this.dpStorageDays = dpStorageDays;
   }
 
 
-  public SubscriptionUsage emails(@javax.annotation.Nullable Long emails) {
+  public SubscriptionUsage emails(@Nullable Long emails) {
     this.emails = emails;
     return this;
   }
@@ -510,7 +512,7 @@ public class SubscriptionUsage {
    * Get emails
    * @return emails
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEmails() {
@@ -520,12 +522,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_EMAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmails(@javax.annotation.Nullable Long emails) {
+  public void setEmails(@Nullable Long emails) {
     this.emails = emails;
   }
 
 
-  public SubscriptionUsage sms(@javax.annotation.Nullable Long sms) {
+  public SubscriptionUsage sms(@Nullable Long sms) {
     this.sms = sms;
     return this;
   }
@@ -534,7 +536,7 @@ public class SubscriptionUsage {
    * Get sms
    * @return sms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getSms() {
@@ -544,12 +546,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_SMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSms(@javax.annotation.Nullable Long sms) {
+  public void setSms(@Nullable Long sms) {
     this.sms = sms;
   }
 
 
-  public SubscriptionUsage alarms(@javax.annotation.Nullable Long alarms) {
+  public SubscriptionUsage alarms(@Nullable Long alarms) {
     this.alarms = alarms;
     return this;
   }
@@ -558,7 +560,7 @@ public class SubscriptionUsage {
    * Get alarms
    * @return alarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAlarms() {
@@ -568,12 +570,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarms(@javax.annotation.Nullable Long alarms) {
+  public void setAlarms(@Nullable Long alarms) {
     this.alarms = alarms;
   }
 
 
-  public SubscriptionUsage reports(@javax.annotation.Nullable Long reports) {
+  public SubscriptionUsage reports(@Nullable Long reports) {
     this.reports = reports;
     return this;
   }
@@ -582,7 +584,7 @@ public class SubscriptionUsage {
    * Get reports
    * @return reports
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getReports() {
@@ -592,12 +594,12 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReports(@javax.annotation.Nullable Long reports) {
+  public void setReports(@Nullable Long reports) {
     this.reports = reports;
   }
 
 
-  public SubscriptionUsage aiCredits(@javax.annotation.Nullable Long aiCredits) {
+  public SubscriptionUsage aiCredits(@Nullable Long aiCredits) {
     this.aiCredits = aiCredits;
     return this;
   }
@@ -606,7 +608,7 @@ public class SubscriptionUsage {
    * Get aiCredits
    * @return aiCredits
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAiCredits() {
@@ -616,7 +618,7 @@ public class SubscriptionUsage {
 
   @JsonProperty(value = JSON_PROPERTY_AI_CREDITS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAiCredits(@javax.annotation.Nullable Long aiCredits) {
+  public void setAiCredits(@Nullable Long aiCredits) {
     this.aiCredits = aiCredits;
   }
 

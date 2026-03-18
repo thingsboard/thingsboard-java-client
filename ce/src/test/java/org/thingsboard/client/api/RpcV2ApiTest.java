@@ -39,7 +39,7 @@ public class RpcV2ApiTest extends AbstractApiTest {
         Device device = new Device();
         device.setName(name);
         device.setType("default");
-        return client.saveDevice(device, null, null, null, null, null);
+        return client.saveDevice(device, null, null, null, null);
     }
 
     /**

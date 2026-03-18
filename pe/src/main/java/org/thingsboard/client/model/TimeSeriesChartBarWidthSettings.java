@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   TimeSeriesChartBarWidthSettings.JSON_PROPERTY_BAR_GAP,
   TimeSeriesChartBarWidthSettings.JSON_PROPERTY_INTERVAL_GAP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TimeSeriesChartBarWidthSettings {
   public static final String JSON_PROPERTY_BAR_GAP = "barGap";
-  @javax.annotation.Nullable
+  @Nullable
   private Double barGap;
 
   public static final String JSON_PROPERTY_INTERVAL_GAP = "intervalGap";
-  @javax.annotation.Nullable
+  @Nullable
   private Double intervalGap;
 
   public TimeSeriesChartBarWidthSettings() { 
   }
 
-  public TimeSeriesChartBarWidthSettings barGap(@javax.annotation.Nullable Double barGap) {
+  public TimeSeriesChartBarWidthSettings barGap(@Nullable Double barGap) {
     this.barGap = barGap;
     return this;
   }
@@ -60,7 +62,7 @@ public class TimeSeriesChartBarWidthSettings {
    * Get barGap
    * @return barGap
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_BAR_GAP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getBarGap() {
@@ -70,12 +72,12 @@ public class TimeSeriesChartBarWidthSettings {
 
   @JsonProperty(value = JSON_PROPERTY_BAR_GAP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBarGap(@javax.annotation.Nullable Double barGap) {
+  public void setBarGap(@Nullable Double barGap) {
     this.barGap = barGap;
   }
 
 
-  public TimeSeriesChartBarWidthSettings intervalGap(@javax.annotation.Nullable Double intervalGap) {
+  public TimeSeriesChartBarWidthSettings intervalGap(@Nullable Double intervalGap) {
     this.intervalGap = intervalGap;
     return this;
   }
@@ -84,7 +86,7 @@ public class TimeSeriesChartBarWidthSettings {
    * Get intervalGap
    * @return intervalGap
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_INTERVAL_GAP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Double getIntervalGap() {
@@ -94,7 +96,7 @@ public class TimeSeriesChartBarWidthSettings {
 
   @JsonProperty(value = JSON_PROPERTY_INTERVAL_GAP, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIntervalGap(@javax.annotation.Nullable Double intervalGap) {
+  public void setIntervalGap(@Nullable Double intervalGap) {
     this.intervalGap = intervalGap;
   }
 

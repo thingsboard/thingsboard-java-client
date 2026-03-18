@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,24 +42,24 @@ import org.thingsboard.client.ApiClient;
   TestSmsRequest.JSON_PROPERTY_NUMBER_TO,
   TestSmsRequest.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TestSmsRequest {
   public static final String JSON_PROPERTY_PROVIDER_CONFIGURATION = "providerConfiguration";
-  @javax.annotation.Nullable
+  @Nullable
   private SmsProviderConfiguration providerConfiguration;
 
   public static final String JSON_PROPERTY_NUMBER_TO = "numberTo";
-  @javax.annotation.Nullable
+  @Nullable
   private String numberTo;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  @javax.annotation.Nullable
+  @Nullable
   private String message;
 
   public TestSmsRequest() { 
   }
 
-  public TestSmsRequest providerConfiguration(@javax.annotation.Nullable SmsProviderConfiguration providerConfiguration) {
+  public TestSmsRequest providerConfiguration(@Nullable SmsProviderConfiguration providerConfiguration) {
     this.providerConfiguration = providerConfiguration;
     return this;
   }
@@ -66,7 +68,7 @@ public class TestSmsRequest {
    * The SMS provider configuration
    * @return providerConfiguration
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROVIDER_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public SmsProviderConfiguration getProviderConfiguration() {
@@ -76,12 +78,12 @@ public class TestSmsRequest {
 
   @JsonProperty(value = JSON_PROPERTY_PROVIDER_CONFIGURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProviderConfiguration(@javax.annotation.Nullable SmsProviderConfiguration providerConfiguration) {
+  public void setProviderConfiguration(@Nullable SmsProviderConfiguration providerConfiguration) {
     this.providerConfiguration = providerConfiguration;
   }
 
 
-  public TestSmsRequest numberTo(@javax.annotation.Nullable String numberTo) {
+  public TestSmsRequest numberTo(@Nullable String numberTo) {
     this.numberTo = numberTo;
     return this;
   }
@@ -90,7 +92,7 @@ public class TestSmsRequest {
    * The phone number or other identifier to specify as a recipient of the SMS.
    * @return numberTo
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NUMBER_TO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNumberTo() {
@@ -100,12 +102,12 @@ public class TestSmsRequest {
 
   @JsonProperty(value = JSON_PROPERTY_NUMBER_TO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNumberTo(@javax.annotation.Nullable String numberTo) {
+  public void setNumberTo(@Nullable String numberTo) {
     this.numberTo = numberTo;
   }
 
 
-  public TestSmsRequest message(@javax.annotation.Nullable String message) {
+  public TestSmsRequest message(@Nullable String message) {
     this.message = message;
     return this;
   }
@@ -114,7 +116,7 @@ public class TestSmsRequest {
    * The test message
    * @return message
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getMessage() {
@@ -124,7 +126,7 @@ public class TestSmsRequest {
 
   @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(@javax.annotation.Nullable String message) {
+  public void setMessage(@Nullable String message) {
     this.message = message;
   }
 

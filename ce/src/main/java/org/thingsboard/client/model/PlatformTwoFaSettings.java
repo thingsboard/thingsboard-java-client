@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -50,30 +53,30 @@ import org.thingsboard.client.ApiClient;
   PlatformTwoFaSettings.JSON_PROPERTY_ENFORCE_TWO_FA,
   PlatformTwoFaSettings.JSON_PROPERTY_ENFORCED_USERS_FILTER
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PlatformTwoFaSettings {
   public static final String JSON_PROPERTY_PROVIDERS = "providers";
-  @javax.annotation.Nonnull
+  @Nonnull
   private List<TwoFaProviderConfig> providers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD = "minVerificationCodeSendPeriod";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer minVerificationCodeSendPeriod;
 
   public static final String JSON_PROPERTY_VERIFICATION_CODE_CHECK_RATE_LIMIT = "verificationCodeCheckRateLimit";
-  @javax.annotation.Nullable
+  @Nullable
   private String verificationCodeCheckRateLimit;
 
   public static final String JSON_PROPERTY_MAX_VERIFICATION_FAILURES_BEFORE_USER_LOCKOUT = "maxVerificationFailuresBeforeUserLockout";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer maxVerificationFailuresBeforeUserLockout;
 
   public static final String JSON_PROPERTY_TOTAL_ALLOWED_TIME_FOR_VERIFICATION = "totalAllowedTimeForVerification";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer totalAllowedTimeForVerification;
 
   public static final String JSON_PROPERTY_ENFORCE_TWO_FA = "enforceTwoFa";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean enforceTwoFa;
 
   public static final String JSON_PROPERTY_ENFORCED_USERS_FILTER = "enforcedUsersFilter";
@@ -82,7 +85,7 @@ public class PlatformTwoFaSettings {
   public PlatformTwoFaSettings() { 
   }
 
-  public PlatformTwoFaSettings providers(@javax.annotation.Nonnull List<TwoFaProviderConfig> providers) {
+  public PlatformTwoFaSettings providers(@Nonnull List<TwoFaProviderConfig> providers) {
     this.providers = providers;
     return this;
   }
@@ -99,7 +102,7 @@ public class PlatformTwoFaSettings {
    * Get providers
    * @return providers
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PROVIDERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public List<TwoFaProviderConfig> getProviders() {
@@ -109,12 +112,12 @@ public class PlatformTwoFaSettings {
 
   @JsonProperty(value = JSON_PROPERTY_PROVIDERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProviders(@javax.annotation.Nonnull List<TwoFaProviderConfig> providers) {
+  public void setProviders(@Nonnull List<TwoFaProviderConfig> providers) {
     this.providers = providers;
   }
 
 
-  public PlatformTwoFaSettings minVerificationCodeSendPeriod(@javax.annotation.Nonnull Integer minVerificationCodeSendPeriod) {
+  public PlatformTwoFaSettings minVerificationCodeSendPeriod(@Nonnull Integer minVerificationCodeSendPeriod) {
     this.minVerificationCodeSendPeriod = minVerificationCodeSendPeriod;
     return this;
   }
@@ -124,7 +127,7 @@ public class PlatformTwoFaSettings {
    * minimum: 5
    * @return minVerificationCodeSendPeriod
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getMinVerificationCodeSendPeriod() {
@@ -134,12 +137,12 @@ public class PlatformTwoFaSettings {
 
   @JsonProperty(value = JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMinVerificationCodeSendPeriod(@javax.annotation.Nonnull Integer minVerificationCodeSendPeriod) {
+  public void setMinVerificationCodeSendPeriod(@Nonnull Integer minVerificationCodeSendPeriod) {
     this.minVerificationCodeSendPeriod = minVerificationCodeSendPeriod;
   }
 
 
-  public PlatformTwoFaSettings verificationCodeCheckRateLimit(@javax.annotation.Nullable String verificationCodeCheckRateLimit) {
+  public PlatformTwoFaSettings verificationCodeCheckRateLimit(@Nullable String verificationCodeCheckRateLimit) {
     this.verificationCodeCheckRateLimit = verificationCodeCheckRateLimit;
     return this;
   }
@@ -148,7 +151,7 @@ public class PlatformTwoFaSettings {
    * Get verificationCodeCheckRateLimit
    * @return verificationCodeCheckRateLimit
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_VERIFICATION_CODE_CHECK_RATE_LIMIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getVerificationCodeCheckRateLimit() {
@@ -158,12 +161,12 @@ public class PlatformTwoFaSettings {
 
   @JsonProperty(value = JSON_PROPERTY_VERIFICATION_CODE_CHECK_RATE_LIMIT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVerificationCodeCheckRateLimit(@javax.annotation.Nullable String verificationCodeCheckRateLimit) {
+  public void setVerificationCodeCheckRateLimit(@Nullable String verificationCodeCheckRateLimit) {
     this.verificationCodeCheckRateLimit = verificationCodeCheckRateLimit;
   }
 
 
-  public PlatformTwoFaSettings maxVerificationFailuresBeforeUserLockout(@javax.annotation.Nullable Integer maxVerificationFailuresBeforeUserLockout) {
+  public PlatformTwoFaSettings maxVerificationFailuresBeforeUserLockout(@Nullable Integer maxVerificationFailuresBeforeUserLockout) {
     this.maxVerificationFailuresBeforeUserLockout = maxVerificationFailuresBeforeUserLockout;
     return this;
   }
@@ -173,7 +176,7 @@ public class PlatformTwoFaSettings {
    * minimum: 0
    * @return maxVerificationFailuresBeforeUserLockout
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_VERIFICATION_FAILURES_BEFORE_USER_LOCKOUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaxVerificationFailuresBeforeUserLockout() {
@@ -183,12 +186,12 @@ public class PlatformTwoFaSettings {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_VERIFICATION_FAILURES_BEFORE_USER_LOCKOUT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxVerificationFailuresBeforeUserLockout(@javax.annotation.Nullable Integer maxVerificationFailuresBeforeUserLockout) {
+  public void setMaxVerificationFailuresBeforeUserLockout(@Nullable Integer maxVerificationFailuresBeforeUserLockout) {
     this.maxVerificationFailuresBeforeUserLockout = maxVerificationFailuresBeforeUserLockout;
   }
 
 
-  public PlatformTwoFaSettings totalAllowedTimeForVerification(@javax.annotation.Nonnull Integer totalAllowedTimeForVerification) {
+  public PlatformTwoFaSettings totalAllowedTimeForVerification(@Nonnull Integer totalAllowedTimeForVerification) {
     this.totalAllowedTimeForVerification = totalAllowedTimeForVerification;
     return this;
   }
@@ -198,7 +201,7 @@ public class PlatformTwoFaSettings {
    * minimum: 60
    * @return totalAllowedTimeForVerification
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TOTAL_ALLOWED_TIME_FOR_VERIFICATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getTotalAllowedTimeForVerification() {
@@ -208,12 +211,12 @@ public class PlatformTwoFaSettings {
 
   @JsonProperty(value = JSON_PROPERTY_TOTAL_ALLOWED_TIME_FOR_VERIFICATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTotalAllowedTimeForVerification(@javax.annotation.Nonnull Integer totalAllowedTimeForVerification) {
+  public void setTotalAllowedTimeForVerification(@Nonnull Integer totalAllowedTimeForVerification) {
     this.totalAllowedTimeForVerification = totalAllowedTimeForVerification;
   }
 
 
-  public PlatformTwoFaSettings enforceTwoFa(@javax.annotation.Nullable Boolean enforceTwoFa) {
+  public PlatformTwoFaSettings enforceTwoFa(@Nullable Boolean enforceTwoFa) {
     this.enforceTwoFa = enforceTwoFa;
     return this;
   }
@@ -222,7 +225,7 @@ public class PlatformTwoFaSettings {
    * Get enforceTwoFa
    * @return enforceTwoFa
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ENFORCE_TWO_FA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEnforceTwoFa() {
@@ -232,12 +235,12 @@ public class PlatformTwoFaSettings {
 
   @JsonProperty(value = JSON_PROPERTY_ENFORCE_TWO_FA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnforceTwoFa(@javax.annotation.Nullable Boolean enforceTwoFa) {
+  public void setEnforceTwoFa(@Nullable Boolean enforceTwoFa) {
     this.enforceTwoFa = enforceTwoFa;
   }
 
 
-  public PlatformTwoFaSettings enforcedUsersFilter(@javax.annotation.Nullable Object enforcedUsersFilter) {
+  public PlatformTwoFaSettings enforcedUsersFilter(@Nullable Object enforcedUsersFilter) {
     this.enforcedUsersFilter = JsonNullable.<Object>of(enforcedUsersFilter);
     return this;
   }
@@ -246,7 +249,7 @@ public class PlatformTwoFaSettings {
    * Get enforcedUsersFilter
    * @return enforcedUsersFilter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonIgnore
   public Object getEnforcedUsersFilter() {
         return enforcedUsersFilter.orElse(null);
@@ -264,7 +267,7 @@ public class PlatformTwoFaSettings {
     this.enforcedUsersFilter = enforcedUsersFilter;
   }
 
-  public void setEnforcedUsersFilter(@javax.annotation.Nullable Object enforcedUsersFilter) {
+  public void setEnforcedUsersFilter(@Nullable Object enforcedUsersFilter) {
     this.enforcedUsersFilter = JsonNullable.<Object>of(enforcedUsersFilter);
   }
 

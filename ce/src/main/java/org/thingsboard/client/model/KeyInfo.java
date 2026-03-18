@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +42,20 @@ import org.thingsboard.client.ApiClient;
   KeyInfo.JSON_PROPERTY_KEY,
   KeyInfo.JSON_PROPERTY_SAMPLE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class KeyInfo {
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String key;
 
   public static final String JSON_PROPERTY_SAMPLE = "sample";
-  @javax.annotation.Nullable
+  @Nullable
   private KeySample sample;
 
   public KeyInfo() { 
   }
 
-  public KeyInfo key(@javax.annotation.Nonnull String key) {
+  public KeyInfo key(@Nonnull String key) {
     this.key = key;
     return this;
   }
@@ -61,7 +64,7 @@ public class KeyInfo {
    * Key name.
    * @return key
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getKey() {
@@ -71,12 +74,12 @@ public class KeyInfo {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKey(@javax.annotation.Nonnull String key) {
+  public void setKey(@Nonnull String key) {
     this.key = key;
   }
 
 
-  public KeyInfo sample(@javax.annotation.Nullable KeySample sample) {
+  public KeyInfo sample(@Nullable KeySample sample) {
     this.sample = sample;
     return this;
   }
@@ -85,7 +88,7 @@ public class KeyInfo {
    * Most recent sample value for this key across the matched entities. Omitted when samples were not requested.
    * @return sample
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SAMPLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public KeySample getSample() {
@@ -95,7 +98,7 @@ public class KeyInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SAMPLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSample(@javax.annotation.Nullable KeySample sample) {
+  public void setSample(@Nullable KeySample sample) {
     this.sample = sample;
   }
 

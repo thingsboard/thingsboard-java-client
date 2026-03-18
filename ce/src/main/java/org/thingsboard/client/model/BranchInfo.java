@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   BranchInfo.JSON_PROPERTY_NAME,
   BranchInfo.JSON_PROPERTY_DEFAULT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BranchInfo {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DEFAULT = "default";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _default;
 
   public BranchInfo() { 
   }
 
-  public BranchInfo name(@javax.annotation.Nullable String name) {
+  public BranchInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -60,7 +62,7 @@ public class BranchInfo {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -70,12 +72,12 @@ public class BranchInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public BranchInfo _default(@javax.annotation.Nullable Boolean _default) {
+  public BranchInfo _default(@Nullable Boolean _default) {
     this._default = _default;
     return this;
   }
@@ -84,7 +86,7 @@ public class BranchInfo {
    * Get _default
    * @return _default
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDefault() {
@@ -94,7 +96,7 @@ public class BranchInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefault(@javax.annotation.Nullable Boolean _default) {
+  public void setDefault(@Nullable Boolean _default) {
     this._default = _default;
   }
 

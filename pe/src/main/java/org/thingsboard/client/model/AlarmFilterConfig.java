@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,32 +48,32 @@ import org.thingsboard.client.ApiClient;
   AlarmFilterConfig.JSON_PROPERTY_ASSIGNEE_ID,
   AlarmFilterConfig.JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmFilterConfig {
   public static final String JSON_PROPERTY_TYPE_LIST = "typeList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<String> typeList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_STATUS_LIST = "statusList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<AlarmSearchStatus> statusList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SEVERITY_LIST = "severityList";
-  @javax.annotation.Nullable
+  @Nullable
   private List<AlarmSeverity> severityList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ASSIGNEE_ID = "assigneeId";
-  @javax.annotation.Nullable
+  @Nullable
   private UserId assigneeId;
 
   public static final String JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS = "searchPropagatedAlarms";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean searchPropagatedAlarms;
 
   public AlarmFilterConfig() { 
   }
 
-  public AlarmFilterConfig typeList(@javax.annotation.Nullable List<String> typeList) {
+  public AlarmFilterConfig typeList(@Nullable List<String> typeList) {
     this.typeList = typeList;
     return this;
   }
@@ -88,7 +90,7 @@ public class AlarmFilterConfig {
    * Get typeList
    * @return typeList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TYPE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTypeList() {
@@ -98,12 +100,12 @@ public class AlarmFilterConfig {
 
   @JsonProperty(value = JSON_PROPERTY_TYPE_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTypeList(@javax.annotation.Nullable List<String> typeList) {
+  public void setTypeList(@Nullable List<String> typeList) {
     this.typeList = typeList;
   }
 
 
-  public AlarmFilterConfig statusList(@javax.annotation.Nullable List<AlarmSearchStatus> statusList) {
+  public AlarmFilterConfig statusList(@Nullable List<AlarmSearchStatus> statusList) {
     this.statusList = statusList;
     return this;
   }
@@ -120,7 +122,7 @@ public class AlarmFilterConfig {
    * Get statusList
    * @return statusList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AlarmSearchStatus> getStatusList() {
@@ -130,12 +132,12 @@ public class AlarmFilterConfig {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatusList(@javax.annotation.Nullable List<AlarmSearchStatus> statusList) {
+  public void setStatusList(@Nullable List<AlarmSearchStatus> statusList) {
     this.statusList = statusList;
   }
 
 
-  public AlarmFilterConfig severityList(@javax.annotation.Nullable List<AlarmSeverity> severityList) {
+  public AlarmFilterConfig severityList(@Nullable List<AlarmSeverity> severityList) {
     this.severityList = severityList;
     return this;
   }
@@ -152,7 +154,7 @@ public class AlarmFilterConfig {
    * Get severityList
    * @return severityList
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEVERITY_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AlarmSeverity> getSeverityList() {
@@ -162,12 +164,12 @@ public class AlarmFilterConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SEVERITY_LIST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSeverityList(@javax.annotation.Nullable List<AlarmSeverity> severityList) {
+  public void setSeverityList(@Nullable List<AlarmSeverity> severityList) {
     this.severityList = severityList;
   }
 
 
-  public AlarmFilterConfig assigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public AlarmFilterConfig assigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
     return this;
   }
@@ -176,7 +178,7 @@ public class AlarmFilterConfig {
    * Get assigneeId
    * @return assigneeId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserId getAssigneeId() {
@@ -186,12 +188,12 @@ public class AlarmFilterConfig {
 
   @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAssigneeId(@javax.annotation.Nullable UserId assigneeId) {
+  public void setAssigneeId(@Nullable UserId assigneeId) {
     this.assigneeId = assigneeId;
   }
 
 
-  public AlarmFilterConfig searchPropagatedAlarms(@javax.annotation.Nullable Boolean searchPropagatedAlarms) {
+  public AlarmFilterConfig searchPropagatedAlarms(@Nullable Boolean searchPropagatedAlarms) {
     this.searchPropagatedAlarms = searchPropagatedAlarms;
     return this;
   }
@@ -200,7 +202,7 @@ public class AlarmFilterConfig {
    * Get searchPropagatedAlarms
    * @return searchPropagatedAlarms
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSearchPropagatedAlarms() {
@@ -210,7 +212,7 @@ public class AlarmFilterConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSearchPropagatedAlarms(@javax.annotation.Nullable Boolean searchPropagatedAlarms) {
+  public void setSearchPropagatedAlarms(@Nullable Boolean searchPropagatedAlarms) {
     this.searchPropagatedAlarms = searchPropagatedAlarms;
   }
 

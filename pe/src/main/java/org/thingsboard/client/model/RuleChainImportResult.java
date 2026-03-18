@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,28 +43,28 @@ import org.thingsboard.client.ApiClient;
   RuleChainImportResult.JSON_PROPERTY_UPDATED,
   RuleChainImportResult.JSON_PROPERTY_ERROR
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChainImportResult {
   public static final String JSON_PROPERTY_RULE_CHAIN_ID = "ruleChainId";
-  @javax.annotation.Nullable
+  @Nullable
   private RuleChainId ruleChainId;
 
   public static final String JSON_PROPERTY_RULE_CHAIN_NAME = "ruleChainName";
-  @javax.annotation.Nullable
+  @Nullable
   private String ruleChainName;
 
   public static final String JSON_PROPERTY_UPDATED = "updated";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean updated;
 
   public static final String JSON_PROPERTY_ERROR = "error";
-  @javax.annotation.Nullable
+  @Nullable
   private String error;
 
   public RuleChainImportResult() { 
   }
 
-  public RuleChainImportResult ruleChainId(@javax.annotation.Nullable RuleChainId ruleChainId) {
+  public RuleChainImportResult ruleChainId(@Nullable RuleChainId ruleChainId) {
     this.ruleChainId = ruleChainId;
     return this;
   }
@@ -71,7 +73,7 @@ public class RuleChainImportResult {
    * Get ruleChainId
    * @return ruleChainId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public RuleChainId getRuleChainId() {
@@ -81,12 +83,12 @@ public class RuleChainImportResult {
 
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRuleChainId(@javax.annotation.Nullable RuleChainId ruleChainId) {
+  public void setRuleChainId(@Nullable RuleChainId ruleChainId) {
     this.ruleChainId = ruleChainId;
   }
 
 
-  public RuleChainImportResult ruleChainName(@javax.annotation.Nullable String ruleChainName) {
+  public RuleChainImportResult ruleChainName(@Nullable String ruleChainName) {
     this.ruleChainName = ruleChainName;
     return this;
   }
@@ -95,7 +97,7 @@ public class RuleChainImportResult {
    * Get ruleChainName
    * @return ruleChainName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getRuleChainName() {
@@ -105,12 +107,12 @@ public class RuleChainImportResult {
 
   @JsonProperty(value = JSON_PROPERTY_RULE_CHAIN_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRuleChainName(@javax.annotation.Nullable String ruleChainName) {
+  public void setRuleChainName(@Nullable String ruleChainName) {
     this.ruleChainName = ruleChainName;
   }
 
 
-  public RuleChainImportResult updated(@javax.annotation.Nullable Boolean updated) {
+  public RuleChainImportResult updated(@Nullable Boolean updated) {
     this.updated = updated;
     return this;
   }
@@ -119,7 +121,7 @@ public class RuleChainImportResult {
    * Get updated
    * @return updated
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getUpdated() {
@@ -129,12 +131,12 @@ public class RuleChainImportResult {
 
   @JsonProperty(value = JSON_PROPERTY_UPDATED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdated(@javax.annotation.Nullable Boolean updated) {
+  public void setUpdated(@Nullable Boolean updated) {
     this.updated = updated;
   }
 
 
-  public RuleChainImportResult error(@javax.annotation.Nullable String error) {
+  public RuleChainImportResult error(@Nullable String error) {
     this.error = error;
     return this;
   }
@@ -143,7 +145,7 @@ public class RuleChainImportResult {
    * Get error
    * @return error
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getError() {
@@ -153,7 +155,7 @@ public class RuleChainImportResult {
 
   @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(@javax.annotation.Nullable String error) {
+  public void setError(@Nullable String error) {
     this.error = error;
   }
 

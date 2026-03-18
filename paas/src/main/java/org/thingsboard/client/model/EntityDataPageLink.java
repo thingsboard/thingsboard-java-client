@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,32 +44,32 @@ import org.thingsboard.client.ApiClient;
   EntityDataPageLink.JSON_PROPERTY_SORT_ORDER,
   EntityDataPageLink.JSON_PROPERTY_DYNAMIC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityDataPageLink {
   public static final String JSON_PROPERTY_PAGE_SIZE = "pageSize";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer pageSize;
 
   public static final String JSON_PROPERTY_PAGE = "page";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer page;
 
   public static final String JSON_PROPERTY_TEXT_SEARCH = "textSearch";
-  @javax.annotation.Nullable
+  @Nullable
   private String textSearch;
 
   public static final String JSON_PROPERTY_SORT_ORDER = "sortOrder";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityDataSortOrder sortOrder;
 
   public static final String JSON_PROPERTY_DYNAMIC = "dynamic";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean dynamic;
 
   public EntityDataPageLink() { 
   }
 
-  public EntityDataPageLink pageSize(@javax.annotation.Nullable Integer pageSize) {
+  public EntityDataPageLink pageSize(@Nullable Integer pageSize) {
     this.pageSize = pageSize;
     return this;
   }
@@ -76,7 +78,7 @@ public class EntityDataPageLink {
    * Get pageSize
    * @return pageSize
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPageSize() {
@@ -86,12 +88,12 @@ public class EntityDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_PAGE_SIZE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageSize(@javax.annotation.Nullable Integer pageSize) {
+  public void setPageSize(@Nullable Integer pageSize) {
     this.pageSize = pageSize;
   }
 
 
-  public EntityDataPageLink page(@javax.annotation.Nullable Integer page) {
+  public EntityDataPageLink page(@Nullable Integer page) {
     this.page = page;
     return this;
   }
@@ -100,7 +102,7 @@ public class EntityDataPageLink {
    * Get page
    * @return page
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getPage() {
@@ -110,12 +112,12 @@ public class EntityDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_PAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPage(@javax.annotation.Nullable Integer page) {
+  public void setPage(@Nullable Integer page) {
     this.page = page;
   }
 
 
-  public EntityDataPageLink textSearch(@javax.annotation.Nullable String textSearch) {
+  public EntityDataPageLink textSearch(@Nullable String textSearch) {
     this.textSearch = textSearch;
     return this;
   }
@@ -124,7 +126,7 @@ public class EntityDataPageLink {
    * Get textSearch
    * @return textSearch
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTextSearch() {
@@ -134,12 +136,12 @@ public class EntityDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_TEXT_SEARCH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTextSearch(@javax.annotation.Nullable String textSearch) {
+  public void setTextSearch(@Nullable String textSearch) {
     this.textSearch = textSearch;
   }
 
 
-  public EntityDataPageLink sortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
+  public EntityDataPageLink sortOrder(@Nullable EntityDataSortOrder sortOrder) {
     this.sortOrder = sortOrder;
     return this;
   }
@@ -148,7 +150,7 @@ public class EntityDataPageLink {
    * Get sortOrder
    * @return sortOrder
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityDataSortOrder getSortOrder() {
@@ -158,12 +160,12 @@ public class EntityDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_SORT_ORDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSortOrder(@javax.annotation.Nullable EntityDataSortOrder sortOrder) {
+  public void setSortOrder(@Nullable EntityDataSortOrder sortOrder) {
     this.sortOrder = sortOrder;
   }
 
 
-  public EntityDataPageLink dynamic(@javax.annotation.Nullable Boolean dynamic) {
+  public EntityDataPageLink dynamic(@Nullable Boolean dynamic) {
     this.dynamic = dynamic;
     return this;
   }
@@ -172,7 +174,7 @@ public class EntityDataPageLink {
    * Get dynamic
    * @return dynamic
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDynamic() {
@@ -182,7 +184,7 @@ public class EntityDataPageLink {
 
   @JsonProperty(value = JSON_PROPERTY_DYNAMIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamic(@javax.annotation.Nullable Boolean dynamic) {
+  public void setDynamic(@Nullable Boolean dynamic) {
     this.dynamic = dynamic;
   }
 

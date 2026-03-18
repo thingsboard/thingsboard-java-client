@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -39,20 +41,20 @@ import org.thingsboard.client.ApiClient;
   TableSortOrder.JSON_PROPERTY_COLUMN,
   TableSortOrder.JSON_PROPERTY_DIRECTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TableSortOrder {
   public static final String JSON_PROPERTY_COLUMN = "column";
-  @javax.annotation.Nullable
+  @Nullable
   private String column;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
-  @javax.annotation.Nullable
+  @Nullable
   private Direction direction;
 
   public TableSortOrder() { 
   }
 
-  public TableSortOrder column(@javax.annotation.Nullable String column) {
+  public TableSortOrder column(@Nullable String column) {
     this.column = column;
     return this;
   }
@@ -61,7 +63,7 @@ public class TableSortOrder {
    * Get column
    * @return column
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COLUMN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getColumn() {
@@ -71,12 +73,12 @@ public class TableSortOrder {
 
   @JsonProperty(value = JSON_PROPERTY_COLUMN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setColumn(@javax.annotation.Nullable String column) {
+  public void setColumn(@Nullable String column) {
     this.column = column;
   }
 
 
-  public TableSortOrder direction(@javax.annotation.Nullable Direction direction) {
+  public TableSortOrder direction(@Nullable Direction direction) {
     this.direction = direction;
     return this;
   }
@@ -85,7 +87,7 @@ public class TableSortOrder {
    * Get direction
    * @return direction
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Direction getDirection() {
@@ -95,7 +97,7 @@ public class TableSortOrder {
 
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDirection(@javax.annotation.Nullable Direction direction) {
+  public void setDirection(@Nullable Direction direction) {
     this.direction = direction;
   }
 

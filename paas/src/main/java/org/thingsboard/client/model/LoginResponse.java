@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -38,20 +40,20 @@ import org.thingsboard.client.ApiClient;
   LoginResponse.JSON_PROPERTY_REFRESH_TOKEN,
   LoginResponse.JSON_PROPERTY_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LoginResponse {
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String refreshToken;
 
   public static final String JSON_PROPERTY_TOKEN = "token";
-  @javax.annotation.Nonnull
+  @Nonnull
   private String token;
 
   public LoginResponse() { 
   }
 
-  public LoginResponse refreshToken(@javax.annotation.Nonnull String refreshToken) {
+  public LoginResponse refreshToken(@Nonnull String refreshToken) {
     this.refreshToken = refreshToken;
     return this;
   }
@@ -60,7 +62,7 @@ public class LoginResponse {
    * Refresh token
    * @return refreshToken
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getRefreshToken() {
@@ -70,12 +72,12 @@ public class LoginResponse {
 
   @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRefreshToken(@javax.annotation.Nonnull String refreshToken) {
+  public void setRefreshToken(@Nonnull String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
 
-  public LoginResponse token(@javax.annotation.Nonnull String token) {
+  public LoginResponse token(@Nonnull String token) {
     this.token = token;
     return this;
   }
@@ -84,7 +86,7 @@ public class LoginResponse {
    * JWT token
    * @return token
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public String getToken() {
@@ -94,7 +96,7 @@ public class LoginResponse {
 
   @JsonProperty(value = JSON_PROPERTY_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setToken(@javax.annotation.Nonnull String token) {
+  public void setToken(@Nonnull String token) {
     this.token = token;
   }
 

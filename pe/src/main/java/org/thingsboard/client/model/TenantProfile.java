@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,34 +47,34 @@ import org.thingsboard.client.ApiClient;
   TenantProfile.JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE,
   TenantProfile.JSON_PROPERTY_PROFILE_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TenantProfile {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantProfileId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nullable
+  @Nullable
   private String description;
 
   public static final String JSON_PROPERTY_DEFAULT = "default";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _default;
 
   public static final String JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE = "isolatedTbRuleEngine";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean isolatedTbRuleEngine;
 
   public static final String JSON_PROPERTY_PROFILE_DATA = "profileData";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantProfileData profileData;
 
   public TenantProfile() { 
@@ -86,7 +88,7 @@ public class TenantProfile {
     this.createdTime = createdTime;
   }
 
-  public TenantProfile id(@javax.annotation.Nullable TenantProfileId id) {
+  public TenantProfile id(@Nullable TenantProfileId id) {
     this.id = id;
     return this;
   }
@@ -95,7 +97,7 @@ public class TenantProfile {
    * JSON object with the tenant profile Id. Specify this field to update the tenant profile. Referencing non-existing tenant profile Id will cause error. Omit this field to create new tenant profile.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantProfileId getId() {
@@ -105,7 +107,7 @@ public class TenantProfile {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable TenantProfileId id) {
+  public void setId(@Nullable TenantProfileId id) {
     this.id = id;
   }
 
@@ -114,7 +116,7 @@ public class TenantProfile {
    * Timestamp of the tenant profile creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -124,7 +126,7 @@ public class TenantProfile {
 
 
 
-  public TenantProfile name(@javax.annotation.Nullable String name) {
+  public TenantProfile name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -133,7 +135,7 @@ public class TenantProfile {
    * Name of the tenant profile
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -143,12 +145,12 @@ public class TenantProfile {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public TenantProfile description(@javax.annotation.Nullable String description) {
+  public TenantProfile description(@Nullable String description) {
     this.description = description;
     return this;
   }
@@ -157,7 +159,7 @@ public class TenantProfile {
    * Description of the tenant profile
    * @return description
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDescription() {
@@ -167,12 +169,12 @@ public class TenantProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(@javax.annotation.Nullable String description) {
+  public void setDescription(@Nullable String description) {
     this.description = description;
   }
 
 
-  public TenantProfile _default(@javax.annotation.Nullable Boolean _default) {
+  public TenantProfile _default(@Nullable Boolean _default) {
     this._default = _default;
     return this;
   }
@@ -181,7 +183,7 @@ public class TenantProfile {
    * Default Tenant profile to be used.
    * @return _default
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getDefault() {
@@ -191,12 +193,12 @@ public class TenantProfile {
 
   @JsonProperty(value = JSON_PROPERTY_DEFAULT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefault(@javax.annotation.Nullable Boolean _default) {
+  public void setDefault(@Nullable Boolean _default) {
     this._default = _default;
   }
 
 
-  public TenantProfile isolatedTbRuleEngine(@javax.annotation.Nullable Boolean isolatedTbRuleEngine) {
+  public TenantProfile isolatedTbRuleEngine(@Nullable Boolean isolatedTbRuleEngine) {
     this.isolatedTbRuleEngine = isolatedTbRuleEngine;
     return this;
   }
@@ -205,7 +207,7 @@ public class TenantProfile {
    * If enabled, will push all messages related to this tenant and processed by the rule engine into separate queue. Useful for complex microservices deployments, to isolate processing of the data for specific tenants
    * @return isolatedTbRuleEngine
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getIsolatedTbRuleEngine() {
@@ -215,12 +217,12 @@ public class TenantProfile {
 
   @JsonProperty(value = JSON_PROPERTY_ISOLATED_TB_RULE_ENGINE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsolatedTbRuleEngine(@javax.annotation.Nullable Boolean isolatedTbRuleEngine) {
+  public void setIsolatedTbRuleEngine(@Nullable Boolean isolatedTbRuleEngine) {
     this.isolatedTbRuleEngine = isolatedTbRuleEngine;
   }
 
 
-  public TenantProfile profileData(@javax.annotation.Nullable TenantProfileData profileData) {
+  public TenantProfile profileData(@Nullable TenantProfileData profileData) {
     this.profileData = profileData;
     return this;
   }
@@ -229,7 +231,7 @@ public class TenantProfile {
    * Get profileData
    * @return profileData
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantProfileData getProfileData() {
@@ -239,7 +241,7 @@ public class TenantProfile {
 
   @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfileData(@javax.annotation.Nullable TenantProfileData profileData) {
+  public void setProfileData(@Nullable TenantProfileData profileData) {
     this.profileData = profileData;
   }
 

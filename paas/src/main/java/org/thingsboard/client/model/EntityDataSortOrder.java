@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -40,20 +42,20 @@ import org.thingsboard.client.ApiClient;
   EntityDataSortOrder.JSON_PROPERTY_KEY,
   EntityDataSortOrder.JSON_PROPERTY_DIRECTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityDataSortOrder {
   public static final String JSON_PROPERTY_KEY = "key";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityKey key;
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
-  @javax.annotation.Nullable
+  @Nullable
   private Direction direction;
 
   public EntityDataSortOrder() { 
   }
 
-  public EntityDataSortOrder key(@javax.annotation.Nullable EntityKey key) {
+  public EntityDataSortOrder key(@Nullable EntityKey key) {
     this.key = key;
     return this;
   }
@@ -62,7 +64,7 @@ public class EntityDataSortOrder {
    * Get key
    * @return key
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityKey getKey() {
@@ -72,12 +74,12 @@ public class EntityDataSortOrder {
 
   @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@javax.annotation.Nullable EntityKey key) {
+  public void setKey(@Nullable EntityKey key) {
     this.key = key;
   }
 
 
-  public EntityDataSortOrder direction(@javax.annotation.Nullable Direction direction) {
+  public EntityDataSortOrder direction(@Nullable Direction direction) {
     this.direction = direction;
     return this;
   }
@@ -86,7 +88,7 @@ public class EntityDataSortOrder {
    * Get direction
    * @return direction
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Direction getDirection() {
@@ -96,7 +98,7 @@ public class EntityDataSortOrder {
 
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDirection(@javax.annotation.Nullable Direction direction) {
+  public void setDirection(@Nullable Direction direction) {
     this.direction = direction;
   }
 

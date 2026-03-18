@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -41,32 +43,32 @@ import org.thingsboard.client.ApiClient;
   TranslationInfo.JSON_PROPERTY_PROGRESS,
   TranslationInfo.JSON_PROPERTY_CUSTOMIZED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TranslationInfo {
   public static final String JSON_PROPERTY_LOCALE_CODE = "localeCode";
-  @javax.annotation.Nullable
+  @Nullable
   private String localeCode;
 
   public static final String JSON_PROPERTY_LANGUAGE = "language";
-  @javax.annotation.Nullable
+  @Nullable
   private String language;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
-  @javax.annotation.Nullable
+  @Nullable
   private String country;
 
   public static final String JSON_PROPERTY_PROGRESS = "progress";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer progress;
 
   public static final String JSON_PROPERTY_CUSTOMIZED = "customized";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean customized;
 
   public TranslationInfo() { 
   }
 
-  public TranslationInfo localeCode(@javax.annotation.Nullable String localeCode) {
+  public TranslationInfo localeCode(@Nullable String localeCode) {
     this.localeCode = localeCode;
     return this;
   }
@@ -75,7 +77,7 @@ public class TranslationInfo {
    * Locale code formed by combining the ISO 639-1 language code and the ISO 3166-1 region code. For example, \&quot;en_US\&quot;
    * @return localeCode
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LOCALE_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLocaleCode() {
@@ -85,12 +87,12 @@ public class TranslationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LOCALE_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocaleCode(@javax.annotation.Nullable String localeCode) {
+  public void setLocaleCode(@Nullable String localeCode) {
     this.localeCode = localeCode;
   }
 
 
-  public TranslationInfo language(@javax.annotation.Nullable String language) {
+  public TranslationInfo language(@Nullable String language) {
     this.language = language;
     return this;
   }
@@ -99,7 +101,7 @@ public class TranslationInfo {
    * Locale code language display name. For example, \&quot;Polish (Polski)\&quot;
    * @return language
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LANGUAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLanguage() {
@@ -109,12 +111,12 @@ public class TranslationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_LANGUAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLanguage(@javax.annotation.Nullable String language) {
+  public void setLanguage(@Nullable String language) {
     this.language = language;
   }
 
 
-  public TranslationInfo country(@javax.annotation.Nullable String country) {
+  public TranslationInfo country(@Nullable String country) {
     this.country = country;
     return this;
   }
@@ -123,7 +125,7 @@ public class TranslationInfo {
    * Locale code country display name. For example, \&quot;Poland\&quot;
    * @return country
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getCountry() {
@@ -133,12 +135,12 @@ public class TranslationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_COUNTRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCountry(@javax.annotation.Nullable String country) {
+  public void setCountry(@Nullable String country) {
     this.country = country;
   }
 
 
-  public TranslationInfo progress(@javax.annotation.Nullable Integer progress) {
+  public TranslationInfo progress(@Nullable Integer progress) {
     this.progress = progress;
     return this;
   }
@@ -147,7 +149,7 @@ public class TranslationInfo {
    * Number representing translation percentage progress. For example, 40 that means 40% of all keys are translated.
    * @return progress
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PROGRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getProgress() {
@@ -157,12 +159,12 @@ public class TranslationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PROGRESS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProgress(@javax.annotation.Nullable Integer progress) {
+  public void setProgress(@Nullable Integer progress) {
     this.progress = progress;
   }
 
 
-  public TranslationInfo customized(@javax.annotation.Nullable Boolean customized) {
+  public TranslationInfo customized(@Nullable Boolean customized) {
     this.customized = customized;
     return this;
   }
@@ -171,7 +173,7 @@ public class TranslationInfo {
    * Boolean representing if current language has customization.
    * @return customized
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMIZED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getCustomized() {
@@ -181,7 +183,7 @@ public class TranslationInfo {
 
   @JsonProperty(value = JSON_PROPERTY_CUSTOMIZED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomized(@javax.annotation.Nullable Boolean customized) {
+  public void setCustomized(@Nullable Boolean customized) {
     this.customized = customized;
   }
 

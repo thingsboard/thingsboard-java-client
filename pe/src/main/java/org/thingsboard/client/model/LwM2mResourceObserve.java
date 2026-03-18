@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,36 +44,36 @@ import org.thingsboard.client.ApiClient;
   LwM2mResourceObserve.JSON_PROPERTY_TELEMETRY,
   LwM2mResourceObserve.JSON_PROPERTY_KEY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LwM2mResourceObserve {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_OBSERVE = "observe";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean observe;
 
   public static final String JSON_PROPERTY_ATTRIBUTE = "attribute";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean attribute;
 
   public static final String JSON_PROPERTY_TELEMETRY = "telemetry";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean telemetry;
 
   public static final String JSON_PROPERTY_KEY_NAME = "keyName";
-  @javax.annotation.Nullable
+  @Nullable
   private String keyName;
 
   public LwM2mResourceObserve() { 
   }
 
-  public LwM2mResourceObserve id(@javax.annotation.Nullable Integer id) {
+  public LwM2mResourceObserve id(@Nullable Integer id) {
     this.id = id;
     return this;
   }
@@ -80,7 +82,7 @@ public class LwM2mResourceObserve {
    * LwM2M Resource Observe id.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getId() {
@@ -90,12 +92,12 @@ public class LwM2mResourceObserve {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable Integer id) {
+  public void setId(@Nullable Integer id) {
     this.id = id;
   }
 
 
-  public LwM2mResourceObserve name(@javax.annotation.Nullable String name) {
+  public LwM2mResourceObserve name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -104,7 +106,7 @@ public class LwM2mResourceObserve {
    * LwM2M Resource Observe name.
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -114,12 +116,12 @@ public class LwM2mResourceObserve {
 
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(@javax.annotation.Nullable String name) {
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
 
-  public LwM2mResourceObserve observe(@javax.annotation.Nullable Boolean observe) {
+  public LwM2mResourceObserve observe(@Nullable Boolean observe) {
     this.observe = observe;
     return this;
   }
@@ -128,7 +130,7 @@ public class LwM2mResourceObserve {
    * LwM2M Resource Observe observe.
    * @return observe
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OBSERVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getObserve() {
@@ -138,12 +140,12 @@ public class LwM2mResourceObserve {
 
   @JsonProperty(value = JSON_PROPERTY_OBSERVE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setObserve(@javax.annotation.Nullable Boolean observe) {
+  public void setObserve(@Nullable Boolean observe) {
     this.observe = observe;
   }
 
 
-  public LwM2mResourceObserve attribute(@javax.annotation.Nullable Boolean attribute) {
+  public LwM2mResourceObserve attribute(@Nullable Boolean attribute) {
     this.attribute = attribute;
     return this;
   }
@@ -152,7 +154,7 @@ public class LwM2mResourceObserve {
    * LwM2M Resource Observe attribute.
    * @return attribute
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getAttribute() {
@@ -162,12 +164,12 @@ public class LwM2mResourceObserve {
 
   @JsonProperty(value = JSON_PROPERTY_ATTRIBUTE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAttribute(@javax.annotation.Nullable Boolean attribute) {
+  public void setAttribute(@Nullable Boolean attribute) {
     this.attribute = attribute;
   }
 
 
-  public LwM2mResourceObserve telemetry(@javax.annotation.Nullable Boolean telemetry) {
+  public LwM2mResourceObserve telemetry(@Nullable Boolean telemetry) {
     this.telemetry = telemetry;
     return this;
   }
@@ -176,7 +178,7 @@ public class LwM2mResourceObserve {
    * LwM2M Resource Observe telemetry.
    * @return telemetry
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TELEMETRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getTelemetry() {
@@ -186,12 +188,12 @@ public class LwM2mResourceObserve {
 
   @JsonProperty(value = JSON_PROPERTY_TELEMETRY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTelemetry(@javax.annotation.Nullable Boolean telemetry) {
+  public void setTelemetry(@Nullable Boolean telemetry) {
     this.telemetry = telemetry;
   }
 
 
-  public LwM2mResourceObserve keyName(@javax.annotation.Nullable String keyName) {
+  public LwM2mResourceObserve keyName(@Nullable String keyName) {
     this.keyName = keyName;
     return this;
   }
@@ -200,7 +202,7 @@ public class LwM2mResourceObserve {
    * LwM2M Resource Observe key name.
    * @return keyName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_KEY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getKeyName() {
@@ -210,7 +212,7 @@ public class LwM2mResourceObserve {
 
   @JsonProperty(value = JSON_PROPERTY_KEY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeyName(@javax.annotation.Nullable String keyName) {
+  public void setKeyName(@Nullable String keyName) {
     this.keyName = keyName;
   }
 

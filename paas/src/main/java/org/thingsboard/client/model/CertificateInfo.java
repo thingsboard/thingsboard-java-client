@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,44 +48,44 @@ import org.thingsboard.client.ApiClient;
   CertificateInfo.JSON_PROPERTY_ISSUED_AT,
   CertificateInfo.JSON_PROPERTY_ACME_CERTIFICATE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CertificateInfo {
   public static final String JSON_PROPERTY_STATUS = "status";
-  @javax.annotation.Nullable
+  @Nullable
   private CertificateStatus status;
 
   public static final String JSON_PROPERTY_DOMAIN_NAME = "domainName";
-  @javax.annotation.Nullable
+  @Nullable
   private String domainName;
 
   public static final String JSON_PROPERTY_SERIAL_NUMBER = "serialNumber";
-  @javax.annotation.Nullable
+  @Nullable
   private String serialNumber;
 
   public static final String JSON_PROPERTY_NOT_BEFORE = "notBefore";
-  @javax.annotation.Nullable
+  @Nullable
   private Long notBefore;
 
   public static final String JSON_PROPERTY_NOT_AFTER = "notAfter";
-  @javax.annotation.Nullable
+  @Nullable
   private Long notAfter;
 
   public static final String JSON_PROPERTY_REQUESTED_AT = "requestedAt";
-  @javax.annotation.Nullable
+  @Nullable
   private Long requestedAt;
 
   public static final String JSON_PROPERTY_ISSUED_AT = "issuedAt";
-  @javax.annotation.Nullable
+  @Nullable
   private Long issuedAt;
 
   public static final String JSON_PROPERTY_ACME_CERTIFICATE_ID = "acmeCertificateId";
-  @javax.annotation.Nullable
+  @Nullable
   private AcmeCertificateId acmeCertificateId;
 
   public CertificateInfo() { 
   }
 
-  public CertificateInfo status(@javax.annotation.Nullable CertificateStatus status) {
+  public CertificateInfo status(@Nullable CertificateStatus status) {
     this.status = status;
     return this;
   }
@@ -92,7 +94,7 @@ public class CertificateInfo {
    * Get status
    * @return status
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CertificateStatus getStatus() {
@@ -102,12 +104,12 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatus(@javax.annotation.Nullable CertificateStatus status) {
+  public void setStatus(@Nullable CertificateStatus status) {
     this.status = status;
   }
 
 
-  public CertificateInfo domainName(@javax.annotation.Nullable String domainName) {
+  public CertificateInfo domainName(@Nullable String domainName) {
     this.domainName = domainName;
     return this;
   }
@@ -116,7 +118,7 @@ public class CertificateInfo {
    * Get domainName
    * @return domainName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DOMAIN_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getDomainName() {
@@ -126,12 +128,12 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DOMAIN_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDomainName(@javax.annotation.Nullable String domainName) {
+  public void setDomainName(@Nullable String domainName) {
     this.domainName = domainName;
   }
 
 
-  public CertificateInfo serialNumber(@javax.annotation.Nullable String serialNumber) {
+  public CertificateInfo serialNumber(@Nullable String serialNumber) {
     this.serialNumber = serialNumber;
     return this;
   }
@@ -140,7 +142,7 @@ public class CertificateInfo {
    * Get serialNumber
    * @return serialNumber
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SERIAL_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getSerialNumber() {
@@ -150,12 +152,12 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_SERIAL_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSerialNumber(@javax.annotation.Nullable String serialNumber) {
+  public void setSerialNumber(@Nullable String serialNumber) {
     this.serialNumber = serialNumber;
   }
 
 
-  public CertificateInfo notBefore(@javax.annotation.Nullable Long notBefore) {
+  public CertificateInfo notBefore(@Nullable Long notBefore) {
     this.notBefore = notBefore;
     return this;
   }
@@ -164,7 +166,7 @@ public class CertificateInfo {
    * Get notBefore
    * @return notBefore
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NOT_BEFORE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getNotBefore() {
@@ -174,12 +176,12 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NOT_BEFORE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotBefore(@javax.annotation.Nullable Long notBefore) {
+  public void setNotBefore(@Nullable Long notBefore) {
     this.notBefore = notBefore;
   }
 
 
-  public CertificateInfo notAfter(@javax.annotation.Nullable Long notAfter) {
+  public CertificateInfo notAfter(@Nullable Long notAfter) {
     this.notAfter = notAfter;
     return this;
   }
@@ -188,7 +190,7 @@ public class CertificateInfo {
    * Get notAfter
    * @return notAfter
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NOT_AFTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getNotAfter() {
@@ -198,12 +200,12 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_NOT_AFTER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotAfter(@javax.annotation.Nullable Long notAfter) {
+  public void setNotAfter(@Nullable Long notAfter) {
     this.notAfter = notAfter;
   }
 
 
-  public CertificateInfo requestedAt(@javax.annotation.Nullable Long requestedAt) {
+  public CertificateInfo requestedAt(@Nullable Long requestedAt) {
     this.requestedAt = requestedAt;
     return this;
   }
@@ -212,7 +214,7 @@ public class CertificateInfo {
    * Get requestedAt
    * @return requestedAt
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_REQUESTED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getRequestedAt() {
@@ -222,12 +224,12 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_REQUESTED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestedAt(@javax.annotation.Nullable Long requestedAt) {
+  public void setRequestedAt(@Nullable Long requestedAt) {
     this.requestedAt = requestedAt;
   }
 
 
-  public CertificateInfo issuedAt(@javax.annotation.Nullable Long issuedAt) {
+  public CertificateInfo issuedAt(@Nullable Long issuedAt) {
     this.issuedAt = issuedAt;
     return this;
   }
@@ -236,7 +238,7 @@ public class CertificateInfo {
    * Get issuedAt
    * @return issuedAt
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ISSUED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getIssuedAt() {
@@ -246,12 +248,12 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ISSUED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuedAt(@javax.annotation.Nullable Long issuedAt) {
+  public void setIssuedAt(@Nullable Long issuedAt) {
     this.issuedAt = issuedAt;
   }
 
 
-  public CertificateInfo acmeCertificateId(@javax.annotation.Nullable AcmeCertificateId acmeCertificateId) {
+  public CertificateInfo acmeCertificateId(@Nullable AcmeCertificateId acmeCertificateId) {
     this.acmeCertificateId = acmeCertificateId;
     return this;
   }
@@ -260,7 +262,7 @@ public class CertificateInfo {
    * Get acmeCertificateId
    * @return acmeCertificateId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ACME_CERTIFICATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AcmeCertificateId getAcmeCertificateId() {
@@ -270,7 +272,7 @@ public class CertificateInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ACME_CERTIFICATE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAcmeCertificateId(@javax.annotation.Nullable AcmeCertificateId acmeCertificateId) {
+  public void setAcmeCertificateId(@Nullable AcmeCertificateId acmeCertificateId) {
     this.acmeCertificateId = acmeCertificateId;
   }
 

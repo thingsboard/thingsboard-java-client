@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -51,72 +53,72 @@ import org.thingsboard.client.ApiClient;
   SubscriptionItems.JSON_PROPERTY_TRENDZ_ENABLED,
   SubscriptionItems.JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SubscriptionItems {
   public static final String JSON_PROPERTY_EXTRA_DEVICE_PACK_COUNT = "extraDevicePackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long extraDevicePackCount;
 
   public static final String JSON_PROPERTY_EXTRA_CUSTOMER_PACK_COUNT = "extraCustomerPackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long extraCustomerPackCount;
 
   public static final String JSON_PROPERTY_EXTRA_INTEGRATION_PACK_COUNT = "extraIntegrationPackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long extraIntegrationPackCount;
 
   public static final String JSON_PROPERTY_EXTRA_CALCULATED_FIELD_COUNT = "extraCalculatedFieldCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long extraCalculatedFieldCount;
 
   public static final String JSON_PROPERTY_TRAFFIC_PACK_COUNT = "trafficPackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long trafficPackCount;
 
   public static final String JSON_PROPERTY_COMPUTE_PACK_COUNT = "computePackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long computePackCount;
 
   public static final String JSON_PROPERTY_STORAGE_PACK_COUNT = "storagePackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long storagePackCount;
 
   public static final String JSON_PROPERTY_ALARM_PACK_COUNT = "alarmPackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long alarmPackCount;
 
   public static final String JSON_PROPERTY_EMAIL_PACK_COUNT = "emailPackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long emailPackCount;
 
   public static final String JSON_PROPERTY_SMS_PACK_COUNT = "smsPackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long smsPackCount;
 
   public static final String JSON_PROPERTY_AI_CREDITS_PACK_COUNT = "aiCreditsPackCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long aiCreditsPackCount;
 
   public static final String JSON_PROPERTY_EDGE_ENABLED = "edgeEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean edgeEnabled;
 
   public static final String JSON_PROPERTY_EXTRA_EDGE_COUNT = "extraEdgeCount";
-  @javax.annotation.Nullable
+  @Nullable
   private Long extraEdgeCount;
 
   public static final String JSON_PROPERTY_TRENDZ_ENABLED = "trendzEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean trendzEnabled;
 
   public static final String JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED = "whiteLabelingAddonEnabled";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean whiteLabelingAddonEnabled;
 
   public SubscriptionItems() { 
   }
 
-  public SubscriptionItems extraDevicePackCount(@javax.annotation.Nullable Long extraDevicePackCount) {
+  public SubscriptionItems extraDevicePackCount(@Nullable Long extraDevicePackCount) {
     this.extraDevicePackCount = extraDevicePackCount;
     return this;
   }
@@ -125,7 +127,7 @@ public class SubscriptionItems {
    * Get extraDevicePackCount
    * @return extraDevicePackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXTRA_DEVICE_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getExtraDevicePackCount() {
@@ -135,12 +137,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_EXTRA_DEVICE_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExtraDevicePackCount(@javax.annotation.Nullable Long extraDevicePackCount) {
+  public void setExtraDevicePackCount(@Nullable Long extraDevicePackCount) {
     this.extraDevicePackCount = extraDevicePackCount;
   }
 
 
-  public SubscriptionItems extraCustomerPackCount(@javax.annotation.Nullable Long extraCustomerPackCount) {
+  public SubscriptionItems extraCustomerPackCount(@Nullable Long extraCustomerPackCount) {
     this.extraCustomerPackCount = extraCustomerPackCount;
     return this;
   }
@@ -149,7 +151,7 @@ public class SubscriptionItems {
    * Get extraCustomerPackCount
    * @return extraCustomerPackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXTRA_CUSTOMER_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getExtraCustomerPackCount() {
@@ -159,12 +161,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_EXTRA_CUSTOMER_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExtraCustomerPackCount(@javax.annotation.Nullable Long extraCustomerPackCount) {
+  public void setExtraCustomerPackCount(@Nullable Long extraCustomerPackCount) {
     this.extraCustomerPackCount = extraCustomerPackCount;
   }
 
 
-  public SubscriptionItems extraIntegrationPackCount(@javax.annotation.Nullable Long extraIntegrationPackCount) {
+  public SubscriptionItems extraIntegrationPackCount(@Nullable Long extraIntegrationPackCount) {
     this.extraIntegrationPackCount = extraIntegrationPackCount;
     return this;
   }
@@ -173,7 +175,7 @@ public class SubscriptionItems {
    * Get extraIntegrationPackCount
    * @return extraIntegrationPackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXTRA_INTEGRATION_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getExtraIntegrationPackCount() {
@@ -183,12 +185,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_EXTRA_INTEGRATION_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExtraIntegrationPackCount(@javax.annotation.Nullable Long extraIntegrationPackCount) {
+  public void setExtraIntegrationPackCount(@Nullable Long extraIntegrationPackCount) {
     this.extraIntegrationPackCount = extraIntegrationPackCount;
   }
 
 
-  public SubscriptionItems extraCalculatedFieldCount(@javax.annotation.Nullable Long extraCalculatedFieldCount) {
+  public SubscriptionItems extraCalculatedFieldCount(@Nullable Long extraCalculatedFieldCount) {
     this.extraCalculatedFieldCount = extraCalculatedFieldCount;
     return this;
   }
@@ -197,7 +199,7 @@ public class SubscriptionItems {
    * Get extraCalculatedFieldCount
    * @return extraCalculatedFieldCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXTRA_CALCULATED_FIELD_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getExtraCalculatedFieldCount() {
@@ -207,12 +209,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_EXTRA_CALCULATED_FIELD_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExtraCalculatedFieldCount(@javax.annotation.Nullable Long extraCalculatedFieldCount) {
+  public void setExtraCalculatedFieldCount(@Nullable Long extraCalculatedFieldCount) {
     this.extraCalculatedFieldCount = extraCalculatedFieldCount;
   }
 
 
-  public SubscriptionItems trafficPackCount(@javax.annotation.Nullable Long trafficPackCount) {
+  public SubscriptionItems trafficPackCount(@Nullable Long trafficPackCount) {
     this.trafficPackCount = trafficPackCount;
     return this;
   }
@@ -221,7 +223,7 @@ public class SubscriptionItems {
    * Get trafficPackCount
    * @return trafficPackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRAFFIC_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getTrafficPackCount() {
@@ -231,12 +233,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_TRAFFIC_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTrafficPackCount(@javax.annotation.Nullable Long trafficPackCount) {
+  public void setTrafficPackCount(@Nullable Long trafficPackCount) {
     this.trafficPackCount = trafficPackCount;
   }
 
 
-  public SubscriptionItems computePackCount(@javax.annotation.Nullable Long computePackCount) {
+  public SubscriptionItems computePackCount(@Nullable Long computePackCount) {
     this.computePackCount = computePackCount;
     return this;
   }
@@ -245,7 +247,7 @@ public class SubscriptionItems {
    * Get computePackCount
    * @return computePackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_COMPUTE_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getComputePackCount() {
@@ -255,12 +257,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_COMPUTE_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setComputePackCount(@javax.annotation.Nullable Long computePackCount) {
+  public void setComputePackCount(@Nullable Long computePackCount) {
     this.computePackCount = computePackCount;
   }
 
 
-  public SubscriptionItems storagePackCount(@javax.annotation.Nullable Long storagePackCount) {
+  public SubscriptionItems storagePackCount(@Nullable Long storagePackCount) {
     this.storagePackCount = storagePackCount;
     return this;
   }
@@ -269,7 +271,7 @@ public class SubscriptionItems {
    * Get storagePackCount
    * @return storagePackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_STORAGE_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getStoragePackCount() {
@@ -279,12 +281,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_STORAGE_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStoragePackCount(@javax.annotation.Nullable Long storagePackCount) {
+  public void setStoragePackCount(@Nullable Long storagePackCount) {
     this.storagePackCount = storagePackCount;
   }
 
 
-  public SubscriptionItems alarmPackCount(@javax.annotation.Nullable Long alarmPackCount) {
+  public SubscriptionItems alarmPackCount(@Nullable Long alarmPackCount) {
     this.alarmPackCount = alarmPackCount;
     return this;
   }
@@ -293,7 +295,7 @@ public class SubscriptionItems {
    * Get alarmPackCount
    * @return alarmPackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARM_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAlarmPackCount() {
@@ -303,12 +305,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_ALARM_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarmPackCount(@javax.annotation.Nullable Long alarmPackCount) {
+  public void setAlarmPackCount(@Nullable Long alarmPackCount) {
     this.alarmPackCount = alarmPackCount;
   }
 
 
-  public SubscriptionItems emailPackCount(@javax.annotation.Nullable Long emailPackCount) {
+  public SubscriptionItems emailPackCount(@Nullable Long emailPackCount) {
     this.emailPackCount = emailPackCount;
     return this;
   }
@@ -317,7 +319,7 @@ public class SubscriptionItems {
    * Get emailPackCount
    * @return emailPackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EMAIL_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getEmailPackCount() {
@@ -327,12 +329,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_EMAIL_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailPackCount(@javax.annotation.Nullable Long emailPackCount) {
+  public void setEmailPackCount(@Nullable Long emailPackCount) {
     this.emailPackCount = emailPackCount;
   }
 
 
-  public SubscriptionItems smsPackCount(@javax.annotation.Nullable Long smsPackCount) {
+  public SubscriptionItems smsPackCount(@Nullable Long smsPackCount) {
     this.smsPackCount = smsPackCount;
     return this;
   }
@@ -341,7 +343,7 @@ public class SubscriptionItems {
    * Get smsPackCount
    * @return smsPackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SMS_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getSmsPackCount() {
@@ -351,12 +353,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_SMS_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSmsPackCount(@javax.annotation.Nullable Long smsPackCount) {
+  public void setSmsPackCount(@Nullable Long smsPackCount) {
     this.smsPackCount = smsPackCount;
   }
 
 
-  public SubscriptionItems aiCreditsPackCount(@javax.annotation.Nullable Long aiCreditsPackCount) {
+  public SubscriptionItems aiCreditsPackCount(@Nullable Long aiCreditsPackCount) {
     this.aiCreditsPackCount = aiCreditsPackCount;
     return this;
   }
@@ -365,7 +367,7 @@ public class SubscriptionItems {
    * Get aiCreditsPackCount
    * @return aiCreditsPackCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_AI_CREDITS_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getAiCreditsPackCount() {
@@ -375,12 +377,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_AI_CREDITS_PACK_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAiCreditsPackCount(@javax.annotation.Nullable Long aiCreditsPackCount) {
+  public void setAiCreditsPackCount(@Nullable Long aiCreditsPackCount) {
     this.aiCreditsPackCount = aiCreditsPackCount;
   }
 
 
-  public SubscriptionItems edgeEnabled(@javax.annotation.Nullable Boolean edgeEnabled) {
+  public SubscriptionItems edgeEnabled(@Nullable Boolean edgeEnabled) {
     this.edgeEnabled = edgeEnabled;
     return this;
   }
@@ -389,7 +391,7 @@ public class SubscriptionItems {
    * Get edgeEnabled
    * @return edgeEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EDGE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getEdgeEnabled() {
@@ -399,12 +401,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_EDGE_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdgeEnabled(@javax.annotation.Nullable Boolean edgeEnabled) {
+  public void setEdgeEnabled(@Nullable Boolean edgeEnabled) {
     this.edgeEnabled = edgeEnabled;
   }
 
 
-  public SubscriptionItems extraEdgeCount(@javax.annotation.Nullable Long extraEdgeCount) {
+  public SubscriptionItems extraEdgeCount(@Nullable Long extraEdgeCount) {
     this.extraEdgeCount = extraEdgeCount;
     return this;
   }
@@ -413,7 +415,7 @@ public class SubscriptionItems {
    * Get extraEdgeCount
    * @return extraEdgeCount
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_EXTRA_EDGE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getExtraEdgeCount() {
@@ -423,12 +425,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_EXTRA_EDGE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExtraEdgeCount(@javax.annotation.Nullable Long extraEdgeCount) {
+  public void setExtraEdgeCount(@Nullable Long extraEdgeCount) {
     this.extraEdgeCount = extraEdgeCount;
   }
 
 
-  public SubscriptionItems trendzEnabled(@javax.annotation.Nullable Boolean trendzEnabled) {
+  public SubscriptionItems trendzEnabled(@Nullable Boolean trendzEnabled) {
     this.trendzEnabled = trendzEnabled;
     return this;
   }
@@ -437,7 +439,7 @@ public class SubscriptionItems {
    * Get trendzEnabled
    * @return trendzEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TRENDZ_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getTrendzEnabled() {
@@ -447,12 +449,12 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_TRENDZ_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTrendzEnabled(@javax.annotation.Nullable Boolean trendzEnabled) {
+  public void setTrendzEnabled(@Nullable Boolean trendzEnabled) {
     this.trendzEnabled = trendzEnabled;
   }
 
 
-  public SubscriptionItems whiteLabelingAddonEnabled(@javax.annotation.Nullable Boolean whiteLabelingAddonEnabled) {
+  public SubscriptionItems whiteLabelingAddonEnabled(@Nullable Boolean whiteLabelingAddonEnabled) {
     this.whiteLabelingAddonEnabled = whiteLabelingAddonEnabled;
     return this;
   }
@@ -461,7 +463,7 @@ public class SubscriptionItems {
    * Get whiteLabelingAddonEnabled
    * @return whiteLabelingAddonEnabled
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getWhiteLabelingAddonEnabled() {
@@ -471,7 +473,7 @@ public class SubscriptionItems {
 
   @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ADDON_ENABLED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWhiteLabelingAddonEnabled(@javax.annotation.Nullable Boolean whiteLabelingAddonEnabled) {
+  public void setWhiteLabelingAddonEnabled(@Nullable Boolean whiteLabelingAddonEnabled) {
     this.whiteLabelingAddonEnabled = whiteLabelingAddonEnabled;
   }
 

@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,40 +46,40 @@ import org.thingsboard.client.ApiClient;
   LegendConfig.JSON_PROPERTY_SHOW_TOTAL,
   LegendConfig.JSON_PROPERTY_SHOW_LATEST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LegendConfig {
   public static final String JSON_PROPERTY_POSITION = "position";
-  @javax.annotation.Nullable
+  @Nullable
   private LegendPosition position;
 
   public static final String JSON_PROPERTY_SORT_DATA_KEYS = "sortDataKeys";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean sortDataKeys;
 
   public static final String JSON_PROPERTY_SHOW_MIN = "showMin";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showMin;
 
   public static final String JSON_PROPERTY_SHOW_MAX = "showMax";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showMax;
 
   public static final String JSON_PROPERTY_SHOW_AVG = "showAvg";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showAvg;
 
   public static final String JSON_PROPERTY_SHOW_TOTAL = "showTotal";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showTotal;
 
   public static final String JSON_PROPERTY_SHOW_LATEST = "showLatest";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean showLatest;
 
   public LegendConfig() { 
   }
 
-  public LegendConfig position(@javax.annotation.Nullable LegendPosition position) {
+  public LegendConfig position(@Nullable LegendPosition position) {
     this.position = position;
     return this;
   }
@@ -86,7 +88,7 @@ public class LegendConfig {
    * Get position
    * @return position
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public LegendPosition getPosition() {
@@ -96,12 +98,12 @@ public class LegendConfig {
 
   @JsonProperty(value = JSON_PROPERTY_POSITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPosition(@javax.annotation.Nullable LegendPosition position) {
+  public void setPosition(@Nullable LegendPosition position) {
     this.position = position;
   }
 
 
-  public LegendConfig sortDataKeys(@javax.annotation.Nullable Boolean sortDataKeys) {
+  public LegendConfig sortDataKeys(@Nullable Boolean sortDataKeys) {
     this.sortDataKeys = sortDataKeys;
     return this;
   }
@@ -110,7 +112,7 @@ public class LegendConfig {
    * Get sortDataKeys
    * @return sortDataKeys
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SORT_DATA_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getSortDataKeys() {
@@ -120,12 +122,12 @@ public class LegendConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SORT_DATA_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSortDataKeys(@javax.annotation.Nullable Boolean sortDataKeys) {
+  public void setSortDataKeys(@Nullable Boolean sortDataKeys) {
     this.sortDataKeys = sortDataKeys;
   }
 
 
-  public LegendConfig showMin(@javax.annotation.Nullable Boolean showMin) {
+  public LegendConfig showMin(@Nullable Boolean showMin) {
     this.showMin = showMin;
     return this;
   }
@@ -134,7 +136,7 @@ public class LegendConfig {
    * Get showMin
    * @return showMin
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_MIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowMin() {
@@ -144,12 +146,12 @@ public class LegendConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_MIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowMin(@javax.annotation.Nullable Boolean showMin) {
+  public void setShowMin(@Nullable Boolean showMin) {
     this.showMin = showMin;
   }
 
 
-  public LegendConfig showMax(@javax.annotation.Nullable Boolean showMax) {
+  public LegendConfig showMax(@Nullable Boolean showMax) {
     this.showMax = showMax;
     return this;
   }
@@ -158,7 +160,7 @@ public class LegendConfig {
    * Get showMax
    * @return showMax
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_MAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowMax() {
@@ -168,12 +170,12 @@ public class LegendConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_MAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowMax(@javax.annotation.Nullable Boolean showMax) {
+  public void setShowMax(@Nullable Boolean showMax) {
     this.showMax = showMax;
   }
 
 
-  public LegendConfig showAvg(@javax.annotation.Nullable Boolean showAvg) {
+  public LegendConfig showAvg(@Nullable Boolean showAvg) {
     this.showAvg = showAvg;
     return this;
   }
@@ -182,7 +184,7 @@ public class LegendConfig {
    * Get showAvg
    * @return showAvg
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_AVG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowAvg() {
@@ -192,12 +194,12 @@ public class LegendConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_AVG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowAvg(@javax.annotation.Nullable Boolean showAvg) {
+  public void setShowAvg(@Nullable Boolean showAvg) {
     this.showAvg = showAvg;
   }
 
 
-  public LegendConfig showTotal(@javax.annotation.Nullable Boolean showTotal) {
+  public LegendConfig showTotal(@Nullable Boolean showTotal) {
     this.showTotal = showTotal;
     return this;
   }
@@ -206,7 +208,7 @@ public class LegendConfig {
    * Get showTotal
    * @return showTotal
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_TOTAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowTotal() {
@@ -216,12 +218,12 @@ public class LegendConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_TOTAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowTotal(@javax.annotation.Nullable Boolean showTotal) {
+  public void setShowTotal(@Nullable Boolean showTotal) {
     this.showTotal = showTotal;
   }
 
 
-  public LegendConfig showLatest(@javax.annotation.Nullable Boolean showLatest) {
+  public LegendConfig showLatest(@Nullable Boolean showLatest) {
     this.showLatest = showLatest;
     return this;
   }
@@ -230,7 +232,7 @@ public class LegendConfig {
    * Get showLatest
    * @return showLatest
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SHOW_LATEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getShowLatest() {
@@ -240,7 +242,7 @@ public class LegendConfig {
 
   @JsonProperty(value = JSON_PROPERTY_SHOW_LATEST, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setShowLatest(@javax.annotation.Nullable Boolean showLatest) {
+  public void setShowLatest(@Nullable Boolean showLatest) {
     this.showLatest = showLatest;
   }
 

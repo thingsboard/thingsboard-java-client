@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -57,70 +59,70 @@ import org.thingsboard.client.ApiClient;
   TbResourceInfo.JSON_PROPERTY_PUBLIC,
   TbResourceInfo.JSON_PROPERTY_PUBLIC_LINK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TbResourceInfo {
   public static final String JSON_PROPERTY_ID = "id";
-  @javax.annotation.Nullable
+  @Nullable
   private TbResourceId id;
 
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
-  @javax.annotation.Nullable
+  @Nullable
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @javax.annotation.Nullable
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
-  @javax.annotation.Nullable
+  @Nullable
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
-  @javax.annotation.Nullable
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_RESOURCE_TYPE = "resourceType";
-  @javax.annotation.Nullable
+  @Nullable
   private ResourceType resourceType;
 
   public static final String JSON_PROPERTY_RESOURCE_SUB_TYPE = "resourceSubType";
-  @javax.annotation.Nullable
+  @Nullable
   private ResourceSubType resourceSubType;
 
   public static final String JSON_PROPERTY_RESOURCE_KEY = "resourceKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String resourceKey;
 
   public static final String JSON_PROPERTY_PUBLIC_RESOURCE_KEY = "publicResourceKey";
-  @javax.annotation.Nullable
+  @Nullable
   private String publicResourceKey;
 
   public static final String JSON_PROPERTY_ETAG = "etag";
-  @javax.annotation.Nullable
+  @Nullable
   private String etag;
 
   public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  @javax.annotation.Nullable
+  @Nullable
   private String fileName;
 
   public static final String JSON_PROPERTY_DESCRIPTOR = "descriptor";
-  @javax.annotation.Nullable
+  @Nullable
   private com.fasterxml.jackson.databind.JsonNode descriptor;
 
   public static final String JSON_PROPERTY_LINK = "link";
-  @javax.annotation.Nullable
+  @Nullable
   private String link;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nullable
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_PUBLIC = "public";
-  @javax.annotation.Nullable
+  @Nullable
   private Boolean _public;
 
   public static final String JSON_PROPERTY_PUBLIC_LINK = "publicLink";
-  @javax.annotation.Nullable
+  @Nullable
   private String publicLink;
 
   public TbResourceInfo() { 
@@ -146,7 +148,7 @@ public class TbResourceInfo {
     this.publicLink = publicLink;
   }
 
-  public TbResourceInfo id(@javax.annotation.Nullable TbResourceId id) {
+  public TbResourceInfo id(@Nullable TbResourceId id) {
     this.id = id;
     return this;
   }
@@ -155,7 +157,7 @@ public class TbResourceInfo {
    * JSON object with the Resource Id. Specify this field to update the Resource. Referencing non-existing Resource Id will cause error. Omit this field to create new Resource.
    * @return id
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TbResourceId getId() {
@@ -165,7 +167,7 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@javax.annotation.Nullable TbResourceId id) {
+  public void setId(@Nullable TbResourceId id) {
     this.id = id;
   }
 
@@ -174,7 +176,7 @@ public class TbResourceInfo {
    * Timestamp of the resource creation, in milliseconds
    * @return createdTime
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getCreatedTime() {
@@ -188,7 +190,7 @@ public class TbResourceInfo {
    * JSON object with Tenant Id. Tenant Id of the resource can&#39;t be changed.
    * @return tenantId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
@@ -202,7 +204,7 @@ public class TbResourceInfo {
    * JSON object with Customer Id. Customer Id of the resource can&#39;t be changed.
    * @return customerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public CustomerId getCustomerId() {
@@ -212,7 +214,7 @@ public class TbResourceInfo {
 
 
 
-  public TbResourceInfo title(@javax.annotation.Nullable String title) {
+  public TbResourceInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -221,7 +223,7 @@ public class TbResourceInfo {
    * Resource title.
    * @return title
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
@@ -231,12 +233,12 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTitle(@javax.annotation.Nullable String title) {
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
 
-  public TbResourceInfo resourceType(@javax.annotation.Nullable ResourceType resourceType) {
+  public TbResourceInfo resourceType(@Nullable ResourceType resourceType) {
     this.resourceType = resourceType;
     return this;
   }
@@ -245,7 +247,7 @@ public class TbResourceInfo {
    * Resource type.
    * @return resourceType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ResourceType getResourceType() {
@@ -255,12 +257,12 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResourceType(@javax.annotation.Nullable ResourceType resourceType) {
+  public void setResourceType(@Nullable ResourceType resourceType) {
     this.resourceType = resourceType;
   }
 
 
-  public TbResourceInfo resourceSubType(@javax.annotation.Nullable ResourceSubType resourceSubType) {
+  public TbResourceInfo resourceSubType(@Nullable ResourceSubType resourceSubType) {
     this.resourceSubType = resourceSubType;
     return this;
   }
@@ -269,7 +271,7 @@ public class TbResourceInfo {
    * Resource sub type.
    * @return resourceSubType
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_SUB_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ResourceSubType getResourceSubType() {
@@ -279,12 +281,12 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_SUB_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResourceSubType(@javax.annotation.Nullable ResourceSubType resourceSubType) {
+  public void setResourceSubType(@Nullable ResourceSubType resourceSubType) {
     this.resourceSubType = resourceSubType;
   }
 
 
-  public TbResourceInfo resourceKey(@javax.annotation.Nullable String resourceKey) {
+  public TbResourceInfo resourceKey(@Nullable String resourceKey) {
     this.resourceKey = resourceKey;
     return this;
   }
@@ -293,7 +295,7 @@ public class TbResourceInfo {
    * Resource key.
    * @return resourceKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getResourceKey() {
@@ -303,12 +305,12 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResourceKey(@javax.annotation.Nullable String resourceKey) {
+  public void setResourceKey(@Nullable String resourceKey) {
     this.resourceKey = resourceKey;
   }
 
 
-  public TbResourceInfo publicResourceKey(@javax.annotation.Nullable String publicResourceKey) {
+  public TbResourceInfo publicResourceKey(@Nullable String publicResourceKey) {
     this.publicResourceKey = publicResourceKey;
     return this;
   }
@@ -317,7 +319,7 @@ public class TbResourceInfo {
    * Public resource key.
    * @return publicResourceKey
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPublicResourceKey() {
@@ -327,7 +329,7 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_RESOURCE_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublicResourceKey(@javax.annotation.Nullable String publicResourceKey) {
+  public void setPublicResourceKey(@Nullable String publicResourceKey) {
     this.publicResourceKey = publicResourceKey;
   }
 
@@ -336,7 +338,7 @@ public class TbResourceInfo {
    * Resource etag.
    * @return etag
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ETAG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEtag() {
@@ -346,7 +348,7 @@ public class TbResourceInfo {
 
 
 
-  public TbResourceInfo fileName(@javax.annotation.Nullable String fileName) {
+  public TbResourceInfo fileName(@Nullable String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -355,7 +357,7 @@ public class TbResourceInfo {
    * Resource file name.
    * @return fileName
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFileName() {
@@ -365,12 +367,12 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFileName(@javax.annotation.Nullable String fileName) {
+  public void setFileName(@Nullable String fileName) {
     this.fileName = fileName;
   }
 
 
-  public TbResourceInfo descriptor(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode descriptor) {
+  public TbResourceInfo descriptor(@Nullable com.fasterxml.jackson.databind.JsonNode descriptor) {
     this.descriptor = descriptor;
     return this;
   }
@@ -379,7 +381,7 @@ public class TbResourceInfo {
    * Resource descriptor.
    * @return descriptor
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public com.fasterxml.jackson.databind.JsonNode getDescriptor() {
@@ -389,7 +391,7 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_DESCRIPTOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescriptor(@javax.annotation.Nullable com.fasterxml.jackson.databind.JsonNode descriptor) {
+  public void setDescriptor(@Nullable com.fasterxml.jackson.databind.JsonNode descriptor) {
     this.descriptor = descriptor;
   }
 
@@ -398,7 +400,7 @@ public class TbResourceInfo {
    * Get link
    * @return link
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getLink() {
@@ -412,7 +414,7 @@ public class TbResourceInfo {
    * Get name
    * @return name
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
@@ -422,7 +424,7 @@ public class TbResourceInfo {
 
 
 
-  public TbResourceInfo _public(@javax.annotation.Nullable Boolean _public) {
+  public TbResourceInfo _public(@Nullable Boolean _public) {
     this._public = _public;
     return this;
   }
@@ -431,7 +433,7 @@ public class TbResourceInfo {
    * Get _public
    * @return _public
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getPublic() {
@@ -441,7 +443,7 @@ public class TbResourceInfo {
 
   @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublic(@javax.annotation.Nullable Boolean _public) {
+  public void setPublic(@Nullable Boolean _public) {
     this._public = _public;
   }
 
@@ -450,7 +452,7 @@ public class TbResourceInfo {
    * Get publicLink
    * @return publicLink
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PUBLIC_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPublicLink() {

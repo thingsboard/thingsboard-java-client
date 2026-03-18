@@ -15,6 +15,9 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,36 +46,36 @@ import org.thingsboard.client.ApiClient;
   SecuritySettings.JSON_PROPERTY_USER_ACTIVATION_TOKEN_TTL,
   SecuritySettings.JSON_PROPERTY_PASSWORD_RESET_TOKEN_TTL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SecuritySettings {
   public static final String JSON_PROPERTY_PASSWORD_POLICY = "passwordPolicy";
-  @javax.annotation.Nullable
+  @Nullable
   private UserPasswordPolicy passwordPolicy;
 
   public static final String JSON_PROPERTY_MAX_FAILED_LOGIN_ATTEMPTS = "maxFailedLoginAttempts";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer maxFailedLoginAttempts;
 
   public static final String JSON_PROPERTY_USER_LOCKOUT_NOTIFICATION_EMAIL = "userLockoutNotificationEmail";
-  @javax.annotation.Nullable
+  @Nullable
   private String userLockoutNotificationEmail;
 
   public static final String JSON_PROPERTY_MOBILE_SECRET_KEY_LENGTH = "mobileSecretKeyLength";
-  @javax.annotation.Nullable
+  @Nullable
   private Integer mobileSecretKeyLength;
 
   public static final String JSON_PROPERTY_USER_ACTIVATION_TOKEN_TTL = "userActivationTokenTtl";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer userActivationTokenTtl;
 
   public static final String JSON_PROPERTY_PASSWORD_RESET_TOKEN_TTL = "passwordResetTokenTtl";
-  @javax.annotation.Nonnull
+  @Nonnull
   private Integer passwordResetTokenTtl;
 
   public SecuritySettings() { 
   }
 
-  public SecuritySettings passwordPolicy(@javax.annotation.Nullable UserPasswordPolicy passwordPolicy) {
+  public SecuritySettings passwordPolicy(@Nullable UserPasswordPolicy passwordPolicy) {
     this.passwordPolicy = passwordPolicy;
     return this;
   }
@@ -81,7 +84,7 @@ public class SecuritySettings {
    * The user password policy object.
    * @return passwordPolicy
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_POLICY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public UserPasswordPolicy getPasswordPolicy() {
@@ -91,12 +94,12 @@ public class SecuritySettings {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_POLICY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPasswordPolicy(@javax.annotation.Nullable UserPasswordPolicy passwordPolicy) {
+  public void setPasswordPolicy(@Nullable UserPasswordPolicy passwordPolicy) {
     this.passwordPolicy = passwordPolicy;
   }
 
 
-  public SecuritySettings maxFailedLoginAttempts(@javax.annotation.Nullable Integer maxFailedLoginAttempts) {
+  public SecuritySettings maxFailedLoginAttempts(@Nullable Integer maxFailedLoginAttempts) {
     this.maxFailedLoginAttempts = maxFailedLoginAttempts;
     return this;
   }
@@ -105,7 +108,7 @@ public class SecuritySettings {
    * Maximum number of failed login attempts allowed before user account is locked.
    * @return maxFailedLoginAttempts
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX_FAILED_LOGIN_ATTEMPTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMaxFailedLoginAttempts() {
@@ -115,12 +118,12 @@ public class SecuritySettings {
 
   @JsonProperty(value = JSON_PROPERTY_MAX_FAILED_LOGIN_ATTEMPTS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxFailedLoginAttempts(@javax.annotation.Nullable Integer maxFailedLoginAttempts) {
+  public void setMaxFailedLoginAttempts(@Nullable Integer maxFailedLoginAttempts) {
     this.maxFailedLoginAttempts = maxFailedLoginAttempts;
   }
 
 
-  public SecuritySettings userLockoutNotificationEmail(@javax.annotation.Nullable String userLockoutNotificationEmail) {
+  public SecuritySettings userLockoutNotificationEmail(@Nullable String userLockoutNotificationEmail) {
     this.userLockoutNotificationEmail = userLockoutNotificationEmail;
     return this;
   }
@@ -129,7 +132,7 @@ public class SecuritySettings {
    * Email to use for notifications about locked users.
    * @return userLockoutNotificationEmail
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_LOCKOUT_NOTIFICATION_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUserLockoutNotificationEmail() {
@@ -139,12 +142,12 @@ public class SecuritySettings {
 
   @JsonProperty(value = JSON_PROPERTY_USER_LOCKOUT_NOTIFICATION_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserLockoutNotificationEmail(@javax.annotation.Nullable String userLockoutNotificationEmail) {
+  public void setUserLockoutNotificationEmail(@Nullable String userLockoutNotificationEmail) {
     this.userLockoutNotificationEmail = userLockoutNotificationEmail;
   }
 
 
-  public SecuritySettings mobileSecretKeyLength(@javax.annotation.Nullable Integer mobileSecretKeyLength) {
+  public SecuritySettings mobileSecretKeyLength(@Nullable Integer mobileSecretKeyLength) {
     this.mobileSecretKeyLength = mobileSecretKeyLength;
     return this;
   }
@@ -153,7 +156,7 @@ public class SecuritySettings {
    * Mobile secret key length
    * @return mobileSecretKeyLength
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_MOBILE_SECRET_KEY_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Integer getMobileSecretKeyLength() {
@@ -163,12 +166,12 @@ public class SecuritySettings {
 
   @JsonProperty(value = JSON_PROPERTY_MOBILE_SECRET_KEY_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMobileSecretKeyLength(@javax.annotation.Nullable Integer mobileSecretKeyLength) {
+  public void setMobileSecretKeyLength(@Nullable Integer mobileSecretKeyLength) {
     this.mobileSecretKeyLength = mobileSecretKeyLength;
   }
 
 
-  public SecuritySettings userActivationTokenTtl(@javax.annotation.Nonnull Integer userActivationTokenTtl) {
+  public SecuritySettings userActivationTokenTtl(@Nonnull Integer userActivationTokenTtl) {
     this.userActivationTokenTtl = userActivationTokenTtl;
     return this;
   }
@@ -179,7 +182,7 @@ public class SecuritySettings {
    * maximum: 24
    * @return userActivationTokenTtl
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_USER_ACTIVATION_TOKEN_TTL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getUserActivationTokenTtl() {
@@ -189,12 +192,12 @@ public class SecuritySettings {
 
   @JsonProperty(value = JSON_PROPERTY_USER_ACTIVATION_TOKEN_TTL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserActivationTokenTtl(@javax.annotation.Nonnull Integer userActivationTokenTtl) {
+  public void setUserActivationTokenTtl(@Nonnull Integer userActivationTokenTtl) {
     this.userActivationTokenTtl = userActivationTokenTtl;
   }
 
 
-  public SecuritySettings passwordResetTokenTtl(@javax.annotation.Nonnull Integer passwordResetTokenTtl) {
+  public SecuritySettings passwordResetTokenTtl(@Nonnull Integer passwordResetTokenTtl) {
     this.passwordResetTokenTtl = passwordResetTokenTtl;
     return this;
   }
@@ -205,7 +208,7 @@ public class SecuritySettings {
    * maximum: 24
    * @return passwordResetTokenTtl
    */
-  @javax.annotation.Nonnull
+  @Nonnull
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_RESET_TOKEN_TTL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Integer getPasswordResetTokenTtl() {
@@ -215,7 +218,7 @@ public class SecuritySettings {
 
   @JsonProperty(value = JSON_PROPERTY_PASSWORD_RESET_TOKEN_TTL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPasswordResetTokenTtl(@javax.annotation.Nonnull Integer passwordResetTokenTtl) {
+  public void setPasswordResetTokenTtl(@Nonnull Integer passwordResetTokenTtl) {
     this.passwordResetTokenTtl = passwordResetTokenTtl;
   }
 

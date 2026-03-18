@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,40 +54,40 @@ import org.thingsboard.client.ApiClient;
   AllowedPermissionsInfo.JSON_PROPERTY_USER_PERMISSIONS,
   AllowedPermissionsInfo.JSON_PROPERTY_USER_OWNER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AllowedPermissionsInfo {
   public static final String JSON_PROPERTY_OPERATIONS_BY_RESOURCE = "operationsByResource";
-  @javax.annotation.Nullable
+  @Nullable
   private Map<String, Set<Operation>> operationsByResource = new HashMap<>();
 
   public static final String JSON_PROPERTY_ALLOWED_FOR_GROUP_ROLE_OPERATIONS = "allowedForGroupRoleOperations";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<Operation> allowedForGroupRoleOperations = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ALLOWED_FOR_GROUP_OWNER_ONLY_OPERATIONS = "allowedForGroupOwnerOnlyOperations";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<Operation> allowedForGroupOwnerOnlyOperations = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ALLOWED_FOR_GROUP_OWNER_ONLY_GROUP_OPERATIONS = "allowedForGroupOwnerOnlyGroupOperations";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<Operation> allowedForGroupOwnerOnlyGroupOperations = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_ALLOWED_RESOURCES = "allowedResources";
-  @javax.annotation.Nullable
+  @Nullable
   private Set<Resource> allowedResources = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_USER_PERMISSIONS = "userPermissions";
-  @javax.annotation.Nullable
+  @Nullable
   private MergedUserPermissions userPermissions;
 
   public static final String JSON_PROPERTY_USER_OWNER_ID = "userOwnerId";
-  @javax.annotation.Nullable
+  @Nullable
   private EntityId userOwnerId;
 
   public AllowedPermissionsInfo() { 
   }
 
-  public AllowedPermissionsInfo operationsByResource(@javax.annotation.Nullable Map<String, Set<Operation>> operationsByResource) {
+  public AllowedPermissionsInfo operationsByResource(@Nullable Map<String, Set<Operation>> operationsByResource) {
     this.operationsByResource = operationsByResource;
     return this;
   }
@@ -102,7 +104,7 @@ public class AllowedPermissionsInfo {
    * Static map (vocabulary) of allowed operations by resource type
    * @return operationsByResource
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_OPERATIONS_BY_RESOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Map<String, Set<Operation>> getOperationsByResource() {
@@ -112,12 +114,12 @@ public class AllowedPermissionsInfo {
 
   @JsonProperty(value = JSON_PROPERTY_OPERATIONS_BY_RESOURCE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOperationsByResource(@javax.annotation.Nullable Map<String, Set<Operation>> operationsByResource) {
+  public void setOperationsByResource(@Nullable Map<String, Set<Operation>> operationsByResource) {
     this.operationsByResource = operationsByResource;
   }
 
 
-  public AllowedPermissionsInfo allowedForGroupRoleOperations(@javax.annotation.Nullable Set<Operation> allowedForGroupRoleOperations) {
+  public AllowedPermissionsInfo allowedForGroupRoleOperations(@Nullable Set<Operation> allowedForGroupRoleOperations) {
     this.allowedForGroupRoleOperations = allowedForGroupRoleOperations;
     return this;
   }
@@ -134,7 +136,7 @@ public class AllowedPermissionsInfo {
    * Static set (vocabulary) of allowed operations for group roles
    * @return allowedForGroupRoleOperations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_FOR_GROUP_ROLE_OPERATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<Operation> getAllowedForGroupRoleOperations() {
@@ -145,12 +147,12 @@ public class AllowedPermissionsInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_FOR_GROUP_ROLE_OPERATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowedForGroupRoleOperations(@javax.annotation.Nullable Set<Operation> allowedForGroupRoleOperations) {
+  public void setAllowedForGroupRoleOperations(@Nullable Set<Operation> allowedForGroupRoleOperations) {
     this.allowedForGroupRoleOperations = allowedForGroupRoleOperations;
   }
 
 
-  public AllowedPermissionsInfo allowedForGroupOwnerOnlyOperations(@javax.annotation.Nullable Set<Operation> allowedForGroupOwnerOnlyOperations) {
+  public AllowedPermissionsInfo allowedForGroupOwnerOnlyOperations(@Nullable Set<Operation> allowedForGroupOwnerOnlyOperations) {
     this.allowedForGroupOwnerOnlyOperations = allowedForGroupOwnerOnlyOperations;
     return this;
   }
@@ -167,7 +169,7 @@ public class AllowedPermissionsInfo {
    * Static set (vocabulary) of allowed operations for group owner
    * @return allowedForGroupOwnerOnlyOperations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_FOR_GROUP_OWNER_ONLY_OPERATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<Operation> getAllowedForGroupOwnerOnlyOperations() {
@@ -178,12 +180,12 @@ public class AllowedPermissionsInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_FOR_GROUP_OWNER_ONLY_OPERATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowedForGroupOwnerOnlyOperations(@javax.annotation.Nullable Set<Operation> allowedForGroupOwnerOnlyOperations) {
+  public void setAllowedForGroupOwnerOnlyOperations(@Nullable Set<Operation> allowedForGroupOwnerOnlyOperations) {
     this.allowedForGroupOwnerOnlyOperations = allowedForGroupOwnerOnlyOperations;
   }
 
 
-  public AllowedPermissionsInfo allowedForGroupOwnerOnlyGroupOperations(@javax.annotation.Nullable Set<Operation> allowedForGroupOwnerOnlyGroupOperations) {
+  public AllowedPermissionsInfo allowedForGroupOwnerOnlyGroupOperations(@Nullable Set<Operation> allowedForGroupOwnerOnlyGroupOperations) {
     this.allowedForGroupOwnerOnlyGroupOperations = allowedForGroupOwnerOnlyGroupOperations;
     return this;
   }
@@ -200,7 +202,7 @@ public class AllowedPermissionsInfo {
    * Static set (vocabulary) of allowed group operations for group owner
    * @return allowedForGroupOwnerOnlyGroupOperations
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_FOR_GROUP_OWNER_ONLY_GROUP_OPERATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<Operation> getAllowedForGroupOwnerOnlyGroupOperations() {
@@ -211,12 +213,12 @@ public class AllowedPermissionsInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_FOR_GROUP_OWNER_ONLY_GROUP_OPERATIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowedForGroupOwnerOnlyGroupOperations(@javax.annotation.Nullable Set<Operation> allowedForGroupOwnerOnlyGroupOperations) {
+  public void setAllowedForGroupOwnerOnlyGroupOperations(@Nullable Set<Operation> allowedForGroupOwnerOnlyGroupOperations) {
     this.allowedForGroupOwnerOnlyGroupOperations = allowedForGroupOwnerOnlyGroupOperations;
   }
 
 
-  public AllowedPermissionsInfo allowedResources(@javax.annotation.Nullable Set<Resource> allowedResources) {
+  public AllowedPermissionsInfo allowedResources(@Nullable Set<Resource> allowedResources) {
     this.allowedResources = allowedResources;
     return this;
   }
@@ -233,7 +235,7 @@ public class AllowedPermissionsInfo {
    * Static set (vocabulary) of all possibly allowed resources. Static and depends only on the authority of the user
    * @return allowedResources
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<Resource> getAllowedResources() {
@@ -244,12 +246,12 @@ public class AllowedPermissionsInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(value = JSON_PROPERTY_ALLOWED_RESOURCES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAllowedResources(@javax.annotation.Nullable Set<Resource> allowedResources) {
+  public void setAllowedResources(@Nullable Set<Resource> allowedResources) {
     this.allowedResources = allowedResources;
   }
 
 
-  public AllowedPermissionsInfo userPermissions(@javax.annotation.Nullable MergedUserPermissions userPermissions) {
+  public AllowedPermissionsInfo userPermissions(@Nullable MergedUserPermissions userPermissions) {
     this.userPermissions = userPermissions;
     return this;
   }
@@ -258,7 +260,7 @@ public class AllowedPermissionsInfo {
    * JSON object with merged permission for all generic and group roles assigned to all user groups the user belongs to
    * @return userPermissions
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public MergedUserPermissions getUserPermissions() {
@@ -268,12 +270,12 @@ public class AllowedPermissionsInfo {
 
   @JsonProperty(value = JSON_PROPERTY_USER_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserPermissions(@javax.annotation.Nullable MergedUserPermissions userPermissions) {
+  public void setUserPermissions(@Nullable MergedUserPermissions userPermissions) {
     this.userPermissions = userPermissions;
   }
 
 
-  public AllowedPermissionsInfo userOwnerId(@javax.annotation.Nullable EntityId userOwnerId) {
+  public AllowedPermissionsInfo userOwnerId(@Nullable EntityId userOwnerId) {
     this.userOwnerId = userOwnerId;
     return this;
   }
@@ -282,7 +284,7 @@ public class AllowedPermissionsInfo {
    * Owner Id of the user (Tenant or Customer)
    * @return userOwnerId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_USER_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public EntityId getUserOwnerId() {
@@ -292,7 +294,7 @@ public class AllowedPermissionsInfo {
 
   @JsonProperty(value = JSON_PROPERTY_USER_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserOwnerId(@javax.annotation.Nullable EntityId userOwnerId) {
+  public void setUserOwnerId(@Nullable EntityId userOwnerId) {
     this.userOwnerId = userOwnerId;
   }
 

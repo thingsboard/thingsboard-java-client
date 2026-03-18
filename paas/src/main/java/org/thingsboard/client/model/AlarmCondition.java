@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,20 +44,20 @@ import org.thingsboard.client.ApiClient;
   AlarmCondition.JSON_PROPERTY_CONDITION,
   AlarmCondition.JSON_PROPERTY_SPEC
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmCondition {
   public static final String JSON_PROPERTY_CONDITION = "condition";
-  @javax.annotation.Nullable
+  @Nullable
   private List<AlarmConditionFilter> condition = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SPEC = "spec";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmConditionSpec spec;
 
   public AlarmCondition() { 
   }
 
-  public AlarmCondition condition(@javax.annotation.Nullable List<AlarmConditionFilter> condition) {
+  public AlarmCondition condition(@Nullable List<AlarmConditionFilter> condition) {
     this.condition = condition;
     return this;
   }
@@ -72,7 +74,7 @@ public class AlarmCondition {
    * Get condition
    * @return condition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONDITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<AlarmConditionFilter> getCondition() {
@@ -82,12 +84,12 @@ public class AlarmCondition {
 
   @JsonProperty(value = JSON_PROPERTY_CONDITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCondition(@javax.annotation.Nullable List<AlarmConditionFilter> condition) {
+  public void setCondition(@Nullable List<AlarmConditionFilter> condition) {
     this.condition = condition;
   }
 
 
-  public AlarmCondition spec(@javax.annotation.Nullable AlarmConditionSpec spec) {
+  public AlarmCondition spec(@Nullable AlarmConditionSpec spec) {
     this.spec = spec;
     return this;
   }
@@ -96,7 +98,7 @@ public class AlarmCondition {
    * JSON object representing alarm condition type
    * @return spec
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SPEC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmConditionSpec getSpec() {
@@ -106,7 +108,7 @@ public class AlarmCondition {
 
   @JsonProperty(value = JSON_PROPERTY_SPEC, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSpec(@javax.annotation.Nullable AlarmConditionSpec spec) {
+  public void setSpec(@Nullable AlarmConditionSpec spec) {
     this.spec = spec;
   }
 

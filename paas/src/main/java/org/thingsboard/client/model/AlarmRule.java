@@ -15,6 +15,8 @@
  */
 package org.thingsboard.client.model;
 
+import javax.annotation.Generated;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -43,28 +45,28 @@ import org.thingsboard.client.ApiClient;
   AlarmRule.JSON_PROPERTY_DASHBOARD_ID,
   AlarmRule.JSON_PROPERTY_SCHEDULE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmRule {
   public static final String JSON_PROPERTY_CONDITION = "condition";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmCondition condition;
 
   public static final String JSON_PROPERTY_ALARM_DETAILS = "alarmDetails";
-  @javax.annotation.Nullable
+  @Nullable
   private String alarmDetails;
 
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
-  @javax.annotation.Nullable
+  @Nullable
   private DashboardId dashboardId;
 
   public static final String JSON_PROPERTY_SCHEDULE = "schedule";
-  @javax.annotation.Nullable
+  @Nullable
   private AlarmSchedule schedule;
 
   public AlarmRule() { 
   }
 
-  public AlarmRule condition(@javax.annotation.Nullable AlarmCondition condition) {
+  public AlarmRule condition(@Nullable AlarmCondition condition) {
     this.condition = condition;
     return this;
   }
@@ -73,7 +75,7 @@ public class AlarmRule {
    * JSON object representing the alarm rule condition
    * @return condition
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_CONDITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmCondition getCondition() {
@@ -83,12 +85,12 @@ public class AlarmRule {
 
   @JsonProperty(value = JSON_PROPERTY_CONDITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCondition(@javax.annotation.Nullable AlarmCondition condition) {
+  public void setCondition(@Nullable AlarmCondition condition) {
     this.condition = condition;
   }
 
 
-  public AlarmRule alarmDetails(@javax.annotation.Nullable String alarmDetails) {
+  public AlarmRule alarmDetails(@Nullable String alarmDetails) {
     this.alarmDetails = alarmDetails;
     return this;
   }
@@ -97,7 +99,7 @@ public class AlarmRule {
    * String value representing the additional details for an alarm rule
    * @return alarmDetails
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_ALARM_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getAlarmDetails() {
@@ -107,12 +109,12 @@ public class AlarmRule {
 
   @JsonProperty(value = JSON_PROPERTY_ALARM_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarmDetails(@javax.annotation.Nullable String alarmDetails) {
+  public void setAlarmDetails(@Nullable String alarmDetails) {
     this.alarmDetails = alarmDetails;
   }
 
 
-  public AlarmRule dashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public AlarmRule dashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
     return this;
   }
@@ -121,7 +123,7 @@ public class AlarmRule {
    * JSON object with the dashboard Id representing the reference to alarm details dashboard used by mobile application
    * @return dashboardId
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DashboardId getDashboardId() {
@@ -131,12 +133,12 @@ public class AlarmRule {
 
   @JsonProperty(value = JSON_PROPERTY_DASHBOARD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDashboardId(@javax.annotation.Nullable DashboardId dashboardId) {
+  public void setDashboardId(@Nullable DashboardId dashboardId) {
     this.dashboardId = dashboardId;
   }
 
 
-  public AlarmRule schedule(@javax.annotation.Nullable AlarmSchedule schedule) {
+  public AlarmRule schedule(@Nullable AlarmSchedule schedule) {
     this.schedule = schedule;
     return this;
   }
@@ -145,7 +147,7 @@ public class AlarmRule {
    * JSON object representing time interval during which the rule is active
    * @return schedule
    */
-  @javax.annotation.Nullable
+  @Nullable
   @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public AlarmSchedule getSchedule() {
@@ -155,7 +157,7 @@ public class AlarmRule {
 
   @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSchedule(@javax.annotation.Nullable AlarmSchedule schedule) {
+  public void setSchedule(@Nullable AlarmSchedule schedule) {
     this.schedule = schedule;
   }
 
