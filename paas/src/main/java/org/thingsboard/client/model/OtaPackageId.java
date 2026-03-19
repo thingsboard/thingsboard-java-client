@@ -57,12 +57,6 @@ public class OtaPackageId extends EntityId {
   }
 
   @Override
-  public OtaPackageId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public OtaPackageId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

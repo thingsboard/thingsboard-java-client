@@ -57,12 +57,6 @@ public class EntityGroupId extends EntityId {
   }
 
   @Override
-  public EntityGroupId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public EntityGroupId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

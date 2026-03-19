@@ -125,12 +125,6 @@ public class MobileAppDeliveryMethodNotificationTemplate extends DeliveryMethodN
     return this;
   }
 
-  @Override
-  public MobileAppDeliveryMethodNotificationTemplate method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this MobileAppDeliveryMethodNotificationTemplate object is equal to o.
    */

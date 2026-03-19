@@ -375,12 +375,6 @@ public class GoogleAiGeminiChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public GoogleAiGeminiChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this GoogleAiGeminiChatModelConfig object is equal to o.
    */

@@ -57,12 +57,6 @@ public class MobileAppBundleId extends EntityId {
   }
 
   @Override
-  public MobileAppBundleId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public MobileAppBundleId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

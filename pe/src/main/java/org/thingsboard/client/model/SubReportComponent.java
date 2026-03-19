@@ -162,12 +162,6 @@ public class SubReportComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public SubReportComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this SubReportComponent object is equal to o.
    */

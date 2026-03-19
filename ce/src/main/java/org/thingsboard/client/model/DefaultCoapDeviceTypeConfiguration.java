@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -84,12 +83,6 @@ public class DefaultCoapDeviceTypeConfiguration extends CoapDeviceTypeConfigurat
     this.transportPayloadTypeConfiguration = transportPayloadTypeConfiguration;
   }
 
-
-  @Override
-  public DefaultCoapDeviceTypeConfiguration coapDeviceType(@Nonnull String coapDeviceType) {
-    this.setCoapDeviceType(coapDeviceType);
-    return this;
-  }
 
   /**
    * Return true if this DefaultCoapDeviceTypeConfiguration object is equal to o.

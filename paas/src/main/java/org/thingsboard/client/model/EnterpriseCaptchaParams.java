@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -228,12 +227,6 @@ public class EnterpriseCaptchaParams extends CaptchaParams {
     this.logActionName = logActionName;
   }
 
-
-  @Override
-  public EnterpriseCaptchaParams version(@Nonnull String version) {
-    this.setVersion(version);
-    return this;
-  }
 
   /**
    * Return true if this EnterpriseCaptchaParams object is equal to o.

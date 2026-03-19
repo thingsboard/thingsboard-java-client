@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -200,12 +199,6 @@ public class EntityGroupFilter extends EntityFilter {
     this.defaultStateEntityGroup = defaultStateEntityGroup;
   }
 
-
-  @Override
-  public EntityGroupFilter type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
 
   /**
    * Return true if this EntityGroupFilter object is equal to o.

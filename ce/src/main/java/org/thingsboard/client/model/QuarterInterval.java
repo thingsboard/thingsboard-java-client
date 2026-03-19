@@ -113,12 +113,6 @@ public class QuarterInterval extends AggInterval {
   }
 
 
-  @Override
-  public QuarterInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this QuarterInterval object is equal to o.
    */

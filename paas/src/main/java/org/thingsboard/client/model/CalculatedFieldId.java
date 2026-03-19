@@ -57,12 +57,6 @@ public class CalculatedFieldId extends EntityId {
   }
 
   @Override
-  public CalculatedFieldId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public CalculatedFieldId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

@@ -413,12 +413,6 @@ public class ReportJobConfiguration extends JobConfiguration {
     return this;
   }
 
-  @Override
-  public ReportJobConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this ReportJobConfiguration object is equal to o.
    */

@@ -57,12 +57,6 @@ public class CustomerId extends EntityId {
   }
 
   @Override
-  public CustomerId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public CustomerId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

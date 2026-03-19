@@ -90,12 +90,6 @@ public class SmsTwoFaAccountConfig extends TwoFaAccountConfig {
     return this;
   }
 
-  @Override
-  public SmsTwoFaAccountConfig providerType(@Nonnull String providerType) {
-    this.setProviderType(providerType);
-    return this;
-  }
-
   /**
    * Return true if this SmsTwoFaAccountConfig object is equal to o.
    */

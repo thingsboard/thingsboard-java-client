@@ -524,12 +524,6 @@ public class SmppSmsProviderConfiguration extends SmsProviderConfiguration {
   }
 
 
-  @Override
-  public SmppSmsProviderConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this SmppSmsProviderConfiguration object is equal to o.
    */

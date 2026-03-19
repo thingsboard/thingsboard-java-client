@@ -83,12 +83,6 @@ public class TotpTwoFaProviderConfig extends TwoFaProviderConfig {
   }
 
 
-  @Override
-  public TotpTwoFaProviderConfig providerType(@Nonnull String providerType) {
-    this.setProviderType(providerType);
-    return this;
-  }
-
   /**
    * Return true if this TotpTwoFaProviderConfig object is equal to o.
    */

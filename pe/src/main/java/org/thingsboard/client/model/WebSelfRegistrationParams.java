@@ -155,12 +155,6 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
 
 
   @Override
-  public WebSelfRegistrationParams type(@Nonnull SelfRegistrationType type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
   public WebSelfRegistrationParams enabled(@Nullable Boolean enabled) {
     this.setEnabled(enabled);
     return this;

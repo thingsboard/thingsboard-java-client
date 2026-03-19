@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -101,12 +100,6 @@ public class AttributesOutput extends Output {
   @Override
   public AttributesOutput decimalsByDefault(@Nullable Integer decimalsByDefault) {
     this.setDecimalsByDefault(decimalsByDefault);
-    return this;
-  }
-
-  @Override
-  public AttributesOutput type(@Nonnull String type) {
-    this.setType(type);
     return this;
   }
 

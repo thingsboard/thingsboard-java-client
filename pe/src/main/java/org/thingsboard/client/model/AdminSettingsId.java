@@ -57,12 +57,6 @@ public class AdminSettingsId extends EntityId {
   }
 
   @Override
-  public AdminSettingsId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public AdminSettingsId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

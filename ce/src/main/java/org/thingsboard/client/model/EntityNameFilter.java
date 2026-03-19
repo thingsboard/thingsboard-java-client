@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -113,12 +112,6 @@ public class EntityNameFilter extends EntityFilter {
     this.entityNameFilter = entityNameFilter;
   }
 
-
-  @Override
-  public EntityNameFilter type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
 
   /**
    * Return true if this EntityNameFilter object is equal to o.

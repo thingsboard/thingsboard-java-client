@@ -112,12 +112,6 @@ public class Basic extends OllamaAuth {
   }
 
 
-  @Override
-  public Basic type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this Basic object is equal to o.
    */

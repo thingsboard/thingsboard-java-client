@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -171,12 +170,6 @@ public class CoapDeviceTransportConfiguration extends DeviceTransportConfigurati
     this.pagingTransmissionWindow = pagingTransmissionWindow;
   }
 
-
-  @Override
-  public CoapDeviceTransportConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
 
   /**
    * Return true if this CoapDeviceTransportConfiguration object is equal to o.

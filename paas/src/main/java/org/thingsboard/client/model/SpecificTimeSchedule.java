@@ -190,12 +190,6 @@ public class SpecificTimeSchedule extends AlarmSchedule {
     return this;
   }
 
-  @Override
-  public SpecificTimeSchedule type(@Nullable AlarmScheduleType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this SpecificTimeSchedule object is equal to o.
    */

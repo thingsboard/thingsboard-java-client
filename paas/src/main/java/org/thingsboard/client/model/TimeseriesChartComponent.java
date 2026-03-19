@@ -456,12 +456,6 @@ public class TimeseriesChartComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public TimeseriesChartComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this TimeseriesChartComponent object is equal to o.
    */

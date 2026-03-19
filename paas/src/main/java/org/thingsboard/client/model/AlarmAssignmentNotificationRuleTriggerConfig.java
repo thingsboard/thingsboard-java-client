@@ -214,12 +214,6 @@ public class AlarmAssignmentNotificationRuleTriggerConfig extends NotificationRu
   }
 
 
-  @Override
-  public AlarmAssignmentNotificationRuleTriggerConfig triggerType(@Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
-
   /**
    * Return true if this AlarmAssignmentNotificationRuleTriggerConfig object is equal to o.
    */

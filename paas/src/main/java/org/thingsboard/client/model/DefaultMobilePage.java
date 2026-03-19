@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -143,12 +142,6 @@ public class DefaultMobilePage extends MobilePage {
     this.id = id;
   }
 
-
-  @Override
-  public DefaultMobilePage type(@Nonnull MobilePageType type) {
-    this.setType(type);
-    return this;
-  }
 
   @Override
   public DefaultMobilePage visible(@Nullable Boolean visible) {

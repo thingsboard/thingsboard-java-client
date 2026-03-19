@@ -83,12 +83,6 @@ public class TbelAlarmConditionExpression extends AlarmConditionExpression {
   }
 
 
-  @Override
-  public TbelAlarmConditionExpression type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this TbelAlarmConditionExpression object is equal to o.
    */

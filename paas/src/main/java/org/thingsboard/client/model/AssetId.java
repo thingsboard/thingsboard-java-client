@@ -57,12 +57,6 @@ public class AssetId extends EntityId {
   }
 
   @Override
-  public AssetId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public AssetId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

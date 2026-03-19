@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -248,12 +247,6 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   @Override
   public PdfReportTemplateConfig timeDataPattern(@Nullable String timeDataPattern) {
     this.setTimeDataPattern(timeDataPattern);
-    return this;
-  }
-
-  @Override
-  public PdfReportTemplateConfig format(@Nonnull TbReportFormat format) {
-    this.setFormat(format);
     return this;
   }
 

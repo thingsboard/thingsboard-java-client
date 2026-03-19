@@ -160,12 +160,6 @@ public class SimpleCalculatedFieldConfiguration extends CalculatedFieldConfigura
     return this;
   }
 
-  @Override
-  public SimpleCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this SimpleCalculatedFieldConfiguration object is equal to o.
    */

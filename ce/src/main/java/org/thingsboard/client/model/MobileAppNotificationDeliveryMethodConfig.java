@@ -113,12 +113,6 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
   }
 
 
-  @Override
-  public MobileAppNotificationDeliveryMethodConfig method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this MobileAppNotificationDeliveryMethodConfig object is equal to o.
    */

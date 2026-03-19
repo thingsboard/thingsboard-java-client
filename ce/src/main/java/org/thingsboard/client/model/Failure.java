@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -83,12 +82,6 @@ public class Failure extends TbChatResponse {
     this.errorDetails = errorDetails;
   }
 
-
-  @Override
-  public Failure status(@Nonnull String status) {
-    this.setStatus(status);
-    return this;
-  }
 
   /**
    * Return true if this Failure object is equal to o.

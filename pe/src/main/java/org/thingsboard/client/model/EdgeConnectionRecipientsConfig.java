@@ -17,7 +17,6 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -95,12 +94,6 @@ public class EdgeConnectionRecipientsConfig extends NotificationRuleRecipientsCo
     this.targets = targets;
   }
 
-
-  @Override
-  public EdgeConnectionRecipientsConfig triggerType(@Nullable NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
 
   /**
    * Return true if this EdgeConnectionRecipientsConfig object is equal to o.

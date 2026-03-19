@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -94,12 +93,6 @@ public class RelationPathQueryDynamicSourceConfiguration extends CfArgumentDynam
     this.levels = levels;
   }
 
-
-  @Override
-  public RelationPathQueryDynamicSourceConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
 
   /**
    * Return true if this RelationPathQueryDynamicSourceConfiguration object is equal to o.

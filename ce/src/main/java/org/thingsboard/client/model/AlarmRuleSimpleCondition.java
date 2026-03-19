@@ -69,12 +69,6 @@ public class AlarmRuleSimpleCondition extends AlarmRuleCondition {
     return this;
   }
 
-  @Override
-  public AlarmRuleSimpleCondition type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this AlarmRuleSimpleCondition object is equal to o.
    */

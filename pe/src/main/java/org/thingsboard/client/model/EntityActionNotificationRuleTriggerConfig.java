@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -184,12 +183,6 @@ public class EntityActionNotificationRuleTriggerConfig extends NotificationRuleT
     this.deleted = deleted;
   }
 
-
-  @Override
-  public EntityActionNotificationRuleTriggerConfig triggerType(@Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
 
   /**
    * Return true if this EntityActionNotificationRuleTriggerConfig object is equal to o.

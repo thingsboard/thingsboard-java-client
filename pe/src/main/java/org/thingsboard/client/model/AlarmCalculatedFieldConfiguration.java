@@ -324,12 +324,6 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
     return this;
   }
 
-  @Override
-  public AlarmCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this AlarmCalculatedFieldConfiguration object is equal to o.
    */

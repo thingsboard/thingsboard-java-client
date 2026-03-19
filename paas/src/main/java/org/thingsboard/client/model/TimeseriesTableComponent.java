@@ -514,12 +514,6 @@ public class TimeseriesTableComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public TimeseriesTableComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this TimeseriesTableComponent object is equal to o.
    */

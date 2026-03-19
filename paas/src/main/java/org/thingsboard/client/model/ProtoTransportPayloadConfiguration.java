@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -228,12 +227,6 @@ public class ProtoTransportPayloadConfiguration extends TransportPayloadTypeConf
     this.useJsonPayloadFormatForDefaultDownlinkTopics = useJsonPayloadFormatForDefaultDownlinkTopics;
   }
 
-
-  @Override
-  public ProtoTransportPayloadConfiguration transportPayloadType(@Nonnull String transportPayloadType) {
-    this.setTransportPayloadType(transportPayloadType);
-    return this;
-  }
 
   /**
    * Return true if this ProtoTransportPayloadConfiguration object is equal to o.

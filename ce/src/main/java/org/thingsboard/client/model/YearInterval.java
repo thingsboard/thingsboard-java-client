@@ -113,12 +113,6 @@ public class YearInterval extends AggInterval {
   }
 
 
-  @Override
-  public YearInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this YearInterval object is equal to o.
    */

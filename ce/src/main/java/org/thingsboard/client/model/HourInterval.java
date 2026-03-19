@@ -113,12 +113,6 @@ public class HourInterval extends AggInterval {
   }
 
 
-  @Override
-  public HourInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this HourInterval object is equal to o.
    */

@@ -62,12 +62,6 @@ public class AnyTimeSchedule extends AlarmSchedule {
     return this;
   }
 
-  @Override
-  public AnyTimeSchedule type(@Nullable AlarmScheduleType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this AnyTimeSchedule object is equal to o.
    */

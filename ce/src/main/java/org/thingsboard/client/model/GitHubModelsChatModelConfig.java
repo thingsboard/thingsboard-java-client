@@ -346,12 +346,6 @@ public class GitHubModelsChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public GitHubModelsChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this GitHubModelsChatModelConfig object is equal to o.
    */

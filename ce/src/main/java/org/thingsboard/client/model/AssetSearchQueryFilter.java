@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -298,12 +297,6 @@ public class AssetSearchQueryFilter extends EntityFilter {
     this.assetTypes = assetTypes;
   }
 
-
-  @Override
-  public AssetSearchQueryFilter type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
 
   /**
    * Return true if this AssetSearchQueryFilter object is equal to o.

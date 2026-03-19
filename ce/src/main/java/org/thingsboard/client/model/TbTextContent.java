@@ -83,12 +83,6 @@ public class TbTextContent extends TbContent {
   }
 
 
-  @Override
-  public TbTextContent contentType(@Nonnull String contentType) {
-    this.setContentType(contentType);
-    return this;
-  }
-
   /**
    * Return true if this TbTextContent object is equal to o.
    */

@@ -143,12 +143,6 @@ public class CustomInterval extends AggInterval {
   }
 
 
-  @Override
-  public CustomInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this CustomInterval object is equal to o.
    */

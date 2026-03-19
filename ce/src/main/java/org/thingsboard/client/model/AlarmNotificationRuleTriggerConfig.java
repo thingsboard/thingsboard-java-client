@@ -205,12 +205,6 @@ public class AlarmNotificationRuleTriggerConfig extends NotificationRuleTriggerC
   }
 
 
-  @Override
-  public AlarmNotificationRuleTriggerConfig triggerType(@Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
-
   /**
    * Return true if this AlarmNotificationRuleTriggerConfig object is equal to o.
    */

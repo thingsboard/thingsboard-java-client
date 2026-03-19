@@ -367,12 +367,6 @@ public class EntityTableComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public EntityTableComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this EntityTableComponent object is equal to o.
    */

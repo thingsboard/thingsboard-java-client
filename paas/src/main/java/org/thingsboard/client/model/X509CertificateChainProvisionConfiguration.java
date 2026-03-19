@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -116,12 +115,6 @@ public class X509CertificateChainProvisionConfiguration extends DeviceProfilePro
   @Override
   public X509CertificateChainProvisionConfiguration provisionDeviceSecret(@Nullable String provisionDeviceSecret) {
     this.setProvisionDeviceSecret(provisionDeviceSecret);
-    return this;
-  }
-
-  @Override
-  public X509CertificateChainProvisionConfiguration type(@Nonnull String type) {
-    this.setType(type);
     return this;
   }
 

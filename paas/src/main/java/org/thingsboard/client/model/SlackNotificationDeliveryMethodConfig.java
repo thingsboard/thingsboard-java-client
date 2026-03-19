@@ -83,12 +83,6 @@ public class SlackNotificationDeliveryMethodConfig extends NotificationDeliveryM
   }
 
 
-  @Override
-  public SlackNotificationDeliveryMethodConfig method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this SlackNotificationDeliveryMethodConfig object is equal to o.
    */

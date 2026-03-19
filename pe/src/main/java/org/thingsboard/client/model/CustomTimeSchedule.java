@@ -131,12 +131,6 @@ public class CustomTimeSchedule extends AlarmSchedule {
     return this;
   }
 
-  @Override
-  public CustomTimeSchedule type(@Nullable AlarmScheduleType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this CustomTimeSchedule object is equal to o.
    */

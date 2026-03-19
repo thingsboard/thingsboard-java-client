@@ -94,12 +94,6 @@ public class UserRoleFilter extends UsersFilter {
   }
 
 
-  @Override
-  public UserRoleFilter type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this UserRoleFilter object is equal to o.
    */

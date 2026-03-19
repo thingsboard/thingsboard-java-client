@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -53,12 +52,6 @@ import org.thingsboard.client.ApiClient;
 
 public class TaskProcessingFailureNotificationRuleTriggerConfig extends NotificationRuleTriggerConfig {
   public TaskProcessingFailureNotificationRuleTriggerConfig() { 
-  }
-
-  @Override
-  public TaskProcessingFailureNotificationRuleTriggerConfig triggerType(@Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
   }
 
   /**

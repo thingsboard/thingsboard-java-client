@@ -113,12 +113,6 @@ public class WeekInterval extends AggInterval {
   }
 
 
-  @Override
-  public WeekInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this WeekInterval object is equal to o.
    */

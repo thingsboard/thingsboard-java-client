@@ -121,12 +121,6 @@ public class SlackNotificationTargetConfig extends NotificationTargetConfig {
     return this;
   }
 
-  @Override
-  public SlackNotificationTargetConfig type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this SlackNotificationTargetConfig object is equal to o.
    */

@@ -346,12 +346,6 @@ public class OpenAiChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public OpenAiChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this OpenAiChatModelConfig object is equal to o.
    */

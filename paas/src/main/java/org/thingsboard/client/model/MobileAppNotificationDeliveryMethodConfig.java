@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -141,12 +140,6 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
     this.useSystemSettings = useSystemSettings;
   }
 
-
-  @Override
-  public MobileAppNotificationDeliveryMethodConfig method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
 
   /**
    * Return true if this MobileAppNotificationDeliveryMethodConfig object is equal to o.

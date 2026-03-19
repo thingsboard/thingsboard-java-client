@@ -57,12 +57,6 @@ public class SecretId extends EntityId {
   }
 
   @Override
-  public SecretId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public SecretId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

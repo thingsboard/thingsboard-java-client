@@ -57,12 +57,6 @@ public class RuleChainId extends EntityId {
   }
 
   @Override
-  public RuleChainId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public RuleChainId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -128,12 +127,6 @@ public class EntityTypeVersionLoadRequest extends VersionLoadRequest {
   @Override
   public EntityTypeVersionLoadRequest versionId(@Nullable String versionId) {
     this.setVersionId(versionId);
-    return this;
-  }
-
-  @Override
-  public EntityTypeVersionLoadRequest type(@Nonnull VersionLoadRequestType type) {
-    this.setType(type);
     return this;
   }
 

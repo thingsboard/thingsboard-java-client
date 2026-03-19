@@ -113,12 +113,6 @@ public class DayInterval extends AggInterval {
   }
 
 
-  @Override
-  public DayInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this DayInterval object is equal to o.
    */

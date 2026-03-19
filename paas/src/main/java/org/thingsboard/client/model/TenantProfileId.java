@@ -57,12 +57,6 @@ public class TenantProfileId extends EntityId {
   }
 
   @Override
-  public TenantProfileId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public TenantProfileId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

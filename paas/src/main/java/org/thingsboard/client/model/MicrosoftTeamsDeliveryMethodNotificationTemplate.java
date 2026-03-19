@@ -155,12 +155,6 @@ public class MicrosoftTeamsDeliveryMethodNotificationTemplate extends DeliveryMe
     return this;
   }
 
-  @Override
-  public MicrosoftTeamsDeliveryMethodNotificationTemplate method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this MicrosoftTeamsDeliveryMethodNotificationTemplate object is equal to o.
    */

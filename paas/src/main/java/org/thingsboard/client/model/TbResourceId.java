@@ -57,12 +57,6 @@ public class TbResourceId extends EntityId {
   }
 
   @Override
-  public TbResourceId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public TbResourceId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

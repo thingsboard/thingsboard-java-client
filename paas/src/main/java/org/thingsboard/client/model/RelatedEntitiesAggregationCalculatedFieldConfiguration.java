@@ -281,12 +281,6 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
 
 
   @Override
-  public RelatedEntitiesAggregationCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
   public RelatedEntitiesAggregationCalculatedFieldConfiguration output(@Nonnull Output output) {
     this.setOutput(output);
     return this;

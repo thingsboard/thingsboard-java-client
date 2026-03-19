@@ -57,12 +57,6 @@ public class DomainId extends EntityId {
   }
 
   @Override
-  public DomainId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public DomainId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

@@ -91,12 +91,6 @@ public class PlatformUsersNotificationTargetConfig extends NotificationTargetCon
     return this;
   }
 
-  @Override
-  public PlatformUsersNotificationTargetConfig type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this PlatformUsersNotificationTargetConfig object is equal to o.
    */

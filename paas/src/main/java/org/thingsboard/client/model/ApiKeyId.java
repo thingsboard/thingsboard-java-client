@@ -57,12 +57,6 @@ public class ApiKeyId extends EntityId {
   }
 
   @Override
-  public ApiKeyId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public ApiKeyId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

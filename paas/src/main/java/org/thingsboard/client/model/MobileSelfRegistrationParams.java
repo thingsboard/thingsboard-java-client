@@ -155,12 +155,6 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
 
 
   @Override
-  public MobileSelfRegistrationParams type(@Nonnull SelfRegistrationType type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
   public MobileSelfRegistrationParams enabled(@Nullable Boolean enabled) {
     this.setEnabled(enabled);
     return this;

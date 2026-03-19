@@ -57,12 +57,6 @@ public class WidgetTypeId extends EntityId {
   }
 
   @Override
-  public WidgetTypeId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public WidgetTypeId id(@Nonnull UUID id) {
     this.setId(id);
     return this;
