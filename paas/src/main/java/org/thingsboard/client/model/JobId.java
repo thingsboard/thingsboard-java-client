@@ -57,12 +57,6 @@ public class JobId extends EntityId {
   }
 
   @Override
-  public JobId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public JobId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

@@ -57,12 +57,6 @@ public class ProductId extends EntityId {
   }
 
   @Override
-  public ProductId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public ProductId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

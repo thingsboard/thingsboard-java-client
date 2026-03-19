@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -139,12 +138,6 @@ public class ReportJobResult extends JobResult {
   @Override
   public ReportJobResult cancellationTs(@Nullable Long cancellationTs) {
     this.setCancellationTs(cancellationTs);
-    return this;
-  }
-
-  @Override
-  public ReportJobResult jobType(@Nonnull String jobType) {
-    this.setJobType(jobType);
     return this;
   }
 

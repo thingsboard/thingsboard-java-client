@@ -346,12 +346,6 @@ public class MistralAiChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public MistralAiChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this MistralAiChatModelConfig object is equal to o.
    */

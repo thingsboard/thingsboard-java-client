@@ -67,12 +67,6 @@ public class SmsDeliveryMethodNotificationTemplate extends DeliveryMethodNotific
     return this;
   }
 
-  @Override
-  public SmsDeliveryMethodNotificationTemplate method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this SmsDeliveryMethodNotificationTemplate object is equal to o.
    */

@@ -397,12 +397,6 @@ public class DashboardComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public DashboardComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this DashboardComponent object is equal to o.
    */

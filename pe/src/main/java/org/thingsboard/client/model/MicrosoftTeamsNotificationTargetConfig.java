@@ -304,12 +304,6 @@ public class MicrosoftTeamsNotificationTargetConfig extends NotificationTargetCo
     return this;
   }
 
-  @Override
-  public MicrosoftTeamsNotificationTargetConfig type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this MicrosoftTeamsNotificationTargetConfig object is equal to o.
    */

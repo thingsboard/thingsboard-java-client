@@ -57,12 +57,6 @@ public class AlarmId extends EntityId {
   }
 
   @Override
-  public AlarmId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public AlarmId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

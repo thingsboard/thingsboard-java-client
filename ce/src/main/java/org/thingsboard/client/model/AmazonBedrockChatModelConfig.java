@@ -288,12 +288,6 @@ public class AmazonBedrockChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public AmazonBedrockChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this AmazonBedrockChatModelConfig object is equal to o.
    */

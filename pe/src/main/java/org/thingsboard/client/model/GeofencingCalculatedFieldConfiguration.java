@@ -190,12 +190,6 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
     return this;
   }
 
-  @Override
-  public GeofencingCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this GeofencingCalculatedFieldConfiguration object is equal to o.
    */

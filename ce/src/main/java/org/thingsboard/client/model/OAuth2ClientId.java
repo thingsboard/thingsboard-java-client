@@ -57,12 +57,6 @@ public class OAuth2ClientId extends EntityId {
   }
 
   @Override
-  public OAuth2ClientId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public OAuth2ClientId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

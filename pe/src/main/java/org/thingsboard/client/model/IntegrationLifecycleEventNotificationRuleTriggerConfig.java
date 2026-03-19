@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -204,12 +203,6 @@ public class IntegrationLifecycleEventNotificationRuleTriggerConfig extends Noti
     this.onlyOnError = onlyOnError;
   }
 
-
-  @Override
-  public IntegrationLifecycleEventNotificationRuleTriggerConfig triggerType(@Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
 
   /**
    * Return true if this IntegrationLifecycleEventNotificationRuleTriggerConfig object is equal to o.

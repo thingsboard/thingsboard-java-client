@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -199,12 +198,6 @@ public class AttributesImmediateOutputStrategy extends AttributesOutputStrategy 
     this.processCfs = processCfs;
   }
 
-
-  @Override
-  public AttributesImmediateOutputStrategy type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
 
   /**
    * Return true if this AttributesImmediateOutputStrategy object is equal to o.

@@ -57,12 +57,6 @@ public class EdgeId extends EntityId {
   }
 
   @Override
-  public EdgeId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public EdgeId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

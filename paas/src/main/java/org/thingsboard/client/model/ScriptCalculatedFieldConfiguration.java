@@ -126,12 +126,6 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
 
   @Override
-  public ScriptCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
   public ScriptCalculatedFieldConfiguration output(@Nullable Output output) {
     this.setOutput(output);
     return this;

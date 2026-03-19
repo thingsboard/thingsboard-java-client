@@ -57,12 +57,6 @@ public class CouponId extends EntityId {
   }
 
   @Override
-  public CouponId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public CouponId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

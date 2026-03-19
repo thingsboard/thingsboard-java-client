@@ -57,12 +57,6 @@ public class RoleId extends EntityId {
   }
 
   @Override
-  public RoleId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public RoleId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

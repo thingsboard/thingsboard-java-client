@@ -413,12 +413,6 @@ public class SplitViewComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public SplitViewComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this SplitViewComponent object is equal to o.
    */

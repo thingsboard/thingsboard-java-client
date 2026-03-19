@@ -346,12 +346,6 @@ public class OllamaChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public OllamaChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this OllamaChatModelConfig object is equal to o.
    */

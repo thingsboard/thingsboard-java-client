@@ -155,12 +155,6 @@ public class SimpleCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
 
   @Override
-  public SimpleCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
   public SimpleCalculatedFieldConfiguration output(@Nullable Output output) {
     this.setOutput(output);
     return this;

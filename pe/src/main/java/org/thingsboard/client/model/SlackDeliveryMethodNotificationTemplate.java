@@ -67,12 +67,6 @@ public class SlackDeliveryMethodNotificationTemplate extends DeliveryMethodNotif
     return this;
   }
 
-  @Override
-  public SlackDeliveryMethodNotificationTemplate method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this SlackDeliveryMethodNotificationTemplate object is equal to o.
    */

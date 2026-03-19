@@ -426,12 +426,6 @@ public class ImageComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public ImageComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this ImageComponent object is equal to o.
    */

@@ -339,12 +339,6 @@ public class DummyJobConfiguration extends JobConfiguration {
     return this;
   }
 
-  @Override
-  public DummyJobConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this DummyJobConfiguration object is equal to o.
    */

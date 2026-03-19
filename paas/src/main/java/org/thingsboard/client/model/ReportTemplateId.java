@@ -57,12 +57,6 @@ public class ReportTemplateId extends EntityId {
   }
 
   @Override
-  public ReportTemplateId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public ReportTemplateId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

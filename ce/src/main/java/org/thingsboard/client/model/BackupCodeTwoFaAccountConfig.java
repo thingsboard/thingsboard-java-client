@@ -131,12 +131,6 @@ public class BackupCodeTwoFaAccountConfig extends TwoFaAccountConfig {
     return this;
   }
 
-  @Override
-  public BackupCodeTwoFaAccountConfig providerType(@Nonnull String providerType) {
-    this.setProviderType(providerType);
-    return this;
-  }
-
   /**
    * Return true if this BackupCodeTwoFaAccountConfig object is equal to o.
    */

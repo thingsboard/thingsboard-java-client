@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -208,12 +207,6 @@ public class DefaultMenuItem extends MenuItem {
     this.pages = pages;
   }
 
-
-  @Override
-  public DefaultMenuItem type(@Nonnull MenuItemType type) {
-    this.setType(type);
-    return this;
-  }
 
   /**
    * Return true if this DefaultMenuItem object is equal to o.

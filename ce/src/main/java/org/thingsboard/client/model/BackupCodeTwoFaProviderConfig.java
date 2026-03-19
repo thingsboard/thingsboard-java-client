@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -84,12 +83,6 @@ public class BackupCodeTwoFaProviderConfig extends TwoFaProviderConfig {
     this.codesQuantity = codesQuantity;
   }
 
-
-  @Override
-  public BackupCodeTwoFaProviderConfig providerType(@Nonnull String providerType) {
-    this.setProviderType(providerType);
-    return this;
-  }
 
   /**
    * Return true if this BackupCodeTwoFaProviderConfig object is equal to o.

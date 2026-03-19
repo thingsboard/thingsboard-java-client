@@ -57,12 +57,6 @@ public class RpcId extends EntityId {
   }
 
   @Override
-  public RpcId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public RpcId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

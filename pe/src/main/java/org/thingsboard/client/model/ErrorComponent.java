@@ -122,12 +122,6 @@ public class ErrorComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public ErrorComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this ErrorComponent object is equal to o.
    */

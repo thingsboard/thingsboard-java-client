@@ -113,12 +113,6 @@ public class MonthInterval extends AggInterval {
   }
 
 
-  @Override
-  public MonthInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this MonthInterval object is equal to o.
    */

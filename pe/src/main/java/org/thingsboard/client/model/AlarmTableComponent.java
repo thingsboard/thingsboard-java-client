@@ -387,12 +387,6 @@ public class AlarmTableComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public AlarmTableComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this AlarmTableComponent object is equal to o.
    */

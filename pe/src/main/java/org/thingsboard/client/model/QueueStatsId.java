@@ -57,12 +57,6 @@ public class QueueStatsId extends EntityId {
   }
 
   @Override
-  public QueueStatsId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public QueueStatsId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

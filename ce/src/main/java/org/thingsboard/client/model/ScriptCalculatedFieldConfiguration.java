@@ -131,12 +131,6 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
     return this;
   }
 
-  @Override
-  public ScriptCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this ScriptCalculatedFieldConfiguration object is equal to o.
    */

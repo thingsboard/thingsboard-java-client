@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -52,12 +51,6 @@ import org.thingsboard.client.ApiClient;
 
 public class DefaultDeviceProfileConfiguration extends DeviceProfileConfiguration {
   public DefaultDeviceProfileConfiguration() { 
-  }
-
-  @Override
-  public DefaultDeviceProfileConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
   }
 
   /**

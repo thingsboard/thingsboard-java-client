@@ -57,12 +57,6 @@ public class DeviceProfileId extends EntityId {
   }
 
   @Override
-  public DeviceProfileId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public DeviceProfileId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

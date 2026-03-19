@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -232,12 +231,6 @@ public class AlarmCommentNotificationRuleTriggerConfig extends NotificationRuleT
     this.notifyOnCommentUpdate = notifyOnCommentUpdate;
   }
 
-
-  @Override
-  public AlarmCommentNotificationRuleTriggerConfig triggerType(@Nonnull NotificationRuleTriggerType triggerType) {
-    this.setTriggerType(triggerType);
-    return this;
-  }
 
   /**
    * Return true if this AlarmCommentNotificationRuleTriggerConfig object is equal to o.

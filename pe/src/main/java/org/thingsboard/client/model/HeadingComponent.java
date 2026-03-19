@@ -455,12 +455,6 @@ public class HeadingComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public HeadingComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this HeadingComponent object is equal to o.
    */

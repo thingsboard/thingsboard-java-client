@@ -319,12 +319,6 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
 
 
   @Override
-  public AlarmCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
   public AlarmCalculatedFieldConfiguration output(@Nullable Output output) {
     this.setOutput(output);
     return this;

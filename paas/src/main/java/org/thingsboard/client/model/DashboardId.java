@@ -57,12 +57,6 @@ public class DashboardId extends EntityId {
   }
 
   @Override
-  public DashboardId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public DashboardId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

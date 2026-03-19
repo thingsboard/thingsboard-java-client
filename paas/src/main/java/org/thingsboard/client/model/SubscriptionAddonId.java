@@ -57,12 +57,6 @@ public class SubscriptionAddonId extends EntityId {
   }
 
   @Override
-  public SubscriptionAddonId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public SubscriptionAddonId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

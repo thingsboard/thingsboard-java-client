@@ -114,12 +114,6 @@ public class AlarmRuleNumericFilterPredicate extends AlarmRuleKeyFilterPredicate
   }
 
 
-  @Override
-  public AlarmRuleNumericFilterPredicate type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this AlarmRuleNumericFilterPredicate object is equal to o.
    */

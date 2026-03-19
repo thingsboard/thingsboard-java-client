@@ -84,12 +84,6 @@ public class CustomerUsersFilter extends UsersFilter {
   }
 
 
-  @Override
-  public CustomerUsersFilter type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this CustomerUsersFilter object is equal to o.
    */

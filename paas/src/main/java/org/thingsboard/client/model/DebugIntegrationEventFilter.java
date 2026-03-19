@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -264,12 +263,6 @@ public class DebugIntegrationEventFilter extends EventFilter {
     this.statusIntegration = statusIntegration;
   }
 
-
-  @Override
-  public DebugIntegrationEventFilter eventType(@Nonnull EventType eventType) {
-    this.setEventType(eventType);
-    return this;
-  }
 
   @Override
   public DebugIntegrationEventFilter notEmpty(@Nullable Boolean notEmpty) {

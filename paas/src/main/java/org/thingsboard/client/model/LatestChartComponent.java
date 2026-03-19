@@ -426,12 +426,6 @@ public class LatestChartComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public LatestChartComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this LatestChartComponent object is equal to o.
    */

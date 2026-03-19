@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -190,12 +189,6 @@ public class EntityGroupExportData extends EntityExportData {
   @Override
   public EntityGroupExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
-    return this;
-  }
-
-  @Override
-  public EntityGroupExportData entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
     return this;
   }
 

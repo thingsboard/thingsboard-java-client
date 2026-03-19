@@ -129,12 +129,6 @@ public class AlarmRuleDurationCondition extends AlarmRuleCondition {
     return this;
   }
 
-  @Override
-  public AlarmRuleDurationCondition type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this AlarmRuleDurationCondition object is equal to o.
    */

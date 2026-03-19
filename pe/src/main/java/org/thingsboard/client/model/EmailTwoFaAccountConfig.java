@@ -90,12 +90,6 @@ public class EmailTwoFaAccountConfig extends TwoFaAccountConfig {
     return this;
   }
 
-  @Override
-  public EmailTwoFaAccountConfig providerType(@Nonnull String providerType) {
-    this.setProviderType(providerType);
-    return this;
-  }
-
   /**
    * Return true if this EmailTwoFaAccountConfig object is equal to o.
    */

@@ -57,12 +57,6 @@ public class SchedulerEventId extends EntityId {
   }
 
   @Override
-  public SchedulerEventId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public SchedulerEventId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

@@ -94,12 +94,6 @@ public class UserListFilter extends UsersFilter {
   }
 
 
-  @Override
-  public UserListFilter type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this UserListFilter object is equal to o.
    */

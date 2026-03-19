@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -58,12 +57,6 @@ public class AllowCreateNewDevicesDeviceProfileProvisionConfiguration extends De
   @Override
   public AllowCreateNewDevicesDeviceProfileProvisionConfiguration provisionDeviceSecret(@Nullable String provisionDeviceSecret) {
     this.setProvisionDeviceSecret(provisionDeviceSecret);
-    return this;
-  }
-
-  @Override
-  public AllowCreateNewDevicesDeviceProfileProvisionConfiguration type(@Nonnull String type) {
-    this.setType(type);
     return this;
   }
 

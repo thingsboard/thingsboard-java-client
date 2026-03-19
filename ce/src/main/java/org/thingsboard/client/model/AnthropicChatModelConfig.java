@@ -317,12 +317,6 @@ public class AnthropicChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public AnthropicChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this AnthropicChatModelConfig object is equal to o.
    */

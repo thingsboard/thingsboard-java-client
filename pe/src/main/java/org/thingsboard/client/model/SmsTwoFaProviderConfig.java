@@ -114,12 +114,6 @@ public class SmsTwoFaProviderConfig extends TwoFaProviderConfig {
   }
 
 
-  @Override
-  public SmsTwoFaProviderConfig providerType(@Nonnull String providerType) {
-    this.setProviderType(providerType);
-    return this;
-  }
-
   /**
    * Return true if this SmsTwoFaProviderConfig object is equal to o.
    */

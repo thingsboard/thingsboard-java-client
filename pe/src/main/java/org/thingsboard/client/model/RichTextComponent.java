@@ -307,12 +307,6 @@ public class RichTextComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public RichTextComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this RichTextComponent object is equal to o.
    */

@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -124,12 +123,6 @@ public class TelemetryQueryingSnmpCommunicationConfig extends SnmpCommunicationC
     this.queryingFrequencyMs = queryingFrequencyMs;
   }
 
-
-  @Override
-  public TelemetryQueryingSnmpCommunicationConfig spec(@Nonnull SnmpCommunicationSpec spec) {
-    this.setSpec(spec);
-    return this;
-  }
 
   /**
    * Return true if this TelemetryQueryingSnmpCommunicationConfig object is equal to o.

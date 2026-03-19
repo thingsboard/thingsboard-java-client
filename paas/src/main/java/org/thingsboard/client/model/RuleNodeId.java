@@ -57,12 +57,6 @@ public class RuleNodeId extends EntityId {
   }
 
   @Override
-  public RuleNodeId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public RuleNodeId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

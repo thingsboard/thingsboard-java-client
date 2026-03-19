@@ -57,12 +57,6 @@ public class AiModelId extends EntityId {
   }
 
   @Override
-  public AiModelId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public AiModelId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

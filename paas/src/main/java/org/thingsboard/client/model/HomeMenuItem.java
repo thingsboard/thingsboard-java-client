@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -268,12 +267,6 @@ public class HomeMenuItem extends MenuItem {
     this.hideDashboardToolbar = hideDashboardToolbar;
   }
 
-
-  @Override
-  public HomeMenuItem type(@Nonnull MenuItemType type) {
-    this.setType(type);
-    return this;
-  }
 
   @Override
   public HomeMenuItem visible(@Nullable Boolean visible) {

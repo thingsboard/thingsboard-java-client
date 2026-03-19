@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -95,12 +94,6 @@ public class ToDeviceRpcRequestSnmpCommunicationConfig extends SnmpCommunication
     this.mappings = mappings;
   }
 
-
-  @Override
-  public ToDeviceRpcRequestSnmpCommunicationConfig spec(@Nonnull SnmpCommunicationSpec spec) {
-    this.setSpec(spec);
-    return this;
-  }
 
   /**
    * Return true if this ToDeviceRpcRequestSnmpCommunicationConfig object is equal to o.

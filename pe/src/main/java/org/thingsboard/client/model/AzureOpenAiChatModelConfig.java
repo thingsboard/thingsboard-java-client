@@ -346,12 +346,6 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
   }
 
 
-  @Override
-  public AzureOpenAiChatModelConfig provider(@Nonnull String provider) {
-    this.setProvider(provider);
-    return this;
-  }
-
   /**
    * Return true if this AzureOpenAiChatModelConfig object is equal to o.
    */

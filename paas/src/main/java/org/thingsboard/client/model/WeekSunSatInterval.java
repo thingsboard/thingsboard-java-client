@@ -113,12 +113,6 @@ public class WeekSunSatInterval extends AggInterval {
   }
 
 
-  @Override
-  public WeekSunSatInterval type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this WeekSunSatInterval object is equal to o.
    */

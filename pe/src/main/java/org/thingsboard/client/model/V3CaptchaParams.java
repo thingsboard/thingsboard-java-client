@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -141,12 +140,6 @@ public class V3CaptchaParams extends CaptchaParams {
     this.secretKey = secretKey;
   }
 
-
-  @Override
-  public V3CaptchaParams version(@Nonnull String version) {
-    this.setVersion(version);
-    return this;
-  }
 
   /**
    * Return true if this V3CaptchaParams object is equal to o.

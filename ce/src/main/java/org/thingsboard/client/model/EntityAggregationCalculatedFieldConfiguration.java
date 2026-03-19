@@ -229,12 +229,6 @@ public class EntityAggregationCalculatedFieldConfiguration extends CalculatedFie
     return this;
   }
 
-  @Override
-  public EntityAggregationCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this EntityAggregationCalculatedFieldConfiguration object is equal to o.
    */

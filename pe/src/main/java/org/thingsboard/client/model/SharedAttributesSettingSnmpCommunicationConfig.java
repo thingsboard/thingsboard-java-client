@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -95,12 +94,6 @@ public class SharedAttributesSettingSnmpCommunicationConfig extends SnmpCommunic
     this.mappings = mappings;
   }
 
-
-  @Override
-  public SharedAttributesSettingSnmpCommunicationConfig spec(@Nonnull SnmpCommunicationSpec spec) {
-    this.setSpec(spec);
-    return this;
-  }
 
   /**
    * Return true if this SharedAttributesSettingSnmpCommunicationConfig object is equal to o.

@@ -358,12 +358,6 @@ public class CustomMenuItem extends MenuItem {
   }
 
 
-  @Override
-  public CustomMenuItem type(@Nonnull MenuItemType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this CustomMenuItem object is equal to o.
    */

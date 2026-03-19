@@ -83,12 +83,6 @@ public class Token extends OllamaAuth {
   }
 
 
-  @Override
-  public Token type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this Token object is equal to o.
    */

@@ -57,12 +57,6 @@ public class GroupPermissionId extends EntityId {
   }
 
   @Override
-  public GroupPermissionId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public GroupPermissionId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

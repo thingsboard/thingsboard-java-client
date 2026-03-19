@@ -96,12 +96,6 @@ public class EmailDeliveryMethodNotificationTemplate extends DeliveryMethodNotif
     return this;
   }
 
-  @Override
-  public EmailDeliveryMethodNotificationTemplate method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this EmailDeliveryMethodNotificationTemplate object is equal to o.
    */

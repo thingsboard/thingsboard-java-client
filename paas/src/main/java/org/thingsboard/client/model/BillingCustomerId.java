@@ -57,12 +57,6 @@ public class BillingCustomerId extends EntityId {
   }
 
   @Override
-  public BillingCustomerId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public BillingCustomerId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

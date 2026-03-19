@@ -125,12 +125,6 @@ public class WebDeliveryMethodNotificationTemplate extends DeliveryMethodNotific
     return this;
   }
 
-  @Override
-  public WebDeliveryMethodNotificationTemplate method(@Nonnull String method) {
-    this.setMethod(method);
-    return this;
-  }
-
   /**
    * Return true if this WebDeliveryMethodNotificationTemplate object is equal to o.
    */

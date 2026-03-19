@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -477,12 +476,6 @@ public class RuleNodeDebugEventFilter extends EventFilter {
     this.metadataSearch = metadataSearch;
   }
 
-
-  @Override
-  public RuleNodeDebugEventFilter eventType(@Nonnull EventType eventType) {
-    this.setEventType(eventType);
-    return this;
-  }
 
   @Override
   public RuleNodeDebugEventFilter notEmpty(@Nullable Boolean notEmpty) {

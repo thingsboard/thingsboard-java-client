@@ -57,12 +57,6 @@ public class NotificationId extends EntityId {
   }
 
   @Override
-  public NotificationId entityType(@Nonnull EntityType entityType) {
-    this.setEntityType(entityType);
-    return this;
-  }
-
-  @Override
   public NotificationId id(@Nonnull UUID id) {
     this.setId(id);
     return this;

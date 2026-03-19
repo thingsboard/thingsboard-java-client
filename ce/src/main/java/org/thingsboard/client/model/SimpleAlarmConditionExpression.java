@@ -125,12 +125,6 @@ public class SimpleAlarmConditionExpression extends AlarmConditionExpression {
   }
 
 
-  @Override
-  public SimpleAlarmConditionExpression type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this SimpleAlarmConditionExpression object is equal to o.
    */

@@ -185,12 +185,6 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
 
 
   @Override
-  public PropagationCalculatedFieldConfiguration type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
   public PropagationCalculatedFieldConfiguration output(@Nullable Output output) {
     this.setOutput(output);
     return this;

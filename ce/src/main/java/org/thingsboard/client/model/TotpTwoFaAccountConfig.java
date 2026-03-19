@@ -90,12 +90,6 @@ public class TotpTwoFaAccountConfig extends TwoFaAccountConfig {
     return this;
   }
 
-  @Override
-  public TotpTwoFaAccountConfig providerType(@Nonnull String providerType) {
-    this.setProviderType(providerType);
-    return this;
-  }
-
   /**
    * Return true if this TotpTwoFaAccountConfig object is equal to o.
    */

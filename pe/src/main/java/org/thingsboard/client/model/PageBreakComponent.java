@@ -62,12 +62,6 @@ public class PageBreakComponent extends ReportComponent {
     return this;
   }
 
-  @Override
-  public PageBreakComponent type(@Nonnull ReportComponentType type) {
-    this.setType(type);
-    return this;
-  }
-
   /**
    * Return true if this PageBreakComponent object is equal to o.
    */
