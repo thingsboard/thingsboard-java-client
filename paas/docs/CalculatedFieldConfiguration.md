@@ -9,7 +9,6 @@
 |------------ | ------------- | ------------- | -------------|
 | **type** | **String** |  | |
 | **output** | **Output** |  | [optional] |
-| **aiGenerated** | **Boolean** |  | [optional] |
 
 
 

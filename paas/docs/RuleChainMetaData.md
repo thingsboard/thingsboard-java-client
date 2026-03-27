@@ -15,6 +15,7 @@ A JSON value representing the rule chain metadata.
 | **nodes** | **List\<RuleNode\>** | List of rule node JSON objects | |
 | **connections** | **List\<NodeConnectionInfo\>** | List of JSON objects that represent connections between rule nodes | |
 | **ruleChainConnections** | **List\<RuleChainConnectionInfo\>** | List of JSON objects that represent connections between rule nodes and other rule chains. | |
+| **notes** | **List\<RuleChainNote\>** | List of sticky notes placed on the rule chain canvas | [optional] |
 
 
 

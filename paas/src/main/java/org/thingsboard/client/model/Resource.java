@@ -138,7 +138,7 @@ public enum Resource {
   
   AI_MODEL("AI_MODEL"),
   
-  AI_SOLUTION_CREATOR("AI_SOLUTION_CREATOR"),
+  AI("AI"),
   
   API_KEY("API_KEY");
 

@@ -112,7 +112,7 @@
 
 * `AI_MODEL` (value: `"AI_MODEL"`)
 
-* `AI_SOLUTION_CREATOR` (value: `"AI_SOLUTION_CREATOR"`)
+* `AI` (value: `"AI"`)
 
 * `API_KEY` (value: `"API_KEY"`)
 
