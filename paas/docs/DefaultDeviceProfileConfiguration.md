@@ -14,6 +14,13 @@ Default device profile configuration
 
 
 
+## Referenced Types
+
+#### DeviceProfileConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
 ---
 
 ### Conventions

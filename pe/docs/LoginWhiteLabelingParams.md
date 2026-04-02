@@ -34,6 +34,31 @@ A JSON value representing the login white labeling configuration
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### Favicon
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| url | String |  | [optional] |
+
+#### PaletteSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| primaryPalette | Palette | Primary palette JSON |  |
+| accentPalette | Palette | Accent palette JSON |  |
+
+#### Palette
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String | Name of the pre-defined palette, or 'custom' |  |
+| _extends | String | Pre-defined palette name that the custom palette extends | [optional] |
+| colors | Map<String, String> | Mapping of hue identifier number to the rgb(a) color code | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
 ---
 
 ### Conventions

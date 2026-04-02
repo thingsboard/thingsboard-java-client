@@ -22,6 +22,22 @@
 
 
 
+## Referenced Types
+
+#### ComponentDescriptorId
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | UUID | string |  |
+
+#### ComponentType (enum)
+`ENRICHMENT` | `FILTER` | `TRANSFORMATION` | `ACTION` | `ANALYTICS` | `EXTERNAL` | `FLOW`
+
+#### ComponentScope (enum)
+`SYSTEM` | `TENANT`
+
+#### ComponentClusteringMode (enum)
+`USER_PREFERENCE` | `ENABLED` | `SINGLETON`
+
 ---
 
 ### Conventions

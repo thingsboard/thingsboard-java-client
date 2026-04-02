@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### Direction (enum)
+`ASC` | `DESC`
+
 ---
 
 ### Conventions

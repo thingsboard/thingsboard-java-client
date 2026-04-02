@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### SubmitStrategyType (enum)
+`BURST` | `BATCH` | `SEQUENTIAL_BY_ORIGINATOR` | `SEQUENTIAL_BY_TENANT` | `SEQUENTIAL`
+
 ---
 
 ### Conventions

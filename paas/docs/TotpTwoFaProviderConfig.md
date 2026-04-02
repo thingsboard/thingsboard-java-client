@@ -13,6 +13,29 @@
 
 
 
+## Referenced Types
+
+#### TwoFaProviderConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| providerType | String |  |  |
+
+#### BackupCodeTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`BACKUP_CODE`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| codesQuantity | Integer |  | [optional] |
+
+#### EmailTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`EMAIL`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| verificationCodeLifetime | Integer |  | [optional] |
+
+#### SmsTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`SMS`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| verificationCodeLifetime | Integer |  | [optional] |
+| smsVerificationMessageTemplate | String |  |  |
+
 ---
 
 ### Conventions

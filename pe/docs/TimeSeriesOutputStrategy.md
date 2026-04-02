@@ -11,6 +11,20 @@
 
 
 
+## Subtypes
+
+#### TimeSeriesImmediateOutputStrategy  *(type=`IMMEDIATE`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| ttl | Long |  | [optional] |
+| saveTimeSeries | Boolean |  | [optional] |
+| saveLatest | Boolean |  | [optional] |
+| sendWsUpdate | Boolean |  | [optional] |
+| processCfs | Boolean |  | [optional] |
+
+#### TimeSeriesRuleChainOutputStrategy  *(type=`RULE_CHAIN`)*
+*(no additional properties)*
+
 ---
 
 ### Conventions

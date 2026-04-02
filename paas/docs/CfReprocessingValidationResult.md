@@ -13,6 +13,11 @@
 
 
 
+## Referenced Types
+
+#### JobStatus (enum)
+`QUEUED` | `PENDING` | `RUNNING` | `COMPLETED` | `FAILED` | `CANCELLED`
+
 ---
 
 ### Conventions

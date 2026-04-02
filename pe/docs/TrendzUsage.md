@@ -17,6 +17,21 @@
 
 
 
+## Referenced Types
+
+#### Entity
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| used | Boolean |  | [optional] |
+| activeCount | Long |  | [optional] |
+| totalCount | Long |  | [optional] |
+
+#### SimpleEntity
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| used | Boolean |  | [optional] |
+| totalCount | Long |  | [optional] |
+
 ---
 
 ### Conventions

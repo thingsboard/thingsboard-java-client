@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### Aggregation (enum)
+`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
+
 ---
 
 ### Conventions

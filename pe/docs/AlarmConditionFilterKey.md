@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### AlarmConditionKeyType (enum)
+`ATTRIBUTE` | `TIME_SERIES` | `ENTITY_FIELD` | `CONSTANT`
+
 ---
 
 ### Conventions

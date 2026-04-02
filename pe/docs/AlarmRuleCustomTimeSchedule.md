@@ -14,6 +14,32 @@
 
 
 
+## Referenced Types
+
+#### AlarmRuleSchedule
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### AlarmRuleAnyTimeSchedule  *(extends AlarmRuleSchedule, type=`ANY_TIME`)*
+*See AlarmRuleSchedule for properties.*
+
+#### AlarmRuleSpecificTimeSchedule  *(extends AlarmRuleSchedule, type=`SPECIFIC_TIME`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| daysOfWeek | Set<Integer> |  | [optional] |
+| endsOn | Long |  | [optional] |
+| startsOn | Long |  | [optional] |
+| timezone | String |  | [optional] |
+
+#### AlarmRuleCustomTimeScheduleItem
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| dayOfWeek | Integer |  | [optional] |
+| enabled | Boolean |  | [optional] |
+| endsOn | Long |  | [optional] |
+| startsOn | Long |  | [optional] |
+
 ---
 
 ### Conventions

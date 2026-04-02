@@ -14,6 +14,86 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### NotificationTemplate
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | NotificationTemplateId |  | [optional] |
+| createdTime | Long | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| tenantId | TenantId |  | [optional] |
+| name | String |  |  |
+| notificationType | NotificationType |  |  |
+| _configuration | NotificationTemplateConfig |  |  |
+
+#### NotificationType (enum)
+`GENERAL` | `ALARM` | `DEVICE_ACTIVITY` | `ENTITY_ACTION` | `ALARM_COMMENT` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `ALARM_ASSIGNMENT` | `NEW_PLATFORM_VERSION` | `ENTITIES_LIMIT` | `ENTITIES_LIMIT_INCREASE_REQUEST` | … (24 values total)
+
+#### NotificationTemplateConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| deliveryMethodsTemplates | Map<String, DeliveryMethodNotificationTemplate> |  |  |
+| attachReport | Boolean |  | [optional] |
+| reportTemplateId | ReportTemplateId |  | [optional] |
+| userId | UserId |  | [optional] |
+| timezone | String |  | [optional] |
+
+#### DeliveryMethodNotificationTemplate
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| enabled | Boolean |  | [optional] |
+| body | String |  |  |
+| method | String |  |  |
+
+#### EmailDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`EMAIL`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String |  |  |
+
+#### MicrosoftTeamsDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`MICROSOFT_TEAMS`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String |  | [optional] |
+| themeColor | String |  | [optional] |
+| button | Button |  | [optional] |
+
+#### MobileAppDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`MOBILE_APP`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String | Subject line for the mobile notification |  |
+| additionalConfig | com.fasterxml.jackson.databind.JsonNode | Additional JSON configuration for web buttons/actions | [optional] |
+
+#### SlackDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`SLACK`)*
+*See DeliveryMethodNotificationTemplate for properties.*
+
+#### SmsDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`SMS`)*
+*See DeliveryMethodNotificationTemplate for properties.*
+
+#### WebDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`WEB`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String | Subject line for the web notification |  |
+| additionalConfig | com.fasterxml.jackson.databind.JsonNode | Additional JSON configuration for web buttons/actions | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+
+#### Button
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| enabled | Boolean |  | [optional] |
+| text | String |  | [optional] |
+| linkType | LinkType |  | [optional] |
+| link | String |  | [optional] |
+| dashboardId | UUID |  | [optional] |
+| dashboardState | String |  | [optional] |
+| setEntityIdInState | Boolean |  | [optional] |
+
+#### LinkType (enum)
+`LINK` | `DASHBOARD`
+
 ---
 
 ### Conventions

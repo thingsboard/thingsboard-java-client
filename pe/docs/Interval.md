@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### IntervalType (enum)
+`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
+
 ---
 
 ### Conventions

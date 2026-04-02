@@ -32,6 +32,38 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### TenantAddonData
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| maxDevices | Long |  | [optional] |
+| maxAssets | Long |  | [optional] |
+| maxCustomers | Long |  | [optional] |
+| maxUsers | Long |  | [optional] |
+| maxIntegrations | Long |  | [optional] |
+| maxConverters | Long |  | [optional] |
+| maxCalculatedFieldsPerEntity | Long |  | [optional] |
+| maxTransportMessages | Long |  | [optional] |
+| maxTransportDataPoints | Long |  | [optional] |
+| maxREExecutions | Long |  | [optional] |
+| maxJSExecutions | Long |  | [optional] |
+| maxDPStorageDays | Long |  | [optional] |
+| maxCreatedAlarms | Long |  | [optional] |
+| maxEmails | Long |  | [optional] |
+| maxSms | Long |  | [optional] |
+| maxAiCredits | Long |  | [optional] |
+| edgeEnabled | Boolean |  | [optional] |
+| maxEdges | Long |  | [optional] |
+| trendzEnabled | Boolean |  | [optional] |
+| whiteLabelingEnabled | Boolean |  | [optional] |
+| _default | Boolean |  | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+
 ---
 
 ### Conventions

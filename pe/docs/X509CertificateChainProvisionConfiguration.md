@@ -14,6 +14,23 @@
 
 
 
+## Referenced Types
+
+#### DeviceProfileProvisionConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| provisionDeviceSecret | String | Provision device secret | [optional] |
+| type | String |  |  |
+
+#### AllowCreateNewDevicesDeviceProfileProvisionConfiguration  *(extends DeviceProfileProvisionConfiguration, type=`ALLOW_CREATE_NEW_DEVICES`)*
+*See DeviceProfileProvisionConfiguration for properties.*
+
+#### CheckPreProvisionedDevicesDeviceProfileProvisionConfiguration  *(extends DeviceProfileProvisionConfiguration, type=`CHECK_PRE_PROVISIONED_DEVICES`)*
+*See DeviceProfileProvisionConfiguration for properties.*
+
+#### DisabledDeviceProfileProvisionConfiguration  *(extends DeviceProfileProvisionConfiguration, type=`DISABLED`)*
+*See DeviceProfileProvisionConfiguration for properties.*
+
 ---
 
 ### Conventions

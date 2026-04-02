@@ -15,6 +15,11 @@ JWT Pair
 
 
 
+## Referenced Types
+
+#### Authority (enum)
+`SYS_ADMIN` | `TENANT_ADMIN` | `CUSTOMER_USER` | `BILLING_ADMIN` | `BILLING_SERVICE` | `REFRESH_TOKEN` | `PRE_VERIFICATION_TOKEN` | `MFA_CONFIGURATION_TOKEN`
+
 ---
 
 ### Conventions

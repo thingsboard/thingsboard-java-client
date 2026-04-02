@@ -14,6 +14,29 @@ Base configuration for two-factor authentication accounts
 
 
 
+## Subtypes
+
+#### BackupCodeTwoFaAccountConfig  *(providerType=`BACKUP_CODE`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| codes | Set<String> |  |  |
+| codesLeft | Integer |  | [optional] |
+
+#### EmailTwoFaAccountConfig  *(providerType=`EMAIL`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| email | String |  |  |
+
+#### SmsTwoFaAccountConfig  *(providerType=`SMS`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| phoneNumber | String |  |  |
+
+#### TotpTwoFaAccountConfig  *(providerType=`TOTP`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| authUrl | String |  |  |
+
 ---
 
 ### Conventions

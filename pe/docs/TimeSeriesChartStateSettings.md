@@ -16,6 +16,11 @@
 
 
 
+## Referenced Types
+
+#### TimeSeriesChartStateSourceType (enum)
+`CONSTANT` | `RANGE`
+
 ---
 
 ### Conventions

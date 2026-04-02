@@ -21,6 +21,11 @@
 
 
 
+## Referenced Types
+
+#### SolutionTemplateLevel (enum)
+`MAKER` | `PROTOTYPE` | `STARTUP`
+
 ---
 
 ### Conventions

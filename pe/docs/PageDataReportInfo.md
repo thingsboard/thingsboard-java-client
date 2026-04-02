@@ -14,6 +14,38 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### ReportInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | ReportId |  | [optional] |
+| createdTime | Long | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| tenantId | TenantId |  |  |
+| customerId | CustomerId |  | [optional] |
+| templateId | ReportTemplateId |  |  |
+| format | TbReportFormat |  |  |
+| name | String |  |  |
+| userId | UserId |  |  |
+| templateInfo | EntityInfo |  | [optional] |
+| customerTitle | String |  | [optional] |
+| userName | String |  | [optional] |
+| ownerId | EntityId | JSON object with Customer or Tenant Id | [optional] [readonly] |
+
+#### TbReportFormat (enum)
+`PDF` | `CSV`
+
+#### EntityInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | EntityId | JSON object with the entity Id. | [optional] |
+| name | String | Entity Name | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
 ---
 
 ### Conventions

@@ -15,6 +15,56 @@ Request for creating a version
 
 
 
+## Subtypes
+
+#### ComplexVersionCreateRequest  *(type=`COMPLEX`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| syncStrategy | SyncStrategy |  | [optional] |
+| entityTypes | Map<String, EntityTypeVersionCreateConfig> |  | [optional] |
+
+#### SingleEntityVersionCreateRequest  *(type=`SINGLE_ENTITY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| entityId | EntityId |  | [optional] |
+| config | VersionCreateConfig |  | [optional] |
+
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### VersionCreateRequestType (enum)
+`SINGLE_ENTITY` | `COMPLEX`
+
+#### SyncStrategy (enum)
+`MERGE` | `OVERWRITE`
+
+#### EntityTypeVersionCreateConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| saveRelations | Boolean |  | [optional] |
+| saveAttributes | Boolean |  | [optional] |
+| saveCredentials | Boolean |  | [optional] |
+| saveCalculatedFields | Boolean |  | [optional] |
+| savePermissions | Boolean |  | [optional] |
+| saveGroupEntities | Boolean |  | [optional] |
+| syncStrategy | SyncStrategy |  | [optional] |
+| entityIds | List<UUID> |  | [optional] |
+| allEntities | Boolean |  | [optional] |
+
+#### VersionCreateConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| saveRelations | Boolean |  | [optional] |
+| saveAttributes | Boolean |  | [optional] |
+| saveCredentials | Boolean |  | [optional] |
+| saveCalculatedFields | Boolean |  | [optional] |
+| savePermissions | Boolean |  | [optional] |
+| saveGroupEntities | Boolean |  | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+
 ---
 
 ### Conventions

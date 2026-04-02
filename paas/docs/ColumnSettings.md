@@ -14,6 +14,40 @@
 
 
 
+## Referenced Types
+
+#### CellSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| font | Font |  | [optional] |
+| color | String |  | [optional] |
+| backgroundColor | String |  | [optional] |
+| textAlignment | TextAlignment |  | [optional] |
+| verticalAlignment | VerticalAlignment |  | [optional] |
+
+#### DataKeySettingsType (enum)
+`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
+
+#### Font
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| size | Float |  | [optional] |
+| weight | FontWeight |  | [optional] |
+| style | FontStyle |  | [optional] |
+| family | String |  | [optional] |
+
+#### TextAlignment (enum)
+`CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
+
+#### VerticalAlignment (enum)
+`BOTTOM` | `TOP` | `MIDDLE`
+
+#### FontWeight (enum)
+`NORMAL` | `BOLD` | `_500`
+
+#### FontStyle (enum)
+`NORMAL` | `ITALIC`
+
 ---
 
 ### Conventions

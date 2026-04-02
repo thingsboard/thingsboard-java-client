@@ -18,6 +18,52 @@ A JSON value representing the rule chain metadata.
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### RuleNode
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | RuleNodeId | JSON object with the Rule Node Id. Specify this field to update the Rule Node. Referencing non-existing Rule Node Id will cause error. Omit this field to create new rule node. | [optional] |
+| createdTime | Long | Timestamp of the rule node creation, in milliseconds | [optional] [readonly] |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string). | [optional] |
+| ruleChainId | RuleChainId | JSON object with the Rule Chain Id. | [optional] [readonly] |
+| type | String | Full Java Class Name of the rule node implementation. | [optional] |
+| name | String | User defined name of the rule node. Used on UI and for logging. | [optional] |
+| debugSettings | DebugSettings | Debug settings object. | [optional] |
+| singletonMode | Boolean | Enable/disable singleton mode. | [optional] |
+| queueName | String | Queue name. | [optional] |
+| configurationVersion | Integer | Version of rule node configuration. | [optional] |
+| _configuration | com.fasterxml.jackson.databind.JsonNode | JSON with the rule node configuration. Structure depends on the rule node implementation. | [optional] |
+| externalId | RuleNodeId |  | [optional] |
+| debugMode | Boolean |  | [optional] |
+
+#### NodeConnectionInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| fromIndex | Integer | Index of rule node in the 'nodes' array of the RuleChainMetaData. Indicates the 'from' part of the connection. |  |
+| toIndex | Integer | Index of rule node in the 'nodes' array of the RuleChainMetaData. Indicates the 'to' part of the connection. |  |
+| type | String | Type of the relation. Typically indicated the result of processing by the 'from' rule node. For example, 'Success' or 'Failure' |  |
+
+#### RuleChainConnectionInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| fromIndex | Integer | Index of rule node in the 'nodes' array of the RuleChainMetaData. Indicates the 'from' part of the connection. |  |
+| targetRuleChainId | RuleChainId | JSON object with the Rule Chain Id. |  |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode | JSON object with the additional information about the connection. |  |
+| type | String | Type of the relation. Typically indicated the result of processing by the 'from' rule node. For example, 'Success' or 'Failure' |  |
+
+#### DebugSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failuresEnabled | Boolean | Debug failures. | [optional] |
+| allEnabled | Boolean | Debug All. Used as a trigger for updating debugAllUntil. | [optional] |
+| allEnabledUntil | Long | Timestamp of the end time for the processing debug events. | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+
 ---
 
 ### Conventions

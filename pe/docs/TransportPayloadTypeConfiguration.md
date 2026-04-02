@@ -13,6 +13,21 @@ Configuration for transport payload type
 
 
 
+## Subtypes
+
+#### JsonTransportPayloadConfiguration  *(transportPayloadType=`JSON`)*
+*(no additional properties)*
+
+#### ProtoTransportPayloadConfiguration  *(transportPayloadType=`PROTOBUF`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| deviceTelemetryProtoSchema | String |  | [optional] |
+| deviceAttributesProtoSchema | String |  | [optional] |
+| deviceRpcRequestProtoSchema | String |  | [optional] |
+| deviceRpcResponseProtoSchema | String |  | [optional] |
+| enableCompatibilityWithJsonPayloadFormat | Boolean |  | [optional] |
+| useJsonPayloadFormatForDefaultDownlinkTopics | Boolean |  | [optional] |
+
 ---
 
 ### Conventions

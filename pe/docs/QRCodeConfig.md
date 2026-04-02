@@ -15,6 +15,11 @@
 
 
 
+## Referenced Types
+
+#### BadgePosition (enum)
+`RIGHT` | `LEFT`
+
 ---
 
 ### Conventions

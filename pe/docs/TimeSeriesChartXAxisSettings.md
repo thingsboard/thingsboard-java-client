@@ -25,6 +25,25 @@
 
 
 
+## Referenced Types
+
+#### Font
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| size | Float |  | [optional] |
+| weight | FontWeight |  | [optional] |
+| style | FontStyle |  | [optional] |
+| family | String |  | [optional] |
+
+#### AxisPosition (enum)
+`LEFT` | `RIGHT` | `TOP` | `BOTTOM`
+
+#### FontWeight (enum)
+`NORMAL` | `BOLD` | `_500`
+
+#### FontStyle (enum)
+`NORMAL` | `ITALIC`
+
 ---
 
 ### Conventions

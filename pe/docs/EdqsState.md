@@ -13,6 +13,14 @@
 
 
 
+## Referenced Types
+
+#### EdqsSyncStatus (enum)
+`REQUESTED` | `STARTED` | `FINISHED` | `FAILED`
+
+#### EdqsApiMode (enum)
+`ENABLED` | `AUTO_ENABLED` | `DISABLED` | `AUTO_DISABLED`
+
 ---
 
 ### Conventions

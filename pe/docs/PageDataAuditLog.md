@@ -14,6 +14,40 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### AuditLog
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | AuditLogId | JSON object with the auditLog Id | [optional] |
+| createdTime | Long | Timestamp of the auditLog creation, in milliseconds | [optional] [readonly] |
+| tenantId | TenantId | JSON object with Tenant Id | [optional] [readonly] |
+| customerId | CustomerId | JSON object with Customer Id | [optional] [readonly] |
+| entityId | EntityId | JSON object with Entity id | [optional] [readonly] |
+| entityName | String | Name of the logged entity | [optional] [readonly] |
+| userId | UserId | JSON object with User id. | [optional] [readonly] |
+| userName | String | Unique user name(email) of the user that performed some action on logged entity | [optional] [readonly] |
+| actionType | ActionType | String represented Action type | [optional] [readonly] |
+| actionData | com.fasterxml.jackson.databind.JsonNode | JsonNode represented action data | [optional] [readonly] |
+| actionStatus | ActionStatus | String represented Action status | [optional] [readonly] |
+| actionFailureDetails | String | Failure action details info. An empty string in case of action status type 'SUCCESS', otherwise includes stack trace of the caused exception. | [optional] [readonly] |
+
+#### AuditLogId
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | UUID | string |  |
+
+#### ActionType (enum)
+`ADDED` | `DELETED` | `UPDATED` | `ATTRIBUTES_UPDATED` | `ATTRIBUTES_DELETED` | `TIMESERIES_UPDATED` | `TIMESERIES_DELETED` | `RPC_CALL` | `CREDENTIALS_UPDATED` | `ASSIGNED_TO_CUSTOMER` | … (42 values total)
+
+#### ActionStatus (enum)
+`SUCCESS` | `FAILURE`
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
 ---
 
 ### Conventions

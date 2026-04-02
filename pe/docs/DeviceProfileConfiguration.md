@@ -13,6 +13,11 @@ Device profile configuration
 
 
 
+## Subtypes
+
+#### DefaultDeviceProfileConfiguration  *(type=`DEFAULT`)*
+*(no additional properties)*
+
 ---
 
 ### Conventions

@@ -14,6 +14,14 @@
 
 
 
+## Referenced Types
+
+#### TrendzSynchronizationResultType (enum)
+`SYNC_NOT_INITIALIZED` | `SYNC_COMPLETED` | `SYNC_DISABLED` | `TRENDZ_UNSUPPORTED_VERSION` | `TRENDZ_AUTH_INVALID` | `TRENDZ_URL_UNREACHABLE` | `TB_URL_MISMATCH` | `TB_URL_UNREACHABLE` | `TB_AUTH_INVALID` | `SYNC_INTERNAL_ERROR`
+
+#### TrendzSynchronizationStatus (enum)
+`NOT_AVAILABLE` | `AVAILABLE` | `SYNCED`
+
 ---
 
 ### Conventions

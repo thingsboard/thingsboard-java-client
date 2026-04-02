@@ -13,6 +13,18 @@
 
 
 
+## Referenced Types
+
+#### AggInput
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### AggKeyInput  *(extends AggInput, type=`key`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | String |  | [optional] |
+
 ---
 
 ### Conventions

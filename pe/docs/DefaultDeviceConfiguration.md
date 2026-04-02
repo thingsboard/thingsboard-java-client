@@ -14,6 +14,16 @@ Default device configuration
 
 
 
+## Referenced Types
+
+#### DeviceConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | DeviceProfileType | Device profile type |  |
+
+#### DeviceProfileType (enum)
+`DEFAULT`
+
 ---
 
 ### Conventions

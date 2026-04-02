@@ -17,6 +17,11 @@
 
 
 
+## Referenced Types
+
+#### LinkType (enum)
+`LINK` | `DASHBOARD`
+
 ---
 
 ### Conventions

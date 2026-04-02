@@ -13,6 +13,11 @@
 
 
 
+## Referenced Types
+
+#### SignUpFieldId (enum)
+`EMAIL` | `PASSWORD` | `REPEAT_PASSWORD` | `FIRST_NAME` | `LAST_NAME` | `PHONE` | `COUNTRY` | `CITY` | `STATE` | `ZIP` | … (12 values total)
+
 ---
 
 ### Conventions

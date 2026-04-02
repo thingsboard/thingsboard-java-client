@@ -11,6 +11,11 @@
 
 
 
+## Referenced Types
+
+#### AlarmSearchStatus (enum)
+`ANY` | `ACTIVE` | `CLEARED` | `ACK` | `UNACK`
+
 ---
 
 ### Conventions

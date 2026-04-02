@@ -14,6 +14,14 @@
 
 
 
+## Referenced Types
+
+#### FontWeight (enum)
+`NORMAL` | `BOLD` | `_500`
+
+#### FontStyle (enum)
+`NORMAL` | `ITALIC`
+
 ---
 
 ### Conventions

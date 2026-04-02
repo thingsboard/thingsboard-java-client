@@ -21,6 +21,11 @@
 
 
 
+## Referenced Types
+
+#### PowerMode (enum)
+`PSM` | `DRX` | `E_DRX`
+
 ---
 
 ### Conventions

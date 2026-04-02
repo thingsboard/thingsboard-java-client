@@ -14,6 +14,14 @@
 
 
 
+## Referenced Types
+
+#### Aggregation (enum)
+`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
+
+#### IntervalType (enum)
+`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
+
 ---
 
 ### Conventions

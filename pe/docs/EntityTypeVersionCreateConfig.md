@@ -19,6 +19,11 @@
 
 
 
+## Referenced Types
+
+#### SyncStrategy (enum)
+`MERGE` | `OVERWRITE`
+
 ---
 
 ### Conventions

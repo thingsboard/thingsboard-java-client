@@ -19,6 +19,81 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### CustomMenuId
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | UUID | string |  |
+
+#### CMScope (enum)
+`SYSTEM` | `TENANT` | `CUSTOMER`
+
+#### CMAssigneeType (enum)
+`NO_ASSIGN` | `ALL` | `CUSTOMERS` | `USERS` | `USER_GROUPS`
+
+#### CustomMenuConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| items | List<MenuItem> |  | [optional] |
+
+#### MenuItem
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | MenuItemType | Menu item type |  |
+| visible | Boolean |  | [optional] |
+
+#### CustomMenuItem  *(extends MenuItem, type=`CUSTOM`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| name | String | Name of the menu item |  |
+| icon | String | URL of the menu item icon. Overrides 'materialIcon' | [optional] |
+| menuItemType | CMItemType | Type of menu item (LINK or SECTION). LINK type means item has no child items, SECTION type should have at least one child |  |
+| linkType | CMItemLinkType | Type of menu item (URL or DASHBOARD) | [optional] |
+| dashboardId | String | Id of the Dashboard to open, when user clicks the menu item | [optional] |
+| hideDashboardToolbar | Boolean | Hide the dashboard toolbar | [optional] |
+| url | String | URL to open in the iframe, when user clicks the menu item | [optional] |
+| setAccessToken | Boolean | Set the access token of the current user to a new dashboard | [optional] |
+| visible | Boolean | Mark if menu item is visible for user | [optional] |
+| pages | List<CustomMenuItem> | List of child menu items | [optional] |
+
+#### DefaultMenuItem  *(extends MenuItem, type=`DEFAULT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | String | Unique identifier for predefined menu items | [optional] [readonly] |
+| name | String | Name of the menu item | [optional] |
+| icon | String | URL of the menu item icon. Overrides 'materialIcon' | [optional] |
+| visible | Boolean | Mark if menu item is visible for user | [optional] |
+| pages | List<DefaultMenuItem> | List of child menu items | [optional] |
+
+#### HomeMenuItem  *(extends MenuItem, type=`HOME`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | String | Unique identifier for predefined menu items | [optional] [readonly] |
+| name | String | Name of the menu item | [optional] |
+| icon | String | URL of the menu item icon. Overrides 'materialIcon' | [optional] |
+| pages | List<DefaultMenuItem> | List of child menu items | [optional] |
+| homeType | HomeMenuItemType | DEFAULT or DASHBOARD. DASHBOARD means default home page presentation changed to refer to dashboard | [optional] |
+| dashboardId | String | Id of the Dashboard to open, when user clicks the menu item | [optional] |
+| hideDashboardToolbar | Boolean | Hide the dashboard toolbar | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
+#### MenuItemType (enum)
+`HOME` | `DEFAULT` | `CUSTOM`
+
+#### HomeMenuItemType (enum)
+`DEFAULT` | `DASHBOARD`
+
+#### CMItemType (enum)
+`LINK` | `SECTION`
+
+#### CMItemLinkType (enum)
+`URL` | `DASHBOARD`
+
 ---
 
 ### Conventions

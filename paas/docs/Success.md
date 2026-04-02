@@ -13,6 +13,18 @@
 
 
 
+## Referenced Types
+
+#### TbChatResponse
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| status | String | Indicates whether the request was successful or not |  |
+
+#### Failure  *(extends TbChatResponse, status=`FAILURE`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| errorDetails | String | A string containing details about the failure | [optional] |
+
 ---
 
 ### Conventions

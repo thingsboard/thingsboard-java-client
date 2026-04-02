@@ -14,6 +14,56 @@
 
 
 
+## Referenced Types
+
+#### AggInterval
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### CustomInterval  *(extends AggInterval, type=`CUSTOM`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tz | String |  |  |
+| offsetSec | Long |  | [optional] |
+| durationSec | Long |  |  |
+
+#### DayInterval  *(extends AggInterval, type=`DAY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tz | String |  |  |
+| offsetSec | Long |  | [optional] |
+
+#### HourInterval  *(extends AggInterval, type=`HOUR`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tz | String |  |  |
+| offsetSec | Long |  | [optional] |
+
+#### MonthInterval  *(extends AggInterval, type=`MONTH`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tz | String |  |  |
+| offsetSec | Long |  | [optional] |
+
+#### QuarterInterval  *(extends AggInterval, type=`QUARTER`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tz | String |  |  |
+| offsetSec | Long |  | [optional] |
+
+#### WeekInterval  *(extends AggInterval, type=`WEEK`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tz | String |  |  |
+| offsetSec | Long |  | [optional] |
+
+#### YearInterval  *(extends AggInterval, type=`YEAR`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tz | String |  |  |
+| offsetSec | Long |  | [optional] |
+
 ---
 
 ### Conventions

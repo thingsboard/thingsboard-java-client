@@ -254,6 +254,21 @@ else
 fi
 
 if [ "$DRY_RUN" = false ]; then
+  # Flatten model docs (inline referenced types for self-contained reading)
+  if command -v python3 >/dev/null 2>&1; then
+    if [ "$EDITION" = "all" ]; then
+      for e in "${EDITIONS[@]}"; do
+        echo "Flattening docs for $e..."
+        python3 "$SCRIPT_DIR/scripts/flatten_docs.py" "$SCRIPT_DIR/$e/docs"
+      done
+    else
+      echo "Flattening docs for $EDITION..."
+      python3 "$SCRIPT_DIR/scripts/flatten_docs.py" "$SCRIPT_DIR/$EDITION/docs"
+    fi
+  else
+    echo "Warning: python3 not found — skipping docs flattening"
+  fi
+
   # Resolve mvn: prefer M2_HOME/MAVEN_HOME, fall back to PATH
   if [ -n "${M2_HOME:-}" ] && [ -x "$M2_HOME/bin/mvn" ]; then
     MVN="$M2_HOME/bin/mvn"

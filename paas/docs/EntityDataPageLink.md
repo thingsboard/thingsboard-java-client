@@ -15,6 +15,26 @@
 
 
 
+## Referenced Types
+
+#### EntityDataSortOrder
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | EntityKey |  | [optional] |
+| direction | Direction |  | [optional] |
+
+#### EntityKey
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | EntityKeyType |  | [optional] |
+| key | String |  | [optional] |
+
+#### Direction (enum)
+`ASC` | `DESC`
+
+#### EntityKeyType (enum)
+`ATTRIBUTE` | `CLIENT_ATTRIBUTE` | `SHARED_ATTRIBUTE` | `SERVER_ATTRIBUTE` | `TIME_SERIES` | `ENTITY_FIELD` | `ALARM_FIELD`
+
 ---
 
 ### Conventions

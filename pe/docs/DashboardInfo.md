@@ -26,6 +26,47 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### ShortCustomerInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| customerId | CustomerId | JSON object with the customer Id. | [optional] |
+| title | String | Title of the customer. | [optional] |
+| isPublic | Boolean | Indicates special 'Public' customer used to embed dashboards on public websites. | [optional] |
+
+#### ResourceExportData
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| link | String |  | [optional] |
+| title | String |  | [optional] |
+| type | ResourceType |  | [optional] |
+| subType | ResourceSubType |  | [optional] |
+| resourceKey | String |  | [optional] |
+| fileName | String |  | [optional] |
+| publicResourceKey | String |  | [optional] |
+| mediaType | String |  | [optional] |
+| data | String |  | [optional] |
+| isPublic | Boolean |  | [optional] |
+| _public | Boolean |  | [optional] |
+
+#### EntityInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | EntityId | JSON object with the entity Id. | [optional] |
+| name | String | Entity Name | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
+#### ResourceType (enum)
+`LWM2_M_MODEL` | `JKS` | `PKCS_12` | `JS_MODULE` | `IMAGE` | `DASHBOARD` | `GENERAL`
+
+#### ResourceSubType (enum)
+`IMAGE` | `SCADA_SYMBOL` | `EXTENSION` | `MODULE`
+
 ---
 
 ### Conventions

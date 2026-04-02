@@ -21,6 +21,14 @@
 
 
 
+## Referenced Types
+
+#### ResourceType (enum)
+`LWM2_M_MODEL` | `JKS` | `PKCS_12` | `JS_MODULE` | `IMAGE` | `DASHBOARD` | `GENERAL`
+
+#### ResourceSubType (enum)
+`IMAGE` | `SCADA_SYMBOL` | `EXTENSION` | `MODULE`
+
 ---
 
 ### Conventions

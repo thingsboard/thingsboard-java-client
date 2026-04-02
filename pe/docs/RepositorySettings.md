@@ -23,6 +23,11 @@ A JSON value representing the Repository Settings.
 
 
 
+## Referenced Types
+
+#### RepositoryAuthMethod (enum)
+`USERNAME_PASSWORD` | `PRIVATE_KEY`
+
 ---
 
 ### Conventions

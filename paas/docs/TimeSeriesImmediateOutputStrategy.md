@@ -17,6 +17,16 @@
 
 
 
+## Referenced Types
+
+#### TimeSeriesOutputStrategy
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### TimeSeriesRuleChainOutputStrategy  *(extends TimeSeriesOutputStrategy, type=`RULE_CHAIN`)*
+*See TimeSeriesOutputStrategy for properties.*
+
 ---
 
 ### Conventions

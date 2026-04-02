@@ -24,6 +24,13 @@
 
 
 
+## Referenced Types
+
+#### LwM2MBootstrapServerCredential
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| securityMode | String |  |  |
+
 ---
 
 ### Conventions

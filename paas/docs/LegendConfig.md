@@ -17,6 +17,11 @@
 
 
 
+## Referenced Types
+
+#### LegendPosition (enum)
+`TOP` | `BOTTOM` | `LEFT` | `RIGHT`
+
 ---
 
 ### Conventions

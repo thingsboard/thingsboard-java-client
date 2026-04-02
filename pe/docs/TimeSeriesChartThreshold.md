@@ -34,6 +34,34 @@
 
 
 
+## Referenced Types
+
+#### ValueSourceType (enum)
+`CONSTANT` | `LATEST_KEY` | `ENTITY`
+
+#### ChartLineType (enum)
+`SOLID` | `DASHED` | `DOTTED`
+
+#### ChartShape (enum)
+`EMPTY_CIRCLE` | `CIRCLE` | `RECT` | `ROUND_RECT` | `TRIANGLE` | `DIAMOND` | `PIN` | `ARROW` | `NONE`
+
+#### ThresholdLabelPosition (enum)
+`START` | `MIDDLE` | `END` | `INSIDE_START` | `INSIDE_START_TOP` | `INSIDE_START_BOTTOM` | `INSIDE_MIDDLE` | `INSIDE_MIDDLE_TOP` | `INSIDE_MIDDLE_BOTTOM` | `INSIDE_END` | … (12 values total)
+
+#### Font
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| size | Float |  | [optional] |
+| weight | FontWeight |  | [optional] |
+| style | FontStyle |  | [optional] |
+| family | String |  | [optional] |
+
+#### FontWeight (enum)
+`NORMAL` | `BOLD` | `_500`
+
+#### FontStyle (enum)
+`NORMAL` | `ITALIC`
+
 ---
 
 ### Conventions

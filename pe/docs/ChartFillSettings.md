@@ -13,6 +13,17 @@
 
 
 
+## Referenced Types
+
+#### ChartFillType (enum)
+`NONE` | `OPACITY` | `GRADIENT`
+
+#### ChartFillSettingsGradient
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| start | Float |  | [optional] |
+| end | Float |  | [optional] |
+
 ---
 
 ### Conventions

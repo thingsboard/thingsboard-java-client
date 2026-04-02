@@ -11,6 +11,27 @@
 
 
 
+## Subtypes
+
+#### CurrentOwnerDynamicSourceConfiguration  *(type=`CURRENT_OWNER`)*
+*(no additional properties)*
+
+#### RelationPathQueryDynamicSourceConfiguration  *(type=`RELATION_PATH_QUERY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| levels | List<RelationPathLevel> |  | [optional] |
+
+## Referenced Types
+
+#### RelationPathLevel
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| direction | EntitySearchDirection |  |  |
+| relationType | String |  |  |
+
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
+
 ---
 
 ### Conventions

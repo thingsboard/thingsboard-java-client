@@ -12,6 +12,16 @@
 
 
 
+## Referenced Types
+
+#### EdqsSyncRequest
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| objectTypes | Set<ObjectType> |  | [optional] |
+
+#### ObjectType (enum)
+`TENANT` | `TENANT_PROFILE` | `CUSTOMER` | `QUEUE` | `RPC` | `RULE_CHAIN` | `OTA_PACKAGE` | `RESOURCE` | `ROLE` | `ENTITY_GROUP` | … (49 values total)
+
 ---
 
 ### Conventions

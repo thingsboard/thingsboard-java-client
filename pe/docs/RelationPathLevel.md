@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
+
 ---
 
 ### Conventions

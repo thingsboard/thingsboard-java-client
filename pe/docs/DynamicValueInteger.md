@@ -14,6 +14,11 @@
 
 
 
+## Referenced Types
+
+#### DynamicValueSourceType (enum)
+`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
+
 ---
 
 ### Conventions

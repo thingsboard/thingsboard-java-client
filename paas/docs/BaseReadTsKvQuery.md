@@ -19,6 +19,22 @@
 
 
 
+## Referenced Types
+
+#### AggregationParams
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| aggregation | Aggregation |  | [optional] |
+| intervalType | IntervalType |  | [optional] |
+| tzId | String |  | [optional] |
+| interval | Long |  | [optional] |
+
+#### Aggregation (enum)
+`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
+
+#### IntervalType (enum)
+`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
+
 ---
 
 ### Conventions

@@ -104,6 +104,13 @@
 
 
 
+## Referenced Types
+
+#### TenantProfileConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
 ---
 
 ### Conventions

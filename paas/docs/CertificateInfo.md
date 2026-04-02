@@ -18,6 +18,16 @@
 
 
 
+## Referenced Types
+
+#### CertificateStatus (enum)
+`PENDING_VALIDATION` | `ISSUED` | `INACTIVE` | `EXPIRED` | `VALIDATION_TIMED_OUT` | `REVOKED` | `FAILED` | `UNKNOWN`
+
+#### AcmeCertificateId
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | UUID | string |  |
+
 ---
 
 ### Conventions

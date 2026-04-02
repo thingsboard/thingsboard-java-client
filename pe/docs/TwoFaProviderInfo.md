@@ -14,6 +14,11 @@
 
 
 
+## Referenced Types
+
+#### TwoFaProviderType (enum)
+`TOTP` | `SMS` | `EMAIL` | `BACKUP_CODE`
+
 ---
 
 ### Conventions

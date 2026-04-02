@@ -15,6 +15,13 @@ Text-based content part of a user's prompt
 
 
 
+## Referenced Types
+
+#### TbContent
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| contentType | String |  |  |
+
 ---
 
 ### Conventions

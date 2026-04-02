@@ -21,6 +21,11 @@
 
 
 
+## Referenced Types
+
+#### DataType (enum)
+`BOOLEAN` | `LONG` | `DOUBLE` | `STRING` | `JSON`
+
 ---
 
 ### Conventions

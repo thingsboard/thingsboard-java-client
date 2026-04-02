@@ -18,6 +18,27 @@
 
 
 
+## Referenced Types
+
+#### CaptchaParams
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| version | String |  |  |
+
+#### V2CaptchaParams  *(extends CaptchaParams, version=`v2`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| siteKey | String | Captcha site key for 'I'm not a robot' validation | [optional] |
+| logActionName | String | Optional action name used for logging (for captcha version 'v3' and 'enterprise') | [optional] |
+| secretKey | String | Secret key to validate the Captcha. Should match the Captcha Site Key. | [optional] |
+
+#### V3CaptchaParams  *(extends CaptchaParams, version=`v3`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| siteKey | String | Captcha site key for 'I'm not a robot' validation | [optional] |
+| logActionName | String | Optional action name used for logging (for captcha version 'v3' and 'enterprise') | [optional] |
+| secretKey | String | Secret key to validate the Captcha. Should match the Captcha Site Key. | [optional] |
+
 ---
 
 ### Conventions

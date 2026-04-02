@@ -12,6 +12,15 @@
 
 
 
+## Referenced Types
+
+#### ConvertersInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| library | Boolean |  | [optional] |
+| existing | Boolean |  | [optional] |
+| keys | Set<String> |  | [optional] |
+
 ---
 
 ### Conventions

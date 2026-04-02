@@ -11,6 +11,20 @@
 
 
 
+## Subtypes
+
+#### MobileAppNotificationDeliveryMethodConfig  *(method=`MOBILE_APP`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| firebaseServiceAccountCredentialsFileName | String |  | [optional] |
+| firebaseServiceAccountCredentials | String |  | [optional] |
+| useSystemSettings | Boolean |  | [optional] |
+
+#### SlackNotificationDeliveryMethodConfig  *(method=`SLACK`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| botToken | String |  |  |
+
 ---
 
 ### Conventions

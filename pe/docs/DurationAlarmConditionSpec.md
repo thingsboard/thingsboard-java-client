@@ -16,6 +16,57 @@ Duration Alarm Condition Specification
 
 
 
+## Referenced Types
+
+#### AlarmConditionSpec
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### RepeatingAlarmConditionSpec  *(extends AlarmConditionSpec, type=`REPEATING`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| predicate | FilterPredicateValueInteger | Repeating predicate | [optional] |
+
+#### SimpleAlarmConditionSpec  *(extends AlarmConditionSpec, type=`SIMPLE`)*
+*See AlarmConditionSpec for properties.*
+
+#### TimeUnit (enum)
+`NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
+
+#### FilterPredicateValueLong
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| defaultValue | Long |  | [optional] |
+| userValue | Long |  | [optional] |
+| dynamicValue | DynamicValueLong |  | [optional] |
+
+#### DynamicValueLong
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| resolvedValue | Long |  | [optional] |
+| sourceType | DynamicValueSourceType |  | [optional] |
+| sourceAttribute | String |  | [optional] |
+| inherit | Boolean |  | [optional] |
+
+#### FilterPredicateValueInteger
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| defaultValue | Integer |  | [optional] |
+| userValue | Integer |  | [optional] |
+| dynamicValue | DynamicValueInteger |  | [optional] |
+
+#### DynamicValueSourceType (enum)
+`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
+
+#### DynamicValueInteger
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| resolvedValue | Integer |  | [optional] |
+| sourceType | DynamicValueSourceType |  | [optional] |
+| sourceAttribute | String |  | [optional] |
+| inherit | Boolean |  | [optional] |
+
 ---
 
 ### Conventions

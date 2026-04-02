@@ -23,6 +23,34 @@ A JSON value representing the Mobile Application.
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### PlatformType (enum)
+`WEB` | `ANDROID` | `IOS`
+
+#### MobileAppStatus (enum)
+`DRAFT` | `PUBLISHED` | `DEPRECATED` | `SUSPENDED`
+
+#### MobileAppVersionInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| minVersion | String | Minimum supported version | [optional] |
+| minVersionReleaseNotes | String | Release notes of minimum supported version | [optional] |
+| latestVersion | String | Latest supported version | [optional] |
+| latestVersionReleaseNotes | String | Release notes of latest supported version | [optional] |
+
+#### StoreInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| appId | String |  | [optional] |
+| sha256CertFingerprints | String |  | [optional] |
+| storeLink | String |  | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+
 ---
 
 ### Conventions

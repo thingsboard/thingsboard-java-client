@@ -25,6 +25,32 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### TelemetryEntityView
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| timeseries | List<String> | List of time-series data keys to expose |  |
+| attributes | AttributesEntityView | JSON object with attributes to expose |  |
+
+#### EntityInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | EntityId | JSON object with the entity Id. | [optional] |
+| name | String | Entity Name | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+
+#### AttributesEntityView
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| cs | List<String> | List of client-side attribute keys to expose |  |
+| ss | List<String> | List of server-side attribute keys to expose |  |
+| sh | List<String> | List of shared attribute keys to expose |  |
+
 ---
 
 ### Conventions

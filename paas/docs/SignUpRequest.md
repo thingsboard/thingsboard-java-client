@@ -17,6 +17,11 @@ A JSON value representing the signup request.
 
 
 
+## Referenced Types
+
+#### PlatformType (enum)
+`WEB` | `ANDROID` | `IOS`
+
 ---
 
 ### Conventions

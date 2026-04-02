@@ -15,6 +15,27 @@
 
 
 
+## Referenced Types
+
+#### ErrorComponentAllOfExceptionCause
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| stackTrace | List<ErrorComponentAllOfExceptionCauseStackTrace> |  | [optional] |
+| message | String |  | [optional] |
+| localizedMessage | String |  | [optional] |
+
+#### ErrorComponentAllOfExceptionCauseStackTrace
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| classLoaderName | String |  | [optional] |
+| moduleName | String |  | [optional] |
+| moduleVersion | String |  | [optional] |
+| methodName | String |  | [optional] |
+| fileName | String |  | [optional] |
+| lineNumber | Integer |  | [optional] |
+| className | String |  | [optional] |
+| nativeMethod | Boolean |  | [optional] |
+
 ---
 
 ### Conventions

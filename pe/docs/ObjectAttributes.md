@@ -22,6 +22,13 @@
 
 
 
+## Referenced Types
+
+#### LwM2mVersion
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| supported | Boolean |  | [optional] |
+
 ---
 
 ### Conventions
