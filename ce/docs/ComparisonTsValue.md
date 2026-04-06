@@ -12,6 +12,15 @@
 
 
 
+## Referenced Types
+
+#### TsValue
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| ts | Long |  | [optional] |
+| value | String |  | [optional] |
+| count | Long |  | [optional] |
+
 ---
 
 ### Conventions

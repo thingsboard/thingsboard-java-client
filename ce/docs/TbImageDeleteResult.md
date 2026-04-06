@@ -12,6 +12,13 @@
 
 
 
+## Referenced Types
+
+#### HasIdObject
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | Object |  | [optional] |
+
 ---
 
 ### Conventions

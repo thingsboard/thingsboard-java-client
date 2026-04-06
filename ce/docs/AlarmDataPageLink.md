@@ -23,6 +23,37 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### EntityDataSortOrder
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | EntityKey |  | [optional] |
+| direction | Direction |  | [optional] |
+
+#### AlarmSearchStatus (enum)
+`ANY` | `ACTIVE` | `CLEARED` | `ACK` | `UNACK`
+
+#### AlarmSeverity (enum)
+`CRITICAL` | `MAJOR` | `MINOR` | `WARNING` | `INDETERMINATE`
+
+#### EntityKey
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | EntityKeyType |  | [optional] |
+| key | String |  | [optional] |
+
+#### Direction (enum)
+`ASC` | `DESC`
+
+#### EntityKeyType (enum)
+`ATTRIBUTE` | `CLIENT_ATTRIBUTE` | `SHARED_ATTRIBUTE` | `SERVER_ATTRIBUTE` | `TIME_SERIES` | `ENTITY_FIELD` | `ALARM_FIELD`
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
 ---
 
 ### Conventions

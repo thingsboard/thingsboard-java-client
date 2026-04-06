@@ -11,6 +11,14 @@
 
 
 
+## Referenced Types
+
+#### NotificationPref
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| enabled | Boolean |  | [optional] |
+| enabledDeliveryMethods | Map<String, Boolean> |  |  |
+
 ---
 
 ### Conventions

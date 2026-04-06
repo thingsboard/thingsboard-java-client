@@ -11,6 +11,11 @@
 
 
 
+## Referenced Types
+
+#### ObjectType (enum)
+`TENANT` | `TENANT_PROFILE` | `CUSTOMER` | `QUEUE` | `RPC` | `RULE_CHAIN` | `OTA_PACKAGE` | `RESOURCE` | `EVENT` | `RULE_NODE` | … (37 values total)
+
 ---
 
 ### Conventions

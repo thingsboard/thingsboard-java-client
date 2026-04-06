@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### BulkImportColumnType (enum)
+`NAME` | `TYPE` | `LABEL` | `SHARED_ATTRIBUTE` | `SERVER_ATTRIBUTE` | `TIMESERIES` | `ACCESS_TOKEN` | `X509` | `MQTT_CLIENT_ID` | `MQTT_USER_NAME` | … (30 values total)
+
 ---
 
 ### Conventions

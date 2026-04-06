@@ -13,6 +13,19 @@
 
 
 
+## Referenced Types
+
+#### NotificationDeliveryMethodConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| method | String |  |  |
+
+#### MobileAppNotificationDeliveryMethodConfig  *(extends NotificationDeliveryMethodConfig, method=`MOBILE_APP`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| firebaseServiceAccountCredentialsFileName | String |  | [optional] |
+| firebaseServiceAccountCredentials | String |  |  |
+
 ---
 
 ### Conventions

@@ -11,6 +11,11 @@
 
 
 
+## Referenced Types
+
+#### AiModelType (enum)
+`CHAT`
+
 ---
 
 ### Conventions

@@ -14,6 +14,26 @@
 
 
 
+## Referenced Types
+
+#### AggFunction (enum)
+`MIN` | `MAX` | `SUM` | `AVG` | `COUNT` | `COUNT_UNIQUE`
+
+#### AggInput
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### AggFunctionInput  *(extends AggInput, type=`function`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| function | String |  | [optional] |
+
+#### AggKeyInput  *(extends AggInput, type=`key`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | String |  | [optional] |
+
 ---
 
 ### Conventions

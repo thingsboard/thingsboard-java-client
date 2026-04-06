@@ -18,6 +18,11 @@
 
 
 
+## Referenced Types
+
+#### TenantNameStrategyType (enum)
+`DOMAIN` | `EMAIL` | `CUSTOM`
+
 ---
 
 ### Conventions

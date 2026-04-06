@@ -12,6 +12,41 @@
 
 
 
+## Referenced Types
+
+#### UsersFilter
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### AffectedUserFilter  *(extends UsersFilter, type=`AFFECTED_USER`)*
+*See UsersFilter for properties.*
+
+#### AllUsersFilter  *(extends UsersFilter, type=`ALL_USERS`)*
+*See UsersFilter for properties.*
+
+#### CustomerUsersFilter  *(extends UsersFilter, type=`CUSTOMER_USERS`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| customerId | UUID |  |  |
+
+#### OriginatorEntityOwnerUsersFilter  *(extends UsersFilter, type=`ORIGINATOR_ENTITY_OWNER_USERS`)*
+*See UsersFilter for properties.*
+
+#### SystemAdministratorsFilter  *(extends UsersFilter, type=`SYSTEM_ADMINISTRATORS`)*
+*See UsersFilter for properties.*
+
+#### TenantAdministratorsFilter  *(extends UsersFilter, type=`TENANT_ADMINISTRATORS`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| tenantsIds | Set<UUID> |  | [optional] |
+| tenantProfilesIds | Set<UUID> |  | [optional] |
+
+#### UserListFilter  *(extends UsersFilter, type=`USER_LIST`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| usersIds | List<UUID> |  |  |
+
 ---
 
 ### Conventions

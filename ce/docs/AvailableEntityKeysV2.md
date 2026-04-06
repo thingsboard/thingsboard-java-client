@@ -15,6 +15,23 @@ Contains unique time series and attribute key names discovered from entities mat
 
 
 
+## Referenced Types
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
+#### KeyInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | String | Key name. |  |
+| sample | KeySample | Most recent sample value for this key across the matched entities. Omitted when samples were not requested. | [optional] |
+
+#### KeySample
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| ts | Long | Timestamp in milliseconds since epoch. |  |
+| value | Object |  |  |
+
 ---
 
 ### Conventions

@@ -13,6 +13,32 @@
 
 
 
+## Subtypes
+
+#### DummyJobConfiguration  *(type=`DUMMY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| taskProcessingTimeMs | Long |  | [optional] |
+| successfulTasksCount | Integer |  | [optional] |
+| failedTasksCount | Integer |  | [optional] |
+| permanentlyFailedTasksCount | Integer |  | [optional] |
+| errors | List<String> |  | [optional] |
+| retries | Integer |  | [optional] |
+| taskProcessingTimeoutMs | Long |  | [optional] |
+| generalError | String |  | [optional] |
+| submittedTasksBeforeGeneralError | Integer |  | [optional] |
+
+## Referenced Types
+
+#### TaskResult
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | String |  | [optional] |
+| success | Boolean |  | [optional] |
+| discarded | Boolean |  | [optional] |
+| finishTs | Long |  | [optional] |
+| jobType | String |  |  |
+
 ---
 
 ### Conventions

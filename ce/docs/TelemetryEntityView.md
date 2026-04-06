@@ -12,6 +12,15 @@
 
 
 
+## Referenced Types
+
+#### AttributesEntityView
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| cs | List<String> | List of client-side attribute keys to expose |  |
+| ss | List<String> | List of server-side attribute keys to expose |  |
+| sh | List<String> | List of shared attribute keys to expose |  |
+
 ---
 
 ### Conventions

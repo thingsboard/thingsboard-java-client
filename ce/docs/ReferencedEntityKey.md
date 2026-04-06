@@ -13,6 +13,14 @@
 
 
 
+## Referenced Types
+
+#### ArgumentType (enum)
+`TS_LATEST` | `ATTRIBUTE` | `TS_ROLLING`
+
+#### AttributeScope (enum)
+`CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`
+
 ---
 
 ### Conventions

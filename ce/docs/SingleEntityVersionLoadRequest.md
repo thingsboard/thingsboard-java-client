@@ -14,6 +14,46 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### VersionLoadRequest
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| versionId | String |  | [optional] |
+| type | VersionLoadRequestType | Type of the version to load |  |
+
+#### EntityTypeVersionLoadRequest  *(extends VersionLoadRequest, type=`ENTITY_TYPE`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| entityTypes | Map<String, EntityTypeVersionLoadConfig> |  | [optional] |
+| rollbackOnError | Boolean |  | [optional] |
+
+#### VersionLoadConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| loadRelations | Boolean |  | [optional] |
+| loadAttributes | Boolean |  | [optional] |
+| loadCredentials | Boolean |  | [optional] |
+| loadCalculatedFields | Boolean |  | [optional] |
+
+#### VersionLoadRequestType (enum)
+`SINGLE_ENTITY` | `ENTITY_TYPE`
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
+#### EntityTypeVersionLoadConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| loadRelations | Boolean |  | [optional] |
+| loadAttributes | Boolean |  | [optional] |
+| loadCredentials | Boolean |  | [optional] |
+| loadCalculatedFields | Boolean |  | [optional] |
+| removeOtherEntities | Boolean |  | [optional] |
+| findExistingEntityByName | Boolean |  | [optional] |
+
 ---
 
 ### Conventions

@@ -24,6 +24,108 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### NotificationTemplate
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | NotificationTemplateId |  | [optional] |
+| createdTime | Long | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| tenantId | TenantId |  | [optional] |
+| name | String |  |  |
+| notificationType | NotificationType |  |  |
+| _configuration | NotificationTemplateConfig |  |  |
+
+#### NotificationInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| dashboardId | DashboardId |  | [optional] |
+| stateEntityId | EntityId |  | [optional] |
+| type | String |  |  |
+
+#### NotificationRequestConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| sendingDelayInSec | Integer |  | [optional] |
+
+#### NotificationRequestStatus (enum)
+`PROCESSING` | `SENT` | `SCHEDULED`
+
+#### NotificationRequestStats
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| sent | Map<String, Integer> | Number of successfully sent notifications per delivery method | [optional] |
+| errors | Map<String, Map<String, String>> | Errors per delivery method. Each entry maps recipient name to error message | [optional] |
+| totalErrors | Integer | Total number of errors across all delivery methods | [optional] |
+| error | String | General error message if the entire request failed | [optional] |
+
+#### NotificationDeliveryMethod (enum)
+`WEB` | `EMAIL` | `SMS` | `SLACK` | `MICROSOFT_TEAMS` | `MOBILE_APP`
+
+#### NotificationType (enum)
+`GENERAL` | `ALARM` | `DEVICE_ACTIVITY` | `ENTITY_ACTION` | `ALARM_COMMENT` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `ALARM_ASSIGNMENT` | `NEW_PLATFORM_VERSION` | `ENTITIES_LIMIT` | `ENTITIES_LIMIT_INCREASE_REQUEST` | … (17 values total)
+
+#### NotificationTemplateConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| deliveryMethodsTemplates | Map<String, DeliveryMethodNotificationTemplate> |  |  |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
+#### DeliveryMethodNotificationTemplate
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| enabled | Boolean |  | [optional] |
+| body | String |  |  |
+| method | String |  |  |
+
+#### EmailDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`EMAIL`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String |  |  |
+
+#### MicrosoftTeamsDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`MICROSOFT_TEAMS`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String |  | [optional] |
+| themeColor | String |  | [optional] |
+| button | Button |  | [optional] |
+
+#### MobileAppDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`MOBILE_APP`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String | Subject line for the mobile notification |  |
+| additionalConfig | com.fasterxml.jackson.databind.JsonNode | Additional JSON configuration for web buttons/actions | [optional] |
+
+#### SlackDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`SLACK`)*
+*See DeliveryMethodNotificationTemplate for properties.*
+
+#### SmsDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`SMS`)*
+*See DeliveryMethodNotificationTemplate for properties.*
+
+#### WebDeliveryMethodNotificationTemplate  *(extends DeliveryMethodNotificationTemplate, method=`WEB`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subject | String | Subject line for the web notification |  |
+| additionalConfig | com.fasterxml.jackson.databind.JsonNode | Additional JSON configuration for web buttons/actions | [optional] |
+
+#### Button
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| enabled | Boolean |  | [optional] |
+| text | String |  | [optional] |
+| linkType | LinkType |  | [optional] |
+| link | String |  | [optional] |
+| dashboardId | UUID |  | [optional] |
+| dashboardState | String |  | [optional] |
+| setEntityIdInState | Boolean |  | [optional] |
+
+#### LinkType (enum)
+`LINK` | `DASHBOARD`
+
 ---
 
 ### Conventions

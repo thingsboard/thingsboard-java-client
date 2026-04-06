@@ -16,6 +16,11 @@
 
 
 
+## Referenced Types
+
+#### SlackConversationType (enum)
+`DIRECT` | `PUBLIC_CHANNEL` | `PRIVATE_CHANNEL`
+
 ---
 
 ### Conventions

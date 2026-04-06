@@ -12,6 +12,11 @@
 
 
 
+## Referenced Types
+
+#### EntityKeyType (enum)
+`ATTRIBUTE` | `CLIENT_ATTRIBUTE` | `SHARED_ATTRIBUTE` | `SERVER_ATTRIBUTE` | `TIME_SERIES` | `ENTITY_FIELD` | `ALARM_FIELD`
+
 ---
 
 ### Conventions

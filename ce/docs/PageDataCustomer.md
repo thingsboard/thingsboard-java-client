@@ -14,6 +14,32 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### Customer
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | CustomerId | JSON object with the customer Id. Specify this field to update the customer. Referencing non-existing customer Id will cause error. Omit this field to create new customer. | [optional] |
+| createdTime | Long | Timestamp of the customer creation, in milliseconds | [optional] [readonly] |
+| country | String | Country | [optional] |
+| state | String | State | [optional] |
+| city | String | City | [optional] |
+| address | String | Address Line 1 | [optional] |
+| address2 | String | Address Line 2 | [optional] |
+| zip | String | Zip code | [optional] |
+| phone | String | Phone number | [optional] |
+| email | String | Email | [optional] |
+| title | String | Title of the customer |  |
+| tenantId | TenantId | JSON object with Tenant Id | [optional] |
+| version | Long |  | [optional] |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer). | [optional] |
+| name | String | Name of the customer. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
 ---
 
 ### Conventions

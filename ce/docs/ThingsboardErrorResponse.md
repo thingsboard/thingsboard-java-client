@@ -14,6 +14,11 @@
 
 
 
+## Referenced Types
+
+#### ThingsboardErrorCode (enum)
+`NUMBER_2` | `NUMBER_10` | `NUMBER_11` | `NUMBER_15` | `NUMBER_20` | `NUMBER_30` | `NUMBER_31` | `NUMBER_32` | `NUMBER_33` | `NUMBER_34` | … (15 values total)
+
 ---
 
 ### Conventions

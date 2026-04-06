@@ -11,6 +11,18 @@
 
 
 
+## Subtypes
+
+#### AggFunctionInput  *(type=`function`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| function | String |  | [optional] |
+
+#### AggKeyInput  *(type=`key`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | String |  | [optional] |
+
 ---
 
 ### Conventions

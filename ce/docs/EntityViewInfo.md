@@ -24,6 +24,26 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### TelemetryEntityView
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| timeseries | List<String> | List of time-series data keys to expose |  |
+| attributes | AttributesEntityView | JSON object with attributes to expose |  |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
+#### AttributesEntityView
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| cs | List<String> | List of client-side attribute keys to expose |  |
+| ss | List<String> | List of server-side attribute keys to expose |  |
+| sh | List<String> | List of shared attribute keys to expose |  |
+
 ---
 
 ### Conventions

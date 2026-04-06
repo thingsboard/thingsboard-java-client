@@ -11,6 +11,18 @@
 
 
 
+## Referenced Types
+
+#### TbContent
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| contentType | String |  |  |
+
+#### TbTextContent  *(extends TbContent, contentType=`TEXT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| text | String | The text content |  |
+
 ---
 
 ### Conventions

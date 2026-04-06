@@ -12,6 +12,26 @@
 
 
 
+## Referenced Types
+
+#### DeviceProfileProvisionConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| provisionDeviceSecret | String | Provision device secret | [optional] |
+| type | String |  |  |
+
+#### AllowCreateNewDevicesDeviceProfileProvisionConfiguration  *(extends DeviceProfileProvisionConfiguration, type=`ALLOW_CREATE_NEW_DEVICES`)*
+*See DeviceProfileProvisionConfiguration for properties.*
+
+#### CheckPreProvisionedDevicesDeviceProfileProvisionConfiguration  *(extends DeviceProfileProvisionConfiguration, type=`CHECK_PRE_PROVISIONED_DEVICES`)*
+*See DeviceProfileProvisionConfiguration for properties.*
+
+#### X509CertificateChainProvisionConfiguration  *(extends DeviceProfileProvisionConfiguration, type=`X509_CERTIFICATE_CHAIN`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| certificateRegExPattern | String |  | [optional] |
+| allowCreateNewDevicesByX509Certificate | Boolean |  | [optional] |
+
 ---
 
 ### Conventions

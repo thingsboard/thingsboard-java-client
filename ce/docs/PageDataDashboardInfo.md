@@ -14,6 +14,34 @@
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### DashboardInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | DashboardId | JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard. | [optional] |
+| createdTime | Long | Timestamp of the dashboard creation, in milliseconds | [optional] [readonly] |
+| tenantId | TenantId | JSON object with Tenant Id. Tenant Id of the dashboard can't be changed. | [optional] [readonly] |
+| title | String | Title of the dashboard. |  |
+| image | String | Thumbnail picture for rendering of the dashboards in a grid view on mobile devices. | [optional] [readonly] |
+| assignedCustomers | Set<ShortCustomerInfo> | List of assigned customers with their info. | [optional] |
+| mobileHide | Boolean | Hide dashboard from mobile devices. Useful if the dashboard is not designed for small screens. | [optional] [readonly] |
+| mobileOrder | Integer | Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications | [optional] [readonly] |
+| version | Long |  | [optional] |
+| name | String | Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard. | [optional] [readonly] |
+
+#### ShortCustomerInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| customerId | CustomerId | JSON object with the customer Id. | [optional] |
+| title | String | Title of the customer. | [optional] |
+| _public | Boolean | Indicates special 'Public' customer used to embed dashboards on public websites. | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
 ---
 
 ### Conventions

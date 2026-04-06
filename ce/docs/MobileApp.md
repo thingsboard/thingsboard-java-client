@@ -23,6 +23,34 @@ A JSON value representing the Mobile Application.
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### PlatformType (enum)
+`WEB` | `ANDROID` | `IOS`
+
+#### MobileAppStatus (enum)
+`DRAFT` | `PUBLISHED` | `DEPRECATED` | `SUSPENDED`
+
+#### MobileAppVersionInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| minVersion | String | Minimum supported version | [optional] |
+| minVersionReleaseNotes | String | Release notes of minimum supported version | [optional] |
+| latestVersion | String | Latest supported version | [optional] |
+| latestVersionReleaseNotes | String | Release notes of latest supported version | [optional] |
+
+#### StoreInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| appId | String |  | [optional] |
+| sha256CertFingerprints | String |  | [optional] |
+| storeLink | String |  | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
 ---
 
 ### Conventions

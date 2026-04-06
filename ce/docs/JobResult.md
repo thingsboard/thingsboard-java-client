@@ -22,6 +22,22 @@ Job execution result
 
 
 
+## Subtypes
+
+#### DummyJobResult  *(jobType=`DUMMY`)*
+*(no additional properties)*
+
+## Referenced Types
+
+#### TaskResult
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| key | String |  | [optional] |
+| success | Boolean |  | [optional] |
+| discarded | Boolean |  | [optional] |
+| finishTs | Long |  | [optional] |
+| jobType | String |  |  |
+
 ---
 
 ### Conventions

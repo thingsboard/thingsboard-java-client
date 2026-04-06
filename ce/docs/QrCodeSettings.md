@@ -23,6 +23,30 @@ A JSON value representing the mobile apps configuration
 
 
 
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### QrCodeSettingsId
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | UUID | string |  |
+
+#### QRCodeConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showOnHomePage | Boolean |  | [optional] |
+| badgeEnabled | Boolean |  | [optional] |
+| qrCodeLabelEnabled | Boolean |  | [optional] |
+| badgePosition | BadgePosition |  | [optional] |
+| qrCodeLabel | String |  | [optional] |
+
+#### BadgePosition (enum)
+`RIGHT` | `LEFT`
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
 ---
 
 ### Conventions

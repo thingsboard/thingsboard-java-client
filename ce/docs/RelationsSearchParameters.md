@@ -16,6 +16,17 @@
 
 
 
+## Referenced Types
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
+
+#### RelationTypeGroup (enum)
+`COMMON` | `DASHBOARD` | `RULE_CHAIN` | `RULE_NODE` | `EDGE` | `EDGE_AUTO_ASSIGN_RULE_CHAIN`
+
 ---
 
 ### Conventions

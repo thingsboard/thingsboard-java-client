@@ -13,6 +13,16 @@ Device configuration
 
 
 
+## Subtypes
+
+#### DefaultDeviceConfiguration  *(type=`DEFAULT`)*
+*(no additional properties)*
+
+## Referenced Types
+
+#### DeviceProfileType (enum)
+`DEFAULT`
+
 ---
 
 ### Conventions

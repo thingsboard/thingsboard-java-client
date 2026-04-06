@@ -12,6 +12,27 @@
 
 
 
+## Referenced Types
+
+#### CfArgumentDynamicSourceConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### RelationPathQueryDynamicSourceConfiguration  *(extends CfArgumentDynamicSourceConfiguration, type=`RELATION_PATH_QUERY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| levels | List<RelationPathLevel> |  | [optional] |
+
+#### RelationPathLevel
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| direction | EntitySearchDirection |  |  |
+| relationType | String |  |  |
+
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
+
 ---
 
 ### Conventions

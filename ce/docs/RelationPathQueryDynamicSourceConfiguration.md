@@ -13,6 +13,25 @@
 
 
 
+## Referenced Types
+
+#### CfArgumentDynamicSourceConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | String |  |  |
+
+#### CurrentOwnerDynamicSourceConfiguration  *(extends CfArgumentDynamicSourceConfiguration, type=`CURRENT_OWNER`)*
+*See CfArgumentDynamicSourceConfiguration for properties.*
+
+#### RelationPathLevel
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| direction | EntitySearchDirection |  |  |
+| relationType | String |  |  |
+
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
+
 ---
 
 ### Conventions
