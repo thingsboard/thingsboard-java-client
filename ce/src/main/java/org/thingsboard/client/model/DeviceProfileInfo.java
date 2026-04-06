@@ -30,9 +30,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.DashboardId;
+import org.thingsboard.client.model.DeviceProfileId;
 import org.thingsboard.client.model.DeviceProfileType;
 import org.thingsboard.client.model.DeviceTransportType;
-import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -54,7 +54,7 @@ import org.thingsboard.client.ApiClient;
 public class DeviceProfileInfo {
   public static final String JSON_PROPERTY_ID = "id";
   @Nullable
-  private EntityId id;
+  private DeviceProfileId id;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @Nullable
@@ -83,26 +83,26 @@ public class DeviceProfileInfo {
   public DeviceProfileInfo() { 
   }
 
-  public DeviceProfileInfo id(@Nullable EntityId id) {
+  public DeviceProfileInfo id(@Nullable DeviceProfileId id) {
     this.id = id;
     return this;
   }
 
   /**
-   * JSON object with the entity Id. 
+   * JSON object with the Device Profile Id.
    * @return id
    */
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityId getId() {
+  public DeviceProfileId getId() {
     return id;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@Nullable EntityId id) {
+  public void setId(@Nullable DeviceProfileId id) {
     this.id = id;
   }
 

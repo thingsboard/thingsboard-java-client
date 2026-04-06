@@ -28,10 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.thingsboard.client.model.DeviceProfileAlarm;
 import org.thingsboard.client.model.DeviceProfileConfiguration;
 import org.thingsboard.client.model.DeviceProfileProvisionConfiguration;
 import org.thingsboard.client.model.DeviceProfileTransportConfiguration;
@@ -45,8 +42,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   DeviceProfileData.JSON_PROPERTY_CONFIGURATION,
   DeviceProfileData.JSON_PROPERTY_TRANSPORT_CONFIGURATION,
-  DeviceProfileData.JSON_PROPERTY_PROVISION_CONFIGURATION,
-  DeviceProfileData.JSON_PROPERTY_ALARMS
+  DeviceProfileData.JSON_PROPERTY_PROVISION_CONFIGURATION
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceProfileData {
@@ -61,10 +57,6 @@ public class DeviceProfileData {
   public static final String JSON_PROPERTY_PROVISION_CONFIGURATION = "provisionConfiguration";
   @Nullable
   private DeviceProfileProvisionConfiguration provisionConfiguration;
-
-  public static final String JSON_PROPERTY_ALARMS = "alarms";
-  @Nullable
-  private List<DeviceProfileAlarm> alarms = new ArrayList<>();
 
   public DeviceProfileData() { 
   }
@@ -141,38 +133,6 @@ public class DeviceProfileData {
   }
 
 
-  public DeviceProfileData alarms(@Nullable List<DeviceProfileAlarm> alarms) {
-    this.alarms = alarms;
-    return this;
-  }
-
-  public DeviceProfileData addAlarmsItem(DeviceProfileAlarm alarmsItem) {
-    if (this.alarms == null) {
-      this.alarms = new ArrayList<>();
-    }
-    this.alarms.add(alarmsItem);
-    return this;
-  }
-
-  /**
-   * Get alarms
-   * @return alarms
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<DeviceProfileAlarm> getAlarms() {
-    return alarms;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ALARMS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlarms(@Nullable List<DeviceProfileAlarm> alarms) {
-    this.alarms = alarms;
-  }
-
-
   /**
    * Return true if this DeviceProfileData object is equal to o.
    */
@@ -187,13 +147,12 @@ public class DeviceProfileData {
     DeviceProfileData deviceProfileData = (DeviceProfileData) o;
     return Objects.equals(this._configuration, deviceProfileData._configuration) &&
         Objects.equals(this.transportConfiguration, deviceProfileData.transportConfiguration) &&
-        Objects.equals(this.provisionConfiguration, deviceProfileData.provisionConfiguration) &&
-        Objects.equals(this.alarms, deviceProfileData.alarms);
+        Objects.equals(this.provisionConfiguration, deviceProfileData.provisionConfiguration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_configuration, transportConfiguration, provisionConfiguration, alarms);
+    return Objects.hash(_configuration, transportConfiguration, provisionConfiguration);
   }
 
   @Override
@@ -203,7 +162,6 @@ public class DeviceProfileData {
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    transportConfiguration: ").append(toIndentedString(transportConfiguration)).append("\n");
     sb.append("    provisionConfiguration: ").append(toIndentedString(provisionConfiguration)).append("\n");
-    sb.append("    alarms: ").append(toIndentedString(alarms)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -264,16 +222,6 @@ public class DeviceProfileData {
     // add `provisionConfiguration` to the URL query string
     if (getProvisionConfiguration() != null) {
       joiner.add(getProvisionConfiguration().toUrlQueryString(prefix + "provisionConfiguration" + suffix));
-    }
-
-    // add `alarms` to the URL query string
-    if (getAlarms() != null) {
-      for (int i = 0; i < getAlarms().size(); i++) {
-        if (getAlarms().get(i) != null) {
-          joiner.add(getAlarms().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%salarms%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
     }
 
     return joiner.toString();

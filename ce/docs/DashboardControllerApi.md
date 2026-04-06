@@ -9,11 +9,11 @@ Dashboard assignDashboardToEdge(@Nonnull String edgeId, @Nonnull String dashboar
 Dashboard assignDashboardToPublicCustomer(@Nonnull String dashboardId) // Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer)
 void deleteDashboard(@Nonnull String dashboardId) // Delete the Dashboard (deleteDashboard)
 PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Dashboards (getCustomerDashboards)
-void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) // Get Dashboard (getDashboardById)
+Dashboard getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) // Get Dashboard (getDashboardById)
 DashboardInfo getDashboardInfoById(@Nonnull String dashboardId) // Get Dashboard Info (getDashboardInfoById)
 List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds) // Get dashboards by Dashboard Ids (getDashboardsByIds)
 PageDataDashboardInfo getEdgeDashboards(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Dashboards (getEdgeDashboards)
-void getHomeDashboard(@Nullable String acceptEncoding) // Get Home Dashboard (getHomeDashboard)
+HomeDashboard getHomeDashboard(@Nullable String acceptEncoding) // Get Home Dashboard (getHomeDashboard)
 HomeDashboardInfo getHomeDashboardInfo() // Get Home Dashboard Info (getHomeDashboardInfo)
 Long getMaxDatapointsLimit() // Get max data points limit (getMaxDatapointsLimit)
 Long getServerTime() // Get server time (getServerTime)
@@ -186,7 +186,7 @@ Returns a page of dashboard info objects owned by the specified customer. The Da
 ## getDashboardById
 
 ```
-void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding)
+Dashboard getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding)
 ```
 
 **GET** `/api/dashboard/{dashboardId}`
@@ -206,7 +206,7 @@ Get the dashboard based on 'dashboardId' parameter. The Dashboard object is a he
 
 ### Return type
 
-null (empty response body)
+**Dashboard**
 
 
 ## getDashboardInfoById
@@ -289,7 +289,7 @@ Returns a page of dashboard info objects assigned to the specified edge. The Das
 ## getHomeDashboard
 
 ```
-void getHomeDashboard(@Nullable String acceptEncoding)
+HomeDashboard getHomeDashboard(@Nullable String acceptEncoding)
 ```
 
 **GET** `/api/dashboard/home`
@@ -307,7 +307,7 @@ Returns the home dashboard object that is configured as 'homeDashboardId' parame
 
 ### Return type
 
-null (empty response body)
+**HomeDashboard**
 
 
 ## getHomeDashboardInfo

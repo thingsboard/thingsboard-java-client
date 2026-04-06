@@ -95,7 +95,7 @@ public class Customer {
   private String phone;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
-  @Nonnull
+  @Nullable
   private String email;
 
   public static final String JSON_PROPERTY_TITLE = "title";
@@ -337,7 +337,7 @@ public class Customer {
   }
 
 
-  public Customer email(@Nonnull String email) {
+  public Customer email(@Nullable String email) {
     this.email = email;
     return this;
   }
@@ -346,17 +346,17 @@ public class Customer {
    * Email
    * @return email
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_EMAIL, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEmail() {
     return email;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_EMAIL, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEmail(@Nonnull String email) {
+  @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmail(@Nullable String email) {
     this.email = email;
   }
 
