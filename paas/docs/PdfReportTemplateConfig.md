@@ -32,9 +32,6 @@
 | filters | List<Filter> |  | [optional] |
 | components | List<ReportComponent> |  | [optional] |
 
-#### CsvReportTemplateConfig  *(extends ReportTemplateConfig, format=`CSV`)*
-*See ReportTemplateConfig for properties.*
-
 #### HeaderFooter
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|

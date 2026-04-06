@@ -21,22 +21,6 @@
 | useByDefault | Boolean |  | [optional] |
 | providerType | String |  |  |
 
-#### BackupCodeTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`BACKUP_CODE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| codes | Set<String> |  |  |
-| codesLeft | Integer |  | [optional] |
-
-#### SmsTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`SMS`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| phoneNumber | String |  |  |
-
-#### TotpTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`TOTP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| authUrl | String |  |  |
-
 ---
 
 ### Conventions

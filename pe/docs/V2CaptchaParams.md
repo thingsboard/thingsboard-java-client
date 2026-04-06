@@ -22,23 +22,6 @@
 |------|------|-------------|-------|
 | version | String |  |  |
 
-#### EnterpriseCaptchaParams  *(extends CaptchaParams, version=`enterprise`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| projectId | String | Your Google Cloud project ID | [optional] |
-| serviceAccountCredentials | String | Service account credentials | [optional] |
-| serviceAccountCredentialsFileName | String | Service account credentials file name | [optional] |
-| androidKey | String | The reCAPTCHA key associated with android app. | [optional] |
-| iosKey | String | The reCAPTCHA key associated with iOS app. | [optional] |
-| logActionName | String | Optional action name used for logging | [optional] |
-
-#### V3CaptchaParams  *(extends CaptchaParams, version=`v3`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| siteKey | String | Captcha site key for 'I'm not a robot' validation | [optional] |
-| logActionName | String | Optional action name used for logging (for captcha version 'v3' and 'enterprise') | [optional] |
-| secretKey | String | Secret key to validate the Captcha. Should match the Captcha Site Key. | [optional] |
-
 ---
 
 ### Conventions

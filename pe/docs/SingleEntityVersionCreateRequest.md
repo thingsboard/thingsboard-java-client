@@ -25,12 +25,6 @@
 | branch | String |  | [optional] |
 | type | VersionCreateRequestType | Type of the version to create |  |
 
-#### ComplexVersionCreateRequest  *(extends VersionCreateRequest, type=`COMPLEX`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| syncStrategy | SyncStrategy |  | [optional] |
-| entityTypes | Map<String, EntityTypeVersionCreateConfig> |  | [optional] |
-
 #### VersionCreateConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -46,22 +40,6 @@
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
-
-#### SyncStrategy (enum)
-`MERGE` | `OVERWRITE`
-
-#### EntityTypeVersionCreateConfig
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| saveRelations | Boolean |  | [optional] |
-| saveAttributes | Boolean |  | [optional] |
-| saveCredentials | Boolean |  | [optional] |
-| saveCalculatedFields | Boolean |  | [optional] |
-| savePermissions | Boolean |  | [optional] |
-| saveGroupEntities | Boolean |  | [optional] |
-| syncStrategy | SyncStrategy |  | [optional] |
-| entityIds | List<UUID> |  | [optional] |
-| allEntities | Boolean |  | [optional] |
 
 ---
 

@@ -21,17 +21,6 @@
 | schedule | AlarmConditionValueAlarmRuleSchedule |  | [optional] |
 | type | String |  |  |
 
-#### AlarmRuleDurationCondition  *(extends AlarmRuleCondition, type=`DURATION`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| unit | TimeUnit |  |  |
-| value | AlarmConditionValueLong |  |  |
-
-#### AlarmRuleRepeatingCondition  *(extends AlarmRuleCondition, type=`REPEATING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| count | AlarmConditionValueInteger |  |  |
-
 #### AlarmConditionExpression
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -75,21 +64,6 @@
 | endsOn | Long |  | [optional] |
 | startsOn | Long |  | [optional] |
 | timezone | String |  | [optional] |
-
-#### TimeUnit (enum)
-`NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
-
-#### AlarmConditionValueLong
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| staticValue | Long |  | [optional] |
-| dynamicValueArgument | String |  | [optional] |
-
-#### AlarmConditionValueInteger
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| staticValue | Integer |  | [optional] |
-| dynamicValueArgument | String |  | [optional] |
 
 #### AlarmRuleConditionFilter
 | Name | Type | Description | Notes |
@@ -175,6 +149,15 @@
 |------|------|-------------|-------|
 | staticValue | Boolean |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
+
+#### AlarmConditionValueLong
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| staticValue | Long |  | [optional] |
+| dynamicValueArgument | String |  | [optional] |
+
+#### TimeUnit (enum)
+`NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
 
 ---
 

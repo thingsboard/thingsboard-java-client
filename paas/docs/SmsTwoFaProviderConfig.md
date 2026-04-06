@@ -21,21 +21,6 @@
 |------|------|-------------|-------|
 | providerType | String |  |  |
 
-#### BackupCodeTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`BACKUP_CODE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| codesQuantity | Integer |  | [optional] |
-
-#### EmailTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`EMAIL`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| verificationCodeLifetime | Integer |  | [optional] |
-
-#### TotpTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`TOTP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| issuerName | String |  |  |
-
 ---
 
 ### Conventions

@@ -20,28 +20,6 @@
 |------|------|-------------|-------|
 | spec | SnmpCommunicationSpec | Specification of the SNMP communication |  |
 
-#### ClientAttributesQueryingSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`CLIENT_ATTRIBUTES_QUERYING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-| queryingFrequencyMs | Long |  | [optional] |
-
-#### TelemetryQueryingSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`TELEMETRY_QUERYING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-| queryingFrequencyMs | Long |  | [optional] |
-
-#### ToDeviceRpcRequestSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`TO_DEVICE_RPC_REQUEST`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-
-#### ToServerRpcRequestSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`TO_SERVER_RPC_REQUEST`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-
 #### SnmpMapping
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|

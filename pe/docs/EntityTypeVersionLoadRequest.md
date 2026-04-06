@@ -16,20 +16,11 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
-
 #### VersionLoadRequest
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | versionId | String |  | [optional] |
 | type | VersionLoadRequestType | Type of the version to load |  |
-
-#### SingleEntityVersionLoadRequest  *(extends VersionLoadRequest, type=`SINGLE_ENTITY`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| internalEntityId | EntityId |  | [optional] |
-| externalEntityId | EntityId |  | [optional] |
-| config | VersionLoadConfig |  | [optional] |
 
 #### EntityTypeVersionLoadConfig
 | Name | Type | Description | Notes |
@@ -46,20 +37,6 @@
 
 #### VersionLoadRequestType (enum)
 `SINGLE_ENTITY` | `ENTITY_TYPE`
-
-#### VersionLoadConfig
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| loadRelations | Boolean |  | [optional] |
-| loadAttributes | Boolean |  | [optional] |
-| loadCredentials | Boolean |  | [optional] |
-| loadCalculatedFields | Boolean |  | [optional] |
-| loadPermissions | Boolean |  | [optional] |
-| loadGroupEntities | Boolean |  | [optional] |
-| autoGenerateIntegrationKey | Boolean |  | [optional] |
-
-#### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
 
 ---
 

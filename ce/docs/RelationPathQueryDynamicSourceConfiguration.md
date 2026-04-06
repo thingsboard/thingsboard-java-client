@@ -20,9 +20,6 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### CurrentOwnerDynamicSourceConfiguration  *(extends CfArgumentDynamicSourceConfiguration, type=`CURRENT_OWNER`)*
-*See CfArgumentDynamicSourceConfiguration for properties.*
-
 #### RelationPathLevel
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|

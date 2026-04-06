@@ -23,14 +23,6 @@
 | schedule | AlarmConditionValueAlarmRuleSchedule |  | [optional] |
 | type | String |  |  |
 
-#### AlarmRuleRepeatingCondition  *(extends AlarmRuleCondition, type=`REPEATING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| count | AlarmConditionValueInteger |  |  |
-
-#### AlarmRuleSimpleCondition  *(extends AlarmRuleCondition, type=`SIMPLE`)*
-*See AlarmRuleCondition for properties.*
-
 #### TimeUnit (enum)
 `NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
 
@@ -83,12 +75,6 @@
 | endsOn | Long |  | [optional] |
 | startsOn | Long |  | [optional] |
 | timezone | String |  | [optional] |
-
-#### AlarmConditionValueInteger
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| staticValue | Integer |  | [optional] |
-| dynamicValueArgument | String |  | [optional] |
 
 #### AlarmRuleConditionFilter
 | Name | Type | Description | Notes |

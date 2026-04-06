@@ -24,15 +24,6 @@
 | dynamicValue | DynamicValueString |  | [optional] |
 | type | AlarmScheduleType |  | [optional] |
 
-#### AnyTimeSchedule  *(extends AlarmSchedule, type=`ANY_TIME`)*
-*See AlarmSchedule for properties.*
-
-#### CustomTimeSchedule  *(extends AlarmSchedule, type=`CUSTOM`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| timezone | String |  | [optional] |
-| items | List<CustomTimeScheduleItem> |  | [optional] |
-
 #### DynamicValueString
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -46,14 +37,6 @@
 
 #### DynamicValueSourceType (enum)
 `CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
-
-#### CustomTimeScheduleItem
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dayOfWeek | Integer |  | [optional] |
-| enabled | Boolean |  | [optional] |
-| endsOn | Long |  | [optional] |
-| startsOn | Long |  | [optional] |
 
 ---
 

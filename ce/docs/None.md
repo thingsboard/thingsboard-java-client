@@ -19,17 +19,6 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### Basic  *(extends OllamaAuth, type=`BASIC`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| username | String |  |  |
-| password | String |  |  |
-
-#### Token  *(extends OllamaAuth, type=`TOKEN`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| token | String |  |  |
-
 ---
 
 ### Conventions

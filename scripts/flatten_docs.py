@@ -186,8 +186,11 @@ def collect_types_to_expand(
                 if ref not in visited:
                     queue.append((ref, depth + 1))
 
-            # Queue discriminator subtypes of polymorphic types
-            if discriminators and type_name in discriminators:
+            # Queue discriminator subtypes of polymorphic types —
+            # but skip when the type is the root's own parent (the root
+            # is already one of those subtypes; siblings are irrelevant).
+            if (discriminators and type_name in discriminators
+                    and type_name != root_info.get('parent')):
                 for subtype in discriminators[type_name]['mapping'].values():
                     if subtype not in visited:
                         queue.append((subtype, depth + 1))

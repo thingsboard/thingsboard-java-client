@@ -24,12 +24,6 @@
 | versionId | String |  | [optional] |
 | type | VersionLoadRequestType | Type of the version to load |  |
 
-#### EntityTypeVersionLoadRequest  *(extends VersionLoadRequest, type=`ENTITY_TYPE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| entityTypes | Map<String, EntityTypeVersionLoadConfig> |  | [optional] |
-| rollbackOnError | Boolean |  | [optional] |
-
 #### VersionLoadConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -43,16 +37,6 @@
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
-
-#### EntityTypeVersionLoadConfig
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| loadRelations | Boolean |  | [optional] |
-| loadAttributes | Boolean |  | [optional] |
-| loadCredentials | Boolean |  | [optional] |
-| loadCalculatedFields | Boolean |  | [optional] |
-| removeOtherEntities | Boolean |  | [optional] |
-| findExistingEntityByName | Boolean |  | [optional] |
 
 ---
 

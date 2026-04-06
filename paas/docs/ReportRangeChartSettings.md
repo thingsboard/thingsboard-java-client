@@ -54,22 +54,6 @@
 | xaxis | TimeSeriesChartXAxisSettings |  | [optional] |
 | yaxes | Map<String, TimeSeriesChartYAxisSettings> |  | [optional] |
 
-#### ReportBarChartWithLabelsSettings  *(extends ReportTimeSeriesChartSettings, subType=`barChartWithLabels`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showBarLabel | Boolean |  | [optional] |
-| barLabelFont | Font |  | [optional] |
-| barLabelColor | String |  | [optional] |
-| showBarValue | Boolean |  | [optional] |
-| barValueFont | Font |  | [optional] |
-| barValueColor | String |  | [optional] |
-| showBarBorder | Boolean |  | [optional] |
-| barBorderWidth | Float |  | [optional] |
-| barBorderRadius | Float |  | [optional] |
-| barBackgroundSettings | ChartFillSettings |  | [optional] |
-| barUnits | String |  | [optional] |
-| barDecimals | Integer |  | [optional] |
-
 #### ColorRange
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|

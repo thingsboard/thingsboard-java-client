@@ -37,13 +37,6 @@
 | customerGroupId | EntityGroupId |  | [optional] |
 | customMenuId | CustomMenuId |  | [optional] |
 
-#### MobileSelfRegistrationParams  *(extends SelfRegistrationParams, type=`MOBILE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| privacyPolicy | String | Privacy policy text. Supports HTML. | [optional] |
-| redirect | MobileRedirectParams | Mobile redirect params. |  |
-| termsOfUse | String | Terms of User text. Supports HTML. | [optional] |
-
 #### SelfRegistrationType (enum)
 `WEB` | `MOBILE`
 
@@ -119,12 +112,6 @@
 
 #### SignUpFieldId (enum)
 `EMAIL` | `PASSWORD` | `REPEAT_PASSWORD` | `FIRST_NAME` | `LAST_NAME` | `PHONE` | `COUNTRY` | `CITY` | `STATE` | `ZIP` | … (12 values total)
-
-#### MobileRedirectParams
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| scheme | String | Mobile application verification settings. Used for callback to mobile application once user is registered. | [optional] |
-| host | String | Mobile application verification settings. Used for callback to mobile application once user is registered. | [optional] |
 
 ---
 

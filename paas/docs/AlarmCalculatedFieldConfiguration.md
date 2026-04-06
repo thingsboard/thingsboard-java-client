@@ -31,55 +31,6 @@
 | output | Output |  | [optional] |
 | aiGenerated | Boolean |  | [optional] |
 
-#### EntityAggregationCalculatedFieldConfiguration  *(extends CalculatedFieldConfiguration, type=`ENTITY_AGGREGATION`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| arguments | Map<String, Argument> |  |  |
-| interval | AggInterval |  |  |
-| metrics | Map<String, AggMetric> |  |  |
-| produceIntermediateResult | Boolean |  | [optional] |
-| watermark | Watermark |  | [optional] |
-
-#### GeofencingCalculatedFieldConfiguration  *(extends CalculatedFieldConfiguration, type=`GEOFENCING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| entityCoordinates | EntityCoordinates |  |  |
-| scheduledUpdateEnabled | Boolean |  | [optional] |
-| scheduledUpdateInterval | Integer |  | [optional] |
-| zoneGroups | Map<String, ZoneGroupConfiguration> |  |  |
-
-#### PropagationCalculatedFieldConfiguration  *(extends CalculatedFieldConfiguration, type=`PROPAGATION`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| applyExpressionToResolvedArguments | Boolean |  | [optional] |
-| arguments | Map<String, Argument> |  |  |
-| expression | String |  | [optional] |
-| relation | RelationPathLevel |  |  |
-
-#### RelatedEntitiesAggregationCalculatedFieldConfiguration  *(extends CalculatedFieldConfiguration, type=`RELATED_ENTITIES_AGGREGATION`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| arguments | Map<String, Argument> |  |  |
-| deduplicationIntervalInSec | Long |  | [optional] |
-| metrics | Map<String, AggMetric> |  |  |
-| relation | RelationPathLevel |  |  |
-| scheduledUpdateEnabled | Boolean |  | [optional] |
-| scheduledUpdateInterval | Integer |  | [optional] |
-| useLatestTs | Boolean |  | [optional] |
-
-#### ScriptCalculatedFieldConfiguration  *(extends CalculatedFieldConfiguration, type=`SCRIPT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| arguments | Map<String, Argument> |  |  |
-| expression | String |  | [optional] |
-
-#### SimpleCalculatedFieldConfiguration  *(extends CalculatedFieldConfiguration, type=`SIMPLE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| arguments | Map<String, Argument> |  |  |
-| expression | String |  | [optional] |
-| useLatestTs | Boolean |  | [optional] |
-
 #### Argument
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -160,96 +111,6 @@
 #### AttributeScope (enum)
 `CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`
 
-#### EntityCoordinates
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| latitudeKeyName | String |  |  |
-| longitudeKeyName | String |  |  |
-
-#### ZoneGroupConfiguration
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| refEntityId | EntityId |  | [optional] |
-| refDynamicSourceConfiguration | CfArgumentDynamicSourceConfiguration |  | [optional] |
-| perimeterKeyName | String |  |  |
-| reportStrategy | GeofencingReportStrategy |  |  |
-| createRelationsWithMatchedZones | Boolean |  | [optional] |
-| relationType | String |  | [optional] |
-| direction | EntitySearchDirection |  | [optional] |
-
-#### RelationPathLevel
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| direction | EntitySearchDirection |  |  |
-| relationType | String |  |  |
-
-#### AggMetric
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| function | AggFunction |  | [optional] |
-| filter | String |  | [optional] |
-| input | AggInput |  | [optional] |
-| defaultValue | Double |  | [optional] |
-
-#### AggInterval
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | String |  |  |
-
-#### CustomInterval  *(extends AggInterval, type=`CUSTOM`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-| durationSec | Long |  |  |
-
-#### DayInterval  *(extends AggInterval, type=`DAY`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-
-#### HourInterval  *(extends AggInterval, type=`HOUR`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-
-#### MonthInterval  *(extends AggInterval, type=`MONTH`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-
-#### QuarterInterval  *(extends AggInterval, type=`QUARTER`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-
-#### WeekInterval  *(extends AggInterval, type=`WEEK`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-
-#### WeekSunSatInterval  *(extends AggInterval, type=`WEEK_SUN_SAT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-
-#### YearInterval  *(extends AggInterval, type=`YEAR`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| tz | String |  |  |
-| offsetSec | Long |  | [optional] |
-
-#### Watermark
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| duration | Long |  | [optional] |
-
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
 
@@ -312,29 +173,11 @@
 #### AttributesRuleChainOutputStrategy  *(extends AttributesOutputStrategy, type=`RULE_CHAIN`)*
 *See AttributesOutputStrategy for properties.*
 
-#### GeofencingReportStrategy (enum)
-`REPORT_TRANSITION_EVENTS_ONLY` | `REPORT_PRESENCE_STATUS_ONLY` | `REPORT_TRANSITION_EVENTS_AND_PRESENCE_STATUS`
-
-#### EntitySearchDirection (enum)
-`FROM` | `TO`
-
-#### AggFunction (enum)
-`MIN` | `MAX` | `SUM` | `AVG` | `COUNT` | `COUNT_UNIQUE`
-
-#### AggInput
+#### RelationPathLevel
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| type | String |  |  |
-
-#### AggFunctionInput  *(extends AggInput, type=`function`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| function | String |  | [optional] |
-
-#### AggKeyInput  *(extends AggInput, type=`key`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| key | String |  | [optional] |
+| direction | EntitySearchDirection |  |  |
+| relationType | String |  |  |
 
 #### AlarmRuleSchedule
 | Name | Type | Description | Notes |
@@ -372,6 +215,9 @@
 |------|------|-------------|-------|
 | staticValue | Integer |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
+
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
 
 #### AlarmRuleConditionFilter
 | Name | Type | Description | Notes |

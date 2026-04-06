@@ -20,13 +20,6 @@
 |------|------|-------------|-------|
 | method | String |  |  |
 
-#### MobileAppNotificationDeliveryMethodConfig  *(extends NotificationDeliveryMethodConfig, method=`MOBILE_APP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| firebaseServiceAccountCredentialsFileName | String |  | [optional] |
-| firebaseServiceAccountCredentials | String |  | [optional] |
-| useSystemSettings | Boolean |  | [optional] |
-
 ---
 
 ### Conventions

@@ -24,9 +24,6 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### AttributesRuleChainOutputStrategy  *(extends AttributesOutputStrategy, type=`RULE_CHAIN`)*
-*See AttributesOutputStrategy for properties.*
-
 ---
 
 ### Conventions

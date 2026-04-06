@@ -21,11 +21,6 @@
 |------|------|-------------|-------|
 | method | String |  |  |
 
-#### SlackNotificationDeliveryMethodConfig  *(extends NotificationDeliveryMethodConfig, method=`SLACK`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| botToken | String |  |  |
-
 ---
 
 ### Conventions

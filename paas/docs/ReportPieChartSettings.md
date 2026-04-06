@@ -43,23 +43,6 @@
 | legendValueColor | String |  | [optional] |
 | legendShowTotal | Boolean |  | [optional] |
 
-#### ReportDoughnutChartSettings  *(extends ReportLatestChartSettings, subType=`horizontalDoughnutChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| layout | DoughnutLayout |  | [optional] |
-| clockwise | Boolean |  | [optional] |
-| totalValueFont | Font |  | [optional] |
-| totalValueColor | String |  | [optional] |
-
-#### ReportBarChartSettings  *(extends ReportLatestChartSettings, subType=`latestBarChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| axisMin | Double |  | [optional] |
-| axisMax | Double |  | [optional] |
-| axisTickLabelFont | Font |  | [optional] |
-| axisTickLabelColor | String |  | [optional] |
-| barSettings | BarSeriesSettings |  | [optional] |
-
 #### PieChartLabelPosition (enum)
 `INSIDE` | `OUTSIDE`
 
@@ -82,43 +65,6 @@
 
 #### FontStyle (enum)
 `NORMAL` | `ITALIC`
-
-#### BarSeriesSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showBorder | Boolean |  | [optional] |
-| borderWidth | Float |  | [optional] |
-| borderRadius | Float |  | [optional] |
-| barWidth | Double |  | [optional] |
-| showLabel | Boolean |  | [optional] |
-| labelPosition | ChartLabelPosition |  | [optional] |
-| labelFont | Font |  | [optional] |
-| labelColor | String |  | [optional] |
-| enableLabelBackground | Boolean |  | [optional] |
-| labelBackground | String |  | [optional] |
-| backgroundSettings | ChartFillSettings |  | [optional] |
-
-#### DoughnutLayout (enum)
-`DEFAULT` | `WITH_TOTAL`
-
-#### ChartLabelPosition (enum)
-`TOP` | `BOTTOM`
-
-#### ChartFillSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | ChartFillType |  | [optional] |
-| opacity | Float |  | [optional] |
-| gradient | ChartFillSettingsGradient |  | [optional] |
-
-#### ChartFillType (enum)
-`NONE` | `OPACITY` | `GRADIENT`
-
-#### ChartFillSettingsGradient
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| start | Float |  | [optional] |
-| end | Float |  | [optional] |
 
 ---
 

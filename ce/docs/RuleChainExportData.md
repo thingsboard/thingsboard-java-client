@@ -26,56 +26,6 @@
 | calculatedFields | List<CalculatedField> |  | [optional] |
 | entityType | EntityType |  |  |
 
-#### AiModelExportData  *(extends EntityExportData, entityType=`AI_MODEL`)*
-*See EntityExportData for properties.*
-
-#### AssetExportData  *(extends EntityExportData, entityType=`ASSET`)*
-*See EntityExportData for properties.*
-
-#### AssetProfileExportData  *(extends EntityExportData, entityType=`ASSET_PROFILE`)*
-*See EntityExportData for properties.*
-
-#### CustomerExportData  *(extends EntityExportData, entityType=`CUSTOMER`)*
-*See EntityExportData for properties.*
-
-#### DashboardExportData  *(extends EntityExportData, entityType=`DASHBOARD`)*
-*See EntityExportData for properties.*
-
-#### DeviceExportData  *(extends EntityExportData, entityType=`DEVICE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| credentials | DeviceCredentials |  | [optional] |
-
-#### DeviceProfileExportData  *(extends EntityExportData, entityType=`DEVICE_PROFILE`)*
-*See EntityExportData for properties.*
-
-#### EntityViewExportData  *(extends EntityExportData, entityType=`ENTITY_VIEW`)*
-*See EntityExportData for properties.*
-
-#### NotificationRuleExportData  *(extends EntityExportData, entityType=`NOTIFICATION_RULE`)*
-*See EntityExportData for properties.*
-
-#### NotificationTargetExportData  *(extends EntityExportData, entityType=`NOTIFICATION_TARGET`)*
-*See EntityExportData for properties.*
-
-#### NotificationTemplateExportData  *(extends EntityExportData, entityType=`NOTIFICATION_TEMPLATE`)*
-*See EntityExportData for properties.*
-
-#### OtaPackageExportData  *(extends EntityExportData, entityType=`OTA_PACKAGE`)*
-*See EntityExportData for properties.*
-
-#### TbResourceExportData  *(extends EntityExportData, entityType=`TB_RESOURCE`)*
-*See EntityExportData for properties.*
-
-#### WidgetsBundleExportData  *(extends EntityExportData, entityType=`WIDGETS_BUNDLE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| widgets | List<com.fasterxml.jackson.databind.JsonNode> |  | [optional] |
-| fqns | List<String> |  | [optional] |
-
-#### WidgetTypeExportData  *(extends EntityExportData, entityType=`WIDGET_TYPE`)*
-*See EntityExportData for properties.*
-
 #### RuleChainMetaData
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -259,17 +209,6 @@
 | expression | String |  | [optional] |
 | useLatestTs | Boolean |  | [optional] |
 
-#### DeviceCredentials
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | DeviceCredentialsId | The Id is automatically generated during device creation. Use 'getDeviceCredentialsByDeviceId' to obtain the id based on device id. Use 'updateDeviceCredentials' to update device credentials. | [readonly] |
-| createdTime | Long | Timestamp of the device credentials creation, in milliseconds | [optional] |
-| deviceId | DeviceId | JSON object with the device Id. |  |
-| credentialsType | DeviceCredentialsType | Type of the credentials | [optional] |
-| credentialsId | String | Unique Credentials Id per platform instance. Used to lookup credentials from the database. By default, new access token for your device. Depends on the type of the credentials. |  |
-| credentialsValue | String | Value of the credentials. Null in case of ACCESS_TOKEN credentials type. Base64 value in case of X509_CERTIFICATE. Complex object in case of MQTT_BASIC and LWM2M_CREDENTIALS | [optional] |
-| version | Long |  | [optional] |
-
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -288,14 +227,6 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | strategy | TimeSeriesOutputStrategy |  | [optional] |
-
-#### DeviceCredentialsId
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | UUID | string |  |
-
-#### DeviceCredentialsType (enum)
-`ACCESS_TOKEN` | `X509_CERTIFICATE` | `MQTT_BASIC` | `LWM2_M_CREDENTIALS`
 
 #### AttributeScope (enum)
 `CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`

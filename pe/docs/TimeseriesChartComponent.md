@@ -35,176 +35,6 @@
 | subType | ReportComponentSubType |  |  |
 | type | ReportComponentType |  |  |
 
-#### AlarmTableComponent  *(extends ReportComponent, type=`ALARM_TABLE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| showTableHeading | Boolean |  | [optional] |
-| tableHeading | Heading |  | [optional] |
-| tableSortOrder | TableSortOrder |  | [optional] |
-| alarmSource | DataSource |  | [optional] |
-| timewindow | TimeWindowConfiguration |  | [optional] |
-
-#### DashboardComponent  *(extends ReportComponent, type=`DASHBOARD`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| widthType | ImageWidthType |  | [optional] |
-| customWidth | Integer |  | [optional] |
-| alignment | ImageAlignment |  | [optional] |
-| config | DashboardReportConfig | Dashboard report configuration. |  |
-
-#### DividerComponent  *(extends ReportComponent, type=`DIVIDER`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| length | BorderLength |  | [optional] |
-| borderType | BorderType |  | [optional] |
-| widthPx | Integer |  | [optional] |
-| color | String |  | [optional] |
-
-#### EntityTableComponent  *(extends ReportComponent, type=`ENTITY_TABLE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| showTableHeading | Boolean |  | [optional] |
-| tableHeading | Heading |  | [optional] |
-| tableSortOrder | TableSortOrder |  | [optional] |
-
-#### ErrorComponent  *(extends ReportComponent, type=`ERROR`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| errorMessage | String |  | [optional] |
-| exception | ErrorComponentAllOfException |  | [optional] |
-
-#### HeadingComponent  *(extends ReportComponent, type=`HEADING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| value | String |  | [optional] |
-| font | Font |  | [optional] |
-| color | String |  | [optional] |
-| textAlignment | TextAlignment |  | [optional] |
-| verticalAlignment | VerticalAlignment |  | [optional] |
-| height | Integer |  | [optional] |
-
-#### ImageComponent  *(extends ReportComponent, type=`IMAGE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| widthType | ImageWidthType |  | [optional] |
-| customWidth | Integer |  | [optional] |
-| alignment | ImageAlignment |  | [optional] |
-| sourceType | ImageSourceType |  | [optional] |
-| imageUrl | String |  | [optional] |
-
-#### LatestChartComponent  *(extends ReportComponent, type=`LATEST_CHART`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| widthType | ImageWidthType |  | [optional] |
-| customWidth | Integer |  | [optional] |
-| alignment | ImageAlignment |  | [optional] |
-| height | Integer |  | [optional] |
-| latestChartSettings | ReportLatestChartSettings |  | [optional] |
-
-#### PageBreakComponent  *(extends ReportComponent, type=`PAGE_BREAK`)*
-*See ReportComponent for properties.*
-
-#### RichTextComponent  *(extends ReportComponent, type=`RICH_TEXT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| value | String |  | [optional] |
-
-#### SplitViewComponent  *(extends ReportComponent, type=`SPLIT_VIEW`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| leftView | ReportComponent |  | [optional] |
-| rightView | ReportComponent |  | [optional] |
-| splitPosition | Float |  | [optional] |
-| splitGap | Integer |  | [optional] |
-| leftVerticalAlignment | VerticalAlignment |  | [optional] |
-| rightVerticalAlignment | VerticalAlignment |  | [optional] |
-
-#### SubReportComponent  *(extends ReportComponent, type=`SUB_REPORT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| templateId | ReportTemplateId |  | [optional] |
-| avoidPageBreakInside | Boolean |  | [optional] |
-
-#### TimeseriesTableComponent  *(extends ReportComponent, type=`TIME_SERIES_TABLE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| dataSources | List<DataSource> |  | [optional] |
-| margins | Insets |  | [optional] |
-| paddings | Insets |  | [optional] |
-| background | String |  | [optional] |
-| borderWidth | Integer |  | [optional] |
-| borderRadius | Integer |  | [optional] |
-| borderColor | String |  | [optional] |
-| showTableHeading | Boolean |  | [optional] |
-| tableHeading | Heading |  | [optional] |
-| tableSortOrder | TableSortOrder |  | [optional] |
-| timewindow | TimeWindowConfiguration |  | [optional] |
-| showTimestamp | Boolean |  | [optional] |
-| timestampLabel | String |  | [optional] |
-| timestampPattern | String |  | [optional] |
-| timestampColumnSettings | ColumnSettings |  | [optional] |
-
 #### DataSource
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -474,107 +304,6 @@
 | showTotal | Boolean |  | [optional] |
 | showLatest | Boolean |  | [optional] |
 
-#### VerticalAlignment (enum)
-`BOTTOM` | `TOP` | `MIDDLE`
-
-#### Heading
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| text | String |  | [optional] |
-| font | Font |  | [optional] |
-| color | String |  | [optional] |
-| textAlignment | TextAlignment |  | [optional] |
-| verticalAlignment | VerticalAlignment |  | [optional] |
-| height | Integer |  | [optional] |
-
-#### TableSortOrder
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| column | String |  | [optional] |
-| direction | Direction |  | [optional] |
-
-#### ReportLatestChartSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showTitle | Boolean |  | [optional] |
-| title | String |  | [optional] |
-| titleFont | Font |  | [optional] |
-| titleColor | String |  | [optional] |
-| titleAlignment | TextAlignment |  | [optional] |
-| units | String |  | [optional] |
-| decimals | Integer |  | [optional] |
-| autoScale | Boolean |  | [optional] |
-| sortSeries | Boolean |  | [optional] |
-| showTotal | Boolean |  | [optional] |
-| showLegend | Boolean |  | [optional] |
-| legendPosition | LegendPosition |  | [optional] |
-| legendLabelFont | Font |  | [optional] |
-| legendLabelColor | String |  | [optional] |
-| legendValueFont | Font |  | [optional] |
-| legendValueColor | String |  | [optional] |
-| legendShowTotal | Boolean |  | [optional] |
-
-#### ReportDoughnutChartSettings  *(extends ReportLatestChartSettings, subType=`horizontalDoughnutChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| layout | DoughnutLayout |  | [optional] |
-| clockwise | Boolean |  | [optional] |
-| totalValueFont | Font |  | [optional] |
-| totalValueColor | String |  | [optional] |
-
-#### ReportBarChartSettings  *(extends ReportLatestChartSettings, subType=`latestBarChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| axisMin | Double |  | [optional] |
-| axisMax | Double |  | [optional] |
-| axisTickLabelFont | Font |  | [optional] |
-| axisTickLabelColor | String |  | [optional] |
-| barSettings | BarSeriesSettings |  | [optional] |
-
-#### ReportPieChartSettings  *(extends ReportLatestChartSettings, subType=`pieChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showLabel | Boolean |  | [optional] |
-| labelPosition | PieChartLabelPosition |  | [optional] |
-| labelFont | Font |  | [optional] |
-| labelColor | String |  | [optional] |
-| borderWidth | Float |  | [optional] |
-| borderColor | String |  | [optional] |
-| radius | Double |  | [optional] |
-| clockwise | Boolean |  | [optional] |
-
-#### DashboardReportConfig
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| baseUrl | String | Base URL of ThingsBoard UI that should be accessible by Web Report Server. |  |
-| dashboardId | String | A string value representing the dashboard id. |  |
-| state | String | Target dashboard state for dashboard report generation. | [optional] |
-| timezone | String | Timezone in which target dashboard will be presented in dashboard report. |  |
-| useDashboardTimewindow | Boolean | If set, timewindow configured in the target dashboard will be used during dashboard report generation. | [optional] |
-| timewindow | com.fasterxml.jackson.databind.JsonNode | Specific dashboard timewindow that will be used during dashboard report generation. | [optional] |
-| namePattern | String | If set, timewindow configured in the target dashboard will be used during dashboard report generation. |  |
-| type | String | Dashboard report file type, can be PDF | PNG |
-| useCurrentUserCredentials | Boolean | If set, credentials of user created this dashboard report configuration will be used to open dashboard UI during dashboard report generation. | [optional] |
-| userId | String | A string value representing the user id. |  |
-
-#### ImageSourceType (enum)
-`IMAGE` | `ENTITY_KEY`
-
-#### ErrorComponentAllOfException
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| cause | ErrorComponentAllOfExceptionCause |  | [optional] |
-| stackTrace | List<ErrorComponentAllOfExceptionCauseStackTrace> |  | [optional] |
-| message | String |  | [optional] |
-| suppressed | List<ErrorComponentAllOfExceptionCause> |  | [optional] |
-| localizedMessage | String |  | [optional] |
-
-#### BorderLength (enum)
-`LONG` | `SHORT`
-
-#### BorderType (enum)
-`SOLID` | `DASHED` | `DOTTED`
-
 #### Aggregation (enum)
 `MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
 
@@ -697,39 +426,8 @@
 | pointSize | Float |  | [optional] |
 | fillAreaSettings | ChartFillSettings |  | [optional] |
 
-#### Direction (enum)
-`ASC` | `DESC`
-
-#### CellSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| font | Font |  | [optional] |
-| color | String |  | [optional] |
-| backgroundColor | String |  | [optional] |
-| textAlignment | TextAlignment |  | [optional] |
-| verticalAlignment | VerticalAlignment |  | [optional] |
-
 #### DataKeySettingsType (enum)
 `COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
-
-#### ErrorComponentAllOfExceptionCause
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| stackTrace | List<ErrorComponentAllOfExceptionCauseStackTrace> |  | [optional] |
-| message | String |  | [optional] |
-| localizedMessage | String |  | [optional] |
-
-#### ErrorComponentAllOfExceptionCauseStackTrace
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| classLoaderName | String |  | [optional] |
-| moduleName | String |  | [optional] |
-| moduleVersion | String |  | [optional] |
-| methodName | String |  | [optional] |
-| fileName | String |  | [optional] |
-| lineNumber | Integer |  | [optional] |
-| className | String |  | [optional] |
-| nativeMethod | Boolean |  | [optional] |
 
 #### IntervalType (enum)
 `MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
@@ -749,6 +447,18 @@
 #### ChartLabelPosition (enum)
 `TOP` | `BOTTOM`
 
+#### CellSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| font | Font |  | [optional] |
+| color | String |  | [optional] |
+| backgroundColor | String |  | [optional] |
+| textAlignment | TextAlignment |  | [optional] |
+| verticalAlignment | VerticalAlignment |  | [optional] |
+
+#### TimeSeriesChartSeriesType (enum)
+`LINE` | `BAR`
+
 #### BarSeriesSettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -764,24 +474,18 @@
 | labelBackground | String |  | [optional] |
 | backgroundSettings | ChartFillSettings |  | [optional] |
 
-#### PieChartLabelPosition (enum)
-`INSIDE` | `OUTSIDE`
-
-#### DoughnutLayout (enum)
-`DEFAULT` | `WITH_TOTAL`
-
-#### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
-
-#### TimeSeriesChartSeriesType (enum)
-`LINE` | `BAR`
-
 #### DataKeyComparisonSettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | showValuesForComparison | Boolean |  | [optional] |
 | comparisonValuesLabel | String |  | [optional] |
 | color | String |  | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
+#### VerticalAlignment (enum)
+`BOTTOM` | `TOP` | `MIDDLE`
 
 ---
 

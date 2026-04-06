@@ -20,22 +20,6 @@
 |------|------|-------------|-------|
 | providerType | String |  |  |
 
-#### EmailTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`EMAIL`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| verificationCodeLifetime | Integer |  | [optional] |
-
-#### SmsTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`SMS`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| verificationCodeLifetime | Integer |  | [optional] |
-| smsVerificationMessageTemplate | String |  |  |
-
-#### TotpTwoFaProviderConfig  *(extends TwoFaProviderConfig, providerType=`TOTP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| issuerName | String |  |  |
-
 ---
 
 ### Conventions

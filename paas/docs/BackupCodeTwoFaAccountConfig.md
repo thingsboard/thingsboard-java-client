@@ -22,21 +22,6 @@
 | useByDefault | Boolean |  | [optional] |
 | providerType | String |  |  |
 
-#### EmailTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`EMAIL`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| email | String |  |  |
-
-#### SmsTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`SMS`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| phoneNumber | String |  |  |
-
-#### TotpTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`TOTP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| authUrl | String |  |  |
-
 ---
 
 ### Conventions

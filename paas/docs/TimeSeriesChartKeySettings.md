@@ -26,17 +26,6 @@
 |------|------|-------------|-------|
 | type | DataKeySettingsType | Data key settings type |  |
 
-#### ColumnSettings  *(type=`COLUMN`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| columnWidth | String |  | [optional] |
-| header | CellSettings |  | [optional] |
-| cell | CellSettings |  | [optional] |
-| type | DataKeySettingsType | Data key settings type |  |
-
-#### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
-*See DataKeySettings for properties.*
-
 #### TimeSeriesChartSeriesType (enum)
 `LINE` | `BAR`
 
@@ -112,15 +101,6 @@
 | opacity | Float |  | [optional] |
 | gradient | ChartFillSettingsGradient |  | [optional] |
 
-#### CellSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| font | Font |  | [optional] |
-| color | String |  | [optional] |
-| backgroundColor | String |  | [optional] |
-| textAlignment | TextAlignment |  | [optional] |
-| verticalAlignment | VerticalAlignment |  | [optional] |
-
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`
 
@@ -135,12 +115,6 @@
 |------|------|-------------|-------|
 | start | Float |  | [optional] |
 | end | Float |  | [optional] |
-
-#### TextAlignment (enum)
-`CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
-
-#### VerticalAlignment (enum)
-`BOTTOM` | `TOP` | `MIDDLE`
 
 ---
 

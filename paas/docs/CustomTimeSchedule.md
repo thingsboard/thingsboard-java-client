@@ -22,17 +22,6 @@
 | dynamicValue | DynamicValueString |  | [optional] |
 | type | AlarmScheduleType |  | [optional] |
 
-#### AnyTimeSchedule  *(extends AlarmSchedule, type=`ANY_TIME`)*
-*See AlarmSchedule for properties.*
-
-#### SpecificTimeSchedule  *(extends AlarmSchedule, type=`SPECIFIC_TIME`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| daysOfWeek | Set<Integer> |  | [optional] |
-| endsOn | Long |  | [optional] |
-| startsOn | Long |  | [optional] |
-| timezone | String |  | [optional] |
-
 #### CustomTimeScheduleItem
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|

@@ -41,20 +41,6 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### AwsSnsSmsProviderConfiguration  *(extends SmsProviderConfiguration, type=`AWS_SNS`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| accessKeyId | String | The AWS SNS Access Key ID. | [optional] |
-| secretAccessKey | String | The AWS SNS Access Key. | [optional] |
-| region | String | The AWS region. | [optional] |
-
-#### TwilioSmsProviderConfiguration  *(extends SmsProviderConfiguration, type=`TWILIO`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| accountSid | String | Twilio account Sid. | [optional] |
-| accountToken | String | Twilio account Token. | [optional] |
-| numberFrom | String | The number/id of a sender. | [optional] |
-
 #### SmppBindType (enum)
 `TX` | `RX` | `TRX`
 

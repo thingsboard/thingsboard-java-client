@@ -31,12 +31,6 @@
 | cancellationTs | Long | Timestamp of the job cancellation, in milliseconds | [optional] |
 | jobType | String |  |  |
 
-#### CfReprocessingJobResult  *(extends JobResult, jobType=`CF_REPROCESSING`)*
-*See JobResult for properties.*
-
-#### DummyJobResult  *(extends JobResult, jobType=`DUMMY`)*
-*See JobResult for properties.*
-
 #### Report
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|

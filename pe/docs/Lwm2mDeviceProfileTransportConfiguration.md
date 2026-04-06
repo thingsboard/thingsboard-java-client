@@ -23,33 +23,6 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### CoapDeviceProfileTransportConfiguration  *(extends DeviceProfileTransportConfiguration, type=`COAP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| coapDeviceTypeConfiguration | CoapDeviceTypeConfiguration |  | [optional] |
-| clientSettings | PowerSavingConfiguration |  | [optional] |
-
-#### DefaultDeviceProfileTransportConfiguration  *(extends DeviceProfileTransportConfiguration, type=`DEFAULT`)*
-*See DeviceProfileTransportConfiguration for properties.*
-
-#### MqttDeviceProfileTransportConfiguration  *(extends DeviceProfileTransportConfiguration, type=`MQTT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| deviceTelemetryTopic | String |  | [optional] |
-| deviceAttributesTopic | String |  | [optional] |
-| deviceAttributesSubscribeTopic | String |  | [optional] |
-| transportPayloadTypeConfiguration | TransportPayloadTypeConfiguration |  | [optional] |
-| sparkplug | Boolean |  | [optional] |
-| sparkplugAttributesMetricNames | Set<String> |  | [optional] |
-| sendAckOnValidationException | Boolean |  | [optional] |
-
-#### SnmpDeviceProfileTransportConfiguration  *(extends DeviceProfileTransportConfiguration, type=`SNMP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| timeoutMs | Integer |  | [optional] |
-| retries | Integer |  | [optional] |
-| communicationConfigs | List<SnmpCommunicationConfig> |  | [optional] |
-
 #### TelemetryMappingConfiguration
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -103,94 +76,10 @@
 #### PowerMode (enum)
 `PSM` | `DRX` | `E_DRX`
 
-#### TransportPayloadTypeConfiguration
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| transportPayloadType | String |  |  |
-
-#### JsonTransportPayloadConfiguration  *(extends TransportPayloadTypeConfiguration, transportPayloadType=`JSON`)*
-*See TransportPayloadTypeConfiguration for properties.*
-
-#### ProtoTransportPayloadConfiguration  *(extends TransportPayloadTypeConfiguration, transportPayloadType=`PROTOBUF`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| deviceTelemetryProtoSchema | String |  | [optional] |
-| deviceAttributesProtoSchema | String |  | [optional] |
-| deviceRpcRequestProtoSchema | String |  | [optional] |
-| deviceRpcResponseProtoSchema | String |  | [optional] |
-| enableCompatibilityWithJsonPayloadFormat | Boolean |  | [optional] |
-| useJsonPayloadFormatForDefaultDownlinkTopics | Boolean |  | [optional] |
-
-#### CoapDeviceTypeConfiguration
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| coapDeviceType | String |  |  |
-
-#### DefaultCoapDeviceTypeConfiguration  *(extends CoapDeviceTypeConfiguration, coapDeviceType=`DEFAULT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| transportPayloadTypeConfiguration | TransportPayloadTypeConfiguration |  | [optional] |
-
-#### EfentoCoapDeviceTypeConfiguration  *(extends CoapDeviceTypeConfiguration, coapDeviceType=`EFENTO`)*
-*See CoapDeviceTypeConfiguration for properties.*
-
-#### PowerSavingConfiguration
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| powerMode | PowerMode |  | [optional] |
-| psmActivityTimer | Long |  | [optional] |
-| edrxCycle | Long |  | [optional] |
-| pagingTransmissionWindow | Long |  | [optional] |
-
-#### SnmpCommunicationConfig
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| spec | SnmpCommunicationSpec | Specification of the SNMP communication |  |
-
-#### ClientAttributesQueryingSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`CLIENT_ATTRIBUTES_QUERYING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-| queryingFrequencyMs | Long |  | [optional] |
-
-#### SharedAttributesSettingSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`SHARED_ATTRIBUTES_SETTING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-
-#### TelemetryQueryingSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`TELEMETRY_QUERYING`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-| queryingFrequencyMs | Long |  | [optional] |
-
-#### ToDeviceRpcRequestSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`TO_DEVICE_RPC_REQUEST`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-
-#### ToServerRpcRequestSnmpCommunicationConfig  *(extends SnmpCommunicationConfig, spec=`TO_SERVER_RPC_REQUEST`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| mappings | List<SnmpMapping> |  | [optional] |
-
 #### LwM2mVersion
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | supported | Boolean |  | [optional] |
-
-#### SnmpCommunicationSpec (enum)
-`TELEMETRY_QUERYING` | `CLIENT_ATTRIBUTES_QUERYING` | `SHARED_ATTRIBUTES_SETTING` | `TO_DEVICE_RPC_REQUEST` | `TO_SERVER_RPC_REQUEST`
-
-#### SnmpMapping
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| oid | String |  | [optional] |
-| key | String |  | [optional] |
-| dataType | DataType |  | [optional] |
-
-#### DataType (enum)
-`BOOLEAN` | `LONG` | `DOUBLE` | `STRING` | `JSON`
 
 ---
 

@@ -25,3 +25,4 @@ pom.xml.versionsBackup
 .run
 .claude
 .planning
+__pycache__/
