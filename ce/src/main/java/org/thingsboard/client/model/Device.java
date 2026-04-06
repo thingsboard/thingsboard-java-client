@@ -89,7 +89,7 @@ public class Device {
   private String label;
 
   public static final String JSON_PROPERTY_DEVICE_PROFILE_ID = "deviceProfileId";
-  @Nonnull
+  @Nullable
   private DeviceProfileId deviceProfileId;
 
   public static final String JSON_PROPERTY_FIRMWARE_ID = "firmwareId";
@@ -265,26 +265,26 @@ public class Device {
   }
 
 
-  public Device deviceProfileId(@Nonnull DeviceProfileId deviceProfileId) {
+  public Device deviceProfileId(@Nullable DeviceProfileId deviceProfileId) {
     this.deviceProfileId = deviceProfileId;
     return this;
   }
 
   /**
-   * JSON object with Device Profile Id.
+   * JSON object with Device Profile Id. If not provided, the type will be used to determine the profile. If neither deviceProfileId nor type is specified, the default device profile will be used.
    * @return deviceProfileId
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public DeviceProfileId getDeviceProfileId() {
     return deviceProfileId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDeviceProfileId(@Nonnull DeviceProfileId deviceProfileId) {
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeviceProfileId(@Nullable DeviceProfileId deviceProfileId) {
     this.deviceProfileId = deviceProfileId;
   }
 

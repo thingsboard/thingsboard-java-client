@@ -38,6 +38,10 @@
       "description": "Alarm Controller"
     },
     {
+      "name": "alarm-rule-controller",
+      "description": "Alarm Rule Controller"
+    },
+    {
       "name": "api-key-controller",
       "description": "Api Key Controller"
     },
@@ -7368,6 +7372,1328 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PageDataAlarmInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/alarm/rule": {
+      "post": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Create Or Update Alarm Rule (saveAlarmRule)",
+        "description": "Creates or Updates the Alarm Rule. When creating alarm rule, platform generates Alarm Rule Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm Rule Id will be present in the response. Specify existing Alarm Rule Id to update the alarm rule. Referencing non-existing Alarm Rule Id will cause 'Not Found' error. Remove 'id', 'tenantId' from the request body example (below) to create new Alarm Rule entity. \n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "saveAlarmRule",
+        "requestBody": {
+          "description": "A JSON value representing the alarm rule.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlarmRuleDefinition"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlarmRuleDefinition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid request body",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/alarm/rule/testScript": {
+      "post": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Test alarm rule TBEL expression (testAlarmRuleScript)",
+        "description": "Execute the alarm rule TBEL condition expression and return the result. Alarm rule expressions must return a boolean value. The format of request: \n\n```json\n{\n  \"expression\": \"return temperature > 50;\",\n  \"arguments\": {\n    \"temperature\": { \"type\": \"SINGLE_VALUE\", \"ts\": 1739776478057, \"value\": 55 }\n  }\n}\n```\n\n Expected result JSON contains \"output\" and \"error\".\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "testAlarmRuleScript",
+        "requestBody": {
+          "description": "Test alarm rule TBEL condition expression. The expression must return a boolean value.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonNode"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonNode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid request body",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/alarm/rule/{alarmRuleId}": {
+      "get": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Get Alarm Rule (getAlarmRuleById)",
+        "description": "Fetch the Alarm Rule object based on the provided Alarm Rule Id.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "getAlarmRuleById",
+        "parameters": [
+          {
+            "name": "alarmRuleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlarmRuleDefinition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Delete Alarm Rule (deleteAlarmRule)",
+        "description": "Deletes the alarm rule. Referencing non-existing Alarm Rule Id will cause an error.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "deleteAlarmRule",
+        "parameters": [
+          {
+            "name": "alarmRuleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/alarm/rule/{alarmRuleId}/debug": {
+      "get": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Get latest alarm rule debug event (getLatestAlarmRuleDebugEvent)",
+        "description": "Gets latest alarm rule debug event for specified alarm rule id. Referencing non-existing alarm rule id will cause an error. \n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "getLatestAlarmRuleDebugEvent",
+        "parameters": [
+          {
+            "name": "alarmRuleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonNode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/alarm/rules": {
+      "get": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Get alarm rules (getAlarmRules)",
+        "description": "Fetch tenant alarm rules based on the filter.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "getAlarmRules",
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Maximum amount of entities in a one page",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Sequence number of page starting from 0",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "entityType",
+            "in": "query",
+            "description": "Entity type filter. If not specified, alarm rules for all supported entity types will be returned.",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/EntityType"
+            }
+          },
+          {
+            "name": "entities",
+            "in": "query",
+            "description": "Entities filter. If not specified, alarm rules for entity type filter will be returned.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "uniqueItems": true
+            }
+          },
+          {
+            "name": "textSearch",
+            "in": "query",
+            "description": "The case insensitive 'substring' filter based on the calculated field name.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortProperty",
+            "in": "query",
+            "description": "Property of entity to sort by",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "createdTime",
+                "name"
+              ]
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. ASC (ASCENDING) or DESC (DESCENDING)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ASC",
+                "DESC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageDataAlarmRuleDefinitionInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/alarm/rules/names": {
+      "get": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Get alarm rule names (getAlarmRuleNames)",
+        "description": "Fetch the list of alarm rule names.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "getAlarmRuleNames",
+        "parameters": [
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Maximum amount of entities in a one page",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Sequence number of page starting from 0",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "textSearch",
+            "in": "query",
+            "description": "The case insensitive 'substring' filter based on the calculated field name.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. ASC (ASCENDING) or DESC (DESCENDING)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ASC",
+                "DESC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageDataString"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/alarm/rules/{entityType}/{entityId}": {
+      "get": {
+        "tags": [
+          "alarm-rule-controller"
+        ],
+        "summary": "Get Alarm Rules by Entity Id (getAlarmRulesByEntityId)",
+        "description": "Fetch the Alarm Rules based on the provided Entity Id.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "operationId": "getAlarmRulesByEntityId",
+        "parameters": [
+          {
+            "name": "entityType",
+            "in": "path",
+            "description": "A string value representing the entity type. For example, 'DEVICE'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "entityId",
+            "in": "path",
+            "description": "A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Maximum amount of entities in a one page",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Sequence number of page starting from 0",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "textSearch",
+            "in": "query",
+            "description": "The case insensitive 'substring' filter based on the calculated field name.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortProperty",
+            "in": "query",
+            "description": "Property of entity to sort by",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "createdTime",
+                "name"
+              ]
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. ASC (ASCENDING) or DESC (DESCENDING)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ASC",
+                "DESC"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageDataAlarmRuleDefinition"
                 }
               }
             }
@@ -19242,7 +20568,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HomeDashboard"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -19953,7 +21286,14 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dashboard"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request",
@@ -26779,7 +28119,7 @@
           "device-profile-controller"
         ],
         "summary": "Create Or Update Device Profile (saveDeviceProfile)",
-        "description": "Create or update the Device Profile. When creating device profile, platform generates device profile id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created device profile id will be present in the response. Specify existing device profile id to update the device profile. Referencing non-existing device profile Id will cause 'Not Found' error. \n\nDevice profile name is unique in the scope of tenant. Only one 'default' device profile may exist in scope of tenant.\n\n# Device profile data definition\n\nDevice profile data object contains alarm rules configuration, device provision strategy and transport type configuration for device connectivity. Let's review some examples. First one is the default device profile data configuration and second one - the custom one. \n\n```json\n{\n   \"alarms\":[\n   ],\n   \"configuration\":{\n      \"type\":\"DEFAULT\"\n   },\n   \"provisionConfiguration\":{\n      \"type\":\"DISABLED\",\n      \"provisionDeviceSecret\":null\n   },\n   \"transportConfiguration\":{\n      \"type\":\"DEFAULT\"\n   }\n}\n```\n\n```json\n{\n   \"alarms\":[\n      {\n         \"id\":\"2492b935-1226-59e9-8615-17d8978a4f93\",\n         \"alarmType\":\"Temperature Alarm\",\n         \"clearRule\":{\n            \"schedule\":null,\n            \"condition\":{\n               \"spec\":{\n                  \"type\":\"SIMPLE\"\n               },\n               \"condition\":[\n                  {\n                     \"key\":{\n                        \"key\":\"temperature\",\n                        \"type\":\"TIME_SERIES\"\n                     },\n                     \"value\":null,\n                     \"predicate\":{\n                        \"type\":\"NUMERIC\",\n                        \"value\":{\n                           \"userValue\":null,\n                           \"defaultValue\":30.0,\n                           \"dynamicValue\":null\n                        },\n                        \"operation\":\"LESS\"\n                     },\n                     \"valueType\":\"NUMERIC\"\n                  }\n               ]\n            },\n            \"dashboardId\":null,\n            \"alarmDetails\":null\n         },\n         \"propagate\":false,\n         \"createRules\":{\n            \"MAJOR\":{\n               \"schedule\":{\n                  \"type\":\"SPECIFIC_TIME\",\n                  \"endsOn\":64800000,\n                  \"startsOn\":43200000,\n                  \"timezone\":\"Europe/Kiev\",\n                  \"daysOfWeek\":[\n                     1,\n                     3,\n                     5\n                  ]\n               },\n               \"condition\":{\n                  \"spec\":{\n                     \"type\":\"DURATION\",\n                     \"unit\":\"MINUTES\",\n                     \"predicate\":{\n                        \"userValue\":null,\n                        \"defaultValue\":30,\n                        \"dynamicValue\":null\n                     }\n                  },\n                  \"condition\":[\n                     {\n                        \"key\":{\n                           \"key\":\"temperature\",\n                           \"type\":\"TIME_SERIES\"\n                        },\n                        \"value\":null,\n                        \"predicate\":{\n                           \"type\":\"COMPLEX\",\n                           \"operation\":\"OR\",\n                           \"predicates\":[\n                              {\n                                 \"type\":\"NUMERIC\",\n                                 \"value\":{\n                                    \"userValue\":null,\n                                    \"defaultValue\":50.0,\n                                    \"dynamicValue\":null\n                                 },\n                                 \"operation\":\"LESS_OR_EQUAL\"\n                              },\n                              {\n                                 \"type\":\"NUMERIC\",\n                                 \"value\":{\n                                    \"userValue\":null,\n                                    \"defaultValue\":30.0,\n                                    \"dynamicValue\":null\n                                 },\n                                 \"operation\":\"GREATER\"\n                              }\n                           ]\n                        },\n                        \"valueType\":\"NUMERIC\"\n                     }\n                  ]\n               },\n               \"dashboardId\":null,\n               \"alarmDetails\":null\n            },\n            \"WARNING\":{\n               \"schedule\":{\n                  \"type\":\"CUSTOM\",\n                  \"items\":[\n                     {\n                        \"endsOn\":0,\n                        \"enabled\":false,\n                        \"startsOn\":0,\n                        \"dayOfWeek\":1\n                     },\n                     {\n                        \"endsOn\":64800000,\n                        \"enabled\":true,\n                        \"startsOn\":43200000,\n                        \"dayOfWeek\":2\n                     },\n                     {\n                        \"endsOn\":0,\n                        \"enabled\":false,\n                        \"startsOn\":0,\n                        \"dayOfWeek\":3\n                     },\n                     {\n                        \"endsOn\":57600000,\n                        \"enabled\":true,\n                        \"startsOn\":36000000,\n                        \"dayOfWeek\":4\n                     },\n                     {\n                        \"endsOn\":0,\n                        \"enabled\":false,\n                        \"startsOn\":0,\n                        \"dayOfWeek\":5\n                     },\n                     {\n                        \"endsOn\":0,\n                        \"enabled\":false,\n                        \"startsOn\":0,\n                        \"dayOfWeek\":6\n                     },\n                     {\n                        \"endsOn\":0,\n                        \"enabled\":false,\n                        \"startsOn\":0,\n                        \"dayOfWeek\":7\n                     }\n                  ],\n                  \"timezone\":\"Europe/Kiev\"\n               },\n               \"condition\":{\n                  \"spec\":{\n                     \"type\":\"REPEATING\",\n                     \"predicate\":{\n                        \"userValue\":null,\n                        \"defaultValue\":5,\n                        \"dynamicValue\":null\n                     }\n                  },\n                  \"condition\":[\n                     {\n                        \"key\":{\n                           \"key\":\"tempConstant\",\n                           \"type\":\"CONSTANT\"\n                        },\n                        \"value\":30,\n                        \"predicate\":{\n                           \"type\":\"NUMERIC\",\n                           \"value\":{\n                              \"userValue\":null,\n                              \"defaultValue\":0.0,\n                              \"dynamicValue\":{\n                                 \"inherit\":false,\n                                 \"sourceType\":\"CURRENT_DEVICE\",\n                                 \"sourceAttribute\":\"tempThreshold\"\n                              }\n                           },\n                           \"operation\":\"EQUAL\"\n                        },\n                        \"valueType\":\"NUMERIC\"\n                     }\n                  ]\n               },\n               \"dashboardId\":null,\n               \"alarmDetails\":null\n            },\n            \"CRITICAL\":{\n               \"schedule\":null,\n               \"condition\":{\n                  \"spec\":{\n                     \"type\":\"SIMPLE\"\n                  },\n                  \"condition\":[\n                     {\n                        \"key\":{\n                           \"key\":\"temperature\",\n                           \"type\":\"TIME_SERIES\"\n                        },\n                        \"value\":null,\n                        \"predicate\":{\n                           \"type\":\"NUMERIC\",\n                           \"value\":{\n                              \"userValue\":null,\n                              \"defaultValue\":50.0,\n                              \"dynamicValue\":null\n                           },\n                           \"operation\":\"GREATER\"\n                        },\n                        \"valueType\":\"NUMERIC\"\n                     }\n                  ]\n               },\n               \"dashboardId\":null,\n               \"alarmDetails\":null\n            }\n         },\n         \"propagateRelationTypes\":null\n      }\n   ],\n   \"configuration\":{\n      \"type\":\"DEFAULT\"\n   },\n   \"provisionConfiguration\":{\n      \"type\":\"ALLOW_CREATE_NEW_DEVICES\",\n      \"provisionDeviceSecret\":\"vaxb9hzqdbz3oqukvomg\"\n   },\n   \"transportConfiguration\":{\n      \"type\":\"MQTT\",\n      \"deviceTelemetryTopic\":\"v1/devices/me/telemetry\",\n      \"deviceAttributesTopic\":\"v1/devices/me/attributes\",\n      \"transportPayloadTypeConfiguration\":{\n         \"transportPayloadType\":\"PROTOBUF\",\n         \"deviceTelemetryProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage telemetry;\\n\\nmessage SensorDataReading {\\n\\n  optional double temperature = 1;\\n  optional double humidity = 2;\\n  InnerObject innerObject = 3;\\n\\n  message InnerObject {\\n    optional string key1 = 1;\\n    optional bool key2 = 2;\\n    optional double key3 = 3;\\n    optional int32 key4 = 4;\\n    optional string key5 = 5;\\n  }\\n}\",\n         \"deviceAttributesProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage attributes;\\n\\nmessage SensorConfiguration {\\n  optional string firmwareVersion = 1;\\n  optional string serialNumber = 2;\\n}\",\n         \"deviceRpcRequestProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage rpc;\\n\\nmessage RpcRequestMsg {\\n  optional string method = 1;\\n  optional int32 requestId = 2;\\n  optional string params = 3;\\n}\",\n         \"deviceRpcResponseProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage rpc;\\n\\nmessage RpcResponseMsg {\\n  optional string payload = 1;\\n}\"\n      }\n   }\n}\n```\n\nLet's review some specific objects examples related to the device profile configuration:\n\n# Alarm Schedule\n\nAlarm Schedule JSON object represents the time interval during which the alarm rule is active. Note, \n\n```json\n\"schedule\": null\n```\n\nmeans alarm rule is active all the time. **'daysOfWeek'** field represents Monday as 1, Tuesday as 2 and so on. **'startsOn'** and **'endsOn'** fields represent hours in millis (e.g. 64800000 = 18:00 or 6pm). **'enabled'** flag specifies if item in a custom rule is active for specific day of the week:\n\n## Specific Time Schedule\n\n```json\n{\n   \"schedule\":{\n      \"type\":\"SPECIFIC_TIME\",\n      \"endsOn\":64800000,\n      \"startsOn\":43200000,\n      \"timezone\":\"Europe/Kiev\",\n      \"daysOfWeek\":[\n         1,\n         3,\n         5\n      ]\n   }\n}\n```\n\n## Custom Schedule\n\n```json\n{\n   \"schedule\":{\n      \"type\":\"CUSTOM\",\n      \"items\":[\n         {\n            \"endsOn\":0,\n            \"enabled\":false,\n            \"startsOn\":0,\n            \"dayOfWeek\":1\n         },\n         {\n            \"endsOn\":64800000,\n            \"enabled\":true,\n            \"startsOn\":43200000,\n            \"dayOfWeek\":2\n         },\n         {\n            \"endsOn\":0,\n            \"enabled\":false,\n            \"startsOn\":0,\n            \"dayOfWeek\":3\n         },\n         {\n            \"endsOn\":57600000,\n            \"enabled\":true,\n            \"startsOn\":36000000,\n            \"dayOfWeek\":4\n         },\n         {\n            \"endsOn\":0,\n            \"enabled\":false,\n            \"startsOn\":0,\n            \"dayOfWeek\":5\n         },\n         {\n            \"endsOn\":0,\n            \"enabled\":false,\n            \"startsOn\":0,\n            \"dayOfWeek\":6\n         },\n         {\n            \"endsOn\":0,\n            \"enabled\":false,\n            \"startsOn\":0,\n            \"dayOfWeek\":7\n         }\n      ],\n      \"timezone\":\"Europe/Kiev\"\n   }\n}\n```\n\n# Alarm condition type (**'spec'**)\n\nAlarm condition type can be either simple, duration, or repeating. For example, 5 times in a row or during 5 minutes.\n\nNote, **'userValue'** field is not used and reserved for future usage, **'dynamicValue'** is used for condition appliance by using the value of the **'sourceAttribute'** or else **'defaultValue'** is used (if **'sourceAttribute'** is absent).\n\n**'sourceType'** of the **'sourceAttribute'** can be: \n * 'CURRENT_DEVICE';\n * 'CURRENT_CUSTOMER';\n * 'CURRENT_TENANT'.\n\n**'sourceAttribute'** can be inherited from the owner if **'inherit'** is set to true (for CURRENT_DEVICE and CURRENT_CUSTOMER).\n\n## Repeating alarm condition\n\n```json\n{\n   \"spec\":{\n      \"type\":\"REPEATING\",\n      \"predicate\":{\n         \"userValue\":null,\n         \"defaultValue\":5,\n         \"dynamicValue\":{\n            \"inherit\":true,\n            \"sourceType\":\"CURRENT_DEVICE\",\n            \"sourceAttribute\":\"tempAttr\"\n         }\n      }\n   }\n}\n```\n\n## Duration alarm condition\n\n```json\n{\n   \"spec\":{\n      \"type\":\"DURATION\",\n      \"unit\":\"MINUTES\",\n      \"predicate\":{\n         \"userValue\":null,\n         \"defaultValue\":30,\n         \"dynamicValue\":null\n      }\n   }\n}\n```\n\n**'unit'** can be: \n * 'SECONDS';\n * 'MINUTES';\n * 'HOURS';\n * 'DAYS'.\n\n# Key Filters\n\nKey filter objects are created under the **'condition'** array. They allow you to define complex logical expressions over entity field, attribute, latest time series value or constant. The filter is defined using 'key', 'valueType', 'value' (refers to the value of the 'CONSTANT' alarm filter key type) and 'predicate' objects. Let's review each object:\n\n## Alarm Filter Key\n\nFilter Key defines either entity field, attribute, telemetry or constant. It is a JSON object that consists the key name and type. The following filter key types are supported:\n * 'ATTRIBUTE' - used for attributes values;\n * 'TIME_SERIES' - used for time series values;\n * 'ENTITY_FIELD' - used for accessing entity fields like 'name', 'label', etc. The list of available fields depends on the entity type;\n * 'CONSTANT' - constant value specified.\n\nLet's review the example:\n\n```json\n{\n  \"type\": \"TIME_SERIES\",\n  \"key\": \"temperature\"\n}\n```\n\n## Value Type and Operations\n\nProvides a hint about the data type of the entity field that is defined in the filter key. The value type impacts the list of possible operations that you may use in the corresponding predicate. For example, you may use 'STARTS_WITH' or 'END_WITH', but you can't use 'GREATER_OR_EQUAL' for string values.The following filter value types and corresponding predicate operations are supported: \n\n * 'STRING' - used to filter any 'String' or 'JSON' values. Operations: EQUAL, NOT_EQUAL, STARTS_WITH, ENDS_WITH, CONTAINS, NOT_CONTAINS; \n * 'NUMERIC' - used for 'Long' and 'Double' values. Operations: EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL; \n * 'BOOLEAN' - used for boolean values. Operations: EQUAL, NOT_EQUAL;\n * 'DATE_TIME' - similar to numeric, transforms value to milliseconds since epoch. Operations: EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL; \n\n\n\n\n## Filter Predicate\n\nFilter Predicate defines the logical expression to evaluate. The list of available operations depends on the filter value type, see above. Platform supports 4 predicate types: 'STRING', 'NUMERIC', 'BOOLEAN' and 'COMPLEX'. The last one allows to combine multiple operations over one filter key.\n\nSimple predicate example to check 'value < 100': \n\n```json\n{\n  \"operation\": \"LESS\",\n  \"value\": {\n    \"userValue\": null,\n    \"defaultValue\": 100,\n    \"dynamicValue\": null\n  },\n  \"type\": \"NUMERIC\"\n}\n```\n\nComplex predicate example, to check 'value < 10 or value > 20': \n\n```json\n{\n  \"type\": \"COMPLEX\",\n  \"operation\": \"OR\",\n  \"predicates\": [\n    {\n      \"operation\": \"LESS\",\n      \"value\": {\n        \"userValue\": null,\n        \"defaultValue\": 10,\n        \"dynamicValue\": null\n      },\n      \"type\": \"NUMERIC\"\n    },\n    {\n      \"operation\": \"GREATER\",\n      \"value\": {\n        \"userValue\": null,\n        \"defaultValue\": 20,\n        \"dynamicValue\": null\n      },\n      \"type\": \"NUMERIC\"\n    }\n  ]\n}\n```\n\nMore complex predicate example, to check 'value < 10 or (value > 50 && value < 60)': \n\n```json\n{\n  \"type\": \"COMPLEX\",\n  \"operation\": \"OR\",\n  \"predicates\": [\n    {\n      \"operation\": \"LESS\",\n      \"value\": {\n        \"userValue\": null,\n        \"defaultValue\": 10,\n        \"dynamicValue\": null\n      },\n      \"type\": \"NUMERIC\"\n    },\n    {\n      \"type\": \"COMPLEX\",\n      \"operation\": \"AND\",\n      \"predicates\": [\n        {\n          \"operation\": \"GREATER\",\n          \"value\": {\n            \"userValue\": null,\n            \"defaultValue\": 50,\n            \"dynamicValue\": null\n          },\n          \"type\": \"NUMERIC\"\n        },\n        {\n          \"operation\": \"LESS\",\n          \"value\": {\n            \"userValue\": null,\n            \"defaultValue\": 60,\n            \"dynamicValue\": null\n          },\n          \"type\": \"NUMERIC\"\n        }\n      ]\n    }\n  ]\n}\n```\n\nYou may also want to replace hardcoded values (for example, temperature > 20) with the more dynamic expression (for example, temperature > value of the tenant attribute with key 'temperatureThreshold'). It is possible to use 'dynamicValue' to define attribute of the tenant, customer or device. See example below:\n\n```json\n{\n  \"operation\": \"GREATER\",\n  \"value\": {\n    \"userValue\": null,\n    \"defaultValue\": 0,\n    \"dynamicValue\": {\n      \"inherit\": false,\n      \"sourceType\": \"CURRENT_TENANT\",\n      \"sourceAttribute\": \"temperatureThreshold\"\n    }\n  },\n  \"type\": \"NUMERIC\"\n}\n```\n\nNote that you may use 'CURRENT_DEVICE', 'CURRENT_CUSTOMER' and 'CURRENT_TENANT' as a 'sourceType'. The 'defaultValue' is used when the attribute with such a name is not defined for the chosen source. The 'sourceAttribute' can be inherited from the owner of the specified 'sourceType' if 'inherit' is set to true.\n\n# Provision Configuration\n\nThere are 3 types of device provision configuration for the device profile: \n * 'DISABLED';\n * 'ALLOW_CREATE_NEW_DEVICES';\n * 'CHECK_PRE_PROVISIONED_DEVICES'.\n\nPlease refer to the [docs](https://thingsboard.io/docs/user-guide/device-provisioning/) for more details.\n\n# Transport Configuration\n\n5 transport configuration types are available:\n * 'DEFAULT';\n * 'MQTT';\n * 'LWM2M';\n * 'COAP';\n * 'SNMP'.\n\nDefault type supports basic MQTT, HTTP, CoAP and LwM2M transports. Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-profiles/#transport-configuration) for more details about other types.\n\nSee another example of COAP transport configuration below:\n\n```json\n{\n   \"type\":\"COAP\",\n   \"clientSettings\":{\n      \"edrxCycle\":null,\n      \"powerMode\":\"DRX\",\n      \"psmActivityTimer\":null,\n      \"pagingTransmissionWindow\":null\n   },\n   \"coapDeviceTypeConfiguration\":{\n      \"coapDeviceType\":\"DEFAULT\",\n      \"transportPayloadTypeConfiguration\":{\n         \"transportPayloadType\":\"JSON\"\n      }\n   }\n}\n```Remove 'id', 'tenantId' from the request body example (below) to create new Device Profile entity. \n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "Create or update the Device Profile. When creating device profile, platform generates device profile id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created device profile id will be present in the response. Specify existing device profile id to update the device profile. Referencing non-existing device profile Id will cause 'Not Found' error. \n\nDevice profile name is unique in the scope of tenant. Only one 'default' device profile may exist in scope of tenant.\n\n# Device profile data definition\n\nDevice profile data object contains device provision strategy and transport type configuration for device connectivity. Let's review some examples. First one is the default device profile data configuration and second one - the custom one. \n\n```json\n{\n   \"configuration\":{\n      \"type\":\"DEFAULT\"\n   },\n   \"provisionConfiguration\":{\n      \"type\":\"DISABLED\",\n      \"provisionDeviceSecret\":null\n   },\n   \"transportConfiguration\":{\n      \"type\":\"DEFAULT\"\n   }\n}\n```\n\n```json\n{\n   \"configuration\":{\n      \"type\":\"DEFAULT\"\n   },\n   \"provisionConfiguration\":{\n      \"type\":\"ALLOW_CREATE_NEW_DEVICES\",\n      \"provisionDeviceSecret\":\"vaxb9hzqdbz3oqukvomg\"\n   },\n   \"transportConfiguration\":{\n      \"type\":\"MQTT\",\n      \"deviceTelemetryTopic\":\"v1/devices/me/telemetry\",\n      \"deviceAttributesTopic\":\"v1/devices/me/attributes\",\n      \"transportPayloadTypeConfiguration\":{\n         \"transportPayloadType\":\"PROTOBUF\",\n         \"deviceTelemetryProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage telemetry;\\n\\nmessage SensorDataReading {\\n\\n  optional double temperature = 1;\\n  optional double humidity = 2;\\n  InnerObject innerObject = 3;\\n\\n  message InnerObject {\\n    optional string key1 = 1;\\n    optional bool key2 = 2;\\n    optional double key3 = 3;\\n    optional int32 key4 = 4;\\n    optional string key5 = 5;\\n  }\\n}\",\n         \"deviceAttributesProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage attributes;\\n\\nmessage SensorConfiguration {\\n  optional string firmwareVersion = 1;\\n  optional string serialNumber = 2;\\n}\",\n         \"deviceRpcRequestProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage rpc;\\n\\nmessage RpcRequestMsg {\\n  optional string method = 1;\\n  optional int32 requestId = 2;\\n  optional string params = 3;\\n}\",\n         \"deviceRpcResponseProtoSchema\":\"syntax =\\\"proto3\\\";\\npackage rpc;\\n\\nmessage RpcResponseMsg {\\n  optional string payload = 1;\\n}\"\n      }\n   }\n}\n```\n\nLet's review some specific objects examples related to the device profile configuration:# Provision Configuration\n\nThere are 3 types of device provision configuration for the device profile: \n * 'DISABLED';\n * 'ALLOW_CREATE_NEW_DEVICES';\n * 'CHECK_PRE_PROVISIONED_DEVICES'.\n\nPlease refer to the [docs](https://thingsboard.io/docs/user-guide/device-provisioning/) for more details.\n\n# Transport Configuration\n\n5 transport configuration types are available:\n * 'DEFAULT';\n * 'MQTT';\n * 'LWM2M';\n * 'COAP';\n * 'SNMP'.\n\nDefault type supports basic MQTT, HTTP, CoAP and LwM2M transports. Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-profiles/#transport-configuration) for more details about other types.\n\nSee another example of COAP transport configuration below:\n\n```json\n{\n   \"type\":\"COAP\",\n   \"clientSettings\":{\n      \"edrxCycle\":null,\n      \"powerMode\":\"DRX\",\n      \"psmActivityTimer\":null,\n      \"pagingTransmissionWindow\":null\n   },\n   \"coapDeviceTypeConfiguration\":{\n      \"coapDeviceType\":\"DEFAULT\",\n      \"transportPayloadTypeConfiguration\":{\n         \"transportPayloadType\":\"JSON\"\n      }\n   }\n}\n```Remove 'id', 'tenantId' from the request body example (below) to create new Device Profile entity. \n\nAvailable for users with 'TENANT_ADMIN' authority.",
         "operationId": "saveDeviceProfile",
         "requestBody": {
           "content": {
@@ -57268,11 +58608,11 @@
           }
         ],
         "requestBody": {
+          "description": "A JSON object representing the RPC request.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the RPC request."
+                "type": "string"
               }
             }
           },
@@ -57425,11 +58765,11 @@
           }
         ],
         "requestBody": {
+          "description": "A JSON object representing the RPC request.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the RPC request."
+                "type": "string"
               }
             }
           },
@@ -57582,11 +58922,11 @@
           }
         ],
         "requestBody": {
+          "description": "A JSON object representing the RPC request.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the RPC request."
+                "type": "string"
               }
             }
           },
@@ -58241,11 +59581,11 @@
           }
         ],
         "requestBody": {
+          "description": "A JSON object representing the RPC request.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the RPC request."
+                "type": "string"
               }
             }
           },
@@ -61889,11 +63229,11 @@
         "description": "Creates the Message with type 'REST_API_REQUEST' and payload taken from the request body. Uses current User Id ( the one which credentials is used to perform the request) as the Rule Engine message originator. This method allows you to extend the regular platform API with the power of Rule Engine. You may use default and custom rule nodes to handle the message. The generated message contains two important metadata fields:\n\n * **'serviceId'** to identify the platform server that received the request;\n * **'requestUUID'** to identify the request and route possible response from the Rule Engine;\n\nUse **'rest call reply'** rule node to push the reply from rule engine back as a REST API call response. The default timeout of the request processing is 10 seconds.\n\n Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).",
         "operationId": "handleRuleEngineRequestForUser",
         "requestBody": {
+          "description": "A JSON object representing the message.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the message."
+                "type": "string"
               }
             }
           },
@@ -62055,11 +63395,11 @@
           }
         ],
         "requestBody": {
+          "description": "A JSON object representing the message.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the message."
+                "type": "string"
               }
             }
           },
@@ -62240,11 +63580,11 @@
           }
         ],
         "requestBody": {
+          "description": "A JSON object representing the message.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the message."
+                "type": "string"
               }
             }
           },
@@ -62416,11 +63756,11 @@
           }
         ],
         "requestBody": {
+          "description": "A JSON object representing the message.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
-                "type": "string",
-                "description": "A JSON value representing the message."
+                "type": "string"
               }
             }
           },
@@ -65735,7 +67075,7 @@
         "requestBody": {
           "description": "A string value representing the json object. For example, '{\"key\":\"value\"}'. See API call description for more details.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
                 "type": "string"
               }
@@ -66068,7 +67408,7 @@
         "requestBody": {
           "description": "A string value representing the json object. For example, '{\"key\":\"value\"}'. See API call description for more details.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
                 "type": "string"
               }
@@ -66935,7 +68275,7 @@
         "requestBody": {
           "description": "A JSON with the telemetry values. See API call description for more details.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
                 "type": "string"
               }
@@ -67111,7 +68451,7 @@
         "requestBody": {
           "description": "A JSON with the telemetry values. See API call description for more details.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
                 "type": "string"
               }
@@ -68125,7 +69465,7 @@
         "requestBody": {
           "description": "A string value representing the json object. For example, '{\"key\":\"value\"}'. See API call description for more details.",
           "content": {
-            "application/json": {
+            "text/plain": {
               "schema": {
                 "type": "string"
               }
@@ -81239,91 +82579,12 @@
           "OTHER"
         ]
       },
-      "AlarmCondition": {
-        "type": "object",
-        "properties": {
-          "condition": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AlarmConditionFilter"
-            }
-          },
-          "spec": {
-            "$ref": "#/components/schemas/AlarmConditionSpec",
-            "description": "JSON object representing alarm condition type"
-          }
-        }
-      },
       "AlarmConditionExpression": {
         "discriminator": {
           "propertyName": "type",
           "mapping": {
             "SIMPLE": "#/components/schemas/SimpleAlarmConditionExpression",
             "TBEL": "#/components/schemas/TbelAlarmConditionExpression"
-          }
-        },
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "AlarmConditionFilter": {
-        "type": "object",
-        "properties": {
-          "valueType": {
-            "$ref": "#/components/schemas/EntityKeyValueType",
-            "description": "String representation of the type of the value",
-            "example": "NUMERIC"
-          },
-          "key": {
-            "$ref": "#/components/schemas/AlarmConditionFilterKey",
-            "description": "JSON object for specifying alarm condition by specific key"
-          },
-          "predicate": {
-            "$ref": "#/components/schemas/KeyFilterPredicate",
-            "description": "JSON object representing filter condition"
-          },
-          "value": {
-            "description": "Value used in Constant comparison. For other types, such as TIME_SERIES or ATTRIBUTE, the predicate condition is used"
-          }
-        }
-      },
-      "AlarmConditionFilterKey": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "$ref": "#/components/schemas/AlarmConditionKeyType",
-            "description": "The key type",
-            "example": "TIME_SERIES"
-          },
-          "key": {
-            "type": "string",
-            "description": "String value representing the key",
-            "example": "temp"
-          }
-        }
-      },
-      "AlarmConditionKeyType": {
-        "type": "string",
-        "enum": [
-          "ATTRIBUTE",
-          "TIME_SERIES",
-          "ENTITY_FIELD",
-          "CONSTANT"
-        ]
-      },
-      "AlarmConditionSpec": {
-        "description": "Specification for alarm conditions",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "SIMPLE": "#/components/schemas/SimpleAlarmConditionSpec",
-            "DURATION": "#/components/schemas/DurationAlarmConditionSpec",
-            "REPEATING": "#/components/schemas/RepeatingAlarmConditionSpec"
           }
         },
         "properties": {
@@ -81912,27 +83173,6 @@
           "notifyOn"
         ]
       },
-      "AlarmRule": {
-        "type": "object",
-        "properties": {
-          "condition": {
-            "$ref": "#/components/schemas/AlarmCondition",
-            "description": "JSON object representing the alarm rule condition"
-          },
-          "alarmDetails": {
-            "type": "string",
-            "description": "String value representing the additional details for an alarm rule"
-          },
-          "dashboardId": {
-            "$ref": "#/components/schemas/DashboardId",
-            "description": "JSON object with the dashboard Id representing the reference to alarm details dashboard used by mobile application"
-          },
-          "schedule": {
-            "$ref": "#/components/schemas/AlarmSchedule",
-            "description": "JSON object representing time interval during which the rule is active"
-          }
-        }
-      },
       "AlarmRuleAnyTimeSchedule": {
         "allOf": [
           {
@@ -82092,6 +83332,67 @@
         },
         "required": [
           "condition"
+        ]
+      },
+      "AlarmRuleDefinitionInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/CalculatedFieldId",
+            "description": "JSON object with the Alarm Rule Id. Referencing non-existing Alarm Rule Id will cause error."
+          },
+          "createdTime": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp of the alarm rule creation, in milliseconds",
+            "example": 1609459200000,
+            "readOnly": true
+          },
+          "tenantId": {
+            "$ref": "#/components/schemas/TenantId"
+          },
+          "entityId": {
+            "$ref": "#/components/schemas/EntityId"
+          },
+          "name": {
+            "type": "string",
+            "description": "User defined name of the alarm rule."
+          },
+          "debugSettings": {
+            "$ref": "#/components/schemas/DebugSettings",
+            "description": "Debug settings object."
+          },
+          "configurationVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Version of alarm rule configuration.",
+            "example": 0
+          },
+          "configuration": {
+            "$ref": "#/components/schemas/AlarmCalculatedFieldConfiguration"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the alarm rule. May include: 'description' (string).",
+            "example": {
+              "description": "High temperature alarm rule"
+            }
+          },
+          "entityName": {
+            "type": "string"
+          },
+          "debugMode": {
+            "type": "boolean",
+            "deprecated": true,
+            "writeOnly": true
+          }
+        },
+        "required": [
+          "configuration"
         ]
       },
       "AlarmRuleDurationCondition": {
@@ -82278,34 +83579,6 @@
         "required": [
           "operation",
           "value"
-        ]
-      },
-      "AlarmSchedule": {
-        "type": "object",
-        "description": "Configuration for alarm schedule",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "ANY_TIME": "#/components/schemas/AnyTimeSchedule",
-            "SPECIFIC_TIME": "#/components/schemas/SpecificTimeSchedule",
-            "CUSTOM": "#/components/schemas/CustomTimeSchedule"
-          }
-        },
-        "properties": {
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueString"
-          },
-          "type": {
-            "$ref": "#/components/schemas/AlarmScheduleType"
-          }
-        }
-      },
-      "AlarmScheduleType": {
-        "type": "string",
-        "enum": [
-          "ANY_TIME",
-          "SPECIFIC_TIME",
-          "CUSTOM"
         ]
       },
       "AlarmSearchStatus": {
@@ -82578,13 +83851,6 @@
         },
         "required": [
           "apiKey"
-        ]
-      },
-      "AnyTimeSchedule": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmSchedule"
-          }
         ]
       },
       "ApiFeature": {
@@ -83065,8 +84331,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/EntityId",
-            "description": "JSON object with the entity Id. "
+            "$ref": "#/components/schemas/AssetProfileId",
+            "description": "JSON object with the Asset Profile Id."
           },
           "name": {
             "type": "string",
@@ -84604,47 +85870,6 @@
           }
         ]
       },
-      "CustomTimeSchedule": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmSchedule"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "timezone": {
-                "type": "string"
-              },
-              "items": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CustomTimeScheduleItem"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "CustomTimeScheduleItem": {
-        "type": "object",
-        "properties": {
-          "enabled": {
-            "type": "boolean"
-          },
-          "dayOfWeek": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "startsOn": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "endsOn": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      },
       "Customer": {
         "type": "object",
         "properties": {
@@ -84729,7 +85954,6 @@
           }
         },
         "required": [
-          "email",
           "title"
         ]
       },
@@ -85507,7 +86731,7 @@
           },
           "deviceProfileId": {
             "$ref": "#/components/schemas/DeviceProfileId",
-            "description": "JSON object with Device Profile Id."
+            "description": "JSON object with Device Profile Id. If not provided, the type will be used to determine the profile. If neither deviceProfileId nor type is specified, the default device profile will be used."
           },
           "firmwareId": {
             "$ref": "#/components/schemas/OtaPackageId",
@@ -85536,7 +86760,6 @@
           }
         },
         "required": [
-          "deviceProfileId",
           "name"
         ]
       },
@@ -85782,7 +87005,7 @@
           },
           "deviceProfileId": {
             "$ref": "#/components/schemas/DeviceProfileId",
-            "description": "JSON object with Device Profile Id."
+            "description": "JSON object with Device Profile Id. If not provided, the type will be used to determine the profile. If neither deviceProfileId nor type is specified, the default device profile will be used."
           },
           "firmwareId": {
             "$ref": "#/components/schemas/OtaPackageId",
@@ -85831,7 +87054,6 @@
           }
         },
         "required": [
-          "deviceProfileId",
           "name"
         ]
       },
@@ -85922,54 +87144,6 @@
           }
         }
       },
-      "DeviceProfileAlarm": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "String value representing the alarm rule id",
-            "example": "highTemperatureAlarmID"
-          },
-          "alarmType": {
-            "type": "string",
-            "description": "String value representing type of the alarm",
-            "example": "High Temperature Alarm"
-          },
-          "createRules": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/AlarmRule"
-            },
-            "description": "Complex JSON object representing create alarm rules. The unique create alarm rule can be created for each alarm severity type. There can be 5 create alarm rules configured per a single alarm type. See method implementation notes and AlarmRule model for more details"
-          },
-          "clearRule": {
-            "$ref": "#/components/schemas/AlarmRule",
-            "description": "JSON object representing clear alarm rule"
-          },
-          "propagate": {
-            "type": "boolean",
-            "description": "Propagation flag to specify if alarm should be propagated to parent entities of alarm originator",
-            "example": true
-          },
-          "propagateToOwner": {
-            "type": "boolean",
-            "description": "Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) of alarm originator",
-            "example": true
-          },
-          "propagateToTenant": {
-            "type": "boolean",
-            "description": "Propagation flag to specify if alarm should be propagated to the tenant entity",
-            "example": true
-          },
-          "propagateRelationTypes": {
-            "type": "array",
-            "description": "JSON array of relation types that should be used for propagation. By default, 'propagateRelationTypes' array is empty which means that the alarm will be propagated based on any relation type to parent entities. This parameter should be used only in case when 'propagate' parameter is set to true, otherwise, 'propagateRelationTypes' array will be ignored.",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
       "DeviceProfileConfiguration": {
         "description": "Device profile configuration",
         "discriminator": {
@@ -86001,12 +87175,6 @@
           "provisionConfiguration": {
             "$ref": "#/components/schemas/DeviceProfileProvisionConfiguration",
             "description": "JSON object of provisioning strategy type per device profile"
-          },
-          "alarms": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DeviceProfileAlarm"
-            }
           }
         }
       },
@@ -86032,8 +87200,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "#/components/schemas/EntityId",
-            "description": "JSON object with the entity Id. "
+            "$ref": "#/components/schemas/DeviceProfileId",
+            "description": "JSON object with the Device Profile Id."
           },
           "name": {
             "type": "string",
@@ -86431,27 +87599,6 @@
           }
         ]
       },
-      "DurationAlarmConditionSpec": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmConditionSpec"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "unit": {
-                "$ref": "#/components/schemas/TimeUnit",
-                "description": "Duration time unit"
-              },
-              "predicate": {
-                "$ref": "#/components/schemas/FilterPredicateValueLong",
-                "description": "Duration predicate"
-              }
-            }
-          }
-        ],
-        "description": "Duration Alarm Condition Specification"
-      },
       "DynamicValueBoolean": {
         "type": "object",
         "properties": {
@@ -86475,42 +87622,6 @@
           "resolvedValue": {
             "type": "number",
             "format": "double"
-          },
-          "sourceType": {
-            "$ref": "#/components/schemas/DynamicValueSourceType"
-          },
-          "sourceAttribute": {
-            "type": "string"
-          },
-          "inherit": {
-            "type": "boolean"
-          }
-        }
-      },
-      "DynamicValueInteger": {
-        "type": "object",
-        "properties": {
-          "resolvedValue": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "sourceType": {
-            "$ref": "#/components/schemas/DynamicValueSourceType"
-          },
-          "sourceAttribute": {
-            "type": "string"
-          },
-          "inherit": {
-            "type": "boolean"
-          }
-        }
-      },
-      "DynamicValueLong": {
-        "type": "object",
-        "properties": {
-          "resolvedValue": {
-            "type": "integer",
-            "format": "int64"
           },
           "sourceType": {
             "$ref": "#/components/schemas/DynamicValueSourceType"
@@ -88452,38 +89563,6 @@
           }
         }
       },
-      "FilterPredicateValueInteger": {
-        "type": "object",
-        "properties": {
-          "defaultValue": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userValue": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueInteger"
-          }
-        }
-      },
-      "FilterPredicateValueLong": {
-        "type": "object",
-        "properties": {
-          "defaultValue": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "userValue": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "dynamicValue": {
-            "$ref": "#/components/schemas/DynamicValueLong"
-          }
-        }
-      },
       "FilterPredicateValueString": {
         "type": "object",
         "properties": {
@@ -88894,6 +89973,82 @@
         "properties": {
           "id": {}
         }
+      },
+      "HomeDashboard": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/DashboardId",
+            "description": "JSON object with the dashboard Id. Specify existing dashboard Id to update the dashboard. Referencing non-existing dashboard id will cause error. Omit this field to create new dashboard."
+          },
+          "createdTime": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp of the dashboard creation, in milliseconds",
+            "example": 1609459200000,
+            "readOnly": true
+          },
+          "tenantId": {
+            "$ref": "#/components/schemas/TenantId",
+            "description": "JSON object with Tenant Id. Tenant Id of the dashboard can't be changed.",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the dashboard."
+          },
+          "name": {
+            "type": "string",
+            "description": "Same as title of the dashboard. Read-only field. Update the 'title' to change the 'name' of the dashboard.",
+            "readOnly": true
+          },
+          "image": {
+            "type": "string",
+            "description": "Thumbnail picture for rendering of the dashboards in a grid view on mobile devices.",
+            "readOnly": true
+          },
+          "mobileHide": {
+            "type": "boolean",
+            "description": "Hide dashboard from mobile devices. Useful if the dashboard is not designed for small screens.",
+            "readOnly": true
+          },
+          "mobileOrder": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications",
+            "readOnly": true
+          },
+          "assignedCustomers": {
+            "type": "array",
+            "description": "List of assigned customers with their info.",
+            "items": {
+              "$ref": "#/components/schemas/ShortCustomerInfo"
+            },
+            "readOnly": true,
+            "uniqueItems": true
+          },
+          "configuration": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON."
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResourceExportData"
+            }
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hideDashboardToolbar": {
+            "type": "boolean",
+            "description": "Hide dashboard toolbar flag. Useful for rendering dashboards on mobile."
+          }
+        },
+        "required": [
+          "title"
+        ]
       },
       "HomeDashboardInfo": {
         "type": "object",
@@ -92351,6 +93506,66 @@
           }
         }
       },
+      "PageDataAlarmRuleDefinition": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "Array of the entities",
+            "items": {
+              "$ref": "#/components/schemas/AlarmRuleDefinition"
+            },
+            "readOnly": true
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+            "readOnly": true
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of elements in all available pages",
+            "readOnly": true
+          },
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
+            "readOnly": true
+          }
+        }
+      },
+      "PageDataAlarmRuleDefinitionInfo": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "Array of the entities",
+            "items": {
+              "$ref": "#/components/schemas/AlarmRuleDefinitionInfo"
+            },
+            "readOnly": true
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Total number of available pages. Calculated based on the 'pageSize' request parameter and total number of entities that match search criteria",
+            "readOnly": true
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Total number of elements in all available pages",
+            "readOnly": true
+          },
+          "hasNext": {
+            "type": "boolean",
+            "description": "'false' value indicates the end of the result set",
+            "readOnly": true
+          }
+        }
+      },
       "PageDataApiKeyInfo": {
         "type": "object",
         "properties": {
@@ -94521,22 +95736,6 @@
           }
         }
       },
-      "RepeatingAlarmConditionSpec": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmConditionSpec"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "predicate": {
-                "$ref": "#/components/schemas/FilterPredicateValueInteger",
-                "description": "Repeating predicate"
-              }
-            }
-          }
-        ]
-      },
       "RepositoryAuthMethod": {
         "type": "string",
         "enum": [
@@ -95035,6 +96234,13 @@
             "items": {
               "$ref": "#/components/schemas/RuleChainConnectionInfo"
             }
+          },
+          "notes": {
+            "type": "array",
+            "description": "List of sticky notes placed on the rule chain canvas",
+            "items": {
+              "$ref": "#/components/schemas/RuleChainNote"
+            }
           }
         },
         "required": [
@@ -95044,6 +96250,60 @@
           "ruleChainConnections",
           "ruleChainId"
         ]
+      },
+      "RuleChainNote": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the note on the canvas"
+          },
+          "x": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Horizontal position of the note on the canvas, in pixels"
+          },
+          "y": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Vertical position of the note on the canvas, in pixels"
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Width of the note, in pixels"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Height of the note, in pixels"
+          },
+          "content": {
+            "type": "string",
+            "description": "Markdown or HTML content of the note"
+          },
+          "backgroundColor": {
+            "type": "string",
+            "description": "Background color of the note in CSS hex format, e.g. '#FFF9C4'"
+          },
+          "borderColor": {
+            "type": "string",
+            "description": "Border color of the note in CSS hex format, e.g. '#E6C800'"
+          },
+          "borderWidth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Border width of the note in pixels"
+          },
+          "applyDefaultMarkdownStyle": {
+            "type": "boolean",
+            "description": "Whether to apply the default markdown stylesheet to the note content"
+          },
+          "markdownCss": {
+            "type": "string",
+            "description": "Custom CSS styles applied to the note content"
+          }
+        }
       },
       "RuleChainOutputLabelsUsage": {
         "type": "object",
@@ -95542,7 +96802,7 @@
             "type": "string",
             "description": "Title of the customer."
           },
-          "isPublic": {
+          "public": {
             "type": "boolean",
             "description": "Indicates special 'Public' customer used to embed dashboards on public websites."
           }
@@ -95571,13 +96831,6 @@
         ],
         "required": [
           "filters"
-        ]
-      },
-      "SimpleAlarmConditionSpec": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmConditionSpec"
-          }
         ]
       },
       "SimpleCalculatedFieldConfiguration": {
@@ -96041,37 +97294,6 @@
           "V1",
           "V2C",
           "V3"
-        ]
-      },
-      "SpecificTimeSchedule": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmSchedule"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "timezone": {
-                "type": "string"
-              },
-              "daysOfWeek": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                },
-                "uniqueItems": true
-              },
-              "startsOn": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "endsOn": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
         ]
       },
       "StarredDashboardInfo": {

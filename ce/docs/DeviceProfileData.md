@@ -10,7 +10,6 @@
 | **_configuration** | **DeviceProfileConfiguration** | JSON object of device profile configuration | [optional] |
 | **transportConfiguration** | **DeviceProfileTransportConfiguration** | JSON object of device profile transport configuration | [optional] |
 | **provisionConfiguration** | **DeviceProfileProvisionConfiguration** | JSON object of provisioning strategy type per device profile | [optional] |
-| **alarms** | **List\<DeviceProfileAlarm\>** |  | [optional] |
 
 
 
