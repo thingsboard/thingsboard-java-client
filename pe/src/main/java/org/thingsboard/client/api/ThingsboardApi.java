@@ -31,6 +31,7 @@ import org.thingsboard.client.model.AlarmComment;
 import org.thingsboard.client.model.AlarmCountQuery;
 import org.thingsboard.client.model.AlarmDataQuery;
 import org.thingsboard.client.model.AlarmInfo;
+import org.thingsboard.client.model.AlarmRuleDefinition;
 import org.thingsboard.client.model.AlarmSeverity;
 import org.thingsboard.client.model.AllowedPermissionsInfo;
 import org.thingsboard.client.model.ApiKey;
@@ -107,6 +108,7 @@ import org.thingsboard.client.model.FeaturesInfo;
 import java.io.File;
 import org.thingsboard.client.model.GroupPermission;
 import org.thingsboard.client.model.GroupPermissionInfo;
+import org.thingsboard.client.model.HomeDashboard;
 import org.thingsboard.client.model.HomeDashboardInfo;
 import org.thingsboard.client.model.Integration;
 import org.thingsboard.client.model.IntegrationConvertersInfo;
@@ -148,6 +150,8 @@ import org.thingsboard.client.model.PageDataAiModel;
 import org.thingsboard.client.model.PageDataAlarmCommentInfo;
 import org.thingsboard.client.model.PageDataAlarmData;
 import org.thingsboard.client.model.PageDataAlarmInfo;
+import org.thingsboard.client.model.PageDataAlarmRuleDefinition;
+import org.thingsboard.client.model.PageDataAlarmRuleDefinitionInfo;
 import org.thingsboard.client.model.PageDataApiKeyInfo;
 import org.thingsboard.client.model.PageDataAsset;
 import org.thingsboard.client.model.PageDataAssetInfo;
@@ -256,7 +260,12 @@ import org.thingsboard.client.model.SignUpResult;
 import org.thingsboard.client.model.SignUpSelfRegistrationParams;
 import org.thingsboard.client.model.SlackConversation;
 import org.thingsboard.client.model.SlackConversationType;
+import org.thingsboard.client.model.SolutionData;
+import org.thingsboard.client.model.SolutionExportRequest;
+import org.thingsboard.client.model.SolutionExportResponse;
+import org.thingsboard.client.model.SolutionImportResult;
 import org.thingsboard.client.model.SolutionInstallResponse;
+import org.thingsboard.client.model.SolutionValidationResult;
 import org.thingsboard.client.model.SystemInfo;
 import org.thingsboard.client.model.TbChatRequest;
 import org.thingsboard.client.model.TbChatResponse;
@@ -4015,6 +4024,79 @@ public class ThingsboardApi {
     String localVarPath = "/api/alarm/{alarmId}/comment/{commentId}"
         .replace("{alarmId}", ApiClient.urlEncode(alarmId.toString()))
         .replace("{commentId}", ApiClient.urlEncode(commentId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete Alarm Rule (deleteAlarmRule)
+   * Deletes the alarm rule. Referencing non-existing Alarm Rule Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAlarmRule(@Nonnull String alarmRuleId) throws ApiException {
+    deleteAlarmRuleWithHttpInfo(alarmRuleId, null);
+  }
+
+  /**
+   * Delete Alarm Rule (deleteAlarmRule)
+   * Deletes the alarm rule. Referencing non-existing Alarm Rule Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteAlarmRuleWithHttpInfo(@Nonnull String alarmRuleId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteAlarmRuleRequestBuilder(alarmRuleId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteAlarmRule", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteAlarmRuleRequestBuilder(@Nonnull String alarmRuleId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'alarmRuleId' is set
+    if (alarmRuleId == null) {
+      throw new ApiException(400, "Missing the required parameter 'alarmRuleId' when calling deleteAlarmRule");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rule/{alarmRuleId}"
+        .replace("{alarmRuleId}", ApiClient.urlEncode(alarmRuleId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
@@ -10668,6 +10750,88 @@ public class ThingsboardApi {
   }
 
   /**
+   * Export Solution (exportSolution)
+   * Exports a set of entities as a portable solution package. The request specifies entity IDs to include and optional export settings (relations, attributes, credentials). All specified entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
+   * @param solutionExportRequest Export request with entity IDs and optional settings. (required)
+   * @return SolutionExportResponse
+   * @throws ApiException if fails to make API call
+   */
+  public SolutionExportResponse exportSolution(@Nonnull SolutionExportRequest solutionExportRequest) throws ApiException {
+    ApiResponse<SolutionExportResponse> localVarResponse = exportSolutionWithHttpInfo(solutionExportRequest, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Export Solution (exportSolution)
+   * Exports a set of entities as a portable solution package. The request specifies entity IDs to include and optional export settings (relations, attributes, credentials). All specified entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
+   * @param solutionExportRequest Export request with entity IDs and optional settings. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;SolutionExportResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<SolutionExportResponse> exportSolutionWithHttpInfo(@Nonnull SolutionExportRequest solutionExportRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = exportSolutionRequestBuilder(solutionExportRequest, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("exportSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<SolutionExportResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        SolutionExportResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<SolutionExportResponse>() {});
+        return new ApiResponse<SolutionExportResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder exportSolutionRequestBuilder(@Nonnull SolutionExportRequest solutionExportRequest, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionExportRequest' is set
+    if (solutionExportRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionExportRequest' when calling exportSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/solution/export";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(solutionExportRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Find Alarms by Query
    * This method description defines how Alarm Data Query extends the Entity Data Query. See method &#39;Find Entity Data by Query&#39; first to get the info about &#39;Entity Data Query&#39;.   The platform will first search the entities that match the entity and key filters. Then, the platform will use &#39;Alarm Page Link&#39; to filter the alarms related to those entities. Finally, platform fetch the properties of alarm that are defined in the **&#39;alarmFields&#39;** and combine them with the other entity, attribute and latest time series fields to return the result.    See example of the alarm query below. The query will search first 100 active alarms with type &#39;Temperature Alarm&#39; or &#39;Fire Alarm&#39; for any device with current temperature &gt; 0. The query will return combination of the entity fields: name of the device, device model and latest temperature reading and alarms fields: createdTime, type, severity and status:   &#x60;&#x60;&#x60;json {   \&quot;entityFilter\&quot;: {     \&quot;type\&quot;: \&quot;entityType\&quot;,     \&quot;resolveMultiple\&quot;: true,     \&quot;entityType\&quot;: \&quot;DEVICE\&quot;   },   \&quot;pageLink\&quot;: {     \&quot;page\&quot;: 0,     \&quot;pageSize\&quot;: 100,     \&quot;textSearch\&quot;: null,     \&quot;searchPropagatedAlarms\&quot;: false,     \&quot;statusList\&quot;: [       \&quot;ACTIVE\&quot;     ],     \&quot;severityList\&quot;: [       \&quot;CRITICAL\&quot;,       \&quot;MAJOR\&quot;     ],     \&quot;typeList\&quot;: [       \&quot;Temperature Alarm\&quot;,       \&quot;Fire Alarm\&quot;     ],     \&quot;sortOrder\&quot;: {       \&quot;key\&quot;: {         \&quot;key\&quot;: \&quot;createdTime\&quot;,         \&quot;type\&quot;: \&quot;ALARM_FIELD\&quot;       },       \&quot;direction\&quot;: \&quot;DESC\&quot;     },     \&quot;timeWindow\&quot;: 86400000   },   \&quot;keyFilters\&quot;: [     {       \&quot;key\&quot;: {         \&quot;type\&quot;: \&quot;TIME_SERIES\&quot;,         \&quot;key\&quot;: \&quot;temperature\&quot;       },       \&quot;valueType\&quot;: \&quot;NUMERIC\&quot;,       \&quot;predicate\&quot;: {         \&quot;operation\&quot;: \&quot;GREATER\&quot;,         \&quot;value\&quot;: {           \&quot;defaultValue\&quot;: 0,           \&quot;dynamicValue\&quot;: null         },         \&quot;type\&quot;: \&quot;NUMERIC\&quot;       }     }   ],   \&quot;alarmFields\&quot;: [     {       \&quot;type\&quot;: \&quot;ALARM_FIELD\&quot;,       \&quot;key\&quot;: \&quot;createdTime\&quot;     },     {       \&quot;type\&quot;: \&quot;ALARM_FIELD\&quot;,       \&quot;key\&quot;: \&quot;type\&quot;     },     {       \&quot;type\&quot;: \&quot;ALARM_FIELD\&quot;,       \&quot;key\&quot;: \&quot;severity\&quot;     },     {       \&quot;type\&quot;: \&quot;ALARM_FIELD\&quot;,       \&quot;key\&quot;: \&quot;status\&quot;     }   ],   \&quot;entityFields\&quot;: [     {       \&quot;type\&quot;: \&quot;ENTITY_FIELD\&quot;,       \&quot;key\&quot;: \&quot;name\&quot;     }   ],   \&quot;latestValues\&quot;: [     {       \&quot;type\&quot;: \&quot;ATTRIBUTE\&quot;,       \&quot;key\&quot;: \&quot;model\&quot;     },     {       \&quot;type\&quot;: \&quot;TIME_SERIES\&quot;,       \&quot;key\&quot;: \&quot;temperature\&quot;     }   ] } &#x60;&#x60;&#x60;
    * @param alarmDataQuery  (required)
@@ -13581,6 +13745,431 @@ public class ThingsboardApi {
     String localVarPath = "/api/alarm/info/{alarmId}"
         .replace("{alarmId}", ApiClient.urlEncode(alarmId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Alarm Rule (getAlarmRuleById)
+   * Fetch the Alarm Rule object based on the provided Alarm Rule Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleId  (required)
+   * @return AlarmRuleDefinition
+   * @throws ApiException if fails to make API call
+   */
+  public AlarmRuleDefinition getAlarmRuleById(@Nonnull String alarmRuleId) throws ApiException {
+    ApiResponse<AlarmRuleDefinition> localVarResponse = getAlarmRuleByIdWithHttpInfo(alarmRuleId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Alarm Rule (getAlarmRuleById)
+   * Fetch the Alarm Rule object based on the provided Alarm Rule Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AlarmRuleDefinition&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AlarmRuleDefinition> getAlarmRuleByIdWithHttpInfo(@Nonnull String alarmRuleId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAlarmRuleByIdRequestBuilder(alarmRuleId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAlarmRuleById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AlarmRuleDefinition>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AlarmRuleDefinition responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AlarmRuleDefinition>() {});
+        return new ApiResponse<AlarmRuleDefinition>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAlarmRuleByIdRequestBuilder(@Nonnull String alarmRuleId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'alarmRuleId' is set
+    if (alarmRuleId == null) {
+      throw new ApiException(400, "Missing the required parameter 'alarmRuleId' when calling getAlarmRuleById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rule/{alarmRuleId}"
+        .replace("{alarmRuleId}", ApiClient.urlEncode(alarmRuleId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get alarm rule names (getAlarmRuleNames)
+   * Fetch the list of alarm rule names.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the calculated field name. (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataString
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataString getAlarmRuleNames(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataString> localVarResponse = getAlarmRuleNamesWithHttpInfo(pageSize, page, textSearch, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get alarm rule names (getAlarmRuleNames)
+   * Fetch the list of alarm rule names.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the calculated field name. (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataString&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataString> getAlarmRuleNamesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAlarmRuleNamesRequestBuilder(pageSize, page, textSearch, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAlarmRuleNames", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataString>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataString responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataString>() {});
+        return new ApiResponse<PageDataString>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAlarmRuleNamesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAlarmRuleNames");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAlarmRuleNames");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rules/names";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get alarm rules (getAlarmRules)
+   * Fetch tenant alarm rules based on the filter.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param entityType Entity type filter. If not specified, alarm rules for all supported entity types will be returned. (optional)
+   * @param entities Entities filter. If not specified, alarm rules for entity type filter will be returned. (optional)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the calculated field name. (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAlarmRuleDefinitionInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAlarmRuleDefinitionInfo getAlarmRules(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable EntityType entityType, @Nullable Set<UUID> entities, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAlarmRuleDefinitionInfo> localVarResponse = getAlarmRulesWithHttpInfo(pageSize, page, entityType, entities, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get alarm rules (getAlarmRules)
+   * Fetch tenant alarm rules based on the filter.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param entityType Entity type filter. If not specified, alarm rules for all supported entity types will be returned. (optional)
+   * @param entities Entities filter. If not specified, alarm rules for entity type filter will be returned. (optional)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the calculated field name. (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAlarmRuleDefinitionInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAlarmRuleDefinitionInfo> getAlarmRulesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable EntityType entityType, @Nullable Set<UUID> entities, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAlarmRulesRequestBuilder(pageSize, page, entityType, entities, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAlarmRules", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAlarmRuleDefinitionInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAlarmRuleDefinitionInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAlarmRuleDefinitionInfo>() {});
+        return new ApiResponse<PageDataAlarmRuleDefinitionInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAlarmRulesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable EntityType entityType, @Nullable Set<UUID> entities, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAlarmRules");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAlarmRules");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rules";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "entityType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("entityType", entityType));
+    localVarQueryParameterBaseName = "entities";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "entities", entities));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Alarm Rules by Entity Id (getAlarmRulesByEntityId)
+   * Fetch the Alarm Rules based on the provided Entity Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType A string value representing the entity type. For example, &#39;DEVICE&#39; (required)
+   * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the calculated field name. (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAlarmRuleDefinition
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAlarmRuleDefinition getAlarmRulesByEntityId(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAlarmRuleDefinition> localVarResponse = getAlarmRulesByEntityIdWithHttpInfo(entityType, entityId, pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Alarm Rules by Entity Id (getAlarmRulesByEntityId)
+   * Fetch the Alarm Rules based on the provided Entity Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType A string value representing the entity type. For example, &#39;DEVICE&#39; (required)
+   * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch The case insensitive &#39;substring&#39; filter based on the calculated field name. (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAlarmRuleDefinition&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAlarmRuleDefinition> getAlarmRulesByEntityIdWithHttpInfo(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAlarmRulesByEntityIdRequestBuilder(entityType, entityId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAlarmRulesByEntityId", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAlarmRuleDefinition>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAlarmRuleDefinition responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAlarmRuleDefinition>() {});
+        return new ApiResponse<PageDataAlarmRuleDefinition>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAlarmRulesByEntityIdRequestBuilder(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'entityType' is set
+    if (entityType == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityType' when calling getAlarmRulesByEntityId");
+    }
+    // verify the required parameter 'entityId' is set
+    if (entityId == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityId' when calling getAlarmRulesByEntityId");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAlarmRulesByEntityId");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAlarmRulesByEntityId");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rules/{entityType}/{entityId}"
+        .replace("{entityType}", ApiClient.urlEncode(entityType.toString()))
+        .replace("{entityId}", ApiClient.urlEncode(entityId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
@@ -20444,10 +21033,12 @@ public class ThingsboardApi {
    * Get end-user Custom Menu configuration (getCustomMenu)
    * Fetch the Custom Menu configuration object for the authorized user. The custom menu is configured in the white labeling parameters and has one of three user scopes:SYSTEM, TENANT, CUSTOMER and four assignee type: NO_ASSIGN, ALL, CUSTOMERS, USERS.There are three default (assignee type: ALL) menus configured on the system level for each scope and if no other menu is configured for user, system configuration of the corresponding scope will be applied.If a custom menu with assignee type ALL is configured on the tenant level, it overrides the menu configuration of the corresponding scope on the system level. If a custom menu with assignee type USER_GROUPS is configured on the tenant level, it overrides default tenant menu.If a custom menu with assignee type CUSTOMERS is configured on tenant level for specific customer, it will be applied to all customer users.If a custom menu with assignee type ALL is configured on the customer level, it overrides the menu assigned on tenant level.If a custom menu with assignee type USER_GROUPS is configured on the customer level, it overrides default customer menu.If a custom menu is assigned to specific user, it overrides all other configuration.
    * @param ifNoneMatch  (optional)
+   * @return CustomMenuConfig
    * @throws ApiException if fails to make API call
    */
-  public void getCustomMenu(@Nullable String ifNoneMatch) throws ApiException {
-    getCustomMenuWithHttpInfo(ifNoneMatch, null);
+  public CustomMenuConfig getCustomMenu(@Nullable String ifNoneMatch) throws ApiException {
+    ApiResponse<CustomMenuConfig> localVarResponse = getCustomMenuWithHttpInfo(ifNoneMatch, null);
+    return localVarResponse.getData();
   }
 
   /**
@@ -20455,10 +21046,10 @@ public class ThingsboardApi {
    * Fetch the Custom Menu configuration object for the authorized user. The custom menu is configured in the white labeling parameters and has one of three user scopes:SYSTEM, TENANT, CUSTOMER and four assignee type: NO_ASSIGN, ALL, CUSTOMERS, USERS.There are three default (assignee type: ALL) menus configured on the system level for each scope and if no other menu is configured for user, system configuration of the corresponding scope will be applied.If a custom menu with assignee type ALL is configured on the tenant level, it overrides the menu configuration of the corresponding scope on the system level. If a custom menu with assignee type USER_GROUPS is configured on the tenant level, it overrides default tenant menu.If a custom menu with assignee type CUSTOMERS is configured on tenant level for specific customer, it will be applied to all customer users.If a custom menu with assignee type ALL is configured on the customer level, it overrides the menu assigned on tenant level.If a custom menu with assignee type USER_GROUPS is configured on the customer level, it overrides default customer menu.If a custom menu is assigned to specific user, it overrides all other configuration.
    * @param ifNoneMatch  (optional)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;CustomMenuConfig&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getCustomMenuWithHttpInfo(@Nullable String ifNoneMatch, Map<String, String> headers) throws ApiException {
+  public ApiResponse<CustomMenuConfig> getCustomMenuWithHttpInfo(@Nullable String ifNoneMatch, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getCustomMenuRequestBuilder(ifNoneMatch, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -20473,10 +21064,12 @@ public class ThingsboardApi {
           throw getApiException("getCustomMenu", localVarResponse);
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody != null) {
-          localVarResponseBody.readAllBytes();
+        if (localVarResponseBody == null) {
+          return new ApiResponse<CustomMenuConfig>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
-        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        CustomMenuConfig responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<CustomMenuConfig>() {});
+        return new ApiResponse<CustomMenuConfig>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -23029,10 +23622,12 @@ public class ThingsboardApi {
    * @param dashboardId A string value representing the dashboard id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param includeResources Export used resources and replace resource links with resource metadata (optional)
    * @param acceptEncoding  (optional)
+   * @return Dashboard
    * @throws ApiException if fails to make API call
    */
-  public void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) throws ApiException {
-    getDashboardByIdWithHttpInfo(dashboardId, includeResources, acceptEncoding, null);
+  public Dashboard getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) throws ApiException {
+    ApiResponse<Dashboard> localVarResponse = getDashboardByIdWithHttpInfo(dashboardId, includeResources, acceptEncoding, null);
+    return localVarResponse.getData();
   }
 
   /**
@@ -23042,10 +23637,10 @@ public class ThingsboardApi {
    * @param includeResources Export used resources and replace resource links with resource metadata (optional)
    * @param acceptEncoding  (optional)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;Dashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getDashboardByIdWithHttpInfo(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding, Map<String, String> headers) throws ApiException {
+  public ApiResponse<Dashboard> getDashboardByIdWithHttpInfo(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getDashboardByIdRequestBuilder(dashboardId, includeResources, acceptEncoding, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -23060,10 +23655,12 @@ public class ThingsboardApi {
           throw getApiException("getDashboardById", localVarResponse);
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody != null) {
-          localVarResponseBody.readAllBytes();
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Dashboard>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
-        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Dashboard responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Dashboard>() {});
+        return new ApiResponse<Dashboard>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -29397,10 +29994,12 @@ public class ThingsboardApi {
    * @param localeCode Locale code (e.g. &#39;en_US&#39;). (required)
    * @param ifNoneMatch  (optional)
    * @param acceptEncoding  (optional)
+   * @return com.fasterxml.jackson.databind.JsonNode
    * @throws ApiException if fails to make API call
    */
-  public void getFullTranslation(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) throws ApiException {
-    getFullTranslationWithHttpInfo(localeCode, ifNoneMatch, acceptEncoding, null);
+  public com.fasterxml.jackson.databind.JsonNode getFullTranslation(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getFullTranslationWithHttpInfo(localeCode, ifNoneMatch, acceptEncoding, null);
+    return localVarResponse.getData();
   }
 
   /**
@@ -29410,10 +30009,10 @@ public class ThingsboardApi {
    * @param ifNoneMatch  (optional)
    * @param acceptEncoding  (optional)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getFullTranslationWithHttpInfo(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding, Map<String, String> headers) throws ApiException {
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getFullTranslationWithHttpInfo(@Nonnull String localeCode, @Nullable String ifNoneMatch, @Nullable String acceptEncoding, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getFullTranslationRequestBuilder(localeCode, ifNoneMatch, acceptEncoding, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -29428,10 +30027,12 @@ public class ThingsboardApi {
           throw getApiException("getFullTranslation", localVarResponse);
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody != null) {
-          localVarResponseBody.readAllBytes();
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
-        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -30108,10 +30709,12 @@ public class ThingsboardApi {
    * Get Home Dashboard (getHomeDashboard)
    * Returns the home dashboard object that is configured as &#39;homeDashboardId&#39; parameter in the &#39;additionalInfo&#39; of the User. If &#39;homeDashboardId&#39; parameter is not set on the User level and the User has authority &#39;CUSTOMER_USER&#39;, check the same parameter for the corresponding Customer. If &#39;homeDashboardId&#39; parameter is not set on the User and Customer levels then checks the same parameter for the Tenant that owns the user. The Dashboard object is a heavyweight object that contains information about the dashboard (e.g. title, image, assigned customers) and also configuration JSON (e.g. layouts, widgets, entity aliases).  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param acceptEncoding  (optional)
+   * @return HomeDashboard
    * @throws ApiException if fails to make API call
    */
-  public void getHomeDashboard(@Nullable String acceptEncoding) throws ApiException {
-    getHomeDashboardWithHttpInfo(acceptEncoding, null);
+  public HomeDashboard getHomeDashboard(@Nullable String acceptEncoding) throws ApiException {
+    ApiResponse<HomeDashboard> localVarResponse = getHomeDashboardWithHttpInfo(acceptEncoding, null);
+    return localVarResponse.getData();
   }
 
   /**
@@ -30119,10 +30722,10 @@ public class ThingsboardApi {
    * Returns the home dashboard object that is configured as &#39;homeDashboardId&#39; parameter in the &#39;additionalInfo&#39; of the User. If &#39;homeDashboardId&#39; parameter is not set on the User level and the User has authority &#39;CUSTOMER_USER&#39;, check the same parameter for the corresponding Customer. If &#39;homeDashboardId&#39; parameter is not set on the User and Customer levels then checks the same parameter for the Tenant that owns the user. The Dashboard object is a heavyweight object that contains information about the dashboard (e.g. title, image, assigned customers) and also configuration JSON (e.g. layouts, widgets, entity aliases).  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param acceptEncoding  (optional)
    * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Void&gt;
+   * @return ApiResponse&lt;HomeDashboard&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> getHomeDashboardWithHttpInfo(@Nullable String acceptEncoding, Map<String, String> headers) throws ApiException {
+  public ApiResponse<HomeDashboard> getHomeDashboardWithHttpInfo(@Nullable String acceptEncoding, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getHomeDashboardRequestBuilder(acceptEncoding, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -30137,10 +30740,12 @@ public class ThingsboardApi {
           throw getApiException("getHomeDashboard", localVarResponse);
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody != null) {
-          localVarResponseBody.readAllBytes();
+        if (localVarResponseBody == null) {
+          return new ApiResponse<HomeDashboard>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
         }
-        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        HomeDashboard responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<HomeDashboard>() {});
+        return new ApiResponse<HomeDashboard>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
       } finally {
         if (localVarResponseBody != null) {
           localVarResponseBody.close();
@@ -31399,6 +32004,83 @@ public class ThingsboardApi {
   private HttpRequest.Builder getLastVisitedDashboardsRequestBuilder(Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/user/lastVisitedDashboards";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get latest alarm rule debug event (getLatestAlarmRuleDebugEvent)
+   * Gets latest alarm rule debug event for specified alarm rule id. Referencing non-existing alarm rule id will cause an error.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleId  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode getLatestAlarmRuleDebugEvent(@Nonnull String alarmRuleId) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getLatestAlarmRuleDebugEventWithHttpInfo(alarmRuleId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get latest alarm rule debug event (getLatestAlarmRuleDebugEvent)
+   * Gets latest alarm rule debug event for specified alarm rule id. Referencing non-existing alarm rule id will cause an error.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getLatestAlarmRuleDebugEventWithHttpInfo(@Nonnull String alarmRuleId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getLatestAlarmRuleDebugEventRequestBuilder(alarmRuleId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getLatestAlarmRuleDebugEvent", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getLatestAlarmRuleDebugEventRequestBuilder(@Nonnull String alarmRuleId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'alarmRuleId' is set
+    if (alarmRuleId == null) {
+      throw new ApiException(400, "Missing the required parameter 'alarmRuleId' when calling getLatestAlarmRuleDebugEvent");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rule/{alarmRuleId}/debug"
+        .replace("{alarmRuleId}", ApiClient.urlEncode(alarmRuleId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -47800,7 +48482,7 @@ public class ThingsboardApi {
    * Send one-way RPC request (handleOneWayDeviceRPCRequestV1)
    * Deprecated. See &#39;Rpc V 2 Controller&#39; instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -47813,7 +48495,7 @@ public class ThingsboardApi {
    * Send one-way RPC request (handleOneWayDeviceRPCRequestV1)
    * Deprecated. See &#39;Rpc V 2 Controller&#39; instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -47866,7 +48548,7 @@ public class ThingsboardApi {
     String localVarPath = "/api/plugins/rpc/oneway/{deviceId}"
         .replace("{deviceId}", ApiClient.urlEncode(deviceId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -47884,7 +48566,7 @@ public class ThingsboardApi {
    * Send one-way RPC request (handleOneWayDeviceRPCRequestV2)
    * Sends the one-way remote-procedure call (RPC) request to device. Sends the one-way remote-procedure call (RPC) request to device. The RPC call is A JSON that contains the method name (&#39;method&#39;), parameters (&#39;params&#39;) and multiple optional fields. See example below. We will review the properties of the RPC call one-by-one below.   &#x60;&#x60;&#x60;json {   \&quot;method\&quot;: \&quot;setGpio\&quot;,   \&quot;params\&quot;: {     \&quot;pin\&quot;: 7,     \&quot;value\&quot;: 1   },   \&quot;persistent\&quot;: false,   \&quot;timeout\&quot;: 5000 } &#x60;&#x60;&#x60;  ### Server-side RPC structure  The body of server-side RPC request consists of multiple fields:  * **method** - mandatory, name of the method to distinct the RPC calls.   For example, \&quot;getCurrentTime\&quot; or \&quot;getWeatherForecast\&quot;. The value of the parameter is a string. * **params** - mandatory, parameters used for processing of the request. The value is a JSON. Leave empty JSON \&quot;{}\&quot; if no parameters needed. * **timeout** - optional, value of the processing timeout in milliseconds. The default value is 10000 (10 seconds). The minimum value is 5000 (5 seconds). * **expirationTime** - optional, value of the epoch time (in milliseconds, UTC timezone). Overrides **timeout** if present. * **persistent** - optional, indicates persistent RPC. The default value is \&quot;false\&quot;. * **retries** - optional, defines how many times persistent RPC will be re-sent in case of failures on the network and/or device side. * **additionalInfo** - optional, defines metadata for the persistent RPC that will be added to the persistent RPC events.  ### RPC Result In case of persistent RPC, the result of this call is &#39;rpcId&#39; UUID. In case of lightweight RPC, the result of this call is either 200 OK if the message was sent to device, or 504 Gateway Timeout if device is offline.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -47897,7 +48579,7 @@ public class ThingsboardApi {
    * Send one-way RPC request (handleOneWayDeviceRPCRequestV2)
    * Sends the one-way remote-procedure call (RPC) request to device. Sends the one-way remote-procedure call (RPC) request to device. The RPC call is A JSON that contains the method name (&#39;method&#39;), parameters (&#39;params&#39;) and multiple optional fields. See example below. We will review the properties of the RPC call one-by-one below.   &#x60;&#x60;&#x60;json {   \&quot;method\&quot;: \&quot;setGpio\&quot;,   \&quot;params\&quot;: {     \&quot;pin\&quot;: 7,     \&quot;value\&quot;: 1   },   \&quot;persistent\&quot;: false,   \&quot;timeout\&quot;: 5000 } &#x60;&#x60;&#x60;  ### Server-side RPC structure  The body of server-side RPC request consists of multiple fields:  * **method** - mandatory, name of the method to distinct the RPC calls.   For example, \&quot;getCurrentTime\&quot; or \&quot;getWeatherForecast\&quot;. The value of the parameter is a string. * **params** - mandatory, parameters used for processing of the request. The value is a JSON. Leave empty JSON \&quot;{}\&quot; if no parameters needed. * **timeout** - optional, value of the processing timeout in milliseconds. The default value is 10000 (10 seconds). The minimum value is 5000 (5 seconds). * **expirationTime** - optional, value of the epoch time (in milliseconds, UTC timezone). Overrides **timeout** if present. * **persistent** - optional, indicates persistent RPC. The default value is \&quot;false\&quot;. * **retries** - optional, defines how many times persistent RPC will be re-sent in case of failures on the network and/or device side. * **additionalInfo** - optional, defines metadata for the persistent RPC that will be added to the persistent RPC events.  ### RPC Result In case of persistent RPC, the result of this call is &#39;rpcId&#39; UUID. In case of lightweight RPC, the result of this call is either 200 OK if the message was sent to device, or 504 Gateway Timeout if device is offline.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -47950,7 +48632,7 @@ public class ThingsboardApi {
     String localVarPath = "/api/rpc/oneway/{deviceId}"
         .replace("{deviceId}", ApiClient.urlEncode(deviceId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -47969,7 +48651,7 @@ public class ThingsboardApi {
    * Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from the request body. Uses specified Entity Id as the Rule Engine message originator. This method allows you to extend the regular platform API with the power of Rule Engine. You may use default and custom rule nodes to handle the message. The generated message contains two important metadata fields:   * **&#39;serviceId&#39;** to identify the platform server that received the request;  * **&#39;requestUUID&#39;** to identify the request and route possible response from the Rule Engine;  Use **&#39;rest call reply&#39;** rule node to push the reply from rule engine back as a REST API call response. The default timeout of the request processing is 10 seconds.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param entityType A string value representing the entity type. For example, &#39;DEVICE&#39; (required)
    * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -47983,7 +48665,7 @@ public class ThingsboardApi {
    * Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from the request body. Uses specified Entity Id as the Rule Engine message originator. This method allows you to extend the regular platform API with the power of Rule Engine. You may use default and custom rule nodes to handle the message. The generated message contains two important metadata fields:   * **&#39;serviceId&#39;** to identify the platform server that received the request;  * **&#39;requestUUID&#39;** to identify the request and route possible response from the Rule Engine;  Use **&#39;rest call reply&#39;** rule node to push the reply from rule engine back as a REST API call response. The default timeout of the request processing is 10 seconds.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param entityType A string value representing the entity type. For example, &#39;DEVICE&#39; (required)
    * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -48041,7 +48723,7 @@ public class ThingsboardApi {
         .replace("{entityType}", ApiClient.urlEncode(entityType.toString()))
         .replace("{entityId}", ApiClient.urlEncode(entityId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -48062,7 +48744,7 @@ public class ThingsboardApi {
    * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param queueName Queue name to process the request in the rule engine (required)
    * @param timeout Timeout to process the request in milliseconds (required)
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -48078,7 +48760,7 @@ public class ThingsboardApi {
    * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param queueName Queue name to process the request in the rule engine (required)
    * @param timeout Timeout to process the request in milliseconds (required)
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -48146,7 +48828,7 @@ public class ThingsboardApi {
         .replace("{queueName}", ApiClient.urlEncode(queueName.toString()))
         .replace("{timeout}", ApiClient.urlEncode(timeout.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -48166,7 +48848,7 @@ public class ThingsboardApi {
    * @param entityType A string value representing the entity type. For example, &#39;DEVICE&#39; (required)
    * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param timeout Timeout to process the request in milliseconds (required)
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -48181,7 +48863,7 @@ public class ThingsboardApi {
    * @param entityType A string value representing the entity type. For example, &#39;DEVICE&#39; (required)
    * @param entityId A string value representing the entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param timeout Timeout to process the request in milliseconds (required)
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -48244,7 +48926,7 @@ public class ThingsboardApi {
         .replace("{entityId}", ApiClient.urlEncode(entityId.toString()))
         .replace("{timeout}", ApiClient.urlEncode(timeout.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -48261,7 +48943,7 @@ public class ThingsboardApi {
   /**
    * Push user message to the rule engine (handleRuleEngineRequestForUser)
    * Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from the request body. Uses current User Id ( the one which credentials is used to perform the request) as the Rule Engine message originator. This method allows you to extend the regular platform API with the power of Rule Engine. You may use default and custom rule nodes to handle the message. The generated message contains two important metadata fields:   * **&#39;serviceId&#39;** to identify the platform server that received the request;  * **&#39;requestUUID&#39;** to identify the request and route possible response from the Rule Engine;  Use **&#39;rest call reply&#39;** rule node to push the reply from rule engine back as a REST API call response. The default timeout of the request processing is 10 seconds.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -48273,7 +48955,7 @@ public class ThingsboardApi {
   /**
    * Push user message to the rule engine (handleRuleEngineRequestForUser)
    * Creates the Message with type &#39;REST_API_REQUEST&#39; and payload taken from the request body. Uses current User Id ( the one which credentials is used to perform the request) as the Rule Engine message originator. This method allows you to extend the regular platform API with the power of Rule Engine. You may use default and custom rule nodes to handle the message. The generated message contains two important metadata fields:   * **&#39;serviceId&#39;** to identify the platform server that received the request;  * **&#39;requestUUID&#39;** to identify the request and route possible response from the Rule Engine;  Use **&#39;rest call reply&#39;** rule node to push the reply from rule engine back as a REST API call response. The default timeout of the request processing is 10 seconds.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
-   * @param body  (required)
+   * @param body A JSON object representing the message. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -48321,7 +49003,7 @@ public class ThingsboardApi {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/rule-engine/";
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -48339,7 +49021,7 @@ public class ThingsboardApi {
    * Send two-way RPC request (handleTwoWayDeviceRPCRequestV1)
    * Deprecated. See &#39;Rpc V 2 Controller&#39; instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -48352,7 +49034,7 @@ public class ThingsboardApi {
    * Send two-way RPC request (handleTwoWayDeviceRPCRequestV1)
    * Deprecated. See &#39;Rpc V 2 Controller&#39; instead.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -48405,7 +49087,7 @@ public class ThingsboardApi {
     String localVarPath = "/api/plugins/rpc/twoway/{deviceId}"
         .replace("{deviceId}", ApiClient.urlEncode(deviceId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -48423,7 +49105,7 @@ public class ThingsboardApi {
    * Send two-way RPC request (handleTwoWayDeviceRPCRequestV2)
    * Sends the two-way remote-procedure call (RPC) request to device. Sends the one-way remote-procedure call (RPC) request to device. The RPC call is A JSON that contains the method name (&#39;method&#39;), parameters (&#39;params&#39;) and multiple optional fields. See example below. We will review the properties of the RPC call one-by-one below.   &#x60;&#x60;&#x60;json {   \&quot;method\&quot;: \&quot;setGpio\&quot;,   \&quot;params\&quot;: {     \&quot;pin\&quot;: 7,     \&quot;value\&quot;: 1   },   \&quot;persistent\&quot;: false,   \&quot;timeout\&quot;: 5000 } &#x60;&#x60;&#x60;  ### Server-side RPC structure  The body of server-side RPC request consists of multiple fields:  * **method** - mandatory, name of the method to distinct the RPC calls.   For example, \&quot;getCurrentTime\&quot; or \&quot;getWeatherForecast\&quot;. The value of the parameter is a string. * **params** - mandatory, parameters used for processing of the request. The value is a JSON. Leave empty JSON \&quot;{}\&quot; if no parameters needed. * **timeout** - optional, value of the processing timeout in milliseconds. The default value is 10000 (10 seconds). The minimum value is 5000 (5 seconds). * **expirationTime** - optional, value of the epoch time (in milliseconds, UTC timezone). Overrides **timeout** if present. * **persistent** - optional, indicates persistent RPC. The default value is \&quot;false\&quot;. * **retries** - optional, defines how many times persistent RPC will be re-sent in case of failures on the network and/or device side. * **additionalInfo** - optional, defines metadata for the persistent RPC that will be added to the persistent RPC events.  ### RPC Result In case of persistent RPC, the result of this call is &#39;rpcId&#39; UUID. In case of lightweight RPC, the result of this call is the response from device, or 504 Gateway Timeout if device is offline.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -48436,7 +49118,7 @@ public class ThingsboardApi {
    * Send two-way RPC request (handleTwoWayDeviceRPCRequestV2)
    * Sends the two-way remote-procedure call (RPC) request to device. Sends the one-way remote-procedure call (RPC) request to device. The RPC call is A JSON that contains the method name (&#39;method&#39;), parameters (&#39;params&#39;) and multiple optional fields. See example below. We will review the properties of the RPC call one-by-one below.   &#x60;&#x60;&#x60;json {   \&quot;method\&quot;: \&quot;setGpio\&quot;,   \&quot;params\&quot;: {     \&quot;pin\&quot;: 7,     \&quot;value\&quot;: 1   },   \&quot;persistent\&quot;: false,   \&quot;timeout\&quot;: 5000 } &#x60;&#x60;&#x60;  ### Server-side RPC structure  The body of server-side RPC request consists of multiple fields:  * **method** - mandatory, name of the method to distinct the RPC calls.   For example, \&quot;getCurrentTime\&quot; or \&quot;getWeatherForecast\&quot;. The value of the parameter is a string. * **params** - mandatory, parameters used for processing of the request. The value is a JSON. Leave empty JSON \&quot;{}\&quot; if no parameters needed. * **timeout** - optional, value of the processing timeout in milliseconds. The default value is 10000 (10 seconds). The minimum value is 5000 (5 seconds). * **expirationTime** - optional, value of the epoch time (in milliseconds, UTC timezone). Overrides **timeout** if present. * **persistent** - optional, indicates persistent RPC. The default value is \&quot;false\&quot;. * **retries** - optional, defines how many times persistent RPC will be re-sent in case of failures on the network and/or device side. * **additionalInfo** - optional, defines metadata for the persistent RPC that will be added to the persistent RPC events.  ### RPC Result In case of persistent RPC, the result of this call is &#39;rpcId&#39; UUID. In case of lightweight RPC, the result of this call is the response from device, or 504 Gateway Timeout if device is offline.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceId A string value representing the device id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param body  (required)
+   * @param body A JSON object representing the RPC request. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
@@ -48489,7 +49171,7 @@ public class ThingsboardApi {
     String localVarPath = "/api/rpc/twoway/{deviceId}"
         .replace("{deviceId}", ApiClient.urlEncode(deviceId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -48860,6 +49542,88 @@ public class ThingsboardApi {
     localVarRequestBuilder.header("Accept", "application/json");
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(ruleChainData);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Import Solution (importSolution)
+   * Imports a solution package into the current tenant. Before importing, the endpoint checks for name conflicts with existing entities in the tenant. If name conflicts are detected, the import is rejected with HTTP 409 (Conflict). The import is transactional — if any entity fails to import, all changes are rolled back (all-or-nothing). Entities are imported in dependency order with a two-pass resolution for circular references (e.g. rule chains referencing each other).  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
+   * @param solutionData Solution data exported via the export endpoint. (required)
+   * @return SolutionImportResult
+   * @throws ApiException if fails to make API call
+   */
+  public SolutionImportResult importSolution(@Nonnull SolutionData solutionData) throws ApiException {
+    ApiResponse<SolutionImportResult> localVarResponse = importSolutionWithHttpInfo(solutionData, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Import Solution (importSolution)
+   * Imports a solution package into the current tenant. Before importing, the endpoint checks for name conflicts with existing entities in the tenant. If name conflicts are detected, the import is rejected with HTTP 409 (Conflict). The import is transactional — if any entity fails to import, all changes are rolled back (all-or-nothing). Entities are imported in dependency order with a two-pass resolution for circular references (e.g. rule chains referencing each other).  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
+   * @param solutionData Solution data exported via the export endpoint. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;SolutionImportResult&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<SolutionImportResult> importSolutionWithHttpInfo(@Nonnull SolutionData solutionData, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = importSolutionRequestBuilder(solutionData, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("importSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<SolutionImportResult>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        SolutionImportResult responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<SolutionImportResult>() {});
+        return new ApiResponse<SolutionImportResult>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder importSolutionRequestBuilder(@Nonnull SolutionData solutionData, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionData' is set
+    if (solutionData == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionData' when calling importSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/solution/import";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(solutionData);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);
@@ -53152,6 +53916,88 @@ public class ThingsboardApi {
   }
 
   /**
+   * Create Or Update Alarm Rule (saveAlarmRule)
+   * Creates or Updates the Alarm Rule. When creating alarm rule, platform generates Alarm Rule Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm Rule Id will be present in the response. Specify existing Alarm Rule Id to update the alarm rule. Referencing non-existing Alarm Rule Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Alarm Rule entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleDefinition A JSON value representing the alarm rule. (required)
+   * @return AlarmRuleDefinition
+   * @throws ApiException if fails to make API call
+   */
+  public AlarmRuleDefinition saveAlarmRule(@Nonnull AlarmRuleDefinition alarmRuleDefinition) throws ApiException {
+    ApiResponse<AlarmRuleDefinition> localVarResponse = saveAlarmRuleWithHttpInfo(alarmRuleDefinition, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create Or Update Alarm Rule (saveAlarmRule)
+   * Creates or Updates the Alarm Rule. When creating alarm rule, platform generates Alarm Rule Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm Rule Id will be present in the response. Specify existing Alarm Rule Id to update the alarm rule. Referencing non-existing Alarm Rule Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Alarm Rule entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param alarmRuleDefinition A JSON value representing the alarm rule. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AlarmRuleDefinition&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AlarmRuleDefinition> saveAlarmRuleWithHttpInfo(@Nonnull AlarmRuleDefinition alarmRuleDefinition, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = saveAlarmRuleRequestBuilder(alarmRuleDefinition, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("saveAlarmRule", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AlarmRuleDefinition>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AlarmRuleDefinition responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AlarmRuleDefinition>() {});
+        return new ApiResponse<AlarmRuleDefinition>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder saveAlarmRuleRequestBuilder(@Nonnull AlarmRuleDefinition alarmRuleDefinition, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'alarmRuleDefinition' is set
+    if (alarmRuleDefinition == null) {
+      throw new ApiException(400, "Missing the required parameter 'alarmRuleDefinition' when calling saveAlarmRule");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rule";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(alarmRuleDefinition);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Save API key for user (saveApiKey)
    * Creates an API key for the given user and returns the token ONCE as &#39;ApiKey {value}&#39;.  Available for any authorized user. 
    * @param apiKeyInfo  (required)
@@ -54258,7 +55104,7 @@ public class ThingsboardApi {
         .replace("{deviceId}", ApiClient.urlEncode(deviceId.toString()))
         .replace("{scope}", ApiClient.urlEncode(scope.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -54356,7 +55202,7 @@ public class ThingsboardApi {
 
   /**
    * Create Or Update Device Profile (saveDeviceProfile)
-   * Create or update the Device Profile. When creating device profile, platform generates device profile id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created device profile id will be present in the response. Specify existing device profile id to update the device profile. Referencing non-existing device profile Id will cause &#39;Not Found&#39; error.   Device profile name is unique in the scope of tenant. Only one &#39;default&#39; device profile may exist in scope of tenant.  # Device profile data definition  Device profile data object contains alarm rules configuration, device provision strategy and transport type configuration for device connectivity. Let&#39;s review some examples. First one is the default device profile data configuration and second one - the custom one.   &#x60;&#x60;&#x60;json {    \&quot;alarms\&quot;:[    ],    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DISABLED\&quot;,       \&quot;provisionDeviceSecret\&quot;:null    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    } } &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60;json {    \&quot;alarms\&quot;:[       {          \&quot;id\&quot;:\&quot;2492b935-1226-59e9-8615-17d8978a4f93\&quot;,          \&quot;alarmType\&quot;:\&quot;Temperature Alarm\&quot;,          \&quot;clearRule\&quot;:{             \&quot;schedule\&quot;:null,             \&quot;condition\&quot;:{                \&quot;spec\&quot;:{                   \&quot;type\&quot;:\&quot;SIMPLE\&quot;                },                \&quot;condition\&quot;:[                   {                      \&quot;key\&quot;:{                         \&quot;key\&quot;:\&quot;temperature\&quot;,                         \&quot;type\&quot;:\&quot;TIME_SERIES\&quot;                      },                      \&quot;value\&quot;:null,                      \&quot;predicate\&quot;:{                         \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                         \&quot;value\&quot;:{                            \&quot;userValue\&quot;:null,                            \&quot;defaultValue\&quot;:30.0,                            \&quot;dynamicValue\&quot;:null                         },                         \&quot;operation\&quot;:\&quot;LESS\&quot;                      },                      \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                   }                ]             },             \&quot;dashboardId\&quot;:null,             \&quot;alarmDetails\&quot;:null          },          \&quot;propagate\&quot;:false,          \&quot;createRules\&quot;:{             \&quot;MAJOR\&quot;:{                \&quot;schedule\&quot;:{                   \&quot;type\&quot;:\&quot;SPECIFIC_TIME\&quot;,                   \&quot;endsOn\&quot;:64800000,                   \&quot;startsOn\&quot;:43200000,                   \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;,                   \&quot;daysOfWeek\&quot;:[                      1,                      3,                      5                   ]                },                \&quot;condition\&quot;:{                   \&quot;spec\&quot;:{                      \&quot;type\&quot;:\&quot;DURATION\&quot;,                      \&quot;unit\&quot;:\&quot;MINUTES\&quot;,                      \&quot;predicate\&quot;:{                         \&quot;userValue\&quot;:null,                         \&quot;defaultValue\&quot;:30,                         \&quot;dynamicValue\&quot;:null                      }                   },                   \&quot;condition\&quot;:[                      {                         \&quot;key\&quot;:{                            \&quot;key\&quot;:\&quot;temperature\&quot;,                            \&quot;type\&quot;:\&quot;TIME_SERIES\&quot;                         },                         \&quot;value\&quot;:null,                         \&quot;predicate\&quot;:{                            \&quot;type\&quot;:\&quot;COMPLEX\&quot;,                            \&quot;operation\&quot;:\&quot;OR\&quot;,                            \&quot;predicates\&quot;:[                               {                                  \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                                  \&quot;value\&quot;:{                                     \&quot;userValue\&quot;:null,                                     \&quot;defaultValue\&quot;:50.0,                                     \&quot;dynamicValue\&quot;:null                                  },                                  \&quot;operation\&quot;:\&quot;LESS_OR_EQUAL\&quot;                               },                               {                                  \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                                  \&quot;value\&quot;:{                                     \&quot;userValue\&quot;:null,                                     \&quot;defaultValue\&quot;:30.0,                                     \&quot;dynamicValue\&quot;:null                                  },                                  \&quot;operation\&quot;:\&quot;GREATER\&quot;                               }                            ]                         },                         \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                      }                   ]                },                \&quot;dashboardId\&quot;:null,                \&quot;alarmDetails\&quot;:null             },             \&quot;WARNING\&quot;:{                \&quot;schedule\&quot;:{                   \&quot;type\&quot;:\&quot;CUSTOM\&quot;,                   \&quot;items\&quot;:[                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:1                      },                      {                         \&quot;endsOn\&quot;:64800000,                         \&quot;enabled\&quot;:true,                         \&quot;startsOn\&quot;:43200000,                         \&quot;dayOfWeek\&quot;:2                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:3                      },                      {                         \&quot;endsOn\&quot;:57600000,                         \&quot;enabled\&quot;:true,                         \&quot;startsOn\&quot;:36000000,                         \&quot;dayOfWeek\&quot;:4                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:5                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:6                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:7                      }                   ],                   \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;                },                \&quot;condition\&quot;:{                   \&quot;spec\&quot;:{                      \&quot;type\&quot;:\&quot;REPEATING\&quot;,                      \&quot;predicate\&quot;:{                         \&quot;userValue\&quot;:null,                         \&quot;defaultValue\&quot;:5,                         \&quot;dynamicValue\&quot;:null                      }                   },                   \&quot;condition\&quot;:[                      {                         \&quot;key\&quot;:{                            \&quot;key\&quot;:\&quot;tempConstant\&quot;,                            \&quot;type\&quot;:\&quot;CONSTANT\&quot;                         },                         \&quot;value\&quot;:30,                         \&quot;predicate\&quot;:{                            \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                            \&quot;value\&quot;:{                               \&quot;userValue\&quot;:null,                               \&quot;defaultValue\&quot;:0.0,                               \&quot;dynamicValue\&quot;:{                                  \&quot;inherit\&quot;:false,                                  \&quot;sourceType\&quot;:\&quot;CURRENT_DEVICE\&quot;,                                  \&quot;sourceAttribute\&quot;:\&quot;tempThreshold\&quot;                               }                            },                            \&quot;operation\&quot;:\&quot;EQUAL\&quot;                         },                         \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                      }                   ]                },                \&quot;dashboardId\&quot;:null,                \&quot;alarmDetails\&quot;:null             },             \&quot;CRITICAL\&quot;:{                \&quot;schedule\&quot;:null,                \&quot;condition\&quot;:{                   \&quot;spec\&quot;:{                      \&quot;type\&quot;:\&quot;SIMPLE\&quot;                   },                   \&quot;condition\&quot;:[                      {                         \&quot;key\&quot;:{                            \&quot;key\&quot;:\&quot;temperature\&quot;,                            \&quot;type\&quot;:\&quot;TIME_SERIES\&quot;                         },                         \&quot;value\&quot;:null,                         \&quot;predicate\&quot;:{                            \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                            \&quot;value\&quot;:{                               \&quot;userValue\&quot;:null,                               \&quot;defaultValue\&quot;:50.0,                               \&quot;dynamicValue\&quot;:null                            },                            \&quot;operation\&quot;:\&quot;GREATER\&quot;                         },                         \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                      }                   ]                },                \&quot;dashboardId\&quot;:null,                \&quot;alarmDetails\&quot;:null             }          },          \&quot;propagateRelationTypes\&quot;:null       }    ],    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;ALLOW_CREATE_NEW_DEVICES\&quot;,       \&quot;provisionDeviceSecret\&quot;:\&quot;vaxb9hzqdbz3oqukvomg\&quot;    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;MQTT\&quot;,       \&quot;deviceTelemetryTopic\&quot;:\&quot;v1/devices/me/telemetry\&quot;,       \&quot;deviceAttributesTopic\&quot;:\&quot;v1/devices/me/attributes\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;PROTOBUF\&quot;,          \&quot;deviceTelemetryProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage telemetry;\\n\\nmessage SensorDataReading {\\n\\n  optional double temperature &#x3D; 1;\\n  optional double humidity &#x3D; 2;\\n  InnerObject innerObject &#x3D; 3;\\n\\n  message InnerObject {\\n    optional string key1 &#x3D; 1;\\n    optional bool key2 &#x3D; 2;\\n    optional double key3 &#x3D; 3;\\n    optional int32 key4 &#x3D; 4;\\n    optional string key5 &#x3D; 5;\\n  }\\n}\&quot;,          \&quot;deviceAttributesProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage attributes;\\n\\nmessage SensorConfiguration {\\n  optional string firmwareVersion &#x3D; 1;\\n  optional string serialNumber &#x3D; 2;\\n}\&quot;,          \&quot;deviceRpcRequestProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcRequestMsg {\\n  optional string method &#x3D; 1;\\n  optional int32 requestId &#x3D; 2;\\n  optional string params &#x3D; 3;\\n}\&quot;,          \&quot;deviceRpcResponseProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcResponseMsg {\\n  optional string payload &#x3D; 1;\\n}\&quot;       }    } } &#x60;&#x60;&#x60;  Let&#39;s review some specific objects examples related to the device profile configuration:  # Alarm Schedule  Alarm Schedule JSON object represents the time interval during which the alarm rule is active. Note,   &#x60;&#x60;&#x60;json \&quot;schedule\&quot;: null &#x60;&#x60;&#x60;  means alarm rule is active all the time. **&#39;daysOfWeek&#39;** field represents Monday as 1, Tuesday as 2 and so on. **&#39;startsOn&#39;** and **&#39;endsOn&#39;** fields represent hours in millis (e.g. 64800000 &#x3D; 18:00 or 6pm). **&#39;enabled&#39;** flag specifies if item in a custom rule is active for specific day of the week:  ## Specific Time Schedule  &#x60;&#x60;&#x60;json {    \&quot;schedule\&quot;:{       \&quot;type\&quot;:\&quot;SPECIFIC_TIME\&quot;,       \&quot;endsOn\&quot;:64800000,       \&quot;startsOn\&quot;:43200000,       \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;,       \&quot;daysOfWeek\&quot;:[          1,          3,          5       ]    } } &#x60;&#x60;&#x60;  ## Custom Schedule  &#x60;&#x60;&#x60;json {    \&quot;schedule\&quot;:{       \&quot;type\&quot;:\&quot;CUSTOM\&quot;,       \&quot;items\&quot;:[          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:1          },          {             \&quot;endsOn\&quot;:64800000,             \&quot;enabled\&quot;:true,             \&quot;startsOn\&quot;:43200000,             \&quot;dayOfWeek\&quot;:2          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:3          },          {             \&quot;endsOn\&quot;:57600000,             \&quot;enabled\&quot;:true,             \&quot;startsOn\&quot;:36000000,             \&quot;dayOfWeek\&quot;:4          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:5          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:6          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:7          }       ],       \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;    } } &#x60;&#x60;&#x60;  # Alarm condition type (**&#39;spec&#39;**)  Alarm condition type can be either simple, duration, or repeating. For example, 5 times in a row or during 5 minutes.  Note, **&#39;userValue&#39;** field is not used and reserved for future usage, **&#39;dynamicValue&#39;** is used for condition appliance by using the value of the **&#39;sourceAttribute&#39;** or else **&#39;defaultValue&#39;** is used (if **&#39;sourceAttribute&#39;** is absent).  **&#39;sourceType&#39;** of the **&#39;sourceAttribute&#39;** can be:   * &#39;CURRENT_DEVICE&#39;;  * &#39;CURRENT_CUSTOMER&#39;;  * &#39;CURRENT_TENANT&#39;.  **&#39;sourceAttribute&#39;** can be inherited from the owner if **&#39;inherit&#39;** is set to true (for CURRENT_DEVICE and CURRENT_CUSTOMER).  ## Repeating alarm condition  &#x60;&#x60;&#x60;json {    \&quot;spec\&quot;:{       \&quot;type\&quot;:\&quot;REPEATING\&quot;,       \&quot;predicate\&quot;:{          \&quot;userValue\&quot;:null,          \&quot;defaultValue\&quot;:5,          \&quot;dynamicValue\&quot;:{             \&quot;inherit\&quot;:true,             \&quot;sourceType\&quot;:\&quot;CURRENT_DEVICE\&quot;,             \&quot;sourceAttribute\&quot;:\&quot;tempAttr\&quot;          }       }    } } &#x60;&#x60;&#x60;  ## Duration alarm condition  &#x60;&#x60;&#x60;json {    \&quot;spec\&quot;:{       \&quot;type\&quot;:\&quot;DURATION\&quot;,       \&quot;unit\&quot;:\&quot;MINUTES\&quot;,       \&quot;predicate\&quot;:{          \&quot;userValue\&quot;:null,          \&quot;defaultValue\&quot;:30,          \&quot;dynamicValue\&quot;:null       }    } } &#x60;&#x60;&#x60;  **&#39;unit&#39;** can be:   * &#39;SECONDS&#39;;  * &#39;MINUTES&#39;;  * &#39;HOURS&#39;;  * &#39;DAYS&#39;.  # Key Filters  Key filter objects are created under the **&#39;condition&#39;** array. They allow you to define complex logical expressions over entity field, attribute, latest time series value or constant. The filter is defined using &#39;key&#39;, &#39;valueType&#39;, &#39;value&#39; (refers to the value of the &#39;CONSTANT&#39; alarm filter key type) and &#39;predicate&#39; objects. Let&#39;s review each object:  ## Alarm Filter Key  Filter Key defines either entity field, attribute, telemetry or constant. It is a JSON object that consists the key name and type. The following filter key types are supported:  * &#39;ATTRIBUTE&#39; - used for attributes values;  * &#39;TIME_SERIES&#39; - used for time series values;  * &#39;ENTITY_FIELD&#39; - used for accessing entity fields like &#39;name&#39;, &#39;label&#39;, etc. The list of available fields depends on the entity type;  * &#39;CONSTANT&#39; - constant value specified.  Let&#39;s review the example:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;TIME_SERIES\&quot;,   \&quot;key\&quot;: \&quot;temperature\&quot; } &#x60;&#x60;&#x60;  ## Value Type and Operations  Provides a hint about the data type of the entity field that is defined in the filter key. The value type impacts the list of possible operations that you may use in the corresponding predicate. For example, you may use &#39;STARTS_WITH&#39; or &#39;END_WITH&#39;, but you can&#39;t use &#39;GREATER_OR_EQUAL&#39; for string values.The following filter value types and corresponding predicate operations are supported:    * &#39;STRING&#39; - used to filter any &#39;String&#39; or &#39;JSON&#39; values. Operations: EQUAL, NOT_EQUAL, STARTS_WITH, ENDS_WITH, CONTAINS, NOT_CONTAINS;   * &#39;NUMERIC&#39; - used for &#39;Long&#39; and &#39;Double&#39; values. Operations: EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL;   * &#39;BOOLEAN&#39; - used for boolean values. Operations: EQUAL, NOT_EQUAL;  * &#39;DATE_TIME&#39; - similar to numeric, transforms value to milliseconds since epoch. Operations: EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL;      ## Filter Predicate  Filter Predicate defines the logical expression to evaluate. The list of available operations depends on the filter value type, see above. Platform supports 4 predicate types: &#39;STRING&#39;, &#39;NUMERIC&#39;, &#39;BOOLEAN&#39; and &#39;COMPLEX&#39;. The last one allows to combine multiple operations over one filter key.  Simple predicate example to check &#39;value &lt; 100&#39;:   &#x60;&#x60;&#x60;json {   \&quot;operation\&quot;: \&quot;LESS\&quot;,   \&quot;value\&quot;: {     \&quot;userValue\&quot;: null,     \&quot;defaultValue\&quot;: 100,     \&quot;dynamicValue\&quot;: null   },   \&quot;type\&quot;: \&quot;NUMERIC\&quot; } &#x60;&#x60;&#x60;  Complex predicate example, to check &#39;value &lt; 10 or value &gt; 20&#39;:   &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;COMPLEX\&quot;,   \&quot;operation\&quot;: \&quot;OR\&quot;,   \&quot;predicates\&quot;: [     {       \&quot;operation\&quot;: \&quot;LESS\&quot;,       \&quot;value\&quot;: {         \&quot;userValue\&quot;: null,         \&quot;defaultValue\&quot;: 10,         \&quot;dynamicValue\&quot;: null       },       \&quot;type\&quot;: \&quot;NUMERIC\&quot;     },     {       \&quot;operation\&quot;: \&quot;GREATER\&quot;,       \&quot;value\&quot;: {         \&quot;userValue\&quot;: null,         \&quot;defaultValue\&quot;: 20,         \&quot;dynamicValue\&quot;: null       },       \&quot;type\&quot;: \&quot;NUMERIC\&quot;     }   ] } &#x60;&#x60;&#x60;  More complex predicate example, to check &#39;value &lt; 10 or (value &gt; 50 &amp;&amp; value &lt; 60)&#39;:   &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;COMPLEX\&quot;,   \&quot;operation\&quot;: \&quot;OR\&quot;,   \&quot;predicates\&quot;: [     {       \&quot;operation\&quot;: \&quot;LESS\&quot;,       \&quot;value\&quot;: {         \&quot;userValue\&quot;: null,         \&quot;defaultValue\&quot;: 10,         \&quot;dynamicValue\&quot;: null       },       \&quot;type\&quot;: \&quot;NUMERIC\&quot;     },     {       \&quot;type\&quot;: \&quot;COMPLEX\&quot;,       \&quot;operation\&quot;: \&quot;AND\&quot;,       \&quot;predicates\&quot;: [         {           \&quot;operation\&quot;: \&quot;GREATER\&quot;,           \&quot;value\&quot;: {             \&quot;userValue\&quot;: null,             \&quot;defaultValue\&quot;: 50,             \&quot;dynamicValue\&quot;: null           },           \&quot;type\&quot;: \&quot;NUMERIC\&quot;         },         {           \&quot;operation\&quot;: \&quot;LESS\&quot;,           \&quot;value\&quot;: {             \&quot;userValue\&quot;: null,             \&quot;defaultValue\&quot;: 60,             \&quot;dynamicValue\&quot;: null           },           \&quot;type\&quot;: \&quot;NUMERIC\&quot;         }       ]     }   ] } &#x60;&#x60;&#x60;  You may also want to replace hardcoded values (for example, temperature &gt; 20) with the more dynamic expression (for example, temperature &gt; value of the tenant attribute with key &#39;temperatureThreshold&#39;). It is possible to use &#39;dynamicValue&#39; to define attribute of the tenant, customer or device. See example below:  &#x60;&#x60;&#x60;json {   \&quot;operation\&quot;: \&quot;GREATER\&quot;,   \&quot;value\&quot;: {     \&quot;userValue\&quot;: null,     \&quot;defaultValue\&quot;: 0,     \&quot;dynamicValue\&quot;: {       \&quot;inherit\&quot;: false,       \&quot;sourceType\&quot;: \&quot;CURRENT_TENANT\&quot;,       \&quot;sourceAttribute\&quot;: \&quot;temperatureThreshold\&quot;     }   },   \&quot;type\&quot;: \&quot;NUMERIC\&quot; } &#x60;&#x60;&#x60;  Note that you may use &#39;CURRENT_DEVICE&#39;, &#39;CURRENT_CUSTOMER&#39; and &#39;CURRENT_TENANT&#39; as a &#39;sourceType&#39;. The &#39;defaultValue&#39; is used when the attribute with such a name is not defined for the chosen source. The &#39;sourceAttribute&#39; can be inherited from the owner of the specified &#39;sourceType&#39; if &#39;inherit&#39; is set to true.  # Provision Configuration  There are 3 types of device provision configuration for the device profile:   * &#39;DISABLED&#39;;  * &#39;ALLOW_CREATE_NEW_DEVICES&#39;;  * &#39;CHECK_PRE_PROVISIONED_DEVICES&#39;.  Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-provisioning/) for more details.  # Transport Configuration  5 transport configuration types are available:  * &#39;DEFAULT&#39;;  * &#39;MQTT&#39;;  * &#39;LWM2M&#39;;  * &#39;COAP&#39;;  * &#39;SNMP&#39;.  Default type supports basic MQTT, HTTP, CoAP and LwM2M transports. Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-profiles/#transport-configuration) for more details about other types.  See another example of COAP transport configuration below:  &#x60;&#x60;&#x60;json {    \&quot;type\&quot;:\&quot;COAP\&quot;,    \&quot;clientSettings\&quot;:{       \&quot;edrxCycle\&quot;:null,       \&quot;powerMode\&quot;:\&quot;DRX\&quot;,       \&quot;psmActivityTimer\&quot;:null,       \&quot;pagingTransmissionWindow\&quot;:null    },    \&quot;coapDeviceTypeConfiguration\&quot;:{       \&quot;coapDeviceType\&quot;:\&quot;DEFAULT\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;JSON\&quot;       }    } } &#x60;&#x60;&#x60;Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Device Profile entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Create or update the Device Profile. When creating device profile, platform generates device profile id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created device profile id will be present in the response. Specify existing device profile id to update the device profile. Referencing non-existing device profile Id will cause &#39;Not Found&#39; error.   Device profile name is unique in the scope of tenant. Only one &#39;default&#39; device profile may exist in scope of tenant.  # Device profile data definition  Device profile data object contains device provision strategy and transport type configuration for device connectivity. Let&#39;s review some examples. First one is the default device profile data configuration and second one - the custom one.   &#x60;&#x60;&#x60;json {    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DISABLED\&quot;,       \&quot;provisionDeviceSecret\&quot;:null    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    } } &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60;json {    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;ALLOW_CREATE_NEW_DEVICES\&quot;,       \&quot;provisionDeviceSecret\&quot;:\&quot;vaxb9hzqdbz3oqukvomg\&quot;    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;MQTT\&quot;,       \&quot;deviceTelemetryTopic\&quot;:\&quot;v1/devices/me/telemetry\&quot;,       \&quot;deviceAttributesTopic\&quot;:\&quot;v1/devices/me/attributes\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;PROTOBUF\&quot;,          \&quot;deviceTelemetryProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage telemetry;\\n\\nmessage SensorDataReading {\\n\\n  optional double temperature &#x3D; 1;\\n  optional double humidity &#x3D; 2;\\n  InnerObject innerObject &#x3D; 3;\\n\\n  message InnerObject {\\n    optional string key1 &#x3D; 1;\\n    optional bool key2 &#x3D; 2;\\n    optional double key3 &#x3D; 3;\\n    optional int32 key4 &#x3D; 4;\\n    optional string key5 &#x3D; 5;\\n  }\\n}\&quot;,          \&quot;deviceAttributesProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage attributes;\\n\\nmessage SensorConfiguration {\\n  optional string firmwareVersion &#x3D; 1;\\n  optional string serialNumber &#x3D; 2;\\n}\&quot;,          \&quot;deviceRpcRequestProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcRequestMsg {\\n  optional string method &#x3D; 1;\\n  optional int32 requestId &#x3D; 2;\\n  optional string params &#x3D; 3;\\n}\&quot;,          \&quot;deviceRpcResponseProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcResponseMsg {\\n  optional string payload &#x3D; 1;\\n}\&quot;       }    } } &#x60;&#x60;&#x60;  Let&#39;s review some specific objects examples related to the device profile configuration:# Provision Configuration  There are 3 types of device provision configuration for the device profile:   * &#39;DISABLED&#39;;  * &#39;ALLOW_CREATE_NEW_DEVICES&#39;;  * &#39;CHECK_PRE_PROVISIONED_DEVICES&#39;.  Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-provisioning/) for more details.  # Transport Configuration  5 transport configuration types are available:  * &#39;DEFAULT&#39;;  * &#39;MQTT&#39;;  * &#39;LWM2M&#39;;  * &#39;COAP&#39;;  * &#39;SNMP&#39;.  Default type supports basic MQTT, HTTP, CoAP and LwM2M transports. Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-profiles/#transport-configuration) for more details about other types.  See another example of COAP transport configuration below:  &#x60;&#x60;&#x60;json {    \&quot;type\&quot;:\&quot;COAP\&quot;,    \&quot;clientSettings\&quot;:{       \&quot;edrxCycle\&quot;:null,       \&quot;powerMode\&quot;:\&quot;DRX\&quot;,       \&quot;psmActivityTimer\&quot;:null,       \&quot;pagingTransmissionWindow\&quot;:null    },    \&quot;coapDeviceTypeConfiguration\&quot;:{       \&quot;coapDeviceType\&quot;:\&quot;DEFAULT\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;JSON\&quot;       }    } } &#x60;&#x60;&#x60;Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Device Profile entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param deviceProfile  (required)
    * @return DeviceProfile
    * @throws ApiException if fails to make API call
@@ -54368,7 +55214,7 @@ public class ThingsboardApi {
 
   /**
    * Create Or Update Device Profile (saveDeviceProfile)
-   * Create or update the Device Profile. When creating device profile, platform generates device profile id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created device profile id will be present in the response. Specify existing device profile id to update the device profile. Referencing non-existing device profile Id will cause &#39;Not Found&#39; error.   Device profile name is unique in the scope of tenant. Only one &#39;default&#39; device profile may exist in scope of tenant.  # Device profile data definition  Device profile data object contains alarm rules configuration, device provision strategy and transport type configuration for device connectivity. Let&#39;s review some examples. First one is the default device profile data configuration and second one - the custom one.   &#x60;&#x60;&#x60;json {    \&quot;alarms\&quot;:[    ],    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DISABLED\&quot;,       \&quot;provisionDeviceSecret\&quot;:null    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    } } &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60;json {    \&quot;alarms\&quot;:[       {          \&quot;id\&quot;:\&quot;2492b935-1226-59e9-8615-17d8978a4f93\&quot;,          \&quot;alarmType\&quot;:\&quot;Temperature Alarm\&quot;,          \&quot;clearRule\&quot;:{             \&quot;schedule\&quot;:null,             \&quot;condition\&quot;:{                \&quot;spec\&quot;:{                   \&quot;type\&quot;:\&quot;SIMPLE\&quot;                },                \&quot;condition\&quot;:[                   {                      \&quot;key\&quot;:{                         \&quot;key\&quot;:\&quot;temperature\&quot;,                         \&quot;type\&quot;:\&quot;TIME_SERIES\&quot;                      },                      \&quot;value\&quot;:null,                      \&quot;predicate\&quot;:{                         \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                         \&quot;value\&quot;:{                            \&quot;userValue\&quot;:null,                            \&quot;defaultValue\&quot;:30.0,                            \&quot;dynamicValue\&quot;:null                         },                         \&quot;operation\&quot;:\&quot;LESS\&quot;                      },                      \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                   }                ]             },             \&quot;dashboardId\&quot;:null,             \&quot;alarmDetails\&quot;:null          },          \&quot;propagate\&quot;:false,          \&quot;createRules\&quot;:{             \&quot;MAJOR\&quot;:{                \&quot;schedule\&quot;:{                   \&quot;type\&quot;:\&quot;SPECIFIC_TIME\&quot;,                   \&quot;endsOn\&quot;:64800000,                   \&quot;startsOn\&quot;:43200000,                   \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;,                   \&quot;daysOfWeek\&quot;:[                      1,                      3,                      5                   ]                },                \&quot;condition\&quot;:{                   \&quot;spec\&quot;:{                      \&quot;type\&quot;:\&quot;DURATION\&quot;,                      \&quot;unit\&quot;:\&quot;MINUTES\&quot;,                      \&quot;predicate\&quot;:{                         \&quot;userValue\&quot;:null,                         \&quot;defaultValue\&quot;:30,                         \&quot;dynamicValue\&quot;:null                      }                   },                   \&quot;condition\&quot;:[                      {                         \&quot;key\&quot;:{                            \&quot;key\&quot;:\&quot;temperature\&quot;,                            \&quot;type\&quot;:\&quot;TIME_SERIES\&quot;                         },                         \&quot;value\&quot;:null,                         \&quot;predicate\&quot;:{                            \&quot;type\&quot;:\&quot;COMPLEX\&quot;,                            \&quot;operation\&quot;:\&quot;OR\&quot;,                            \&quot;predicates\&quot;:[                               {                                  \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                                  \&quot;value\&quot;:{                                     \&quot;userValue\&quot;:null,                                     \&quot;defaultValue\&quot;:50.0,                                     \&quot;dynamicValue\&quot;:null                                  },                                  \&quot;operation\&quot;:\&quot;LESS_OR_EQUAL\&quot;                               },                               {                                  \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                                  \&quot;value\&quot;:{                                     \&quot;userValue\&quot;:null,                                     \&quot;defaultValue\&quot;:30.0,                                     \&quot;dynamicValue\&quot;:null                                  },                                  \&quot;operation\&quot;:\&quot;GREATER\&quot;                               }                            ]                         },                         \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                      }                   ]                },                \&quot;dashboardId\&quot;:null,                \&quot;alarmDetails\&quot;:null             },             \&quot;WARNING\&quot;:{                \&quot;schedule\&quot;:{                   \&quot;type\&quot;:\&quot;CUSTOM\&quot;,                   \&quot;items\&quot;:[                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:1                      },                      {                         \&quot;endsOn\&quot;:64800000,                         \&quot;enabled\&quot;:true,                         \&quot;startsOn\&quot;:43200000,                         \&quot;dayOfWeek\&quot;:2                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:3                      },                      {                         \&quot;endsOn\&quot;:57600000,                         \&quot;enabled\&quot;:true,                         \&quot;startsOn\&quot;:36000000,                         \&quot;dayOfWeek\&quot;:4                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:5                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:6                      },                      {                         \&quot;endsOn\&quot;:0,                         \&quot;enabled\&quot;:false,                         \&quot;startsOn\&quot;:0,                         \&quot;dayOfWeek\&quot;:7                      }                   ],                   \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;                },                \&quot;condition\&quot;:{                   \&quot;spec\&quot;:{                      \&quot;type\&quot;:\&quot;REPEATING\&quot;,                      \&quot;predicate\&quot;:{                         \&quot;userValue\&quot;:null,                         \&quot;defaultValue\&quot;:5,                         \&quot;dynamicValue\&quot;:null                      }                   },                   \&quot;condition\&quot;:[                      {                         \&quot;key\&quot;:{                            \&quot;key\&quot;:\&quot;tempConstant\&quot;,                            \&quot;type\&quot;:\&quot;CONSTANT\&quot;                         },                         \&quot;value\&quot;:30,                         \&quot;predicate\&quot;:{                            \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                            \&quot;value\&quot;:{                               \&quot;userValue\&quot;:null,                               \&quot;defaultValue\&quot;:0.0,                               \&quot;dynamicValue\&quot;:{                                  \&quot;inherit\&quot;:false,                                  \&quot;sourceType\&quot;:\&quot;CURRENT_DEVICE\&quot;,                                  \&quot;sourceAttribute\&quot;:\&quot;tempThreshold\&quot;                               }                            },                            \&quot;operation\&quot;:\&quot;EQUAL\&quot;                         },                         \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                      }                   ]                },                \&quot;dashboardId\&quot;:null,                \&quot;alarmDetails\&quot;:null             },             \&quot;CRITICAL\&quot;:{                \&quot;schedule\&quot;:null,                \&quot;condition\&quot;:{                   \&quot;spec\&quot;:{                      \&quot;type\&quot;:\&quot;SIMPLE\&quot;                   },                   \&quot;condition\&quot;:[                      {                         \&quot;key\&quot;:{                            \&quot;key\&quot;:\&quot;temperature\&quot;,                            \&quot;type\&quot;:\&quot;TIME_SERIES\&quot;                         },                         \&quot;value\&quot;:null,                         \&quot;predicate\&quot;:{                            \&quot;type\&quot;:\&quot;NUMERIC\&quot;,                            \&quot;value\&quot;:{                               \&quot;userValue\&quot;:null,                               \&quot;defaultValue\&quot;:50.0,                               \&quot;dynamicValue\&quot;:null                            },                            \&quot;operation\&quot;:\&quot;GREATER\&quot;                         },                         \&quot;valueType\&quot;:\&quot;NUMERIC\&quot;                      }                   ]                },                \&quot;dashboardId\&quot;:null,                \&quot;alarmDetails\&quot;:null             }          },          \&quot;propagateRelationTypes\&quot;:null       }    ],    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;ALLOW_CREATE_NEW_DEVICES\&quot;,       \&quot;provisionDeviceSecret\&quot;:\&quot;vaxb9hzqdbz3oqukvomg\&quot;    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;MQTT\&quot;,       \&quot;deviceTelemetryTopic\&quot;:\&quot;v1/devices/me/telemetry\&quot;,       \&quot;deviceAttributesTopic\&quot;:\&quot;v1/devices/me/attributes\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;PROTOBUF\&quot;,          \&quot;deviceTelemetryProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage telemetry;\\n\\nmessage SensorDataReading {\\n\\n  optional double temperature &#x3D; 1;\\n  optional double humidity &#x3D; 2;\\n  InnerObject innerObject &#x3D; 3;\\n\\n  message InnerObject {\\n    optional string key1 &#x3D; 1;\\n    optional bool key2 &#x3D; 2;\\n    optional double key3 &#x3D; 3;\\n    optional int32 key4 &#x3D; 4;\\n    optional string key5 &#x3D; 5;\\n  }\\n}\&quot;,          \&quot;deviceAttributesProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage attributes;\\n\\nmessage SensorConfiguration {\\n  optional string firmwareVersion &#x3D; 1;\\n  optional string serialNumber &#x3D; 2;\\n}\&quot;,          \&quot;deviceRpcRequestProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcRequestMsg {\\n  optional string method &#x3D; 1;\\n  optional int32 requestId &#x3D; 2;\\n  optional string params &#x3D; 3;\\n}\&quot;,          \&quot;deviceRpcResponseProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcResponseMsg {\\n  optional string payload &#x3D; 1;\\n}\&quot;       }    } } &#x60;&#x60;&#x60;  Let&#39;s review some specific objects examples related to the device profile configuration:  # Alarm Schedule  Alarm Schedule JSON object represents the time interval during which the alarm rule is active. Note,   &#x60;&#x60;&#x60;json \&quot;schedule\&quot;: null &#x60;&#x60;&#x60;  means alarm rule is active all the time. **&#39;daysOfWeek&#39;** field represents Monday as 1, Tuesday as 2 and so on. **&#39;startsOn&#39;** and **&#39;endsOn&#39;** fields represent hours in millis (e.g. 64800000 &#x3D; 18:00 or 6pm). **&#39;enabled&#39;** flag specifies if item in a custom rule is active for specific day of the week:  ## Specific Time Schedule  &#x60;&#x60;&#x60;json {    \&quot;schedule\&quot;:{       \&quot;type\&quot;:\&quot;SPECIFIC_TIME\&quot;,       \&quot;endsOn\&quot;:64800000,       \&quot;startsOn\&quot;:43200000,       \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;,       \&quot;daysOfWeek\&quot;:[          1,          3,          5       ]    } } &#x60;&#x60;&#x60;  ## Custom Schedule  &#x60;&#x60;&#x60;json {    \&quot;schedule\&quot;:{       \&quot;type\&quot;:\&quot;CUSTOM\&quot;,       \&quot;items\&quot;:[          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:1          },          {             \&quot;endsOn\&quot;:64800000,             \&quot;enabled\&quot;:true,             \&quot;startsOn\&quot;:43200000,             \&quot;dayOfWeek\&quot;:2          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:3          },          {             \&quot;endsOn\&quot;:57600000,             \&quot;enabled\&quot;:true,             \&quot;startsOn\&quot;:36000000,             \&quot;dayOfWeek\&quot;:4          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:5          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:6          },          {             \&quot;endsOn\&quot;:0,             \&quot;enabled\&quot;:false,             \&quot;startsOn\&quot;:0,             \&quot;dayOfWeek\&quot;:7          }       ],       \&quot;timezone\&quot;:\&quot;Europe/Kiev\&quot;    } } &#x60;&#x60;&#x60;  # Alarm condition type (**&#39;spec&#39;**)  Alarm condition type can be either simple, duration, or repeating. For example, 5 times in a row or during 5 minutes.  Note, **&#39;userValue&#39;** field is not used and reserved for future usage, **&#39;dynamicValue&#39;** is used for condition appliance by using the value of the **&#39;sourceAttribute&#39;** or else **&#39;defaultValue&#39;** is used (if **&#39;sourceAttribute&#39;** is absent).  **&#39;sourceType&#39;** of the **&#39;sourceAttribute&#39;** can be:   * &#39;CURRENT_DEVICE&#39;;  * &#39;CURRENT_CUSTOMER&#39;;  * &#39;CURRENT_TENANT&#39;.  **&#39;sourceAttribute&#39;** can be inherited from the owner if **&#39;inherit&#39;** is set to true (for CURRENT_DEVICE and CURRENT_CUSTOMER).  ## Repeating alarm condition  &#x60;&#x60;&#x60;json {    \&quot;spec\&quot;:{       \&quot;type\&quot;:\&quot;REPEATING\&quot;,       \&quot;predicate\&quot;:{          \&quot;userValue\&quot;:null,          \&quot;defaultValue\&quot;:5,          \&quot;dynamicValue\&quot;:{             \&quot;inherit\&quot;:true,             \&quot;sourceType\&quot;:\&quot;CURRENT_DEVICE\&quot;,             \&quot;sourceAttribute\&quot;:\&quot;tempAttr\&quot;          }       }    } } &#x60;&#x60;&#x60;  ## Duration alarm condition  &#x60;&#x60;&#x60;json {    \&quot;spec\&quot;:{       \&quot;type\&quot;:\&quot;DURATION\&quot;,       \&quot;unit\&quot;:\&quot;MINUTES\&quot;,       \&quot;predicate\&quot;:{          \&quot;userValue\&quot;:null,          \&quot;defaultValue\&quot;:30,          \&quot;dynamicValue\&quot;:null       }    } } &#x60;&#x60;&#x60;  **&#39;unit&#39;** can be:   * &#39;SECONDS&#39;;  * &#39;MINUTES&#39;;  * &#39;HOURS&#39;;  * &#39;DAYS&#39;.  # Key Filters  Key filter objects are created under the **&#39;condition&#39;** array. They allow you to define complex logical expressions over entity field, attribute, latest time series value or constant. The filter is defined using &#39;key&#39;, &#39;valueType&#39;, &#39;value&#39; (refers to the value of the &#39;CONSTANT&#39; alarm filter key type) and &#39;predicate&#39; objects. Let&#39;s review each object:  ## Alarm Filter Key  Filter Key defines either entity field, attribute, telemetry or constant. It is a JSON object that consists the key name and type. The following filter key types are supported:  * &#39;ATTRIBUTE&#39; - used for attributes values;  * &#39;TIME_SERIES&#39; - used for time series values;  * &#39;ENTITY_FIELD&#39; - used for accessing entity fields like &#39;name&#39;, &#39;label&#39;, etc. The list of available fields depends on the entity type;  * &#39;CONSTANT&#39; - constant value specified.  Let&#39;s review the example:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;TIME_SERIES\&quot;,   \&quot;key\&quot;: \&quot;temperature\&quot; } &#x60;&#x60;&#x60;  ## Value Type and Operations  Provides a hint about the data type of the entity field that is defined in the filter key. The value type impacts the list of possible operations that you may use in the corresponding predicate. For example, you may use &#39;STARTS_WITH&#39; or &#39;END_WITH&#39;, but you can&#39;t use &#39;GREATER_OR_EQUAL&#39; for string values.The following filter value types and corresponding predicate operations are supported:    * &#39;STRING&#39; - used to filter any &#39;String&#39; or &#39;JSON&#39; values. Operations: EQUAL, NOT_EQUAL, STARTS_WITH, ENDS_WITH, CONTAINS, NOT_CONTAINS;   * &#39;NUMERIC&#39; - used for &#39;Long&#39; and &#39;Double&#39; values. Operations: EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL;   * &#39;BOOLEAN&#39; - used for boolean values. Operations: EQUAL, NOT_EQUAL;  * &#39;DATE_TIME&#39; - similar to numeric, transforms value to milliseconds since epoch. Operations: EQUAL, NOT_EQUAL, GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL;      ## Filter Predicate  Filter Predicate defines the logical expression to evaluate. The list of available operations depends on the filter value type, see above. Platform supports 4 predicate types: &#39;STRING&#39;, &#39;NUMERIC&#39;, &#39;BOOLEAN&#39; and &#39;COMPLEX&#39;. The last one allows to combine multiple operations over one filter key.  Simple predicate example to check &#39;value &lt; 100&#39;:   &#x60;&#x60;&#x60;json {   \&quot;operation\&quot;: \&quot;LESS\&quot;,   \&quot;value\&quot;: {     \&quot;userValue\&quot;: null,     \&quot;defaultValue\&quot;: 100,     \&quot;dynamicValue\&quot;: null   },   \&quot;type\&quot;: \&quot;NUMERIC\&quot; } &#x60;&#x60;&#x60;  Complex predicate example, to check &#39;value &lt; 10 or value &gt; 20&#39;:   &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;COMPLEX\&quot;,   \&quot;operation\&quot;: \&quot;OR\&quot;,   \&quot;predicates\&quot;: [     {       \&quot;operation\&quot;: \&quot;LESS\&quot;,       \&quot;value\&quot;: {         \&quot;userValue\&quot;: null,         \&quot;defaultValue\&quot;: 10,         \&quot;dynamicValue\&quot;: null       },       \&quot;type\&quot;: \&quot;NUMERIC\&quot;     },     {       \&quot;operation\&quot;: \&quot;GREATER\&quot;,       \&quot;value\&quot;: {         \&quot;userValue\&quot;: null,         \&quot;defaultValue\&quot;: 20,         \&quot;dynamicValue\&quot;: null       },       \&quot;type\&quot;: \&quot;NUMERIC\&quot;     }   ] } &#x60;&#x60;&#x60;  More complex predicate example, to check &#39;value &lt; 10 or (value &gt; 50 &amp;&amp; value &lt; 60)&#39;:   &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;COMPLEX\&quot;,   \&quot;operation\&quot;: \&quot;OR\&quot;,   \&quot;predicates\&quot;: [     {       \&quot;operation\&quot;: \&quot;LESS\&quot;,       \&quot;value\&quot;: {         \&quot;userValue\&quot;: null,         \&quot;defaultValue\&quot;: 10,         \&quot;dynamicValue\&quot;: null       },       \&quot;type\&quot;: \&quot;NUMERIC\&quot;     },     {       \&quot;type\&quot;: \&quot;COMPLEX\&quot;,       \&quot;operation\&quot;: \&quot;AND\&quot;,       \&quot;predicates\&quot;: [         {           \&quot;operation\&quot;: \&quot;GREATER\&quot;,           \&quot;value\&quot;: {             \&quot;userValue\&quot;: null,             \&quot;defaultValue\&quot;: 50,             \&quot;dynamicValue\&quot;: null           },           \&quot;type\&quot;: \&quot;NUMERIC\&quot;         },         {           \&quot;operation\&quot;: \&quot;LESS\&quot;,           \&quot;value\&quot;: {             \&quot;userValue\&quot;: null,             \&quot;defaultValue\&quot;: 60,             \&quot;dynamicValue\&quot;: null           },           \&quot;type\&quot;: \&quot;NUMERIC\&quot;         }       ]     }   ] } &#x60;&#x60;&#x60;  You may also want to replace hardcoded values (for example, temperature &gt; 20) with the more dynamic expression (for example, temperature &gt; value of the tenant attribute with key &#39;temperatureThreshold&#39;). It is possible to use &#39;dynamicValue&#39; to define attribute of the tenant, customer or device. See example below:  &#x60;&#x60;&#x60;json {   \&quot;operation\&quot;: \&quot;GREATER\&quot;,   \&quot;value\&quot;: {     \&quot;userValue\&quot;: null,     \&quot;defaultValue\&quot;: 0,     \&quot;dynamicValue\&quot;: {       \&quot;inherit\&quot;: false,       \&quot;sourceType\&quot;: \&quot;CURRENT_TENANT\&quot;,       \&quot;sourceAttribute\&quot;: \&quot;temperatureThreshold\&quot;     }   },   \&quot;type\&quot;: \&quot;NUMERIC\&quot; } &#x60;&#x60;&#x60;  Note that you may use &#39;CURRENT_DEVICE&#39;, &#39;CURRENT_CUSTOMER&#39; and &#39;CURRENT_TENANT&#39; as a &#39;sourceType&#39;. The &#39;defaultValue&#39; is used when the attribute with such a name is not defined for the chosen source. The &#39;sourceAttribute&#39; can be inherited from the owner of the specified &#39;sourceType&#39; if &#39;inherit&#39; is set to true.  # Provision Configuration  There are 3 types of device provision configuration for the device profile:   * &#39;DISABLED&#39;;  * &#39;ALLOW_CREATE_NEW_DEVICES&#39;;  * &#39;CHECK_PRE_PROVISIONED_DEVICES&#39;.  Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-provisioning/) for more details.  # Transport Configuration  5 transport configuration types are available:  * &#39;DEFAULT&#39;;  * &#39;MQTT&#39;;  * &#39;LWM2M&#39;;  * &#39;COAP&#39;;  * &#39;SNMP&#39;.  Default type supports basic MQTT, HTTP, CoAP and LwM2M transports. Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-profiles/#transport-configuration) for more details about other types.  See another example of COAP transport configuration below:  &#x60;&#x60;&#x60;json {    \&quot;type\&quot;:\&quot;COAP\&quot;,    \&quot;clientSettings\&quot;:{       \&quot;edrxCycle\&quot;:null,       \&quot;powerMode\&quot;:\&quot;DRX\&quot;,       \&quot;psmActivityTimer\&quot;:null,       \&quot;pagingTransmissionWindow\&quot;:null    },    \&quot;coapDeviceTypeConfiguration\&quot;:{       \&quot;coapDeviceType\&quot;:\&quot;DEFAULT\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;JSON\&quot;       }    } } &#x60;&#x60;&#x60;Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Device Profile entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Create or update the Device Profile. When creating device profile, platform generates device profile id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created device profile id will be present in the response. Specify existing device profile id to update the device profile. Referencing non-existing device profile Id will cause &#39;Not Found&#39; error.   Device profile name is unique in the scope of tenant. Only one &#39;default&#39; device profile may exist in scope of tenant.  # Device profile data definition  Device profile data object contains device provision strategy and transport type configuration for device connectivity. Let&#39;s review some examples. First one is the default device profile data configuration and second one - the custom one.   &#x60;&#x60;&#x60;json {    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DISABLED\&quot;,       \&quot;provisionDeviceSecret\&quot;:null    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    } } &#x60;&#x60;&#x60;  &#x60;&#x60;&#x60;json {    \&quot;configuration\&quot;:{       \&quot;type\&quot;:\&quot;DEFAULT\&quot;    },    \&quot;provisionConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;ALLOW_CREATE_NEW_DEVICES\&quot;,       \&quot;provisionDeviceSecret\&quot;:\&quot;vaxb9hzqdbz3oqukvomg\&quot;    },    \&quot;transportConfiguration\&quot;:{       \&quot;type\&quot;:\&quot;MQTT\&quot;,       \&quot;deviceTelemetryTopic\&quot;:\&quot;v1/devices/me/telemetry\&quot;,       \&quot;deviceAttributesTopic\&quot;:\&quot;v1/devices/me/attributes\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;PROTOBUF\&quot;,          \&quot;deviceTelemetryProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage telemetry;\\n\\nmessage SensorDataReading {\\n\\n  optional double temperature &#x3D; 1;\\n  optional double humidity &#x3D; 2;\\n  InnerObject innerObject &#x3D; 3;\\n\\n  message InnerObject {\\n    optional string key1 &#x3D; 1;\\n    optional bool key2 &#x3D; 2;\\n    optional double key3 &#x3D; 3;\\n    optional int32 key4 &#x3D; 4;\\n    optional string key5 &#x3D; 5;\\n  }\\n}\&quot;,          \&quot;deviceAttributesProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage attributes;\\n\\nmessage SensorConfiguration {\\n  optional string firmwareVersion &#x3D; 1;\\n  optional string serialNumber &#x3D; 2;\\n}\&quot;,          \&quot;deviceRpcRequestProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcRequestMsg {\\n  optional string method &#x3D; 1;\\n  optional int32 requestId &#x3D; 2;\\n  optional string params &#x3D; 3;\\n}\&quot;,          \&quot;deviceRpcResponseProtoSchema\&quot;:\&quot;syntax &#x3D;\\\&quot;proto3\\\&quot;;\\npackage rpc;\\n\\nmessage RpcResponseMsg {\\n  optional string payload &#x3D; 1;\\n}\&quot;       }    } } &#x60;&#x60;&#x60;  Let&#39;s review some specific objects examples related to the device profile configuration:# Provision Configuration  There are 3 types of device provision configuration for the device profile:   * &#39;DISABLED&#39;;  * &#39;ALLOW_CREATE_NEW_DEVICES&#39;;  * &#39;CHECK_PRE_PROVISIONED_DEVICES&#39;.  Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-provisioning/) for more details.  # Transport Configuration  5 transport configuration types are available:  * &#39;DEFAULT&#39;;  * &#39;MQTT&#39;;  * &#39;LWM2M&#39;;  * &#39;COAP&#39;;  * &#39;SNMP&#39;.  Default type supports basic MQTT, HTTP, CoAP and LwM2M transports. Please refer to the [docs](https://thingsboard.io/docs/user-guide/device-profiles/#transport-configuration) for more details about other types.  See another example of COAP transport configuration below:  &#x60;&#x60;&#x60;json {    \&quot;type\&quot;:\&quot;COAP\&quot;,    \&quot;clientSettings\&quot;:{       \&quot;edrxCycle\&quot;:null,       \&quot;powerMode\&quot;:\&quot;DRX\&quot;,       \&quot;psmActivityTimer\&quot;:null,       \&quot;pagingTransmissionWindow\&quot;:null    },    \&quot;coapDeviceTypeConfiguration\&quot;:{       \&quot;coapDeviceType\&quot;:\&quot;DEFAULT\&quot;,       \&quot;transportPayloadTypeConfiguration\&quot;:{          \&quot;transportPayloadType\&quot;:\&quot;JSON\&quot;       }    } } &#x60;&#x60;&#x60;Remove &#39;id&#39;, &#39;tenantId&#39; from the request body example (below) to create new Device Profile entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param deviceProfile  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;DeviceProfile&gt;
@@ -54916,7 +55762,7 @@ public class ThingsboardApi {
         .replace("{entityId}", ApiClient.urlEncode(entityId.toString()))
         .replace("{scope}", ApiClient.urlEncode(scope.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -55014,7 +55860,7 @@ public class ThingsboardApi {
         .replace("{entityId}", ApiClient.urlEncode(entityId.toString()))
         .replace("{scope}", ApiClient.urlEncode(scope.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -55194,7 +56040,7 @@ public class ThingsboardApi {
         .replace("{entityId}", ApiClient.urlEncode(entityId.toString()))
         .replace("{scope}", ApiClient.urlEncode(scope.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -55299,7 +56145,7 @@ public class ThingsboardApi {
         .replace("{scope}", ApiClient.urlEncode(scope.toString()))
         .replace("{ttl}", ApiClient.urlEncode(ttl.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
     if (memberVarReadTimeout != null) {
@@ -60741,6 +61587,88 @@ public class ThingsboardApi {
   }
 
   /**
+   * Test alarm rule TBEL expression (testAlarmRuleScript)
+   * Execute the alarm rule TBEL condition expression and return the result. Alarm rule expressions must return a boolean value. The format of request:   &#x60;&#x60;&#x60;json {   \&quot;expression\&quot;: \&quot;return temperature &gt; 50;\&quot;,   \&quot;arguments\&quot;: {     \&quot;temperature\&quot;: { \&quot;type\&quot;: \&quot;SINGLE_VALUE\&quot;, \&quot;ts\&quot;: 1739776478057, \&quot;value\&quot;: 55 }   } } &#x60;&#x60;&#x60;   Expected result JSON contains \&quot;output\&quot; and \&quot;error\&quot;.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param body Test alarm rule TBEL condition expression. The expression must return a boolean value. (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode testAlarmRuleScript(@Nullable Object body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = testAlarmRuleScriptWithHttpInfo(body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Test alarm rule TBEL expression (testAlarmRuleScript)
+   * Execute the alarm rule TBEL condition expression and return the result. Alarm rule expressions must return a boolean value. The format of request:   &#x60;&#x60;&#x60;json {   \&quot;expression\&quot;: \&quot;return temperature &gt; 50;\&quot;,   \&quot;arguments\&quot;: {     \&quot;temperature\&quot;: { \&quot;type\&quot;: \&quot;SINGLE_VALUE\&quot;, \&quot;ts\&quot;: 1739776478057, \&quot;value\&quot;: 55 }   } } &#x60;&#x60;&#x60;   Expected result JSON contains \&quot;output\&quot; and \&quot;error\&quot;.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param body Test alarm rule TBEL condition expression. The expression must return a boolean value. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> testAlarmRuleScriptWithHttpInfo(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = testAlarmRuleScriptRequestBuilder(body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("testAlarmRuleScript", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder testAlarmRuleScriptRequestBuilder(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling testAlarmRuleScript");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/alarm/rule/testScript";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Test Script expression
    * Execute the Script expression and return the result. The format of request:   &#x60;&#x60;&#x60;json {   \&quot;expression\&quot;: \&quot;var temp &#x3D; 0; foreach(element: temperature.values) {temp +&#x3D; element.value;} var avgTemperature &#x3D; temp / temperature.values.size(); var adjustedTemperature &#x3D; avgTemperature + 0.1 * humidity.value; return {\\\&quot;adjustedTemperature\\\&quot;: adjustedTemperature};\&quot;,   \&quot;arguments\&quot;: {     \&quot;temperature\&quot;: {       \&quot;type\&quot;: \&quot;TS_ROLLING\&quot;,       \&quot;timeWindow\&quot;: {         \&quot;startTs\&quot;: 1739775630002,         \&quot;endTs\&quot;: 65432211,         \&quot;limit\&quot;: 5       },       \&quot;values\&quot;: [         { \&quot;ts\&quot;: 1739775639851, \&quot;value\&quot;: 23 },         { \&quot;ts\&quot;: 1739775664561, \&quot;value\&quot;: 43 },         { \&quot;ts\&quot;: 1739775713079, \&quot;value\&quot;: 15 },         { \&quot;ts\&quot;: 1739775999522, \&quot;value\&quot;: 34 },         { \&quot;ts\&quot;: 1739776228452, \&quot;value\&quot;: 22 }       ]     },     \&quot;humidity\&quot;: { \&quot;type\&quot;: \&quot;SINGLE_VALUE\&quot;, \&quot;ts\&quot;: 1739776478057, \&quot;value\&quot;: 23 }   } } &#x60;&#x60;&#x60;   Expected result JSON contains \&quot;output\&quot; and \&quot;error\&quot;.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param body Test calculated field TBEL expression. (required)
@@ -63847,6 +64775,88 @@ public class ThingsboardApi {
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Validate Solution (validateSolution)
+   * Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid&#x3D;true) and lists any conflicts or warnings.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL READ permission.
+   * @param solutionData Solution data to validate. (required)
+   * @return SolutionValidationResult
+   * @throws ApiException if fails to make API call
+   */
+  public SolutionValidationResult validateSolution(@Nonnull SolutionData solutionData) throws ApiException {
+    ApiResponse<SolutionValidationResult> localVarResponse = validateSolutionWithHttpInfo(solutionData, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Validate Solution (validateSolution)
+   * Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid&#x3D;true) and lists any conflicts or warnings.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL READ permission.
+   * @param solutionData Solution data to validate. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;SolutionValidationResult&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<SolutionValidationResult> validateSolutionWithHttpInfo(@Nonnull SolutionData solutionData, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = validateSolutionRequestBuilder(solutionData, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("validateSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<SolutionValidationResult>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        SolutionValidationResult responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<SolutionValidationResult>() {});
+        return new ApiResponse<SolutionValidationResult>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder validateSolutionRequestBuilder(@Nonnull SolutionData solutionData, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionData' is set
+    if (solutionData == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionData' when calling validateSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/solution/validate";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(solutionData);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }

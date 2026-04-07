@@ -34,7 +34,6 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.thingsboard.client.model.EntityGroupId;
-import org.thingsboard.client.model.EntityGroupInfoOwnerIdsInner;
 import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.EntityType;
 import org.thingsboard.client.model.TenantId;
@@ -217,8 +216,8 @@ public class EntityGroupInfo {
   private Long version;
 
   public static final String JSON_PROPERTY_OWNER_IDS = "ownerIds";
-  @Nonnull
-  private Set<EntityGroupInfoOwnerIdsInner> ownerIds = new LinkedHashSet<>();
+  @Nullable
+  private Set<EntityId> ownerIds = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_EDGE_GROUP_ALL = "edgeGroupAll";
   @Nullable
@@ -427,12 +426,12 @@ public class EntityGroupInfo {
   }
 
 
-  public EntityGroupInfo ownerIds(@Nonnull Set<EntityGroupInfoOwnerIdsInner> ownerIds) {
+  public EntityGroupInfo ownerIds(@Nullable Set<EntityId> ownerIds) {
     this.ownerIds = ownerIds;
     return this;
   }
 
-  public EntityGroupInfo addOwnerIdsItem(EntityGroupInfoOwnerIdsInner ownerIdsItem) {
+  public EntityGroupInfo addOwnerIdsItem(EntityId ownerIdsItem) {
     if (this.ownerIds == null) {
       this.ownerIds = new LinkedHashSet<>();
     }
@@ -441,21 +440,21 @@ public class EntityGroupInfo {
   }
 
   /**
-   * List of the entity group owners.
+   * Get ownerIds
    * @return ownerIds
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Set<EntityGroupInfoOwnerIdsInner> getOwnerIds() {
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Set<EntityId> getOwnerIds() {
     return ownerIds;
   }
 
 
   @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOwnerIds(@Nonnull Set<EntityGroupInfoOwnerIdsInner> ownerIds) {
+  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setOwnerIds(@Nullable Set<EntityId> ownerIds) {
     this.ownerIds = ownerIds;
   }
 
@@ -659,7 +658,7 @@ public class EntityGroupInfo {
     // add `ownerIds` to the URL query string
     if (getOwnerIds() != null) {
       int i = 0;
-      for (EntityGroupInfoOwnerIdsInner _item : getOwnerIds()) {
+      for (EntityId _item : getOwnerIds()) {
         if (_item != null) {
           joiner.add(_item.toUrlQueryString(String.format(java.util.Locale.ROOT, "%sownerIds%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));

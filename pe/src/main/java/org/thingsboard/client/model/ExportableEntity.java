@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -38,11 +39,17 @@ import org.thingsboard.client.ApiClient;
  * ExportableEntity
  */
 @JsonPropertyOrder({
+  ExportableEntity.JSON_PROPERTY_CREATED_TIME,
   ExportableEntity.JSON_PROPERTY_ID,
-  ExportableEntity.JSON_PROPERTY_NAME
+  ExportableEntity.JSON_PROPERTY_NAME,
+  ExportableEntity.JSON_PROPERTY_TENANT_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ExportableEntity {
+  public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
+  @Nullable
+  private Long createdTime;
+
   public static final String JSON_PROPERTY_ID = "id";
   @Nullable
   private EntityId id;
@@ -51,8 +58,36 @@ public class ExportableEntity {
   @Nullable
   private String name;
 
+  public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
+  @Nullable
+  private TenantId tenantId;
+
   public ExportableEntity() { 
   }
+
+  public ExportableEntity createdTime(@Nullable Long createdTime) {
+    this.createdTime = createdTime;
+    return this;
+  }
+
+  /**
+   * Get createdTime
+   * @return createdTime
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getCreatedTime() {
+    return createdTime;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CREATED_TIME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreatedTime(@Nullable Long createdTime) {
+    this.createdTime = createdTime;
+  }
+
 
   public ExportableEntity id(@Nullable EntityId id) {
     this.id = id;
@@ -102,6 +137,30 @@ public class ExportableEntity {
   }
 
 
+  public ExportableEntity tenantId(@Nullable TenantId tenantId) {
+    this.tenantId = tenantId;
+    return this;
+  }
+
+  /**
+   * Get tenantId
+   * @return tenantId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public TenantId getTenantId() {
+    return tenantId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTenantId(@Nullable TenantId tenantId) {
+    this.tenantId = tenantId;
+  }
+
+
   /**
    * Return true if this ExportableEntity object is equal to o.
    */
@@ -114,21 +173,25 @@ public class ExportableEntity {
       return false;
     }
     ExportableEntity exportableEntity = (ExportableEntity) o;
-    return Objects.equals(this.id, exportableEntity.id) &&
-        Objects.equals(this.name, exportableEntity.name);
+    return Objects.equals(this.createdTime, exportableEntity.createdTime) &&
+        Objects.equals(this.id, exportableEntity.id) &&
+        Objects.equals(this.name, exportableEntity.name) &&
+        Objects.equals(this.tenantId, exportableEntity.tenantId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name);
+    return Objects.hash(createdTime, id, name, tenantId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExportableEntity {\n");
+    sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,6 +239,11 @@ public class ExportableEntity {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `createdTime` to the URL query string
+    if (getCreatedTime() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
     // add `id` to the URL query string
     if (getId() != null) {
       joiner.add(getId().toUrlQueryString(prefix + "id" + suffix));
@@ -184,6 +252,11 @@ public class ExportableEntity {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    }
+
+    // add `tenantId` to the URL query string
+    if (getTenantId() != null) {
+      joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
     return joiner.toString();

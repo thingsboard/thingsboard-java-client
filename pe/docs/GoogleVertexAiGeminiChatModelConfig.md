@@ -9,7 +9,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **modelType** | **AiModelType** |  | [optional] [readonly] |
 | **providerConfig** | **GoogleVertexAiGeminiProviderConfig** |  | |
 | **modelId** | **String** |  | |
 | **temperature** | **Double** |  | [optional] |
@@ -20,6 +19,7 @@
 | **maxOutputTokens** | **Integer** |  | [optional] |
 | **timeoutSeconds** | **Integer** |  | [optional] |
 | **maxRetries** | **Integer** |  | [optional] |
+| **modelType** | **AiModelType** |  | [optional] [readonly] |
 
 
 
@@ -30,9 +30,6 @@
 |------|------|-------------|-------|
 | provider | String |  |  |
 
-#### AiModelType (enum)
-`CHAT`
-
 #### GoogleVertexAiGeminiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -40,6 +37,9 @@
 | projectId | String |  |  |
 | location | String |  |  |
 | serviceAccountKey | String |  |  |
+
+#### AiModelType (enum)
+`CHAT`
 
 ---
 

@@ -18,7 +18,6 @@ Root configuration for AI models
 #### AmazonBedrockChatModelConfig  *(provider=`AMAZON_BEDROCK`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | AmazonBedrockProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -26,11 +25,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AnthropicChatModelConfig  *(provider=`ANTHROPIC`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | AnthropicProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -39,11 +38,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AzureOpenAiChatModelConfig  *(provider=`AZURE_OPENAI`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | AzureOpenAiProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -53,11 +52,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GitHubModelsChatModelConfig  *(provider=`GITHUB_MODELS`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | GitHubModelsProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -67,11 +66,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleAiGeminiChatModelConfig  *(provider=`GOOGLE_AI_GEMINI`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | GoogleAiGeminiProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -82,11 +81,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleVertexAiGeminiChatModelConfig  *(provider=`GOOGLE_VERTEX_AI_GEMINI`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | GoogleVertexAiGeminiProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -97,11 +96,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### MistralAiChatModelConfig  *(provider=`MISTRAL_AI`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | MistralAiProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -111,11 +110,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OllamaChatModelConfig  *(provider=`OLLAMA`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | OllamaProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -125,11 +124,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OpenAiChatModelConfig  *(provider=`OPENAI`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| modelType | AiModelType |  | [optional] [readonly] |
 | providerConfig | OpenAiProviderConfig |  |  |
 | modelId | String |  |  |
 | temperature | Double |  | [optional] |
@@ -139,11 +138,9 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
+| modelType | AiModelType |  | [optional] [readonly] |
 
 ## Referenced Types
-
-#### AiModelType (enum)
-`CHAT`
 
 #### AmazonBedrockProviderConfig
 | Name | Type | Description | Notes |
@@ -151,6 +148,9 @@ Root configuration for AI models
 | region | String |  |  |
 | accessKeyId | String |  |  |
 | secretAccessKey | String |  |  |
+
+#### AiModelType (enum)
+`CHAT`
 
 #### AnthropicProviderConfig
 | Name | Type | Description | Notes |
