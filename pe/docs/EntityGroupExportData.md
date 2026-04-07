@@ -54,8 +54,10 @@
 #### ExportableEntity
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| createdTime | Long |  | [optional] |
 | id | EntityId |  | [optional] |
 | name | String |  | [optional] |
+| tenantId | TenantId |  | [optional] |
 
 #### EntityRelation
 | Name | Type | Description | Notes |

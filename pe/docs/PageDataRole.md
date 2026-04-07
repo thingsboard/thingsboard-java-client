@@ -24,11 +24,12 @@
 | id | RoleId | JSON object with the Role Id. Specify this field to update the Role. Referencing non-existing Role Id will cause error. Omit this field to create new Role. | [optional] |
 | createdTime | Long | Timestamp of the role creation, in milliseconds | [optional] [readonly] |
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the role. May include: 'description' (string). | [optional] |
-| tenantId | TenantId | JSON object with Tenant Id. | [readonly] |
+| tenantId | TenantId | JSON object with Tenant Id. | [optional] [readonly] |
 | customerId | CustomerId | JSON object with Customer Id. | [optional] [readonly] |
 | name | String | Role Name |  |
 | type | RoleType | Type of the role: generic or group |  |
-| permissions | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
+| permissions | com.fasterxml.jackson.databind.JsonNode | JSON object with the set of permissions. Structure is specific for role type | [optional] [readonly] |
+| excludedPermissions | com.fasterxml.jackson.databind.JsonNode | JSON object with the set of excluded permissions. Only applicable for generic roles. Structure is the same as permissions | [optional] [readonly] |
 | version | Long |  | [optional] |
 | ownerId | EntityId | JSON object with Customer or Tenant Id | [optional] [readonly] |
 

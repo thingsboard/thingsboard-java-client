@@ -51,6 +51,7 @@ import org.thingsboard.client.ApiClient;
   Role.JSON_PROPERTY_NAME,
   Role.JSON_PROPERTY_TYPE,
   Role.JSON_PROPERTY_PERMISSIONS,
+  Role.JSON_PROPERTY_EXCLUDED_PERMISSIONS,
   Role.JSON_PROPERTY_VERSION,
   Role.JSON_PROPERTY_OWNER_ID
 })
@@ -69,7 +70,7 @@ public class Role {
   private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @Nonnull
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
@@ -86,7 +87,11 @@ public class Role {
 
   public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
   @Nullable
-  private com.fasterxml.jackson.databind.JsonNode permissions = null;
+  private com.fasterxml.jackson.databind.JsonNode permissions;
+
+  public static final String JSON_PROPERTY_EXCLUDED_PERMISSIONS = "excludedPermissions";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode excludedPermissions;
 
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
@@ -104,12 +109,16 @@ public class Role {
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
+    @JsonProperty(JSON_PROPERTY_PERMISSIONS) com.fasterxml.jackson.databind.JsonNode permissions, 
+    @JsonProperty(JSON_PROPERTY_EXCLUDED_PERMISSIONS) com.fasterxml.jackson.databind.JsonNode excludedPermissions, 
     @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
+    this.permissions = permissions;
+    this.excludedPermissions = excludedPermissions;
     this.ownerId = ownerId;
   }
 
@@ -179,9 +188,9 @@ public class Role {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
     return tenantId;
   }
@@ -251,13 +260,8 @@ public class Role {
   }
 
 
-  public Role permissions(@Nullable com.fasterxml.jackson.databind.JsonNode permissions) {
-    this.permissions = permissions;
-    return this;
-  }
-
   /**
-   * Get permissions
+   * JSON object with the set of permissions. Structure is specific for role type
    * @return permissions
    */
   @Nullable
@@ -268,11 +272,20 @@ public class Role {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = false)
+
+
+  /**
+   * JSON object with the set of excluded permissions. Only applicable for generic roles. Structure is the same as permissions
+   * @return excludedPermissions
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_EXCLUDED_PERMISSIONS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPermissions(@Nullable com.fasterxml.jackson.databind.JsonNode permissions) {
-    this.permissions = permissions;
+  public com.fasterxml.jackson.databind.JsonNode getExcludedPermissions() {
+    return excludedPermissions;
   }
+
+
 
 
   public Role version(@Nullable Long version) {
@@ -333,13 +346,14 @@ public class Role {
         Objects.equals(this.name, role.name) &&
         Objects.equals(this.type, role.type) &&
         Objects.equals(this.permissions, role.permissions) &&
+        Objects.equals(this.excludedPermissions, role.excludedPermissions) &&
         Objects.equals(this.version, role.version) &&
         Objects.equals(this.ownerId, role.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, permissions, version, ownerId);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, permissions, excludedPermissions, version, ownerId);
   }
 
   @Override
@@ -354,6 +368,7 @@ public class Role {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
+    sb.append("    excludedPermissions: ").append(toIndentedString(excludedPermissions)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
@@ -441,6 +456,11 @@ public class Role {
     // add `permissions` to the URL query string
     if (getPermissions() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spermissions%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPermissions()))));
+    }
+
+    // add `excludedPermissions` to the URL query string
+    if (getExcludedPermissions() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sexcludedPermissions%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getExcludedPermissions()))));
     }
 
     // add `version` to the URL query string
