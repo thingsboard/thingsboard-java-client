@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Configuration {
-  public static final String VERSION = "4.4.0PE-SNAPSHOT";
+  public static final String VERSION = "4.4.0PAAS";
 
   private static final AtomicReference<ApiClient> defaultApiClient = new AtomicReference<>();
   private static volatile Supplier<ApiClient> apiClientFactory = ApiClient::new;

@@ -131,12 +131,6 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
     return this;
   }
 
-  @Override
-  public ScriptCalculatedFieldConfiguration aiGenerated(@Nullable Boolean aiGenerated) {
-    this.setAiGenerated(aiGenerated);
-    return this;
-  }
-
   /**
    * Return true if this ScriptCalculatedFieldConfiguration object is equal to o.
    */
@@ -221,11 +215,6 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
-    }
-
-    // add `aiGenerated` to the URL query string
-    if (getAiGenerated() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%saiGenerated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiGenerated()))));
     }
 
     // add `arguments` to the URL query string

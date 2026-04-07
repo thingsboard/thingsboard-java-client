@@ -6,7 +6,7 @@
 com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body) // createChat
 void deleteChat(@Nonnull UUID chatId) // deleteChat
 com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId) // getChatMessages
-com.fasterxml.jackson.databind.JsonNode listChats() // listChats
+com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType) // listChats
 List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body) // sendChatMessage
 void updateChat(@Nonnull UUID chatId, @Nonnull Object body) // updateChat
 ```
@@ -81,12 +81,19 @@ getChatMessages
 ## listChats
 
 ```
-com.fasterxml.jackson.databind.JsonNode listChats()
+com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType)
 ```
 
-**GET** `/api/ai/chats`
+**GET** `/api/ai/chats/{chatType}`
 
 listChats
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **chatType** | **ChatType** |  | [enum: GENERIC, SOLUTION_BUILDER] |
 
 ### Return type
 
