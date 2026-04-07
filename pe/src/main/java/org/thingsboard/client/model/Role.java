@@ -86,7 +86,7 @@ public class Role {
   private RoleType type;
 
   public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
-  @Nullable
+  @Nonnull
   private com.fasterxml.jackson.databind.JsonNode permissions;
 
   public static final String JSON_PROPERTY_EXCLUDED_PERMISSIONS = "excludedPermissions";
@@ -109,16 +109,12 @@ public class Role {
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_PERMISSIONS) com.fasterxml.jackson.databind.JsonNode permissions, 
-    @JsonProperty(JSON_PROPERTY_EXCLUDED_PERMISSIONS) com.fasterxml.jackson.databind.JsonNode excludedPermissions, 
     @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
     this.customerId = customerId;
-    this.permissions = permissions;
-    this.excludedPermissions = excludedPermissions;
     this.ownerId = ownerId;
   }
 
@@ -260,19 +256,34 @@ public class Role {
   }
 
 
+  public Role permissions(@Nonnull com.fasterxml.jackson.databind.JsonNode permissions) {
+    this.permissions = permissions;
+    return this;
+  }
+
   /**
    * JSON object with the set of permissions. Structure is specific for role type
    * @return permissions
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public com.fasterxml.jackson.databind.JsonNode getPermissions() {
     return permissions;
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPermissions(@Nonnull com.fasterxml.jackson.databind.JsonNode permissions) {
+    this.permissions = permissions;
+  }
 
+
+  public Role excludedPermissions(@Nullable com.fasterxml.jackson.databind.JsonNode excludedPermissions) {
+    this.excludedPermissions = excludedPermissions;
+    return this;
+  }
 
   /**
    * JSON object with the set of excluded permissions. Only applicable for generic roles. Structure is the same as permissions
@@ -286,6 +297,11 @@ public class Role {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_EXCLUDED_PERMISSIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExcludedPermissions(@Nullable com.fasterxml.jackson.databind.JsonNode excludedPermissions) {
+    this.excludedPermissions = excludedPermissions;
+  }
 
 
   public Role version(@Nullable Long version) {

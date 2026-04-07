@@ -44,8 +44,8 @@
 | customerId | CustomerId | JSON object with Customer Id. | [optional] [readonly] |
 | name | String | Role Name |  |
 | type | RoleType | Type of the role: generic or group |  |
-| permissions | com.fasterxml.jackson.databind.JsonNode | JSON object with the set of permissions. Structure is specific for role type | [optional] [readonly] |
-| excludedPermissions | com.fasterxml.jackson.databind.JsonNode | JSON object with the set of excluded permissions. Only applicable for generic roles. Structure is the same as permissions | [optional] [readonly] |
+| permissions | com.fasterxml.jackson.databind.JsonNode | JSON object with the set of permissions. Structure is specific for role type |  |
+| excludedPermissions | com.fasterxml.jackson.databind.JsonNode | JSON object with the set of excluded permissions. Only applicable for generic roles. Structure is the same as permissions | [optional] |
 | version | Long |  | [optional] |
 | ownerId | EntityId | JSON object with Customer or Tenant Id | [optional] [readonly] |
 

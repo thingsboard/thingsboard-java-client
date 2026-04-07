@@ -49,7 +49,6 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 | output | Output |  | [optional] |
-| aiGenerated | Boolean |  | [optional] |
 
 #### AlarmCalculatedFieldConfiguration  *(extends CalculatedFieldConfiguration, type=`ALARM`)*
 | Name | Type | Description | Notes |

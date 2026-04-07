@@ -24,7 +24,6 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 | output | Output |  | [optional] |
-| aiGenerated | Boolean |  | [optional] |
 
 #### Argument
 | Name | Type | Description | Notes |
