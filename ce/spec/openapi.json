@@ -82025,12 +82025,10 @@
           }
         }
       },
-      "AiChatModelConfigObject": {
-        "type": "object",
+      "AiChatModelConfig": {
         "properties": {
           "modelType": {
-            "$ref": "#/components/schemas/AiModelType",
-            "readOnly": true
+            "$ref": "#/components/schemas/AiModelType"
           }
         }
       },
@@ -83690,42 +83688,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/AmazonBedrockProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -83793,46 +83759,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/AnthropicProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "topK": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -84885,50 +84815,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/AzureOpenAiProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "frequencyPenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "presencePenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -89489,11 +89379,19 @@
       "ExportableEntity": {
         "type": "object",
         "properties": {
+          "createdTime": {
+            "type": "integer",
+            "format": "int64"
+          },
           "id": {
             "$ref": "#/components/schemas/EntityId"
           },
           "name": {
             "type": "string"
+          },
+          "tenantId": {
+            "$ref": "#/components/schemas/TenantId",
+            "writeOnly": true
           }
         }
       },
@@ -89661,50 +89559,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/GitHubModelsProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "frequencyPenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "presencePenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -89772,54 +89630,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/GoogleAiGeminiProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "topK": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "frequencyPenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "presencePenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -89887,54 +89701,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/GoogleVertexAiGeminiProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "topK": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "frequencyPenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "presencePenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -90936,50 +90706,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/MistralAiProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "frequencyPenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "presencePenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -92815,50 +92545,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/OllamaProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "topK": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "contextLength": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }
@@ -92926,50 +92616,10 @@
               "maxRetries": {
                 "type": "integer",
                 "format": "int32"
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/AiChatModelConfigObject"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "providerConfig": {
-                "$ref": "#/components/schemas/OpenAiProviderConfig"
               },
-              "modelId": {
-                "type": "string",
-                "minLength": 1
-              },
-              "temperature": {
-                "type": "number",
-                "format": "double"
-              },
-              "topP": {
-                "type": "number",
-                "format": "double",
-                "maximum": 1
-              },
-              "frequencyPenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "presencePenalty": {
-                "type": "number",
-                "format": "double"
-              },
-              "maxOutputTokens": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "timeoutSeconds": {
-                "type": "integer",
-                "format": "int32"
-              },
-              "maxRetries": {
-                "type": "integer",
-                "format": "int32"
+              "modelType": {
+                "$ref": "#/components/schemas/AiModelType",
+                "readOnly": true
               }
             }
           }

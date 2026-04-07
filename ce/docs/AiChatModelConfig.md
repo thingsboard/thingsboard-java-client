@@ -1,13 +1,13 @@
 
-# AiChatModelConfigObject
+# AiChatModelConfig
 
-`org.thingsboard.client.model.AiChatModelConfigObject`
+`org.thingsboard.client.model.AiChatModelConfig`
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **modelType** | **AiModelType** |  | [optional] [readonly] |
+| **modelType** | **AiModelType** |  | [optional] |
 
 
 

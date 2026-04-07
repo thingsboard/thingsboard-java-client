@@ -35,26 +35,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import org.thingsboard.client.ApiClient;
 /**
- * AiChatModelConfigObject
+ * AiChatModelConfig
  */
 @JsonPropertyOrder({
-  AiChatModelConfigObject.JSON_PROPERTY_MODEL_TYPE
+  AiChatModelConfig.JSON_PROPERTY_MODEL_TYPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class AiChatModelConfigObject {
+public class AiChatModelConfig {
   public static final String JSON_PROPERTY_MODEL_TYPE = "modelType";
   @Nullable
   private AiModelType modelType;
 
-  public AiChatModelConfigObject() { 
+  public AiChatModelConfig() { 
   }
 
-  @JsonCreator
-  public AiChatModelConfigObject(
-    @JsonProperty(JSON_PROPERTY_MODEL_TYPE) AiModelType modelType
-  ) {
-  this();
+  public AiChatModelConfig modelType(@Nullable AiModelType modelType) {
     this.modelType = modelType;
+    return this;
   }
 
   /**
@@ -69,10 +66,15 @@ public class AiChatModelConfigObject {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_MODEL_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setModelType(@Nullable AiModelType modelType) {
+    this.modelType = modelType;
+  }
 
 
   /**
-   * Return true if this AiChatModelConfigObject object is equal to o.
+   * Return true if this AiChatModelConfig object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -82,8 +84,8 @@ public class AiChatModelConfigObject {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AiChatModelConfigObject aiChatModelConfigObject = (AiChatModelConfigObject) o;
-    return Objects.equals(this.modelType, aiChatModelConfigObject.modelType);
+    AiChatModelConfig aiChatModelConfig = (AiChatModelConfig) o;
+    return Objects.equals(this.modelType, aiChatModelConfig.modelType);
   }
 
   @Override
@@ -94,7 +96,7 @@ public class AiChatModelConfigObject {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AiChatModelConfigObject {\n");
+    sb.append("class AiChatModelConfig {\n");
     sb.append("    modelType: ").append(toIndentedString(modelType)).append("\n");
     sb.append("}");
     return sb.toString();
