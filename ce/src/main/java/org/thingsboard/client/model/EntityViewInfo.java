@@ -45,6 +45,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   EntityViewInfo.JSON_PROPERTY_ID,
   EntityViewInfo.JSON_PROPERTY_CREATED_TIME,
+  EntityViewInfo.JSON_PROPERTY_ADDITIONAL_INFO,
   EntityViewInfo.JSON_PROPERTY_ENTITY_ID,
   EntityViewInfo.JSON_PROPERTY_TENANT_ID,
   EntityViewInfo.JSON_PROPERTY_CUSTOMER_ID,
@@ -55,8 +56,7 @@ import org.thingsboard.client.ApiClient;
   EntityViewInfo.JSON_PROPERTY_END_TIME_MS,
   EntityViewInfo.JSON_PROPERTY_VERSION,
   EntityViewInfo.JSON_PROPERTY_CUSTOMER_TITLE,
-  EntityViewInfo.JSON_PROPERTY_CUSTOMER_IS_PUBLIC,
-  EntityViewInfo.JSON_PROPERTY_ADDITIONAL_INFO
+  EntityViewInfo.JSON_PROPERTY_CUSTOMER_IS_PUBLIC
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityViewInfo {
@@ -67,6 +67,10 @@ public class EntityViewInfo {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
   @Nonnull
@@ -111,10 +115,6 @@ public class EntityViewInfo {
   public static final String JSON_PROPERTY_CUSTOMER_IS_PUBLIC = "customerIsPublic";
   @Nullable
   private Boolean customerIsPublic;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public EntityViewInfo() { 
   }
@@ -171,6 +171,30 @@ public class EntityViewInfo {
   }
 
 
+
+
+  public EntityViewInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the entity view. May include: &#39;description&#39; (string).
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public EntityViewInfo entityId(@Nonnull EntityId entityId) {
@@ -397,30 +421,6 @@ public class EntityViewInfo {
 
 
 
-  public EntityViewInfo additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the entity view. May include: &#39;description&#39; (string).
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this EntityViewInfo object is equal to o.
    */
@@ -435,6 +435,7 @@ public class EntityViewInfo {
     EntityViewInfo entityViewInfo = (EntityViewInfo) o;
     return Objects.equals(this.id, entityViewInfo.id) &&
         Objects.equals(this.createdTime, entityViewInfo.createdTime) &&
+        Objects.equals(this.additionalInfo, entityViewInfo.additionalInfo) &&
         Objects.equals(this.entityId, entityViewInfo.entityId) &&
         Objects.equals(this.tenantId, entityViewInfo.tenantId) &&
         Objects.equals(this.customerId, entityViewInfo.customerId) &&
@@ -445,13 +446,12 @@ public class EntityViewInfo {
         Objects.equals(this.endTimeMs, entityViewInfo.endTimeMs) &&
         Objects.equals(this.version, entityViewInfo.version) &&
         Objects.equals(this.customerTitle, entityViewInfo.customerTitle) &&
-        Objects.equals(this.customerIsPublic, entityViewInfo.customerIsPublic) &&
-        Objects.equals(this.additionalInfo, entityViewInfo.additionalInfo);
+        Objects.equals(this.customerIsPublic, entityViewInfo.customerIsPublic);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version, customerTitle, customerIsPublic, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version, customerTitle, customerIsPublic);
   }
 
   @Override
@@ -460,6 +460,7 @@ public class EntityViewInfo {
     sb.append("class EntityViewInfo {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
@@ -471,7 +472,6 @@ public class EntityViewInfo {
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    customerTitle: ").append(toIndentedString(customerTitle)).append("\n");
     sb.append("    customerIsPublic: ").append(toIndentedString(customerIsPublic)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -529,6 +529,11 @@ public class EntityViewInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `entityId` to the URL query string
     if (getEntityId() != null) {
       joiner.add(getEntityId().toUrlQueryString(prefix + "entityId" + suffix));
@@ -582,11 +587,6 @@ public class EntityViewInfo {
     // add `customerIsPublic` to the URL query string
     if (getCustomerIsPublic() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scustomerIsPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerIsPublic()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

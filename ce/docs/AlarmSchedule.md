@@ -1,7 +1,7 @@
 
-# AlarmRuleSchedule
+# AlarmSchedule
 
-`org.thingsboard.client.model.AlarmRuleSchedule`
+`org.thingsboard.client.model.AlarmSchedule`
 
 ## Properties
 
@@ -13,32 +13,32 @@
 
 ## Subtypes
 
-#### AlarmRuleAnyTimeSchedule  *(type=`ANY_TIME`)*
+#### AnyTimeSchedule  *(type=`ANY_TIME`)*
 *(no additional properties)*
 
-#### AlarmRuleCustomTimeSchedule  *(type=`CUSTOM`)*
+#### CustomTimeSchedule  *(type=`CUSTOM`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| items | List<AlarmRuleCustomTimeScheduleItem> |  | [optional] |
 | timezone | String |  | [optional] |
+| items | List<CustomTimeScheduleItem> |  | [optional] |
 
-#### AlarmRuleSpecificTimeSchedule  *(type=`SPECIFIC_TIME`)*
+#### SpecificTimeSchedule  *(type=`SPECIFIC_TIME`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| daysOfWeek | Set<Integer> |  | [optional] |
-| endsOn | Long |  | [optional] |
-| startsOn | Long |  | [optional] |
 | timezone | String |  | [optional] |
+| daysOfWeek | Set<Integer> |  | [optional] |
+| startsOn | Long |  | [optional] |
+| endsOn | Long |  | [optional] |
 
 ## Referenced Types
 
-#### AlarmRuleCustomTimeScheduleItem
+#### CustomTimeScheduleItem
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| dayOfWeek | Integer |  | [optional] |
 | enabled | Boolean |  | [optional] |
-| endsOn | Long |  | [optional] |
+| dayOfWeek | Integer |  | [optional] |
 | startsOn | Long |  | [optional] |
+| endsOn | Long |  | [optional] |
 
 ---
 

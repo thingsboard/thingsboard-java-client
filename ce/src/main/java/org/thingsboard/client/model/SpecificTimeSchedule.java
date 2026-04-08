@@ -35,20 +35,20 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import org.thingsboard.client.model.AlarmRuleSchedule;
+import org.thingsboard.client.model.AlarmSchedule;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleSpecificTimeSchedule
+ * SpecificTimeSchedule
  */
 @JsonPropertyOrder({
-  AlarmRuleSpecificTimeSchedule.JSON_PROPERTY_DAYS_OF_WEEK,
-  AlarmRuleSpecificTimeSchedule.JSON_PROPERTY_ENDS_ON,
-  AlarmRuleSpecificTimeSchedule.JSON_PROPERTY_STARTS_ON,
-  AlarmRuleSpecificTimeSchedule.JSON_PROPERTY_TIMEZONE
+  SpecificTimeSchedule.JSON_PROPERTY_TIMEZONE,
+  SpecificTimeSchedule.JSON_PROPERTY_DAYS_OF_WEEK,
+  SpecificTimeSchedule.JSON_PROPERTY_STARTS_ON,
+  SpecificTimeSchedule.JSON_PROPERTY_ENDS_ON
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -57,32 +57,56 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class AlarmRuleSpecificTimeSchedule extends AlarmRuleSchedule {
+public class SpecificTimeSchedule extends AlarmSchedule {
+  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
+  @Nullable
+  private String timezone;
+
   public static final String JSON_PROPERTY_DAYS_OF_WEEK = "daysOfWeek";
   @Nullable
   private Set<Integer> daysOfWeek = new LinkedHashSet<>();
-
-  public static final String JSON_PROPERTY_ENDS_ON = "endsOn";
-  @Nullable
-  private Long endsOn;
 
   public static final String JSON_PROPERTY_STARTS_ON = "startsOn";
   @Nullable
   private Long startsOn;
 
-  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
+  public static final String JSON_PROPERTY_ENDS_ON = "endsOn";
   @Nullable
-  private String timezone;
+  private Long endsOn;
 
-  public AlarmRuleSpecificTimeSchedule() { 
+  public SpecificTimeSchedule() { 
   }
 
-  public AlarmRuleSpecificTimeSchedule daysOfWeek(@Nullable Set<Integer> daysOfWeek) {
+  public SpecificTimeSchedule timezone(@Nullable String timezone) {
+    this.timezone = timezone;
+    return this;
+  }
+
+  /**
+   * Get timezone
+   * @return timezone
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTimezone(@Nullable String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public SpecificTimeSchedule daysOfWeek(@Nullable Set<Integer> daysOfWeek) {
     this.daysOfWeek = daysOfWeek;
     return this;
   }
 
-  public AlarmRuleSpecificTimeSchedule addDaysOfWeekItem(Integer daysOfWeekItem) {
+  public SpecificTimeSchedule addDaysOfWeekItem(Integer daysOfWeekItem) {
     if (this.daysOfWeek == null) {
       this.daysOfWeek = new LinkedHashSet<>();
     }
@@ -110,31 +134,7 @@ public class AlarmRuleSpecificTimeSchedule extends AlarmRuleSchedule {
   }
 
 
-  public AlarmRuleSpecificTimeSchedule endsOn(@Nullable Long endsOn) {
-    this.endsOn = endsOn;
-    return this;
-  }
-
-  /**
-   * Get endsOn
-   * @return endsOn
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getEndsOn() {
-    return endsOn;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndsOn(@Nullable Long endsOn) {
-    this.endsOn = endsOn;
-  }
-
-
-  public AlarmRuleSpecificTimeSchedule startsOn(@Nullable Long startsOn) {
+  public SpecificTimeSchedule startsOn(@Nullable Long startsOn) {
     this.startsOn = startsOn;
     return this;
   }
@@ -158,32 +158,32 @@ public class AlarmRuleSpecificTimeSchedule extends AlarmRuleSchedule {
   }
 
 
-  public AlarmRuleSpecificTimeSchedule timezone(@Nullable String timezone) {
-    this.timezone = timezone;
+  public SpecificTimeSchedule endsOn(@Nullable Long endsOn) {
+    this.endsOn = endsOn;
     return this;
   }
 
   /**
-   * Get timezone
-   * @return timezone
+   * Get endsOn
+   * @return endsOn
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTimezone() {
-    return timezone;
+  public Long getEndsOn() {
+    return endsOn;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimezone(@Nullable String timezone) {
-    this.timezone = timezone;
+  public void setEndsOn(@Nullable Long endsOn) {
+    this.endsOn = endsOn;
   }
 
 
   /**
-   * Return true if this AlarmRuleSpecificTimeSchedule object is equal to o.
+   * Return true if this SpecificTimeSchedule object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -193,28 +193,28 @@ public class AlarmRuleSpecificTimeSchedule extends AlarmRuleSchedule {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleSpecificTimeSchedule alarmRuleSpecificTimeSchedule = (AlarmRuleSpecificTimeSchedule) o;
-    return Objects.equals(this.daysOfWeek, alarmRuleSpecificTimeSchedule.daysOfWeek) &&
-        Objects.equals(this.endsOn, alarmRuleSpecificTimeSchedule.endsOn) &&
-        Objects.equals(this.startsOn, alarmRuleSpecificTimeSchedule.startsOn) &&
-        Objects.equals(this.timezone, alarmRuleSpecificTimeSchedule.timezone) &&
+    SpecificTimeSchedule specificTimeSchedule = (SpecificTimeSchedule) o;
+    return Objects.equals(this.timezone, specificTimeSchedule.timezone) &&
+        Objects.equals(this.daysOfWeek, specificTimeSchedule.daysOfWeek) &&
+        Objects.equals(this.startsOn, specificTimeSchedule.startsOn) &&
+        Objects.equals(this.endsOn, specificTimeSchedule.endsOn) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(daysOfWeek, endsOn, startsOn, timezone, super.hashCode());
+    return Objects.hash(timezone, daysOfWeek, startsOn, endsOn, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleSpecificTimeSchedule {\n");
+    sb.append("class SpecificTimeSchedule {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    daysOfWeek: ").append(toIndentedString(daysOfWeek)).append("\n");
-    sb.append("    endsOn: ").append(toIndentedString(endsOn)).append("\n");
-    sb.append("    startsOn: ").append(toIndentedString(startsOn)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    daysOfWeek: ").append(toIndentedString(daysOfWeek)).append("\n");
+    sb.append("    startsOn: ").append(toIndentedString(startsOn)).append("\n");
+    sb.append("    endsOn: ").append(toIndentedString(endsOn)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -267,6 +267,11 @@ public class AlarmRuleSpecificTimeSchedule extends AlarmRuleSchedule {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
+    // add `timezone` to the URL query string
+    if (getTimezone() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
+    }
+
     // add `daysOfWeek` to the URL query string
     if (getDaysOfWeek() != null) {
       int i = 0;
@@ -278,19 +283,14 @@ public class AlarmRuleSpecificTimeSchedule extends AlarmRuleSchedule {
       i++;
     }
 
-    // add `endsOn` to the URL query string
-    if (getEndsOn() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sendsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEndsOn()))));
-    }
-
     // add `startsOn` to the URL query string
     if (getStartsOn() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstartsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStartsOn()))));
     }
 
-    // add `timezone` to the URL query string
-    if (getTimezone() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
+    // add `endsOn` to the URL query string
+    if (getEndsOn() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sendsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEndsOn()))));
     }
 
     return joiner.toString();
@@ -298,8 +298,8 @@ public class AlarmRuleSpecificTimeSchedule extends AlarmRuleSchedule {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("AlarmRuleSpecificTimeSchedule", AlarmRuleSpecificTimeSchedule.class);
-  JSON.registerDiscriminator(AlarmRuleSpecificTimeSchedule.class, "type", mappings);
+  mappings.put("SpecificTimeSchedule", SpecificTimeSchedule.class);
+  JSON.registerDiscriminator(SpecificTimeSchedule.class, "type", mappings);
 }
 }
 

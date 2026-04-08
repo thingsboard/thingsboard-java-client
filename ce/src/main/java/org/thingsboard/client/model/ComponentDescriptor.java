@@ -48,10 +48,10 @@ import org.thingsboard.client.ApiClient;
   ComponentDescriptor.JSON_PROPERTY_CLUSTERING_MODE,
   ComponentDescriptor.JSON_PROPERTY_NAME,
   ComponentDescriptor.JSON_PROPERTY_CLAZZ,
+  ComponentDescriptor.JSON_PROPERTY_CONFIGURATION_DESCRIPTOR,
   ComponentDescriptor.JSON_PROPERTY_CONFIGURATION_VERSION,
   ComponentDescriptor.JSON_PROPERTY_ACTIONS,
-  ComponentDescriptor.JSON_PROPERTY_HAS_QUEUE_NAME,
-  ComponentDescriptor.JSON_PROPERTY_CONFIGURATION_DESCRIPTOR
+  ComponentDescriptor.JSON_PROPERTY_HAS_QUEUE_NAME
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ComponentDescriptor {
@@ -83,6 +83,10 @@ public class ComponentDescriptor {
   @Nullable
   private String clazz;
 
+  public static final String JSON_PROPERTY_CONFIGURATION_DESCRIPTOR = "configurationDescriptor";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode configurationDescriptor = null;
+
   public static final String JSON_PROPERTY_CONFIGURATION_VERSION = "configurationVersion";
   @Nullable
   private Integer configurationVersion;
@@ -94,10 +98,6 @@ public class ComponentDescriptor {
   public static final String JSON_PROPERTY_HAS_QUEUE_NAME = "hasQueueName";
   @Nullable
   private Boolean hasQueueName;
-
-  public static final String JSON_PROPERTY_CONFIGURATION_DESCRIPTOR = "configurationDescriptor";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode configurationDescriptor = null;
 
   public ComponentDescriptor() { 
   }
@@ -234,6 +234,30 @@ public class ComponentDescriptor {
 
 
 
+  public ComponentDescriptor configurationDescriptor(@Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
+    this.configurationDescriptor = configurationDescriptor;
+    return this;
+  }
+
+  /**
+   * Get configurationDescriptor
+   * @return configurationDescriptor
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_DESCRIPTOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getConfigurationDescriptor() {
+    return configurationDescriptor;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_DESCRIPTOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConfigurationDescriptor(@Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
+    this.configurationDescriptor = configurationDescriptor;
+  }
+
+
   /**
    * Rule node configuration version. By default, this value is 0. If the rule node is a versioned node, this value might be greater than 0.
    * @return configurationVersion
@@ -276,30 +300,6 @@ public class ComponentDescriptor {
 
 
 
-  public ComponentDescriptor configurationDescriptor(@Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
-    this.configurationDescriptor = configurationDescriptor;
-    return this;
-  }
-
-  /**
-   * Get configurationDescriptor
-   * @return configurationDescriptor
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_DESCRIPTOR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getConfigurationDescriptor() {
-    return configurationDescriptor;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_DESCRIPTOR, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigurationDescriptor(@Nullable com.fasterxml.jackson.databind.JsonNode configurationDescriptor) {
-    this.configurationDescriptor = configurationDescriptor;
-  }
-
-
   /**
    * Return true if this ComponentDescriptor object is equal to o.
    */
@@ -319,15 +319,15 @@ public class ComponentDescriptor {
         Objects.equals(this.clusteringMode, componentDescriptor.clusteringMode) &&
         Objects.equals(this.name, componentDescriptor.name) &&
         Objects.equals(this.clazz, componentDescriptor.clazz) &&
+        Objects.equals(this.configurationDescriptor, componentDescriptor.configurationDescriptor) &&
         Objects.equals(this.configurationVersion, componentDescriptor.configurationVersion) &&
         Objects.equals(this.actions, componentDescriptor.actions) &&
-        Objects.equals(this.hasQueueName, componentDescriptor.hasQueueName) &&
-        Objects.equals(this.configurationDescriptor, componentDescriptor.configurationDescriptor);
+        Objects.equals(this.hasQueueName, componentDescriptor.hasQueueName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, type, scope, clusteringMode, name, clazz, configurationVersion, actions, hasQueueName, configurationDescriptor);
+    return Objects.hash(id, createdTime, type, scope, clusteringMode, name, clazz, configurationDescriptor, configurationVersion, actions, hasQueueName);
   }
 
   @Override
@@ -341,10 +341,10 @@ public class ComponentDescriptor {
     sb.append("    clusteringMode: ").append(toIndentedString(clusteringMode)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    clazz: ").append(toIndentedString(clazz)).append("\n");
+    sb.append("    configurationDescriptor: ").append(toIndentedString(configurationDescriptor)).append("\n");
     sb.append("    configurationVersion: ").append(toIndentedString(configurationVersion)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    hasQueueName: ").append(toIndentedString(hasQueueName)).append("\n");
-    sb.append("    configurationDescriptor: ").append(toIndentedString(configurationDescriptor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -427,6 +427,11 @@ public class ComponentDescriptor {
       joiner.add(String.format(java.util.Locale.ROOT, "%sclazz%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getClazz()))));
     }
 
+    // add `configurationDescriptor` to the URL query string
+    if (getConfigurationDescriptor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationDescriptor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConfigurationDescriptor()))));
+    }
+
     // add `configurationVersion` to the URL query string
     if (getConfigurationVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationVersion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConfigurationVersion()))));
@@ -440,11 +445,6 @@ public class ComponentDescriptor {
     // add `hasQueueName` to the URL query string
     if (getHasQueueName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%shasQueueName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasQueueName()))));
-    }
-
-    // add `configurationDescriptor` to the URL query string
-    if (getConfigurationDescriptor() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationDescriptor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConfigurationDescriptor()))));
     }
 
     return joiner.toString();

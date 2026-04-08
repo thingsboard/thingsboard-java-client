@@ -11,6 +11,7 @@ A JSON value representing the tenant.
 |------------ | ------------- | ------------- | -------------|
 | **id** | **TenantId** | JSON object with the tenant Id. Specify this field to update the tenant. Referencing non-existing tenant Id will cause error. Omit this field to create new tenant. | [optional] |
 | **createdTime** | **Long** | Timestamp of the tenant creation, in milliseconds | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar). | [optional] |
 | **country** | **String** | Country | [optional] |
 | **state** | **String** | State | [optional] |
 | **city** | **String** | City | [optional] |
@@ -23,7 +24,6 @@ A JSON value representing the tenant.
 | **region** | **String** | Geo region of the tenant | [optional] |
 | **tenantProfileId** | **TenantProfileId** | JSON object with Tenant Profile Id | [optional] |
 | **version** | **Long** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar). | [optional] |
 | **name** | **String** | Name of the tenant. Read-only, duplicated from title for backward compatibility | [optional] [readonly] |
 
 

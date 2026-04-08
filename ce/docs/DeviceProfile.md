@@ -21,13 +21,13 @@ A JSON value representing the device profile.
 | **defaultRuleChainId** | **RuleChainId** | Reference to the rule chain. If present, the specified rule chain will be used to process all messages related to device, including telemetry, attribute updates, etc. Otherwise, the root rule chain will be used to process those messages. | [optional] |
 | **defaultDashboardId** | **DashboardId** | Reference to the dashboard. Used in the mobile application to open the default dashboard when user navigates to device details. | [optional] |
 | **defaultQueueName** | **String** | Rule engine queue name. If present, the specified queue will be used to store all unprocessed messages related to device, including telemetry, attribute updates, etc. Otherwise, the 'Main' queue will be used to store those messages. | [optional] |
+| **profileData** | **DeviceProfileData** | Complex JSON object that includes addition device profile configuration (transport, alarm rules, etc). | [optional] |
 | **provisionDeviceKey** | **String** | Unique provisioning key used by 'Device Provisioning' feature. | [optional] |
 | **firmwareId** | **OtaPackageId** | Reference to the firmware OTA package. If present, the specified package will be used as default device firmware.  | [optional] |
 | **softwareId** | **OtaPackageId** | Reference to the software OTA package. If present, the specified package will be used as default device software.  | [optional] |
 | **defaultEdgeRuleChainId** | **RuleChainId** | Reference to the edge rule chain. If present, the specified edge rule chain will be used on the edge to process all messages related to device, including telemetry, attribute updates, etc. Otherwise, the edge root rule chain will be used to process those messages. | [optional] |
 | **version** | **Long** |  | [optional] |
 | **_default** | **Boolean** | Used to mark the default profile. Default profile is used when the device profile is not specified during device creation. | [optional] |
-| **profileData** | **DeviceProfileData** | Complex JSON object that includes addition device profile configuration (transport, alarm rules, etc). | [optional] |
 
 
 

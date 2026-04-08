@@ -44,15 +44,15 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   RuleChain.JSON_PROPERTY_ID,
   RuleChain.JSON_PROPERTY_CREATED_TIME,
+  RuleChain.JSON_PROPERTY_ADDITIONAL_INFO,
   RuleChain.JSON_PROPERTY_TENANT_ID,
   RuleChain.JSON_PROPERTY_NAME,
   RuleChain.JSON_PROPERTY_TYPE,
   RuleChain.JSON_PROPERTY_FIRST_RULE_NODE_ID,
   RuleChain.JSON_PROPERTY_ROOT,
   RuleChain.JSON_PROPERTY_DEBUG_MODE,
-  RuleChain.JSON_PROPERTY_VERSION,
-  RuleChain.JSON_PROPERTY_ADDITIONAL_INFO,
-  RuleChain.JSON_PROPERTY_CONFIGURATION
+  RuleChain.JSON_PROPERTY_CONFIGURATION,
+  RuleChain.JSON_PROPERTY_VERSION
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChain {
@@ -63,6 +63,10 @@ public class RuleChain {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nonnull
@@ -88,17 +92,13 @@ public class RuleChain {
   @Nullable
   private Boolean debugMode;
 
-  public static final String JSON_PROPERTY_VERSION = "version";
-  @Nullable
-  private Long version;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
-
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
   @Nullable
   private com.fasterxml.jackson.databind.JsonNode _configuration = null;
+
+  public static final String JSON_PROPERTY_VERSION = "version";
+  @Nullable
+  private Long version;
 
   public RuleChain() { 
   }
@@ -149,6 +149,30 @@ public class RuleChain {
   }
 
 
+
+
+  public RuleChain additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Get additionalInfo
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   /**
@@ -285,54 +309,6 @@ public class RuleChain {
   }
 
 
-  public RuleChain version(@Nullable Long version) {
-    this.version = version;
-    return this;
-  }
-
-  /**
-   * Get version
-   * @return version
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getVersion() {
-    return version;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(@Nullable Long version) {
-    this.version = version;
-  }
-
-
-  public RuleChain additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Get additionalInfo
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   public RuleChain _configuration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
     this._configuration = _configuration;
     return this;
@@ -357,6 +333,30 @@ public class RuleChain {
   }
 
 
+  public RuleChain version(@Nullable Long version) {
+    this.version = version;
+    return this;
+  }
+
+  /**
+   * Get version
+   * @return version
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getVersion() {
+    return version;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVersion(@Nullable Long version) {
+    this.version = version;
+  }
+
+
   /**
    * Return true if this RuleChain object is equal to o.
    */
@@ -371,20 +371,20 @@ public class RuleChain {
     RuleChain ruleChain = (RuleChain) o;
     return Objects.equals(this.id, ruleChain.id) &&
         Objects.equals(this.createdTime, ruleChain.createdTime) &&
+        Objects.equals(this.additionalInfo, ruleChain.additionalInfo) &&
         Objects.equals(this.tenantId, ruleChain.tenantId) &&
         Objects.equals(this.name, ruleChain.name) &&
         Objects.equals(this.type, ruleChain.type) &&
         Objects.equals(this.firstRuleNodeId, ruleChain.firstRuleNodeId) &&
         Objects.equals(this.root, ruleChain.root) &&
         Objects.equals(this.debugMode, ruleChain.debugMode) &&
-        Objects.equals(this.version, ruleChain.version) &&
-        Objects.equals(this.additionalInfo, ruleChain.additionalInfo) &&
-        Objects.equals(this._configuration, ruleChain._configuration);
+        Objects.equals(this._configuration, ruleChain._configuration) &&
+        Objects.equals(this.version, ruleChain.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, name, type, firstRuleNodeId, root, debugMode, version, additionalInfo, _configuration);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, name, type, firstRuleNodeId, root, debugMode, _configuration, version);
   }
 
   @Override
@@ -393,15 +393,15 @@ public class RuleChain {
     sb.append("class RuleChain {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    firstRuleNodeId: ").append(toIndentedString(firstRuleNodeId)).append("\n");
     sb.append("    root: ").append(toIndentedString(root)).append("\n");
     sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -459,6 +459,11 @@ public class RuleChain {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -489,19 +494,14 @@ public class RuleChain {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdebugMode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDebugMode()))));
     }
 
-    // add `version` to the URL query string
-    if (getVersion() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
-    }
-
     // add `configuration` to the URL query string
     if (getConfiguration() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sconfiguration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConfiguration()))));
+    }
+
+    // add `version` to the URL query string
+    if (getVersion() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
     return joiner.toString();

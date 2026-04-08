@@ -1,27 +1,34 @@
 
-# AlarmRuleSpecificTimeSchedule
+# NoDataFilterPredicate
 
-`org.thingsboard.client.model.AlarmRuleSpecificTimeSchedule`
+`org.thingsboard.client.model.NoDataFilterPredicate`
 
-**Extends:** **AlarmRuleSchedule**
+**Extends:** **AlarmRuleKeyFilterPredicate**
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **daysOfWeek** | **Set\<Integer\>** |  | [optional] |
-| **endsOn** | **Long** |  | [optional] |
-| **startsOn** | **Long** |  | [optional] |
-| **timezone** | **String** |  | [optional] |
+| **unit** | **TimeUnit** |  | |
+| **duration** | **AlarmConditionValueLong** |  | |
 
 
 
 ## Referenced Types
 
-#### AlarmRuleSchedule
+#### AlarmRuleKeyFilterPredicate
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | type | String |  |  |
+
+#### TimeUnit (enum)
+`NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
+
+#### AlarmConditionValueLong
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| staticValue | Long |  | [optional] |
+| dynamicValueArgument | String |  | [optional] |
 
 ---
 

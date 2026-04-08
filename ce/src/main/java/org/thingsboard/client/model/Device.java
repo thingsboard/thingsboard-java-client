@@ -46,17 +46,17 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   Device.JSON_PROPERTY_ID,
   Device.JSON_PROPERTY_CREATED_TIME,
+  Device.JSON_PROPERTY_ADDITIONAL_INFO,
   Device.JSON_PROPERTY_TENANT_ID,
   Device.JSON_PROPERTY_CUSTOMER_ID,
   Device.JSON_PROPERTY_NAME,
   Device.JSON_PROPERTY_TYPE,
   Device.JSON_PROPERTY_LABEL,
   Device.JSON_PROPERTY_DEVICE_PROFILE_ID,
+  Device.JSON_PROPERTY_DEVICE_DATA,
   Device.JSON_PROPERTY_FIRMWARE_ID,
   Device.JSON_PROPERTY_SOFTWARE_ID,
-  Device.JSON_PROPERTY_VERSION,
-  Device.JSON_PROPERTY_ADDITIONAL_INFO,
-  Device.JSON_PROPERTY_DEVICE_DATA
+  Device.JSON_PROPERTY_VERSION
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Device {
@@ -67,6 +67,10 @@ public class Device {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
@@ -92,6 +96,10 @@ public class Device {
   @Nullable
   private DeviceProfileId deviceProfileId;
 
+  public static final String JSON_PROPERTY_DEVICE_DATA = "deviceData";
+  @Nullable
+  private DeviceData deviceData;
+
   public static final String JSON_PROPERTY_FIRMWARE_ID = "firmwareId";
   @Nullable
   private OtaPackageId firmwareId;
@@ -103,14 +111,6 @@ public class Device {
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
-
-  public static final String JSON_PROPERTY_DEVICE_DATA = "deviceData";
-  @Nullable
-  private DeviceData deviceData;
 
   public Device() { 
   }
@@ -163,6 +163,30 @@ public class Device {
   }
 
 
+
+
+  public Device additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the device. May include: &#39;gateway&#39; (boolean, whether the device is a gateway), &#39;description&#39; (string), &#39;lastConnectedGateway&#39; (string, UUID of the last gateway that connected this device).
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   /**
@@ -289,6 +313,30 @@ public class Device {
   }
 
 
+  public Device deviceData(@Nullable DeviceData deviceData) {
+    this.deviceData = deviceData;
+    return this;
+  }
+
+  /**
+   * JSON object with content specific to type of transport in the device profile.
+   * @return deviceData
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DeviceData getDeviceData() {
+    return deviceData;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDeviceData(@Nullable DeviceData deviceData) {
+    this.deviceData = deviceData;
+  }
+
+
   public Device firmwareId(@Nullable OtaPackageId firmwareId) {
     this.firmwareId = firmwareId;
     return this;
@@ -361,54 +409,6 @@ public class Device {
   }
 
 
-  public Device additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the device. May include: &#39;gateway&#39; (boolean, whether the device is a gateway), &#39;description&#39; (string), &#39;lastConnectedGateway&#39; (string, UUID of the last gateway that connected this device).
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
-  public Device deviceData(@Nullable DeviceData deviceData) {
-    this.deviceData = deviceData;
-    return this;
-  }
-
-  /**
-   * JSON object with content specific to type of transport in the device profile.
-   * @return deviceData
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DeviceData getDeviceData() {
-    return deviceData;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeviceData(@Nullable DeviceData deviceData) {
-    this.deviceData = deviceData;
-  }
-
-
   /**
    * Return true if this Device object is equal to o.
    */
@@ -423,22 +423,22 @@ public class Device {
     Device device = (Device) o;
     return Objects.equals(this.id, device.id) &&
         Objects.equals(this.createdTime, device.createdTime) &&
+        Objects.equals(this.additionalInfo, device.additionalInfo) &&
         Objects.equals(this.tenantId, device.tenantId) &&
         Objects.equals(this.customerId, device.customerId) &&
         Objects.equals(this.name, device.name) &&
         Objects.equals(this.type, device.type) &&
         Objects.equals(this.label, device.label) &&
         Objects.equals(this.deviceProfileId, device.deviceProfileId) &&
+        Objects.equals(this.deviceData, device.deviceData) &&
         Objects.equals(this.firmwareId, device.firmwareId) &&
         Objects.equals(this.softwareId, device.softwareId) &&
-        Objects.equals(this.version, device.version) &&
-        Objects.equals(this.additionalInfo, device.additionalInfo) &&
-        Objects.equals(this.deviceData, device.deviceData);
+        Objects.equals(this.version, device.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, name, type, label, deviceProfileId, firmwareId, softwareId, version, additionalInfo, deviceData);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, deviceProfileId, deviceData, firmwareId, softwareId, version);
   }
 
   @Override
@@ -447,17 +447,17 @@ public class Device {
     sb.append("class Device {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    deviceProfileId: ").append(toIndentedString(deviceProfileId)).append("\n");
+    sb.append("    deviceData: ").append(toIndentedString(deviceData)).append("\n");
     sb.append("    firmwareId: ").append(toIndentedString(firmwareId)).append("\n");
     sb.append("    softwareId: ").append(toIndentedString(softwareId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
-    sb.append("    deviceData: ").append(toIndentedString(deviceData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -515,6 +515,11 @@ public class Device {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -545,6 +550,11 @@ public class Device {
       joiner.add(getDeviceProfileId().toUrlQueryString(prefix + "deviceProfileId" + suffix));
     }
 
+    // add `deviceData` to the URL query string
+    if (getDeviceData() != null) {
+      joiner.add(getDeviceData().toUrlQueryString(prefix + "deviceData" + suffix));
+    }
+
     // add `firmwareId` to the URL query string
     if (getFirmwareId() != null) {
       joiner.add(getFirmwareId().toUrlQueryString(prefix + "firmwareId" + suffix));
@@ -558,16 +568,6 @@ public class Device {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
-    }
-
-    // add `deviceData` to the URL query string
-    if (getDeviceData() != null) {
-      joiner.add(getDeviceData().toUrlQueryString(prefix + "deviceData" + suffix));
     }
 
     return joiner.toString();

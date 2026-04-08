@@ -1,22 +1,25 @@
 
-# AlarmRuleConditionFilter
+# AlarmConditionFilter
 
-`org.thingsboard.client.model.AlarmRuleConditionFilter`
+`org.thingsboard.client.model.AlarmConditionFilter`
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **argument** | **String** |  | |
-| **operation** | **ComplexOperation** |  | [optional] |
-| **predicates** | **List\<AlarmRuleKeyFilterPredicate\>** |  | |
 | **valueType** | **EntityKeyValueType** |  | |
+| **operation** | **AlarmRuleComplexOperation** |  | [optional] |
+| **predicates** | **List\<AlarmRuleKeyFilterPredicate\>** |  | |
 
 
 
 ## Referenced Types
 
-#### ComplexOperation (enum)
+#### EntityKeyValueType (enum)
+`STRING` | `NUMERIC` | `BOOLEAN` | `DATE_TIME`
+
+#### AlarmRuleComplexOperation (enum)
 `AND` | `OR`
 
 #### AlarmRuleKeyFilterPredicate
@@ -27,38 +30,35 @@
 #### AlarmRuleBooleanFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`BOOLEAN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | BooleanOperation |  |  |
+| operation | AlarmRuleBooleanOperation |  |  |
 | value | AlarmConditionValueBoolean |  |  |
 
 #### AlarmRuleComplexFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<AlarmRuleKeyFilterPredicate> |  | [optional] |
 
-#### AlarmRuleNoDataFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NO_DATA`)*
+#### NoDataFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NO_DATA`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| duration | AlarmConditionValueLong |  |  |
 | unit | TimeUnit |  |  |
+| duration | AlarmConditionValueLong |  |  |
 
 #### AlarmRuleNumericFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NUMERIC`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | NumericOperation |  |  |
+| operation | AlarmRuleNumericOperation |  |  |
 | value | AlarmConditionValueDouble |  |  |
 
 #### AlarmRuleStringFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`STRING`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| ignoreCase | Boolean |  | [optional] |
-| operation | StringOperation |  |  |
+| operation | AlarmRuleStringOperation |  |  |
 | value | AlarmConditionValueString |  |  |
+| ignoreCase | Boolean |  | [optional] |
 
-#### EntityKeyValueType (enum)
-`STRING` | `NUMERIC` | `BOOLEAN` | `DATE_TIME`
-
-#### StringOperation (enum)
+#### AlarmRuleStringOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `STARTS_WITH` | `ENDS_WITH` | `CONTAINS` | `NOT_CONTAINS` | `IN` | `NOT_IN`
 
 #### AlarmConditionValueString
@@ -67,7 +67,7 @@
 | staticValue | String |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
 
-#### NumericOperation (enum)
+#### AlarmRuleNumericOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `GREATER` | `LESS` | `GREATER_OR_EQUAL` | `LESS_OR_EQUAL`
 
 #### AlarmConditionValueDouble
@@ -76,7 +76,7 @@
 | staticValue | Double |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
 
-#### BooleanOperation (enum)
+#### AlarmRuleBooleanOperation (enum)
 `EQUAL` | `NOT_EQUAL`
 
 #### AlarmConditionValueBoolean
@@ -85,14 +85,14 @@
 | staticValue | Boolean |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
 
+#### TimeUnit (enum)
+`NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
+
 #### AlarmConditionValueLong
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | staticValue | Long |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
-
-#### TimeUnit (enum)
-`NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
 
 ---
 

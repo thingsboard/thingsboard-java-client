@@ -14,10 +14,10 @@
 | **clusteringMode** | **ComponentClusteringMode** | Clustering mode of the RuleNode. This mode represents the ability to start Rule Node in multiple microservices. | [optional] [readonly] |
 | **name** | **String** | Name of the Rule Node. Taken from the @RuleNode annotation. | [optional] [readonly] |
 | **clazz** | **String** | Full name of the Java class that implements the Rule Engine Node interface. | [optional] [readonly] |
+| **configurationDescriptor** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **configurationVersion** | **Integer** | Rule node configuration version. By default, this value is 0. If the rule node is a versioned node, this value might be greater than 0. | [optional] [readonly] |
 | **actions** | **String** | Rule Node Actions. Deprecated. Always null. | [optional] [readonly] |
 | **hasQueueName** | **Boolean** | Indicates that the RuleNode supports queue name configuration. | [optional] [readonly] |
-| **configurationDescriptor** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 
 

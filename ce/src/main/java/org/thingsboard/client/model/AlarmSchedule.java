@@ -16,7 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -31,22 +31,17 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.thingsboard.client.model.AlarmRuleCustomTimeScheduleItem;
-import org.thingsboard.client.model.AlarmRuleSchedule;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleCustomTimeSchedule
+ * AlarmSchedule
  */
 @JsonPropertyOrder({
-  AlarmRuleCustomTimeSchedule.JSON_PROPERTY_ITEMS,
-  AlarmRuleCustomTimeSchedule.JSON_PROPERTY_TIMEZONE
+  AlarmSchedule.JSON_PROPERTY_TYPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,77 +49,46 @@ import org.thingsboard.client.ApiClient;
   allowSetters = true // allows the type to be set during deserialization
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = AnyTimeSchedule.class, name = "ANY_TIME"),
+  @JsonSubTypes.Type(value = CustomTimeSchedule.class, name = "CUSTOM"),
+  @JsonSubTypes.Type(value = SpecificTimeSchedule.class, name = "SPECIFIC_TIME"),
+})
 
-public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
-  public static final String JSON_PROPERTY_ITEMS = "items";
-  @Nullable
-  private List<AlarmRuleCustomTimeScheduleItem> items = new ArrayList<>();
+public class AlarmSchedule {
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @Nonnull
+  private String type;
 
-  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
-  @Nullable
-  private String timezone;
-
-  public AlarmRuleCustomTimeSchedule() { 
+  public AlarmSchedule() { 
   }
 
-  public AlarmRuleCustomTimeSchedule items(@Nullable List<AlarmRuleCustomTimeScheduleItem> items) {
-    this.items = items;
-    return this;
-  }
-
-  public AlarmRuleCustomTimeSchedule addItemsItem(AlarmRuleCustomTimeScheduleItem itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<>();
-    }
-    this.items.add(itemsItem);
+  public AlarmSchedule type(@Nonnull String type) {
+    this.type = type;
     return this;
   }
 
   /**
-   * Get items
-   * @return items
+   * Get type
+   * @return type
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ITEMS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<AlarmRuleCustomTimeScheduleItem> getItems() {
-    return items;
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getType() {
+    return type;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ITEMS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setItems(@Nullable List<AlarmRuleCustomTimeScheduleItem> items) {
-    this.items = items;
-  }
-
-
-  public AlarmRuleCustomTimeSchedule timezone(@Nullable String timezone) {
-    this.timezone = timezone;
-    return this;
-  }
-
-  /**
-   * Get timezone
-   * @return timezone
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTimezone() {
-    return timezone;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimezone(@Nullable String timezone) {
-    this.timezone = timezone;
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@Nonnull String type) {
+    this.type = type;
   }
 
 
   /**
-   * Return true if this AlarmRuleCustomTimeSchedule object is equal to o.
+   * Return true if this AlarmSchedule object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -134,24 +98,20 @@ public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleCustomTimeSchedule alarmRuleCustomTimeSchedule = (AlarmRuleCustomTimeSchedule) o;
-    return Objects.equals(this.items, alarmRuleCustomTimeSchedule.items) &&
-        Objects.equals(this.timezone, alarmRuleCustomTimeSchedule.timezone) &&
-        super.equals(o);
+    AlarmSchedule alarmSchedule = (AlarmSchedule) o;
+    return Objects.equals(this.type, alarmSchedule.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, timezone, super.hashCode());
+    return Objects.hash(type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleCustomTimeSchedule {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("class AlarmSchedule {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -204,28 +164,16 @@ public class AlarmRuleCustomTimeSchedule extends AlarmRuleSchedule {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `items` to the URL query string
-    if (getItems() != null) {
-      for (int i = 0; i < getItems().size(); i++) {
-        if (getItems().get(i) != null) {
-          joiner.add(getItems().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sitems%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
-    }
-
-    // add `timezone` to the URL query string
-    if (getTimezone() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
-    }
-
     return joiner.toString();
   }
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("AlarmRuleCustomTimeSchedule", AlarmRuleCustomTimeSchedule.class);
-  JSON.registerDiscriminator(AlarmRuleCustomTimeSchedule.class, "type", mappings);
+  mappings.put("ANY_TIME", AnyTimeSchedule.class);
+  mappings.put("CUSTOM", CustomTimeSchedule.class);
+  mappings.put("SPECIFIC_TIME", SpecificTimeSchedule.class);
+  mappings.put("AlarmSchedule", AlarmSchedule.class);
+  JSON.registerDiscriminator(AlarmSchedule.class, "type", mappings);
 }
 }
 

@@ -11,6 +11,7 @@ A JSON value representing the queue.
 |------------ | ------------- | ------------- | -------------|
 | **id** | **QueueId** |  | [optional] |
 | **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 | **tenantId** | **TenantId** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **topic** | **String** |  | [optional] |
@@ -20,7 +21,6 @@ A JSON value representing the queue.
 | **packProcessingTimeout** | **Long** |  | [optional] |
 | **submitStrategy** | **SubmitStrategy** |  | [optional] |
 | **processingStrategy** | **ProcessingStrategy** |  | [optional] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** |  | [optional] |
 
 
 

@@ -16,8 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -33,22 +31,16 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.thingsboard.client.model.AlarmConditionExpression;
-import org.thingsboard.client.model.AlarmConditionValueAlarmRuleSchedule;
-import org.thingsboard.client.model.AlarmConditionValueLong;
-import org.thingsboard.client.model.AlarmRuleCondition;
-import org.thingsboard.client.model.TimeUnit;
+import org.thingsboard.client.model.AlarmSchedule;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleDurationCondition
+ * AnyTimeSchedule
  */
 @JsonPropertyOrder({
-  AlarmRuleDurationCondition.JSON_PROPERTY_UNIT,
-  AlarmRuleDurationCondition.JSON_PROPERTY_VALUE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -57,80 +49,12 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class AlarmRuleDurationCondition extends AlarmRuleCondition {
-  public static final String JSON_PROPERTY_UNIT = "unit";
-  @Nonnull
-  private TimeUnit unit;
-
-  public static final String JSON_PROPERTY_VALUE = "value";
-  @Nonnull
-  private AlarmConditionValueLong value;
-
-  public AlarmRuleDurationCondition() { 
-  }
-
-  public AlarmRuleDurationCondition unit(@Nonnull TimeUnit unit) {
-    this.unit = unit;
-    return this;
+public class AnyTimeSchedule extends AlarmSchedule {
+  public AnyTimeSchedule() { 
   }
 
   /**
-   * Get unit
-   * @return unit
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public TimeUnit getUnit() {
-    return unit;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUnit(@Nonnull TimeUnit unit) {
-    this.unit = unit;
-  }
-
-
-  public AlarmRuleDurationCondition value(@Nonnull AlarmConditionValueLong value) {
-    this.value = value;
-    return this;
-  }
-
-  /**
-   * Get value
-   * @return value
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_VALUE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public AlarmConditionValueLong getValue() {
-    return value;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_VALUE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValue(@Nonnull AlarmConditionValueLong value) {
-    this.value = value;
-  }
-
-
-  @Override
-  public AlarmRuleDurationCondition expression(@Nonnull AlarmConditionExpression expression) {
-    this.setExpression(expression);
-    return this;
-  }
-
-  @Override
-  public AlarmRuleDurationCondition schedule(@Nullable AlarmConditionValueAlarmRuleSchedule schedule) {
-    this.setSchedule(schedule);
-    return this;
-  }
-
-  /**
-   * Return true if this AlarmRuleDurationCondition object is equal to o.
+   * Return true if this AnyTimeSchedule object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -140,24 +64,19 @@ public class AlarmRuleDurationCondition extends AlarmRuleCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleDurationCondition alarmRuleDurationCondition = (AlarmRuleDurationCondition) o;
-    return Objects.equals(this.unit, alarmRuleDurationCondition.unit) &&
-        Objects.equals(this.value, alarmRuleDurationCondition.value) &&
-        super.equals(o);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unit, value, super.hashCode());
+    return Objects.hash(super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleDurationCondition {\n");
+    sb.append("class AnyTimeSchedule {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -205,29 +124,9 @@ public class AlarmRuleDurationCondition extends AlarmRuleCondition {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `expression` to the URL query string
-    if (getExpression() != null) {
-      joiner.add(getExpression().toUrlQueryString(prefix + "expression" + suffix));
-    }
-
-    // add `schedule` to the URL query string
-    if (getSchedule() != null) {
-      joiner.add(getSchedule().toUrlQueryString(prefix + "schedule" + suffix));
-    }
-
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
-    // add `unit` to the URL query string
-    if (getUnit() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sunit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUnit()))));
-    }
-
-    // add `value` to the URL query string
-    if (getValue() != null) {
-      joiner.add(getValue().toUrlQueryString(prefix + "value" + suffix));
     }
 
     return joiner.toString();
@@ -235,8 +134,8 @@ public class AlarmRuleDurationCondition extends AlarmRuleCondition {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("AlarmRuleDurationCondition", AlarmRuleDurationCondition.class);
-  JSON.registerDiscriminator(AlarmRuleDurationCondition.class, "type", mappings);
+  mappings.put("AnyTimeSchedule", AnyTimeSchedule.class);
+  JSON.registerDiscriminator(AnyTimeSchedule.class, "type", mappings);
 }
 }
 

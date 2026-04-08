@@ -33,20 +33,20 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.AlarmCondition;
 import org.thingsboard.client.model.AlarmConditionExpression;
-import org.thingsboard.client.model.AlarmConditionValueAlarmRuleSchedule;
+import org.thingsboard.client.model.AlarmConditionValueAlarmSchedule;
+import org.thingsboard.client.model.AlarmConditionValueInteger;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleCondition
+ * RepeatingAlarmCondition
  */
 @JsonPropertyOrder({
-  AlarmRuleCondition.JSON_PROPERTY_EXPRESSION,
-  AlarmRuleCondition.JSON_PROPERTY_SCHEDULE,
-  AlarmRuleCondition.JSON_PROPERTY_TYPE
+  RepeatingAlarmCondition.JSON_PROPERTY_COUNT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,102 +54,53 @@ import org.thingsboard.client.ApiClient;
   allowSetters = true // allows the type to be set during deserialization
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = AlarmRuleDurationCondition.class, name = "DURATION"),
-  @JsonSubTypes.Type(value = AlarmRuleRepeatingCondition.class, name = "REPEATING"),
-  @JsonSubTypes.Type(value = AlarmRuleSimpleCondition.class, name = "SIMPLE"),
-})
 
-public class AlarmRuleCondition {
-  public static final String JSON_PROPERTY_EXPRESSION = "expression";
+public class RepeatingAlarmCondition extends AlarmCondition {
+  public static final String JSON_PROPERTY_COUNT = "count";
   @Nonnull
-  private AlarmConditionExpression expression;
+  private AlarmConditionValueInteger count;
 
-  public static final String JSON_PROPERTY_SCHEDULE = "schedule";
-  @Nullable
-  private AlarmConditionValueAlarmRuleSchedule schedule;
-
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @Nonnull
-  private String type;
-
-  public AlarmRuleCondition() { 
+  public RepeatingAlarmCondition() { 
   }
 
-  public AlarmRuleCondition expression(@Nonnull AlarmConditionExpression expression) {
-    this.expression = expression;
+  public RepeatingAlarmCondition count(@Nonnull AlarmConditionValueInteger count) {
+    this.count = count;
     return this;
   }
 
   /**
-   * Get expression
-   * @return expression
+   * Get count
+   * @return count
    */
   @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_EXPRESSION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_COUNT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public AlarmConditionExpression getExpression() {
-    return expression;
+  public AlarmConditionValueInteger getCount() {
+    return count;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_EXPRESSION, required = true)
+  @JsonProperty(value = JSON_PROPERTY_COUNT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpression(@Nonnull AlarmConditionExpression expression) {
-    this.expression = expression;
+  public void setCount(@Nonnull AlarmConditionValueInteger count) {
+    this.count = count;
   }
 
 
-  public AlarmRuleCondition schedule(@Nullable AlarmConditionValueAlarmRuleSchedule schedule) {
-    this.schedule = schedule;
+  @Override
+  public RepeatingAlarmCondition expression(@Nonnull AlarmConditionExpression expression) {
+    this.setExpression(expression);
+    return this;
+  }
+
+  @Override
+  public RepeatingAlarmCondition schedule(@Nullable AlarmConditionValueAlarmSchedule schedule) {
+    this.setSchedule(schedule);
     return this;
   }
 
   /**
-   * Get schedule
-   * @return schedule
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmConditionValueAlarmRuleSchedule getSchedule() {
-    return schedule;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSchedule(@Nullable AlarmConditionValueAlarmRuleSchedule schedule) {
-    this.schedule = schedule;
-  }
-
-
-  public AlarmRuleCondition type(@Nonnull String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@Nonnull String type) {
-    this.type = type;
-  }
-
-
-  /**
-   * Return true if this AlarmRuleCondition object is equal to o.
+   * Return true if this RepeatingAlarmCondition object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -159,24 +110,22 @@ public class AlarmRuleCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleCondition alarmRuleCondition = (AlarmRuleCondition) o;
-    return Objects.equals(this.expression, alarmRuleCondition.expression) &&
-        Objects.equals(this.schedule, alarmRuleCondition.schedule) &&
-        Objects.equals(this.type, alarmRuleCondition.type);
+    RepeatingAlarmCondition repeatingAlarmCondition = (RepeatingAlarmCondition) o;
+    return Objects.equals(this.count, repeatingAlarmCondition.count) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(expression, schedule, type);
+    return Objects.hash(count, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleCondition {\n");
-    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
-    sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class RepeatingAlarmCondition {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -239,16 +188,18 @@ public class AlarmRuleCondition {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
+    // add `count` to the URL query string
+    if (getCount() != null) {
+      joiner.add(getCount().toUrlQueryString(prefix + "count" + suffix));
+    }
+
     return joiner.toString();
   }
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("DURATION", AlarmRuleDurationCondition.class);
-  mappings.put("REPEATING", AlarmRuleRepeatingCondition.class);
-  mappings.put("SIMPLE", AlarmRuleSimpleCondition.class);
-  mappings.put("AlarmRuleCondition", AlarmRuleCondition.class);
-  JSON.registerDiscriminator(AlarmRuleCondition.class, "type", mappings);
+  mappings.put("RepeatingAlarmCondition", RepeatingAlarmCondition.class);
+  JSON.registerDiscriminator(RepeatingAlarmCondition.class, "type", mappings);
 }
 }
 

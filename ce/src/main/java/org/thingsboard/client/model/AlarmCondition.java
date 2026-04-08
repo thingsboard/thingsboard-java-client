@@ -34,17 +34,19 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AlarmConditionExpression;
-import org.thingsboard.client.model.AlarmConditionValueAlarmRuleSchedule;
-import org.thingsboard.client.model.AlarmRuleCondition;
+import org.thingsboard.client.model.AlarmConditionValueAlarmSchedule;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleSimpleCondition
+ * AlarmCondition
  */
 @JsonPropertyOrder({
+  AlarmCondition.JSON_PROPERTY_EXPRESSION,
+  AlarmCondition.JSON_PROPERTY_SCHEDULE,
+  AlarmCondition.JSON_PROPERTY_TYPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -52,25 +54,102 @@ import org.thingsboard.client.ApiClient;
   allowSetters = true // allows the type to be set during deserialization
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = DurationAlarmCondition.class, name = "DURATION"),
+  @JsonSubTypes.Type(value = RepeatingAlarmCondition.class, name = "REPEATING"),
+  @JsonSubTypes.Type(value = SimpleAlarmCondition.class, name = "SIMPLE"),
+})
 
-public class AlarmRuleSimpleCondition extends AlarmRuleCondition {
-  public AlarmRuleSimpleCondition() { 
+public class AlarmCondition {
+  public static final String JSON_PROPERTY_EXPRESSION = "expression";
+  @Nonnull
+  private AlarmConditionExpression expression;
+
+  public static final String JSON_PROPERTY_SCHEDULE = "schedule";
+  @Nullable
+  private AlarmConditionValueAlarmSchedule schedule;
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @Nonnull
+  private String type;
+
+  public AlarmCondition() { 
   }
 
-  @Override
-  public AlarmRuleSimpleCondition expression(@Nonnull AlarmConditionExpression expression) {
-    this.setExpression(expression);
-    return this;
-  }
-
-  @Override
-  public AlarmRuleSimpleCondition schedule(@Nullable AlarmConditionValueAlarmRuleSchedule schedule) {
-    this.setSchedule(schedule);
+  public AlarmCondition expression(@Nonnull AlarmConditionExpression expression) {
+    this.expression = expression;
     return this;
   }
 
   /**
-   * Return true if this AlarmRuleSimpleCondition object is equal to o.
+   * Get expression
+   * @return expression
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_EXPRESSION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AlarmConditionExpression getExpression() {
+    return expression;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EXPRESSION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setExpression(@Nonnull AlarmConditionExpression expression) {
+    this.expression = expression;
+  }
+
+
+  public AlarmCondition schedule(@Nullable AlarmConditionValueAlarmSchedule schedule) {
+    this.schedule = schedule;
+    return this;
+  }
+
+  /**
+   * Get schedule
+   * @return schedule
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmConditionValueAlarmSchedule getSchedule() {
+    return schedule;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSchedule(@Nullable AlarmConditionValueAlarmSchedule schedule) {
+    this.schedule = schedule;
+  }
+
+
+  public AlarmCondition type(@Nonnull String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getType() {
+    return type;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@Nonnull String type) {
+    this.type = type;
+  }
+
+
+  /**
+   * Return true if this AlarmCondition object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -80,19 +159,24 @@ public class AlarmRuleSimpleCondition extends AlarmRuleCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    AlarmCondition alarmCondition = (AlarmCondition) o;
+    return Objects.equals(this.expression, alarmCondition.expression) &&
+        Objects.equals(this.schedule, alarmCondition.schedule) &&
+        Objects.equals(this.type, alarmCondition.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(expression, schedule, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleSimpleCondition {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class AlarmCondition {\n");
+    sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
+    sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -160,8 +244,11 @@ public class AlarmRuleSimpleCondition extends AlarmRuleCondition {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("AlarmRuleSimpleCondition", AlarmRuleSimpleCondition.class);
-  JSON.registerDiscriminator(AlarmRuleSimpleCondition.class, "type", mappings);
+  mappings.put("DURATION", DurationAlarmCondition.class);
+  mappings.put("REPEATING", RepeatingAlarmCondition.class);
+  mappings.put("SIMPLE", SimpleAlarmCondition.class);
+  mappings.put("AlarmCondition", AlarmCondition.class);
+  JSON.registerDiscriminator(AlarmCondition.class, "type", mappings);
 }
 }
 

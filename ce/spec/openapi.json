@@ -82367,12 +82367,12 @@
               "createRules": {
                 "type": "object",
                 "additionalProperties": {
-                  "$ref": "#/components/schemas/AlarmRuleDefinition"
+                  "$ref": "#/components/schemas/AlarmRule"
                 },
                 "minProperties": 1
               },
               "clearRule": {
-                "$ref": "#/components/schemas/AlarmRuleDefinition"
+                "$ref": "#/components/schemas/AlarmRule"
               },
               "propagate": {
                 "type": "boolean"
@@ -82577,6 +82577,32 @@
           "OTHER"
         ]
       },
+      "AlarmCondition": {
+        "type": "object",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "SIMPLE": "#/components/schemas/SimpleAlarmCondition",
+            "DURATION": "#/components/schemas/DurationAlarmCondition",
+            "REPEATING": "#/components/schemas/RepeatingAlarmCondition"
+          }
+        },
+        "properties": {
+          "expression": {
+            "$ref": "#/components/schemas/AlarmConditionExpression"
+          },
+          "schedule": {
+            "$ref": "#/components/schemas/AlarmConditionValueAlarmSchedule"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "expression",
+          "type"
+        ]
+      },
       "AlarmConditionExpression": {
         "discriminator": {
           "propertyName": "type",
@@ -82594,14 +82620,41 @@
           "type"
         ]
       },
-      "AlarmConditionValueAlarmRuleSchedule": {
+      "AlarmConditionFilter": {
         "type": "object",
         "properties": {
+          "argument": {
+            "type": "string",
+            "minLength": 1
+          },
+          "valueType": {
+            "$ref": "#/components/schemas/EntityKeyValueType"
+          },
+          "operation": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
+          },
+          "predicates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "argument",
+          "predicates",
+          "valueType"
+        ]
+      },
+      "AlarmConditionValueAlarmSchedule": {
+        "type": "object",
+        "properties": {
+          "staticValue": {
+            "$ref": "#/components/schemas/AlarmSchedule"
+          },
           "dynamicValueArgument": {
             "type": "string"
-          },
-          "staticValue": {
-            "$ref": "#/components/schemas/AlarmRuleSchedule"
           }
         }
       },
@@ -83171,11 +83224,21 @@
           "notifyOn"
         ]
       },
-      "AlarmRuleAnyTimeSchedule": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmRuleSchedule"
+      "AlarmRule": {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "$ref": "#/components/schemas/AlarmCondition"
+          },
+          "alarmDetails": {
+            "type": "string"
+          },
+          "dashboardId": {
+            "$ref": "#/components/schemas/DashboardId"
           }
+        },
+        "required": [
+          "condition"
         ]
       },
       "AlarmRuleBooleanFilterPredicate": {
@@ -83187,7 +83250,7 @@
             "type": "object",
             "properties": {
               "operation": {
-                "$ref": "#/components/schemas/BooleanOperation"
+                "$ref": "#/components/schemas/AlarmRuleBooleanOperation"
               },
               "value": {
                 "$ref": "#/components/schemas/AlarmConditionValueBoolean"
@@ -83200,6 +83263,13 @@
           "value"
         ]
       },
+      "AlarmRuleBooleanOperation": {
+        "type": "string",
+        "enum": [
+          "EQUAL",
+          "NOT_EQUAL"
+        ]
+      },
       "AlarmRuleComplexFilterPredicate": {
         "allOf": [
           {
@@ -83209,7 +83279,7 @@
             "type": "object",
             "properties": {
               "operation": {
-                "$ref": "#/components/schemas/ComplexOperation"
+                "$ref": "#/components/schemas/AlarmRuleComplexOperation"
               },
               "predicates": {
                 "type": "array",
@@ -83221,115 +83291,69 @@
           }
         ]
       },
-      "AlarmRuleCondition": {
-        "type": "object",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "SIMPLE": "#/components/schemas/AlarmRuleSimpleCondition",
-            "DURATION": "#/components/schemas/AlarmRuleDurationCondition",
-            "REPEATING": "#/components/schemas/AlarmRuleRepeatingCondition"
-          }
-        },
-        "properties": {
-          "expression": {
-            "$ref": "#/components/schemas/AlarmConditionExpression"
-          },
-          "schedule": {
-            "$ref": "#/components/schemas/AlarmConditionValueAlarmRuleSchedule"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "expression",
-          "type"
+      "AlarmRuleComplexOperation": {
+        "type": "string",
+        "enum": [
+          "AND",
+          "OR"
         ]
-      },
-      "AlarmRuleConditionFilter": {
-        "type": "object",
-        "properties": {
-          "argument": {
-            "type": "string",
-            "minLength": 1
-          },
-          "operation": {
-            "$ref": "#/components/schemas/ComplexOperation"
-          },
-          "predicates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
-            },
-            "minItems": 1
-          },
-          "valueType": {
-            "$ref": "#/components/schemas/EntityKeyValueType"
-          }
-        },
-        "required": [
-          "argument",
-          "predicates",
-          "valueType"
-        ]
-      },
-      "AlarmRuleCustomTimeSchedule": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmRuleSchedule"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "items": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/AlarmRuleCustomTimeScheduleItem"
-                }
-              },
-              "timezone": {
-                "type": "string"
-              }
-            }
-          }
-        ]
-      },
-      "AlarmRuleCustomTimeScheduleItem": {
-        "type": "object",
-        "properties": {
-          "dayOfWeek": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "enabled": {
-            "type": "boolean"
-          },
-          "endsOn": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "startsOn": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
       },
       "AlarmRuleDefinition": {
         "type": "object",
         "properties": {
-          "alarmDetails": {
-            "type": "string"
+          "id": {
+            "$ref": "#/components/schemas/CalculatedFieldId",
+            "description": "JSON object with the Alarm Rule Id. Referencing non-existing Alarm Rule Id will cause error."
           },
-          "condition": {
-            "$ref": "#/components/schemas/AlarmRuleCondition"
+          "createdTime": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Timestamp of the alarm rule creation, in milliseconds",
+            "example": 1609459200000,
+            "readOnly": true
           },
-          "dashboardId": {
-            "$ref": "#/components/schemas/DashboardId"
+          "tenantId": {
+            "$ref": "#/components/schemas/TenantId"
+          },
+          "entityId": {
+            "$ref": "#/components/schemas/EntityId"
+          },
+          "name": {
+            "type": "string",
+            "description": "User defined name of the alarm rule."
+          },
+          "debugSettings": {
+            "$ref": "#/components/schemas/DebugSettings",
+            "description": "Debug settings object."
+          },
+          "configurationVersion": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Version of alarm rule configuration.",
+            "example": 0
+          },
+          "configuration": {
+            "$ref": "#/components/schemas/AlarmCalculatedFieldConfiguration"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the alarm rule. May include: 'description' (string).",
+            "example": {
+              "description": "High temperature alarm rule"
+            }
+          },
+          "debugMode": {
+            "type": "boolean",
+            "deprecated": true,
+            "writeOnly": true
           }
         },
         "required": [
-          "condition"
+          "configuration"
         ]
       },
       "AlarmRuleDefinitionInfo": {
@@ -83393,28 +83417,6 @@
           "configuration"
         ]
       },
-      "AlarmRuleDurationCondition": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmRuleCondition"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "unit": {
-                "$ref": "#/components/schemas/TimeUnit"
-              },
-              "value": {
-                "$ref": "#/components/schemas/AlarmConditionValueLong"
-              }
-            }
-          }
-        ],
-        "required": [
-          "unit",
-          "value"
-        ]
-      },
       "AlarmRuleKeyFilterPredicate": {
         "description": "Filter predicate for alarm rule key-based filtering",
         "discriminator": {
@@ -83423,7 +83425,7 @@
             "STRING": "#/components/schemas/AlarmRuleStringFilterPredicate",
             "NUMERIC": "#/components/schemas/AlarmRuleNumericFilterPredicate",
             "BOOLEAN": "#/components/schemas/AlarmRuleBooleanFilterPredicate",
-            "NO_DATA": "#/components/schemas/AlarmRuleNoDataFilterPredicate",
+            "NO_DATA": "#/components/schemas/NoDataFilterPredicate",
             "COMPLEX": "#/components/schemas/AlarmRuleComplexFilterPredicate"
           }
         },
@@ -83436,28 +83438,6 @@
           "type"
         ]
       },
-      "AlarmRuleNoDataFilterPredicate": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "duration": {
-                "$ref": "#/components/schemas/AlarmConditionValueLong"
-              },
-              "unit": {
-                "$ref": "#/components/schemas/TimeUnit"
-              }
-            }
-          }
-        ],
-        "required": [
-          "duration",
-          "unit"
-        ]
-      },
       "AlarmRuleNumericFilterPredicate": {
         "allOf": [
           {
@@ -83467,7 +83447,7 @@
             "type": "object",
             "properties": {
               "operation": {
-                "$ref": "#/components/schemas/NumericOperation"
+                "$ref": "#/components/schemas/AlarmRuleNumericOperation"
               },
               "value": {
                 "$ref": "#/components/schemas/AlarmConditionValueDouble"
@@ -83480,78 +83460,15 @@
           "value"
         ]
       },
-      "AlarmRuleRepeatingCondition": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmRuleCondition"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "count": {
-                "$ref": "#/components/schemas/AlarmConditionValueInteger"
-              }
-            }
-          }
-        ],
-        "required": [
-          "count"
-        ]
-      },
-      "AlarmRuleSchedule": {
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "ANY_TIME": "#/components/schemas/AlarmRuleAnyTimeSchedule",
-            "SPECIFIC_TIME": "#/components/schemas/AlarmRuleSpecificTimeSchedule",
-            "CUSTOM": "#/components/schemas/AlarmRuleCustomTimeSchedule"
-          }
-        },
-        "properties": {
-          "type": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "AlarmRuleSimpleCondition": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmRuleCondition"
-          }
-        ]
-      },
-      "AlarmRuleSpecificTimeSchedule": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/AlarmRuleSchedule"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "daysOfWeek": {
-                "type": "array",
-                "items": {
-                  "type": "integer",
-                  "format": "int32"
-                },
-                "uniqueItems": true
-              },
-              "endsOn": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "startsOn": {
-                "type": "integer",
-                "format": "int64"
-              },
-              "timezone": {
-                "type": "string"
-              }
-            }
-          }
+      "AlarmRuleNumericOperation": {
+        "type": "string",
+        "enum": [
+          "EQUAL",
+          "NOT_EQUAL",
+          "GREATER",
+          "LESS",
+          "GREATER_OR_EQUAL",
+          "LESS_OR_EQUAL"
         ]
       },
       "AlarmRuleStringFilterPredicate": {
@@ -83562,14 +83479,14 @@
           {
             "type": "object",
             "properties": {
-              "ignoreCase": {
-                "type": "boolean"
-              },
               "operation": {
-                "$ref": "#/components/schemas/StringOperation"
+                "$ref": "#/components/schemas/AlarmRuleStringOperation"
               },
               "value": {
                 "$ref": "#/components/schemas/AlarmConditionValueString"
+              },
+              "ignoreCase": {
+                "type": "boolean"
               }
             }
           }
@@ -83577,6 +83494,37 @@
         "required": [
           "operation",
           "value"
+        ]
+      },
+      "AlarmRuleStringOperation": {
+        "type": "string",
+        "enum": [
+          "EQUAL",
+          "NOT_EQUAL",
+          "STARTS_WITH",
+          "ENDS_WITH",
+          "CONTAINS",
+          "NOT_CONTAINS",
+          "IN",
+          "NOT_IN"
+        ]
+      },
+      "AlarmSchedule": {
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "ANY_TIME": "#/components/schemas/AnyTimeSchedule",
+            "SPECIFIC_TIME": "#/components/schemas/SpecificTimeSchedule",
+            "CUSTOM": "#/components/schemas/CustomTimeSchedule"
+          }
+        },
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
         ]
       },
       "AlarmSearchStatus": {
@@ -83781,6 +83729,13 @@
         },
         "required": [
           "apiKey"
+        ]
+      },
+      "AnyTimeSchedule": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlarmSchedule"
+          }
         ]
       },
       "ApiFeature": {
@@ -84043,6 +83998,13 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the asset. May include: 'description' (string).",
+            "example": {
+              "description": "Building A asset"
+            }
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id.",
@@ -84075,13 +84037,6 @@
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the asset. May include: 'description' (string).",
-            "example": {
-              "description": "Building A asset"
-            }
           }
         },
         "required": [
@@ -84119,6 +84074,13 @@
             "description": "Timestamp of the asset creation, in milliseconds",
             "example": 1609459200000,
             "readOnly": true
+          },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the asset. May include: 'description' (string).",
+            "example": {
+              "description": "Building A asset"
+            }
           },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
@@ -84167,13 +84129,6 @@
             "type": "string",
             "description": "Name of the corresponding Asset Profile.",
             "readOnly": true
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the asset. May include: 'description' (string).",
-            "example": {
-              "description": "Building A asset"
-            }
           }
         },
         "required": [
@@ -85627,6 +85582,9 @@
             "example": "com.mycompany.CustomRuleNode",
             "readOnly": true
           },
+          "configurationDescriptor": {
+            "$ref": "#/components/schemas/JsonNode"
+          },
           "configurationVersion": {
             "type": "integer",
             "format": "int32",
@@ -85643,9 +85601,6 @@
             "description": "Indicates that the RuleNode supports queue name configuration.",
             "example": true,
             "readOnly": true
-          },
-          "configurationDescriptor": {
-            "$ref": "#/components/schemas/JsonNode"
           }
         }
       },
@@ -85760,6 +85715,47 @@
           }
         ]
       },
+      "CustomTimeSchedule": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlarmSchedule"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "timezone": {
+                "type": "string"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CustomTimeScheduleItem"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CustomTimeScheduleItem": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "dayOfWeek": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startsOn": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "endsOn": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
       "Customer": {
         "type": "object",
         "properties": {
@@ -85773,6 +85769,16 @@
             "description": "Timestamp of the customer creation, in milliseconds",
             "example": 1609459200000,
             "readOnly": true
+          },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer).",
+            "example": {
+              "description": "Regional customer",
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": false,
+              "isPublic": false
+            }
           },
           "country": {
             "type": "string",
@@ -85825,16 +85831,6 @@
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the customer. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar), 'isPublic' (boolean, whether this is a public customer).",
-            "example": {
-              "description": "Regional customer",
-              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
-              "homeDashboardHideToolbar": false,
-              "isPublic": false
-            }
           },
           "name": {
             "type": "string",
@@ -86594,6 +86590,15 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device).",
+            "example": {
+              "gateway": false,
+              "description": "Temperature sensor",
+              "lastConnectedGateway": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id. Use 'assignDeviceToTenant' to change the Tenant Id.",
@@ -86623,6 +86628,10 @@
             "$ref": "#/components/schemas/DeviceProfileId",
             "description": "JSON object with Device Profile Id. If not provided, the type will be used to determine the profile. If neither deviceProfileId nor type is specified, the default device profile will be used."
           },
+          "deviceData": {
+            "$ref": "#/components/schemas/DeviceData",
+            "description": "JSON object with content specific to type of transport in the device profile."
+          },
           "firmwareId": {
             "$ref": "#/components/schemas/OtaPackageId",
             "description": "JSON object with Ota Package Id."
@@ -86634,19 +86643,6 @@
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device).",
-            "example": {
-              "gateway": false,
-              "description": "Temperature sensor",
-              "lastConnectedGateway": "784f394c-42b6-435a-983c-b7beff2784f9"
-            }
-          },
-          "deviceData": {
-            "$ref": "#/components/schemas/DeviceData",
-            "description": "JSON object with content specific to type of transport in the device profile."
           }
         },
         "required": [
@@ -86868,6 +86864,15 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device).",
+            "example": {
+              "gateway": false,
+              "description": "Temperature sensor",
+              "lastConnectedGateway": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id. Use 'assignDeviceToTenant' to change the Tenant Id.",
@@ -86896,6 +86901,10 @@
           "deviceProfileId": {
             "$ref": "#/components/schemas/DeviceProfileId",
             "description": "JSON object with Device Profile Id. If not provided, the type will be used to determine the profile. If neither deviceProfileId nor type is specified, the default device profile will be used."
+          },
+          "deviceData": {
+            "$ref": "#/components/schemas/DeviceData",
+            "description": "JSON object with content specific to type of transport in the device profile."
           },
           "firmwareId": {
             "$ref": "#/components/schemas/OtaPackageId",
@@ -86928,19 +86937,6 @@
             "type": "boolean",
             "description": "Device active flag.",
             "readOnly": true
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device).",
-            "example": {
-              "gateway": false,
-              "description": "Temperature sensor",
-              "lastConnectedGateway": "784f394c-42b6-435a-983c-b7beff2784f9"
-            }
-          },
-          "deviceData": {
-            "$ref": "#/components/schemas/DeviceData",
-            "description": "JSON object with content specific to type of transport in the device profile."
           }
         },
         "required": [
@@ -87004,6 +87000,10 @@
             "type": "string",
             "description": "Rule engine queue name. If present, the specified queue will be used to store all unprocessed messages related to device, including telemetry, attribute updates, etc. Otherwise, the 'Main' queue will be used to store those messages."
           },
+          "profileData": {
+            "$ref": "#/components/schemas/DeviceProfileData",
+            "description": "Complex JSON object that includes addition device profile configuration (transport, alarm rules, etc)."
+          },
           "provisionDeviceKey": {
             "type": "string",
             "description": "Unique provisioning key used by 'Device Provisioning' feature."
@@ -87027,10 +87027,6 @@
           "default": {
             "type": "boolean",
             "description": "Used to mark the default profile. Default profile is used when the device profile is not specified during device creation."
-          },
-          "profileData": {
-            "$ref": "#/components/schemas/DeviceProfileData",
-            "description": "Complex JSON object that includes addition device profile configuration (transport, alarm rules, etc)."
           }
         }
       },
@@ -87489,6 +87485,28 @@
           }
         ]
       },
+      "DurationAlarmCondition": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlarmCondition"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "$ref": "#/components/schemas/TimeUnit"
+              },
+              "value": {
+                "$ref": "#/components/schemas/AlarmConditionValueLong"
+              }
+            }
+          }
+        ],
+        "required": [
+          "unit",
+          "value"
+        ]
+      },
       "DynamicValueBoolean": {
         "type": "object",
         "properties": {
@@ -87565,6 +87583,13 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the edge. May include: 'description' (string).",
+            "example": {
+              "description": "Edge at location A"
+            }
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id. Use 'assignDeviceToTenant' to change the Tenant Id.",
@@ -87606,13 +87631,6 @@
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the edge. May include: 'description' (string).",
-            "example": {
-              "description": "Edge at location A"
-            }
           }
         },
         "required": [
@@ -87867,6 +87885,13 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the edge. May include: 'description' (string).",
+            "example": {
+              "description": "Edge at location A"
+            }
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id. Use 'assignDeviceToTenant' to change the Tenant Id.",
@@ -87914,13 +87939,6 @@
           },
           "customerIsPublic": {
             "type": "boolean"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the edge. May include: 'description' (string).",
-            "example": {
-              "description": "Edge at location A"
-            }
           }
         },
         "required": [
@@ -88742,6 +88760,13 @@
             "type": "integer",
             "format": "int64"
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the relation.",
+            "example": {
+              "description": "Power supply connection"
+            }
+          },
           "fromName": {
             "type": "string",
             "description": "Name of the entity for [from] direction.",
@@ -88753,13 +88778,6 @@
             "description": "Name of the entity for [to] direction.",
             "example": "A4B72CCDFF35",
             "readOnly": true
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the relation.",
-            "example": {
-              "description": "Power supply connection"
-            }
           }
         },
         "required": [
@@ -88990,6 +89008,13 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the entity view. May include: 'description' (string).",
+            "example": {
+              "description": "Temperature readings view"
+            }
+          },
           "entityId": {
             "$ref": "#/components/schemas/EntityId",
             "description": "JSON object with the referenced Entity Id (Device or Asset)."
@@ -89031,13 +89056,6 @@
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the entity view. May include: 'description' (string).",
-            "example": {
-              "description": "Temperature readings view"
-            }
           }
         },
         "required": [
@@ -89077,6 +89095,13 @@
             "description": "Timestamp of the Entity View creation, in milliseconds",
             "example": 1609459200000,
             "readOnly": true
+          },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the entity view. May include: 'description' (string).",
+            "example": {
+              "description": "Temperature readings view"
+            }
           },
           "entityId": {
             "$ref": "#/components/schemas/EntityId",
@@ -89129,13 +89154,6 @@
             "type": "boolean",
             "description": "Indicates special 'Public' Customer that is auto-generated to use the entity view on public dashboards.",
             "readOnly": true
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the entity view. May include: 'description' (string).",
-            "example": {
-              "description": "Temperature readings view"
-            }
           }
         },
         "required": [
@@ -91174,6 +91192,28 @@
           "targets"
         ]
       },
+      "NoDataFilterPredicate": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlarmRuleKeyFilterPredicate"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "unit": {
+                "$ref": "#/components/schemas/TimeUnit"
+              },
+              "duration": {
+                "$ref": "#/components/schemas/AlarmConditionValueLong"
+              }
+            }
+          }
+        ],
+        "required": [
+          "duration",
+          "unit"
+        ]
+      },
       "NoSecLwM2MBootstrapServerCredential": {
         "allOf": [
           {
@@ -92266,6 +92306,9 @@
             "example": 1746028547220,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode"
+          },
           "providerId": {
             "type": "string",
             "description": "OAuth2 provider identifier (e.g. its name)"
@@ -92320,9 +92363,6 @@
           "helpLink": {
             "type": "string",
             "description": "Help link for OAuth2 provider"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode"
           },
           "name": {
             "type": "string"
@@ -92661,6 +92701,11 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "OTA Package description.",
+            "example": "Description for the OTA Package fw_1.0"
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id. Tenant Id of the ota package can't be changed.",
@@ -92732,11 +92777,6 @@
             "description": "OTA Package data size.",
             "example": 8,
             "readOnly": true
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "OTA Package description.",
-            "example": "Description for the OTA Package fw_1.0"
           },
           "data": {
             "type": "string",
@@ -92780,6 +92820,11 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "OTA Package description.",
+            "example": "Description for the OTA Package fw_1.0"
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id. Tenant Id of the ota package can't be changed.",
@@ -92851,11 +92896,6 @@
             "description": "OTA Package data size.",
             "example": 8,
             "readOnly": true
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "OTA Package description.",
-            "example": "Description for the OTA Package fw_1.0"
           },
           "name": {
             "type": "string",
@@ -94959,6 +94999,9 @@
             "example": 1746028547220,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode"
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId"
           },
@@ -94988,9 +95031,6 @@
           },
           "processingStrategy": {
             "$ref": "#/components/schemas/ProcessingStrategy"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode"
           }
         }
       },
@@ -95386,6 +95426,24 @@
           }
         }
       },
+      "RepeatingAlarmCondition": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlarmCondition"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "count": {
+                "$ref": "#/components/schemas/AlarmConditionValueInteger"
+              }
+            }
+          }
+        ],
+        "required": [
+          "count"
+        ]
+      },
       "RepositoryAuthMethod": {
         "type": "string",
         "enum": [
@@ -95671,6 +95729,9 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode"
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id.",
@@ -95698,15 +95759,12 @@
             "type": "boolean",
             "description": "Reserved for future usage."
           },
+          "configuration": {
+            "$ref": "#/components/schemas/JsonNode"
+          },
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode"
-          },
-          "configuration": {
-            "$ref": "#/components/schemas/JsonNode"
           }
         },
         "required": [
@@ -96083,6 +96141,15 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string).",
+            "example": {
+              "layoutX": 320,
+              "layoutY": 160,
+              "description": "Filter temperature data"
+            }
+          },
           "ruleChainId": {
             "$ref": "#/components/schemas/RuleChainId",
             "description": "JSON object with the Rule Chain Id. ",
@@ -96124,15 +96191,6 @@
           },
           "externalId": {
             "$ref": "#/components/schemas/RuleNodeId"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string).",
-            "example": {
-              "layoutX": 320,
-              "layoutY": 160,
-              "description": "Filter temperature data"
-            }
           },
           "debugMode": {
             "type": "boolean",
@@ -96260,6 +96318,11 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "OTA Package description.",
+            "example": "Description for the OTA Package fw_1.0"
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with Tenant Id. Tenant Id of the ota package can't be changed.",
@@ -96337,11 +96400,6 @@
             "description": "Indicates OTA Package uses url. Should be 'true' if uses url or 'false' if will be used data.",
             "example": true,
             "readOnly": true
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "OTA Package description.",
-            "example": "Description for the OTA Package fw_1.0"
           },
           "name": {
             "type": "string",
@@ -96458,6 +96516,13 @@
           }
         }
       },
+      "SimpleAlarmCondition": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlarmCondition"
+          }
+        ]
+      },
       "SimpleAlarmConditionExpression": {
         "allOf": [
           {
@@ -96469,12 +96534,12 @@
               "filters": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/AlarmRuleConditionFilter"
+                  "$ref": "#/components/schemas/AlarmConditionFilter"
                 },
                 "minItems": 1
               },
               "operation": {
-                "$ref": "#/components/schemas/ComplexOperation"
+                "$ref": "#/components/schemas/AlarmRuleComplexOperation"
               }
             }
           }
@@ -96944,6 +97009,37 @@
           "V1",
           "V2C",
           "V3"
+        ]
+      },
+      "SpecificTimeSchedule": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AlarmSchedule"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "timezone": {
+                "type": "string"
+              },
+              "daysOfWeek": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "format": "int32"
+                },
+                "uniqueItems": true
+              },
+              "startsOn": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "endsOn": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }
         ]
       },
       "StarredDashboardInfo": {
@@ -97672,6 +97768,15 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar).",
+            "example": {
+              "description": "Main tenant",
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": true
+            }
+          },
           "country": {
             "type": "string",
             "description": "Country",
@@ -97728,15 +97833,6 @@
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar).",
-            "example": {
-              "description": "Main tenant",
-              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
-              "homeDashboardHideToolbar": true
-            }
           },
           "name": {
             "type": "string",
@@ -97802,6 +97898,15 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar).",
+            "example": {
+              "description": "Main tenant",
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": true
+            }
+          },
           "country": {
             "type": "string",
             "description": "Country",
@@ -97863,15 +97968,6 @@
             "type": "string",
             "description": "Tenant Profile name",
             "example": "Default"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the tenant. May include: 'description' (string), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean, whether to hide the dashboard toolbar).",
-            "example": {
-              "description": "Main tenant",
-              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
-              "homeDashboardHideToolbar": true
-            }
           },
           "name": {
             "type": "string",
@@ -98611,6 +98707,17 @@
             "example": 1609459200000,
             "readOnly": true
           },
+          "additionalInfo": {
+            "$ref": "#/components/schemas/JsonNode",
+            "description": "Additional parameters of the user. May include: 'defaultDashboardId' (string, UUID of the default dashboard), 'defaultDashboardFullscreen' (boolean), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean), 'lang' (string, user locale, e.g. 'en_US'), 'authProviderName' (string, name of the authentication provider).",
+            "example": {
+              "defaultDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "defaultDashboardFullscreen": false,
+              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+              "homeDashboardHideToolbar": true,
+              "lang": "en_US"
+            }
+          },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
             "description": "JSON object with the Tenant Id."
@@ -98647,17 +98754,6 @@
           "version": {
             "type": "integer",
             "format": "int64"
-          },
-          "additionalInfo": {
-            "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional parameters of the user. May include: 'defaultDashboardId' (string, UUID of the default dashboard), 'defaultDashboardFullscreen' (boolean), 'homeDashboardId' (string, UUID of the home dashboard), 'homeDashboardHideToolbar' (boolean), 'lang' (string, user locale, e.g. 'en_US'), 'authProviderName' (string, name of the authentication provider).",
-            "example": {
-              "defaultDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
-              "defaultDashboardFullscreen": false,
-              "homeDashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
-              "homeDashboardHideToolbar": true,
-              "lang": "en_US"
-            }
           },
           "name": {
             "type": "string",

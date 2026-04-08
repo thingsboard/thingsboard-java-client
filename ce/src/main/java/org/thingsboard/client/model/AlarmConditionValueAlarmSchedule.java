@@ -29,32 +29,56 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.thingsboard.client.model.AlarmRuleSchedule;
+import org.thingsboard.client.model.AlarmSchedule;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmConditionValueAlarmRuleSchedule
+ * AlarmConditionValueAlarmSchedule
  */
 @JsonPropertyOrder({
-  AlarmConditionValueAlarmRuleSchedule.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT,
-  AlarmConditionValueAlarmRuleSchedule.JSON_PROPERTY_STATIC_VALUE
+  AlarmConditionValueAlarmSchedule.JSON_PROPERTY_STATIC_VALUE,
+  AlarmConditionValueAlarmSchedule.JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class AlarmConditionValueAlarmRuleSchedule {
+public class AlarmConditionValueAlarmSchedule {
+  public static final String JSON_PROPERTY_STATIC_VALUE = "staticValue";
+  @Nullable
+  private AlarmSchedule staticValue;
+
   public static final String JSON_PROPERTY_DYNAMIC_VALUE_ARGUMENT = "dynamicValueArgument";
   @Nullable
   private String dynamicValueArgument;
 
-  public static final String JSON_PROPERTY_STATIC_VALUE = "staticValue";
-  @Nullable
-  private AlarmRuleSchedule staticValue;
-
-  public AlarmConditionValueAlarmRuleSchedule() { 
+  public AlarmConditionValueAlarmSchedule() { 
   }
 
-  public AlarmConditionValueAlarmRuleSchedule dynamicValueArgument(@Nullable String dynamicValueArgument) {
+  public AlarmConditionValueAlarmSchedule staticValue(@Nullable AlarmSchedule staticValue) {
+    this.staticValue = staticValue;
+    return this;
+  }
+
+  /**
+   * Get staticValue
+   * @return staticValue
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmSchedule getStaticValue() {
+    return staticValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStaticValue(@Nullable AlarmSchedule staticValue) {
+    this.staticValue = staticValue;
+  }
+
+
+  public AlarmConditionValueAlarmSchedule dynamicValueArgument(@Nullable String dynamicValueArgument) {
     this.dynamicValueArgument = dynamicValueArgument;
     return this;
   }
@@ -78,32 +102,8 @@ public class AlarmConditionValueAlarmRuleSchedule {
   }
 
 
-  public AlarmConditionValueAlarmRuleSchedule staticValue(@Nullable AlarmRuleSchedule staticValue) {
-    this.staticValue = staticValue;
-    return this;
-  }
-
   /**
-   * Get staticValue
-   * @return staticValue
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmRuleSchedule getStaticValue() {
-    return staticValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_STATIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStaticValue(@Nullable AlarmRuleSchedule staticValue) {
-    this.staticValue = staticValue;
-  }
-
-
-  /**
-   * Return true if this AlarmConditionValueAlarmRuleSchedule object is equal to o.
+   * Return true if this AlarmConditionValueAlarmSchedule object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -113,22 +113,22 @@ public class AlarmConditionValueAlarmRuleSchedule {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmConditionValueAlarmRuleSchedule alarmConditionValueAlarmRuleSchedule = (AlarmConditionValueAlarmRuleSchedule) o;
-    return Objects.equals(this.dynamicValueArgument, alarmConditionValueAlarmRuleSchedule.dynamicValueArgument) &&
-        Objects.equals(this.staticValue, alarmConditionValueAlarmRuleSchedule.staticValue);
+    AlarmConditionValueAlarmSchedule alarmConditionValueAlarmSchedule = (AlarmConditionValueAlarmSchedule) o;
+    return Objects.equals(this.staticValue, alarmConditionValueAlarmSchedule.staticValue) &&
+        Objects.equals(this.dynamicValueArgument, alarmConditionValueAlarmSchedule.dynamicValueArgument);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dynamicValueArgument, staticValue);
+    return Objects.hash(staticValue, dynamicValueArgument);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmConditionValueAlarmRuleSchedule {\n");
-    sb.append("    dynamicValueArgument: ").append(toIndentedString(dynamicValueArgument)).append("\n");
+    sb.append("class AlarmConditionValueAlarmSchedule {\n");
     sb.append("    staticValue: ").append(toIndentedString(staticValue)).append("\n");
+    sb.append("    dynamicValueArgument: ").append(toIndentedString(dynamicValueArgument)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,14 +176,14 @@ public class AlarmConditionValueAlarmRuleSchedule {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `dynamicValueArgument` to the URL query string
-    if (getDynamicValueArgument() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdynamicValueArgument%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDynamicValueArgument()))));
-    }
-
     // add `staticValue` to the URL query string
     if (getStaticValue() != null) {
       joiner.add(getStaticValue().toUrlQueryString(prefix + "staticValue" + suffix));
+    }
+
+    // add `dynamicValueArgument` to the URL query string
+    if (getDynamicValueArgument() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdynamicValueArgument%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDynamicValueArgument()))));
     }
 
     return joiner.toString();
