@@ -17,7 +17,6 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -33,20 +32,20 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.thingsboard.client.model.AlarmConditionExpression;
-import org.thingsboard.client.model.AlarmConditionValueAlarmRuleSchedule;
-import org.thingsboard.client.model.AlarmConditionValueInteger;
-import org.thingsboard.client.model.AlarmRuleCondition;
+import org.thingsboard.client.model.AlarmConditionValueLong;
+import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
+import org.thingsboard.client.model.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleRepeatingCondition
+ * NoDataFilterPredicate
  */
 @JsonPropertyOrder({
-  AlarmRuleRepeatingCondition.JSON_PROPERTY_COUNT
+  NoDataFilterPredicate.JSON_PROPERTY_UNIT,
+  NoDataFilterPredicate.JSON_PROPERTY_DURATION
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -55,52 +54,68 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class AlarmRuleRepeatingCondition extends AlarmRuleCondition {
-  public static final String JSON_PROPERTY_COUNT = "count";
+public class NoDataFilterPredicate extends AlarmRuleKeyFilterPredicate {
+  public static final String JSON_PROPERTY_UNIT = "unit";
   @Nonnull
-  private AlarmConditionValueInteger count;
+  private TimeUnit unit;
 
-  public AlarmRuleRepeatingCondition() { 
+  public static final String JSON_PROPERTY_DURATION = "duration";
+  @Nonnull
+  private AlarmConditionValueLong duration;
+
+  public NoDataFilterPredicate() { 
   }
 
-  public AlarmRuleRepeatingCondition count(@Nonnull AlarmConditionValueInteger count) {
-    this.count = count;
+  public NoDataFilterPredicate unit(@Nonnull TimeUnit unit) {
+    this.unit = unit;
     return this;
   }
 
   /**
-   * Get count
-   * @return count
+   * Get unit
+   * @return unit
    */
   @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_COUNT, required = true)
+  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public AlarmConditionValueInteger getCount() {
-    return count;
+  public TimeUnit getUnit() {
+    return unit;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_COUNT, required = true)
+  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCount(@Nonnull AlarmConditionValueInteger count) {
-    this.count = count;
+  public void setUnit(@Nonnull TimeUnit unit) {
+    this.unit = unit;
   }
 
 
-  @Override
-  public AlarmRuleRepeatingCondition expression(@Nonnull AlarmConditionExpression expression) {
-    this.setExpression(expression);
-    return this;
-  }
-
-  @Override
-  public AlarmRuleRepeatingCondition schedule(@Nullable AlarmConditionValueAlarmRuleSchedule schedule) {
-    this.setSchedule(schedule);
+  public NoDataFilterPredicate duration(@Nonnull AlarmConditionValueLong duration) {
+    this.duration = duration;
     return this;
   }
 
   /**
-   * Return true if this AlarmRuleRepeatingCondition object is equal to o.
+   * Get duration
+   * @return duration
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AlarmConditionValueLong getDuration() {
+    return duration;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDuration(@Nonnull AlarmConditionValueLong duration) {
+    this.duration = duration;
+  }
+
+
+  /**
+   * Return true if this NoDataFilterPredicate object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -110,22 +125,24 @@ public class AlarmRuleRepeatingCondition extends AlarmRuleCondition {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleRepeatingCondition alarmRuleRepeatingCondition = (AlarmRuleRepeatingCondition) o;
-    return Objects.equals(this.count, alarmRuleRepeatingCondition.count) &&
+    NoDataFilterPredicate noDataFilterPredicate = (NoDataFilterPredicate) o;
+    return Objects.equals(this.unit, noDataFilterPredicate.unit) &&
+        Objects.equals(this.duration, noDataFilterPredicate.duration) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, super.hashCode());
+    return Objects.hash(unit, duration, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleRepeatingCondition {\n");
+    sb.append("class NoDataFilterPredicate {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -173,24 +190,19 @@ public class AlarmRuleRepeatingCondition extends AlarmRuleCondition {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `expression` to the URL query string
-    if (getExpression() != null) {
-      joiner.add(getExpression().toUrlQueryString(prefix + "expression" + suffix));
-    }
-
-    // add `schedule` to the URL query string
-    if (getSchedule() != null) {
-      joiner.add(getSchedule().toUrlQueryString(prefix + "schedule" + suffix));
-    }
-
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `count` to the URL query string
-    if (getCount() != null) {
-      joiner.add(getCount().toUrlQueryString(prefix + "count" + suffix));
+    // add `unit` to the URL query string
+    if (getUnit() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sunit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUnit()))));
+    }
+
+    // add `duration` to the URL query string
+    if (getDuration() != null) {
+      joiner.add(getDuration().toUrlQueryString(prefix + "duration" + suffix));
     }
 
     return joiner.toString();
@@ -198,8 +210,8 @@ public class AlarmRuleRepeatingCondition extends AlarmRuleCondition {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("AlarmRuleRepeatingCondition", AlarmRuleRepeatingCondition.class);
-  JSON.registerDiscriminator(AlarmRuleRepeatingCondition.class, "type", mappings);
+  mappings.put("NoDataFilterPredicate", NoDataFilterPredicate.class);
+  JSON.registerDiscriminator(NoDataFilterPredicate.class, "type", mappings);
 }
 }
 

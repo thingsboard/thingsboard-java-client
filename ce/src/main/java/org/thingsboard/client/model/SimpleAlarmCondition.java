@@ -17,6 +17,7 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -32,16 +33,18 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.AlarmCondition;
+import org.thingsboard.client.model.AlarmConditionExpression;
+import org.thingsboard.client.model.AlarmConditionValueAlarmSchedule;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleSchedule
+ * SimpleAlarmCondition
  */
 @JsonPropertyOrder({
-  AlarmRuleSchedule.JSON_PROPERTY_TYPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -49,46 +52,25 @@ import org.thingsboard.client.ApiClient;
   allowSetters = true // allows the type to be set during deserialization
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value = AlarmRuleAnyTimeSchedule.class, name = "ANY_TIME"),
-  @JsonSubTypes.Type(value = AlarmRuleCustomTimeSchedule.class, name = "CUSTOM"),
-  @JsonSubTypes.Type(value = AlarmRuleSpecificTimeSchedule.class, name = "SPECIFIC_TIME"),
-})
 
-public class AlarmRuleSchedule {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @Nonnull
-  private String type;
-
-  public AlarmRuleSchedule() { 
+public class SimpleAlarmCondition extends AlarmCondition {
+  public SimpleAlarmCondition() { 
   }
 
-  public AlarmRuleSchedule type(@Nonnull String type) {
-    this.type = type;
+  @Override
+  public SimpleAlarmCondition expression(@Nonnull AlarmConditionExpression expression) {
+    this.setExpression(expression);
+    return this;
+  }
+
+  @Override
+  public SimpleAlarmCondition schedule(@Nullable AlarmConditionValueAlarmSchedule schedule) {
+    this.setSchedule(schedule);
     return this;
   }
 
   /**
-   * Get type
-   * @return type
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@Nonnull String type) {
-    this.type = type;
-  }
-
-
-  /**
-   * Return true if this AlarmRuleSchedule object is equal to o.
+   * Return true if this SimpleAlarmCondition object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -98,20 +80,19 @@ public class AlarmRuleSchedule {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleSchedule alarmRuleSchedule = (AlarmRuleSchedule) o;
-    return Objects.equals(this.type, alarmRuleSchedule.type);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type);
+    return Objects.hash(super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleSchedule {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("class SimpleAlarmCondition {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -159,6 +140,16 @@ public class AlarmRuleSchedule {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `expression` to the URL query string
+    if (getExpression() != null) {
+      joiner.add(getExpression().toUrlQueryString(prefix + "expression" + suffix));
+    }
+
+    // add `schedule` to the URL query string
+    if (getSchedule() != null) {
+      joiner.add(getSchedule().toUrlQueryString(prefix + "schedule" + suffix));
+    }
+
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
@@ -169,11 +160,8 @@ public class AlarmRuleSchedule {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("ANY_TIME", AlarmRuleAnyTimeSchedule.class);
-  mappings.put("CUSTOM", AlarmRuleCustomTimeSchedule.class);
-  mappings.put("SPECIFIC_TIME", AlarmRuleSpecificTimeSchedule.class);
-  mappings.put("AlarmRuleSchedule", AlarmRuleSchedule.class);
-  JSON.registerDiscriminator(AlarmRuleSchedule.class, "type", mappings);
+  mappings.put("SimpleAlarmCondition", SimpleAlarmCondition.class);
+  JSON.registerDiscriminator(SimpleAlarmCondition.class, "type", mappings);
 }
 }
 

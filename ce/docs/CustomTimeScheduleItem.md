@@ -1,23 +1,18 @@
 
-# AlarmRuleAnyTimeSchedule
+# CustomTimeScheduleItem
 
-`org.thingsboard.client.model.AlarmRuleAnyTimeSchedule`
-
-**Extends:** **AlarmRuleSchedule**
+`org.thingsboard.client.model.CustomTimeScheduleItem`
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **enabled** | **Boolean** |  | [optional] |
+| **dayOfWeek** | **Integer** |  | [optional] |
+| **startsOn** | **Long** |  | [optional] |
+| **endsOn** | **Long** |  | [optional] |
 
 
-
-## Referenced Types
-
-#### AlarmRuleSchedule
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | String |  |  |
 
 ---
 

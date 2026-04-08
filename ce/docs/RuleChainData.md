@@ -23,15 +23,15 @@ A JSON value representing the rule chains.
 |------|------|-------------|-------|
 | id | RuleChainId | JSON object with the Rule Chain Id. Specify this field to update the Rule Chain. Referencing non-existing Rule Chain Id will cause error. Omit this field to create new rule chain. | [optional] |
 | createdTime | Long | Timestamp of the rule chain creation, in milliseconds | [optional] [readonly] |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
 | tenantId | TenantId | JSON object with Tenant Id. | [readonly] |
 | name | String | Rule Chain name |  |
 | type | RuleChainType | Rule Chain type. 'EDGE' rule chains are processing messages on the edge devices only. | [optional] |
 | firstRuleNodeId | RuleNodeId | JSON object with Rule Chain Id. Pointer to the first rule node that should receive all messages pushed to this rule chain. | [optional] |
 | root | Boolean | Indicates root rule chain. The root rule chain process messages from all devices and entities by default. User may configure default rule chain per device profile. | [optional] |
 | debugMode | Boolean | Reserved for future usage. | [optional] |
-| version | Long |  | [optional] |
-| additionalInfo | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
 | _configuration | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
+| version | Long |  | [optional] |
 
 #### RuleChainMetaData
 | Name | Type | Description | Notes |
@@ -52,6 +52,7 @@ A JSON value representing the rule chains.
 |------|------|-------------|-------|
 | id | RuleNodeId | JSON object with the Rule Node Id. Specify this field to update the Rule Node. Referencing non-existing Rule Node Id will cause error. Omit this field to create new rule node. | [optional] |
 | createdTime | Long | Timestamp of the rule node creation, in milliseconds | [optional] [readonly] |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string). | [optional] |
 | ruleChainId | RuleChainId | JSON object with the Rule Chain Id. | [optional] [readonly] |
 | type | String | Full Java Class Name of the rule node implementation. | [optional] |
 | name | String | User defined name of the rule node. Used on UI and for logging. | [optional] |
@@ -61,7 +62,6 @@ A JSON value representing the rule chains.
 | configurationVersion | Integer | Version of rule node configuration. | [optional] |
 | _configuration | com.fasterxml.jackson.databind.JsonNode | JSON with the rule node configuration. Structure depends on the rule node implementation. | [optional] |
 | externalId | RuleNodeId |  | [optional] |
-| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string). | [optional] |
 | debugMode | Boolean |  | [optional] |
 
 #### NodeConnectionInfo

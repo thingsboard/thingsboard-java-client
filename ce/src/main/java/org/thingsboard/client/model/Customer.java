@@ -42,6 +42,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   Customer.JSON_PROPERTY_ID,
   Customer.JSON_PROPERTY_CREATED_TIME,
+  Customer.JSON_PROPERTY_ADDITIONAL_INFO,
   Customer.JSON_PROPERTY_COUNTRY,
   Customer.JSON_PROPERTY_STATE,
   Customer.JSON_PROPERTY_CITY,
@@ -53,7 +54,6 @@ import org.thingsboard.client.ApiClient;
   Customer.JSON_PROPERTY_TITLE,
   Customer.JSON_PROPERTY_TENANT_ID,
   Customer.JSON_PROPERTY_VERSION,
-  Customer.JSON_PROPERTY_ADDITIONAL_INFO,
   Customer.JSON_PROPERTY_NAME
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -65,6 +65,10 @@ public class Customer {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_COUNTRY = "country";
   @Nullable
@@ -109,10 +113,6 @@ public class Customer {
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @Nullable
@@ -167,6 +167,30 @@ public class Customer {
   }
 
 
+
+
+  public Customer additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the customer. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar), &#39;isPublic&#39; (boolean, whether this is a public customer).
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public Customer country(@Nullable String country) {
@@ -433,30 +457,6 @@ public class Customer {
   }
 
 
-  public Customer additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the customer. May include: &#39;description&#39; (string), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean, whether to hide the dashboard toolbar), &#39;isPublic&#39; (boolean, whether this is a public customer).
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Name of the customer. Read-only, duplicated from title for backward compatibility
    * @return name
@@ -485,6 +485,7 @@ public class Customer {
     Customer customer = (Customer) o;
     return Objects.equals(this.id, customer.id) &&
         Objects.equals(this.createdTime, customer.createdTime) &&
+        Objects.equals(this.additionalInfo, customer.additionalInfo) &&
         Objects.equals(this.country, customer.country) &&
         Objects.equals(this.state, customer.state) &&
         Objects.equals(this.city, customer.city) &&
@@ -496,13 +497,12 @@ public class Customer {
         Objects.equals(this.title, customer.title) &&
         Objects.equals(this.tenantId, customer.tenantId) &&
         Objects.equals(this.version, customer.version) &&
-        Objects.equals(this.additionalInfo, customer.additionalInfo) &&
         Objects.equals(this.name, customer.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, country, state, city, address, address2, zip, phone, email, title, tenantId, version, additionalInfo, name);
+    return Objects.hash(id, createdTime, additionalInfo, country, state, city, address, address2, zip, phone, email, title, tenantId, version, name);
   }
 
   @Override
@@ -511,6 +511,7 @@ public class Customer {
     sb.append("class Customer {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
@@ -522,7 +523,6 @@ public class Customer {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -581,6 +581,11 @@ public class Customer {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `country` to the URL query string
     if (getCountry() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scountry%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCountry()))));
@@ -634,11 +639,6 @@ public class Customer {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `name` to the URL query string

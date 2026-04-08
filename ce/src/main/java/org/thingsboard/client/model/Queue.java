@@ -43,6 +43,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   Queue.JSON_PROPERTY_ID,
   Queue.JSON_PROPERTY_CREATED_TIME,
+  Queue.JSON_PROPERTY_ADDITIONAL_INFO,
   Queue.JSON_PROPERTY_TENANT_ID,
   Queue.JSON_PROPERTY_NAME,
   Queue.JSON_PROPERTY_TOPIC,
@@ -51,8 +52,7 @@ import org.thingsboard.client.ApiClient;
   Queue.JSON_PROPERTY_CONSUMER_PER_PARTITION,
   Queue.JSON_PROPERTY_PACK_PROCESSING_TIMEOUT,
   Queue.JSON_PROPERTY_SUBMIT_STRATEGY,
-  Queue.JSON_PROPERTY_PROCESSING_STRATEGY,
-  Queue.JSON_PROPERTY_ADDITIONAL_INFO
+  Queue.JSON_PROPERTY_PROCESSING_STRATEGY
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Queue {
@@ -63,6 +63,10 @@ public class Queue {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
@@ -99,10 +103,6 @@ public class Queue {
   public static final String JSON_PROPERTY_PROCESSING_STRATEGY = "processingStrategy";
   @Nullable
   private ProcessingStrategy processingStrategy;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public Queue() { 
   }
@@ -151,6 +151,30 @@ public class Queue {
   }
 
 
+
+
+  public Queue additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Get additionalInfo
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public Queue tenantId(@Nullable TenantId tenantId) {
@@ -369,30 +393,6 @@ public class Queue {
   }
 
 
-  public Queue additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Get additionalInfo
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this Queue object is equal to o.
    */
@@ -407,6 +407,7 @@ public class Queue {
     Queue queue = (Queue) o;
     return Objects.equals(this.id, queue.id) &&
         Objects.equals(this.createdTime, queue.createdTime) &&
+        Objects.equals(this.additionalInfo, queue.additionalInfo) &&
         Objects.equals(this.tenantId, queue.tenantId) &&
         Objects.equals(this.name, queue.name) &&
         Objects.equals(this.topic, queue.topic) &&
@@ -415,13 +416,12 @@ public class Queue {
         Objects.equals(this.consumerPerPartition, queue.consumerPerPartition) &&
         Objects.equals(this.packProcessingTimeout, queue.packProcessingTimeout) &&
         Objects.equals(this.submitStrategy, queue.submitStrategy) &&
-        Objects.equals(this.processingStrategy, queue.processingStrategy) &&
-        Objects.equals(this.additionalInfo, queue.additionalInfo);
+        Objects.equals(this.processingStrategy, queue.processingStrategy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, name, topic, pollInterval, partitions, consumerPerPartition, packProcessingTimeout, submitStrategy, processingStrategy, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, name, topic, pollInterval, partitions, consumerPerPartition, packProcessingTimeout, submitStrategy, processingStrategy);
   }
 
   @Override
@@ -430,6 +430,7 @@ public class Queue {
     sb.append("class Queue {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    topic: ").append(toIndentedString(topic)).append("\n");
@@ -439,7 +440,6 @@ public class Queue {
     sb.append("    packProcessingTimeout: ").append(toIndentedString(packProcessingTimeout)).append("\n");
     sb.append("    submitStrategy: ").append(toIndentedString(submitStrategy)).append("\n");
     sb.append("    processingStrategy: ").append(toIndentedString(processingStrategy)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -497,6 +497,11 @@ public class Queue {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -540,11 +545,6 @@ public class Queue {
     // add `processingStrategy` to the URL query string
     if (getProcessingStrategy() != null) {
       joiner.add(getProcessingStrategy().toUrlQueryString(prefix + "processingStrategy" + suffix));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

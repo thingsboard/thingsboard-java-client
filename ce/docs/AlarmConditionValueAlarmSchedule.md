@@ -1,48 +1,48 @@
 
-# AlarmConditionValueAlarmRuleSchedule
+# AlarmConditionValueAlarmSchedule
 
-`org.thingsboard.client.model.AlarmConditionValueAlarmRuleSchedule`
+`org.thingsboard.client.model.AlarmConditionValueAlarmSchedule`
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **staticValue** | **AlarmSchedule** |  | [optional] |
 | **dynamicValueArgument** | **String** |  | [optional] |
-| **staticValue** | **AlarmRuleSchedule** |  | [optional] |
 
 
 
 ## Referenced Types
 
-#### AlarmRuleSchedule
+#### AlarmSchedule
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### AlarmRuleAnyTimeSchedule  *(extends AlarmRuleSchedule, type=`ANY_TIME`)*
-*See AlarmRuleSchedule for properties.*
+#### AnyTimeSchedule  *(extends AlarmSchedule, type=`ANY_TIME`)*
+*See AlarmSchedule for properties.*
 
-#### AlarmRuleCustomTimeSchedule  *(extends AlarmRuleSchedule, type=`CUSTOM`)*
+#### CustomTimeSchedule  *(extends AlarmSchedule, type=`CUSTOM`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| items | List<AlarmRuleCustomTimeScheduleItem> |  | [optional] |
 | timezone | String |  | [optional] |
+| items | List<CustomTimeScheduleItem> |  | [optional] |
 
-#### AlarmRuleSpecificTimeSchedule  *(extends AlarmRuleSchedule, type=`SPECIFIC_TIME`)*
+#### SpecificTimeSchedule  *(extends AlarmSchedule, type=`SPECIFIC_TIME`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| timezone | String |  | [optional] |
 | daysOfWeek | Set<Integer> |  | [optional] |
-| endsOn | Long |  | [optional] |
 | startsOn | Long |  | [optional] |
-| timezone | String |  | [optional] |
+| endsOn | Long |  | [optional] |
 
-#### AlarmRuleCustomTimeScheduleItem
+#### CustomTimeScheduleItem
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| dayOfWeek | Integer |  | [optional] |
 | enabled | Boolean |  | [optional] |
-| endsOn | Long |  | [optional] |
+| dayOfWeek | Integer |  | [optional] |
 | startsOn | Long |  | [optional] |
+| endsOn | Long |  | [optional] |
 
 ---
 

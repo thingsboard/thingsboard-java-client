@@ -44,6 +44,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   OtaPackage.JSON_PROPERTY_ID,
   OtaPackage.JSON_PROPERTY_CREATED_TIME,
+  OtaPackage.JSON_PROPERTY_ADDITIONAL_INFO,
   OtaPackage.JSON_PROPERTY_TENANT_ID,
   OtaPackage.JSON_PROPERTY_DEVICE_PROFILE_ID,
   OtaPackage.JSON_PROPERTY_TYPE,
@@ -57,7 +58,6 @@ import org.thingsboard.client.ApiClient;
   OtaPackage.JSON_PROPERTY_CHECKSUM_ALGORITHM,
   OtaPackage.JSON_PROPERTY_CHECKSUM,
   OtaPackage.JSON_PROPERTY_DATA_SIZE,
-  OtaPackage.JSON_PROPERTY_ADDITIONAL_INFO,
   OtaPackage.JSON_PROPERTY_DATA,
   OtaPackage.JSON_PROPERTY_NAME
 })
@@ -70,6 +70,10 @@ public class OtaPackage {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
@@ -122,10 +126,6 @@ public class OtaPackage {
   public static final String JSON_PROPERTY_DATA_SIZE = "dataSize";
   @Nullable
   private Long dataSize;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_DATA = "data";
   @Nullable
@@ -200,6 +200,30 @@ public class OtaPackage {
   }
 
 
+
+
+  public OtaPackage additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * OTA Package description.
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   /**
@@ -434,30 +458,6 @@ public class OtaPackage {
 
 
 
-  public OtaPackage additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * OTA Package description.
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   public OtaPackage data(@Nullable byte[] data) {
     this.data = data;
     return this;
@@ -510,6 +510,7 @@ public class OtaPackage {
     OtaPackage otaPackage = (OtaPackage) o;
     return Objects.equals(this.id, otaPackage.id) &&
         Objects.equals(this.createdTime, otaPackage.createdTime) &&
+        Objects.equals(this.additionalInfo, otaPackage.additionalInfo) &&
         Objects.equals(this.tenantId, otaPackage.tenantId) &&
         Objects.equals(this.deviceProfileId, otaPackage.deviceProfileId) &&
         Objects.equals(this.type, otaPackage.type) &&
@@ -523,14 +524,13 @@ public class OtaPackage {
         Objects.equals(this.checksumAlgorithm, otaPackage.checksumAlgorithm) &&
         Objects.equals(this.checksum, otaPackage.checksum) &&
         Objects.equals(this.dataSize, otaPackage.dataSize) &&
-        Objects.equals(this.additionalInfo, otaPackage.additionalInfo) &&
         Arrays.equals(this.data, otaPackage.data) &&
         Objects.equals(this.name, otaPackage.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, deviceProfileId, type, title, version, tag, url, hasData, fileName, contentType, checksumAlgorithm, checksum, dataSize, additionalInfo, Arrays.hashCode(data), name);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, deviceProfileId, type, title, version, tag, url, hasData, fileName, contentType, checksumAlgorithm, checksum, dataSize, Arrays.hashCode(data), name);
   }
 
   @Override
@@ -539,6 +539,7 @@ public class OtaPackage {
     sb.append("class OtaPackage {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    deviceProfileId: ").append(toIndentedString(deviceProfileId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
@@ -552,7 +553,6 @@ public class OtaPackage {
     sb.append("    checksumAlgorithm: ").append(toIndentedString(checksumAlgorithm)).append("\n");
     sb.append("    checksum: ").append(toIndentedString(checksum)).append("\n");
     sb.append("    dataSize: ").append(toIndentedString(dataSize)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
@@ -610,6 +610,11 @@ public class OtaPackage {
     // add `createdTime` to the URL query string
     if (getCreatedTime() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
+    }
+
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `tenantId` to the URL query string
@@ -675,11 +680,6 @@ public class OtaPackage {
     // add `dataSize` to the URL query string
     if (getDataSize() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdataSize%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDataSize()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `data` to the URL query string

@@ -44,14 +44,14 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   Asset.JSON_PROPERTY_ID,
   Asset.JSON_PROPERTY_CREATED_TIME,
+  Asset.JSON_PROPERTY_ADDITIONAL_INFO,
   Asset.JSON_PROPERTY_TENANT_ID,
   Asset.JSON_PROPERTY_CUSTOMER_ID,
   Asset.JSON_PROPERTY_NAME,
   Asset.JSON_PROPERTY_TYPE,
   Asset.JSON_PROPERTY_LABEL,
   Asset.JSON_PROPERTY_ASSET_PROFILE_ID,
-  Asset.JSON_PROPERTY_VERSION,
-  Asset.JSON_PROPERTY_ADDITIONAL_INFO
+  Asset.JSON_PROPERTY_VERSION
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Asset {
@@ -62,6 +62,10 @@ public class Asset {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
@@ -90,10 +94,6 @@ public class Asset {
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Asset() { 
   }
@@ -146,6 +146,30 @@ public class Asset {
   }
 
 
+
+
+  public Asset additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the asset. May include: &#39;description&#39; (string).
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   /**
@@ -296,30 +320,6 @@ public class Asset {
   }
 
 
-  public Asset additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the asset. May include: &#39;description&#39; (string).
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this Asset object is equal to o.
    */
@@ -334,19 +334,19 @@ public class Asset {
     Asset asset = (Asset) o;
     return Objects.equals(this.id, asset.id) &&
         Objects.equals(this.createdTime, asset.createdTime) &&
+        Objects.equals(this.additionalInfo, asset.additionalInfo) &&
         Objects.equals(this.tenantId, asset.tenantId) &&
         Objects.equals(this.customerId, asset.customerId) &&
         Objects.equals(this.name, asset.name) &&
         Objects.equals(this.type, asset.type) &&
         Objects.equals(this.label, asset.label) &&
         Objects.equals(this.assetProfileId, asset.assetProfileId) &&
-        Objects.equals(this.version, asset.version) &&
-        Objects.equals(this.additionalInfo, asset.additionalInfo);
+        Objects.equals(this.version, asset.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, name, type, label, assetProfileId, version, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, assetProfileId, version);
   }
 
   @Override
@@ -355,6 +355,7 @@ public class Asset {
     sb.append("class Asset {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -362,7 +363,6 @@ public class Asset {
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    assetProfileId: ").append(toIndentedString(assetProfileId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -420,6 +420,11 @@ public class Asset {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -453,11 +458,6 @@ public class Asset {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

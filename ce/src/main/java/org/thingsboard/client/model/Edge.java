@@ -44,6 +44,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   Edge.JSON_PROPERTY_ID,
   Edge.JSON_PROPERTY_CREATED_TIME,
+  Edge.JSON_PROPERTY_ADDITIONAL_INFO,
   Edge.JSON_PROPERTY_TENANT_ID,
   Edge.JSON_PROPERTY_CUSTOMER_ID,
   Edge.JSON_PROPERTY_ROOT_RULE_CHAIN_ID,
@@ -52,8 +53,7 @@ import org.thingsboard.client.ApiClient;
   Edge.JSON_PROPERTY_LABEL,
   Edge.JSON_PROPERTY_ROUTING_KEY,
   Edge.JSON_PROPERTY_SECRET,
-  Edge.JSON_PROPERTY_VERSION,
-  Edge.JSON_PROPERTY_ADDITIONAL_INFO
+  Edge.JSON_PROPERTY_VERSION
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Edge {
@@ -64,6 +64,10 @@ public class Edge {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
@@ -100,10 +104,6 @@ public class Edge {
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public Edge() { 
   }
@@ -158,6 +158,30 @@ public class Edge {
   }
 
 
+
+
+  public Edge additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the edge. May include: &#39;description&#39; (string).
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   /**
@@ -346,30 +370,6 @@ public class Edge {
   }
 
 
-  public Edge additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the edge. May include: &#39;description&#39; (string).
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Return true if this Edge object is equal to o.
    */
@@ -384,6 +384,7 @@ public class Edge {
     Edge edge = (Edge) o;
     return Objects.equals(this.id, edge.id) &&
         Objects.equals(this.createdTime, edge.createdTime) &&
+        Objects.equals(this.additionalInfo, edge.additionalInfo) &&
         Objects.equals(this.tenantId, edge.tenantId) &&
         Objects.equals(this.customerId, edge.customerId) &&
         Objects.equals(this.rootRuleChainId, edge.rootRuleChainId) &&
@@ -392,13 +393,12 @@ public class Edge {
         Objects.equals(this.label, edge.label) &&
         Objects.equals(this.routingKey, edge.routingKey) &&
         Objects.equals(this.secret, edge.secret) &&
-        Objects.equals(this.version, edge.version) &&
-        Objects.equals(this.additionalInfo, edge.additionalInfo);
+        Objects.equals(this.version, edge.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, rootRuleChainId, name, type, label, routingKey, secret, version, additionalInfo);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, rootRuleChainId, name, type, label, routingKey, secret, version);
   }
 
   @Override
@@ -407,6 +407,7 @@ public class Edge {
     sb.append("class Edge {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    rootRuleChainId: ").append(toIndentedString(rootRuleChainId)).append("\n");
@@ -416,7 +417,6 @@ public class Edge {
     sb.append("    routingKey: ").append(toIndentedString(routingKey)).append("\n");
     sb.append("    secret: ").append(toIndentedString(secret)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -474,6 +474,11 @@ public class Edge {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -517,11 +522,6 @@ public class Edge {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     return joiner.toString();

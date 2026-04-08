@@ -54,8 +54,8 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | arguments | Map<String, Argument> |  |  |
-| createRules | Map<String, AlarmRuleDefinition> |  |  |
-| clearRule | AlarmRuleDefinition |  | [optional] |
+| createRules | Map<String, AlarmRule> |  |  |
+| clearRule | AlarmRule |  | [optional] |
 | propagate | Boolean |  | [optional] |
 | propagateToOwner | Boolean |  | [optional] |
 | propagateToTenant | Boolean |  | [optional] |
@@ -120,11 +120,11 @@
 | limit | Integer |  | [optional] |
 | timeWindow | Long |  | [optional] |
 
-#### AlarmRuleDefinition
+#### AlarmRule
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| condition | AlarmCondition |  |  |
 | alarmDetails | String |  | [optional] |
-| condition | AlarmRuleCondition |  |  |
 | dashboardId | DashboardId |  | [optional] |
 
 #### Output
@@ -166,26 +166,26 @@
 | type | ArgumentType |  | [optional] |
 | scope | AttributeScope |  | [optional] |
 
-#### AlarmRuleCondition
+#### AlarmCondition
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | expression | AlarmConditionExpression |  |  |
-| schedule | AlarmConditionValueAlarmRuleSchedule |  | [optional] |
+| schedule | AlarmConditionValueAlarmSchedule |  | [optional] |
 | type | String |  |  |
 
-#### AlarmRuleDurationCondition  *(extends AlarmRuleCondition, type=`DURATION`)*
+#### DurationAlarmCondition  *(extends AlarmCondition, type=`DURATION`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | unit | TimeUnit |  |  |
 | value | AlarmConditionValueLong |  |  |
 
-#### AlarmRuleRepeatingCondition  *(extends AlarmRuleCondition, type=`REPEATING`)*
+#### RepeatingAlarmCondition  *(extends AlarmCondition, type=`REPEATING`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | count | AlarmConditionValueInteger |  |  |
 
-#### AlarmRuleSimpleCondition  *(extends AlarmRuleCondition, type=`SIMPLE`)*
-*See AlarmRuleCondition for properties.*
+#### SimpleAlarmCondition  *(extends AlarmCondition, type=`SIMPLE`)*
+*See AlarmCondition for properties.*
 
 #### AttributeScope (enum)
 `CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`
@@ -291,19 +291,19 @@
 #### SimpleAlarmConditionExpression  *(extends AlarmConditionExpression, type=`SIMPLE`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| filters | List<AlarmRuleConditionFilter> |  |  |
-| operation | ComplexOperation |  | [optional] |
+| filters | List<AlarmConditionFilter> |  |  |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 
 #### TbelAlarmConditionExpression  *(extends AlarmConditionExpression, type=`TBEL`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | expression | String |  |  |
 
-#### AlarmConditionValueAlarmRuleSchedule
+#### AlarmConditionValueAlarmSchedule
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| staticValue | AlarmSchedule |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
-| staticValue | AlarmRuleSchedule |  | [optional] |
 
 #### TimeSeriesOutputStrategy
 | Name | Type | Description | Notes |
@@ -363,27 +363,27 @@
 |------|------|-------------|-------|
 | key | String |  | [optional] |
 
-#### AlarmRuleSchedule
+#### AlarmSchedule
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### AlarmRuleAnyTimeSchedule  *(extends AlarmRuleSchedule, type=`ANY_TIME`)*
-*See AlarmRuleSchedule for properties.*
+#### AnyTimeSchedule  *(extends AlarmSchedule, type=`ANY_TIME`)*
+*See AlarmSchedule for properties.*
 
-#### AlarmRuleCustomTimeSchedule  *(extends AlarmRuleSchedule, type=`CUSTOM`)*
+#### CustomTimeSchedule  *(extends AlarmSchedule, type=`CUSTOM`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| items | List<AlarmRuleCustomTimeScheduleItem> |  | [optional] |
 | timezone | String |  | [optional] |
+| items | List<CustomTimeScheduleItem> |  | [optional] |
 
-#### AlarmRuleSpecificTimeSchedule  *(extends AlarmRuleSchedule, type=`SPECIFIC_TIME`)*
+#### SpecificTimeSchedule  *(extends AlarmSchedule, type=`SPECIFIC_TIME`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| timezone | String |  | [optional] |
 | daysOfWeek | Set<Integer> |  | [optional] |
-| endsOn | Long |  | [optional] |
 | startsOn | Long |  | [optional] |
-| timezone | String |  | [optional] |
+| endsOn | Long |  | [optional] |
 
 #### TimeUnit (enum)
 `NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
@@ -400,16 +400,19 @@
 | staticValue | Integer |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
 
-#### AlarmRuleConditionFilter
+#### AlarmConditionFilter
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | argument | String |  |  |
-| operation | ComplexOperation |  | [optional] |
-| predicates | List<AlarmRuleKeyFilterPredicate> |  |  |
 | valueType | EntityKeyValueType |  |  |
+| operation | AlarmRuleComplexOperation |  | [optional] |
+| predicates | List<AlarmRuleKeyFilterPredicate> |  |  |
 
-#### ComplexOperation (enum)
+#### AlarmRuleComplexOperation (enum)
 `AND` | `OR`
+
+#### EntityKeyValueType (enum)
+`STRING` | `NUMERIC` | `BOOLEAN` | `DATE_TIME`
 
 #### AlarmRuleKeyFilterPredicate
 | Name | Type | Description | Notes |
@@ -419,46 +422,43 @@
 #### AlarmRuleBooleanFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`BOOLEAN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | BooleanOperation |  |  |
+| operation | AlarmRuleBooleanOperation |  |  |
 | value | AlarmConditionValueBoolean |  |  |
 
 #### AlarmRuleComplexFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<AlarmRuleKeyFilterPredicate> |  | [optional] |
 
-#### AlarmRuleNoDataFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NO_DATA`)*
+#### NoDataFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NO_DATA`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| duration | AlarmConditionValueLong |  |  |
 | unit | TimeUnit |  |  |
+| duration | AlarmConditionValueLong |  |  |
 
 #### AlarmRuleNumericFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NUMERIC`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | NumericOperation |  |  |
+| operation | AlarmRuleNumericOperation |  |  |
 | value | AlarmConditionValueDouble |  |  |
 
 #### AlarmRuleStringFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`STRING`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| ignoreCase | Boolean |  | [optional] |
-| operation | StringOperation |  |  |
+| operation | AlarmRuleStringOperation |  |  |
 | value | AlarmConditionValueString |  |  |
+| ignoreCase | Boolean |  | [optional] |
 
-#### EntityKeyValueType (enum)
-`STRING` | `NUMERIC` | `BOOLEAN` | `DATE_TIME`
-
-#### AlarmRuleCustomTimeScheduleItem
+#### CustomTimeScheduleItem
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| dayOfWeek | Integer |  | [optional] |
 | enabled | Boolean |  | [optional] |
-| endsOn | Long |  | [optional] |
+| dayOfWeek | Integer |  | [optional] |
 | startsOn | Long |  | [optional] |
+| endsOn | Long |  | [optional] |
 
-#### StringOperation (enum)
+#### AlarmRuleStringOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `STARTS_WITH` | `ENDS_WITH` | `CONTAINS` | `NOT_CONTAINS` | `IN` | `NOT_IN`
 
 #### AlarmConditionValueString
@@ -467,7 +467,7 @@
 | staticValue | String |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
 
-#### NumericOperation (enum)
+#### AlarmRuleNumericOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `GREATER` | `LESS` | `GREATER_OR_EQUAL` | `LESS_OR_EQUAL`
 
 #### AlarmConditionValueDouble
@@ -476,7 +476,7 @@
 | staticValue | Double |  | [optional] |
 | dynamicValueArgument | String |  | [optional] |
 
-#### BooleanOperation (enum)
+#### AlarmRuleBooleanOperation (enum)
 `EQUAL` | `NOT_EQUAL`
 
 #### AlarmConditionValueBoolean

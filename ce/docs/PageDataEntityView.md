@@ -23,6 +23,7 @@
 |------|------|-------------|-------|
 | id | EntityViewId | JSON object with the Entity View Id. Specify this field to update the Entity View. Referencing non-existing Entity View Id will cause error. Omit this field to create new Entity View. | [optional] |
 | createdTime | Long | Timestamp of the Entity View creation, in milliseconds | [optional] [readonly] |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 | entityId | EntityId | JSON object with the referenced Entity Id (Device or Asset). |  |
 | tenantId | TenantId | JSON object with Tenant Id. | [optional] [readonly] |
 | customerId | CustomerId | JSON object with Customer Id. Use 'assignEntityViewToCustomer' to change the Customer Id. | [optional] [readonly] |
@@ -32,7 +33,6 @@
 | startTimeMs | Long | Represents the start time of the interval that is used to limit access to target device telemetry. Customer will not be able to see entity telemetry that is outside the specified interval; | [optional] |
 | endTimeMs | Long | Represents the end time of the interval that is used to limit access to target device telemetry. Customer will not be able to see entity telemetry that is outside the specified interval; | [optional] |
 | version | Long |  | [optional] |
-| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 
 #### TelemetryEntityView
 | Name | Type | Description | Notes |

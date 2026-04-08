@@ -16,7 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -31,21 +31,22 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
-import org.thingsboard.client.model.AlarmConditionValueLong;
-import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
-import org.thingsboard.client.model.TimeUnit;
+import java.util.List;
+import org.thingsboard.client.model.AlarmSchedule;
+import org.thingsboard.client.model.CustomTimeScheduleItem;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleNoDataFilterPredicate
+ * CustomTimeSchedule
  */
 @JsonPropertyOrder({
-  AlarmRuleNoDataFilterPredicate.JSON_PROPERTY_DURATION,
-  AlarmRuleNoDataFilterPredicate.JSON_PROPERTY_UNIT
+  CustomTimeSchedule.JSON_PROPERTY_TIMEZONE,
+  CustomTimeSchedule.JSON_PROPERTY_ITEMS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -54,68 +55,76 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate {
-  public static final String JSON_PROPERTY_DURATION = "duration";
-  @Nonnull
-  private AlarmConditionValueLong duration;
+public class CustomTimeSchedule extends AlarmSchedule {
+  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
+  @Nullable
+  private String timezone;
 
-  public static final String JSON_PROPERTY_UNIT = "unit";
-  @Nonnull
-  private TimeUnit unit;
+  public static final String JSON_PROPERTY_ITEMS = "items";
+  @Nullable
+  private List<CustomTimeScheduleItem> items = new ArrayList<>();
 
-  public AlarmRuleNoDataFilterPredicate() { 
+  public CustomTimeSchedule() { 
   }
 
-  public AlarmRuleNoDataFilterPredicate duration(@Nonnull AlarmConditionValueLong duration) {
-    this.duration = duration;
+  public CustomTimeSchedule timezone(@Nullable String timezone) {
+    this.timezone = timezone;
     return this;
   }
 
   /**
-   * Get duration
-   * @return duration
+   * Get timezone
+   * @return timezone
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public AlarmConditionValueLong getDuration() {
-    return duration;
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTimezone() {
+    return timezone;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_DURATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDuration(@Nonnull AlarmConditionValueLong duration) {
-    this.duration = duration;
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTimezone(@Nullable String timezone) {
+    this.timezone = timezone;
   }
 
 
-  public AlarmRuleNoDataFilterPredicate unit(@Nonnull TimeUnit unit) {
-    this.unit = unit;
+  public CustomTimeSchedule items(@Nullable List<CustomTimeScheduleItem> items) {
+    this.items = items;
+    return this;
+  }
+
+  public CustomTimeSchedule addItemsItem(CustomTimeScheduleItem itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
     return this;
   }
 
   /**
-   * Get unit
-   * @return unit
+   * Get items
+   * @return items
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public TimeUnit getUnit() {
-    return unit;
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ITEMS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<CustomTimeScheduleItem> getItems() {
+    return items;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_UNIT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUnit(@Nonnull TimeUnit unit) {
-    this.unit = unit;
+  @JsonProperty(value = JSON_PROPERTY_ITEMS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setItems(@Nullable List<CustomTimeScheduleItem> items) {
+    this.items = items;
   }
 
 
   /**
-   * Return true if this AlarmRuleNoDataFilterPredicate object is equal to o.
+   * Return true if this CustomTimeSchedule object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -125,24 +134,24 @@ public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate 
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleNoDataFilterPredicate alarmRuleNoDataFilterPredicate = (AlarmRuleNoDataFilterPredicate) o;
-    return Objects.equals(this.duration, alarmRuleNoDataFilterPredicate.duration) &&
-        Objects.equals(this.unit, alarmRuleNoDataFilterPredicate.unit) &&
+    CustomTimeSchedule customTimeSchedule = (CustomTimeSchedule) o;
+    return Objects.equals(this.timezone, customTimeSchedule.timezone) &&
+        Objects.equals(this.items, customTimeSchedule.items) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(duration, unit, super.hashCode());
+    return Objects.hash(timezone, items, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleNoDataFilterPredicate {\n");
+    sb.append("class CustomTimeSchedule {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
-    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -195,14 +204,19 @@ public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate 
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `duration` to the URL query string
-    if (getDuration() != null) {
-      joiner.add(getDuration().toUrlQueryString(prefix + "duration" + suffix));
+    // add `timezone` to the URL query string
+    if (getTimezone() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
     }
 
-    // add `unit` to the URL query string
-    if (getUnit() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sunit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUnit()))));
+    // add `items` to the URL query string
+    if (getItems() != null) {
+      for (int i = 0; i < getItems().size(); i++) {
+        if (getItems().get(i) != null) {
+          joiner.add(getItems().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sitems%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     return joiner.toString();
@@ -210,8 +224,8 @@ public class AlarmRuleNoDataFilterPredicate extends AlarmRuleKeyFilterPredicate 
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("AlarmRuleNoDataFilterPredicate", AlarmRuleNoDataFilterPredicate.class);
-  JSON.registerDiscriminator(AlarmRuleNoDataFilterPredicate.class, "type", mappings);
+  mappings.put("CustomTimeSchedule", CustomTimeSchedule.class);
+  JSON.registerDiscriminator(CustomTimeSchedule.class, "type", mappings);
 }
 }
 

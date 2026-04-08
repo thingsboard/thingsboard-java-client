@@ -32,44 +32,44 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
 import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
-import org.thingsboard.client.model.ComplexOperation;
 import org.thingsboard.client.model.EntityKeyValueType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.ApiClient;
 /**
- * AlarmRuleConditionFilter
+ * AlarmConditionFilter
  */
 @JsonPropertyOrder({
-  AlarmRuleConditionFilter.JSON_PROPERTY_ARGUMENT,
-  AlarmRuleConditionFilter.JSON_PROPERTY_OPERATION,
-  AlarmRuleConditionFilter.JSON_PROPERTY_PREDICATES,
-  AlarmRuleConditionFilter.JSON_PROPERTY_VALUE_TYPE
+  AlarmConditionFilter.JSON_PROPERTY_ARGUMENT,
+  AlarmConditionFilter.JSON_PROPERTY_VALUE_TYPE,
+  AlarmConditionFilter.JSON_PROPERTY_OPERATION,
+  AlarmConditionFilter.JSON_PROPERTY_PREDICATES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class AlarmRuleConditionFilter {
+public class AlarmConditionFilter {
   public static final String JSON_PROPERTY_ARGUMENT = "argument";
   @Nonnull
   private String argument;
-
-  public static final String JSON_PROPERTY_OPERATION = "operation";
-  @Nullable
-  private ComplexOperation operation;
-
-  public static final String JSON_PROPERTY_PREDICATES = "predicates";
-  @Nonnull
-  private List<AlarmRuleKeyFilterPredicate> predicates = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VALUE_TYPE = "valueType";
   @Nonnull
   private EntityKeyValueType valueType;
 
-  public AlarmRuleConditionFilter() { 
+  public static final String JSON_PROPERTY_OPERATION = "operation";
+  @Nullable
+  private AlarmRuleComplexOperation operation;
+
+  public static final String JSON_PROPERTY_PREDICATES = "predicates";
+  @Nonnull
+  private List<AlarmRuleKeyFilterPredicate> predicates = new ArrayList<>();
+
+  public AlarmConditionFilter() { 
   }
 
-  public AlarmRuleConditionFilter argument(@Nonnull String argument) {
+  public AlarmConditionFilter argument(@Nonnull String argument) {
     this.argument = argument;
     return this;
   }
@@ -93,7 +93,31 @@ public class AlarmRuleConditionFilter {
   }
 
 
-  public AlarmRuleConditionFilter operation(@Nullable ComplexOperation operation) {
+  public AlarmConditionFilter valueType(@Nonnull EntityKeyValueType valueType) {
+    this.valueType = valueType;
+    return this;
+  }
+
+  /**
+   * Get valueType
+   * @return valueType
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public EntityKeyValueType getValueType() {
+    return valueType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setValueType(@Nonnull EntityKeyValueType valueType) {
+    this.valueType = valueType;
+  }
+
+
+  public AlarmConditionFilter operation(@Nullable AlarmRuleComplexOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -105,24 +129,24 @@ public class AlarmRuleConditionFilter {
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ComplexOperation getOperation() {
+  public AlarmRuleComplexOperation getOperation() {
     return operation;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOperation(@Nullable ComplexOperation operation) {
+  public void setOperation(@Nullable AlarmRuleComplexOperation operation) {
     this.operation = operation;
   }
 
 
-  public AlarmRuleConditionFilter predicates(@Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
+  public AlarmConditionFilter predicates(@Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
     this.predicates = predicates;
     return this;
   }
 
-  public AlarmRuleConditionFilter addPredicatesItem(AlarmRuleKeyFilterPredicate predicatesItem) {
+  public AlarmConditionFilter addPredicatesItem(AlarmRuleKeyFilterPredicate predicatesItem) {
     if (this.predicates == null) {
       this.predicates = new ArrayList<>();
     }
@@ -149,32 +173,8 @@ public class AlarmRuleConditionFilter {
   }
 
 
-  public AlarmRuleConditionFilter valueType(@Nonnull EntityKeyValueType valueType) {
-    this.valueType = valueType;
-    return this;
-  }
-
   /**
-   * Get valueType
-   * @return valueType
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public EntityKeyValueType getValueType() {
-    return valueType;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setValueType(@Nonnull EntityKeyValueType valueType) {
-    this.valueType = valueType;
-  }
-
-
-  /**
-   * Return true if this AlarmRuleConditionFilter object is equal to o.
+   * Return true if this AlarmConditionFilter object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -184,26 +184,26 @@ public class AlarmRuleConditionFilter {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlarmRuleConditionFilter alarmRuleConditionFilter = (AlarmRuleConditionFilter) o;
-    return Objects.equals(this.argument, alarmRuleConditionFilter.argument) &&
-        Objects.equals(this.operation, alarmRuleConditionFilter.operation) &&
-        Objects.equals(this.predicates, alarmRuleConditionFilter.predicates) &&
-        Objects.equals(this.valueType, alarmRuleConditionFilter.valueType);
+    AlarmConditionFilter alarmConditionFilter = (AlarmConditionFilter) o;
+    return Objects.equals(this.argument, alarmConditionFilter.argument) &&
+        Objects.equals(this.valueType, alarmConditionFilter.valueType) &&
+        Objects.equals(this.operation, alarmConditionFilter.operation) &&
+        Objects.equals(this.predicates, alarmConditionFilter.predicates);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(argument, operation, predicates, valueType);
+    return Objects.hash(argument, valueType, operation, predicates);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlarmRuleConditionFilter {\n");
+    sb.append("class AlarmConditionFilter {\n");
     sb.append("    argument: ").append(toIndentedString(argument)).append("\n");
+    sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    predicates: ").append(toIndentedString(predicates)).append("\n");
-    sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -256,6 +256,11 @@ public class AlarmRuleConditionFilter {
       joiner.add(String.format(java.util.Locale.ROOT, "%sargument%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getArgument()))));
     }
 
+    // add `valueType` to the URL query string
+    if (getValueType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%svalueType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getValueType()))));
+    }
+
     // add `operation` to the URL query string
     if (getOperation() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%soperation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOperation()))));
@@ -269,11 +274,6 @@ public class AlarmRuleConditionFilter {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
-    }
-
-    // add `valueType` to the URL query string
-    if (getValueType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%svalueType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getValueType()))));
     }
 
     return joiner.toString();

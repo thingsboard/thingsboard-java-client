@@ -23,6 +23,7 @@
 |------|------|-------------|-------|
 | id | OtaPackageId | JSON object with the ota package Id. Specify existing ota package Id to update the ota package. Referencing non-existing ota package id will cause error. Omit this field to create new ota package. | [optional] |
 | createdTime | Long | Timestamp of the ota package creation, in milliseconds | [optional] [readonly] |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode | OTA Package description. | [optional] |
 | tenantId | TenantId | JSON object with Tenant Id. Tenant Id of the ota package can't be changed. | [optional] [readonly] |
 | deviceProfileId | DeviceProfileId | JSON object with Device Profile Id. Device Profile Id of the ota package can't be changed. | [optional] |
 | type | OtaPackageType | OTA Package type. | [optional] |
@@ -36,7 +37,6 @@
 | checksumAlgorithm | ChecksumAlgorithm | OTA Package checksum algorithm. | [optional] [readonly] |
 | checksum | String | OTA Package checksum. | [optional] [readonly] |
 | dataSize | Long | OTA Package data size. | [optional] [readonly] |
-| additionalInfo | com.fasterxml.jackson.databind.JsonNode | OTA Package description. | [optional] |
 | name | String |  | [optional] [readonly] |
 
 #### OtaPackageType (enum)

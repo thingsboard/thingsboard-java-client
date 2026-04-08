@@ -58,13 +58,13 @@ import org.thingsboard.client.ApiClient;
   DeviceProfile.JSON_PROPERTY_DEFAULT_RULE_CHAIN_ID,
   DeviceProfile.JSON_PROPERTY_DEFAULT_DASHBOARD_ID,
   DeviceProfile.JSON_PROPERTY_DEFAULT_QUEUE_NAME,
+  DeviceProfile.JSON_PROPERTY_PROFILE_DATA,
   DeviceProfile.JSON_PROPERTY_PROVISION_DEVICE_KEY,
   DeviceProfile.JSON_PROPERTY_FIRMWARE_ID,
   DeviceProfile.JSON_PROPERTY_SOFTWARE_ID,
   DeviceProfile.JSON_PROPERTY_DEFAULT_EDGE_RULE_CHAIN_ID,
   DeviceProfile.JSON_PROPERTY_VERSION,
-  DeviceProfile.JSON_PROPERTY_DEFAULT,
-  DeviceProfile.JSON_PROPERTY_PROFILE_DATA
+  DeviceProfile.JSON_PROPERTY_DEFAULT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceProfile {
@@ -116,6 +116,10 @@ public class DeviceProfile {
   @Nullable
   private String defaultQueueName;
 
+  public static final String JSON_PROPERTY_PROFILE_DATA = "profileData";
+  @Nullable
+  private DeviceProfileData profileData;
+
   public static final String JSON_PROPERTY_PROVISION_DEVICE_KEY = "provisionDeviceKey";
   @Nullable
   private String provisionDeviceKey;
@@ -139,10 +143,6 @@ public class DeviceProfile {
   public static final String JSON_PROPERTY_DEFAULT = "default";
   @Nullable
   private Boolean _default;
-
-  public static final String JSON_PROPERTY_PROFILE_DATA = "profileData";
-  @Nullable
-  private DeviceProfileData profileData;
 
   public DeviceProfile() { 
   }
@@ -425,6 +425,30 @@ public class DeviceProfile {
   }
 
 
+  public DeviceProfile profileData(@Nullable DeviceProfileData profileData) {
+    this.profileData = profileData;
+    return this;
+  }
+
+  /**
+   * Complex JSON object that includes addition device profile configuration (transport, alarm rules, etc).
+   * @return profileData
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public DeviceProfileData getProfileData() {
+    return profileData;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setProfileData(@Nullable DeviceProfileData profileData) {
+    this.profileData = profileData;
+  }
+
+
   public DeviceProfile provisionDeviceKey(@Nullable String provisionDeviceKey) {
     this.provisionDeviceKey = provisionDeviceKey;
     return this;
@@ -569,30 +593,6 @@ public class DeviceProfile {
   }
 
 
-  public DeviceProfile profileData(@Nullable DeviceProfileData profileData) {
-    this.profileData = profileData;
-    return this;
-  }
-
-  /**
-   * Complex JSON object that includes addition device profile configuration (transport, alarm rules, etc).
-   * @return profileData
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DeviceProfileData getProfileData() {
-    return profileData;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PROFILE_DATA, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfileData(@Nullable DeviceProfileData profileData) {
-    this.profileData = profileData;
-  }
-
-
   /**
    * Return true if this DeviceProfile object is equal to o.
    */
@@ -617,18 +617,18 @@ public class DeviceProfile {
         Objects.equals(this.defaultRuleChainId, deviceProfile.defaultRuleChainId) &&
         Objects.equals(this.defaultDashboardId, deviceProfile.defaultDashboardId) &&
         Objects.equals(this.defaultQueueName, deviceProfile.defaultQueueName) &&
+        Objects.equals(this.profileData, deviceProfile.profileData) &&
         Objects.equals(this.provisionDeviceKey, deviceProfile.provisionDeviceKey) &&
         Objects.equals(this.firmwareId, deviceProfile.firmwareId) &&
         Objects.equals(this.softwareId, deviceProfile.softwareId) &&
         Objects.equals(this.defaultEdgeRuleChainId, deviceProfile.defaultEdgeRuleChainId) &&
         Objects.equals(this.version, deviceProfile.version) &&
-        Objects.equals(this._default, deviceProfile._default) &&
-        Objects.equals(this.profileData, deviceProfile.profileData);
+        Objects.equals(this._default, deviceProfile._default);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, name, description, image, type, transportType, provisionType, defaultRuleChainId, defaultDashboardId, defaultQueueName, provisionDeviceKey, firmwareId, softwareId, defaultEdgeRuleChainId, version, _default, profileData);
+    return Objects.hash(id, createdTime, tenantId, name, description, image, type, transportType, provisionType, defaultRuleChainId, defaultDashboardId, defaultQueueName, profileData, provisionDeviceKey, firmwareId, softwareId, defaultEdgeRuleChainId, version, _default);
   }
 
   @Override
@@ -647,13 +647,13 @@ public class DeviceProfile {
     sb.append("    defaultRuleChainId: ").append(toIndentedString(defaultRuleChainId)).append("\n");
     sb.append("    defaultDashboardId: ").append(toIndentedString(defaultDashboardId)).append("\n");
     sb.append("    defaultQueueName: ").append(toIndentedString(defaultQueueName)).append("\n");
+    sb.append("    profileData: ").append(toIndentedString(profileData)).append("\n");
     sb.append("    provisionDeviceKey: ").append(toIndentedString(provisionDeviceKey)).append("\n");
     sb.append("    firmwareId: ").append(toIndentedString(firmwareId)).append("\n");
     sb.append("    softwareId: ").append(toIndentedString(softwareId)).append("\n");
     sb.append("    defaultEdgeRuleChainId: ").append(toIndentedString(defaultEdgeRuleChainId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
-    sb.append("    profileData: ").append(toIndentedString(profileData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -761,6 +761,11 @@ public class DeviceProfile {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdefaultQueueName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefaultQueueName()))));
     }
 
+    // add `profileData` to the URL query string
+    if (getProfileData() != null) {
+      joiner.add(getProfileData().toUrlQueryString(prefix + "profileData" + suffix));
+    }
+
     // add `provisionDeviceKey` to the URL query string
     if (getProvisionDeviceKey() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sprovisionDeviceKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getProvisionDeviceKey()))));
@@ -789,11 +794,6 @@ public class DeviceProfile {
     // add `default` to the URL query string
     if (getDefault() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDefault()))));
-    }
-
-    // add `profileData` to the URL query string
-    if (getProfileData() != null) {
-      joiner.add(getProfileData().toUrlQueryString(prefix + "profileData" + suffix));
     }
 
     return joiner.toString();

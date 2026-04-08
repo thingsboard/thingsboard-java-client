@@ -42,6 +42,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   RuleNode.JSON_PROPERTY_ID,
   RuleNode.JSON_PROPERTY_CREATED_TIME,
+  RuleNode.JSON_PROPERTY_ADDITIONAL_INFO,
   RuleNode.JSON_PROPERTY_RULE_CHAIN_ID,
   RuleNode.JSON_PROPERTY_TYPE,
   RuleNode.JSON_PROPERTY_NAME,
@@ -51,7 +52,6 @@ import org.thingsboard.client.ApiClient;
   RuleNode.JSON_PROPERTY_CONFIGURATION_VERSION,
   RuleNode.JSON_PROPERTY_CONFIGURATION,
   RuleNode.JSON_PROPERTY_EXTERNAL_ID,
-  RuleNode.JSON_PROPERTY_ADDITIONAL_INFO,
   RuleNode.JSON_PROPERTY_DEBUG_MODE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -63,6 +63,10 @@ public class RuleNode {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_RULE_CHAIN_ID = "ruleChainId";
   @Nullable
@@ -99,10 +103,6 @@ public class RuleNode {
   public static final String JSON_PROPERTY_EXTERNAL_ID = "externalId";
   @Nullable
   private RuleNodeId externalId;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_DEBUG_MODE = "debugMode";
   @Nullable
@@ -157,6 +157,30 @@ public class RuleNode {
   }
 
 
+
+
+  public RuleNode additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the rule node. May include: &#39;layoutX&#39; (number, X coordinate for visualization), &#39;layoutY&#39; (number, Y coordinate for visualization), &#39;description&#39; (string).
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   /**
@@ -365,30 +389,6 @@ public class RuleNode {
   }
 
 
-  public RuleNode additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the rule node. May include: &#39;layoutX&#39; (number, X coordinate for visualization), &#39;layoutY&#39; (number, Y coordinate for visualization), &#39;description&#39; (string).
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   public RuleNode debugMode(@Nullable Boolean debugMode) {
     this.debugMode = debugMode;
     return this;
@@ -429,6 +429,7 @@ public class RuleNode {
     RuleNode ruleNode = (RuleNode) o;
     return Objects.equals(this.id, ruleNode.id) &&
         Objects.equals(this.createdTime, ruleNode.createdTime) &&
+        Objects.equals(this.additionalInfo, ruleNode.additionalInfo) &&
         Objects.equals(this.ruleChainId, ruleNode.ruleChainId) &&
         Objects.equals(this.type, ruleNode.type) &&
         Objects.equals(this.name, ruleNode.name) &&
@@ -438,13 +439,12 @@ public class RuleNode {
         Objects.equals(this.configurationVersion, ruleNode.configurationVersion) &&
         Objects.equals(this._configuration, ruleNode._configuration) &&
         Objects.equals(this.externalId, ruleNode.externalId) &&
-        Objects.equals(this.additionalInfo, ruleNode.additionalInfo) &&
         Objects.equals(this.debugMode, ruleNode.debugMode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, ruleChainId, type, name, debugSettings, singletonMode, queueName, configurationVersion, _configuration, externalId, additionalInfo, debugMode);
+    return Objects.hash(id, createdTime, additionalInfo, ruleChainId, type, name, debugSettings, singletonMode, queueName, configurationVersion, _configuration, externalId, debugMode);
   }
 
   @Override
@@ -453,6 +453,7 @@ public class RuleNode {
     sb.append("class RuleNode {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    ruleChainId: ").append(toIndentedString(ruleChainId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -462,7 +463,6 @@ public class RuleNode {
     sb.append("    configurationVersion: ").append(toIndentedString(configurationVersion)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    debugMode: ").append(toIndentedString(debugMode)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -521,6 +521,11 @@ public class RuleNode {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `ruleChainId` to the URL query string
     if (getRuleChainId() != null) {
       joiner.add(getRuleChainId().toUrlQueryString(prefix + "ruleChainId" + suffix));
@@ -564,11 +569,6 @@ public class RuleNode {
     // add `externalId` to the URL query string
     if (getExternalId() != null) {
       joiner.add(getExternalId().toUrlQueryString(prefix + "externalId" + suffix));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `debugMode` to the URL query string

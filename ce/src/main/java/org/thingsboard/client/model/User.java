@@ -44,6 +44,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   User.JSON_PROPERTY_ID,
   User.JSON_PROPERTY_CREATED_TIME,
+  User.JSON_PROPERTY_ADDITIONAL_INFO,
   User.JSON_PROPERTY_TENANT_ID,
   User.JSON_PROPERTY_CUSTOMER_ID,
   User.JSON_PROPERTY_EMAIL,
@@ -52,7 +53,6 @@ import org.thingsboard.client.ApiClient;
   User.JSON_PROPERTY_LAST_NAME,
   User.JSON_PROPERTY_PHONE,
   User.JSON_PROPERTY_VERSION,
-  User.JSON_PROPERTY_ADDITIONAL_INFO,
   User.JSON_PROPERTY_NAME
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -64,6 +64,10 @@ public class User {
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
+
+  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
@@ -96,10 +100,6 @@ public class User {
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
-
-  public static final String JSON_PROPERTY_ADDITIONAL_INFO = "additionalInfo";
-  @Nullable
-  private com.fasterxml.jackson.databind.JsonNode additionalInfo;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @Nullable
@@ -154,6 +154,30 @@ public class User {
   }
 
 
+
+
+  public User additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+    return this;
+  }
+
+  /**
+   * Additional parameters of the user. May include: &#39;defaultDashboardId&#39; (string, UUID of the default dashboard), &#39;defaultDashboardFullscreen&#39; (boolean), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean), &#39;lang&#39; (string, user locale, e.g. &#39;en_US&#39;), &#39;authProviderName&#39; (string, name of the authentication provider).
+   * @return additionalInfo
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
+    return additionalInfo;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
+    this.additionalInfo = additionalInfo;
+  }
 
 
   public User tenantId(@Nullable TenantId tenantId) {
@@ -348,30 +372,6 @@ public class User {
   }
 
 
-  public User additionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-    return this;
-  }
-
-  /**
-   * Additional parameters of the user. May include: &#39;defaultDashboardId&#39; (string, UUID of the default dashboard), &#39;defaultDashboardFullscreen&#39; (boolean), &#39;homeDashboardId&#39; (string, UUID of the home dashboard), &#39;homeDashboardHideToolbar&#39; (boolean), &#39;lang&#39; (string, user locale, e.g. &#39;en_US&#39;), &#39;authProviderName&#39; (string, name of the authentication provider).
-   * @return additionalInfo
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public com.fasterxml.jackson.databind.JsonNode getAdditionalInfo() {
-    return additionalInfo;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ADDITIONAL_INFO, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAdditionalInfo(@Nullable com.fasterxml.jackson.databind.JsonNode additionalInfo) {
-    this.additionalInfo = additionalInfo;
-  }
-
-
   /**
    * Duplicates the email of the user, readonly
    * @return name
@@ -400,6 +400,7 @@ public class User {
     User user = (User) o;
     return Objects.equals(this.id, user.id) &&
         Objects.equals(this.createdTime, user.createdTime) &&
+        Objects.equals(this.additionalInfo, user.additionalInfo) &&
         Objects.equals(this.tenantId, user.tenantId) &&
         Objects.equals(this.customerId, user.customerId) &&
         Objects.equals(this.email, user.email) &&
@@ -408,13 +409,12 @@ public class User {
         Objects.equals(this.lastName, user.lastName) &&
         Objects.equals(this.phone, user.phone) &&
         Objects.equals(this.version, user.version) &&
-        Objects.equals(this.additionalInfo, user.additionalInfo) &&
         Objects.equals(this.name, user.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, email, authority, firstName, lastName, phone, version, additionalInfo, name);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, email, authority, firstName, lastName, phone, version, name);
   }
 
   @Override
@@ -423,6 +423,7 @@ public class User {
     sb.append("class User {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
+    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
@@ -431,7 +432,6 @@ public class User {
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -490,6 +490,11 @@ public class User {
       joiner.add(String.format(java.util.Locale.ROOT, "%screatedTime%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCreatedTime()))));
     }
 
+    // add `additionalInfo` to the URL query string
+    if (getAdditionalInfo() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
+    }
+
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
@@ -528,11 +533,6 @@ public class User {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
-    }
-
-    // add `additionalInfo` to the URL query string
-    if (getAdditionalInfo() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sadditionalInfo%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAdditionalInfo()))));
     }
 
     // add `name` to the URL query string

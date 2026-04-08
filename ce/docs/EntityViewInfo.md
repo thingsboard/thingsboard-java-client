@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 | **id** | **EntityViewId** | JSON object with the Entity View Id. Specify this field to update the Entity View. Referencing non-existing Entity View Id will cause error. Omit this field to create new Entity View. | [optional] |
 | **createdTime** | **Long** | Timestamp of the Entity View creation, in milliseconds | [optional] [readonly] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 | **entityId** | **EntityId** | JSON object with the referenced Entity Id (Device or Asset). | |
 | **tenantId** | **TenantId** | JSON object with Tenant Id. | [optional] [readonly] |
 | **customerId** | **CustomerId** | JSON object with Customer Id. Use 'assignEntityViewToCustomer' to change the Customer Id. | [optional] [readonly] |
@@ -20,7 +21,6 @@
 | **version** | **Long** |  | [optional] |
 | **customerTitle** | **String** | Title of the Customer that owns the entity view. | [optional] [readonly] |
 | **customerIsPublic** | **Boolean** | Indicates special 'Public' Customer that is auto-generated to use the entity view on public dashboards. | [optional] [readonly] |
-| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 
 
 

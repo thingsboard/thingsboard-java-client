@@ -23,6 +23,7 @@
 |------|------|-------------|-------|
 | id | AssetId | JSON object with the asset Id. Specify this field to update the asset. Referencing non-existing asset Id will cause error. Omit this field to create new asset. | [optional] |
 | createdTime | Long | Timestamp of the asset creation, in milliseconds | [optional] [readonly] |
+| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the asset. May include: 'description' (string). | [optional] |
 | tenantId | TenantId | JSON object with Tenant Id. | [optional] [readonly] |
 | customerId | CustomerId | JSON object with Customer Id. Use 'assignAssetToCustomer' to change the Customer Id. | [optional] [readonly] |
 | name | String | Unique Asset Name in scope of Tenant |  |
@@ -30,7 +31,6 @@
 | label | String | Label that may be used in widgets | [optional] |
 | assetProfileId | AssetProfileId | JSON object with Asset Profile Id. | [optional] |
 | version | Long |  | [optional] |
-| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the asset. May include: 'description' (string). | [optional] |
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
