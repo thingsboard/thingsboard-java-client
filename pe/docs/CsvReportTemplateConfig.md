@@ -507,7 +507,7 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | column | String |  | [optional] |
-| direction | Direction |  | [optional] |
+| direction | TableSortDirection |  | [optional] |
 
 #### TimeWindowConfiguration
 | Name | Type | Description | Notes |
@@ -720,7 +720,7 @@
 #### FontStyle (enum)
 `NORMAL` | `ITALIC`
 
-#### Direction (enum)
+#### TableSortDirection (enum)
 `ASC` | `DESC`
 
 #### History

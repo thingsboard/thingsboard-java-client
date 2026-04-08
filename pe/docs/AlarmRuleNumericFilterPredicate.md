@@ -9,7 +9,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **operation** | **NumericOperation** |  | |
+| **operation** | **AlarmRuleNumericOperation** |  | |
 | **value** | **AlarmConditionValueDouble** |  | |
 
 
@@ -21,7 +21,7 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### NumericOperation (enum)
+#### AlarmRuleNumericOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `GREATER` | `LESS` | `GREATER_OR_EQUAL` | `LESS_OR_EQUAL`
 
 #### AlarmConditionValueDouble
