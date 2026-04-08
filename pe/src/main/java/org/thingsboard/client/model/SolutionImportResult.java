@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -40,7 +41,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   SolutionImportResult.JSON_PROPERTY_SUCCESS,
-  SolutionImportResult.JSON_PROPERTY_CREATED
+  SolutionImportResult.JSON_PROPERTY_CREATED,
+  SolutionImportResult.JSON_PROPERTY_ID_MAPPING
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SolutionImportResult {
@@ -51,6 +53,10 @@ public class SolutionImportResult {
   public static final String JSON_PROPERTY_CREATED = "created";
   @Nullable
   private Map<String, Integer> created = new HashMap<>();
+
+  public static final String JSON_PROPERTY_ID_MAPPING = "idMapping";
+  @Nullable
+  private Map<String, UUID> idMapping = new HashMap<>();
 
   public SolutionImportResult() { 
   }
@@ -111,6 +117,38 @@ public class SolutionImportResult {
   }
 
 
+  public SolutionImportResult idMapping(@Nullable Map<String, UUID> idMapping) {
+    this.idMapping = idMapping;
+    return this;
+  }
+
+  public SolutionImportResult putIdMappingItem(String key, UUID idMappingItem) {
+    if (this.idMapping == null) {
+      this.idMapping = new HashMap<>();
+    }
+    this.idMapping.put(key, idMappingItem);
+    return this;
+  }
+
+  /**
+   * Mapping from external entity IDs (as they appear in the solution file) to the internal entity IDs assigned during import.
+   * @return idMapping
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID_MAPPING, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Map<String, UUID> getIdMapping() {
+    return idMapping;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID_MAPPING, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdMapping(@Nullable Map<String, UUID> idMapping) {
+    this.idMapping = idMapping;
+  }
+
+
   /**
    * Return true if this SolutionImportResult object is equal to o.
    */
@@ -124,12 +162,13 @@ public class SolutionImportResult {
     }
     SolutionImportResult solutionImportResult = (SolutionImportResult) o;
     return Objects.equals(this.success, solutionImportResult.success) &&
-        Objects.equals(this.created, solutionImportResult.created);
+        Objects.equals(this.created, solutionImportResult.created) &&
+        Objects.equals(this.idMapping, solutionImportResult.idMapping);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, created);
+    return Objects.hash(success, created, idMapping);
   }
 
   @Override
@@ -138,6 +177,7 @@ public class SolutionImportResult {
     sb.append("class SolutionImportResult {\n");
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    idMapping: ").append(toIndentedString(idMapping)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -196,6 +236,15 @@ public class SolutionImportResult {
         joiner.add(String.format(java.util.Locale.ROOT, "%screated%s%s=%s", prefix, suffix,
             "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
             getCreated().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getCreated().get(_key)))));
+      }
+    }
+
+    // add `idMapping` to the URL query string
+    if (getIdMapping() != null) {
+      for (String _key : getIdMapping().keySet()) {
+        joiner.add(String.format(java.util.Locale.ROOT, "%sidMapping%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
+            getIdMapping().get(_key), ApiClient.urlEncode(ApiClient.valueToString(getIdMapping().get(_key)))));
       }
     }
 
