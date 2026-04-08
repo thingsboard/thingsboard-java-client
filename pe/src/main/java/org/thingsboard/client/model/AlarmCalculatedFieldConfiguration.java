@@ -37,7 +37,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.thingsboard.client.model.AlarmRuleDefinition;
+import org.thingsboard.client.model.AlarmRule;
 import org.thingsboard.client.model.Argument;
 import org.thingsboard.client.model.CalculatedFieldConfiguration;
 import org.thingsboard.client.model.Output;
@@ -73,11 +73,11 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
 
   public static final String JSON_PROPERTY_CREATE_RULES = "createRules";
   @Nonnull
-  private Map<String, AlarmRuleDefinition> createRules = new HashMap<>();
+  private Map<String, AlarmRule> createRules = new HashMap<>();
 
   public static final String JSON_PROPERTY_CLEAR_RULE = "clearRule";
   @Nullable
-  private AlarmRuleDefinition clearRule;
+  private AlarmRule clearRule;
 
   public static final String JSON_PROPERTY_PROPAGATE = "propagate";
   @Nullable
@@ -134,12 +134,12 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   }
 
 
-  public AlarmCalculatedFieldConfiguration createRules(@Nonnull Map<String, AlarmRuleDefinition> createRules) {
+  public AlarmCalculatedFieldConfiguration createRules(@Nonnull Map<String, AlarmRule> createRules) {
     this.createRules = createRules;
     return this;
   }
 
-  public AlarmCalculatedFieldConfiguration putCreateRulesItem(String key, AlarmRuleDefinition createRulesItem) {
+  public AlarmCalculatedFieldConfiguration putCreateRulesItem(String key, AlarmRule createRulesItem) {
     if (this.createRules == null) {
       this.createRules = new HashMap<>();
     }
@@ -154,19 +154,19 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CREATE_RULES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Map<String, AlarmRuleDefinition> getCreateRules() {
+  public Map<String, AlarmRule> getCreateRules() {
     return createRules;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_CREATE_RULES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreateRules(@Nonnull Map<String, AlarmRuleDefinition> createRules) {
+  public void setCreateRules(@Nonnull Map<String, AlarmRule> createRules) {
     this.createRules = createRules;
   }
 
 
-  public AlarmCalculatedFieldConfiguration clearRule(@Nullable AlarmRuleDefinition clearRule) {
+  public AlarmCalculatedFieldConfiguration clearRule(@Nullable AlarmRule clearRule) {
     this.clearRule = clearRule;
     return this;
   }
@@ -178,14 +178,14 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmRuleDefinition getClearRule() {
+  public AlarmRule getClearRule() {
     return clearRule;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClearRule(@Nullable AlarmRuleDefinition clearRule) {
+  public void setClearRule(@Nullable AlarmRule clearRule) {
     this.clearRule = clearRule;
   }
 

@@ -9,7 +9,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **operation** | **BooleanOperation** |  | |
+| **operation** | **AlarmRuleBooleanOperation** |  | |
 | **value** | **AlarmConditionValueBoolean** |  | |
 
 
@@ -21,7 +21,7 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### BooleanOperation (enum)
+#### AlarmRuleBooleanOperation (enum)
 `EQUAL` | `NOT_EQUAL`
 
 #### AlarmConditionValueBoolean
