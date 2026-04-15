@@ -19,7 +19,7 @@ All modules share the same `org.thingsboard.client` group ID and use the `org.th
 <dependency>
     <groupId>org.thingsboard.client</groupId>
     <artifactId>thingsboard-ce-client</artifactId>
-    <version>4.4.0-SNAPSHOT</version>
+    <version>4.3.1.2-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -67,7 +67,7 @@ client.login("tenant@thingsboard.org", "tenant");
 Each published JAR includes Markdown API documentation bundled under `api-docs/` in the classpath. This covers every controller endpoint (`*ControllerApi.md`) and every model class. To extract the docs from a dependency:
 
 ```bash
-jar xf thingsboard-ce-client-4.4.0-SNAPSHOT.jar api-docs/
+jar xf thingsboard-ce-client-4.3.1.2-SNAPSHOT.jar api-docs/
 ```
 
 The same docs are also available in each edition's `docs/` directory in this repository.
