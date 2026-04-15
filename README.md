@@ -113,7 +113,7 @@ The `generate-client.sh` script handles the full workflow: generate, post-proces
 
 ### Prerequisites
 
-- Java 25
+- Java 17
 - Maven
 - Perl (for post-processing)
 - curl (for downloading the generator JAR on first run)
