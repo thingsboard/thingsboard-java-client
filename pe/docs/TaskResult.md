@@ -11,6 +11,7 @@
 | **success** | **Boolean** |  | [optional] |
 | **discarded** | **Boolean** |  | [optional] |
 | **finishTs** | **Long** |  | [optional] |
+| **error** | **String** |  | [optional] |
 | **jobType** | **String** |  | |
 
 
