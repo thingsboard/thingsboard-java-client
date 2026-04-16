@@ -82071,9 +82071,7 @@
           }
         },
         "required": [
-          "name",
-          "tenantId",
-          "version"
+          "name"
         ]
       },
       "AiModelConfig": {
@@ -95768,8 +95766,7 @@
           }
         },
         "required": [
-          "name",
-          "tenantId"
+          "name"
         ]
       },
       "RuleChainConnectionInfo": {
@@ -97312,6 +97309,9 @@
           "finishTs": {
             "type": "integer",
             "format": "int64"
+          },
+          "error": {
+            "type": "string"
           },
           "jobType": {
             "type": "string"
