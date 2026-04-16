@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.thingsboard.client</groupId>
         <artifactId>thingsboard-client-parent</artifactId>
-        <version>4.4.0-SNAPSHOT</version>
+        <version>4.3.1.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>thingsboard-pe-client</artifactId>

@@ -59,7 +59,7 @@
 #
 # Output log: generate-client.log (overwritten on each run)
 #
-# Prerequisites: Java 25, Maven, Perl (Node.js/npm optional — JAR fallback used if absent)
+# Prerequisites: Java 17, Maven, Perl (Node.js/npm optional — JAR fallback used if absent)
 #
 
 set -euo pipefail
