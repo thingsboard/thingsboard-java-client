@@ -86,6 +86,12 @@ public class TimeSeriesOutput extends Output {
 
 
   @Override
+  public TimeSeriesOutput decimalsByDefault(@Nullable Integer decimalsByDefault) {
+    this.setDecimalsByDefault(decimalsByDefault);
+    return this;
+  }
+
+  @Override
   public TimeSeriesOutput name(@Nullable String name) {
     this.setName(name);
     return this;
@@ -94,12 +100,6 @@ public class TimeSeriesOutput extends Output {
   @Override
   public TimeSeriesOutput scope(@Nullable AttributeScope scope) {
     this.setScope(scope);
-    return this;
-  }
-
-  @Override
-  public TimeSeriesOutput decimalsByDefault(@Nullable Integer decimalsByDefault) {
-    this.setDecimalsByDefault(decimalsByDefault);
     return this;
   }
 
@@ -177,6 +177,11 @@ public class TimeSeriesOutput extends Output {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `decimalsByDefault` to the URL query string
+    if (getDecimalsByDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdecimalsByDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDecimalsByDefault()))));
+    }
+
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
@@ -185,11 +190,6 @@ public class TimeSeriesOutput extends Output {
     // add `scope` to the URL query string
     if (getScope() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScope()))));
-    }
-
-    // add `decimalsByDefault` to the URL query string
-    if (getDecimalsByDefault() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdecimalsByDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDecimalsByDefault()))));
     }
 
     // add `strategy` to the URL query string
