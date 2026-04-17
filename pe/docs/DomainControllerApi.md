@@ -7,7 +7,7 @@ void deleteDomain(@Nonnull UUID id) // Delete Domain by ID (deleteDomain)
 DomainInfo getDomainInfoById(@Nonnull UUID id) // Get Domain info by Id (getDomainInfoById)
 PageDataDomainInfo getDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Domain infos (getDomainInfos)
 Domain saveDomain(@Nonnull Domain domain, @Nullable List<String> oauth2ClientIds) // Save or Update Domain (saveDomain)
-void updateOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) // Update oauth2 clients (updateOauth2Clients)
+void updateDomainOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) // Update oauth2 clients (updateDomainOauth2Clients)
 ```
 
 
@@ -112,15 +112,15 @@ Create or update the Domain. When creating domain, platform generates Domain Id 
 **Domain**
 
 
-## updateOauth2Clients
+## updateDomainOauth2Clients
 
 ```
-void updateOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID)
+void updateDomainOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID)
 ```
 
 **PUT** `/api/domain/{id}/oauth2Clients`
 
-Update oauth2 clients (updateOauth2Clients)
+Update oauth2 clients (updateDomainOauth2Clients)
 
 Update oauth2 clients for the specified domain.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

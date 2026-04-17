@@ -326,35 +326,6 @@
 | legendValueColor | String |  | [optional] |
 | legendShowTotal | Boolean |  | [optional] |
 
-#### ReportDoughnutChartSettings  *(extends ReportLatestChartSettings, subType=`horizontalDoughnutChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| layout | DoughnutLayout |  | [optional] |
-| clockwise | Boolean |  | [optional] |
-| totalValueFont | Font |  | [optional] |
-| totalValueColor | String |  | [optional] |
-
-#### ReportBarChartSettings  *(extends ReportLatestChartSettings, subType=`latestBarChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| axisMin | Double |  | [optional] |
-| axisMax | Double |  | [optional] |
-| axisTickLabelFont | Font |  | [optional] |
-| axisTickLabelColor | String |  | [optional] |
-| barSettings | BarSeriesSettings |  | [optional] |
-
-#### ReportPieChartSettings  *(extends ReportLatestChartSettings, subType=`pieChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showLabel | Boolean |  | [optional] |
-| labelPosition | PieChartLabelPosition |  | [optional] |
-| labelFont | Font |  | [optional] |
-| labelColor | String |  | [optional] |
-| borderWidth | Float |  | [optional] |
-| borderColor | String |  | [optional] |
-| radius | Double |  | [optional] |
-| clockwise | Boolean |  | [optional] |
-
 #### ReportTimeSeriesChartSettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -385,35 +356,6 @@
 | legendConfig | LegendConfig |  | [optional] |
 | xaxis | TimeSeriesChartXAxisSettings |  | [optional] |
 | yaxes | Map<String, TimeSeriesChartYAxisSettings> |  | [optional] |
-
-#### ReportBarChartWithLabelsSettings  *(extends ReportTimeSeriesChartSettings, subType=`barChartWithLabels`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showBarLabel | Boolean |  | [optional] |
-| barLabelFont | Font |  | [optional] |
-| barLabelColor | String |  | [optional] |
-| showBarValue | Boolean |  | [optional] |
-| barValueFont | Font |  | [optional] |
-| barValueColor | String |  | [optional] |
-| showBarBorder | Boolean |  | [optional] |
-| barBorderWidth | Float |  | [optional] |
-| barBorderRadius | Float |  | [optional] |
-| barBackgroundSettings | ChartFillSettings |  | [optional] |
-| barUnits | String |  | [optional] |
-| barDecimals | Integer |  | [optional] |
-
-#### ReportRangeChartSettings  *(extends ReportTimeSeriesChartSettings, subType=`rangeChart`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| rangeColors | List<ColorRange> |  | [optional] |
-| outOfRangeColor | String |  | [optional] |
-| showRangeThresholds | Boolean |  | [optional] |
-| rangeThreshold | TimeSeriesChartThreshold |  | [optional] |
-| fillArea | Boolean |  | [optional] |
-| fillAreaOpacity | Float |  | [optional] |
-| lineSettings | LineSeriesSettings |  | [optional] |
-| rangeUnits | String |  | [optional] |
-| rangeDecimals | Integer |  | [optional] |
 
 #### TableSortDirection (enum)
 `ASC` | `DESC`
@@ -476,8 +418,8 @@
 | methodName | String |  | [optional] |
 | fileName | String |  | [optional] |
 | lineNumber | Integer |  | [optional] |
-| className | String |  | [optional] |
 | nativeMethod | Boolean |  | [optional] |
+| className | String |  | [optional] |
 
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`
@@ -669,27 +611,6 @@
 #### QuickTimeInterval (enum)
 `YESTERDAY` | `DAY_BEFORE_YESTERDAY` | `THIS_DAY_LAST_WEEK` | `PREVIOUS_WEEK` | `PREVIOUS_WEEK_ISO` | `PREVIOUS_MONTH` | `PREVIOUS_QUARTER` | `PREVIOUS_HALF_YEAR` | `PREVIOUS_YEAR` | `CURRENT_HOUR` | … (24 values total)
 
-#### BarSeriesSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showBorder | Boolean |  | [optional] |
-| borderWidth | Float |  | [optional] |
-| borderRadius | Float |  | [optional] |
-| barWidth | Double |  | [optional] |
-| showLabel | Boolean |  | [optional] |
-| labelPosition | ChartLabelPosition |  | [optional] |
-| labelFont | Font |  | [optional] |
-| labelColor | String |  | [optional] |
-| enableLabelBackground | Boolean |  | [optional] |
-| labelBackground | String |  | [optional] |
-| backgroundSettings | ChartFillSettings |  | [optional] |
-
-#### PieChartLabelPosition (enum)
-`INSIDE` | `OUTSIDE`
-
-#### DoughnutLayout (enum)
-`DEFAULT` | `WITH_TOTAL`
-
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
 
@@ -721,19 +642,11 @@
 #### TimeSeriesChartStateSourceType (enum)
 `CONSTANT` | `RANGE`
 
-#### ChartFillSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | ChartFillType |  | [optional] |
-| opacity | Float |  | [optional] |
-| gradient | ChartFillSettingsGradient |  | [optional] |
+#### IntervalType (enum)
+`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
 
-#### ColorRange
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| from | Double |  | [optional] |
-| to | Double |  | [optional] |
-| color | String |  | [optional] |
+#### TimeSeriesChartSeriesType (enum)
+`LINE` | `BAR`
 
 #### LineSeriesSettings
 | Name | Type | Description | Notes |
@@ -755,11 +668,40 @@
 | pointSize | Float |  | [optional] |
 | fillAreaSettings | ChartFillSettings |  | [optional] |
 
-#### IntervalType (enum)
-`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
+#### BarSeriesSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showBorder | Boolean |  | [optional] |
+| borderWidth | Float |  | [optional] |
+| borderRadius | Float |  | [optional] |
+| barWidth | Double |  | [optional] |
+| showLabel | Boolean |  | [optional] |
+| labelPosition | ChartLabelPosition |  | [optional] |
+| labelFont | Font |  | [optional] |
+| labelColor | String |  | [optional] |
+| enableLabelBackground | Boolean |  | [optional] |
+| labelBackground | String |  | [optional] |
+| backgroundSettings | ChartFillSettings |  | [optional] |
+
+#### DataKeyComparisonSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showValuesForComparison | Boolean |  | [optional] |
+| comparisonValuesLabel | String |  | [optional] |
+| color | String |  | [optional] |
+
+#### LineSeriesStepType (enum)
+`START` | `MIDDLE` | `END`
 
 #### ChartLabelPosition (enum)
 `TOP` | `BOTTOM`
+
+#### ChartFillSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ChartFillType |  | [optional] |
+| opacity | Float |  | [optional] |
+| gradient | ChartFillSettingsGradient |  | [optional] |
 
 #### ChartFillType (enum)
 `NONE` | `OPACITY` | `GRADIENT`
@@ -769,19 +711,6 @@
 |------|------|-------------|-------|
 | start | Float |  | [optional] |
 | end | Float |  | [optional] |
-
-#### LineSeriesStepType (enum)
-`START` | `MIDDLE` | `END`
-
-#### TimeSeriesChartSeriesType (enum)
-`LINE` | `BAR`
-
-#### DataKeyComparisonSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showValuesForComparison | Boolean |  | [optional] |
-| comparisonValuesLabel | String |  | [optional] |
-| color | String |  | [optional] |
 
 ---
 
