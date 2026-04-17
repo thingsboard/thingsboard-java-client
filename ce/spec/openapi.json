@@ -75242,14 +75242,34 @@
         ]
       }
     },
-    "/api/user/dashboards": {
+    "/api/user/dashboards/{dashboardId}/{action}": {
       "get": {
         "tags": [
           "user-controller"
         ],
-        "summary": "Get information about last visited and starred dashboards (getUserDashboardsInfo)",
-        "description": "Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
-        "operationId": "getUserDashboardsInfo",
+        "summary": "Report action of User over the dashboard (reportUserDashboardAction)",
+        "description": "Report action of User over the dashboard. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
+        "operationId": "reportUserDashboardAction",
+        "parameters": [
+          {
+            "name": "dashboardId",
+            "in": "path",
+            "description": "A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "action",
+            "in": "path",
+            "description": "Dashboard action, one of: \"visit\", \"star\" or \"unstar\".",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -75377,34 +75397,14 @@
         ]
       }
     },
-    "/api/user/dashboards/{dashboardId}/{action}": {
+    "/api/user/lastVisitedDashboards": {
       "get": {
         "tags": [
           "user-controller"
         ],
-        "summary": "Report action of User over the dashboard (reportUserDashboardAction)",
-        "description": "Report action of User over the dashboard. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
-        "operationId": "reportUserDashboardAction",
-        "parameters": [
-          {
-            "name": "dashboardId",
-            "in": "path",
-            "description": "A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "action",
-            "in": "path",
-            "description": "Dashboard action, one of: \"visit\", \"star\" or \"unstar\".",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "summary": "Get information about last visited and starred dashboards (getLastVisitedDashboards)",
+        "description": "Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
+        "operationId": "getLastVisitedDashboards",
         "responses": {
           "200": {
             "description": "OK",
@@ -80381,7 +80381,7 @@
         ]
       }
     },
-    "/api/widgetsBundles/{widgetsBundleId}/widgetTypes": {
+    "/api/widgetsBundle/{widgetsBundleId}/widgetTypes": {
       "get": {
         "tags": [
           "widget-type-controller"
@@ -80427,6 +80427,157 @@
                     "value": {
                       "status": 400,
                       "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "widgets-bundle-controller"
+        ],
+        "summary": "Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes)",
+        "description": "Updates widgets bundle widgets list.\n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
+        "operationId": "updateWidgetsBundleWidgetTypes",
+        "parameters": [
+          {
+            "name": "widgetsBundleId",
+            "in": "path",
+            "description": "A string value representing the widget bundle id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "description": "Ordered list of widget type Ids to be included by widgets bundle",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid request body",
                       "errorCode": 31,
                       "timestamp": 1609459200000
                     }
@@ -80992,159 +81143,6 @@
               "schema": {
                 "type": "array",
                 "description": "Ordered list of widget type FQNs to be included by widgets bundle",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid request body",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      }
-    },
-    "/api/widgetsBundle/{widgetsBundleId}/widgetTypes": {
-      "post": {
-        "tags": [
-          "widgets-bundle-controller"
-        ],
-        "summary": "Update widgets bundle widgets types list (updateWidgetsBundleWidgetTypes)",
-        "description": "Updates widgets bundle widgets list.\n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
-        "operationId": "updateWidgetsBundleWidgetTypes",
-        "parameters": [
-          {
-            "name": "widgetsBundleId",
-            "in": "path",
-            "description": "A string value representing the widget bundle id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "description": "Ordered list of widget type Ids to be included by widgets bundle",
                 "items": {
                   "type": "string"
                 }
@@ -92130,7 +92128,10 @@
           },
           "additionalInfo": {
             "$ref": "#/components/schemas/JsonNode",
-            "description": "Additional info of OAuth2 client (e.g. providerName)"
+            "description": "Additional info of OAuth2 client. Must include: 'providerName' (string, name of the OAuth2 provider).",
+            "example": {
+              "providerName": "Google"
+            }
           },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
@@ -95939,13 +95940,6 @@
             "items": {
               "$ref": "#/components/schemas/RuleChainConnectionInfo"
             }
-          },
-          "notes": {
-            "type": "array",
-            "description": "List of sticky notes placed on the rule chain canvas",
-            "items": {
-              "$ref": "#/components/schemas/RuleChainNote"
-            }
           }
         },
         "required": [
@@ -95955,60 +95949,6 @@
           "ruleChainConnections",
           "ruleChainId"
         ]
-      },
-      "RuleChainNote": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier of the note on the canvas"
-          },
-          "x": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Horizontal position of the note on the canvas, in pixels"
-          },
-          "y": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Vertical position of the note on the canvas, in pixels"
-          },
-          "width": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Width of the note, in pixels"
-          },
-          "height": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Height of the note, in pixels"
-          },
-          "content": {
-            "type": "string",
-            "description": "Markdown or HTML content of the note"
-          },
-          "backgroundColor": {
-            "type": "string",
-            "description": "Background color of the note in CSS hex format, e.g. '#FFF9C4'"
-          },
-          "borderColor": {
-            "type": "string",
-            "description": "Border color of the note in CSS hex format, e.g. '#E6C800'"
-          },
-          "borderWidth": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Border width of the note in pixels"
-          },
-          "applyDefaultMarkdownStyle": {
-            "type": "boolean",
-            "description": "Whether to apply the default markdown stylesheet to the note content"
-          },
-          "markdownCss": {
-            "type": "string",
-            "description": "Custom CSS styles applied to the note content"
-          }
-        }
       },
       "RuleChainOutputLabelsUsage": {
         "type": "object",

@@ -70,7 +70,7 @@ Returns an array of Widget Type fqns that belong to specified Widget Bundle.  Av
 List<WidgetType> getBundleWidgetTypes(@Nonnull String widgetsBundleId)
 ```
 
-**GET** `/api/widgetsBundles/{widgetsBundleId}/widgetTypes`
+**GET** `/api/widgetsBundle/{widgetsBundleId}/widgetTypes`
 
 Get all Widget types for specified Bundle (getBundleWidgetTypes)
 
