@@ -20239,6 +20239,76 @@ public class ThingsboardApi {
   }
 
   /**
+   * Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Mail configuration template is set of default smtp settings for mail server that specific provider supports
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode getClientRegistrationTemplates() throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getClientRegistrationTemplatesWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get the list of all OAuth2 client registration templates (getClientRegistrationTemplates)  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Mail configuration template is set of default smtp settings for mail server that specific provider supports
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getClientRegistrationTemplatesWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getClientRegistrationTemplatesRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getClientRegistrationTemplates", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getClientRegistrationTemplatesRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/mail/config/template";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Get Component Descriptor (getComponentDescriptorByClazz)
    * Gets the Component Descriptor object using class name from the path parameters. Each Component Descriptor represents configuration of specific rule node (e.g. &#39;Save Timeseries&#39; or &#39;Send Email&#39;.). The Component Descriptors are used by the rule chain Web UI to build the configuration forms for the rule nodes. The Component Descriptors are discovered at runtime by scanning the class path and searching for @RuleNode annotation. Once discovered, the up to date list of descriptors is persisted to the database.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
    * @param componentDescriptorClazz Component Descriptor class name (required)
@@ -33081,76 +33151,6 @@ public class ThingsboardApi {
   }
 
   /**
-   * Get the list of all OAuth2 client registration templates (getMailConfigTemplates)  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
-   * Mail configuration template is set of default smtp settings for mail server that specific provider supports
-   * @return com.fasterxml.jackson.databind.JsonNode
-   * @throws ApiException if fails to make API call
-   */
-  public com.fasterxml.jackson.databind.JsonNode getMailConfigTemplates() throws ApiException {
-    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getMailConfigTemplatesWithHttpInfo(null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get the list of all OAuth2 client registration templates (getMailConfigTemplates)  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
-   * Mail configuration template is set of default smtp settings for mail server that specific provider supports
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getMailConfigTemplatesWithHttpInfo(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getMailConfigTemplatesRequestBuilder(headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getMailConfigTemplates", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
-        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getMailConfigTemplatesRequestBuilder(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/mail/config/template";
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
    * Redirect user to mail provider login page. 
    * After user logged in and provided accessprovider sends authorization code to specified redirect uri.)
    * @return String
@@ -35650,7 +35650,7 @@ public class ThingsboardApi {
   }
 
   /**
-   * Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileAndType)
+   * Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType)
    * Returns a page of OTA Package Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. OTA Package Info is a lightweight object that includes main information about the OTA Package excluding the heavyweight data.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceProfileId A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param type OTA Package type. (required)
@@ -35662,13 +35662,13 @@ public class ThingsboardApi {
    * @return PageDataOtaPackageInfo
    * @throws ApiException if fails to make API call
    */
-  public PageDataOtaPackageInfo getOtaPackagesByDeviceProfileAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
-    ApiResponse<PageDataOtaPackageInfo> localVarResponse = getOtaPackagesByDeviceProfileAndTypeWithHttpInfo(deviceProfileId, type, pageSize, page, textSearch, sortProperty, sortOrder, null);
+  public PageDataOtaPackageInfo getOtaPackagesByDeviceProfileIdAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataOtaPackageInfo> localVarResponse = getOtaPackagesByDeviceProfileIdAndTypeWithHttpInfo(deviceProfileId, type, pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
   }
 
   /**
-   * Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileAndType)
+   * Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType)
    * Returns a page of OTA Package Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. OTA Package Info is a lightweight object that includes main information about the OTA Package excluding the heavyweight data.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param deviceProfileId A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param type OTA Package type. (required)
@@ -35681,8 +35681,8 @@ public class ThingsboardApi {
    * @return ApiResponse&lt;PageDataOtaPackageInfo&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageDataOtaPackageInfo> getOtaPackagesByDeviceProfileAndTypeWithHttpInfo(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getOtaPackagesByDeviceProfileAndTypeRequestBuilder(deviceProfileId, type, pageSize, page, textSearch, sortProperty, sortOrder, headers);
+  public ApiResponse<PageDataOtaPackageInfo> getOtaPackagesByDeviceProfileIdAndTypeWithHttpInfo(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getOtaPackagesByDeviceProfileIdAndTypeRequestBuilder(deviceProfileId, type, pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -35693,7 +35693,7 @@ public class ThingsboardApi {
       InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getOtaPackagesByDeviceProfileAndType", localVarResponse);
+          throw getApiException("getOtaPackagesByDeviceProfileIdAndType", localVarResponse);
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
@@ -35716,22 +35716,22 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getOtaPackagesByDeviceProfileAndTypeRequestBuilder(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getOtaPackagesByDeviceProfileIdAndTypeRequestBuilder(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'deviceProfileId' is set
     if (deviceProfileId == null) {
-      throw new ApiException(400, "Missing the required parameter 'deviceProfileId' when calling getOtaPackagesByDeviceProfileAndType");
+      throw new ApiException(400, "Missing the required parameter 'deviceProfileId' when calling getOtaPackagesByDeviceProfileIdAndType");
     }
     // verify the required parameter 'type' is set
     if (type == null) {
-      throw new ApiException(400, "Missing the required parameter 'type' when calling getOtaPackagesByDeviceProfileAndType");
+      throw new ApiException(400, "Missing the required parameter 'type' when calling getOtaPackagesByDeviceProfileIdAndType");
     }
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getOtaPackagesByDeviceProfileAndType");
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getOtaPackagesByDeviceProfileIdAndType");
     }
     // verify the required parameter 'page' is set
     if (page == null) {
-      throw new ApiException(400, "Missing the required parameter 'page' when calling getOtaPackagesByDeviceProfileAndType");
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getOtaPackagesByDeviceProfileIdAndType");
     }
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/otaPackages/{deviceProfileId}/{type}"
@@ -61195,6 +61195,91 @@ public class ThingsboardApi {
   }
 
   /**
+   * Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroupV2)
+   * Share the entity group with specified user group using specified role.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * @param entityGroupId A uuid value representing the Entity Group Id that you would like to share. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param shareGroupRequest  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void shareEntityGroupToChildOwnerUserGroupV2(@Nonnull UUID entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest) throws ApiException {
+    shareEntityGroupToChildOwnerUserGroupV2WithHttpInfo(entityGroupId, shareGroupRequest, null);
+  }
+
+  /**
+   * Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroupV2)
+   * Share the entity group with specified user group using specified role.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * @param entityGroupId A uuid value representing the Entity Group Id that you would like to share. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param shareGroupRequest  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> shareEntityGroupToChildOwnerUserGroupV2WithHttpInfo(@Nonnull UUID entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = shareEntityGroupToChildOwnerUserGroupV2RequestBuilder(entityGroupId, shareGroupRequest, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("shareEntityGroupToChildOwnerUserGroupV2", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder shareEntityGroupToChildOwnerUserGroupV2RequestBuilder(@Nonnull UUID entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'entityGroupId' is set
+    if (entityGroupId == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityGroupId' when calling shareEntityGroupToChildOwnerUserGroupV2");
+    }
+    // verify the required parameter 'shareGroupRequest' is set
+    if (shareGroupRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'shareGroupRequest' when calling shareEntityGroupToChildOwnerUserGroupV2");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/v2/entityGroup/{entityGroupId}/share"
+        .replace("{entityGroupId}", ApiClient.urlEncode(entityGroupId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(shareGroupRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * User Sign Up (signUp)
    * Process user sign up request. Creates the Customer and corresponding User based on self Registration parameters for the domain. See [Self Registration Controller](/swagger-ui.html#/self-registration-controller) for more details.  The result is either &#39;SUCCESS&#39; or &#39;INACTIVE_USER_EXISTS&#39;. If Success, the user will receive an email with instruction to activate the account. The content of the email is customizable via the mail templates.
    * @param signUpRequest  (required)
@@ -63135,91 +63220,6 @@ public class ThingsboardApi {
   }
 
   /**
-   * Update oauth2 clients (updateDomainOauth2Clients)
-   * Update oauth2 clients for the specified domain.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-   * @param id  (required)
-   * @param UUID  (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void updateDomainOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) throws ApiException {
-    updateDomainOauth2ClientsWithHttpInfo(id, UUID, null);
-  }
-
-  /**
-   * Update oauth2 clients (updateDomainOauth2Clients)
-   * Update oauth2 clients for the specified domain.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-   * @param id  (required)
-   * @param UUID  (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Void&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Void> updateDomainOauth2ClientsWithHttpInfo(@Nonnull UUID id, @Nonnull List<UUID> UUID, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = updateDomainOauth2ClientsRequestBuilder(id, UUID, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("updateDomainOauth2Clients", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody != null) {
-          localVarResponseBody.readAllBytes();
-        }
-        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder updateDomainOauth2ClientsRequestBuilder(@Nonnull UUID id, @Nonnull List<UUID> UUID, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'id' is set
-    if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling updateDomainOauth2Clients");
-    }
-    // verify the required parameter 'UUID' is set
-    if (UUID == null) {
-      throw new ApiException(400, "Missing the required parameter 'UUID' when calling updateDomainOauth2Clients");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/domain/{id}/oauth2Clients"
-        .replace("{id}", ApiClient.urlEncode(id.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Content-Type", "application/json");
-    localVarRequestBuilder.header("Accept", "application/json");
-    try {
-      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(UUID);
-      localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
    * updateImage
    * 
    * @param type Type of the image: tenant or system (required)
@@ -63594,6 +63594,91 @@ public class ThingsboardApi {
     }
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/mobile/bundle/{id}/oauth2Clients"
+        .replace("{id}", ApiClient.urlEncode(id.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(UUID);
+      localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update oauth2 clients (updateOauth2Clients)
+   * Update oauth2 clients for the specified domain.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param id  (required)
+   * @param UUID  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void updateOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) throws ApiException {
+    updateOauth2ClientsWithHttpInfo(id, UUID, null);
+  }
+
+  /**
+   * Update oauth2 clients (updateOauth2Clients)
+   * Update oauth2 clients for the specified domain.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param id  (required)
+   * @param UUID  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> updateOauth2ClientsWithHttpInfo(@Nonnull UUID id, @Nonnull List<UUID> UUID, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateOauth2ClientsRequestBuilder(id, UUID, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateOauth2Clients", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateOauth2ClientsRequestBuilder(@Nonnull UUID id, @Nonnull List<UUID> UUID, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling updateOauth2Clients");
+    }
+    // verify the required parameter 'UUID' is set
+    if (UUID == null) {
+      throw new ApiException(400, "Missing the required parameter 'UUID' when calling updateOauth2Clients");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/domain/{id}/oauth2Clients"
         .replace("{id}", ApiClient.urlEncode(id.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Content-Type", "application/json");

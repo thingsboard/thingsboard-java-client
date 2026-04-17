@@ -27,6 +27,45 @@
 
 
 
+## Subtypes
+
+#### ReportDoughnutChartSettings  *(subType=`doughnutChart`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| layout | DoughnutLayout |  | [optional] |
+| clockwise | Boolean |  | [optional] |
+| totalValueFont | Font |  | [optional] |
+| totalValueColor | String |  | [optional] |
+
+#### ReportDoughnutChartSettings  *(subType=`horizontalDoughnutChart`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| layout | DoughnutLayout |  | [optional] |
+| clockwise | Boolean |  | [optional] |
+| totalValueFont | Font |  | [optional] |
+| totalValueColor | String |  | [optional] |
+
+#### ReportBarChartSettings  *(subType=`latestBarChart`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| axisMin | Double |  | [optional] |
+| axisMax | Double |  | [optional] |
+| axisTickLabelFont | Font |  | [optional] |
+| axisTickLabelColor | String |  | [optional] |
+| barSettings | BarSeriesSettings |  | [optional] |
+
+#### ReportPieChartSettings  *(subType=`pieChart`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showLabel | Boolean |  | [optional] |
+| labelPosition | PieChartLabelPosition |  | [optional] |
+| labelFont | Font |  | [optional] |
+| labelColor | String |  | [optional] |
+| borderWidth | Float |  | [optional] |
+| borderColor | String |  | [optional] |
+| radius | Double |  | [optional] |
+| clockwise | Boolean |  | [optional] |
+
 ## Referenced Types
 
 #### Font
@@ -43,11 +82,51 @@
 #### LegendPosition (enum)
 `TOP` | `BOTTOM` | `LEFT` | `RIGHT`
 
+#### DoughnutLayout (enum)
+`DEFAULT` | `WITH_TOTAL`
+
+#### BarSeriesSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showBorder | Boolean |  | [optional] |
+| borderWidth | Float |  | [optional] |
+| borderRadius | Float |  | [optional] |
+| barWidth | Double |  | [optional] |
+| showLabel | Boolean |  | [optional] |
+| labelPosition | ChartLabelPosition |  | [optional] |
+| labelFont | Font |  | [optional] |
+| labelColor | String |  | [optional] |
+| enableLabelBackground | Boolean |  | [optional] |
+| labelBackground | String |  | [optional] |
+| backgroundSettings | ChartFillSettings |  | [optional] |
+
+#### PieChartLabelPosition (enum)
+`INSIDE` | `OUTSIDE`
+
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`
 
 #### FontStyle (enum)
 `NORMAL` | `ITALIC`
+
+#### ChartLabelPosition (enum)
+`TOP` | `BOTTOM`
+
+#### ChartFillSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ChartFillType |  | [optional] |
+| opacity | Float |  | [optional] |
+| gradient | ChartFillSettingsGradient |  | [optional] |
+
+#### ChartFillType (enum)
+`NONE` | `OPACITY` | `GRADIENT`
+
+#### ChartFillSettingsGradient
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| start | Float |  | [optional] |
+| end | Float |  | [optional] |
 
 ---
 

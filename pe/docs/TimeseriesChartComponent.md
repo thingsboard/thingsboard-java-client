@@ -98,6 +98,35 @@
 | xaxis | TimeSeriesChartXAxisSettings |  | [optional] |
 | yaxes | Map<String, TimeSeriesChartYAxisSettings> |  | [optional] |
 
+#### ReportBarChartWithLabelsSettings  *(extends ReportTimeSeriesChartSettings, subType=`barChartWithLabels`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showBarLabel | Boolean |  | [optional] |
+| barLabelFont | Font |  | [optional] |
+| barLabelColor | String |  | [optional] |
+| showBarValue | Boolean |  | [optional] |
+| barValueFont | Font |  | [optional] |
+| barValueColor | String |  | [optional] |
+| showBarBorder | Boolean |  | [optional] |
+| barBorderWidth | Float |  | [optional] |
+| barBorderRadius | Float |  | [optional] |
+| barBackgroundSettings | ChartFillSettings |  | [optional] |
+| barUnits | String |  | [optional] |
+| barDecimals | Integer |  | [optional] |
+
+#### ReportRangeChartSettings  *(extends ReportTimeSeriesChartSettings, subType=`rangeChart`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| rangeColors | List<ColorRange> |  | [optional] |
+| outOfRangeColor | String |  | [optional] |
+| showRangeThresholds | Boolean |  | [optional] |
+| rangeThreshold | TimeSeriesChartThreshold |  | [optional] |
+| fillArea | Boolean |  | [optional] |
+| fillAreaOpacity | Float |  | [optional] |
+| lineSettings | LineSeriesSettings |  | [optional] |
+| rangeUnits | String |  | [optional] |
+| rangeDecimals | Integer |  | [optional] |
+
 #### ReportComponentSubType (enum)
 `DOUGHNUT_CHART` | `HORIZONTAL_DOUGHNUT_CHART` | `POINT_CHART` | `BAR_CHART` | `PIE_CHART` | `LINE_CHART` | `LATEST_BAR_CHART` | `RANGE_CHART` | `BAR_CHART_WITH_LABELS` | `STATE_CHART` | … (11 values total)
 
@@ -363,23 +392,19 @@
 #### LegendPosition (enum)
 `TOP` | `BOTTOM` | `LEFT` | `RIGHT`
 
-#### DataKeySettingsType (enum)
-`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
-
-#### IntervalType (enum)
-`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
-
-#### CellSettings
+#### ChartFillSettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| font | Font |  | [optional] |
-| color | String |  | [optional] |
-| backgroundColor | String |  | [optional] |
-| textAlignment | TextAlignment |  | [optional] |
-| verticalAlignment | VerticalAlignment |  | [optional] |
+| type | ChartFillType |  | [optional] |
+| opacity | Float |  | [optional] |
+| gradient | ChartFillSettingsGradient |  | [optional] |
 
-#### TimeSeriesChartSeriesType (enum)
-`LINE` | `BAR`
+#### ColorRange
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| from | Double |  | [optional] |
+| to | Double |  | [optional] |
+| color | String |  | [optional] |
 
 #### LineSeriesSettings
 | Name | Type | Description | Notes |
@@ -400,6 +425,39 @@
 | pointShape | ChartShape |  | [optional] |
 | pointSize | Float |  | [optional] |
 | fillAreaSettings | ChartFillSettings |  | [optional] |
+
+#### DataKeySettingsType (enum)
+`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
+
+#### IntervalType (enum)
+`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
+
+#### ChartFillType (enum)
+`NONE` | `OPACITY` | `GRADIENT`
+
+#### ChartFillSettingsGradient
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| start | Float |  | [optional] |
+| end | Float |  | [optional] |
+
+#### LineSeriesStepType (enum)
+`START` | `MIDDLE` | `END`
+
+#### ChartLabelPosition (enum)
+`TOP` | `BOTTOM`
+
+#### CellSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| font | Font |  | [optional] |
+| color | String |  | [optional] |
+| backgroundColor | String |  | [optional] |
+| textAlignment | TextAlignment |  | [optional] |
+| verticalAlignment | VerticalAlignment |  | [optional] |
+
+#### TimeSeriesChartSeriesType (enum)
+`LINE` | `BAR`
 
 #### BarSeriesSettings
 | Name | Type | Description | Notes |
@@ -428,28 +486,6 @@
 
 #### VerticalAlignment (enum)
 `BOTTOM` | `TOP` | `MIDDLE`
-
-#### LineSeriesStepType (enum)
-`START` | `MIDDLE` | `END`
-
-#### ChartLabelPosition (enum)
-`TOP` | `BOTTOM`
-
-#### ChartFillSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | ChartFillType |  | [optional] |
-| opacity | Float |  | [optional] |
-| gradient | ChartFillSettingsGradient |  | [optional] |
-
-#### ChartFillType (enum)
-`NONE` | `OPACITY` | `GRADIENT`
-
-#### ChartFillSettingsGradient
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| start | Float |  | [optional] |
-| end | Float |  | [optional] |
 
 ---
 

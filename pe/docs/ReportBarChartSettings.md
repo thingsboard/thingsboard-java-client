@@ -3,27 +3,12 @@
 
 `org.thingsboard.client.model.ReportBarChartSettings`
 
+**Extends:** **ReportLatestChartSettings**
+
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **showTitle** | **Boolean** |  | [optional] |
-| **title** | **String** |  | [optional] |
-| **titleFont** | **Font** |  | [optional] |
-| **titleColor** | **String** |  | [optional] |
-| **titleAlignment** | **TextAlignment** |  | [optional] |
-| **units** | **String** |  | [optional] |
-| **decimals** | **Integer** |  | [optional] |
-| **autoScale** | **Boolean** |  | [optional] |
-| **sortSeries** | **Boolean** |  | [optional] |
-| **showTotal** | **Boolean** |  | [optional] |
-| **showLegend** | **Boolean** |  | [optional] |
-| **legendPosition** | **LegendPosition** |  | [optional] |
-| **legendLabelFont** | **Font** |  | [optional] |
-| **legendLabelColor** | **String** |  | [optional] |
-| **legendValueFont** | **Font** |  | [optional] |
-| **legendValueColor** | **String** |  | [optional] |
-| **legendShowTotal** | **Boolean** |  | [optional] |
 | **axisMin** | **Double** |  | [optional] |
 | **axisMax** | **Double** |  | [optional] |
 | **axisTickLabelFont** | **Font** |  | [optional] |
@@ -34,6 +19,27 @@
 
 ## Referenced Types
 
+#### ReportLatestChartSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showTitle | Boolean |  | [optional] |
+| title | String |  | [optional] |
+| titleFont | Font |  | [optional] |
+| titleColor | String |  | [optional] |
+| titleAlignment | TextAlignment |  | [optional] |
+| units | String |  | [optional] |
+| decimals | Integer |  | [optional] |
+| autoScale | Boolean |  | [optional] |
+| sortSeries | Boolean |  | [optional] |
+| showTotal | Boolean |  | [optional] |
+| showLegend | Boolean |  | [optional] |
+| legendPosition | LegendPosition |  | [optional] |
+| legendLabelFont | Font |  | [optional] |
+| legendLabelColor | String |  | [optional] |
+| legendValueFont | Font |  | [optional] |
+| legendValueColor | String |  | [optional] |
+| legendShowTotal | Boolean |  | [optional] |
+
 #### Font
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -41,12 +47,6 @@
 | weight | FontWeight |  | [optional] |
 | style | FontStyle |  | [optional] |
 | family | String |  | [optional] |
-
-#### TextAlignment (enum)
-`CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
-
-#### LegendPosition (enum)
-`TOP` | `BOTTOM` | `LEFT` | `RIGHT`
 
 #### BarSeriesSettings
 | Name | Type | Description | Notes |
@@ -62,6 +62,12 @@
 | enableLabelBackground | Boolean |  | [optional] |
 | labelBackground | String |  | [optional] |
 | backgroundSettings | ChartFillSettings |  | [optional] |
+
+#### TextAlignment (enum)
+`CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
+
+#### LegendPosition (enum)
+`TOP` | `BOTTOM` | `LEFT` | `RIGHT`
 
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`

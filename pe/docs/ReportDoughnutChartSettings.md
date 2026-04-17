@@ -3,27 +3,12 @@
 
 `org.thingsboard.client.model.ReportDoughnutChartSettings`
 
+**Extends:** **ReportLatestChartSettings**
+
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **showTitle** | **Boolean** |  | [optional] |
-| **title** | **String** |  | [optional] |
-| **titleFont** | **Font** |  | [optional] |
-| **titleColor** | **String** |  | [optional] |
-| **titleAlignment** | **TextAlignment** |  | [optional] |
-| **units** | **String** |  | [optional] |
-| **decimals** | **Integer** |  | [optional] |
-| **autoScale** | **Boolean** |  | [optional] |
-| **sortSeries** | **Boolean** |  | [optional] |
-| **showTotal** | **Boolean** |  | [optional] |
-| **showLegend** | **Boolean** |  | [optional] |
-| **legendPosition** | **LegendPosition** |  | [optional] |
-| **legendLabelFont** | **Font** |  | [optional] |
-| **legendLabelColor** | **String** |  | [optional] |
-| **legendValueFont** | **Font** |  | [optional] |
-| **legendValueColor** | **String** |  | [optional] |
-| **legendShowTotal** | **Boolean** |  | [optional] |
 | **layout** | **DoughnutLayout** |  | [optional] |
 | **clockwise** | **Boolean** |  | [optional] |
 | **totalValueFont** | **Font** |  | [optional] |
@@ -32,6 +17,30 @@
 
 
 ## Referenced Types
+
+#### ReportLatestChartSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showTitle | Boolean |  | [optional] |
+| title | String |  | [optional] |
+| titleFont | Font |  | [optional] |
+| titleColor | String |  | [optional] |
+| titleAlignment | TextAlignment |  | [optional] |
+| units | String |  | [optional] |
+| decimals | Integer |  | [optional] |
+| autoScale | Boolean |  | [optional] |
+| sortSeries | Boolean |  | [optional] |
+| showTotal | Boolean |  | [optional] |
+| showLegend | Boolean |  | [optional] |
+| legendPosition | LegendPosition |  | [optional] |
+| legendLabelFont | Font |  | [optional] |
+| legendLabelColor | String |  | [optional] |
+| legendValueFont | Font |  | [optional] |
+| legendValueColor | String |  | [optional] |
+| legendShowTotal | Boolean |  | [optional] |
+
+#### DoughnutLayout (enum)
+`DEFAULT` | `WITH_TOTAL`
 
 #### Font
 | Name | Type | Description | Notes |
@@ -46,9 +55,6 @@
 
 #### LegendPosition (enum)
 `TOP` | `BOTTOM` | `LEFT` | `RIGHT`
-
-#### DoughnutLayout (enum)
-`DEFAULT` | `WITH_TOTAL`
 
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`

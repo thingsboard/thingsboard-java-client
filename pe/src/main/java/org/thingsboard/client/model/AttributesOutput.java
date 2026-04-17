@@ -86,12 +86,6 @@ public class AttributesOutput extends Output {
 
 
   @Override
-  public AttributesOutput decimalsByDefault(@Nullable Integer decimalsByDefault) {
-    this.setDecimalsByDefault(decimalsByDefault);
-    return this;
-  }
-
-  @Override
   public AttributesOutput name(@Nullable String name) {
     this.setName(name);
     return this;
@@ -100,6 +94,12 @@ public class AttributesOutput extends Output {
   @Override
   public AttributesOutput scope(@Nullable AttributeScope scope) {
     this.setScope(scope);
+    return this;
+  }
+
+  @Override
+  public AttributesOutput decimalsByDefault(@Nullable Integer decimalsByDefault) {
+    this.setDecimalsByDefault(decimalsByDefault);
     return this;
   }
 
@@ -177,11 +177,6 @@ public class AttributesOutput extends Output {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `decimalsByDefault` to the URL query string
-    if (getDecimalsByDefault() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdecimalsByDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDecimalsByDefault()))));
-    }
-
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
@@ -190,6 +185,11 @@ public class AttributesOutput extends Output {
     // add `scope` to the URL query string
     if (getScope() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScope()))));
+    }
+
+    // add `decimalsByDefault` to the URL query string
+    if (getDecimalsByDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdecimalsByDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDecimalsByDefault()))));
     }
 
     // add `strategy` to the URL query string

@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **decimalsByDefault** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **scope** | **AttributeScope** |  | [optional] |
+| **decimalsByDefault** | **Integer** |  | [optional] |
 | **strategy** | **Object** |  | [optional] |
 | **type** | **String** |  | |
 
