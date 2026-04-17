@@ -199,7 +199,7 @@ public class OAuth2Client {
   }
 
   /**
-   * Additional info of OAuth2 client (e.g. providerName)
+   * Additional info of OAuth2 client. Must include: &#39;providerName&#39; (string, name of the OAuth2 provider).
    * @return additionalInfo
    */
   @Nonnull
