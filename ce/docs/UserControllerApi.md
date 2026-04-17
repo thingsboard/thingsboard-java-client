@@ -11,10 +11,10 @@ String getActivationLink(@Nonnull String userId) // Get activation link (getActi
 UserActivationLink getActivationLinkInfo(@Nonnull String userId) // Get activation link info (getActivationLinkInfo)
 PageDataUser getCustomerUsers(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Users (getCustomerUsers)
 com.fasterxml.jackson.databind.JsonNode getGeneralUserSettings() // Get user settings (getGeneralUserSettings)
-UserDashboardsInfo getLastVisitedDashboards() // Get information about last visited and starred dashboards (getLastVisitedDashboards)
 MobileSessionInfo getMobileSession(@Nonnull String xMobileToken) // getMobileSession
 PageDataUser getTenantAdmins(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Users (getTenantAdmins)
 User getUserById(@Nonnull String userId) // Get User (getUserById)
+UserDashboardsInfo getUserDashboardsInfo() // Get information about last visited and starred dashboards (getUserDashboardsInfo)
 com.fasterxml.jackson.databind.JsonNode getUserSettings(@Nonnull String type) // Get user settings (getUserSettings)
 JwtPair getUserToken(@Nonnull String userId) // Get User Token (getUserToken)
 PageDataUser getUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Users (getUsers)
@@ -228,23 +228,6 @@ Fetch the User settings based on authorized user.
 **com.fasterxml.jackson.databind.JsonNode**
 
 
-## getLastVisitedDashboards
-
-```
-UserDashboardsInfo getLastVisitedDashboards()
-```
-
-**GET** `/api/user/lastVisitedDashboards`
-
-Get information about last visited and starred dashboards (getLastVisitedDashboards)
-
-Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
-
-### Return type
-
-**UserDashboardsInfo**
-
-
 ## getMobileSession
 
 ```
@@ -318,6 +301,23 @@ Fetch the User object based on the provided User Id. If the user has the authori
 ### Return type
 
 **User**
+
+
+## getUserDashboardsInfo
+
+```
+UserDashboardsInfo getUserDashboardsInfo()
+```
+
+**GET** `/api/user/dashboards`
+
+Get information about last visited and starred dashboards (getUserDashboardsInfo)
+
+Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+### Return type
+
+**UserDashboardsInfo**
 
 
 ## getUserSettings

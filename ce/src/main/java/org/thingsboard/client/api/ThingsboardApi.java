@@ -14702,7 +14702,7 @@ public class ThingsboardApi {
       throw new ApiException(400, "Missing the required parameter 'widgetsBundleId' when calling getBundleWidgetTypes");
     }
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/widgetsBundle/{widgetsBundleId}/widgetTypes"
+    String localVarPath = "/api/widgetsBundles/{widgetsBundleId}/widgetTypes"
         .replace("{widgetsBundleId}", ApiClient.urlEncode(widgetsBundleId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
@@ -21951,76 +21951,6 @@ public class ThingsboardApi {
   private HttpRequest.Builder getJwtSettingsRequestBuilder(Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/admin/jwtSettings";
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Get information about last visited and starred dashboards (getLastVisitedDashboards)
-   * Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-   * @return UserDashboardsInfo
-   * @throws ApiException if fails to make API call
-   */
-  public UserDashboardsInfo getLastVisitedDashboards() throws ApiException {
-    ApiResponse<UserDashboardsInfo> localVarResponse = getLastVisitedDashboardsWithHttpInfo(null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get information about last visited and starred dashboards (getLastVisitedDashboards)
-   * Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;UserDashboardsInfo&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<UserDashboardsInfo> getLastVisitedDashboardsWithHttpInfo(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getLastVisitedDashboardsRequestBuilder(headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getLastVisitedDashboards", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<UserDashboardsInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        UserDashboardsInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<UserDashboardsInfo>() {});
-        return new ApiResponse<UserDashboardsInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getLastVisitedDashboardsRequestBuilder(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/user/lastVisitedDashboards";
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -31686,6 +31616,76 @@ public class ThingsboardApi {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/user/{userId}"
         .replace("{userId}", ApiClient.urlEncode(userId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get information about last visited and starred dashboards (getUserDashboardsInfo)
+   * Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @return UserDashboardsInfo
+   * @throws ApiException if fails to make API call
+   */
+  public UserDashboardsInfo getUserDashboardsInfo() throws ApiException {
+    ApiResponse<UserDashboardsInfo> localVarResponse = getUserDashboardsInfoWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get information about last visited and starred dashboards (getUserDashboardsInfo)
+   * Fetch the list of last visited and starred dashboards. Both lists are limited to 10 items.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;UserDashboardsInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<UserDashboardsInfo> getUserDashboardsInfoWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getUserDashboardsInfoRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getUserDashboardsInfo", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<UserDashboardsInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        UserDashboardsInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<UserDashboardsInfo>() {});
+        return new ApiResponse<UserDashboardsInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getUserDashboardsInfoRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/user/dashboards";
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
