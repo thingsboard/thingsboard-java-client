@@ -48,7 +48,9 @@ public enum ApiFeature {
   
   ALARM("ALARM"),
   
-  REPORT("REPORT");
+  REPORT("REPORT"),
+  
+  AI("AI");
 
   private String value;
 

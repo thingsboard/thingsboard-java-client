@@ -59,6 +59,7 @@ import org.thingsboard.client.model.CalculatedField;
 import org.thingsboard.client.model.CalculatedFieldType;
 import org.thingsboard.client.model.CfReprocessingValidationResult;
 import org.thingsboard.client.model.ChangePasswordRequest;
+import org.thingsboard.client.model.ChatType;
 import org.thingsboard.client.model.ClaimRequest;
 import org.thingsboard.client.model.ComponentDescriptor;
 import org.thingsboard.client.model.Converter;
@@ -265,6 +266,7 @@ import org.thingsboard.client.model.SolutionExportRequest;
 import org.thingsboard.client.model.SolutionExportResponse;
 import org.thingsboard.client.model.SolutionImportResult;
 import org.thingsboard.client.model.SolutionInstallResponse;
+import org.thingsboard.client.model.SolutionStep;
 import org.thingsboard.client.model.SolutionValidationResult;
 import org.thingsboard.client.model.SystemInfo;
 import org.thingsboard.client.model.TbChatRequest;
@@ -2154,6 +2156,97 @@ public class ThingsboardApi {
   }
 
   /**
+   * chat
+   * 
+   * @param solutionId  (required)
+   * @param step  (required)
+   * @param body  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode chat(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull String body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = chatWithHttpInfo(solutionId, step, body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * chat
+   * 
+   * @param solutionId  (required)
+   * @param step  (required)
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> chatWithHttpInfo(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull String body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = chatRequestBuilder(solutionId, step, body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("chat", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder chatRequestBuilder(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull String body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling chat");
+    }
+    // verify the required parameter 'step' is set
+    if (step == null) {
+      throw new ApiException(400, "Missing the required parameter 'step' when calling chat");
+    }
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling chat");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}/{step}/chat"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()))
+        .replace("{step}", ApiClient.urlEncode(step.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Check Activate User Token (checkActivateToken)
    * Checks the activation token and forwards user to &#39;Create Password&#39; page. If token is valid, returns &#39;303 See Other&#39; (redirect) response code with the correct address of &#39;Create Password&#39; page and same &#39;activateToken&#39; specified in the URL parameters. If token is not valid, returns &#39;409 Conflict&#39;. If token is expired, redirects to error page.
    * @param activateToken The activate token string. (required)
@@ -3030,6 +3123,86 @@ public class ThingsboardApi {
   }
 
   /**
+   * clearStep
+   * 
+   * @param solutionId  (required)
+   * @param step  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void clearStep(@Nonnull UUID solutionId, @Nonnull SolutionStep step) throws ApiException {
+    clearStepWithHttpInfo(solutionId, step, null);
+  }
+
+  /**
+   * clearStep
+   * 
+   * @param solutionId  (required)
+   * @param step  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> clearStepWithHttpInfo(@Nonnull UUID solutionId, @Nonnull SolutionStep step, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = clearStepRequestBuilder(solutionId, step, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("clearStep", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder clearStepRequestBuilder(@Nonnull UUID solutionId, @Nonnull SolutionStep step, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling clearStep");
+    }
+    // verify the required parameter 'step' is set
+    if (step == null) {
+      throw new ApiException(400, "Missing the required parameter 'step' when calling clearStep");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}/{step}/clear"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()))
+        .replace("{step}", ApiClient.urlEncode(step.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Compare entity data to version (compareEntityDataToVersion)
    * Returns an object with current entity data and the one at a specific version. Entity data structure is the same as stored in a repository.   Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param entityType A string value representing the entity type. For example, &#39;DEVICE&#39; (required)
@@ -3543,6 +3716,88 @@ public class ThingsboardApi {
   }
 
   /**
+   * createChat
+   * 
+   * @param body  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode createChat(@Nullable Object body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = createChatWithHttpInfo(body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * createChat
+   * 
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> createChatWithHttpInfo(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createChatRequestBuilder(body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createChat", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createChatRequestBuilder(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling createChat");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Create Custom Menu (createCustomMenu)
    * The api is designed to create Custom Menu without configuration. Is not applicable for update.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the custom menu with specified id.
    * @param customMenuInfo  (required)
@@ -3793,6 +4048,83 @@ public class ThingsboardApi {
     } catch (IOException e) {
       throw new ApiException(e);
     }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * createSolution
+   * 
+   * @param solutionId  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode createSolution(@Nonnull UUID solutionId) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = createSolutionWithHttpInfo(solutionId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * createSolution
+   * 
+   * @param solutionId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> createSolutionWithHttpInfo(@Nonnull UUID solutionId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createSolutionRequestBuilder(solutionId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createSolutionRequestBuilder(@Nonnull UUID solutionId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling createSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}/create"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -4528,6 +4860,79 @@ public class ThingsboardApi {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/calculatedField/{calculatedFieldId}"
         .replace("{calculatedFieldId}", ApiClient.urlEncode(calculatedFieldId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * deleteChat
+   * 
+   * @param chatId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteChat(@Nonnull UUID chatId) throws ApiException {
+    deleteChatWithHttpInfo(chatId, null);
+  }
+
+  /**
+   * deleteChat
+   * 
+   * @param chatId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteChatWithHttpInfo(@Nonnull UUID chatId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteChatRequestBuilder(chatId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteChat", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteChatRequestBuilder(@Nonnull UUID chatId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'chatId' is set
+    if (chatId == null) {
+      throw new ApiException(400, "Missing the required parameter 'chatId' when calling deleteChat");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats/{chatId}"
+        .replace("{chatId}", ApiClient.urlEncode(chatId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
@@ -8096,6 +8501,79 @@ public class ThingsboardApi {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/secret/{id}"
         .replace("{id}", ApiClient.urlEncode(id.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * deleteSolution
+   * 
+   * @param solutionId  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteSolution(@Nonnull UUID solutionId) throws ApiException {
+    deleteSolutionWithHttpInfo(solutionId, null);
+  }
+
+  /**
+   * deleteSolution
+   * 
+   * @param solutionId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteSolutionWithHttpInfo(@Nonnull UUID solutionId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteSolutionRequestBuilder(solutionId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteSolutionRequestBuilder(@Nonnull UUID solutionId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling deleteSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
@@ -20225,6 +20703,83 @@ public class ThingsboardApi {
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * getChatMessages
+   * 
+   * @param chatId  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getChatMessagesWithHttpInfo(chatId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * getChatMessages
+   * 
+   * @param chatId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getChatMessagesWithHttpInfo(@Nonnull UUID chatId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getChatMessagesRequestBuilder(chatId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getChatMessages", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getChatMessagesRequestBuilder(@Nonnull UUID chatId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'chatId' is set
+    if (chatId == null) {
+      throw new ApiException(400, "Missing the required parameter 'chatId' when calling getChatMessages");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats/{chatId}/messages"
+        .replace("{chatId}", ApiClient.urlEncode(chatId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
@@ -40486,6 +41041,83 @@ public class ThingsboardApi {
   }
 
   /**
+   * getSolution
+   * 
+   * @param solutionId  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode getSolution(@Nonnull UUID solutionId) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getSolutionWithHttpInfo(solutionId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * getSolution
+   * 
+   * @param solutionId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getSolutionWithHttpInfo(@Nonnull UUID solutionId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getSolutionRequestBuilder(solutionId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getSolutionRequestBuilder(@Nonnull UUID solutionId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling getSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Get Solution template details (getSolutionTemplateDetails)
    * Get a solution template details based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -40695,6 +41327,76 @@ public class ThingsboardApi {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/solutions/templates/instructions/{solutionTemplateId}"
         .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * getSolutions
+   * 
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode getSolutions() throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = getSolutionsWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * getSolutions
+   * 
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> getSolutionsWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getSolutionsRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getSolutions", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getSolutionsRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/infos";
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -49640,6 +50342,92 @@ public class ThingsboardApi {
   }
 
   /**
+   * installSolution
+   * 
+   * @param solutionId  (required)
+   * @param xAuthorization  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode installSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = installSolutionWithHttpInfo(solutionId, xAuthorization, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * installSolution
+   * 
+   * @param solutionId  (required)
+   * @param xAuthorization  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> installSolutionWithHttpInfo(@Nonnull UUID solutionId, @Nonnull String xAuthorization, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = installSolutionRequestBuilder(solutionId, xAuthorization, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("installSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder installSolutionRequestBuilder(@Nonnull UUID solutionId, @Nonnull String xAuthorization, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling installSolution");
+    }
+    // verify the required parameter 'xAuthorization' is set
+    if (xAuthorization == null) {
+      throw new ApiException(400, "Missing the required parameter 'xAuthorization' when calling installSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}/install"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    if (xAuthorization != null) {
+      localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Install Solution Template (installSolutionTemplate)
    * Install solution template based on the provided id   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -50276,6 +51064,83 @@ public class ThingsboardApi {
   private HttpRequest.Builder listBranchesRequestBuilder(Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/entities/vc/branches";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * listChats
+   * 
+   * @param chatType  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = listChatsWithHttpInfo(chatType, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * listChats
+   * 
+   * @param chatType  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> listChatsWithHttpInfo(@Nonnull ChatType chatType, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listChatsRequestBuilder(chatType, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("listChats", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder listChatsRequestBuilder(@Nonnull ChatType chatType, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'chatType' is set
+    if (chatType == null) {
+      throw new ApiException(400, "Missing the required parameter 'chatType' when calling listChats");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats/{chatType}"
+        .replace("{chatType}", ApiClient.urlEncode(chatType.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -53565,6 +54430,88 @@ public class ThingsboardApi {
     localVarRequestBuilder.header("Accept", "application/json");
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(resetPasswordRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * resolveToolApproval
+   * 
+   * @param body  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode resolveToolApproval(@Nullable Object body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = resolveToolApprovalWithHttpInfo(body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * resolveToolApproval
+   * 
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> resolveToolApprovalWithHttpInfo(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = resolveToolApprovalRequestBuilder(body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("resolveToolApproval", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder resolveToolApprovalRequestBuilder(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling resolveToolApproval");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/tools/resolve-approval";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);
@@ -59839,6 +60786,99 @@ public class ThingsboardApi {
   }
 
   /**
+   * sendChatMessage
+   * 
+   * @param chatId  (required)
+   * @param xAuthorization  (required)
+   * @param body  (required)
+   * @return List&lt;Object&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body) throws ApiException {
+    ApiResponse<List<Object>> localVarResponse = sendChatMessageWithHttpInfo(chatId, xAuthorization, body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * sendChatMessage
+   * 
+   * @param chatId  (required)
+   * @param xAuthorization  (required)
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;Object&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<Object>> sendChatMessageWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = sendChatMessageRequestBuilder(chatId, xAuthorization, body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("sendChatMessage", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<Object>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<Object> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<Object>>() {});
+        return new ApiResponse<List<Object>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder sendChatMessageRequestBuilder(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'chatId' is set
+    if (chatId == null) {
+      throw new ApiException(400, "Missing the required parameter 'chatId' when calling sendChatMessage");
+    }
+    // verify the required parameter 'xAuthorization' is set
+    if (xAuthorization == null) {
+      throw new ApiException(400, "Missing the required parameter 'xAuthorization' when calling sendChatMessage");
+    }
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling sendChatMessage");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats/{chatId}/messages"
+        .replace("{chatId}", ApiClient.urlEncode(chatId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    if (xAuthorization != null) {
+      localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
+    }
+    localVarRequestBuilder.header("Content-Type", "text/plain");
+    localVarRequestBuilder.header("Accept", "text/event-stream, application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Send request to AI chat model (sendChatRequest)
    * Submits a single prompt - made up of an optional system message and a required user message - to the specified AI chat model and returns either the generated answer or an error envelope.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param tbChatRequest  (required)
@@ -61277,6 +62317,76 @@ public class ThingsboardApi {
   }
 
   /**
+   * startNew
+   * 
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode startNew() throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = startNewWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * startNew
+   * 
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> startNewWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = startNewRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("startNew", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder startNewRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/start";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Submit 2FA account config (submitTwoFaAccountConfig)
    * Submit 2FA account config to prepare for a future verification. Basically, this method will send a verification code for a given account config, if this has sense for a chosen 2FA provider. This code is needed to then verify and save the account config.  Example of EMAIL 2FA account config: &#x60;&#x60;&#x60; {   \&quot;providerType\&quot;: \&quot;EMAIL\&quot;,   \&quot;useByDefault\&quot;: true,   \&quot;email\&quot;: \&quot;separate-email-for-2fa@thingsboard.org\&quot; } &#x60;&#x60;&#x60;  Example of SMS 2FA account config: &#x60;&#x60;&#x60; {   \&quot;providerType\&quot;: \&quot;SMS\&quot;,   \&quot;useByDefault\&quot;: false,   \&quot;phoneNumber\&quot;: \&quot;+38012312321\&quot; } &#x60;&#x60;&#x60;  For TOTP this method does nothing.  Will throw an error (Bad Request) if submitted account config is not valid, or if the provider is not configured for usage.   Available for any authorized user. 
    * @param twoFaAccountConfig  (required)
@@ -62461,6 +63571,92 @@ public class ThingsboardApi {
   }
 
   /**
+   * uninstallSolution
+   * 
+   * @param solutionId  (required)
+   * @param xAuthorization  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode uninstallSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = uninstallSolutionWithHttpInfo(solutionId, xAuthorization, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * uninstallSolution
+   * 
+   * @param solutionId  (required)
+   * @param xAuthorization  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> uninstallSolutionWithHttpInfo(@Nonnull UUID solutionId, @Nonnull String xAuthorization, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = uninstallSolutionRequestBuilder(solutionId, xAuthorization, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("uninstallSolution", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder uninstallSolutionRequestBuilder(@Nonnull UUID solutionId, @Nonnull String xAuthorization, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling uninstallSolution");
+    }
+    // verify the required parameter 'xAuthorization' is set
+    if (xAuthorization == null) {
+      throw new ApiException(400, "Missing the required parameter 'xAuthorization' when calling uninstallSolution");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}/uninstall"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    if (xAuthorization != null) {
+      localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Uninstall Solution Template (uninstallSolutionTemplate)
    * Uninstall solution template based on the provided id   Security check is performed to verify that the user has &#39;DELETE&#39; permission for the entity (entities).
    * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -62780,6 +63976,91 @@ public class ThingsboardApi {
   }
 
   /**
+   * updateChat
+   * 
+   * @param chatId  (required)
+   * @param body  (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void updateChat(@Nonnull UUID chatId, @Nullable Object body) throws ApiException {
+    updateChatWithHttpInfo(chatId, body, null);
+  }
+
+  /**
+   * updateChat
+   * 
+   * @param chatId  (required)
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> updateChatWithHttpInfo(@Nonnull UUID chatId, @Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateChatRequestBuilder(chatId, body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateChat", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateChatRequestBuilder(@Nonnull UUID chatId, @Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'chatId' is set
+    if (chatId == null) {
+      throw new ApiException(400, "Missing the required parameter 'chatId' when calling updateChat");
+    }
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling updateChat");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats/{chatId}"
+        .replace("{chatId}", ApiClient.urlEncode(chatId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("PATCH", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Update custom menu assignee list (updateCustomMenuAssigneeList)
    * The api designed to update the list of assignees or assignee type based on the provided Custom Menu Id. To change assignee type, put new assignee type in path parameter.  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the custom menu with specified id.
    * @param id  (required)
@@ -63041,6 +64322,102 @@ public class ThingsboardApi {
     localVarRequestBuilder.header("Content-Type", "application/json");
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.ofString(body));
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * updateData
+   * 
+   * @param solutionId  (required)
+   * @param dataKey  (required)
+   * @param body  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode updateData(@Nonnull UUID solutionId, @Nonnull String dataKey, @Nullable Object body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = updateDataWithHttpInfo(solutionId, dataKey, body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * updateData
+   * 
+   * @param solutionId  (required)
+   * @param dataKey  (required)
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> updateDataWithHttpInfo(@Nonnull UUID solutionId, @Nonnull String dataKey, @Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateDataRequestBuilder(solutionId, dataKey, body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateData", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateDataRequestBuilder(@Nonnull UUID solutionId, @Nonnull String dataKey, @Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'solutionId' is set
+    if (solutionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'solutionId' when calling updateData");
+    }
+    // verify the required parameter 'dataKey' is set
+    if (dataKey == null) {
+      throw new ApiException(400, "Missing the required parameter 'dataKey' when calling updateData");
+    }
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling updateData");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/solution/{solutionId}/{dataKey}"
+        .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()))
+        .replace("{dataKey}", ApiClient.urlEncode(dataKey.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
