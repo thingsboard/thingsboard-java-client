@@ -37,7 +37,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.thingsboard.client.model.AlarmRuleDefinition;
+import org.thingsboard.client.model.AlarmRule;
 import org.thingsboard.client.model.Argument;
 import org.thingsboard.client.model.CalculatedFieldConfiguration;
 import org.thingsboard.client.model.Output;
@@ -51,13 +51,13 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_ARGUMENTS,
-  AlarmCalculatedFieldConfiguration.JSON_PROPERTY_CLEAR_RULE,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_CREATE_RULES,
+  AlarmCalculatedFieldConfiguration.JSON_PROPERTY_CLEAR_RULE,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE,
-  AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_RELATION_TYPES,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_TO_OWNER,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY,
-  AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_TO_TENANT
+  AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_TO_TENANT,
+  AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_RELATION_TYPES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -71,21 +71,17 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   @Nonnull
   private Map<String, Argument> arguments = new HashMap<>();
 
-  public static final String JSON_PROPERTY_CLEAR_RULE = "clearRule";
-  @Nullable
-  private AlarmRuleDefinition clearRule;
-
   public static final String JSON_PROPERTY_CREATE_RULES = "createRules";
   @Nonnull
-  private Map<String, AlarmRuleDefinition> createRules = new HashMap<>();
+  private Map<String, AlarmRule> createRules = new HashMap<>();
+
+  public static final String JSON_PROPERTY_CLEAR_RULE = "clearRule";
+  @Nullable
+  private AlarmRule clearRule;
 
   public static final String JSON_PROPERTY_PROPAGATE = "propagate";
   @Nullable
   private Boolean propagate;
-
-  public static final String JSON_PROPERTY_PROPAGATE_RELATION_TYPES = "propagateRelationTypes";
-  @Nullable
-  private List<String> propagateRelationTypes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER = "propagateToOwner";
   @Nullable
@@ -98,6 +94,10 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   public static final String JSON_PROPERTY_PROPAGATE_TO_TENANT = "propagateToTenant";
   @Nullable
   private Boolean propagateToTenant;
+
+  public static final String JSON_PROPERTY_PROPAGATE_RELATION_TYPES = "propagateRelationTypes";
+  @Nullable
+  private List<String> propagateRelationTypes = new ArrayList<>();
 
   public AlarmCalculatedFieldConfiguration() { 
   }
@@ -134,36 +134,12 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   }
 
 
-  public AlarmCalculatedFieldConfiguration clearRule(@Nullable AlarmRuleDefinition clearRule) {
-    this.clearRule = clearRule;
-    return this;
-  }
-
-  /**
-   * Get clearRule
-   * @return clearRule
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmRuleDefinition getClearRule() {
-    return clearRule;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClearRule(@Nullable AlarmRuleDefinition clearRule) {
-    this.clearRule = clearRule;
-  }
-
-
-  public AlarmCalculatedFieldConfiguration createRules(@Nonnull Map<String, AlarmRuleDefinition> createRules) {
+  public AlarmCalculatedFieldConfiguration createRules(@Nonnull Map<String, AlarmRule> createRules) {
     this.createRules = createRules;
     return this;
   }
 
-  public AlarmCalculatedFieldConfiguration putCreateRulesItem(String key, AlarmRuleDefinition createRulesItem) {
+  public AlarmCalculatedFieldConfiguration putCreateRulesItem(String key, AlarmRule createRulesItem) {
     if (this.createRules == null) {
       this.createRules = new HashMap<>();
     }
@@ -178,15 +154,39 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   @Nonnull
   @JsonProperty(value = JSON_PROPERTY_CREATE_RULES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Map<String, AlarmRuleDefinition> getCreateRules() {
+  public Map<String, AlarmRule> getCreateRules() {
     return createRules;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_CREATE_RULES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreateRules(@Nonnull Map<String, AlarmRuleDefinition> createRules) {
+  public void setCreateRules(@Nonnull Map<String, AlarmRule> createRules) {
     this.createRules = createRules;
+  }
+
+
+  public AlarmCalculatedFieldConfiguration clearRule(@Nullable AlarmRule clearRule) {
+    this.clearRule = clearRule;
+    return this;
+  }
+
+  /**
+   * Get clearRule
+   * @return clearRule
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRule getClearRule() {
+    return clearRule;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CLEAR_RULE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClearRule(@Nullable AlarmRule clearRule) {
+    this.clearRule = clearRule;
   }
 
 
@@ -211,38 +211,6 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPropagate(@Nullable Boolean propagate) {
     this.propagate = propagate;
-  }
-
-
-  public AlarmCalculatedFieldConfiguration propagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
-    this.propagateRelationTypes = propagateRelationTypes;
-    return this;
-  }
-
-  public AlarmCalculatedFieldConfiguration addPropagateRelationTypesItem(String propagateRelationTypesItem) {
-    if (this.propagateRelationTypes == null) {
-      this.propagateRelationTypes = new ArrayList<>();
-    }
-    this.propagateRelationTypes.add(propagateRelationTypesItem);
-    return this;
-  }
-
-  /**
-   * Get propagateRelationTypes
-   * @return propagateRelationTypes
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<String> getPropagateRelationTypes() {
-    return propagateRelationTypes;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPropagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
-    this.propagateRelationTypes = propagateRelationTypes;
   }
 
 
@@ -318,6 +286,38 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   }
 
 
+  public AlarmCalculatedFieldConfiguration propagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
+    this.propagateRelationTypes = propagateRelationTypes;
+    return this;
+  }
+
+  public AlarmCalculatedFieldConfiguration addPropagateRelationTypesItem(String propagateRelationTypesItem) {
+    if (this.propagateRelationTypes == null) {
+      this.propagateRelationTypes = new ArrayList<>();
+    }
+    this.propagateRelationTypes.add(propagateRelationTypesItem);
+    return this;
+  }
+
+  /**
+   * Get propagateRelationTypes
+   * @return propagateRelationTypes
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<String> getPropagateRelationTypes() {
+    return propagateRelationTypes;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
+    this.propagateRelationTypes = propagateRelationTypes;
+  }
+
+
   @Override
   public AlarmCalculatedFieldConfiguration output(@Nullable Output output) {
     this.setOutput(output);
@@ -337,19 +337,19 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
     }
     AlarmCalculatedFieldConfiguration alarmCalculatedFieldConfiguration = (AlarmCalculatedFieldConfiguration) o;
     return Objects.equals(this.arguments, alarmCalculatedFieldConfiguration.arguments) &&
-        Objects.equals(this.clearRule, alarmCalculatedFieldConfiguration.clearRule) &&
         Objects.equals(this.createRules, alarmCalculatedFieldConfiguration.createRules) &&
+        Objects.equals(this.clearRule, alarmCalculatedFieldConfiguration.clearRule) &&
         Objects.equals(this.propagate, alarmCalculatedFieldConfiguration.propagate) &&
-        Objects.equals(this.propagateRelationTypes, alarmCalculatedFieldConfiguration.propagateRelationTypes) &&
         Objects.equals(this.propagateToOwner, alarmCalculatedFieldConfiguration.propagateToOwner) &&
         Objects.equals(this.propagateToOwnerHierarchy, alarmCalculatedFieldConfiguration.propagateToOwnerHierarchy) &&
         Objects.equals(this.propagateToTenant, alarmCalculatedFieldConfiguration.propagateToTenant) &&
+        Objects.equals(this.propagateRelationTypes, alarmCalculatedFieldConfiguration.propagateRelationTypes) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(arguments, clearRule, createRules, propagate, propagateRelationTypes, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, super.hashCode());
+    return Objects.hash(arguments, createRules, clearRule, propagate, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, propagateRelationTypes, super.hashCode());
   }
 
   @Override
@@ -358,13 +358,13 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
     sb.append("class AlarmCalculatedFieldConfiguration {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
-    sb.append("    clearRule: ").append(toIndentedString(clearRule)).append("\n");
     sb.append("    createRules: ").append(toIndentedString(createRules)).append("\n");
+    sb.append("    clearRule: ").append(toIndentedString(clearRule)).append("\n");
     sb.append("    propagate: ").append(toIndentedString(propagate)).append("\n");
-    sb.append("    propagateRelationTypes: ").append(toIndentedString(propagateRelationTypes)).append("\n");
     sb.append("    propagateToOwner: ").append(toIndentedString(propagateToOwner)).append("\n");
     sb.append("    propagateToOwnerHierarchy: ").append(toIndentedString(propagateToOwnerHierarchy)).append("\n");
     sb.append("    propagateToTenant: ").append(toIndentedString(propagateToTenant)).append("\n");
+    sb.append("    propagateRelationTypes: ").append(toIndentedString(propagateRelationTypes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -412,14 +412,14 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     // add `arguments` to the URL query string
@@ -432,11 +432,6 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
       }
     }
 
-    // add `clearRule` to the URL query string
-    if (getClearRule() != null) {
-      joiner.add(getClearRule().toUrlQueryString(prefix + "clearRule" + suffix));
-    }
-
     // add `createRules` to the URL query string
     if (getCreateRules() != null) {
       for (String _key : getCreateRules().keySet()) {
@@ -447,18 +442,14 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
       }
     }
 
+    // add `clearRule` to the URL query string
+    if (getClearRule() != null) {
+      joiner.add(getClearRule().toUrlQueryString(prefix + "clearRule" + suffix));
+    }
+
     // add `propagate` to the URL query string
     if (getPropagate() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spropagate%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagate()))));
-    }
-
-    // add `propagateRelationTypes` to the URL query string
-    if (getPropagateRelationTypes() != null) {
-      for (int i = 0; i < getPropagateRelationTypes().size(); i++) {
-        joiner.add(String.format(java.util.Locale.ROOT, "%spropagateRelationTypes%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
-            ApiClient.urlEncode(ApiClient.valueToString(getPropagateRelationTypes().get(i)))));
-      }
     }
 
     // add `propagateToOwner` to the URL query string
@@ -474,6 +465,15 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
     // add `propagateToTenant` to the URL query string
     if (getPropagateToTenant() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spropagateToTenant%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagateToTenant()))));
+    }
+
+    // add `propagateRelationTypes` to the URL query string
+    if (getPropagateRelationTypes() != null) {
+      for (int i = 0; i < getPropagateRelationTypes().size(); i++) {
+        joiner.add(String.format(java.util.Locale.ROOT, "%spropagateRelationTypes%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getPropagateRelationTypes().get(i)))));
+      }
     }
 
     return joiner.toString();

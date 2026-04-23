@@ -24,7 +24,7 @@ A JSON value representing the rule chains.
 | id | RuleChainId | JSON object with the Rule Chain Id. Specify this field to update the Rule Chain. Referencing non-existing Rule Chain Id will cause error. Omit this field to create new rule chain. | [optional] |
 | createdTime | Long | Timestamp of the rule chain creation, in milliseconds | [optional] [readonly] |
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
-| tenantId | TenantId | JSON object with Tenant Id. | [readonly] |
+| tenantId | TenantId | JSON object with Tenant Id. | [optional] [readonly] |
 | name | String | Rule Chain name |  |
 | type | RuleChainType | Rule Chain type. 'EDGE' rule chains are processing messages on the edge devices only. | [optional] |
 | firstRuleNodeId | RuleNodeId | JSON object with Rule Chain Id. Pointer to the first rule node that should receive all messages pushed to this rule chain. | [optional] |
@@ -42,7 +42,6 @@ A JSON value representing the rule chains.
 | nodes | List<RuleNode> | List of rule node JSON objects |  |
 | connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes |  |
 | ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. |  |
-| notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
 
 #### RuleChainType (enum)
 `CORE` | `EDGE`
@@ -78,21 +77,6 @@ A JSON value representing the rule chains.
 | targetRuleChainId | RuleChainId | JSON object with the Rule Chain Id. |  |
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode | JSON object with the additional information about the connection. |  |
 | type | String | Type of the relation. Typically indicated the result of processing by the 'from' rule node. For example, 'Success' or 'Failure' |  |
-
-#### RuleChainNote
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | String | Unique identifier of the note on the canvas | [optional] |
-| x | Integer | Horizontal position of the note on the canvas, in pixels | [optional] |
-| y | Integer | Vertical position of the note on the canvas, in pixels | [optional] |
-| width | Integer | Width of the note, in pixels | [optional] |
-| height | Integer | Height of the note, in pixels | [optional] |
-| content | String | Markdown or HTML content of the note | [optional] |
-| backgroundColor | String | Background color of the note in CSS hex format, e.g. '#FFF9C4' | [optional] |
-| borderColor | String | Border color of the note in CSS hex format, e.g. '#E6C800' | [optional] |
-| borderWidth | Integer | Border width of the note in pixels | [optional] |
-| applyDefaultMarkdownStyle | Boolean | Whether to apply the default markdown stylesheet to the note content | [optional] |
-| markdownCss | String | Custom CSS styles applied to the note content | [optional] |
 
 #### DebugSettings
 | Name | Type | Description | Notes |

@@ -29,8 +29,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.AssetProfileId;
 import org.thingsboard.client.model.DashboardId;
-import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -50,7 +50,7 @@ import org.thingsboard.client.ApiClient;
 public class AssetProfileInfo {
   public static final String JSON_PROPERTY_ID = "id";
   @Nullable
-  private EntityId id;
+  private AssetProfileId id;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @Nullable
@@ -71,26 +71,26 @@ public class AssetProfileInfo {
   public AssetProfileInfo() { 
   }
 
-  public AssetProfileInfo id(@Nullable EntityId id) {
+  public AssetProfileInfo id(@Nullable AssetProfileId id) {
     this.id = id;
     return this;
   }
 
   /**
-   * JSON object with the entity Id. 
+   * JSON object with the Asset Profile Id.
    * @return id
    */
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public EntityId getId() {
+  public AssetProfileId getId() {
     return id;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(@Nullable EntityId id) {
+  public void setId(@Nullable AssetProfileId id) {
     this.id = id;
   }
 

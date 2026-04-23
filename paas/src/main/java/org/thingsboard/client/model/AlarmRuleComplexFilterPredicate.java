@@ -34,8 +34,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
 import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
-import org.thingsboard.client.model.ComplexOperation;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -58,7 +58,7 @@ import org.thingsboard.client.ApiClient;
 public class AlarmRuleComplexFilterPredicate extends AlarmRuleKeyFilterPredicate {
   public static final String JSON_PROPERTY_OPERATION = "operation";
   @Nullable
-  private ComplexOperation operation;
+  private AlarmRuleComplexOperation operation;
 
   public static final String JSON_PROPERTY_PREDICATES = "predicates";
   @Nullable
@@ -67,7 +67,7 @@ public class AlarmRuleComplexFilterPredicate extends AlarmRuleKeyFilterPredicate
   public AlarmRuleComplexFilterPredicate() { 
   }
 
-  public AlarmRuleComplexFilterPredicate operation(@Nullable ComplexOperation operation) {
+  public AlarmRuleComplexFilterPredicate operation(@Nullable AlarmRuleComplexOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -79,14 +79,14 @@ public class AlarmRuleComplexFilterPredicate extends AlarmRuleKeyFilterPredicate
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ComplexOperation getOperation() {
+  public AlarmRuleComplexOperation getOperation() {
     return operation;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOperation(@Nullable ComplexOperation operation) {
+  public void setOperation(@Nullable AlarmRuleComplexOperation operation) {
     this.operation = operation;
   }
 

@@ -9,7 +9,7 @@ PageDataOtaPackageInfo getGroupOtaPackages(@Nonnull String groupId, @Nonnull Str
 OtaPackage getOtaPackageById(@Nonnull String otaPackageId) // Get OTA Package (getOtaPackageById)
 OtaPackageInfo getOtaPackageInfoById(@Nonnull String otaPackageId) // Get OTA Package Info (getOtaPackageInfoById)
 PageDataOtaPackageInfo getOtaPackages(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OTA Package Infos (getOtaPackages)
-PageDataOtaPackageInfo getOtaPackagesByDeviceProfileIdAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType)
+PageDataOtaPackageInfo getOtaPackagesByDeviceProfileAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileAndType)
 OtaPackageInfo saveOtaPackageData(@Nonnull String otaPackageId, @Nonnull String checksumAlgorithm, @Nonnull File _file, @Nullable String checksum) // Save OTA Package data (saveOtaPackageData)
 OtaPackageInfo saveOtaPackageInfo(@Nonnull SaveOtaPackageInfoRequest saveOtaPackageInfoRequest) // Create Or Update OTA Package Info (saveOtaPackageInfo)
 ```
@@ -169,15 +169,15 @@ Returns a page of OTA Package Info objects owned by tenant. You can specify para
 **PageDataOtaPackageInfo**
 
 
-## getOtaPackagesByDeviceProfileIdAndType
+## getOtaPackagesByDeviceProfileAndType
 
 ```
-PageDataOtaPackageInfo getOtaPackagesByDeviceProfileIdAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataOtaPackageInfo getOtaPackagesByDeviceProfileAndType(@Nonnull String deviceProfileId, @Nonnull String type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/otaPackages/{deviceProfileId}/{type}`
 
-Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileIdAndType)
+Get OTA Package Infos by Device Profile and Type (getOtaPackagesByDeviceProfileAndType)
 
 Returns a page of OTA Package Info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. OTA Package Info is a lightweight object that includes main information about the OTA Package excluding the heavyweight data.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 

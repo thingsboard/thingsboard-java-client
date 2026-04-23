@@ -16,7 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -32,18 +32,15 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.thingsboard.client.model.AlarmScheduleType;
-import org.thingsboard.client.model.DynamicValueString;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * Configuration for alarm schedule
+ * AlarmSchedule
  */
 @JsonPropertyOrder({
-  AlarmSchedule.JSON_PROPERTY_DYNAMIC_VALUE,
   AlarmSchedule.JSON_PROPERTY_TYPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -59,42 +56,14 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class AlarmSchedule {
-  public static final String JSON_PROPERTY_DYNAMIC_VALUE = "dynamicValue";
-  @Nullable
-  private DynamicValueString dynamicValue;
-
   public static final String JSON_PROPERTY_TYPE = "type";
-  @Nullable
-  private AlarmScheduleType type;
+  @Nonnull
+  private String type;
 
   public AlarmSchedule() { 
   }
 
-  public AlarmSchedule dynamicValue(@Nullable DynamicValueString dynamicValue) {
-    this.dynamicValue = dynamicValue;
-    return this;
-  }
-
-  /**
-   * Get dynamicValue
-   * @return dynamicValue
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public DynamicValueString getDynamicValue() {
-    return dynamicValue;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DYNAMIC_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDynamicValue(@Nullable DynamicValueString dynamicValue) {
-    this.dynamicValue = dynamicValue;
-  }
-
-
-  public AlarmSchedule type(@Nullable AlarmScheduleType type) {
+  public AlarmSchedule type(@Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -103,17 +72,17 @@ public class AlarmSchedule {
    * Get type
    * @return type
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmScheduleType getType() {
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getType() {
     return type;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(@Nullable AlarmScheduleType type) {
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@Nonnull String type) {
     this.type = type;
   }
 
@@ -130,20 +99,18 @@ public class AlarmSchedule {
       return false;
     }
     AlarmSchedule alarmSchedule = (AlarmSchedule) o;
-    return Objects.equals(this.dynamicValue, alarmSchedule.dynamicValue) &&
-        Objects.equals(this.type, alarmSchedule.type);
+    return Objects.equals(this.type, alarmSchedule.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dynamicValue, type);
+    return Objects.hash(type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmSchedule {\n");
-    sb.append("    dynamicValue: ").append(toIndentedString(dynamicValue)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -191,11 +158,6 @@ public class AlarmSchedule {
     }
 
     StringJoiner joiner = new StringJoiner("&");
-
-    // add `dynamicValue` to the URL query string
-    if (getDynamicValue() != null) {
-      joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
-    }
 
     // add `type` to the URL query string
     if (getType() != null) {

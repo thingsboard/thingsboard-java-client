@@ -207,14 +207,14 @@ public class ScriptCalculatedFieldConfiguration extends CalculatedFieldConfigura
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     // add `arguments` to the URL query string

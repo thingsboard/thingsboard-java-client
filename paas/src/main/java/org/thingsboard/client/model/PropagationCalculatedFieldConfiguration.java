@@ -48,10 +48,10 @@ import org.thingsboard.client.ApiClient;
  * PropagationCalculatedFieldConfiguration
  */
 @JsonPropertyOrder({
-  PropagationCalculatedFieldConfiguration.JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS,
   PropagationCalculatedFieldConfiguration.JSON_PROPERTY_ARGUMENTS,
   PropagationCalculatedFieldConfiguration.JSON_PROPERTY_EXPRESSION,
-  PropagationCalculatedFieldConfiguration.JSON_PROPERTY_RELATION
+  PropagationCalculatedFieldConfiguration.JSON_PROPERTY_RELATION,
+  PropagationCalculatedFieldConfiguration.JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -61,10 +61,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConfiguration {
-  public static final String JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS = "applyExpressionToResolvedArguments";
-  @Nullable
-  private Boolean applyExpressionToResolvedArguments;
-
   public static final String JSON_PROPERTY_ARGUMENTS = "arguments";
   @Nonnull
   private Map<String, Argument> arguments = new HashMap<>();
@@ -77,32 +73,12 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
   @Nonnull
   private RelationPathLevel relation;
 
+  public static final String JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS = "applyExpressionToResolvedArguments";
+  @Nullable
+  private Boolean applyExpressionToResolvedArguments;
+
   public PropagationCalculatedFieldConfiguration() { 
   }
-
-  public PropagationCalculatedFieldConfiguration applyExpressionToResolvedArguments(@Nullable Boolean applyExpressionToResolvedArguments) {
-    this.applyExpressionToResolvedArguments = applyExpressionToResolvedArguments;
-    return this;
-  }
-
-  /**
-   * Get applyExpressionToResolvedArguments
-   * @return applyExpressionToResolvedArguments
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getApplyExpressionToResolvedArguments() {
-    return applyExpressionToResolvedArguments;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setApplyExpressionToResolvedArguments(@Nullable Boolean applyExpressionToResolvedArguments) {
-    this.applyExpressionToResolvedArguments = applyExpressionToResolvedArguments;
-  }
-
 
   public PropagationCalculatedFieldConfiguration arguments(@Nonnull Map<String, Argument> arguments) {
     this.arguments = arguments;
@@ -184,6 +160,30 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
   }
 
 
+  public PropagationCalculatedFieldConfiguration applyExpressionToResolvedArguments(@Nullable Boolean applyExpressionToResolvedArguments) {
+    this.applyExpressionToResolvedArguments = applyExpressionToResolvedArguments;
+    return this;
+  }
+
+  /**
+   * Get applyExpressionToResolvedArguments
+   * @return applyExpressionToResolvedArguments
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getApplyExpressionToResolvedArguments() {
+    return applyExpressionToResolvedArguments;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_APPLY_EXPRESSION_TO_RESOLVED_ARGUMENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setApplyExpressionToResolvedArguments(@Nullable Boolean applyExpressionToResolvedArguments) {
+    this.applyExpressionToResolvedArguments = applyExpressionToResolvedArguments;
+  }
+
+
   @Override
   public PropagationCalculatedFieldConfiguration output(@Nullable Output output) {
     this.setOutput(output);
@@ -202,16 +202,16 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
       return false;
     }
     PropagationCalculatedFieldConfiguration propagationCalculatedFieldConfiguration = (PropagationCalculatedFieldConfiguration) o;
-    return Objects.equals(this.applyExpressionToResolvedArguments, propagationCalculatedFieldConfiguration.applyExpressionToResolvedArguments) &&
-        Objects.equals(this.arguments, propagationCalculatedFieldConfiguration.arguments) &&
+    return Objects.equals(this.arguments, propagationCalculatedFieldConfiguration.arguments) &&
         Objects.equals(this.expression, propagationCalculatedFieldConfiguration.expression) &&
         Objects.equals(this.relation, propagationCalculatedFieldConfiguration.relation) &&
+        Objects.equals(this.applyExpressionToResolvedArguments, propagationCalculatedFieldConfiguration.applyExpressionToResolvedArguments) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applyExpressionToResolvedArguments, arguments, expression, relation, super.hashCode());
+    return Objects.hash(arguments, expression, relation, applyExpressionToResolvedArguments, super.hashCode());
   }
 
   @Override
@@ -219,10 +219,10 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
     StringBuilder sb = new StringBuilder();
     sb.append("class PropagationCalculatedFieldConfiguration {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    applyExpressionToResolvedArguments: ").append(toIndentedString(applyExpressionToResolvedArguments)).append("\n");
     sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
     sb.append("    expression: ").append(toIndentedString(expression)).append("\n");
     sb.append("    relation: ").append(toIndentedString(relation)).append("\n");
+    sb.append("    applyExpressionToResolvedArguments: ").append(toIndentedString(applyExpressionToResolvedArguments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -270,19 +270,14 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
     }
 
-    // add `applyExpressionToResolvedArguments` to the URL query string
-    if (getApplyExpressionToResolvedArguments() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sapplyExpressionToResolvedArguments%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getApplyExpressionToResolvedArguments()))));
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     // add `arguments` to the URL query string
@@ -303,6 +298,11 @@ public class PropagationCalculatedFieldConfiguration extends CalculatedFieldConf
     // add `relation` to the URL query string
     if (getRelation() != null) {
       joiner.add(getRelation().toUrlQueryString(prefix + "relation" + suffix));
+    }
+
+    // add `applyExpressionToResolvedArguments` to the URL query string
+    if (getApplyExpressionToResolvedArguments() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sapplyExpressionToResolvedArguments%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getApplyExpressionToResolvedArguments()))));
     }
 
     return joiner.toString();

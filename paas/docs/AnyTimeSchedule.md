@@ -17,22 +17,7 @@
 #### AlarmSchedule
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| dynamicValue | DynamicValueString |  | [optional] |
-| type | AlarmScheduleType |  | [optional] |
-
-#### DynamicValueString
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| resolvedValue | String |  | [optional] |
-| sourceType | DynamicValueSourceType |  | [optional] |
-| sourceAttribute | String |  | [optional] |
-| inherit | Boolean |  | [optional] |
-
-#### AlarmScheduleType (enum)
-`ANY_TIME` | `SPECIFIC_TIME` | `CUSTOM`
-
-#### DynamicValueSourceType (enum)
-`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
+| type | String |  |  |
 
 ---
 

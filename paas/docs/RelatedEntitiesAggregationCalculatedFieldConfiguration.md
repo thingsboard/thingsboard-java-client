@@ -9,13 +9,13 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **relation** | **RelationPathLevel** |  | |
 | **arguments** | **Map\<String, Argument\>** |  | |
 | **deduplicationIntervalInSec** | **Long** |  | [optional] |
 | **metrics** | **Map\<String, AggMetric\>** |  | |
-| **relation** | **RelationPathLevel** |  | |
-| **scheduledUpdateEnabled** | **Boolean** |  | [optional] |
-| **scheduledUpdateInterval** | **Integer** |  | [optional] |
 | **useLatestTs** | **Boolean** |  | [optional] |
+| **scheduledUpdateInterval** | **Integer** |  | [optional] |
+| **scheduledUpdateEnabled** | **Boolean** |  | [optional] |
 
 
 
@@ -26,8 +26,14 @@
 #### CalculatedFieldConfiguration
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| type | String |  |  |
 | output | Output |  | [optional] |
+| type | String |  |  |
+
+#### RelationPathLevel
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| direction | EntitySearchDirection |  |  |
+| relationType | String |  |  |
 
 #### Argument
 | Name | Type | Description | Notes |
@@ -47,18 +53,12 @@
 | input | AggInput |  | [optional] |
 | defaultValue | Double |  | [optional] |
 
-#### RelationPathLevel
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| direction | EntitySearchDirection |  |  |
-| relationType | String |  |  |
-
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| decimalsByDefault | Integer |  | [optional] |
 | name | String |  | [optional] |
 | scope | AttributeScope |  | [optional] |
-| decimalsByDefault | Integer |  | [optional] |
 | strategy | Object |  | [optional] |
 | type | String |  |  |
 
@@ -71,6 +71,9 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | strategy | TimeSeriesOutputStrategy |  | [optional] |
+
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
 
 #### CfArgumentDynamicSourceConfiguration
 | Name | Type | Description | Notes |
@@ -109,9 +112,6 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | key | String |  | [optional] |
-
-#### EntitySearchDirection (enum)
-`FROM` | `TO`
 
 #### AttributeScope (enum)
 `CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`

@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **dayOfWeek** | **Integer** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
-| **endsOn** | **Long** |  | [optional] |
+| **dayOfWeek** | **Integer** |  | [optional] |
 | **startsOn** | **Long** |  | [optional] |
+| **endsOn** | **Long** |  | [optional] |
 
 
 

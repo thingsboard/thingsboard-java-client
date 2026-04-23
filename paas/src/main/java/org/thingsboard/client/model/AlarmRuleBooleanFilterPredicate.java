@@ -33,8 +33,8 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AlarmConditionValueBoolean;
+import org.thingsboard.client.model.AlarmRuleBooleanOperation;
 import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
-import org.thingsboard.client.model.BooleanOperation;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -57,7 +57,7 @@ import org.thingsboard.client.ApiClient;
 public class AlarmRuleBooleanFilterPredicate extends AlarmRuleKeyFilterPredicate {
   public static final String JSON_PROPERTY_OPERATION = "operation";
   @Nonnull
-  private BooleanOperation operation;
+  private AlarmRuleBooleanOperation operation;
 
   public static final String JSON_PROPERTY_VALUE = "value";
   @Nonnull
@@ -66,7 +66,7 @@ public class AlarmRuleBooleanFilterPredicate extends AlarmRuleKeyFilterPredicate
   public AlarmRuleBooleanFilterPredicate() { 
   }
 
-  public AlarmRuleBooleanFilterPredicate operation(@Nonnull BooleanOperation operation) {
+  public AlarmRuleBooleanFilterPredicate operation(@Nonnull AlarmRuleBooleanOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -78,14 +78,14 @@ public class AlarmRuleBooleanFilterPredicate extends AlarmRuleKeyFilterPredicate
   @Nonnull
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public BooleanOperation getOperation() {
+  public AlarmRuleBooleanOperation getOperation() {
     return operation;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOperation(@Nonnull BooleanOperation operation) {
+  public void setOperation(@Nonnull AlarmRuleBooleanOperation operation) {
     this.operation = operation;
   }
 
