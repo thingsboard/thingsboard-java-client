@@ -5,7 +5,7 @@
 ```
 void deleteDomain(@Nonnull UUID id) // Delete Domain by ID (deleteDomain)
 DomainInfo getDomainInfoById(@Nonnull UUID id) // Get Domain info by Id (getDomainInfoById)
-PageDataDomainInfo getTenantDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Domain infos (getTenantDomainInfos)
+PageDataDomainInfo getDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Domain infos (getDomainInfos)
 Domain saveDomain(@Nonnull Domain domain, @Nullable List<String> oauth2ClientIds) // Save or Update Domain (saveDomain)
 void updateDomainOauth2Clients(@Nonnull UUID id, @Nonnull List<UUID> UUID) // Update oauth2 clients (updateDomainOauth2Clients)
 ```
@@ -59,15 +59,15 @@ Get Domain info by Id (getDomainInfoById)
 **DomainInfo**
 
 
-## getTenantDomainInfos
+## getDomainInfos
 
 ```
-PageDataDomainInfo getTenantDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataDomainInfo getDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/domain/infos`
 
-Get Domain infos (getTenantDomainInfos)
+Get Domain infos (getDomainInfos)
 
   Available for users with 'SYS_ADMIN' authority.
 

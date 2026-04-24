@@ -9797,9 +9797,9 @@
         "tags": [
           "asset-controller"
         ],
-        "summary": "Import the bulk of assets (processAssetsBulkImport)",
+        "summary": "Import the bulk of assets (processAssetBulkImport)",
         "description": "There's an ability to import the bulk of assets using the only .csv file.",
-        "operationId": "processAssetsBulkImport",
+        "operationId": "processAssetBulkImport",
         "requestBody": {
           "content": {
             "application/json": {
@@ -30295,9 +30295,9 @@
         "tags": [
           "domain-controller"
         ],
-        "summary": "Get Domain infos (getTenantDomainInfos)",
+        "summary": "Get Domain infos (getDomainInfos)",
         "description": "\n\nAvailable for users with 'SYS_ADMIN' authority.",
-        "operationId": "getTenantDomainInfos",
+        "operationId": "getDomainInfos",
         "parameters": [
           {
             "name": "pageSize",
@@ -54535,9 +54535,9 @@
         "tags": [
           "o-auth-2-controller"
         ],
-        "summary": "Get OAuth2 Client infos (findTenantOAuth2ClientInfos)",
+        "summary": "Get OAuth2 Client infos (findOAuth2ClientInfos)",
         "description": "\n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
-        "operationId": "findTenantOAuth2ClientInfos",
+        "operationId": "findOAuth2ClientInfos",
         "parameters": [
           {
             "name": "pageSize",
