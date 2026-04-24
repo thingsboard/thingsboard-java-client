@@ -17,7 +17,7 @@
 | **address2** | **String** | Address Line 2 | [optional] |
 | **zip** | **String** | Zip code | [optional] |
 | **phone** | **String** | Phone number | [optional] |
-| **email** | **String** | Email | |
+| **email** | **String** | Email | [optional] |
 | **title** | **String** | Title of the customer | |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] |
 | **parentCustomerId** | **CustomerId** | JSON object with parent Customer Id | [optional] |

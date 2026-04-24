@@ -43,8 +43,8 @@ import org.thingsboard.client.ApiClient;
  * CalculatedFieldConfiguration
  */
 @JsonPropertyOrder({
-  CalculatedFieldConfiguration.JSON_PROPERTY_TYPE,
-  CalculatedFieldConfiguration.JSON_PROPERTY_OUTPUT
+  CalculatedFieldConfiguration.JSON_PROPERTY_OUTPUT,
+  CalculatedFieldConfiguration.JSON_PROPERTY_TYPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -63,40 +63,16 @@ import org.thingsboard.client.ApiClient;
 })
 
 public class CalculatedFieldConfiguration {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @Nonnull
-  private String type;
-
   public static final String JSON_PROPERTY_OUTPUT = "output";
   @Nullable
   private Output output;
 
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @Nonnull
+  private String type;
+
   public CalculatedFieldConfiguration() { 
   }
-
-  public CalculatedFieldConfiguration type(@Nonnull String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getType() {
-    return type;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(@Nonnull String type) {
-    this.type = type;
-  }
-
 
   public CalculatedFieldConfiguration output(@Nullable Output output) {
     this.output = output;
@@ -122,6 +98,30 @@ public class CalculatedFieldConfiguration {
   }
 
 
+  public CalculatedFieldConfiguration type(@Nonnull String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * Get type
+   * @return type
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getType() {
+    return type;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@Nonnull String type) {
+    this.type = type;
+  }
+
+
   /**
    * Return true if this CalculatedFieldConfiguration object is equal to o.
    */
@@ -134,21 +134,21 @@ public class CalculatedFieldConfiguration {
       return false;
     }
     CalculatedFieldConfiguration calculatedFieldConfiguration = (CalculatedFieldConfiguration) o;
-    return Objects.equals(this.type, calculatedFieldConfiguration.type) &&
-        Objects.equals(this.output, calculatedFieldConfiguration.output);
+    return Objects.equals(this.output, calculatedFieldConfiguration.output) &&
+        Objects.equals(this.type, calculatedFieldConfiguration.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, output);
+    return Objects.hash(output, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CalculatedFieldConfiguration {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    output: ").append(toIndentedString(output)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -196,14 +196,14 @@ public class CalculatedFieldConfiguration {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
+    }
+
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
     return joiner.toString();

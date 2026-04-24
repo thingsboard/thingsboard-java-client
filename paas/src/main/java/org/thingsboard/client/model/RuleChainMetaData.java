@@ -35,7 +35,6 @@ import java.util.List;
 import org.thingsboard.client.model.NodeConnectionInfo;
 import org.thingsboard.client.model.RuleChainConnectionInfo;
 import org.thingsboard.client.model.RuleChainId;
-import org.thingsboard.client.model.RuleChainNote;
 import org.thingsboard.client.model.RuleNode;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -50,8 +49,7 @@ import org.thingsboard.client.ApiClient;
   RuleChainMetaData.JSON_PROPERTY_FIRST_NODE_INDEX,
   RuleChainMetaData.JSON_PROPERTY_NODES,
   RuleChainMetaData.JSON_PROPERTY_CONNECTIONS,
-  RuleChainMetaData.JSON_PROPERTY_RULE_CHAIN_CONNECTIONS,
-  RuleChainMetaData.JSON_PROPERTY_NOTES
+  RuleChainMetaData.JSON_PROPERTY_RULE_CHAIN_CONNECTIONS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class RuleChainMetaData {
@@ -78,10 +76,6 @@ public class RuleChainMetaData {
   public static final String JSON_PROPERTY_RULE_CHAIN_CONNECTIONS = "ruleChainConnections";
   @Nonnull
   private List<RuleChainConnectionInfo> ruleChainConnections = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_NOTES = "notes";
-  @Nullable
-  private List<RuleChainNote> notes = new ArrayList<>();
 
   public RuleChainMetaData() { 
   }
@@ -252,38 +246,6 @@ public class RuleChainMetaData {
   }
 
 
-  public RuleChainMetaData notes(@Nullable List<RuleChainNote> notes) {
-    this.notes = notes;
-    return this;
-  }
-
-  public RuleChainMetaData addNotesItem(RuleChainNote notesItem) {
-    if (this.notes == null) {
-      this.notes = new ArrayList<>();
-    }
-    this.notes.add(notesItem);
-    return this;
-  }
-
-  /**
-   * List of sticky notes placed on the rule chain canvas
-   * @return notes
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_NOTES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<RuleChainNote> getNotes() {
-    return notes;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_NOTES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNotes(@Nullable List<RuleChainNote> notes) {
-    this.notes = notes;
-  }
-
-
   /**
    * Return true if this RuleChainMetaData object is equal to o.
    */
@@ -301,13 +263,12 @@ public class RuleChainMetaData {
         Objects.equals(this.firstNodeIndex, ruleChainMetaData.firstNodeIndex) &&
         Objects.equals(this.nodes, ruleChainMetaData.nodes) &&
         Objects.equals(this.connections, ruleChainMetaData.connections) &&
-        Objects.equals(this.ruleChainConnections, ruleChainMetaData.ruleChainConnections) &&
-        Objects.equals(this.notes, ruleChainMetaData.notes);
+        Objects.equals(this.ruleChainConnections, ruleChainMetaData.ruleChainConnections);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleChainId, version, firstNodeIndex, nodes, connections, ruleChainConnections, notes);
+    return Objects.hash(ruleChainId, version, firstNodeIndex, nodes, connections, ruleChainConnections);
   }
 
   @Override
@@ -320,7 +281,6 @@ public class RuleChainMetaData {
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    connections: ").append(toIndentedString(connections)).append("\n");
     sb.append("    ruleChainConnections: ").append(toIndentedString(ruleChainConnections)).append("\n");
-    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -408,16 +368,6 @@ public class RuleChainMetaData {
       for (int i = 0; i < getRuleChainConnections().size(); i++) {
         if (getRuleChainConnections().get(i) != null) {
           joiner.add(getRuleChainConnections().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sruleChainConnections%s%s", prefix, suffix,
-          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
-    }
-
-    // add `notes` to the URL query string
-    if (getNotes() != null) {
-      for (int i = 0; i < getNotes().size(); i++) {
-        if (getNotes().get(i) != null) {
-          joiner.add(getNotes().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%snotes%s%s", prefix, suffix,
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }

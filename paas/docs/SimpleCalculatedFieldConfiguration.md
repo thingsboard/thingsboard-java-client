@@ -22,8 +22,8 @@
 #### CalculatedFieldConfiguration
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| type | String |  |  |
 | output | Output |  | [optional] |
+| type | String |  |  |
 
 #### Argument
 | Name | Type | Description | Notes |
@@ -38,9 +38,9 @@
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| decimalsByDefault | Integer |  | [optional] |
 | name | String |  | [optional] |
 | scope | AttributeScope |  | [optional] |
-| decimalsByDefault | Integer |  | [optional] |
 | strategy | Object |  | [optional] |
 | type | String |  |  |
 

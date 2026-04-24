@@ -49,9 +49,9 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_ENTITY_COORDINATES,
+  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_ZONE_GROUPS,
   GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_ENABLED,
-  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL,
-  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_ZONE_GROUPS
+  GeofencingCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -65,6 +65,10 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   @Nonnull
   private EntityCoordinates entityCoordinates;
 
+  public static final String JSON_PROPERTY_ZONE_GROUPS = "zoneGroups";
+  @Nonnull
+  private Map<String, ZoneGroupConfiguration> zoneGroups = new HashMap<>();
+
   public static final String JSON_PROPERTY_SCHEDULED_UPDATE_ENABLED = "scheduledUpdateEnabled";
   @Nullable
   private Boolean scheduledUpdateEnabled;
@@ -72,10 +76,6 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   public static final String JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL = "scheduledUpdateInterval";
   @Nullable
   private Integer scheduledUpdateInterval;
-
-  public static final String JSON_PROPERTY_ZONE_GROUPS = "zoneGroups";
-  @Nonnull
-  private Map<String, ZoneGroupConfiguration> zoneGroups = new HashMap<>();
 
   public GeofencingCalculatedFieldConfiguration() { 
   }
@@ -101,6 +101,38 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEntityCoordinates(@Nonnull EntityCoordinates entityCoordinates) {
     this.entityCoordinates = entityCoordinates;
+  }
+
+
+  public GeofencingCalculatedFieldConfiguration zoneGroups(@Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
+    this.zoneGroups = zoneGroups;
+    return this;
+  }
+
+  public GeofencingCalculatedFieldConfiguration putZoneGroupsItem(String key, ZoneGroupConfiguration zoneGroupsItem) {
+    if (this.zoneGroups == null) {
+      this.zoneGroups = new HashMap<>();
+    }
+    this.zoneGroups.put(key, zoneGroupsItem);
+    return this;
+  }
+
+  /**
+   * Get zoneGroups
+   * @return zoneGroups
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Map<String, ZoneGroupConfiguration> getZoneGroups() {
+    return zoneGroups;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setZoneGroups(@Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
+    this.zoneGroups = zoneGroups;
   }
 
 
@@ -152,38 +184,6 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
   }
 
 
-  public GeofencingCalculatedFieldConfiguration zoneGroups(@Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
-    this.zoneGroups = zoneGroups;
-    return this;
-  }
-
-  public GeofencingCalculatedFieldConfiguration putZoneGroupsItem(String key, ZoneGroupConfiguration zoneGroupsItem) {
-    if (this.zoneGroups == null) {
-      this.zoneGroups = new HashMap<>();
-    }
-    this.zoneGroups.put(key, zoneGroupsItem);
-    return this;
-  }
-
-  /**
-   * Get zoneGroups
-   * @return zoneGroups
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public Map<String, ZoneGroupConfiguration> getZoneGroups() {
-    return zoneGroups;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ZONE_GROUPS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setZoneGroups(@Nonnull Map<String, ZoneGroupConfiguration> zoneGroups) {
-    this.zoneGroups = zoneGroups;
-  }
-
-
   @Override
   public GeofencingCalculatedFieldConfiguration output(@Nonnull Output output) {
     this.setOutput(output);
@@ -203,15 +203,15 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
     }
     GeofencingCalculatedFieldConfiguration geofencingCalculatedFieldConfiguration = (GeofencingCalculatedFieldConfiguration) o;
     return Objects.equals(this.entityCoordinates, geofencingCalculatedFieldConfiguration.entityCoordinates) &&
+        Objects.equals(this.zoneGroups, geofencingCalculatedFieldConfiguration.zoneGroups) &&
         Objects.equals(this.scheduledUpdateEnabled, geofencingCalculatedFieldConfiguration.scheduledUpdateEnabled) &&
         Objects.equals(this.scheduledUpdateInterval, geofencingCalculatedFieldConfiguration.scheduledUpdateInterval) &&
-        Objects.equals(this.zoneGroups, geofencingCalculatedFieldConfiguration.zoneGroups) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityCoordinates, scheduledUpdateEnabled, scheduledUpdateInterval, zoneGroups, super.hashCode());
+    return Objects.hash(entityCoordinates, zoneGroups, scheduledUpdateEnabled, scheduledUpdateInterval, super.hashCode());
   }
 
   @Override
@@ -220,9 +220,9 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
     sb.append("class GeofencingCalculatedFieldConfiguration {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    entityCoordinates: ").append(toIndentedString(entityCoordinates)).append("\n");
+    sb.append("    zoneGroups: ").append(toIndentedString(zoneGroups)).append("\n");
     sb.append("    scheduledUpdateEnabled: ").append(toIndentedString(scheduledUpdateEnabled)).append("\n");
     sb.append("    scheduledUpdateInterval: ").append(toIndentedString(scheduledUpdateInterval)).append("\n");
-    sb.append("    zoneGroups: ").append(toIndentedString(zoneGroups)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -270,29 +270,19 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `type` to the URL query string
-    if (getType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
-    }
-
     // add `output` to the URL query string
     if (getOutput() != null) {
       joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
     }
 
+    // add `type` to the URL query string
+    if (getType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
     // add `entityCoordinates` to the URL query string
     if (getEntityCoordinates() != null) {
       joiner.add(getEntityCoordinates().toUrlQueryString(prefix + "entityCoordinates" + suffix));
-    }
-
-    // add `scheduledUpdateEnabled` to the URL query string
-    if (getScheduledUpdateEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateEnabled()))));
-    }
-
-    // add `scheduledUpdateInterval` to the URL query string
-    if (getScheduledUpdateInterval() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateInterval%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateInterval()))));
     }
 
     // add `zoneGroups` to the URL query string
@@ -303,6 +293,16 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
         }
       }
+    }
+
+    // add `scheduledUpdateEnabled` to the URL query string
+    if (getScheduledUpdateEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateEnabled()))));
+    }
+
+    // add `scheduledUpdateInterval` to the URL query string
+    if (getScheduledUpdateInterval() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateInterval%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateInterval()))));
     }
 
     return joiner.toString();

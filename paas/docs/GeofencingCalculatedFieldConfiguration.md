@@ -10,9 +10,9 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **entityCoordinates** | **EntityCoordinates** |  | |
+| **zoneGroups** | **Map\<String, ZoneGroupConfiguration\>** |  | |
 | **scheduledUpdateEnabled** | **Boolean** |  | [optional] |
 | **scheduledUpdateInterval** | **Integer** |  | [optional] |
-| **zoneGroups** | **Map\<String, ZoneGroupConfiguration\>** |  | |
 
 
 
@@ -23,8 +23,8 @@
 #### CalculatedFieldConfiguration
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| type | String |  |  |
 | output | Output |  | [optional] |
+| type | String |  |  |
 
 #### EntityCoordinates
 | Name | Type | Description | Notes |
@@ -46,9 +46,9 @@
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| decimalsByDefault | Integer |  | [optional] |
 | name | String |  | [optional] |
 | scope | AttributeScope |  | [optional] |
-| decimalsByDefault | Integer |  | [optional] |
 | strategy | Object |  | [optional] |
 | type | String |  |  |
 

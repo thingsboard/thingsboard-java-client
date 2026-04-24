@@ -9,9 +9,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **ignoreCase** | **Boolean** |  | [optional] |
-| **operation** | **StringOperation** |  | |
+| **operation** | **AlarmRuleStringOperation** |  | |
 | **value** | **AlarmConditionValueString** |  | |
+| **ignoreCase** | **Boolean** |  | [optional] |
 
 
 
@@ -22,7 +22,7 @@
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### StringOperation (enum)
+#### AlarmRuleStringOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `STARTS_WITH` | `ENDS_WITH` | `CONTAINS` | `NOT_CONTAINS` | `IN` | `NOT_IN`
 
 #### AlarmConditionValueString

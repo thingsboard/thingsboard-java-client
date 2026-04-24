@@ -10,10 +10,10 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **arguments** | **Map\<String, Argument\>** |  | |
-| **interval** | **AggInterval** |  | |
 | **metrics** | **Map\<String, AggMetric\>** |  | |
-| **produceIntermediateResult** | **Boolean** |  | [optional] |
+| **interval** | **AggInterval** |  | |
 | **watermark** | **Watermark** |  | [optional] |
+| **produceIntermediateResult** | **Boolean** |  | [optional] |
 
 
 
@@ -24,8 +24,8 @@
 #### CalculatedFieldConfiguration
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| type | String |  |  |
 | output | Output |  | [optional] |
+| type | String |  |  |
 
 #### Argument
 | Name | Type | Description | Notes |
@@ -36,6 +36,14 @@
 | defaultValue | String |  | [optional] |
 | limit | Integer |  | [optional] |
 | timeWindow | Long |  | [optional] |
+
+#### AggMetric
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| function | AggFunction |  | [optional] |
+| filter | String |  | [optional] |
+| input | AggInput |  | [optional] |
+| defaultValue | Double |  | [optional] |
 
 #### AggInterval
 | Name | Type | Description | Notes |
@@ -91,14 +99,6 @@
 | tz | String |  |  |
 | offsetSec | Long |  | [optional] |
 
-#### AggMetric
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| function | AggFunction |  | [optional] |
-| filter | String |  | [optional] |
-| input | AggInput |  | [optional] |
-| defaultValue | Double |  | [optional] |
-
 #### Watermark
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -107,9 +107,9 @@
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| decimalsByDefault | Integer |  | [optional] |
 | name | String |  | [optional] |
 | scope | AttributeScope |  | [optional] |
-| decimalsByDefault | Integer |  | [optional] |
 | strategy | Object |  | [optional] |
 | type | String |  |  |
 

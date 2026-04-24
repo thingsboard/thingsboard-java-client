@@ -9,10 +9,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **daysOfWeek** | **Set\<Integer\>** |  | [optional] |
-| **endsOn** | **Long** |  | [optional] |
-| **startsOn** | **Long** |  | [optional] |
 | **timezone** | **String** |  | [optional] |
+| **daysOfWeek** | **Set\<Integer\>** |  | [optional] |
+| **startsOn** | **Long** |  | [optional] |
+| **endsOn** | **Long** |  | [optional] |
 
 
 
@@ -21,22 +21,7 @@
 #### AlarmSchedule
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| dynamicValue | DynamicValueString |  | [optional] |
-| type | AlarmScheduleType |  | [optional] |
-
-#### DynamicValueString
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| resolvedValue | String |  | [optional] |
-| sourceType | DynamicValueSourceType |  | [optional] |
-| sourceAttribute | String |  | [optional] |
-| inherit | Boolean |  | [optional] |
-
-#### AlarmScheduleType (enum)
-`ANY_TIME` | `SPECIFIC_TIME` | `CUSTOM`
-
-#### DynamicValueSourceType (enum)
-`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
+| type | String |  |  |
 
 ---
 

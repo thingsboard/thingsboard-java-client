@@ -52,7 +52,7 @@ import org.thingsboard.client.ApiClient;
 @JsonSubTypes({
   @JsonSubTypes.Type(value = AlarmRuleBooleanFilterPredicate.class, name = "BOOLEAN"),
   @JsonSubTypes.Type(value = AlarmRuleComplexFilterPredicate.class, name = "COMPLEX"),
-  @JsonSubTypes.Type(value = AlarmRuleNoDataFilterPredicate.class, name = "NO_DATA"),
+  @JsonSubTypes.Type(value = NoDataFilterPredicate.class, name = "NO_DATA"),
   @JsonSubTypes.Type(value = AlarmRuleNumericFilterPredicate.class, name = "NUMERIC"),
   @JsonSubTypes.Type(value = AlarmRuleStringFilterPredicate.class, name = "STRING"),
 })
@@ -173,7 +173,7 @@ static {
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
   mappings.put("BOOLEAN", AlarmRuleBooleanFilterPredicate.class);
   mappings.put("COMPLEX", AlarmRuleComplexFilterPredicate.class);
-  mappings.put("NO_DATA", AlarmRuleNoDataFilterPredicate.class);
+  mappings.put("NO_DATA", NoDataFilterPredicate.class);
   mappings.put("NUMERIC", AlarmRuleNumericFilterPredicate.class);
   mappings.put("STRING", AlarmRuleStringFilterPredicate.class);
   mappings.put("AlarmRuleKeyFilterPredicate", AlarmRuleKeyFilterPredicate.class);
