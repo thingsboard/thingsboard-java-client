@@ -88,6 +88,7 @@ import org.thingsboard.client.ApiClient;
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_SMS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_CREATED_ALARMS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_GENERATED_REPORTS,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_AI_CREDITS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_TENANT_SERVER_REST_LIMITS_CONFIGURATION,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_CUSTOMER_SERVER_REST_LIMITS_CONFIGURATION,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_WS_SESSIONS_PER_TENANT,
@@ -128,7 +129,8 @@ import org.thingsboard.client.ApiClient;
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MIN_ALLOWED_AGGREGATION_INTERVAL_IN_SEC_FOR_C_F,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_INTERMEDIATE_AGGREGATION_INTERVAL_IN_SEC_FOR_C_F,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_CF_REEVALUATION_CHECK_INTERVAL,
-  DefaultTenantProfileConfiguration.JSON_PROPERTY_ALARMS_REEVALUATION_INTERVAL
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_ALARMS_REEVALUATION_INTERVAL,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_AI_CHAT_REQUESTS_PER_TENANT_RATE_LIMIT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -322,6 +324,10 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   @Nullable
   private Long maxGeneratedReports;
 
+  public static final String JSON_PROPERTY_MAX_AI_CREDITS = "maxAiCredits";
+  @Nullable
+  private Long maxAiCredits;
+
   public static final String JSON_PROPERTY_TENANT_SERVER_REST_LIMITS_CONFIGURATION = "tenantServerRestLimitsConfiguration";
   @Nullable
   private String tenantServerRestLimitsConfiguration;
@@ -485,6 +491,10 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   public static final String JSON_PROPERTY_ALARMS_REEVALUATION_INTERVAL = "alarmsReevaluationInterval";
   @Nullable
   private Long alarmsReevaluationInterval;
+
+  public static final String JSON_PROPERTY_AI_CHAT_REQUESTS_PER_TENANT_RATE_LIMIT = "aiChatRequestsPerTenantRateLimit";
+  @Nullable
+  private String aiChatRequestsPerTenantRateLimit;
 
   public DefaultTenantProfileConfiguration() { 
   }
@@ -1593,6 +1603,30 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   }
 
 
+  public DefaultTenantProfileConfiguration maxAiCredits(@Nullable Long maxAiCredits) {
+    this.maxAiCredits = maxAiCredits;
+    return this;
+  }
+
+  /**
+   * Get maxAiCredits
+   * @return maxAiCredits
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMaxAiCredits() {
+    return maxAiCredits;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxAiCredits(@Nullable Long maxAiCredits) {
+    this.maxAiCredits = maxAiCredits;
+  }
+
+
   public DefaultTenantProfileConfiguration tenantServerRestLimitsConfiguration(@Nullable String tenantServerRestLimitsConfiguration) {
     this.tenantServerRestLimitsConfiguration = tenantServerRestLimitsConfiguration;
     return this;
@@ -2577,6 +2611,30 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   }
 
 
+  public DefaultTenantProfileConfiguration aiChatRequestsPerTenantRateLimit(@Nullable String aiChatRequestsPerTenantRateLimit) {
+    this.aiChatRequestsPerTenantRateLimit = aiChatRequestsPerTenantRateLimit;
+    return this;
+  }
+
+  /**
+   * Get aiChatRequestsPerTenantRateLimit
+   * @return aiChatRequestsPerTenantRateLimit
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AI_CHAT_REQUESTS_PER_TENANT_RATE_LIMIT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAiChatRequestsPerTenantRateLimit() {
+    return aiChatRequestsPerTenantRateLimit;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AI_CHAT_REQUESTS_PER_TENANT_RATE_LIMIT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAiChatRequestsPerTenantRateLimit(@Nullable String aiChatRequestsPerTenantRateLimit) {
+    this.aiChatRequestsPerTenantRateLimit = aiChatRequestsPerTenantRateLimit;
+  }
+
+
   /**
    * Return true if this DefaultTenantProfileConfiguration object is equal to o.
    */
@@ -2635,6 +2693,7 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
         Objects.equals(this.maxSms, defaultTenantProfileConfiguration.maxSms) &&
         Objects.equals(this.maxCreatedAlarms, defaultTenantProfileConfiguration.maxCreatedAlarms) &&
         Objects.equals(this.maxGeneratedReports, defaultTenantProfileConfiguration.maxGeneratedReports) &&
+        Objects.equals(this.maxAiCredits, defaultTenantProfileConfiguration.maxAiCredits) &&
         Objects.equals(this.tenantServerRestLimitsConfiguration, defaultTenantProfileConfiguration.tenantServerRestLimitsConfiguration) &&
         Objects.equals(this.customerServerRestLimitsConfiguration, defaultTenantProfileConfiguration.customerServerRestLimitsConfiguration) &&
         Objects.equals(this.maxWsSessionsPerTenant, defaultTenantProfileConfiguration.maxWsSessionsPerTenant) &&
@@ -2676,12 +2735,13 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
         Objects.equals(this.intermediateAggregationIntervalInSecForCF, defaultTenantProfileConfiguration.intermediateAggregationIntervalInSecForCF) &&
         Objects.equals(this.cfReevaluationCheckInterval, defaultTenantProfileConfiguration.cfReevaluationCheckInterval) &&
         Objects.equals(this.alarmsReevaluationInterval, defaultTenantProfileConfiguration.alarmsReevaluationInterval) &&
+        Objects.equals(this.aiChatRequestsPerTenantRateLimit, defaultTenantProfileConfiguration.aiChatRequestsPerTenantRateLimit) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxDashboards, maxRuleChains, maxEdges, maxResourcesInBytes, maxOtaPackagesInBytes, maxResourceSize, maxReportSizeInBytes, maxIntegrations, maxConverters, maxSchedulerEvents, transportTenantMsgRateLimit, transportTenantTelemetryMsgRateLimit, transportTenantTelemetryDataPointsRateLimit, transportDeviceMsgRateLimit, transportDeviceTelemetryMsgRateLimit, transportDeviceTelemetryDataPointsRateLimit, transportGatewayMsgRateLimit, transportGatewayTelemetryMsgRateLimit, transportGatewayTelemetryDataPointsRateLimit, transportGatewayDeviceMsgRateLimit, transportGatewayDeviceTelemetryMsgRateLimit, transportGatewayDeviceTelemetryDataPointsRateLimit, integrationMsgsPerTenantRateLimit, integrationMsgsPerDeviceRateLimit, integrationMsgsPerAssetRateLimit, tenantEntityExportRateLimit, tenantEntityImportRateLimit, tenantNotificationRequestsRateLimit, tenantNotificationRequestsPerRuleRateLimit, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxTbelExecutions, maxDPStorageDays, maxRuleNodeExecutionsPerMessage, maxDebugModeDurationMinutes, maxEmails, smsEnabled, maxSms, maxCreatedAlarms, maxGeneratedReports, tenantServerRestLimitsConfiguration, customerServerRestLimitsConfiguration, maxWsSessionsPerTenant, maxWsSessionsPerCustomer, maxWsSessionsPerRegularUser, maxWsSessionsPerPublicUser, wsMsgQueueLimitPerSession, maxWsSubscriptionsPerTenant, maxWsSubscriptionsPerCustomer, maxWsSubscriptionsPerRegularUser, maxWsSubscriptionsPerPublicUser, wsUpdatesPerSessionRateLimit, cassandraReadQueryTenantCoreRateLimits, cassandraWriteQueryTenantCoreRateLimits, cassandraReadQueryTenantRuleEngineRateLimits, cassandraWriteQueryTenantRuleEngineRateLimits, edgeEventRateLimits, edgeEventRateLimitsPerEdge, edgeUplinkMessagesRateLimits, edgeUplinkMessagesRateLimitsPerEdge, defaultStorageTtlDays, alarmsTtlDays, rpcTtlDays, queueStatsTtlDays, ruleEngineExceptionsTtlDays, blobEntityTtlDays, reportTtlDays, warnThreshold, maxCalculatedFieldsPerEntity, maxArgumentsPerCF, minAllowedScheduledUpdateIntervalInSecForCF, maxRelationLevelPerCfArgument, maxRelatedEntitiesToReturnPerCfArgument, maxDataPointsPerRollingArg, maxStateSizeInKBytes, maxSingleValueArgumentSizeInKBytes, minAllowedDeduplicationIntervalInSecForCF, minAllowedAggregationIntervalInSecForCF, intermediateAggregationIntervalInSecForCF, cfReevaluationCheckInterval, alarmsReevaluationInterval, super.hashCode());
+    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxDashboards, maxRuleChains, maxEdges, maxResourcesInBytes, maxOtaPackagesInBytes, maxResourceSize, maxReportSizeInBytes, maxIntegrations, maxConverters, maxSchedulerEvents, transportTenantMsgRateLimit, transportTenantTelemetryMsgRateLimit, transportTenantTelemetryDataPointsRateLimit, transportDeviceMsgRateLimit, transportDeviceTelemetryMsgRateLimit, transportDeviceTelemetryDataPointsRateLimit, transportGatewayMsgRateLimit, transportGatewayTelemetryMsgRateLimit, transportGatewayTelemetryDataPointsRateLimit, transportGatewayDeviceMsgRateLimit, transportGatewayDeviceTelemetryMsgRateLimit, transportGatewayDeviceTelemetryDataPointsRateLimit, integrationMsgsPerTenantRateLimit, integrationMsgsPerDeviceRateLimit, integrationMsgsPerAssetRateLimit, tenantEntityExportRateLimit, tenantEntityImportRateLimit, tenantNotificationRequestsRateLimit, tenantNotificationRequestsPerRuleRateLimit, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxTbelExecutions, maxDPStorageDays, maxRuleNodeExecutionsPerMessage, maxDebugModeDurationMinutes, maxEmails, smsEnabled, maxSms, maxCreatedAlarms, maxGeneratedReports, maxAiCredits, tenantServerRestLimitsConfiguration, customerServerRestLimitsConfiguration, maxWsSessionsPerTenant, maxWsSessionsPerCustomer, maxWsSessionsPerRegularUser, maxWsSessionsPerPublicUser, wsMsgQueueLimitPerSession, maxWsSubscriptionsPerTenant, maxWsSubscriptionsPerCustomer, maxWsSubscriptionsPerRegularUser, maxWsSubscriptionsPerPublicUser, wsUpdatesPerSessionRateLimit, cassandraReadQueryTenantCoreRateLimits, cassandraWriteQueryTenantCoreRateLimits, cassandraReadQueryTenantRuleEngineRateLimits, cassandraWriteQueryTenantRuleEngineRateLimits, edgeEventRateLimits, edgeEventRateLimitsPerEdge, edgeUplinkMessagesRateLimits, edgeUplinkMessagesRateLimitsPerEdge, defaultStorageTtlDays, alarmsTtlDays, rpcTtlDays, queueStatsTtlDays, ruleEngineExceptionsTtlDays, blobEntityTtlDays, reportTtlDays, warnThreshold, maxCalculatedFieldsPerEntity, maxArgumentsPerCF, minAllowedScheduledUpdateIntervalInSecForCF, maxRelationLevelPerCfArgument, maxRelatedEntitiesToReturnPerCfArgument, maxDataPointsPerRollingArg, maxStateSizeInKBytes, maxSingleValueArgumentSizeInKBytes, minAllowedDeduplicationIntervalInSecForCF, minAllowedAggregationIntervalInSecForCF, intermediateAggregationIntervalInSecForCF, cfReevaluationCheckInterval, alarmsReevaluationInterval, aiChatRequestsPerTenantRateLimit, super.hashCode());
   }
 
   @Override
@@ -2735,6 +2795,7 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
     sb.append("    maxSms: ").append(toIndentedString(maxSms)).append("\n");
     sb.append("    maxCreatedAlarms: ").append(toIndentedString(maxCreatedAlarms)).append("\n");
     sb.append("    maxGeneratedReports: ").append(toIndentedString(maxGeneratedReports)).append("\n");
+    sb.append("    maxAiCredits: ").append(toIndentedString(maxAiCredits)).append("\n");
     sb.append("    tenantServerRestLimitsConfiguration: ").append(toIndentedString(tenantServerRestLimitsConfiguration)).append("\n");
     sb.append("    customerServerRestLimitsConfiguration: ").append(toIndentedString(customerServerRestLimitsConfiguration)).append("\n");
     sb.append("    maxWsSessionsPerTenant: ").append(toIndentedString(maxWsSessionsPerTenant)).append("\n");
@@ -2776,6 +2837,7 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
     sb.append("    intermediateAggregationIntervalInSecForCF: ").append(toIndentedString(intermediateAggregationIntervalInSecForCF)).append("\n");
     sb.append("    cfReevaluationCheckInterval: ").append(toIndentedString(cfReevaluationCheckInterval)).append("\n");
     sb.append("    alarmsReevaluationInterval: ").append(toIndentedString(alarmsReevaluationInterval)).append("\n");
+    sb.append("    aiChatRequestsPerTenantRateLimit: ").append(toIndentedString(aiChatRequestsPerTenantRateLimit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -3058,6 +3120,11 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
       joiner.add(String.format(java.util.Locale.ROOT, "%smaxGeneratedReports%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxGeneratedReports()))));
     }
 
+    // add `maxAiCredits` to the URL query string
+    if (getMaxAiCredits() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaxAiCredits%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxAiCredits()))));
+    }
+
     // add `tenantServerRestLimitsConfiguration` to the URL query string
     if (getTenantServerRestLimitsConfiguration() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stenantServerRestLimitsConfiguration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTenantServerRestLimitsConfiguration()))));
@@ -3261,6 +3328,11 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
     // add `alarmsReevaluationInterval` to the URL query string
     if (getAlarmsReevaluationInterval() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%salarmsReevaluationInterval%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAlarmsReevaluationInterval()))));
+    }
+
+    // add `aiChatRequestsPerTenantRateLimit` to the URL query string
+    if (getAiChatRequestsPerTenantRateLimit() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%saiChatRequestsPerTenantRateLimit%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiChatRequestsPerTenantRateLimit()))));
     }
 
     return joiner.toString();
