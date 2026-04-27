@@ -136,6 +136,8 @@ public enum Resource {
   
   AI_MODEL("AI_MODEL"),
   
+  AI("AI"),
+  
   API_KEY("API_KEY");
 
   private String value;
