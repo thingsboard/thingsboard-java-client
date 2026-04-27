@@ -4,7 +4,7 @@
 
 ```
 void deleteOauth2Client(@Nonnull UUID id) // Delete oauth2 client (deleteOauth2Client)
-PageDataOAuth2ClientInfo findTenantOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
+PageDataOAuth2ClientInfo findOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get OAuth2 Client infos (findOAuth2ClientInfos)
 List<OAuth2ClientInfo> findTenantOAuth2ClientInfosByIds(@Nonnull List<String> clientIds) // Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIds)
 String getLoginProcessingUrl() // Get OAuth2 log in processing URL (getLoginProcessingUrl)
 OAuth2Client getOAuth2ClientById(@Nonnull UUID id) // Get OAuth2 Client by id (getOAuth2ClientById)
@@ -37,15 +37,15 @@ Deletes the oauth2 client. Referencing non-existing oauth2 client Id will cause 
 null (empty response body)
 
 
-## findTenantOAuth2ClientInfos
+## findOAuth2ClientInfos
 
 ```
-PageDataOAuth2ClientInfo findTenantOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataOAuth2ClientInfo findOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/oauth2/client/infos`
 
-Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
+Get OAuth2 Client infos (findOAuth2ClientInfos)
 
   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 

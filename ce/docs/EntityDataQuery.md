@@ -11,9 +11,11 @@ Entity data query to find entities. Page size is capped at 100.
 |------------ | ------------- | ------------- | -------------|
 | **entityFilter** | **EntityFilter** |  | [optional] |
 | **keyFilters** | **List\<KeyFilter\>** |  | [optional] |
+| **keyFiltersOperation** | **AlarmRuleComplexOperation** |  | [optional] |
 | **pageLink** | **EntityDataPageLink** |  | [optional] |
 | **entityFields** | **List\<EntityKey\>** |  | [optional] |
 | **latestValues** | **List\<EntityKey\>** |  | [optional] |
+| **keyFiltersOperationOrDefault** | **AlarmRuleComplexOperation** |  | [optional] |
 
 
 
@@ -151,6 +153,9 @@ Entity data query to find entities. Page size is capped at 100.
 | valueType | EntityKeyValueType |  | [optional] |
 | predicate | KeyFilterPredicate |  | [optional] |
 
+#### AlarmRuleComplexOperation (enum)
+`AND` | `OR`
+
 #### EntityDataPageLink
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -183,7 +188,7 @@ Entity data query to find entities. Page size is capped at 100.
 #### ComplexFilterPredicate  *(extends KeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<KeyFilterPredicate> |  | [optional] |
 
 #### NumericFilterPredicate  *(extends KeyFilterPredicate, type=`NUMERIC`)*
@@ -263,9 +268,6 @@ Entity data query to find entities. Page size is capped at 100.
 | defaultValue | Boolean |  | [optional] |
 | userValue | Boolean |  | [optional] |
 | dynamicValue | DynamicValueBoolean |  | [optional] |
-
-#### ComplexOperation (enum)
-`AND` | `OR`
 
 #### DynamicValueString
 | Name | Type | Description | Notes |
