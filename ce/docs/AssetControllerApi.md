@@ -18,7 +18,7 @@ PageDataAsset getEdgeAssets(@Nonnull String edgeId, @Nonnull Integer pageSize, @
 Asset getTenantAssetByName(@Nonnull String assetName) // Get Tenant Asset (getTenantAssetByName)
 PageDataAssetInfo getTenantAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Asset Infos (getTenantAssetInfos)
 PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Assets (getTenantAssets)
-BulkImportResultAsset processAssetsBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of assets (processAssetsBulkImport)
+BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of assets (processAssetBulkImport)
 Asset saveAsset(@Nonnull Asset asset, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Asset (saveAsset)
 Asset unassignAssetFromCustomer(@Nonnull String assetId) // Unassign asset from customer (unassignAssetFromCustomer)
 Asset unassignAssetFromEdge(@Nonnull String edgeId, @Nonnull String assetId) // Unassign asset from edge (unassignAssetFromEdge)
@@ -412,15 +412,15 @@ Returns a page of assets owned by tenant. You can specify parameters to filter t
 **PageDataAsset**
 
 
-## processAssetsBulkImport
+## processAssetBulkImport
 
 ```
-BulkImportResultAsset processAssetsBulkImport(@Nonnull BulkImportRequest bulkImportRequest)
+BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest)
 ```
 
 **POST** `/api/asset/bulk_import`
 
-Import the bulk of assets (processAssetsBulkImport)
+Import the bulk of assets (processAssetBulkImport)
 
 There's an ability to import the bulk of assets using the only .csv file.
 

@@ -9797,9 +9797,9 @@
         "tags": [
           "asset-controller"
         ],
-        "summary": "Import the bulk of assets (processAssetsBulkImport)",
+        "summary": "Import the bulk of assets (processAssetBulkImport)",
         "description": "There's an ability to import the bulk of assets using the only .csv file.",
-        "operationId": "processAssetsBulkImport",
+        "operationId": "processAssetBulkImport",
         "requestBody": {
           "content": {
             "application/json": {
@@ -30295,9 +30295,9 @@
         "tags": [
           "domain-controller"
         ],
-        "summary": "Get Domain infos (getTenantDomainInfos)",
+        "summary": "Get Domain infos (getDomainInfos)",
         "description": "\n\nAvailable for users with 'SYS_ADMIN' authority.",
-        "operationId": "getTenantDomainInfos",
+        "operationId": "getDomainInfos",
         "parameters": [
           {
             "name": "pageSize",
@@ -54535,9 +54535,9 @@
         "tags": [
           "o-auth-2-controller"
         ],
-        "summary": "Get OAuth2 Client infos (findTenantOAuth2ClientInfos)",
+        "summary": "Get OAuth2 Client infos (findOAuth2ClientInfos)",
         "description": "\n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
-        "operationId": "findTenantOAuth2ClientInfos",
+        "operationId": "findOAuth2ClientInfos",
         "parameters": [
           {
             "name": "pageSize",
@@ -82725,6 +82725,9 @@
               "$ref": "#/components/schemas/KeyFilter"
             }
           },
+          "keyFiltersOperation": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
+          },
           "startTs": {
             "type": "integer",
             "format": "int64"
@@ -82760,6 +82763,9 @@
           },
           "assigneeId": {
             "$ref": "#/components/schemas/UserId"
+          },
+          "keyFiltersOperationOrDefault": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
           }
         }
       },
@@ -82996,6 +83002,9 @@
               "$ref": "#/components/schemas/KeyFilter"
             }
           },
+          "keyFiltersOperation": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
+          },
           "pageLink": {
             "$ref": "#/components/schemas/AlarmDataPageLink"
           },
@@ -83016,6 +83025,9 @@
             "items": {
               "$ref": "#/components/schemas/EntityKey"
             }
+          },
+          "keyFiltersOperationOrDefault": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
           }
         }
       },
@@ -85479,7 +85491,7 @@
             "type": "object",
             "properties": {
               "operation": {
-                "$ref": "#/components/schemas/ComplexOperation"
+                "$ref": "#/components/schemas/AlarmRuleComplexOperation"
               },
               "predicates": {
                 "type": "array",
@@ -85489,13 +85501,6 @@
               }
             }
           }
-        ]
-      },
-      "ComplexOperation": {
-        "type": "string",
-        "enum": [
-          "AND",
-          "OR"
         ]
       },
       "ComplexVersionCreateRequest": {
@@ -88313,6 +88318,12 @@
             "items": {
               "$ref": "#/components/schemas/KeyFilter"
             }
+          },
+          "keyFiltersOperation": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
+          },
+          "keyFiltersOperationOrDefault": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
           }
         }
       },
@@ -88411,6 +88422,9 @@
               "$ref": "#/components/schemas/KeyFilter"
             }
           },
+          "keyFiltersOperation": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
+          },
           "pageLink": {
             "$ref": "#/components/schemas/EntityDataPageLink"
           },
@@ -88425,6 +88439,9 @@
             "items": {
               "$ref": "#/components/schemas/EntityKey"
             }
+          },
+          "keyFiltersOperationOrDefault": {
+            "$ref": "#/components/schemas/AlarmRuleComplexOperation"
           }
         }
       },
@@ -95940,6 +95957,13 @@
             "items": {
               "$ref": "#/components/schemas/RuleChainConnectionInfo"
             }
+          },
+          "notes": {
+            "type": "array",
+            "description": "List of sticky notes placed on the rule chain canvas",
+            "items": {
+              "$ref": "#/components/schemas/RuleChainNote"
+            }
           }
         },
         "required": [
@@ -95949,6 +95973,60 @@
           "ruleChainConnections",
           "ruleChainId"
         ]
+      },
+      "RuleChainNote": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the note on the canvas"
+          },
+          "x": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Horizontal position of the note on the canvas, in pixels"
+          },
+          "y": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Vertical position of the note on the canvas, in pixels"
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Width of the note, in pixels"
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Height of the note, in pixels"
+          },
+          "content": {
+            "type": "string",
+            "description": "Markdown or HTML content of the note"
+          },
+          "backgroundColor": {
+            "type": "string",
+            "description": "Background color of the note in CSS hex format, e.g. '#FFF9C4'"
+          },
+          "borderColor": {
+            "type": "string",
+            "description": "Border color of the note in CSS hex format, e.g. '#E6C800'"
+          },
+          "borderWidth": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Border width of the note in pixels"
+          },
+          "applyDefaultMarkdownStyle": {
+            "type": "boolean",
+            "description": "Whether to apply the default markdown stylesheet to the note content"
+          },
+          "markdownCss": {
+            "type": "string",
+            "description": "Custom CSS styles applied to the note content"
+          }
+        }
       },
       "RuleChainOutputLabelsUsage": {
         "type": "object",

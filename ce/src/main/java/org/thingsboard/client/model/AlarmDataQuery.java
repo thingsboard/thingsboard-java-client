@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.thingsboard.client.model.AlarmDataPageLink;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
 import org.thingsboard.client.model.EntityFilter;
 import org.thingsboard.client.model.EntityKey;
 import org.thingsboard.client.model.KeyFilter;
@@ -45,10 +46,12 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   AlarmDataQuery.JSON_PROPERTY_ENTITY_FILTER,
   AlarmDataQuery.JSON_PROPERTY_KEY_FILTERS,
+  AlarmDataQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION,
   AlarmDataQuery.JSON_PROPERTY_PAGE_LINK,
   AlarmDataQuery.JSON_PROPERTY_ENTITY_FIELDS,
   AlarmDataQuery.JSON_PROPERTY_LATEST_VALUES,
-  AlarmDataQuery.JSON_PROPERTY_ALARM_FIELDS
+  AlarmDataQuery.JSON_PROPERTY_ALARM_FIELDS,
+  AlarmDataQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmDataQuery {
@@ -59,6 +62,10 @@ public class AlarmDataQuery {
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
   @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION = "keyFiltersOperation";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperation;
 
   public static final String JSON_PROPERTY_PAGE_LINK = "pageLink";
   @Nullable
@@ -75,6 +82,10 @@ public class AlarmDataQuery {
   public static final String JSON_PROPERTY_ALARM_FIELDS = "alarmFields";
   @Nullable
   private List<EntityKey> alarmFields = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT = "keyFiltersOperationOrDefault";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperationOrDefault;
 
   public AlarmDataQuery() { 
   }
@@ -132,6 +143,30 @@ public class AlarmDataQuery {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
+  }
+
+
+  public AlarmDataQuery keyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperation
+   * @return keyFiltersOperation
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperation() {
+    return keyFiltersOperation;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
   }
 
 
@@ -255,6 +290,30 @@ public class AlarmDataQuery {
   }
 
 
+  public AlarmDataQuery keyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperationOrDefault
+   * @return keyFiltersOperationOrDefault
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperationOrDefault() {
+    return keyFiltersOperationOrDefault;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+  }
+
+
   /**
    * Return true if this AlarmDataQuery object is equal to o.
    */
@@ -269,15 +328,17 @@ public class AlarmDataQuery {
     AlarmDataQuery alarmDataQuery = (AlarmDataQuery) o;
     return Objects.equals(this.entityFilter, alarmDataQuery.entityFilter) &&
         Objects.equals(this.keyFilters, alarmDataQuery.keyFilters) &&
+        Objects.equals(this.keyFiltersOperation, alarmDataQuery.keyFiltersOperation) &&
         Objects.equals(this.pageLink, alarmDataQuery.pageLink) &&
         Objects.equals(this.entityFields, alarmDataQuery.entityFields) &&
         Objects.equals(this.latestValues, alarmDataQuery.latestValues) &&
-        Objects.equals(this.alarmFields, alarmDataQuery.alarmFields);
+        Objects.equals(this.alarmFields, alarmDataQuery.alarmFields) &&
+        Objects.equals(this.keyFiltersOperationOrDefault, alarmDataQuery.keyFiltersOperationOrDefault);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityFilter, keyFilters, pageLink, entityFields, latestValues, alarmFields);
+    return Objects.hash(entityFilter, keyFilters, keyFiltersOperation, pageLink, entityFields, latestValues, alarmFields, keyFiltersOperationOrDefault);
   }
 
   @Override
@@ -286,10 +347,12 @@ public class AlarmDataQuery {
     sb.append("class AlarmDataQuery {\n");
     sb.append("    entityFilter: ").append(toIndentedString(entityFilter)).append("\n");
     sb.append("    keyFilters: ").append(toIndentedString(keyFilters)).append("\n");
+    sb.append("    keyFiltersOperation: ").append(toIndentedString(keyFiltersOperation)).append("\n");
     sb.append("    pageLink: ").append(toIndentedString(pageLink)).append("\n");
     sb.append("    entityFields: ").append(toIndentedString(entityFields)).append("\n");
     sb.append("    latestValues: ").append(toIndentedString(latestValues)).append("\n");
     sb.append("    alarmFields: ").append(toIndentedString(alarmFields)).append("\n");
+    sb.append("    keyFiltersOperationOrDefault: ").append(toIndentedString(keyFiltersOperationOrDefault)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -352,6 +415,11 @@ public class AlarmDataQuery {
       }
     }
 
+    // add `keyFiltersOperation` to the URL query string
+    if (getKeyFiltersOperation() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperation()))));
+    }
+
     // add `pageLink` to the URL query string
     if (getPageLink() != null) {
       joiner.add(getPageLink().toUrlQueryString(prefix + "pageLink" + suffix));
@@ -385,6 +453,11 @@ public class AlarmDataQuery {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `keyFiltersOperationOrDefault` to the URL query string
+    if (getKeyFiltersOperationOrDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperationOrDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperationOrDefault()))));
     }
 
     return joiner.toString();
