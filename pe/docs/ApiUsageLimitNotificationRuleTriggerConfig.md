@@ -22,7 +22,7 @@
 | triggerType | NotificationRuleTriggerType |  |  |
 
 #### ApiFeature (enum)
-`TRANSPORT` | `DB` | `RE` | `JS` | `TBEL` | `EMAIL` | `SMS` | `ALARM` | `REPORT`
+`TRANSPORT` | `DB` | `RE` | `JS` | `TBEL` | `EMAIL` | `SMS` | `ALARM` | `REPORT` | `AI`
 
 #### ApiUsageStateValue (enum)
 `ENABLED` | `WARNING` | `DISABLED`

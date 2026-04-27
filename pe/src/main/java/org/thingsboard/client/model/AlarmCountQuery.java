@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
 import org.thingsboard.client.model.AlarmSearchStatus;
 import org.thingsboard.client.model.AlarmSeverity;
 import org.thingsboard.client.model.EntityFilter;
@@ -46,6 +47,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   AlarmCountQuery.JSON_PROPERTY_ENTITY_FILTER,
   AlarmCountQuery.JSON_PROPERTY_KEY_FILTERS,
+  AlarmCountQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION,
   AlarmCountQuery.JSON_PROPERTY_START_TS,
   AlarmCountQuery.JSON_PROPERTY_END_TS,
   AlarmCountQuery.JSON_PROPERTY_TIME_WINDOW,
@@ -53,7 +55,8 @@ import org.thingsboard.client.ApiClient;
   AlarmCountQuery.JSON_PROPERTY_STATUS_LIST,
   AlarmCountQuery.JSON_PROPERTY_SEVERITY_LIST,
   AlarmCountQuery.JSON_PROPERTY_SEARCH_PROPAGATED_ALARMS,
-  AlarmCountQuery.JSON_PROPERTY_ASSIGNEE_ID
+  AlarmCountQuery.JSON_PROPERTY_ASSIGNEE_ID,
+  AlarmCountQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmCountQuery {
@@ -64,6 +67,10 @@ public class AlarmCountQuery {
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
   @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION = "keyFiltersOperation";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperation;
 
   public static final String JSON_PROPERTY_START_TS = "startTs";
   @Nullable
@@ -96,6 +103,10 @@ public class AlarmCountQuery {
   public static final String JSON_PROPERTY_ASSIGNEE_ID = "assigneeId";
   @Nullable
   private UserId assigneeId;
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT = "keyFiltersOperationOrDefault";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperationOrDefault;
 
   public AlarmCountQuery() { 
   }
@@ -153,6 +164,30 @@ public class AlarmCountQuery {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
+  }
+
+
+  public AlarmCountQuery keyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperation
+   * @return keyFiltersOperation
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperation() {
+    return keyFiltersOperation;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
   }
 
 
@@ -372,6 +407,30 @@ public class AlarmCountQuery {
   }
 
 
+  public AlarmCountQuery keyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperationOrDefault
+   * @return keyFiltersOperationOrDefault
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperationOrDefault() {
+    return keyFiltersOperationOrDefault;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+  }
+
+
   /**
    * Return true if this AlarmCountQuery object is equal to o.
    */
@@ -386,6 +445,7 @@ public class AlarmCountQuery {
     AlarmCountQuery alarmCountQuery = (AlarmCountQuery) o;
     return Objects.equals(this.entityFilter, alarmCountQuery.entityFilter) &&
         Objects.equals(this.keyFilters, alarmCountQuery.keyFilters) &&
+        Objects.equals(this.keyFiltersOperation, alarmCountQuery.keyFiltersOperation) &&
         Objects.equals(this.startTs, alarmCountQuery.startTs) &&
         Objects.equals(this.endTs, alarmCountQuery.endTs) &&
         Objects.equals(this.timeWindow, alarmCountQuery.timeWindow) &&
@@ -393,12 +453,13 @@ public class AlarmCountQuery {
         Objects.equals(this.statusList, alarmCountQuery.statusList) &&
         Objects.equals(this.severityList, alarmCountQuery.severityList) &&
         Objects.equals(this.searchPropagatedAlarms, alarmCountQuery.searchPropagatedAlarms) &&
-        Objects.equals(this.assigneeId, alarmCountQuery.assigneeId);
+        Objects.equals(this.assigneeId, alarmCountQuery.assigneeId) &&
+        Objects.equals(this.keyFiltersOperationOrDefault, alarmCountQuery.keyFiltersOperationOrDefault);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityFilter, keyFilters, startTs, endTs, timeWindow, typeList, statusList, severityList, searchPropagatedAlarms, assigneeId);
+    return Objects.hash(entityFilter, keyFilters, keyFiltersOperation, startTs, endTs, timeWindow, typeList, statusList, severityList, searchPropagatedAlarms, assigneeId, keyFiltersOperationOrDefault);
   }
 
   @Override
@@ -407,6 +468,7 @@ public class AlarmCountQuery {
     sb.append("class AlarmCountQuery {\n");
     sb.append("    entityFilter: ").append(toIndentedString(entityFilter)).append("\n");
     sb.append("    keyFilters: ").append(toIndentedString(keyFilters)).append("\n");
+    sb.append("    keyFiltersOperation: ").append(toIndentedString(keyFiltersOperation)).append("\n");
     sb.append("    startTs: ").append(toIndentedString(startTs)).append("\n");
     sb.append("    endTs: ").append(toIndentedString(endTs)).append("\n");
     sb.append("    timeWindow: ").append(toIndentedString(timeWindow)).append("\n");
@@ -415,6 +477,7 @@ public class AlarmCountQuery {
     sb.append("    severityList: ").append(toIndentedString(severityList)).append("\n");
     sb.append("    searchPropagatedAlarms: ").append(toIndentedString(searchPropagatedAlarms)).append("\n");
     sb.append("    assigneeId: ").append(toIndentedString(assigneeId)).append("\n");
+    sb.append("    keyFiltersOperationOrDefault: ").append(toIndentedString(keyFiltersOperationOrDefault)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -477,6 +540,11 @@ public class AlarmCountQuery {
       }
     }
 
+    // add `keyFiltersOperation` to the URL query string
+    if (getKeyFiltersOperation() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperation()))));
+    }
+
     // add `startTs` to the URL query string
     if (getStartTs() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstartTs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStartTs()))));
@@ -531,6 +599,11 @@ public class AlarmCountQuery {
     // add `assigneeId` to the URL query string
     if (getAssigneeId() != null) {
       joiner.add(getAssigneeId().toUrlQueryString(prefix + "assigneeId" + suffix));
+    }
+
+    // add `keyFiltersOperationOrDefault` to the URL query string
+    if (getKeyFiltersOperationOrDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperationOrDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperationOrDefault()))));
     }
 
     return joiner.toString();

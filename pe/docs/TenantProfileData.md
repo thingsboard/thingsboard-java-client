@@ -68,6 +68,7 @@
 | maxSms | Long |  | [optional] |
 | maxCreatedAlarms | Long |  | [optional] |
 | maxGeneratedReports | Long |  | [optional] |
+| maxAiCredits | Long |  | [optional] |
 | tenantServerRestLimitsConfiguration | String |  | [optional] |
 | customerServerRestLimitsConfiguration | String |  | [optional] |
 | maxWsSessionsPerTenant | Integer |  | [optional] |
@@ -109,6 +110,7 @@
 | intermediateAggregationIntervalInSecForCF | Long |  | [optional] |
 | cfReevaluationCheckInterval | Long |  | [optional] |
 | alarmsReevaluationInterval | Long |  | [optional] |
+| aiChatRequestsPerTenantRateLimit | String |  | [optional] |
 
 #### TenantProfileQueueConfiguration
 | Name | Type | Description | Notes |

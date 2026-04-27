@@ -418,8 +418,8 @@
 | methodName | String |  | [optional] |
 | fileName | String |  | [optional] |
 | lineNumber | Integer |  | [optional] |
-| nativeMethod | Boolean |  | [optional] |
 | className | String |  | [optional] |
+| nativeMethod | Boolean |  | [optional] |
 
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`
