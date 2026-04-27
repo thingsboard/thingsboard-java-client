@@ -29,7 +29,7 @@ Creates the Message with type 'REST_API_REQUEST' and payload taken from the requ
 |------------- | ------------- | ------------- | -------------|
 | **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **body** | **String** |  | |
+| **body** | **String** | A JSON object representing the message. | |
 
 ### Return type
 
@@ -57,7 +57,7 @@ Creates the Message with type 'REST_API_REQUEST' and payload taken from the requ
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **queueName** | **String** | Queue name to process the request in the rule engine | |
 | **timeout** | **Integer** | Timeout to process the request in milliseconds | |
-| **body** | **String** |  | |
+| **body** | **String** | A JSON object representing the message. | |
 
 ### Return type
 
@@ -84,7 +84,7 @@ Creates the Message with type 'REST_API_REQUEST' and payload taken from the requ
 | **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **timeout** | **Integer** | Timeout to process the request in milliseconds | |
-| **body** | **String** |  | |
+| **body** | **String** | A JSON object representing the message. | |
 
 ### Return type
 
@@ -108,7 +108,7 @@ Creates the Message with type 'REST_API_REQUEST' and payload taken from the requ
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **body** | **String** |  | |
+| **body** | **String** | A JSON object representing the message. | |
 
 ### Return type
 

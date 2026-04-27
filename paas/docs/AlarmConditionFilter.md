@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **valueType** | **EntityKeyValueType** | String representation of the type of the value | [optional] |
-| **key** | **AlarmConditionFilterKey** | JSON object for specifying alarm condition by specific key | [optional] |
-| **predicate** | **KeyFilterPredicate** | JSON object representing filter condition | [optional] |
-| **value** | **Object** |  | [optional] |
+| **argument** | **String** |  | |
+| **valueType** | **EntityKeyValueType** |  | |
+| **operation** | **AlarmRuleComplexOperation** |  | [optional] |
+| **predicates** | **List\<AlarmRuleKeyFilterPredicate\>** |  | |
 
 
 
@@ -19,104 +19,80 @@
 #### EntityKeyValueType (enum)
 `STRING` | `NUMERIC` | `BOOLEAN` | `DATE_TIME`
 
-#### AlarmConditionFilterKey
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | AlarmConditionKeyType | The key type | [optional] |
-| key | String | String value representing the key | [optional] |
+#### AlarmRuleComplexOperation (enum)
+`AND` | `OR`
 
-#### KeyFilterPredicate
+#### AlarmRuleKeyFilterPredicate
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | type | String |  |  |
 
-#### BooleanFilterPredicate  *(extends KeyFilterPredicate, type=`BOOLEAN`)*
+#### AlarmRuleBooleanFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`BOOLEAN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | BooleanOperation |  | [optional] |
-| value | FilterPredicateValueBoolean | The value associated with the filter predicate | [optional] |
+| operation | AlarmRuleBooleanOperation |  |  |
+| value | AlarmConditionValueBoolean |  |  |
 
-#### ComplexFilterPredicate  *(extends KeyFilterPredicate, type=`COMPLEX`)*
+#### AlarmRuleComplexFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
-| predicates | List<KeyFilterPredicate> |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
+| predicates | List<AlarmRuleKeyFilterPredicate> |  | [optional] |
 
-#### NumericFilterPredicate  *(extends KeyFilterPredicate, type=`NUMERIC`)*
+#### NoDataFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NO_DATA`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | NumericOperation |  | [optional] |
-| value | FilterPredicateValueDouble | The value associated with the filter predicate | [optional] |
+| unit | TimeUnit |  |  |
+| duration | AlarmConditionValueLong |  |  |
 
-#### StringFilterPredicate  *(extends KeyFilterPredicate, type=`STRING`)*
+#### AlarmRuleNumericFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`NUMERIC`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | StringOperation |  | [optional] |
-| value | FilterPredicateValueString | The value associated with the filter predicate | [optional] |
+| operation | AlarmRuleNumericOperation |  |  |
+| value | AlarmConditionValueDouble |  |  |
+
+#### AlarmRuleStringFilterPredicate  *(extends AlarmRuleKeyFilterPredicate, type=`STRING`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| operation | AlarmRuleStringOperation |  |  |
+| value | AlarmConditionValueString |  |  |
 | ignoreCase | Boolean |  | [optional] |
 
-#### AlarmConditionKeyType (enum)
-`ATTRIBUTE` | `TIME_SERIES` | `ENTITY_FIELD` | `CONSTANT`
-
-#### StringOperation (enum)
+#### AlarmRuleStringOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `STARTS_WITH` | `ENDS_WITH` | `CONTAINS` | `NOT_CONTAINS` | `IN` | `NOT_IN`
 
-#### FilterPredicateValueString
+#### AlarmConditionValueString
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| defaultValue | String |  | [optional] |
-| userValue | String |  | [optional] |
-| dynamicValue | DynamicValueString |  | [optional] |
+| staticValue | String |  | [optional] |
+| dynamicValueArgument | String |  | [optional] |
 
-#### NumericOperation (enum)
+#### AlarmRuleNumericOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `GREATER` | `LESS` | `GREATER_OR_EQUAL` | `LESS_OR_EQUAL`
 
-#### FilterPredicateValueDouble
+#### AlarmConditionValueDouble
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| defaultValue | Double |  | [optional] |
-| userValue | Double |  | [optional] |
-| dynamicValue | DynamicValueDouble |  | [optional] |
+| staticValue | Double |  | [optional] |
+| dynamicValueArgument | String |  | [optional] |
 
-#### BooleanOperation (enum)
+#### AlarmRuleBooleanOperation (enum)
 `EQUAL` | `NOT_EQUAL`
 
-#### FilterPredicateValueBoolean
+#### AlarmConditionValueBoolean
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| defaultValue | Boolean |  | [optional] |
-| userValue | Boolean |  | [optional] |
-| dynamicValue | DynamicValueBoolean |  | [optional] |
+| staticValue | Boolean |  | [optional] |
+| dynamicValueArgument | String |  | [optional] |
 
-#### ComplexOperation (enum)
-`AND` | `OR`
+#### TimeUnit (enum)
+`NANOSECONDS` | `MICROSECONDS` | `MILLISECONDS` | `SECONDS` | `MINUTES` | `HOURS` | `DAYS`
 
-#### DynamicValueString
+#### AlarmConditionValueLong
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| resolvedValue | String |  | [optional] |
-| sourceType | DynamicValueSourceType |  | [optional] |
-| sourceAttribute | String |  | [optional] |
-| inherit | Boolean |  | [optional] |
-
-#### DynamicValueDouble
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| resolvedValue | Double |  | [optional] |
-| sourceType | DynamicValueSourceType |  | [optional] |
-| sourceAttribute | String |  | [optional] |
-| inherit | Boolean |  | [optional] |
-
-#### DynamicValueBoolean
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| resolvedValue | Boolean |  | [optional] |
-| sourceType | DynamicValueSourceType |  | [optional] |
-| sourceAttribute | String |  | [optional] |
-| inherit | Boolean |  | [optional] |
-
-#### DynamicValueSourceType (enum)
-`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
+| staticValue | Long |  | [optional] |
+| dynamicValueArgument | String |  | [optional] |
 
 ---
 

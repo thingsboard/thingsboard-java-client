@@ -24,7 +24,7 @@ A JSON value representing the rule chains.
 | id | RuleChainId | JSON object with the Rule Chain Id. Specify this field to update the Rule Chain. Referencing non-existing Rule Chain Id will cause error. Omit this field to create new rule chain. | [optional] |
 | createdTime | Long | Timestamp of the rule chain creation, in milliseconds | [optional] [readonly] |
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
-| tenantId | TenantId | JSON object with Tenant Id. | [readonly] |
+| tenantId | TenantId | JSON object with Tenant Id. | [optional] [readonly] |
 | name | String | Rule Chain name |  |
 | type | RuleChainType | Rule Chain type. 'EDGE' rule chains are processing messages on the edge devices only. | [optional] |
 | firstRuleNodeId | RuleNodeId | JSON object with Rule Chain Id. Pointer to the first rule node that should receive all messages pushed to this rule chain. | [optional] |

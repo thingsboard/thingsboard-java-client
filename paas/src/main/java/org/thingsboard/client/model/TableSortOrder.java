@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
-import org.thingsboard.client.model.Direction;
+import org.thingsboard.client.model.TableSortDirection;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -49,7 +49,7 @@ public class TableSortOrder {
 
   public static final String JSON_PROPERTY_DIRECTION = "direction";
   @Nullable
-  private Direction direction;
+  private TableSortDirection direction;
 
   public TableSortOrder() { 
   }
@@ -78,7 +78,7 @@ public class TableSortOrder {
   }
 
 
-  public TableSortOrder direction(@Nullable Direction direction) {
+  public TableSortOrder direction(@Nullable TableSortDirection direction) {
     this.direction = direction;
     return this;
   }
@@ -90,14 +90,14 @@ public class TableSortOrder {
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Direction getDirection() {
+  public TableSortDirection getDirection() {
     return direction;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_DIRECTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDirection(@Nullable Direction direction) {
+  public void setDirection(@Nullable TableSortDirection direction) {
     this.direction = direction;
   }
 

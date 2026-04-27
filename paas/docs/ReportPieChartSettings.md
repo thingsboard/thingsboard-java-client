@@ -3,12 +3,27 @@
 
 `org.thingsboard.client.model.ReportPieChartSettings`
 
-**Extends:** **ReportLatestChartSettings**
-
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **showTitle** | **Boolean** |  | [optional] |
+| **title** | **String** |  | [optional] |
+| **titleFont** | **Font** |  | [optional] |
+| **titleColor** | **String** |  | [optional] |
+| **titleAlignment** | **TextAlignment** |  | [optional] |
+| **units** | **String** |  | [optional] |
+| **decimals** | **Integer** |  | [optional] |
+| **autoScale** | **Boolean** |  | [optional] |
+| **sortSeries** | **Boolean** |  | [optional] |
+| **showTotal** | **Boolean** |  | [optional] |
+| **showLegend** | **Boolean** |  | [optional] |
+| **legendPosition** | **LegendPosition** |  | [optional] |
+| **legendLabelFont** | **Font** |  | [optional] |
+| **legendLabelColor** | **String** |  | [optional] |
+| **legendValueFont** | **Font** |  | [optional] |
+| **legendValueColor** | **String** |  | [optional] |
+| **legendShowTotal** | **Boolean** |  | [optional] |
 | **showLabel** | **Boolean** |  | [optional] |
 | **labelPosition** | **PieChartLabelPosition** |  | [optional] |
 | **labelFont** | **Font** |  | [optional] |
@@ -21,30 +36,6 @@
 
 
 ## Referenced Types
-
-#### ReportLatestChartSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showTitle | Boolean |  | [optional] |
-| title | String |  | [optional] |
-| titleFont | Font |  | [optional] |
-| titleColor | String |  | [optional] |
-| titleAlignment | TextAlignment |  | [optional] |
-| units | String |  | [optional] |
-| decimals | Integer |  | [optional] |
-| autoScale | Boolean |  | [optional] |
-| sortSeries | Boolean |  | [optional] |
-| showTotal | Boolean |  | [optional] |
-| showLegend | Boolean |  | [optional] |
-| legendPosition | LegendPosition |  | [optional] |
-| legendLabelFont | Font |  | [optional] |
-| legendLabelColor | String |  | [optional] |
-| legendValueFont | Font |  | [optional] |
-| legendValueColor | String |  | [optional] |
-| legendShowTotal | Boolean |  | [optional] |
-
-#### PieChartLabelPosition (enum)
-`INSIDE` | `OUTSIDE`
 
 #### Font
 | Name | Type | Description | Notes |
@@ -59,6 +50,9 @@
 
 #### LegendPosition (enum)
 `TOP` | `BOTTOM` | `LEFT` | `RIGHT`
+
+#### PieChartLabelPosition (enum)
+`INSIDE` | `OUTSIDE`
 
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`

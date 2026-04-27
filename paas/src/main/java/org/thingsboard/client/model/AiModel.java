@@ -59,11 +59,11 @@ public class AiModel {
   private Long createdTime;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @Nonnull
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
-  @Nonnull
+  @Nullable
   private Long version = 1l;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -131,9 +131,9 @@ public class AiModel {
    * JSON object representing the ID of the tenant associated with this AI model
    * @return tenantId
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
     return tenantId;
   }
@@ -145,9 +145,9 @@ public class AiModel {
    * Version of the AI model record; increments automatically whenever the record is changed
    * @return version
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_VERSION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Long getVersion() {
     return version;
   }

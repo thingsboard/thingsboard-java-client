@@ -5,7 +5,7 @@
 ```
 CustomMenu createCustomMenu(@Nonnull CustomMenuInfo customMenuInfo, @Nullable List<String> assignToList, @Nullable Boolean force) // Create Custom Menu (createCustomMenu)
 CustomMenuDeleteResult deleteCustomMenu(@Nonnull UUID customMenuId, @Nullable Boolean force) // Delete custom menu (deleteCustomMenu)
-void getCustomMenu(@Nullable String ifNoneMatch) // Get end-user Custom Menu configuration (getCustomMenu)
+CustomMenuConfig getCustomMenu(@Nullable String ifNoneMatch) // Get end-user Custom Menu configuration (getCustomMenu)
 List<EntityInfo> getCustomMenuAssigneeList(@Nonnull UUID customMenuId) // Get Custom Menu assignee list (getCustomMenuAssigneeList)
 CustomMenuConfig getCustomMenuConfig(@Nonnull UUID customMenuId) // Get Custom Menu configuration by id (getCustomMenuConfig)
 CustomMenuInfo getCustomMenuInfoById(@Nonnull UUID customMenuId) // Get Custom Menu Info (getCustomMenuInfoById)
@@ -70,7 +70,7 @@ Deletes the custom menu based on the provided Custom Menu Id. Referencing non-ex
 ## getCustomMenu
 
 ```
-void getCustomMenu(@Nullable String ifNoneMatch)
+CustomMenuConfig getCustomMenu(@Nullable String ifNoneMatch)
 ```
 
 **GET** `/api/customMenu`
@@ -88,7 +88,7 @@ Fetch the Custom Menu configuration object for the authorized user. The custom m
 
 ### Return type
 
-null (empty response body)
+**CustomMenuConfig**
 
 
 ## getCustomMenuAssigneeList

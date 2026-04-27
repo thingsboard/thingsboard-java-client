@@ -35,9 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.thingsboard.client.model.AlarmSchedule;
-import org.thingsboard.client.model.AlarmScheduleType;
 import org.thingsboard.client.model.CustomTimeScheduleItem;
-import org.thingsboard.client.model.DynamicValueString;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -125,12 +123,6 @@ public class CustomTimeSchedule extends AlarmSchedule {
   }
 
 
-  @Override
-  public CustomTimeSchedule dynamicValue(@Nullable DynamicValueString dynamicValue) {
-    this.setDynamicValue(dynamicValue);
-    return this;
-  }
-
   /**
    * Return true if this CustomTimeSchedule object is equal to o.
    */
@@ -206,11 +198,6 @@ public class CustomTimeSchedule extends AlarmSchedule {
     }
 
     StringJoiner joiner = new StringJoiner("&");
-
-    // add `dynamicValue` to the URL query string
-    if (getDynamicValue() != null) {
-      joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
-    }
 
     // add `type` to the URL query string
     if (getType() != null) {
