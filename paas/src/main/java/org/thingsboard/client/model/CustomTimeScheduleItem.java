@@ -37,55 +37,31 @@ import org.thingsboard.client.ApiClient;
  * CustomTimeScheduleItem
  */
 @JsonPropertyOrder({
-  CustomTimeScheduleItem.JSON_PROPERTY_DAY_OF_WEEK,
   CustomTimeScheduleItem.JSON_PROPERTY_ENABLED,
-  CustomTimeScheduleItem.JSON_PROPERTY_ENDS_ON,
-  CustomTimeScheduleItem.JSON_PROPERTY_STARTS_ON
+  CustomTimeScheduleItem.JSON_PROPERTY_DAY_OF_WEEK,
+  CustomTimeScheduleItem.JSON_PROPERTY_STARTS_ON,
+  CustomTimeScheduleItem.JSON_PROPERTY_ENDS_ON
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CustomTimeScheduleItem {
-  public static final String JSON_PROPERTY_DAY_OF_WEEK = "dayOfWeek";
-  @Nullable
-  private Integer dayOfWeek;
-
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   @Nullable
   private Boolean enabled;
 
-  public static final String JSON_PROPERTY_ENDS_ON = "endsOn";
+  public static final String JSON_PROPERTY_DAY_OF_WEEK = "dayOfWeek";
   @Nullable
-  private Long endsOn;
+  private Integer dayOfWeek;
 
   public static final String JSON_PROPERTY_STARTS_ON = "startsOn";
   @Nullable
   private Long startsOn;
 
+  public static final String JSON_PROPERTY_ENDS_ON = "endsOn";
+  @Nullable
+  private Long endsOn;
+
   public CustomTimeScheduleItem() { 
   }
-
-  public CustomTimeScheduleItem dayOfWeek(@Nullable Integer dayOfWeek) {
-    this.dayOfWeek = dayOfWeek;
-    return this;
-  }
-
-  /**
-   * Get dayOfWeek
-   * @return dayOfWeek
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getDayOfWeek() {
-    return dayOfWeek;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDayOfWeek(@Nullable Integer dayOfWeek) {
-    this.dayOfWeek = dayOfWeek;
-  }
-
 
   public CustomTimeScheduleItem enabled(@Nullable Boolean enabled) {
     this.enabled = enabled;
@@ -111,27 +87,27 @@ public class CustomTimeScheduleItem {
   }
 
 
-  public CustomTimeScheduleItem endsOn(@Nullable Long endsOn) {
-    this.endsOn = endsOn;
+  public CustomTimeScheduleItem dayOfWeek(@Nullable Integer dayOfWeek) {
+    this.dayOfWeek = dayOfWeek;
     return this;
   }
 
   /**
-   * Get endsOn
-   * @return endsOn
+   * Get dayOfWeek
+   * @return dayOfWeek
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
+  @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getEndsOn() {
-    return endsOn;
+  public Integer getDayOfWeek() {
+    return dayOfWeek;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
+  @JsonProperty(value = JSON_PROPERTY_DAY_OF_WEEK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndsOn(@Nullable Long endsOn) {
-    this.endsOn = endsOn;
+  public void setDayOfWeek(@Nullable Integer dayOfWeek) {
+    this.dayOfWeek = dayOfWeek;
   }
 
 
@@ -159,6 +135,30 @@ public class CustomTimeScheduleItem {
   }
 
 
+  public CustomTimeScheduleItem endsOn(@Nullable Long endsOn) {
+    this.endsOn = endsOn;
+    return this;
+  }
+
+  /**
+   * Get endsOn
+   * @return endsOn
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getEndsOn() {
+    return endsOn;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndsOn(@Nullable Long endsOn) {
+    this.endsOn = endsOn;
+  }
+
+
   /**
    * Return true if this CustomTimeScheduleItem object is equal to o.
    */
@@ -171,25 +171,25 @@ public class CustomTimeScheduleItem {
       return false;
     }
     CustomTimeScheduleItem customTimeScheduleItem = (CustomTimeScheduleItem) o;
-    return Objects.equals(this.dayOfWeek, customTimeScheduleItem.dayOfWeek) &&
-        Objects.equals(this.enabled, customTimeScheduleItem.enabled) &&
-        Objects.equals(this.endsOn, customTimeScheduleItem.endsOn) &&
-        Objects.equals(this.startsOn, customTimeScheduleItem.startsOn);
+    return Objects.equals(this.enabled, customTimeScheduleItem.enabled) &&
+        Objects.equals(this.dayOfWeek, customTimeScheduleItem.dayOfWeek) &&
+        Objects.equals(this.startsOn, customTimeScheduleItem.startsOn) &&
+        Objects.equals(this.endsOn, customTimeScheduleItem.endsOn);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dayOfWeek, enabled, endsOn, startsOn);
+    return Objects.hash(enabled, dayOfWeek, startsOn, endsOn);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomTimeScheduleItem {\n");
-    sb.append("    dayOfWeek: ").append(toIndentedString(dayOfWeek)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
-    sb.append("    endsOn: ").append(toIndentedString(endsOn)).append("\n");
+    sb.append("    dayOfWeek: ").append(toIndentedString(dayOfWeek)).append("\n");
     sb.append("    startsOn: ").append(toIndentedString(startsOn)).append("\n");
+    sb.append("    endsOn: ").append(toIndentedString(endsOn)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -237,24 +237,24 @@ public class CustomTimeScheduleItem {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `dayOfWeek` to the URL query string
-    if (getDayOfWeek() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdayOfWeek%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDayOfWeek()))));
-    }
-
     // add `enabled` to the URL query string
     if (getEnabled() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEnabled()))));
     }
 
-    // add `endsOn` to the URL query string
-    if (getEndsOn() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sendsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEndsOn()))));
+    // add `dayOfWeek` to the URL query string
+    if (getDayOfWeek() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sdayOfWeek%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDayOfWeek()))));
     }
 
     // add `startsOn` to the URL query string
     if (getStartsOn() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstartsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStartsOn()))));
+    }
+
+    // add `endsOn` to the URL query string
+    if (getEndsOn() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sendsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEndsOn()))));
     }
 
     return joiner.toString();

@@ -9,7 +9,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **modelType** | **AiModelType** |  | [optional] [readonly] |
 | **providerConfig** | **OllamaProviderConfig** |  | |
 | **modelId** | **String** |  | |
 | **temperature** | **Double** |  | [optional] |
@@ -19,6 +18,7 @@
 | **maxOutputTokens** | **Integer** |  | [optional] |
 | **timeoutSeconds** | **Integer** |  | [optional] |
 | **maxRetries** | **Integer** |  | [optional] |
+| **modelType** | **AiModelType** |  | [optional] [readonly] |
 
 
 
@@ -29,14 +29,14 @@
 |------|------|-------------|-------|
 | provider | String |  |  |
 
-#### AiModelType (enum)
-`CHAT`
-
 #### OllamaProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | baseUrl | String |  |  |
 | auth | OllamaAuth |  |  |
+
+#### AiModelType (enum)
+`CHAT`
 
 #### OllamaAuth
 | Name | Type | Description | Notes |

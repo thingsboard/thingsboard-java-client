@@ -16,6 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -28,14 +29,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.jackson.nullable.JsonNullable;
-import org.thingsboard.client.model.AlarmConditionFilterKey;
+import java.util.List;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
+import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
 import org.thingsboard.client.model.EntityKeyValueType;
-import org.thingsboard.client.model.KeyFilterPredicate;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -44,132 +43,133 @@ import org.thingsboard.client.ApiClient;
  * AlarmConditionFilter
  */
 @JsonPropertyOrder({
+  AlarmConditionFilter.JSON_PROPERTY_ARGUMENT,
   AlarmConditionFilter.JSON_PROPERTY_VALUE_TYPE,
-  AlarmConditionFilter.JSON_PROPERTY_KEY,
-  AlarmConditionFilter.JSON_PROPERTY_PREDICATE,
-  AlarmConditionFilter.JSON_PROPERTY_VALUE
+  AlarmConditionFilter.JSON_PROPERTY_OPERATION,
+  AlarmConditionFilter.JSON_PROPERTY_PREDICATES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmConditionFilter {
+  public static final String JSON_PROPERTY_ARGUMENT = "argument";
+  @Nonnull
+  private String argument;
+
   public static final String JSON_PROPERTY_VALUE_TYPE = "valueType";
-  @Nullable
+  @Nonnull
   private EntityKeyValueType valueType;
 
-  public static final String JSON_PROPERTY_KEY = "key";
+  public static final String JSON_PROPERTY_OPERATION = "operation";
   @Nullable
-  private AlarmConditionFilterKey key;
+  private AlarmRuleComplexOperation operation;
 
-  public static final String JSON_PROPERTY_PREDICATE = "predicate";
-  @Nullable
-  private KeyFilterPredicate predicate;
-
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private JsonNullable<Object> value = JsonNullable.<Object>of(null);
+  public static final String JSON_PROPERTY_PREDICATES = "predicates";
+  @Nonnull
+  private List<AlarmRuleKeyFilterPredicate> predicates = new ArrayList<>();
 
   public AlarmConditionFilter() { 
   }
 
-  public AlarmConditionFilter valueType(@Nullable EntityKeyValueType valueType) {
+  public AlarmConditionFilter argument(@Nonnull String argument) {
+    this.argument = argument;
+    return this;
+  }
+
+  /**
+   * Get argument
+   * @return argument
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ARGUMENT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getArgument() {
+    return argument;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ARGUMENT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setArgument(@Nonnull String argument) {
+    this.argument = argument;
+  }
+
+
+  public AlarmConditionFilter valueType(@Nonnull EntityKeyValueType valueType) {
     this.valueType = valueType;
     return this;
   }
 
   /**
-   * String representation of the type of the value
+   * Get valueType
    * @return valueType
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public EntityKeyValueType getValueType() {
     return valueType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValueType(@Nullable EntityKeyValueType valueType) {
+  @JsonProperty(value = JSON_PROPERTY_VALUE_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setValueType(@Nonnull EntityKeyValueType valueType) {
     this.valueType = valueType;
   }
 
 
-  public AlarmConditionFilter key(@Nullable AlarmConditionFilterKey key) {
-    this.key = key;
+  public AlarmConditionFilter operation(@Nullable AlarmRuleComplexOperation operation) {
+    this.operation = operation;
     return this;
   }
 
   /**
-   * JSON object for specifying alarm condition by specific key
-   * @return key
+   * Get operation
+   * @return operation
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
+  @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmConditionFilterKey getKey() {
-    return key;
+  public AlarmRuleComplexOperation getOperation() {
+    return operation;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_KEY, required = false)
+  @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKey(@Nullable AlarmConditionFilterKey key) {
-    this.key = key;
+  public void setOperation(@Nullable AlarmRuleComplexOperation operation) {
+    this.operation = operation;
   }
 
 
-  public AlarmConditionFilter predicate(@Nullable KeyFilterPredicate predicate) {
-    this.predicate = predicate;
+  public AlarmConditionFilter predicates(@Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
+    this.predicates = predicates;
+    return this;
+  }
+
+  public AlarmConditionFilter addPredicatesItem(AlarmRuleKeyFilterPredicate predicatesItem) {
+    if (this.predicates == null) {
+      this.predicates = new ArrayList<>();
+    }
+    this.predicates.add(predicatesItem);
     return this;
   }
 
   /**
-   * JSON object representing filter condition
-   * @return predicate
+   * Get predicates
+   * @return predicates
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_PREDICATE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public KeyFilterPredicate getPredicate() {
-    return predicate;
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PREDICATES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public List<AlarmRuleKeyFilterPredicate> getPredicates() {
+    return predicates;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PREDICATE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPredicate(@Nullable KeyFilterPredicate predicate) {
-    this.predicate = predicate;
-  }
-
-
-  public AlarmConditionFilter value(@Nullable Object value) {
-    this.value = JsonNullable.<Object>of(value);
-    return this;
-  }
-
-  /**
-   * Get value
-   * @return value
-   */
-  @Nullable
-  @JsonIgnore
-  public Object getValue() {
-        return value.orElse(null);
-  }
-
-  @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Object> getValue_JsonNullable() {
-    return value;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_VALUE)
-  public void setValue_JsonNullable(JsonNullable<Object> value) {
-    this.value = value;
-  }
-
-  public void setValue(@Nullable Object value) {
-    this.value = JsonNullable.<Object>of(value);
+  @JsonProperty(value = JSON_PROPERTY_PREDICATES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPredicates(@Nonnull List<AlarmRuleKeyFilterPredicate> predicates) {
+    this.predicates = predicates;
   }
 
 
@@ -185,36 +185,25 @@ public class AlarmConditionFilter {
       return false;
     }
     AlarmConditionFilter alarmConditionFilter = (AlarmConditionFilter) o;
-    return Objects.equals(this.valueType, alarmConditionFilter.valueType) &&
-        Objects.equals(this.key, alarmConditionFilter.key) &&
-        Objects.equals(this.predicate, alarmConditionFilter.predicate) &&
-        equalsNullable(this.value, alarmConditionFilter.value);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+    return Objects.equals(this.argument, alarmConditionFilter.argument) &&
+        Objects.equals(this.valueType, alarmConditionFilter.valueType) &&
+        Objects.equals(this.operation, alarmConditionFilter.operation) &&
+        Objects.equals(this.predicates, alarmConditionFilter.predicates);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(valueType, key, predicate, hashCodeNullable(value));
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(argument, valueType, operation, predicates);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmConditionFilter {\n");
+    sb.append("    argument: ").append(toIndentedString(argument)).append("\n");
     sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
-    sb.append("    key: ").append(toIndentedString(key)).append("\n");
-    sb.append("    predicate: ").append(toIndentedString(predicate)).append("\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    predicates: ").append(toIndentedString(predicates)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -262,24 +251,29 @@ public class AlarmConditionFilter {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `argument` to the URL query string
+    if (getArgument() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sargument%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getArgument()))));
+    }
+
     // add `valueType` to the URL query string
     if (getValueType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%svalueType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getValueType()))));
     }
 
-    // add `key` to the URL query string
-    if (getKey() != null) {
-      joiner.add(getKey().toUrlQueryString(prefix + "key" + suffix));
+    // add `operation` to the URL query string
+    if (getOperation() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%soperation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOperation()))));
     }
 
-    // add `predicate` to the URL query string
-    if (getPredicate() != null) {
-      joiner.add(getPredicate().toUrlQueryString(prefix + "predicate" + suffix));
-    }
-
-    // add `value` to the URL query string
-    if (getValue() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%svalue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getValue()))));
+    // add `predicates` to the URL query string
+    if (getPredicates() != null) {
+      for (int i = 0; i < getPredicates().size(); i++) {
+        if (getPredicates().get(i) != null) {
+          joiner.add(getPredicates().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%spredicates%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     return joiner.toString();

@@ -9,7 +9,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **modelType** | **AiModelType** |  | [optional] [readonly] |
 | **providerConfig** | **AmazonBedrockProviderConfig** |  | |
 | **modelId** | **String** |  | |
 | **temperature** | **Double** |  | [optional] |
@@ -17,6 +16,7 @@
 | **maxOutputTokens** | **Integer** |  | [optional] |
 | **timeoutSeconds** | **Integer** |  | [optional] |
 | **maxRetries** | **Integer** |  | [optional] |
+| **modelType** | **AiModelType** |  | [optional] [readonly] |
 
 
 
@@ -27,15 +27,15 @@
 |------|------|-------------|-------|
 | provider | String |  |  |
 
-#### AiModelType (enum)
-`CHAT`
-
 #### AmazonBedrockProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | region | String |  |  |
 | accessKeyId | String |  |  |
 | secretAccessKey | String |  |  |
+
+#### AiModelType (enum)
+`CHAT`
 
 ---
 

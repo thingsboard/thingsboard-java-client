@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import org.thingsboard.client.ApiClient;
 /**
- * A JSON value representing the custom menu configuration
+ * CustomMenuConfig
  */
 @JsonPropertyOrder({
   CustomMenuConfig.JSON_PROPERTY_ITEMS

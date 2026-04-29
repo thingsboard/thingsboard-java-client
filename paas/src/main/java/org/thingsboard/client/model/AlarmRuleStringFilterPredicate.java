@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AlarmConditionValueString;
 import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
-import org.thingsboard.client.model.StringOperation;
+import org.thingsboard.client.model.AlarmRuleStringOperation;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -45,9 +45,9 @@ import org.thingsboard.client.ApiClient;
  * AlarmRuleStringFilterPredicate
  */
 @JsonPropertyOrder({
-  AlarmRuleStringFilterPredicate.JSON_PROPERTY_IGNORE_CASE,
   AlarmRuleStringFilterPredicate.JSON_PROPERTY_OPERATION,
-  AlarmRuleStringFilterPredicate.JSON_PROPERTY_VALUE
+  AlarmRuleStringFilterPredicate.JSON_PROPERTY_VALUE,
+  AlarmRuleStringFilterPredicate.JSON_PROPERTY_IGNORE_CASE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -57,46 +57,22 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class AlarmRuleStringFilterPredicate extends AlarmRuleKeyFilterPredicate {
-  public static final String JSON_PROPERTY_IGNORE_CASE = "ignoreCase";
-  @Nullable
-  private Boolean ignoreCase;
-
   public static final String JSON_PROPERTY_OPERATION = "operation";
   @Nonnull
-  private StringOperation operation;
+  private AlarmRuleStringOperation operation;
 
   public static final String JSON_PROPERTY_VALUE = "value";
   @Nonnull
   private AlarmConditionValueString value;
 
+  public static final String JSON_PROPERTY_IGNORE_CASE = "ignoreCase";
+  @Nullable
+  private Boolean ignoreCase;
+
   public AlarmRuleStringFilterPredicate() { 
   }
 
-  public AlarmRuleStringFilterPredicate ignoreCase(@Nullable Boolean ignoreCase) {
-    this.ignoreCase = ignoreCase;
-    return this;
-  }
-
-  /**
-   * Get ignoreCase
-   * @return ignoreCase
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_IGNORE_CASE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getIgnoreCase() {
-    return ignoreCase;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_IGNORE_CASE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIgnoreCase(@Nullable Boolean ignoreCase) {
-    this.ignoreCase = ignoreCase;
-  }
-
-
-  public AlarmRuleStringFilterPredicate operation(@Nonnull StringOperation operation) {
+  public AlarmRuleStringFilterPredicate operation(@Nonnull AlarmRuleStringOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -108,14 +84,14 @@ public class AlarmRuleStringFilterPredicate extends AlarmRuleKeyFilterPredicate 
   @Nonnull
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public StringOperation getOperation() {
+  public AlarmRuleStringOperation getOperation() {
     return operation;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOperation(@Nonnull StringOperation operation) {
+  public void setOperation(@Nonnull AlarmRuleStringOperation operation) {
     this.operation = operation;
   }
 
@@ -144,6 +120,30 @@ public class AlarmRuleStringFilterPredicate extends AlarmRuleKeyFilterPredicate 
   }
 
 
+  public AlarmRuleStringFilterPredicate ignoreCase(@Nullable Boolean ignoreCase) {
+    this.ignoreCase = ignoreCase;
+    return this;
+  }
+
+  /**
+   * Get ignoreCase
+   * @return ignoreCase
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_IGNORE_CASE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getIgnoreCase() {
+    return ignoreCase;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_IGNORE_CASE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIgnoreCase(@Nullable Boolean ignoreCase) {
+    this.ignoreCase = ignoreCase;
+  }
+
+
   /**
    * Return true if this AlarmRuleStringFilterPredicate object is equal to o.
    */
@@ -156,15 +156,15 @@ public class AlarmRuleStringFilterPredicate extends AlarmRuleKeyFilterPredicate 
       return false;
     }
     AlarmRuleStringFilterPredicate alarmRuleStringFilterPredicate = (AlarmRuleStringFilterPredicate) o;
-    return Objects.equals(this.ignoreCase, alarmRuleStringFilterPredicate.ignoreCase) &&
-        Objects.equals(this.operation, alarmRuleStringFilterPredicate.operation) &&
+    return Objects.equals(this.operation, alarmRuleStringFilterPredicate.operation) &&
         Objects.equals(this.value, alarmRuleStringFilterPredicate.value) &&
+        Objects.equals(this.ignoreCase, alarmRuleStringFilterPredicate.ignoreCase) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ignoreCase, operation, value, super.hashCode());
+    return Objects.hash(operation, value, ignoreCase, super.hashCode());
   }
 
   @Override
@@ -172,9 +172,9 @@ public class AlarmRuleStringFilterPredicate extends AlarmRuleKeyFilterPredicate 
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmRuleStringFilterPredicate {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    ignoreCase: ").append(toIndentedString(ignoreCase)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    ignoreCase: ").append(toIndentedString(ignoreCase)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -227,11 +227,6 @@ public class AlarmRuleStringFilterPredicate extends AlarmRuleKeyFilterPredicate 
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `ignoreCase` to the URL query string
-    if (getIgnoreCase() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%signoreCase%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIgnoreCase()))));
-    }
-
     // add `operation` to the URL query string
     if (getOperation() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%soperation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOperation()))));
@@ -240,6 +235,11 @@ public class AlarmRuleStringFilterPredicate extends AlarmRuleKeyFilterPredicate 
     // add `value` to the URL query string
     if (getValue() != null) {
       joiner.add(getValue().toUrlQueryString(prefix + "value" + suffix));
+    }
+
+    // add `ignoreCase` to the URL query string
+    if (getIgnoreCase() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%signoreCase%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getIgnoreCase()))));
     }
 
     return joiner.toString();

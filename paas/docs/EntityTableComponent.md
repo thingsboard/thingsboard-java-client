@@ -65,7 +65,7 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | column | String |  | [optional] |
-| direction | Direction |  | [optional] |
+| direction | TableSortDirection |  | [optional] |
 
 #### ReportComponentSubType (enum)
 `DOUGHNUT_CHART` | `HORIZONTAL_DOUGHNUT_CHART` | `POINT_CHART` | `BAR_CHART` | `PIE_CHART` | `LINE_CHART` | `LATEST_BAR_CHART` | `RANGE_CHART` | `BAR_CHART_WITH_LABELS` | `STATE_CHART` | … (11 values total)
@@ -114,7 +114,7 @@
 #### VerticalAlignment (enum)
 `BOTTOM` | `TOP` | `MIDDLE`
 
-#### Direction (enum)
+#### TableSortDirection (enum)
 `ASC` | `DESC`
 
 #### Aggregation (enum)

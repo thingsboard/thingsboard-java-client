@@ -9,7 +9,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **modelType** | **AiModelType** |  | [optional] [readonly] |
 | **providerConfig** | **MistralAiProviderConfig** |  | |
 | **modelId** | **String** |  | |
 | **temperature** | **Double** |  | [optional] |
@@ -19,6 +18,7 @@
 | **maxOutputTokens** | **Integer** |  | [optional] |
 | **timeoutSeconds** | **Integer** |  | [optional] |
 | **maxRetries** | **Integer** |  | [optional] |
+| **modelType** | **AiModelType** |  | [optional] [readonly] |
 
 
 
@@ -29,13 +29,13 @@
 |------|------|-------------|-------|
 | provider | String |  |  |
 
-#### AiModelType (enum)
-`CHAT`
-
 #### MistralAiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | apiKey | String |  |  |
+
+#### AiModelType (enum)
+`CHAT`
 
 ---
 

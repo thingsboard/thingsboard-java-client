@@ -16,6 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -30,7 +31,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AlarmCondition;
-import org.thingsboard.client.model.AlarmSchedule;
 import org.thingsboard.client.model.DashboardId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -42,13 +42,12 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   AlarmRule.JSON_PROPERTY_CONDITION,
   AlarmRule.JSON_PROPERTY_ALARM_DETAILS,
-  AlarmRule.JSON_PROPERTY_DASHBOARD_ID,
-  AlarmRule.JSON_PROPERTY_SCHEDULE
+  AlarmRule.JSON_PROPERTY_DASHBOARD_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AlarmRule {
   public static final String JSON_PROPERTY_CONDITION = "condition";
-  @Nullable
+  @Nonnull
   private AlarmCondition condition;
 
   public static final String JSON_PROPERTY_ALARM_DETAILS = "alarmDetails";
@@ -59,33 +58,29 @@ public class AlarmRule {
   @Nullable
   private DashboardId dashboardId;
 
-  public static final String JSON_PROPERTY_SCHEDULE = "schedule";
-  @Nullable
-  private AlarmSchedule schedule;
-
   public AlarmRule() { 
   }
 
-  public AlarmRule condition(@Nullable AlarmCondition condition) {
+  public AlarmRule condition(@Nonnull AlarmCondition condition) {
     this.condition = condition;
     return this;
   }
 
   /**
-   * JSON object representing the alarm rule condition
+   * Get condition
    * @return condition
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public AlarmCondition getCondition() {
     return condition;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCondition(@Nullable AlarmCondition condition) {
+  @JsonProperty(value = JSON_PROPERTY_CONDITION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCondition(@Nonnull AlarmCondition condition) {
     this.condition = condition;
   }
 
@@ -96,7 +91,7 @@ public class AlarmRule {
   }
 
   /**
-   * String value representing the additional details for an alarm rule
+   * Get alarmDetails
    * @return alarmDetails
    */
   @Nullable
@@ -120,7 +115,7 @@ public class AlarmRule {
   }
 
   /**
-   * JSON object with the dashboard Id representing the reference to alarm details dashboard used by mobile application
+   * Get dashboardId
    * @return dashboardId
    */
   @Nullable
@@ -138,30 +133,6 @@ public class AlarmRule {
   }
 
 
-  public AlarmRule schedule(@Nullable AlarmSchedule schedule) {
-    this.schedule = schedule;
-    return this;
-  }
-
-  /**
-   * JSON object representing time interval during which the rule is active
-   * @return schedule
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AlarmSchedule getSchedule() {
-    return schedule;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SCHEDULE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSchedule(@Nullable AlarmSchedule schedule) {
-    this.schedule = schedule;
-  }
-
-
   /**
    * Return true if this AlarmRule object is equal to o.
    */
@@ -176,13 +147,12 @@ public class AlarmRule {
     AlarmRule alarmRule = (AlarmRule) o;
     return Objects.equals(this.condition, alarmRule.condition) &&
         Objects.equals(this.alarmDetails, alarmRule.alarmDetails) &&
-        Objects.equals(this.dashboardId, alarmRule.dashboardId) &&
-        Objects.equals(this.schedule, alarmRule.schedule);
+        Objects.equals(this.dashboardId, alarmRule.dashboardId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(condition, alarmDetails, dashboardId, schedule);
+    return Objects.hash(condition, alarmDetails, dashboardId);
   }
 
   @Override
@@ -192,7 +162,6 @@ public class AlarmRule {
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
     sb.append("    alarmDetails: ").append(toIndentedString(alarmDetails)).append("\n");
     sb.append("    dashboardId: ").append(toIndentedString(dashboardId)).append("\n");
-    sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -253,11 +222,6 @@ public class AlarmRule {
     // add `dashboardId` to the URL query string
     if (getDashboardId() != null) {
       joiner.add(getDashboardId().toUrlQueryString(prefix + "dashboardId" + suffix));
-    }
-
-    // add `schedule` to the URL query string
-    if (getSchedule() != null) {
-      joiner.add(getSchedule().toUrlQueryString(prefix + "schedule" + suffix));
     }
 
     return joiner.toString();

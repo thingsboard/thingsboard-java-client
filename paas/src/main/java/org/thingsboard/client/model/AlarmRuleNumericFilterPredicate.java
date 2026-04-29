@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AlarmConditionValueDouble;
 import org.thingsboard.client.model.AlarmRuleKeyFilterPredicate;
-import org.thingsboard.client.model.NumericOperation;
+import org.thingsboard.client.model.AlarmRuleNumericOperation;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -57,7 +57,7 @@ import org.thingsboard.client.ApiClient;
 public class AlarmRuleNumericFilterPredicate extends AlarmRuleKeyFilterPredicate {
   public static final String JSON_PROPERTY_OPERATION = "operation";
   @Nonnull
-  private NumericOperation operation;
+  private AlarmRuleNumericOperation operation;
 
   public static final String JSON_PROPERTY_VALUE = "value";
   @Nonnull
@@ -66,7 +66,7 @@ public class AlarmRuleNumericFilterPredicate extends AlarmRuleKeyFilterPredicate
   public AlarmRuleNumericFilterPredicate() { 
   }
 
-  public AlarmRuleNumericFilterPredicate operation(@Nonnull NumericOperation operation) {
+  public AlarmRuleNumericFilterPredicate operation(@Nonnull AlarmRuleNumericOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -78,14 +78,14 @@ public class AlarmRuleNumericFilterPredicate extends AlarmRuleKeyFilterPredicate
   @Nonnull
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public NumericOperation getOperation() {
+  public AlarmRuleNumericOperation getOperation() {
     return operation;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOperation(@Nonnull NumericOperation operation) {
+  public void setOperation(@Nonnull AlarmRuleNumericOperation operation) {
     this.operation = operation;
   }
 

@@ -3,8 +3,6 @@
 
 `org.thingsboard.client.model.CustomMenuConfig`
 
-A JSON value representing the custom menu configuration
-
 ## Properties
 
 | Name | Type | Description | Notes |

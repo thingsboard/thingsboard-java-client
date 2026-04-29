@@ -3,12 +3,37 @@
 
 `org.thingsboard.client.model.ReportBarChartWithLabelsSettings`
 
-**Extends:** **ReportTimeSeriesChartSettings**
-
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **showTitle** | **Boolean** |  | [optional] |
+| **title** | **String** |  | [optional] |
+| **titleFont** | **Font** |  | [optional] |
+| **titleColor** | **String** |  | [optional] |
+| **titleAlignment** | **TextAlignment** |  | [optional] |
+| **thresholds** | **List\<TimeSeriesChartThreshold\>** |  | [optional] |
+| **stack** | **Boolean** |  | [optional] |
+| **grid** | **TimeSeriesChartGridSettings** |  | [optional] |
+| **yAxes** | **Map\<String, TimeSeriesChartYAxisSettings\>** |  | [optional] |
+| **xAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
+| **barWidthSettings** | **TimeSeriesChartBarWidthSettings** |  | [optional] |
+| **noAggregationBarWidthSettings** | **TimeSeriesChartNoAggregationBarWidthSettings** |  | [optional] |
+| **states** | **List\<TimeSeriesChartStateSettings\>** |  | [optional] |
+| **comparisonEnabled** | **Boolean** |  | [optional] |
+| **timeForComparison** | **ComparisonDuration** |  | [optional] |
+| **comparisonCustomIntervalValue** | **Long** |  | [optional] |
+| **comparisonXAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
+| **showLegend** | **Boolean** |  | [optional] |
+| **legendColumnTitleFont** | **Font** |  | [optional] |
+| **legendColumnTitleColor** | **String** |  | [optional] |
+| **legendLabelFont** | **Font** |  | [optional] |
+| **legendLabelColor** | **String** |  | [optional] |
+| **legendValueFont** | **Font** |  | [optional] |
+| **legendValueColor** | **String** |  | [optional] |
+| **legendConfig** | **LegendConfig** |  | [optional] |
+| **xaxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
+| **yaxes** | **Map\<String, TimeSeriesChartYAxisSettings\>** |  | [optional] |
 | **showBarLabel** | **Boolean** |  | [optional] |
 | **barLabelFont** | **Font** |  | [optional] |
 | **barLabelColor** | **String** |  | [optional] |
@@ -26,37 +51,6 @@
 
 ## Referenced Types
 
-#### ReportTimeSeriesChartSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showTitle | Boolean |  | [optional] |
-| title | String |  | [optional] |
-| titleFont | Font |  | [optional] |
-| titleColor | String |  | [optional] |
-| titleAlignment | TextAlignment |  | [optional] |
-| thresholds | List<TimeSeriesChartThreshold> |  | [optional] |
-| stack | Boolean |  | [optional] |
-| grid | TimeSeriesChartGridSettings |  | [optional] |
-| yAxes | Map<String, TimeSeriesChartYAxisSettings> |  | [optional] |
-| xAxis | TimeSeriesChartXAxisSettings |  | [optional] |
-| barWidthSettings | TimeSeriesChartBarWidthSettings |  | [optional] |
-| noAggregationBarWidthSettings | TimeSeriesChartNoAggregationBarWidthSettings |  | [optional] |
-| states | List<TimeSeriesChartStateSettings> |  | [optional] |
-| comparisonEnabled | Boolean |  | [optional] |
-| timeForComparison | ComparisonDuration |  | [optional] |
-| comparisonCustomIntervalValue | Long |  | [optional] |
-| comparisonXAxis | TimeSeriesChartXAxisSettings |  | [optional] |
-| showLegend | Boolean |  | [optional] |
-| legendColumnTitleFont | Font |  | [optional] |
-| legendColumnTitleColor | String |  | [optional] |
-| legendLabelFont | Font |  | [optional] |
-| legendLabelColor | String |  | [optional] |
-| legendValueFont | Font |  | [optional] |
-| legendValueColor | String |  | [optional] |
-| legendConfig | LegendConfig |  | [optional] |
-| xaxis | TimeSeriesChartXAxisSettings |  | [optional] |
-| yaxes | Map<String, TimeSeriesChartYAxisSettings> |  | [optional] |
-
 #### Font
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -64,13 +58,6 @@
 | weight | FontWeight |  | [optional] |
 | style | FontStyle |  | [optional] |
 | family | String |  | [optional] |
-
-#### ChartFillSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | ChartFillType |  | [optional] |
-| opacity | Float |  | [optional] |
-| gradient | ChartFillSettingsGradient |  | [optional] |
 
 #### TextAlignment (enum)
 `CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
@@ -193,20 +180,18 @@
 | showTotal | Boolean |  | [optional] |
 | showLatest | Boolean |  | [optional] |
 
+#### ChartFillSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ChartFillType |  | [optional] |
+| opacity | Float |  | [optional] |
+| gradient | ChartFillSettingsGradient |  | [optional] |
+
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`
 
 #### FontStyle (enum)
 `NORMAL` | `ITALIC`
-
-#### ChartFillType (enum)
-`NONE` | `OPACITY` | `GRADIENT`
-
-#### ChartFillSettingsGradient
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| start | Float |  | [optional] |
-| end | Float |  | [optional] |
 
 #### ValueSourceType (enum)
 `CONSTANT` | `LATEST_KEY` | `ENTITY`
@@ -238,6 +223,15 @@
 
 #### LegendPosition (enum)
 `TOP` | `BOTTOM` | `LEFT` | `RIGHT`
+
+#### ChartFillType (enum)
+`NONE` | `OPACITY` | `GRADIENT`
+
+#### ChartFillSettingsGradient
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| start | Float |  | [optional] |
+| end | Float |  | [optional] |
 
 ---
 

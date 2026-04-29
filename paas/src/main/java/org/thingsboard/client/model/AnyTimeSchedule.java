@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -33,8 +32,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AlarmSchedule;
-import org.thingsboard.client.model.AlarmScheduleType;
-import org.thingsboard.client.model.DynamicValueString;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -54,12 +51,6 @@ import org.thingsboard.client.ApiClient;
 
 public class AnyTimeSchedule extends AlarmSchedule {
   public AnyTimeSchedule() { 
-  }
-
-  @Override
-  public AnyTimeSchedule dynamicValue(@Nullable DynamicValueString dynamicValue) {
-    this.setDynamicValue(dynamicValue);
-    return this;
   }
 
   /**
@@ -132,11 +123,6 @@ public class AnyTimeSchedule extends AlarmSchedule {
     }
 
     StringJoiner joiner = new StringJoiner("&");
-
-    // add `dynamicValue` to the URL query string
-    if (getDynamicValue() != null) {
-      joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
-    }
 
     // add `type` to the URL query string
     if (getType() != null) {

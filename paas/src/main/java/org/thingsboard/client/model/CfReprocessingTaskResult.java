@@ -102,6 +102,12 @@ public class CfReprocessingTaskResult extends TaskResult {
     return this;
   }
 
+  @Override
+  public CfReprocessingTaskResult error(@Nullable String error) {
+    this.setError(error);
+    return this;
+  }
+
   /**
    * Return true if this CfReprocessingTaskResult object is equal to o.
    */
@@ -194,6 +200,11 @@ public class CfReprocessingTaskResult extends TaskResult {
     // add `finishTs` to the URL query string
     if (getFinishTs() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sfinishTs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFinishTs()))));
+    }
+
+    // add `error` to the URL query string
+    if (getError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
     }
 
     // add `jobType` to the URL query string

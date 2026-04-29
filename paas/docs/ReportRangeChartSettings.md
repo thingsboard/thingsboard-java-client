@@ -3,12 +3,37 @@
 
 `org.thingsboard.client.model.ReportRangeChartSettings`
 
-**Extends:** **ReportTimeSeriesChartSettings**
-
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **showTitle** | **Boolean** |  | [optional] |
+| **title** | **String** |  | [optional] |
+| **titleFont** | **Font** |  | [optional] |
+| **titleColor** | **String** |  | [optional] |
+| **titleAlignment** | **TextAlignment** |  | [optional] |
+| **thresholds** | **List\<TimeSeriesChartThreshold\>** |  | [optional] |
+| **stack** | **Boolean** |  | [optional] |
+| **grid** | **TimeSeriesChartGridSettings** |  | [optional] |
+| **yAxes** | **Map\<String, TimeSeriesChartYAxisSettings\>** |  | [optional] |
+| **xAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
+| **barWidthSettings** | **TimeSeriesChartBarWidthSettings** |  | [optional] |
+| **noAggregationBarWidthSettings** | **TimeSeriesChartNoAggregationBarWidthSettings** |  | [optional] |
+| **states** | **List\<TimeSeriesChartStateSettings\>** |  | [optional] |
+| **comparisonEnabled** | **Boolean** |  | [optional] |
+| **timeForComparison** | **ComparisonDuration** |  | [optional] |
+| **comparisonCustomIntervalValue** | **Long** |  | [optional] |
+| **comparisonXAxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
+| **showLegend** | **Boolean** |  | [optional] |
+| **legendColumnTitleFont** | **Font** |  | [optional] |
+| **legendColumnTitleColor** | **String** |  | [optional] |
+| **legendLabelFont** | **Font** |  | [optional] |
+| **legendLabelColor** | **String** |  | [optional] |
+| **legendValueFont** | **Font** |  | [optional] |
+| **legendValueColor** | **String** |  | [optional] |
+| **legendConfig** | **LegendConfig** |  | [optional] |
+| **xaxis** | **TimeSeriesChartXAxisSettings** |  | [optional] |
+| **yaxes** | **Map\<String, TimeSeriesChartYAxisSettings\>** |  | [optional] |
 | **rangeColors** | **List\<ColorRange\>** |  | [optional] |
 | **outOfRangeColor** | **String** |  | [optional] |
 | **showRangeThresholds** | **Boolean** |  | [optional] |
@@ -23,43 +48,16 @@
 
 ## Referenced Types
 
-#### ReportTimeSeriesChartSettings
+#### Font
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| showTitle | Boolean |  | [optional] |
-| title | String |  | [optional] |
-| titleFont | Font |  | [optional] |
-| titleColor | String |  | [optional] |
-| titleAlignment | TextAlignment |  | [optional] |
-| thresholds | List<TimeSeriesChartThreshold> |  | [optional] |
-| stack | Boolean |  | [optional] |
-| grid | TimeSeriesChartGridSettings |  | [optional] |
-| yAxes | Map<String, TimeSeriesChartYAxisSettings> |  | [optional] |
-| xAxis | TimeSeriesChartXAxisSettings |  | [optional] |
-| barWidthSettings | TimeSeriesChartBarWidthSettings |  | [optional] |
-| noAggregationBarWidthSettings | TimeSeriesChartNoAggregationBarWidthSettings |  | [optional] |
-| states | List<TimeSeriesChartStateSettings> |  | [optional] |
-| comparisonEnabled | Boolean |  | [optional] |
-| timeForComparison | ComparisonDuration |  | [optional] |
-| comparisonCustomIntervalValue | Long |  | [optional] |
-| comparisonXAxis | TimeSeriesChartXAxisSettings |  | [optional] |
-| showLegend | Boolean |  | [optional] |
-| legendColumnTitleFont | Font |  | [optional] |
-| legendColumnTitleColor | String |  | [optional] |
-| legendLabelFont | Font |  | [optional] |
-| legendLabelColor | String |  | [optional] |
-| legendValueFont | Font |  | [optional] |
-| legendValueColor | String |  | [optional] |
-| legendConfig | LegendConfig |  | [optional] |
-| xaxis | TimeSeriesChartXAxisSettings |  | [optional] |
-| yaxes | Map<String, TimeSeriesChartYAxisSettings> |  | [optional] |
+| size | Float |  | [optional] |
+| weight | FontWeight |  | [optional] |
+| style | FontStyle |  | [optional] |
+| family | String |  | [optional] |
 
-#### ColorRange
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| from | Double |  | [optional] |
-| to | Double |  | [optional] |
-| color | String |  | [optional] |
+#### TextAlignment (enum)
+`CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
 
 #### TimeSeriesChartThreshold
 | Name | Type | Description | Notes |
@@ -88,37 +86,6 @@
 | enableLabelBackground | Boolean |  | [optional] |
 | labelBackground | String |  | [optional] |
 | yaxisId | String |  | [optional] |
-
-#### LineSeriesSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| showLine | Boolean |  | [optional] |
-| step | Boolean |  | [optional] |
-| stepType | LineSeriesStepType |  | [optional] |
-| smooth | Boolean |  | [optional] |
-| lineType | ChartLineType |  | [optional] |
-| lineWidth | Float |  | [optional] |
-| showPoints | Boolean |  | [optional] |
-| showPointLabel | Boolean |  | [optional] |
-| pointLabelPosition | ChartLabelPosition |  | [optional] |
-| pointLabelFont | Font |  | [optional] |
-| pointLabelColor | String |  | [optional] |
-| enablePointLabelBackground | Boolean |  | [optional] |
-| pointLabelBackground | String |  | [optional] |
-| pointShape | ChartShape |  | [optional] |
-| pointSize | Float |  | [optional] |
-| fillAreaSettings | ChartFillSettings |  | [optional] |
-
-#### Font
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| size | Float |  | [optional] |
-| weight | FontWeight |  | [optional] |
-| style | FontStyle |  | [optional] |
-| family | String |  | [optional] |
-
-#### TextAlignment (enum)
-`CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
 
 #### TimeSeriesChartGridSettings
 | Name | Type | Description | Notes |
@@ -210,6 +177,39 @@
 | showTotal | Boolean |  | [optional] |
 | showLatest | Boolean |  | [optional] |
 
+#### ColorRange
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| from | Double |  | [optional] |
+| to | Double |  | [optional] |
+| color | String |  | [optional] |
+
+#### LineSeriesSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showLine | Boolean |  | [optional] |
+| step | Boolean |  | [optional] |
+| stepType | LineSeriesStepType |  | [optional] |
+| smooth | Boolean |  | [optional] |
+| lineType | ChartLineType |  | [optional] |
+| lineWidth | Float |  | [optional] |
+| showPoints | Boolean |  | [optional] |
+| showPointLabel | Boolean |  | [optional] |
+| pointLabelPosition | ChartLabelPosition |  | [optional] |
+| pointLabelFont | Font |  | [optional] |
+| pointLabelColor | String |  | [optional] |
+| enablePointLabelBackground | Boolean |  | [optional] |
+| pointLabelBackground | String |  | [optional] |
+| pointShape | ChartShape |  | [optional] |
+| pointSize | Float |  | [optional] |
+| fillAreaSettings | ChartFillSettings |  | [optional] |
+
+#### FontWeight (enum)
+`NORMAL` | `BOLD` | `_500`
+
+#### FontStyle (enum)
+`NORMAL` | `ITALIC`
+
 #### ValueSourceType (enum)
 `CONSTANT` | `LATEST_KEY` | `ENTITY`
 
@@ -221,25 +221,6 @@
 
 #### ThresholdLabelPosition (enum)
 `START` | `MIDDLE` | `END` | `INSIDE_START` | `INSIDE_START_TOP` | `INSIDE_START_BOTTOM` | `INSIDE_MIDDLE` | `INSIDE_MIDDLE_TOP` | `INSIDE_MIDDLE_BOTTOM` | `INSIDE_END` | … (12 values total)
-
-#### LineSeriesStepType (enum)
-`START` | `MIDDLE` | `END`
-
-#### ChartLabelPosition (enum)
-`TOP` | `BOTTOM`
-
-#### ChartFillSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | ChartFillType |  | [optional] |
-| opacity | Float |  | [optional] |
-| gradient | ChartFillSettingsGradient |  | [optional] |
-
-#### FontWeight (enum)
-`NORMAL` | `BOLD` | `_500`
-
-#### FontStyle (enum)
-`NORMAL` | `ITALIC`
 
 #### AxisPosition (enum)
 `LEFT` | `RIGHT` | `TOP` | `BOTTOM`
@@ -259,6 +240,19 @@
 
 #### LegendPosition (enum)
 `TOP` | `BOTTOM` | `LEFT` | `RIGHT`
+
+#### LineSeriesStepType (enum)
+`START` | `MIDDLE` | `END`
+
+#### ChartLabelPosition (enum)
+`TOP` | `BOTTOM`
+
+#### ChartFillSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ChartFillType |  | [optional] |
+| opacity | Float |  | [optional] |
+| gradient | ChartFillSettingsGradient |  | [optional] |
 
 #### ChartFillType (enum)
 `NONE` | `OPACITY` | `GRADIENT`

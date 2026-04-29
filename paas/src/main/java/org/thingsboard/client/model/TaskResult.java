@@ -46,6 +46,7 @@ import org.thingsboard.client.ApiClient;
   TaskResult.JSON_PROPERTY_SUCCESS,
   TaskResult.JSON_PROPERTY_DISCARDED,
   TaskResult.JSON_PROPERTY_FINISH_TS,
+  TaskResult.JSON_PROPERTY_ERROR,
   TaskResult.JSON_PROPERTY_JOB_TYPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -76,6 +77,10 @@ public class TaskResult {
   public static final String JSON_PROPERTY_FINISH_TS = "finishTs";
   @Nullable
   private Long finishTs;
+
+  public static final String JSON_PROPERTY_ERROR = "error";
+  @Nullable
+  private String error;
 
   public static final String JSON_PROPERTY_JOB_TYPE = "jobType";
   @Nonnull
@@ -180,6 +185,30 @@ public class TaskResult {
   }
 
 
+  public TaskResult error(@Nullable String error) {
+    this.error = error;
+    return this;
+  }
+
+  /**
+   * Get error
+   * @return error
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getError() {
+    return error;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setError(@Nullable String error) {
+    this.error = error;
+  }
+
+
   public TaskResult jobType(@Nonnull String jobType) {
     this.jobType = jobType;
     return this;
@@ -220,12 +249,13 @@ public class TaskResult {
         Objects.equals(this.success, taskResult.success) &&
         Objects.equals(this.discarded, taskResult.discarded) &&
         Objects.equals(this.finishTs, taskResult.finishTs) &&
+        Objects.equals(this.error, taskResult.error) &&
         Objects.equals(this.jobType, taskResult.jobType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(key, success, discarded, finishTs, jobType);
+    return Objects.hash(key, success, discarded, finishTs, error, jobType);
   }
 
   @Override
@@ -236,6 +266,7 @@ public class TaskResult {
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    discarded: ").append(toIndentedString(discarded)).append("\n");
     sb.append("    finishTs: ").append(toIndentedString(finishTs)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    jobType: ").append(toIndentedString(jobType)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -302,6 +333,11 @@ public class TaskResult {
     // add `finishTs` to the URL query string
     if (getFinishTs() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sfinishTs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFinishTs()))));
+    }
+
+    // add `error` to the URL query string
+    if (getError() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
     }
 
     // add `jobType` to the URL query string
