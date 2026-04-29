@@ -9920,7 +9920,7 @@ public class ThingsboardApi {
   }
 
   /**
-   * Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
+   * Get OAuth2 Client infos (findOAuth2ClientInfos)
    *   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
@@ -9930,13 +9930,13 @@ public class ThingsboardApi {
    * @return PageDataOAuth2ClientInfo
    * @throws ApiException if fails to make API call
    */
-  public PageDataOAuth2ClientInfo findTenantOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
-    ApiResponse<PageDataOAuth2ClientInfo> localVarResponse = findTenantOAuth2ClientInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+  public PageDataOAuth2ClientInfo findOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataOAuth2ClientInfo> localVarResponse = findOAuth2ClientInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
   }
 
   /**
-   * Get OAuth2 Client infos (findTenantOAuth2ClientInfos)
+   * Get OAuth2 Client infos (findOAuth2ClientInfos)
    *   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
@@ -9947,8 +9947,8 @@ public class ThingsboardApi {
    * @return ApiResponse&lt;PageDataOAuth2ClientInfo&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageDataOAuth2ClientInfo> findTenantOAuth2ClientInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = findTenantOAuth2ClientInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+  public ApiResponse<PageDataOAuth2ClientInfo> findOAuth2ClientInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = findOAuth2ClientInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -9959,7 +9959,7 @@ public class ThingsboardApi {
       InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("findTenantOAuth2ClientInfos", localVarResponse);
+          throw getApiException("findOAuth2ClientInfos", localVarResponse);
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
@@ -9982,14 +9982,14 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder findTenantOAuth2ClientInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder findOAuth2ClientInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling findTenantOAuth2ClientInfos");
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling findOAuth2ClientInfos");
     }
     // verify the required parameter 'page' is set
     if (page == null) {
-      throw new ApiException(400, "Missing the required parameter 'page' when calling findTenantOAuth2ClientInfos");
+      throw new ApiException(400, "Missing the required parameter 'page' when calling findOAuth2ClientInfos");
     }
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/oauth2/client/infos";
@@ -18890,6 +18890,116 @@ public class ThingsboardApi {
     String localVarPath = "/api/domain/info/{id}"
         .replace("{id}", ApiClient.urlEncode(id.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Domain infos (getDomainInfos)
+   *   Available for users with &#39;SYS_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Case-insensitive &#39;substring&#39; filter based on domain&#39;s name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataDomainInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataDomainInfo getDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataDomainInfo> localVarResponse = getDomainInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Domain infos (getDomainInfos)
+   *   Available for users with &#39;SYS_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Case-insensitive &#39;substring&#39; filter based on domain&#39;s name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataDomainInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataDomainInfo> getDomainInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getDomainInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getDomainInfos", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataDomainInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataDomainInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataDomainInfo>() {});
+        return new ApiResponse<PageDataDomainInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getDomainInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getDomainInfos");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getDomainInfos");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/domain/infos";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
@@ -28750,116 +28860,6 @@ public class ThingsboardApi {
   }
 
   /**
-   * Get Domain infos (getTenantDomainInfos)
-   *   Available for users with &#39;SYS_ADMIN&#39; authority.
-   * @param pageSize Maximum amount of entities in a one page (required)
-   * @param page Sequence number of page starting from 0 (required)
-   * @param textSearch Case-insensitive &#39;substring&#39; filter based on domain&#39;s name (optional)
-   * @param sortProperty Property of entity to sort by (optional)
-   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
-   * @return PageDataDomainInfo
-   * @throws ApiException if fails to make API call
-   */
-  public PageDataDomainInfo getTenantDomainInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
-    ApiResponse<PageDataDomainInfo> localVarResponse = getTenantDomainInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get Domain infos (getTenantDomainInfos)
-   *   Available for users with &#39;SYS_ADMIN&#39; authority.
-   * @param pageSize Maximum amount of entities in a one page (required)
-   * @param page Sequence number of page starting from 0 (required)
-   * @param textSearch Case-insensitive &#39;substring&#39; filter based on domain&#39;s name (optional)
-   * @param sortProperty Property of entity to sort by (optional)
-   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;PageDataDomainInfo&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<PageDataDomainInfo> getTenantDomainInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getTenantDomainInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getTenantDomainInfos", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<PageDataDomainInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        PageDataDomainInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataDomainInfo>() {});
-        return new ApiResponse<PageDataDomainInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getTenantDomainInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'pageSize' is set
-    if (pageSize == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getTenantDomainInfos");
-    }
-    // verify the required parameter 'page' is set
-    if (page == null) {
-      throw new ApiException(400, "Missing the required parameter 'page' when calling getTenantDomainInfos");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/domain/infos";
-    List<Pair> localVarQueryParams = new ArrayList<>();
-    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
-    String localVarQueryParameterBaseName;
-    localVarQueryParameterBaseName = "pageSize";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
-    localVarQueryParameterBaseName = "page";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
-    localVarQueryParameterBaseName = "textSearch";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
-    localVarQueryParameterBaseName = "sortProperty";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
-    localVarQueryParameterBaseName = "sortOrder";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
-    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
-      StringJoiner queryJoiner = new StringJoiner("&");
-      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
-      if (localVarQueryStringJoiner.length() != 0) {
-        queryJoiner.add(localVarQueryStringJoiner.toString());
-      }
-      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
-    } else {
-      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    }
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
    * Get Tenant Edge by name (getTenantEdgeByName)
    * Requested edge must be owned by tenant or customer that the user belongs to. Edge name is an unique property of edge. So it can be used to identify the edge.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param edgeName Unique name of the edge (required)
@@ -35685,27 +35685,27 @@ public class ThingsboardApi {
   }
 
   /**
-   * Import the bulk of assets (processAssetsBulkImport)
+   * Import the bulk of assets (processAssetBulkImport)
    * There&#39;s an ability to import the bulk of assets using the only .csv file.
    * @param bulkImportRequest  (required)
    * @return BulkImportResultAsset
    * @throws ApiException if fails to make API call
    */
-  public BulkImportResultAsset processAssetsBulkImport(@Nonnull BulkImportRequest bulkImportRequest) throws ApiException {
-    ApiResponse<BulkImportResultAsset> localVarResponse = processAssetsBulkImportWithHttpInfo(bulkImportRequest, null);
+  public BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest) throws ApiException {
+    ApiResponse<BulkImportResultAsset> localVarResponse = processAssetBulkImportWithHttpInfo(bulkImportRequest, null);
     return localVarResponse.getData();
   }
 
   /**
-   * Import the bulk of assets (processAssetsBulkImport)
+   * Import the bulk of assets (processAssetBulkImport)
    * There&#39;s an ability to import the bulk of assets using the only .csv file.
    * @param bulkImportRequest  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;BulkImportResultAsset&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<BulkImportResultAsset> processAssetsBulkImportWithHttpInfo(@Nonnull BulkImportRequest bulkImportRequest, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = processAssetsBulkImportRequestBuilder(bulkImportRequest, headers);
+  public ApiResponse<BulkImportResultAsset> processAssetBulkImportWithHttpInfo(@Nonnull BulkImportRequest bulkImportRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = processAssetBulkImportRequestBuilder(bulkImportRequest, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -35716,7 +35716,7 @@ public class ThingsboardApi {
       InputStream localVarResponseBody = null;
       try {
         if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("processAssetsBulkImport", localVarResponse);
+          throw getApiException("processAssetBulkImport", localVarResponse);
         }
         localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
         if (localVarResponseBody == null) {
@@ -35739,10 +35739,10 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder processAssetsBulkImportRequestBuilder(@Nonnull BulkImportRequest bulkImportRequest, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder processAssetBulkImportRequestBuilder(@Nonnull BulkImportRequest bulkImportRequest, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'bulkImportRequest' is set
     if (bulkImportRequest == null) {
-      throw new ApiException(400, "Missing the required parameter 'bulkImportRequest' when calling processAssetsBulkImport");
+      throw new ApiException(400, "Missing the required parameter 'bulkImportRequest' when calling processAssetBulkImport");
     }
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/asset/bulk_import";

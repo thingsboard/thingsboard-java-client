@@ -11,10 +11,12 @@ A JSON value representing the alarm data query. See API call notes above for mor
 |------------ | ------------- | ------------- | -------------|
 | **entityFilter** | **EntityFilter** |  | [optional] |
 | **keyFilters** | **List\<KeyFilter\>** |  | [optional] |
+| **keyFiltersOperation** | **AlarmRuleComplexOperation** |  | [optional] |
 | **pageLink** | **AlarmDataPageLink** |  | [optional] |
 | **entityFields** | **List\<EntityKey\>** |  | [optional] |
 | **latestValues** | **List\<EntityKey\>** |  | [optional] |
 | **alarmFields** | **List\<EntityKey\>** |  | [optional] |
+| **keyFiltersOperationOrDefault** | **AlarmRuleComplexOperation** |  | [optional] |
 
 
 
@@ -152,6 +154,9 @@ A JSON value representing the alarm data query. See API call notes above for mor
 | valueType | EntityKeyValueType |  | [optional] |
 | predicate | KeyFilterPredicate |  | [optional] |
 
+#### AlarmRuleComplexOperation (enum)
+`AND` | `OR`
+
 #### AlarmDataPageLink
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -192,7 +197,7 @@ A JSON value representing the alarm data query. See API call notes above for mor
 #### ComplexFilterPredicate  *(extends KeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<KeyFilterPredicate> |  | [optional] |
 
 #### NumericFilterPredicate  *(extends KeyFilterPredicate, type=`NUMERIC`)*
@@ -278,9 +283,6 @@ A JSON value representing the alarm data query. See API call notes above for mor
 | defaultValue | Boolean |  | [optional] |
 | userValue | Boolean |  | [optional] |
 | dynamicValue | DynamicValueBoolean |  | [optional] |
-
-#### ComplexOperation (enum)
-`AND` | `OR`
 
 #### DynamicValueString
 | Name | Type | Description | Notes |
