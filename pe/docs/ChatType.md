@@ -1,30 +1,14 @@
 
-# ApiFeature
+# ChatType
 
-`org.thingsboard.client.model.ApiFeature`
+`org.thingsboard.client.model.ChatType`
 
 ## Enum Values
 
 
-* `TRANSPORT` (value: `"TRANSPORT"`)
+* `GENERIC` (value: `"GENERIC"`)
 
-* `DB` (value: `"DB"`)
-
-* `RE` (value: `"RE"`)
-
-* `JS` (value: `"JS"`)
-
-* `TBEL` (value: `"TBEL"`)
-
-* `EMAIL` (value: `"EMAIL"`)
-
-* `SMS` (value: `"SMS"`)
-
-* `ALARM` (value: `"ALARM"`)
-
-* `REPORT` (value: `"REPORT"`)
-
-* `AI` (value: `"AI"`)
+* `SOLUTION_BUILDER` (value: `"SOLUTION_BUILDER"`)
 
 
 

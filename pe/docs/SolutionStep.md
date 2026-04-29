@@ -1,14 +1,14 @@
 
-# ComplexOperation
+# SolutionStep
 
-`org.thingsboard.client.model.ComplexOperation`
+`org.thingsboard.client.model.SolutionStep`
 
 ## Enum Values
 
 
-* `AND` (value: `"AND"`)
+* `INITIAL_CONFIGURATION` (value: `"INITIAL_CONFIGURATION"`)
 
-* `OR` (value: `"OR"`)
+* `DASHBOARDS_CONFIGURATION` (value: `"DASHBOARDS_CONFIGURATION"`)
 
 
 

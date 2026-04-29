@@ -83,6 +83,7 @@ A JSON value representing the tenant profile.
 | maxSms | Long |  | [optional] |
 | maxCreatedAlarms | Long |  | [optional] |
 | maxGeneratedReports | Long |  | [optional] |
+| maxAiCredits | Long |  | [optional] |
 | tenantServerRestLimitsConfiguration | String |  | [optional] |
 | customerServerRestLimitsConfiguration | String |  | [optional] |
 | maxWsSessionsPerTenant | Integer |  | [optional] |
@@ -124,6 +125,7 @@ A JSON value representing the tenant profile.
 | intermediateAggregationIntervalInSecForCF | Long |  | [optional] |
 | cfReevaluationCheckInterval | Long |  | [optional] |
 | alarmsReevaluationInterval | Long |  | [optional] |
+| aiChatRequestsPerTenantRateLimit | String |  | [optional] |
 
 #### TenantProfileQueueConfiguration
 | Name | Type | Description | Notes |

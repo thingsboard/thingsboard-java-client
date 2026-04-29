@@ -495,7 +495,7 @@ A JSON value representing the Report Template.
 #### ComplexFilterPredicate  *(extends KeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<KeyFilterPredicate> |  | [optional] |
 
 #### NumericFilterPredicate  *(extends KeyFilterPredicate, type=`NUMERIC`)*
@@ -869,8 +869,8 @@ A JSON value representing the Report Template.
 | methodName | String |  | [optional] |
 | fileName | String |  | [optional] |
 | lineNumber | Integer |  | [optional] |
-| nativeMethod | Boolean |  | [optional] |
 | className | String |  | [optional] |
+| nativeMethod | Boolean |  | [optional] |
 
 #### AliasEntityType (enum)
 `CURRENT_CUSTOMER` | `CURRENT_TENANT` | `CURRENT_USER` | `CURRENT_USER_OWNER`
@@ -905,7 +905,7 @@ A JSON value representing the Report Template.
 | userValue | Boolean |  | [optional] |
 | dynamicValue | DynamicValueBoolean |  | [optional] |
 
-#### ComplexOperation (enum)
+#### AlarmRuleComplexOperation (enum)
 `AND` | `OR`
 
 #### Aggregation (enum)

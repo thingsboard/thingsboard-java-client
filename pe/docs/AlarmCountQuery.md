@@ -11,6 +11,7 @@ A JSON value representing the alarm count query.
 |------------ | ------------- | ------------- | -------------|
 | **entityFilter** | **EntityFilter** |  | [optional] |
 | **keyFilters** | **List\<KeyFilter\>** |  | [optional] |
+| **keyFiltersOperation** | **AlarmRuleComplexOperation** |  | [optional] |
 | **startTs** | **Long** |  | [optional] |
 | **endTs** | **Long** |  | [optional] |
 | **timeWindow** | **Long** |  | [optional] |
@@ -19,6 +20,7 @@ A JSON value representing the alarm count query.
 | **severityList** | **List\<AlarmSeverity\>** |  | [optional] |
 | **searchPropagatedAlarms** | **Boolean** |  | [optional] |
 | **assigneeId** | **UserId** |  | [optional] |
+| **keyFiltersOperationOrDefault** | **AlarmRuleComplexOperation** |  | [optional] |
 
 
 
@@ -205,6 +207,9 @@ A JSON value representing the alarm count query.
 | valueType | EntityKeyValueType |  | [optional] |
 | predicate | KeyFilterPredicate |  | [optional] |
 
+#### AlarmRuleComplexOperation (enum)
+`AND` | `OR`
+
 #### AlarmSearchStatus (enum)
 `ANY` | `ACTIVE` | `CLEARED` | `ACK` | `UNACK`
 
@@ -234,7 +239,7 @@ A JSON value representing the alarm count query.
 #### ComplexFilterPredicate  *(extends KeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<KeyFilterPredicate> |  | [optional] |
 
 #### NumericFilterPredicate  *(extends KeyFilterPredicate, type=`NUMERIC`)*
@@ -305,9 +310,6 @@ A JSON value representing the alarm count query.
 | defaultValue | Boolean |  | [optional] |
 | userValue | Boolean |  | [optional] |
 | dynamicValue | DynamicValueBoolean |  | [optional] |
-
-#### ComplexOperation (enum)
-`AND` | `OR`
 
 #### DynamicValueString
 | Name | Type | Description | Notes |

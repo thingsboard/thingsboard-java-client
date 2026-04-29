@@ -28,33 +28,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets ApiFeature
+ * Gets or Sets SolutionStep
  */
-public enum ApiFeature {
+public enum SolutionStep {
   
-  TRANSPORT("TRANSPORT"),
+  INITIAL_CONFIGURATION("INITIAL_CONFIGURATION"),
   
-  DB("DB"),
-  
-  RE("RE"),
-  
-  JS("JS"),
-  
-  TBEL("TBEL"),
-  
-  EMAIL("EMAIL"),
-  
-  SMS("SMS"),
-  
-  ALARM("ALARM"),
-  
-  REPORT("REPORT"),
-  
-  AI("AI");
+  DASHBOARDS_CONFIGURATION("DASHBOARDS_CONFIGURATION");
 
   private String value;
 
-  ApiFeature(String value) {
+  SolutionStep(String value) {
     this.value = value;
   }
 
@@ -69,8 +53,8 @@ public enum ApiFeature {
   }
 
   @JsonCreator
-  public static ApiFeature fromValue(String value) {
-    for (ApiFeature b : ApiFeature.values()) {
+  public static SolutionStep fromValue(String value) {
+    for (SolutionStep b : SolutionStep.values()) {
       if (b.value.equals(value)) {
         return b;
       }

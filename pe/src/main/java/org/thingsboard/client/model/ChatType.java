@@ -28,17 +28,17 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets ComplexOperation
+ * Gets or Sets ChatType
  */
-public enum ComplexOperation {
+public enum ChatType {
   
-  AND("AND"),
+  GENERIC("GENERIC"),
   
-  OR("OR");
+  SOLUTION_BUILDER("SOLUTION_BUILDER");
 
   private String value;
 
-  ComplexOperation(String value) {
+  ChatType(String value) {
     this.value = value;
   }
 
@@ -53,8 +53,8 @@ public enum ComplexOperation {
   }
 
   @JsonCreator
-  public static ComplexOperation fromValue(String value) {
-    for (ComplexOperation b : ComplexOperation.values()) {
+  public static ChatType fromValue(String value) {
+    for (ChatType b : ChatType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
