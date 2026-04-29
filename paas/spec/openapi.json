@@ -134253,21 +134253,31 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "ADMIN_SETTINGS",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "AffectedTenantAdministratorsFilter": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UsersFilter"
           }
-        ]
+        ],
+        "example": {
+          "type": "AFFECTED_TENANT_ADMINISTRATORS"
+        }
       },
       "AffectedUserFilter": {
         "allOf": [
           {
             "$ref": "#/components/schemas/UsersFilter"
           }
-        ]
+        ],
+        "example": {
+          "type": "AFFECTED_USER"
+        }
       },
       "AggFunction": {
         "type": "string",
@@ -134293,7 +134303,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "function",
+          "function": null
+        }
       },
       "AggInput": {
         "discriminator": {
@@ -134302,6 +134316,10 @@
             "key": "#/components/schemas/AggKeyInput",
             "function": "#/components/schemas/AggFunctionInput"
           }
+        },
+        "example": {
+          "type": "key",
+          "key": null
         },
         "properties": {
           "type": {
@@ -134326,6 +134344,11 @@
             "CUSTOM": "#/components/schemas/CustomInterval"
           }
         },
+        "example": {
+          "type": "HOUR",
+          "tz": null,
+          "offsetSec": null
+        },
         "properties": {
           "type": {
             "type": "string"
@@ -134348,7 +134371,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "key",
+          "key": null
+        }
       },
       "AggMetric": {
         "type": "object",
@@ -134474,6 +134501,22 @@
             "OLLAMA": "#/components/schemas/OllamaChatModelConfig"
           }
         },
+        "example": {
+          "provider": "OPENAI",
+          "providerConfig": {
+            "baseUrl": null,
+            "apiKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "frequencyPenalty": null,
+          "presencePenalty": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "properties": {
           "provider": {
             "type": "string"
@@ -134488,7 +134531,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "AI_MODEL"
+        }
       },
       "AiModelId": {
         "type": "object",
@@ -134499,7 +134560,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "AI_MODEL",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "AiModelType": {
         "type": "string",
@@ -134709,6 +134774,13 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "ALARM_ASSIGNMENT",
+          "alarmTypes": null,
+          "alarmSeverities": null,
+          "alarmStatuses": null,
+          "notifyOn": null
+        },
         "required": [
           "notifyOn"
         ]
@@ -134732,6 +134804,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "ALARM_ASSIGNMENT",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -134782,6 +134858,42 @@
             }
           }
         ],
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "ALARM",
+          "arguments": null,
+          "createRules": null,
+          "clearRule": {
+            "condition": {
+              "expression": {
+                "type": null
+              },
+              "schedule": {
+                "staticValue": {
+                  "type": null
+                },
+                "dynamicValueArgument": null
+              },
+              "type": "SIMPLE"
+            },
+            "alarmDetails": null,
+            "dashboardId": {
+              "entityType": "DASHBOARD",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "propagate": null,
+          "propagateToOwner": null,
+          "propagateToOwnerHierarchy": null,
+          "propagateToTenant": null,
+          "propagateRelationTypes": null
+        },
         "required": [
           "arguments",
           "createRules"
@@ -134935,7 +135047,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "ALARM_COMMENT",
+          "alarmTypes": null,
+          "alarmSeverities": null,
+          "alarmStatuses": null,
+          "onlyUserComments": null,
+          "notifyOnCommentUpdate": null
+        }
       },
       "AlarmCommentRecipientsConfig": {
         "allOf": [
@@ -134956,6 +135076,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "ALARM_COMMENT",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -134976,6 +135100,18 @@
             "DURATION": "#/components/schemas/DurationAlarmCondition",
             "REPEATING": "#/components/schemas/RepeatingAlarmCondition"
           }
+        },
+        "example": {
+          "expression": {
+            "type": null
+          },
+          "schedule": {
+            "staticValue": {
+              "type": null
+            },
+            "dynamicValueArgument": null
+          },
+          "type": "SIMPLE"
         },
         "properties": {
           "expression": {
@@ -135000,6 +135136,11 @@
             "SIMPLE": "#/components/schemas/SimpleAlarmConditionExpression",
             "TBEL": "#/components/schemas/TbelAlarmConditionExpression"
           }
+        },
+        "example": {
+          "type": "SIMPLE",
+          "filters": null,
+          "operation": {}
         },
         "properties": {
           "type": {
@@ -135456,7 +135597,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "ALARM",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "AlarmInfo": {
         "type": "object",
@@ -135649,6 +135794,15 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "ALARM",
+          "alarmTypes": null,
+          "alarmSeverities": null,
+          "notifyOn": null,
+          "clearRule": {
+            "alarmStatuses": null
+          }
+        },
         "required": [
           "notifyOn"
         ]
@@ -135687,6 +135841,14 @@
             }
           }
         ],
+        "example": {
+          "type": "BOOLEAN",
+          "operation": {},
+          "value": {
+            "staticValue": null,
+            "dynamicValueArgument": null
+          }
+        },
         "required": [
           "operation",
           "value"
@@ -135718,7 +135880,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "COMPLEX",
+          "operation": {},
+          "predicates": null
+        }
       },
       "AlarmRuleComplexOperation": {
         "type": "string",
@@ -135858,6 +136025,15 @@
             "COMPLEX": "#/components/schemas/AlarmRuleComplexFilterPredicate"
           }
         },
+        "example": {
+          "type": "STRING",
+          "operation": {},
+          "value": {
+            "staticValue": null,
+            "dynamicValueArgument": null
+          },
+          "ignoreCase": null
+        },
         "properties": {
           "type": {
             "type": "string"
@@ -135884,6 +136060,14 @@
             }
           }
         ],
+        "example": {
+          "type": "NUMERIC",
+          "operation": {},
+          "value": {
+            "staticValue": null,
+            "dynamicValueArgument": null
+          }
+        },
         "required": [
           "operation",
           "value"
@@ -135920,6 +136104,15 @@
             }
           }
         ],
+        "example": {
+          "type": "STRING",
+          "operation": {},
+          "value": {
+            "staticValue": null,
+            "dynamicValueArgument": null
+          },
+          "ignoreCase": null
+        },
         "required": [
           "operation",
           "value"
@@ -135946,6 +136139,9 @@
             "SPECIFIC_TIME": "#/components/schemas/SpecificTimeSchedule",
             "CUSTOM": "#/components/schemas/CustomTimeSchedule"
           }
+        },
+        "example": {
+          "type": "ANY_TIME"
         },
         "properties": {
           "type": {
@@ -136030,7 +136226,77 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "ALARM_TABLE",
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "showTableHeading": null,
+          "tableHeading": {
+            "text": null,
+            "font": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "color": null,
+            "textAlignment": {},
+            "verticalAlignment": {},
+            "height": null
+          },
+          "tableSortOrder": {
+            "column": null,
+            "direction": {}
+          },
+          "alarmSource": {
+            "type": {},
+            "deviceId": null,
+            "entityAliasId": null,
+            "filterId": null,
+            "dataKeys": null,
+            "latestDataKeys": null,
+            "alarmFilterConfig": {
+              "typeList": null,
+              "statusList": null,
+              "severityList": null,
+              "assigneeId": {
+                "entityType": "USER",
+                "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+              },
+              "searchPropagatedAlarms": null
+            }
+          },
+          "timewindow": {
+            "history": {
+              "historyType": null,
+              "interval": {},
+              "timewindowMs": null,
+              "fixedTimewindow": {},
+              "quickInterval": {}
+            },
+            "aggregation": {
+              "type": {},
+              "limit": null
+            },
+            "timezone": null
+          }
+        }
       },
       "AliasEntityId": {
         "type": "object",
@@ -136068,14 +136334,21 @@
           {
             "$ref": "#/components/schemas/UsersFilter"
           }
-        ]
+        ],
+        "example": {
+          "type": "ALL_USERS"
+        }
       },
       "AllowCreateNewDevicesDeviceProfileProvisionConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/DeviceProfileProvisionConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "provisionDeviceSecret": "secret123",
+          "type": "ALLOW_CREATE_NEW_DEVICES"
+        }
       },
       "AllowedPermissionsInfo": {
         "type": "object",
@@ -136176,6 +136449,21 @@
             }
           }
         ],
+        "example": {
+          "provider": "AMAZON_BEDROCK",
+          "providerConfig": {
+            "region": null,
+            "accessKeyId": null,
+            "secretAccessKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -136247,6 +136535,20 @@
             }
           }
         ],
+        "example": {
+          "provider": "ANTHROPIC",
+          "providerConfig": {
+            "apiKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "topK": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -136268,7 +136570,10 @@
           {
             "$ref": "#/components/schemas/AlarmSchedule"
           }
-        ]
+        ],
+        "example": {
+          "type": "ANY_TIME"
+        }
       },
       "ApiFeature": {
         "type": "string",
@@ -136349,7 +136654,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "API_KEY",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "ApiKeyInfo": {
         "type": "object",
@@ -136426,7 +136735,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "API_USAGE_LIMIT",
+          "apiFeatures": null,
+          "notifyOn": null
+        }
       },
       "ApiUsageLimitRecipientsConfig": {
         "allOf": [
@@ -136447,6 +136761,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "API_USAGE_LIMIT",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -136464,7 +136782,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "apiUsageState",
+          "customerId": {
+            "entityType": "CUSTOMER",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          }
+        }
       },
       "ApiUsageStateId": {
         "type": "object",
@@ -136475,7 +136800,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "API_USAGE_STATE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "ApiUsageStateValue": {
         "type": "string",
@@ -136588,7 +136917,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "ASSET"
+        }
       },
       "AssetId": {
         "type": "object",
@@ -136599,7 +136946,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "ASSET",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "AssetInfo": {
         "type": "object",
@@ -136742,7 +137093,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "ASSET_PROFILE"
+        }
       },
       "AssetProfileId": {
         "type": "object",
@@ -136753,7 +137122,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "ASSET_PROFILE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "AssetProfileInfo": {
         "type": "object",
@@ -136838,7 +137211,26 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "assetSearchQuery",
+          "rootEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "relationType": null,
+          "direction": {},
+          "maxLevel": null,
+          "fetchLastLevelOnly": null,
+          "rootStateEntity": null,
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "assetTypes": null
+        }
       },
       "AssetTypeFilter": {
         "allOf": [
@@ -136864,7 +137256,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "assetType",
+          "assetTypes": null,
+          "assetNameFilter": null,
+          "assetType": null
+        }
       },
       "AttributeData": {
         "type": "object",
@@ -136991,7 +137389,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "IMMEDIATE",
+          "sendAttributesUpdatedNotification": null,
+          "updateAttributesOnlyOnValueChange": null,
+          "saveAttribute": null,
+          "sendWsUpdate": null,
+          "processCfs": null
+        }
       },
       "AttributesOutput": {
         "allOf": [
@@ -137006,7 +137412,21 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "decimalsByDefault": null,
+          "name": null,
+          "scope": {},
+          "strategy": {
+            "type": "IMMEDIATE",
+            "sendAttributesUpdatedNotification": null,
+            "updateAttributesOnlyOnValueChange": null,
+            "saveAttribute": null,
+            "sendWsUpdate": null,
+            "processCfs": null
+          },
+          "type": "ATTRIBUTES"
+        }
       },
       "AttributesOutputStrategy": {
         "discriminator": {
@@ -137015,6 +137435,14 @@
             "IMMEDIATE": "#/components/schemas/AttributesImmediateOutputStrategy",
             "RULE_CHAIN": "#/components/schemas/AttributesRuleChainOutputStrategy"
           }
+        },
+        "example": {
+          "type": "IMMEDIATE",
+          "sendAttributesUpdatedNotification": null,
+          "updateAttributesOnlyOnValueChange": null,
+          "saveAttribute": null,
+          "sendWsUpdate": null,
+          "processCfs": null
         },
         "properties": {
           "type": {
@@ -137030,7 +137458,10 @@
           {
             "$ref": "#/components/schemas/AttributesOutputStrategy"
           }
-        ]
+        ],
+        "example": {
+          "type": "RULE_CHAIN"
+        }
       },
       "AuditLog": {
         "type": "object",
@@ -137283,7 +137714,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "AWS_SNS",
+          "accessKeyId": null,
+          "secretAccessKey": null,
+          "region": null
+        }
       },
       "AxisPosition": {
         "type": "string",
@@ -137345,6 +137782,23 @@
             }
           }
         ],
+        "example": {
+          "provider": "AZURE_OPENAI",
+          "providerConfig": {
+            "endpoint": null,
+            "serviceVersion": null,
+            "apiKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "frequencyPenalty": null,
+          "presencePenalty": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -137391,6 +137845,12 @@
             }
           }
         ],
+        "example": {
+          "useByDefault": null,
+          "providerType": "BACKUP_CODE",
+          "codes": null,
+          "codesLeft": null
+        },
         "required": [
           "codes"
         ]
@@ -137410,7 +137870,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "providerType": "BACKUP_CODE",
+          "codesQuantity": null
+        }
       },
       "BadgePosition": {
         "type": "string",
@@ -137514,6 +137978,11 @@
             }
           }
         ],
+        "example": {
+          "type": "BASIC",
+          "username": null,
+          "password": null
+        },
         "required": [
           "password",
           "username"
@@ -137528,7 +137997,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "BILLING_CUSTOMER",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "BlobEntityId": {
         "type": "object",
@@ -137539,7 +138012,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "BLOB_ENTITY",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "BlobEntityInfo": {
         "type": "object",
@@ -137684,7 +138161,21 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "BOOLEAN",
+          "operation": {},
+          "value": {
+            "defaultValue": null,
+            "userValue": null,
+            "dynamicValue": {
+              "resolvedValue": null,
+              "sourceType": {},
+              "sourceAttribute": null,
+              "inherit": null
+            }
+          }
+        }
       },
       "BooleanOperation": {
         "type": "string",
@@ -137973,6 +138464,19 @@
             "ENTITY_AGGREGATION": "#/components/schemas/EntityAggregationCalculatedFieldConfiguration"
           }
         },
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "SIMPLE",
+          "arguments": null,
+          "expression": null,
+          "useLatestTs": null
+        },
         "properties": {
           "output": {
             "$ref": "#/components/schemas/Output"
@@ -138056,7 +138560,31 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "DEBUG_CALCULATED_FIELD",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "isError": "false",
+          "errorStr": "not present in the DB",
+          "entityId": "57b6bafe-d600-423c-9267-fe31e5218986",
+          "entityType": "DEVICE",
+          "msgId": "dcf44612-2ce4-4e5d-b462-ebb9c5628228",
+          "msgType": "POST_TELEMETRY_REQUEST",
+          "arguments": {
+            "x": {
+              "ts": 1739432016629,
+              "value": 20
+            },
+            "y": {
+              "ts": 1739429717656,
+              "value": 12
+            }
+          },
+          "result": {
+            "x + y": 32
+          }
+        }
       },
       "CalculatedFieldId": {
         "type": "object",
@@ -138067,7 +138595,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "CALCULATED_FIELD",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "CalculatedFieldInfo": {
         "type": "object",
@@ -138166,6 +138698,15 @@
             "v3": "#/components/schemas/V3CaptchaParams"
           }
         },
+        "example": {
+          "version": "enterprise",
+          "projectId": null,
+          "serviceAccountCredentials": null,
+          "serviceAccountCredentialsFileName": null,
+          "androidKey": null,
+          "iosKey": null,
+          "logActionName": null
+        },
         "properties": {
           "version": {
             "type": "string"
@@ -138249,6 +138790,10 @@
             "CURRENT_OWNER": "#/components/schemas/CurrentOwnerDynamicSourceConfiguration"
           }
         },
+        "example": {
+          "type": "RELATION_PATH_QUERY",
+          "levels": null
+        },
         "properties": {
           "type": {
             "type": "string"
@@ -138283,6 +138828,18 @@
             }
           }
         ],
+        "example": {
+          "tasksKey": null,
+          "toReprocess": null,
+          "type": "CF_REPROCESSING",
+          "calculatedFieldId": {
+            "entityType": "CALCULATED_FIELD",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "calculatedFieldName": null,
+          "startTs": null,
+          "endTs": null
+        },
         "required": [
           "calculatedFieldId"
         ]
@@ -138292,7 +138849,19 @@
           {
             "$ref": "#/components/schemas/JobResult"
           }
-        ]
+        ],
+        "example": {
+          "successfulCount": null,
+          "failedCount": null,
+          "discardedCount": null,
+          "totalCount": null,
+          "results": null,
+          "generalError": null,
+          "startTs": null,
+          "finishTs": null,
+          "cancellationTs": null,
+          "jobType": "CF_REPROCESSING"
+        }
       },
       "CfReprocessingTaskFailure": {
         "type": "object",
@@ -138427,7 +138996,11 @@
           {
             "$ref": "#/components/schemas/DeviceProfileProvisionConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "provisionDeviceSecret": "secret123",
+          "type": "CHECK_PRE_PROVISIONED_DEVICES"
+        }
       },
       "ChecksumAlgorithm": {
         "type": "string",
@@ -138482,7 +139055,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "spec": "CLIENT_ATTRIBUTES_QUERYING",
+          "mappings": null,
+          "queryingFrequencyMs": null
+        }
       },
       "CloudDomainId": {
         "type": "object",
@@ -138544,7 +139122,22 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "COAP",
+          "coapDeviceTypeConfiguration": {
+            "coapDeviceType": "DEFAULT",
+            "transportPayloadTypeConfiguration": {
+              "transportPayloadType": null
+            }
+          },
+          "clientSettings": {
+            "powerMode": {},
+            "psmActivityTimer": null,
+            "edrxCycle": null,
+            "pagingTransmissionWindow": null
+          }
+        }
       },
       "CoapDeviceTransportConfiguration": {
         "allOf": [
@@ -138571,7 +139164,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "COAP",
+          "powerMode": {},
+          "psmActivityTimer": null,
+          "edrxCycle": null,
+          "pagingTransmissionWindow": null
+        }
       },
       "CoapDeviceTypeConfiguration": {
         "description": "CoAP device type configuration",
@@ -138580,6 +139180,12 @@
           "mapping": {
             "DEFAULT": "#/components/schemas/DefaultCoapDeviceTypeConfiguration",
             "EFENTO": "#/components/schemas/EfentoCoapDeviceTypeConfiguration"
+          }
+        },
+        "example": {
+          "coapDeviceType": "DEFAULT",
+          "transportPayloadTypeConfiguration": {
+            "transportPayloadType": null
           }
         },
         "properties": {
@@ -138620,6 +139226,34 @@
       },
       "ColumnSettings": {
         "type": "object",
+        "example": {
+          "columnWidth": null,
+          "header": {
+            "font": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "color": null,
+            "backgroundColor": null,
+            "textAlignment": {},
+            "verticalAlignment": {}
+          },
+          "cell": {
+            "font": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "color": null,
+            "backgroundColor": null,
+            "textAlignment": {},
+            "verticalAlignment": {}
+          },
+          "type": "COLUMN"
+        },
         "properties": {
           "columnWidth": {
             "type": "string"
@@ -138680,7 +139314,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "COMPLEX",
+          "operation": {},
+          "predicates": null
+        }
       },
       "ComplexOperation": {
         "type": "string",
@@ -138708,7 +139347,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "versionName": null,
+          "branch": null,
+          "type": "COMPLEX",
+          "syncStrategy": {},
+          "entityTypes": null
+        }
       },
       "ComponentClusteringMode": {
         "type": "string",
@@ -138962,7 +139608,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "CONVERTER"
+        }
       },
       "ConverterId": {
         "type": "object",
@@ -138973,7 +139637,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "CONVERTER",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "ConverterType": {
         "type": "string",
@@ -139017,21 +139685,36 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "COUPON",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "CsvReportTemplateConfig": {
         "allOf": [
           {
             "$ref": "#/components/schemas/ReportTemplateConfig"
           }
-        ]
+        ],
+        "example": {
+          "namePattern": null,
+          "timeDataPattern": null,
+          "format": "CSV",
+          "entityAliases": null,
+          "filters": null,
+          "components": null
+        }
       },
       "CurrentOwnerDynamicSourceConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/CfArgumentDynamicSourceConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "type": "CURRENT_OWNER"
+        }
       },
       "CustomInterval": {
         "allOf": [
@@ -139057,6 +139740,12 @@
             }
           }
         ],
+        "example": {
+          "type": "CUSTOM",
+          "tz": null,
+          "offsetSec": null,
+          "durationSec": null
+        },
         "required": [
           "durationSec",
           "tz"
@@ -139275,6 +139964,19 @@
             }
           }
         ],
+        "example": {
+          "type": "CUSTOM",
+          "visible": null,
+          "name": "My Custom Menu",
+          "icon": "My Custom Menu",
+          "menuItemType": "LINK",
+          "linkType": "URL",
+          "dashboardId": "https://mycompany.com",
+          "hideDashboardToolbar": null,
+          "url": "https://myexternalurl.com",
+          "setAccessToken": null,
+          "pages": null
+        },
         "required": [
           "menuItemType",
           "name"
@@ -139305,7 +140007,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "CUSTOM",
+          "visible": null,
+          "label": "Air quality",
+          "icon": "home_icon",
+          "path": "/alarmDetails/868c7083-032d-4f52-b8b4-7859aebb6a4e"
+        }
       },
       "CustomTimeSchedule": {
         "allOf": [
@@ -139326,7 +140035,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "CUSTOM",
+          "timezone": null,
+          "items": null
+        }
       },
       "CustomTimeScheduleItem": {
         "type": "object",
@@ -139457,7 +140171,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "CUSTOMER"
+        }
       },
       "CustomerId": {
         "type": "object",
@@ -139468,7 +140200,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "CUSTOMER",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "CustomerInfo": {
         "type": "object",
@@ -139602,6 +140338,10 @@
             }
           }
         ],
+        "example": {
+          "type": "CUSTOMER_USERS",
+          "customerId": null
+        },
         "required": [
           "customerId"
         ]
@@ -139734,6 +140474,42 @@
             }
           }
         ],
+        "example": {
+          "subType": {},
+          "type": "DASHBOARD",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "widthType": {},
+          "customWidth": null,
+          "alignment": {},
+          "config": {
+            "baseUrl": "https:thingsboard.cloud",
+            "dashboardId": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "state": null,
+            "timezone": "Europe/Kiev",
+            "useDashboardTimewindow": true,
+            "timewindow": {},
+            "namePattern": "report-%d{yyyy-MM-dd_HH:mm:ss}",
+            "type": "pdf",
+            "useCurrentUserCredentials": true,
+            "userId": "784f394c-42b6-435a-983c-b7beff2784f9"
+          }
+        },
         "required": [
           "config"
         ]
@@ -139743,7 +140519,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "DASHBOARD"
+        }
       },
       "DashboardId": {
         "type": "object",
@@ -139754,7 +140548,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "DASHBOARD",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "DashboardInfo": {
         "type": "object",
@@ -139871,7 +140669,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "DASHBOARD",
+          "visible": null,
+          "label": "Air quality",
+          "icon": "home_icon",
+          "dashboardId": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "DashboardReportConfig": {
         "type": "object",
@@ -139996,6 +140801,34 @@
             "DEFAULT": "#/components/schemas/DefaultDataKeySettings"
           }
         },
+        "example": {
+          "columnWidth": null,
+          "header": {
+            "font": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "color": null,
+            "backgroundColor": null,
+            "textAlignment": {},
+            "verticalAlignment": {}
+          },
+          "cell": {
+            "font": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "color": null,
+            "backgroundColor": null,
+            "textAlignment": {},
+            "verticalAlignment": {}
+          },
+          "type": "COLUMN"
+        },
         "properties": {
           "type": {
             "$ref": "#/components/schemas/DataKeySettingsType",
@@ -140084,6 +140917,11 @@
             }
           }
         ],
+        "example": {
+          "type": "DAY",
+          "tz": null,
+          "offsetSec": null
+        },
         "required": [
           "tz"
         ]
@@ -140128,7 +140966,18 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "DEBUG_CONVERTER",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "isError": "false",
+          "errorStr": "not present in the DB",
+          "type": null,
+          "in": null,
+          "out": null,
+          "metadata": null
+        }
       },
       "DebugIntegrationEventFilter": {
         "allOf": [
@@ -140167,7 +141016,17 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "DEBUG_INTEGRATION",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "isError": "false",
+          "errorStr": "not present in the DB",
+          "type": null,
+          "message": null,
+          "statusIntegration": null
+        }
       },
       "DebugSettings": {
         "type": "object",
@@ -140202,7 +141061,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "coapDeviceType": "DEFAULT",
+          "transportPayloadTypeConfiguration": {
+            "transportPayloadType": null
+          }
+        }
       },
       "DefaultDashboardParams": {
         "type": "object",
@@ -140223,7 +141088,10 @@
           {
             "$ref": "#/components/schemas/DataKeySettings"
           }
-        ]
+        ],
+        "example": {
+          "type": "DEFAULT"
+        }
       },
       "DefaultDeviceConfiguration": {
         "allOf": [
@@ -140231,7 +141099,10 @@
             "$ref": "#/components/schemas/DeviceConfiguration"
           }
         ],
-        "description": "Default device configuration"
+        "description": "Default device configuration",
+        "example": {
+          "type": "DEFAULT"
+        }
       },
       "DefaultDeviceProfileConfiguration": {
         "allOf": [
@@ -140239,21 +141110,30 @@
             "$ref": "#/components/schemas/DeviceProfileConfiguration"
           }
         ],
-        "description": "Default device profile configuration"
+        "description": "Default device profile configuration",
+        "example": {
+          "type": "DEFAULT"
+        }
       },
       "DefaultDeviceProfileTransportConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/DeviceProfileTransportConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "type": "DEFAULT"
+        }
       },
       "DefaultDeviceTransportConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/DeviceTransportConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "type": "DEFAULT"
+        }
       },
       "DefaultMenuItem": {
         "allOf": [
@@ -140292,7 +141172,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "DEFAULT",
+          "visible": null,
+          "id": "home",
+          "name": "My Custom Menu",
+          "icon": "My Custom Menu",
+          "pages": null
+        }
       },
       "DefaultMobilePage": {
         "allOf": [
@@ -140319,7 +141207,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "DEFAULT",
+          "visible": null,
+          "label": "Air quality",
+          "icon": "home_icon",
+          "id": "HOME"
+        }
       },
       "DefaultPageId": {
         "type": "string",
@@ -140737,7 +141632,102 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "DEFAULT",
+          "maxDevices": null,
+          "maxAssets": null,
+          "maxCustomers": null,
+          "maxUsers": null,
+          "maxDashboards": null,
+          "maxRuleChains": null,
+          "maxEdges": null,
+          "maxResourcesInBytes": null,
+          "maxOtaPackagesInBytes": null,
+          "maxResourceSize": null,
+          "maxReportSizeInBytes": null,
+          "maxIntegrations": null,
+          "maxConverters": null,
+          "maxSchedulerEvents": null,
+          "whiteLabelingEnabled": null,
+          "trendzEnabled": null,
+          "edgeEnabled": null,
+          "transportTenantMsgRateLimit": "1000:1,20000:60",
+          "transportTenantTelemetryMsgRateLimit": "1000:1,20000:60",
+          "transportTenantTelemetryDataPointsRateLimit": "1000:1,20000:60",
+          "transportDeviceMsgRateLimit": "20:1,600:60",
+          "transportDeviceTelemetryMsgRateLimit": "20:1,600:60",
+          "transportDeviceTelemetryDataPointsRateLimit": "20:1,600:60",
+          "transportGatewayMsgRateLimit": "20:1,600:60",
+          "transportGatewayTelemetryMsgRateLimit": "20:1,600:60",
+          "transportGatewayTelemetryDataPointsRateLimit": "20:1,600:60",
+          "transportGatewayDeviceMsgRateLimit": "20:1,600:60",
+          "transportGatewayDeviceTelemetryMsgRateLimit": "20:1,600:60",
+          "transportGatewayDeviceTelemetryDataPointsRateLimit": "20:1,600:60",
+          "integrationMsgsPerTenantRateLimit": "20:1,600:60",
+          "integrationMsgsPerDeviceRateLimit": "20:1,600:60",
+          "integrationMsgsPerAssetRateLimit": null,
+          "tenantEntityExportRateLimit": "20:1,600:60",
+          "tenantEntityImportRateLimit": "20:1,600:60",
+          "tenantNotificationRequestsRateLimit": "20:1,600:60",
+          "tenantNotificationRequestsPerRuleRateLimit": "20:1,600:60",
+          "maxTransportMessages": 10000000,
+          "maxTransportDataPoints": 10000000,
+          "maxREExecutions": 4000000,
+          "maxJSExecutions": 5000000,
+          "maxTbelExecutions": 5000000,
+          "maxDPStorageDays": 0,
+          "maxRuleNodeExecutionsPerMessage": 50,
+          "maxDebugModeDurationMinutes": 15,
+          "maxEmails": 0,
+          "smsEnabled": true,
+          "maxSms": 0,
+          "maxCreatedAlarms": 1000,
+          "maxGeneratedReports": 10000,
+          "maxAiCredits": 10000,
+          "tenantServerRestLimitsConfiguration": null,
+          "customerServerRestLimitsConfiguration": null,
+          "maxWsSessionsPerTenant": null,
+          "maxWsSessionsPerCustomer": null,
+          "maxWsSessionsPerRegularUser": null,
+          "maxWsSessionsPerPublicUser": null,
+          "wsMsgQueueLimitPerSession": null,
+          "maxWsSubscriptionsPerTenant": null,
+          "maxWsSubscriptionsPerCustomer": null,
+          "maxWsSubscriptionsPerRegularUser": null,
+          "maxWsSubscriptionsPerPublicUser": null,
+          "wsUpdatesPerSessionRateLimit": null,
+          "cassandraReadQueryTenantCoreRateLimits": null,
+          "cassandraWriteQueryTenantCoreRateLimits": null,
+          "cassandraReadQueryTenantRuleEngineRateLimits": null,
+          "cassandraWriteQueryTenantRuleEngineRateLimits": null,
+          "edgeEventRateLimits": null,
+          "edgeEventRateLimitsPerEdge": null,
+          "edgeUplinkMessagesRateLimits": null,
+          "edgeUplinkMessagesRateLimitsPerEdge": null,
+          "defaultStorageTtlDays": null,
+          "alarmsTtlDays": null,
+          "rpcTtlDays": null,
+          "queueStatsTtlDays": null,
+          "ruleEngineExceptionsTtlDays": null,
+          "blobEntityTtlDays": null,
+          "reportTtlDays": null,
+          "warnThreshold": null,
+          "maxCalculatedFieldsPerEntity": 100,
+          "maxArgumentsPerCF": 10,
+          "minAllowedScheduledUpdateIntervalInSecForCF": 10,
+          "maxRelationLevelPerCfArgument": 2,
+          "maxRelatedEntitiesToReturnPerCfArgument": 1000,
+          "maxDataPointsPerRollingArg": 1000,
+          "maxStateSizeInKBytes": 512,
+          "maxSingleValueArgumentSizeInKBytes": 32,
+          "minAllowedDeduplicationIntervalInSecForCF": 10,
+          "minAllowedAggregationIntervalInSecForCF": 60,
+          "intermediateAggregationIntervalInSecForCF": 300,
+          "cfReevaluationCheckInterval": 60,
+          "alarmsReevaluationInterval": 60,
+          "aiChatRequestsPerTenantRateLimit": null
+        }
       },
       "DeleteTenantRequest": {
         "type": "object",
@@ -140763,6 +141753,13 @@
             "MICROSOFT_TEAMS": "#/components/schemas/MicrosoftTeamsDeliveryMethodNotificationTemplate",
             "MOBILE_APP": "#/components/schemas/MobileAppDeliveryMethodNotificationTemplate"
           }
+        },
+        "example": {
+          "enabled": null,
+          "body": null,
+          "method": "WEB",
+          "subject": "New Message Received",
+          "additionalConfig": {}
         },
         "properties": {
           "enabled": {
@@ -140891,6 +141888,12 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "DEVICE_ACTIVITY",
+          "devices": null,
+          "deviceProfiles": null,
+          "notifyOn": null
+        },
         "required": [
           "notifyOn"
         ]
@@ -140914,6 +141917,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "DEVICE_ACTIVITY",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -140926,6 +141933,9 @@
           "mapping": {
             "DEFAULT": "#/components/schemas/DefaultDeviceConfiguration"
           }
+        },
+        "example": {
+          "type": "DEFAULT"
         },
         "properties": {
           "type": {
@@ -141044,7 +142054,37 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "credentials": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "createdTime": 1609459200000,
+            "deviceId": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "credentialsType": {},
+            "credentialsId": "Access token or other value that depends on the credentials type",
+            "credentialsValue": "Null in case of ACCESS_TOKEN. See model definition.",
+            "version": null
+          },
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "DEVICE"
+        }
       },
       "DeviceGroupOtaPackage": {
         "type": "object",
@@ -141077,7 +142117,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "DEVICE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "DeviceInfo": {
         "type": "object",
@@ -141267,6 +142311,9 @@
             "DEFAULT": "#/components/schemas/DefaultDeviceProfileConfiguration"
           }
         },
+        "example": {
+          "type": "DEFAULT"
+        },
         "properties": {
           "type": {
             "type": "string"
@@ -141298,7 +142345,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "DEVICE_PROFILE"
+        }
       },
       "DeviceProfileId": {
         "type": "object",
@@ -141309,7 +142374,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "DEVICE_PROFILE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "DeviceProfileInfo": {
         "type": "object",
@@ -141356,6 +142425,10 @@
             "X509_CERTIFICATE_CHAIN": "#/components/schemas/X509CertificateChainProvisionConfiguration"
           }
         },
+        "example": {
+          "provisionDeviceSecret": "secret123",
+          "type": "DISABLED"
+        },
         "properties": {
           "provisionDeviceSecret": {
             "type": "string",
@@ -141390,6 +142463,9 @@
             "COAP": "#/components/schemas/CoapDeviceProfileTransportConfiguration",
             "SNMP": "#/components/schemas/SnmpDeviceProfileTransportConfiguration"
           }
+        },
+        "example": {
+          "type": "DEFAULT"
         },
         "properties": {
           "type": {
@@ -141465,7 +142541,26 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "deviceSearchQuery",
+          "rootEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "relationType": null,
+          "direction": {},
+          "maxLevel": null,
+          "fetchLastLevelOnly": null,
+          "rootStateEntity": null,
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "deviceTypes": null
+        }
       },
       "DeviceTransportConfiguration": {
         "description": "Configuration for device transport",
@@ -141478,6 +142573,9 @@
             "LWM2M": "#/components/schemas/Lwm2mDeviceTransportConfiguration",
             "SNMP": "#/components/schemas/SnmpDeviceTransportConfiguration"
           }
+        },
+        "example": {
+          "type": "DEFAULT"
         },
         "properties": {
           "type": {
@@ -141522,7 +142620,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "deviceType",
+          "deviceTypes": null,
+          "deviceNameFilter": null,
+          "deviceType": null
+        }
       },
       "Direction": {
         "type": "string",
@@ -141536,7 +142640,11 @@
           {
             "$ref": "#/components/schemas/DeviceProfileProvisionConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "provisionDeviceSecret": "secret123",
+          "type": "DISABLED"
+        }
       },
       "Discount": {
         "type": "object",
@@ -141617,7 +142725,31 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "DIVIDER",
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "length": {},
+          "borderType": {},
+          "widthPx": null,
+          "color": null
+        }
       },
       "Domain": {
         "type": "object",
@@ -141673,7 +142805,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "DOMAIN",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "DomainInfo": {
         "type": "object",
@@ -141781,14 +142917,40 @@
             }
           }
         ],
-        "description": "Dummy job configuration"
+        "description": "Dummy job configuration",
+        "example": {
+          "tasksKey": null,
+          "toReprocess": null,
+          "type": "DUMMY",
+          "taskProcessingTimeMs": null,
+          "successfulTasksCount": null,
+          "failedTasksCount": null,
+          "permanentlyFailedTasksCount": null,
+          "errors": null,
+          "retries": null,
+          "taskProcessingTimeoutMs": null,
+          "generalError": null,
+          "submittedTasksBeforeGeneralError": null
+        }
       },
       "DummyJobResult": {
         "allOf": [
           {
             "$ref": "#/components/schemas/JobResult"
           }
-        ]
+        ],
+        "example": {
+          "successfulCount": null,
+          "failedCount": null,
+          "discardedCount": null,
+          "totalCount": null,
+          "results": null,
+          "generalError": null,
+          "startTs": null,
+          "finishTs": null,
+          "cancellationTs": null,
+          "jobType": "DUMMY"
+        }
       },
       "DummyTaskFailure": {
         "type": "object",
@@ -141837,6 +142999,23 @@
             }
           }
         ],
+        "example": {
+          "expression": {
+            "type": null
+          },
+          "schedule": {
+            "staticValue": {
+              "type": null
+            },
+            "dynamicValueArgument": null
+          },
+          "type": "DURATION",
+          "unit": {},
+          "value": {
+            "staticValue": null,
+            "dynamicValueArgument": null
+          }
+        },
         "required": [
           "unit",
           "value"
@@ -142012,7 +143191,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "EDGE_COMMUNICATION_FAILURE",
+          "edges": null
+        }
       },
       "EdgeCommunicationFailureRecipientsConfig": {
         "allOf": [
@@ -142033,6 +143216,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "EDGE_COMMUNICATION_FAILURE",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -142062,7 +143249,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "EDGE_CONNECTION",
+          "edges": null,
+          "notifyOn": null
+        }
       },
       "EdgeConnectionRecipientsConfig": {
         "allOf": [
@@ -142083,6 +143275,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "EDGE_CONNECTION",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -142243,7 +143439,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "EDGE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "EdgeInfo": {
         "type": "object",
@@ -142422,7 +143622,26 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "edgeSearchQuery",
+          "rootEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "relationType": null,
+          "direction": {},
+          "maxLevel": null,
+          "fetchLastLevelOnly": null,
+          "rootStateEntity": null,
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "edgeTypes": null
+        }
       },
       "EdgeTypeFilter": {
         "allOf": [
@@ -142448,7 +143667,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "edgeType",
+          "edgeTypes": null,
+          "edgeNameFilter": null,
+          "edgeType": null
+        }
       },
       "EdqsApiMode": {
         "type": "string",
@@ -142499,7 +143724,10 @@
           {
             "$ref": "#/components/schemas/CoapDeviceTypeConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "coapDeviceType": "EFENTO"
+        }
       },
       "EmailDeliveryMethodNotificationTemplate": {
         "allOf": [
@@ -142516,6 +143744,12 @@
             }
           }
         ],
+        "example": {
+          "enabled": null,
+          "body": null,
+          "method": "EMAIL",
+          "subject": null
+        },
         "required": [
           "subject"
         ]
@@ -142535,6 +143769,11 @@
             }
           }
         ],
+        "example": {
+          "useByDefault": null,
+          "providerType": "EMAIL",
+          "email": null
+        },
         "required": [
           "email"
         ]
@@ -142554,7 +143793,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "providerType": "EMAIL",
+          "verificationCodeLifetime": null
+        }
       },
       "EnterpriseCaptchaParams": {
         "allOf": [
@@ -142590,7 +143833,16 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "version": "enterprise",
+          "projectId": null,
+          "serviceAccountCredentials": null,
+          "serviceAccountCredentialsFileName": null,
+          "androidKey": null,
+          "iosKey": null,
+          "logActionName": null
+        }
       },
       "EntitiesByGroupNameFilter": {
         "allOf": [
@@ -142617,7 +143869,18 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entitiesByGroupName",
+          "groupType": {},
+          "ownerId": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "entityGroupNameFilter": null,
+          "groupStateEntity": null,
+          "stateEntityParamName": null
+        }
       },
       "EntitiesLimitNotificationRuleTriggerConfig": {
         "allOf": [
@@ -142641,7 +143904,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "ENTITIES_LIMIT",
+          "entityTypes": null,
+          "threshold": null
+        }
       },
       "EntitiesLimitRecipientsConfig": {
         "allOf": [
@@ -142662,6 +143930,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "ENTITIES_LIMIT",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -142708,7 +143980,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "ENTITY_ACTION",
+          "entityTypes": null,
+          "created": null,
+          "updated": null,
+          "deleted": null
+        }
       },
       "EntityActionRecipientsConfig": {
         "allOf": [
@@ -142729,6 +144008,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "ENTITY_ACTION",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -142767,6 +144050,27 @@
             }
           }
         ],
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "ENTITY_AGGREGATION",
+          "arguments": null,
+          "metrics": null,
+          "interval": {
+            "type": "HOUR",
+            "tz": null,
+            "offsetSec": null
+          },
+          "watermark": {
+            "duration": null
+          },
+          "produceIntermediateResult": null
+        },
         "required": [
           "arguments",
           "interval",
@@ -142985,6 +144289,36 @@
             "REPORT_TEMPLATE": "#/components/schemas/ReportTemplateExportData"
           }
         },
+        "example": {
+          "credentials": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "createdTime": 1609459200000,
+            "deviceId": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "credentialsType": {},
+            "credentialsId": "Access token or other value that depends on the credentials type",
+            "credentialsValue": "Null in case of ACCESS_TOKEN. See model definition.",
+            "version": null
+          },
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "DEVICE"
+        },
         "properties": {
           "entity": {
             "$ref": "#/components/schemas/ExportableEntity"
@@ -143068,6 +144402,14 @@
             "entityViewSearchQuery": "#/components/schemas/EntityViewSearchQueryFilter",
             "edgeSearchQuery": "#/components/schemas/EdgeSearchQueryFilter",
             "schedulerEvent": "#/components/schemas/SchedulerEventFilter"
+          }
+        },
+        "example": {
+          "type": "singleEntity",
+          "singleEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
           }
         },
         "properties": {
@@ -143175,7 +144517,28 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "permissions": null,
+          "groupOtaPackages": null,
+          "groupEntities": null,
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "ENTITY_GROUP"
+        }
       },
       "EntityGroupFilter": {
         "allOf": [
@@ -143202,7 +144565,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityGroup",
+          "groupType": {},
+          "entityGroup": null,
+          "groupStateEntity": null,
+          "defaultStateGroupType": {},
+          "defaultStateEntityGroup": null
+        }
       },
       "EntityGroupId": {
         "type": "object",
@@ -143213,7 +144584,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "ENTITY_GROUP",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "EntityGroupInfo": {
         "type": "object",
@@ -143311,7 +144686,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityGroupList",
+          "groupType": {},
+          "entityGroupList": null
+        }
       },
       "EntityGroupNameFilter": {
         "allOf": [
@@ -143329,7 +144709,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityGroupName",
+          "groupType": {},
+          "entityGroupNameFilter": null
+        }
       },
       "EntityId": {
         "type": "object",
@@ -143389,6 +144774,10 @@
             "PRODUCT": "#/components/schemas/ProductId",
             "SUBSCRIPTION_ADDON": "#/components/schemas/SubscriptionAddonId"
           }
+        },
+        "example": {
+          "entityType": "DEVICE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
         },
         "properties": {
           "entityType": {
@@ -143471,7 +144860,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityList",
+          "entityType": {},
+          "entityList": null
+        }
       },
       "EntityLoadError": {
         "type": "object",
@@ -143506,7 +144900,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityName",
+          "entityType": {},
+          "entityNameFilter": null
+        }
       },
       "EntityRelation": {
         "type": "object",
@@ -143686,7 +145085,46 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "ENTITY_TABLE",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "showTableHeading": null,
+          "tableHeading": {
+            "text": null,
+            "font": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "color": null,
+            "textAlignment": {},
+            "verticalAlignment": {},
+            "height": null
+          },
+          "tableSortOrder": {
+            "column": null,
+            "direction": {}
+          }
+        }
       },
       "EntityType": {
         "type": "string",
@@ -143758,7 +145196,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityType",
+          "entityType": {}
+        }
       },
       "EntityTypeLoadResult": {
         "type": "object",
@@ -143879,7 +145321,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "versionId": null,
+          "type": "ENTITY_TYPE",
+          "entityTypes": null,
+          "rollbackOnError": null
+        }
       },
       "EntityVersion": {
         "type": "object",
@@ -143980,7 +145428,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "ENTITY_VIEW"
+        }
       },
       "EntityViewId": {
         "type": "object",
@@ -143991,7 +145457,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "ENTITY_VIEW",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "EntityViewInfo": {
         "type": "object",
@@ -144140,7 +145610,26 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityViewSearchQuery",
+          "rootEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "relationType": null,
+          "direction": {},
+          "maxLevel": null,
+          "fetchLastLevelOnly": null,
+          "rootStateEntity": null,
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "entityViewTypes": null
+        }
       },
       "EntityViewTypeFilter": {
         "allOf": [
@@ -144166,7 +145655,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "entityViewType",
+          "entityViewTypes": null,
+          "entityViewNameFilter": null,
+          "entityViewType": null
+        }
       },
       "ErrorComponent": {
         "allOf": [
@@ -144316,7 +145811,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "ERROR",
+          "errorMessage": null,
+          "exception": null
+        }
       },
       "ErrorEventFilter": {
         "allOf": [
@@ -144343,7 +145844,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "ERROR",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "method": "onClusterEventMsg",
+          "errorStr": "not present in the DB"
+        }
       },
       "EscalatedNotificationRuleRecipientsConfig": {
         "allOf": [
@@ -144368,6 +145876,10 @@
           }
         ],
         "description": "Escalated notification rule recipients configuration",
+        "example": {
+          "triggerType": "ALARM",
+          "escalationTable": null
+        },
         "required": [
           "escalationTable"
         ]
@@ -144388,6 +145900,15 @@
             "DEBUG_CONVERTER": "#/components/schemas/DebugConverterEventFilter",
             "RAW_DATA": "#/components/schemas/RawDataEventFilter"
           }
+        },
+        "example": {
+          "eventType": "STATS",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "minMessagesProcessed": 25,
+          "maxMessagesProcessed": 250,
+          "minErrorsOccurred": 30,
+          "maxErrorsOccurred": 300
         },
         "properties": {
           "eventType": {
@@ -144502,7 +146023,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "status": "FAILURE",
+          "errorDetails": null
+        }
       },
       "Favicon": {
         "type": "object",
@@ -144669,6 +146194,23 @@
             }
           }
         ],
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "GEOFENCING",
+          "entityCoordinates": {
+            "latitudeKeyName": null,
+            "longitudeKeyName": null
+          },
+          "zoneGroups": null,
+          "scheduledUpdateEnabled": null,
+          "scheduledUpdateInterval": null
+        },
         "required": [
           "entityCoordinates",
           "output",
@@ -144734,6 +146276,21 @@
             }
           }
         ],
+        "example": {
+          "provider": "GITHUB_MODELS",
+          "providerConfig": {
+            "personalAccessToken": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "frequencyPenalty": null,
+          "presencePenalty": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -144805,6 +146362,22 @@
             }
           }
         ],
+        "example": {
+          "provider": "GOOGLE_AI_GEMINI",
+          "providerConfig": {
+            "apiKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "topK": null,
+          "frequencyPenalty": null,
+          "presencePenalty": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -144876,6 +146449,25 @@
             }
           }
         ],
+        "example": {
+          "provider": "GOOGLE_VERTEX_AI_GEMINI",
+          "providerConfig": {
+            "fileName": null,
+            "projectId": null,
+            "location": null,
+            "serviceAccountKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "topK": null,
+          "frequencyPenalty": null,
+          "presencePenalty": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -144967,7 +146559,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "GROUP_PERMISSION",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "GroupPermissionInfo": {
         "type": "object",
@@ -145157,7 +146753,39 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "HEADING",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "value": null,
+          "font": {
+            "size": null,
+            "weight": {},
+            "style": {},
+            "family": null
+          },
+          "color": null,
+          "textAlignment": {},
+          "verticalAlignment": {},
+          "height": null
+        }
       },
       "History": {
         "type": "object",
@@ -145335,7 +146963,18 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "HOME",
+          "visible": null,
+          "id": "home",
+          "name": "My Custom Menu",
+          "icon": "My Custom Menu",
+          "pages": null,
+          "homeType": {},
+          "dashboardId": null,
+          "hideDashboardToolbar": null
+        }
       },
       "HomeMenuItemType": {
         "type": "string",
@@ -145363,6 +147002,11 @@
             }
           }
         ],
+        "example": {
+          "type": "HOUR",
+          "tz": null,
+          "offsetSec": null
+        },
         "required": [
           "tz"
         ]
@@ -145427,7 +147071,33 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "IMAGE",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "widthType": {},
+          "customWidth": null,
+          "alignment": {},
+          "sourceType": {},
+          "imageUrl": null
+        }
       },
       "ImageSourceType": {
         "type": "string",
@@ -145575,7 +147245,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "INTEGRATION"
+        }
       },
       "IntegrationId": {
         "type": "object",
@@ -145586,7 +147274,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "INTEGRATION",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "IntegrationInfo": {
         "type": "object",
@@ -145693,7 +147385,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "INTEGRATION_LIFECYCLE_EVENT",
+          "integrationTypes": null,
+          "integrations": null,
+          "notifyOn": null,
+          "onlyOnError": null
+        }
       },
       "IntegrationLifecycleEventRecipientsConfig": {
         "allOf": [
@@ -145714,6 +147413,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "INTEGRATION_LIFECYCLE_EVENT",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -145833,6 +147536,20 @@
             "REPORT": "#/components/schemas/ReportJobConfiguration"
           }
         },
+        "example": {
+          "tasksKey": null,
+          "toReprocess": null,
+          "type": "DUMMY",
+          "taskProcessingTimeMs": null,
+          "successfulTasksCount": null,
+          "failedTasksCount": null,
+          "permanentlyFailedTasksCount": null,
+          "errors": null,
+          "retries": null,
+          "taskProcessingTimeoutMs": null,
+          "generalError": null,
+          "submittedTasksBeforeGeneralError": null
+        },
         "properties": {
           "tasksKey": {
             "type": "string",
@@ -145862,7 +147579,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "JOB",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "JobResult": {
         "type": "object",
@@ -145874,6 +147595,18 @@
             "CF_REPROCESSING": "#/components/schemas/CfReprocessingJobResult",
             "REPORT": "#/components/schemas/ReportJobResult"
           }
+        },
+        "example": {
+          "successfulCount": null,
+          "failedCount": null,
+          "discardedCount": null,
+          "totalCount": null,
+          "results": null,
+          "generalError": null,
+          "startTs": null,
+          "finishTs": null,
+          "cancellationTs": null,
+          "jobType": "DUMMY"
         },
         "properties": {
           "successfulCount": {
@@ -145957,7 +147690,10 @@
           {
             "$ref": "#/components/schemas/TransportPayloadTypeConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "transportPayloadType": "JSON"
+        }
       },
       "JwtPair": {
         "type": "object",
@@ -146030,6 +147766,21 @@
             "BOOLEAN": "#/components/schemas/BooleanFilterPredicate",
             "COMPLEX": "#/components/schemas/ComplexFilterPredicate"
           }
+        },
+        "example": {
+          "type": "STRING",
+          "operation": {},
+          "value": {
+            "defaultValue": null,
+            "userValue": null,
+            "dynamicValue": {
+              "resolvedValue": null,
+              "sourceType": {},
+              "sourceAttribute": null,
+              "inherit": null
+            }
+          },
+          "ignoreCase": null
         },
         "properties": {
           "type": {
@@ -146155,7 +147906,66 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "LATEST_CHART",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "widthType": {},
+          "customWidth": null,
+          "alignment": {},
+          "height": null,
+          "latestChartSettings": {
+            "showTitle": null,
+            "title": null,
+            "titleFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "titleColor": null,
+            "titleAlignment": {},
+            "units": null,
+            "decimals": null,
+            "autoScale": null,
+            "sortSeries": null,
+            "showTotal": null,
+            "showLegend": null,
+            "legendPosition": {},
+            "legendLabelFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "legendLabelColor": null,
+            "legendValueFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "legendValueColor": null,
+            "legendShowTotal": null
+          }
+        }
       },
       "LegendConfig": {
         "type": "object",
@@ -146263,7 +148073,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "LC_EVENT",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "event": "STARTED",
+          "status": "Success",
+          "errorStr": "not present in the DB"
+        }
       },
       "LimitedApi": {
         "type": "string",
@@ -146774,7 +148592,34 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "LWM2M",
+          "observeAttr": {
+            "keyName": null,
+            "observe": null,
+            "attribute": null,
+            "telemetry": null,
+            "attributeLwm2m": null,
+            "initAttrTelAsObsStrategy": null,
+            "observeStrategy": {}
+          },
+          "bootstrapServerUpdateEnable": null,
+          "bootstrap": null,
+          "clientLwM2mSettings": {
+            "powerMode": {},
+            "psmActivityTimer": null,
+            "edrxCycle": null,
+            "pagingTransmissionWindow": null,
+            "useObject19ForOtaInfo": null,
+            "fwUpdateStrategy": null,
+            "swUpdateStrategy": null,
+            "clientOnlyObserveAfterConnect": null,
+            "fwUpdateResource": null,
+            "swUpdateResource": null,
+            "defaultObjectIDVer": null
+          }
+        }
       },
       "Lwm2mDeviceTransportConfiguration": {
         "allOf": [
@@ -146801,7 +148646,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "LWM2M",
+          "powerMode": {},
+          "psmActivityTimer": null,
+          "edrxCycle": null,
+          "pagingTransmissionWindow": null
+        }
       },
       "MapperType": {
         "type": "string",
@@ -146841,6 +148693,17 @@
             "DEFAULT": "#/components/schemas/DefaultMenuItem",
             "CUSTOM": "#/components/schemas/CustomMenuItem"
           }
+        },
+        "example": {
+          "type": "HOME",
+          "visible": null,
+          "id": "home",
+          "name": "My Custom Menu",
+          "icon": "My Custom Menu",
+          "pages": null,
+          "homeType": {},
+          "dashboardId": null,
+          "hideDashboardToolbar": null
         },
         "properties": {
           "type": {
@@ -146964,7 +148827,23 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "enabled": null,
+          "body": null,
+          "method": "MICROSOFT_TEAMS",
+          "subject": null,
+          "themeColor": null,
+          "button": {
+            "enabled": null,
+            "text": null,
+            "linkType": {},
+            "link": null,
+            "dashboardId": null,
+            "dashboardState": null,
+            "setEntityIdInState": null
+          }
+        }
       },
       "MicrosoftTeamsNotificationTargetConfig": {
         "allOf": [
@@ -147001,6 +148880,18 @@
             }
           }
         ],
+        "example": {
+          "description": null,
+          "type": "MICROSOFT_TEAMS",
+          "webhookUrl": null,
+          "channelName": null,
+          "useOldApi": null,
+          "email": null,
+          "firstName": null,
+          "id": null,
+          "lastName": null,
+          "title": null
+        },
         "required": [
           "channelName",
           "webhookUrl"
@@ -147057,6 +148948,21 @@
             }
           }
         ],
+        "example": {
+          "provider": "MISTRAL_AI",
+          "providerConfig": {
+            "apiKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "frequencyPenalty": null,
+          "presencePenalty": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -147202,7 +149108,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "MOBILE_APP_BUNDLE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "MobileAppBundleInfo": {
         "type": "object",
@@ -147301,6 +149211,13 @@
             }
           }
         ],
+        "example": {
+          "enabled": null,
+          "body": null,
+          "method": "MOBILE_APP",
+          "subject": "New Message Received",
+          "additionalConfig": {}
+        },
         "required": [
           "subject"
         ]
@@ -147314,7 +149231,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "MOBILE_APP",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "MobileAppNotificationDeliveryMethodConfig": {
         "allOf": [
@@ -147335,7 +149256,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "method": "MOBILE_APP",
+          "firebaseServiceAccountCredentialsFileName": null,
+          "firebaseServiceAccountCredentials": null,
+          "useSystemSettings": null
+        }
       },
       "MobileAppStatus": {
         "type": "string",
@@ -147389,6 +149316,13 @@
             "WEB_VIEW": "#/components/schemas/WebViewPage",
             "CUSTOM": "#/components/schemas/CustomMobilePage"
           }
+        },
+        "example": {
+          "type": "DEFAULT",
+          "visible": null,
+          "label": "Air quality",
+          "icon": "home_icon",
+          "id": "HOME"
         },
         "properties": {
           "type": {
@@ -147447,6 +149381,50 @@
             }
           }
         ],
+        "example": {
+          "type": "MOBILE",
+          "enabled": null,
+          "title": null,
+          "captcha": {
+            "version": "enterprise",
+            "projectId": null,
+            "serviceAccountCredentials": null,
+            "serviceAccountCredentialsFileName": null,
+            "androidKey": null,
+            "iosKey": null,
+            "logActionName": null
+          },
+          "permissions": null,
+          "notificationRecipient": {
+            "entityType": "NOTIFICATION_TARGET",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "signUpFields": null,
+          "customerTitlePrefix": null,
+          "showPrivacyPolicy": null,
+          "showTermsOfUse": null,
+          "defaultDashboard": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "fullscreen": null
+          },
+          "homeDashboard": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "hideToolbar": null
+          },
+          "customerGroupId": {
+            "entityType": "ENTITY_GROUP",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "customMenuId": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "privacyPolicy": null,
+          "redirect": {
+            "scheme": null,
+            "host": null
+          },
+          "termsOfUse": null
+        },
         "required": [
           "redirect"
         ]
@@ -147493,6 +149471,11 @@
             }
           }
         ],
+        "example": {
+          "type": "MONTH",
+          "tz": null,
+          "offsetSec": null
+        },
         "required": [
           "tz"
         ]
@@ -147532,14 +149515,29 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "MQTT",
+          "deviceTelemetryTopic": null,
+          "deviceAttributesTopic": null,
+          "deviceAttributesSubscribeTopic": null,
+          "transportPayloadTypeConfiguration": {
+            "transportPayloadType": null
+          },
+          "sparkplug": null,
+          "sparkplugAttributesMetricNames": null,
+          "sendAckOnValidationException": null
+        }
       },
       "MqttDeviceTransportConfiguration": {
         "allOf": [
           {
             "$ref": "#/components/schemas/DeviceTransportConfiguration"
           }
-        ]
+        ],
+        "example": {
+          "type": "MQTT"
+        }
       },
       "NameConflictPolicy": {
         "type": "string",
@@ -147553,7 +149551,10 @@
           {
             "$ref": "#/components/schemas/NotificationRuleTriggerConfig"
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "NEW_PLATFORM_VERSION"
+        }
       },
       "NewPlatformVersionRecipientsConfig": {
         "allOf": [
@@ -147574,6 +149575,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "NEW_PLATFORM_VERSION",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -147595,6 +149600,14 @@
             }
           }
         ],
+        "example": {
+          "type": "NO_DATA",
+          "unit": {},
+          "duration": {
+            "staticValue": null,
+            "dynamicValueArgument": null
+          }
+        },
         "required": [
           "duration",
           "unit"
@@ -147719,7 +149732,10 @@
           {
             "$ref": "#/components/schemas/OllamaAuth"
           }
-        ]
+        ],
+        "example": {
+          "type": "NONE"
+        }
       },
       "Notification": {
         "type": "object",
@@ -147782,6 +149798,10 @@
             "MOBILE_APP": "#/components/schemas/MobileAppNotificationDeliveryMethodConfig"
           }
         },
+        "example": {
+          "method": "SLACK",
+          "botToken": null
+        },
         "properties": {
           "method": {
             "type": "string"
@@ -147800,7 +149820,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "NOTIFICATION",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "NotificationInfo": {
         "type": "object",
@@ -147917,7 +149941,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "NOTIFICATION_REQUEST",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "NotificationRequestInfo": {
         "type": "object",
@@ -148110,7 +150138,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "NOTIFICATION_RULE"
+        }
       },
       "NotificationRuleId": {
         "type": "object",
@@ -148121,7 +150167,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "NOTIFICATION_RULE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "NotificationRuleInfo": {
         "type": "object",
@@ -148201,6 +150251,10 @@
             "INTEGRATION_LIFECYCLE_EVENT": "#/components/schemas/IntegrationLifecycleEventRecipientsConfig"
           }
         },
+        "example": {
+          "triggerType": "ENTITY_ACTION",
+          "targets": null
+        },
         "properties": {
           "triggerType": {
             "$ref": "#/components/schemas/NotificationRuleTriggerType"
@@ -148228,6 +150282,15 @@
             "TASK_PROCESSING_FAILURE": "#/components/schemas/TaskProcessingFailureNotificationRuleTriggerConfig",
             "RESOURCES_SHORTAGE": "#/components/schemas/ResourcesShortageNotificationRuleTriggerConfig",
             "INTEGRATION_LIFECYCLE_EVENT": "#/components/schemas/IntegrationLifecycleEventNotificationRuleTriggerConfig"
+          }
+        },
+        "example": {
+          "triggerType": "ALARM",
+          "alarmTypes": null,
+          "alarmSeverities": null,
+          "notifyOn": null,
+          "clearRule": {
+            "alarmStatuses": null
           }
         },
         "properties": {
@@ -148319,6 +150382,13 @@
             "MICROSOFT_TEAMS": "#/components/schemas/MicrosoftTeamsNotificationTargetConfig"
           }
         },
+        "example": {
+          "description": null,
+          "type": "PLATFORM_USERS",
+          "usersFilter": {
+            "type": null
+          }
+        },
         "properties": {
           "description": {
             "type": "string"
@@ -148336,7 +150406,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "NOTIFICATION_TARGET"
+        }
       },
       "NotificationTargetId": {
         "type": "object",
@@ -148347,7 +150435,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "NOTIFICATION_TARGET",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "NotificationTemplate": {
         "type": "object",
@@ -148414,7 +150506,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "NOTIFICATION_TEMPLATE"
+        }
       },
       "NotificationTemplateId": {
         "type": "object",
@@ -148425,7 +150535,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "NOTIFICATION_TEMPLATE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "NotificationType": {
         "type": "string",
@@ -148473,7 +150587,21 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "NUMERIC",
+          "operation": {},
+          "value": {
+            "defaultValue": null,
+            "userValue": null,
+            "dynamicValue": {
+              "resolvedValue": null,
+              "sourceType": {},
+              "sourceAttribute": null,
+              "inherit": null
+            }
+          }
+        }
       },
       "NumericOperation": {
         "type": "string",
@@ -148667,7 +150795,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "OAUTH2_CLIENT",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "OAuth2ClientInfo": {
         "type": "object",
@@ -148975,6 +151107,9 @@
             "TOKEN": "#/components/schemas/Token"
           }
         },
+        "example": {
+          "type": "NONE"
+        },
         "properties": {
           "type": {
             "type": "string"
@@ -149035,6 +151170,24 @@
             }
           }
         ],
+        "example": {
+          "provider": "OLLAMA",
+          "providerConfig": {
+            "baseUrl": null,
+            "auth": {
+              "type": null
+            }
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "topK": null,
+          "contextLength": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -149106,6 +151259,22 @@
             }
           }
         ],
+        "example": {
+          "provider": "OPENAI",
+          "providerConfig": {
+            "baseUrl": null,
+            "apiKey": null
+          },
+          "modelId": null,
+          "temperature": null,
+          "topP": null,
+          "frequencyPenalty": null,
+          "presencePenalty": null,
+          "maxOutputTokens": null,
+          "timeoutSeconds": null,
+          "maxRetries": null,
+          "modelType": {}
+        },
         "required": [
           "modelId",
           "providerConfig"
@@ -149153,7 +151322,10 @@
           {
             "$ref": "#/components/schemas/UsersFilter"
           }
-        ]
+        ],
+        "example": {
+          "type": "ORIGINATOR_ENTITY_OWNER_USERS"
+        }
       },
       "OtaPackage": {
         "type": "object",
@@ -149261,7 +151433,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "OTA_PACKAGE"
+        }
       },
       "OtaPackageId": {
         "type": "object",
@@ -149272,7 +151462,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "OTA_PACKAGE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "OtaPackageInfo": {
         "type": "object",
@@ -149431,6 +151625,15 @@
             "ATTRIBUTES": "#/components/schemas/AttributesOutput"
           }
         },
+        "example": {
+          "decimalsByDefault": null,
+          "name": null,
+          "scope": {},
+          "strategy": {
+            "type": null
+          },
+          "type": "TIME_SERIES"
+        },
         "properties": {
           "decimalsByDefault": {
             "type": "integer",
@@ -149549,7 +151752,11 @@
           {
             "$ref": "#/components/schemas/ReportComponent"
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "PAGE_BREAK"
+        }
       },
       "PageDataAiModel": {
         "type": "object",
@@ -151799,7 +154006,34 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "namePattern": null,
+          "timeDataPattern": null,
+          "format": "PDF",
+          "entityAliases": null,
+          "filters": null,
+          "components": null,
+          "footer": {
+            "enabled": null,
+            "components": null,
+            "firstPage": null
+          },
+          "header": {
+            "enabled": null,
+            "components": null,
+            "firstPage": null
+          },
+          "pageBackground": null,
+          "pageMargins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "pageOrientation": {},
+          "pageSize": {}
+        }
       },
       "PieChartLabelPosition": {
         "type": "string",
@@ -151875,6 +154109,13 @@
             }
           }
         ],
+        "example": {
+          "description": null,
+          "type": "PLATFORM_USERS",
+          "usersFilter": {
+            "type": null
+          }
+        },
         "required": [
           "usersFilter"
         ]
@@ -151960,7 +154201,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "PRODUCT",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "PropagationCalculatedFieldConfiguration": {
         "allOf": [
@@ -151989,6 +154234,23 @@
             }
           }
         ],
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "PROPAGATION",
+          "arguments": null,
+          "expression": null,
+          "relation": {
+            "direction": {},
+            "relationType": null
+          },
+          "applyExpressionToResolvedArguments": null
+        },
         "required": [
           "arguments",
           "relation"
@@ -152022,7 +154284,16 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "transportPayloadType": "PROTOBUF",
+          "deviceTelemetryProtoSchema": null,
+          "deviceAttributesProtoSchema": null,
+          "deviceRpcRequestProtoSchema": null,
+          "deviceRpcResponseProtoSchema": null,
+          "enableCompatibilityWithJsonPayloadFormat": null,
+          "useJsonPayloadFormatForDefaultDownlinkTopics": null
+        }
       },
       "QRCodeConfig": {
         "type": "object",
@@ -152137,6 +154408,11 @@
             }
           }
         ],
+        "example": {
+          "type": "QUARTER",
+          "tz": null,
+          "offsetSec": null
+        },
         "required": [
           "tz"
         ]
@@ -152199,7 +154475,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "QUEUE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "QueueStats": {
         "type": "object",
@@ -152234,7 +154514,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "QUEUE_STATS",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "QuickTimeInterval": {
         "type": "string",
@@ -152372,7 +154656,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "RATE_LIMITS",
+          "apis": null
+        }
       },
       "RateLimitsRecipientsConfig": {
         "allOf": [
@@ -152393,6 +154681,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "RATE_LIMITS",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -152425,7 +154717,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "RAW_DATA",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "uuid": "STARTED",
+          "messageType": null,
+          "message": null
+        }
       },
       "ReadTsKvQueryResult": {
         "type": "object",
@@ -152502,6 +154802,26 @@
             }
           }
         ],
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "RELATED_ENTITIES_AGGREGATION",
+          "relation": {
+            "direction": {},
+            "relationType": null
+          },
+          "arguments": null,
+          "deduplicationIntervalInSec": null,
+          "metrics": null,
+          "useLatestTs": null,
+          "scheduledUpdateInterval": null,
+          "scheduledUpdateEnabled": null
+        },
         "required": [
           "arguments",
           "metrics",
@@ -152562,7 +154882,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "RELATION_PATH_QUERY",
+          "levels": null
+        }
       },
       "RelationTypeGroup": {
         "type": "string",
@@ -152627,7 +154951,29 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "relationsQuery",
+          "rootEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "multiRoot": null,
+          "multiRootEntitiesType": {},
+          "multiRootEntityIds": null,
+          "direction": {},
+          "filters": null,
+          "maxLevel": null,
+          "fetchLastLevelOnly": null,
+          "negate": null,
+          "rootStateEntity": null,
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          }
+        }
       },
       "RelationsSearchParameters": {
         "type": "object",
@@ -152675,6 +155021,22 @@
             }
           }
         ],
+        "example": {
+          "expression": {
+            "type": null
+          },
+          "schedule": {
+            "staticValue": {
+              "type": null
+            },
+            "dynamicValueArgument": null
+          },
+          "type": "REPEATING",
+          "count": {
+            "staticValue": null,
+            "dynamicValueArgument": null
+          }
+        },
         "required": [
           "count"
         ]
@@ -152826,6 +155188,38 @@
             "SPLIT_VIEW": "#/components/schemas/SplitViewComponent"
           }
         },
+        "example": {
+          "subType": {},
+          "type": "HEADING",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "value": null,
+          "font": {
+            "size": null,
+            "weight": {},
+            "style": {},
+            "family": null
+          },
+          "color": null,
+          "textAlignment": {},
+          "verticalAlignment": {},
+          "height": null
+        },
         "properties": {
           "subType": {
             "$ref": "#/components/schemas/ReportComponentSubType"
@@ -152907,7 +155301,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "REPORT",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "ReportInfo": {
         "type": "object",
@@ -153014,7 +155412,72 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "tasksKey": null,
+          "toReprocess": null,
+          "type": "REPORT",
+          "reportTemplateId": {
+            "entityType": "REPORT_TEMPLATE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "userId": {
+            "entityType": "USER",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "timezone": null,
+          "targets": null,
+          "notificationTemplateId": {
+            "entityType": "NOTIFICATION_TEMPLATE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "notificationRequests": null,
+          "originator": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "ruleNode": {
+            "id": {
+              "entityType": "RULE_NODE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "createdTime": 1609459200000,
+            "additionalInfo": {
+              "layoutX": 320,
+              "layoutY": 160,
+              "description": "Filter temperature data"
+            },
+            "ruleChainId": {
+              "entityType": "RULE_CHAIN",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "type": "com.mycompany.iot.rule.engine.ProcessingNode",
+            "name": "Process sensor reading",
+            "debugSettings": {
+              "failuresEnabled": false,
+              "allEnabled": false,
+              "allEnabledUntil": null
+            },
+            "singletonMode": false,
+            "queueName": "Main",
+            "configurationVersion": 0,
+            "configuration": {},
+            "externalId": {
+              "entityType": "RULE_NODE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "debugMode": null
+          },
+          "outputTbMsgProto": null,
+          "queueName": null,
+          "schedulerEventInfo": {
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null
+          }
+        }
       },
       "ReportJobResult": {
         "allOf": [
@@ -153029,7 +155492,48 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "successfulCount": null,
+          "failedCount": null,
+          "discardedCount": null,
+          "totalCount": null,
+          "results": null,
+          "generalError": null,
+          "startTs": null,
+          "finishTs": null,
+          "cancellationTs": null,
+          "jobType": "REPORT",
+          "report": {
+            "id": {
+              "entityType": "REPORT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "createdTime": 1746028547220,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "customerId": {
+              "entityType": "CUSTOMER",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "templateId": {
+              "entityType": "REPORT_TEMPLATE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "format": {},
+            "name": null,
+            "userId": {
+              "entityType": "USER",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "ownerId": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          }
+        }
       },
       "ReportLatestChartSettings": {
         "type": "object",
@@ -153300,6 +155804,33 @@
             "CSV": "#/components/schemas/CsvReportTemplateConfig"
           }
         },
+        "example": {
+          "namePattern": null,
+          "timeDataPattern": null,
+          "format": "PDF",
+          "entityAliases": null,
+          "filters": null,
+          "components": null,
+          "footer": {
+            "enabled": null,
+            "components": null,
+            "firstPage": null
+          },
+          "header": {
+            "enabled": null,
+            "components": null,
+            "firstPage": null
+          },
+          "pageBackground": null,
+          "pageMargins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "pageOrientation": {},
+          "pageSize": {}
+        },
         "properties": {
           "namePattern": {
             "type": "string"
@@ -153339,7 +155870,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "REPORT_TEMPLATE"
+        }
       },
       "ReportTemplateId": {
         "type": "object",
@@ -153350,7 +155899,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "REPORT_TEMPLATE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "ReportTemplateInfo": {
         "type": "object",
@@ -153728,6 +156281,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "RESOURCES_SHORTAGE",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -153778,7 +156335,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "RESOURCES_SHORTAGE",
+          "cpuThreshold": null,
+          "ramThreshold": null,
+          "storageThreshold": null
+        }
       },
       "RichTextComponent": {
         "allOf": [
@@ -153819,7 +156382,29 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "RICH_TEXT",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "value": null
+        }
       },
       "Role": {
         "type": "object",
@@ -153892,7 +156477,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "ROLE"
+        }
       },
       "RoleId": {
         "type": "object",
@@ -153903,7 +156506,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "ROLE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "RoleType": {
         "type": "string",
@@ -153973,7 +156580,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "RPC",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "RpcStatus": {
         "type": "string",
@@ -154131,7 +156742,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "DEBUG_RULE_CHAIN",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "isError": "false",
+          "errorStr": "not present in the DB",
+          "message": null
+        }
       },
       "RuleChainExportData": {
         "allOf": [
@@ -154146,7 +156765,36 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "metaData": {
+            "ruleChainId": {
+              "entityType": "RULE_CHAIN",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "version": null,
+            "firstNodeIndex": null,
+            "nodes": null,
+            "connections": null,
+            "ruleChainConnections": null
+          },
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "RULE_CHAIN"
+        }
       },
       "RuleChainId": {
         "type": "object",
@@ -154157,7 +156805,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "RULE_CHAIN",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "RuleChainImportResult": {
         "type": "object",
@@ -154314,7 +156966,16 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT",
+          "ruleChains": null,
+          "ruleChainEvents": null,
+          "onlyRuleChainLifecycleFailures": null,
+          "trackRuleNodeEvents": null,
+          "ruleNodeEvents": null,
+          "onlyRuleNodeLifecycleFailures": null
+        }
       },
       "RuleEngineComponentLifecycleEventRecipientsConfig": {
         "allOf": [
@@ -154335,6 +156996,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -154484,7 +157149,22 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "DEBUG_RULE_NODE",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "isError": "false",
+          "errorStr": "not present in the DB",
+          "msgDirectionType": "IN",
+          "entityId": "de9d54a0-2b7a-11ec-a3cc-23386423d98f",
+          "entityType": "DEVICE",
+          "msgId": "de9d54a0-2b7a-11ec-a3cc-23386423d98f",
+          "msgType": "POST_TELEMETRY_REQUEST",
+          "relationType": "Success",
+          "dataSearch": "humidity",
+          "metadataSearch": "deviceName"
+        }
       },
       "RuleNodeId": {
         "type": "object",
@@ -154495,7 +157175,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "RULE_NODE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "SaveDeviceWithCredentialsRequest": {
         "type": "object",
@@ -154769,7 +157453,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "SCHEDULER_EVENT"
+        }
       },
       "SchedulerEventFilter": {
         "allOf": [
@@ -154793,7 +157495,22 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "schedulerEvent",
+          "originator": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "eventType": null,
+          "originatorStateEntity": null,
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          }
+        }
       },
       "SchedulerEventId": {
         "type": "object",
@@ -154804,7 +157521,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "SCHEDULER_EVENT",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "SchedulerEventInfo": {
         "type": "object",
@@ -154970,6 +157691,18 @@
             }
           }
         ],
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "SCRIPT",
+          "arguments": null,
+          "expression": null
+        },
         "required": [
           "arguments"
         ]
@@ -155038,7 +157771,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "SECRET",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "SecretInfo": {
         "type": "object",
@@ -155138,6 +157875,50 @@
             "WEB": "#/components/schemas/WebSelfRegistrationParams",
             "MOBILE": "#/components/schemas/MobileSelfRegistrationParams"
           }
+        },
+        "example": {
+          "type": "WEB",
+          "enabled": null,
+          "title": null,
+          "captcha": {
+            "version": "enterprise",
+            "projectId": null,
+            "serviceAccountCredentials": null,
+            "serviceAccountCredentialsFileName": null,
+            "androidKey": null,
+            "iosKey": null,
+            "logActionName": null
+          },
+          "permissions": null,
+          "notificationRecipient": {
+            "entityType": "NOTIFICATION_TARGET",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "signUpFields": null,
+          "customerTitlePrefix": null,
+          "showPrivacyPolicy": null,
+          "showTermsOfUse": null,
+          "defaultDashboard": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "fullscreen": null
+          },
+          "homeDashboard": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "hideToolbar": null
+          },
+          "customerGroupId": {
+            "entityType": "ENTITY_GROUP",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "customMenuId": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "domainId": {
+            "entityType": "DOMAIN",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "privacyPolicy": null,
+          "termsOfUse": null
         },
         "properties": {
           "type": {
@@ -155249,7 +158030,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "spec": "SHARED_ATTRIBUTES_SETTING",
+          "mappings": null
+        }
       },
       "ShortCustomerInfo": {
         "type": "object",
@@ -155389,7 +158174,19 @@
           {
             "$ref": "#/components/schemas/AlarmCondition"
           }
-        ]
+        ],
+        "example": {
+          "expression": {
+            "type": null
+          },
+          "schedule": {
+            "staticValue": {
+              "type": null
+            },
+            "dynamicValueArgument": null
+          },
+          "type": "SIMPLE"
+        }
       },
       "SimpleAlarmConditionExpression": {
         "allOf": [
@@ -155412,6 +158209,11 @@
             }
           }
         ],
+        "example": {
+          "type": "SIMPLE",
+          "filters": null,
+          "operation": {}
+        },
         "required": [
           "filters"
         ]
@@ -155440,6 +158242,19 @@
             }
           }
         ],
+        "example": {
+          "output": {
+            "decimalsByDefault": null,
+            "name": null,
+            "scope": {},
+            "strategy": {},
+            "type": null
+          },
+          "type": "SIMPLE",
+          "arguments": null,
+          "expression": null,
+          "useLatestTs": null
+        },
         "required": [
           "arguments"
         ]
@@ -155469,7 +158284,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "singleEntity",
+          "singleEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          }
+        }
       },
       "SingleEntityVersionCreateRequest": {
         "allOf": [
@@ -155487,7 +158310,24 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "versionName": null,
+          "branch": null,
+          "type": "SINGLE_ENTITY",
+          "entityId": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "config": {
+            "saveRelations": null,
+            "saveAttributes": null,
+            "saveCredentials": null,
+            "saveCalculatedFields": null,
+            "savePermissions": null,
+            "saveGroupEntities": null
+          }
+        }
       },
       "SingleEntityVersionLoadRequest": {
         "allOf": [
@@ -155508,7 +158348,28 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "versionId": null,
+          "type": "SINGLE_ENTITY",
+          "internalEntityId": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "externalEntityId": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "config": {
+            "loadRelations": null,
+            "loadAttributes": null,
+            "loadCredentials": null,
+            "loadCalculatedFields": null,
+            "loadPermissions": null,
+            "loadGroupEntities": null,
+            "autoGenerateIntegrationKey": null
+          }
+        }
       },
       "SlackConversation": {
         "type": "object",
@@ -155553,7 +158414,12 @@
           {
             "$ref": "#/components/schemas/DeliveryMethodNotificationTemplate"
           }
-        ]
+        ],
+        "example": {
+          "enabled": null,
+          "body": null,
+          "method": "SLACK"
+        }
       },
       "SlackNotificationDeliveryMethodConfig": {
         "allOf": [
@@ -155570,6 +158436,10 @@
             }
           }
         ],
+        "example": {
+          "method": "SLACK",
+          "botToken": null
+        },
         "required": [
           "botToken"
         ]
@@ -155591,6 +158461,19 @@
             }
           }
         ],
+        "example": {
+          "description": null,
+          "type": "SLACK",
+          "conversationType": {},
+          "conversation": {
+            "type": {},
+            "id": null,
+            "name": null,
+            "wholeName": null,
+            "email": null,
+            "title": null
+          }
+        },
         "required": [
           "conversation"
         ]
@@ -155685,6 +158568,24 @@
             }
           }
         ],
+        "example": {
+          "type": "SMPP",
+          "protocolVersion": "3.3, 3.4",
+          "host": null,
+          "port": null,
+          "systemId": null,
+          "password": null,
+          "systemType": null,
+          "bindType": {},
+          "serviceType": null,
+          "sourceAddress": null,
+          "sourceTon": null,
+          "sourceNpi": null,
+          "destinationTon": null,
+          "destinationNpi": null,
+          "addressRange": null,
+          "codingScheme": null
+        },
         "required": [
           "host",
           "password",
@@ -155698,7 +158599,12 @@
           {
             "$ref": "#/components/schemas/DeliveryMethodNotificationTemplate"
           }
-        ]
+        ],
+        "example": {
+          "enabled": null,
+          "body": null,
+          "method": "SMS"
+        }
       },
       "SmsProviderConfiguration": {
         "description": "Base configuration for SMS providers",
@@ -155709,6 +158615,12 @@
             "TWILIO": "#/components/schemas/TwilioSmsProviderConfiguration",
             "SMPP": "#/components/schemas/SmppSmsProviderConfiguration"
           }
+        },
+        "example": {
+          "type": "AWS_SNS",
+          "accessKeyId": null,
+          "secretAccessKey": null,
+          "region": null
         },
         "properties": {
           "type": {
@@ -155735,6 +158647,11 @@
             }
           }
         ],
+        "example": {
+          "useByDefault": null,
+          "providerType": "SMS",
+          "phoneNumber": null
+        },
         "required": [
           "phoneNumber"
         ]
@@ -155760,6 +158677,11 @@
             }
           }
         ],
+        "example": {
+          "providerType": "SMS",
+          "verificationCodeLifetime": null,
+          "smsVerificationMessageTemplate": null
+        },
         "required": [
           "smsVerificationMessageTemplate"
         ]
@@ -155776,6 +158698,11 @@
             "TO_DEVICE_RPC_REQUEST": "#/components/schemas/ToDeviceRpcRequestSnmpCommunicationConfig",
             "TO_SERVER_RPC_REQUEST": "#/components/schemas/ToServerRpcRequestSnmpCommunicationConfig"
           }
+        },
+        "example": {
+          "spec": "TELEMETRY_QUERYING",
+          "mappings": null,
+          "queryingFrequencyMs": null
         },
         "properties": {
           "spec": {
@@ -155821,7 +158748,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "SNMP",
+          "timeoutMs": null,
+          "retries": null,
+          "communicationConfigs": null
+        }
       },
       "SnmpDeviceTransportConfiguration": {
         "allOf": [
@@ -155870,7 +158803,22 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "SNMP",
+          "host": null,
+          "port": null,
+          "protocolVersion": {},
+          "community": null,
+          "username": null,
+          "securityName": null,
+          "contextName": null,
+          "authenticationProtocol": {},
+          "authenticationPassphrase": null,
+          "privacyProtocol": {},
+          "privacyPassphrase": null,
+          "engineId": null
+        }
       },
       "SnmpMapping": {
         "type": "object",
@@ -156098,7 +159046,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "SPECIFIC_TIME",
+          "timezone": null,
+          "daysOfWeek": null,
+          "startsOn": null,
+          "endsOn": null
+        }
       },
       "SplitViewComponent": {
         "allOf": [
@@ -156150,7 +159105,33 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "SPLIT_VIEW",
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "leftView": {},
+          "rightView": {},
+          "splitPosition": null,
+          "splitGap": null,
+          "leftVerticalAlignment": {},
+          "rightVerticalAlignment": {}
+        }
       },
       "StarredDashboardInfo": {
         "type": "object",
@@ -156185,7 +159166,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "stateEntity",
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          }
+        }
       },
       "StateEntityOwnerFilter": {
         "allOf": [
@@ -156203,7 +159192,20 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "stateEntityOwner",
+          "singleEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "defaultStateEntity": {
+            "aliasEntityType": {},
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          }
+        }
       },
       "StatisticsEventFilter": {
         "allOf": [
@@ -156244,7 +159246,16 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "eventType": "STATS",
+          "notEmpty": null,
+          "server": "ip-172-31-24-152",
+          "minMessagesProcessed": 25,
+          "maxMessagesProcessed": 250,
+          "minErrorsOccurred": 30,
+          "maxErrorsOccurred": 300
+        }
       },
       "StoreInfo": {
         "type": "object",
@@ -156280,7 +159291,22 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "STRING",
+          "operation": {},
+          "value": {
+            "defaultValue": null,
+            "userValue": null,
+            "dynamicValue": {
+              "resolvedValue": null,
+              "sourceType": {},
+              "sourceAttribute": null,
+              "inherit": null
+            }
+          },
+          "ignoreCase": null
+        }
       },
       "StringOperation": {
         "type": "string",
@@ -156317,7 +159343,17 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "SUB_REPORT",
+          "dataSources": null,
+          "templateId": {
+            "entityType": "REPORT_TEMPLATE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "avoidPageBreakInside": null
+        }
       },
       "SubmitStrategy": {
         "type": "object",
@@ -156350,7 +159386,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "SUBSCRIPTION_ADDON",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "SubscriptionDetails": {
         "type": "object",
@@ -156489,7 +159529,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "SUBSCRIPTION",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "SubscriptionItems": {
         "type": "object",
@@ -156562,7 +159606,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "SUBSCRIPTION_PLAN",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "SubscriptionUsage": {
         "type": "object",
@@ -156663,7 +159711,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "status": "SUCCESS",
+          "generatedContent": null
+        }
       },
       "SyncStrategy": {
         "type": "string",
@@ -156677,7 +159729,10 @@
           {
             "$ref": "#/components/schemas/UsersFilter"
           }
-        ]
+        ],
+        "example": {
+          "type": "SYSTEM_ADMINISTRATORS"
+        }
       },
       "SystemInfo": {
         "type": "object",
@@ -156762,7 +159817,10 @@
           {
             "$ref": "#/components/schemas/NotificationRuleTriggerConfig"
           }
-        ]
+        ],
+        "example": {
+          "triggerType": "TASK_PROCESSING_FAILURE"
+        }
       },
       "TaskProcessingFailureRecipientsConfig": {
         "allOf": [
@@ -156783,6 +159841,10 @@
             }
           }
         ],
+        "example": {
+          "triggerType": "TASK_PROCESSING_FAILURE",
+          "targets": null
+        },
         "required": [
           "targets"
         ]
@@ -156849,6 +159911,10 @@
             "FAILURE": "#/components/schemas/Failure"
           }
         },
+        "example": {
+          "status": "SUCCESS",
+          "generatedContent": null
+        },
         "properties": {
           "status": {
             "type": "string",
@@ -156866,6 +159932,10 @@
           "mapping": {
             "TEXT": "#/components/schemas/TbTextContent"
           }
+        },
+        "example": {
+          "contentType": "TEXT",
+          "text": "What is the weather like in Kyiv today?"
         },
         "properties": {
           "contentType": {
@@ -157017,7 +160087,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "TB_RESOURCE"
+        }
       },
       "TbResourceId": {
         "type": "object",
@@ -157028,7 +160116,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "TB_RESOURCE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "TbResourceInfo": {
         "type": "object",
@@ -157147,6 +160239,10 @@
           }
         ],
         "description": "Text-based content part of a user's prompt",
+        "example": {
+          "contentType": "TEXT",
+          "text": "What is the weather like in Kyiv today?"
+        },
         "required": [
           "text"
         ]
@@ -157181,6 +160277,10 @@
             }
           }
         ],
+        "example": {
+          "type": "TBEL",
+          "expression": null
+        },
         "required": [
           "expression"
         ]
@@ -157287,7 +160387,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "spec": "TELEMETRY_QUERYING",
+          "mappings": null,
+          "queryingFrequencyMs": null
+        }
       },
       "Tenant": {
         "type": "object",
@@ -157510,7 +160615,12 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "TENANT_ADMINISTRATORS",
+          "tenantsIds": null,
+          "tenantProfilesIds": null
+        }
       },
       "TenantId": {
         "type": "object",
@@ -157521,7 +160631,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "TENANT",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "TenantInfo": {
         "type": "object",
@@ -157692,6 +160806,101 @@
             "DEFAULT": "#/components/schemas/DefaultTenantProfileConfiguration"
           }
         },
+        "example": {
+          "type": "DEFAULT",
+          "maxDevices": null,
+          "maxAssets": null,
+          "maxCustomers": null,
+          "maxUsers": null,
+          "maxDashboards": null,
+          "maxRuleChains": null,
+          "maxEdges": null,
+          "maxResourcesInBytes": null,
+          "maxOtaPackagesInBytes": null,
+          "maxResourceSize": null,
+          "maxReportSizeInBytes": null,
+          "maxIntegrations": null,
+          "maxConverters": null,
+          "maxSchedulerEvents": null,
+          "whiteLabelingEnabled": null,
+          "trendzEnabled": null,
+          "edgeEnabled": null,
+          "transportTenantMsgRateLimit": "1000:1,20000:60",
+          "transportTenantTelemetryMsgRateLimit": "1000:1,20000:60",
+          "transportTenantTelemetryDataPointsRateLimit": "1000:1,20000:60",
+          "transportDeviceMsgRateLimit": "20:1,600:60",
+          "transportDeviceTelemetryMsgRateLimit": "20:1,600:60",
+          "transportDeviceTelemetryDataPointsRateLimit": "20:1,600:60",
+          "transportGatewayMsgRateLimit": "20:1,600:60",
+          "transportGatewayTelemetryMsgRateLimit": "20:1,600:60",
+          "transportGatewayTelemetryDataPointsRateLimit": "20:1,600:60",
+          "transportGatewayDeviceMsgRateLimit": "20:1,600:60",
+          "transportGatewayDeviceTelemetryMsgRateLimit": "20:1,600:60",
+          "transportGatewayDeviceTelemetryDataPointsRateLimit": "20:1,600:60",
+          "integrationMsgsPerTenantRateLimit": "20:1,600:60",
+          "integrationMsgsPerDeviceRateLimit": "20:1,600:60",
+          "integrationMsgsPerAssetRateLimit": null,
+          "tenantEntityExportRateLimit": "20:1,600:60",
+          "tenantEntityImportRateLimit": "20:1,600:60",
+          "tenantNotificationRequestsRateLimit": "20:1,600:60",
+          "tenantNotificationRequestsPerRuleRateLimit": "20:1,600:60",
+          "maxTransportMessages": 10000000,
+          "maxTransportDataPoints": 10000000,
+          "maxREExecutions": 4000000,
+          "maxJSExecutions": 5000000,
+          "maxTbelExecutions": 5000000,
+          "maxDPStorageDays": 0,
+          "maxRuleNodeExecutionsPerMessage": 50,
+          "maxDebugModeDurationMinutes": 15,
+          "maxEmails": 0,
+          "smsEnabled": true,
+          "maxSms": 0,
+          "maxCreatedAlarms": 1000,
+          "maxGeneratedReports": 10000,
+          "maxAiCredits": 10000,
+          "tenantServerRestLimitsConfiguration": null,
+          "customerServerRestLimitsConfiguration": null,
+          "maxWsSessionsPerTenant": null,
+          "maxWsSessionsPerCustomer": null,
+          "maxWsSessionsPerRegularUser": null,
+          "maxWsSessionsPerPublicUser": null,
+          "wsMsgQueueLimitPerSession": null,
+          "maxWsSubscriptionsPerTenant": null,
+          "maxWsSubscriptionsPerCustomer": null,
+          "maxWsSubscriptionsPerRegularUser": null,
+          "maxWsSubscriptionsPerPublicUser": null,
+          "wsUpdatesPerSessionRateLimit": null,
+          "cassandraReadQueryTenantCoreRateLimits": null,
+          "cassandraWriteQueryTenantCoreRateLimits": null,
+          "cassandraReadQueryTenantRuleEngineRateLimits": null,
+          "cassandraWriteQueryTenantRuleEngineRateLimits": null,
+          "edgeEventRateLimits": null,
+          "edgeEventRateLimitsPerEdge": null,
+          "edgeUplinkMessagesRateLimits": null,
+          "edgeUplinkMessagesRateLimitsPerEdge": null,
+          "defaultStorageTtlDays": null,
+          "alarmsTtlDays": null,
+          "rpcTtlDays": null,
+          "queueStatsTtlDays": null,
+          "ruleEngineExceptionsTtlDays": null,
+          "blobEntityTtlDays": null,
+          "reportTtlDays": null,
+          "warnThreshold": null,
+          "maxCalculatedFieldsPerEntity": 100,
+          "maxArgumentsPerCF": 10,
+          "minAllowedScheduledUpdateIntervalInSecForCF": 10,
+          "maxRelationLevelPerCfArgument": 2,
+          "maxRelatedEntitiesToReturnPerCfArgument": 1000,
+          "maxDataPointsPerRollingArg": 1000,
+          "maxStateSizeInKBytes": 512,
+          "maxSingleValueArgumentSizeInKBytes": 32,
+          "minAllowedDeduplicationIntervalInSecForCF": 10,
+          "minAllowedAggregationIntervalInSecForCF": 60,
+          "intermediateAggregationIntervalInSecForCF": 300,
+          "cfReevaluationCheckInterval": 60,
+          "alarmsReevaluationInterval": 60,
+          "aiChatRequestsPerTenantRateLimit": null
+        },
         "properties": {
           "type": {
             "type": "string"
@@ -157726,7 +160935,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "TENANT_PROFILE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "TenantProfileQueueConfiguration": {
         "type": "object",
@@ -158119,7 +161332,68 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "TIME_SERIES_CHART",
+          "yAxisId": null,
+          "showInLegend": null,
+          "seriesType": {},
+          "lineSettings": {
+            "showLine": null,
+            "step": null,
+            "stepType": {},
+            "smooth": null,
+            "lineType": {},
+            "lineWidth": null,
+            "showPoints": null,
+            "showPointLabel": null,
+            "pointLabelPosition": {},
+            "pointLabelFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "pointLabelColor": null,
+            "enablePointLabelBackground": null,
+            "pointLabelBackground": null,
+            "pointShape": {},
+            "pointSize": null,
+            "fillAreaSettings": {
+              "type": {},
+              "opacity": null,
+              "gradient": {}
+            }
+          },
+          "barSettings": {
+            "showBorder": null,
+            "borderWidth": null,
+            "borderRadius": null,
+            "barWidth": null,
+            "showLabel": null,
+            "labelPosition": {},
+            "labelFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "labelColor": null,
+            "enableLabelBackground": null,
+            "labelBackground": null,
+            "backgroundSettings": {
+              "type": {},
+              "opacity": null,
+              "gradient": {}
+            }
+          },
+          "comparisonSettings": {
+            "showValuesForComparison": null,
+            "comparisonValuesLabel": null,
+            "color": null
+          },
+          "yaxisId": null
+        }
       },
       "TimeSeriesChartNoAggregationBarWidthSettings": {
         "type": "object",
@@ -158420,7 +161694,15 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "IMMEDIATE",
+          "ttl": null,
+          "saveTimeSeries": null,
+          "saveLatest": null,
+          "sendWsUpdate": null,
+          "processCfs": null
+        }
       },
       "TimeSeriesOutput": {
         "allOf": [
@@ -158435,7 +161717,16 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "decimalsByDefault": null,
+          "name": null,
+          "scope": {},
+          "strategy": {
+            "type": null
+          },
+          "type": "TIME_SERIES"
+        }
       },
       "TimeSeriesOutputStrategy": {
         "discriminator": {
@@ -158444,6 +161735,14 @@
             "IMMEDIATE": "#/components/schemas/TimeSeriesImmediateOutputStrategy",
             "RULE_CHAIN": "#/components/schemas/TimeSeriesRuleChainOutputStrategy"
           }
+        },
+        "example": {
+          "type": "IMMEDIATE",
+          "ttl": null,
+          "saveTimeSeries": null,
+          "saveLatest": null,
+          "sendWsUpdate": null,
+          "processCfs": null
         },
         "properties": {
           "type": {
@@ -158459,7 +161758,10 @@
           {
             "$ref": "#/components/schemas/TimeSeriesOutputStrategy"
           }
-        ]
+        ],
+        "example": {
+          "type": "RULE_CHAIN"
+        }
       },
       "TimeUnit": {
         "type": "string",
@@ -158543,7 +161845,163 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "TIME_SERIES_CHART",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "widthType": {},
+          "customWidth": null,
+          "alignment": {},
+          "height": null,
+          "timewindow": {
+            "history": {
+              "historyType": null,
+              "interval": {},
+              "timewindowMs": null,
+              "fixedTimewindow": {},
+              "quickInterval": {}
+            },
+            "aggregation": {
+              "type": {},
+              "limit": null
+            },
+            "timezone": null
+          },
+          "timeSeriesChartSettings": {
+            "showTitle": null,
+            "title": null,
+            "titleFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "titleColor": null,
+            "titleAlignment": {},
+            "thresholds": null,
+            "stack": null,
+            "grid": {
+              "show": null,
+              "backgroundColor": null,
+              "borderWidth": null,
+              "borderColor": null
+            },
+            "yAxes": null,
+            "xAxis": {
+              "show": null,
+              "label": null,
+              "labelFont": {},
+              "labelColor": null,
+              "position": {},
+              "showTickLabels": null,
+              "tickLabelFont": {},
+              "tickLabelColor": null,
+              "showTicks": null,
+              "ticksColor": null,
+              "showLine": null,
+              "lineColor": null,
+              "showSplitLines": null,
+              "splitLinesColor": null,
+              "ticksFormat": null
+            },
+            "barWidthSettings": {
+              "barGap": null,
+              "intervalGap": null
+            },
+            "noAggregationBarWidthSettings": {
+              "strategy": {},
+              "groupWidth": {},
+              "barWidth": {}
+            },
+            "states": null,
+            "comparisonEnabled": null,
+            "timeForComparison": {},
+            "comparisonCustomIntervalValue": null,
+            "comparisonXAxis": {
+              "show": null,
+              "label": null,
+              "labelFont": {},
+              "labelColor": null,
+              "position": {},
+              "showTickLabels": null,
+              "tickLabelFont": {},
+              "tickLabelColor": null,
+              "showTicks": null,
+              "ticksColor": null,
+              "showLine": null,
+              "lineColor": null,
+              "showSplitLines": null,
+              "splitLinesColor": null,
+              "ticksFormat": null
+            },
+            "showLegend": null,
+            "legendColumnTitleFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "legendColumnTitleColor": null,
+            "legendLabelFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "legendLabelColor": null,
+            "legendValueFont": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "legendValueColor": null,
+            "legendConfig": {
+              "position": {},
+              "sortDataKeys": null,
+              "showMin": null,
+              "showMax": null,
+              "showAvg": null,
+              "showTotal": null,
+              "showLatest": null
+            },
+            "xaxis": {
+              "show": null,
+              "label": null,
+              "labelFont": {},
+              "labelColor": null,
+              "position": {},
+              "showTickLabels": null,
+              "tickLabelFont": {},
+              "tickLabelColor": null,
+              "showTicks": null,
+              "ticksColor": null,
+              "showLine": null,
+              "lineColor": null,
+              "showSplitLines": null,
+              "splitLinesColor": null,
+              "ticksFormat": null
+            },
+            "yaxes": null
+          }
+        }
       },
       "TimeseriesTableComponent": {
         "allOf": [
@@ -158605,7 +162063,91 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "subType": {},
+          "type": "TIME_SERIES_TABLE",
+          "dataSources": null,
+          "margins": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "paddings": {
+            "left": null,
+            "right": null,
+            "top": null,
+            "bottom": null
+          },
+          "background": null,
+          "borderWidth": null,
+          "borderRadius": null,
+          "borderColor": null,
+          "showTableHeading": null,
+          "tableHeading": {
+            "text": null,
+            "font": {
+              "size": null,
+              "weight": {},
+              "style": {},
+              "family": null
+            },
+            "color": null,
+            "textAlignment": {},
+            "verticalAlignment": {},
+            "height": null
+          },
+          "tableSortOrder": {
+            "column": null,
+            "direction": {}
+          },
+          "timewindow": {
+            "history": {
+              "historyType": null,
+              "interval": {},
+              "timewindowMs": null,
+              "fixedTimewindow": {},
+              "quickInterval": {}
+            },
+            "aggregation": {
+              "type": {},
+              "limit": null
+            },
+            "timezone": null
+          },
+          "showTimestamp": null,
+          "timestampLabel": null,
+          "timestampPattern": null,
+          "timestampColumnSettings": {
+            "columnWidth": null,
+            "header": {
+              "font": {
+                "size": null,
+                "weight": {},
+                "style": {},
+                "family": null
+              },
+              "color": null,
+              "backgroundColor": null,
+              "textAlignment": {},
+              "verticalAlignment": {}
+            },
+            "cell": {
+              "font": {
+                "size": null,
+                "weight": {},
+                "style": {},
+                "family": null
+              },
+              "color": null,
+              "backgroundColor": null,
+              "textAlignment": {},
+              "verticalAlignment": {}
+            },
+            "type": "COLUMN"
+          }
+        }
       },
       "ToCoreEdqsRequest": {
         "type": "object",
@@ -158634,7 +162176,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "spec": "TO_DEVICE_RPC_REQUEST",
+          "mappings": null
+        }
       },
       "ToServerRpcRequestSnmpCommunicationConfig": {
         "allOf": [
@@ -158652,7 +162198,11 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "spec": "TO_SERVER_RPC_REQUEST",
+          "mappings": null
+        }
       },
       "Token": {
         "allOf": [
@@ -158668,6 +162218,10 @@
             }
           }
         ],
+        "example": {
+          "type": "TOKEN",
+          "token": null
+        },
         "required": [
           "token"
         ]
@@ -158688,6 +162242,11 @@
             }
           }
         ],
+        "example": {
+          "useByDefault": null,
+          "providerType": "TOTP",
+          "authUrl": null
+        },
         "required": [
           "authUrl"
         ]
@@ -158707,6 +162266,10 @@
             }
           }
         ],
+        "example": {
+          "providerType": "TOTP",
+          "issuerName": null
+        },
         "required": [
           "issuerName"
         ]
@@ -158745,6 +162308,9 @@
             "JSON": "#/components/schemas/JsonTransportPayloadConfiguration",
             "PROTOBUF": "#/components/schemas/ProtoTransportPayloadConfiguration"
           }
+        },
+        "example": {
+          "transportPayloadType": "JSON"
         },
         "properties": {
           "transportPayloadType": {
@@ -159002,7 +162568,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "TWILIO",
+          "accountSid": null,
+          "accountToken": null,
+          "numberFrom": null
+        }
       },
       "TwoFaAccountConfig": {
         "type": "object",
@@ -159015,6 +162587,11 @@
             "EMAIL": "#/components/schemas/EmailTwoFaAccountConfig",
             "BACKUP_CODE": "#/components/schemas/BackupCodeTwoFaAccountConfig"
           }
+        },
+        "example": {
+          "useByDefault": null,
+          "providerType": "TOTP",
+          "authUrl": null
         },
         "properties": {
           "useByDefault": {
@@ -159046,6 +162623,10 @@
             "EMAIL": "#/components/schemas/EmailTwoFaProviderConfig",
             "BACKUP_CODE": "#/components/schemas/BackupCodeTwoFaProviderConfig"
           }
+        },
+        "example": {
+          "providerType": "TOTP",
+          "issuerName": null
         },
         "properties": {
           "providerType": {
@@ -159398,6 +162979,10 @@
             }
           }
         ],
+        "example": {
+          "type": "USER_GROUP_LIST",
+          "groupsIds": null
+        },
         "required": [
           "groupsIds"
         ]
@@ -159411,7 +162996,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "USER",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "UserInfo": {
         "type": "object",
@@ -159527,6 +163116,10 @@
             }
           }
         ],
+        "example": {
+          "type": "USER_LIST",
+          "usersIds": null
+        },
         "required": [
           "usersIds"
         ]
@@ -159637,6 +163230,10 @@
             }
           }
         ],
+        "example": {
+          "type": "USER_ROLE",
+          "rolesIds": null
+        },
         "required": [
           "rolesIds"
         ]
@@ -159656,6 +163253,10 @@
             "USER_GROUP_LIST": "#/components/schemas/UserGroupListFilter",
             "USER_ROLE": "#/components/schemas/UserRoleFilter"
           }
+        },
+        "example": {
+          "type": "USER_LIST",
+          "usersIds": null
         },
         "properties": {
           "type": {
@@ -159688,7 +163289,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "version": "v2",
+          "siteKey": null,
+          "logActionName": null,
+          "secretKey": null
+        }
       },
       "V3CaptchaParams": {
         "allOf": [
@@ -159712,7 +163319,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "version": "v3",
+          "siteKey": null,
+          "logActionName": null,
+          "secretKey": null
+        }
       },
       "ValueSourceType": {
         "type": "string",
@@ -159765,6 +163378,23 @@
           "mapping": {
             "SINGLE_ENTITY": "#/components/schemas/SingleEntityVersionCreateRequest",
             "COMPLEX": "#/components/schemas/ComplexVersionCreateRequest"
+          }
+        },
+        "example": {
+          "versionName": null,
+          "branch": null,
+          "type": "SINGLE_ENTITY",
+          "entityId": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "config": {
+            "saveRelations": null,
+            "saveAttributes": null,
+            "saveCredentials": null,
+            "saveCalculatedFields": null,
+            "savePermissions": null,
+            "saveGroupEntities": null
           }
         },
         "properties": {
@@ -159850,6 +163480,27 @@
           "mapping": {
             "SINGLE_ENTITY": "#/components/schemas/SingleEntityVersionLoadRequest",
             "ENTITY_TYPE": "#/components/schemas/EntityTypeVersionLoadRequest"
+          }
+        },
+        "example": {
+          "versionId": null,
+          "type": "SINGLE_ENTITY",
+          "internalEntityId": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "externalEntityId": {
+            "entityType": "DEVICE",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "config": {
+            "loadRelations": null,
+            "loadAttributes": null,
+            "loadCredentials": null,
+            "loadCalculatedFields": null,
+            "loadPermissions": null,
+            "loadGroupEntities": null,
+            "autoGenerateIntegrationKey": null
           }
         },
         "properties": {
@@ -159939,6 +163590,13 @@
             }
           }
         ],
+        "example": {
+          "enabled": null,
+          "body": null,
+          "method": "WEB",
+          "subject": "New Message Received",
+          "additionalConfig": {}
+        },
         "required": [
           "subject"
         ]
@@ -159966,6 +163624,50 @@
             }
           }
         ],
+        "example": {
+          "type": "WEB",
+          "enabled": null,
+          "title": null,
+          "captcha": {
+            "version": "enterprise",
+            "projectId": null,
+            "serviceAccountCredentials": null,
+            "serviceAccountCredentialsFileName": null,
+            "androidKey": null,
+            "iosKey": null,
+            "logActionName": null
+          },
+          "permissions": null,
+          "notificationRecipient": {
+            "entityType": "NOTIFICATION_TARGET",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "signUpFields": null,
+          "customerTitlePrefix": null,
+          "showPrivacyPolicy": null,
+          "showTermsOfUse": null,
+          "defaultDashboard": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "fullscreen": null
+          },
+          "homeDashboard": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9",
+            "hideToolbar": null
+          },
+          "customerGroupId": {
+            "entityType": "ENTITY_GROUP",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "customMenuId": {
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "domainId": {
+            "entityType": "DOMAIN",
+            "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+          },
+          "privacyPolicy": null,
+          "termsOfUse": null
+        },
         "required": [
           "domainId"
         ]
@@ -159995,7 +163697,14 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "type": "WEB_VIEW",
+          "visible": null,
+          "label": "Air quality",
+          "icon": "home_icon",
+          "url": "/url"
+        }
       },
       "WeekInterval": {
         "allOf": [
@@ -160016,6 +163725,11 @@
             }
           }
         ],
+        "example": {
+          "type": "WEEK",
+          "tz": null,
+          "offsetSec": null
+        },
         "required": [
           "tz"
         ]
@@ -160039,6 +163753,11 @@
             }
           }
         ],
+        "example": {
+          "type": "WEEK_SUN_SAT",
+          "tz": null,
+          "offsetSec": null
+        },
         "required": [
           "tz"
         ]
@@ -160292,7 +164011,25 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "WIDGET_TYPE"
+        }
       },
       "WidgetTypeId": {
         "type": "object",
@@ -160303,7 +164040,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "WIDGET_TYPE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "WidgetTypeInfo": {
         "type": "object",
@@ -160465,7 +164206,27 @@
           {
             "$ref": "#/components/schemas/EntityExportData"
           }
-        ]
+        ],
+        "example": {
+          "widgets": null,
+          "fqns": null,
+          "entity": {
+            "createdTime": null,
+            "id": {
+              "entityType": "DEVICE",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            },
+            "name": null,
+            "tenantId": {
+              "entityType": "TENANT",
+              "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+            }
+          },
+          "relations": null,
+          "attributes": null,
+          "calculatedFields": null,
+          "entityType": "WIDGETS_BUNDLE"
+        }
       },
       "WidgetsBundleId": {
         "type": "object",
@@ -160476,7 +164237,11 @@
           {
             "type": "object"
           }
-        ]
+        ],
+        "example": {
+          "entityType": "WIDGETS_BUNDLE",
+          "id": "784f394c-42b6-435a-983c-b7beff2784f9"
+        }
       },
       "X509CertificateChainProvisionConfiguration": {
         "allOf": [
@@ -160494,7 +164259,13 @@
               }
             }
           }
-        ]
+        ],
+        "example": {
+          "provisionDeviceSecret": "secret123",
+          "type": "X509_CERTIFICATE_CHAIN",
+          "certificateRegExPattern": null,
+          "allowCreateNewDevicesByX509Certificate": null
+        }
       },
       "X509LwM2MBootstrapServerCredential": {
         "allOf": [
@@ -160605,6 +164376,11 @@
             }
           }
         ],
+        "example": {
+          "type": "YEAR",
+          "tz": null,
+          "offsetSec": null
+        },
         "required": [
           "tz"
         ]
