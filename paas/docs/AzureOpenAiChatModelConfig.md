@@ -9,7 +9,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **modelType** | **AiModelType** |  | [optional] [readonly] |
 | **providerConfig** | **AzureOpenAiProviderConfig** |  | |
 | **modelId** | **String** |  | |
 | **temperature** | **Double** |  | [optional] |
@@ -19,6 +18,7 @@
 | **maxOutputTokens** | **Integer** |  | [optional] |
 | **timeoutSeconds** | **Integer** |  | [optional] |
 | **maxRetries** | **Integer** |  | [optional] |
+| **modelType** | **AiModelType** |  | [optional] [readonly] |
 
 
 
@@ -29,15 +29,15 @@
 |------|------|-------------|-------|
 | provider | String |  |  |
 
-#### AiModelType (enum)
-`CHAT`
-
 #### AzureOpenAiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | endpoint | String |  |  |
 | serviceVersion | String |  | [optional] |
 | apiKey | String |  |  |
+
+#### AiModelType (enum)
+`CHAT`
 
 ---
 

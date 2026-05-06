@@ -8,11 +8,11 @@ List<Dashboard> exportGroupDashboards(@Nonnull String entityGroupId, @Nonnull In
 PageDataDashboardInfo getAllDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Dashboards for current user (getAllDashboards)
 PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Dashboards (getCustomerDashboards)
 HomeDashboardInfo getCustomerHomeDashboardInfo() // Get Customer Home Dashboard Info (getCustomerHomeDashboardInfo)
-void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) // Get Dashboard (getDashboardById)
+Dashboard getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) // Get Dashboard (getDashboardById)
 DashboardInfo getDashboardInfoById(@Nonnull String dashboardId) // Get Dashboard Info (getDashboardInfoById)
 PageDataDashboardInfo getDashboardsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get dashboards by Entity Group Id (getDashboardsByEntityGroupId)
 List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds) // Get dashboards by Dashboard Ids (getDashboardsByIds)
-void getHomeDashboard(@Nullable String acceptEncoding) // Get Home Dashboard (getHomeDashboard)
+HomeDashboard getHomeDashboard(@Nullable String acceptEncoding) // Get Home Dashboard (getHomeDashboard)
 HomeDashboardInfo getHomeDashboardInfo() // Get Home Dashboard Info (getHomeDashboardInfo)
 Long getMaxDatapointsLimit() // Get max data points limit (getMaxDatapointsLimit)
 Long getServerTime() // Get server time (getServerTime)
@@ -156,7 +156,7 @@ Returns the home dashboard info object that is configured as 'homeDashboardId' p
 ## getDashboardById
 
 ```
-void getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding)
+Dashboard getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding)
 ```
 
 **GET** `/api/dashboard/{dashboardId}`
@@ -176,7 +176,7 @@ Get the dashboard based on 'dashboardId' parameter. The Dashboard object is a he
 
 ### Return type
 
-null (empty response body)
+**Dashboard**
 
 
 ## getDashboardInfoById
@@ -259,7 +259,7 @@ Returns a list of DashboardInfo objects based on the provided ids. Filters the l
 ## getHomeDashboard
 
 ```
-void getHomeDashboard(@Nullable String acceptEncoding)
+HomeDashboard getHomeDashboard(@Nullable String acceptEncoding)
 ```
 
 **GET** `/api/dashboard/home`
@@ -277,7 +277,7 @@ Returns the home dashboard object that is configured as 'homeDashboardId' parame
 
 ### Return type
 
-null (empty response body)
+**HomeDashboard**
 
 
 ## getHomeDashboardInfo

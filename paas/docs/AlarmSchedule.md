@@ -3,14 +3,11 @@
 
 `org.thingsboard.client.model.AlarmSchedule`
 
-Configuration for alarm schedule
-
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **dynamicValue** | **DynamicValueString** |  | [optional] |
-| **type** | **AlarmScheduleType** |  | [optional] |
+| **type** | **String** |  | |
 
 
 
@@ -28,34 +25,20 @@ Configuration for alarm schedule
 #### SpecificTimeSchedule  *(type=`SPECIFIC_TIME`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| daysOfWeek | Set<Integer> |  | [optional] |
-| endsOn | Long |  | [optional] |
-| startsOn | Long |  | [optional] |
 | timezone | String |  | [optional] |
+| daysOfWeek | Set<Integer> |  | [optional] |
+| startsOn | Long |  | [optional] |
+| endsOn | Long |  | [optional] |
 
 ## Referenced Types
-
-#### DynamicValueString
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| resolvedValue | String |  | [optional] |
-| sourceType | DynamicValueSourceType |  | [optional] |
-| sourceAttribute | String |  | [optional] |
-| inherit | Boolean |  | [optional] |
-
-#### AlarmScheduleType (enum)
-`ANY_TIME` | `SPECIFIC_TIME` | `CUSTOM`
 
 #### CustomTimeScheduleItem
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| dayOfWeek | Integer |  | [optional] |
 | enabled | Boolean |  | [optional] |
-| endsOn | Long |  | [optional] |
+| dayOfWeek | Integer |  | [optional] |
 | startsOn | Long |  | [optional] |
-
-#### DynamicValueSourceType (enum)
-`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
+| endsOn | Long |  | [optional] |
 
 ---
 

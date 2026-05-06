@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
 import org.thingsboard.client.model.EntityDataPageLink;
 import org.thingsboard.client.model.EntityFilter;
 import org.thingsboard.client.model.EntityKey;
@@ -45,9 +46,11 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   EntityDataQuery.JSON_PROPERTY_ENTITY_FILTER,
   EntityDataQuery.JSON_PROPERTY_KEY_FILTERS,
+  EntityDataQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION,
   EntityDataQuery.JSON_PROPERTY_PAGE_LINK,
   EntityDataQuery.JSON_PROPERTY_ENTITY_FIELDS,
-  EntityDataQuery.JSON_PROPERTY_LATEST_VALUES
+  EntityDataQuery.JSON_PROPERTY_LATEST_VALUES,
+  EntityDataQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityDataQuery {
@@ -58,6 +61,10 @@ public class EntityDataQuery {
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
   @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION = "keyFiltersOperation";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperation;
 
   public static final String JSON_PROPERTY_PAGE_LINK = "pageLink";
   @Nullable
@@ -70,6 +77,10 @@ public class EntityDataQuery {
   public static final String JSON_PROPERTY_LATEST_VALUES = "latestValues";
   @Nullable
   private List<EntityKey> latestValues = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT = "keyFiltersOperationOrDefault";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperationOrDefault;
 
   public EntityDataQuery() { 
   }
@@ -127,6 +138,30 @@ public class EntityDataQuery {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyFilters(@Nullable List<KeyFilter> keyFilters) {
     this.keyFilters = keyFilters;
+  }
+
+
+  public EntityDataQuery keyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperation
+   * @return keyFiltersOperation
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperation() {
+    return keyFiltersOperation;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
   }
 
 
@@ -218,6 +253,30 @@ public class EntityDataQuery {
   }
 
 
+  public EntityDataQuery keyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperationOrDefault
+   * @return keyFiltersOperationOrDefault
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperationOrDefault() {
+    return keyFiltersOperationOrDefault;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+  }
+
+
   /**
    * Return true if this EntityDataQuery object is equal to o.
    */
@@ -232,14 +291,16 @@ public class EntityDataQuery {
     EntityDataQuery entityDataQuery = (EntityDataQuery) o;
     return Objects.equals(this.entityFilter, entityDataQuery.entityFilter) &&
         Objects.equals(this.keyFilters, entityDataQuery.keyFilters) &&
+        Objects.equals(this.keyFiltersOperation, entityDataQuery.keyFiltersOperation) &&
         Objects.equals(this.pageLink, entityDataQuery.pageLink) &&
         Objects.equals(this.entityFields, entityDataQuery.entityFields) &&
-        Objects.equals(this.latestValues, entityDataQuery.latestValues);
+        Objects.equals(this.latestValues, entityDataQuery.latestValues) &&
+        Objects.equals(this.keyFiltersOperationOrDefault, entityDataQuery.keyFiltersOperationOrDefault);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityFilter, keyFilters, pageLink, entityFields, latestValues);
+    return Objects.hash(entityFilter, keyFilters, keyFiltersOperation, pageLink, entityFields, latestValues, keyFiltersOperationOrDefault);
   }
 
   @Override
@@ -248,9 +309,11 @@ public class EntityDataQuery {
     sb.append("class EntityDataQuery {\n");
     sb.append("    entityFilter: ").append(toIndentedString(entityFilter)).append("\n");
     sb.append("    keyFilters: ").append(toIndentedString(keyFilters)).append("\n");
+    sb.append("    keyFiltersOperation: ").append(toIndentedString(keyFiltersOperation)).append("\n");
     sb.append("    pageLink: ").append(toIndentedString(pageLink)).append("\n");
     sb.append("    entityFields: ").append(toIndentedString(entityFields)).append("\n");
     sb.append("    latestValues: ").append(toIndentedString(latestValues)).append("\n");
+    sb.append("    keyFiltersOperationOrDefault: ").append(toIndentedString(keyFiltersOperationOrDefault)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,6 +376,11 @@ public class EntityDataQuery {
       }
     }
 
+    // add `keyFiltersOperation` to the URL query string
+    if (getKeyFiltersOperation() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperation()))));
+    }
+
     // add `pageLink` to the URL query string
     if (getPageLink() != null) {
       joiner.add(getPageLink().toUrlQueryString(prefix + "pageLink" + suffix));
@@ -336,6 +404,11 @@ public class EntityDataQuery {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `keyFiltersOperationOrDefault` to the URL query string
+    if (getKeyFiltersOperationOrDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperationOrDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperationOrDefault()))));
     }
 
     return joiner.toString();

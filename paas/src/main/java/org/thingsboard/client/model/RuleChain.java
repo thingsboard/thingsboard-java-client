@@ -69,7 +69,7 @@ public class RuleChain {
   private com.fasterxml.jackson.databind.JsonNode additionalInfo = null;
 
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
-  @Nonnull
+  @Nullable
   private TenantId tenantId;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -179,9 +179,9 @@ public class RuleChain {
    * JSON object with Tenant Id.
    * @return tenantId
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TENANT_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
     return tenantId;
   }

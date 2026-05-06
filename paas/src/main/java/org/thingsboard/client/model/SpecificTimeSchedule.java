@@ -36,8 +36,6 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.thingsboard.client.model.AlarmSchedule;
-import org.thingsboard.client.model.AlarmScheduleType;
-import org.thingsboard.client.model.DynamicValueString;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -47,10 +45,10 @@ import org.thingsboard.client.ApiClient;
  * SpecificTimeSchedule
  */
 @JsonPropertyOrder({
+  SpecificTimeSchedule.JSON_PROPERTY_TIMEZONE,
   SpecificTimeSchedule.JSON_PROPERTY_DAYS_OF_WEEK,
-  SpecificTimeSchedule.JSON_PROPERTY_ENDS_ON,
   SpecificTimeSchedule.JSON_PROPERTY_STARTS_ON,
-  SpecificTimeSchedule.JSON_PROPERTY_TIMEZONE
+  SpecificTimeSchedule.JSON_PROPERTY_ENDS_ON
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -60,24 +58,48 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class SpecificTimeSchedule extends AlarmSchedule {
+  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
+  @Nullable
+  private String timezone;
+
   public static final String JSON_PROPERTY_DAYS_OF_WEEK = "daysOfWeek";
   @Nullable
   private Set<Integer> daysOfWeek = new LinkedHashSet<>();
-
-  public static final String JSON_PROPERTY_ENDS_ON = "endsOn";
-  @Nullable
-  private Long endsOn;
 
   public static final String JSON_PROPERTY_STARTS_ON = "startsOn";
   @Nullable
   private Long startsOn;
 
-  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
+  public static final String JSON_PROPERTY_ENDS_ON = "endsOn";
   @Nullable
-  private String timezone;
+  private Long endsOn;
 
   public SpecificTimeSchedule() { 
   }
+
+  public SpecificTimeSchedule timezone(@Nullable String timezone) {
+    this.timezone = timezone;
+    return this;
+  }
+
+  /**
+   * Get timezone
+   * @return timezone
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTimezone(@Nullable String timezone) {
+    this.timezone = timezone;
+  }
+
 
   public SpecificTimeSchedule daysOfWeek(@Nullable Set<Integer> daysOfWeek) {
     this.daysOfWeek = daysOfWeek;
@@ -112,30 +134,6 @@ public class SpecificTimeSchedule extends AlarmSchedule {
   }
 
 
-  public SpecificTimeSchedule endsOn(@Nullable Long endsOn) {
-    this.endsOn = endsOn;
-    return this;
-  }
-
-  /**
-   * Get endsOn
-   * @return endsOn
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Long getEndsOn() {
-    return endsOn;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndsOn(@Nullable Long endsOn) {
-    this.endsOn = endsOn;
-  }
-
-
   public SpecificTimeSchedule startsOn(@Nullable Long startsOn) {
     this.startsOn = startsOn;
     return this;
@@ -160,35 +158,29 @@ public class SpecificTimeSchedule extends AlarmSchedule {
   }
 
 
-  public SpecificTimeSchedule timezone(@Nullable String timezone) {
-    this.timezone = timezone;
+  public SpecificTimeSchedule endsOn(@Nullable Long endsOn) {
+    this.endsOn = endsOn;
     return this;
   }
 
   /**
-   * Get timezone
-   * @return timezone
+   * Get endsOn
+   * @return endsOn
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getTimezone() {
-    return timezone;
+  public Long getEndsOn() {
+    return endsOn;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_ENDS_ON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimezone(@Nullable String timezone) {
-    this.timezone = timezone;
+  public void setEndsOn(@Nullable Long endsOn) {
+    this.endsOn = endsOn;
   }
 
-
-  @Override
-  public SpecificTimeSchedule dynamicValue(@Nullable DynamicValueString dynamicValue) {
-    this.setDynamicValue(dynamicValue);
-    return this;
-  }
 
   /**
    * Return true if this SpecificTimeSchedule object is equal to o.
@@ -202,16 +194,16 @@ public class SpecificTimeSchedule extends AlarmSchedule {
       return false;
     }
     SpecificTimeSchedule specificTimeSchedule = (SpecificTimeSchedule) o;
-    return Objects.equals(this.daysOfWeek, specificTimeSchedule.daysOfWeek) &&
-        Objects.equals(this.endsOn, specificTimeSchedule.endsOn) &&
+    return Objects.equals(this.timezone, specificTimeSchedule.timezone) &&
+        Objects.equals(this.daysOfWeek, specificTimeSchedule.daysOfWeek) &&
         Objects.equals(this.startsOn, specificTimeSchedule.startsOn) &&
-        Objects.equals(this.timezone, specificTimeSchedule.timezone) &&
+        Objects.equals(this.endsOn, specificTimeSchedule.endsOn) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(daysOfWeek, endsOn, startsOn, timezone, super.hashCode());
+    return Objects.hash(timezone, daysOfWeek, startsOn, endsOn, super.hashCode());
   }
 
   @Override
@@ -219,10 +211,10 @@ public class SpecificTimeSchedule extends AlarmSchedule {
     StringBuilder sb = new StringBuilder();
     sb.append("class SpecificTimeSchedule {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    daysOfWeek: ").append(toIndentedString(daysOfWeek)).append("\n");
-    sb.append("    endsOn: ").append(toIndentedString(endsOn)).append("\n");
-    sb.append("    startsOn: ").append(toIndentedString(startsOn)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    daysOfWeek: ").append(toIndentedString(daysOfWeek)).append("\n");
+    sb.append("    startsOn: ").append(toIndentedString(startsOn)).append("\n");
+    sb.append("    endsOn: ").append(toIndentedString(endsOn)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -270,14 +262,14 @@ public class SpecificTimeSchedule extends AlarmSchedule {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `dynamicValue` to the URL query string
-    if (getDynamicValue() != null) {
-      joiner.add(getDynamicValue().toUrlQueryString(prefix + "dynamicValue" + suffix));
-    }
-
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
+    // add `timezone` to the URL query string
+    if (getTimezone() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
     }
 
     // add `daysOfWeek` to the URL query string
@@ -291,19 +283,14 @@ public class SpecificTimeSchedule extends AlarmSchedule {
       i++;
     }
 
-    // add `endsOn` to the URL query string
-    if (getEndsOn() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sendsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEndsOn()))));
-    }
-
     // add `startsOn` to the URL query string
     if (getStartsOn() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sstartsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStartsOn()))));
     }
 
-    // add `timezone` to the URL query string
-    if (getTimezone() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
+    // add `endsOn` to the URL query string
+    if (getEndsOn() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sendsOn%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEndsOn()))));
     }
 
     return joiner.toString();

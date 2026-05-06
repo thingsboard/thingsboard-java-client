@@ -15,7 +15,7 @@
 | **name** | **String** | Unique Device Name in scope of Tenant | [optional] |
 | **type** | **String** | Device Profile Name | [optional] |
 | **label** | **String** | Label that may be used in widgets | [optional] |
-| **deviceProfileId** | **DeviceProfileId** | JSON object with Device Profile Id. | |
+| **deviceProfileId** | **DeviceProfileId** | JSON object with Device Profile Id. If not provided, the type will be used to determine the profile. If neither deviceProfileId nor type is specified, the default device profile will be used. | [optional] |
 | **deviceData** | **DeviceData** | JSON object with content specific to type of transport in the device profile. | [optional] |
 | **firmwareId** | **OtaPackageId** | JSON object with Ota Package Id. | [optional] |
 | **softwareId** | **OtaPackageId** | JSON object with Ota Package Id. | [optional] |

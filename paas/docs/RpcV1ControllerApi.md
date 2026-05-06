@@ -26,7 +26,7 @@ Deprecated. See 'Rpc V 2 Controller' instead.  Available for users with 'TENANT_
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **deviceId** | **String** | A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **body** | **String** |  | |
+| **body** | **String** | A JSON object representing the RPC request. | |
 
 ### Return type
 
@@ -51,7 +51,7 @@ Deprecated. See 'Rpc V 2 Controller' instead.  Available for users with 'TENANT_
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **deviceId** | **String** | A string value representing the device id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **body** | **String** |  | |
+| **body** | **String** | A JSON object representing the RPC request. | |
 
 ### Return type
 

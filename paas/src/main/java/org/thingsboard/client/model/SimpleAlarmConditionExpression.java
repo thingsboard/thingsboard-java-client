@@ -36,8 +36,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.thingsboard.client.model.AlarmConditionExpression;
-import org.thingsboard.client.model.AlarmRuleConditionFilter;
-import org.thingsboard.client.model.ComplexOperation;
+import org.thingsboard.client.model.AlarmConditionFilter;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -60,21 +60,21 @@ import org.thingsboard.client.ApiClient;
 public class SimpleAlarmConditionExpression extends AlarmConditionExpression {
   public static final String JSON_PROPERTY_FILTERS = "filters";
   @Nonnull
-  private List<AlarmRuleConditionFilter> filters = new ArrayList<>();
+  private List<AlarmConditionFilter> filters = new ArrayList<>();
 
   public static final String JSON_PROPERTY_OPERATION = "operation";
   @Nullable
-  private ComplexOperation operation;
+  private AlarmRuleComplexOperation operation;
 
   public SimpleAlarmConditionExpression() { 
   }
 
-  public SimpleAlarmConditionExpression filters(@Nonnull List<AlarmRuleConditionFilter> filters) {
+  public SimpleAlarmConditionExpression filters(@Nonnull List<AlarmConditionFilter> filters) {
     this.filters = filters;
     return this;
   }
 
-  public SimpleAlarmConditionExpression addFiltersItem(AlarmRuleConditionFilter filtersItem) {
+  public SimpleAlarmConditionExpression addFiltersItem(AlarmConditionFilter filtersItem) {
     if (this.filters == null) {
       this.filters = new ArrayList<>();
     }
@@ -89,19 +89,19 @@ public class SimpleAlarmConditionExpression extends AlarmConditionExpression {
   @Nonnull
   @JsonProperty(value = JSON_PROPERTY_FILTERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public List<AlarmRuleConditionFilter> getFilters() {
+  public List<AlarmConditionFilter> getFilters() {
     return filters;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_FILTERS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFilters(@Nonnull List<AlarmRuleConditionFilter> filters) {
+  public void setFilters(@Nonnull List<AlarmConditionFilter> filters) {
     this.filters = filters;
   }
 
 
-  public SimpleAlarmConditionExpression operation(@Nullable ComplexOperation operation) {
+  public SimpleAlarmConditionExpression operation(@Nullable AlarmRuleComplexOperation operation) {
     this.operation = operation;
     return this;
   }
@@ -113,14 +113,14 @@ public class SimpleAlarmConditionExpression extends AlarmConditionExpression {
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ComplexOperation getOperation() {
+  public AlarmRuleComplexOperation getOperation() {
     return operation;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_OPERATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOperation(@Nullable ComplexOperation operation) {
+  public void setOperation(@Nullable AlarmRuleComplexOperation operation) {
     this.operation = operation;
   }
 

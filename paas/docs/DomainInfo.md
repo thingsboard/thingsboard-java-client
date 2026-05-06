@@ -12,10 +12,10 @@
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] |
 | **customerId** | **CustomerId** | JSON object with Customer Id | [optional] |
 | **name** | **String** | Domain name. Cannot be empty | |
-| **oauth2ClientInfos** | **List\<OAuth2ClientInfo\>** | List of available oauth2 clients | [optional] |
 | **oauth2Enabled** | **Boolean** | Whether OAuth2 settings are enabled or not | [optional] |
-| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 | **propagateToEdge** | **Boolean** | Whether OAuth2 settings are enabled on Edge or not | [optional] |
+| **oauth2ClientInfos** | **List\<OAuth2ClientInfo\>** | List of available oauth2 clients | [optional] |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 
 
 
