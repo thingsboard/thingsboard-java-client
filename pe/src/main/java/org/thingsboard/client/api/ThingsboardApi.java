@@ -13369,6 +13369,104 @@ public class ThingsboardApi {
   }
 
   /**
+   * generateDashboard
+   * 
+   * @param deviceId  (required)
+   * @param xAuthorization  (required)
+   * @param body  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  public com.fasterxml.jackson.databind.JsonNode generateDashboard(@Nonnull UUID deviceId, @Nonnull String xAuthorization, @Nullable Object body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = generateDashboardWithHttpInfo(deviceId, xAuthorization, body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * generateDashboard
+   * 
+   * @param deviceId  (required)
+   * @param xAuthorization  (required)
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> generateDashboardWithHttpInfo(@Nonnull UUID deviceId, @Nonnull String xAuthorization, @Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = generateDashboardRequestBuilder(deviceId, xAuthorization, body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("generateDashboard", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder generateDashboardRequestBuilder(@Nonnull UUID deviceId, @Nonnull String xAuthorization, @Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'deviceId' is set
+    if (deviceId == null) {
+      throw new ApiException(400, "Missing the required parameter 'deviceId' when calling generateDashboard");
+    }
+    // verify the required parameter 'xAuthorization' is set
+    if (xAuthorization == null) {
+      throw new ApiException(400, "Missing the required parameter 'xAuthorization' when calling generateDashboard");
+    }
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling generateDashboard");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/devices/{deviceId}/dashboard"
+        .replace("{deviceId}", ApiClient.urlEncode(deviceId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    if (xAuthorization != null) {
+      localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
+    }
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Generate 2FA account config (generateTwoFaAccountConfig)
    * Generate new 2FA account config template for specified provider type.   For TOTP, this will return a corresponding account config template with a generated OTP auth URL (with new random secret key for each API call) that can be then converted to a QR code to scan with an authenticator app. Example: &#x60;&#x60;&#x60; {   \&quot;providerType\&quot;: \&quot;TOTP\&quot;,   \&quot;useByDefault\&quot;: false,   \&quot;authUrl\&quot;: \&quot;otpauth://totp/TB%202FA:tenant@thingsboard.org?issuer&#x3D;TB+2FA&amp;secret&#x3D;PNJDNWJVAK4ZTUYT7RFGPQLXA7XGU7PX\&quot; } &#x60;&#x60;&#x60;  For EMAIL, the generated config will contain email from user&#39;s account: &#x60;&#x60;&#x60; {   \&quot;providerType\&quot;: \&quot;EMAIL\&quot;,   \&quot;useByDefault\&quot;: false,   \&quot;email\&quot;: \&quot;tenant@thingsboard.org\&quot; } &#x60;&#x60;&#x60;  For SMS 2FA this method will just return a config with empty/default values as there is nothing to generate/preset: &#x60;&#x60;&#x60; {   \&quot;providerType\&quot;: \&quot;SMS\&quot;,   \&quot;useByDefault\&quot;: false,   \&quot;phoneNumber\&quot;: null } &#x60;&#x60;&#x60;  Will throw an error (Bad Request) if the provider is not configured for usage.   Available for any authorized user. 
    * @param providerType 2FA provider type to generate new account config for (required)
@@ -60791,11 +60889,12 @@ public class ThingsboardApi {
    * @param chatId  (required)
    * @param xAuthorization  (required)
    * @param body  (required)
+   * @param acceptLanguage  (optional)
    * @return List&lt;Object&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body) throws ApiException {
-    ApiResponse<List<Object>> localVarResponse = sendChatMessageWithHttpInfo(chatId, xAuthorization, body, null);
+  public List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage) throws ApiException {
+    ApiResponse<List<Object>> localVarResponse = sendChatMessageWithHttpInfo(chatId, xAuthorization, body, acceptLanguage, null);
     return localVarResponse.getData();
   }
 
@@ -60805,12 +60904,13 @@ public class ThingsboardApi {
    * @param chatId  (required)
    * @param xAuthorization  (required)
    * @param body  (required)
+   * @param acceptLanguage  (optional)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;List&lt;Object&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<Object>> sendChatMessageWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = sendChatMessageRequestBuilder(chatId, xAuthorization, body, headers);
+  public ApiResponse<List<Object>> sendChatMessageWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = sendChatMessageRequestBuilder(chatId, xAuthorization, body, acceptLanguage, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -60844,7 +60944,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder sendChatMessageRequestBuilder(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder sendChatMessageRequestBuilder(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'chatId' is set
     if (chatId == null) {
       throw new ApiException(400, "Missing the required parameter 'chatId' when calling sendChatMessage");
@@ -60863,6 +60963,9 @@ public class ThingsboardApi {
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     if (xAuthorization != null) {
       localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
+    }
+    if (acceptLanguage != null) {
+      localVarRequestBuilder.header("Accept-Language", acceptLanguage.toString());
     }
     localVarRequestBuilder.header("Content-Type", "text/plain");
     localVarRequestBuilder.header("Accept", "text/event-stream, application/json");
