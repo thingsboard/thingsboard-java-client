@@ -7,7 +7,7 @@ com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body) // crea
 void deleteChat(@Nonnull UUID chatId) // deleteChat
 com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId) // getChatMessages
 com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType) // listChats
-List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body) // sendChatMessage
+List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage) // sendChatMessage
 void updateChat(@Nonnull UUID chatId, @Nonnull Object body) // updateChat
 ```
 
@@ -103,7 +103,7 @@ listChats
 ## sendChatMessage
 
 ```
-List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body)
+List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage)
 ```
 
 **POST** `/api/ai/chats/{chatId}/messages`
@@ -118,6 +118,7 @@ sendChatMessage
 | **chatId** | **UUID** |  | |
 | **xAuthorization** | **String** |  | |
 | **body** | **String** |  | |
+| **acceptLanguage** | **String** |  | [optional] |
 
 ### Return type
 
