@@ -30,6 +30,10 @@
       "description": "Ai Chat Controller"
     },
     {
+      "name": "ai-device-dashboard-controller",
+      "description": "Ai Device Dashboard Controller"
+    },
+    {
       "name": "ai-model-controller",
       "description": "Ai Model Controller"
     },
@@ -4844,6 +4848,14 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -5041,6 +5053,184 @@
                     "summary": "Bad Request",
                     "value": {
                       "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "status": 400,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "status": 401,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "status": 403,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "status": 404,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "status": 429,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/ai/devices/{deviceId}/dashboard": {
+      "post": {
+        "tags": [
+          "ai-device-dashboard-controller"
+        ],
+        "summary": "generateDashboard",
+        "operationId": "generateDashboard",
+        "parameters": [
+          {
+            "name": "deviceId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonNode"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonNode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "message": "Invalid request body",
                       "errorCode": 31,
                       "status": 400,
                       "subscriptionErrorCode": null,
