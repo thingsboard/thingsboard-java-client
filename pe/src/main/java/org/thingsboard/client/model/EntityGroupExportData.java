@@ -36,6 +36,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import org.thingsboard.client.model.AttributeExportData;
 import org.thingsboard.client.model.CalculatedField;
 import org.thingsboard.client.model.DeviceGroupOtaPackage;
@@ -55,7 +56,8 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   EntityGroupExportData.JSON_PROPERTY_PERMISSIONS,
   EntityGroupExportData.JSON_PROPERTY_GROUP_OTA_PACKAGES,
-  EntityGroupExportData.JSON_PROPERTY_GROUP_ENTITIES
+  EntityGroupExportData.JSON_PROPERTY_GROUP_ENTITIES,
+  EntityGroupExportData.JSON_PROPERTY_MEMBER_IDS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -77,6 +79,10 @@ public class EntityGroupExportData extends EntityExportData {
   @Nullable
   private Boolean groupEntities;
 
+  public static final String JSON_PROPERTY_MEMBER_IDS = "memberIds";
+  @Nullable
+  private List<UUID> memberIds = new ArrayList<>();
+
   public EntityGroupExportData() { 
   }
 
@@ -94,7 +100,7 @@ public class EntityGroupExportData extends EntityExportData {
   }
 
   /**
-   * Get permissions
+   * Group permissions to apply to this group on import. Meaningful only for USER groups; ignored for groups of any other type. Each entry&#39;s userGroupId, roleId, and entityGroupId may use the external IDs of other entities in this payload or the IDs of entities that already exist on the target tenant; the importer resolves them against the target tenant. System-tenant roles are not allowed and will be rejected. Leave null to skip permission management for this group.
    * @return permissions
    */
   @Nullable
@@ -126,7 +132,7 @@ public class EntityGroupExportData extends EntityExportData {
   }
 
   /**
-   * Get groupOtaPackages
+   * OTA package assignments to apply to this group on import. Meaningful only for DEVICE groups; ignored for groups of any other type. Each entry&#39;s otaPackageId and groupId may reference external IDs of entities in this payload or IDs of entities that already exist on the target tenant. Leave null to skip OTA assignment management for this group.
    * @return groupOtaPackages
    */
   @Nullable
@@ -150,7 +156,7 @@ public class EntityGroupExportData extends EntityExportData {
   }
 
   /**
-   * Get groupEntities
+   * Marker indicating that the group&#39;s member entities are intended to be transported alongside this payload. Used by flows that convey members through a side channel (notably the version control flow, which stores members in a separate git index). The solution import API does not consume this flag and does not require it to be set. Safe to leave false (default).
    * @return groupEntities
    */
   @Nullable
@@ -165,6 +171,38 @@ public class EntityGroupExportData extends EntityExportData {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGroupEntities(@Nullable Boolean groupEntities) {
     this.groupEntities = groupEntities;
+  }
+
+
+  public EntityGroupExportData memberIds(@Nullable List<UUID> memberIds) {
+    this.memberIds = memberIds;
+    return this;
+  }
+
+  public EntityGroupExportData addMemberIdsItem(UUID memberIdsItem) {
+    if (this.memberIds == null) {
+      this.memberIds = new ArrayList<>();
+    }
+    this.memberIds.add(memberIdsItem);
+    return this;
+  }
+
+  /**
+   * External IDs of the entities that should be members of this group after import. Each ID is resolved against the target tenant — by other entity in this payload, by external ID, or by existing internal ID — and the matching entities are added to the group. The import fails if any listed member cannot be resolved. Must be null for the special &#39;All&#39; group (whose membership is implicit and managed by the platform). Leave null to skip membership wiring; existing membership on the target tenant is left untouched.
+   * @return memberIds
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MEMBER_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<UUID> getMemberIds() {
+    return memberIds;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MEMBER_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMemberIds(@Nullable List<UUID> memberIds) {
+    this.memberIds = memberIds;
   }
 
 
@@ -207,12 +245,13 @@ public class EntityGroupExportData extends EntityExportData {
     return Objects.equals(this.permissions, entityGroupExportData.permissions) &&
         Objects.equals(this.groupOtaPackages, entityGroupExportData.groupOtaPackages) &&
         Objects.equals(this.groupEntities, entityGroupExportData.groupEntities) &&
+        Objects.equals(this.memberIds, entityGroupExportData.memberIds) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(permissions, groupOtaPackages, groupEntities, super.hashCode());
+    return Objects.hash(permissions, groupOtaPackages, groupEntities, memberIds, super.hashCode());
   }
 
   @Override
@@ -223,6 +262,7 @@ public class EntityGroupExportData extends EntityExportData {
     sb.append("    permissions: ").append(toIndentedString(permissions)).append("\n");
     sb.append("    groupOtaPackages: ").append(toIndentedString(groupOtaPackages)).append("\n");
     sb.append("    groupEntities: ").append(toIndentedString(groupEntities)).append("\n");
+    sb.append("    memberIds: ").append(toIndentedString(memberIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -332,6 +372,17 @@ public class EntityGroupExportData extends EntityExportData {
     // add `groupEntities` to the URL query string
     if (getGroupEntities() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sgroupEntities%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGroupEntities()))));
+    }
+
+    // add `memberIds` to the URL query string
+    if (getMemberIds() != null) {
+      for (int i = 0; i < getMemberIds().size(); i++) {
+        if (getMemberIds().get(i) != null) {
+          joiner.add(String.format(java.util.Locale.ROOT, "%smemberIds%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+              ApiClient.urlEncode(ApiClient.valueToString(getMemberIds().get(i)))));
+        }
+      }
     }
 
     return joiner.toString();

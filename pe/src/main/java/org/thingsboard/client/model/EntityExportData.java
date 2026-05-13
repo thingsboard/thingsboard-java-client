@@ -84,6 +84,7 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = RuleChainExportData.class, name = "RULE_CHAIN"),
   @JsonSubTypes.Type(value = SchedulerEventExportData.class, name = "SCHEDULER_EVENT"),
   @JsonSubTypes.Type(value = TbResourceExportData.class, name = "TB_RESOURCE"),
+  @JsonSubTypes.Type(value = UserExportData.class, name = "USER"),
   @JsonSubTypes.Type(value = WidgetsBundleExportData.class, name = "WIDGETS_BUNDLE"),
   @JsonSubTypes.Type(value = WidgetTypeExportData.class, name = "WIDGET_TYPE"),
 })
@@ -400,6 +401,7 @@ static {
   mappings.put("RULE_CHAIN", RuleChainExportData.class);
   mappings.put("SCHEDULER_EVENT", SchedulerEventExportData.class);
   mappings.put("TB_RESOURCE", TbResourceExportData.class);
+  mappings.put("USER", UserExportData.class);
   mappings.put("WIDGETS_BUNDLE", WidgetsBundleExportData.class);
   mappings.put("WIDGET_TYPE", WidgetTypeExportData.class);
   mappings.put("EntityExportData", EntityExportData.class);

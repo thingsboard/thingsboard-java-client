@@ -167,6 +167,12 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
+  public MobileSelfRegistrationParams permissions(@Nullable List<GroupPermission> permissions) {
+    this.setPermissions(permissions);
+    return this;
+  }
+
+  @Override
   public MobileSelfRegistrationParams notificationRecipient(@Nullable NotificationTargetId notificationRecipient) {
     this.setNotificationRecipient(notificationRecipient);
     return this;

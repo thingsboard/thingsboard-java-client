@@ -1,15 +1,14 @@
 
-# SolutionData
+# UserExportData
 
-`org.thingsboard.client.model.SolutionData`
+`org.thingsboard.client.model.UserExportData`
 
-Portable solution package containing exported entities grouped by type. Represents a self-contained snapshot that can be imported into another tenant.
+**Extends:** **EntityExportData**
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **entities** | **Map\<String, List<EntityExportData>\>** | Exported entities grouped by entity type. Each key is an entity type (e.g. DEVICE_PROFILE, RULE_CHAIN) and the value is a list of entity export data objects. | |
 
 
 
@@ -25,87 +24,6 @@ Portable solution package containing exported entities grouped by type. Represen
 | attributes | Map<String, List<AttributeExportData>> | Map of attributes where key is the scope of attributes and value is the list of attributes for that scope | [optional] |
 | calculatedFields | List<CalculatedField> |  | [optional] |
 | entityType | EntityType |  |  |
-
-#### AiModelExportData  *(extends EntityExportData, entityType=`AI_MODEL`)*
-*See EntityExportData for properties.*
-
-#### AssetExportData  *(extends EntityExportData, entityType=`ASSET`)*
-*See EntityExportData for properties.*
-
-#### AssetProfileExportData  *(extends EntityExportData, entityType=`ASSET_PROFILE`)*
-*See EntityExportData for properties.*
-
-#### ConverterExportData  *(extends EntityExportData, entityType=`CONVERTER`)*
-*See EntityExportData for properties.*
-
-#### CustomerExportData  *(extends EntityExportData, entityType=`CUSTOMER`)*
-*See EntityExportData for properties.*
-
-#### DashboardExportData  *(extends EntityExportData, entityType=`DASHBOARD`)*
-*See EntityExportData for properties.*
-
-#### DeviceExportData  *(extends EntityExportData, entityType=`DEVICE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| credentials | DeviceCredentials |  | [optional] |
-
-#### DeviceProfileExportData  *(extends EntityExportData, entityType=`DEVICE_PROFILE`)*
-*See EntityExportData for properties.*
-
-#### EntityGroupExportData  *(extends EntityExportData, entityType=`ENTITY_GROUP`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| permissions | List<GroupPermission> | Group permissions to apply to this group on import. Meaningful only for USER groups; ignored for groups of any other type. Each entry's userGroupId, roleId, and entityGroupId may use the external IDs of other entities in this payload or the IDs of entities that already exist on the target tenant; the importer resolves them against the target tenant. System-tenant roles are not allowed and will be rejected. Leave null to skip permission management for this group. | [optional] |
-| groupOtaPackages | List<DeviceGroupOtaPackage> | OTA package assignments to apply to this group on import. Meaningful only for DEVICE groups; ignored for groups of any other type. Each entry's otaPackageId and groupId may reference external IDs of entities in this payload or IDs of entities that already exist on the target tenant. Leave null to skip OTA assignment management for this group. | [optional] |
-| groupEntities | Boolean | Marker indicating that the group's member entities are intended to be transported alongside this payload. Used by flows that convey members through a side channel (notably the version control flow, which stores members in a separate git index). The solution import API does not consume this flag and does not require it to be set. Safe to leave false (default). | [optional] |
-| memberIds | List<UUID> | External IDs of the entities that should be members of this group after import. Each ID is resolved against the target tenant — by other entity in this payload, by external ID, or by existing internal ID — and the matching entities are added to the group. The import fails if any listed member cannot be resolved. Must be null for the special 'All' group (whose membership is implicit and managed by the platform). Leave null to skip membership wiring; existing membership on the target tenant is left untouched. | [optional] |
-
-#### EntityViewExportData  *(extends EntityExportData, entityType=`ENTITY_VIEW`)*
-*See EntityExportData for properties.*
-
-#### IntegrationExportData  *(extends EntityExportData, entityType=`INTEGRATION`)*
-*See EntityExportData for properties.*
-
-#### NotificationRuleExportData  *(extends EntityExportData, entityType=`NOTIFICATION_RULE`)*
-*See EntityExportData for properties.*
-
-#### NotificationTargetExportData  *(extends EntityExportData, entityType=`NOTIFICATION_TARGET`)*
-*See EntityExportData for properties.*
-
-#### NotificationTemplateExportData  *(extends EntityExportData, entityType=`NOTIFICATION_TEMPLATE`)*
-*See EntityExportData for properties.*
-
-#### OtaPackageExportData  *(extends EntityExportData, entityType=`OTA_PACKAGE`)*
-*See EntityExportData for properties.*
-
-#### ReportTemplateExportData  *(extends EntityExportData, entityType=`REPORT_TEMPLATE`)*
-*See EntityExportData for properties.*
-
-#### RoleExportData  *(extends EntityExportData, entityType=`ROLE`)*
-*See EntityExportData for properties.*
-
-#### RuleChainExportData  *(extends EntityExportData, entityType=`RULE_CHAIN`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| metaData | RuleChainMetaData |  | [optional] |
-
-#### SchedulerEventExportData  *(extends EntityExportData, entityType=`SCHEDULER_EVENT`)*
-*See EntityExportData for properties.*
-
-#### TbResourceExportData  *(extends EntityExportData, entityType=`TB_RESOURCE`)*
-*See EntityExportData for properties.*
-
-#### UserExportData  *(extends EntityExportData, entityType=`USER`)*
-*See EntityExportData for properties.*
-
-#### WidgetsBundleExportData  *(extends EntityExportData, entityType=`WIDGETS_BUNDLE`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| widgets | List<com.fasterxml.jackson.databind.JsonNode> |  | [optional] |
-| fqns | List<String> |  | [optional] |
-
-#### WidgetTypeExportData  *(extends EntityExportData, entityType=`WIDGET_TYPE`)*
-*See EntityExportData for properties.*
 
 #### ExportableEntity
 | Name | Type | Description | Notes |
@@ -235,51 +153,6 @@ Portable solution package containing exported entities grouped by type. Represen
 | expression | String |  | [optional] |
 | useLatestTs | Boolean |  | [optional] |
 
-#### DeviceCredentials
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | DeviceCredentialsId | The Id is automatically generated during device creation. Use 'getDeviceCredentialsByDeviceId' to obtain the id based on device id. Use 'updateDeviceCredentials' to update device credentials. | [readonly] |
-| createdTime | Long | Timestamp of the device credentials creation, in milliseconds | [optional] |
-| deviceId | DeviceId | JSON object with the device Id. |  |
-| credentialsType | DeviceCredentialsType | Type of the credentials | [optional] |
-| credentialsId | String | Unique Credentials Id per platform instance. Used to lookup credentials from the database. By default, new access token for your device. Depends on the type of the credentials. |  |
-| credentialsValue | String | Value of the credentials. Null in case of ACCESS_TOKEN credentials type. Base64 value in case of X509_CERTIFICATE. Complex object in case of MQTT_BASIC and LWM2M_CREDENTIALS | [optional] |
-| version | Long |  | [optional] |
-
-#### RuleChainMetaData
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| ruleChainId | RuleChainId | JSON object with Rule Chain Id. | [readonly] |
-| version | Long | Version of the Rule Chain | [optional] |
-| firstNodeIndex | Integer | Index of the first rule node in the 'nodes' list |  |
-| nodes | List<RuleNode> | List of rule node JSON objects |  |
-| connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes |  |
-| ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. |  |
-| notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
-
-#### GroupPermission
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | GroupPermissionId | JSON object with the Group Permission Id. Specify this field to update the Group Permission. Referencing non-existing Group Permission Id will cause error. Omit this field to create new Group Permission. | [optional] |
-| createdTime | Long | Timestamp of the group permission creation, in milliseconds | [optional] [readonly] |
-| tenantId | TenantId | JSON object with the Tenant Id. | [optional] [readonly] |
-| userGroupId | EntityGroupId | JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group. |  |
-| roleId | RoleId | JSON object with the Role Id. Represents the set of permissions. The role type (GENERIC or GROUP) determines whether 'entityGroupId' is required. |  |
-| entityGroupId | EntityGroupId | JSON object with the Entity Group Id. Required when using a GROUP role — specifies the entity group to which the permissions apply. Must be null or omitted when using a GENERIC role. | [optional] |
-| entityGroupType | EntityType | Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc. Auto-populated from the referenced entity group. Null for generic permissions. | [optional] [readonly] |
-| isPublic | Boolean |  | [optional] |
-| name | String | Name of the Group Permissions. Auto-generated | [optional] [readonly] |
-| _public | Boolean |  | [optional] |
-
-#### DeviceGroupOtaPackage
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | UUID |  | [optional] |
-| groupId | EntityGroupId |  | [optional] |
-| otaPackageType | OtaPackageType |  | [optional] |
-| otaPackageId | OtaPackageId |  | [optional] |
-| otaPackageUpdateTime | Long |  | [optional] |
-
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -298,64 +171,6 @@ Portable solution package containing exported entities grouped by type. Represen
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | strategy | TimeSeriesOutputStrategy |  | [optional] |
-
-#### DeviceCredentialsId
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | UUID | string |  |
-
-#### DeviceCredentialsType (enum)
-`ACCESS_TOKEN` | `X509_CERTIFICATE` | `MQTT_BASIC` | `LWM2_M_CREDENTIALS`
-
-#### RuleNode
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | RuleNodeId | JSON object with the Rule Node Id. Specify this field to update the Rule Node. Referencing non-existing Rule Node Id will cause error. Omit this field to create new rule node. | [optional] |
-| createdTime | Long | Timestamp of the rule node creation, in milliseconds | [optional] [readonly] |
-| additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the rule node. May include: 'layoutX' (number, X coordinate for visualization), 'layoutY' (number, Y coordinate for visualization), 'description' (string). | [optional] |
-| ruleChainId | RuleChainId | JSON object with the Rule Chain Id. | [optional] [readonly] |
-| type | String | Full Java Class Name of the rule node implementation. | [optional] |
-| name | String | User defined name of the rule node. Used on UI and for logging. | [optional] |
-| debugSettings | DebugSettings | Debug settings object. | [optional] |
-| singletonMode | Boolean | Enable/disable singleton mode. | [optional] |
-| queueName | String | Queue name. | [optional] |
-| configurationVersion | Integer | Version of rule node configuration. | [optional] |
-| _configuration | com.fasterxml.jackson.databind.JsonNode | JSON with the rule node configuration. Structure depends on the rule node implementation. | [optional] |
-| externalId | RuleNodeId |  | [optional] |
-| debugMode | Boolean |  | [optional] |
-
-#### NodeConnectionInfo
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| fromIndex | Integer | Index of rule node in the 'nodes' array of the RuleChainMetaData. Indicates the 'from' part of the connection. |  |
-| toIndex | Integer | Index of rule node in the 'nodes' array of the RuleChainMetaData. Indicates the 'to' part of the connection. |  |
-| type | String | Type of the relation. Typically indicated the result of processing by the 'from' rule node. For example, 'Success' or 'Failure' |  |
-
-#### RuleChainConnectionInfo
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| fromIndex | Integer | Index of rule node in the 'nodes' array of the RuleChainMetaData. Indicates the 'from' part of the connection. |  |
-| targetRuleChainId | RuleChainId | JSON object with the Rule Chain Id. |  |
-| additionalInfo | com.fasterxml.jackson.databind.JsonNode | JSON object with the additional information about the connection. |  |
-| type | String | Type of the relation. Typically indicated the result of processing by the 'from' rule node. For example, 'Success' or 'Failure' |  |
-
-#### RuleChainNote
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| id | String | Unique identifier of the note on the canvas | [optional] |
-| x | Integer | Horizontal position of the note on the canvas, in pixels | [optional] |
-| y | Integer | Vertical position of the note on the canvas, in pixels | [optional] |
-| width | Integer | Width of the note, in pixels | [optional] |
-| height | Integer | Height of the note, in pixels | [optional] |
-| content | String | Markdown or HTML content of the note | [optional] |
-| backgroundColor | String | Background color of the note in CSS hex format, e.g. '#FFF9C4' | [optional] |
-| borderColor | String | Border color of the note in CSS hex format, e.g. '#E6C800' | [optional] |
-| borderWidth | Integer | Border width of the note in pixels | [optional] |
-| applyDefaultMarkdownStyle | Boolean | Whether to apply the default markdown stylesheet to the note content | [optional] |
-| markdownCss | String | Custom CSS styles applied to the note content | [optional] |
-
-#### OtaPackageType (enum)
-`FIRMWARE` | `SOFTWARE`
 
 #### AttributeScope (enum)
 `CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`
