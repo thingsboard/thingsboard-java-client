@@ -328,7 +328,7 @@ public class EntityGroup {
   }
 
   /**
-   * JSON object with the owner of the group - Tenant or Customer Id.
+   * JSON object with the owner of the group - Tenant or Customer Id. When omitted or null on creation, defaults to the current user&#39;s owner (Tenant for tenant admins, Customer for customer users).
    * @return ownerId
    */
   @Nullable
