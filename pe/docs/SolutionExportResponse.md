@@ -61,9 +61,10 @@ Solution export response containing the exported solution data and any dependenc
 #### EntityGroupExportData  *(extends EntityExportData, entityType=`ENTITY_GROUP`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| permissions | List<GroupPermission> |  | [optional] |
-| groupOtaPackages | List<DeviceGroupOtaPackage> |  | [optional] |
-| groupEntities | Boolean |  | [optional] |
+| permissions | List<GroupPermission> | Group permissions to apply to this group on import. Meaningful only for USER groups; ignored for groups of any other type. Each entry's userGroupId, roleId, and entityGroupId may use the external IDs of other entities in this payload or the IDs of entities that already exist on the target tenant; the importer resolves them against the target tenant. System-tenant roles are not allowed and will be rejected. Leave null to skip permission management for this group. | [optional] |
+| groupOtaPackages | List<DeviceGroupOtaPackage> | OTA package assignments to apply to this group on import. Meaningful only for DEVICE groups; ignored for groups of any other type. Each entry's otaPackageId and groupId may reference external IDs of entities in this payload or IDs of entities that already exist on the target tenant. Leave null to skip OTA assignment management for this group. | [optional] |
+| groupEntities | Boolean | Marker indicating that the group's member entities are intended to be transported alongside this payload. Used by flows that convey members through a side channel (notably the version control flow, which stores members in a separate git index). The solution import API does not consume this flag and does not require it to be set. Safe to leave false (default). | [optional] |
+| memberIds | List<UUID> | External IDs of the entities that should be members of this group after import. Each ID is resolved against the target tenant — by other entity in this payload, by external ID, or by existing internal ID — and the matching entities are added to the group. The import fails if any listed member cannot be resolved. Must be null for the special 'All' group (whose membership is implicit and managed by the platform). Leave null to skip membership wiring; existing membership on the target tenant is left untouched. | [optional] |
 
 #### EntityViewExportData  *(extends EntityExportData, entityType=`ENTITY_VIEW`)*
 *See EntityExportData for properties.*
@@ -98,6 +99,9 @@ Solution export response containing the exported solution data and any dependenc
 *See EntityExportData for properties.*
 
 #### TbResourceExportData  *(extends EntityExportData, entityType=`TB_RESOURCE`)*
+*See EntityExportData for properties.*
+
+#### UserExportData  *(extends EntityExportData, entityType=`USER`)*
 *See EntityExportData for properties.*
 
 #### WidgetsBundleExportData  *(extends EntityExportData, entityType=`WIDGETS_BUNDLE`)*
