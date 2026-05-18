@@ -94619,7 +94619,7 @@
           "solution-export-import-controller"
         ],
         "summary": "Validate Solution (validateSolution)",
-        "description": "Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid=true) and lists any conflicts or warnings.\n\nAvailable for users with 'TENANT_ADMIN' authority. Requires VERSION_CONTROL READ permission.",
+        "description": "Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid=true) and lists any conflicts or warnings.\n\nAvailable for users with 'TENANT_ADMIN' authority. Requires VERSION_CONTROL WRITE permission.",
         "operationId": "validateSolution",
         "requestBody": {
           "description": "Solution data to validate.",
@@ -142646,8 +142646,9 @@
         "type": "object",
         "description": "Solution export request specifying which entities to include and export settings.",
         "properties": {
-          "entityIds": {
+          "internalIds": {
             "type": "array",
+            "description": "Set of internal entity IDs to export. All listed entities must belong to the current tenant. The export will include the entity data, and optionally relations, attributes, and credentials based on the settings.",
             "items": {
               "$ref": "#/components/schemas/EntityId"
             },
