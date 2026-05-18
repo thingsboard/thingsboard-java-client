@@ -142654,6 +142654,152 @@
             },
             "uniqueItems": true
           },
+          "externalIds": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/AdminSettingsId"
+                },
+                {
+                  "$ref": "#/components/schemas/AiModelId"
+                },
+                {
+                  "$ref": "#/components/schemas/AlarmId"
+                },
+                {
+                  "$ref": "#/components/schemas/ApiKeyId"
+                },
+                {
+                  "$ref": "#/components/schemas/ApiUsageStateId"
+                },
+                {
+                  "$ref": "#/components/schemas/AssetId"
+                },
+                {
+                  "$ref": "#/components/schemas/AssetProfileId"
+                },
+                {
+                  "$ref": "#/components/schemas/BlobEntityId"
+                },
+                {
+                  "$ref": "#/components/schemas/CalculatedFieldId"
+                },
+                {
+                  "$ref": "#/components/schemas/ConverterId"
+                },
+                {
+                  "$ref": "#/components/schemas/CustomerId"
+                },
+                {
+                  "$ref": "#/components/schemas/DashboardId"
+                },
+                {
+                  "$ref": "#/components/schemas/DeviceId"
+                },
+                {
+                  "$ref": "#/components/schemas/DeviceProfileId"
+                },
+                {
+                  "$ref": "#/components/schemas/DomainId"
+                },
+                {
+                  "$ref": "#/components/schemas/EdgeId"
+                },
+                {
+                  "$ref": "#/components/schemas/EntityGroupId"
+                },
+                {
+                  "$ref": "#/components/schemas/EntityViewId"
+                },
+                {
+                  "$ref": "#/components/schemas/GroupPermissionId"
+                },
+                {
+                  "$ref": "#/components/schemas/IntegrationId"
+                },
+                {
+                  "$ref": "#/components/schemas/JobId"
+                },
+                {
+                  "$ref": "#/components/schemas/MobileAppBundleId"
+                },
+                {
+                  "$ref": "#/components/schemas/MobileAppId"
+                },
+                {
+                  "$ref": "#/components/schemas/NotificationId"
+                },
+                {
+                  "$ref": "#/components/schemas/NotificationRequestId"
+                },
+                {
+                  "$ref": "#/components/schemas/NotificationRuleId"
+                },
+                {
+                  "$ref": "#/components/schemas/NotificationTargetId"
+                },
+                {
+                  "$ref": "#/components/schemas/NotificationTemplateId"
+                },
+                {
+                  "$ref": "#/components/schemas/OAuth2ClientId"
+                },
+                {
+                  "$ref": "#/components/schemas/OtaPackageId"
+                },
+                {
+                  "$ref": "#/components/schemas/QueueId"
+                },
+                {
+                  "$ref": "#/components/schemas/QueueStatsId"
+                },
+                {
+                  "$ref": "#/components/schemas/ReportId"
+                },
+                {
+                  "$ref": "#/components/schemas/ReportTemplateId"
+                },
+                {
+                  "$ref": "#/components/schemas/RoleId"
+                },
+                {
+                  "$ref": "#/components/schemas/RpcId"
+                },
+                {
+                  "$ref": "#/components/schemas/RuleChainId"
+                },
+                {
+                  "$ref": "#/components/schemas/RuleNodeId"
+                },
+                {
+                  "$ref": "#/components/schemas/SchedulerEventId"
+                },
+                {
+                  "$ref": "#/components/schemas/SecretId"
+                },
+                {
+                  "$ref": "#/components/schemas/TbResourceId"
+                },
+                {
+                  "$ref": "#/components/schemas/TenantId"
+                },
+                {
+                  "$ref": "#/components/schemas/TenantProfileId"
+                },
+                {
+                  "$ref": "#/components/schemas/UserId"
+                },
+                {
+                  "$ref": "#/components/schemas/WidgetTypeId"
+                },
+                {
+                  "$ref": "#/components/schemas/WidgetsBundleId"
+                }
+              ]
+            },
+            "uniqueItems": true
+          },
           "settings": {
             "$ref": "#/components/schemas/EntityExportSettings",
             "description": "Optional export settings controlling what additional data is included (relations, attributes, credentials, etc.). If not specified, default settings will be used that include all available data."
