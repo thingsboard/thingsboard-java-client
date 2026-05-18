@@ -68749,7 +68749,7 @@ public class ThingsboardApi {
 
   /**
    * Validate Solution (validateSolution)
-   * Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid&#x3D;true) and lists any conflicts or warnings.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL READ permission.
+   * Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid&#x3D;true) and lists any conflicts or warnings.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
    * @param solutionData Solution data to validate. (required)
    * @return SolutionValidationResult
    * @throws ApiException if fails to make API call
@@ -68761,7 +68761,7 @@ public class ThingsboardApi {
 
   /**
    * Validate Solution (validateSolution)
-   * Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid&#x3D;true) and lists any conflicts or warnings.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL READ permission.
+   * Performs a dry-run validation of a solution without modifying any data. Detects duplicate entities within the solution, identifies name conflicts with existing entities in the current tenant, and reports missing dependency references (e.g. a device profile referencing an absent rule chain). The result indicates whether the solution is safe to import (valid&#x3D;true) and lists any conflicts or warnings.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
    * @param solutionData Solution data to validate. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;SolutionValidationResult&gt;

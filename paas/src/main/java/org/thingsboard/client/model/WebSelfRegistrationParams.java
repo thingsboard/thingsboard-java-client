@@ -167,6 +167,12 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
+  public WebSelfRegistrationParams permissions(@Nullable List<GroupPermission> permissions) {
+    this.setPermissions(permissions);
+    return this;
+  }
+
+  @Override
   public WebSelfRegistrationParams notificationRecipient(@Nullable NotificationTargetId notificationRecipient) {
     this.setNotificationRecipient(notificationRecipient);
     return this;
