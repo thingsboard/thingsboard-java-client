@@ -87,7 +87,7 @@ public class WidgetsBundleExportData extends EntityExportData {
   }
 
   /**
-   * Get widgets
+   * List of widgets in the bundle
    * @return widgets
    */
   @Nullable
