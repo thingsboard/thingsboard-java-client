@@ -94,7 +94,7 @@ Base export container for ThingsBoard entities
 #### WidgetsBundleExportData  *(entityType=`WIDGETS_BUNDLE`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| widgets | List<com.fasterxml.jackson.databind.JsonNode> |  | [optional] |
+| widgets | List<com.fasterxml.jackson.databind.JsonNode> | List of widgets in the bundle | [optional] |
 | fqns | List<String> |  | [optional] |
 
 #### WidgetTypeExportData  *(entityType=`WIDGET_TYPE`)*

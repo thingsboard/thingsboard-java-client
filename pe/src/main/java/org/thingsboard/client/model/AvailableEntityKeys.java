@@ -109,7 +109,7 @@ public class AvailableEntityKeys {
   }
 
   /**
-   * Get timeseries
+   * List of unique time series key names available on the matched entities.
    * @return timeseries
    */
   @Nonnull
@@ -142,7 +142,7 @@ public class AvailableEntityKeys {
   }
 
   /**
-   * Get attribute
+   * List of unique attribute key names available on the matched entities.
    * @return attribute
    */
   @Nonnull
