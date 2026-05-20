@@ -94327,10 +94327,10 @@
           "solution-export-import-controller"
         ],
         "summary": "Export Solution (exportSolution)",
-        "description": "Exports a set of entities as a portable solution package. The request specifies entity IDs to include and optional export settings (relations, attributes, credentials). All specified entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.\n\nAvailable for users with 'TENANT_ADMIN' authority. Requires VERSION_CONTROL WRITE permission.",
+        "description": "Exports a set of entities as a portable solution package. The request specifies entities to include via 'internalIds' (server-internal UUIDs) and/or 'externalIds' (looked up by the entity's stored externalId within the current tenant); at least one of the two collections must be non-empty, and entities reached via both sides are deduplicated. Optional export settings control inclusion of relations, attributes, and credentials. All resolved entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.\n\nAvailable for users with 'TENANT_ADMIN' authority. Requires VERSION_CONTROL WRITE permission.",
         "operationId": "exportSolution",
         "requestBody": {
-          "description": "Export request with entity IDs and optional settings.",
+          "description": "Export request with internal and/or external entity IDs and optional settings.",
           "content": {
             "application/json": {
               "schema": {
@@ -121623,6 +121623,7 @@
           },
           "timeseries": {
             "type": "array",
+            "description": "List of unique time series key names available on the matched entities.",
             "items": {
               "type": "string",
               "example": "temperature",
@@ -121632,6 +121633,7 @@
           },
           "attribute": {
             "type": "array",
+            "description": "List of unique attribute key names available on the matched entities.",
             "items": {
               "type": "string",
               "example": "serialNumber",
@@ -121670,6 +121672,7 @@
           },
           "timeseries": {
             "type": "array",
+            "description": "List of unique time series keys available on the matched entities, sorted alphabetically.\nOmitted when timeseries keys were not requested.",
             "items": {
               "$ref": "#/components/schemas/KeyInfo"
             }
@@ -128443,6 +128446,7 @@
           },
           "ownerIds": {
             "type": "array",
+            "description": "List of the entity group owners.",
             "items": {
               "$ref": "#/components/schemas/EntityId"
             },
@@ -128464,6 +128468,7 @@
         },
         "required": [
           "name",
+          "ownerIds",
           "type"
         ]
       },
@@ -142648,7 +142653,7 @@
         "properties": {
           "internalIds": {
             "type": "array",
-            "description": "Set of internal entity IDs to export. All listed entities must belong to the current tenant. The export will include the entity data, and optionally relations, attributes, and credentials based on the settings.",
+            "description": "Set of internal entity IDs to export. The 'id' of each EntityId is the server-internal UUID. All listed entities must belong to the current tenant. Optional, but at least one of 'internalIds' or 'externalIds' must be non-empty.",
             "items": {
               "$ref": "#/components/schemas/EntityId"
             },
@@ -142656,147 +142661,9 @@
           },
           "externalIds": {
             "type": "array",
+            "description": "Set of external entity IDs to export. The 'id' of each EntityId is the external UUID (as stored in the 'externalId' field on the entity in the current tenant). The server looks up each entity by 'externalId' and 'entityType' within the current tenant. Optional, but at least one of 'internalIds' or 'externalIds' must be non-empty.",
             "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/AdminSettingsId"
-                },
-                {
-                  "$ref": "#/components/schemas/AiModelId"
-                },
-                {
-                  "$ref": "#/components/schemas/AlarmId"
-                },
-                {
-                  "$ref": "#/components/schemas/ApiKeyId"
-                },
-                {
-                  "$ref": "#/components/schemas/ApiUsageStateId"
-                },
-                {
-                  "$ref": "#/components/schemas/AssetId"
-                },
-                {
-                  "$ref": "#/components/schemas/AssetProfileId"
-                },
-                {
-                  "$ref": "#/components/schemas/BlobEntityId"
-                },
-                {
-                  "$ref": "#/components/schemas/CalculatedFieldId"
-                },
-                {
-                  "$ref": "#/components/schemas/ConverterId"
-                },
-                {
-                  "$ref": "#/components/schemas/CustomerId"
-                },
-                {
-                  "$ref": "#/components/schemas/DashboardId"
-                },
-                {
-                  "$ref": "#/components/schemas/DeviceId"
-                },
-                {
-                  "$ref": "#/components/schemas/DeviceProfileId"
-                },
-                {
-                  "$ref": "#/components/schemas/DomainId"
-                },
-                {
-                  "$ref": "#/components/schemas/EdgeId"
-                },
-                {
-                  "$ref": "#/components/schemas/EntityGroupId"
-                },
-                {
-                  "$ref": "#/components/schemas/EntityViewId"
-                },
-                {
-                  "$ref": "#/components/schemas/GroupPermissionId"
-                },
-                {
-                  "$ref": "#/components/schemas/IntegrationId"
-                },
-                {
-                  "$ref": "#/components/schemas/JobId"
-                },
-                {
-                  "$ref": "#/components/schemas/MobileAppBundleId"
-                },
-                {
-                  "$ref": "#/components/schemas/MobileAppId"
-                },
-                {
-                  "$ref": "#/components/schemas/NotificationId"
-                },
-                {
-                  "$ref": "#/components/schemas/NotificationRequestId"
-                },
-                {
-                  "$ref": "#/components/schemas/NotificationRuleId"
-                },
-                {
-                  "$ref": "#/components/schemas/NotificationTargetId"
-                },
-                {
-                  "$ref": "#/components/schemas/NotificationTemplateId"
-                },
-                {
-                  "$ref": "#/components/schemas/OAuth2ClientId"
-                },
-                {
-                  "$ref": "#/components/schemas/OtaPackageId"
-                },
-                {
-                  "$ref": "#/components/schemas/QueueId"
-                },
-                {
-                  "$ref": "#/components/schemas/QueueStatsId"
-                },
-                {
-                  "$ref": "#/components/schemas/ReportId"
-                },
-                {
-                  "$ref": "#/components/schemas/ReportTemplateId"
-                },
-                {
-                  "$ref": "#/components/schemas/RoleId"
-                },
-                {
-                  "$ref": "#/components/schemas/RpcId"
-                },
-                {
-                  "$ref": "#/components/schemas/RuleChainId"
-                },
-                {
-                  "$ref": "#/components/schemas/RuleNodeId"
-                },
-                {
-                  "$ref": "#/components/schemas/SchedulerEventId"
-                },
-                {
-                  "$ref": "#/components/schemas/SecretId"
-                },
-                {
-                  "$ref": "#/components/schemas/TbResourceId"
-                },
-                {
-                  "$ref": "#/components/schemas/TenantId"
-                },
-                {
-                  "$ref": "#/components/schemas/TenantProfileId"
-                },
-                {
-                  "$ref": "#/components/schemas/UserId"
-                },
-                {
-                  "$ref": "#/components/schemas/WidgetTypeId"
-                },
-                {
-                  "$ref": "#/components/schemas/WidgetsBundleId"
-                }
-              ]
+              "$ref": "#/components/schemas/EntityId"
             },
             "uniqueItems": true
           },
@@ -143861,6 +143728,7 @@
         "properties": {
           "contents": {
             "type": "array",
+            "description": "A list of content parts that make up the complete user prompt",
             "items": {
               "$ref": "#/components/schemas/TbContent"
             },
@@ -147674,6 +147542,7 @@
             "properties": {
               "widgets": {
                 "type": "array",
+                "description": "List of widgets in the bundle",
                 "items": {
                   "$ref": "#/components/schemas/JsonNode"
                 }
