@@ -258,7 +258,7 @@ public class AlarmInfo {
 
 
   /**
-   * JSON object with Customer Id
+   * JSON object with Customer Id. Derived from the originator entity owner and cannot be set independently; any value supplied in the request body must match the originator&#39;s customer or the request is rejected.
    * @return customerId
    */
   @Nullable

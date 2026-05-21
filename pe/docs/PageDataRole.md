@@ -25,7 +25,7 @@
 | createdTime | Long | Timestamp of the role creation, in milliseconds | [optional] [readonly] |
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the role. May include: 'description' (string). | [optional] |
 | tenantId | TenantId | JSON object with Tenant Id. | [optional] [readonly] |
-| customerId | CustomerId | JSON object with Customer Id. | [optional] [readonly] |
+| customerId | CustomerId | JSON object with Customer Id. Optional: when omitted the Role is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id. | [optional] |
 | name | String | Role Name |  |
 | type | RoleType | Type of the role: generic or group |  |
 | permissions | com.fasterxml.jackson.databind.JsonNode | Set of permissions granted by this role. The JSON shape depends on the role 'type':  * GENERIC — JSON object mapping `Resource` enum names to arrays of `Operation` enum names allowed on that resource. The wildcard entry `{\"ALL\":[\"ALL\"]}` grants every operation on every resource.  * GROUP — JSON array of `Operation` enum names that apply to the entity group this role is bound to via `GroupPermission.entityGroupId`. Only operations with `allowedForGroupRole=true` may appear (see `Operation` enum). The wildcard entry `[\"ALL\"]` grants every supported operation on the bound entity group. |  |
