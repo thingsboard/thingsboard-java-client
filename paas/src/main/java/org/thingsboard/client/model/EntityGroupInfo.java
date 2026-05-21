@@ -228,7 +228,7 @@ public class EntityGroupInfo {
   private Long version;
 
   public static final String JSON_PROPERTY_OWNER_IDS = "ownerIds";
-  @Nullable
+  @Nonnull
   private Set<EntityId> ownerIds = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_EDGE_GROUP_ALL = "edgeGroupAll";
@@ -438,7 +438,7 @@ public class EntityGroupInfo {
   }
 
 
-  public EntityGroupInfo ownerIds(@Nullable Set<EntityId> ownerIds) {
+  public EntityGroupInfo ownerIds(@Nonnull Set<EntityId> ownerIds) {
     this.ownerIds = ownerIds;
     return this;
   }
@@ -452,21 +452,21 @@ public class EntityGroupInfo {
   }
 
   /**
-   * Get ownerIds
+   * List of the entity group owners.
    * @return ownerIds
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public Set<EntityId> getOwnerIds() {
     return ownerIds;
   }
 
 
   @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerIds(@Nullable Set<EntityId> ownerIds) {
+  @JsonProperty(value = JSON_PROPERTY_OWNER_IDS, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOwnerIds(@Nonnull Set<EntityId> ownerIds) {
     this.ownerIds = ownerIds;
   }
 

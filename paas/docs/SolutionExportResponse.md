@@ -107,7 +107,7 @@ Solution export response containing the exported solution data and any dependenc
 #### WidgetsBundleExportData  *(extends EntityExportData, entityType=`WIDGETS_BUNDLE`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| widgets | List<com.fasterxml.jackson.databind.JsonNode> |  | [optional] |
+| widgets | List<com.fasterxml.jackson.databind.JsonNode> | List of widgets in the bundle | [optional] |
 | fqns | List<String> |  | [optional] |
 
 #### WidgetTypeExportData  *(extends EntityExportData, entityType=`WIDGET_TYPE`)*

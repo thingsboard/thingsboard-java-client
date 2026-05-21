@@ -42,14 +42,19 @@ import org.thingsboard.client.ApiClient;
  * Solution export request specifying which entities to include and export settings.
  */
 @JsonPropertyOrder({
-  SolutionExportRequest.JSON_PROPERTY_ENTITY_IDS,
+  SolutionExportRequest.JSON_PROPERTY_INTERNAL_IDS,
+  SolutionExportRequest.JSON_PROPERTY_EXTERNAL_IDS,
   SolutionExportRequest.JSON_PROPERTY_SETTINGS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class SolutionExportRequest {
-  public static final String JSON_PROPERTY_ENTITY_IDS = "entityIds";
+  public static final String JSON_PROPERTY_INTERNAL_IDS = "internalIds";
   @Nullable
-  private Set<EntityId> entityIds = new LinkedHashSet<>();
+  private Set<EntityId> internalIds = new LinkedHashSet<>();
+
+  public static final String JSON_PROPERTY_EXTERNAL_IDS = "externalIds";
+  @Nullable
+  private Set<EntityId> externalIds = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_SETTINGS = "settings";
   @Nullable
@@ -58,36 +63,69 @@ public class SolutionExportRequest {
   public SolutionExportRequest() { 
   }
 
-  public SolutionExportRequest entityIds(@Nullable Set<EntityId> entityIds) {
-    this.entityIds = entityIds;
+  public SolutionExportRequest internalIds(@Nullable Set<EntityId> internalIds) {
+    this.internalIds = internalIds;
     return this;
   }
 
-  public SolutionExportRequest addEntityIdsItem(EntityId entityIdsItem) {
-    if (this.entityIds == null) {
-      this.entityIds = new LinkedHashSet<>();
+  public SolutionExportRequest addInternalIdsItem(EntityId internalIdsItem) {
+    if (this.internalIds == null) {
+      this.internalIds = new LinkedHashSet<>();
     }
-    this.entityIds.add(entityIdsItem);
+    this.internalIds.add(internalIdsItem);
     return this;
   }
 
   /**
-   * Get entityIds
-   * @return entityIds
+   * Set of internal entity IDs to export. The &#39;id&#39; of each EntityId is the server-internal UUID. All listed entities must belong to the current tenant. Optional, but at least one of &#39;internalIds&#39; or &#39;externalIds&#39; must be non-empty.
+   * @return internalIds
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_IDS, required = false)
+  @JsonProperty(value = JSON_PROPERTY_INTERNAL_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Set<EntityId> getEntityIds() {
-    return entityIds;
+  public Set<EntityId> getInternalIds() {
+    return internalIds;
   }
 
 
   @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_IDS, required = false)
+  @JsonProperty(value = JSON_PROPERTY_INTERNAL_IDS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEntityIds(@Nullable Set<EntityId> entityIds) {
-    this.entityIds = entityIds;
+  public void setInternalIds(@Nullable Set<EntityId> internalIds) {
+    this.internalIds = internalIds;
+  }
+
+
+  public SolutionExportRequest externalIds(@Nullable Set<EntityId> externalIds) {
+    this.externalIds = externalIds;
+    return this;
+  }
+
+  public SolutionExportRequest addExternalIdsItem(EntityId externalIdsItem) {
+    if (this.externalIds == null) {
+      this.externalIds = new LinkedHashSet<>();
+    }
+    this.externalIds.add(externalIdsItem);
+    return this;
+  }
+
+  /**
+   * Set of external entity IDs to export. The &#39;id&#39; of each EntityId is the external UUID (as stored in the &#39;externalId&#39; field on the entity in the current tenant). The server looks up each entity by &#39;externalId&#39; and &#39;entityType&#39; within the current tenant. Optional, but at least one of &#39;internalIds&#39; or &#39;externalIds&#39; must be non-empty.
+   * @return externalIds
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_EXTERNAL_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Set<EntityId> getExternalIds() {
+    return externalIds;
+  }
+
+
+  @JsonDeserialize(as = LinkedHashSet.class)
+  @JsonProperty(value = JSON_PROPERTY_EXTERNAL_IDS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExternalIds(@Nullable Set<EntityId> externalIds) {
+    this.externalIds = externalIds;
   }
 
 
@@ -127,20 +165,22 @@ public class SolutionExportRequest {
       return false;
     }
     SolutionExportRequest solutionExportRequest = (SolutionExportRequest) o;
-    return Objects.equals(this.entityIds, solutionExportRequest.entityIds) &&
+    return Objects.equals(this.internalIds, solutionExportRequest.internalIds) &&
+        Objects.equals(this.externalIds, solutionExportRequest.externalIds) &&
         Objects.equals(this.settings, solutionExportRequest.settings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityIds, settings);
+    return Objects.hash(internalIds, externalIds, settings);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SolutionExportRequest {\n");
-    sb.append("    entityIds: ").append(toIndentedString(entityIds)).append("\n");
+    sb.append("    internalIds: ").append(toIndentedString(internalIds)).append("\n");
+    sb.append("    externalIds: ").append(toIndentedString(externalIds)).append("\n");
     sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -189,12 +229,24 @@ public class SolutionExportRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `entityIds` to the URL query string
-    if (getEntityIds() != null) {
+    // add `internalIds` to the URL query string
+    if (getInternalIds() != null) {
       int i = 0;
-      for (EntityId _item : getEntityIds()) {
+      for (EntityId _item : getInternalIds()) {
         if (_item != null) {
-          joiner.add(_item.toUrlQueryString(String.format(java.util.Locale.ROOT, "%sentityIds%s%s", prefix, suffix,
+          joiner.add(_item.toUrlQueryString(String.format(java.util.Locale.ROOT, "%sinternalIds%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+      i++;
+    }
+
+    // add `externalIds` to the URL query string
+    if (getExternalIds() != null) {
+      int i = 0;
+      for (EntityId _item : getExternalIds()) {
+        if (_item != null) {
+          joiner.add(_item.toUrlQueryString(String.format(java.util.Locale.ROOT, "%sexternalIds%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
