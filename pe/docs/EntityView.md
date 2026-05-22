@@ -14,7 +14,7 @@ A JSON object representing the entity view.
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity view. May include: 'description' (string). | [optional] |
 | **entityId** | **EntityId** | JSON object with the referenced Entity Id (Device or Asset). | |
 | **tenantId** | **TenantId** | JSON object with Tenant Id. | [optional] [readonly] |
-| **customerId** | **CustomerId** | JSON object with Customer Id. Use 'assignEntityViewToCustomer' to change the Customer Id. | [optional] [readonly] |
+| **customerId** | **CustomerId** | JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Entity View. | [optional] |
 | **name** | **String** | Entity View name | |
 | **type** | **String** | Device Profile Name | |
 | **keys** | **TelemetryEntityView** | Set of telemetry and attribute keys to expose via Entity View. | [optional] |

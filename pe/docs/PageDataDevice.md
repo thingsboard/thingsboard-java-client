@@ -25,7 +25,7 @@
 | createdTime | Long | Timestamp of the device creation, in milliseconds | [optional] [readonly] |
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode | Additional parameters of the device. May include: 'gateway' (boolean, whether the device is a gateway), 'description' (string), 'lastConnectedGateway' (string, UUID of the last gateway that connected this device). | [optional] |
 | tenantId | TenantId | JSON object with Tenant Id. Use 'assignDeviceToTenant' to change the Tenant Id. | [optional] [readonly] |
-| customerId | CustomerId | JSON object with Customer Id. Use 'assignDeviceToCustomer' to change the Customer Id. | [optional] [readonly] |
+| customerId | CustomerId | JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Device. | [optional] |
 | name | String | Unique Device Name in scope of Tenant | [optional] |
 | type | String | Device Profile Name | [optional] |
 | label | String | Label that may be used in widgets | [optional] |
