@@ -11813,8 +11813,8 @@ public class ThingsboardApi {
 
   /**
    * Export Solution (exportSolution)
-   * Exports a set of entities as a portable solution package. The request specifies entity IDs to include and optional export settings (relations, attributes, credentials). All specified entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
-   * @param solutionExportRequest Export request with entity IDs and optional settings. (required)
+   * Exports a set of entities as a portable solution package. The request specifies entities to include via &#39;internalIds&#39; (server-internal UUIDs) and/or &#39;externalIds&#39; (looked up by the entity&#39;s stored externalId within the current tenant); at least one of the two collections must be non-empty, and entities reached via both sides are deduplicated. Optional export settings control inclusion of relations, attributes, and credentials. All resolved entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
+   * @param solutionExportRequest Export request with internal and/or external entity IDs and optional settings. (required)
    * @return SolutionExportResponse
    * @throws ApiException if fails to make API call
    */
@@ -11825,8 +11825,8 @@ public class ThingsboardApi {
 
   /**
    * Export Solution (exportSolution)
-   * Exports a set of entities as a portable solution package. The request specifies entity IDs to include and optional export settings (relations, attributes, credentials). All specified entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
-   * @param solutionExportRequest Export request with entity IDs and optional settings. (required)
+   * Exports a set of entities as a portable solution package. The request specifies entities to include via &#39;internalIds&#39; (server-internal UUIDs) and/or &#39;externalIds&#39; (looked up by the entity&#39;s stored externalId within the current tenant); at least one of the two collections must be non-empty, and entities reached via both sides are deduplicated. Optional export settings control inclusion of relations, attributes, and credentials. All resolved entities must belong to the current tenant. The response contains the solution data (entities grouped by type) and any dependency warnings (e.g. when an exported device profile references a rule chain that was not included in the export). The solution data can later be imported into the same or a different tenant via the import endpoint.  Available for users with &#39;TENANT_ADMIN&#39; authority. Requires VERSION_CONTROL WRITE permission.
+   * @param solutionExportRequest Export request with internal and/or external entity IDs and optional settings. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;SolutionExportResponse&gt;
    * @throws ApiException if fails to make API call

@@ -10,8 +10,8 @@ Contains unique time series and attribute key names discovered from entities mat
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 | **entityTypes** | **Set\<EntityType\>** | Set of entity types found among the matched entities. | |
-| **timeseries** | **Set\<String\>** |  | |
-| **attribute** | **Set\<String\>** |  | |
+| **timeseries** | **Set\<String\>** | List of unique time series key names available on the matched entities. | |
+| **attribute** | **Set\<String\>** | List of unique attribute key names available on the matched entities. | |
 
 
 

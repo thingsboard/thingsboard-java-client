@@ -65,7 +65,7 @@ public class TbUserMessage {
   }
 
   /**
-   * Get contents
+   * A list of content parts that make up the complete user prompt
    * @return contents
    */
   @Nonnull
