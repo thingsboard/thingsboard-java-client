@@ -128,14 +128,12 @@ public class Edge {
   public Edge(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_ROOT_RULE_CHAIN_ID) RuleChainId rootRuleChainId, 
     @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
     this.rootRuleChainId = rootRuleChainId;
     this.ownerId = ownerId;
   }
@@ -203,7 +201,7 @@ public class Edge {
 
 
   /**
-   * JSON object with Tenant Id. Use &#39;assignDeviceToTenant&#39; to change the Tenant Id.
+   * JSON object with Tenant Id. Always set to the tenant of the current user on save; cannot be changed after creation.
    * @return tenantId
    */
   @Nullable
@@ -216,8 +214,13 @@ public class Edge {
 
 
 
+  public Edge customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignEdgeToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id.
    * @return customerId
    */
   @Nullable
@@ -228,6 +231,11 @@ public class Edge {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   /**

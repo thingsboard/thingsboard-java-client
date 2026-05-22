@@ -11,7 +11,7 @@
 | **createdTime** | **Long** | Timestamp of the scheduler event creation, in milliseconds | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the scheduler event | [optional] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] [readonly] |
-| **customerId** | **CustomerId** | JSON object with Customer Id | [optional] [readonly] |
+| **customerId** | **CustomerId** | JSON object with Customer Id. Optional: when omitted the Scheduler Event is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id. | [optional] |
 | **originatorId** | **EntityId** | JSON object with Originator Id | [optional] [readonly] |
 | **name** | **String** | scheduler event name | [optional] |
 | **type** | **String** | scheduler event type | [optional] |
