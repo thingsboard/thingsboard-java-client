@@ -115,7 +115,7 @@ public class AvailableEntityKeysV2 {
   }
 
   /**
-   * Get timeseries
+   * List of unique time series keys available on the matched entities, sorted alphabetically. Omitted when timeseries keys were not requested.
    * @return timeseries
    */
   @Nullable
