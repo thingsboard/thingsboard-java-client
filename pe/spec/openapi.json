@@ -118593,7 +118593,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
+            "description": "JSON object with Customer Id. Derived from the originator entity owner and cannot be set independently; any value supplied in the request body must match the originator's customer or the request is rejected.",
             "readOnly": true
           },
           "type": {
@@ -119319,7 +119319,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
+            "description": "JSON object with Customer Id. Derived from the originator entity owner and cannot be set independently; any value supplied in the request body must match the originator's customer or the request is rejected.",
             "readOnly": true
           },
           "type": {
@@ -119624,7 +119624,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
+            "description": "JSON object with Customer Id. Derived from the originator entity owner and cannot be set independently; any value supplied in the request body must match the originator's customer or the request is rejected.",
             "readOnly": true
           },
           "type": {
@@ -120876,8 +120876,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignAssetToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Asset."
           },
           "name": {
             "type": "string",
@@ -120980,8 +120979,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignAssetToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Asset."
           },
           "name": {
             "type": "string",
@@ -125644,8 +125642,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignDeviceToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Device."
           },
           "name": {
             "type": "string",
@@ -125989,8 +125986,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignDeviceToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Device."
           },
           "name": {
             "type": "string",
@@ -126906,13 +126902,12 @@
           },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
-            "description": "JSON object with Tenant Id. Use 'assignDeviceToTenant' to change the Tenant Id.",
+            "description": "JSON object with Tenant Id. Always set to the tenant of the current user on save; cannot be changed after creation.",
             "readOnly": true
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignEdgeToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id."
           },
           "rootRuleChainId": {
             "$ref": "#/components/schemas/RuleChainId",
@@ -127265,13 +127260,12 @@
           },
           "tenantId": {
             "$ref": "#/components/schemas/TenantId",
-            "description": "JSON object with Tenant Id. Use 'assignDeviceToTenant' to change the Tenant Id.",
+            "description": "JSON object with Tenant Id. Always set to the tenant of the current user on save; cannot be changed after creation.",
             "readOnly": true
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignEdgeToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id."
           },
           "rootRuleChainId": {
             "$ref": "#/components/schemas/RuleChainId",
@@ -129173,8 +129167,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignEntityViewToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Entity View."
           },
           "name": {
             "type": "string",
@@ -129288,8 +129281,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. Use 'assignEntityViewToCustomer' to change the Customer Id.",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Entity View."
           },
           "name": {
             "type": "string",
@@ -139520,8 +139512,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional: when omitted the Report Template is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id."
           },
           "name": {
             "type": "string",
@@ -139698,8 +139689,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional: when omitted the Report Template is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id."
           },
           "name": {
             "type": "string",
@@ -140206,8 +140196,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id. ",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional: when omitted the Role is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id."
           },
           "name": {
             "type": "string",
@@ -141114,8 +141103,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional: when omitted the Scheduler Event is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id."
           },
           "originatorId": {
             "$ref": "#/components/schemas/EntityId",
@@ -141193,8 +141181,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional: when omitted the Scheduler Event is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id."
           },
           "originatorId": {
             "$ref": "#/components/schemas/EntityId",
@@ -141338,8 +141325,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional: when omitted the Scheduler Event is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id."
           },
           "originatorId": {
             "$ref": "#/components/schemas/EntityId",
@@ -141401,8 +141387,7 @@
           },
           "customerId": {
             "$ref": "#/components/schemas/CustomerId",
-            "description": "JSON object with Customer Id",
-            "readOnly": true
+            "description": "JSON object with Customer Id. Optional: when omitted the Scheduler Event is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id."
           },
           "originatorId": {
             "$ref": "#/components/schemas/EntityId",
