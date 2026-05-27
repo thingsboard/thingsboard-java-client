@@ -127,7 +127,6 @@ public class ScheduledReportInfo {
   public ScheduledReportInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_ORIGINATOR_ID) EntityId originatorId, 
     @JsonProperty(JSON_PROPERTY_TEMPLATE_INFO) EntityInfo templateInfo, 
     @JsonProperty(JSON_PROPERTY_CUSTOMER_TITLE) String customerTitle, 
@@ -137,7 +136,6 @@ public class ScheduledReportInfo {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
     this.originatorId = originatorId;
     this.templateInfo = templateInfo;
     this.customerTitle = customerTitle;
@@ -221,8 +219,13 @@ public class ScheduledReportInfo {
 
 
 
+  public ScheduledReportInfo customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id
+   * JSON object with Customer Id. Optional: when omitted the Scheduler Event is owned by the tenant. When the request is made by a Customer user, the value is forced to the user&#39;s own Customer Id.
    * @return customerId
    */
   @Nullable
@@ -233,6 +236,11 @@ public class ScheduledReportInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   /**
