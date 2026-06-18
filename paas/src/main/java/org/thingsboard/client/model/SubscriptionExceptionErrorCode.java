@@ -43,9 +43,7 @@ public enum SubscriptionExceptionErrorCode {
   
   NUMBER_5(new BigDecimal("5")),
   
-  NUMBER_6(new BigDecimal("6")),
-  
-  NUMBER_7(new BigDecimal("7"));
+  NUMBER_6(new BigDecimal("6"));
 
   private BigDecimal value;
 
