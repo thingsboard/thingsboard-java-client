@@ -268,7 +268,6 @@ import org.thingsboard.client.model.SolutionData;
 import org.thingsboard.client.model.SolutionExportRequest;
 import org.thingsboard.client.model.SolutionExportResponse;
 import org.thingsboard.client.model.SolutionImportResult;
-import org.thingsboard.client.model.SolutionInstallResponse;
 import org.thingsboard.client.model.SolutionStep;
 import org.thingsboard.client.model.SolutionValidationResult;
 import org.thingsboard.client.model.SubscriptionDetails;
@@ -284,9 +283,6 @@ import org.thingsboard.client.model.TbSecretDeleteResult;
 import org.thingsboard.client.model.Tenant;
 import org.thingsboard.client.model.TenantInfo;
 import org.thingsboard.client.model.TenantProfile;
-import org.thingsboard.client.model.TenantSolutionTemplateDetails;
-import org.thingsboard.client.model.TenantSolutionTemplateInfo;
-import org.thingsboard.client.model.TenantSolutionTemplateInstructions;
 import org.thingsboard.client.model.TestSmsRequest;
 import org.thingsboard.client.model.ThingsboardCredentialsExpiredResponse;
 import org.thingsboard.client.model.ThingsboardErrorResponse;
@@ -11707,6 +11703,83 @@ public class ThingsboardApi {
     String localVarPath = "/api/images/{type}/{key}/export"
         .replace("{type}", ApiClient.urlEncode(type.toString()))
         .replace("{key}", ApiClient.urlEncode(key.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Export integration as IoT Hub package
+   * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
+   * @param integrationId  (required)
+   * @return byte[]
+   * @throws ApiException if fails to make API call
+   */
+  public byte[] exportIntegrationPackage(@Nonnull String integrationId) throws ApiException {
+    ApiResponse<byte[]> localVarResponse = exportIntegrationPackageWithHttpInfo(integrationId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Export integration as IoT Hub package
+   * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
+   * @param integrationId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;byte[]&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<byte[]> exportIntegrationPackageWithHttpInfo(@Nonnull String integrationId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = exportIntegrationPackageRequestBuilder(integrationId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("exportIntegrationPackage", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        byte[] responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<byte[]>() {});
+        return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder exportIntegrationPackageRequestBuilder(@Nonnull String integrationId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'integrationId' is set
+    if (integrationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'integrationId' when calling exportIntegrationPackage");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/integration/{integrationId}/export-package"
+        .replace("{integrationId}", ApiClient.urlEncode(integrationId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -42017,230 +42090,6 @@ public class ThingsboardApi {
   }
 
   /**
-   * Get Solution template details (getSolutionTemplateDetails)
-   * Get a solution template details based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return TenantSolutionTemplateDetails
-   * @throws ApiException if fails to make API call
-   */
-  public TenantSolutionTemplateDetails getSolutionTemplateDetails(@Nonnull String solutionTemplateId) throws ApiException {
-    ApiResponse<TenantSolutionTemplateDetails> localVarResponse = getSolutionTemplateDetailsWithHttpInfo(solutionTemplateId, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get Solution template details (getSolutionTemplateDetails)
-   * Get a solution template details based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;TenantSolutionTemplateDetails&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<TenantSolutionTemplateDetails> getSolutionTemplateDetailsWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getSolutionTemplateDetailsRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getSolutionTemplateDetails", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<TenantSolutionTemplateDetails>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        TenantSolutionTemplateDetails responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<TenantSolutionTemplateDetails>() {});
-        return new ApiResponse<TenantSolutionTemplateDetails>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getSolutionTemplateDetailsRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling getSolutionTemplateDetails");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/details/{solutionTemplateId}"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Get Solution templates (getSolutionTemplateInfos)
-   * Get a list of solution template descriptors   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @return List&lt;TenantSolutionTemplateInfo&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<TenantSolutionTemplateInfo> getSolutionTemplateInfos() throws ApiException {
-    ApiResponse<List<TenantSolutionTemplateInfo>> localVarResponse = getSolutionTemplateInfosWithHttpInfo(null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get Solution templates (getSolutionTemplateInfos)
-   * Get a list of solution template descriptors   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;List&lt;TenantSolutionTemplateInfo&gt;&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<List<TenantSolutionTemplateInfo>> getSolutionTemplateInfosWithHttpInfo(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getSolutionTemplateInfosRequestBuilder(headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getSolutionTemplateInfos", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<List<TenantSolutionTemplateInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        List<TenantSolutionTemplateInfo> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<TenantSolutionTemplateInfo>>() {});
-        return new ApiResponse<List<TenantSolutionTemplateInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getSolutionTemplateInfosRequestBuilder(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/infos";
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Get Solution Template Instructions (getSolutionTemplateInstructions)
-   * Get a solution template instructions based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return TenantSolutionTemplateInstructions
-   * @throws ApiException if fails to make API call
-   */
-  public TenantSolutionTemplateInstructions getSolutionTemplateInstructions(@Nonnull String solutionTemplateId) throws ApiException {
-    ApiResponse<TenantSolutionTemplateInstructions> localVarResponse = getSolutionTemplateInstructionsWithHttpInfo(solutionTemplateId, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get Solution Template Instructions (getSolutionTemplateInstructions)
-   * Get a solution template instructions based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;TenantSolutionTemplateInstructions&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<TenantSolutionTemplateInstructions> getSolutionTemplateInstructionsWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getSolutionTemplateInstructionsRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getSolutionTemplateInstructions", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<TenantSolutionTemplateInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        TenantSolutionTemplateInstructions responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<TenantSolutionTemplateInstructions>() {});
-        return new ApiResponse<TenantSolutionTemplateInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getSolutionTemplateInstructionsRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling getSolutionTemplateInstructions");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/instructions/{solutionTemplateId}"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
    * getSolutions
    * 
    * @return com.fasterxml.jackson.databind.JsonNode
@@ -51670,83 +51519,6 @@ public class ThingsboardApi {
     if (xAuthorization != null) {
       localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
     }
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Install Solution Template (installSolutionTemplate)
-   * Install solution template based on the provided id   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return SolutionInstallResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SolutionInstallResponse installSolutionTemplate(@Nonnull String solutionTemplateId) throws ApiException {
-    ApiResponse<SolutionInstallResponse> localVarResponse = installSolutionTemplateWithHttpInfo(solutionTemplateId, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Install Solution Template (installSolutionTemplate)
-   * Install solution template based on the provided id   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;SolutionInstallResponse&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<SolutionInstallResponse> installSolutionTemplateWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = installSolutionTemplateRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("installSolutionTemplate", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<SolutionInstallResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        SolutionInstallResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<SolutionInstallResponse>() {});
-        return new ApiResponse<SolutionInstallResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder installSolutionTemplateRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling installSolutionTemplate");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/{solutionTemplateId}/install"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
@@ -66312,79 +66084,6 @@ public class ThingsboardApi {
     if (xAuthorization != null) {
       localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
     }
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Uninstall Solution Template (uninstallSolutionTemplate)
-   * Uninstall solution template based on the provided id   Security check is performed to verify that the user has &#39;DELETE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void uninstallSolutionTemplate(@Nonnull String solutionTemplateId) throws ApiException {
-    uninstallSolutionTemplateWithHttpInfo(solutionTemplateId, null);
-  }
-
-  /**
-   * Uninstall Solution Template (uninstallSolutionTemplate)
-   * Uninstall solution template based on the provided id   Security check is performed to verify that the user has &#39;DELETE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Void&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Void> uninstallSolutionTemplateWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = uninstallSolutionTemplateRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("uninstallSolutionTemplate", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody != null) {
-          localVarResponseBody.readAllBytes();
-        }
-        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder uninstallSolutionTemplateRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling uninstallSolutionTemplate");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/{solutionTemplateId}/delete"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
