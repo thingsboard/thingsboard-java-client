@@ -4413,6 +4413,11 @@
               "schema": {
                 "type": "string"
               }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonNode"
+              }
             }
           },
           "required": true
@@ -4537,6 +4542,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "HttpLoginForm": []
