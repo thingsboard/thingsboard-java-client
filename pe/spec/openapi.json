@@ -294,10 +294,6 @@
       "description": "Sign Up Controller"
     },
     {
-      "name": "solution-controller",
-      "description": "Solution Controller"
-    },
-    {
       "name": "solution-export-import-controller",
       "description": "Solution Export Import Controller"
     },
@@ -4417,6 +4413,11 @@
               "schema": {
                 "type": "string"
               }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonNode"
+              }
             }
           },
           "required": true
@@ -4541,6 +4542,7 @@
             }
           }
         },
+        "deprecated": true,
         "security": [
           {
             "HttpLoginForm": []
@@ -13484,7 +13486,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -14004,7 +14006,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -28215,7 +28217,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -28711,7 +28713,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -30087,7 +30089,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -31616,7 +31618,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -34349,7 +34351,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -36192,7 +36194,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -41047,7 +41049,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -43265,7 +43267,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -56932,7 +56934,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -58320,7 +58322,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -65142,6 +65144,152 @@
         ]
       }
     },
+    "/api/integration/{integrationId}/export-package": {
+      "get": {
+        "tags": [
+          "integration-controller"
+        ],
+        "summary": "Export integration as IoT Hub package",
+        "description": "Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration's runtime POJO.",
+        "operationId": "exportIntegrationPackage",
+        "parameters": [
+          {
+            "name": "integrationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "byte"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
     "/api/integrationInfos": {
       "get": {
         "tags": [
@@ -65856,7 +66004,7 @@
           "job-controller"
         ],
         "summary": "Get job by id (getJobById)",
-        "description": "Fetches job info by id.\n\nExample of a RUNNING CF_REPROCESSING job response:\n```json\n{\n  \"id\": {\n    \"entityType\": \"JOB\",\n    \"id\": \"475e94e0-2f2d-11f0-8240-91e99922a704\"\n  },\n  \"createdTime\": 1747053196590,\n  \"tenantId\": {\n    \"entityType\": \"TENANT\",\n    \"id\": \"46859a00-2f2d-11f0-8240-91e99922a704\"\n  },\n  \"type\": \"CF_REPROCESSING\",\n  \"key\": \"474e4130-2f2d-11f0-8240-91e99922a704\",\n  \"entityId\": {\n    \"entityType\": \"DEVICE_PROFILE\",\n    \"id\": \"9fd41f20-31a1-11f0-933e-27998d6db02e\"\n   },\n  \"status\": \"RUNNING\",\n  \"configuration\": {\n    \"type\": \"CF_REPROCESSING\",\n    \"calculatedFieldId\": {\n      \"entityType\": \"CALCULATED_FIELD\",\n      \"id\": \"474e4130-2f2d-11f0-8240-91e99922a704\"\n    },\n    \"startTs\": 1747051995760,\n    \"endTs\": 1747052895760,\n    \"tasksKey\": \"c3cdbd42-799e-4d3a-9aad-9310f767aa36\",\n    \"toReprocess\": null\n  },\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 1,\n    \"failedCount\": 0,\n    \"discardedCount\": 0,\n    \"totalCount\": 2,\n    \"results\": [],\n    \"generalError\": null,\n    \"startTs\": 1747323069445,\n    \"finishTs\": 1747323070585,\n    \"cancellationTs\": 0\n  }\n}\n\n```\n\nExample of a CF_REPROCESSING job with failures:\n```json\n{\n  ...,\n  \"status\": \"FAILED\",\n  ...,\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 0,\n    \"failedCount\": 2,\n    \"discardedCount\": 0,\n    \"totalCount\": 2,\n    \"results\": [\n      {\n        \"jobType\": \"CF_REPROCESSING\",\n        \"key\": \"c3cdbd42-799e-4d3a-9aad-9310f767aa36\",\n        \"success\": false,\n        \"discarded\": false,\n        \"failure\": {\n          \"error\": \"Failed to fetch temperature: Failed to fetch timeseries data\",\n          \"entityInfo\": {\n            \"id\": {\n              \"entityType\": \"DEVICE\",\n              \"id\": \"9fd41f20-31a1-11f0-933e-27998d6db02e\"\n            },\n            \"name\": \"Test device 1\"\n          }\n        }\n      },\n      {\n        \"jobType\": \"CF_REPROCESSING\",\n        \"key\": \"c3cdbd42-799e-4d3a-9aad-9310f767aa36\",\n        \"success\": false,\n        \"discarded\": false,\n        \"failure\": {\n          \"error\": \"Failed to fetch temperature: Failed to fetch timeseries data\",\n          \"entityInfo\": {\n            \"id\": {\n              \"entityType\": \"DEVICE\",\n              \"id\": \"9ffc4090-31a1-11f0-933e-27998d6db02e\"\n            },\n            \"name\": \"Test device 2\"\n          }\n        }\n      }\n    ],\n    \"generalError\": null,\n    \"startTs\": 1747323069445,\n    \"finishTs\": 1747323070585,\n    \"cancellationTs\": 0\n  }\n}\n\n```\n\nExample of a FAILED job result with general error:\n```json\n{\n  ...,\n  \"status\": \"FAILED\",\n  ...,\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 1,\n    \"failedCount\": 0,\n    \"discardedCount\": 0,\n    \"totalCount\": null,\n    \"results\": [],\n    \"generalError\": \"Timeout to find devices by profile\",\n    \"cancellationTs\": 0\n  }\n}\n\n```\n\nExample of a CANCELLED job result:\n```json\n{\n  ...,\n  \"status\": \"CANCELLED\",\n  ...,\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 15,\n    \"failedCount\": 0,\n    \"discardedCount\": 85,\n    \"totalCount\": 100,\n    \"results\": [],\n    \"generalError\": null,\n    \"cancellationTs\": 1747065908414\n  }\n}\n\n```\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "Fetches job info by id.\n\nExample of a RUNNING CF_REPROCESSING job response:\n```json\n{\n  \"id\": {\n    \"entityType\": \"JOB\",\n    \"id\": \"475e94e0-2f2d-11f0-8240-91e99922a704\"\n  },\n  \"createdTime\": 1747053196590,\n  \"tenantId\": {\n    \"entityType\": \"TENANT\",\n    \"id\": \"46859a00-2f2d-11f0-8240-91e99922a704\"\n  },\n  \"type\": \"CF_REPROCESSING\",\n  \"key\": \"474e4130-2f2d-11f0-8240-91e99922a704\",\n  \"entityId\": {\n    \"entityType\": \"DEVICE_PROFILE\",\n    \"id\": \"9fd41f20-31a1-11f0-933e-27998d6db02e\"\n   },\n  \"status\": \"RUNNING\",\n  \"configuration\": {\n    \"type\": \"CF_REPROCESSING\",\n    \"calculatedFieldId\": {\n      \"entityType\": \"CALCULATED_FIELD\",\n      \"id\": \"474e4130-2f2d-11f0-8240-91e99922a704\"\n    },\n    \"startTs\": 1747051995760,\n    \"endTs\": 1747052895760,\n    \"tasksKey\": \"c3cdbd42-799e-4d3a-9aad-9310f767aa36\",\n    \"toReprocess\": null\n  },\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 1,\n    \"failedCount\": 0,\n    \"discardedCount\": 0,\n    \"totalCount\": 2,\n    \"results\": [],\n    \"generalError\": null,\n    \"startTs\": 1747323069445,\n    \"finishTs\": 1747323070585,\n    \"cancellationTs\": 0\n  }\n}\n\n```\n\nExample of a CF_REPROCESSING job with failures:\n```json\n{\n  ...,\n  \"status\": \"FAILED\",\n  ...,\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 0,\n    \"failedCount\": 2,\n    \"discardedCount\": 0,\n    \"totalCount\": 2,\n    \"results\": [\n      {\n        \"jobType\": \"CF_REPROCESSING\",\n        \"key\": \"c3cdbd42-799e-4d3a-9aad-9310f767aa36\",\n        \"success\": false,\n        \"discarded\": false,\n        \"failure\": {\n          \"error\": \"Failed to fetch temperature: Failed to fetch timeseries data\",\n          \"entityInfo\": {\n            \"id\": {\n              \"entityType\": \"DEVICE\",\n              \"id\": \"9fd41f20-31a1-11f0-933e-27998d6db02e\"\n            },\n            \"name\": \"Test device 1\"\n          }\n        }\n      },\n      {\n        \"jobType\": \"CF_REPROCESSING\",\n        \"key\": \"c3cdbd42-799e-4d3a-9aad-9310f767aa36\",\n        \"success\": false,\n        \"discarded\": false,\n        \"failure\": {\n          \"error\": \"Failed to fetch temperature: Failed to fetch timeseries data\",\n          \"entityInfo\": {\n            \"id\": {\n              \"entityType\": \"DEVICE\",\n              \"id\": \"9ffc4090-31a1-11f0-933e-27998d6db02e\"\n            },\n            \"name\": \"Test device 2\"\n          }\n        }\n      }\n    ],\n    \"generalError\": null,\n    \"startTs\": 1747323069445,\n    \"finishTs\": 1747323070585,\n    \"cancellationTs\": 0\n  }\n}\n\n```\n\nExample of a FAILED job result with general error:\n```json\n{\n  ...,\n  \"status\": \"FAILED\",\n  ...,\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 1,\n    \"failedCount\": 0,\n    \"discardedCount\": 0,\n    \"totalCount\": null,\n    \"results\": [],\n    \"generalError\": \"Timeout to find devices by profile\",\n    \"cancellationTs\": 0\n  }\n}\n\n```\n\nExample of a CANCELLED job result:\n```json\n{\n  ...,\n  \"status\": \"CANCELLED\",\n  ...,\n  \"result\": {\n    \"jobType\": \"CF_REPROCESSING\",\n    \"successfulCount\": 15,\n    \"failedCount\": 0,\n    \"discardedCount\": 85,\n    \"totalCount\": 100,\n    \"results\": [],\n    \"generalError\": null,\n    \"cancellationTs\": 1747065908414\n  }\n}\n\n```\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "getJobById",
         "parameters": [
           {
@@ -66138,7 +66286,7 @@
           "job-controller"
         ],
         "summary": "Cancel job (cancelJob)",
-        "description": "Cancels the job. The status of the job must be QUEUED, PENDING or RUNNING.\n\nFor a running job, all the tasks not yet processed will be discarded.\n\nSee the example of a cancelled job result in getJobById method description.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "Cancels the job. The status of the job must be QUEUED, PENDING or RUNNING.\n\nFor a running job, all the tasks not yet processed will be discarded.\n\nSee the example of a cancelled job result in getJobById method description.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "cancelJob",
         "parameters": [
           {
@@ -66277,7 +66425,7 @@
           "job-controller"
         ],
         "summary": "Reprocess job (reprocessJob)",
-        "description": "Reprocesses the job. Failures are located at job.result.results list. Platform iterates over this list and submits new tasks for them. Doesn't create new job entity but updates the existing one. Successfully reprocessed job will look the same as completed one.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "Reprocesses the job. Failures are located at job.result.results list. Platform iterates over this list and submits new tasks for them. Doesn't create new job entity but updates the existing one. Successfully reprocessed job will look the same as completed one.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "reprocessJob",
         "parameters": [
           {
@@ -66416,7 +66564,7 @@
           "job-controller"
         ],
         "summary": "Get jobs (getJobs)",
-        "description": "Returns the page of jobs.\n\nYou can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. \n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "Returns the page of jobs.\n\nYou can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "getJobs",
         "parameters": [
           {
@@ -66520,6 +66668,15 @@
             "schema": {
               "type": "integer",
               "format": "int64"
+            }
+          },
+          {
+            "name": "includeCustomers",
+            "in": "query",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -79928,7 +80085,7 @@
           "report-controller"
         ],
         "summary": "Download test report (testReportAndDownload)",
-        "description": "Generate and download test report.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
+        "description": "Generate and download test report.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
         "operationId": "testReportAndDownload",
         "requestBody": {
           "content": {
@@ -80074,7 +80231,7 @@
           "report-controller"
         ],
         "summary": "Get Report (getReportById)",
-        "description": "Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause 'Not Found' error.\n\nAvailable for users with 'TENANT_ADMIN' authority.\n\n Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
+        "description": "Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause 'Not Found' error.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.\n\n Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
         "operationId": "getReportById",
         "parameters": [
           {
@@ -80679,7 +80836,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -80914,6 +81071,15 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "includeCustomers",
+            "in": "query",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
         ],
         "responses": {
@@ -81049,7 +81215,7 @@
           "report-template-controller"
         ],
         "summary": "Save Report Template (saveReportTemplate)",
-        "description": "Creates or Updates report template. Report Template extends Report Template Info object and adds 'configuration' - a JSON structure of report template configuration. See the 'Model' tab of the Response Class for more details. When creating report template, platform generates report template Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created report template id will be present in the response. Specify existing report template id to update the report template. Referencing non-existing report template Id will cause 'Not Found' error. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Report Template entity. \n\nAvailable for users with 'TENANT_ADMIN' authority.\n\n Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).",
+        "description": "Creates or Updates report template. Report Template extends Report Template Info object and adds 'configuration' - a JSON structure of report template configuration. See the 'Model' tab of the Response Class for more details. When creating report template, platform generates report template Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created report template id will be present in the response. Specify existing report template id to update the report template. Referencing non-existing report template Id will cause 'Not Found' error. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Report Template entity. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.\n\n Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).",
         "operationId": "saveReportTemplate",
         "requestBody": {
           "content": {
@@ -81623,7 +81789,7 @@
           "report-template-controller"
         ],
         "summary": "Get All Report Templates for current user (getAllReportTemplateInfos)",
-        "description": "Returns a page of report template info objects owned by the tenant or the customer of a current user. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the 'Model' tab of the Response Class for more details.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. \n\nAvailable for users with 'TENANT_ADMIN' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
+        "description": "Returns a page of report template info objects owned by the tenant or the customer of a current user. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the 'Model' tab of the Response Class for more details.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
         "operationId": "getAllReportTemplateInfos",
         "parameters": [
           {
@@ -81661,7 +81827,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -81857,7 +82023,7 @@
           "report-template-controller"
         ],
         "summary": "Get report templates by Report Template Ids (getReportTemplatesByIds)",
-        "description": "Returns a list of ReportTemplateInfo objects based on the provided ids. Filters the list based on the user permissions. \n\nAvailable for users with 'TENANT_ADMIN' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
+        "description": "Returns a list of ReportTemplateInfo objects based on the provided ids. Filters the list based on the user permissions. \n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
         "operationId": "getReportTemplatesByIds",
         "parameters": [
           {
@@ -88755,7 +88921,7 @@
           "scheduler-event-controller"
         ],
         "summary": "Get Scheduled Report Events (getScheduledReportEvents)",
-        "description": "\n\nAvailable for users with 'TENANT_ADMIN' authority.\n\n Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
+        "description": "\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.\n\n Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
         "operationId": "getScheduledReportEvents",
         "parameters": [
           {
@@ -88781,7 +88947,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -93653,721 +93819,6 @@
                     "value": {
                       "status": 400,
                       "message": "Invalid UUID string: 123",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      }
-    },
-    "/api/solutions/templates/details/{solutionTemplateId}": {
-      "get": {
-        "tags": [
-          "solution-controller"
-        ],
-        "summary": "Get Solution template details (getSolutionTemplateDetails)",
-        "description": "Get a solution template details based on the provided id\n\n Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
-        "operationId": "getSolutionTemplateDetails",
-        "parameters": [
-          {
-            "name": "solutionTemplateId",
-            "in": "path",
-            "description": "A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TenantSolutionTemplateDetails"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid UUID string: 123",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      }
-    },
-    "/api/solutions/templates/infos": {
-      "get": {
-        "tags": [
-          "solution-controller"
-        ],
-        "summary": "Get Solution templates (getSolutionTemplateInfos)",
-        "description": "Get a list of solution template descriptors\n\n Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
-        "operationId": "getSolutionTemplateInfos",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TenantSolutionTemplateInfo"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid UUID string: 123",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      }
-    },
-    "/api/solutions/templates/instructions/{solutionTemplateId}": {
-      "get": {
-        "tags": [
-          "solution-controller"
-        ],
-        "summary": "Get Solution Template Instructions (getSolutionTemplateInstructions)",
-        "description": "Get a solution template instructions based on the provided id\n\n Security check is performed to verify that the user has 'READ' permission for the entity (entities).",
-        "operationId": "getSolutionTemplateInstructions",
-        "parameters": [
-          {
-            "name": "solutionTemplateId",
-            "in": "path",
-            "description": "A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TenantSolutionTemplateInstructions"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid UUID string: 123",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      }
-    },
-    "/api/solutions/templates/{solutionTemplateId}/delete": {
-      "delete": {
-        "tags": [
-          "solution-controller"
-        ],
-        "summary": "Uninstall Solution Template (uninstallSolutionTemplate)",
-        "description": "Uninstall solution template based on the provided id\n\n Security check is performed to verify that the user has 'DELETE' permission for the entity (entities).",
-        "operationId": "uninstallSolutionTemplate",
-        "parameters": [
-          {
-            "name": "solutionTemplateId",
-            "in": "path",
-            "description": "A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid UUID string: 123",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      }
-    },
-    "/api/solutions/templates/{solutionTemplateId}/install": {
-      "post": {
-        "tags": [
-          "solution-controller"
-        ],
-        "summary": "Install Solution Template (installSolutionTemplate)",
-        "description": "Install solution template based on the provided id\n\n Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).",
-        "operationId": "installSolutionTemplate",
-        "parameters": [
-          {
-            "name": "solutionTemplateId",
-            "in": "path",
-            "description": "A string value representing the solution template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SolutionInstallResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid request body",
                       "errorCode": 31,
                       "timestamp": 1609459200000
                     }
@@ -108261,7 +107712,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -112442,7 +111893,7 @@
           {
             "name": "includeCustomers",
             "in": "query",
-            "description": "Include customer or sub-customer entities",
+            "description": "Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -131445,6 +130896,9 @@
           "tenantId": {
             "$ref": "#/components/schemas/TenantId"
           },
+          "customerId": {
+            "$ref": "#/components/schemas/CustomerId"
+          },
           "type": {
             "$ref": "#/components/schemas/JobType"
           },
@@ -131466,6 +130920,11 @@
           },
           "result": {
             "$ref": "#/components/schemas/JobResult"
+          },
+          "ownerId": {
+            "$ref": "#/components/schemas/EntityId",
+            "description": "JSON object with Customer or Tenant Id",
+            "readOnly": true
           }
         },
         "required": [
@@ -142271,6 +141730,33 @@
           }
         }
       },
+      "SimpleValueSourceConfig": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ValueSourceType"
+          },
+          "value": {
+            "type": "number",
+            "format": "double"
+          },
+          "latestKeyType": {
+            "type": "string"
+          },
+          "latestKey": {
+            "type": "string"
+          },
+          "entityKeyType": {
+            "type": "string"
+          },
+          "entityAlias": {
+            "type": "string"
+          },
+          "entityKey": {
+            "type": "string"
+          }
+        }
+      },
       "SingleEntityFilter": {
         "allOf": [
           {
@@ -142940,48 +142426,11 @@
           }
         }
       },
-      "SolutionInstallResponse": {
-        "type": "object",
-        "properties": {
-          "dashboardGroupId": {
-            "$ref": "#/components/schemas/EntityGroupId",
-            "description": "Id of the group that contains main dashboard of the solution"
-          },
-          "dashboardId": {
-            "$ref": "#/components/schemas/DashboardId",
-            "description": "Id of the main dashboard of the solution"
-          },
-          "publicId": {
-            "$ref": "#/components/schemas/CustomerId",
-            "description": "Id of the public customer if solution has public entities"
-          },
-          "mainDashboardPublic": {
-            "type": "boolean",
-            "description": "Is the main dashboard public"
-          },
-          "details": {
-            "type": "string",
-            "description": "Markdown with solution usage instructions"
-          },
-          "success": {
-            "type": "boolean",
-            "description": "Indicates that template was installed successfully"
-          }
-        }
-      },
       "SolutionStep": {
         "type": "string",
         "enum": [
           "INITIAL_CONFIGURATION",
           "DASHBOARDS_CONFIGURATION"
-        ]
-      },
-      "SolutionTemplateLevel": {
-        "type": "string",
-        "enum": [
-          "MAKER",
-          "PROTOTYPE",
-          "STARTUP"
         ]
       },
       "SolutionValidationResult": {
@@ -144543,144 +143992,6 @@
           }
         }
       },
-      "TenantSolutionTemplateDetails": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "ID of the solution template",
-            "example": "smart_office"
-          },
-          "title": {
-            "type": "string",
-            "description": "Template Title",
-            "example": "Smart office"
-          },
-          "level": {
-            "$ref": "#/components/schemas/SolutionTemplateLevel",
-            "description": "Level of the subscription that is required to unlock the template",
-            "example": "PROTOTYPE"
-          },
-          "installTimeoutMs": {
-            "type": "integer",
-            "format": "int64",
-            "description": "Timeout for the installation UI to wait while template is installing"
-          },
-          "tenantTelemetryKeys": {
-            "type": "array",
-            "description": "What keys to delete during template uninstall",
-            "items": {
-              "type": "string"
-            }
-          },
-          "tenantAttributeKeys": {
-            "type": "array",
-            "description": "What attributes to delete during template uninstall",
-            "items": {
-              "type": "string"
-            }
-          },
-          "imageUrls": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "highlights": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "installed": {
-            "type": "boolean"
-          }
-        }
-      },
-      "TenantSolutionTemplateInfo": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "ID of the solution template",
-            "example": "smart_office"
-          },
-          "title": {
-            "type": "string",
-            "description": "Template Title",
-            "example": "Smart office"
-          },
-          "level": {
-            "$ref": "#/components/schemas/SolutionTemplateLevel",
-            "description": "Level of the subscription that is required to unlock the template",
-            "example": "PROTOTYPE"
-          },
-          "installTimeoutMs": {
-            "type": "integer",
-            "format": "int64",
-            "description": "Timeout for the installation UI to wait while template is installing"
-          },
-          "tenantTelemetryKeys": {
-            "type": "array",
-            "description": "What keys to delete during template uninstall",
-            "items": {
-              "type": "string"
-            }
-          },
-          "tenantAttributeKeys": {
-            "type": "array",
-            "description": "What attributes to delete during template uninstall",
-            "items": {
-              "type": "string"
-            }
-          },
-          "previewImageUrl": {
-            "type": "string",
-            "description": "URL of the preview image"
-          },
-          "videoPreviewImageUrl": {
-            "type": "string",
-            "description": "Video preview image URL"
-          },
-          "previewMp4Url": {
-            "type": "string",
-            "description": "Video MP4 URL"
-          },
-          "previewWebmUrl": {
-            "type": "string",
-            "description": "Video WEBM URL"
-          },
-          "installed": {
-            "type": "boolean",
-            "description": "Indicates that template is already installed for the current tenant"
-          }
-        }
-      },
-      "TenantSolutionTemplateInstructions": {
-        "type": "object",
-        "properties": {
-          "dashboardGroupId": {
-            "$ref": "#/components/schemas/EntityGroupId",
-            "description": "Id of the group that contains main dashboard of the solution"
-          },
-          "dashboardId": {
-            "$ref": "#/components/schemas/DashboardId",
-            "description": "Id of the main dashboard of the solution"
-          },
-          "publicId": {
-            "$ref": "#/components/schemas/CustomerId",
-            "description": "Id of the public customer if solution has public entities"
-          },
-          "mainDashboardPublic": {
-            "type": "boolean",
-            "description": "Is the main dashboard public"
-          },
-          "details": {
-            "type": "string",
-            "description": "Markdown with solution usage instructions"
-          }
-        }
-      },
       "TestSmsRequest": {
         "type": "object",
         "description": "A JSON value representing the Test SMS request.",
@@ -145207,12 +144518,10 @@
             "format": "int32"
           },
           "min": {
-            "type": "number",
-            "format": "double"
+            "$ref": "#/components/schemas/SimpleValueSourceConfig"
           },
           "max": {
-            "type": "number",
-            "format": "double"
+            "$ref": "#/components/schemas/SimpleValueSourceConfig"
           }
         }
       },

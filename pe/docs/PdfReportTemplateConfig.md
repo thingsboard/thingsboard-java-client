@@ -770,8 +770,8 @@
 | decimals | Integer |  | [optional] |
 | interval | Double |  | [optional] |
 | splitNumber | Integer |  | [optional] |
-| min | Double |  | [optional] |
-| max | Double |  | [optional] |
+| min | SimpleValueSourceConfig |  | [optional] |
+| max | SimpleValueSourceConfig |  | [optional] |
 
 #### TimeSeriesChartXAxisSettings
 | Name | Type | Description | Notes |
@@ -952,6 +952,17 @@
 
 #### AxisPosition (enum)
 `LEFT` | `RIGHT` | `TOP` | `BOTTOM`
+
+#### SimpleValueSourceConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ValueSourceType |  | [optional] |
+| value | Double |  | [optional] |
+| latestKeyType | String |  | [optional] |
+| latestKey | String |  | [optional] |
+| entityKeyType | String |  | [optional] |
+| entityAlias | String |  | [optional] |
+| entityKey | String |  | [optional] |
 
 #### TimeSeriesChartNoAggregationBarWidthStrategy (enum)
 `GROUP` | `SEPARATE`

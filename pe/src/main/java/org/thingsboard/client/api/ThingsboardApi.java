@@ -265,7 +265,6 @@ import org.thingsboard.client.model.SolutionData;
 import org.thingsboard.client.model.SolutionExportRequest;
 import org.thingsboard.client.model.SolutionExportResponse;
 import org.thingsboard.client.model.SolutionImportResult;
-import org.thingsboard.client.model.SolutionInstallResponse;
 import org.thingsboard.client.model.SolutionStep;
 import org.thingsboard.client.model.SolutionValidationResult;
 import org.thingsboard.client.model.SystemInfo;
@@ -279,9 +278,6 @@ import org.thingsboard.client.model.TbSecretDeleteResult;
 import org.thingsboard.client.model.Tenant;
 import org.thingsboard.client.model.TenantInfo;
 import org.thingsboard.client.model.TenantProfile;
-import org.thingsboard.client.model.TenantSolutionTemplateDetails;
-import org.thingsboard.client.model.TenantSolutionTemplateInfo;
-import org.thingsboard.client.model.TenantSolutionTemplateInstructions;
 import org.thingsboard.client.model.TestSmsRequest;
 import org.thingsboard.client.model.ThingsboardErrorResponse;
 import org.thingsboard.client.model.ToCoreEdqsRequest;
@@ -1812,7 +1808,7 @@ public class ThingsboardApi {
 
   /**
    * Cancel job (cancelJob)
-   * Cancels the job. The status of the job must be QUEUED, PENDING or RUNNING.  For a running job, all the tasks not yet processed will be discarded.  See the example of a cancelled job result in getJobById method description.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Cancels the job. The status of the job must be QUEUED, PENDING or RUNNING.  For a running job, all the tasks not yet processed will be discarded.  See the example of a cancelled job result in getJobById method description.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param id  (required)
    * @throws ApiException if fails to make API call
    */
@@ -1822,7 +1818,7 @@ public class ThingsboardApi {
 
   /**
    * Cancel job (cancelJob)
-   * Cancels the job. The status of the job must be QUEUED, PENDING or RUNNING.  For a running job, all the tasks not yet processed will be discarded.  See the example of a cancelled job result in getJobById method description.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Cancels the job. The status of the job must be QUEUED, PENDING or RUNNING.  For a running job, all the tasks not yet processed will be discarded.  See the example of a cancelled job result in getJobById method description.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param id  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Void&gt;
@@ -11138,6 +11134,83 @@ public class ThingsboardApi {
   }
 
   /**
+   * Export integration as IoT Hub package
+   * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
+   * @param integrationId  (required)
+   * @return byte[]
+   * @throws ApiException if fails to make API call
+   */
+  public byte[] exportIntegrationPackage(@Nonnull String integrationId) throws ApiException {
+    ApiResponse<byte[]> localVarResponse = exportIntegrationPackageWithHttpInfo(integrationId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Export integration as IoT Hub package
+   * Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration&#39;s runtime POJO.
+   * @param integrationId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;byte[]&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<byte[]> exportIntegrationPackageWithHttpInfo(@Nonnull String integrationId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = exportIntegrationPackageRequestBuilder(integrationId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("exportIntegrationPackage", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        byte[] responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<byte[]>() {});
+        return new ApiResponse<byte[]>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder exportIntegrationPackageRequestBuilder(@Nonnull String integrationId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'integrationId' is set
+    if (integrationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'integrationId' when calling exportIntegrationPackage");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/integration/{integrationId}/export-package"
+        .replace("{integrationId}", ApiClient.urlEncode(integrationId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Export Rule Chains
    * Exports all tenant rule chains as one JSON.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param limit A limit of rule chains to export. (required)
@@ -15434,7 +15507,7 @@ public class ThingsboardApi {
    * Returns a page of asset info objects owned by the tenant or the customer of a current user. Asset Info is an extension of the default Asset object that contains information about the owner name.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param assetProfileId A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the asset name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -15452,7 +15525,7 @@ public class ThingsboardApi {
    * Returns a page of asset info objects owned by the tenant or the customer of a current user. Asset Info is an extension of the default Asset object that contains information about the owner name.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param assetProfileId A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the asset name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -15552,7 +15625,7 @@ public class ThingsboardApi {
    * Returns a page of customer info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -15569,7 +15642,7 @@ public class ThingsboardApi {
    * Returns a page of customer info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -15776,7 +15849,7 @@ public class ThingsboardApi {
    * Returns a page of dashboard info objects owned by the tenant or the customer of a current user. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the dashboard title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -15793,7 +15866,7 @@ public class ThingsboardApi {
    * Returns a page of dashboard info objects owned by the tenant or the customer of a current user. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the dashboard title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -15890,7 +15963,7 @@ public class ThingsboardApi {
    * Returns a page of device info objects owned by the tenant or the customer of a current user. Device Info is an extension of the default Device object that contains information about the owner name.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param deviceProfileId A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param active A boolean value representing the device active flag. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the device name. (optional)
@@ -15909,7 +15982,7 @@ public class ThingsboardApi {
    * Returns a page of device info objects owned by the tenant or the customer of a current user. Device Info is an extension of the default Device object that contains information about the owner name.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param deviceProfileId A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param active A boolean value representing the device active flag. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the device name. (optional)
@@ -16096,7 +16169,7 @@ public class ThingsboardApi {
    * Returns a page of edge info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type A string value representing the edge type. For example, &#39;default&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the edge name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -16114,7 +16187,7 @@ public class ThingsboardApi {
    * Returns a page of edge info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type A string value representing the edge type. For example, &#39;default&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the edge name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -16475,7 +16548,7 @@ public class ThingsboardApi {
    * Returns a page of entity view info objects owned by the tenant or the customer of a current user. Entity Views Info extends the Entity View with owner name. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the entity view name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -16493,7 +16566,7 @@ public class ThingsboardApi {
    * Returns a page of entity view info objects owned by the tenant or the customer of a current user. Entity Views Info extends the Entity View with owner name. Entity Views limit the degree of exposure of the Device or Asset telemetry and attributes to the Customers. Every Entity View references exactly one entity (device or asset) and defines telemetry and attribute keys that will be visible to the assigned Customer. As a Tenant Administrator you are able to create multiple EVs per Device or Asset and assign them to different Customers.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the entity view name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -16590,12 +16663,12 @@ public class ThingsboardApi {
 
   /**
    * Get All Report Templates for current user (getAllReportTemplateInfos)
-   * Returns a page of report template info objects owned by the tenant or the customer of a current user. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the &#39;Model&#39; tab of the Response Class for more details.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * Returns a page of report template info objects owned by the tenant or the customer of a current user. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the &#39;Model&#39; tab of the Response Class for more details.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param typeList A list of string values separated by comma &#39;,&#39; representing one of the ReportTemplateType enumeration value. (optional)
    * @param formatList A list of string values separated by comma &#39;,&#39; representing one of the TbReportFormat enumeration value. (optional)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the report template name or customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -16609,12 +16682,12 @@ public class ThingsboardApi {
 
   /**
    * Get All Report Templates for current user (getAllReportTemplateInfos)
-   * Returns a page of report template info objects owned by the tenant or the customer of a current user. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the &#39;Model&#39; tab of the Response Class for more details.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * Returns a page of report template info objects owned by the tenant or the customer of a current user. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the &#39;Model&#39; tab of the Response Class for more details.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param typeList A list of string values separated by comma &#39;,&#39; representing one of the ReportTemplateType enumeration value. (optional)
    * @param formatList A list of string values separated by comma &#39;,&#39; representing one of the TbReportFormat enumeration value. (optional)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the report template name or customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -16878,7 +16951,7 @@ public class ThingsboardApi {
    * Returns a page of user info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the user email. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -16895,7 +16968,7 @@ public class ThingsboardApi {
    * Returns a page of user info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the user email. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -22119,7 +22192,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param assetProfileId A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the asset name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -22138,7 +22211,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param assetProfileId A string value representing the asset profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the asset name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -22442,7 +22515,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -22460,7 +22533,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -22563,7 +22636,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the dashboard title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -22581,7 +22654,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the dashboard title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -22684,7 +22757,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param deviceProfileId A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param active A boolean value representing the device active flag. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the device name. (optional)
@@ -22704,7 +22777,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param deviceProfileId A string value representing the device profile id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (optional)
    * @param active A boolean value representing the device active flag. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the device name. (optional)
@@ -22934,7 +23007,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type A string value representing the edge type. For example, &#39;default&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the edge name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -22953,7 +23026,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type A string value representing the edge type. For example, &#39;default&#39; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the edge name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -23180,7 +23253,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the entity view name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -23199,7 +23272,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param type   ## Entity View Filter  Allows to filter entity views based on their type and the **&#39;starts with&#39;** expression over their name. For example, this entity filter selects all &#39;Concrete Mixer&#39; entity views which name starts with &#39;CAT&#39;:  &#x60;&#x60;&#x60;json {   \&quot;type\&quot;: \&quot;entityViewType\&quot;,   \&quot;entityViewType\&quot;: \&quot;Concrete Mixer\&quot;,   \&quot;entityViewNameFilter\&quot;: \&quot;CAT\&quot; } &#x60;&#x60;&#x60; (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the entity view name. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -23650,7 +23723,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the user email. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -23668,7 +23741,7 @@ public class ThingsboardApi {
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the user email. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -32179,7 +32252,7 @@ public class ThingsboardApi {
 
   /**
    * Get job by id (getJobById)
-   * Fetches job info by id.  Example of a RUNNING CF_REPROCESSING job response: &#x60;&#x60;&#x60;json {   \&quot;id\&quot;: {     \&quot;entityType\&quot;: \&quot;JOB\&quot;,     \&quot;id\&quot;: \&quot;475e94e0-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;createdTime\&quot;: 1747053196590,   \&quot;tenantId\&quot;: {     \&quot;entityType\&quot;: \&quot;TENANT\&quot;,     \&quot;id\&quot;: \&quot;46859a00-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,   \&quot;key\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;,   \&quot;entityId\&quot;: {     \&quot;entityType\&quot;: \&quot;DEVICE_PROFILE\&quot;,     \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;    },   \&quot;status\&quot;: \&quot;RUNNING\&quot;,   \&quot;configuration\&quot;: {     \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;calculatedFieldId\&quot;: {       \&quot;entityType\&quot;: \&quot;CALCULATED_FIELD\&quot;,       \&quot;id\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;     },     \&quot;startTs\&quot;: 1747051995760,     \&quot;endTs\&quot;: 1747052895760,     \&quot;tasksKey\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,     \&quot;toReprocess\&quot;: null   },   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CF_REPROCESSING job with failures: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 0,     \&quot;failedCount\&quot;: 2,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 1\&quot;           }         }       },       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9ffc4090-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 2\&quot;           }         }       }     ],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a FAILED job result with general error: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: null,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: \&quot;Timeout to find devices by profile\&quot;,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CANCELLED job result: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;CANCELLED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 15,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 85,     \&quot;totalCount\&quot;: 100,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;cancellationTs\&quot;: 1747065908414   } }  &#x60;&#x60;&#x60;  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Fetches job info by id.  Example of a RUNNING CF_REPROCESSING job response: &#x60;&#x60;&#x60;json {   \&quot;id\&quot;: {     \&quot;entityType\&quot;: \&quot;JOB\&quot;,     \&quot;id\&quot;: \&quot;475e94e0-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;createdTime\&quot;: 1747053196590,   \&quot;tenantId\&quot;: {     \&quot;entityType\&quot;: \&quot;TENANT\&quot;,     \&quot;id\&quot;: \&quot;46859a00-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,   \&quot;key\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;,   \&quot;entityId\&quot;: {     \&quot;entityType\&quot;: \&quot;DEVICE_PROFILE\&quot;,     \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;    },   \&quot;status\&quot;: \&quot;RUNNING\&quot;,   \&quot;configuration\&quot;: {     \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;calculatedFieldId\&quot;: {       \&quot;entityType\&quot;: \&quot;CALCULATED_FIELD\&quot;,       \&quot;id\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;     },     \&quot;startTs\&quot;: 1747051995760,     \&quot;endTs\&quot;: 1747052895760,     \&quot;tasksKey\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,     \&quot;toReprocess\&quot;: null   },   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CF_REPROCESSING job with failures: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 0,     \&quot;failedCount\&quot;: 2,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 1\&quot;           }         }       },       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9ffc4090-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 2\&quot;           }         }       }     ],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a FAILED job result with general error: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: null,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: \&quot;Timeout to find devices by profile\&quot;,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CANCELLED job result: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;CANCELLED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 15,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 85,     \&quot;totalCount\&quot;: 100,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;cancellationTs\&quot;: 1747065908414   } }  &#x60;&#x60;&#x60;  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param id  (required)
    * @return Job
    * @throws ApiException if fails to make API call
@@ -32191,7 +32264,7 @@ public class ThingsboardApi {
 
   /**
    * Get job by id (getJobById)
-   * Fetches job info by id.  Example of a RUNNING CF_REPROCESSING job response: &#x60;&#x60;&#x60;json {   \&quot;id\&quot;: {     \&quot;entityType\&quot;: \&quot;JOB\&quot;,     \&quot;id\&quot;: \&quot;475e94e0-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;createdTime\&quot;: 1747053196590,   \&quot;tenantId\&quot;: {     \&quot;entityType\&quot;: \&quot;TENANT\&quot;,     \&quot;id\&quot;: \&quot;46859a00-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,   \&quot;key\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;,   \&quot;entityId\&quot;: {     \&quot;entityType\&quot;: \&quot;DEVICE_PROFILE\&quot;,     \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;    },   \&quot;status\&quot;: \&quot;RUNNING\&quot;,   \&quot;configuration\&quot;: {     \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;calculatedFieldId\&quot;: {       \&quot;entityType\&quot;: \&quot;CALCULATED_FIELD\&quot;,       \&quot;id\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;     },     \&quot;startTs\&quot;: 1747051995760,     \&quot;endTs\&quot;: 1747052895760,     \&quot;tasksKey\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,     \&quot;toReprocess\&quot;: null   },   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CF_REPROCESSING job with failures: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 0,     \&quot;failedCount\&quot;: 2,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 1\&quot;           }         }       },       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9ffc4090-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 2\&quot;           }         }       }     ],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a FAILED job result with general error: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: null,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: \&quot;Timeout to find devices by profile\&quot;,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CANCELLED job result: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;CANCELLED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 15,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 85,     \&quot;totalCount\&quot;: 100,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;cancellationTs\&quot;: 1747065908414   } }  &#x60;&#x60;&#x60;  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Fetches job info by id.  Example of a RUNNING CF_REPROCESSING job response: &#x60;&#x60;&#x60;json {   \&quot;id\&quot;: {     \&quot;entityType\&quot;: \&quot;JOB\&quot;,     \&quot;id\&quot;: \&quot;475e94e0-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;createdTime\&quot;: 1747053196590,   \&quot;tenantId\&quot;: {     \&quot;entityType\&quot;: \&quot;TENANT\&quot;,     \&quot;id\&quot;: \&quot;46859a00-2f2d-11f0-8240-91e99922a704\&quot;   },   \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,   \&quot;key\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;,   \&quot;entityId\&quot;: {     \&quot;entityType\&quot;: \&quot;DEVICE_PROFILE\&quot;,     \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;    },   \&quot;status\&quot;: \&quot;RUNNING\&quot;,   \&quot;configuration\&quot;: {     \&quot;type\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;calculatedFieldId\&quot;: {       \&quot;entityType\&quot;: \&quot;CALCULATED_FIELD\&quot;,       \&quot;id\&quot;: \&quot;474e4130-2f2d-11f0-8240-91e99922a704\&quot;     },     \&quot;startTs\&quot;: 1747051995760,     \&quot;endTs\&quot;: 1747052895760,     \&quot;tasksKey\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,     \&quot;toReprocess\&quot;: null   },   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CF_REPROCESSING job with failures: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 0,     \&quot;failedCount\&quot;: 2,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: 2,     \&quot;results\&quot;: [       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9fd41f20-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 1\&quot;           }         }       },       {         \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,         \&quot;key\&quot;: \&quot;c3cdbd42-799e-4d3a-9aad-9310f767aa36\&quot;,         \&quot;success\&quot;: false,         \&quot;discarded\&quot;: false,         \&quot;failure\&quot;: {           \&quot;error\&quot;: \&quot;Failed to fetch temperature: Failed to fetch timeseries data\&quot;,           \&quot;entityInfo\&quot;: {             \&quot;id\&quot;: {               \&quot;entityType\&quot;: \&quot;DEVICE\&quot;,               \&quot;id\&quot;: \&quot;9ffc4090-31a1-11f0-933e-27998d6db02e\&quot;             },             \&quot;name\&quot;: \&quot;Test device 2\&quot;           }         }       }     ],     \&quot;generalError\&quot;: null,     \&quot;startTs\&quot;: 1747323069445,     \&quot;finishTs\&quot;: 1747323070585,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a FAILED job result with general error: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;FAILED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 1,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 0,     \&quot;totalCount\&quot;: null,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: \&quot;Timeout to find devices by profile\&quot;,     \&quot;cancellationTs\&quot;: 0   } }  &#x60;&#x60;&#x60;  Example of a CANCELLED job result: &#x60;&#x60;&#x60;json {   ...,   \&quot;status\&quot;: \&quot;CANCELLED\&quot;,   ...,   \&quot;result\&quot;: {     \&quot;jobType\&quot;: \&quot;CF_REPROCESSING\&quot;,     \&quot;successfulCount\&quot;: 15,     \&quot;failedCount\&quot;: 0,     \&quot;discardedCount\&quot;: 85,     \&quot;totalCount\&quot;: 100,     \&quot;results\&quot;: [],     \&quot;generalError\&quot;: null,     \&quot;cancellationTs\&quot;: 1747065908414   } }  &#x60;&#x60;&#x60;  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param id  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Job&gt;
@@ -32256,7 +32329,7 @@ public class ThingsboardApi {
 
   /**
    * Get jobs (getJobs)
-   * Returns the page of jobs.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Returns the page of jobs.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param textSearch Case-insensitive &#39;substring&#39; filter based on job&#39;s description (optional)
@@ -32267,17 +32340,18 @@ public class ThingsboardApi {
    * @param entities Comma-separated list of entity ids. If empty - jobs for all entities are included. (optional)
    * @param startTime To only include jobs created after this timestamp. (optional)
    * @param endTime To only include jobs created before this timestamp. (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @return PageDataJob
    * @throws ApiException if fails to make API call
    */
-  public PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime) throws ApiException {
-    ApiResponse<PageDataJob> localVarResponse = getJobsWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, types, statuses, entities, startTime, endTime, null);
+  public PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime, @Nullable Boolean includeCustomers) throws ApiException {
+    ApiResponse<PageDataJob> localVarResponse = getJobsWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, types, statuses, entities, startTime, endTime, includeCustomers, null);
     return localVarResponse.getData();
   }
 
   /**
    * Get jobs (getJobs)
-   * Returns the page of jobs.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Returns the page of jobs.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param textSearch Case-insensitive &#39;substring&#39; filter based on job&#39;s description (optional)
@@ -32288,12 +32362,13 @@ public class ThingsboardApi {
    * @param entities Comma-separated list of entity ids. If empty - jobs for all entities are included. (optional)
    * @param startTime To only include jobs created after this timestamp. (optional)
    * @param endTime To only include jobs created before this timestamp. (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;PageDataJob&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageDataJob> getJobsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getJobsRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, types, statuses, entities, startTime, endTime, headers);
+  public ApiResponse<PageDataJob> getJobsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime, @Nullable Boolean includeCustomers, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getJobsRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, types, statuses, entities, startTime, endTime, includeCustomers, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -32327,7 +32402,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getJobsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getJobsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> types, @Nullable List<String> statuses, @Nullable List<String> entities, @Nullable Long startTime, @Nullable Long endTime, @Nullable Boolean includeCustomers, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getJobs");
@@ -32361,6 +32436,8 @@ public class ThingsboardApi {
     localVarQueryParams.addAll(ApiClient.parameterToPairs("startTime", startTime));
     localVarQueryParameterBaseName = "endTime";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("endTime", endTime));
+    localVarQueryParameterBaseName = "includeCustomers";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("includeCustomers", includeCustomers));
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
       localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
@@ -37717,7 +37794,7 @@ public class ThingsboardApi {
 
   /**
    * Get Report (getReportById)
-   * Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause &#39;Not Found&#39; error.  Available for users with &#39;TENANT_ADMIN&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause &#39;Not Found&#39; error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param reportId A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @return Report
    * @throws ApiException if fails to make API call
@@ -37729,7 +37806,7 @@ public class ThingsboardApi {
 
   /**
    * Get Report (getReportById)
-   * Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause &#39;Not Found&#39; error.  Available for users with &#39;TENANT_ADMIN&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause &#39;Not Found&#39; error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param reportId A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Report&gt;
@@ -37799,7 +37876,7 @@ public class ThingsboardApi {
    * @param page Sequence number of page starting from 0 (required)
    * @param reportTemplateId Report template id (optional)
    * @param userId The user used for report generation. (optional)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -37818,7 +37895,7 @@ public class ThingsboardApi {
    * @param page Sequence number of page starting from 0 (required)
    * @param reportTemplateId Report template id (optional)
    * @param userId The user used for report generation. (optional)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -38160,7 +38237,7 @@ public class ThingsboardApi {
 
   /**
    * Get report templates by Report Template Ids (getReportTemplatesByIds)
-   * Returns a list of ReportTemplateInfo objects based on the provided ids. Filters the list based on the user permissions.   Available for users with &#39;TENANT_ADMIN&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * Returns a list of ReportTemplateInfo objects based on the provided ids. Filters the list based on the user permissions.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param reportTemplateIds A list of report template ids, separated by comma &#39;,&#39; (required)
    * @return List&lt;ReportTemplateInfo&gt;
    * @throws ApiException if fails to make API call
@@ -38172,7 +38249,7 @@ public class ThingsboardApi {
 
   /**
    * Get report templates by Report Template Ids (getReportTemplatesByIds)
-   * Returns a list of ReportTemplateInfo objects based on the provided ids. Filters the list based on the user permissions.   Available for users with &#39;TENANT_ADMIN&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * Returns a list of ReportTemplateInfo objects based on the provided ids. Filters the list based on the user permissions.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param reportTemplateIds A list of report template ids, separated by comma &#39;,&#39; (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;List&lt;ReportTemplateInfo&gt;&gt;
@@ -38256,11 +38333,12 @@ public class ThingsboardApi {
    * @param textSearch Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @return PageDataReport
    * @throws ApiException if fails to make API call
    */
-  public PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
-    ApiResponse<PageDataReport> localVarResponse = getReportsWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+  public PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean includeCustomers) throws ApiException {
+    ApiResponse<PageDataReport> localVarResponse = getReportsWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, includeCustomers, null);
     return localVarResponse.getData();
   }
 
@@ -38272,12 +38350,13 @@ public class ThingsboardApi {
    * @param textSearch Case-insensitive &#39;substring&#39; filter based on report&#39;s name or customer title (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;PageDataReport&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<PageDataReport> getReportsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getReportsRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+  public ApiResponse<PageDataReport> getReportsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean includeCustomers, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getReportsRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, includeCustomers, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -38311,7 +38390,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getReportsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getReportsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean includeCustomers, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getReports");
@@ -38335,6 +38414,8 @@ public class ThingsboardApi {
     localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
     localVarQueryParameterBaseName = "sortOrder";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    localVarQueryParameterBaseName = "includeCustomers";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("includeCustomers", includeCustomers));
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
       localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
@@ -39660,12 +39741,12 @@ public class ThingsboardApi {
 
   /**
    * Get Scheduled Report Events (getScheduledReportEvents)
-   *   Available for users with &#39;TENANT_ADMIN&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   *   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param reportTemplateId Report template id (optional)
    * @param userId The user used for report generation. (optional)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the scheduler event name or customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -39679,12 +39760,12 @@ public class ThingsboardApi {
 
   /**
    * Get Scheduled Report Events (getScheduledReportEvents)
-   *   Available for users with &#39;TENANT_ADMIN&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   *   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param reportTemplateId Report template id (optional)
    * @param userId The user used for report generation. (optional)
-   * @param includeCustomers Include customer or sub-customer entities (optional)
+   * @param includeCustomers Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the scheduler event name or customer title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
    * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
@@ -41201,230 +41282,6 @@ public class ThingsboardApi {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/ai/solution/{solutionId}"
         .replace("{solutionId}", ApiClient.urlEncode(solutionId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Get Solution template details (getSolutionTemplateDetails)
-   * Get a solution template details based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return TenantSolutionTemplateDetails
-   * @throws ApiException if fails to make API call
-   */
-  public TenantSolutionTemplateDetails getSolutionTemplateDetails(@Nonnull String solutionTemplateId) throws ApiException {
-    ApiResponse<TenantSolutionTemplateDetails> localVarResponse = getSolutionTemplateDetailsWithHttpInfo(solutionTemplateId, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get Solution template details (getSolutionTemplateDetails)
-   * Get a solution template details based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;TenantSolutionTemplateDetails&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<TenantSolutionTemplateDetails> getSolutionTemplateDetailsWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getSolutionTemplateDetailsRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getSolutionTemplateDetails", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<TenantSolutionTemplateDetails>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        TenantSolutionTemplateDetails responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<TenantSolutionTemplateDetails>() {});
-        return new ApiResponse<TenantSolutionTemplateDetails>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getSolutionTemplateDetailsRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling getSolutionTemplateDetails");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/details/{solutionTemplateId}"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Get Solution templates (getSolutionTemplateInfos)
-   * Get a list of solution template descriptors   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @return List&lt;TenantSolutionTemplateInfo&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public List<TenantSolutionTemplateInfo> getSolutionTemplateInfos() throws ApiException {
-    ApiResponse<List<TenantSolutionTemplateInfo>> localVarResponse = getSolutionTemplateInfosWithHttpInfo(null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get Solution templates (getSolutionTemplateInfos)
-   * Get a list of solution template descriptors   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;List&lt;TenantSolutionTemplateInfo&gt;&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<List<TenantSolutionTemplateInfo>> getSolutionTemplateInfosWithHttpInfo(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getSolutionTemplateInfosRequestBuilder(headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getSolutionTemplateInfos", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<List<TenantSolutionTemplateInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        List<TenantSolutionTemplateInfo> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<TenantSolutionTemplateInfo>>() {});
-        return new ApiResponse<List<TenantSolutionTemplateInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getSolutionTemplateInfosRequestBuilder(Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/infos";
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Get Solution Template Instructions (getSolutionTemplateInstructions)
-   * Get a solution template instructions based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return TenantSolutionTemplateInstructions
-   * @throws ApiException if fails to make API call
-   */
-  public TenantSolutionTemplateInstructions getSolutionTemplateInstructions(@Nonnull String solutionTemplateId) throws ApiException {
-    ApiResponse<TenantSolutionTemplateInstructions> localVarResponse = getSolutionTemplateInstructionsWithHttpInfo(solutionTemplateId, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Get Solution Template Instructions (getSolutionTemplateInstructions)
-   * Get a solution template instructions based on the provided id   Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;TenantSolutionTemplateInstructions&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<TenantSolutionTemplateInstructions> getSolutionTemplateInstructionsWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getSolutionTemplateInstructionsRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("getSolutionTemplateInstructions", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<TenantSolutionTemplateInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        TenantSolutionTemplateInstructions responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<TenantSolutionTemplateInstructions>() {});
-        return new ApiResponse<TenantSolutionTemplateInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder getSolutionTemplateInstructionsRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling getSolutionTemplateInstructions");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/instructions/{solutionTemplateId}"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -50526,83 +50383,6 @@ public class ThingsboardApi {
   }
 
   /**
-   * Install Solution Template (installSolutionTemplate)
-   * Install solution template based on the provided id   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @return SolutionInstallResponse
-   * @throws ApiException if fails to make API call
-   */
-  public SolutionInstallResponse installSolutionTemplate(@Nonnull String solutionTemplateId) throws ApiException {
-    ApiResponse<SolutionInstallResponse> localVarResponse = installSolutionTemplateWithHttpInfo(solutionTemplateId, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * Install Solution Template (installSolutionTemplate)
-   * Install solution template based on the provided id   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;SolutionInstallResponse&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<SolutionInstallResponse> installSolutionTemplateWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = installSolutionTemplateRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("installSolutionTemplate", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody == null) {
-          return new ApiResponse<SolutionInstallResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-        }
-        String responseBody = new String(localVarResponseBody.readAllBytes());
-        SolutionInstallResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<SolutionInstallResponse>() {});
-        return new ApiResponse<SolutionInstallResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder installSolutionTemplateRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling installSolutionTemplate");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/{solutionTemplateId}/install"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
    * Check Customer White Labeling Allowed
    * Check if the White Labeling is enabled for the customers of the current tenant  Security check is performed to verify that the user has &#39;WRITE&#39; permission for the white labeling resource.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @return Boolean
@@ -54054,7 +53834,7 @@ public class ThingsboardApi {
 
   /**
    * Reprocess job (reprocessJob)
-   * Reprocesses the job. Failures are located at job.result.results list. Platform iterates over this list and submits new tasks for them. Doesn&#39;t create new job entity but updates the existing one. Successfully reprocessed job will look the same as completed one.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Reprocesses the job. Failures are located at job.result.results list. Platform iterates over this list and submits new tasks for them. Doesn&#39;t create new job entity but updates the existing one. Successfully reprocessed job will look the same as completed one.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param id  (required)
    * @throws ApiException if fails to make API call
    */
@@ -54064,7 +53844,7 @@ public class ThingsboardApi {
 
   /**
    * Reprocess job (reprocessJob)
-   * Reprocesses the job. Failures are located at job.result.results list. Platform iterates over this list and submits new tasks for them. Doesn&#39;t create new job entity but updates the existing one. Successfully reprocessed job will look the same as completed one.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Reprocesses the job. Failures are located at job.result.results list. Platform iterates over this list and submits new tasks for them. Doesn&#39;t create new job entity but updates the existing one. Successfully reprocessed job will look the same as completed one.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param id  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Void&gt;
@@ -59092,7 +58872,7 @@ public class ThingsboardApi {
 
   /**
    * Save Report Template (saveReportTemplate)
-   * Creates or Updates report template. Report Template extends Report Template Info object and adds &#39;configuration&#39; - a JSON structure of report template configuration. See the &#39;Model&#39; tab of the Response Class for more details. When creating report template, platform generates report template Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created report template id will be present in the response. Specify existing report template id to update the report template. Referencing non-existing report template Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Report Template entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+   * Creates or Updates report template. Report Template extends Report Template Info object and adds &#39;configuration&#39; - a JSON structure of report template configuration. See the &#39;Model&#39; tab of the Response Class for more details. When creating report template, platform generates report template Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created report template id will be present in the response. Specify existing report template id to update the report template. Referencing non-existing report template Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Report Template entity.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param reportTemplate  (required)
    * @return ReportTemplate
    * @throws ApiException if fails to make API call
@@ -59104,7 +58884,7 @@ public class ThingsboardApi {
 
   /**
    * Save Report Template (saveReportTemplate)
-   * Creates or Updates report template. Report Template extends Report Template Info object and adds &#39;configuration&#39; - a JSON structure of report template configuration. See the &#39;Model&#39; tab of the Response Class for more details. When creating report template, platform generates report template Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created report template id will be present in the response. Specify existing report template id to update the report template. Referencing non-existing report template Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Report Template entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+   * Creates or Updates report template. Report Template extends Report Template Info object and adds &#39;configuration&#39; - a JSON structure of report template configuration. See the &#39;Model&#39; tab of the Response Class for more details. When creating report template, platform generates report template Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created report template id will be present in the response. Specify existing report template id to update the report template. Referencing non-existing report template Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Report Template entity.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.   Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param reportTemplate  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;ReportTemplate&gt;
@@ -60892,7 +60672,9 @@ public class ThingsboardApi {
    * @param acceptLanguage  (optional)
    * @return List&lt;Object&gt;
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   public List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage) throws ApiException {
     ApiResponse<List<Object>> localVarResponse = sendChatMessageWithHttpInfo(chatId, xAuthorization, body, acceptLanguage, null);
     return localVarResponse.getData();
@@ -60908,7 +60690,9 @@ public class ThingsboardApi {
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;List&lt;Object&gt;&gt;
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   public ApiResponse<List<Object>> sendChatMessageWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = sendChatMessageRequestBuilder(chatId, xAuthorization, body, acceptLanguage, headers);
     try {
@@ -63063,7 +62847,7 @@ public class ThingsboardApi {
 
   /**
    * Download test report (testReportAndDownload)
-   * Generate and download test report.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Generate and download test report.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param reportRequest  (required)
    * @return File
    * @throws ApiException if fails to make API call
@@ -63075,7 +62859,7 @@ public class ThingsboardApi {
 
   /**
    * Download test report (testReportAndDownload)
-   * Generate and download test report.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * Generate and download test report.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
    * @param reportRequest  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;File&gt;
@@ -63831,79 +63615,6 @@ public class ThingsboardApi {
     if (xAuthorization != null) {
       localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
     }
-    localVarRequestBuilder.header("Accept", "application/json");
-    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
-    if (memberVarReadTimeout != null) {
-      localVarRequestBuilder.timeout(memberVarReadTimeout);
-    }
-    // Add custom headers if provided
-    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
-    if (memberVarInterceptor != null) {
-      memberVarInterceptor.accept(localVarRequestBuilder);
-    }
-    return localVarRequestBuilder;
-  }
-
-  /**
-   * Uninstall Solution Template (uninstallSolutionTemplate)
-   * Uninstall solution template based on the provided id   Security check is performed to verify that the user has &#39;DELETE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @throws ApiException if fails to make API call
-   */
-  public void uninstallSolutionTemplate(@Nonnull String solutionTemplateId) throws ApiException {
-    uninstallSolutionTemplateWithHttpInfo(solutionTemplateId, null);
-  }
-
-  /**
-   * Uninstall Solution Template (uninstallSolutionTemplate)
-   * Uninstall solution template based on the provided id   Security check is performed to verify that the user has &#39;DELETE&#39; permission for the entity (entities).
-   * @param solutionTemplateId A string value representing the solution template id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;Void&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<Void> uninstallSolutionTemplateWithHttpInfo(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = uninstallSolutionTemplateRequestBuilder(solutionTemplateId, headers);
-    try {
-      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
-          localVarRequestBuilder.build(),
-          HttpResponse.BodyHandlers.ofInputStream());
-      if (memberVarResponseInterceptor != null) {
-        memberVarResponseInterceptor.accept(localVarResponse);
-      }
-      InputStream localVarResponseBody = null;
-      try {
-        if (localVarResponse.statusCode()/ 100 != 2) {
-          throw getApiException("uninstallSolutionTemplate", localVarResponse);
-        }
-        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
-        if (localVarResponseBody != null) {
-          localVarResponseBody.readAllBytes();
-        }
-        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
-      } finally {
-        if (localVarResponseBody != null) {
-          localVarResponseBody.close();
-        }
-      }
-    } catch (IOException e) {
-      throw new ApiException(e);
-    }
-    catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ApiException(e);
-    }
-  }
-
-  private HttpRequest.Builder uninstallSolutionTemplateRequestBuilder(@Nonnull String solutionTemplateId, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'solutionTemplateId' is set
-    if (solutionTemplateId == null) {
-      throw new ApiException(400, "Missing the required parameter 'solutionTemplateId' when calling uninstallSolutionTemplate");
-    }
-    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/solutions/templates/{solutionTemplateId}/delete"
-        .replace("{solutionTemplateId}", ApiClient.urlEncode(solutionTemplateId.toString()));
-    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
