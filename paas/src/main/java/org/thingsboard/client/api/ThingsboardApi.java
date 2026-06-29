@@ -62449,7 +62449,9 @@ public class ThingsboardApi {
    * @param acceptLanguage  (optional)
    * @return List&lt;Object&gt;
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   public List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage) throws ApiException {
     ApiResponse<List<Object>> localVarResponse = sendChatMessageWithHttpInfo(chatId, xAuthorization, body, acceptLanguage, null);
     return localVarResponse.getData();
@@ -62465,7 +62467,9 @@ public class ThingsboardApi {
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;List&lt;Object&gt;&gt;
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   public ApiResponse<List<Object>> sendChatMessageWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = sendChatMessageRequestBuilder(chatId, xAuthorization, body, acceptLanguage, headers);
     try {
