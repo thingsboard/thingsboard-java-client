@@ -224,7 +224,7 @@ public class {{classname}} {
   /**
    * {{summary}}
    * {{notes}}
-   * @param apiRequest {@link API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request}
+   * @param apiRequest {@link {{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args}
    {{#returnType}}
    * @return {{#asyncNative}}CompletableFuture&lt;{{/asyncNative}}{{returnType}}{{#asyncNative}}&gt;{{/asyncNative}}
    {{/returnType}}
@@ -245,7 +245,8 @@ public class {{classname}} {
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
-  public {{#returnType}}{{#asyncNative}}CompletableFuture<{{{returnType}}}>{{/asyncNative}}{{^asyncNative}}{{{returnType}}}{{/asyncNative}}{{/returnType}}{{^returnType}}{{#asyncNative}}CompletableFuture<Void>{{/asyncNative}}{{^asyncNative}}void{{/asyncNative}}{{/returnType}} {{operationId}}(API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request apiRequest) throws ApiException {
+  @SuppressWarnings({"deprecation", "removal"})
+  public {{#returnType}}{{#asyncNative}}CompletableFuture<{{{returnType}}}>{{/asyncNative}}{{^asyncNative}}{{{returnType}}}{{/asyncNative}}{{/returnType}}{{^returnType}}{{#asyncNative}}CompletableFuture<Void>{{/asyncNative}}{{^asyncNative}}void{{/asyncNative}}{{/returnType}} {{operationId}}({{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args apiRequest) throws ApiException {
     {{#allParams}}
     {{>nullable_var_annotations}}{{! prevent indent}}
     {{{dataType}}} {{paramName}} = apiRequest.{{paramName}}();
@@ -270,7 +271,7 @@ public class {{classname}} {
   /**
    * {{summary}}
    * {{notes}}
-   * @param apiRequest {@link API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request}
+   * @param apiRequest {@link {{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args}
    * @param headers Optional headers to include in the request
    * @return {{#asyncNative}}CompletableFuture&lt;{{/asyncNative}}ApiResponse&lt;{{returnType}}{{^returnType}}Void{{/returnType}}&gt;{{#asyncNative}}&gt;{{/asyncNative}}
    * @throws ApiException if fails to make API call
@@ -285,7 +286,8 @@ public class {{classname}} {
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
-  public {{#asyncNative}}CompletableFuture<{{/asyncNative}}ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}>{{#asyncNative}}>{{/asyncNative}} {{operationId}}WithHttpInfo(API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request apiRequest, Map<String, String> headers) throws ApiException {
+  @SuppressWarnings({"deprecation", "removal"})
+  public {{#asyncNative}}CompletableFuture<{{/asyncNative}}ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}>{{#asyncNative}}>{{/asyncNative}} {{operationId}}WithHttpInfo({{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args apiRequest, Map<String, String> headers) throws ApiException {
     {{#allParams}}
     {{{dataType}}} {{paramName}} = apiRequest.{{paramName}}();
     {{/allParams}}
@@ -309,17 +311,31 @@ public class {{classname}} {
    {{/asyncNative}}
    {{/returnType}}
    * @throws ApiException if fails to make API call
+   {{#hasParams}}
+   * @deprecated Use {@link #{{operationId}}({{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   {{/hasParams}}
+   {{^hasParams}}
    {{#isDeprecated}}
    * @deprecated
    {{/isDeprecated}}
+   {{/hasParams}}
    {{#externalDocs}}
    * {{description}}
    * @see <a href="{{url}}">{{summary}} Documentation</a>
    {{/externalDocs}}
    */
+  {{#hasParams}}
+  @Deprecated(forRemoval = true)
+  {{/hasParams}}
+  {{^hasParams}}
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
+  {{/hasParams}}
   public {{#returnType}}{{#asyncNative}}CompletableFuture<{{{returnType}}}>{{/asyncNative}}{{^asyncNative}}{{{returnType}}}{{/asyncNative}}{{/returnType}}{{^returnType}}{{#asyncNative}}CompletableFuture<Void>{{/asyncNative}}{{^asyncNative}}void{{/asyncNative}}{{/returnType}} {{operationId}}({{#allParams}}{{>nullable_var_annotations}} {{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
     {{^asyncNative}}
     {{#returnType}}ApiResponse<{{{.}}}> localVarResponse = {{/returnType}}{{operationId}}WithHttpInfo({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#hasParams}}, {{/hasParams}}null);
@@ -347,17 +363,31 @@ public class {{classname}} {
    * @param headers Optional headers to include in the request
    * @return {{#asyncNative}}CompletableFuture&lt;{{/asyncNative}}ApiResponse&lt;{{returnType}}{{^returnType}}Void{{/returnType}}&gt;{{#asyncNative}}&gt;{{/asyncNative}}
    * @throws ApiException if fails to make API call
+   {{#hasParams}}
+   * @deprecated Use {@link #{{operationId}}({{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   {{/hasParams}}
+   {{^hasParams}}
    {{#isDeprecated}}
    * @deprecated
    {{/isDeprecated}}
+   {{/hasParams}}
    {{#externalDocs}}
    * {{description}}
    * @see <a href="{{url}}">{{summary}} Documentation</a>
    {{/externalDocs}}
    */
+  {{#hasParams}}
+  @Deprecated(forRemoval = true)
+  {{/hasParams}}
+  {{^hasParams}}
   {{#isDeprecated}}
   @Deprecated
   {{/isDeprecated}}
+  {{/hasParams}}
   public {{#asyncNative}}CompletableFuture<{{/asyncNative}}ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}>{{#asyncNative}}>{{/asyncNative}} {{operationId}}WithHttpInfo({{#allParams}}{{>nullable_var_annotations}} {{{dataType}}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#hasParams}}, {{/hasParams}}Map<String, String> headers) throws ApiException {
     {{^asyncNative}}
     HttpRequest.Builder localVarRequestBuilder = {{operationId}}RequestBuilder({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#hasParams}}, {{/hasParams}}headers);
@@ -792,7 +822,7 @@ public class {{classname}} {
   {{#vendorExtensions.x-group-parameters}}
   {{#hasParams}}
 
-  public static final class API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request {
+  public static final class {{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args {
     {{#requiredParams}}
     {{>nullable_var_annotations}}{{! prevent indent}}
     private {{{dataType}}} {{paramName}}; // {{description}} (required)
@@ -802,7 +832,7 @@ public class {{classname}} {
     private {{{dataType}}} {{paramName}}; // {{description}} (optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}})
     {{/optionalParams}}
 
-    private API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request(Builder builder) {
+    private {{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args(Builder builder) {
       {{#requiredParams}}
       this.{{paramName}} = builder.{{paramName}};
       {{/requiredParams}}
@@ -816,7 +846,7 @@ public class {{classname}} {
       return {{paramName}};
     }
     {{/allParams}}
-    public static Builder newBuilder() {
+    public static Builder builder() {
       return new Builder();
     }
 
@@ -834,8 +864,13 @@ public class {{classname}} {
         return this;
       }
       {{/allParams}}
-      public API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request build() {
-        return new API{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Request(this);
+      public {{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args build() {
+        {{#requiredParams}}
+        if (this.{{paramName}} == null) {
+          throw new IllegalArgumentException("Required parameter '{{paramName}}' is not set for {{operationId}}");
+        }
+        {{/requiredParams}}
+        return new {{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args(this);
       }
     }
   }
