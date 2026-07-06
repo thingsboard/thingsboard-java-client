@@ -1,55 +1,66 @@
 # AiChatControllerApi
 
-`ThingsboardClient` methods:
+Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
+`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
+set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
+classes are nested in `ThingsboardApi`, e.g.
+`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
+have no `Args` object — call them directly.
 
 ```
-com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body) // createChat
-void deleteChat(@Nonnull UUID chatId) // deleteChat
-com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId) // getChatMessages
-com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType) // listChats
-List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage) // sendChatMessage
-void updateChat(@Nonnull UUID chatId, @Nonnull Object body) // updateChat
+com.fasterxml.jackson.databind.JsonNode createChat(CreateChatArgs args) // createChat
+void deleteChat(DeleteChatArgs args) // deleteChat
+com.fasterxml.jackson.databind.JsonNode getChatMessages(GetChatMessagesArgs args) // getChatMessages
+com.fasterxml.jackson.databind.JsonNode listChats(ListChatsArgs args) // listChats
+List<Object> sendChatMessage(SendChatMessageArgs args) // sendChatMessage
+void updateChat(UpdateChatArgs args) // updateChat
 ```
 
 
 ## createChat
 
-```
-com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body)
-```
-
 **POST** `/api/ai/chats`
 
 createChat
 
+```java
+com.fasterxml.jackson.databind.JsonNode createChat(CreateChatArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+CreateChatArgs.builder()
+        .body(Object)
+        .build()
+```
 
-### Parameters
+### `CreateChatArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **body** | **Object** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `body` | `Object` | **yes** |  | |
 
 ### Return type
 
-**com.fasterxml.jackson.databind.JsonNode**
+`com.fasterxml.jackson.databind.JsonNode`
 
 
 ## deleteChat
-
-```
-void deleteChat(@Nonnull UUID chatId)
-```
 
 **DELETE** `/api/ai/chats/{chatId}`
 
 deleteChat
 
+```java
+void deleteChat(DeleteChatArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+DeleteChatArgs.builder()
+        .chatId(UUID)
+        .build()
+```
 
-### Parameters
+### `DeleteChatArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **chatId** | **UUID** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `chatId` | `UUID` | **yes** |  | |
 
 ### Return type
 
@@ -58,90 +69,105 @@ null (empty response body)
 
 ## getChatMessages
 
-```
-com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId)
-```
-
 **GET** `/api/ai/chats/{chatId}/messages`
 
 getChatMessages
 
+```java
+com.fasterxml.jackson.databind.JsonNode getChatMessages(GetChatMessagesArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+GetChatMessagesArgs.builder()
+        .chatId(UUID)
+        .build()
+```
 
-### Parameters
+### `GetChatMessagesArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **chatId** | **UUID** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `chatId` | `UUID` | **yes** |  | |
 
 ### Return type
 
-**com.fasterxml.jackson.databind.JsonNode**
+`com.fasterxml.jackson.databind.JsonNode`
 
 
 ## listChats
-
-```
-com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType)
-```
 
 **GET** `/api/ai/chats/{chatType}`
 
 listChats
 
+```java
+com.fasterxml.jackson.databind.JsonNode listChats(ListChatsArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+ListChatsArgs.builder()
+        .chatType(ChatType)
+        .build()
+```
 
-### Parameters
+### `ListChatsArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **chatType** | **ChatType** |  | [enum: GENERIC, SOLUTION_BUILDER] |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `chatType` | `ChatType` | **yes** |  | enum: `GENERIC`, `SOLUTION_BUILDER` |
 
 ### Return type
 
-**com.fasterxml.jackson.databind.JsonNode**
+`com.fasterxml.jackson.databind.JsonNode`
 
 
 ## sendChatMessage
-
-```
-List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage)
-```
 
 **POST** `/api/ai/chats/{chatId}/messages`
 
 sendChatMessage
 
+```java
+List<Object> sendChatMessage(SendChatMessageArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+SendChatMessageArgs.builder()
+        .chatId(UUID)
+        .xAuthorization(String)
+        .body(String)
+        .build()
+```
 
-### Parameters
+### `SendChatMessageArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **chatId** | **UUID** |  | |
-| **xAuthorization** | **String** |  | |
-| **body** | **String** |  | |
-| **acceptLanguage** | **String** |  | [optional] |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `chatId` | `UUID` | **yes** |  | |
+| `xAuthorization` | `String` | **yes** |  | |
+| `body` | `String` | **yes** |  | |
+| `acceptLanguage` | `String` | no |  | |
 
 ### Return type
 
-**List<Object>**
+`List<Object>`
 
 
 ## updateChat
-
-```
-void updateChat(@Nonnull UUID chatId, @Nonnull Object body)
-```
 
 **PATCH** `/api/ai/chats/{chatId}`
 
 updateChat
 
+```java
+void updateChat(UpdateChatArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+UpdateChatArgs.builder()
+        .chatId(UUID)
+        .body(Object)
+        .build()
+```
 
-### Parameters
+### `UpdateChatArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **chatId** | **UUID** |  | |
-| **body** | **Object** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `chatId` | `UUID` | **yes** |  | |
+| `body` | `Object` | **yes** |  | |
 
 ### Return type
 

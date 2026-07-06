@@ -15,10 +15,15 @@
 }}
 # {{classname}}
 
-`ThingsboardClient` methods:
+Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
+`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
+set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
+classes are nested in `ThingsboardApi`, e.g.
+`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
+have no `Args` object — call them directly.
 
 ```
-{{#operations}}{{#operation}}{{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{#required}}@Nonnull {{/required}}{{^required}}@Nullable {{/required}}{{{dataType}}} {{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}}) // {{{summary}}}
+{{#operations}}{{#operation}}{{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#hasParams}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args args{{/hasParams}}) // {{{summary}}}
 {{/operation}}{{/operations}}```
 
 {{#operations}}
@@ -26,27 +31,33 @@
 
 ## {{operationId}}
 
-```
-{{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#allParams}}{{#required}}@Nonnull {{/required}}{{^required}}@Nullable {{/required}}{{{dataType}}} {{{paramName}}}{{^-last}}, {{/-last}}{{/allParams}})
-```
-
 **{{httpMethod}}** `{{commonPath}}{{path}}`
 
 {{{summary}}}{{#notes}}
 
 {{{.}}}{{/notes}}
-{{#allParams}}{{#-first}}
 
-### Parameters
+```java
+{{#returnType}}{{{.}}} {{/returnType}}{{^returnType}}void {{/returnType}}{{operationId}}({{#hasParams}}{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args args{{/hasParams}})
+{{#hasParams}}
+// build the request (required fields shown; add optional fields from the table below as needed):
+{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args.builder()
+{{#requiredParams}}        .{{paramName}}({{{dataType}}})
+{{/requiredParams}}        .build()
+{{/hasParams}}```
+{{#hasParams}}
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-{{/-first}}| **{{paramName}}** | **{{{dataType}}}** | {{{description}}} |{{^required}} [optional]{{/required}}{{^isContainer}}{{#defaultValue}} [default to {{.}}]{{/defaultValue}}{{/isContainer}}{{#allowableValues}} [enum: {{#values}}{{{.}}}{{^-last}}, {{/-last}}{{/values}}]{{/allowableValues}} |
+### `{{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args` builder fields
+
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+{{#allParams}}| `{{paramName}}` | `{{{dataType}}}` | {{#required}}**yes**{{/required}}{{^required}}no{{/required}} | {{{description}}} |{{^isContainer}}{{#defaultValue}} default: `{{.}}`{{/defaultValue}}{{/isContainer}}{{#allowableValues}} enum: {{#values}}`{{{.}}}`{{^-last}}, {{/-last}}{{/values}}{{/allowableValues}} |
 {{/allParams}}
+{{/hasParams}}
 
 ### Return type
 
-{{#returnType}}**{{{.}}}**{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}
+{{#returnType}}`{{{.}}}`{{/returnType}}{{^returnType}}null (empty response body){{/returnType}}
 
 {{/operation}}
 {{/operations}}

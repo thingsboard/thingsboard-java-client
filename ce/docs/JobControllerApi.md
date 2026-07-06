@@ -1,32 +1,40 @@
 # JobControllerApi
 
-`ThingsboardClient` methods:
+Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
+`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
+set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
+classes are nested in `ThingsboardApi`, e.g.
+`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
+have no `Args` object — call them directly.
 
 ```
-void cancelJob(@Nonnull UUID id) // cancelJob
-void deleteJob(@Nonnull UUID id) // deleteJob
-Job getJobById(@Nonnull UUID id) // getJobById
-PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<JobType> types, @Nullable List<JobStatus> statuses, @Nullable List<UUID> entities, @Nullable Long startTime, @Nullable Long endTime) // getJobs
-void reprocessJob(@Nonnull UUID id) // reprocessJob
+void cancelJob(CancelJobArgs args) // cancelJob
+void deleteJob(DeleteJobArgs args) // deleteJob
+Job getJobById(GetJobByIdArgs args) // getJobById
+PageDataJob getJobs(GetJobsArgs args) // getJobs
+void reprocessJob(ReprocessJobArgs args) // reprocessJob
 ```
 
 
 ## cancelJob
 
-```
-void cancelJob(@Nonnull UUID id)
-```
-
 **POST** `/api/job/{id}/cancel`
 
 cancelJob
 
+```java
+void cancelJob(CancelJobArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+CancelJobArgs.builder()
+        .id(UUID)
+        .build()
+```
 
-### Parameters
+### `CancelJobArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **UUID** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `id` | `UUID` | **yes** |  | |
 
 ### Return type
 
@@ -35,20 +43,23 @@ null (empty response body)
 
 ## deleteJob
 
-```
-void deleteJob(@Nonnull UUID id)
-```
-
 **DELETE** `/api/job/{id}`
 
 deleteJob
 
+```java
+void deleteJob(DeleteJobArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+DeleteJobArgs.builder()
+        .id(UUID)
+        .build()
+```
 
-### Parameters
+### `DeleteJobArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **UUID** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `id` | `UUID` | **yes** |  | |
 
 ### Return type
 
@@ -57,73 +68,83 @@ null (empty response body)
 
 ## getJobById
 
-```
-Job getJobById(@Nonnull UUID id)
-```
-
 **GET** `/api/job/{id}`
 
 getJobById
 
+```java
+Job getJobById(GetJobByIdArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+GetJobByIdArgs.builder()
+        .id(UUID)
+        .build()
+```
 
-### Parameters
+### `GetJobByIdArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **UUID** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `id` | `UUID` | **yes** |  | |
 
 ### Return type
 
-**Job**
+`Job`
 
 
 ## getJobs
-
-```
-PageDataJob getJobs(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<JobType> types, @Nullable List<JobStatus> statuses, @Nullable List<UUID> entities, @Nullable Long startTime, @Nullable Long endTime)
-```
 
 **GET** `/api/jobs`
 
 getJobs
 
+```java
+PageDataJob getJobs(GetJobsArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+GetJobsArgs.builder()
+        .pageSize(Integer)
+        .page(Integer)
+        .build()
+```
 
-### Parameters
+### `GetJobsArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
-| **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | Case-insensitive 'substring' filter based on job's description | [optional] |
-| **sortProperty** | **String** | Property of entity to sort by | [optional] |
-| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
-| **types** | **List<JobType>** |  | [optional] |
-| **statuses** | **List<JobStatus>** |  | [optional] |
-| **entities** | **List<UUID>** |  | [optional] |
-| **startTime** | **Long** |  | [optional] |
-| **endTime** | **Long** |  | [optional] |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `pageSize` | `Integer` | **yes** | Maximum amount of entities in a one page | |
+| `page` | `Integer` | **yes** | Sequence number of page starting from 0 | |
+| `textSearch` | `String` | no | Case-insensitive 'substring' filter based on job's description | |
+| `sortProperty` | `String` | no | Property of entity to sort by | |
+| `sortOrder` | `String` | no | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | |
+| `types` | `List<JobType>` | no |  | |
+| `statuses` | `List<JobStatus>` | no |  | |
+| `entities` | `List<UUID>` | no |  | |
+| `startTime` | `Long` | no |  | |
+| `endTime` | `Long` | no |  | |
 
 ### Return type
 
-**PageDataJob**
+`PageDataJob`
 
 
 ## reprocessJob
-
-```
-void reprocessJob(@Nonnull UUID id)
-```
 
 **POST** `/api/job/{id}/reprocess`
 
 reprocessJob
 
+```java
+void reprocessJob(ReprocessJobArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+ReprocessJobArgs.builder()
+        .id(UUID)
+        .build()
+```
 
-### Parameters
+### `ReprocessJobArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **UUID** |  | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `id` | `UUID` | **yes** |  | |
 
 ### Return type
 

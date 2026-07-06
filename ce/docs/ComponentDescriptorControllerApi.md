@@ -1,19 +1,20 @@
 # ComponentDescriptorControllerApi
 
-`ThingsboardClient` methods:
+Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
+`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
+set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
+classes are nested in `ThingsboardApi`, e.g.
+`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
+have no `Args` object — call them directly.
 
 ```
-ComponentDescriptor getComponentDescriptorByClazz(@Nonnull String componentDescriptorClazz) // Get Component Descriptor (getComponentDescriptorByClazz)
-List<ComponentDescriptor> getComponentDescriptorsByType(@Nonnull String componentType, @Nullable String ruleChainType) // Get Component Descriptors (getComponentDescriptorsByType)
-List<ComponentDescriptor> getComponentDescriptorsByTypes(@Nonnull List<String> componentTypes, @Nullable String ruleChainType) // Get Component Descriptors (getComponentDescriptorsByTypes)
+ComponentDescriptor getComponentDescriptorByClazz(GetComponentDescriptorByClazzArgs args) // Get Component Descriptor (getComponentDescriptorByClazz)
+List<ComponentDescriptor> getComponentDescriptorsByType(GetComponentDescriptorsByTypeArgs args) // Get Component Descriptors (getComponentDescriptorsByType)
+List<ComponentDescriptor> getComponentDescriptorsByTypes(GetComponentDescriptorsByTypesArgs args) // Get Component Descriptors (getComponentDescriptorsByTypes)
 ```
 
 
 ## getComponentDescriptorByClazz
-
-```
-ComponentDescriptor getComponentDescriptorByClazz(@Nonnull String componentDescriptorClazz)
-```
 
 **GET** `/api/component/{componentDescriptorClazz}`
 
@@ -21,23 +22,26 @@ Get Component Descriptor (getComponentDescriptorByClazz)
 
 Gets the Component Descriptor object using class name from the path parameters. Each Component Descriptor represents configuration of specific rule node (e.g. 'Save Timeseries' or 'Send Email'.). The Component Descriptors are used by the rule chain Web UI to build the configuration forms for the rule nodes. The Component Descriptors are discovered at runtime by scanning the class path and searching for @RuleNode annotation. Once discovered, the up to date list of descriptors is persisted to the database.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
+```java
+ComponentDescriptor getComponentDescriptorByClazz(GetComponentDescriptorByClazzArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+GetComponentDescriptorByClazzArgs.builder()
+        .componentDescriptorClazz(String)
+        .build()
+```
 
-### Parameters
+### `GetComponentDescriptorByClazzArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **componentDescriptorClazz** | **String** | Component Descriptor class name | |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `componentDescriptorClazz` | `String` | **yes** | Component Descriptor class name | |
 
 ### Return type
 
-**ComponentDescriptor**
+`ComponentDescriptor`
 
 
 ## getComponentDescriptorsByType
-
-```
-List<ComponentDescriptor> getComponentDescriptorsByType(@Nonnull String componentType, @Nullable String ruleChainType)
-```
 
 **GET** `/api/components/{componentType}`
 
@@ -45,24 +49,27 @@ Get Component Descriptors (getComponentDescriptorsByType)
 
 Gets the Component Descriptors using rule node type and optional rule chain type request parameters. Each Component Descriptor represents configuration of specific rule node (e.g. 'Save Timeseries' or 'Send Email'.). The Component Descriptors are used by the rule chain Web UI to build the configuration forms for the rule nodes. The Component Descriptors are discovered at runtime by scanning the class path and searching for @RuleNode annotation. Once discovered, the up to date list of descriptors is persisted to the database.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
+```java
+List<ComponentDescriptor> getComponentDescriptorsByType(GetComponentDescriptorsByTypeArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+GetComponentDescriptorsByTypeArgs.builder()
+        .componentType(String)
+        .build()
+```
 
-### Parameters
+### `GetComponentDescriptorsByTypeArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **componentType** | **String** | Type of the Rule Node | [enum: ENRICHMENT, FILTER, TRANSFORMATION, ACTION, EXTERNAL] |
-| **ruleChainType** | **String** | Type of the Rule Chain | [optional] [enum: CORE, EDGE] |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `componentType` | `String` | **yes** | Type of the Rule Node | enum: `ENRICHMENT`, `FILTER`, `TRANSFORMATION`, `ACTION`, `EXTERNAL` |
+| `ruleChainType` | `String` | no | Type of the Rule Chain | enum: `CORE`, `EDGE` |
 
 ### Return type
 
-**List<ComponentDescriptor>**
+`List<ComponentDescriptor>`
 
 
 ## getComponentDescriptorsByTypes
-
-```
-List<ComponentDescriptor> getComponentDescriptorsByTypes(@Nonnull List<String> componentTypes, @Nullable String ruleChainType)
-```
 
 **GET** `/api/components`
 
@@ -70,15 +77,22 @@ Get Component Descriptors (getComponentDescriptorsByTypes)
 
 Gets the Component Descriptors using coma separated list of rule node types and optional rule chain type request parameters. Each Component Descriptor represents configuration of specific rule node (e.g. 'Save Timeseries' or 'Send Email'.). The Component Descriptors are used by the rule chain Web UI to build the configuration forms for the rule nodes. The Component Descriptors are discovered at runtime by scanning the class path and searching for @RuleNode annotation. Once discovered, the up to date list of descriptors is persisted to the database.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
+```java
+List<ComponentDescriptor> getComponentDescriptorsByTypes(GetComponentDescriptorsByTypesArgs args)
+// build the request (required fields shown; add optional fields from the table below as needed):
+GetComponentDescriptorsByTypesArgs.builder()
+        .componentTypes(List<String>)
+        .build()
+```
 
-### Parameters
+### `GetComponentDescriptorsByTypesArgs` builder fields
 
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **componentTypes** | **List<String>** | List of types of the Rule Nodes, (ENRICHMENT, FILTER, TRANSFORMATION, ACTION or EXTERNAL) | |
-| **ruleChainType** | **String** | Type of the Rule Chain | [optional] [enum: CORE, EDGE] |
+| Field | Type | Required | Description | Notes |
+|-------|------|----------|-------------|-------|
+| `componentTypes` | `List<String>` | **yes** | List of types of the Rule Nodes, (ENRICHMENT, FILTER, TRANSFORMATION, ACTION or EXTERNAL) | |
+| `ruleChainType` | `String` | no | Type of the Rule Chain | enum: `CORE`, `EDGE` |
 
 ### Return type
 
-**List<ComponentDescriptor>**
+`List<ComponentDescriptor>`
 
