@@ -60,7 +60,9 @@ Job execution result
 | format | TbReportFormat |  |  |
 | name | String |  |  |
 | userId | UserId |  |  |
+| publicKey | String |  | [optional] |
 | ownerId | EntityId | JSON object with Customer or Tenant Id | [optional] [readonly] |
+| _public | Boolean |  | [optional] |
 
 #### TbReportFormat (enum)
 `PDF` | `CSV`

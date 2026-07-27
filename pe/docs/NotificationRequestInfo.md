@@ -77,6 +77,7 @@
 | reportTemplateId | ReportTemplateId |  | [optional] |
 | userId | UserId |  | [optional] |
 | timezone | String |  | [optional] |
+| makePublic | Boolean |  | [optional] |
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)

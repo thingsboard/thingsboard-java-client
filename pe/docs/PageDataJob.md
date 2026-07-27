@@ -74,6 +74,7 @@
 | reportTemplateId | ReportTemplateId |  | [optional] |
 | userId | UserId |  | [optional] |
 | timezone | String |  | [optional] |
+| makePublic | Boolean |  | [optional] |
 | targets | List<UUID> |  | [optional] |
 | notificationTemplateId | NotificationTemplateId |  | [optional] |
 | notificationRequests | List<NotificationRequest> |  | [optional] |
@@ -171,7 +172,9 @@
 | format | TbReportFormat |  |  |
 | name | String |  |  |
 | userId | UserId |  |  |
+| publicKey | String |  | [optional] |
 | ownerId | EntityId | JSON object with Customer or Tenant Id | [optional] [readonly] |
+| _public | Boolean |  | [optional] |
 
 #### NotificationTemplate
 | Name | Type | Description | Notes |
@@ -229,6 +232,7 @@
 | reportTemplateId | ReportTemplateId |  | [optional] |
 | userId | UserId |  | [optional] |
 | timezone | String |  | [optional] |
+| makePublic | Boolean |  | [optional] |
 
 #### DeliveryMethodNotificationTemplate
 | Name | Type | Description | Notes |

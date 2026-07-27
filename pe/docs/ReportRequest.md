@@ -11,6 +11,7 @@
 | **reportTemplateConfig** | **ReportTemplateConfig** | Json object representing the report template config. | [optional] |
 | **timezone** | **String** | Timezone used for report generation. | [optional] |
 | **userId** | **String** | A string value representing the user id. | [optional] |
+| **makePublic** | **Boolean** | A boolean value indicating whether the generated report should be made public. | [optional] |
 | **originator** | **EntityId** | Json object representing the originator id. | [optional] |
 | **targets** | **List\<UUID\>** |  | [optional] |
 | **notificationTemplateId** | **NotificationTemplateId** |  | [optional] |

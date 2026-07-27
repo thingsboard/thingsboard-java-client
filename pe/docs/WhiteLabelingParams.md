@@ -11,9 +11,11 @@ A JSON value representing the white labeling configuration
 |------------ | ------------- | ------------- | -------------|
 | **logoImageUrl** | **String** | Logo image URL | [optional] |
 | **logoImageHeight** | **Integer** | The height of a logo container. Logo image will be automatically scaled. | [optional] |
+| **collapsedLogoImageUrl** | **String** | Logo shown when side menu is collapsed | [optional] |
 | **appTitle** | **String** | White-labeled name of the platform | [optional] |
 | **favicon** | **Favicon** | JSON object that contains website icon url and type | [optional] |
 | **paletteSettings** | **PaletteSettings** | Complex JSON that describes structure of the Angular Material Palette. See [theming](https://material.angular.io/guide/theming) for more details | [optional] |
+| **primaryColorPanels** | **Boolean** | Whether primary-color panels (top toolbar, side navigation, dialog and entity-details headers) use the primary palette color as background. When false, they render on a white background | [optional] |
 | **helpLinkBaseUrl** | **String** | Base URL for help link | [optional] |
 | **uiHelpBaseUrl** | **String** | Base URL for the repository with the UI help components (markdown) | [optional] |
 | **enableHelpLinks** | **Boolean** | Enable or Disable help links | [optional] |
