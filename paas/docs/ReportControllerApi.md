@@ -9,7 +9,7 @@ File downloadReport(@Nonnull UUID reportId) // downloadReport
 Report getReportById(@Nonnull String reportId) // Get Report (getReportById)
 PageDataReportInfo getReportInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // getReportInfos
 List<ReportInfo> getReportInfosByIds(@Nonnull List<String> strReportIds) // getReportInfosByIds
-PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // getReports
+PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean includeCustomers) // getReports
 Job requestReport(@Nonnull ReportRequest reportRequest) // requestReport
 File testReportAndDownload(@Nonnull ReportRequest reportRequest) // Download test report (testReportAndDownload)
 ```
@@ -93,7 +93,7 @@ Report getReportById(@Nonnull String reportId)
 
 Get Report (getReportById)
 
-Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause 'Not Found' error.  Available for users with 'TENANT_ADMIN' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+Fetch the Report object based on the provided report Id. The platform uses Report to store generated reports information.Referencing non-existing Report Id will cause 'Not Found' error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -126,7 +126,7 @@ getReportInfos
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **reportTemplateId** | **UUID** | Report template id | [optional] |
 | **userId** | **UUID** | The user used for report generation. | [optional] |
-| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 | **textSearch** | **String** | Case-insensitive 'substring' filter based on report's name or customer title | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
@@ -161,7 +161,7 @@ getReportInfosByIds
 ## getReports
 
 ```
-PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean includeCustomers)
 ```
 
 **GET** `/api/v2/reports`
@@ -178,6 +178,7 @@ getReports
 | **textSearch** | **String** | Case-insensitive 'substring' filter based on report's name or customer title | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 
 ### Return type
 
@@ -216,7 +217,7 @@ File testReportAndDownload(@Nonnull ReportRequest reportRequest)
 
 Download test report (testReportAndDownload)
 
-Generate and download test report.  Available for users with 'TENANT_ADMIN' authority.
+Generate and download test report.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters

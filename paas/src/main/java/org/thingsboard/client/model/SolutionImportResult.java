@@ -99,7 +99,7 @@ public class SolutionImportResult {
   }
 
   /**
-   * Number of newly created entities per entity type. Entity types with zero created entities are omitted.
+   * Number of newly created entities per entity type. Entity types with zero created entities are omitted. Entity groups are reported under the ENTITY_GROUP key regardless of their inner type (e.g. a user group and a device group both contribute to ENTITY_GROUP).
    * @return created
    */
   @Nullable

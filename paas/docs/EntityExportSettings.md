@@ -13,6 +13,7 @@
 | **exportCalculatedFields** | **Boolean** |  | [optional] |
 | **exportPermissions** | **Boolean** |  | [optional] |
 | **exportGroupEntities** | **Boolean** |  | [optional] |
+| **embedGroupMembers** | **Boolean** |  | [optional] |
 
 
 

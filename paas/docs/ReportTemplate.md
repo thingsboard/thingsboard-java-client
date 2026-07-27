@@ -12,7 +12,7 @@ A JSON value representing the Report Template.
 | **id** | **ReportTemplateId** | JSON object with the report template Id. Specify this field to update the report. Referencing non-existing report template Id will cause error. Omit this field to create new report template | [optional] |
 | **createdTime** | **Long** | Timestamp of the report template creation, in milliseconds | [optional] [readonly] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id. Tenant Id of the report template can't be changed. | [optional] [readonly] |
-| **customerId** | **CustomerId** | JSON object with Customer Id | [optional] [readonly] |
+| **customerId** | **CustomerId** | JSON object with Customer Id. Optional: when omitted the Report Template is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id. | [optional] |
 | **name** | **String** | Report name | |
 | **format** | **TbReportFormat** | Report format | |
 | **type** | **ReportTemplateType** | Report template type | |
@@ -791,8 +791,8 @@ A JSON value representing the Report Template.
 | decimals | Integer |  | [optional] |
 | interval | Double |  | [optional] |
 | splitNumber | Integer |  | [optional] |
-| min | Double |  | [optional] |
-| max | Double |  | [optional] |
+| min | SimpleValueSourceConfig |  | [optional] |
+| max | SimpleValueSourceConfig |  | [optional] |
 
 #### TimeSeriesChartXAxisSettings
 | Name | Type | Description | Notes |
@@ -973,6 +973,17 @@ A JSON value representing the Report Template.
 
 #### AxisPosition (enum)
 `LEFT` | `RIGHT` | `TOP` | `BOTTOM`
+
+#### SimpleValueSourceConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ValueSourceType |  | [optional] |
+| value | Double |  | [optional] |
+| latestKeyType | String |  | [optional] |
+| latestKey | String |  | [optional] |
+| entityKeyType | String |  | [optional] |
+| entityAlias | String |  | [optional] |
+| entityKey | String |  | [optional] |
 
 #### TimeSeriesChartNoAggregationBarWidthStrategy (enum)
 `GROUP` | `SEPARATE`

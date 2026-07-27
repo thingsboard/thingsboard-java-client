@@ -10,6 +10,7 @@
 | **id** | **JobId** |  | [optional] |
 | **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 | **tenantId** | **TenantId** |  | |
+| **customerId** | **CustomerId** |  | [optional] |
 | **type** | **JobType** |  | |
 | **key** | **String** |  | |
 | **entityId** | **EntityId** |  | |
@@ -17,6 +18,7 @@
 | **status** | **JobStatus** |  | |
 | **_configuration** | **JobConfiguration** |  | |
 | **result** | **JobResult** |  | |
+| **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 
 
 

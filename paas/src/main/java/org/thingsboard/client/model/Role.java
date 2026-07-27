@@ -108,13 +108,11 @@ public class Role {
   public Role(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
     this.ownerId = ownerId;
   }
 
@@ -194,8 +192,13 @@ public class Role {
 
 
 
+  public Role customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. 
+   * JSON object with Customer Id. Optional: when omitted the Role is owned by the tenant. When the request is made by a Customer user, the value is forced to the user&#39;s own Customer Id.
    * @return customerId
    */
   @Nullable
@@ -206,6 +209,11 @@ public class Role {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   public Role name(@Nonnull String name) {
@@ -262,7 +270,7 @@ public class Role {
   }
 
   /**
-   * JSON object with the set of permissions. Structure is specific for role type
+   * Set of permissions granted by this role. The JSON shape depends on the role &#39;type&#39;:  * GENERIC — JSON object mapping &#x60;Resource&#x60; enum names to arrays of &#x60;Operation&#x60; enum names allowed on that resource. The wildcard entry &#x60;{\&quot;ALL\&quot;:[\&quot;ALL\&quot;]}&#x60; grants every operation on every resource.  * GROUP — JSON array of &#x60;Operation&#x60; enum names that apply to the entity group this role is bound to via &#x60;GroupPermission.entityGroupId&#x60;. Only operations with &#x60;allowedForGroupRole&#x3D;true&#x60; may appear (see &#x60;Operation&#x60; enum). The wildcard entry &#x60;[\&quot;ALL\&quot;]&#x60; grants every supported operation on the bound entity group.
    * @return permissions
    */
   @Nonnull
@@ -286,7 +294,7 @@ public class Role {
   }
 
   /**
-   * JSON object with the set of excluded permissions. Only applicable for generic roles. Structure is the same as permissions
+   * Operations to subtract from those granted by &#x60;permissions&#x60;. Only applicable to GENERIC roles — setting this on a GROUP role is rejected by validation. Same shape as the GENERIC variant of &#x60;permissions&#x60;: a JSON object mapping &#x60;Resource&#x60; enum names to non-empty arrays of &#x60;Operation&#x60; enum names. At evaluation time, for each resource the listed operations are removed from the resolved permission set (e.g. &#x60;permissions&#x3D;{\&quot;ALL\&quot;:[\&quot;ALL\&quot;]}&#x60; combined with &#x60;excludedPermissions&#x3D;{\&quot;DEVICE\&quot;:[\&quot;DELETE\&quot;]}&#x60; grants everything except deleting devices). May be null or an empty object when no exclusions apply.
    * @return excludedPermissions
    */
   @Nullable

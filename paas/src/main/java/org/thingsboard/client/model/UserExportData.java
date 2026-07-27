@@ -48,11 +48,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.thingsboard.client.JSON;
 import org.thingsboard.client.ApiClient;
 /**
- * WidgetsBundleExportData
+ * UserExportData
  */
 @JsonPropertyOrder({
-  WidgetsBundleExportData.JSON_PROPERTY_WIDGETS,
-  WidgetsBundleExportData.JSON_PROPERTY_FQNS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -61,108 +59,36 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 
-public class WidgetsBundleExportData extends EntityExportData {
-  public static final String JSON_PROPERTY_WIDGETS = "widgets";
-  @Nullable
-  private List<com.fasterxml.jackson.databind.JsonNode> widgets = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_FQNS = "fqns";
-  @Nullable
-  private List<String> fqns = new ArrayList<>();
-
-  public WidgetsBundleExportData() { 
+public class UserExportData extends EntityExportData {
+  public UserExportData() { 
   }
-
-  public WidgetsBundleExportData widgets(@Nullable List<com.fasterxml.jackson.databind.JsonNode> widgets) {
-    this.widgets = widgets;
-    return this;
-  }
-
-  public WidgetsBundleExportData addWidgetsItem(com.fasterxml.jackson.databind.JsonNode widgetsItem) {
-    if (this.widgets == null) {
-      this.widgets = new ArrayList<>();
-    }
-    this.widgets.add(widgetsItem);
-    return this;
-  }
-
-  /**
-   * List of widgets in the bundle
-   * @return widgets
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_WIDGETS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<com.fasterxml.jackson.databind.JsonNode> getWidgets() {
-    return widgets;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_WIDGETS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWidgets(@Nullable List<com.fasterxml.jackson.databind.JsonNode> widgets) {
-    this.widgets = widgets;
-  }
-
-
-  public WidgetsBundleExportData fqns(@Nullable List<String> fqns) {
-    this.fqns = fqns;
-    return this;
-  }
-
-  public WidgetsBundleExportData addFqnsItem(String fqnsItem) {
-    if (this.fqns == null) {
-      this.fqns = new ArrayList<>();
-    }
-    this.fqns.add(fqnsItem);
-    return this;
-  }
-
-  /**
-   * Get fqns
-   * @return fqns
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_FQNS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public List<String> getFqns() {
-    return fqns;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_FQNS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFqns(@Nullable List<String> fqns) {
-    this.fqns = fqns;
-  }
-
 
   @Override
-  public WidgetsBundleExportData entity(@Nullable ExportableEntity entity) {
+  public UserExportData entity(@Nullable ExportableEntity entity) {
     this.setEntity(entity);
     return this;
   }
 
   @Override
-  public WidgetsBundleExportData relations(@Nullable List<EntityRelation> relations) {
+  public UserExportData relations(@Nullable List<EntityRelation> relations) {
     this.setRelations(relations);
     return this;
   }
 
   @Override
-  public WidgetsBundleExportData attributes(@Nullable Map<String, List<AttributeExportData>> attributes) {
+  public UserExportData attributes(@Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
-  public WidgetsBundleExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
+  public UserExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
     return this;
   }
 
   /**
-   * Return true if this WidgetsBundleExportData object is equal to o.
+   * Return true if this UserExportData object is equal to o.
    */
   @Override
   public boolean equals(Object o) {
@@ -172,24 +98,19 @@ public class WidgetsBundleExportData extends EntityExportData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WidgetsBundleExportData widgetsBundleExportData = (WidgetsBundleExportData) o;
-    return Objects.equals(this.widgets, widgetsBundleExportData.widgets) &&
-        Objects.equals(this.fqns, widgetsBundleExportData.fqns) &&
-        super.equals(o);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(widgets, fqns, super.hashCode());
+    return Objects.hash(super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WidgetsBundleExportData {\n");
+    sb.append("class UserExportData {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    widgets: ").append(toIndentedString(widgets)).append("\n");
-    sb.append("    fqns: ").append(toIndentedString(fqns)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,33 +197,13 @@ public class WidgetsBundleExportData extends EntityExportData {
       joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
     }
 
-    // add `widgets` to the URL query string
-    if (getWidgets() != null) {
-      for (int i = 0; i < getWidgets().size(); i++) {
-        if (getWidgets().get(i) != null) {
-          joiner.add(String.format(java.util.Locale.ROOT, "%swidgets%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
-              ApiClient.urlEncode(ApiClient.valueToString(getWidgets().get(i)))));
-        }
-      }
-    }
-
-    // add `fqns` to the URL query string
-    if (getFqns() != null) {
-      for (int i = 0; i < getFqns().size(); i++) {
-        joiner.add(String.format(java.util.Locale.ROOT, "%sfqns%s%s=%s", prefix, suffix,
-            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
-            ApiClient.urlEncode(ApiClient.valueToString(getFqns().get(i)))));
-      }
-    }
-
     return joiner.toString();
   }
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("WidgetsBundleExportData", WidgetsBundleExportData.class);
-  JSON.registerDiscriminator(WidgetsBundleExportData.class, "entityType", mappings);
+  mappings.put("UserExportData", UserExportData.class);
+  JSON.registerDiscriminator(UserExportData.class, "entityType", mappings);
 }
 }
 

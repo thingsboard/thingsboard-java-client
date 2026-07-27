@@ -42,7 +42,8 @@ import org.thingsboard.client.ApiClient;
   EntityExportSettings.JSON_PROPERTY_EXPORT_CREDENTIALS,
   EntityExportSettings.JSON_PROPERTY_EXPORT_CALCULATED_FIELDS,
   EntityExportSettings.JSON_PROPERTY_EXPORT_PERMISSIONS,
-  EntityExportSettings.JSON_PROPERTY_EXPORT_GROUP_ENTITIES
+  EntityExportSettings.JSON_PROPERTY_EXPORT_GROUP_ENTITIES,
+  EntityExportSettings.JSON_PROPERTY_EMBED_GROUP_MEMBERS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityExportSettings {
@@ -69,6 +70,10 @@ public class EntityExportSettings {
   public static final String JSON_PROPERTY_EXPORT_GROUP_ENTITIES = "exportGroupEntities";
   @Nullable
   private Boolean exportGroupEntities;
+
+  public static final String JSON_PROPERTY_EMBED_GROUP_MEMBERS = "embedGroupMembers";
+  @Nullable
+  private Boolean embedGroupMembers;
 
   public EntityExportSettings() { 
   }
@@ -217,6 +222,30 @@ public class EntityExportSettings {
   }
 
 
+  public EntityExportSettings embedGroupMembers(@Nullable Boolean embedGroupMembers) {
+    this.embedGroupMembers = embedGroupMembers;
+    return this;
+  }
+
+  /**
+   * Get embedGroupMembers
+   * @return embedGroupMembers
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_EMBED_GROUP_MEMBERS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getEmbedGroupMembers() {
+    return embedGroupMembers;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EMBED_GROUP_MEMBERS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEmbedGroupMembers(@Nullable Boolean embedGroupMembers) {
+    this.embedGroupMembers = embedGroupMembers;
+  }
+
+
   /**
    * Return true if this EntityExportSettings object is equal to o.
    */
@@ -234,12 +263,13 @@ public class EntityExportSettings {
         Objects.equals(this.exportCredentials, entityExportSettings.exportCredentials) &&
         Objects.equals(this.exportCalculatedFields, entityExportSettings.exportCalculatedFields) &&
         Objects.equals(this.exportPermissions, entityExportSettings.exportPermissions) &&
-        Objects.equals(this.exportGroupEntities, entityExportSettings.exportGroupEntities);
+        Objects.equals(this.exportGroupEntities, entityExportSettings.exportGroupEntities) &&
+        Objects.equals(this.embedGroupMembers, entityExportSettings.embedGroupMembers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportRelations, exportAttributes, exportCredentials, exportCalculatedFields, exportPermissions, exportGroupEntities);
+    return Objects.hash(exportRelations, exportAttributes, exportCredentials, exportCalculatedFields, exportPermissions, exportGroupEntities, embedGroupMembers);
   }
 
   @Override
@@ -252,6 +282,7 @@ public class EntityExportSettings {
     sb.append("    exportCalculatedFields: ").append(toIndentedString(exportCalculatedFields)).append("\n");
     sb.append("    exportPermissions: ").append(toIndentedString(exportPermissions)).append("\n");
     sb.append("    exportGroupEntities: ").append(toIndentedString(exportGroupEntities)).append("\n");
+    sb.append("    embedGroupMembers: ").append(toIndentedString(embedGroupMembers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -327,6 +358,11 @@ public class EntityExportSettings {
     // add `exportGroupEntities` to the URL query string
     if (getExportGroupEntities() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sexportGroupEntities%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getExportGroupEntities()))));
+    }
+
+    // add `embedGroupMembers` to the URL query string
+    if (getEmbedGroupMembers() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sembedGroupMembers%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEmbedGroupMembers()))));
     }
 
     return joiner.toString();

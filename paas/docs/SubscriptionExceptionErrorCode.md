@@ -20,8 +20,6 @@ Subscription error code
 
 * `NUMBER_6` (value: `new BigDecimal("6")`)
 
-* `NUMBER_7` (value: `new BigDecimal("7")`)
-
 
 
 ---

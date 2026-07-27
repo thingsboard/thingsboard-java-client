@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.JobConfiguration;
 import org.thingsboard.client.model.JobId;
@@ -48,13 +49,15 @@ import org.thingsboard.client.ApiClient;
   Job.JSON_PROPERTY_ID,
   Job.JSON_PROPERTY_CREATED_TIME,
   Job.JSON_PROPERTY_TENANT_ID,
+  Job.JSON_PROPERTY_CUSTOMER_ID,
   Job.JSON_PROPERTY_TYPE,
   Job.JSON_PROPERTY_KEY,
   Job.JSON_PROPERTY_ENTITY_ID,
   Job.JSON_PROPERTY_ENTITY_NAME,
   Job.JSON_PROPERTY_STATUS,
   Job.JSON_PROPERTY_CONFIGURATION,
-  Job.JSON_PROPERTY_RESULT
+  Job.JSON_PROPERTY_RESULT,
+  Job.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Job {
@@ -69,6 +72,10 @@ public class Job {
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nonnull
   private TenantId tenantId;
+
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TYPE = "type";
   @Nonnull
@@ -98,15 +105,21 @@ public class Job {
   @Nonnull
   private JobResult result;
 
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public Job() { 
   }
 
   @JsonCreator
   public Job(
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
+    this.ownerId = ownerId;
   }
 
   public Job id(@Nullable JobId id) {
@@ -168,6 +181,30 @@ public class Job {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTenantId(@Nonnull TenantId tenantId) {
     this.tenantId = tenantId;
+  }
+
+
+  public Job customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Get customerId
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
   }
 
 
@@ -340,6 +377,20 @@ public class Job {
 
 
   /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  /**
    * Return true if this Job object is equal to o.
    */
   @Override
@@ -354,18 +405,20 @@ public class Job {
     return Objects.equals(this.id, job.id) &&
         Objects.equals(this.createdTime, job.createdTime) &&
         Objects.equals(this.tenantId, job.tenantId) &&
+        Objects.equals(this.customerId, job.customerId) &&
         Objects.equals(this.type, job.type) &&
         Objects.equals(this.key, job.key) &&
         Objects.equals(this.entityId, job.entityId) &&
         Objects.equals(this.entityName, job.entityName) &&
         Objects.equals(this.status, job.status) &&
         Objects.equals(this._configuration, job._configuration) &&
-        Objects.equals(this.result, job.result);
+        Objects.equals(this.result, job.result) &&
+        Objects.equals(this.ownerId, job.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, type, key, entityId, entityName, status, _configuration, result);
+    return Objects.hash(id, createdTime, tenantId, customerId, type, key, entityId, entityName, status, _configuration, result, ownerId);
   }
 
   @Override
@@ -375,6 +428,7 @@ public class Job {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
@@ -382,6 +436,7 @@ public class Job {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    result: ").append(toIndentedString(result)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -444,6 +499,11 @@ public class Job {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
+    }
+
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
@@ -477,6 +537,11 @@ public class Job {
     // add `result` to the URL query string
     if (getResult() != null) {
       joiner.add(getResult().toUrlQueryString(prefix + "result" + suffix));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

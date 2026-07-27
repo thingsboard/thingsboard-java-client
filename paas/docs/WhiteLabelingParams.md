@@ -11,6 +11,7 @@ A JSON value representing the white labeling configuration
 |------------ | ------------- | ------------- | -------------|
 | **logoImageUrl** | **String** | Logo image URL | [optional] |
 | **logoImageHeight** | **Integer** | The height of a logo container. Logo image will be automatically scaled. | [optional] |
+| **collapsedLogoImageUrl** | **String** | Logo shown when side menu is collapsed | [optional] |
 | **appTitle** | **String** | White-labeled name of the platform | [optional] |
 | **favicon** | **Favicon** | JSON object that contains website icon url and type | [optional] |
 | **paletteSettings** | **PaletteSettings** | Complex JSON that describes structure of the Angular Material Palette. See [theming](https://material.angular.io/guide/theming) for more details | [optional] |

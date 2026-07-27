@@ -6,6 +6,7 @@
 Integration assignIntegrationToEdge(@Nonnull String edgeId, @Nonnull String integrationId) // Assign integration to edge (assignIntegrationToEdge)
 void checkIntegrationConnection(@Nonnull Integration integration) // Check integration connectivity (checkIntegrationConnection)
 void deleteIntegration(@Nonnull String integrationId) // Delete integration (deleteIntegration)
+byte[] exportIntegrationPackage(@Nonnull String integrationId) // Export integration as IoT Hub package
 String findAllRelatedEdgesMissingAttributes(@Nonnull String integrationId) // Find missing attributes for all related edges (findAllRelatedEdgesMissingAttributes)
 String findEdgeMissingAttributes(@Nonnull String edgeId, @Nonnull List<String> integrationIds) // Find edge missing attributes for assigned integrations (findEdgeMissingAttributes)
 PageDataIntegrationInfo getEdgeIntegrationInfos(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Integrations (getEdgeIntegrationInfos)
@@ -92,6 +93,30 @@ Deletes the integration and all the relations (from and to the integration). Ref
 ### Return type
 
 null (empty response body)
+
+
+## exportIntegrationPackage
+
+```
+byte[] exportIntegrationPackage(@Nonnull String integrationId)
+```
+
+**GET** `/api/integration/{integrationId}/export-package`
+
+Export integration as IoT Hub package
+
+Returns a ZIP containing integration.json, uplink.json, optional downlink.json, and form.json. Sensitive fields are tokenized via @TemplateField annotations on the integration's runtime POJO.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **integrationId** | **String** |  | |
+
+### Return type
+
+**byte[]**
 
 
 ## findAllRelatedEdgesMissingAttributes
