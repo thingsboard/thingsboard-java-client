@@ -12,6 +12,7 @@
 | **reportTemplateId** | **ReportTemplateId** |  | [optional] |
 | **userId** | **UserId** |  | [optional] |
 | **timezone** | **String** |  | [optional] |
+| **makePublic** | **Boolean** |  | [optional] |
 | **targets** | **List\<UUID\>** |  | [optional] |
 | **notificationTemplateId** | **NotificationTemplateId** |  | [optional] |
 | **notificationRequests** | **List\<NotificationRequest\>** |  | [optional] |
@@ -139,6 +140,7 @@
 | reportTemplateId | ReportTemplateId |  | [optional] |
 | userId | UserId |  | [optional] |
 | timezone | String |  | [optional] |
+| makePublic | Boolean |  | [optional] |
 
 #### DeliveryMethodNotificationTemplate
 | Name | Type | Description | Notes |

@@ -10436,6 +10436,82 @@ public class ThingsboardApi {
   }
 
   /**
+   * Download report by public key (downloadReportByPublicKey)
+   * Downloads the report identified by its public key. This endpoint is intentionally public: it requires no authentication and is accessible to anyone in possession of the report&#39;s random public key. It only returns data for reports that have been explicitly made public (see updateReportPublicStatus).
+   * @param publicKey The random public key of the report (required)
+   * @return File
+   * @throws ApiException if fails to make API call
+   */
+  public File downloadReportByPublicKey(@Nonnull String publicKey) throws ApiException {
+    ApiResponse<File> localVarResponse = downloadReportByPublicKeyWithHttpInfo(publicKey, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Download report by public key (downloadReportByPublicKey)
+   * Downloads the report identified by its public key. This endpoint is intentionally public: it requires no authentication and is accessible to anyone in possession of the report&#39;s random public key. It only returns data for reports that have been explicitly made public (see updateReportPublicStatus).
+   * @param publicKey The random public key of the report (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;File&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<File> downloadReportByPublicKeyWithHttpInfo(@Nonnull String publicKey, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = downloadReportByPublicKeyRequestBuilder(publicKey, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("downloadReportByPublicKey", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<File>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        File responseValue = downloadFileFromResponse(localVarResponse, localVarResponseBody);
+        return new ApiResponse<File>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder downloadReportByPublicKeyRequestBuilder(@Nonnull String publicKey, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'publicKey' is set
+    if (publicKey == null) {
+      throw new ApiException(400, "Missing the required parameter 'publicKey' when calling downloadReportByPublicKey");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/v2/report/public/{publicKey}/download"
+        .replace("{publicKey}", ApiClient.urlEncode(publicKey.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Download Resource (downloadResource)
    * Download Resource based on the provided Resource Id.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
    * @param resourceId A string value representing the resource id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -54571,7 +54647,7 @@ public class ThingsboardApi {
 
   /**
    * Create or Update Alarm (saveAlarm)
-   * Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm id will be present in the response. Specify existing Alarm id to update the alarm. Referencing non-existing Alarm Id will cause &#39;Not Found&#39; error.   Platform also deduplicate the alarms based on the entity id of originator and alarm &#39;type&#39;. For example, if the user or system component create the alarm with the type &#39;HighTemperature&#39; for device &#39;Device A&#39; the new active alarm is created. If the user tries to create &#39;HighTemperature&#39; alarm for the same device again, the previous alarm will be updated (the &#39;end_ts&#39; will be set to current timestamp). If the user clears the alarm (see &#39;Clear Alarm(clearAlarm)&#39;), than new alarm with the same type and same device may be created. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Alarm entity.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+   * Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm id will be present in the response. Specify existing Alarm id to update the alarm. Referencing non-existing Alarm Id will cause &#39;Not Found&#39; error.   Platform also deduplicate the alarms based on the entity id of originator and alarm &#39;type&#39;. For example, if the user or system component create the alarm with the type &#39;HighTemperature&#39; for device &#39;Device A&#39; the new active alarm is created. If the user tries to create &#39;HighTemperature&#39; alarm for the same device again, the previous alarm will be updated (the &#39;end_ts&#39; will be set to current timestamp). If the user clears the alarm (see &#39;Clear Alarm(clearAlarm)&#39;), than new alarm with the same type and same device may be created. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Alarm entity.   The alarm originator is an immutable routing key: when updating an existing alarm, the &#39;originator&#39; in the request body must match the stored alarm&#39;s originator. A request that references an existing alarm id but carries a different originator is treated as a lookup miss and causes a &#39;Not Found&#39; error.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param alarm A JSON value representing the alarm. (required)
    * @return Alarm
    * @throws ApiException if fails to make API call
@@ -54583,7 +54659,7 @@ public class ThingsboardApi {
 
   /**
    * Create or Update Alarm (saveAlarm)
-   * Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm id will be present in the response. Specify existing Alarm id to update the alarm. Referencing non-existing Alarm Id will cause &#39;Not Found&#39; error.   Platform also deduplicate the alarms based on the entity id of originator and alarm &#39;type&#39;. For example, if the user or system component create the alarm with the type &#39;HighTemperature&#39; for device &#39;Device A&#39; the new active alarm is created. If the user tries to create &#39;HighTemperature&#39; alarm for the same device again, the previous alarm will be updated (the &#39;end_ts&#39; will be set to current timestamp). If the user clears the alarm (see &#39;Clear Alarm(clearAlarm)&#39;), than new alarm with the same type and same device may be created. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Alarm entity.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
+   * Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Alarm id will be present in the response. Specify existing Alarm id to update the alarm. Referencing non-existing Alarm Id will cause &#39;Not Found&#39; error.   Platform also deduplicate the alarms based on the entity id of originator and alarm &#39;type&#39;. For example, if the user or system component create the alarm with the type &#39;HighTemperature&#39; for device &#39;Device A&#39; the new active alarm is created. If the user tries to create &#39;HighTemperature&#39; alarm for the same device again, the previous alarm will be updated (the &#39;end_ts&#39; will be set to current timestamp). If the user clears the alarm (see &#39;Clear Alarm(clearAlarm)&#39;), than new alarm with the same type and same device may be created. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Alarm entity.   The alarm originator is an immutable routing key: when updating an existing alarm, the &#39;originator&#39; in the request body must match the stored alarm&#39;s originator. A request that references an existing alarm id but carries a different originator is treated as a lookup miss and causes a &#39;Not Found&#39; error.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param alarm A JSON value representing the alarm. (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Alarm&gt;
@@ -60672,10 +60748,8 @@ public class ThingsboardApi {
    * @param acceptLanguage  (optional)
    * @return List&lt;Object&gt;
    * @throws ApiException if fails to make API call
-   * @deprecated
    */
-  @Deprecated
-  public List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage) throws ApiException {
+  public List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable Object body, @Nullable String acceptLanguage) throws ApiException {
     ApiResponse<List<Object>> localVarResponse = sendChatMessageWithHttpInfo(chatId, xAuthorization, body, acceptLanguage, null);
     return localVarResponse.getData();
   }
@@ -60690,10 +60764,8 @@ public class ThingsboardApi {
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;List&lt;Object&gt;&gt;
    * @throws ApiException if fails to make API call
-   * @deprecated
    */
-  @Deprecated
-  public ApiResponse<List<Object>> sendChatMessageWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
+  public ApiResponse<List<Object>> sendChatMessageWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable Object body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = sendChatMessageRequestBuilder(chatId, xAuthorization, body, acceptLanguage, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -60728,7 +60800,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder sendChatMessageRequestBuilder(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull String body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder sendChatMessageRequestBuilder(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable Object body, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'chatId' is set
     if (chatId == null) {
       throw new ApiException(400, "Missing the required parameter 'chatId' when calling sendChatMessage");
@@ -60751,9 +60823,14 @@ public class ThingsboardApi {
     if (acceptLanguage != null) {
       localVarRequestBuilder.header("Accept-Language", acceptLanguage.toString());
     }
-    localVarRequestBuilder.header("Content-Type", "text/plain");
+    localVarRequestBuilder.header("Content-Type", "application/json");
     localVarRequestBuilder.header("Accept", "text/event-stream, application/json");
-    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofString(body));
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -62036,10 +62113,10 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup)
-   * Share the entity group with specified user group using specified role.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
-   * @param entityGroupId A string value representing the Entity Group Id that you would like to share. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param userGroupId A string value representing the Entity(User) Group Id that you would like to share with. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param roleId A string value representing the Role Id that describes set of permissions you would like to share (read, write, etc). For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * Share the entity group with the specified user group using the specified role. Unlike the &#39;shareEntityGroup&#39; API method, this method is designed for sharing &#39;down&#39; the owner hierarchy and does not require &#39;WRITE&#39; permission for the shared entity group or the target user group. In particular, it allows the current user to re-share an entity group that was shared with them by the parent owner: for example, a customer user may re-share a tenant-owned dashboard group with a user group of their sub-customer.  The following security checks are performed:  * the target user group must belong to the current user&#39;s owner or to one of its sub-customers; * the current user must have the &#39;SHARE_GROUP&#39; operation granted for the shared entity group: either as a generic permission for the corresponding entity group resource (applies only if the shared entity group belongs to the current user&#39;s owner hierarchy), or as a group permission created when the entity group was shared with the current user&#39;s user group using a group role that includes the &#39;SHARE_GROUP&#39; operation; * the specified role must be a group role that is readable by the current user, so it must belong to the current user&#39;s owner or to one of its sub-customers; * the operations of the specified role must be a subset of the operations the current user was granted for the shared entity group (always passes if the current user was granted the &#39;ALL&#39; operation).  If the specified role also includes the &#39;SHARE_GROUP&#39; operation, the members of the target user group will be able to re-share the entity group further down their own owner hierarchy in the same way.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param entityGroupId ID of the entity group to share (required)
+   * @param userGroupId ID of the user group to share the entity group with. The user group must belong to the current user&#39;s owner or to one of its sub-customers (required)
+   * @param roleId ID of the group role that defines the set of operations to grant to the target user group (required)
    * @throws ApiException if fails to make API call
    */
   public void shareEntityGroupToChildOwnerUserGroup(@Nonnull String entityGroupId, @Nonnull String userGroupId, @Nonnull String roleId) throws ApiException {
@@ -62048,10 +62125,10 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup)
-   * Share the entity group with specified user group using specified role.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
-   * @param entityGroupId A string value representing the Entity Group Id that you would like to share. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param userGroupId A string value representing the Entity(User) Group Id that you would like to share with. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
-   * @param roleId A string value representing the Role Id that describes set of permissions you would like to share (read, write, etc). For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * Share the entity group with the specified user group using the specified role. Unlike the &#39;shareEntityGroup&#39; API method, this method is designed for sharing &#39;down&#39; the owner hierarchy and does not require &#39;WRITE&#39; permission for the shared entity group or the target user group. In particular, it allows the current user to re-share an entity group that was shared with them by the parent owner: for example, a customer user may re-share a tenant-owned dashboard group with a user group of their sub-customer.  The following security checks are performed:  * the target user group must belong to the current user&#39;s owner or to one of its sub-customers; * the current user must have the &#39;SHARE_GROUP&#39; operation granted for the shared entity group: either as a generic permission for the corresponding entity group resource (applies only if the shared entity group belongs to the current user&#39;s owner hierarchy), or as a group permission created when the entity group was shared with the current user&#39;s user group using a group role that includes the &#39;SHARE_GROUP&#39; operation; * the specified role must be a group role that is readable by the current user, so it must belong to the current user&#39;s owner or to one of its sub-customers; * the operations of the specified role must be a subset of the operations the current user was granted for the shared entity group (always passes if the current user was granted the &#39;ALL&#39; operation).  If the specified role also includes the &#39;SHARE_GROUP&#39; operation, the members of the target user group will be able to re-share the entity group further down their own owner hierarchy in the same way.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param entityGroupId ID of the entity group to share (required)
+   * @param userGroupId ID of the user group to share the entity group with. The user group must belong to the current user&#39;s owner or to one of its sub-customers (required)
+   * @param roleId ID of the group role that defines the set of operations to grant to the target user group (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Void&gt;
    * @throws ApiException if fails to make API call
@@ -64880,6 +64957,90 @@ public class ThingsboardApi {
     } catch (IOException e) {
       throw new ApiException(e);
     }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update Report public status (updateReportPublicStatus)
+   * Updates the public status of the report. When public, the report can be downloaded without authentication via the public link.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param reportId A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param isPublic Whether the report should be publicly downloadable without authentication (required)
+   * @return Report
+   * @throws ApiException if fails to make API call
+   */
+  public Report updateReportPublicStatus(@Nonnull UUID reportId, @Nonnull Boolean isPublic) throws ApiException {
+    ApiResponse<Report> localVarResponse = updateReportPublicStatusWithHttpInfo(reportId, isPublic, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update Report public status (updateReportPublicStatus)
+   * Updates the public status of the report. When public, the report can be downloaded without authentication via the public link.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * @param reportId A string value representing the report id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param isPublic Whether the report should be publicly downloadable without authentication (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Report&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Report> updateReportPublicStatusWithHttpInfo(@Nonnull UUID reportId, @Nonnull Boolean isPublic, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateReportPublicStatusRequestBuilder(reportId, isPublic, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateReportPublicStatus", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Report>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Report responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Report>() {});
+        return new ApiResponse<Report>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateReportPublicStatusRequestBuilder(@Nonnull UUID reportId, @Nonnull Boolean isPublic, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'reportId' is set
+    if (reportId == null) {
+      throw new ApiException(400, "Missing the required parameter 'reportId' when calling updateReportPublicStatus");
+    }
+    // verify the required parameter 'isPublic' is set
+    if (isPublic == null) {
+      throw new ApiException(400, "Missing the required parameter 'isPublic' when calling updateReportPublicStatus");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/v2/report/{reportId}/public/{isPublic}"
+        .replace("{reportId}", ApiClient.urlEncode(reportId.toString()))
+        .replace("{isPublic}", ApiClient.urlEncode(isPublic.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }

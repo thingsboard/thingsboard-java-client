@@ -39,6 +39,7 @@
 | reportTemplateId | ReportTemplateId |  | [optional] |
 | userId | UserId |  | [optional] |
 | timezone | String |  | [optional] |
+| makePublic | Boolean |  | [optional] |
 
 #### DeliveryMethodNotificationTemplate
 | Name | Type | Description | Notes |

@@ -54,10 +54,12 @@ import org.thingsboard.client.ApiClient;
   ReportInfo.JSON_PROPERTY_FORMAT,
   ReportInfo.JSON_PROPERTY_NAME,
   ReportInfo.JSON_PROPERTY_USER_ID,
+  ReportInfo.JSON_PROPERTY_PUBLIC_KEY,
   ReportInfo.JSON_PROPERTY_TEMPLATE_INFO,
   ReportInfo.JSON_PROPERTY_CUSTOMER_TITLE,
   ReportInfo.JSON_PROPERTY_USER_NAME,
-  ReportInfo.JSON_PROPERTY_OWNER_ID
+  ReportInfo.JSON_PROPERTY_OWNER_ID,
+  ReportInfo.JSON_PROPERTY_PUBLIC
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ReportInfo {
@@ -93,6 +95,10 @@ public class ReportInfo {
   @Nonnull
   private UserId userId;
 
+  public static final String JSON_PROPERTY_PUBLIC_KEY = "publicKey";
+  @Nullable
+  private String publicKey;
+
   public static final String JSON_PROPERTY_TEMPLATE_INFO = "templateInfo";
   @Nullable
   private EntityInfo templateInfo;
@@ -108,6 +114,10 @@ public class ReportInfo {
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @Nullable
   private EntityId ownerId;
+
+  public static final String JSON_PROPERTY_PUBLIC = "public";
+  @Nullable
+  private Boolean _public;
 
   public ReportInfo() { 
   }
@@ -304,6 +314,30 @@ public class ReportInfo {
   }
 
 
+  public ReportInfo publicKey(@Nullable String publicKey) {
+    this.publicKey = publicKey;
+    return this;
+  }
+
+  /**
+   * Get publicKey
+   * @return publicKey
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getPublicKey() {
+    return publicKey;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPublicKey(@Nullable String publicKey) {
+    this.publicKey = publicKey;
+  }
+
+
   public ReportInfo templateInfo(@Nullable EntityInfo templateInfo) {
     this.templateInfo = templateInfo;
     return this;
@@ -390,6 +424,30 @@ public class ReportInfo {
 
 
 
+  public ReportInfo _public(@Nullable Boolean _public) {
+    this._public = _public;
+    return this;
+  }
+
+  /**
+   * Get _public
+   * @return _public
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPublic() {
+    return _public;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPublic(@Nullable Boolean _public) {
+    this._public = _public;
+  }
+
+
   /**
    * Return true if this ReportInfo object is equal to o.
    */
@@ -410,15 +468,17 @@ public class ReportInfo {
         Objects.equals(this.format, reportInfo.format) &&
         Objects.equals(this.name, reportInfo.name) &&
         Objects.equals(this.userId, reportInfo.userId) &&
+        Objects.equals(this.publicKey, reportInfo.publicKey) &&
         Objects.equals(this.templateInfo, reportInfo.templateInfo) &&
         Objects.equals(this.customerTitle, reportInfo.customerTitle) &&
         Objects.equals(this.userName, reportInfo.userName) &&
-        Objects.equals(this.ownerId, reportInfo.ownerId);
+        Objects.equals(this.ownerId, reportInfo.ownerId) &&
+        Objects.equals(this._public, reportInfo._public);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, templateId, format, name, userId, templateInfo, customerTitle, userName, ownerId);
+    return Objects.hash(id, createdTime, tenantId, customerId, templateId, format, name, userId, publicKey, templateInfo, customerTitle, userName, ownerId, _public);
   }
 
   @Override
@@ -433,10 +493,12 @@ public class ReportInfo {
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    publicKey: ").append(toIndentedString(publicKey)).append("\n");
     sb.append("    templateInfo: ").append(toIndentedString(templateInfo)).append("\n");
     sb.append("    customerTitle: ").append(toIndentedString(customerTitle)).append("\n");
     sb.append("    userName: ").append(toIndentedString(userName)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -524,6 +586,11 @@ public class ReportInfo {
       joiner.add(getUserId().toUrlQueryString(prefix + "userId" + suffix));
     }
 
+    // add `publicKey` to the URL query string
+    if (getPublicKey() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spublicKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublicKey()))));
+    }
+
     // add `templateInfo` to the URL query string
     if (getTemplateInfo() != null) {
       joiner.add(getTemplateInfo().toUrlQueryString(prefix + "templateInfo" + suffix));
@@ -542,6 +609,11 @@ public class ReportInfo {
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
+    }
+
+    // add `public` to the URL query string
+    if (getPublic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublic()))));
     }
 
     return joiner.toString();

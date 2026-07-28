@@ -57,6 +57,7 @@ import org.thingsboard.client.ApiClient;
   ReportJobConfiguration.JSON_PROPERTY_REPORT_TEMPLATE_ID,
   ReportJobConfiguration.JSON_PROPERTY_USER_ID,
   ReportJobConfiguration.JSON_PROPERTY_TIMEZONE,
+  ReportJobConfiguration.JSON_PROPERTY_MAKE_PUBLIC,
   ReportJobConfiguration.JSON_PROPERTY_TARGETS,
   ReportJobConfiguration.JSON_PROPERTY_NOTIFICATION_TEMPLATE_ID,
   ReportJobConfiguration.JSON_PROPERTY_NOTIFICATION_REQUESTS,
@@ -85,6 +86,10 @@ public class ReportJobConfiguration extends JobConfiguration {
   public static final String JSON_PROPERTY_TIMEZONE = "timezone";
   @Nullable
   private String timezone;
+
+  public static final String JSON_PROPERTY_MAKE_PUBLIC = "makePublic";
+  @Nullable
+  private Boolean makePublic;
 
   public static final String JSON_PROPERTY_TARGETS = "targets";
   @Nullable
@@ -190,6 +195,30 @@ public class ReportJobConfiguration extends JobConfiguration {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTimezone(@Nullable String timezone) {
     this.timezone = timezone;
+  }
+
+
+  public ReportJobConfiguration makePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
+    return this;
+  }
+
+  /**
+   * Get makePublic
+   * @return makePublic
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getMakePublic() {
+    return makePublic;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMakePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
   }
 
 
@@ -428,6 +457,7 @@ public class ReportJobConfiguration extends JobConfiguration {
     return Objects.equals(this.reportTemplateId, reportJobConfiguration.reportTemplateId) &&
         Objects.equals(this.userId, reportJobConfiguration.userId) &&
         Objects.equals(this.timezone, reportJobConfiguration.timezone) &&
+        Objects.equals(this.makePublic, reportJobConfiguration.makePublic) &&
         Objects.equals(this.targets, reportJobConfiguration.targets) &&
         Objects.equals(this.notificationTemplateId, reportJobConfiguration.notificationTemplateId) &&
         Objects.equals(this.notificationRequests, reportJobConfiguration.notificationRequests) &&
@@ -441,7 +471,7 @@ public class ReportJobConfiguration extends JobConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportTemplateId, userId, timezone, targets, notificationTemplateId, notificationRequests, originator, ruleNode, outputTbMsgProto, queueName, schedulerEventInfo, super.hashCode());
+    return Objects.hash(reportTemplateId, userId, timezone, makePublic, targets, notificationTemplateId, notificationRequests, originator, ruleNode, outputTbMsgProto, queueName, schedulerEventInfo, super.hashCode());
   }
 
   @Override
@@ -452,6 +482,7 @@ public class ReportJobConfiguration extends JobConfiguration {
     sb.append("    reportTemplateId: ").append(toIndentedString(reportTemplateId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    makePublic: ").append(toIndentedString(makePublic)).append("\n");
     sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("    notificationTemplateId: ").append(toIndentedString(notificationTemplateId)).append("\n");
     sb.append("    notificationRequests: ").append(toIndentedString(notificationRequests)).append("\n");
@@ -540,6 +571,11 @@ public class ReportJobConfiguration extends JobConfiguration {
     // add `timezone` to the URL query string
     if (getTimezone() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
+    }
+
+    // add `makePublic` to the URL query string
+    if (getMakePublic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smakePublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMakePublic()))));
     }
 
     // add `targets` to the URL query string

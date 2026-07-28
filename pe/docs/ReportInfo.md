@@ -15,10 +15,12 @@
 | **format** | **TbReportFormat** |  | |
 | **name** | **String** |  | |
 | **userId** | **UserId** |  | |
+| **publicKey** | **String** |  | [optional] |
 | **templateInfo** | **EntityInfo** |  | [optional] |
 | **customerTitle** | **String** |  | [optional] |
 | **userName** | **String** |  | [optional] |
 | **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
+| **_public** | **Boolean** |  | [optional] |
 
 
 
