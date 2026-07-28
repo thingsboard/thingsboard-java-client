@@ -13,11 +13,11 @@ A JSON value representing the role.
 | **createdTime** | **Long** | Timestamp of the role creation, in milliseconds | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the role. May include: 'description' (string). | [optional] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id. | [optional] [readonly] |
-| **customerId** | **CustomerId** | JSON object with Customer Id.  | [optional] [readonly] |
+| **customerId** | **CustomerId** | JSON object with Customer Id. Optional: when omitted the Role is owned by the tenant. When the request is made by a Customer user, the value is forced to the user's own Customer Id. | [optional] |
 | **name** | **String** | Role Name | |
 | **type** | **RoleType** | Type of the role: generic or group | |
-| **permissions** | **com.fasterxml.jackson.databind.JsonNode** | JSON object with the set of permissions. Structure is specific for role type | |
-| **excludedPermissions** | **com.fasterxml.jackson.databind.JsonNode** | JSON object with the set of excluded permissions. Only applicable for generic roles. Structure is the same as permissions | [optional] |
+| **permissions** | **com.fasterxml.jackson.databind.JsonNode** | Set of permissions granted by this role. The JSON shape depends on the role 'type':  * GENERIC — JSON object mapping `Resource` enum names to arrays of `Operation` enum names allowed on that resource. The wildcard entry `{\"ALL\":[\"ALL\"]}` grants every operation on every resource.  * GROUP — JSON array of `Operation` enum names that apply to the entity group this role is bound to via `GroupPermission.entityGroupId`. Only operations with `allowedForGroupRole=true` may appear (see `Operation` enum). The wildcard entry `[\"ALL\"]` grants every supported operation on the bound entity group. | |
+| **excludedPermissions** | **com.fasterxml.jackson.databind.JsonNode** | Operations to subtract from those granted by `permissions`. Only applicable to GENERIC roles — setting this on a GROUP role is rejected by validation. Same shape as the GENERIC variant of `permissions`: a JSON object mapping `Resource` enum names to non-empty arrays of `Operation` enum names. At evaluation time, for each resource the listed operations are removed from the resolved permission set (e.g. `permissions={\"ALL\":[\"ALL\"]}` combined with `excludedPermissions={\"DEVICE\":[\"DELETE\"]}` grants everything except deleting devices). May be null or an empty object when no exclusions apply. | [optional] |
 | **version** | **Long** |  | [optional] |
 | **ownerId** | **EntityId** | JSON object with Customer or Tenant Id | [optional] [readonly] |
 

@@ -9,7 +9,8 @@ Solution export request specifying which entities to include and export settings
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **entityIds** | **Set\<EntityId\>** |  | [optional] |
+| **internalIds** | **Set\<EntityId\>** | Set of internal entity IDs to export. The 'id' of each EntityId is the server-internal UUID. All listed entities must belong to the current tenant. Optional, but at least one of 'internalIds' or 'externalIds' must be non-empty. | [optional] |
+| **externalIds** | **Set\<EntityId\>** | Set of external entity IDs to export. The 'id' of each EntityId is the external UUID (as stored in the 'externalId' field on the entity in the current tenant). The server looks up each entity by 'externalId' and 'entityType' within the current tenant. Optional, but at least one of 'internalIds' or 'externalIds' must be non-empty. | [optional] |
 | **settings** | **EntityExportSettings** | Optional export settings controlling what additional data is included (relations, attributes, credentials, etc.). If not specified, default settings will be used that include all available data. | [optional] |
 
 
@@ -27,6 +28,7 @@ Solution export request specifying which entities to include and export settings
 | exportCalculatedFields | Boolean |  | [optional] |
 | exportPermissions | Boolean |  | [optional] |
 | exportGroupEntities | Boolean |  | [optional] |
+| embedGroupMembers | Boolean |  | [optional] |
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)

@@ -181,7 +181,7 @@ PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull String pageSize, @
 
 Get Scheduled Report Events (getScheduledReportEvents)
 
-  Available for users with 'TENANT_ADMIN' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -192,7 +192,7 @@ Get Scheduled Report Events (getScheduledReportEvents)
 | **page** | **String** | Sequence number of page starting from 0 | |
 | **reportTemplateId** | **UUID** | Report template id | [optional] |
 | **userId** | **UUID** | The user used for report generation. | [optional] |
-| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the scheduler event name or customer title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |

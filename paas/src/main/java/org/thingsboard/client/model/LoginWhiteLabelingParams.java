@@ -42,6 +42,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   LoginWhiteLabelingParams.JSON_PROPERTY_LOGO_IMAGE_URL,
   LoginWhiteLabelingParams.JSON_PROPERTY_LOGO_IMAGE_HEIGHT,
+  LoginWhiteLabelingParams.JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL,
   LoginWhiteLabelingParams.JSON_PROPERTY_APP_TITLE,
   LoginWhiteLabelingParams.JSON_PROPERTY_FAVICON,
   LoginWhiteLabelingParams.JSON_PROPERTY_PALETTE_SETTINGS,
@@ -73,6 +74,10 @@ public class LoginWhiteLabelingParams {
   public static final String JSON_PROPERTY_LOGO_IMAGE_HEIGHT = "logoImageHeight";
   @Nullable
   private Integer logoImageHeight;
+
+  public static final String JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL = "collapsedLogoImageUrl";
+  @Nullable
+  private String collapsedLogoImageUrl;
 
   public static final String JSON_PROPERTY_APP_TITLE = "appTitle";
   @Nullable
@@ -214,6 +219,30 @@ public class LoginWhiteLabelingParams {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLogoImageHeight(@Nullable Integer logoImageHeight) {
     this.logoImageHeight = logoImageHeight;
+  }
+
+
+  public LoginWhiteLabelingParams collapsedLogoImageUrl(@Nullable String collapsedLogoImageUrl) {
+    this.collapsedLogoImageUrl = collapsedLogoImageUrl;
+    return this;
+  }
+
+  /**
+   * Logo shown when side menu is collapsed
+   * @return collapsedLogoImageUrl
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCollapsedLogoImageUrl() {
+    return collapsedLogoImageUrl;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCollapsedLogoImageUrl(@Nullable String collapsedLogoImageUrl) {
+    this.collapsedLogoImageUrl = collapsedLogoImageUrl;
   }
 
 
@@ -725,6 +754,7 @@ public class LoginWhiteLabelingParams {
     LoginWhiteLabelingParams loginWhiteLabelingParams = (LoginWhiteLabelingParams) o;
     return Objects.equals(this.logoImageUrl, loginWhiteLabelingParams.logoImageUrl) &&
         Objects.equals(this.logoImageHeight, loginWhiteLabelingParams.logoImageHeight) &&
+        Objects.equals(this.collapsedLogoImageUrl, loginWhiteLabelingParams.collapsedLogoImageUrl) &&
         Objects.equals(this.appTitle, loginWhiteLabelingParams.appTitle) &&
         Objects.equals(this.favicon, loginWhiteLabelingParams.favicon) &&
         Objects.equals(this.paletteSettings, loginWhiteLabelingParams.paletteSettings) &&
@@ -750,7 +780,7 @@ public class LoginWhiteLabelingParams {
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoImageUrl, logoImageHeight, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot, pageBackgroundColor, darkForeground, domainId, baseUrl, prohibitDifferentUrl, adminSettingsId, showNameBottom);
+    return Objects.hash(logoImageUrl, logoImageHeight, collapsedLogoImageUrl, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot, pageBackgroundColor, darkForeground, domainId, baseUrl, prohibitDifferentUrl, adminSettingsId, showNameBottom);
   }
 
   @Override
@@ -759,6 +789,7 @@ public class LoginWhiteLabelingParams {
     sb.append("class LoginWhiteLabelingParams {\n");
     sb.append("    logoImageUrl: ").append(toIndentedString(logoImageUrl)).append("\n");
     sb.append("    logoImageHeight: ").append(toIndentedString(logoImageHeight)).append("\n");
+    sb.append("    collapsedLogoImageUrl: ").append(toIndentedString(collapsedLogoImageUrl)).append("\n");
     sb.append("    appTitle: ").append(toIndentedString(appTitle)).append("\n");
     sb.append("    favicon: ").append(toIndentedString(favicon)).append("\n");
     sb.append("    paletteSettings: ").append(toIndentedString(paletteSettings)).append("\n");
@@ -835,6 +866,11 @@ public class LoginWhiteLabelingParams {
     // add `logoImageHeight` to the URL query string
     if (getLogoImageHeight() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slogoImageHeight%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLogoImageHeight()))));
+    }
+
+    // add `collapsedLogoImageUrl` to the URL query string
+    if (getCollapsedLogoImageUrl() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scollapsedLogoImageUrl%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCollapsedLogoImageUrl()))));
     }
 
     // add `appTitle` to the URL query string

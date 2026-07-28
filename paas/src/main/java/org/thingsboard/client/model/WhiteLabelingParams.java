@@ -41,6 +41,7 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   WhiteLabelingParams.JSON_PROPERTY_LOGO_IMAGE_URL,
   WhiteLabelingParams.JSON_PROPERTY_LOGO_IMAGE_HEIGHT,
+  WhiteLabelingParams.JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL,
   WhiteLabelingParams.JSON_PROPERTY_APP_TITLE,
   WhiteLabelingParams.JSON_PROPERTY_FAVICON,
   WhiteLabelingParams.JSON_PROPERTY_PALETTE_SETTINGS,
@@ -65,6 +66,10 @@ public class WhiteLabelingParams {
   public static final String JSON_PROPERTY_LOGO_IMAGE_HEIGHT = "logoImageHeight";
   @Nullable
   private Integer logoImageHeight;
+
+  public static final String JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL = "collapsedLogoImageUrl";
+  @Nullable
+  private String collapsedLogoImageUrl;
 
   public static final String JSON_PROPERTY_APP_TITLE = "appTitle";
   @Nullable
@@ -178,6 +183,30 @@ public class WhiteLabelingParams {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLogoImageHeight(@Nullable Integer logoImageHeight) {
     this.logoImageHeight = logoImageHeight;
+  }
+
+
+  public WhiteLabelingParams collapsedLogoImageUrl(@Nullable String collapsedLogoImageUrl) {
+    this.collapsedLogoImageUrl = collapsedLogoImageUrl;
+    return this;
+  }
+
+  /**
+   * Logo shown when side menu is collapsed
+   * @return collapsedLogoImageUrl
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCollapsedLogoImageUrl() {
+    return collapsedLogoImageUrl;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCollapsedLogoImageUrl(@Nullable String collapsedLogoImageUrl) {
+    this.collapsedLogoImageUrl = collapsedLogoImageUrl;
   }
 
 
@@ -521,6 +550,7 @@ public class WhiteLabelingParams {
     WhiteLabelingParams whiteLabelingParams = (WhiteLabelingParams) o;
     return Objects.equals(this.logoImageUrl, whiteLabelingParams.logoImageUrl) &&
         Objects.equals(this.logoImageHeight, whiteLabelingParams.logoImageHeight) &&
+        Objects.equals(this.collapsedLogoImageUrl, whiteLabelingParams.collapsedLogoImageUrl) &&
         Objects.equals(this.appTitle, whiteLabelingParams.appTitle) &&
         Objects.equals(this.favicon, whiteLabelingParams.favicon) &&
         Objects.equals(this.paletteSettings, whiteLabelingParams.paletteSettings) &&
@@ -539,7 +569,7 @@ public class WhiteLabelingParams {
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoImageUrl, logoImageHeight, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot);
+    return Objects.hash(logoImageUrl, logoImageHeight, collapsedLogoImageUrl, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot);
   }
 
   @Override
@@ -548,6 +578,7 @@ public class WhiteLabelingParams {
     sb.append("class WhiteLabelingParams {\n");
     sb.append("    logoImageUrl: ").append(toIndentedString(logoImageUrl)).append("\n");
     sb.append("    logoImageHeight: ").append(toIndentedString(logoImageHeight)).append("\n");
+    sb.append("    collapsedLogoImageUrl: ").append(toIndentedString(collapsedLogoImageUrl)).append("\n");
     sb.append("    appTitle: ").append(toIndentedString(appTitle)).append("\n");
     sb.append("    favicon: ").append(toIndentedString(favicon)).append("\n");
     sb.append("    paletteSettings: ").append(toIndentedString(paletteSettings)).append("\n");
@@ -617,6 +648,11 @@ public class WhiteLabelingParams {
     // add `logoImageHeight` to the URL query string
     if (getLogoImageHeight() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%slogoImageHeight%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLogoImageHeight()))));
+    }
+
+    // add `collapsedLogoImageUrl` to the URL query string
+    if (getCollapsedLogoImageUrl() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scollapsedLogoImageUrl%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCollapsedLogoImageUrl()))));
     }
 
     // add `appTitle` to the URL query string

@@ -173,7 +173,7 @@ public class ApiClient {
   public ApiClient() {
     this.builder = createDefaultHttpClientBuilder();
     this.mapper = createDefaultObjectMapper();
-    updateBaseUri("http://localhost:8080");
+    updateBaseUri("http://localhost:35943");
     interceptor = null;
     readTimeout = null;
     connectTimeout = null;
@@ -191,7 +191,7 @@ public class ApiClient {
   public ApiClient(HttpClient.Builder builder, ObjectMapper mapper, String baseUri) {
     this.builder = builder;
     this.mapper = mapper;
-    updateBaseUri(baseUri != null ? baseUri : "http://localhost:8080");
+    updateBaseUri(baseUri != null ? baseUri : "http://localhost:35943");
     interceptor = null;
     readTimeout = null;
     connectTimeout = null;
