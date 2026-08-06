@@ -37,8 +37,58 @@
 | error | String |  | [optional] |
 | jobType | String |  |  |
 
+#### CfReprocessingTaskResult  *(extends TaskResult, jobType=`CF_REPROCESSING`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failure | CfReprocessingTaskFailure |  | [optional] |
+
+#### DummyTaskResult  *(extends TaskResult, jobType=`DUMMY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failure | DummyTaskFailure |  | [optional] |
+
+#### ReportTaskResult  *(extends TaskResult, jobType=`REPORT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| report | Report |  | [optional] |
+
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
+#### CfReprocessingTaskFailure
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| error | String |  | [optional] |
+| entityInfo | EntityInfo |  | [optional] |
+
+#### Report
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | ReportId |  | [optional] |
+| createdTime | Long | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| tenantId | TenantId |  |  |
+| customerId | CustomerId |  | [optional] |
+| templateId | ReportTemplateId |  |  |
+| format | TbReportFormat |  |  |
+| name | String |  |  |
+| userId | UserId |  |  |
+| ownerId | EntityId | JSON object with Customer or Tenant Id | [optional] [readonly] |
+
+#### DummyTaskFailure
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| error | String |  | [optional] |
+| number | Integer |  | [optional] |
+| failAlways | Boolean |  | [optional] |
+
+#### EntityInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | EntityId | JSON object with the entity Id. | [optional] |
+| name | String | Entity Name | [optional] |
+
+#### TbReportFormat (enum)
+`PDF` | `CSV`
 
 ---
 
