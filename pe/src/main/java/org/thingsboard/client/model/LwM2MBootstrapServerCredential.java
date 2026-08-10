@@ -50,10 +50,10 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "securityMode", visible = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = NoSecLwM2MBootstrapServerCredential.class, name = "NoSecLwM2MBootstrapServerCredential"),
-  @JsonSubTypes.Type(value = PSKLwM2MBootstrapServerCredential.class, name = "PSKLwM2MBootstrapServerCredential"),
-  @JsonSubTypes.Type(value = RPKLwM2MBootstrapServerCredential.class, name = "RPKLwM2MBootstrapServerCredential"),
-  @JsonSubTypes.Type(value = X509LwM2MBootstrapServerCredential.class, name = "X509LwM2MBootstrapServerCredential"),
+  @JsonSubTypes.Type(value = NoSecLwM2MBootstrapServerCredential.class, name = "NO_SEC"),
+  @JsonSubTypes.Type(value = PSKLwM2MBootstrapServerCredential.class, name = "PSK"),
+  @JsonSubTypes.Type(value = RPKLwM2MBootstrapServerCredential.class, name = "RPK"),
+  @JsonSubTypes.Type(value = X509LwM2MBootstrapServerCredential.class, name = "X509"),
 })
 
 public class LwM2MBootstrapServerCredential {
@@ -170,10 +170,10 @@ public class LwM2MBootstrapServerCredential {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("NoSecLwM2MBootstrapServerCredential", NoSecLwM2MBootstrapServerCredential.class);
-  mappings.put("PSKLwM2MBootstrapServerCredential", PSKLwM2MBootstrapServerCredential.class);
-  mappings.put("RPKLwM2MBootstrapServerCredential", RPKLwM2MBootstrapServerCredential.class);
-  mappings.put("X509LwM2MBootstrapServerCredential", X509LwM2MBootstrapServerCredential.class);
+  mappings.put("NO_SEC", NoSecLwM2MBootstrapServerCredential.class);
+  mappings.put("PSK", PSKLwM2MBootstrapServerCredential.class);
+  mappings.put("RPK", RPKLwM2MBootstrapServerCredential.class);
+  mappings.put("X509", X509LwM2MBootstrapServerCredential.class);
   mappings.put("LwM2MBootstrapServerCredential", LwM2MBootstrapServerCredential.class);
   JSON.registerDiscriminator(LwM2MBootstrapServerCredential.class, "securityMode", mappings);
 }
