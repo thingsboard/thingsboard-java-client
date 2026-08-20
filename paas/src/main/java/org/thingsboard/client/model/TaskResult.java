@@ -56,9 +56,9 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "jobType", visible = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = CfReprocessingTaskResult.class, name = "CfReprocessingTaskResult"),
-  @JsonSubTypes.Type(value = DummyTaskResult.class, name = "DummyTaskResult"),
-  @JsonSubTypes.Type(value = ReportTaskResult.class, name = "ReportTaskResult"),
+  @JsonSubTypes.Type(value = CfReprocessingTaskResult.class, name = "CF_REPROCESSING"),
+  @JsonSubTypes.Type(value = DummyTaskResult.class, name = "DUMMY"),
+  @JsonSubTypes.Type(value = ReportTaskResult.class, name = "REPORT"),
 })
 
 public class TaskResult {
@@ -350,9 +350,9 @@ public class TaskResult {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("CfReprocessingTaskResult", CfReprocessingTaskResult.class);
-  mappings.put("DummyTaskResult", DummyTaskResult.class);
-  mappings.put("ReportTaskResult", ReportTaskResult.class);
+  mappings.put("CF_REPROCESSING", CfReprocessingTaskResult.class);
+  mappings.put("DUMMY", DummyTaskResult.class);
+  mappings.put("REPORT", ReportTaskResult.class);
   mappings.put("TaskResult", TaskResult.class);
   JSON.registerDiscriminator(TaskResult.class, "jobType", mappings);
 }
