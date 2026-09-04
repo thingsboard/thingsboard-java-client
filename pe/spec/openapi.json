@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:43909",
+      "url": "http://localhost:44755",
       "description": "Generated server url"
     }
   ],
@@ -3803,6 +3803,138 @@
       }
     },
     "/api/ai/chats": {
+      "get": {
+        "tags": [
+          "ai-chat-controller"
+        ],
+        "summary": "listChats",
+        "operationId": "listChats",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonNode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "status": 400,
+                      "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "status": 401,
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "status": 403,
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "status": 404,
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "status": 429,
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      },
       "post": {
         "tags": [
           "ai-chat-controller"
@@ -4444,150 +4576,6 @@
                     "value": {
                       "status": 400,
                       "message": "Invalid request body",
-                      "errorCode": 31,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-401": {
-                    "summary": "Unauthorized",
-                    "value": {
-                      "status": 401,
-                      "message": "Authentication failed",
-                      "errorCode": 10,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-403": {
-                    "summary": "Forbidden",
-                    "value": {
-                      "status": 403,
-                      "message": "You don't have permission to perform this operation!",
-                      "errorCode": 20,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-404": {
-                    "summary": "Not Found",
-                    "value": {
-                      "status": 404,
-                      "message": "Requested item wasn't found!",
-                      "errorCode": 32,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "Too Many Requests",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-429": {
-                    "summary": "Too Many Requests",
-                    "value": {
-                      "status": 429,
-                      "message": "Too many requests for current tenant!",
-                      "errorCode": 33,
-                      "timestamp": 1609459200000
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "HttpLoginForm": []
-          },
-          {
-            "ApiKeyForm": []
-          }
-        ]
-      }
-    },
-    "/api/ai/chats/{chatType}": {
-      "get": {
-        "tags": [
-          "ai-chat-controller"
-        ],
-        "summary": "listChats",
-        "operationId": "listChats",
-        "parameters": [
-          {
-            "name": "chatType",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/ChatType"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/JsonNode"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
-                },
-                "examples": {
-                  "error-code-400": {
-                    "summary": "Bad Request",
-                    "value": {
-                      "status": 400,
-                      "message": "Invalid UUID string: 123",
                       "errorCode": 31,
                       "timestamp": 1609459200000
                     }
@@ -41610,7 +41598,7 @@
           "edge-controller"
         ],
         "summary": "Import the bulk of edges (processEdgesBulkImport)",
-        "description": "There's an ability to import the bulk of edges using the only .csv file.\n\nAvailable for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.",
+        "description": "There's an ability to import the bulk of edges using the only .csv file.\n\nAvailable for users with 'TENANT_ADMIN' authority.",
         "operationId": "processEdgesBulkImport",
         "requestBody": {
           "content": {
@@ -122834,13 +122822,6 @@
           "pin",
           "arrow",
           "none"
-        ]
-      },
-      "ChatType": {
-        "type": "string",
-        "enum": [
-          "GENERIC",
-          "SOLUTION_BUILDER"
         ]
       },
       "CheckPreProvisionedDevicesDeviceProfileProvisionConfiguration": {
