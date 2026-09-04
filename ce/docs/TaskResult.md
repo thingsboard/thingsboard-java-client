@@ -16,6 +16,22 @@
 
 
 
+## Subtypes
+
+#### DummyTaskResult  *(jobType=`DUMMY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failure | DummyTaskFailure |  | [optional] |
+
+## Referenced Types
+
+#### DummyTaskFailure
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| error | String |  | [optional] |
+| number | Integer |  | [optional] |
+| failAlways | Boolean |  | [optional] |
+
 ---
 
 ### Conventions
