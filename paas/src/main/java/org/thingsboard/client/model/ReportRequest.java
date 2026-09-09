@@ -48,6 +48,7 @@ import org.thingsboard.client.ApiClient;
   ReportRequest.JSON_PROPERTY_REPORT_TEMPLATE_CONFIG,
   ReportRequest.JSON_PROPERTY_TIMEZONE,
   ReportRequest.JSON_PROPERTY_USER_ID,
+  ReportRequest.JSON_PROPERTY_MAKE_PUBLIC,
   ReportRequest.JSON_PROPERTY_ORIGINATOR,
   ReportRequest.JSON_PROPERTY_TARGETS,
   ReportRequest.JSON_PROPERTY_NOTIFICATION_TEMPLATE_ID
@@ -69,6 +70,10 @@ public class ReportRequest {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @Nullable
   private String userId;
+
+  public static final String JSON_PROPERTY_MAKE_PUBLIC = "makePublic";
+  @Nullable
+  private Boolean makePublic;
 
   public static final String JSON_PROPERTY_ORIGINATOR = "originator";
   @Nullable
@@ -181,6 +186,30 @@ public class ReportRequest {
   }
 
 
+  public ReportRequest makePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
+    return this;
+  }
+
+  /**
+   * A boolean value indicating whether the generated report should be made public.
+   * @return makePublic
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getMakePublic() {
+    return makePublic;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMakePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
+  }
+
+
   public ReportRequest originator(@Nullable EntityId originator) {
     this.originator = originator;
     return this;
@@ -277,6 +306,7 @@ public class ReportRequest {
         Objects.equals(this.reportTemplateConfig, reportRequest.reportTemplateConfig) &&
         Objects.equals(this.timezone, reportRequest.timezone) &&
         Objects.equals(this.userId, reportRequest.userId) &&
+        Objects.equals(this.makePublic, reportRequest.makePublic) &&
         Objects.equals(this.originator, reportRequest.originator) &&
         Objects.equals(this.targets, reportRequest.targets) &&
         Objects.equals(this.notificationTemplateId, reportRequest.notificationTemplateId);
@@ -284,7 +314,7 @@ public class ReportRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(reportTemplateId, reportTemplateConfig, timezone, userId, originator, targets, notificationTemplateId);
+    return Objects.hash(reportTemplateId, reportTemplateConfig, timezone, userId, makePublic, originator, targets, notificationTemplateId);
   }
 
   @Override
@@ -295,6 +325,7 @@ public class ReportRequest {
     sb.append("    reportTemplateConfig: ").append(toIndentedString(reportTemplateConfig)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    makePublic: ").append(toIndentedString(makePublic)).append("\n");
     sb.append("    originator: ").append(toIndentedString(originator)).append("\n");
     sb.append("    targets: ").append(toIndentedString(targets)).append("\n");
     sb.append("    notificationTemplateId: ").append(toIndentedString(notificationTemplateId)).append("\n");
@@ -363,6 +394,11 @@ public class ReportRequest {
     // add `userId` to the URL query string
     if (getUserId() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%suserId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUserId()))));
+    }
+
+    // add `makePublic` to the URL query string
+    if (getMakePublic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smakePublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMakePublic()))));
     }
 
     // add `originator` to the URL query string

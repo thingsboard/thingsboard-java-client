@@ -6,12 +6,14 @@
 Report createReport(@Nullable CreateReportRequest createReportRequest) // createReport
 void deleteReport(@Nonnull String reportId) // Delete Report (deleteReport)
 File downloadReport(@Nonnull UUID reportId) // downloadReport
+File downloadReportByPublicKey(@Nonnull String publicKey) // Download report by public key (downloadReportByPublicKey)
 Report getReportById(@Nonnull String reportId) // Get Report (getReportById)
 PageDataReportInfo getReportInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // getReportInfos
 List<ReportInfo> getReportInfosByIds(@Nonnull List<String> strReportIds) // getReportInfosByIds
 PageDataReport getReports(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Boolean includeCustomers) // getReports
 Job requestReport(@Nonnull ReportRequest reportRequest) // requestReport
 File testReportAndDownload(@Nonnull ReportRequest reportRequest) // Download test report (testReportAndDownload)
+Report updateReportPublicStatus(@Nonnull UUID reportId, @Nonnull Boolean isPublic) // Update Report public status (updateReportPublicStatus)
 ```
 
 
@@ -77,6 +79,30 @@ downloadReport
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **reportId** | **UUID** |  | |
+
+### Return type
+
+**File**
+
+
+## downloadReportByPublicKey
+
+```
+File downloadReportByPublicKey(@Nonnull String publicKey)
+```
+
+**GET** `/api/v2/report/public/{publicKey}/download`
+
+Download report by public key (downloadReportByPublicKey)
+
+Downloads the report identified by its public key. This endpoint is intentionally public: it requires no authentication and is accessible to anyone in possession of the report's random public key. It only returns data for reports that have been explicitly made public (see updateReportPublicStatus).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **publicKey** | **String** | The random public key of the report | |
 
 ### Return type
 
@@ -229,4 +255,29 @@ Generate and download test report.  Available for users with 'TENANT_ADMIN' or '
 ### Return type
 
 **File**
+
+
+## updateReportPublicStatus
+
+```
+Report updateReportPublicStatus(@Nonnull UUID reportId, @Nonnull Boolean isPublic)
+```
+
+**PUT** `/api/v2/report/{reportId}/public/{isPublic}`
+
+Update Report public status (updateReportPublicStatus)
+
+Updates the public status of the report. When public, the report can be downloaded without authentication via the public link.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportId** | **UUID** | A string value representing the report id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **isPublic** | **Boolean** | Whether the report should be publicly downloadable without authentication | |
+
+### Return type
+
+**Report**
 

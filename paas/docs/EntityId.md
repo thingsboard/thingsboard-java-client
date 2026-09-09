@@ -17,6 +17,27 @@
 #### AdminSettingsId  *(entityType=`ADMIN_SETTINGS`)*
 *(no additional properties)*
 
+#### AgentId  *(entityType=`AGENT`)*
+*(no additional properties)*
+
+#### AgentApplicationId  *(entityType=`AGENT_APPLICATION`)*
+*(no additional properties)*
+
+#### AgentAppEventId  *(entityType=`AGENT_APP_EVENT`)*
+*(no additional properties)*
+
+#### AgentAppProfileId  *(entityType=`AGENT_APP_PROFILE`)*
+*(no additional properties)*
+
+#### AgentAppUnitId  *(entityType=`AGENT_APP_UNIT`)*
+*(no additional properties)*
+
+#### AgentBulkActionId  *(entityType=`AGENT_BULK_ACTION`)*
+*(no additional properties)*
+
+#### AgentProfileId  *(entityType=`AGENT_PROFILE`)*
+*(no additional properties)*
+
 #### AiModelId  *(entityType=`AI_MODEL`)*
 *(no additional properties)*
 
@@ -173,7 +194,7 @@
 ## Referenced Types
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 ---
 
