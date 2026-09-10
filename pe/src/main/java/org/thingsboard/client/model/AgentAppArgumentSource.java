@@ -28,17 +28,29 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets ChatType
+ * Gets or Sets AgentAppArgumentSource
  */
-public enum ChatType {
+public enum AgentAppArgumentSource {
   
-  GENERIC("GENERIC"),
+  AGENT("AGENT"),
   
-  SOLUTION_BUILDER("SOLUTION_BUILDER");
+  OWNER("OWNER"),
+  
+  RELATED_ENTITY("RELATED_ENTITY"),
+  
+  TENANT("TENANT"),
+  
+  DEVICE("DEVICE"),
+  
+  ASSET("ASSET"),
+  
+  CUSTOMER("CUSTOMER"),
+  
+  EDGE("EDGE");
 
   private String value;
 
-  ChatType(String value) {
+  AgentAppArgumentSource(String value) {
     this.value = value;
   }
 
@@ -53,8 +65,8 @@ public enum ChatType {
   }
 
   @JsonCreator
-  public static ChatType fromValue(String value) {
-    for (ChatType b : ChatType.values()) {
+  public static AgentAppArgumentSource fromValue(String value) {
+    for (AgentAppArgumentSource b : AgentAppArgumentSource.values()) {
       if (b.value.equals(value)) {
         return b;
       }

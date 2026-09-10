@@ -109,6 +109,10 @@ import org.thingsboard.client.ApiClient;
   DefaultTenantProfileConfiguration.JSON_PROPERTY_EDGE_EVENT_RATE_LIMITS_PER_EDGE,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_EDGE_UPLINK_MESSAGES_RATE_LIMITS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_EDGE_UPLINK_MESSAGES_RATE_LIMITS_PER_EDGE,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS_PER_AGENT,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS_PER_AGENT,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_DEFAULT_STORAGE_TTL_DAYS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_ALARMS_TTL_DAYS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_RPC_TTL_DAYS,
@@ -407,6 +411,22 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   public static final String JSON_PROPERTY_EDGE_UPLINK_MESSAGES_RATE_LIMITS_PER_EDGE = "edgeUplinkMessagesRateLimitsPerEdge";
   @Nullable
   private String edgeUplinkMessagesRateLimitsPerEdge;
+
+  public static final String JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS = "agentEventRateLimits";
+  @Nullable
+  private String agentEventRateLimits;
+
+  public static final String JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS_PER_AGENT = "agentEventRateLimitsPerAgent";
+  @Nullable
+  private String agentEventRateLimitsPerAgent;
+
+  public static final String JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS = "agentLogChunkRateLimits";
+  @Nullable
+  private String agentLogChunkRateLimits;
+
+  public static final String JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS_PER_AGENT = "agentLogChunkRateLimitsPerAgent";
+  @Nullable
+  private String agentLogChunkRateLimitsPerAgent;
 
   public static final String JSON_PROPERTY_DEFAULT_STORAGE_TTL_DAYS = "defaultStorageTtlDays";
   @Nullable
@@ -2107,6 +2127,102 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   }
 
 
+  public DefaultTenantProfileConfiguration agentEventRateLimits(@Nullable String agentEventRateLimits) {
+    this.agentEventRateLimits = agentEventRateLimits;
+    return this;
+  }
+
+  /**
+   * Get agentEventRateLimits
+   * @return agentEventRateLimits
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAgentEventRateLimits() {
+    return agentEventRateLimits;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgentEventRateLimits(@Nullable String agentEventRateLimits) {
+    this.agentEventRateLimits = agentEventRateLimits;
+  }
+
+
+  public DefaultTenantProfileConfiguration agentEventRateLimitsPerAgent(@Nullable String agentEventRateLimitsPerAgent) {
+    this.agentEventRateLimitsPerAgent = agentEventRateLimitsPerAgent;
+    return this;
+  }
+
+  /**
+   * Get agentEventRateLimitsPerAgent
+   * @return agentEventRateLimitsPerAgent
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS_PER_AGENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAgentEventRateLimitsPerAgent() {
+    return agentEventRateLimitsPerAgent;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AGENT_EVENT_RATE_LIMITS_PER_AGENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgentEventRateLimitsPerAgent(@Nullable String agentEventRateLimitsPerAgent) {
+    this.agentEventRateLimitsPerAgent = agentEventRateLimitsPerAgent;
+  }
+
+
+  public DefaultTenantProfileConfiguration agentLogChunkRateLimits(@Nullable String agentLogChunkRateLimits) {
+    this.agentLogChunkRateLimits = agentLogChunkRateLimits;
+    return this;
+  }
+
+  /**
+   * Get agentLogChunkRateLimits
+   * @return agentLogChunkRateLimits
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAgentLogChunkRateLimits() {
+    return agentLogChunkRateLimits;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgentLogChunkRateLimits(@Nullable String agentLogChunkRateLimits) {
+    this.agentLogChunkRateLimits = agentLogChunkRateLimits;
+  }
+
+
+  public DefaultTenantProfileConfiguration agentLogChunkRateLimitsPerAgent(@Nullable String agentLogChunkRateLimitsPerAgent) {
+    this.agentLogChunkRateLimitsPerAgent = agentLogChunkRateLimitsPerAgent;
+    return this;
+  }
+
+  /**
+   * Get agentLogChunkRateLimitsPerAgent
+   * @return agentLogChunkRateLimitsPerAgent
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS_PER_AGENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getAgentLogChunkRateLimitsPerAgent() {
+    return agentLogChunkRateLimitsPerAgent;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AGENT_LOG_CHUNK_RATE_LIMITS_PER_AGENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgentLogChunkRateLimitsPerAgent(@Nullable String agentLogChunkRateLimitsPerAgent) {
+    this.agentLogChunkRateLimitsPerAgent = agentLogChunkRateLimitsPerAgent;
+  }
+
+
   public DefaultTenantProfileConfiguration defaultStorageTtlDays(@Nullable Integer defaultStorageTtlDays) {
     this.defaultStorageTtlDays = defaultStorageTtlDays;
     return this;
@@ -2714,6 +2830,10 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
         Objects.equals(this.edgeEventRateLimitsPerEdge, defaultTenantProfileConfiguration.edgeEventRateLimitsPerEdge) &&
         Objects.equals(this.edgeUplinkMessagesRateLimits, defaultTenantProfileConfiguration.edgeUplinkMessagesRateLimits) &&
         Objects.equals(this.edgeUplinkMessagesRateLimitsPerEdge, defaultTenantProfileConfiguration.edgeUplinkMessagesRateLimitsPerEdge) &&
+        Objects.equals(this.agentEventRateLimits, defaultTenantProfileConfiguration.agentEventRateLimits) &&
+        Objects.equals(this.agentEventRateLimitsPerAgent, defaultTenantProfileConfiguration.agentEventRateLimitsPerAgent) &&
+        Objects.equals(this.agentLogChunkRateLimits, defaultTenantProfileConfiguration.agentLogChunkRateLimits) &&
+        Objects.equals(this.agentLogChunkRateLimitsPerAgent, defaultTenantProfileConfiguration.agentLogChunkRateLimitsPerAgent) &&
         Objects.equals(this.defaultStorageTtlDays, defaultTenantProfileConfiguration.defaultStorageTtlDays) &&
         Objects.equals(this.alarmsTtlDays, defaultTenantProfileConfiguration.alarmsTtlDays) &&
         Objects.equals(this.rpcTtlDays, defaultTenantProfileConfiguration.rpcTtlDays) &&
@@ -2741,7 +2861,7 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxDashboards, maxRuleChains, maxEdges, maxResourcesInBytes, maxOtaPackagesInBytes, maxResourceSize, maxReportSizeInBytes, maxIntegrations, maxConverters, maxSchedulerEvents, transportTenantMsgRateLimit, transportTenantTelemetryMsgRateLimit, transportTenantTelemetryDataPointsRateLimit, transportDeviceMsgRateLimit, transportDeviceTelemetryMsgRateLimit, transportDeviceTelemetryDataPointsRateLimit, transportGatewayMsgRateLimit, transportGatewayTelemetryMsgRateLimit, transportGatewayTelemetryDataPointsRateLimit, transportGatewayDeviceMsgRateLimit, transportGatewayDeviceTelemetryMsgRateLimit, transportGatewayDeviceTelemetryDataPointsRateLimit, integrationMsgsPerTenantRateLimit, integrationMsgsPerDeviceRateLimit, integrationMsgsPerAssetRateLimit, tenantEntityExportRateLimit, tenantEntityImportRateLimit, tenantNotificationRequestsRateLimit, tenantNotificationRequestsPerRuleRateLimit, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxTbelExecutions, maxDPStorageDays, maxRuleNodeExecutionsPerMessage, maxDebugModeDurationMinutes, maxEmails, smsEnabled, maxSms, maxCreatedAlarms, maxGeneratedReports, maxAiCredits, tenantServerRestLimitsConfiguration, customerServerRestLimitsConfiguration, maxWsSessionsPerTenant, maxWsSessionsPerCustomer, maxWsSessionsPerRegularUser, maxWsSessionsPerPublicUser, wsMsgQueueLimitPerSession, maxWsSubscriptionsPerTenant, maxWsSubscriptionsPerCustomer, maxWsSubscriptionsPerRegularUser, maxWsSubscriptionsPerPublicUser, wsUpdatesPerSessionRateLimit, cassandraReadQueryTenantCoreRateLimits, cassandraWriteQueryTenantCoreRateLimits, cassandraReadQueryTenantRuleEngineRateLimits, cassandraWriteQueryTenantRuleEngineRateLimits, edgeEventRateLimits, edgeEventRateLimitsPerEdge, edgeUplinkMessagesRateLimits, edgeUplinkMessagesRateLimitsPerEdge, defaultStorageTtlDays, alarmsTtlDays, rpcTtlDays, queueStatsTtlDays, ruleEngineExceptionsTtlDays, blobEntityTtlDays, reportTtlDays, warnThreshold, maxCalculatedFieldsPerEntity, maxArgumentsPerCF, minAllowedScheduledUpdateIntervalInSecForCF, maxRelationLevelPerCfArgument, maxRelatedEntitiesToReturnPerCfArgument, maxDataPointsPerRollingArg, maxStateSizeInKBytes, maxSingleValueArgumentSizeInKBytes, minAllowedDeduplicationIntervalInSecForCF, minAllowedAggregationIntervalInSecForCF, intermediateAggregationIntervalInSecForCF, cfReevaluationCheckInterval, alarmsReevaluationInterval, aiChatRequestsPerTenantRateLimit, super.hashCode());
+    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxDashboards, maxRuleChains, maxEdges, maxResourcesInBytes, maxOtaPackagesInBytes, maxResourceSize, maxReportSizeInBytes, maxIntegrations, maxConverters, maxSchedulerEvents, transportTenantMsgRateLimit, transportTenantTelemetryMsgRateLimit, transportTenantTelemetryDataPointsRateLimit, transportDeviceMsgRateLimit, transportDeviceTelemetryMsgRateLimit, transportDeviceTelemetryDataPointsRateLimit, transportGatewayMsgRateLimit, transportGatewayTelemetryMsgRateLimit, transportGatewayTelemetryDataPointsRateLimit, transportGatewayDeviceMsgRateLimit, transportGatewayDeviceTelemetryMsgRateLimit, transportGatewayDeviceTelemetryDataPointsRateLimit, integrationMsgsPerTenantRateLimit, integrationMsgsPerDeviceRateLimit, integrationMsgsPerAssetRateLimit, tenantEntityExportRateLimit, tenantEntityImportRateLimit, tenantNotificationRequestsRateLimit, tenantNotificationRequestsPerRuleRateLimit, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxTbelExecutions, maxDPStorageDays, maxRuleNodeExecutionsPerMessage, maxDebugModeDurationMinutes, maxEmails, smsEnabled, maxSms, maxCreatedAlarms, maxGeneratedReports, maxAiCredits, tenantServerRestLimitsConfiguration, customerServerRestLimitsConfiguration, maxWsSessionsPerTenant, maxWsSessionsPerCustomer, maxWsSessionsPerRegularUser, maxWsSessionsPerPublicUser, wsMsgQueueLimitPerSession, maxWsSubscriptionsPerTenant, maxWsSubscriptionsPerCustomer, maxWsSubscriptionsPerRegularUser, maxWsSubscriptionsPerPublicUser, wsUpdatesPerSessionRateLimit, cassandraReadQueryTenantCoreRateLimits, cassandraWriteQueryTenantCoreRateLimits, cassandraReadQueryTenantRuleEngineRateLimits, cassandraWriteQueryTenantRuleEngineRateLimits, edgeEventRateLimits, edgeEventRateLimitsPerEdge, edgeUplinkMessagesRateLimits, edgeUplinkMessagesRateLimitsPerEdge, agentEventRateLimits, agentEventRateLimitsPerAgent, agentLogChunkRateLimits, agentLogChunkRateLimitsPerAgent, defaultStorageTtlDays, alarmsTtlDays, rpcTtlDays, queueStatsTtlDays, ruleEngineExceptionsTtlDays, blobEntityTtlDays, reportTtlDays, warnThreshold, maxCalculatedFieldsPerEntity, maxArgumentsPerCF, minAllowedScheduledUpdateIntervalInSecForCF, maxRelationLevelPerCfArgument, maxRelatedEntitiesToReturnPerCfArgument, maxDataPointsPerRollingArg, maxStateSizeInKBytes, maxSingleValueArgumentSizeInKBytes, minAllowedDeduplicationIntervalInSecForCF, minAllowedAggregationIntervalInSecForCF, intermediateAggregationIntervalInSecForCF, cfReevaluationCheckInterval, alarmsReevaluationInterval, aiChatRequestsPerTenantRateLimit, super.hashCode());
   }
 
   @Override
@@ -2816,6 +2936,10 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
     sb.append("    edgeEventRateLimitsPerEdge: ").append(toIndentedString(edgeEventRateLimitsPerEdge)).append("\n");
     sb.append("    edgeUplinkMessagesRateLimits: ").append(toIndentedString(edgeUplinkMessagesRateLimits)).append("\n");
     sb.append("    edgeUplinkMessagesRateLimitsPerEdge: ").append(toIndentedString(edgeUplinkMessagesRateLimitsPerEdge)).append("\n");
+    sb.append("    agentEventRateLimits: ").append(toIndentedString(agentEventRateLimits)).append("\n");
+    sb.append("    agentEventRateLimitsPerAgent: ").append(toIndentedString(agentEventRateLimitsPerAgent)).append("\n");
+    sb.append("    agentLogChunkRateLimits: ").append(toIndentedString(agentLogChunkRateLimits)).append("\n");
+    sb.append("    agentLogChunkRateLimitsPerAgent: ").append(toIndentedString(agentLogChunkRateLimitsPerAgent)).append("\n");
     sb.append("    defaultStorageTtlDays: ").append(toIndentedString(defaultStorageTtlDays)).append("\n");
     sb.append("    alarmsTtlDays: ").append(toIndentedString(alarmsTtlDays)).append("\n");
     sb.append("    rpcTtlDays: ").append(toIndentedString(rpcTtlDays)).append("\n");
@@ -3223,6 +3347,26 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
     // add `edgeUplinkMessagesRateLimitsPerEdge` to the URL query string
     if (getEdgeUplinkMessagesRateLimitsPerEdge() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sedgeUplinkMessagesRateLimitsPerEdge%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeUplinkMessagesRateLimitsPerEdge()))));
+    }
+
+    // add `agentEventRateLimits` to the URL query string
+    if (getAgentEventRateLimits() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sagentEventRateLimits%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAgentEventRateLimits()))));
+    }
+
+    // add `agentEventRateLimitsPerAgent` to the URL query string
+    if (getAgentEventRateLimitsPerAgent() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sagentEventRateLimitsPerAgent%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAgentEventRateLimitsPerAgent()))));
+    }
+
+    // add `agentLogChunkRateLimits` to the URL query string
+    if (getAgentLogChunkRateLimits() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sagentLogChunkRateLimits%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAgentLogChunkRateLimits()))));
+    }
+
+    // add `agentLogChunkRateLimitsPerAgent` to the URL query string
+    if (getAgentLogChunkRateLimitsPerAgent() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sagentLogChunkRateLimitsPerAgent%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAgentLogChunkRateLimitsPerAgent()))));
     }
 
     // add `defaultStorageTtlDays` to the URL query string

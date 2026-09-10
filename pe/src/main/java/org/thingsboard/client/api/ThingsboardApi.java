@@ -25,6 +25,28 @@ import org.thingsboard.client.Pair;
 import org.thingsboard.client.model.AccountTwoFaSettings;
 import org.thingsboard.client.model.ActivateUserRequest;
 import org.thingsboard.client.model.AdminSettings;
+import org.thingsboard.client.model.Agent;
+import org.thingsboard.client.model.AgentAppConfigType;
+import org.thingsboard.client.model.AgentAppEvent;
+import org.thingsboard.client.model.AgentAppEventActionType;
+import org.thingsboard.client.model.AgentAppEventRequest;
+import org.thingsboard.client.model.AgentAppInstallResponse;
+import org.thingsboard.client.model.AgentAppProfile;
+import org.thingsboard.client.model.AgentAppProfileInfo;
+import org.thingsboard.client.model.AgentAppProfileRelationInfo;
+import org.thingsboard.client.model.AgentAppTemplate;
+import org.thingsboard.client.model.AgentAppUnitType;
+import org.thingsboard.client.model.AgentApplication;
+import org.thingsboard.client.model.AgentApplicationInfo;
+import org.thingsboard.client.model.AgentApplicationType;
+import org.thingsboard.client.model.AgentBulkAction;
+import org.thingsboard.client.model.AgentBulkActionEventStats;
+import org.thingsboard.client.model.AgentInfo;
+import org.thingsboard.client.model.AgentInstructions;
+import org.thingsboard.client.model.AgentProcessingStatus;
+import org.thingsboard.client.model.AgentProfile;
+import org.thingsboard.client.model.AgentProfileInfo;
+import org.thingsboard.client.model.AgentUpgradeRequest;
 import org.thingsboard.client.model.AiModel;
 import org.thingsboard.client.model.Alarm;
 import org.thingsboard.client.model.AlarmComment;
@@ -53,13 +75,14 @@ import org.thingsboard.client.model.BulkImportRequest;
 import org.thingsboard.client.model.BulkImportResultAsset;
 import org.thingsboard.client.model.BulkImportResultDevice;
 import org.thingsboard.client.model.BulkImportResultEdge;
+import org.thingsboard.client.model.BulkOperationPreview;
+import org.thingsboard.client.model.BulkOperationRequest;
 import org.thingsboard.client.model.CMAssigneeType;
 import org.thingsboard.client.model.CMScope;
 import org.thingsboard.client.model.CalculatedField;
 import org.thingsboard.client.model.CalculatedFieldType;
 import org.thingsboard.client.model.CfReprocessingValidationResult;
 import org.thingsboard.client.model.ChangePasswordRequest;
-import org.thingsboard.client.model.ChatType;
 import org.thingsboard.client.model.ClaimRequest;
 import org.thingsboard.client.model.ComponentDescriptor;
 import org.thingsboard.client.model.Converter;
@@ -107,6 +130,7 @@ import org.thingsboard.client.model.EntityViewSearchQuery;
 import org.thingsboard.client.model.EventFilter;
 import org.thingsboard.client.model.FeaturesInfo;
 import java.io.File;
+import org.thingsboard.client.model.GetManagedRelatedEntityIds200ResponseInner;
 import org.thingsboard.client.model.GroupPermission;
 import org.thingsboard.client.model.GroupPermissionInfo;
 import org.thingsboard.client.model.HomeDashboard;
@@ -147,6 +171,16 @@ import org.thingsboard.client.model.OAuth2ClientLoginInfo;
 import org.thingsboard.client.model.OAuth2ClientRegistrationTemplate;
 import org.thingsboard.client.model.OtaPackage;
 import org.thingsboard.client.model.OtaPackageInfo;
+import org.thingsboard.client.model.PageDataAgent;
+import org.thingsboard.client.model.PageDataAgentAppEvent;
+import org.thingsboard.client.model.PageDataAgentAppEventInfo;
+import org.thingsboard.client.model.PageDataAgentAppProfile;
+import org.thingsboard.client.model.PageDataAgentAppUnit;
+import org.thingsboard.client.model.PageDataAgentApplicationInfo;
+import org.thingsboard.client.model.PageDataAgentBulkAction;
+import org.thingsboard.client.model.PageDataAgentInfo;
+import org.thingsboard.client.model.PageDataAgentProfile;
+import org.thingsboard.client.model.PageDataAgentProfileInfo;
 import org.thingsboard.client.model.PageDataAiModel;
 import org.thingsboard.client.model.PageDataAlarmCommentInfo;
 import org.thingsboard.client.model.PageDataAlarmData;
@@ -1240,6 +1274,175 @@ public class ThingsboardApi {
   }
 
   /**
+   * Assign App Profile to Agent Profile (assignAppProfileToAgentProfile)
+   * Assigns the given agent application profile to the agent profile, making it available to applications managed by that agent profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void assignAppProfileToAgentProfile(@Nonnull String agentProfileId, @Nonnull String applicationProfileId) throws ApiException {
+    assignAppProfileToAgentProfileWithHttpInfo(agentProfileId, applicationProfileId, null);
+  }
+
+  /**
+   * Assign App Profile to Agent Profile (assignAppProfileToAgentProfile)
+   * Assigns the given agent application profile to the agent profile, making it available to applications managed by that agent profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> assignAppProfileToAgentProfileWithHttpInfo(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = assignAppProfileToAgentProfileRequestBuilder(agentProfileId, applicationProfileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("assignAppProfileToAgentProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder assignAppProfileToAgentProfileRequestBuilder(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling assignAppProfileToAgentProfile");
+    }
+    // verify the required parameter 'applicationProfileId' is set
+    if (applicationProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationProfileId' when calling assignAppProfileToAgentProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfile/{applicationProfileId}"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()))
+        .replace("{applicationProfileId}", ApiClient.urlEncode(applicationProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Assign Multiple App Profiles to Agent Profile (assignAppProfilesToAgentProfile)
+   * Assigns the given set of agent application profiles to the agent profile in a single request, replacing the previous assignment set. An explicitly empty &#39;appProfileIds&#39; value (e.g. &#39;appProfileIds&#x3D;&#39;) removes all assignments.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param appProfileIds Agent application profile ids that replace the current assignment set. An explicitly empty value removes all assignments. (optional)
+   * @throws ApiException if fails to make API call
+   */
+  public void assignAppProfilesToAgentProfile(@Nonnull String agentProfileId, @Nullable List<String> appProfileIds) throws ApiException {
+    assignAppProfilesToAgentProfileWithHttpInfo(agentProfileId, appProfileIds, null);
+  }
+
+  /**
+   * Assign Multiple App Profiles to Agent Profile (assignAppProfilesToAgentProfile)
+   * Assigns the given set of agent application profiles to the agent profile in a single request, replacing the previous assignment set. An explicitly empty &#39;appProfileIds&#39; value (e.g. &#39;appProfileIds&#x3D;&#39;) removes all assignments.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param appProfileIds Agent application profile ids that replace the current assignment set. An explicitly empty value removes all assignments. (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> assignAppProfilesToAgentProfileWithHttpInfo(@Nonnull String agentProfileId, @Nullable List<String> appProfileIds, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = assignAppProfilesToAgentProfileRequestBuilder(agentProfileId, appProfileIds, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("assignAppProfilesToAgentProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder assignAppProfilesToAgentProfileRequestBuilder(@Nonnull String agentProfileId, @Nullable List<String> appProfileIds, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling assignAppProfilesToAgentProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfiles/assign"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "appProfileIds";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "appProfileIds", appProfileIds));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Assign device to tenant (assignDeviceToTenant)
    * Creates assignment of the device to tenant. Thereafter tenant will be able to reassign the device to a customer.  Available for users with &#39;TENANT_ADMIN&#39; authority. Security check is performed to verify that the user has &#39;ASSIGN_TO_TENANT&#39; permission for the entity (entities).
    * @param tenantId A string value representing the tenant id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -1499,6 +1702,97 @@ public class ThingsboardApi {
   }
 
   /**
+   * Assign Related Entity to Agent Application (assignRelatedEntityToAgentApp)
+   * Links an Edge or Gateway Device to the specified agent application and re-merges entity credentials into the compose.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param entityType Related entity type (EDGE or DEVICE) (required)
+   * @param entityId Related entity id (required)
+   * @return AgentApplication
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplication assignRelatedEntityToAgentApp(@Nonnull String agentApplicationId, @Nonnull String entityType, @Nonnull String entityId) throws ApiException {
+    ApiResponse<AgentApplication> localVarResponse = assignRelatedEntityToAgentAppWithHttpInfo(agentApplicationId, entityType, entityId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Assign Related Entity to Agent Application (assignRelatedEntityToAgentApp)
+   * Links an Edge or Gateway Device to the specified agent application and re-merges entity credentials into the compose.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param entityType Related entity type (EDGE or DEVICE) (required)
+   * @param entityId Related entity id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplication&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplication> assignRelatedEntityToAgentAppWithHttpInfo(@Nonnull String agentApplicationId, @Nonnull String entityType, @Nonnull String entityId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = assignRelatedEntityToAgentAppRequestBuilder(agentApplicationId, entityType, entityId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("assignRelatedEntityToAgentApp", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplication responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplication>() {});
+        return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder assignRelatedEntityToAgentAppRequestBuilder(@Nonnull String agentApplicationId, @Nonnull String entityType, @Nonnull String entityId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling assignRelatedEntityToAgentApp");
+    }
+    // verify the required parameter 'entityType' is set
+    if (entityType == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityType' when calling assignRelatedEntityToAgentApp");
+    }
+    // verify the required parameter 'entityId' is set
+    if (entityId == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityId' when calling assignRelatedEntityToAgentApp");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/relatedEntity/{entityType}/{entityId}"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()))
+        .replace("{entityType}", ApiClient.urlEncode(entityType.toString()))
+        .replace("{entityId}", ApiClient.urlEncode(entityId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Assign rule chain to edge (assignRuleChainToEdge)
    * Creates assignment of an existing rule chain to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment rule chain (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once rule chain will be delivered to edge service, it&#39;s going to start processing messages locally.   Only rule chain with type &#39;EDGE&#39; can be assigned to edge.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param edgeId  (required)
@@ -1667,6 +1961,90 @@ public class ThingsboardApi {
   }
 
   /**
+   * Attach Application to Profile (attachToProfile)
+   * Re-attaches the application to a profile. The application adopts the profile&#39;s template version without running any upgrade or downgrade steps. After attachment the profile becomes the source of the config; the app&#39;s own credentials are carried over.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param profileId  (required)
+   * @return AgentApplication
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplication attachToProfile(@Nonnull String agentApplicationId, @Nonnull String profileId) throws ApiException {
+    ApiResponse<AgentApplication> localVarResponse = attachToProfileWithHttpInfo(agentApplicationId, profileId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Attach Application to Profile (attachToProfile)
+   * Re-attaches the application to a profile. The application adopts the profile&#39;s template version without running any upgrade or downgrade steps. After attachment the profile becomes the source of the config; the app&#39;s own credentials are carried over.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param profileId  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplication&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplication> attachToProfileWithHttpInfo(@Nonnull String agentApplicationId, @Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = attachToProfileRequestBuilder(agentApplicationId, profileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("attachToProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplication responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplication>() {});
+        return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder attachToProfileRequestBuilder(@Nonnull String agentApplicationId, @Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling attachToProfile");
+    }
+    // verify the required parameter 'profileId' is set
+    if (profileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'profileId' when calling attachToProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/attach/{profileId}"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()))
+        .replace("{profileId}", ApiClient.urlEncode(profileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Get regular token pair after successfully configuring 2FA
    * Checks 2FA is configured, returning token pair on success.
    * @return JwtPair
@@ -1795,6 +2173,182 @@ public class ThingsboardApi {
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Bulk Operation (bulkOperation)
+   * Enqueues a bulk operation over the applications of the given agent profile and application profile and returns the created bulk action to track its progress.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param bulkOperationRequest  (required)
+   * @return AgentBulkAction
+   * @throws ApiException if fails to make API call
+   */
+  public AgentBulkAction bulkOperation(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull BulkOperationRequest bulkOperationRequest) throws ApiException {
+    ApiResponse<AgentBulkAction> localVarResponse = bulkOperationWithHttpInfo(agentProfileId, applicationProfileId, bulkOperationRequest, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Bulk Operation (bulkOperation)
+   * Enqueues a bulk operation over the applications of the given agent profile and application profile and returns the created bulk action to track its progress.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param bulkOperationRequest  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentBulkAction&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentBulkAction> bulkOperationWithHttpInfo(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull BulkOperationRequest bulkOperationRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = bulkOperationRequestBuilder(agentProfileId, applicationProfileId, bulkOperationRequest, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("bulkOperation", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentBulkAction responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentBulkAction>() {});
+        return new ApiResponse<AgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder bulkOperationRequestBuilder(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull BulkOperationRequest bulkOperationRequest, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling bulkOperation");
+    }
+    // verify the required parameter 'applicationProfileId' is set
+    if (applicationProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationProfileId' when calling bulkOperation");
+    }
+    // verify the required parameter 'bulkOperationRequest' is set
+    if (bulkOperationRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'bulkOperationRequest' when calling bulkOperation");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfile/{applicationProfileId}/bulk"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()))
+        .replace("{applicationProfileId}", ApiClient.urlEncode(applicationProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(bulkOperationRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Cancel Agent Application Event (cancelAgentAppEvent)
+   * Force-cancels an in-flight or pending agent application event, marking it as ERROR. Cannot cancel events that are already in a terminal state (FINISHED or ERROR).  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param agentAppEventId A string value representing the agent app event id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void cancelAgentAppEvent(@Nonnull String agentApplicationId, @Nonnull String agentAppEventId) throws ApiException {
+    cancelAgentAppEventWithHttpInfo(agentApplicationId, agentAppEventId, null);
+  }
+
+  /**
+   * Cancel Agent Application Event (cancelAgentAppEvent)
+   * Force-cancels an in-flight or pending agent application event, marking it as ERROR. Cannot cancel events that are already in a terminal state (FINISHED or ERROR).  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param agentAppEventId A string value representing the agent app event id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> cancelAgentAppEventWithHttpInfo(@Nonnull String agentApplicationId, @Nonnull String agentAppEventId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = cancelAgentAppEventRequestBuilder(agentApplicationId, agentAppEventId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("cancelAgentAppEvent", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder cancelAgentAppEventRequestBuilder(@Nonnull String agentApplicationId, @Nonnull String agentAppEventId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling cancelAgentAppEvent");
+    }
+    // verify the required parameter 'agentAppEventId' is set
+    if (agentAppEventId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentAppEventId' when calling cancelAgentAppEvent");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/event/{agentAppEventId}/cancel"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()))
+        .replace("{agentAppEventId}", ApiClient.urlEncode(agentAppEventId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -3712,6 +4266,95 @@ public class ThingsboardApi {
   }
 
   /**
+   * Execute Agent Application Event (createAgentAppEvent)
+   * Creates an event for the specified agent application. The action type determines the operation (UPDATE, DELETE, RESTART, UPGRADE, ROLLBACK). Step inputs can be provided for actions that require them. Returns the created event so the caller can open a progress view.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param agentAppEventRequest A JSON value representing the event request. (required)
+   * @return AgentAppEvent
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppEvent createAgentAppEvent(@Nonnull String agentApplicationId, @Nonnull AgentAppEventRequest agentAppEventRequest) throws ApiException {
+    ApiResponse<AgentAppEvent> localVarResponse = createAgentAppEventWithHttpInfo(agentApplicationId, agentAppEventRequest, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Execute Agent Application Event (createAgentAppEvent)
+   * Creates an event for the specified agent application. The action type determines the operation (UPDATE, DELETE, RESTART, UPGRADE, ROLLBACK). Step inputs can be provided for actions that require them. Returns the created event so the caller can open a progress view.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param agentAppEventRequest A JSON value representing the event request. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppEvent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppEvent> createAgentAppEventWithHttpInfo(@Nonnull String agentApplicationId, @Nonnull AgentAppEventRequest agentAppEventRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = createAgentAppEventRequestBuilder(agentApplicationId, agentAppEventRequest, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("createAgentAppEvent", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppEvent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppEvent>() {});
+        return new ApiResponse<AgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder createAgentAppEventRequestBuilder(@Nonnull String agentApplicationId, @Nonnull AgentAppEventRequest agentAppEventRequest, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling createAgentAppEvent");
+    }
+    // verify the required parameter 'agentAppEventRequest' is set
+    if (agentAppEventRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentAppEventRequest' when calling createAgentAppEvent");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/event"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentAppEventRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * createChat
    * 
    * @param body  (required)
@@ -4121,6 +4764,225 @@ public class ThingsboardApi {
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete agent (deleteAgent)
+   * Deletes the agent and all the relations (from and to the agent). Referencing non-existing agent Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAgent(@Nonnull String agentId) throws ApiException {
+    deleteAgentWithHttpInfo(agentId, null);
+  }
+
+  /**
+   * Delete agent (deleteAgent)
+   * Deletes the agent and all the relations (from and to the agent). Referencing non-existing agent Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteAgentWithHttpInfo(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteAgentRequestBuilder(agentId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteAgent", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteAgentRequestBuilder(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling deleteAgent");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete Agent Application Profile (deleteAgentAppProfile)
+   * Deletes the agent application profile. Cannot delete if referenced by applications.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param profileId Profile Id (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAgentAppProfile(@Nonnull String profileId) throws ApiException {
+    deleteAgentAppProfileWithHttpInfo(profileId, null);
+  }
+
+  /**
+   * Delete Agent Application Profile (deleteAgentAppProfile)
+   * Deletes the agent application profile. Cannot delete if referenced by applications.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param profileId Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteAgentAppProfileWithHttpInfo(@Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteAgentAppProfileRequestBuilder(profileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteAgentAppProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteAgentAppProfileRequestBuilder(@Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'profileId' is set
+    if (profileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'profileId' when calling deleteAgentAppProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profile/{profileId}"
+        .replace("{profileId}", ApiClient.urlEncode(profileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Delete Agent Profile (deleteAgentProfile)
+   * Deletes the Agent Profile. Referencing a non-existing Agent Profile Id will cause an error. The default Agent Profile can not be deleted.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void deleteAgentProfile(@Nonnull String agentProfileId) throws ApiException {
+    deleteAgentProfileWithHttpInfo(agentProfileId, null);
+  }
+
+  /**
+   * Delete Agent Profile (deleteAgentProfile)
+   * Deletes the Agent Profile. Referencing a non-existing Agent Profile Id will cause an error. The default Agent Profile can not be deleted.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> deleteAgentProfileWithHttpInfo(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = deleteAgentProfileRequestBuilder(agentProfileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("deleteAgentProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder deleteAgentProfileRequestBuilder(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling deleteAgentProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -9186,6 +10048,83 @@ public class ThingsboardApi {
   }
 
   /**
+   * Detach Application from Profile (detachFromProfile)
+   * Detaches the application from its profile. The application keeps the effective config it already carries (profile config with its own credentials merged in) and becomes standalone and editable.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return AgentApplication
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplication detachFromProfile(@Nonnull String agentApplicationId) throws ApiException {
+    ApiResponse<AgentApplication> localVarResponse = detachFromProfileWithHttpInfo(agentApplicationId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Detach Application from Profile (detachFromProfile)
+   * Detaches the application from its profile. The application keeps the effective config it already carries (profile config with its own credentials merged in) and becomes standalone and editable.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplication&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplication> detachFromProfileWithHttpInfo(@Nonnull String agentApplicationId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = detachFromProfileRequestBuilder(agentApplicationId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("detachFromProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplication responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplication>() {});
+        return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder detachFromProfileRequestBuilder(@Nonnull String agentApplicationId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling detachFromProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/detach"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Download Blob Entity By Id (downloadBlobEntity)
    * Download report file based on the provided Blob entity Id. Referencing non-existing Blob entity Id will cause an error.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param blobEntityId A string value representing the blob entity id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -14016,6 +14955,2647 @@ public class ThingsboardApi {
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application Event (getAgentAppEventById)
+   * Fetches a single agent application event by id. Works for orphan events whose application has been deleted (application_id is nullable).  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentAppEventId A string value representing the agent app event id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return AgentAppEvent
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppEvent getAgentAppEventById(@Nonnull String agentAppEventId) throws ApiException {
+    ApiResponse<AgentAppEvent> localVarResponse = getAgentAppEventByIdWithHttpInfo(agentAppEventId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application Event (getAgentAppEventById)
+   * Fetches a single agent application event by id. Works for orphan events whose application has been deleted (application_id is nullable).  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentAppEventId A string value representing the agent app event id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppEvent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppEvent> getAgentAppEventByIdWithHttpInfo(@Nonnull String agentAppEventId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppEventByIdRequestBuilder(agentAppEventId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppEventById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppEvent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppEvent>() {});
+        return new ApiResponse<AgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppEventByIdRequestBuilder(@Nonnull String agentAppEventId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentAppEventId' is set
+    if (agentAppEventId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentAppEventId' when calling getAgentAppEventById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/event/{agentAppEventId}"
+        .replace("{agentAppEventId}", ApiClient.urlEncode(agentAppEventId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent App Event Infos by Agent Id (getAgentAppEventInfosByAgentId)
+   * Returns a page of agent application events for all applications belonging to the specified agent, enriched with the application name for each event. Supports optional filtering by action type and status, and text search over the application name. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional text value to match against the application name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param actionType Optional filter by event action type (optional)
+   * @param processingStatus Optional filter by event status (optional)
+   * @return PageDataAgentAppEventInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentAppEventInfo getAgentAppEventInfosByAgentId(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus) throws ApiException {
+    ApiResponse<PageDataAgentAppEventInfo> localVarResponse = getAgentAppEventInfosByAgentIdWithHttpInfo(agentId, pageSize, page, textSearch, sortProperty, sortOrder, actionType, processingStatus, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent App Event Infos by Agent Id (getAgentAppEventInfosByAgentId)
+   * Returns a page of agent application events for all applications belonging to the specified agent, enriched with the application name for each event. Supports optional filtering by action type and status, and text search over the application name. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional text value to match against the application name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param actionType Optional filter by event action type (optional)
+   * @param processingStatus Optional filter by event status (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentAppEventInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentAppEventInfo> getAgentAppEventInfosByAgentIdWithHttpInfo(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppEventInfosByAgentIdRequestBuilder(agentId, pageSize, page, textSearch, sortProperty, sortOrder, actionType, processingStatus, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppEventInfosByAgentId", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentAppEventInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentAppEventInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentAppEventInfo>() {});
+        return new ApiResponse<PageDataAgentAppEventInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppEventInfosByAgentIdRequestBuilder(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling getAgentAppEventInfosByAgentId");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentAppEventInfosByAgentId");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentAppEventInfosByAgentId");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}/eventInfos"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    localVarQueryParameterBaseName = "actionType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("actionType", actionType));
+    localVarQueryParameterBaseName = "processingStatus";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("processingStatus", processingStatus));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application Events (getAgentAppEvents)
+   * Returns a page of events for the specified agent application. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional case-insensitive substring matched against the event action type and processing status (optional)
+   * @param actionType Optional action type filter (optional)
+   * @param processingStatus Optional processing status filter (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentAppEvent
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentAppEvent getAgentAppEvents(@Nonnull String agentApplicationId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentAppEvent> localVarResponse = getAgentAppEventsWithHttpInfo(agentApplicationId, pageSize, page, textSearch, actionType, processingStatus, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application Events (getAgentAppEvents)
+   * Returns a page of events for the specified agent application. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional case-insensitive substring matched against the event action type and processing status (optional)
+   * @param actionType Optional action type filter (optional)
+   * @param processingStatus Optional processing status filter (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentAppEvent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentAppEvent> getAgentAppEventsWithHttpInfo(@Nonnull String agentApplicationId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppEventsRequestBuilder(agentApplicationId, pageSize, page, textSearch, actionType, processingStatus, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppEvents", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentAppEvent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentAppEvent>() {});
+        return new ApiResponse<PageDataAgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppEventsRequestBuilder(@Nonnull String agentApplicationId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling getAgentAppEvents");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentAppEvents");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentAppEvents");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/events"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "actionType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("actionType", actionType));
+    localVarQueryParameterBaseName = "processingStatus";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("processingStatus", processingStatus));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent App Events by Agent Id (getAgentAppEventsByAgentId)
+   * Returns a page of agent application events for all applications belonging to the specified agent. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value reserved for future event filtering (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentAppEvent
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentAppEvent getAgentAppEventsByAgentId(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentAppEvent> localVarResponse = getAgentAppEventsByAgentIdWithHttpInfo(agentId, pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent App Events by Agent Id (getAgentAppEventsByAgentId)
+   * Returns a page of agent application events for all applications belonging to the specified agent. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value reserved for future event filtering (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentAppEvent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentAppEvent> getAgentAppEventsByAgentIdWithHttpInfo(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppEventsByAgentIdRequestBuilder(agentId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppEventsByAgentId", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentAppEvent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentAppEvent>() {});
+        return new ApiResponse<PageDataAgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppEventsByAgentIdRequestBuilder(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling getAgentAppEventsByAgentId");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentAppEventsByAgentId");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentAppEventsByAgentId");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}/events"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application Profile (getAgentAppProfileById)
+   * Fetch the Agent Application Profile by Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param profileId Profile Id (required)
+   * @return AgentAppProfile
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppProfile getAgentAppProfileById(@Nonnull String profileId) throws ApiException {
+    ApiResponse<AgentAppProfile> localVarResponse = getAgentAppProfileByIdWithHttpInfo(profileId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application Profile (getAgentAppProfileById)
+   * Fetch the Agent Application Profile by Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param profileId Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppProfile> getAgentAppProfileByIdWithHttpInfo(@Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppProfileByIdRequestBuilder(profileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppProfileById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppProfile>() {});
+        return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppProfileByIdRequestBuilder(@Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'profileId' is set
+    if (profileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'profileId' when calling getAgentAppProfileById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profile/{profileId}"
+        .replace("{profileId}", ApiClient.urlEncode(profileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application Profile Info (getAgentAppProfileInfoById)
+   * Fetch the Agent Application Profile Info by Id. Readable by any tenant admin without AGENT_APP_PROFILE permission, so agent/application screens can resolve the linked profile. Returns the full profile, config and arguments included - an application profile carries deployment configuration rather than credentials, so it is not gated like other profiles.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param profileId Profile Id (required)
+   * @return AgentAppProfileInfo
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppProfileInfo getAgentAppProfileInfoById(@Nonnull String profileId) throws ApiException {
+    ApiResponse<AgentAppProfileInfo> localVarResponse = getAgentAppProfileInfoByIdWithHttpInfo(profileId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application Profile Info (getAgentAppProfileInfoById)
+   * Fetch the Agent Application Profile Info by Id. Readable by any tenant admin without AGENT_APP_PROFILE permission, so agent/application screens can resolve the linked profile. Returns the full profile, config and arguments included - an application profile carries deployment configuration rather than credentials, so it is not gated like other profiles.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param profileId Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppProfileInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppProfileInfo> getAgentAppProfileInfoByIdWithHttpInfo(@Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppProfileInfoByIdRequestBuilder(profileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppProfileInfoById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppProfileInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppProfileInfo>() {});
+        return new ApiResponse<AgentAppProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppProfileInfoByIdRequestBuilder(@Nonnull String profileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'profileId' is set
+    if (profileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'profileId' when calling getAgentAppProfileInfoById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profile/info/{profileId}"
+        .replace("{profileId}", ApiClient.urlEncode(profileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application Profiles by app type (getAgentAppProfilesByAppType)
+   * Returns a list of agent application profiles filtered by application type.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType Application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39;, &#39;GENERIC&#39; (required)
+   * @return List&lt;AgentAppProfileInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<AgentAppProfileInfo> getAgentAppProfilesByAppType(@Nonnull AgentApplicationType appType) throws ApiException {
+    ApiResponse<List<AgentAppProfileInfo>> localVarResponse = getAgentAppProfilesByAppTypeWithHttpInfo(appType, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application Profiles by app type (getAgentAppProfilesByAppType)
+   * Returns a list of agent application profiles filtered by application type.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType Application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39;, &#39;GENERIC&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;AgentAppProfileInfo&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<AgentAppProfileInfo>> getAgentAppProfilesByAppTypeWithHttpInfo(@Nonnull AgentApplicationType appType, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppProfilesByAppTypeRequestBuilder(appType, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppProfilesByAppType", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<AgentAppProfileInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<AgentAppProfileInfo> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<AgentAppProfileInfo>>() {});
+        return new ApiResponse<List<AgentAppProfileInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppProfilesByAppTypeRequestBuilder(@Nonnull AgentApplicationType appType, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'appType' is set
+    if (appType == null) {
+      throw new ApiException(400, "Missing the required parameter 'appType' when calling getAgentAppProfilesByAppType");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profiles/{appType}"
+        .replace("{appType}", ApiClient.urlEncode(appType.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application Profiles By Ids (getAgentAppProfilesByIds)
+   * Requested agent application profiles must be owned by tenant which is performing the request.    Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * @param agentAppProfileIds A list of agent application profile ids, separated by comma &#39;,&#39; (required)
+   * @return List&lt;AgentAppProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<AgentAppProfile> getAgentAppProfilesByIds(@Nonnull List<String> agentAppProfileIds) throws ApiException {
+    ApiResponse<List<AgentAppProfile>> localVarResponse = getAgentAppProfilesByIdsWithHttpInfo(agentAppProfileIds, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application Profiles By Ids (getAgentAppProfilesByIds)
+   * Requested agent application profiles must be owned by tenant which is performing the request.    Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * @param agentAppProfileIds A list of agent application profile ids, separated by comma &#39;,&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;AgentAppProfile&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<AgentAppProfile>> getAgentAppProfilesByIdsWithHttpInfo(@Nonnull List<String> agentAppProfileIds, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppProfilesByIdsRequestBuilder(agentAppProfileIds, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppProfilesByIds", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<AgentAppProfile>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<AgentAppProfile> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<AgentAppProfile>>() {});
+        return new ApiResponse<List<AgentAppProfile>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppProfilesByIdsRequestBuilder(@Nonnull List<String> agentAppProfileIds, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentAppProfileIds' is set
+    if (agentAppProfileIds == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentAppProfileIds' when calling getAgentAppProfilesByIds");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profiles";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "agentAppProfileIds";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "agentAppProfileIds", agentAppProfileIds));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent App Template by current version (getAgentAppTemplateByCurrentVersion)
+   * Fetch the Agent App Template object based on the provided app type, config type, and current version. Matches the version exactly, including a floating tag used as a version such as the gateway &#39;latest&#39; tag.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType A string value representing the agent application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39; (required)
+   * @param configType A string value representing the agent configuration type, e.g. &#39;DOCKER_COMPOSE&#39; (required)
+   * @param currentVersion A string value representing the current version of the template, e.g. &#39;1.0.0&#39; (required)
+   * @return AgentAppTemplate
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppTemplate getAgentAppTemplateByCurrentVersion(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType, @Nonnull String currentVersion) throws ApiException {
+    ApiResponse<AgentAppTemplate> localVarResponse = getAgentAppTemplateByCurrentVersionWithHttpInfo(appType, configType, currentVersion, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent App Template by current version (getAgentAppTemplateByCurrentVersion)
+   * Fetch the Agent App Template object based on the provided app type, config type, and current version. Matches the version exactly, including a floating tag used as a version such as the gateway &#39;latest&#39; tag.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType A string value representing the agent application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39; (required)
+   * @param configType A string value representing the agent configuration type, e.g. &#39;DOCKER_COMPOSE&#39; (required)
+   * @param currentVersion A string value representing the current version of the template, e.g. &#39;1.0.0&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppTemplate&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppTemplate> getAgentAppTemplateByCurrentVersionWithHttpInfo(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType, @Nonnull String currentVersion, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppTemplateByCurrentVersionRequestBuilder(appType, configType, currentVersion, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppTemplateByCurrentVersion", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppTemplate>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppTemplate responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppTemplate>() {});
+        return new ApiResponse<AgentAppTemplate>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppTemplateByCurrentVersionRequestBuilder(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType, @Nonnull String currentVersion, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'appType' is set
+    if (appType == null) {
+      throw new ApiException(400, "Missing the required parameter 'appType' when calling getAgentAppTemplateByCurrentVersion");
+    }
+    // verify the required parameter 'configType' is set
+    if (configType == null) {
+      throw new ApiException(400, "Missing the required parameter 'configType' when calling getAgentAppTemplateByCurrentVersion");
+    }
+    // verify the required parameter 'currentVersion' is set
+    if (currentVersion == null) {
+      throw new ApiException(400, "Missing the required parameter 'currentVersion' when calling getAgentAppTemplateByCurrentVersion");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/template/{appType}/{configType}/version/{currentVersion}"
+        .replace("{appType}", ApiClient.urlEncode(appType.toString()))
+        .replace("{configType}", ApiClient.urlEncode(configType.toString()))
+        .replace("{currentVersion}", ApiClient.urlEncode(currentVersion.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get all Agent App Templates (getAgentAppTemplates)
+   * Returns a list of all agent app templates available for the current tenant.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @return List&lt;AgentAppTemplate&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<AgentAppTemplate> getAgentAppTemplates() throws ApiException {
+    ApiResponse<List<AgentAppTemplate>> localVarResponse = getAgentAppTemplatesWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get all Agent App Templates (getAgentAppTemplates)
+   * Returns a list of all agent app templates available for the current tenant.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;AgentAppTemplate&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<AgentAppTemplate>> getAgentAppTemplatesWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppTemplatesRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppTemplates", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<AgentAppTemplate>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<AgentAppTemplate> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<AgentAppTemplate>>() {});
+        return new ApiResponse<List<AgentAppTemplate>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppTemplatesRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/templates";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent App Templates by type (getAgentAppTemplatesByAppType)
+   * Returns a list of agent app templates filtered by application type and config type.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType A string value representing the agent application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39; (required)
+   * @param configType A string value representing the agent configuration type, e.g. &#39;DOCKER_COMPOSE&#39; (required)
+   * @return List&lt;AgentAppTemplate&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<AgentAppTemplate> getAgentAppTemplatesByAppType(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType) throws ApiException {
+    ApiResponse<List<AgentAppTemplate>> localVarResponse = getAgentAppTemplatesByAppTypeWithHttpInfo(appType, configType, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent App Templates by type (getAgentAppTemplatesByAppType)
+   * Returns a list of agent app templates filtered by application type and config type.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType A string value representing the agent application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39; (required)
+   * @param configType A string value representing the agent configuration type, e.g. &#39;DOCKER_COMPOSE&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;AgentAppTemplate&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<AgentAppTemplate>> getAgentAppTemplatesByAppTypeWithHttpInfo(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppTemplatesByAppTypeRequestBuilder(appType, configType, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppTemplatesByAppType", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<AgentAppTemplate>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<AgentAppTemplate> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<AgentAppTemplate>>() {});
+        return new ApiResponse<List<AgentAppTemplate>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppTemplatesByAppTypeRequestBuilder(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'appType' is set
+    if (appType == null) {
+      throw new ApiException(400, "Missing the required parameter 'appType' when calling getAgentAppTemplatesByAppType");
+    }
+    // verify the required parameter 'configType' is set
+    if (configType == null) {
+      throw new ApiException(400, "Missing the required parameter 'configType' when calling getAgentAppTemplatesByAppType");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/templates/{appType}/{configType}"
+        .replace("{appType}", ApiClient.urlEncode(appType.toString()))
+        .replace("{configType}", ApiClient.urlEncode(configType.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application Units (getAgentAppUnits)
+   * Returns a page of units (containers, volumes, networks) for the specified agent application. Live per-unit data such as &#x60;image&#x60; and &#x60;state&#x60; lives in server-scope attributes on each unit and should be fetched separately via the standard telemetry/attributes API.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Case-insensitive substring match against the unit identifier (optional)
+   * @param type Optional unit type filter (CONTAINER, VOLUME, NETWORK) (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentAppUnit
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentAppUnit getAgentAppUnits(@Nonnull String agentApplicationId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppUnitType type, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentAppUnit> localVarResponse = getAgentAppUnitsWithHttpInfo(agentApplicationId, pageSize, page, textSearch, type, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application Units (getAgentAppUnits)
+   * Returns a page of units (containers, volumes, networks) for the specified agent application. Live per-unit data such as &#x60;image&#x60; and &#x60;state&#x60; lives in server-scope attributes on each unit and should be fetched separately via the standard telemetry/attributes API.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Case-insensitive substring match against the unit identifier (optional)
+   * @param type Optional unit type filter (CONTAINER, VOLUME, NETWORK) (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentAppUnit&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentAppUnit> getAgentAppUnitsWithHttpInfo(@Nonnull String agentApplicationId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppUnitType type, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentAppUnitsRequestBuilder(agentApplicationId, pageSize, page, textSearch, type, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentAppUnits", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentAppUnit>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentAppUnit responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentAppUnit>() {});
+        return new ApiResponse<PageDataAgentAppUnit>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentAppUnitsRequestBuilder(@Nonnull String agentApplicationId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppUnitType type, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling getAgentAppUnits");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentAppUnits");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentAppUnits");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/units"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "type";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("type", type));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application (getAgentApplicationById)
+   * Fetch the Agent Application object based on the provided Agent Application Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return AgentApplicationInfo
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplicationInfo getAgentApplicationById(@Nonnull String agentApplicationId) throws ApiException {
+    ApiResponse<AgentApplicationInfo> localVarResponse = getAgentApplicationByIdWithHttpInfo(agentApplicationId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application (getAgentApplicationById)
+   * Fetch the Agent Application object based on the provided Agent Application Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplicationInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplicationInfo> getAgentApplicationByIdWithHttpInfo(@Nonnull String agentApplicationId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentApplicationByIdRequestBuilder(agentApplicationId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentApplicationById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplicationInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplicationInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplicationInfo>() {});
+        return new ApiResponse<AgentApplicationInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentApplicationByIdRequestBuilder(@Nonnull String agentApplicationId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling getAgentApplicationById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Application by Related Entity (getAgentApplicationByRelatedEntity)
+   * Returns the agent application linked to the specified entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType Entity type (required)
+   * @param entityId Entity id (required)
+   * @return AgentApplication
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplication getAgentApplicationByRelatedEntity(@Nonnull String entityType, @Nonnull String entityId) throws ApiException {
+    ApiResponse<AgentApplication> localVarResponse = getAgentApplicationByRelatedEntityWithHttpInfo(entityType, entityId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Application by Related Entity (getAgentApplicationByRelatedEntity)
+   * Returns the agent application linked to the specified entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType Entity type (required)
+   * @param entityId Entity id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplication&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplication> getAgentApplicationByRelatedEntityWithHttpInfo(@Nonnull String entityType, @Nonnull String entityId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentApplicationByRelatedEntityRequestBuilder(entityType, entityId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentApplicationByRelatedEntity", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplication responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplication>() {});
+        return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentApplicationByRelatedEntityRequestBuilder(@Nonnull String entityType, @Nonnull String entityId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'entityType' is set
+    if (entityType == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityType' when calling getAgentApplicationByRelatedEntity");
+    }
+    // verify the required parameter 'entityId' is set
+    if (entityId == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityId' when calling getAgentApplicationByRelatedEntity");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/apps/{entityType}/{entityId}"
+        .replace("{entityType}", ApiClient.urlEncode(entityType.toString()))
+        .replace("{entityId}", ApiClient.urlEncode(entityId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Applications by Agent Id (getAgentApplicationsByAgentId)
+   * Returns a page of agent applications that belong to the specified agent. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing application name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentApplicationInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentApplicationInfo getAgentApplicationsByAgentId(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentApplicationInfo> localVarResponse = getAgentApplicationsByAgentIdWithHttpInfo(agentId, pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Applications by Agent Id (getAgentApplicationsByAgentId)
+   * Returns a page of agent applications that belong to the specified agent. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing application name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentApplicationInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentApplicationInfo> getAgentApplicationsByAgentIdWithHttpInfo(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentApplicationsByAgentIdRequestBuilder(agentId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentApplicationsByAgentId", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentApplicationInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentApplicationInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentApplicationInfo>() {});
+        return new ApiResponse<PageDataAgentApplicationInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentApplicationsByAgentIdRequestBuilder(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling getAgentApplicationsByAgentId");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentApplicationsByAgentId");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentApplicationsByAgentId");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}/apps"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Bulk Action (getAgentBulkAction)
+   * Fetch the Agent Bulk Action object based on the provided Bulk Action Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param bulkActionId Bulk Action Id (required)
+   * @return AgentBulkAction
+   * @throws ApiException if fails to make API call
+   */
+  public AgentBulkAction getAgentBulkAction(@Nonnull String bulkActionId) throws ApiException {
+    ApiResponse<AgentBulkAction> localVarResponse = getAgentBulkActionWithHttpInfo(bulkActionId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Bulk Action (getAgentBulkAction)
+   * Fetch the Agent Bulk Action object based on the provided Bulk Action Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param bulkActionId Bulk Action Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentBulkAction&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentBulkAction> getAgentBulkActionWithHttpInfo(@Nonnull String bulkActionId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentBulkActionRequestBuilder(bulkActionId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentBulkAction", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentBulkAction responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentBulkAction>() {});
+        return new ApiResponse<AgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentBulkActionRequestBuilder(@Nonnull String bulkActionId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'bulkActionId' is set
+    if (bulkActionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'bulkActionId' when calling getAgentBulkAction");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/bulk/{bulkActionId}"
+        .replace("{bulkActionId}", ApiClient.urlEncode(bulkActionId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Bulk Action Event Stats (getAgentBulkActionEventStats)
+   * Returns the number of agent application events produced by the given bulk action per processing status, together with their total.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param bulkActionId Bulk Action Id (required)
+   * @return AgentBulkActionEventStats
+   * @throws ApiException if fails to make API call
+   */
+  public AgentBulkActionEventStats getAgentBulkActionEventStats(@Nonnull String bulkActionId) throws ApiException {
+    ApiResponse<AgentBulkActionEventStats> localVarResponse = getAgentBulkActionEventStatsWithHttpInfo(bulkActionId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Bulk Action Event Stats (getAgentBulkActionEventStats)
+   * Returns the number of agent application events produced by the given bulk action per processing status, together with their total.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param bulkActionId Bulk Action Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentBulkActionEventStats&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentBulkActionEventStats> getAgentBulkActionEventStatsWithHttpInfo(@Nonnull String bulkActionId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentBulkActionEventStatsRequestBuilder(bulkActionId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentBulkActionEventStats", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentBulkActionEventStats>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentBulkActionEventStats responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentBulkActionEventStats>() {});
+        return new ApiResponse<AgentBulkActionEventStats>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentBulkActionEventStatsRequestBuilder(@Nonnull String bulkActionId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'bulkActionId' is set
+    if (bulkActionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'bulkActionId' when calling getAgentBulkActionEventStats");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/bulk/{bulkActionId}/eventStats"
+        .replace("{bulkActionId}", ApiClient.urlEncode(bulkActionId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Bulk Action Events (getAgentBulkActionEvents)
+   * Returns a page of agent application events produced by the given bulk action, optionally filtered by action type and status. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param bulkActionId Bulk Action Id (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Case-insensitive &#39;substring&#39; filter based on the event fields (optional)
+   * @param actionType A string value representing the action type to filter by, e.g. &#39;UPDATE&#39; (optional)
+   * @param processingStatus A string value representing the event status to filter by, e.g. &#39;FINISHED&#39; (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentAppEventInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentAppEventInfo getAgentBulkActionEvents(@Nonnull String bulkActionId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentAppEventInfo> localVarResponse = getAgentBulkActionEventsWithHttpInfo(bulkActionId, pageSize, page, textSearch, actionType, processingStatus, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Bulk Action Events (getAgentBulkActionEvents)
+   * Returns a page of agent application events produced by the given bulk action, optionally filtered by action type and status. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param bulkActionId Bulk Action Id (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Case-insensitive &#39;substring&#39; filter based on the event fields (optional)
+   * @param actionType A string value representing the action type to filter by, e.g. &#39;UPDATE&#39; (optional)
+   * @param processingStatus A string value representing the event status to filter by, e.g. &#39;FINISHED&#39; (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentAppEventInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentAppEventInfo> getAgentBulkActionEventsWithHttpInfo(@Nonnull String bulkActionId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentBulkActionEventsRequestBuilder(bulkActionId, pageSize, page, textSearch, actionType, processingStatus, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentBulkActionEvents", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentAppEventInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentAppEventInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentAppEventInfo>() {});
+        return new ApiResponse<PageDataAgentAppEventInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentBulkActionEventsRequestBuilder(@Nonnull String bulkActionId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'bulkActionId' is set
+    if (bulkActionId == null) {
+      throw new ApiException(400, "Missing the required parameter 'bulkActionId' when calling getAgentBulkActionEvents");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentBulkActionEvents");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentBulkActionEvents");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/bulk/{bulkActionId}/events"
+        .replace("{bulkActionId}", ApiClient.urlEncode(bulkActionId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "actionType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("actionType", actionType));
+    localVarQueryParameterBaseName = "processingStatus";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("processingStatus", processingStatus));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent (getAgentById)
+   * Fetch the Agent object based on the provided Agent Id. The server checks that the agent is owned by the same tenant.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return Agent
+   * @throws ApiException if fails to make API call
+   */
+  public Agent getAgentById(@Nonnull String agentId) throws ApiException {
+    ApiResponse<Agent> localVarResponse = getAgentByIdWithHttpInfo(agentId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent (getAgentById)
+   * Fetch the Agent object based on the provided Agent Id. The server checks that the agent is owned by the same tenant.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Agent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Agent> getAgentByIdWithHttpInfo(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentByIdRequestBuilder(agentId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Agent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Agent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Agent>() {});
+        return new ApiResponse<Agent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentByIdRequestBuilder(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling getAgentById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Info (getAgentInfoById)
+   * Fetch the Agent Info object based on the provided Agent Id. Agent Info extends the Agent object and adds customer title and &#39;is public&#39; flag.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return AgentInfo
+   * @throws ApiException if fails to make API call
+   */
+  public AgentInfo getAgentInfoById(@Nonnull String agentId) throws ApiException {
+    ApiResponse<AgentInfo> localVarResponse = getAgentInfoByIdWithHttpInfo(agentId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Info (getAgentInfoById)
+   * Fetch the Agent Info object based on the provided Agent Id. Agent Info extends the Agent object and adds customer title and &#39;is public&#39; flag.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentInfo> getAgentInfoByIdWithHttpInfo(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentInfoByIdRequestBuilder(agentId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentInfoById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentInfo>() {});
+        return new ApiResponse<AgentInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentInfoByIdRequestBuilder(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling getAgentInfoById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/info/{agentId}"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Infos By Ids (getAgentInfosByIds)
+   * Requested agents must be owned by tenant or assigned to customer which user is performing the request.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * @param agentIds A list of agent ids, separated by comma &#39;,&#39; (required)
+   * @return List&lt;AgentInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<AgentInfo> getAgentInfosByIds(@Nonnull List<String> agentIds) throws ApiException {
+    ApiResponse<List<AgentInfo>> localVarResponse = getAgentInfosByIdsWithHttpInfo(agentIds, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Infos By Ids (getAgentInfosByIds)
+   * Requested agents must be owned by tenant or assigned to customer which user is performing the request.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
+   * @param agentIds A list of agent ids, separated by comma &#39;,&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;AgentInfo&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<AgentInfo>> getAgentInfosByIdsWithHttpInfo(@Nonnull List<String> agentIds, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentInfosByIdsRequestBuilder(agentIds, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentInfosByIds", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<AgentInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<AgentInfo> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<AgentInfo>>() {});
+        return new ApiResponse<List<AgentInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentInfosByIdsRequestBuilder(@Nonnull List<String> agentIds, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentIds' is set
+    if (agentIds == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentIds' when calling getAgentInfosByIds");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agentInfos";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "agentIds";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "agentIds", agentIds));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Install Instructions (getAgentInstallInstructions)
+   * Returns the docker install command for the specified agent with the server address and gRPC port resolved server-side.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param method Installation method (&#39;docker&#39;) (required)
+   * @return AgentInstructions
+   * @throws ApiException if fails to make API call
+   */
+  public AgentInstructions getAgentInstallInstructions(@Nonnull String agentId, @Nonnull String method) throws ApiException {
+    ApiResponse<AgentInstructions> localVarResponse = getAgentInstallInstructionsWithHttpInfo(agentId, method, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Install Instructions (getAgentInstallInstructions)
+   * Returns the docker install command for the specified agent with the server address and gRPC port resolved server-side.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param method Installation method (&#39;docker&#39;) (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentInstructions&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentInstructions> getAgentInstallInstructionsWithHttpInfo(@Nonnull String agentId, @Nonnull String method, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentInstallInstructionsRequestBuilder(agentId, method, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentInstallInstructions", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentInstructions responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentInstructions>() {});
+        return new ApiResponse<AgentInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentInstallInstructionsRequestBuilder(@Nonnull String agentId, @Nonnull String method, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling getAgentInstallInstructions");
+    }
+    // verify the required parameter 'method' is set
+    if (method == null) {
+      throw new ApiException(400, "Missing the required parameter 'method' when calling getAgentInstallInstructions");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/instructions/install/{agentId}/{method}"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()))
+        .replace("{method}", ApiClient.urlEncode(method.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Bulk Actions for Agent Profile and Application Profile (getAgentProfileAppProfileBulkActions)
+   * Returns a page of bulk actions previously submitted for the given agent profile and application profile pair. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentBulkAction
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentBulkAction getAgentProfileAppProfileBulkActions(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentBulkAction> localVarResponse = getAgentProfileAppProfileBulkActionsWithHttpInfo(agentProfileId, applicationProfileId, pageSize, page, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Bulk Actions for Agent Profile and Application Profile (getAgentProfileAppProfileBulkActions)
+   * Returns a page of bulk actions previously submitted for the given agent profile and application profile pair. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentBulkAction&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentBulkAction> getAgentProfileAppProfileBulkActionsWithHttpInfo(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentProfileAppProfileBulkActionsRequestBuilder(agentProfileId, applicationProfileId, pageSize, page, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentProfileAppProfileBulkActions", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentBulkAction responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentBulkAction>() {});
+        return new ApiResponse<PageDataAgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentProfileAppProfileBulkActionsRequestBuilder(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling getAgentProfileAppProfileBulkActions");
+    }
+    // verify the required parameter 'applicationProfileId' is set
+    if (applicationProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationProfileId' when calling getAgentProfileAppProfileBulkActions");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentProfileAppProfileBulkActions");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentProfileAppProfileBulkActions");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfile/{applicationProfileId}/bulk"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()))
+        .replace("{applicationProfileId}", ApiClient.urlEncode(applicationProfileId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Profile App Profile Infos (getAgentProfileAppProfileInfos)
+   * Returns app profiles assigned to the given agent profile, enriched with template version, the count of AgentApplications using each app profile within this agent profile and the additional info of the assignment relation.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @return List&lt;AgentAppProfileRelationInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<AgentAppProfileRelationInfo> getAgentProfileAppProfileInfos(@Nonnull String agentProfileId) throws ApiException {
+    ApiResponse<List<AgentAppProfileRelationInfo>> localVarResponse = getAgentProfileAppProfileInfosWithHttpInfo(agentProfileId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Profile App Profile Infos (getAgentProfileAppProfileInfos)
+   * Returns app profiles assigned to the given agent profile, enriched with template version, the count of AgentApplications using each app profile within this agent profile and the additional info of the assignment relation.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;AgentAppProfileRelationInfo&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<AgentAppProfileRelationInfo>> getAgentProfileAppProfileInfosWithHttpInfo(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentProfileAppProfileInfosRequestBuilder(agentProfileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentProfileAppProfileInfos", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<AgentAppProfileRelationInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<AgentAppProfileRelationInfo> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<AgentAppProfileRelationInfo>>() {});
+        return new ApiResponse<List<AgentAppProfileRelationInfo>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentProfileAppProfileInfosRequestBuilder(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling getAgentProfileAppProfileInfos");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfilesInfo"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Bulk Actions for Agent Profile (getAgentProfileBulkActions)
+   * Returns a page of bulk actions previously submitted for the given agent profile. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentBulkAction
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentBulkAction getAgentProfileBulkActions(@Nonnull String agentProfileId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentBulkAction> localVarResponse = getAgentProfileBulkActionsWithHttpInfo(agentProfileId, pageSize, page, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Bulk Actions for Agent Profile (getAgentProfileBulkActions)
+   * Returns a page of bulk actions previously submitted for the given agent profile. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentBulkAction&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentBulkAction> getAgentProfileBulkActionsWithHttpInfo(@Nonnull String agentProfileId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentProfileBulkActionsRequestBuilder(agentProfileId, pageSize, page, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentProfileBulkActions", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentBulkAction responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentBulkAction>() {});
+        return new ApiResponse<PageDataAgentBulkAction>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentProfileBulkActionsRequestBuilder(@Nonnull String agentProfileId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling getAgentProfileBulkActions");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getAgentProfileBulkActions");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getAgentProfileBulkActions");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/bulk"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Profile (getAgentProfileById)
+   * Fetch the Agent Profile object based on the provided Agent Profile Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @return AgentProfile
+   * @throws ApiException if fails to make API call
+   */
+  public AgentProfile getAgentProfileById(@Nonnull String agentProfileId) throws ApiException {
+    ApiResponse<AgentProfile> localVarResponse = getAgentProfileByIdWithHttpInfo(agentProfileId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Profile (getAgentProfileById)
+   * Fetch the Agent Profile object based on the provided Agent Profile Id.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentProfile> getAgentProfileByIdWithHttpInfo(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentProfileByIdRequestBuilder(agentProfileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentProfileById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentProfile>() {});
+        return new ApiResponse<AgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentProfileByIdRequestBuilder(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling getAgentProfileById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Profile Info (getAgentProfileInfoById)
+   * Fetch the Agent Profile Info object based on the provided Agent Profile Id. Agent Profile Info is a lightweight object that omits the auto-provision key and secret; it is readable by any tenant admin so agent screens can resolve the linked profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @return AgentProfileInfo
+   * @throws ApiException if fails to make API call
+   */
+  public AgentProfileInfo getAgentProfileInfoById(@Nonnull String agentProfileId) throws ApiException {
+    ApiResponse<AgentProfileInfo> localVarResponse = getAgentProfileInfoByIdWithHttpInfo(agentProfileId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Profile Info (getAgentProfileInfoById)
+   * Fetch the Agent Profile Info object based on the provided Agent Profile Id. Agent Profile Info is a lightweight object that omits the auto-provision key and secret; it is readable by any tenant admin so agent screens can resolve the linked profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentProfileInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentProfileInfo> getAgentProfileInfoByIdWithHttpInfo(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentProfileInfoByIdRequestBuilder(agentProfileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentProfileInfoById", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentProfileInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentProfileInfo>() {});
+        return new ApiResponse<AgentProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentProfileInfoByIdRequestBuilder(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling getAgentProfileInfoById");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/info/{agentProfileId}"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Agent Provision Instructions (getAgentProvisionInstructions)
+   * Returns the auto-provision docker command for the specified agent profile with the server address and gRPC port resolved server-side.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param method Installation method (&#39;docker&#39;) (required)
+   * @return AgentInstructions
+   * @throws ApiException if fails to make API call
+   */
+  public AgentInstructions getAgentProvisionInstructions(@Nonnull String agentProfileId, @Nonnull String method) throws ApiException {
+    ApiResponse<AgentInstructions> localVarResponse = getAgentProvisionInstructionsWithHttpInfo(agentProfileId, method, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent Provision Instructions (getAgentProvisionInstructions)
+   * Returns the auto-provision docker command for the specified agent profile with the server address and gRPC port resolved server-side.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param method Installation method (&#39;docker&#39;) (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentInstructions&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentInstructions> getAgentProvisionInstructionsWithHttpInfo(@Nonnull String agentProfileId, @Nonnull String method, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentProvisionInstructionsRequestBuilder(agentProfileId, method, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentProvisionInstructions", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentInstructions responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentInstructions>() {});
+        return new ApiResponse<AgentInstructions>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentProvisionInstructionsRequestBuilder(@Nonnull String agentProfileId, @Nonnull String method, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling getAgentProvisionInstructions");
+    }
+    // verify the required parameter 'method' is set
+    if (method == null) {
+      throw new ApiException(400, "Missing the required parameter 'method' when calling getAgentProvisionInstructions");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/instructions/provision/{agentProfileId}/{method}"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()))
+        .replace("{method}", ApiClient.urlEncode(method.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get the agent upgrade target (getAgentUpgradeTarget)
+   * Returns the image reference the agent should be upgraded to, or an empty string when it already runs the newest published image or cannot be placed in the version graph.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return String
+   * @throws ApiException if fails to make API call
+   */
+  public String getAgentUpgradeTarget(@Nonnull String agentId) throws ApiException {
+    ApiResponse<String> localVarResponse = getAgentUpgradeTargetWithHttpInfo(agentId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get the agent upgrade target (getAgentUpgradeTarget)
+   * Returns the image reference the agent should be upgraded to, or an empty string when it already runs the newest published image or cannot be placed in the version graph.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;String&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<String> getAgentUpgradeTargetWithHttpInfo(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAgentUpgradeTargetRequestBuilder(agentId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getAgentUpgradeTarget", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        String responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<String>() {});
+        return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getAgentUpgradeTargetRequestBuilder(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling getAgentUpgradeTarget");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}/upgrade/target"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
@@ -22263,6 +25843,240 @@ public class ThingsboardApi {
   }
 
   /**
+   * Get Customer Agent Infos (getCustomerAgentInfos)
+   * Returns a page of agent info objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentInfo getCustomerAgentInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentInfo> localVarResponse = getCustomerAgentInfosWithHttpInfo(customerId, pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Customer Agent Infos (getCustomerAgentInfos)
+   * Returns a page of agent info objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentInfo> getCustomerAgentInfosWithHttpInfo(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getCustomerAgentInfosRequestBuilder(customerId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getCustomerAgentInfos", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentInfo>() {});
+        return new ApiResponse<PageDataAgentInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getCustomerAgentInfosRequestBuilder(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'customerId' is set
+    if (customerId == null) {
+      throw new ApiException(400, "Missing the required parameter 'customerId' when calling getCustomerAgentInfos");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getCustomerAgentInfos");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getCustomerAgentInfos");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/customer/{customerId}/agentInfos"
+        .replace("{customerId}", ApiClient.urlEncode(customerId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Customer Agents (getCustomerAgents)
+   * Returns a page of agent objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgent
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgent getCustomerAgents(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgent> localVarResponse = getCustomerAgentsWithHttpInfo(customerId, pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Customer Agents (getCustomerAgents)
+   * Returns a page of agent objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgent> getCustomerAgentsWithHttpInfo(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getCustomerAgentsRequestBuilder(customerId, pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getCustomerAgents", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgent>() {});
+        return new ApiResponse<PageDataAgent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getCustomerAgentsRequestBuilder(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'customerId' is set
+    if (customerId == null) {
+      throw new ApiException(400, "Missing the required parameter 'customerId' when calling getCustomerAgents");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getCustomerAgents");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getCustomerAgents");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/customer/{customerId}/agents"
+        .replace("{customerId}", ApiClient.urlEncode(customerId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Get Customer Asset Infos (getCustomerAssetInfos)
    * Returns a page of asset info objects owned by the specified customer. Asset Info is an extension of the default Asset object that contains information about the owner name.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;READ&#39; permission for the entity (entities).
    * @param customerId A string value representing the customer id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -24717,6 +28531,76 @@ public class ThingsboardApi {
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Default Agent Profile (getDefaultAgentProfileInfo)
+   * Fetch the Agent Profile Info object that is marked as default within the current tenant scope.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @return AgentProfileInfo
+   * @throws ApiException if fails to make API call
+   */
+  public AgentProfileInfo getDefaultAgentProfileInfo() throws ApiException {
+    ApiResponse<AgentProfileInfo> localVarResponse = getDefaultAgentProfileInfoWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Default Agent Profile (getDefaultAgentProfileInfo)
+   * Fetch the Agent Profile Info object that is marked as default within the current tenant scope.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentProfileInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentProfileInfo> getDefaultAgentProfileInfoWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getDefaultAgentProfileInfoRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getDefaultAgentProfileInfo", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentProfileInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentProfileInfo>() {});
+        return new ApiResponse<AgentProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getDefaultAgentProfileInfoRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/info/default";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
@@ -32755,6 +36639,160 @@ public class ThingsboardApi {
   }
 
   /**
+   * Get Agent App Template (getLatestAgentAppTemplateByType)
+   * Fetch the latest Agent App Template object for the given app type and config type.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType A string value representing the agent application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39; (required)
+   * @param configType A string value representing the agent configuration type, e.g. &#39;DOCKER_COMPOSE&#39; (required)
+   * @return AgentAppTemplate
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppTemplate getLatestAgentAppTemplateByAppTypeAndConfigType(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType) throws ApiException {
+    ApiResponse<AgentAppTemplate> localVarResponse = getLatestAgentAppTemplateByAppTypeAndConfigTypeWithHttpInfo(appType, configType, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Agent App Template (getLatestAgentAppTemplateByType)
+   * Fetch the latest Agent App Template object for the given app type and config type.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType A string value representing the agent application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39; (required)
+   * @param configType A string value representing the agent configuration type, e.g. &#39;DOCKER_COMPOSE&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppTemplate&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppTemplate> getLatestAgentAppTemplateByAppTypeAndConfigTypeWithHttpInfo(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getLatestAgentAppTemplateByAppTypeAndConfigTypeRequestBuilder(appType, configType, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getLatestAgentAppTemplateByAppTypeAndConfigType", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppTemplate>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppTemplate responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppTemplate>() {});
+        return new ApiResponse<AgentAppTemplate>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getLatestAgentAppTemplateByAppTypeAndConfigTypeRequestBuilder(@Nonnull AgentApplicationType appType, @Nonnull AgentAppConfigType configType, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'appType' is set
+    if (appType == null) {
+      throw new ApiException(400, "Missing the required parameter 'appType' when calling getLatestAgentAppTemplateByAppTypeAndConfigType");
+    }
+    // verify the required parameter 'configType' is set
+    if (configType == null) {
+      throw new ApiException(400, "Missing the required parameter 'configType' when calling getLatestAgentAppTemplateByAppTypeAndConfigType");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/template/{appType}/{configType}/latest"
+        .replace("{appType}", ApiClient.urlEncode(appType.toString()))
+        .replace("{configType}", ApiClient.urlEncode(configType.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get the newest published agent image (getLatestAgentImageRef)
+   * Returns the newest agent image reference known from the version graph, or the floating tag while no version has been published. Lets a list of agents decide locally which rows are upgradable without asking per row.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @return String
+   * @throws ApiException if fails to make API call
+   */
+  public String getLatestAgentImageRef() throws ApiException {
+    ApiResponse<String> localVarResponse = getLatestAgentImageRefWithHttpInfo(null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get the newest published agent image (getLatestAgentImageRef)
+   * Returns the newest agent image reference known from the version graph, or the floating tag while no version has been published. Lets a list of agents decide locally which rows are upgradable without asking per row.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;String&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<String> getLatestAgentImageRefWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getLatestAgentImageRefRequestBuilder(headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getLatestAgentImageRef", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        String responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<String>() {});
+        return new ApiResponse<String>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getLatestAgentImageRefRequestBuilder(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/upgrade/latest";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Get latest alarm rule debug event (getLatestAlarmRuleDebugEvent)
    * Gets latest alarm rule debug event for specified alarm rule id. Referencing non-existing alarm rule id will cause an error.   Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param alarmRuleId  (required)
@@ -34169,6 +38207,83 @@ public class ThingsboardApi {
     } else {
       localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Managed Related Entity Ids (getManagedRelatedEntityIds)
+   * Returns the ids of entities of the given type that are already linked to an agent application.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType Related entity type (EDGE or DEVICE) (required)
+   * @return List&lt;GetManagedRelatedEntityIds200ResponseInner&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<GetManagedRelatedEntityIds200ResponseInner> getManagedRelatedEntityIds(@Nonnull String entityType) throws ApiException {
+    ApiResponse<List<GetManagedRelatedEntityIds200ResponseInner>> localVarResponse = getManagedRelatedEntityIdsWithHttpInfo(entityType, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Managed Related Entity Ids (getManagedRelatedEntityIds)
+   * Returns the ids of entities of the given type that are already linked to an agent application.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType Related entity type (EDGE or DEVICE) (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;GetManagedRelatedEntityIds200ResponseInner&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<GetManagedRelatedEntityIds200ResponseInner>> getManagedRelatedEntityIdsWithHttpInfo(@Nonnull String entityType, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getManagedRelatedEntityIdsRequestBuilder(entityType, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getManagedRelatedEntityIds", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<GetManagedRelatedEntityIds200ResponseInner>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<GetManagedRelatedEntityIds200ResponseInner> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<GetManagedRelatedEntityIds200ResponseInner>>() {});
+        return new ApiResponse<List<GetManagedRelatedEntityIds200ResponseInner>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getManagedRelatedEntityIdsRequestBuilder(@Nonnull String entityType, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'entityType' is set
+    if (entityType == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityType' when calling getManagedRelatedEntityIds");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/managedRelatedEntities/{entityType}"
+        .replace("{entityType}", ApiClient.urlEncode(entityType.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
@@ -37731,6 +41846,120 @@ public class ThingsboardApi {
     } catch (IOException e) {
       throw new ApiException(e);
     }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Related Entity Candidates (getRelatedEntityCandidates)
+   * Returns a page of Edges or Gateway Devices (devices with &#39;gateway&#39; set in additional info) that can be linked to an agent application. Entities already linked to another application are excluded unless passed as &#39;currentEntityId&#39;. Results are sorted by name. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType Related entity type (EDGE or DEVICE) (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing entity name (optional)
+   * @param currentEntityId Optional id of the entity currently linked to the edited application; it is kept in the result even though it is managed (optional)
+   * @return PageDataEntityInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataEntityInfo getRelatedEntityCandidates(@Nonnull String entityType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String currentEntityId) throws ApiException {
+    ApiResponse<PageDataEntityInfo> localVarResponse = getRelatedEntityCandidatesWithHttpInfo(entityType, pageSize, page, textSearch, currentEntityId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Related Entity Candidates (getRelatedEntityCandidates)
+   * Returns a page of Edges or Gateway Devices (devices with &#39;gateway&#39; set in additional info) that can be linked to an agent application. Entities already linked to another application are excluded unless passed as &#39;currentEntityId&#39;. Results are sorted by name. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param entityType Related entity type (EDGE or DEVICE) (required)
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing entity name (optional)
+   * @param currentEntityId Optional id of the entity currently linked to the edited application; it is kept in the result even though it is managed (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataEntityInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataEntityInfo> getRelatedEntityCandidatesWithHttpInfo(@Nonnull String entityType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String currentEntityId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getRelatedEntityCandidatesRequestBuilder(entityType, pageSize, page, textSearch, currentEntityId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getRelatedEntityCandidates", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataEntityInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataEntityInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataEntityInfo>() {});
+        return new ApiResponse<PageDataEntityInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getRelatedEntityCandidatesRequestBuilder(@Nonnull String entityType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String currentEntityId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'entityType' is set
+    if (entityType == null) {
+      throw new ApiException(400, "Missing the required parameter 'entityType' when calling getRelatedEntityCandidates");
+    }
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getRelatedEntityCandidates");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getRelatedEntityCandidates");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/relatedEntityCandidates";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "entityType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("entityType", entityType));
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "currentEntityId";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("currentEntityId", currentEntityId));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -41683,6 +45912,556 @@ public class ThingsboardApi {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
     String localVarPath = "/api/tenant/{tenantId}/users"
         .replace("{tenantId}", ApiClient.urlEncode(tenantId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Tenant Agent Application Profiles (getTenantAgentAppProfiles)
+   * Returns a page of agent application profiles owned by tenant.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional search text (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentAppProfile
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentAppProfile getTenantAgentAppProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentAppProfile> localVarResponse = getTenantAgentAppProfilesWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Tenant Agent Application Profiles (getTenantAgentAppProfiles)
+   * Returns a page of agent application profiles owned by tenant.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional search text (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentAppProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentAppProfile> getTenantAgentAppProfilesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getTenantAgentAppProfilesRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getTenantAgentAppProfiles", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentAppProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentAppProfile>() {});
+        return new ApiResponse<PageDataAgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getTenantAgentAppProfilesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getTenantAgentAppProfiles");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getTenantAgentAppProfiles");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/tenant/agent/app/profiles";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Tenant Agent Infos (getTenantAgentInfos)
+   * Returns a page of agent info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentInfo getTenantAgentInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentInfo> localVarResponse = getTenantAgentInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Tenant Agent Infos (getTenantAgentInfos)
+   * Returns a page of agent info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentInfo> getTenantAgentInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getTenantAgentInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getTenantAgentInfos", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentInfo>() {});
+        return new ApiResponse<PageDataAgentInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getTenantAgentInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getTenantAgentInfos");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getTenantAgentInfos");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/tenant/agentInfos";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Tenant Agent Profile Infos (getTenantAgentProfileInfos)
+   * Returns a page of Agent Profile Info objects owned by the current tenant. Agent Profile Info is a lightweight object that contains only id and name of the profile. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch  (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentProfileInfo
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentProfileInfo getTenantAgentProfileInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentProfileInfo> localVarResponse = getTenantAgentProfileInfosWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Tenant Agent Profile Infos (getTenantAgentProfileInfos)
+   * Returns a page of Agent Profile Info objects owned by the current tenant. Agent Profile Info is a lightweight object that contains only id and name of the profile. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch  (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentProfileInfo&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentProfileInfo> getTenantAgentProfileInfosWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getTenantAgentProfileInfosRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getTenantAgentProfileInfos", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentProfileInfo responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentProfileInfo>() {});
+        return new ApiResponse<PageDataAgentProfileInfo>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getTenantAgentProfileInfosRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getTenantAgentProfileInfos");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getTenantAgentProfileInfos");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/tenant/agent/profileInfos";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Tenant Agent Profiles (getTenantAgentProfiles)
+   * Returns a page of Agent Profile objects owned by the current tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch  (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgentProfile
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgentProfile getTenantAgentProfiles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgentProfile> localVarResponse = getTenantAgentProfilesWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Tenant Agent Profiles (getTenantAgentProfiles)
+   * Returns a page of Agent Profile objects owned by the current tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch  (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgentProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgentProfile> getTenantAgentProfilesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getTenantAgentProfilesRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getTenantAgentProfiles", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgentProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgentProfile>() {});
+        return new ApiResponse<PageDataAgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getTenantAgentProfilesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getTenantAgentProfiles");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getTenantAgentProfiles");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/tenant/agent/profiles";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "pageSize";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("pageSize", pageSize));
+    localVarQueryParameterBaseName = "page";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
+    localVarQueryParameterBaseName = "textSearch";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("textSearch", textSearch));
+    localVarQueryParameterBaseName = "sortProperty";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortProperty", sortProperty));
+    localVarQueryParameterBaseName = "sortOrder";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("sortOrder", sortOrder));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Get Tenant Agents (getTenantAgents)
+   * Returns a page of agents owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @return PageDataAgent
+   * @throws ApiException if fails to make API call
+   */
+  public PageDataAgent getTenantAgents(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+    ApiResponse<PageDataAgent> localVarResponse = getTenantAgentsWithHttpInfo(pageSize, page, textSearch, sortProperty, sortOrder, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Get Tenant Agents (getTenantAgents)
+   * Returns a page of agents owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param pageSize Maximum amount of entities in a one page (required)
+   * @param page Sequence number of page starting from 0 (required)
+   * @param textSearch Optional String value representing agent name (optional)
+   * @param sortProperty Property of entity to sort by (optional)
+   * @param sortOrder Sort order. ASC (ASCENDING) or DESC (DESCENDING) (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;PageDataAgent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<PageDataAgent> getTenantAgentsWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getTenantAgentsRequestBuilder(pageSize, page, textSearch, sortProperty, sortOrder, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("getTenantAgents", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<PageDataAgent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        PageDataAgent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<PageDataAgent>() {});
+        return new ApiResponse<PageDataAgent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder getTenantAgentsRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'pageSize' is set
+    if (pageSize == null) {
+      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getTenantAgents");
+    }
+    // verify the required parameter 'page' is set
+    if (page == null) {
+      throw new ApiException(400, "Missing the required parameter 'page' when calling getTenantAgents");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/tenant/agents";
     List<Pair> localVarQueryParams = new ArrayList<>();
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -50373,6 +55152,88 @@ public class ThingsboardApi {
   }
 
   /**
+   * Install Agent Application (installAgentApp)
+   * Creates a new agent application and an INSTALL event in a single operation. Returns both the created application and the INSTALL event so the caller can open a progress view without a second round-trip. The request body must include the application object.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentAppEventRequest A JSON value representing the install event request with the application. (required)
+   * @return AgentAppInstallResponse
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppInstallResponse installAgentApp(@Nonnull AgentAppEventRequest agentAppEventRequest) throws ApiException {
+    ApiResponse<AgentAppInstallResponse> localVarResponse = installAgentAppWithHttpInfo(agentAppEventRequest, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Install Agent Application (installAgentApp)
+   * Creates a new agent application and an INSTALL event in a single operation. Returns both the created application and the INSTALL event so the caller can open a progress view without a second round-trip. The request body must include the application object.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentAppEventRequest A JSON value representing the install event request with the application. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppInstallResponse&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppInstallResponse> installAgentAppWithHttpInfo(@Nonnull AgentAppEventRequest agentAppEventRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = installAgentAppRequestBuilder(agentAppEventRequest, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("installAgentApp", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppInstallResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppInstallResponse responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppInstallResponse>() {});
+        return new ApiResponse<AgentAppInstallResponse>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder installAgentAppRequestBuilder(@Nonnull AgentAppEventRequest agentAppEventRequest, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentAppEventRequest' is set
+    if (agentAppEventRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentAppEventRequest' when calling installAgentApp");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/event";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentAppEventRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * installSolution
    * 
    * @param solutionId  (required)
@@ -50447,6 +55308,83 @@ public class ThingsboardApi {
     }
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Is agent upgrade available (isAgentUpgradeAvailable)
+   * Returns &#39;true&#39; when the agent reports an image older than the newest published one, &#39;false&#39; otherwise — including when the agent runs a floating tag such as &#39;latest&#39;, whose current content cannot be told from the tag.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return Boolean
+   * @throws ApiException if fails to make API call
+   */
+  public Boolean isAgentUpgradeAvailable(@Nonnull String agentId) throws ApiException {
+    ApiResponse<Boolean> localVarResponse = isAgentUpgradeAvailableWithHttpInfo(agentId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Is agent upgrade available (isAgentUpgradeAvailable)
+   * Returns &#39;true&#39; when the agent reports an image older than the newest published one, &#39;false&#39; otherwise — including when the agent runs a floating tag such as &#39;latest&#39;, whose current content cannot be told from the tag.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Boolean&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Boolean> isAgentUpgradeAvailableWithHttpInfo(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = isAgentUpgradeAvailableRequestBuilder(agentId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("isAgentUpgradeAvailable", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Boolean>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Boolean responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Boolean>() {});
+        return new ApiResponse<Boolean>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder isAgentUpgradeAvailableRequestBuilder(@Nonnull String agentId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling isAgentUpgradeAvailable");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}/upgrade/available"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -51035,25 +55973,23 @@ public class ThingsboardApi {
   /**
    * listChats
    * 
-   * @param chatType  (required)
    * @return com.fasterxml.jackson.databind.JsonNode
    * @throws ApiException if fails to make API call
    */
-  public com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType) throws ApiException {
-    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = listChatsWithHttpInfo(chatType, null);
+  public com.fasterxml.jackson.databind.JsonNode listChats() throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = listChatsWithHttpInfo(null);
     return localVarResponse.getData();
   }
 
   /**
    * listChats
    * 
-   * @param chatType  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> listChatsWithHttpInfo(@Nonnull ChatType chatType, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = listChatsRequestBuilder(chatType, headers);
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> listChatsWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listChatsRequestBuilder(headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -51087,14 +56023,9 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder listChatsRequestBuilder(@Nonnull ChatType chatType, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'chatType' is set
-    if (chatType == null) {
-      throw new ApiException(400, "Missing the required parameter 'chatType' when calling listChats");
-    }
+  private HttpRequest.Builder listChatsRequestBuilder(Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/ai/chats/{chatType}"
-        .replace("{chatType}", ApiClient.urlEncode(chatType.toString()));
+    String localVarPath = "/api/ai/chats";
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -52276,6 +57207,340 @@ public class ThingsboardApi {
   }
 
   /**
+   * Create Agent Application Profile from template (materializeAgentAppProfile)
+   * Creates an agent application profile from the default configuration of the template with the given app type and version. Used to materialize a predefined (virtual) profile shown in the UI into a real profile on first use. If a profile with the given app type and template version already exists, the existing profile is returned (the oldest one by created time) instead of creating a new one.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType Application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39;, &#39;GENERIC&#39; (required)
+   * @param templateVersion The template version to materialize (e.g. &#39;4.3.1.2EDGEPE&#39;) (required)
+   * @param composeType The compose type to select from the template (e.g. &#39;in_memory&#39;, &#39;kafka&#39;). Defaults to the template&#39;s first compose type. (optional)
+   * @return AgentAppProfile
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppProfile materializeAgentAppProfile(@Nonnull AgentApplicationType appType, @Nonnull String templateVersion, @Nullable String composeType) throws ApiException {
+    ApiResponse<AgentAppProfile> localVarResponse = materializeAgentAppProfileWithHttpInfo(appType, templateVersion, composeType, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create Agent Application Profile from template (materializeAgentAppProfile)
+   * Creates an agent application profile from the default configuration of the template with the given app type and version. Used to materialize a predefined (virtual) profile shown in the UI into a real profile on first use. If a profile with the given app type and template version already exists, the existing profile is returned (the oldest one by created time) instead of creating a new one.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param appType Application type, e.g. &#39;EDGE&#39;, &#39;GATEWAY&#39;, &#39;GENERIC&#39; (required)
+   * @param templateVersion The template version to materialize (e.g. &#39;4.3.1.2EDGEPE&#39;) (required)
+   * @param composeType The compose type to select from the template (e.g. &#39;in_memory&#39;, &#39;kafka&#39;). Defaults to the template&#39;s first compose type. (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppProfile> materializeAgentAppProfileWithHttpInfo(@Nonnull AgentApplicationType appType, @Nonnull String templateVersion, @Nullable String composeType, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = materializeAgentAppProfileRequestBuilder(appType, templateVersion, composeType, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("materializeAgentAppProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppProfile>() {});
+        return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder materializeAgentAppProfileRequestBuilder(@Nonnull AgentApplicationType appType, @Nonnull String templateVersion, @Nullable String composeType, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'appType' is set
+    if (appType == null) {
+      throw new ApiException(400, "Missing the required parameter 'appType' when calling materializeAgentAppProfile");
+    }
+    // verify the required parameter 'templateVersion' is set
+    if (templateVersion == null) {
+      throw new ApiException(400, "Missing the required parameter 'templateVersion' when calling materializeAgentAppProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profile/materialize/{appType}/{templateVersion}"
+        .replace("{appType}", ApiClient.urlEncode(appType.toString()))
+        .replace("{templateVersion}", ApiClient.urlEncode(templateVersion.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "composeType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("composeType", composeType));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Merge template into application profile for preview (mergeAgentAppProfileForPreview)
+   * Merges the specified template into an agent application profile for preview purposes. The compose type determines which compose configuration variant from the template is used.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param templateVersion The template version to merge (e.g. &#39;4.3.1.2EDGEPE&#39;) (required)
+   * @param agentAppProfile Agent application profile to merge template with (required)
+   * @param composeType The compose type to select from the template (e.g. &#39;monolith&#39;, &#39;microservices&#39;) (optional)
+   * @param actionType The event action this merge previews (e.g. UPGRADE). Drives action-specific merge rules. (optional)
+   * @param setHostValues Whether to auto-fill host values (e.g. CLOUD_RPC_HOST) from the platform base URL. Should be true only for the install preview; keep false when previewing the saved compose of an existing profile to preserve user-configured host values. (optional, default to false)
+   * @return AgentAppProfile
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppProfile mergeAgentAppProfileForPreview(@Nonnull String templateVersion, @Nonnull AgentAppProfile agentAppProfile, @Nullable String composeType, @Nullable AgentAppEventActionType actionType, @Nullable Boolean setHostValues) throws ApiException {
+    ApiResponse<AgentAppProfile> localVarResponse = mergeAgentAppProfileForPreviewWithHttpInfo(templateVersion, agentAppProfile, composeType, actionType, setHostValues, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Merge template into application profile for preview (mergeAgentAppProfileForPreview)
+   * Merges the specified template into an agent application profile for preview purposes. The compose type determines which compose configuration variant from the template is used.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param templateVersion The template version to merge (e.g. &#39;4.3.1.2EDGEPE&#39;) (required)
+   * @param agentAppProfile Agent application profile to merge template with (required)
+   * @param composeType The compose type to select from the template (e.g. &#39;monolith&#39;, &#39;microservices&#39;) (optional)
+   * @param actionType The event action this merge previews (e.g. UPGRADE). Drives action-specific merge rules. (optional)
+   * @param setHostValues Whether to auto-fill host values (e.g. CLOUD_RPC_HOST) from the platform base URL. Should be true only for the install preview; keep false when previewing the saved compose of an existing profile to preserve user-configured host values. (optional, default to false)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppProfile> mergeAgentAppProfileForPreviewWithHttpInfo(@Nonnull String templateVersion, @Nonnull AgentAppProfile agentAppProfile, @Nullable String composeType, @Nullable AgentAppEventActionType actionType, @Nullable Boolean setHostValues, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = mergeAgentAppProfileForPreviewRequestBuilder(templateVersion, agentAppProfile, composeType, actionType, setHostValues, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("mergeAgentAppProfileForPreview", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppProfile>() {});
+        return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder mergeAgentAppProfileForPreviewRequestBuilder(@Nonnull String templateVersion, @Nonnull AgentAppProfile agentAppProfile, @Nullable String composeType, @Nullable AgentAppEventActionType actionType, @Nullable Boolean setHostValues, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'templateVersion' is set
+    if (templateVersion == null) {
+      throw new ApiException(400, "Missing the required parameter 'templateVersion' when calling mergeAgentAppProfileForPreview");
+    }
+    // verify the required parameter 'agentAppProfile' is set
+    if (agentAppProfile == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentAppProfile' when calling mergeAgentAppProfileForPreview");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profiles/merge/{templateVersion}/preview"
+        .replace("{templateVersion}", ApiClient.urlEncode(templateVersion.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "composeType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("composeType", composeType));
+    localVarQueryParameterBaseName = "actionType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("actionType", actionType));
+    localVarQueryParameterBaseName = "setHostValues";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("setHostValues", setHostValues));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentAppProfile);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Merge template into application for preview (mergeAgentApplicationForPreview)
+   * Merges the specified template into an agent application for preview purposes. If no application is provided in the body, a new one is created from the template. The compose type determines which compose configuration variant from the template is used. Optionally provide relatedEntityType and relatedEntityId to auto-fill entity credentials (Edge routing key/secret or Gateway access token) into the compose.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param templateVersion The template version to merge (e.g. &#39;4.3.1.2EDGEPE&#39;) (required)
+   * @param appType Application type (EDGE, GATEWAY, GENERIC). Required when no application body is supplied. (optional)
+   * @param composeType The compose type to select from the template (e.g. &#39;monolith&#39;, &#39;microservices&#39;) (optional)
+   * @param actionType The event action this merge previews (e.g. UPGRADE). Drives action-specific merge rules. (optional)
+   * @param setHostValues Whether to auto-fill host values (e.g. CLOUD_RPC_HOST) from the platform base URL. Should be true only for the install preview; keep false when previewing the saved compose of an existing application to preserve user-configured host values. (optional, default to false)
+   * @param relatedEntityType Related entity type (EDGE or DEVICE) (optional)
+   * @param relatedEntityId Related entity id (optional)
+   * @param agentApplication Optional agent application to merge with. If null, a new application is created from the template. (optional)
+   * @return AgentApplication
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplication mergeAgentApplicationForPreview(@Nonnull String templateVersion, @Nullable AgentApplicationType appType, @Nullable String composeType, @Nullable AgentAppEventActionType actionType, @Nullable Boolean setHostValues, @Nullable String relatedEntityType, @Nullable String relatedEntityId, @Nullable AgentApplication agentApplication) throws ApiException {
+    ApiResponse<AgentApplication> localVarResponse = mergeAgentApplicationForPreviewWithHttpInfo(templateVersion, appType, composeType, actionType, setHostValues, relatedEntityType, relatedEntityId, agentApplication, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Merge template into application for preview (mergeAgentApplicationForPreview)
+   * Merges the specified template into an agent application for preview purposes. If no application is provided in the body, a new one is created from the template. The compose type determines which compose configuration variant from the template is used. Optionally provide relatedEntityType and relatedEntityId to auto-fill entity credentials (Edge routing key/secret or Gateway access token) into the compose.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param templateVersion The template version to merge (e.g. &#39;4.3.1.2EDGEPE&#39;) (required)
+   * @param appType Application type (EDGE, GATEWAY, GENERIC). Required when no application body is supplied. (optional)
+   * @param composeType The compose type to select from the template (e.g. &#39;monolith&#39;, &#39;microservices&#39;) (optional)
+   * @param actionType The event action this merge previews (e.g. UPGRADE). Drives action-specific merge rules. (optional)
+   * @param setHostValues Whether to auto-fill host values (e.g. CLOUD_RPC_HOST) from the platform base URL. Should be true only for the install preview; keep false when previewing the saved compose of an existing application to preserve user-configured host values. (optional, default to false)
+   * @param relatedEntityType Related entity type (EDGE or DEVICE) (optional)
+   * @param relatedEntityId Related entity id (optional)
+   * @param agentApplication Optional agent application to merge with. If null, a new application is created from the template. (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplication&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplication> mergeAgentApplicationForPreviewWithHttpInfo(@Nonnull String templateVersion, @Nullable AgentApplicationType appType, @Nullable String composeType, @Nullable AgentAppEventActionType actionType, @Nullable Boolean setHostValues, @Nullable String relatedEntityType, @Nullable String relatedEntityId, @Nullable AgentApplication agentApplication, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = mergeAgentApplicationForPreviewRequestBuilder(templateVersion, appType, composeType, actionType, setHostValues, relatedEntityType, relatedEntityId, agentApplication, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("mergeAgentApplicationForPreview", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplication responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplication>() {});
+        return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder mergeAgentApplicationForPreviewRequestBuilder(@Nonnull String templateVersion, @Nullable AgentApplicationType appType, @Nullable String composeType, @Nullable AgentAppEventActionType actionType, @Nullable Boolean setHostValues, @Nullable String relatedEntityType, @Nullable String relatedEntityId, @Nullable AgentApplication agentApplication, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'templateVersion' is set
+    if (templateVersion == null) {
+      throw new ApiException(400, "Missing the required parameter 'templateVersion' when calling mergeAgentApplicationForPreview");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/merge/{templateVersion}/preview"
+        .replace("{templateVersion}", ApiClient.urlEncode(templateVersion.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "appType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("appType", appType));
+    localVarQueryParameterBaseName = "composeType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("composeType", composeType));
+    localVarQueryParameterBaseName = "actionType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("actionType", actionType));
+    localVarQueryParameterBaseName = "setHostValues";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("setHostValues", setHostValues));
+    localVarQueryParameterBaseName = "relatedEntityType";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("relatedEntityType", relatedEntityType));
+    localVarQueryParameterBaseName = "relatedEntityId";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("relatedEntityId", relatedEntityId));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentApplication);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Mobile Login redirect (mobileLogin)
    * This method generates redirect to the special link that is handled by mobile application. Useful for email verification flow on mobile app.
    * @param pkgName Mobile app package name. Used to identify the application and build the redirect link. (required)
@@ -52517,6 +57782,102 @@ public class ThingsboardApi {
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Preview Bulk Operation (previewBulkOperation)
+   * Previews the effect of a bulk operation over the applications of the given agent profile and application profile without enqueuing it, returning the set of affected applications and the resulting actions.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param bulkOperationRequest  (required)
+   * @return BulkOperationPreview
+   * @throws ApiException if fails to make API call
+   */
+  public BulkOperationPreview previewBulkOperation(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull BulkOperationRequest bulkOperationRequest) throws ApiException {
+    ApiResponse<BulkOperationPreview> localVarResponse = previewBulkOperationWithHttpInfo(agentProfileId, applicationProfileId, bulkOperationRequest, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Preview Bulk Operation (previewBulkOperation)
+   * Previews the effect of a bulk operation over the applications of the given agent profile and application profile without enqueuing it, returning the set of affected applications and the resulting actions.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param bulkOperationRequest  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;BulkOperationPreview&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<BulkOperationPreview> previewBulkOperationWithHttpInfo(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull BulkOperationRequest bulkOperationRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = previewBulkOperationRequestBuilder(agentProfileId, applicationProfileId, bulkOperationRequest, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("previewBulkOperation", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<BulkOperationPreview>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        BulkOperationPreview responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<BulkOperationPreview>() {});
+        return new ApiResponse<BulkOperationPreview>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder previewBulkOperationRequestBuilder(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull BulkOperationRequest bulkOperationRequest, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling previewBulkOperation");
+    }
+    // verify the required parameter 'applicationProfileId' is set
+    if (applicationProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationProfileId' when calling previewBulkOperation");
+    }
+    // verify the required parameter 'bulkOperationRequest' is set
+    if (bulkOperationRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'bulkOperationRequest' when calling previewBulkOperation");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfile/{applicationProfileId}/bulk/preview"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()))
+        .replace("{applicationProfileId}", ApiClient.urlEncode(applicationProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(bulkOperationRequest);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -52846,7 +58207,7 @@ public class ThingsboardApi {
 
   /**
    * Import the bulk of edges (processEdgesBulkImport)
-   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param bulkImportRequest  (required)
    * @return BulkImportResultEdge
    * @throws ApiException if fails to make API call
@@ -52858,7 +58219,7 @@ public class ThingsboardApi {
 
   /**
    * Import the bulk of edges (processEdgesBulkImport)
-   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param bulkImportRequest  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;BulkImportResultEdge&gt;
@@ -54548,6 +59909,288 @@ public class ThingsboardApi {
     localVarRequestBuilder.header("Accept", "application/json");
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(adminSettings);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Create Or Update Agent (saveAgent)
+   * Creates or Updates the Agent. When creating agent, platform generates Agent Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Agent id will be present in the response. Specify existing Agent id to update the agent. Referencing non-existing Agent Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Agent entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agent A JSON value representing the agent. (required)
+   * @param entityGroupId  (optional)
+   * @param entityGroupIds A list of entity group ids, separated by comma &#39;,&#39; (optional)
+   * @return Agent
+   * @throws ApiException if fails to make API call
+   */
+  public Agent saveAgent(@Nonnull Agent agent, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds) throws ApiException {
+    ApiResponse<Agent> localVarResponse = saveAgentWithHttpInfo(agent, entityGroupId, entityGroupIds, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create Or Update Agent (saveAgent)
+   * Creates or Updates the Agent. When creating agent, platform generates Agent Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Agent id will be present in the response. Specify existing Agent id to update the agent. Referencing non-existing Agent Id will cause &#39;Not Found&#39; error. Remove &#39;id&#39;, &#39;tenantId&#39; and optionally &#39;customerId&#39; from the request body example (below) to create new Agent entity.   Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agent A JSON value representing the agent. (required)
+   * @param entityGroupId  (optional)
+   * @param entityGroupIds A list of entity group ids, separated by comma &#39;,&#39; (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Agent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Agent> saveAgentWithHttpInfo(@Nonnull Agent agent, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = saveAgentRequestBuilder(agent, entityGroupId, entityGroupIds, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("saveAgent", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<Agent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        Agent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<Agent>() {});
+        return new ApiResponse<Agent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder saveAgentRequestBuilder(@Nonnull Agent agent, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agent' is set
+    if (agent == null) {
+      throw new ApiException(400, "Missing the required parameter 'agent' when calling saveAgent");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "entityGroupId";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("entityGroupId", entityGroupId));
+    localVarQueryParameterBaseName = "entityGroupIds";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "entityGroupIds", entityGroupIds));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agent);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Create or Update Agent Application Profile (saveAgentAppProfile)
+   * Creates or updates an agent application profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentAppProfile  (required)
+   * @return AgentAppProfile
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppProfile saveAgentAppProfile(@Nonnull AgentAppProfile agentAppProfile) throws ApiException {
+    ApiResponse<AgentAppProfile> localVarResponse = saveAgentAppProfileWithHttpInfo(agentAppProfile, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create or Update Agent Application Profile (saveAgentAppProfile)
+   * Creates or updates an agent application profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentAppProfile  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppProfile> saveAgentAppProfileWithHttpInfo(@Nonnull AgentAppProfile agentAppProfile, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = saveAgentAppProfileRequestBuilder(agentAppProfile, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("saveAgentAppProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppProfile>() {});
+        return new ApiResponse<AgentAppProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder saveAgentAppProfileRequestBuilder(@Nonnull AgentAppProfile agentAppProfile, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentAppProfile' is set
+    if (agentAppProfile == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentAppProfile' when calling saveAgentAppProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/profile";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentAppProfile);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Create or Update Agent Profile (saveAgentProfile)
+   * Creates or updates the Agent Profile. When an id is not present in the request, a new Agent Profile is created, otherwise the existing one is updated. Optionally synchronizes the agent application profile assignments in the same request: when the &#39;appProfileIds&#39; parameter is absent, existing assignments are left untouched; when it is present, the assignment set is replaced with the given ids — including an explicitly empty value (e.g. &#39;appProfileIds&#x3D;&#39;), which removes all assignments.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfile  (required)
+   * @param appProfileIds Agent application profile ids to assign to this agent profile. Absent: assignments are not modified. Present: assignments are replaced with the given ids; an explicitly empty value removes all assignments. (optional)
+   * @return AgentProfile
+   * @throws ApiException if fails to make API call
+   */
+  public AgentProfile saveAgentProfile(@Nonnull AgentProfile agentProfile, @Nullable List<String> appProfileIds) throws ApiException {
+    ApiResponse<AgentProfile> localVarResponse = saveAgentProfileWithHttpInfo(agentProfile, appProfileIds, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Create or Update Agent Profile (saveAgentProfile)
+   * Creates or updates the Agent Profile. When an id is not present in the request, a new Agent Profile is created, otherwise the existing one is updated. Optionally synchronizes the agent application profile assignments in the same request: when the &#39;appProfileIds&#39; parameter is absent, existing assignments are left untouched; when it is present, the assignment set is replaced with the given ids — including an explicitly empty value (e.g. &#39;appProfileIds&#x3D;&#39;), which removes all assignments.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfile  (required)
+   * @param appProfileIds Agent application profile ids to assign to this agent profile. Absent: assignments are not modified. Present: assignments are replaced with the given ids; an explicitly empty value removes all assignments. (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentProfile> saveAgentProfileWithHttpInfo(@Nonnull AgentProfile agentProfile, @Nullable List<String> appProfileIds, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = saveAgentProfileRequestBuilder(agentProfile, appProfileIds, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("saveAgentProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentProfile>() {});
+        return new ApiResponse<AgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder saveAgentProfileRequestBuilder(@Nonnull AgentProfile agentProfile, @Nullable List<String> appProfileIds, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfile' is set
+    if (agentProfile == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfile' when calling saveAgentProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "appProfileIds";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "appProfileIds", appProfileIds));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentProfile);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);
@@ -61154,6 +66797,106 @@ public class ThingsboardApi {
   }
 
   /**
+   * Set App Profile Relates On Auto-Discovery (setAppProfileRelatesOnAutoDiscovery)
+   * Enables or disables automatic assignment of the app profile to new auto-discovered applications with a matching template. Only one app profile per agent profile and template pair may relate on auto-discovery.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param relate Whether the app profile should be auto-assigned to new auto-discovered applications with a matching template (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void setAppProfileRelatesOnAutoDiscovery(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull Boolean relate) throws ApiException {
+    setAppProfileRelatesOnAutoDiscoveryWithHttpInfo(agentProfileId, applicationProfileId, relate, null);
+  }
+
+  /**
+   * Set App Profile Relates On Auto-Discovery (setAppProfileRelatesOnAutoDiscovery)
+   * Enables or disables automatic assignment of the app profile to new auto-discovered applications with a matching template. Only one app profile per agent profile and template pair may relate on auto-discovery.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param relate Whether the app profile should be auto-assigned to new auto-discovered applications with a matching template (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> setAppProfileRelatesOnAutoDiscoveryWithHttpInfo(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull Boolean relate, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = setAppProfileRelatesOnAutoDiscoveryRequestBuilder(agentProfileId, applicationProfileId, relate, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("setAppProfileRelatesOnAutoDiscovery", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder setAppProfileRelatesOnAutoDiscoveryRequestBuilder(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, @Nonnull Boolean relate, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling setAppProfileRelatesOnAutoDiscovery");
+    }
+    // verify the required parameter 'applicationProfileId' is set
+    if (applicationProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationProfileId' when calling setAppProfileRelatesOnAutoDiscovery");
+    }
+    // verify the required parameter 'relate' is set
+    if (relate == null) {
+      throw new ApiException(400, "Missing the required parameter 'relate' when calling setAppProfileRelatesOnAutoDiscovery");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfile/{applicationProfileId}/autoDiscovery"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()))
+        .replace("{applicationProfileId}", ApiClient.urlEncode(applicationProfileId.toString()));
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "relate";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("relate", relate));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Set Auto Assign To Edge Rule Chain (setAutoAssignToEdgeRuleChain)
    * Makes the rule chain to be automatically assigned for any new edge that will be created. Does not assign this rule chain for already created edges.   Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param ruleChainId A string value representing the rule chain id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -61297,6 +67040,83 @@ public class ThingsboardApi {
     } catch (IOException e) {
       throw new ApiException(e);
     }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Make Agent Profile Default (setDefaultAgentProfile)
+   * Marks agent profile as default within a tenant scope.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @return AgentProfile
+   * @throws ApiException if fails to make API call
+   */
+  public AgentProfile setDefaultAgentProfile(@Nonnull String agentProfileId) throws ApiException {
+    ApiResponse<AgentProfile> localVarResponse = setDefaultAgentProfileWithHttpInfo(agentProfileId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Make Agent Profile Default (setDefaultAgentProfile)
+   * Marks agent profile as default within a tenant scope.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentProfile&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentProfile> setDefaultAgentProfileWithHttpInfo(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = setDefaultAgentProfileRequestBuilder(agentProfileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("setDefaultAgentProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentProfile responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentProfile>() {});
+        return new ApiResponse<AgentProfile>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder setDefaultAgentProfileRequestBuilder(@Nonnull String agentProfileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling setDefaultAgentProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/default"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
     if (memberVarReadTimeout != null) {
       localVarRequestBuilder.timeout(memberVarReadTimeout);
     }
@@ -63277,6 +69097,86 @@ public class ThingsboardApi {
   }
 
   /**
+   * Unassign App Profile from Agent Profile (unassignAppProfileFromAgentProfile)
+   * Removes the assignment of the given agent application profile from the agent profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void unassignAppProfileFromAgentProfile(@Nonnull String agentProfileId, @Nonnull String applicationProfileId) throws ApiException {
+    unassignAppProfileFromAgentProfileWithHttpInfo(agentProfileId, applicationProfileId, null);
+  }
+
+  /**
+   * Unassign App Profile from Agent Profile (unassignAppProfileFromAgentProfile)
+   * Removes the assignment of the given agent application profile from the agent profile.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentProfileId Agent Profile Id (required)
+   * @param applicationProfileId Agent Application Profile Id (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;Void&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<Void> unassignAppProfileFromAgentProfileWithHttpInfo(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = unassignAppProfileFromAgentProfileRequestBuilder(agentProfileId, applicationProfileId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("unassignAppProfileFromAgentProfile", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody != null) {
+          localVarResponseBody.readAllBytes();
+        }
+        return new ApiResponse<Void>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder unassignAppProfileFromAgentProfileRequestBuilder(@Nonnull String agentProfileId, @Nonnull String applicationProfileId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentProfileId' is set
+    if (agentProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentProfileId' when calling unassignAppProfileFromAgentProfile");
+    }
+    // verify the required parameter 'applicationProfileId' is set
+    if (applicationProfileId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationProfileId' when calling unassignAppProfileFromAgentProfile");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/profile/{agentProfileId}/appProfile/{applicationProfileId}"
+        .replace("{agentProfileId}", ApiClient.urlEncode(agentProfileId.toString()))
+        .replace("{applicationProfileId}", ApiClient.urlEncode(applicationProfileId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
    * Unassign entity group from edge (unassignEntityGroupFromEdge)
    * Clears assignment of the entity group to the edge. Unassignment works in async way - first, &#39;unassign&#39; notification event pushed to edge queue on platform. Second, remote edge service will receive an &#39;unassign&#39; command to remove entity group (Edge will receive this instantly, if it&#39;s currently connected, or once it&#39;s going to be connected to platform). Third, once &#39;unassign&#39; command will be delivered to edge service, it&#39;s going to remove entity group and entities inside this group locally.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for the entity (entities).
    * @param edgeId A string value representing the edge id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
@@ -63437,6 +69337,83 @@ public class ThingsboardApi {
     String localVarPath = "/api/edge/{edgeId}/integration/{integrationId}"
         .replace("{edgeId}", ApiClient.urlEncode(edgeId.toString()))
         .replace("{integrationId}", ApiClient.urlEncode(integrationId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Unassign Related Entity from Agent Application (unassignRelatedEntityFromAgentApp)
+   * Removes the link between an agent application and its related Edge or Gateway Device.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @return AgentApplication
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplication unassignRelatedEntityFromAgentApp(@Nonnull String agentApplicationId) throws ApiException {
+    ApiResponse<AgentApplication> localVarResponse = unassignRelatedEntityFromAgentAppWithHttpInfo(agentApplicationId, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Unassign Related Entity from Agent Application (unassignRelatedEntityFromAgentApp)
+   * Removes the link between an agent application and its related Edge or Gateway Device.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplicationId A string value representing the agent application id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplication&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplication> unassignRelatedEntityFromAgentAppWithHttpInfo(@Nonnull String agentApplicationId, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = unassignRelatedEntityFromAgentAppRequestBuilder(agentApplicationId, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("unassignRelatedEntityFromAgentApp", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplication responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplication>() {});
+        return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder unassignRelatedEntityFromAgentAppRequestBuilder(@Nonnull String agentApplicationId, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplicationId' is set
+    if (agentApplicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplicationId' when calling unassignRelatedEntityFromAgentApp");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app/{agentApplicationId}/relatedEntity"
+        .replace("{agentApplicationId}", ApiClient.urlEncode(agentApplicationId.toString()));
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("DELETE", HttpRequest.BodyPublishers.noBody());
@@ -63857,6 +69834,88 @@ public class ThingsboardApi {
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Update Agent Application (saveAgentApplication)
+   * Updates the Agent Application.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplication A JSON value representing the agent application. (required)
+   * @return AgentApplication
+   * @throws ApiException if fails to make API call
+   */
+  public AgentApplication updateAgentApplication(@Nonnull AgentApplication agentApplication) throws ApiException {
+    ApiResponse<AgentApplication> localVarResponse = updateAgentApplicationWithHttpInfo(agentApplication, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Update Agent Application (saveAgentApplication)
+   * Updates the Agent Application.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentApplication A JSON value representing the agent application. (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentApplication&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentApplication> updateAgentApplicationWithHttpInfo(@Nonnull AgentApplication agentApplication, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = updateAgentApplicationRequestBuilder(agentApplication, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("updateAgentApplication", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentApplication responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentApplication>() {});
+        return new ApiResponse<AgentApplication>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder updateAgentApplicationRequestBuilder(@Nonnull AgentApplication agentApplication, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentApplication' is set
+    if (agentApplication == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentApplication' when calling updateAgentApplication");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/app";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentApplication);
+      localVarRequestBuilder.method("PUT", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);
     }
@@ -65679,6 +71738,95 @@ public class ThingsboardApi {
     localVarRequestBuilder.header("Accept", "application/json");
     try {
       byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(requestBody);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  /**
+   * Upgrade Agent (upgradeAgent)
+   * Creates an agent-scoped upgrade event that makes the agent replace its own container with the given image. At most one agent upgrade can be active per agent, and it blocks all application events for that agent until it completes.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param agentUpgradeRequest  (required)
+   * @return AgentAppEvent
+   * @throws ApiException if fails to make API call
+   */
+  public AgentAppEvent upgradeAgent(@Nonnull String agentId, @Nonnull AgentUpgradeRequest agentUpgradeRequest) throws ApiException {
+    ApiResponse<AgentAppEvent> localVarResponse = upgradeAgentWithHttpInfo(agentId, agentUpgradeRequest, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Upgrade Agent (upgradeAgent)
+   * Creates an agent-scoped upgrade event that makes the agent replace its own container with the given image. At most one agent upgrade can be active per agent, and it blocks all application events for that agent until it completes.  Available for users with &#39;TENANT_ADMIN&#39; authority.
+   * @param agentId A string value representing the agent id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
+   * @param agentUpgradeRequest  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;AgentAppEvent&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<AgentAppEvent> upgradeAgentWithHttpInfo(@Nonnull String agentId, @Nonnull AgentUpgradeRequest agentUpgradeRequest, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = upgradeAgentRequestBuilder(agentId, agentUpgradeRequest, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("upgradeAgent", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<AgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        AgentAppEvent responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<AgentAppEvent>() {});
+        return new ApiResponse<AgentAppEvent>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder upgradeAgentRequestBuilder(@Nonnull String agentId, @Nonnull AgentUpgradeRequest agentUpgradeRequest, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'agentId' is set
+    if (agentId == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentId' when calling upgradeAgent");
+    }
+    // verify the required parameter 'agentUpgradeRequest' is set
+    if (agentUpgradeRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'agentUpgradeRequest' when calling upgradeAgent");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/agent/{agentId}/upgrade"
+        .replace("{agentId}", ApiClient.urlEncode(agentId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(agentUpgradeRequest);
       localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
     } catch (IOException e) {
       throw new ApiException(e);

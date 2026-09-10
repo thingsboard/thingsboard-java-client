@@ -83,6 +83,10 @@
 | edgeEventRateLimitsPerEdge | String |  | [optional] |
 | edgeUplinkMessagesRateLimits | String |  | [optional] |
 | edgeUplinkMessagesRateLimitsPerEdge | String |  | [optional] |
+| agentEventRateLimits | String |  | [optional] |
+| agentEventRateLimitsPerAgent | String |  | [optional] |
+| agentLogChunkRateLimits | String |  | [optional] |
+| agentLogChunkRateLimitsPerAgent | String |  | [optional] |
 | defaultStorageTtlDays | Integer |  | [optional] |
 | alarmsTtlDays | Integer |  | [optional] |
 | rpcTtlDays | Integer |  | [optional] |

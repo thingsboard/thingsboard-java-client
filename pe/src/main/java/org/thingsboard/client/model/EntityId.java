@@ -54,6 +54,13 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = AdminSettingsId.class, name = "ADMIN_SETTINGS"),
+  @JsonSubTypes.Type(value = AgentId.class, name = "AGENT"),
+  @JsonSubTypes.Type(value = AgentApplicationId.class, name = "AGENT_APPLICATION"),
+  @JsonSubTypes.Type(value = AgentAppEventId.class, name = "AGENT_APP_EVENT"),
+  @JsonSubTypes.Type(value = AgentAppProfileId.class, name = "AGENT_APP_PROFILE"),
+  @JsonSubTypes.Type(value = AgentAppUnitId.class, name = "AGENT_APP_UNIT"),
+  @JsonSubTypes.Type(value = AgentBulkActionId.class, name = "AGENT_BULK_ACTION"),
+  @JsonSubTypes.Type(value = AgentProfileId.class, name = "AGENT_PROFILE"),
   @JsonSubTypes.Type(value = AiModelId.class, name = "AI_MODEL"),
   @JsonSubTypes.Type(value = AlarmId.class, name = "ALARM"),
   @JsonSubTypes.Type(value = ApiKeyId.class, name = "API_KEY"),
@@ -251,6 +258,13 @@ static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
   mappings.put("ADMIN_SETTINGS", AdminSettingsId.class);
+  mappings.put("AGENT", AgentId.class);
+  mappings.put("AGENT_APPLICATION", AgentApplicationId.class);
+  mappings.put("AGENT_APP_EVENT", AgentAppEventId.class);
+  mappings.put("AGENT_APP_PROFILE", AgentAppProfileId.class);
+  mappings.put("AGENT_APP_UNIT", AgentAppUnitId.class);
+  mappings.put("AGENT_BULK_ACTION", AgentBulkActionId.class);
+  mappings.put("AGENT_PROFILE", AgentProfileId.class);
   mappings.put("AI_MODEL", AiModelId.class);
   mappings.put("ALARM", AlarmId.class);
   mappings.put("API_KEY", ApiKeyId.class);
