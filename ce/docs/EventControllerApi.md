@@ -2,6 +2,12 @@
 
 `ThingsboardClient` methods:
 
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
 ```
 void clearEvents(@Nonnull String entityType, @Nonnull String entityId, @Nonnull EventFilter eventFilter, @Nullable Long startTime, @Nullable Long endTime) // Clear Events (clearEvents)
 PageDataEventInfo getEventsByFilter(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nonnull EventFilter eventFilter, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get Events by event filter (getEventsByFilter)

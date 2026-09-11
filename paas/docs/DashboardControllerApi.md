@@ -2,6 +2,12 @@
 
 `ThingsboardClient` methods:
 
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
 ```
 void deleteDashboard(@Nonnull String dashboardId) // Delete the Dashboard (deleteDashboard)
 List<Dashboard> exportGroupDashboards(@Nonnull String entityGroupId, @Nonnull Integer limit, @Nullable String acceptEncoding) // Export Dashboards (exportGroupDashboards)

@@ -156,7 +156,7 @@ generate() {
     --api-package "$BASE_PACKAGE.api" \
     --model-package "$BASE_PACKAGE.model" \
     --invoker-package "$BASE_PACKAGE" \
-    --additional-properties hideGenerationTimestamp=true \
+    --additional-properties hideGenerationTimestamp=true,useSingleRequestParameter=true \
     --global-property apiTests=false,modelTests=false,modelDocs=false,apiDocs=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \
@@ -174,7 +174,7 @@ generate() {
     --api-package "$BASE_PACKAGE.api" \
     --model-package "$BASE_PACKAGE.model" \
     --invoker-package "$BASE_PACKAGE" \
-    --additional-properties hideGenerationTimestamp=true \
+    --additional-properties hideGenerationTimestamp=true,useSingleRequestParameter=true \
     --global-property apis,models,supportingFiles=false,apiTests=false,modelTests=false \
     --schema-mappings  JsonNode="$JACKSON_JSON_NODE" \
     --import-mappings  JsonNode="$JACKSON_JSON_NODE" \

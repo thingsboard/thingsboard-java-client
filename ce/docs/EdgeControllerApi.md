@@ -2,6 +2,12 @@
 
 `ThingsboardClient` methods:
 
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
 ```
 Edge assignEdgeToCustomer(@Nonnull String customerId, @Nonnull String edgeId) // Assign edge to customer (assignEdgeToCustomer)
 Edge assignEdgeToPublicCustomer(@Nonnull String edgeId) // Make edge publicly available (assignEdgeToPublicCustomer)
