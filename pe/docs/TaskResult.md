@@ -16,6 +16,65 @@
 
 
 
+## Subtypes
+
+#### CfReprocessingTaskResult  *(jobType=`CF_REPROCESSING`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failure | CfReprocessingTaskFailure |  | [optional] |
+
+#### DummyTaskResult  *(jobType=`DUMMY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failure | DummyTaskFailure |  | [optional] |
+
+#### ReportTaskResult  *(jobType=`REPORT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| report | Report |  | [optional] |
+
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### CfReprocessingTaskFailure
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| error | String |  | [optional] |
+| entityInfo | EntityInfo |  | [optional] |
+
+#### DummyTaskFailure
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| error | String |  | [optional] |
+| number | Integer |  | [optional] |
+| failAlways | Boolean |  | [optional] |
+
+#### Report
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | ReportId |  | [optional] |
+| createdTime | Long | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
+| tenantId | TenantId |  |  |
+| customerId | CustomerId |  | [optional] |
+| templateId | ReportTemplateId |  |  |
+| format | TbReportFormat |  |  |
+| name | String |  |  |
+| userId | UserId |  |  |
+| ownerId | EntityId | JSON object with Customer or Tenant Id | [optional] [readonly] |
+
+#### EntityInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | EntityId | JSON object with the entity Id. | [optional] |
+| name | String | Entity Name | [optional] |
+
+#### TbReportFormat (enum)
+`PDF` | `CSV`
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
 ---
 
 ### Conventions

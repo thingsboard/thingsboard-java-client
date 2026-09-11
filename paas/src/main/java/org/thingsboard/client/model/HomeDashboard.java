@@ -112,7 +112,7 @@ public class HomeDashboard {
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
   @Nullable
-  private com.fasterxml.jackson.databind.JsonNode _configuration = null;
+  private com.fasterxml.jackson.databind.JsonNode _configuration;
 
   public static final String JSON_PROPERTY_RESOURCES = "resources";
   @Nullable
@@ -358,7 +358,7 @@ public class HomeDashboard {
   }
 
   /**
-   * Get _configuration
+   * JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON.
    * @return _configuration
    */
   @Nullable

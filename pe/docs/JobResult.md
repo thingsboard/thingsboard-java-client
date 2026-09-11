@@ -49,6 +49,21 @@ Job execution result
 | error | String |  | [optional] |
 | jobType | String |  |  |
 
+#### CfReprocessingTaskResult  *(extends TaskResult, jobType=`CF_REPROCESSING`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failure | CfReprocessingTaskFailure |  | [optional] |
+
+#### DummyTaskResult  *(extends TaskResult, jobType=`DUMMY`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| failure | DummyTaskFailure |  | [optional] |
+
+#### ReportTaskResult  *(extends TaskResult, jobType=`REPORT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| report | Report |  | [optional] |
+
 #### Report
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -65,8 +80,27 @@ Job execution result
 #### TbReportFormat (enum)
 `PDF` | `CSV`
 
+#### CfReprocessingTaskFailure
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| error | String |  | [optional] |
+| entityInfo | EntityInfo |  | [optional] |
+
+#### DummyTaskFailure
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| error | String |  | [optional] |
+| number | Integer |  | [optional] |
+| failAlways | Boolean |  | [optional] |
+
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (46 values total)
+
+#### EntityInfo
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | EntityId | JSON object with the entity Id. | [optional] |
+| name | String | Entity Name | [optional] |
 
 ---
 
