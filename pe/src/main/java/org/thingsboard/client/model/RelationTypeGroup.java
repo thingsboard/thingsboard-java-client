@@ -44,7 +44,9 @@ public enum RelationTypeGroup {
   
   EDGE("EDGE"),
   
-  EDGE_AUTO_ASSIGN_RULE_CHAIN("EDGE_AUTO_ASSIGN_RULE_CHAIN");
+  EDGE_AUTO_ASSIGN_RULE_CHAIN("EDGE_AUTO_ASSIGN_RULE_CHAIN"),
+  
+  AGENT("AGENT");
 
   private String value;
 
