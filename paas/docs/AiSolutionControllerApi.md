@@ -1,76 +1,68 @@
 # AiSolutionControllerApi
 
-Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
-`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
-set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
-classes are nested in `ThingsboardApi`, e.g.
-`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
-have no `Args` object — call them directly.
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
 
 ```
-com.fasterxml.jackson.databind.JsonNode chat(ChatArgs args) // chat
-void clearStep(ClearStepArgs args) // clearStep
-com.fasterxml.jackson.databind.JsonNode createSolution(CreateSolutionArgs args) // createSolution
-void deleteSolution(DeleteSolutionArgs args) // deleteSolution
-com.fasterxml.jackson.databind.JsonNode getSolution(GetSolutionArgs args) // getSolution
+com.fasterxml.jackson.databind.JsonNode chat(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull String body) // chat
+void clearStep(@Nonnull UUID solutionId, @Nonnull SolutionStep step) // clearStep
+com.fasterxml.jackson.databind.JsonNode createSolution(@Nonnull UUID solutionId) // createSolution
+void deleteSolution(@Nonnull UUID solutionId) // deleteSolution
+com.fasterxml.jackson.databind.JsonNode getSolution(@Nonnull UUID solutionId) // getSolution
 com.fasterxml.jackson.databind.JsonNode getSolutions() // getSolutions
-com.fasterxml.jackson.databind.JsonNode installSolution(InstallSolutionArgs args) // installSolution
+com.fasterxml.jackson.databind.JsonNode installSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization) // installSolution
 com.fasterxml.jackson.databind.JsonNode startNew() // startNew
-com.fasterxml.jackson.databind.JsonNode uninstallSolution(UninstallSolutionArgs args) // uninstallSolution
-com.fasterxml.jackson.databind.JsonNode updateData(UpdateDataArgs args) // updateData
+com.fasterxml.jackson.databind.JsonNode uninstallSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization) // uninstallSolution
+com.fasterxml.jackson.databind.JsonNode updateData(@Nonnull UUID solutionId, @Nonnull String dataKey, @Nonnull Object body) // updateData
 ```
 
 
 ## chat
 
+```
+com.fasterxml.jackson.databind.JsonNode chat(@Nonnull UUID solutionId, @Nonnull SolutionStep step, @Nonnull String body)
+```
+
 **POST** `/api/ai/solution/{solutionId}/{step}/chat`
 
 chat
 
-```java
-com.fasterxml.jackson.databind.JsonNode chat(ChatArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-ChatArgs.builder()
-        .solutionId(UUID)
-        .step(SolutionStep)
-        .body(String)
-        .build()
-```
 
-### `ChatArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
-| `step` | `SolutionStep` | **yes** |  | enum: `INITIAL_CONFIGURATION`, `DASHBOARDS_CONFIGURATION` |
-| `body` | `String` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
+| **step** | **SolutionStep** |  | [enum: INITIAL_CONFIGURATION, DASHBOARDS_CONFIGURATION] |
+| **body** | **String** |  | |
 
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## clearStep
+
+```
+void clearStep(@Nonnull UUID solutionId, @Nonnull SolutionStep step)
+```
 
 **DELETE** `/api/ai/solution/{solutionId}/{step}/clear`
 
 clearStep
 
-```java
-void clearStep(ClearStepArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-ClearStepArgs.builder()
-        .solutionId(UUID)
-        .step(SolutionStep)
-        .build()
-```
 
-### `ClearStepArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
-| `step` | `SolutionStep` | **yes** |  | enum: `INITIAL_CONFIGURATION`, `DASHBOARDS_CONFIGURATION` |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
+| **step** | **SolutionStep** |  | [enum: INITIAL_CONFIGURATION, DASHBOARDS_CONFIGURATION] |
 
 ### Return type
 
@@ -79,48 +71,42 @@ null (empty response body)
 
 ## createSolution
 
+```
+com.fasterxml.jackson.databind.JsonNode createSolution(@Nonnull UUID solutionId)
+```
+
 **POST** `/api/ai/solution/{solutionId}/create`
 
 createSolution
 
-```java
-com.fasterxml.jackson.databind.JsonNode createSolution(CreateSolutionArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-CreateSolutionArgs.builder()
-        .solutionId(UUID)
-        .build()
-```
 
-### `CreateSolutionArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
 
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## deleteSolution
+
+```
+void deleteSolution(@Nonnull UUID solutionId)
+```
 
 **DELETE** `/api/ai/solution/{solutionId}`
 
 deleteSolution
 
-```java
-void deleteSolution(DeleteSolutionArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-DeleteSolutionArgs.builder()
-        .solutionId(UUID)
-        .build()
-```
 
-### `DeleteSolutionArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
 
 ### Return type
 
@@ -129,138 +115,122 @@ null (empty response body)
 
 ## getSolution
 
+```
+com.fasterxml.jackson.databind.JsonNode getSolution(@Nonnull UUID solutionId)
+```
+
 **GET** `/api/ai/solution/{solutionId}`
 
 getSolution
 
-```java
-com.fasterxml.jackson.databind.JsonNode getSolution(GetSolutionArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-GetSolutionArgs.builder()
-        .solutionId(UUID)
-        .build()
-```
 
-### `GetSolutionArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
 
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## getSolutions
+
+```
+com.fasterxml.jackson.databind.JsonNode getSolutions()
+```
 
 **GET** `/api/ai/solution/infos`
 
 getSolutions
 
-```java
-com.fasterxml.jackson.databind.JsonNode getSolutions()
-```
-
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## installSolution
+
+```
+com.fasterxml.jackson.databind.JsonNode installSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization)
+```
 
 **POST** `/api/ai/solution/{solutionId}/install`
 
 installSolution
 
-```java
-com.fasterxml.jackson.databind.JsonNode installSolution(InstallSolutionArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-InstallSolutionArgs.builder()
-        .solutionId(UUID)
-        .xAuthorization(String)
-        .build()
-```
 
-### `InstallSolutionArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
-| `xAuthorization` | `String` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
+| **xAuthorization** | **String** |  | |
 
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## startNew
+
+```
+com.fasterxml.jackson.databind.JsonNode startNew()
+```
 
 **POST** `/api/ai/solution/start`
 
 startNew
 
-```java
-com.fasterxml.jackson.databind.JsonNode startNew()
-```
-
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## uninstallSolution
+
+```
+com.fasterxml.jackson.databind.JsonNode uninstallSolution(@Nonnull UUID solutionId, @Nonnull String xAuthorization)
+```
 
 **DELETE** `/api/ai/solution/{solutionId}/uninstall`
 
 uninstallSolution
 
-```java
-com.fasterxml.jackson.databind.JsonNode uninstallSolution(UninstallSolutionArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-UninstallSolutionArgs.builder()
-        .solutionId(UUID)
-        .xAuthorization(String)
-        .build()
-```
 
-### `UninstallSolutionArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
-| `xAuthorization` | `String` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
+| **xAuthorization** | **String** |  | |
 
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## updateData
+
+```
+com.fasterxml.jackson.databind.JsonNode updateData(@Nonnull UUID solutionId, @Nonnull String dataKey, @Nonnull Object body)
+```
 
 **PUT** `/api/ai/solution/{solutionId}/{dataKey}`
 
 updateData
 
-```java
-com.fasterxml.jackson.databind.JsonNode updateData(UpdateDataArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-UpdateDataArgs.builder()
-        .solutionId(UUID)
-        .dataKey(String)
-        .body(Object)
-        .build()
-```
 
-### `UpdateDataArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `solutionId` | `UUID` | **yes** |  | |
-| `dataKey` | `String` | **yes** |  | |
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **solutionId** | **UUID** |  | |
+| **dataKey** | **String** |  | |
+| **body** | **Object** |  | |
 
 ### Return type
 
-`com.fasterxml.jackson.databind.JsonNode`
+**com.fasterxml.jackson.databind.JsonNode**
 

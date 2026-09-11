@@ -1,11 +1,12 @@
 # CloudEndpointControllerApi
 
-Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
-`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
-set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
-classes are nested in `ThingsboardApi`, e.g.
-`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
-have no `Args` object — call them directly.
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
 
 ```
 void checkTenantWhiteLabelingAllowed() // checkTenantWhiteLabelingAllowed
@@ -18,13 +19,13 @@ Boolean tenantHasWhiteLabelWrite() // tenantHasWhiteLabelWrite
 
 ## checkTenantWhiteLabelingAllowed
 
+```
+void checkTenantWhiteLabelingAllowed()
+```
+
 **GET** `/api/cloudEndpoint/tenant/permission/whiteLabelingAllowed`
 
 checkTenantWhiteLabelingAllowed
-
-```java
-void checkTenantWhiteLabelingAllowed()
-```
 
 ### Return type
 
@@ -33,60 +34,60 @@ null (empty response body)
 
 ## hasDomainReadPermission
 
+```
+Boolean hasDomainReadPermission()
+```
+
 **GET** `/api/cloudEndpoint/permission/domain/read`
 
 hasDomainReadPermission
 
-```java
-Boolean hasDomainReadPermission()
-```
-
 ### Return type
 
-`Boolean`
+**Boolean**
 
 
 ## hasDomainWritePermission
+
+```
+Boolean hasDomainWritePermission()
+```
 
 **GET** `/api/cloudEndpoint/permission/domain/write`
 
 hasDomainWritePermission
 
-```java
-Boolean hasDomainWritePermission()
-```
-
 ### Return type
 
-`Boolean`
+**Boolean**
 
 
 ## tenantHasWhiteLabelRead
+
+```
+Boolean tenantHasWhiteLabelRead()
+```
 
 **GET** `/api/cloudEndpoint/tenant/permission/whiteLabel/read`
 
 tenantHasWhiteLabelRead
 
-```java
-Boolean tenantHasWhiteLabelRead()
-```
-
 ### Return type
 
-`Boolean`
+**Boolean**
 
 
 ## tenantHasWhiteLabelWrite
+
+```
+Boolean tenantHasWhiteLabelWrite()
+```
 
 **GET** `/api/cloudEndpoint/tenant/permission/whiteLabel/write`
 
 tenantHasWhiteLabelWrite
 
-```java
-Boolean tenantHasWhiteLabelWrite()
-```
-
 ### Return type
 
-`Boolean`
+**Boolean**
 

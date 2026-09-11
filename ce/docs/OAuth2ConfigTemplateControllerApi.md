@@ -1,20 +1,25 @@
 # OAuth2ConfigTemplateControllerApi
 
-Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
-`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
-set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
-classes are nested in `ThingsboardApi`, e.g.
-`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
-have no `Args` object — call them directly.
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
 
 ```
-void deleteClientRegistrationTemplate(DeleteClientRegistrationTemplateArgs args) // Delete OAuth2 client registration template by id (deleteClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
+void deleteClientRegistrationTemplate(@Nonnull String clientRegistrationTemplateId) // Delete OAuth2 client registration template by id (deleteClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
 List<OAuth2ClientRegistrationTemplate> getOAuth2ClientRegistrationTemplates() // Get the list of all OAuth2 client registration templates (getOAuth2ClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
-OAuth2ClientRegistrationTemplate saveClientRegistrationTemplate(SaveClientRegistrationTemplateArgs args) // Create or update OAuth2 client registration template (saveClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
+OAuth2ClientRegistrationTemplate saveClientRegistrationTemplate(@Nonnull OAuth2ClientRegistrationTemplate oauth2ClientRegistrationTemplate) // Create or update OAuth2 client registration template (saveClientRegistrationTemplate)  Available for users with 'SYS_ADMIN' authority.
 ```
 
 
 ## deleteClientRegistrationTemplate
+
+```
+void deleteClientRegistrationTemplate(@Nonnull String clientRegistrationTemplateId)
+```
 
 **DELETE** `/api/oauth2/config/template/{clientRegistrationTemplateId}`
 
@@ -22,19 +27,12 @@ Delete OAuth2 client registration template by id (deleteClientRegistrationTempla
 
 Client registration template is OAuth2 provider configuration template with default settings for registering new OAuth2 clients
 
-```java
-void deleteClientRegistrationTemplate(DeleteClientRegistrationTemplateArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-DeleteClientRegistrationTemplateArgs.builder()
-        .clientRegistrationTemplateId(String)
-        .build()
-```
 
-### `DeleteClientRegistrationTemplateArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `clientRegistrationTemplateId` | `String` | **yes** | String representation of client registration template id to delete | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clientRegistrationTemplateId** | **String** | String representation of client registration template id to delete | |
 
 ### Return type
 
@@ -43,22 +41,26 @@ null (empty response body)
 
 ## getOAuth2ClientRegistrationTemplates
 
+```
+List<OAuth2ClientRegistrationTemplate> getOAuth2ClientRegistrationTemplates()
+```
+
 **GET** `/api/oauth2/config/template`
 
 Get the list of all OAuth2 client registration templates (getOAuth2ClientRegistrationTemplates)  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
 Client registration template is OAuth2 provider configuration template with default settings for registering new OAuth2 clients
 
-```java
-List<OAuth2ClientRegistrationTemplate> getOAuth2ClientRegistrationTemplates()
-```
-
 ### Return type
 
-`List<OAuth2ClientRegistrationTemplate>`
+**List<OAuth2ClientRegistrationTemplate>**
 
 
 ## saveClientRegistrationTemplate
+
+```
+OAuth2ClientRegistrationTemplate saveClientRegistrationTemplate(@Nonnull OAuth2ClientRegistrationTemplate oauth2ClientRegistrationTemplate)
+```
 
 **POST** `/api/oauth2/config/template`
 
@@ -66,21 +68,14 @@ Create or update OAuth2 client registration template (saveClientRegistrationTemp
 
 Client registration template is OAuth2 provider configuration template with default settings for registering new OAuth2 clients
 
-```java
-OAuth2ClientRegistrationTemplate saveClientRegistrationTemplate(SaveClientRegistrationTemplateArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-SaveClientRegistrationTemplateArgs.builder()
-        .oauth2ClientRegistrationTemplate(OAuth2ClientRegistrationTemplate)
-        .build()
-```
 
-### `SaveClientRegistrationTemplateArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `oauth2ClientRegistrationTemplate` | `OAuth2ClientRegistrationTemplate` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **oauth2ClientRegistrationTemplate** | **OAuth2ClientRegistrationTemplate** |  | |
 
 ### Return type
 
-`OAuth2ClientRegistrationTemplate`
+**OAuth2ClientRegistrationTemplate**
 

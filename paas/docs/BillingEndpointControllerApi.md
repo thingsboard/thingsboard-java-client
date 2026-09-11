@@ -1,21 +1,22 @@
 # BillingEndpointControllerApi
 
-Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
-`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
-set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
-classes are nested in `ThingsboardApi`, e.g.
-`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
-have no `Args` object — call them directly.
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
 
 ```
-void checkTenantCanUpdatePlan(CheckTenantCanUpdatePlanArgs args) // checkTenantCanUpdatePlan
-void notifyTenantPlanChanged(NotifyTenantPlanChangedArgs args) // notifyTenantPlanChanged
-void notifyTenantStateChanged(NotifyTenantStateChangedArgs args) // notifyTenantStateChanged
-void notifyTenantSubscriptionCreated(NotifyTenantSubscriptionCreatedArgs args) // notifyTenantSubscriptionCreated
-void sendAccountActivatedEmail(SendAccountActivatedEmailArgs args) // sendAccountActivatedEmail
-void sendBillingActivationEmail(SendBillingActivationEmailArgs args) // sendBillingActivationEmail
-void sendPasswordWasResetEmail(SendPasswordWasResetEmailArgs args) // sendPasswordWasResetEmail
-void sendResetPasswordEmail(SendResetPasswordEmailArgs args) // sendResetPasswordEmail
+void checkTenantCanUpdatePlan(@Nonnull Object body) // checkTenantCanUpdatePlan
+void notifyTenantPlanChanged(@Nonnull Object body) // notifyTenantPlanChanged
+void notifyTenantStateChanged(@Nonnull Object body) // notifyTenantStateChanged
+void notifyTenantSubscriptionCreated(@Nonnull Object body) // notifyTenantSubscriptionCreated
+void sendAccountActivatedEmail(@Nonnull Object body) // sendAccountActivatedEmail
+void sendBillingActivationEmail(@Nonnull Object body) // sendBillingActivationEmail
+void sendPasswordWasResetEmail(@Nonnull Object body) // sendPasswordWasResetEmail
+void sendResetPasswordEmail(@Nonnull Object body) // sendResetPasswordEmail
 Boolean tenantHasBillingRead() // tenantHasBillingRead
 Boolean tenantHasBillingWrite() // tenantHasBillingWrite
 Boolean tenantHasHiddenPlansAccess() // tenantHasHiddenPlansAccess
@@ -24,23 +25,20 @@ Boolean tenantHasHiddenPlansAccess() // tenantHasHiddenPlansAccess
 
 ## checkTenantCanUpdatePlan
 
+```
+void checkTenantCanUpdatePlan(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/tenantCanUpdatePlan`
 
 checkTenantCanUpdatePlan
 
-```java
-void checkTenantCanUpdatePlan(CheckTenantCanUpdatePlanArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-CheckTenantCanUpdatePlanArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `CheckTenantCanUpdatePlanArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -49,23 +47,20 @@ null (empty response body)
 
 ## notifyTenantPlanChanged
 
+```
+void notifyTenantPlanChanged(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/tenantPlanChanged`
 
 notifyTenantPlanChanged
 
-```java
-void notifyTenantPlanChanged(NotifyTenantPlanChangedArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-NotifyTenantPlanChangedArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `NotifyTenantPlanChangedArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -74,23 +69,20 @@ null (empty response body)
 
 ## notifyTenantStateChanged
 
+```
+void notifyTenantStateChanged(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/tenantStateChanged`
 
 notifyTenantStateChanged
 
-```java
-void notifyTenantStateChanged(NotifyTenantStateChangedArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-NotifyTenantStateChangedArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `NotifyTenantStateChangedArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -99,23 +91,20 @@ null (empty response body)
 
 ## notifyTenantSubscriptionCreated
 
+```
+void notifyTenantSubscriptionCreated(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/tenantSubscriptionCreated`
 
 notifyTenantSubscriptionCreated
 
-```java
-void notifyTenantSubscriptionCreated(NotifyTenantSubscriptionCreatedArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-NotifyTenantSubscriptionCreatedArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `NotifyTenantSubscriptionCreatedArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -124,23 +113,20 @@ null (empty response body)
 
 ## sendAccountActivatedEmail
 
+```
+void sendAccountActivatedEmail(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/sendAccountActivated`
 
 sendAccountActivatedEmail
 
-```java
-void sendAccountActivatedEmail(SendAccountActivatedEmailArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-SendAccountActivatedEmailArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `SendAccountActivatedEmailArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -149,23 +135,20 @@ null (empty response body)
 
 ## sendBillingActivationEmail
 
+```
+void sendBillingActivationEmail(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/sendActivation`
 
 sendBillingActivationEmail
 
-```java
-void sendBillingActivationEmail(SendBillingActivationEmailArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-SendBillingActivationEmailArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `SendBillingActivationEmailArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -174,23 +157,20 @@ null (empty response body)
 
 ## sendPasswordWasResetEmail
 
+```
+void sendPasswordWasResetEmail(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/sendPasswordWasReset`
 
 sendPasswordWasResetEmail
 
-```java
-void sendPasswordWasResetEmail(SendPasswordWasResetEmailArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-SendPasswordWasResetEmailArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `SendPasswordWasResetEmailArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -199,23 +179,20 @@ null (empty response body)
 
 ## sendResetPasswordEmail
 
+```
+void sendResetPasswordEmail(@Nonnull Object body)
+```
+
 **POST** `/api/billingEndpoint/sendResetPassword`
 
 sendResetPasswordEmail
 
-```java
-void sendResetPasswordEmail(SendResetPasswordEmailArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-SendResetPasswordEmailArgs.builder()
-        .body(Object)
-        .build()
-```
 
-### `SendResetPasswordEmailArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `body` | `Object` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
 
 ### Return type
 
@@ -224,45 +201,45 @@ null (empty response body)
 
 ## tenantHasBillingRead
 
+```
+Boolean tenantHasBillingRead()
+```
+
 **GET** `/api/billingEndpoint/tenant/permission/billing/read`
 
 tenantHasBillingRead
 
-```java
-Boolean tenantHasBillingRead()
-```
-
 ### Return type
 
-`Boolean`
+**Boolean**
 
 
 ## tenantHasBillingWrite
+
+```
+Boolean tenantHasBillingWrite()
+```
 
 **GET** `/api/billingEndpoint/tenant/permission/billing/write`
 
 tenantHasBillingWrite
 
-```java
-Boolean tenantHasBillingWrite()
-```
-
 ### Return type
 
-`Boolean`
+**Boolean**
 
 
 ## tenantHasHiddenPlansAccess
+
+```
+Boolean tenantHasHiddenPlansAccess()
+```
 
 **GET** `/api/billingEndpoint/tenant/permission/billing/hiddenPlans`
 
 tenantHasHiddenPlansAccess
 
-```java
-Boolean tenantHasHiddenPlansAccess()
-```
-
 ### Return type
 
-`Boolean`
+**Boolean**
 

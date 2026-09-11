@@ -1,38 +1,36 @@
 # DeviceGroupOtaPackageControllerApi
 
-Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
-`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
-set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
-classes are nested in `ThingsboardApi`, e.g.
-`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
-have no `Args` object — call them directly.
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
 
 ```
-void deleteDeviceGroupOtaPackage(DeleteDeviceGroupOtaPackageArgs args) // deleteDeviceGroupOtaPackage
-DeviceGroupOtaPackage getFirmwareById(GetFirmwareByIdArgs args) // getFirmwareById
-DeviceGroupOtaPackage saveDeviceGroupOtaPackage(SaveDeviceGroupOtaPackageArgs args) // saveDeviceGroupOtaPackage
+void deleteDeviceGroupOtaPackage(@Nonnull String id) // deleteDeviceGroupOtaPackage
+DeviceGroupOtaPackage getFirmwareById(@Nonnull String groupId, @Nonnull String firmwareType) // getFirmwareById
+DeviceGroupOtaPackage saveDeviceGroupOtaPackage(@Nonnull DeviceGroupOtaPackage deviceGroupOtaPackage) // saveDeviceGroupOtaPackage
 ```
 
 
 ## deleteDeviceGroupOtaPackage
 
+```
+void deleteDeviceGroupOtaPackage(@Nonnull String id)
+```
+
 **DELETE** `/api/deviceGroupOtaPackage/{id}`
 
 deleteDeviceGroupOtaPackage
 
-```java
-void deleteDeviceGroupOtaPackage(DeleteDeviceGroupOtaPackageArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-DeleteDeviceGroupOtaPackageArgs.builder()
-        .id(String)
-        .build()
-```
 
-### `DeleteDeviceGroupOtaPackageArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `id` | `String` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **id** | **String** |  | |
 
 ### Return type
 
@@ -41,52 +39,45 @@ null (empty response body)
 
 ## getFirmwareById
 
+```
+DeviceGroupOtaPackage getFirmwareById(@Nonnull String groupId, @Nonnull String firmwareType)
+```
+
 **GET** `/api/deviceGroupOtaPackage/{groupId}/{firmwareType}`
 
 getFirmwareById
 
-```java
-DeviceGroupOtaPackage getFirmwareById(GetFirmwareByIdArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-GetFirmwareByIdArgs.builder()
-        .groupId(String)
-        .firmwareType(String)
-        .build()
-```
 
-### `GetFirmwareByIdArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `groupId` | `String` | **yes** |  | |
-| `firmwareType` | `String` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **groupId** | **String** |  | |
+| **firmwareType** | **String** |  | |
 
 ### Return type
 
-`DeviceGroupOtaPackage`
+**DeviceGroupOtaPackage**
 
 
 ## saveDeviceGroupOtaPackage
+
+```
+DeviceGroupOtaPackage saveDeviceGroupOtaPackage(@Nonnull DeviceGroupOtaPackage deviceGroupOtaPackage)
+```
 
 **POST** `/api/deviceGroupOtaPackage`
 
 saveDeviceGroupOtaPackage
 
-```java
-DeviceGroupOtaPackage saveDeviceGroupOtaPackage(SaveDeviceGroupOtaPackageArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-SaveDeviceGroupOtaPackageArgs.builder()
-        .deviceGroupOtaPackage(DeviceGroupOtaPackage)
-        .build()
-```
 
-### `SaveDeviceGroupOtaPackageArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `deviceGroupOtaPackage` | `DeviceGroupOtaPackage` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **deviceGroupOtaPackage** | **DeviceGroupOtaPackage** |  | |
 
 ### Return type
 
-`DeviceGroupOtaPackage`
+**DeviceGroupOtaPackage**
 

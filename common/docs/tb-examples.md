@@ -1,69 +1,58 @@
 # ThingsboardClient Code Examples
 
-Endpoints that take parameters expose a single request-object overload: you pass one
-`<Method>Args` object built with a fluent builder instead of a positional parameter list.
-Only required parameters must be set; optional ones can be omitted. `build()` throws
-`IllegalArgumentException` if a required parameter is missing.
-
-The `<Method>Args` classes are nested in `ThingsboardApi` (the generated base class of
-`ThingsboardClient`). Import them directly, e.g.
-`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`.
-
-The available builder fields vary by edition (CE / PE / PaaS). The examples below match the PE
-edition; CE typically exposes fewer optional builder fields. Always check `target/api-docs/` for
-your edition's exact signatures. Methods that take no parameters (e.g. `getUser()`) have no
-`Args` object — call them directly.
+Method signatures (parameter counts) vary by edition (CE / PE / PaaS). The examples below match the PE edition. 
+CE methods typically have fewer optional parameters. Always check `target/api-docs/` for your edition's exact signatures.
 
 ## Devices
 
 ```java
 // Get device by ID
-Device device = tb.getDeviceById(GetDeviceByIdArgs.builder().deviceId(deviceId).build());
+Device device = tb.getDeviceById(deviceId);
 
 // Get device by name (unique within tenant)
-Device device = tb.getTenantDeviceByName(GetTenantDeviceByNameArgs.builder().deviceName("Temperature Sensor A1").build());
+Device device = tb.getTenantDeviceByName("Temperature Sensor A1");
 
 // Create or update a device
 Device device = new Device();
 device.setName("My Device");
 device.setType("default");
-Device saved = tb.saveDevice(SaveDeviceArgs.builder().device(device).build());
+Device saved = tb.saveDevice(device, null, null, null, null, null, null);
 
 // Delete a device
-tb.deleteDevice(DeleteDeviceArgs.builder().deviceId(deviceId).build());
+tb.deleteDevice(deviceId);
 
 // Get device credentials (access token)
-DeviceCredentials creds = tb.getDeviceCredentialsByDeviceId(GetDeviceCredentialsByDeviceIdArgs.builder().deviceId(deviceId).build());
+DeviceCredentials creds = tb.getDeviceCredentialsByDeviceId(deviceId);
 String accessToken = creds.getCredentialsId();
 
 // List tenant devices (paginated)
-PageDataDevice page = tb.getTenantDevices(GetTenantDevicesArgs.builder().pageSize(10).page(0).build());
+PageDataDevice page = tb.getTenantDevices(10, 0, null, null, null, null);
 List<Device> devices = page.getData();
 
 // Get device info (includes customer name, device profile name, etc.)
-DeviceInfo info = tb.getDeviceInfoById(GetDeviceInfoByIdArgs.builder().deviceId(deviceId).build());
+DeviceInfo info = tb.getDeviceInfoById(deviceId);
 ```
 
 ## Assets
 
 ```java
 // Get asset by ID
-Asset asset = tb.getAssetById(GetAssetByIdArgs.builder().assetId(assetId).build());
+Asset asset = tb.getAssetById(assetId);
 
 // Get asset by name (unique within tenant)
-Asset asset = tb.getTenantAssetByName(GetTenantAssetByNameArgs.builder().assetName("Building A").build());
+Asset asset = tb.getTenantAssetByName("Building A");
 
 // Create or update an asset
 Asset asset = new Asset();
 asset.setName("Building A");
 asset.setType("building");
-Asset saved = tb.saveAsset(SaveAssetArgs.builder().asset(asset).build());
+Asset saved = tb.saveAsset(asset, null, null, null, null, null);
 
 // Delete an asset
-tb.deleteAsset(DeleteAssetArgs.builder().assetId(assetId).build());
+tb.deleteAsset(assetId);
 
 // List tenant assets (paginated)
-PageDataAsset page = tb.getTenantAssets(GetTenantAssetsArgs.builder().pageSize(10).page(0).build());
+PageDataAsset page = tb.getTenantAssets(10, 0, null, null, null, null);
 List<Asset> assets = page.getData();
 ```
 
@@ -71,62 +60,45 @@ List<Asset> assets = page.getData();
 
 ```java
 // Get customer by ID
-Customer customer = tb.getCustomerById(GetCustomerByIdArgs.builder().customerId(customerId).build());
+Customer customer = tb.getCustomerById(customerId);
 
 // Get customer by title (unique within tenant)
-Customer customer = tb.getTenantCustomer(GetTenantCustomerArgs.builder().customerTitle("Acme Corp").build());
+Customer customer = tb.getTenantCustomer("Acme Corp");
 
 // Create or update a customer
 Customer customer = new Customer();
 customer.setTitle("Acme Corp");
 customer.setEmail("info@acme.com");
-Customer saved = tb.saveCustomer(SaveCustomerArgs.builder().customer(customer).build());
+Customer saved = tb.saveCustomer(customer, null, null, null, null, null);
 ```
 
 ## Attributes
 
 ```java
 // Save server-side attributes on a device
-tb.saveDeviceAttributes(SaveDeviceAttributesArgs.builder()
-        .deviceId(deviceId)
-        .scope("SERVER_SCOPE")
-        .body("""
-              {"billingActive": true, "plan": "pro"}
-              """)
-        .build());
+tb.saveDeviceAttributes(deviceId, "SERVER_SCOPE",
+        """
+        {"billingActive": true, "plan": "pro"}
+        """);
 
 // Save attributes on any entity (device, asset, etc.)
-tb.saveEntityAttributesV2(SaveEntityAttributesV2Args.builder()
-        .entityType("ASSET")
-        .entityId(assetId)
-        .scope("SERVER_SCOPE")
-        .body("""
-              {"key1": "value1", "key2": 42}
-              """)
-        .build());
+tb.saveEntityAttributesV2("ASSET", assetId, "SERVER_SCOPE",
+        """
+        {"key1": "value1", "key2": 42}
+        """);
 
-// Read attributes by scope (omit .keys(...) for all; or use .key(List<String>))
-List<AttributeData> attrs = tb.getAttributesByScope(GetAttributesByScopeArgs.builder()
-        .entityType("DEVICE")
-        .entityId(deviceId)
-        .scope("SERVER_SCOPE")
-        .keys("billingActive,plan")
-        .build());
+// Read attributes by scope
+List<AttributeData> attrs = tb.getAttributesByScope(
+        "DEVICE", deviceId, "SERVER_SCOPE",
+        "billingActive,plan",  // comma-separated keys (or null for all)
+        null);                 // alternative: List<String> keys
 
 // List attribute key names
-List<String> keys = tb.getAttributeKeys(GetAttributeKeysArgs.builder().entityType("DEVICE").entityId(deviceId).build());
-List<String> scopedKeys = tb.getAttributeKeysByScope(GetAttributeKeysByScopeArgs.builder()
-        .entityType("DEVICE")
-        .entityId(deviceId)
-        .scope("SERVER_SCOPE")
-        .build());
+List<String> keys = tb.getAttributeKeys("DEVICE", deviceId);
+List<String> scopedKeys = tb.getAttributeKeysByScope("DEVICE", deviceId, "SERVER_SCOPE");
 
 // Delete attributes
-tb.deleteDeviceAttributes(DeleteDeviceAttributesArgs.builder()
-        .deviceId(deviceId)
-        .scope("SERVER_SCOPE")
-        .keys("key1,key2")
-        .build());
+tb.deleteDeviceAttributes(deviceId, "SERVER_SCOPE", "key1,key2", null);
 ```
 
 ### Read-modify-write pattern
@@ -135,12 +107,8 @@ A common pattern: read an attribute, change its value, save it back.
 
 ```java
 // Read current value
-List<AttributeData> attrs = tb.getAttributesByScope(GetAttributesByScopeArgs.builder()
-        .entityType("ASSET")
-        .entityId(assetId)
-        .scope("SERVER_SCOPE")
-        .keys("deviceCount")
-        .build());
+List<AttributeData> attrs = tb.getAttributesByScope(
+        "ASSET", assetId, "SERVER_SCOPE", "deviceCount", null);
 
 long current = 0;
 if (!attrs.isEmpty()) {
@@ -149,44 +117,33 @@ if (!attrs.isEmpty()) {
 
 // Modify and save back
 long updated = current + 1;
-tb.saveEntityAttributesV2(SaveEntityAttributesV2Args.builder()
-        .entityType("ASSET")
-        .entityId(assetId)
-        .scope("SERVER_SCOPE")
-        .body("{\"deviceCount\": %d}".formatted(updated))
-        .build());
+tb.saveEntityAttributesV2("ASSET", assetId, "SERVER_SCOPE",
+        "{\"deviceCount\": %d}".formatted(updated));
 ```
 
 ## Telemetry
 
 ```java
 // List telemetry key names for an entity
-List<String> keys = tb.getTimeseriesKeys(GetTimeseriesKeysArgs.builder().entityType("DEVICE").entityId(deviceId).build());
+List<String> keys = tb.getTimeseriesKeys("DEVICE", deviceId);
 
 // Get timeseries history
-Map<String, List<TsData>> data = tb.getTimeseriesHistory(GetTimeseriesHistoryArgs.builder()
-        .entityType("DEVICE")
-        .entityId(deviceId)
-        .startTs(startTs)                 // Unix epoch millis
-        .endTs(endTs)
-        .keys("temperature,humidity")
-        .limit("100")
-        .agg("NONE")                      // aggregation: NONE, AVG, SUM, MIN, MAX, COUNT
-        .orderBy("DESC")
-        .useStrictDataTypes(true)
-        .build());
-// Optional builder fields not set above: intervalType, interval, timeZone, key
+Map<String, List<TsData>> data = tb.getTimeseriesHistory(
+        "DEVICE", deviceId,
+        startTs, endTs,       // Unix epoch millis
+        "temperature,humidity", // keys
+        null, null, null,     // intervalType, interval, timeZone
+        "100",                // limit
+        "NONE",               // aggregation: NONE, AVG, SUM, MIN, MAX, COUNT
+        "DESC",               // order
+        true,                 // useStrictDataTypes
+        null);                // alternative key list
 
 // Delete timeseries data
-tb.deleteEntityTimeseries(DeleteEntityTimeseriesArgs.builder()
-        .entityType("DEVICE")
-        .entityId(deviceId)
-        .keys("temperature")
-        .deleteAllDataForKeys(true)
-        .deleteLatest(true)
-        .rewriteLatestIfDeleted(false)
-        .build());
-// Optional builder fields not set above: startTs, endTs (null = all), key
+tb.deleteEntityTimeseries("DEVICE", deviceId,
+        "temperature", true,  // keys, deleteAllDataForKeys
+        null, null,           // startTs, endTs (null = all)
+        true, false, null);   // deleteLatest, rewriteLatest, keyList
 ```
 
 ## Alarms
@@ -197,16 +154,16 @@ Alarm alarm = new Alarm();
 alarm.setType("High Temperature");
 alarm.setOriginator(new DeviceId().id(deviceId));
 alarm.setSeverity(AlarmSeverity.CRITICAL);
-Alarm saved = tb.saveAlarm(SaveAlarmArgs.builder().alarm(alarm).build());
+Alarm saved = tb.saveAlarm(alarm);
 
 // Get alarm by ID
-Alarm alarm = tb.getAlarmById(GetAlarmByIdArgs.builder().alarmId(alarmId).build());
+Alarm alarm = tb.getAlarmById(alarmId);
 
 // Acknowledge an alarm
-tb.ackAlarm(AckAlarmArgs.builder().alarmId(alarmId).build());
+tb.ackAlarm(alarmId);
 
 // Clear an alarm
-tb.clearAlarm(ClearAlarmArgs.builder().alarmId(alarmId).build());
+tb.clearAlarm(alarmId);
 ```
 
 ## Relations
@@ -218,7 +175,7 @@ relation.setFrom(new AssetId().id(assetId));
 relation.setTo(new DeviceId().id(deviceId));
 relation.setType("Contains");
 relation.setTypeGroup(RelationTypeGroup.COMMON);
-tb.saveRelation(SaveRelationArgs.builder().entityRelation(relation).build());
+tb.saveRelation(relation);
 ```
 
 ## Users
@@ -228,17 +185,17 @@ tb.saveRelation(SaveRelationArgs.builder().entityRelation(relation).build());
 User user = tb.getUser();
 
 // Get user by ID
-User user = tb.getUserById(GetUserByIdArgs.builder().userId(userId).build());
+User user = tb.getUserById(userId);
 ```
 
 ## Dashboards
 
 ```java
 // Get dashboard by ID
-Dashboard dashboard = tb.getDashboardById(GetDashboardByIdArgs.builder().dashboardId(dashboardId).build());
+Dashboard dashboard = tb.getDashboardById(dashboardId);
 
 // List tenant dashboards (paginated)
-PageDataDashboardInfo page = tb.getTenantDashboards(GetTenantDashboardsArgs.builder().pageSize(10).page(0).build());
+PageDataDashboardInfo page = tb.getTenantDashboards1(10, 0, null, null, null, null);
 ```
 
 ## Entity Groups & Permissions (PE / PaaS only)
@@ -252,55 +209,40 @@ PageDataDashboardInfo page = tb.getTenantDashboards(GetTenantDashboardsArgs.buil
 EntityGroup group = new EntityGroup();
 group.setName("Factory Floor Sensors");
 group.setType(EntityGroup.TypeEnum.DEVICE);
-EntityGroupInfo saved = tb.saveEntityGroup(SaveEntityGroupArgs.builder().entityGroup(group).build());
+EntityGroupInfo saved = tb.saveEntityGroup(group);
 String groupId = saved.getId().getId().toString();
 
 // Get entity group by ID
-EntityGroupInfo group = tb.getEntityGroupById(GetEntityGroupByIdArgs.builder().entityGroupId(groupId).build());
+EntityGroupInfo group = tb.getEntityGroupById(groupId);
 
 // Look up by owner, type, and name
 User me = tb.getUser();
 String tenantId = me.getTenantId().getId().toString();
-EntityGroupInfo group = tb.getEntityGroupByOwnerAndNameAndType(GetEntityGroupByOwnerAndNameAndTypeArgs.builder()
-        .ownerType("TENANT")
-        .ownerId(tenantId)
-        .groupType("DEVICE")
-        .groupName("Factory Floor Sensors")
-        .build());
+EntityGroupInfo group = tb.getEntityGroupByOwnerAndNameAndType(
+        "TENANT", tenantId, "DEVICE", "Factory Floor Sensors");
 
 // Get the special "All" group for a given owner and type
-EntityGroupInfo allDevices = tb.getEntityGroupAllByOwnerAndType(GetEntityGroupAllByOwnerAndTypeArgs.builder()
-        .ownerType("TENANT")
-        .ownerId(tenantId)
-        .groupType("DEVICE")
-        .build());
+EntityGroupInfo allDevices = tb.getEntityGroupAllByOwnerAndType("TENANT", tenantId, "DEVICE");
 
 // List all device groups (optionally include shared)
-List<EntityGroupInfo> groups = tb.getAllEntityGroupsByType(GetAllEntityGroupsByTypeArgs.builder().groupType("DEVICE").includeShared(true).build());
+List<EntityGroupInfo> groups = tb.getAllEntityGroupsByType("DEVICE", true);
 
 // List device groups owned by a specific customer
-List<EntityGroupInfo> groups = tb.getAllEntityGroupsByOwnerAndType(GetAllEntityGroupsByOwnerAndTypeArgs.builder()
-        .ownerType("CUSTOMER")
-        .ownerId(customerId)
-        .groupType("DEVICE")
-        .build());
+List<EntityGroupInfo> groups = tb.getAllEntityGroupsByOwnerAndType(
+        "CUSTOMER", customerId, "DEVICE");
 
 // Add devices to a group
-tb.addEntitiesToEntityGroup(AddEntitiesToEntityGroupArgs.builder().entityGroupId(groupId).requestBody(List.of(deviceId1, deviceId2)).build());
+tb.addEntitiesToEntityGroup(groupId, List.of(deviceId1, deviceId2));
 
 // Remove devices from a group
-tb.removeEntitiesFromEntityGroup(RemoveEntitiesFromEntityGroupArgs.builder().entityGroupId(groupId).requestBody(List.of(deviceId1)).build());
+tb.removeEntitiesFromEntityGroup(groupId, List.of(deviceId1));
 
 // List devices in a group (paginated)
-PageDataDevice page = tb.getDevicesByEntityGroupId(GetDevicesByEntityGroupIdArgs.builder()
-        .entityGroupId(groupId)
-        .pageSize("10")
-        .page("0")
-        .build());
+PageDataDevice page = tb.getDevicesByEntityGroupId(groupId, "10", "0", null, null, null);
 List<Device> devices = page.getData();
 
 // Delete an entity group
-tb.deleteEntityGroup(DeleteEntityGroupArgs.builder().entityGroupId(groupId).build());
+tb.deleteEntityGroup(groupId);
 ```
 
 ### Roles
@@ -310,18 +252,14 @@ tb.deleteEntityGroup(DeleteEntityGroupArgs.builder().entityGroupId(groupId).buil
 Role role = new Role();
 role.setName("Sensor Viewers");
 role.setType(RoleType.GROUP);
-Role saved = tb.saveRole(SaveRoleArgs.builder().role(role).build());
+Role saved = tb.saveRole(role);
 String roleId = saved.getId().getId().toString();
 
 // Get role by ID
-Role role = tb.getRoleById(GetRoleByIdArgs.builder().roleId(roleId).build());
+Role role = tb.getRoleById(roleId);
 
 // List roles (paginated, optionally filter by type)
-PageDataRole page = tb.getRoles(GetRolesArgs.builder()
-        .pageSize("10")
-        .page("0")
-        .type("GROUP")
-        .build());
+PageDataRole page = tb.getRoles("10", "0", "GROUP", null, null, null);
 List<Role> roles = page.getData();
 ```
 
@@ -333,51 +271,39 @@ GroupPermission gp = new GroupPermission();
 gp.setUserGroupId(new EntityGroupId().id(UUID.fromString(userGroupId)));
 gp.setEntityGroupId(new EntityGroupId().id(UUID.fromString(deviceGroupId)));
 gp.setRoleId(new RoleId().id(UUID.fromString(roleId)));
-GroupPermission saved = tb.saveGroupPermission(SaveGroupPermissionArgs.builder().groupPermission(gp).build());
+GroupPermission saved = tb.saveGroupPermission(gp);
 
 // List permissions for an entity group
-List<GroupPermissionInfo> perms = tb.getEntityGroupPermissions(GetEntityGroupPermissionsArgs.builder().entityGroupId(deviceGroupId).build());
+List<GroupPermissionInfo> perms = tb.getEntityGroupPermissions(deviceGroupId);
 
 // List permissions for a user group
-List<GroupPermissionInfo> perms = tb.getUserGroupPermissions(GetUserGroupPermissionsArgs.builder().userGroupId(userGroupId).build());
+List<GroupPermissionInfo> perms = tb.getUserGroupPermissions(userGroupId);
 
 // Delete a group permission
-tb.deleteGroupPermission(DeleteGroupPermissionArgs.builder().groupPermissionId(saved.getId().getId().toString()).build());
+tb.deleteGroupPermission(saved.getId().getId().toString());
 ```
 
 ### Sharing
 
 ```java
 // Share entity group with a specific user group using a role
-tb.shareEntityGroupToChildOwnerUserGroup(ShareEntityGroupToChildOwnerUserGroupArgs.builder()
-        .entityGroupId(entityGroupId)
-        .userGroupId(userGroupId)
-        .roleId(roleId)
-        .build());
+tb.shareEntityGroupToChildOwnerUserGroup(entityGroupId, userGroupId, roleId);
 
 // Share entity group with the "All" user group (read-only)
 ShareGroupRequest req = new ShareGroupRequest();
 req.setAllUserGroup(true);
 req.setReadElseWrite(true);
-tb.shareEntityGroup(ShareEntityGroupArgs.builder().entityGroupId(entityGroupId).shareGroupRequest(req).build());
+tb.shareEntityGroup(entityGroupId, req);
 ```
 
 ### Ownership
 
 ```java
 // Transfer a device group to a customer
-tb.changeOwnerToCustomer(ChangeOwnerToCustomerArgs.builder()
-        .ownerId(customerId)
-        .entityType("ENTITY_GROUP")
-        .entityId(groupId)
-        .build());
+tb.changeOwnerToCustomer(customerId, "ENTITY_GROUP", groupId, null);
 
 // Transfer it back to the tenant
-tb.changeOwnerToTenant(ChangeOwnerToTenantArgs.builder()
-        .ownerId(tenantId)
-        .entityType("ENTITY_GROUP")
-        .entityId(groupId)
-        .build());
+tb.changeOwnerToTenant(tenantId, "ENTITY_GROUP", groupId, null);
 ```
 
 ### Customer hierarchy
@@ -386,15 +312,12 @@ tb.changeOwnerToTenant(ChangeOwnerToTenantArgs.builder()
 // Create a sub-customer and place it in a customer group
 Customer sub = new Customer();
 sub.setTitle("Acme West");
-Customer saved = tb.saveCustomer(SaveCustomerArgs.builder().customer(sub).entityGroupId(customerGroupId).build());
+Customer saved = tb.saveCustomer(sub, customerGroupId, null, null, null, null);
 String subId = saved.getId().getId().toString();
 
 // Get the "All" user group for the sub-customer
-EntityGroupInfo allUsers = tb.getEntityGroupAllByOwnerAndType(GetEntityGroupAllByOwnerAndTypeArgs.builder()
-        .ownerType("CUSTOMER")
-        .ownerId(subId)
-        .groupType("USER")
-        .build());
+EntityGroupInfo allUsers = tb.getEntityGroupAllByOwnerAndType(
+        "CUSTOMER", subId, "USER");
 String userGroupId = allUsers.getId().getId().toString();
 
 // Create a customer user and place it in a user group
@@ -402,25 +325,14 @@ User user = new User();
 user.setEmail("operator@acme-west.com");
 user.setAuthority(Authority.CUSTOMER_USER);
 user.setCustomerId(new CustomerId().id(UUID.fromString(subId)));
-User savedUser = tb.saveUser(SaveUserArgs.builder()
-        .user(user)
-        .sendActivationMail("false")
-        .entityGroupId(userGroupId)
-        .build());
+User savedUser = tb.saveUser(user, "false", userGroupId, null);
 
 // List users in a user group (paginated)
-PageDataUser page = tb.getUsersByEntityGroupId(GetUsersByEntityGroupIdArgs.builder()
-        .entityGroupId(userGroupId)
-        .pageSize(10)
-        .page(0)
-        .build());
+PageDataUser page = tb.getUsersByEntityGroupId(userGroupId, 10, 0, null, null, null);
 
 // List customers in a customer group (paginated)
-PageDataCustomer page = tb.getCustomersByEntityGroupId(GetCustomersByEntityGroupIdArgs.builder()
-        .entityGroupId(customerGroupId)
-        .pageSize("10")
-        .page("0")
-        .build());
+PageDataCustomer page = tb.getCustomersByEntityGroupId(
+        customerGroupId, "10", "0", null, null, null);
 ```
 
 ### Full workflow: customer onboarding
@@ -431,40 +343,33 @@ End-to-end example: create customer, device group, user group, role, permission,
 // 1. Create customer
 Customer customer = new Customer();
 customer.setTitle("Acme Corp");
-Customer savedCustomer = tb.saveCustomer(SaveCustomerArgs.builder().customer(customer).build());
+Customer savedCustomer = tb.saveCustomer(customer, null, null, null, null, null);
 String customerId = savedCustomer.getId().getId().toString();
 
 // 2. Create a device group owned by the tenant
 EntityGroup deviceGroup = new EntityGroup();
 deviceGroup.setName("Acme Devices");
 deviceGroup.setType(EntityGroup.TypeEnum.DEVICE);
-EntityGroupInfo savedGroup = tb.saveEntityGroup(SaveEntityGroupArgs.builder().entityGroup(deviceGroup).build());
+EntityGroupInfo savedGroup = tb.saveEntityGroup(deviceGroup);
 String deviceGroupId = savedGroup.getId().getId().toString();
 
 // 3. Get the customer's "All" user group (auto-created by TB)
-EntityGroupInfo allUsers = tb.getEntityGroupAllByOwnerAndType(GetEntityGroupAllByOwnerAndTypeArgs.builder()
-        .ownerType("CUSTOMER")
-        .ownerId(customerId)
-        .groupType("USER")
-        .build());
+EntityGroupInfo allUsers = tb.getEntityGroupAllByOwnerAndType(
+        "CUSTOMER", customerId, "USER");
 String userGroupId = allUsers.getId().getId().toString();
 
 // 4. Create a role that grants read-only access
 Role role = new Role();
 role.setName("Acme Device Readers");
 role.setType(RoleType.GROUP);
-Role savedRole = tb.saveRole(SaveRoleArgs.builder().role(role).build());
+Role savedRole = tb.saveRole(role);
 String roleId = savedRole.getId().getId().toString();
 
 // 5. Share the device group with the customer's user group
-tb.shareEntityGroupToChildOwnerUserGroup(ShareEntityGroupToChildOwnerUserGroupArgs.builder()
-        .entityGroupId(deviceGroupId)
-        .userGroupId(userGroupId)
-        .roleId(roleId)
-        .build());
+tb.shareEntityGroupToChildOwnerUserGroup(deviceGroupId, userGroupId, roleId);
 
 // 6. Add devices to the group
-tb.addEntitiesToEntityGroup(AddEntitiesToEntityGroupArgs.builder().entityGroupId(deviceGroupId).requestBody(List.of(deviceId)).build());
+tb.addEntitiesToEntityGroup(deviceGroupId, List.of(deviceId));
 ```
 
 ### Find or create an entity group
@@ -475,18 +380,14 @@ String tenantId = me.getTenantId().getId().toString();
 
 EntityGroupInfo group;
 try {
-    group = tb.getEntityGroupByOwnerAndNameAndType(GetEntityGroupByOwnerAndNameAndTypeArgs.builder()
-            .ownerType("TENANT")
-            .ownerId(tenantId)
-            .groupType("DEVICE")
-            .groupName("Factory Floor Sensors")
-            .build());
+    group = tb.getEntityGroupByOwnerAndNameAndType(
+            "TENANT", tenantId, "DEVICE", "Factory Floor Sensors");
 } catch (ApiException e) {
     if (e.getCode() == 404) {
         EntityGroup newGroup = new EntityGroup();
         newGroup.setName("Factory Floor Sensors");
         newGroup.setType(EntityGroup.TypeEnum.DEVICE);
-        group = tb.saveEntityGroup(SaveEntityGroupArgs.builder().entityGroup(newGroup).build());
+        group = tb.saveEntityGroup(newGroup);
     } else {
         throw e;
     }

@@ -1,47 +1,49 @@
 # QrCodeSettingsControllerApi
 
-Methods on `ThingsboardClient`. Endpoints that take input accept a single request object: call
-`<method>Args.builder()`, set the fields you need, then `build()`. Only required fields must be
-set — `build()` throws `IllegalArgumentException` if a required field is missing. The `*Args`
-classes are nested in `ThingsboardApi`, e.g.
-`import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Methods that take no input
-have no `Args` object — call them directly.
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
 
 ```
-Object getApplicationRedirect(GetApplicationRedirectArgs args) // getApplicationRedirect
+Object getApplicationRedirect(@Nonnull String userAgent) // getApplicationRedirect
 String getMobileAppDeepLink() // Get the deep link to the associated mobile application (getMobileAppDeepLink)
 QrCodeSettings getQrCodeSettings() // Get Mobile application settings (getQrCodeSettings)
-JwtPair getUserTokenByMobileSecret(GetUserTokenByMobileSecretArgs args) // Get User Token (getUserTokenByMobileSecret)
-QrCodeSettings saveQrCodeSettings(SaveQrCodeSettingsArgs args) // Create Or Update the Mobile application settings (saveMobileAppSettings)
+JwtPair getUserTokenByMobileSecret(@Nonnull String secret) // Get User Token (getUserTokenByMobileSecret)
+QrCodeSettings saveQrCodeSettings(@Nonnull QrCodeSettings qrCodeSettings) // Create Or Update the Mobile application settings (saveMobileAppSettings)
 ```
 
 
 ## getApplicationRedirect
 
+```
+Object getApplicationRedirect(@Nonnull String userAgent)
+```
+
 **GET** `/api/noauth/qr`
 
 getApplicationRedirect
 
-```java
-Object getApplicationRedirect(GetApplicationRedirectArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-GetApplicationRedirectArgs.builder()
-        .userAgent(String)
-        .build()
-```
 
-### `GetApplicationRedirectArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `userAgent` | `String` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userAgent** | **String** |  | |
 
 ### Return type
 
-`Object`
+**Object**
 
 
 ## getMobileAppDeepLink
+
+```
+String getMobileAppDeepLink()
+```
 
 **GET** `/api/mobile/qr/deepLink`
 
@@ -49,16 +51,16 @@ Get the deep link to the associated mobile application (getMobileAppDeepLink)
 
 Fetch the url that takes user to linked mobile application   Available for any authorized user. 
 
-```java
-String getMobileAppDeepLink()
-```
-
 ### Return type
 
-`String`
+**String**
 
 
 ## getQrCodeSettings
+
+```
+QrCodeSettings getQrCodeSettings()
+```
 
 **GET** `/api/mobile/qr/settings`
 
@@ -66,16 +68,16 @@ Get Mobile application settings (getQrCodeSettings)
 
 The response payload contains configuration for android/iOS applications and platform qr code widget settings.  Available for any authorized user. 
 
-```java
-QrCodeSettings getQrCodeSettings()
-```
-
 ### Return type
 
-`QrCodeSettings`
+**QrCodeSettings**
 
 
 ## getUserTokenByMobileSecret
+
+```
+JwtPair getUserTokenByMobileSecret(@Nonnull String secret)
+```
 
 **GET** `/api/noauth/qr/{secret}`
 
@@ -83,26 +85,23 @@ Get User Token (getUserTokenByMobileSecret)
 
 Returns the token of the User based on the provided secret key.
 
-```java
-JwtPair getUserTokenByMobileSecret(GetUserTokenByMobileSecretArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-GetUserTokenByMobileSecretArgs.builder()
-        .secret(String)
-        .build()
-```
 
-### `GetUserTokenByMobileSecretArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `secret` | `String` | **yes** | A string value representing short-lived secret key | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **secret** | **String** | A string value representing short-lived secret key | |
 
 ### Return type
 
-`JwtPair`
+**JwtPair**
 
 
 ## saveQrCodeSettings
+
+```
+QrCodeSettings saveQrCodeSettings(@Nonnull QrCodeSettings qrCodeSettings)
+```
 
 **POST** `/api/mobile/qr/settings`
 
@@ -110,21 +109,14 @@ Create Or Update the Mobile application settings (saveMobileAppSettings)
 
 The request payload contains configuration for android/iOS applications and platform qr code widget settings.  Available for users with 'SYS_ADMIN' authority.
 
-```java
-QrCodeSettings saveQrCodeSettings(SaveQrCodeSettingsArgs args)
-// build the request (required fields shown; add optional fields from the table below as needed):
-SaveQrCodeSettingsArgs.builder()
-        .qrCodeSettings(QrCodeSettings)
-        .build()
-```
 
-### `SaveQrCodeSettingsArgs` builder fields
+### Parameters
 
-| Field | Type | Required | Description | Notes |
-|-------|------|----------|-------------|-------|
-| `qrCodeSettings` | `QrCodeSettings` | **yes** |  | |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **qrCodeSettings** | **QrCodeSettings** |  | |
 
 ### Return type
 
-`QrCodeSettings`
+**QrCodeSettings**
 
