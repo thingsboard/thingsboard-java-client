@@ -19,7 +19,7 @@ All modules share the same `org.thingsboard.client` group ID and use the `org.th
 <dependency>
     <groupId>org.thingsboard.client</groupId>
     <artifactId>thingsboard-ce-client</artifactId>
-    <version>4.4.0</version>
+    <version>4.3.1.5</version>
 </dependency>
 ```
 
@@ -31,6 +31,7 @@ Replace `thingsboard-ce-client` with `thingsboard-pe-client` or `thingsboard-paa
 
 ```java
 import org.thingsboard.client.ThingsboardClient;
+import org.thingsboard.client.api.ThingsboardApi.GetTenantDevicesArgs;
 
 // Credentials — logs in automatically, refreshes tokens before expiry
 ThingsboardClient client = ThingsboardClient.builder()
@@ -38,7 +39,9 @@ ThingsboardClient client = ThingsboardClient.builder()
         .credentials("tenant@thingsboard.org", "tenant")
         .build();
 
-var devices = client.getTenantDevices(10, 0, null, null, null, null);
+// Endpoints with parameters take a single <Method>Args request object built with a builder;
+// only required fields must be set, optional ones can be omitted.
+var devices = client.getTenantDevices(GetTenantDevicesArgs.builder().pageSize(10).page(0).build());
 ```
 
 ### API Key Authentication
@@ -49,7 +52,7 @@ ThingsboardClient client = ThingsboardClient.builder()
         .apiKey("your-api-key")
         .build();
 
-var devices = client.getTenantDevices(10, 0, null, null, null, null);
+var devices = client.getTenantDevices(GetTenantDevicesArgs.builder().pageSize(10).page(0).build());
 ```
 
 ### Deferred Login
@@ -67,7 +70,7 @@ client.login("tenant@thingsboard.org", "tenant");
 Each published JAR includes Markdown API documentation bundled under `api-docs/` in the classpath. This covers every controller endpoint (`*ControllerApi.md`) and every model class. To extract the docs from a dependency:
 
 ```bash
-jar xf thingsboard-ce-client-4.4.0.jar api-docs/
+jar xf thingsboard-ce-client-4.3.1.5.jar api-docs/
 ```
 
 The same docs are also available in each edition's `docs/` directory in this repository.
