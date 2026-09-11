@@ -30,6 +30,10 @@ Subscription entry
 
 * `NUMBER_11` (value: `new BigDecimal("11")`)
 
+* `NUMBER_12` (value: `new BigDecimal("12")`)
+
+* `NUMBER_13` (value: `new BigDecimal("13")`)
+
 * `NUMBER_30` (value: `new BigDecimal("30")`)
 
 * `NUMBER_31` (value: `new BigDecimal("31")`)

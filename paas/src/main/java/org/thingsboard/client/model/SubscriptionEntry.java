@@ -55,6 +55,10 @@ public enum SubscriptionEntry {
   
   NUMBER_11(new BigDecimal("11")),
   
+  NUMBER_12(new BigDecimal("12")),
+  
+  NUMBER_13(new BigDecimal("13")),
+  
   NUMBER_30(new BigDecimal("30")),
   
   NUMBER_31(new BigDecimal("31"));

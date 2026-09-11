@@ -21,7 +21,7 @@ A JSON value representing the tenant profile.
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### TenantProfileData
 | Name | Type | Description | Notes |
@@ -44,6 +44,8 @@ A JSON value representing the tenant profile.
 | maxDashboards | Long |  | [optional] |
 | maxRuleChains | Long |  | [optional] |
 | maxEdges | Long |  | [optional] |
+| maxAgents | Long |  | [optional] |
+| maxAgentApplications | Long |  | [optional] |
 | maxResourcesInBytes | Long |  | [optional] |
 | maxOtaPackagesInBytes | Long |  | [optional] |
 | maxResourceSize | Long |  | [optional] |
@@ -107,6 +109,10 @@ A JSON value representing the tenant profile.
 | edgeEventRateLimitsPerEdge | String |  | [optional] |
 | edgeUplinkMessagesRateLimits | String |  | [optional] |
 | edgeUplinkMessagesRateLimitsPerEdge | String |  | [optional] |
+| agentEventRateLimits | String |  | [optional] |
+| agentEventRateLimitsPerAgent | String |  | [optional] |
+| agentLogChunkRateLimits | String |  | [optional] |
+| agentLogChunkRateLimitsPerAgent | String |  | [optional] |
 | defaultStorageTtlDays | Integer |  | [optional] |
 | alarmsTtlDays | Integer |  | [optional] |
 | rpcTtlDays | Integer |  | [optional] |
@@ -144,7 +150,7 @@ A JSON value representing the tenant profile.
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 #### SubmitStrategy
 | Name | Type | Description | Notes |

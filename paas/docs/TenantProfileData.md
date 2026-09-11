@@ -29,6 +29,8 @@
 | maxDashboards | Long |  | [optional] |
 | maxRuleChains | Long |  | [optional] |
 | maxEdges | Long |  | [optional] |
+| maxAgents | Long |  | [optional] |
+| maxAgentApplications | Long |  | [optional] |
 | maxResourcesInBytes | Long |  | [optional] |
 | maxOtaPackagesInBytes | Long |  | [optional] |
 | maxResourceSize | Long |  | [optional] |
@@ -92,6 +94,10 @@
 | edgeEventRateLimitsPerEdge | String |  | [optional] |
 | edgeUplinkMessagesRateLimits | String |  | [optional] |
 | edgeUplinkMessagesRateLimitsPerEdge | String |  | [optional] |
+| agentEventRateLimits | String |  | [optional] |
+| agentEventRateLimitsPerAgent | String |  | [optional] |
+| agentLogChunkRateLimits | String |  | [optional] |
+| agentLogChunkRateLimitsPerAgent | String |  | [optional] |
 | defaultStorageTtlDays | Integer |  | [optional] |
 | alarmsTtlDays | Integer |  | [optional] |
 | rpcTtlDays | Integer |  | [optional] |
