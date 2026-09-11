@@ -2,6 +2,12 @@
 
 `ThingsboardClient` methods:
 
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
 ```
 void deleteAgent(@Nonnull String agentId) // Delete agent (deleteAgent)
 PageDataAgentAppEventInfo getAgentAppEventInfosByAgentId(@Nonnull String agentId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable AgentAppEventActionType actionType, @Nullable AgentProcessingStatus processingStatus) // Get Agent App Event Infos by Agent Id (getAgentAppEventInfosByAgentId)

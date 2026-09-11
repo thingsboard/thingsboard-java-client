@@ -2,6 +2,12 @@
 
 `ThingsboardClient` methods:
 
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
 ```
 String handleRuleEngineRequestForEntity(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String body) // Push entity message to the rule engine (handleRuleEngineRequestForEntity)
 String handleRuleEngineRequestForEntityWithQueueAndTimeout(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String queueName, @Nonnull Integer timeout, @Nonnull String body) // Push entity message with timeout and specified queue to the rule engine (handleRuleEngineRequestForEntityWithQueueAndTimeout)

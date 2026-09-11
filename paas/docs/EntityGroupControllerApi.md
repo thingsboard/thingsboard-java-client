@@ -2,6 +2,12 @@
 
 `ThingsboardClient` methods:
 
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
 ```
 void addEntitiesToEntityGroup(@Nonnull String entityGroupId, @Nonnull List<String> requestBody) // Add entities to the group (addEntitiesToEntityGroup)
 EntityGroup assignEntityGroupToEdge(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String entityGroupId) // Assign entity group to edge (assignEntityGroupToEdge)

@@ -2,6 +2,12 @@
 
 `ThingsboardClient` methods:
 
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
 ```
 EntityRelation deleteRelation(@Nonnull String fromId, @Nonnull String fromType, @Nonnull String relationType, @Nonnull String toId, @Nonnull String toType, @Nullable String relationTypeGroup) // Delete Relation (deleteRelation)
 void deleteRelations(@Nonnull String entityId, @Nonnull String entityType) // Delete common relations (deleteRelations)

@@ -221,7 +221,7 @@ public class ThingsboardClient extends ThingsboardApi {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername(username);
         loginRequest.setPassword(password);
-        LoginResponse response = login(loginRequest);
+        LoginResponse response = login(LoginArgs.builder().loginRequest(loginRequest).build());
         auth.onLogin(username, password, response);
     }
 
