@@ -56,7 +56,7 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "jobType", visible = true)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = DummyTaskResult.class, name = "DummyTaskResult"),
+  @JsonSubTypes.Type(value = DummyTaskResult.class, name = "DUMMY"),
 })
 
 public class TaskResult {
@@ -348,7 +348,7 @@ public class TaskResult {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
-  mappings.put("DummyTaskResult", DummyTaskResult.class);
+  mappings.put("DUMMY", DummyTaskResult.class);
   mappings.put("TaskResult", TaskResult.class);
   JSON.registerDiscriminator(TaskResult.class, "jobType", mappings);
 }
