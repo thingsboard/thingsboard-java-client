@@ -48,7 +48,9 @@ public enum DefaultPageId {
   
   DEVICE_LIST("DEVICE_LIST"),
   
-  DASHBOARDS("DASHBOARDS");
+  DASHBOARDS("DASHBOARDS"),
+  
+  LIVE_LOCATION_TRACKING("LIVE_LOCATION_TRACKING");
 
   private String value;
 
