@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:39233",
+      "url": "http://localhost:45121",
       "description": "Generated server url"
     }
   ],
@@ -137883,7 +137883,8 @@
           "AUDIT_LOGS",
           "NOTIFICATIONS",
           "DEVICE_LIST",
-          "DASHBOARDS"
+          "DASHBOARDS",
+          "LIVE_LOCATION_TRACKING"
         ]
       },
       "DefaultRuleChainCreateRequest": {
