@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:39233",
+      "url": "http://localhost:41269",
       "description": "Generated server url"
     }
   ],
@@ -105776,16 +105776,14 @@
           {
             "name": "resourceType",
             "in": "query",
-            "description": "A string value representing the resource type.",
+            "description": "A list of resource types, separated by comma ','.",
             "required": false,
             "schema": {
-              "type": "string",
-              "enum": [
-                "LWM2M_MODEL",
-                "JKS",
-                "PKCS_12",
-                "JS_MODULE"
-              ]
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ResourceType"
+              },
+              "uniqueItems": true
             }
           },
           {
@@ -137883,7 +137881,8 @@
           "AUDIT_LOGS",
           "NOTIFICATIONS",
           "DEVICE_LIST",
-          "DASHBOARDS"
+          "DASHBOARDS",
+          "LIVE_LOCATION_TRACKING"
         ]
       },
       "DefaultRuleChainCreateRequest": {

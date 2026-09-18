@@ -21,7 +21,7 @@ List<LwM2mObject> getLwm2mListObjectsPage(@Nonnull Integer pageSize, @Nonnull In
 TbResource getResourceById(@Nonnull String resourceId) // Get Resource (getResourceById)
 TbResourceInfo getResourceInfo(@Nonnull String resourceType, @Nonnull String scope, @Nonnull String key) // Get resource info (getResourceInfo)
 TbResourceInfo getResourceInfoById(@Nonnull String resourceId) // Get Resource Info (getResourceInfoById)
-PageDataTbResourceInfo getResources(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Resource Infos (getResources)
+PageDataTbResourceInfo getResources(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<ResourceType> resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Resource Infos (getResources)
 List<TbResourceInfo> getSystemOrTenantResourcesByIds(@Nonnull List<String> resourceIds) // Get Resource Infos by ids (getSystemOrTenantResourcesByIds)
 PageDataTbResourceInfo getTenantResources(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Resource Infos (getTenantResources)
 TbResourceInfo saveResource(@Nonnull TbResource tbResource) // Create Or Update Resource (saveResource)
@@ -338,7 +338,7 @@ Fetch the Resource Info object based on the provided Resource Id. Resource Info 
 ## getResources
 
 ```
-PageDataTbResourceInfo getResources(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataTbResourceInfo getResources(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<ResourceType> resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/resource`
@@ -354,7 +354,7 @@ Returns a page of Resource Info objects owned by tenant or sysadmin. You can spe
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **resourceType** | **String** | A string value representing the resource type. | [optional] [enum: LWM2M_MODEL, JKS, PKCS_12, JS_MODULE] |
+| **resourceType** | **Set<ResourceType>** | A list of resource types, separated by comma ','. | [optional] |
 | **resourceSubType** | **String** | A string value representing the resource sub-type. | [optional] [enum: EXTENSION, MODULE] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the resource title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, resourceType, tenantId] |
