@@ -12,11 +12,11 @@
       "name": "Apache License Version 2.0",
       "url": "https://github.com/thingsboard/thingsboard/blob/master/LICENSE"
     },
-    "version": "4.4.0PAAS"
+    "version": "4.4.0PE"
   },
   "servers": [
     {
-      "url": "http://localhost:35993",
+      "url": "http://localhost:42695",
       "description": "Generated server url"
     }
   ],
@@ -155225,7 +155225,8 @@
           "AUDIT_LOGS",
           "NOTIFICATIONS",
           "DEVICE_LIST",
-          "DASHBOARDS"
+          "DASHBOARDS",
+          "LIVE_LOCATION_TRACKING"
         ]
       },
       "DefaultRuleChainCreateRequest": {
