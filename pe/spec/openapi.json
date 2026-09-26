@@ -16,7 +16,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:39233",
+      "url": "http://localhost:35803",
       "description": "Generated server url"
     }
   ],
@@ -105776,16 +105776,14 @@
           {
             "name": "resourceType",
             "in": "query",
-            "description": "A string value representing the resource type.",
+            "description": "A list of resource types, separated by comma ','.",
             "required": false,
             "schema": {
-              "type": "string",
-              "enum": [
-                "LWM2M_MODEL",
-                "JKS",
-                "PKCS_12",
-                "JS_MODULE"
-              ]
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ResourceType"
+              },
+              "uniqueItems": true
             }
           },
           {
@@ -137883,7 +137881,8 @@
           "AUDIT_LOGS",
           "NOTIFICATIONS",
           "DEVICE_LIST",
-          "DASHBOARDS"
+          "DASHBOARDS",
+          "LIVE_LOCATION_TRACKING"
         ]
       },
       "DefaultRuleChainCreateRequest": {
@@ -137961,6 +137960,14 @@
                 "format": "int64"
               },
               "maxSchedulerEvents": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "maxAgents": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "maxAgentApplications": {
                 "type": "integer",
                 "format": "int64"
               },
@@ -138308,6 +138315,8 @@
           "maxIntegrations": null,
           "maxConverters": null,
           "maxSchedulerEvents": null,
+          "maxAgents": null,
+          "maxAgentApplications": null,
           "transportTenantMsgRateLimit": "1000:1,20000:60",
           "transportTenantTelemetryMsgRateLimit": "1000:1,20000:60",
           "transportTenantTelemetryDataPointsRateLimit": "1000:1,20000:60",
@@ -145044,7 +145053,7 @@
         },
         "example": {
           "securityMode": "NO_SEC",
-          "shortServerId": 123,
+          "shortServerId": 1,
           "bootstrapServerIs": true,
           "host": "0.0.0.0",
           "port": "'5685' or '5687'",
@@ -145072,8 +145081,8 @@
           "shortServerId": {
             "type": "integer",
             "format": "int32",
-            "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false'. The values ID:0 and ID:65535 values MUST NOT be used for identifying the LwM2M Server.",
-            "example": 123,
+            "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false' and MUST be null when Bootstrap-Server is 'true'. The values 0 and 65535 MUST NOT be used for identifying the LwM2M Server.",
+            "example": 1,
             "readOnly": true
           },
           "bootstrapServerIs": {
@@ -146322,8 +146331,8 @@
               "shortServerId": {
                 "type": "integer",
                 "format": "int32",
-                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false'. The values ID:0 and ID:65535 values MUST NOT be used for identifying the LwM2M Server.",
-                "example": 123,
+                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false' and MUST be null when Bootstrap-Server is 'true'. The values 0 and 65535 MUST NOT be used for identifying the LwM2M Server.",
+                "example": 1,
                 "readOnly": true
               },
               "bootstrapServerIs": {
@@ -146402,7 +146411,7 @@
         ],
         "example": {
           "securityMode": "NO_SEC",
-          "shortServerId": 123,
+          "shortServerId": 1,
           "bootstrapServerIs": true,
           "host": "0.0.0.0",
           "port": "'5685' or '5687'",
@@ -148382,8 +148391,8 @@
               "shortServerId": {
                 "type": "integer",
                 "format": "int32",
-                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false'. The values ID:0 and ID:65535 values MUST NOT be used for identifying the LwM2M Server.",
-                "example": 123,
+                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false' and MUST be null when Bootstrap-Server is 'true'. The values 0 and 65535 MUST NOT be used for identifying the LwM2M Server.",
+                "example": 1,
                 "readOnly": true
               },
               "bootstrapServerIs": {
@@ -148462,7 +148471,7 @@
         ],
         "example": {
           "securityMode": "PSK",
-          "shortServerId": 123,
+          "shortServerId": 1,
           "bootstrapServerIs": true,
           "host": "0.0.0.0",
           "port": "'5685' or '5687'",
@@ -151582,8 +151591,8 @@
               "shortServerId": {
                 "type": "integer",
                 "format": "int32",
-                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false'. The values ID:0 and ID:65535 values MUST NOT be used for identifying the LwM2M Server.",
-                "example": 123,
+                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false' and MUST be null when Bootstrap-Server is 'true'. The values 0 and 65535 MUST NOT be used for identifying the LwM2M Server.",
+                "example": 1,
                 "readOnly": true
               },
               "bootstrapServerIs": {
@@ -151662,7 +151671,7 @@
         ],
         "example": {
           "securityMode": "RPK",
-          "shortServerId": 123,
+          "shortServerId": 1,
           "bootstrapServerIs": true,
           "host": "0.0.0.0",
           "port": "'5685' or '5687'",
@@ -157760,6 +157769,8 @@
           "maxIntegrations": null,
           "maxConverters": null,
           "maxSchedulerEvents": null,
+          "maxAgents": null,
+          "maxAgentApplications": null,
           "transportTenantMsgRateLimit": "1000:1,20000:60",
           "transportTenantTelemetryMsgRateLimit": "1000:1,20000:60",
           "transportTenantTelemetryDataPointsRateLimit": "1000:1,20000:60",
@@ -161085,8 +161096,8 @@
               "shortServerId": {
                 "type": "integer",
                 "format": "int32",
-                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false'. The values ID:0 and ID:65535 values MUST NOT be used for identifying the LwM2M Server.",
-                "example": 123,
+                "description": "Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of 'false' and MUST be null when Bootstrap-Server is 'true'. The values 0 and 65535 MUST NOT be used for identifying the LwM2M Server.",
+                "example": 1,
                 "readOnly": true
               },
               "bootstrapServerIs": {
@@ -161165,7 +161176,7 @@
         ],
         "example": {
           "securityMode": "X509",
-          "shortServerId": 123,
+          "shortServerId": 1,
           "bootstrapServerIs": true,
           "host": "0.0.0.0",
           "port": "'5685' or '5687'",

@@ -51,6 +51,8 @@ A JSON value representing the tenant profile.
 | maxIntegrations | Long |  | [optional] |
 | maxConverters | Long |  | [optional] |
 | maxSchedulerEvents | Long |  | [optional] |
+| maxAgents | Long |  | [optional] |
+| maxAgentApplications | Long |  | [optional] |
 | transportTenantMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryDataPointsRateLimit | String |  | [optional] |
