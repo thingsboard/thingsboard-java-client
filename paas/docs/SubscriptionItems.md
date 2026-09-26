@@ -11,6 +11,7 @@
 | **extraCustomerPackCount** | **Long** |  | [optional] |
 | **extraIntegrationPackCount** | **Long** |  | [optional] |
 | **extraCalculatedFieldCount** | **Long** |  | [optional] |
+| **extraAgentPackCount** | **Long** |  | [optional] |
 | **trafficPackCount** | **Long** |  | [optional] |
 | **computePackCount** | **Long** |  | [optional] |
 | **storagePackCount** | **Long** |  | [optional] |

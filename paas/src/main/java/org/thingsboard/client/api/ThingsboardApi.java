@@ -273,6 +273,7 @@ import org.thingsboard.client.model.RepositorySettingsInfo;
 import org.thingsboard.client.model.ResetPasswordEmailRequest;
 import org.thingsboard.client.model.ResetPasswordRequest;
 import org.thingsboard.client.model.ResourceExportData;
+import org.thingsboard.client.model.ResourceType;
 import org.thingsboard.client.model.Role;
 import org.thingsboard.client.model.Rpc;
 import org.thingsboard.client.model.RuleChain;
@@ -86261,7 +86262,7 @@ public class ThingsboardApi {
     @Nonnull
     Integer page = apiRequest.page();
     @Nullable
-    String resourceType = apiRequest.resourceType();
+    Set<ResourceType> resourceType = apiRequest.resourceType();
     @Nullable
     String resourceSubType = apiRequest.resourceSubType();
     @Nullable
@@ -86286,7 +86287,7 @@ public class ThingsboardApi {
   public ApiResponse<PageDataTbResourceInfo> getResourcesWithHttpInfo(GetResourcesArgs apiRequest, Map<String, String> headers) throws ApiException {
     Integer pageSize = apiRequest.pageSize();
     Integer page = apiRequest.page();
-    String resourceType = apiRequest.resourceType();
+    Set<ResourceType> resourceType = apiRequest.resourceType();
     String resourceSubType = apiRequest.resourceSubType();
     String textSearch = apiRequest.textSearch();
     String sortProperty = apiRequest.sortProperty();
@@ -86299,7 +86300,7 @@ public class ThingsboardApi {
    * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param resourceType A string value representing the resource type. (optional)
+   * @param resourceType A list of resource types, separated by comma &#39;,&#39;. (optional)
    * @param resourceSubType A string value representing the resource sub-type. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the resource title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -86313,7 +86314,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public PageDataTbResourceInfo getResources(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
+  public PageDataTbResourceInfo getResources(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<ResourceType> resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) throws ApiException {
     ApiResponse<PageDataTbResourceInfo> localVarResponse = getResourcesWithHttpInfo(pageSize, page, resourceType, resourceSubType, textSearch, sortProperty, sortOrder, null);
     return localVarResponse.getData();
   }
@@ -86323,7 +86324,7 @@ public class ThingsboardApi {
    * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
-   * @param resourceType A string value representing the resource type. (optional)
+   * @param resourceType A list of resource types, separated by comma &#39;,&#39;. (optional)
    * @param resourceSubType A string value representing the resource sub-type. (optional)
    * @param textSearch The case insensitive &#39;substring&#39; filter based on the resource title. (optional)
    * @param sortProperty Property of entity to sort by (optional)
@@ -86338,7 +86339,7 @@ public class ThingsboardApi {
    *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
    */
   @Deprecated(forRemoval = true)
-  public ApiResponse<PageDataTbResourceInfo> getResourcesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  public ApiResponse<PageDataTbResourceInfo> getResourcesWithHttpInfo(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<ResourceType> resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = getResourcesRequestBuilder(pageSize, page, resourceType, resourceSubType, textSearch, sortProperty, sortOrder, headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
@@ -86373,7 +86374,7 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder getResourcesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
+  private HttpRequest.Builder getResourcesRequestBuilder(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<ResourceType> resourceType, @Nullable String resourceSubType, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, Map<String, String> headers) throws ApiException {
     // verify the required parameter 'pageSize' is set
     if (pageSize == null) {
       throw new ApiException(400, "Missing the required parameter 'pageSize' when calling getResources");
@@ -86392,7 +86393,7 @@ public class ThingsboardApi {
     localVarQueryParameterBaseName = "page";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("page", page));
     localVarQueryParameterBaseName = "resourceType";
-    localVarQueryParams.addAll(ApiClient.parameterToPairs("resourceType", resourceType));
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("multi", "resourceType", resourceType));
     localVarQueryParameterBaseName = "resourceSubType";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("resourceSubType", resourceSubType));
     localVarQueryParameterBaseName = "textSearch";
@@ -86430,7 +86431,7 @@ public class ThingsboardApi {
     @Nonnull
     private Integer page; // Sequence number of page starting from 0 (required)
     @Nullable
-    private String resourceType; // A string value representing the resource type. (optional)
+    private Set<ResourceType> resourceType; // A list of resource types, separated by comma &#39;,&#39;. (optional)
     @Nullable
     private String resourceSubType; // A string value representing the resource sub-type. (optional)
     @Nullable
@@ -86457,7 +86458,7 @@ public class ThingsboardApi {
       return page;
     }
     @Nullable
-    public String resourceType() {
+    public Set<ResourceType> resourceType() {
       return resourceType;
     }
     @Nullable
@@ -86482,7 +86483,7 @@ public class ThingsboardApi {
     public static class Builder {
       private Integer pageSize;
       private Integer page;
-      private String resourceType;
+      private Set<ResourceType> resourceType;
       private String resourceSubType;
       private String textSearch;
       private String sortProperty;
@@ -86495,7 +86496,7 @@ public class ThingsboardApi {
         this.page = page;
         return this;
       }
-      public Builder resourceType(@Nullable String resourceType) {
+      public Builder resourceType(@Nullable Set<ResourceType> resourceType) {
         this.resourceType = resourceType;
         return this;
       }

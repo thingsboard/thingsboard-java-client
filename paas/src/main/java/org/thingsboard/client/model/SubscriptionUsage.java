@@ -47,6 +47,7 @@ import org.thingsboard.client.ApiClient;
   SubscriptionUsage.JSON_PROPERTY_CONVERTERS,
   SubscriptionUsage.JSON_PROPERTY_SCHEDULER_EVENTS,
   SubscriptionUsage.JSON_PROPERTY_EDGES,
+  SubscriptionUsage.JSON_PROPERTY_AGENTS,
   SubscriptionUsage.JSON_PROPERTY_TRANSPORT_MESSAGES,
   SubscriptionUsage.JSON_PROPERTY_TRANSPORT_DATA_POINTS,
   SubscriptionUsage.JSON_PROPERTY_RE_EXECUTIONS,
@@ -99,6 +100,10 @@ public class SubscriptionUsage {
   public static final String JSON_PROPERTY_EDGES = "edges";
   @Nullable
   private Long edges;
+
+  public static final String JSON_PROPERTY_AGENTS = "agents";
+  @Nullable
+  private Long agents;
 
   public static final String JSON_PROPERTY_TRANSPORT_MESSAGES = "transportMessages";
   @Nullable
@@ -383,6 +388,30 @@ public class SubscriptionUsage {
   }
 
 
+  public SubscriptionUsage agents(@Nullable Long agents) {
+    this.agents = agents;
+    return this;
+  }
+
+  /**
+   * Get agents
+   * @return agents
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AGENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getAgents() {
+    return agents;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AGENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAgents(@Nullable Long agents) {
+    this.agents = agents;
+  }
+
+
   public SubscriptionUsage transportMessages(@Nullable Long transportMessages) {
     this.transportMessages = transportMessages;
     return this;
@@ -645,6 +674,7 @@ public class SubscriptionUsage {
         Objects.equals(this.converters, subscriptionUsage.converters) &&
         Objects.equals(this.schedulerEvents, subscriptionUsage.schedulerEvents) &&
         Objects.equals(this.edges, subscriptionUsage.edges) &&
+        Objects.equals(this.agents, subscriptionUsage.agents) &&
         Objects.equals(this.transportMessages, subscriptionUsage.transportMessages) &&
         Objects.equals(this.transportDataPoints, subscriptionUsage.transportDataPoints) &&
         Objects.equals(this.reExecutions, subscriptionUsage.reExecutions) &&
@@ -659,7 +689,7 @@ public class SubscriptionUsage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(devices, assets, customers, users, dashboards, ruleChains, integrations, converters, schedulerEvents, edges, transportMessages, transportDataPoints, reExecutions, jsExecutions, dpStorageDays, emails, sms, alarms, reports, aiCredits);
+    return Objects.hash(devices, assets, customers, users, dashboards, ruleChains, integrations, converters, schedulerEvents, edges, agents, transportMessages, transportDataPoints, reExecutions, jsExecutions, dpStorageDays, emails, sms, alarms, reports, aiCredits);
   }
 
   @Override
@@ -676,6 +706,7 @@ public class SubscriptionUsage {
     sb.append("    converters: ").append(toIndentedString(converters)).append("\n");
     sb.append("    schedulerEvents: ").append(toIndentedString(schedulerEvents)).append("\n");
     sb.append("    edges: ").append(toIndentedString(edges)).append("\n");
+    sb.append("    agents: ").append(toIndentedString(agents)).append("\n");
     sb.append("    transportMessages: ").append(toIndentedString(transportMessages)).append("\n");
     sb.append("    transportDataPoints: ").append(toIndentedString(transportDataPoints)).append("\n");
     sb.append("    reExecutions: ").append(toIndentedString(reExecutions)).append("\n");
@@ -781,6 +812,11 @@ public class SubscriptionUsage {
     // add `edges` to the URL query string
     if (getEdges() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sedges%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdges()))));
+    }
+
+    // add `agents` to the URL query string
+    if (getAgents() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sagents%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAgents()))));
     }
 
     // add `transportMessages` to the URL query string
