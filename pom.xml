@@ -73,6 +73,8 @@
                                     <exclude>.github/**</exclude>
                                     <exclude>.run/**</exclude>
                                     <exclude>.claude/**</exclude>
+                                    <exclude>openapi/api.mustache</exclude>
+                                    <exclude>openapi/pojo.mustache</exclude>
                                 </excludes>
                             </licenseSet>
                         </licenseSets>
