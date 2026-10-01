@@ -36,6 +36,7 @@
 
     <properties>
         <main.dir>${basedir}/..</main.dir>
+        <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
     <dependencies>
