@@ -89,7 +89,7 @@ thingsboard-java-client/
 ├── pom.xml                          # Parent POM
 ├── generate-client.sh               # Client generation script
 ├── openapitools.json                # OpenAPI Generator version config
-├── license-header-template.txt      # License header for generated files
+├── license-header.txt               # License header for generated files
 ├── common/
 │   ├── pom.xml                      # Compiles against CE for IDE support
 │   ├── src/main/java/               # Handwritten shared code (ThingsboardClient, etc.)
@@ -169,6 +169,6 @@ Options:
 
 Output log: `generate-client.log` (overwritten on each run)
 
-## License
+## Licensing
 
-This project is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+ThingsBoard Java REST Clients are licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full license text.
