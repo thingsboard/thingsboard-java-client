@@ -17,6 +17,7 @@ List<String> getAttributeKeysByScope(@Nonnull String entityType, @Nonnull String
 List<AttributeData> getAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable List<String> key) // Get attributes (getAttributes)
 List<AttributeData> getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Get attributes by scope (getAttributesByScope)
 Map<String, List<TsData>> getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get latest time series value (getLatestTimeseries)
+List<ReadTsKvQueryResult> getTimeseriesByReadTsKvQueries(@Nonnull String entityType, @Nonnull String entityId, @Nonnull List<BaseReadTsKvQuery> baseReadTsKvQuery) // Get time series data by read queries (getTimeseriesByReadTsKvQueries)
 Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get time series data (getTimeseriesHistory)
 List<String> getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId) // Get time series keys (getTimeseriesKeys)
 String saveDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nonnull String body) // Save device attributes (saveDeviceAttributes)
@@ -246,6 +247,32 @@ Returns all time series that belong to specified entity. Use optional 'keys' par
 ### Return type
 
 **Map<String, List<TsData>>**
+
+
+## getTimeseriesByReadTsKvQueries
+
+```
+List<ReadTsKvQueryResult> getTimeseriesByReadTsKvQueries(@Nonnull String entityType, @Nonnull String entityId, @Nonnull List<BaseReadTsKvQuery> baseReadTsKvQuery)
+```
+
+**POST** `/api/plugins/telemetry/{entityType}/{entityId}/values/timeseries`
+
+Get time series data by read queries (getTimeseriesByReadTsKvQueries)
+
+Returns aggregated time series values according to queries for specified entity. ```json [   {     \"queryId\": 49,     \"data\": [       {         \"ts\": 1751450399999,         \"kv\": {           \"key\": \"temperature\",           \"value\": 26,           \"doubleValue\": 26,           \"valueAsString\": \"26.0\",           \"dataType\": \"DOUBLE\",           \"longValue\": null,           \"booleanValue\": null,           \"jsonValue\": null,           \"strValue\": null         },         \"version\": null       }     ],     \"lastEntryTs\": 1750264592675   },   {     \"queryId\": 50,     \"data\": [],     \"lastEntryTs\": 1751317200000   } ] ```  Referencing a non-existing entity Id or invalid entity type will cause an error.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **baseReadTsKvQuery** | **List<BaseReadTsKvQuery>** | A JSON array of time series read queries. | |
+
+### Return type
+
+**List<ReadTsKvQueryResult>**
 
 
 ## getTimeseriesHistory

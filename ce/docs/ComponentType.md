@@ -14,6 +14,8 @@
 
 * `ACTION` (value: `"ACTION"`)
 
+* `ANALYTICS` (value: `"ANALYTICS"`)
+
 * `EXTERNAL` (value: `"EXTERNAL"`)
 
 * `FLOW` (value: `"FLOW"`)

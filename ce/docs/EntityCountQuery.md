@@ -18,7 +18,7 @@ A JSON value representing the entity count query. See API call notes above for m
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### EntityFilter
 | Name | Type | Description | Notes |
@@ -87,6 +87,36 @@ A JSON value representing the entity count query. See API call notes above for m
 | edgeNameFilter | String |  | [optional] |
 | edgeType | String |  | [optional] |
 
+#### EntitiesByGroupNameFilter  *(extends EntityFilter, type=`entitiesByGroupName`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| groupType | EntityType |  | [optional] |
+| ownerId | EntityId |  | [optional] |
+| entityGroupNameFilter | String |  | [optional] |
+| groupStateEntity | Boolean |  | [optional] |
+| stateEntityParamName | String |  | [optional] |
+
+#### EntityGroupFilter  *(extends EntityFilter, type=`entityGroup`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| groupType | EntityType |  | [optional] |
+| entityGroup | String |  | [optional] |
+| groupStateEntity | Boolean |  | [optional] |
+| defaultStateGroupType | EntityType |  | [optional] |
+| defaultStateEntityGroup | String |  | [optional] |
+
+#### EntityGroupListFilter  *(extends EntityFilter, type=`entityGroupList`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| groupType | EntityType |  | [optional] |
+| entityGroupList | List<String> |  | [optional] |
+
+#### EntityGroupNameFilter  *(extends EntityFilter, type=`entityGroupName`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| groupType | EntityType |  | [optional] |
+| entityGroupNameFilter | String |  | [optional] |
+
 #### EntityListFilter  *(extends EntityFilter, type=`entityList`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -138,10 +168,29 @@ A JSON value representing the entity count query. See API call notes above for m
 | rootStateEntity | Boolean |  | [optional] |
 | defaultStateEntity | AliasEntityId |  | [optional] |
 
+#### SchedulerEventFilter  *(extends EntityFilter, type=`schedulerEvent`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| originator | AliasEntityId |  | [optional] |
+| eventType | String |  | [optional] |
+| originatorStateEntity | Boolean |  | [optional] |
+| defaultStateEntity | AliasEntityId |  | [optional] |
+
 #### SingleEntityFilter  *(extends EntityFilter, type=`singleEntity`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | singleEntity | AliasEntityId |  | [optional] |
+
+#### StateEntityFilter  *(extends EntityFilter, type=`stateEntity`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| defaultStateEntity | AliasEntityId |  | [optional] |
+
+#### StateEntityOwnerFilter  *(extends EntityFilter, type=`stateEntityOwner`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| singleEntity | AliasEntityId |  | [optional] |
+| defaultStateEntity | AliasEntityId |  | [optional] |
 
 #### KeyFilter
 | Name | Type | Description | Notes |
@@ -200,7 +249,7 @@ A JSON value representing the entity count query. See API call notes above for m
 | id | UUID | ID of the entity, time-based UUID v1 |  |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### EntitySearchDirection (enum)
 `FROM` | `TO`

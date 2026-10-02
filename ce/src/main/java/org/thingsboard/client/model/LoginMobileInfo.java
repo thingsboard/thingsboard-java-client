@@ -33,6 +33,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.thingsboard.client.model.MobileAppVersionInfo;
 import org.thingsboard.client.model.OAuth2ClientLoginInfo;
+import org.thingsboard.client.model.SignUpSelfRegistrationParams;
 import org.thingsboard.client.model.StoreInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -43,6 +44,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   LoginMobileInfo.JSON_PROPERTY_O_AUTH2_CLIENT_LOGIN_INFOS,
+  LoginMobileInfo.JSON_PROPERTY_SELF_REGISTRATION_PARAMS,
   LoginMobileInfo.JSON_PROPERTY_STORE_INFO,
   LoginMobileInfo.JSON_PROPERTY_VERSION_INFO
 })
@@ -51,6 +53,10 @@ public class LoginMobileInfo {
   public static final String JSON_PROPERTY_O_AUTH2_CLIENT_LOGIN_INFOS = "oAuth2ClientLoginInfos";
   @Nullable
   private List<OAuth2ClientLoginInfo> oAuth2ClientLoginInfos = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SELF_REGISTRATION_PARAMS = "selfRegistrationParams";
+  @Nullable
+  private SignUpSelfRegistrationParams selfRegistrationParams;
 
   public static final String JSON_PROPERTY_STORE_INFO = "storeInfo";
   @Nullable
@@ -92,6 +98,30 @@ public class LoginMobileInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setoAuth2ClientLoginInfos(@Nullable List<OAuth2ClientLoginInfo> oAuth2ClientLoginInfos) {
     this.oAuth2ClientLoginInfos = oAuth2ClientLoginInfos;
+  }
+
+
+  public LoginMobileInfo selfRegistrationParams(@Nullable SignUpSelfRegistrationParams selfRegistrationParams) {
+    this.selfRegistrationParams = selfRegistrationParams;
+    return this;
+  }
+
+  /**
+   * Get selfRegistrationParams
+   * @return selfRegistrationParams
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SELF_REGISTRATION_PARAMS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public SignUpSelfRegistrationParams getSelfRegistrationParams() {
+    return selfRegistrationParams;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SELF_REGISTRATION_PARAMS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSelfRegistrationParams(@Nullable SignUpSelfRegistrationParams selfRegistrationParams) {
+    this.selfRegistrationParams = selfRegistrationParams;
   }
 
 
@@ -156,13 +186,14 @@ public class LoginMobileInfo {
     }
     LoginMobileInfo loginMobileInfo = (LoginMobileInfo) o;
     return Objects.equals(this.oAuth2ClientLoginInfos, loginMobileInfo.oAuth2ClientLoginInfos) &&
+        Objects.equals(this.selfRegistrationParams, loginMobileInfo.selfRegistrationParams) &&
         Objects.equals(this.storeInfo, loginMobileInfo.storeInfo) &&
         Objects.equals(this.versionInfo, loginMobileInfo.versionInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(oAuth2ClientLoginInfos, storeInfo, versionInfo);
+    return Objects.hash(oAuth2ClientLoginInfos, selfRegistrationParams, storeInfo, versionInfo);
   }
 
   @Override
@@ -170,6 +201,7 @@ public class LoginMobileInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginMobileInfo {\n");
     sb.append("    oAuth2ClientLoginInfos: ").append(toIndentedString(oAuth2ClientLoginInfos)).append("\n");
+    sb.append("    selfRegistrationParams: ").append(toIndentedString(selfRegistrationParams)).append("\n");
     sb.append("    storeInfo: ").append(toIndentedString(storeInfo)).append("\n");
     sb.append("    versionInfo: ").append(toIndentedString(versionInfo)).append("\n");
     sb.append("}");
@@ -227,6 +259,11 @@ public class LoginMobileInfo {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `selfRegistrationParams` to the URL query string
+    if (getSelfRegistrationParams() != null) {
+      joiner.add(getSelfRegistrationParams().toUrlQueryString(prefix + "selfRegistrationParams" + suffix));
     }
 
     // add `storeInfo` to the URL query string

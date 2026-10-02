@@ -313,7 +313,7 @@ List<RuleChain> getRuleChainsByIds(@Nonnull List<String> ruleChainIds)
 
 Get Rule Chains By Ids (getRuleChainsByIds)
 
-Requested rule chains must be owned by tenant which is performing the request.   
+Requested rule chains must be owned by tenant which is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters

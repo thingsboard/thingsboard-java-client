@@ -14,9 +14,13 @@ CalculatedField getCalculatedFieldById(@Nonnull String calculatedFieldId) // Get
 PageDataString getCalculatedFieldNames(@Nonnull CalculatedFieldType type, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortOrder) // Get calculated field names (getCalculatedFieldNames)
 PageDataCalculatedFieldInfo getCalculatedFields(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Set<CalculatedFieldType> types, @Nullable EntityType entityType, @Nullable Set<UUID> entities, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable List<String> name) // Get calculated fields (getCalculatedFields)
 PageDataCalculatedField getCalculatedFieldsByEntityId(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable CalculatedFieldType type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Calculated Fields by Entity Id (getCalculatedFieldsByEntityId)
+Job getLastCalculatedFieldReprocessingJob(@Nonnull UUID calculatedFieldId) // getLastCalculatedFieldReprocessingJob
 com.fasterxml.jackson.databind.JsonNode getLatestCalculatedFieldDebugEvent(@Nonnull String calculatedFieldId) // Get latest calculated field debug event (getLatestCalculatedFieldDebugEvent)
+Job reprocessCalculatedField(@Nonnull String calculatedFieldId, @Nonnull Long startTs, @Nonnull Long endTs) // Reprocess Calculated Field (reprocessCalculatedField)
+void reprocessCalculatedFieldAndWait(@Nonnull String calculatedFieldId, @Nonnull Long startTs, @Nonnull Long endTs) // Reprocess Calculated Field and wait for completion (reprocessCalculatedFieldAndWait)
 CalculatedField saveCalculatedField(@Nonnull CalculatedField calculatedField) // Create Or Update Calculated Field (saveCalculatedField)
 com.fasterxml.jackson.databind.JsonNode testCalculatedFieldScript(@Nonnull Object body) // Test Script expression
+CfReprocessingValidationResult validateCalculatedFieldReprocessing(@Nonnull String calculatedFieldId) // Validate reprocessing capability of a calculated field (validateCalculatedFieldReprocessing)
 ```
 
 
@@ -116,7 +120,7 @@ Fetch tenant calculated fields based on the filter.
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **types** | **Set<CalculatedFieldType>** | Calculated field types filter. | [optional] |
-| **entityType** | **EntityType** | Entity type filter. If not specified, calculated fields for all supported entity types will be returned. | [optional] [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, RULE_CHAIN, RULE_NODE, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, ADMIN_SETTINGS, AI_MODEL, API_KEY] |
+| **entityType** | **EntityType** | Entity type filter. If not specified, calculated fields for all supported entity types will be returned. | [optional] [enum: TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, ENTITY_GROUP, CONVERTER, INTEGRATION, RULE_CHAIN, RULE_NODE, SCHEDULER_EVENT, BLOB_ENTITY, REPORT_TEMPLATE, REPORT, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE, ROLE, GROUP_PERMISSION, TENANT_PROFILE, DEVICE_PROFILE, ASSET_PROFILE, API_USAGE_STATE, TB_RESOURCE, OTA_PACKAGE, EDGE, RPC, QUEUE, NOTIFICATION_TARGET, NOTIFICATION_TEMPLATE, NOTIFICATION_REQUEST, NOTIFICATION, NOTIFICATION_RULE, QUEUE_STATS, OAUTH2_CLIENT, DOMAIN, MOBILE_APP, MOBILE_APP_BUNDLE, CALCULATED_FIELD, JOB, SECRET, ADMIN_SETTINGS, AI_MODEL, API_KEY, AGENT, AGENT_APPLICATION, AGENT_APP_EVENT, AGENT_APP_UNIT, AGENT_APP_PROFILE, AGENT_PROFILE, AGENT_BULK_ACTION] |
 | **entities** | **Set<UUID>** | Entities filter. If not specified, calculated fields for entity type filter will be returned. | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the calculated field name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name] |
@@ -159,6 +163,28 @@ Fetch the Calculated Fields based on the provided Entity Id.
 **PageDataCalculatedField**
 
 
+## getLastCalculatedFieldReprocessingJob
+
+```
+Job getLastCalculatedFieldReprocessingJob(@Nonnull UUID calculatedFieldId)
+```
+
+**GET** `/api/calculatedField/{calculatedFieldId}/reprocess/job`
+
+getLastCalculatedFieldReprocessingJob
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **calculatedFieldId** | **UUID** |  | |
+
+### Return type
+
+**Job**
+
+
 ## getLatestCalculatedFieldDebugEvent
 
 ```
@@ -181,6 +207,58 @@ Gets latest calculated field debug event for specified calculated field id. Refe
 ### Return type
 
 **com.fasterxml.jackson.databind.JsonNode**
+
+
+## reprocessCalculatedField
+
+```
+Job reprocessCalculatedField(@Nonnull String calculatedFieldId, @Nonnull Long startTs, @Nonnull Long endTs)
+```
+
+**GET** `/api/calculatedField/{calculatedFieldId}/reprocess`
+
+Reprocess Calculated Field (reprocessCalculatedField)
+
+Reprocesses the calculated field.  Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **calculatedFieldId** | **String** |  | |
+| **startTs** | **Long** |  | |
+| **endTs** | **Long** |  | |
+
+### Return type
+
+**Job**
+
+
+## reprocessCalculatedFieldAndWait
+
+```
+void reprocessCalculatedFieldAndWait(@Nonnull String calculatedFieldId, @Nonnull Long startTs, @Nonnull Long endTs)
+```
+
+**GET** `/api/calculatedField/{calculatedFieldId}/reprocessAndWait`
+
+Reprocess Calculated Field and wait for completion (reprocessCalculatedFieldAndWait)
+
+Reprocesses the calculated field and waits until the job completes or fails.  Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **calculatedFieldId** | **String** |  | |
+| **startTs** | **Long** |  | |
+| **endTs** | **Long** |  | |
+
+### Return type
+
+null (empty response body)
 
 
 ## saveCalculatedField
@@ -229,4 +307,28 @@ Execute the Script expression and return the result. The format of request:   ``
 ### Return type
 
 **com.fasterxml.jackson.databind.JsonNode**
+
+
+## validateCalculatedFieldReprocessing
+
+```
+CfReprocessingValidationResult validateCalculatedFieldReprocessing(@Nonnull String calculatedFieldId)
+```
+
+**GET** `/api/calculatedField/{calculatedFieldId}/reprocess/validate`
+
+Validate reprocessing capability of a calculated field (validateCalculatedFieldReprocessing)
+
+Checks whether the specified calculated field can be reprocessed. Returns a validation result indicating if reprocessing is allowed and, if not, provides a reason.   Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **calculatedFieldId** | **String** |  | |
+
+### Return type
+
+**CfReprocessingValidationResult**
 

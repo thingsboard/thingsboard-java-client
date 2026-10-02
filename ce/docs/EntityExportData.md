@@ -28,6 +28,9 @@ Base export container for ThingsBoard entities
 #### AssetProfileExportData  *(entityType=`ASSET_PROFILE`)*
 *(no additional properties)*
 
+#### ConverterExportData  *(entityType=`CONVERTER`)*
+*(no additional properties)*
+
 #### CustomerExportData  *(entityType=`CUSTOMER`)*
 *(no additional properties)*
 
@@ -42,7 +45,18 @@ Base export container for ThingsBoard entities
 #### DeviceProfileExportData  *(entityType=`DEVICE_PROFILE`)*
 *(no additional properties)*
 
+#### EntityGroupExportData  *(entityType=`ENTITY_GROUP`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| permissions | List<GroupPermission> | Group permissions to apply to this group on import. Meaningful only for USER groups; ignored for groups of any other type. Each entry's userGroupId, roleId, and entityGroupId may use the external IDs of other entities in this payload or the IDs of entities that already exist on the target tenant; the importer resolves them against the target tenant. System-tenant roles are not allowed and will be rejected. Leave null to skip permission management for this group. | [optional] |
+| groupOtaPackages | List<DeviceGroupOtaPackage> | OTA package assignments to apply to this group on import. Meaningful only for DEVICE groups; ignored for groups of any other type. Each entry's otaPackageId and groupId may reference external IDs of entities in this payload or IDs of entities that already exist on the target tenant. Leave null to skip OTA assignment management for this group. | [optional] |
+| groupEntities | Boolean | Marker indicating that the group's member entities are intended to be transported alongside this payload. Used by flows that convey members through a side channel (notably the version control flow, which stores members in a separate git index). The solution import API does not consume this flag and does not require it to be set. Safe to leave false (default). | [optional] |
+| memberIds | List<UUID> | External IDs of the entities that should be members of this group after import. Each ID is resolved against the target tenant — by other entity in this payload, by external ID, or by existing internal ID — and the matching entities are added to the group. The import fails if any listed member cannot be resolved. Must be null for the special 'All' group (whose membership is implicit and managed by the platform). Leave null to skip membership wiring; existing membership on the target tenant is left untouched. | [optional] |
+
 #### EntityViewExportData  *(entityType=`ENTITY_VIEW`)*
+*(no additional properties)*
+
+#### IntegrationExportData  *(entityType=`INTEGRATION`)*
 *(no additional properties)*
 
 #### NotificationRuleExportData  *(entityType=`NOTIFICATION_RULE`)*
@@ -57,12 +71,24 @@ Base export container for ThingsBoard entities
 #### OtaPackageExportData  *(entityType=`OTA_PACKAGE`)*
 *(no additional properties)*
 
+#### ReportTemplateExportData  *(entityType=`REPORT_TEMPLATE`)*
+*(no additional properties)*
+
+#### RoleExportData  *(entityType=`ROLE`)*
+*(no additional properties)*
+
 #### RuleChainExportData  *(entityType=`RULE_CHAIN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | metaData | RuleChainMetaData |  | [optional] |
 
+#### SchedulerEventExportData  *(entityType=`SCHEDULER_EVENT`)*
+*(no additional properties)*
+
 #### TbResourceExportData  *(entityType=`TB_RESOURCE`)*
+*(no additional properties)*
+
+#### UserExportData  *(entityType=`USER`)*
 *(no additional properties)*
 
 #### WidgetsBundleExportData  *(entityType=`WIDGETS_BUNDLE`)*
@@ -76,7 +102,7 @@ Base export container for ThingsBoard entities
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### ExportableEntity
 | Name | Type | Description | Notes |
@@ -124,7 +150,7 @@ Base export container for ThingsBoard entities
 | debugMode | Boolean |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### DeviceCredentials
 | Name | Type | Description | Notes |
@@ -136,6 +162,29 @@ Base export container for ThingsBoard entities
 | credentialsId | String | Unique Credentials Id per platform instance. Used to lookup credentials from the database. By default, new access token for your device. Depends on the type of the credentials. |  |
 | credentialsValue | String | Value of the credentials. Null in case of ACCESS_TOKEN credentials type. Base64 value in case of X509_CERTIFICATE. Complex object in case of MQTT_BASIC and LWM2M_CREDENTIALS | [optional] |
 | version | Long |  | [optional] |
+
+#### GroupPermission
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | GroupPermissionId | JSON object with the Group Permission Id. Specify this field to update the Group Permission. Referencing non-existing Group Permission Id will cause error. Omit this field to create new Group Permission. | [optional] |
+| createdTime | Long | Timestamp of the group permission creation, in milliseconds | [optional] [readonly] |
+| tenantId | TenantId | JSON object with the Tenant Id. | [optional] [readonly] |
+| userGroupId | EntityGroupId | JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group. |  |
+| roleId | RoleId | JSON object with the Role Id. Represents the set of permissions. The role type (GENERIC or GROUP) determines whether 'entityGroupId' is required. |  |
+| entityGroupId | EntityGroupId | JSON object with the Entity Group Id. Required when using a GROUP role — specifies the entity group to which the permissions apply. Must be null or omitted when using a GENERIC role. | [optional] |
+| entityGroupType | EntityType | Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc. Auto-populated from the referenced entity group. Null for generic permissions. | [optional] [readonly] |
+| isPublic | Boolean |  | [optional] |
+| name | String | Name of the Group Permissions. Auto-generated | [optional] [readonly] |
+| _public | Boolean |  | [optional] |
+
+#### DeviceGroupOtaPackage
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | UUID |  | [optional] |
+| groupId | EntityGroupId |  | [optional] |
+| otaPackageType | OtaPackageType |  | [optional] |
+| otaPackageId | OtaPackageId |  | [optional] |
+| otaPackageUpdateTime | Long |  | [optional] |
 
 #### RuleChainMetaData
 | Name | Type | Description | Notes |
@@ -149,7 +198,7 @@ Base export container for ThingsBoard entities
 | notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
 
 #### RelationTypeGroup (enum)
-`COMMON` | `DASHBOARD` | `RULE_CHAIN` | `RULE_NODE` | `EDGE` | `EDGE_AUTO_ASSIGN_RULE_CHAIN`
+`COMMON` | `DASHBOARD` | `FROM_ENTITY_GROUP` | `RULE_CHAIN` | `RULE_NODE` | `EDGE` | `EDGE_AUTO_ASSIGN_RULE_CHAIN` | `AGENT`
 
 #### CalculatedFieldType (enum)
 `SIMPLE` | `SCRIPT` | `GEOFENCING` | `ALARM` | `PROPAGATION` | `RELATED_ENTITIES_AGGREGATION` | `ENTITY_AGGREGATION`
@@ -175,6 +224,7 @@ Base export container for ThingsBoard entities
 | clearRule | AlarmRule |  | [optional] |
 | propagate | Boolean |  | [optional] |
 | propagateToOwner | Boolean |  | [optional] |
+| propagateToOwnerHierarchy | Boolean |  | [optional] |
 | propagateToTenant | Boolean |  | [optional] |
 | propagateRelationTypes | List<String> |  | [optional] |
 
@@ -234,6 +284,9 @@ Base export container for ThingsBoard entities
 
 #### DeviceCredentialsType (enum)
 `ACCESS_TOKEN` | `X509_CERTIFICATE` | `MQTT_BASIC` | `LWM2_M_CREDENTIALS`
+
+#### OtaPackageType (enum)
+`FIRMWARE` | `SOFTWARE`
 
 #### RuleNode
 | Name | Type | Description | Notes |

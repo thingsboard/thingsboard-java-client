@@ -40,7 +40,9 @@ import org.thingsboard.client.ApiClient;
   EntityDataInfo.JSON_PROPERTY_HAS_RELATIONS,
   EntityDataInfo.JSON_PROPERTY_HAS_ATTRIBUTES,
   EntityDataInfo.JSON_PROPERTY_HAS_CREDENTIALS,
-  EntityDataInfo.JSON_PROPERTY_HAS_CALCULATED_FIELDS
+  EntityDataInfo.JSON_PROPERTY_HAS_CALCULATED_FIELDS,
+  EntityDataInfo.JSON_PROPERTY_HAS_PERMISSIONS,
+  EntityDataInfo.JSON_PROPERTY_HAS_GROUP_ENTITIES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityDataInfo {
@@ -59,6 +61,14 @@ public class EntityDataInfo {
   public static final String JSON_PROPERTY_HAS_CALCULATED_FIELDS = "hasCalculatedFields";
   @Nullable
   private Boolean hasCalculatedFields;
+
+  public static final String JSON_PROPERTY_HAS_PERMISSIONS = "hasPermissions";
+  @Nullable
+  private Boolean hasPermissions;
+
+  public static final String JSON_PROPERTY_HAS_GROUP_ENTITIES = "hasGroupEntities";
+  @Nullable
+  private Boolean hasGroupEntities;
 
   public EntityDataInfo() { 
   }
@@ -159,6 +169,54 @@ public class EntityDataInfo {
   }
 
 
+  public EntityDataInfo hasPermissions(@Nullable Boolean hasPermissions) {
+    this.hasPermissions = hasPermissions;
+    return this;
+  }
+
+  /**
+   * Get hasPermissions
+   * @return hasPermissions
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_HAS_PERMISSIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getHasPermissions() {
+    return hasPermissions;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_HAS_PERMISSIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHasPermissions(@Nullable Boolean hasPermissions) {
+    this.hasPermissions = hasPermissions;
+  }
+
+
+  public EntityDataInfo hasGroupEntities(@Nullable Boolean hasGroupEntities) {
+    this.hasGroupEntities = hasGroupEntities;
+    return this;
+  }
+
+  /**
+   * Get hasGroupEntities
+   * @return hasGroupEntities
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_HAS_GROUP_ENTITIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getHasGroupEntities() {
+    return hasGroupEntities;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_HAS_GROUP_ENTITIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setHasGroupEntities(@Nullable Boolean hasGroupEntities) {
+    this.hasGroupEntities = hasGroupEntities;
+  }
+
+
   /**
    * Return true if this EntityDataInfo object is equal to o.
    */
@@ -174,12 +232,14 @@ public class EntityDataInfo {
     return Objects.equals(this.hasRelations, entityDataInfo.hasRelations) &&
         Objects.equals(this.hasAttributes, entityDataInfo.hasAttributes) &&
         Objects.equals(this.hasCredentials, entityDataInfo.hasCredentials) &&
-        Objects.equals(this.hasCalculatedFields, entityDataInfo.hasCalculatedFields);
+        Objects.equals(this.hasCalculatedFields, entityDataInfo.hasCalculatedFields) &&
+        Objects.equals(this.hasPermissions, entityDataInfo.hasPermissions) &&
+        Objects.equals(this.hasGroupEntities, entityDataInfo.hasGroupEntities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasRelations, hasAttributes, hasCredentials, hasCalculatedFields);
+    return Objects.hash(hasRelations, hasAttributes, hasCredentials, hasCalculatedFields, hasPermissions, hasGroupEntities);
   }
 
   @Override
@@ -190,6 +250,8 @@ public class EntityDataInfo {
     sb.append("    hasAttributes: ").append(toIndentedString(hasAttributes)).append("\n");
     sb.append("    hasCredentials: ").append(toIndentedString(hasCredentials)).append("\n");
     sb.append("    hasCalculatedFields: ").append(toIndentedString(hasCalculatedFields)).append("\n");
+    sb.append("    hasPermissions: ").append(toIndentedString(hasPermissions)).append("\n");
+    sb.append("    hasGroupEntities: ").append(toIndentedString(hasGroupEntities)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -255,6 +317,16 @@ public class EntityDataInfo {
     // add `hasCalculatedFields` to the URL query string
     if (getHasCalculatedFields() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%shasCalculatedFields%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasCalculatedFields()))));
+    }
+
+    // add `hasPermissions` to the URL query string
+    if (getHasPermissions() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%shasPermissions%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasPermissions()))));
+    }
+
+    // add `hasGroupEntities` to the URL query string
+    if (getHasGroupEntities() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%shasGroupEntities%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasGroupEntities()))));
     }
 
     return joiner.toString();

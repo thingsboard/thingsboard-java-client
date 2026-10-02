@@ -41,7 +41,10 @@ import org.thingsboard.client.ApiClient;
   EntityTypeLoadResult.JSON_PROPERTY_ENTITY_TYPE,
   EntityTypeLoadResult.JSON_PROPERTY_CREATED,
   EntityTypeLoadResult.JSON_PROPERTY_UPDATED,
-  EntityTypeLoadResult.JSON_PROPERTY_DELETED
+  EntityTypeLoadResult.JSON_PROPERTY_DELETED,
+  EntityTypeLoadResult.JSON_PROPERTY_GROUPS_CREATED,
+  EntityTypeLoadResult.JSON_PROPERTY_GROUPS_UPDATED,
+  EntityTypeLoadResult.JSON_PROPERTY_GROUPS_DELETED
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityTypeLoadResult {
@@ -60,6 +63,18 @@ public class EntityTypeLoadResult {
   public static final String JSON_PROPERTY_DELETED = "deleted";
   @Nullable
   private Integer deleted;
+
+  public static final String JSON_PROPERTY_GROUPS_CREATED = "groupsCreated";
+  @Nullable
+  private Integer groupsCreated;
+
+  public static final String JSON_PROPERTY_GROUPS_UPDATED = "groupsUpdated";
+  @Nullable
+  private Integer groupsUpdated;
+
+  public static final String JSON_PROPERTY_GROUPS_DELETED = "groupsDeleted";
+  @Nullable
+  private Integer groupsDeleted;
 
   public EntityTypeLoadResult() { 
   }
@@ -160,6 +175,78 @@ public class EntityTypeLoadResult {
   }
 
 
+  public EntityTypeLoadResult groupsCreated(@Nullable Integer groupsCreated) {
+    this.groupsCreated = groupsCreated;
+    return this;
+  }
+
+  /**
+   * Get groupsCreated
+   * @return groupsCreated
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_GROUPS_CREATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getGroupsCreated() {
+    return groupsCreated;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GROUPS_CREATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroupsCreated(@Nullable Integer groupsCreated) {
+    this.groupsCreated = groupsCreated;
+  }
+
+
+  public EntityTypeLoadResult groupsUpdated(@Nullable Integer groupsUpdated) {
+    this.groupsUpdated = groupsUpdated;
+    return this;
+  }
+
+  /**
+   * Get groupsUpdated
+   * @return groupsUpdated
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_GROUPS_UPDATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getGroupsUpdated() {
+    return groupsUpdated;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GROUPS_UPDATED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroupsUpdated(@Nullable Integer groupsUpdated) {
+    this.groupsUpdated = groupsUpdated;
+  }
+
+
+  public EntityTypeLoadResult groupsDeleted(@Nullable Integer groupsDeleted) {
+    this.groupsDeleted = groupsDeleted;
+    return this;
+  }
+
+  /**
+   * Get groupsDeleted
+   * @return groupsDeleted
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_GROUPS_DELETED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getGroupsDeleted() {
+    return groupsDeleted;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GROUPS_DELETED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroupsDeleted(@Nullable Integer groupsDeleted) {
+    this.groupsDeleted = groupsDeleted;
+  }
+
+
   /**
    * Return true if this EntityTypeLoadResult object is equal to o.
    */
@@ -175,12 +262,15 @@ public class EntityTypeLoadResult {
     return Objects.equals(this.entityType, entityTypeLoadResult.entityType) &&
         Objects.equals(this.created, entityTypeLoadResult.created) &&
         Objects.equals(this.updated, entityTypeLoadResult.updated) &&
-        Objects.equals(this.deleted, entityTypeLoadResult.deleted);
+        Objects.equals(this.deleted, entityTypeLoadResult.deleted) &&
+        Objects.equals(this.groupsCreated, entityTypeLoadResult.groupsCreated) &&
+        Objects.equals(this.groupsUpdated, entityTypeLoadResult.groupsUpdated) &&
+        Objects.equals(this.groupsDeleted, entityTypeLoadResult.groupsDeleted);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityType, created, updated, deleted);
+    return Objects.hash(entityType, created, updated, deleted, groupsCreated, groupsUpdated, groupsDeleted);
   }
 
   @Override
@@ -191,6 +281,9 @@ public class EntityTypeLoadResult {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    deleted: ").append(toIndentedString(deleted)).append("\n");
+    sb.append("    groupsCreated: ").append(toIndentedString(groupsCreated)).append("\n");
+    sb.append("    groupsUpdated: ").append(toIndentedString(groupsUpdated)).append("\n");
+    sb.append("    groupsDeleted: ").append(toIndentedString(groupsDeleted)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -256,6 +349,21 @@ public class EntityTypeLoadResult {
     // add `deleted` to the URL query string
     if (getDeleted() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sdeleted%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDeleted()))));
+    }
+
+    // add `groupsCreated` to the URL query string
+    if (getGroupsCreated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sgroupsCreated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGroupsCreated()))));
+    }
+
+    // add `groupsUpdated` to the URL query string
+    if (getGroupsUpdated() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sgroupsUpdated%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGroupsUpdated()))));
+    }
+
+    // add `groupsDeleted` to the URL query string
+    if (getGroupsDeleted() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sgroupsDeleted%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getGroupsDeleted()))));
     }
 
     return joiner.toString();

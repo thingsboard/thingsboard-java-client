@@ -57,13 +57,20 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = DeviceTypeFilter.class, name = "deviceType"),
   @JsonSubTypes.Type(value = EdgeSearchQueryFilter.class, name = "edgeSearchQuery"),
   @JsonSubTypes.Type(value = EdgeTypeFilter.class, name = "edgeType"),
+  @JsonSubTypes.Type(value = EntitiesByGroupNameFilter.class, name = "entitiesByGroupName"),
+  @JsonSubTypes.Type(value = EntityGroupFilter.class, name = "entityGroup"),
+  @JsonSubTypes.Type(value = EntityGroupListFilter.class, name = "entityGroupList"),
+  @JsonSubTypes.Type(value = EntityGroupNameFilter.class, name = "entityGroupName"),
   @JsonSubTypes.Type(value = EntityListFilter.class, name = "entityList"),
   @JsonSubTypes.Type(value = EntityNameFilter.class, name = "entityName"),
   @JsonSubTypes.Type(value = EntityTypeFilter.class, name = "entityType"),
   @JsonSubTypes.Type(value = EntityViewSearchQueryFilter.class, name = "entityViewSearchQuery"),
   @JsonSubTypes.Type(value = EntityViewTypeFilter.class, name = "entityViewType"),
   @JsonSubTypes.Type(value = RelationsQueryFilter.class, name = "relationsQuery"),
+  @JsonSubTypes.Type(value = SchedulerEventFilter.class, name = "schedulerEvent"),
   @JsonSubTypes.Type(value = SingleEntityFilter.class, name = "singleEntity"),
+  @JsonSubTypes.Type(value = StateEntityFilter.class, name = "stateEntity"),
+  @JsonSubTypes.Type(value = StateEntityOwnerFilter.class, name = "stateEntityOwner"),
 })
 
 public class EntityFilter {
@@ -187,13 +194,20 @@ static {
   mappings.put("deviceType", DeviceTypeFilter.class);
   mappings.put("edgeSearchQuery", EdgeSearchQueryFilter.class);
   mappings.put("edgeType", EdgeTypeFilter.class);
+  mappings.put("entitiesByGroupName", EntitiesByGroupNameFilter.class);
+  mappings.put("entityGroup", EntityGroupFilter.class);
+  mappings.put("entityGroupList", EntityGroupListFilter.class);
+  mappings.put("entityGroupName", EntityGroupNameFilter.class);
   mappings.put("entityList", EntityListFilter.class);
   mappings.put("entityName", EntityNameFilter.class);
   mappings.put("entityType", EntityTypeFilter.class);
   mappings.put("entityViewSearchQuery", EntityViewSearchQueryFilter.class);
   mappings.put("entityViewType", EntityViewTypeFilter.class);
   mappings.put("relationsQuery", RelationsQueryFilter.class);
+  mappings.put("schedulerEvent", SchedulerEventFilter.class);
   mappings.put("singleEntity", SingleEntityFilter.class);
+  mappings.put("stateEntity", StateEntityFilter.class);
+  mappings.put("stateEntityOwner", StateEntityOwnerFilter.class);
   mappings.put("EntityFilter", EntityFilter.class);
   JSON.registerDiscriminator(EntityFilter.class, "type", mappings);
 }

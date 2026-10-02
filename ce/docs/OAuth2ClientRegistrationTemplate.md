@@ -57,6 +57,8 @@
 | customerNamePattern | String | Customer name pattern. When creating a user on the first OAuth2 log in, if specified, customer name will be used to create or find existing customer in the platform and assign customerId to the user | [optional] |
 | defaultDashboardName | String | Name of the tenant's dashboard to set as default dashboard for newly created user | [optional] |
 | alwaysFullScreen | Boolean | Whether default dashboard should be open in full screen | [optional] |
+| parentCustomerNamePattern | String |  | [optional] |
+| userGroupsNamePattern | List<String> |  | [optional] |
 
 #### OAuth2CustomMapperConfig
 | Name | Type | Description | Notes |

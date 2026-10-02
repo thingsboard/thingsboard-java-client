@@ -16,7 +16,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### TenantProfile
 | Name | Type | Description | Notes |
@@ -53,6 +53,12 @@
 | maxResourcesInBytes | Long |  | [optional] |
 | maxOtaPackagesInBytes | Long |  | [optional] |
 | maxResourceSize | Long |  | [optional] |
+| maxReportSizeInBytes | Long |  | [optional] |
+| maxIntegrations | Long |  | [optional] |
+| maxConverters | Long |  | [optional] |
+| maxSchedulerEvents | Long |  | [optional] |
+| maxAgents | Long |  | [optional] |
+| maxAgentApplications | Long |  | [optional] |
 | transportTenantMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryDataPointsRateLimit | String |  | [optional] |
@@ -65,6 +71,9 @@
 | transportGatewayDeviceMsgRateLimit | String |  | [optional] |
 | transportGatewayDeviceTelemetryMsgRateLimit | String |  | [optional] |
 | transportGatewayDeviceTelemetryDataPointsRateLimit | String |  | [optional] |
+| integrationMsgsPerTenantRateLimit | String |  | [optional] |
+| integrationMsgsPerDeviceRateLimit | String |  | [optional] |
+| integrationMsgsPerAssetRateLimit | String |  | [optional] |
 | tenantEntityExportRateLimit | String |  | [optional] |
 | tenantEntityImportRateLimit | String |  | [optional] |
 | tenantNotificationRequestsRateLimit | String |  | [optional] |
@@ -81,6 +90,8 @@
 | smsEnabled | Boolean |  | [optional] |
 | maxSms | Long |  | [optional] |
 | maxCreatedAlarms | Long |  | [optional] |
+| maxGeneratedReports | Long |  | [optional] |
+| maxAiCredits | Long |  | [optional] |
 | tenantServerRestLimitsConfiguration | String |  | [optional] |
 | customerServerRestLimitsConfiguration | String |  | [optional] |
 | maxWsSessionsPerTenant | Integer |  | [optional] |
@@ -101,11 +112,17 @@
 | edgeEventRateLimitsPerEdge | String |  | [optional] |
 | edgeUplinkMessagesRateLimits | String |  | [optional] |
 | edgeUplinkMessagesRateLimitsPerEdge | String |  | [optional] |
+| agentEventRateLimits | String |  | [optional] |
+| agentEventRateLimitsPerAgent | String |  | [optional] |
+| agentLogChunkRateLimits | String |  | [optional] |
+| agentLogChunkRateLimitsPerAgent | String |  | [optional] |
 | defaultStorageTtlDays | Integer |  | [optional] |
 | alarmsTtlDays | Integer |  | [optional] |
 | rpcTtlDays | Integer |  | [optional] |
 | queueStatsTtlDays | Integer |  | [optional] |
 | ruleEngineExceptionsTtlDays | Integer |  | [optional] |
+| blobEntityTtlDays | Integer |  | [optional] |
+| reportTtlDays | Integer |  | [optional] |
 | warnThreshold | Double |  | [optional] |
 | maxCalculatedFieldsPerEntity | Long |  | [optional] |
 | maxArgumentsPerCF | Long |  | [optional] |
@@ -120,6 +137,7 @@
 | intermediateAggregationIntervalInSecForCF | Long |  | [optional] |
 | cfReevaluationCheckInterval | Long |  | [optional] |
 | alarmsReevaluationInterval | Long |  | [optional] |
+| aiChatRequestsPerTenantRateLimit | String |  | [optional] |
 
 #### TenantProfileQueueConfiguration
 | Name | Type | Description | Notes |
@@ -135,7 +153,7 @@
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### SubmitStrategy
 | Name | Type | Description | Notes |

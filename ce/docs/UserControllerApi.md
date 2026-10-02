@@ -15,15 +15,20 @@ void deleteUserSettingsByType(@Nonnull String paths, @Nonnull String type) // De
 PageDataUserEmailInfo findUsersByQuery(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Find users by query (findUsersByQuery)
 String getActivationLink(@Nonnull String userId) // Get activation link (getActivationLink)
 UserActivationLink getActivationLinkInfo(@Nonnull String userId) // Get activation link info (getActivationLinkInfo)
+PageDataUser getAllCustomerUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Users (getCustomerUsers)
+PageDataUserInfo getAllUserInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All User Infos for current user (getAllUserInfos)
+PageDataUserInfo getCustomerUserInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer user Infos (getCustomerUserInfos)
 PageDataUser getCustomerUsers(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Users (getCustomerUsers)
 com.fasterxml.jackson.databind.JsonNode getGeneralUserSettings() // Get user settings (getGeneralUserSettings)
 UserDashboardsInfo getLastVisitedDashboards() // Get information about last visited and starred dashboards (getLastVisitedDashboards)
 MobileSessionInfo getMobileSession(@Nonnull String xMobileToken) // getMobileSession
 PageDataUser getTenantAdmins(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Users (getTenantAdmins)
 User getUserById(@Nonnull String userId) // Get User (getUserById)
+UserInfo getUserInfoById(@Nonnull String userId) // Get User info (getUserInfoById)
 com.fasterxml.jackson.databind.JsonNode getUserSettings(@Nonnull String type) // Get user settings (getUserSettings)
 JwtPair getUserToken(@Nonnull String userId) // Get User Token (getUserToken)
-PageDataUser getUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Users (getUsers)
+PageDataUser getUserUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Users (getUsers)
+PageDataUser getUsersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get users by Entity Group Id (getUsersByEntityGroupId)
 List<User> getUsersByIds(@Nonnull List<String> userIds) // Get Users By Ids (getUsersByIds)
 PageDataUserEmailInfo getUsersForAssign(@Nonnull String alarmId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get usersForAssign (getUsersForAssign)
 Boolean isUserTokenAccessEnabled() // Check Token Access Enabled (isUserTokenAccessEnabled)
@@ -32,7 +37,7 @@ void putUserSettings(@Nonnull String type, @Nonnull Object body) // Update user 
 void removeMobileSession(@Nonnull String xMobileToken) // removeMobileSession
 UserDashboardsInfo reportUserDashboardAction(@Nonnull String dashboardId, @Nonnull String action) // Report action of User over the dashboard (reportUserDashboardAction)
 void saveMobileSession(@Nonnull String xMobileToken, @Nonnull MobileSessionInfo mobileSessionInfo) // saveMobileSession
-User saveUser(@Nonnull User user, @Nullable String sendActivationMail) // Save Or update User (saveUser)
+User saveUser(@Nonnull User user, @Nullable String sendActivationMail, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds) // Save Or update User (saveUser)
 com.fasterxml.jackson.databind.JsonNode saveUserSettings(@Nonnull Object body) // Save user settings (saveUserSettings)
 void sendActivationEmail(@Nonnull String email) // Send or re-send the activation email
 void setUserCredentialsEnabled(@Nonnull String userId, @Nullable String userCredentialsEnabled) // Enable/Disable User credentials (setUserCredentialsEnabled)
@@ -73,7 +78,7 @@ void deleteUser(@Nonnull String userId)
 
 Delete User (deleteUser)
 
-Deletes the User, it's credentials and all the relations (from and to the User). Referencing non-existing User Id will cause an error.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Deletes the User, it's credentials and all the relations (from and to the User). Referencing non-existing User Id will cause an error.    Security check is performed to verify that the user has 'DELETE' permission for the entity (entities).
 
 
 ### Parameters
@@ -150,7 +155,7 @@ String getActivationLink(@Nonnull String userId)
 
 Get activation link (getActivationLink)
 
-Get the activation link for the user. The base url for activation link is configurable in the general settings of system administrator.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Get the activation link for the user. The base url for activation link is configurable in the general settings of system administrator.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -174,7 +179,7 @@ UserActivationLink getActivationLinkInfo(@Nonnull String userId)
 
 Get activation link info (getActivationLinkInfo)
 
-Get the activation link info for the user. The base url for activation link is configurable in the general settings of system administrator.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Get the activation link info for the user. The base url for activation link is configurable in the general settings of system administrator.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -188,6 +193,93 @@ Get the activation link info for the user. The base url for activation link is c
 **UserActivationLink**
 
 
+## getAllCustomerUsers
+
+```
+PageDataUser getAllCustomerUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/users`
+
+Get Customer Users (getCustomerUsers)
+
+Returns a page of users for the current tenant with authority 'CUSTOMER_USER'. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the user email. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, firstName, lastName, email] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataUser**
+
+
+## getAllUserInfos
+
+```
+PageDataUserInfo getAllUserInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/userInfos/all`
+
+Get All User Infos for current user (getAllUserInfos)
+
+Returns a page of user info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the user email. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, firstName, lastName, email] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataUserInfo**
+
+
+## getCustomerUserInfos
+
+```
+PageDataUserInfo getCustomerUserInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/customer/{customerId}/userInfos`
+
+Get Customer user Infos (getCustomerUserInfos)
+
+Returns a page of user info objects owned by the specified customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the user email. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, firstName, lastName, email] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataUserInfo**
+
+
 ## getCustomerUsers
 
 ```
@@ -198,7 +290,7 @@ PageDataUser getCustomerUsers(@Nonnull String customerId, @Nonnull Integer pageS
 
 Get Customer Users (getCustomerUsers)
 
-Returns a page of users owned by customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+Returns a page of users owned by customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -283,7 +375,7 @@ PageDataUser getTenantAdmins(@Nonnull String tenantId, @Nonnull Integer pageSize
 
 Get Tenant Users (getTenantAdmins)
 
-Returns a page of users owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' authority.
+Returns a page of users owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -312,7 +404,7 @@ User getUserById(@Nonnull String userId)
 
 Get User (getUserById)
 
-Fetch the User object based on the provided User Id. If the user has the authority of 'SYS_ADMIN', the server does not perform additional checks. If the user has the authority of 'TENANT_ADMIN', the server checks that the requested user is owned by the same tenant. If the user has the authority of 'CUSTOMER_USER', the server checks that the requested user is owned by the same customer.
+Fetch the User object based on the provided User Id. If the user has the authority of 'SYS_ADMIN', the server does not perform additional checks. If the user has the authority of 'TENANT_ADMIN', the server checks that the requested user is owned by the same tenant. If the user has the authority of 'CUSTOMER_USER', the server checks that the requested user is owned by the same customer.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -324,6 +416,30 @@ Fetch the User object based on the provided User Id. If the user has the authori
 ### Return type
 
 **User**
+
+
+## getUserInfoById
+
+```
+UserInfo getUserInfoById(@Nonnull String userId)
+```
+
+**GET** `/api/user/info/{userId}`
+
+Get User info (getUserInfoById)
+
+Fetch the User info object based on the provided User Id. If the user has the authority of 'SYS_ADMIN', the server does not perform additional checks. If the user has the authority of 'TENANT_ADMIN', the server checks that the requested user is owned by the same tenant. If the user has the authority of 'CUSTOMER_USER', the server checks that the requested user is owned by the same customer.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userId** | **String** | A string value representing the user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**UserInfo**
 
 
 ## getUserSettings
@@ -374,23 +490,52 @@ Returns the token of the User based on the provided User Id. If the user who per
 **JwtPair**
 
 
-## getUsers
+## getUserUsers
 
 ```
-PageDataUser getUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataUser getUserUsers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
-**GET** `/api/users`
+**GET** `/api/user/users`
 
 Get Users (getUsers)
 
-Returns a page of users owned by tenant or customer. The scope depends on authority of the user that performs the request.You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Returns a page of user objects available for the current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the user email. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, firstName, lastName, email] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataUser**
+
+
+## getUsersByEntityGroupId
+
+```
+PageDataUser getUsersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/users`
+
+Get users by Entity Group Id (getUsersByEntityGroupId)
+
+Returns a page of user objects that belongs to specified Entity Group Id. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.    Security check is performed to verify that the user has 'READ' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the user email. | [optional] |
@@ -412,7 +557,7 @@ List<User> getUsersByIds(@Nonnull List<String> userIds)
 
 Get Users By Ids (getUsersByIds)
 
-Requested users must be owned by tenant or assigned to customer which user is performing the request. 
+Requested users must be owned by tenant or assigned to customer which user is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -465,7 +610,7 @@ Boolean isUserTokenAccessEnabled()
 
 Check Token Access Enabled (isUserTokenAccessEnabled)
 
-Checks that the system is configured to allow administrators to impersonate themself as other users. If the user who performs the request has the authority of 'SYS_ADMIN', it is possible to login as any tenant administrator. If the user who performs the request has the authority of 'TENANT_ADMIN', it is possible to login as any customer user. 
+Checks that the system is configured to allow administrators to impersonate themself as other users. If the user who performs the request has the authority of 'SYS_ADMIN', it is possible to login as any tenant administrator. If the user who performs the request has the authority of 'TENANT_ADMIN', it is possible to login as any customer user.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 ### Return type
 
@@ -594,14 +739,14 @@ null (empty response body)
 ## saveUser
 
 ```
-User saveUser(@Nonnull User user, @Nullable String sendActivationMail)
+User saveUser(@Nonnull User user, @Nullable String sendActivationMail, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds)
 ```
 
 **POST** `/api/user`
 
 Save Or update User (saveUser)
 
-Create or update the User. When creating user, platform generates User Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created User Id will be present in the response. Specify existing User Id to update the device. Referencing non-existing User Id will cause 'Not Found' error.  Device email is unique for entire platform setup.Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new User entity.  Available for users with 'SYS_ADMIN', 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Create or update the User. When creating user, platform generates User Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created User Id will be present in the response. Specify existing User Id to update the device. Referencing non-existing User Id will cause 'Not Found' error.  Device email is unique for entire platform setup.  Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new User entity. Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
 
 
 ### Parameters
@@ -610,6 +755,8 @@ Create or update the User. When creating user, platform generates User Id as [ti
 |------------- | ------------- | ------------- | -------------|
 | **user** | **User** |  | |
 | **sendActivationMail** | **String** | Send activation email (or use activation link) | [optional] |
+| **entityGroupId** | **String** |  | [optional] |
+| **entityGroupIds** | **List<String>** | A list of entity group ids, separated by comma ',' | [optional] |
 
 ### Return type
 
@@ -650,7 +797,7 @@ void sendActivationEmail(@Nonnull String email)
 
 Send or re-send the activation email
 
-Force send the activation email to the user. Useful to resend the email if user has accidentally deleted it.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Force send the activation email to the user. Useful to resend the email if user has accidentally deleted it.   Security check is performed to verify that the user has 'DELETE' permission for the entity (entities).
 
 
 ### Parameters
@@ -674,7 +821,7 @@ void setUserCredentialsEnabled(@Nonnull String userId, @Nullable String userCred
 
 Enable/Disable User credentials (setUserCredentialsEnabled)
 
-Enables or Disables user credentials. Useful when you would like to block user account without deleting it. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+Enables or Disables user credentials. Useful when you would like to block user account without deleting it. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
 
 
 ### Parameters

@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -30,10 +29,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
+import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.DashboardId;
+import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.EntityInfo;
+import org.thingsboard.client.model.ResourceExportData;
 import org.thingsboard.client.model.ShortCustomerInfo;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -47,13 +52,19 @@ import org.thingsboard.client.ApiClient;
   DashboardInfo.JSON_PROPERTY_ID,
   DashboardInfo.JSON_PROPERTY_CREATED_TIME,
   DashboardInfo.JSON_PROPERTY_TENANT_ID,
+  DashboardInfo.JSON_PROPERTY_CUSTOMER_ID,
+  DashboardInfo.JSON_PROPERTY_OWNER_ID,
   DashboardInfo.JSON_PROPERTY_TITLE,
+  DashboardInfo.JSON_PROPERTY_NAME,
   DashboardInfo.JSON_PROPERTY_IMAGE,
   DashboardInfo.JSON_PROPERTY_ASSIGNED_CUSTOMERS,
   DashboardInfo.JSON_PROPERTY_MOBILE_HIDE,
   DashboardInfo.JSON_PROPERTY_MOBILE_ORDER,
+  DashboardInfo.JSON_PROPERTY_CONFIGURATION,
+  DashboardInfo.JSON_PROPERTY_RESOURCES,
   DashboardInfo.JSON_PROPERTY_VERSION,
-  DashboardInfo.JSON_PROPERTY_NAME
+  DashboardInfo.JSON_PROPERTY_GROUPS,
+  DashboardInfo.JSON_PROPERTY_OWNER_NAME
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DashboardInfo {
@@ -69,9 +80,21 @@ public class DashboardInfo {
   @Nullable
   private TenantId tenantId;
 
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
+
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public static final String JSON_PROPERTY_TITLE = "title";
-  @Nonnull
+  @Nullable
   private String title;
+
+  public static final String JSON_PROPERTY_NAME = "name";
+  @Nullable
+  private String name;
 
   public static final String JSON_PROPERTY_IMAGE = "image";
   @Nullable
@@ -89,13 +112,25 @@ public class DashboardInfo {
   @Nullable
   private Integer mobileOrder;
 
+  public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode _configuration;
+
+  public static final String JSON_PROPERTY_RESOURCES = "resources";
+  @Nullable
+  private List<ResourceExportData> resources = new ArrayList<>();
+
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_NAME = "name";
+  public static final String JSON_PROPERTY_GROUPS = "groups";
   @Nullable
-  private String name;
+  private List<EntityInfo> groups = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
+  @Nullable
+  private String ownerName;
 
   public DashboardInfo() { 
   }
@@ -104,18 +139,22 @@ public class DashboardInfo {
   public DashboardInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId, 
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_IMAGE) String image, 
     @JsonProperty(JSON_PROPERTY_MOBILE_HIDE) Boolean mobileHide, 
     @JsonProperty(JSON_PROPERTY_MOBILE_ORDER) Integer mobileOrder, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
+    @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
+    this.ownerId = ownerId;
+    this.name = name;
     this.image = image;
     this.mobileHide = mobileHide;
     this.mobileOrder = mobileOrder;
-    this.name = name;
+    this.ownerName = ownerName;
   }
 
   public DashboardInfo id(@Nullable DashboardId id) {
@@ -170,7 +209,45 @@ public class DashboardInfo {
 
 
 
-  public DashboardInfo title(@Nonnull String title) {
+  public DashboardInfo customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * JSON object with Customer Id. 
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
+
+
+  /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  public DashboardInfo title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -179,19 +256,33 @@ public class DashboardInfo {
    * Title of the dashboard.
    * @return title
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
     return title;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTitle(@Nonnull String title) {
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
+
+
+  /**
+   * Same as title of the dashboard. Read-only field. Update the &#39;title&#39; to change the &#39;name&#39; of the dashboard.
+   * @return name
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getName() {
+    return name;
+  }
+
+
 
 
   /**
@@ -269,6 +360,62 @@ public class DashboardInfo {
 
 
 
+  public DashboardInfo _configuration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+    this._configuration = _configuration;
+    return this;
+  }
+
+  /**
+   * JSON object with main configuration of the dashboard: layouts, widgets, aliases, etc. The JSON structure of the dashboard configuration is quite complex. The easiest way to learn it is to export existing dashboard to JSON.
+   * @return _configuration
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getConfiguration() {
+    return _configuration;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setConfiguration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
+    this._configuration = _configuration;
+  }
+
+
+  public DashboardInfo resources(@Nullable List<ResourceExportData> resources) {
+    this.resources = resources;
+    return this;
+  }
+
+  public DashboardInfo addResourcesItem(ResourceExportData resourcesItem) {
+    if (this.resources == null) {
+      this.resources = new ArrayList<>();
+    }
+    this.resources.add(resourcesItem);
+    return this;
+  }
+
+  /**
+   * Get resources
+   * @return resources
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<ResourceExportData> getResources() {
+    return resources;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_RESOURCES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setResources(@Nullable List<ResourceExportData> resources) {
+    this.resources = resources;
+  }
+
+
   public DashboardInfo version(@Nullable Long version) {
     this.version = version;
     return this;
@@ -293,15 +440,47 @@ public class DashboardInfo {
   }
 
 
+  public DashboardInfo groups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+    return this;
+  }
+
+  public DashboardInfo addGroupsItem(EntityInfo groupsItem) {
+    if (this.groups == null) {
+      this.groups = new ArrayList<>();
+    }
+    this.groups.add(groupsItem);
+    return this;
+  }
+
   /**
-   * Same as title of the dashboard. Read-only field. Update the &#39;title&#39; to change the &#39;name&#39; of the dashboard.
-   * @return name
+   * Groups
+   * @return groups
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getName() {
-    return name;
+  public List<EntityInfo> getGroups() {
+    return groups;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+  }
+
+
+  /**
+   * Owner name
+   * @return ownerName
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getOwnerName() {
+    return ownerName;
   }
 
 
@@ -322,18 +501,24 @@ public class DashboardInfo {
     return Objects.equals(this.id, dashboardInfo.id) &&
         Objects.equals(this.createdTime, dashboardInfo.createdTime) &&
         Objects.equals(this.tenantId, dashboardInfo.tenantId) &&
+        Objects.equals(this.customerId, dashboardInfo.customerId) &&
+        Objects.equals(this.ownerId, dashboardInfo.ownerId) &&
         Objects.equals(this.title, dashboardInfo.title) &&
+        Objects.equals(this.name, dashboardInfo.name) &&
         Objects.equals(this.image, dashboardInfo.image) &&
         Objects.equals(this.assignedCustomers, dashboardInfo.assignedCustomers) &&
         Objects.equals(this.mobileHide, dashboardInfo.mobileHide) &&
         Objects.equals(this.mobileOrder, dashboardInfo.mobileOrder) &&
+        Objects.equals(this._configuration, dashboardInfo._configuration) &&
+        Objects.equals(this.resources, dashboardInfo.resources) &&
         Objects.equals(this.version, dashboardInfo.version) &&
-        Objects.equals(this.name, dashboardInfo.name);
+        Objects.equals(this.groups, dashboardInfo.groups) &&
+        Objects.equals(this.ownerName, dashboardInfo.ownerName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, title, image, assignedCustomers, mobileHide, mobileOrder, version, name);
+    return Objects.hash(id, createdTime, tenantId, customerId, ownerId, title, name, image, assignedCustomers, mobileHide, mobileOrder, _configuration, resources, version, groups, ownerName);
   }
 
   @Override
@@ -343,13 +528,19 @@ public class DashboardInfo {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    assignedCustomers: ").append(toIndentedString(assignedCustomers)).append("\n");
     sb.append("    mobileHide: ").append(toIndentedString(mobileHide)).append("\n");
     sb.append("    mobileOrder: ").append(toIndentedString(mobileOrder)).append("\n");
+    sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
+    sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -412,9 +603,24 @@ public class DashboardInfo {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
+    }
+
     // add `title` to the URL query string
     if (getTitle() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
     }
 
     // add `image` to the URL query string
@@ -444,14 +650,39 @@ public class DashboardInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%smobileOrder%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileOrder()))));
     }
 
+    // add `configuration` to the URL query string
+    if (getConfiguration() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sconfiguration%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getConfiguration()))));
+    }
+
+    // add `resources` to the URL query string
+    if (getResources() != null) {
+      for (int i = 0; i < getResources().size(); i++) {
+        if (getResources().get(i) != null) {
+          joiner.add(getResources().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sresources%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    // add `groups` to the URL query string
+    if (getGroups() != null) {
+      for (int i = 0; i < getGroups().size(); i++) {
+        if (getGroups().get(i) != null) {
+          joiner.add(getGroups().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sgroups%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `ownerName` to the URL query string
+    if (getOwnerName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sownerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOwnerName()))));
     }
 
     return joiner.toString();

@@ -17,6 +17,7 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -45,7 +46,7 @@ import org.thingsboard.client.ApiClient;
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class GoogleVertexAiGeminiProviderConfig {
   public static final String JSON_PROPERTY_FILE_NAME = "fileName";
-  @Nonnull
+  @Nullable
   private String fileName;
 
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
@@ -63,7 +64,7 @@ public class GoogleVertexAiGeminiProviderConfig {
   public GoogleVertexAiGeminiProviderConfig() { 
   }
 
-  public GoogleVertexAiGeminiProviderConfig fileName(@Nonnull String fileName) {
+  public GoogleVertexAiGeminiProviderConfig fileName(@Nullable String fileName) {
     this.fileName = fileName;
     return this;
   }
@@ -72,17 +73,17 @@ public class GoogleVertexAiGeminiProviderConfig {
    * Get fileName
    * @return fileName
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFileName() {
     return fileName;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFileName(@Nonnull String fileName) {
+  @JsonProperty(value = JSON_PROPERTY_FILE_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFileName(@Nullable String fileName) {
     this.fileName = fileName;
   }
 

@@ -28,7 +28,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.thingsboard.client.model.ReportId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -37,13 +40,18 @@ import org.thingsboard.client.ApiClient;
  * NotificationRequestConfig
  */
 @JsonPropertyOrder({
-  NotificationRequestConfig.JSON_PROPERTY_SENDING_DELAY_IN_SEC
+  NotificationRequestConfig.JSON_PROPERTY_SENDING_DELAY_IN_SEC,
+  NotificationRequestConfig.JSON_PROPERTY_REPORTS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequestConfig {
   public static final String JSON_PROPERTY_SENDING_DELAY_IN_SEC = "sendingDelayInSec";
   @Nullable
   private Integer sendingDelayInSec;
+
+  public static final String JSON_PROPERTY_REPORTS = "reports";
+  @Nullable
+  private List<ReportId> reports = new ArrayList<>();
 
   public NotificationRequestConfig() { 
   }
@@ -73,6 +81,38 @@ public class NotificationRequestConfig {
   }
 
 
+  public NotificationRequestConfig reports(@Nullable List<ReportId> reports) {
+    this.reports = reports;
+    return this;
+  }
+
+  public NotificationRequestConfig addReportsItem(ReportId reportsItem) {
+    if (this.reports == null) {
+      this.reports = new ArrayList<>();
+    }
+    this.reports.add(reportsItem);
+    return this;
+  }
+
+  /**
+   * Get reports
+   * @return reports
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<ReportId> getReports() {
+    return reports;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReports(@Nullable List<ReportId> reports) {
+    this.reports = reports;
+  }
+
+
   /**
    * Return true if this NotificationRequestConfig object is equal to o.
    */
@@ -85,12 +125,13 @@ public class NotificationRequestConfig {
       return false;
     }
     NotificationRequestConfig notificationRequestConfig = (NotificationRequestConfig) o;
-    return Objects.equals(this.sendingDelayInSec, notificationRequestConfig.sendingDelayInSec);
+    return Objects.equals(this.sendingDelayInSec, notificationRequestConfig.sendingDelayInSec) &&
+        Objects.equals(this.reports, notificationRequestConfig.reports);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sendingDelayInSec);
+    return Objects.hash(sendingDelayInSec, reports);
   }
 
   @Override
@@ -98,6 +139,7 @@ public class NotificationRequestConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationRequestConfig {\n");
     sb.append("    sendingDelayInSec: ").append(toIndentedString(sendingDelayInSec)).append("\n");
+    sb.append("    reports: ").append(toIndentedString(reports)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,6 +190,16 @@ public class NotificationRequestConfig {
     // add `sendingDelayInSec` to the URL query string
     if (getSendingDelayInSec() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssendingDelayInSec%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSendingDelayInSec()))));
+    }
+
+    // add `reports` to the URL query string
+    if (getReports() != null) {
+      for (int i = 0; i < getReports().size(); i++) {
+        if (getReports().get(i) != null) {
+          joiner.add(getReports().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sreports%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     return joiner.toString();

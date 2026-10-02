@@ -62,6 +62,10 @@
 
 * `DESCRIPTION` (value: `"DESCRIPTION"`)
 
+* `EDGE_LICENSE_KEY` (value: `"EDGE_LICENSE_KEY"`)
+
+* `CLOUD_ENDPOINT` (value: `"CLOUD_ENDPOINT"`)
+
 * `ROUTING_KEY` (value: `"ROUTING_KEY"`)
 
 * `SECRET` (value: `"SECRET"`)

@@ -46,7 +46,11 @@ public enum ApiFeature {
   
   SMS("SMS"),
   
-  ALARM("ALARM");
+  ALARM("ALARM"),
+  
+  REPORT("REPORT"),
+  
+  AI("AI");
 
   private String value;
 

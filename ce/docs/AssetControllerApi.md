@@ -9,100 +9,22 @@
 > below, but only adds a builder field to `*Args`.
 
 ```
-Asset assignAssetToCustomer(@Nonnull String customerId, @Nonnull String assetId) // Assign asset to customer (assignAssetToCustomer)
-Asset assignAssetToEdge(@Nonnull String edgeId, @Nonnull String assetId) // Assign asset to edge (assignAssetToEdge)
-Asset assignAssetToPublicCustomer(@Nonnull String assetId) // Make asset publicly available (assignAssetToPublicCustomer)
 void deleteAsset(@Nonnull String assetId) // Delete asset (deleteAsset)
 List<Asset> findAssetsByQuery(@Nonnull AssetSearchQuery assetSearchQuery) // Find related assets (findAssetsByQuery)
+PageDataAssetInfo getAllAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Asset Infos for current user (getAllAssetInfos)
 Asset getAssetById(@Nonnull String assetId) // Get Asset (getAssetById)
 AssetInfo getAssetInfoById(@Nonnull String assetId) // Get Asset Info (getAssetInfoById)
 List<EntitySubtype> getAssetTypes() // Get Asset Types (getAssetTypes)
+PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get assets by Entity Group Id (getAssetsByEntityGroupId)
 List<Asset> getAssetsByIds(@Nonnull List<String> assetIds) // Get Assets By Ids (getAssetsByIds)
-PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Asset Infos (getCustomerAssetInfos)
+PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Asset Infos (getCustomerAssetInfos)
 PageDataAsset getCustomerAssets(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Assets (getCustomerAssets)
-PageDataAsset getEdgeAssets(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get assets assigned to edge (getEdgeAssets)
 Asset getTenantAssetByName(@Nonnull String assetName) // Get Tenant Asset (getTenantAssetByName)
-PageDataAssetInfo getTenantAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Asset Infos (getTenantAssetInfos)
 PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Assets (getTenantAssets)
-BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of assets (processAssetBulkImport)
-Asset saveAsset(@Nonnull Asset asset, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Asset (saveAsset)
-Asset unassignAssetFromCustomer(@Nonnull String assetId) // Unassign asset from customer (unassignAssetFromCustomer)
-Asset unassignAssetFromEdge(@Nonnull String edgeId, @Nonnull String assetId) // Unassign asset from edge (unassignAssetFromEdge)
+PageDataAsset getUserAssets(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Assets (getUserAssets)
+BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of assets (processAssetsBulkImport)
+Asset saveAsset(@Nonnull Asset asset, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Asset (saveAsset)
 ```
-
-
-## assignAssetToCustomer
-
-```
-Asset assignAssetToCustomer(@Nonnull String customerId, @Nonnull String assetId)
-```
-
-**POST** `/api/customer/{customerId}/asset/{assetId}`
-
-Assign asset to customer (assignAssetToCustomer)
-
-Creates assignment of the asset to customer. Customer will be able to query asset afterwards.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **assetId** | **String** | A string value representing the asset id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Asset**
-
-
-## assignAssetToEdge
-
-```
-Asset assignAssetToEdge(@Nonnull String edgeId, @Nonnull String assetId)
-```
-
-**POST** `/api/edge/{edgeId}/asset/{assetId}`
-
-Assign asset to edge (assignAssetToEdge)
-
-Creates assignment of an existing asset to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment asset (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once asset will be delivered to edge service, it's going to be available for usage on remote edge instance.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **assetId** | **String** | A string value representing the asset id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Asset**
-
-
-## assignAssetToPublicCustomer
-
-```
-Asset assignAssetToPublicCustomer(@Nonnull String assetId)
-```
-
-**POST** `/api/customer/public/asset/{assetId}`
-
-Make asset publicly available (assignAssetToPublicCustomer)
-
-Asset will be available for non-authorized (not logged-in) users. This is useful to create dashboards that you plan to share/embed on a publicly available website. However, users that are logged-in and belong to different tenant will not be able to access the asset.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **assetId** | **String** | A string value representing the asset id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Asset**
 
 
 ## deleteAsset
@@ -115,7 +37,7 @@ void deleteAsset(@Nonnull String assetId)
 
 Delete asset (deleteAsset)
 
-Deletes the asset and all the relations (from and to the asset). Referencing non-existing asset Id will cause an error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Deletes the asset and all the relations (from and to the asset). Referencing non-existing asset Id will cause an error.   Security check is performed to verify that the user has 'DELETE' permission for the entity (entities).
 
 
 ### Parameters
@@ -139,7 +61,7 @@ List<Asset> findAssetsByQuery(@Nonnull AssetSearchQuery assetSearchQuery)
 
 Find related assets (findAssetsByQuery)
 
-Returns all assets that are related to the specific entity. The entity id, relation type, asset types, depth of the search, and other query parameters defined using complex 'AssetSearchQuery' object. See 'Model' tab of the Parameters for more info.
+Returns all assets that are related to the specific entity. The entity id, relation type, asset types, depth of the search, and other query parameters defined using complex 'AssetSearchQuery' object. See 'Model' tab of the Parameters for more info.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -153,6 +75,36 @@ Returns all assets that are related to the specific entity. The entity id, relat
 **List<Asset>**
 
 
+## getAllAssetInfos
+
+```
+PageDataAssetInfo getAllAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/assetInfos/all`
+
+Get All Asset Infos for current user (getAllAssetInfos)
+
+Returns a page of asset info objects owned by the tenant or the customer of a current user. Asset Info is an extension of the default Asset object that contains information about the owner name.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataAssetInfo**
+
+
 ## getAssetById
 
 ```
@@ -163,7 +115,7 @@ Asset getAssetById(@Nonnull String assetId)
 
 Get Asset (getAssetById)
 
-Fetch the Asset object based on the provided Asset Id. If the user has the authority of 'Tenant Administrator', the server checks that the asset is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the asset is assigned to the same customer.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Fetch the Asset object based on the provided Asset Id. If the user has the authority of 'Tenant Administrator', the server checks that the asset is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the asset is assigned to the same customer.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -187,7 +139,7 @@ AssetInfo getAssetInfoById(@Nonnull String assetId)
 
 Get Asset Info (getAssetInfoById)
 
-Fetch the Asset Info object based on the provided Asset Id. If the user has the authority of 'Tenant Administrator', the server checks that the asset is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the asset is assigned to the same customer. Asset Info is an extension of the default Asset object that contains information about the assigned customer name.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Fetch the Asset Info object based on the provided Asset Id. If the user has the authority of 'Tenant Administrator', the server checks that the asset is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the asset is assigned to the same customer.Asset Info is an extension of the default Asset object that contains information about the owner name.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -218,6 +170,35 @@ Deprecated. See 'getAssetProfileNames' API from Asset Profile Controller instead
 **List<EntitySubtype>**
 
 
+## getAssetsByEntityGroupId
+
+```
+PageDataAsset getAssetsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/assets`
+
+Get assets by Entity Group Id (getAssetsByEntityGroupId)
+
+Returns a page of asset objects that belongs to specified Entity Group Id. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.    Security check is performed to verify that the user has 'READ' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataAsset**
+
+
 ## getAssetsByIds
 
 ```
@@ -228,14 +209,14 @@ List<Asset> getAssetsByIds(@Nonnull List<String> assetIds)
 
 Get Assets By Ids (getAssetsByIds)
 
-Requested assets must be owned by tenant or assigned to customer which user is performing the request. 
+Requested assets must be owned by tenant or assigned to customer which user is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **assetIds** | **List<String>** | A list of assets ids, separated by comma ',' | |
+| **assetIds** | **List<String>** | A list of asset ids, separated by comma ',' | |
 
 ### Return type
 
@@ -245,14 +226,14 @@ Requested assets must be owned by tenant or assigned to customer which user is p
 ## getCustomerAssetInfos
 
 ```
-PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataAssetInfo getCustomerAssetInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/customer/{customerId}/assetInfos`
 
 Get Customer Asset Infos (getCustomerAssetInfos)
 
-Returns a page of assets info objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Asset Info is an extension of the default Asset object that contains information about the assigned customer name. 
+Returns a page of asset info objects owned by the specified customer. Asset Info is an extension of the default Asset object that contains information about the owner name.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -262,7 +243,7 @@ Returns a page of assets info objects assigned to customer. You can specify para
 | **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** | Asset type | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 | **assetProfileId** | **String** | A string value representing the asset profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
@@ -283,7 +264,7 @@ PageDataAsset getCustomerAssets(@Nonnull String customerId, @Nonnull Integer pag
 
 Get Customer Assets (getCustomerAssets)
 
-Returns a page of assets objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. 
+Returns a page of assets objects owned by customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -303,38 +284,6 @@ Returns a page of assets objects assigned to customer. You can specify parameter
 **PageDataAsset**
 
 
-## getEdgeAssets
-
-```
-PageDataAsset getEdgeAssets(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime)
-```
-
-**GET** `/api/edge/{edgeId}/assets`
-
-Get assets assigned to edge (getEdgeAssets)
-
-Returns a page of assets assigned to edge. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. 
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
-| **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** | Asset type | [optional] |
-| **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
-| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-| **startTime** | **Long** | Timestamp. Assets with creation time before it won't be queried | [optional] |
-| **endTime** | **Long** | Timestamp. Assets with creation time after it won't be queried | [optional] |
-
-### Return type
-
-**PageDataAsset**
-
-
 ## getTenantAssetByName
 
 ```
@@ -345,7 +294,7 @@ Asset getTenantAssetByName(@Nonnull String assetName)
 
 Get Tenant Asset (getTenantAssetByName)
 
-Requested asset must be owned by tenant that the user belongs to. Asset name is an unique property of asset. So it can be used to identify the asset.  Available for users with 'TENANT_ADMIN' authority.
+Requested asset must be owned by tenant that the user belongs to. Asset name is an unique property of asset. So it can be used to identify the asset.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -359,36 +308,6 @@ Requested asset must be owned by tenant that the user belongs to. Asset name is 
 **Asset**
 
 
-## getTenantAssetInfos
-
-```
-PageDataAssetInfo getTenantAssetInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
-```
-
-**GET** `/api/tenant/assetInfos`
-
-Get Tenant Asset Infos (getTenantAssetInfos)
-
-Returns a page of assets info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Asset Info is an extension of the default Asset object that contains information about the assigned customer name.   Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
-| **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** | Asset type | [optional] |
-| **assetProfileId** | **String** | A string value representing the asset profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
-| **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
-| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-**PageDataAssetInfo**
-
-
 ## getTenantAssets
 
 ```
@@ -399,7 +318,7 @@ PageDataAsset getTenantAssets(@Nonnull Integer pageSize, @Nonnull Integer page, 
 
 Get Tenant Assets (getTenantAssets)
 
-Returns a page of assets owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+Returns a page of assets owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -409,6 +328,36 @@ Returns a page of assets owned by tenant. You can specify parameters to filter t
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
 | **type** | **String** | Asset type | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataAsset**
+
+
+## getUserAssets
+
+```
+PageDataAsset getUserAssets(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String assetProfileId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/assets`
+
+Get Assets (getUserAssets)
+
+Returns a page of assets objects available for the current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Asset Info is an extension of the default Asset object that contains information about the owner name.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **type** | **String** | Asset type | [optional] |
+| **assetProfileId** | **String** | A string value representing the asset profile id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the asset name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -426,9 +375,9 @@ BulkImportResultAsset processAssetBulkImport(@Nonnull BulkImportRequest bulkImpo
 
 **POST** `/api/asset/bulk_import`
 
-Import the bulk of assets (processAssetBulkImport)
+Import the bulk of assets (processAssetsBulkImport)
 
-There's an ability to import the bulk of assets using the only .csv file.
+There's an ability to import the bulk of assets using the only .csv file.   Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
 
 
 ### Parameters
@@ -445,14 +394,14 @@ There's an ability to import the bulk of assets using the only .csv file.
 ## saveAsset
 
 ```
-Asset saveAsset(@Nonnull Asset asset, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
+Asset saveAsset(@Nonnull Asset asset, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy)
 ```
 
 **POST** `/api/asset`
 
 Create Or Update Asset (saveAsset)
 
-Creates or Updates the Asset. When creating asset, platform generates Asset Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Asset id will be present in the response. Specify existing Asset id to update the asset. Referencing non-existing Asset Id will cause 'Not Found' error. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Asset entity.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Creates or Updates the Asset. When creating asset, platform generates Asset Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Asset id will be present in the response. Specify existing Asset id to update the asset. Referencing non-existing Asset Id will cause 'Not Found' error. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Asset entity.    Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
 
 
 ### Parameters
@@ -460,58 +409,11 @@ Creates or Updates the Asset. When creating asset, platform generates Asset Id a
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asset** | **Asset** | A JSON value representing the asset. | |
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9'. If specified, the entity will be added to the corresponding entity group. | [optional] |
+| **entityGroupIds** | **List<String>** | A list of string values, separated by comma ',' representing the Entity Group Ids. For example, '784f394c-42b6-435a-983c-b7beff2784f9','a84f394c-42b6-435a-083c-b7beff2784f9'. If specified, the entity will be added to the corresponding entity groups. | [optional] |
 | **nameConflictPolicy** | **NameConflictPolicy** | Optional value of name conflict policy. Possible values: FAIL or UNIQUIFY.  If omitted, FAIL policy is applied. FAIL policy implies exception will be thrown if an entity with the same name already exists.  UNIQUIFY policy appends a suffix to the entity name, if a name conflict occurs. | [optional] [default to FAIL] [enum: FAIL, UNIQUIFY] |
 | **uniquifySeparator** | **String** | Optional value of name suffix separator used by UNIQUIFY policy. By default, underscore separator is used. For example, strategy is UNIQUIFY, separator is '-'; if a name conflict occurs for entity name 'test-name', created entity will have name like 'test-name-7fsh4f'. | [optional] [default to _] |
 | **uniquifyStrategy** | **UniquifyStrategy** | Optional value of uniquify strategy used by UNIQUIFY policy. Possible values: RANDOM or INCREMENTAL. By default, RANDOM strategy is used, which means random alphanumeric string will be added as a suffix to entity name. INCREMENTAL implies the first possible number starting from 1 will be added as a name suffix. For example, strategy is UNIQUIFY, uniquify strategy is INCREMENTAL; if a name conflict occurs for entity name 'test-name', created entity will have name like 'test-name-1. | [optional] [default to RANDOM] [enum: RANDOM, INCREMENTAL] |
-
-### Return type
-
-**Asset**
-
-
-## unassignAssetFromCustomer
-
-```
-Asset unassignAssetFromCustomer(@Nonnull String assetId)
-```
-
-**DELETE** `/api/customer/asset/{assetId}`
-
-Unassign asset from customer (unassignAssetFromCustomer)
-
-Clears assignment of the asset to customer. Customer will not be able to query asset afterwards.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **assetId** | **String** | A string value representing the asset id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Asset**
-
-
-## unassignAssetFromEdge
-
-```
-Asset unassignAssetFromEdge(@Nonnull String edgeId, @Nonnull String assetId)
-```
-
-**DELETE** `/api/edge/{edgeId}/asset/{assetId}`
-
-Unassign asset from edge (unassignAssetFromEdge)
-
-Clears assignment of the asset to the edge. Unassignment works in async way - first, 'unassign' notification event pushed to edge queue on platform. Second, remote edge service will receive an 'unassign' command to remove asset (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once 'unassign' command will be delivered to edge service, it's going to remove asset locally.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **assetId** | **String** | A string value representing the asset id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 
 ### Return type
 

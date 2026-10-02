@@ -10,10 +10,11 @@
 
 ```
 Object getApplicationRedirect(@Nonnull String userAgent) // getApplicationRedirect
+QrCodeSettings getMergedMobileAppSettings() // Get QR code configuration for home page (getMergedMobileAppSettings)
 String getMobileAppDeepLink() // Get the deep link to the associated mobile application (getMobileAppDeepLink)
 QrCodeSettings getQrCodeSettings() // Get Mobile application settings (getQrCodeSettings)
 JwtPair getUserTokenByMobileSecret(@Nonnull String secret) // Get User Token (getUserTokenByMobileSecret)
-QrCodeSettings saveQrCodeSettings(@Nonnull QrCodeSettings qrCodeSettings) // Create Or Update the Mobile application settings (saveMobileAppSettings)
+QrCodeSettings saveQrCodeSettings(@Nonnull QrCodeSettings qrCodeSettings) // Create Or Update the Mobile application settings (saveQrCodeSettings)
 ```
 
 
@@ -37,6 +38,23 @@ getApplicationRedirect
 ### Return type
 
 **Object**
+
+
+## getMergedMobileAppSettings
+
+```
+QrCodeSettings getMergedMobileAppSettings()
+```
+
+**GET** `/api/mobile/qr/merged`
+
+Get QR code configuration for home page (getMergedMobileAppSettings)
+
+The response payload contains ui configuration of qr code  Available for any authorized user. 
+
+### Return type
+
+**QrCodeSettings**
 
 
 ## getMobileAppDeepLink
@@ -105,9 +123,9 @@ QrCodeSettings saveQrCodeSettings(@Nonnull QrCodeSettings qrCodeSettings)
 
 **POST** `/api/mobile/qr/settings`
 
-Create Or Update the Mobile application settings (saveMobileAppSettings)
+Create Or Update the Mobile application settings (saveQrCodeSettings)
 
-The request payload contains configuration for android/iOS applications and platform qr code widget settings.  Available for users with 'SYS_ADMIN' authority.
+The request payload contains configuration for android/iOS applications and platform qr code widget settings.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
 
 
 ### Parameters

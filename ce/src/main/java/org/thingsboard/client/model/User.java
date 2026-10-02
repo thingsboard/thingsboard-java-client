@@ -31,7 +31,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.Authority;
+import org.thingsboard.client.model.CustomMenuId;
 import org.thingsboard.client.model.CustomerId;
+import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.TenantId;
 import org.thingsboard.client.model.UserId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -52,8 +54,10 @@ import org.thingsboard.client.ApiClient;
   User.JSON_PROPERTY_FIRST_NAME,
   User.JSON_PROPERTY_LAST_NAME,
   User.JSON_PROPERTY_PHONE,
+  User.JSON_PROPERTY_CUSTOM_MENU_ID,
   User.JSON_PROPERTY_VERSION,
-  User.JSON_PROPERTY_NAME
+  User.JSON_PROPERTY_NAME,
+  User.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class User {
@@ -97,6 +101,10 @@ public class User {
   @Nullable
   private String phone;
 
+  public static final String JSON_PROPERTY_CUSTOM_MENU_ID = "customMenuId";
+  @Nullable
+  private CustomMenuId customMenuId;
+
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
@@ -105,17 +113,23 @@ public class User {
   @Nullable
   private String name;
 
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public User() { 
   }
 
   @JsonCreator
   public User(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.name = name;
+    this.ownerId = ownerId;
   }
 
   public User id(@Nullable UserId id) {
@@ -348,6 +362,30 @@ public class User {
   }
 
 
+  public User customMenuId(@Nullable CustomMenuId customMenuId) {
+    this.customMenuId = customMenuId;
+    return this;
+  }
+
+  /**
+   * Get customMenuId
+   * @return customMenuId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomMenuId getCustomMenuId() {
+    return customMenuId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomMenuId(@Nullable CustomMenuId customMenuId) {
+    this.customMenuId = customMenuId;
+  }
+
+
   public User version(@Nullable Long version) {
     this.version = version;
     return this;
@@ -387,6 +425,20 @@ public class User {
 
 
   /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  /**
    * Return true if this User object is equal to o.
    */
   @Override
@@ -408,13 +460,15 @@ public class User {
         Objects.equals(this.firstName, user.firstName) &&
         Objects.equals(this.lastName, user.lastName) &&
         Objects.equals(this.phone, user.phone) &&
+        Objects.equals(this.customMenuId, user.customMenuId) &&
         Objects.equals(this.version, user.version) &&
-        Objects.equals(this.name, user.name);
+        Objects.equals(this.name, user.name) &&
+        Objects.equals(this.ownerId, user.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, email, authority, firstName, lastName, phone, version, name);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, email, authority, firstName, lastName, phone, customMenuId, version, name, ownerId);
   }
 
   @Override
@@ -431,8 +485,10 @@ public class User {
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -530,6 +586,11 @@ public class User {
       joiner.add(String.format(java.util.Locale.ROOT, "%sphone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPhone()))));
     }
 
+    // add `customMenuId` to the URL query string
+    if (getCustomMenuId() != null) {
+      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    }
+
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
@@ -538,6 +599,11 @@ public class User {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();
