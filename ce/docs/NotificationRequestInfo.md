@@ -26,7 +26,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### NotificationTemplate
 | Name | Type | Description | Notes |
@@ -49,6 +49,7 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | sendingDelayInSec | Integer |  | [optional] |
+| reports | List<ReportId> |  | [optional] |
 
 #### NotificationRequestStatus (enum)
 `PROCESSING` | `SENT` | `SCHEDULED`
@@ -56,24 +57,30 @@
 #### NotificationRequestStats
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| sent | Map<String, Integer> | Number of successfully sent notifications per delivery method | [optional] |
-| errors | Map<String, Map<String, String>> | Errors per delivery method. Each entry maps recipient name to error message | [optional] |
-| totalErrors | Integer | Total number of errors across all delivery methods | [optional] |
-| error | String | General error message if the entire request failed | [optional] |
+| sent | Map<String, Integer> |  | [optional] |
+| errors | Map<String, Map<String, String>> |  | [optional] |
+| totalErrors | Integer |  | [optional] |
+| error | String |  | [optional] |
+| totalSent | Integer |  | [optional] |
 
 #### NotificationDeliveryMethod (enum)
 `WEB` | `EMAIL` | `SMS` | `SLACK` | `MICROSOFT_TEAMS` | `MOBILE_APP`
 
 #### NotificationType (enum)
-`GENERAL` | `ALARM` | `DEVICE_ACTIVITY` | `ENTITY_ACTION` | `ALARM_COMMENT` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `ALARM_ASSIGNMENT` | `NEW_PLATFORM_VERSION` | `ENTITIES_LIMIT` | `ENTITIES_LIMIT_INCREASE_REQUEST` | … (17 values total)
+`GENERAL` | `ALARM` | `DEVICE_ACTIVITY` | `ENTITY_ACTION` | `ALARM_COMMENT` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `ALARM_ASSIGNMENT` | `NEW_PLATFORM_VERSION` | `ENTITIES_LIMIT` | `ENTITIES_LIMIT_INCREASE_REQUEST` | … (24 values total)
 
 #### NotificationTemplateConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | deliveryMethodsTemplates | Map<String, DeliveryMethodNotificationTemplate> |  |  |
+| attachReport | Boolean |  | [optional] |
+| reportTemplateId | ReportTemplateId |  | [optional] |
+| userId | UserId |  | [optional] |
+| timezone | String |  | [optional] |
+| makePublic | Boolean |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### DeliveryMethodNotificationTemplate
 | Name | Type | Description | Notes |

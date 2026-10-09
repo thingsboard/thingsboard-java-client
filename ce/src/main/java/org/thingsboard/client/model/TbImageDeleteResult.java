@@ -28,11 +28,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.thingsboard.client.model.HasIdObject;
+import org.thingsboard.client.model.WhiteLabeling;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -42,6 +44,7 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   TbImageDeleteResult.JSON_PROPERTY_SUCCESS,
+  TbImageDeleteResult.JSON_PROPERTY_WHITE_LABELING_LIST,
   TbImageDeleteResult.JSON_PROPERTY_REFERENCES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -49,6 +52,10 @@ public class TbImageDeleteResult {
   public static final String JSON_PROPERTY_SUCCESS = "success";
   @Nullable
   private Boolean success;
+
+  public static final String JSON_PROPERTY_WHITE_LABELING_LIST = "whiteLabelingList";
+  @Nullable
+  private List<WhiteLabeling> whiteLabelingList = new ArrayList<>();
 
   public static final String JSON_PROPERTY_REFERENCES = "references";
   @Nullable
@@ -78,6 +85,38 @@ public class TbImageDeleteResult {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSuccess(@Nullable Boolean success) {
     this.success = success;
+  }
+
+
+  public TbImageDeleteResult whiteLabelingList(@Nullable List<WhiteLabeling> whiteLabelingList) {
+    this.whiteLabelingList = whiteLabelingList;
+    return this;
+  }
+
+  public TbImageDeleteResult addWhiteLabelingListItem(WhiteLabeling whiteLabelingListItem) {
+    if (this.whiteLabelingList == null) {
+      this.whiteLabelingList = new ArrayList<>();
+    }
+    this.whiteLabelingList.add(whiteLabelingListItem);
+    return this;
+  }
+
+  /**
+   * Get whiteLabelingList
+   * @return whiteLabelingList
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_LIST, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<WhiteLabeling> getWhiteLabelingList() {
+    return whiteLabelingList;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_LIST, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWhiteLabelingList(@Nullable List<WhiteLabeling> whiteLabelingList) {
+    this.whiteLabelingList = whiteLabelingList;
   }
 
 
@@ -126,12 +165,13 @@ public class TbImageDeleteResult {
     }
     TbImageDeleteResult tbImageDeleteResult = (TbImageDeleteResult) o;
     return Objects.equals(this.success, tbImageDeleteResult.success) &&
+        Objects.equals(this.whiteLabelingList, tbImageDeleteResult.whiteLabelingList) &&
         Objects.equals(this.references, tbImageDeleteResult.references);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, references);
+    return Objects.hash(success, whiteLabelingList, references);
   }
 
   @Override
@@ -139,6 +179,7 @@ public class TbImageDeleteResult {
     StringBuilder sb = new StringBuilder();
     sb.append("class TbImageDeleteResult {\n");
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    whiteLabelingList: ").append(toIndentedString(whiteLabelingList)).append("\n");
     sb.append("    references: ").append(toIndentedString(references)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -190,6 +231,16 @@ public class TbImageDeleteResult {
     // add `success` to the URL query string
     if (getSuccess() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssuccess%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSuccess()))));
+    }
+
+    // add `whiteLabelingList` to the URL query string
+    if (getWhiteLabelingList() != null) {
+      for (int i = 0; i < getWhiteLabelingList().size(); i++) {
+        if (getWhiteLabelingList().get(i) != null) {
+          joiner.add(getWhiteLabelingList().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%swhiteLabelingList%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     // add `references` to the URL query string

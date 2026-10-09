@@ -1,0 +1,170 @@
+# ReportTemplateControllerApi
+
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
+```
+void deleteReportTemplate(@Nonnull String reportTemplateId) // Delete Report Template (deleteReportTemplate)
+PageDataReportTemplateInfo getAllReportTemplateInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> typeList, @Nullable List<String> formatList, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Report Templates for current user (getAllReportTemplateInfos)
+ReportTemplate getReportTemplateById(@Nonnull String reportTemplateId) // Get Report Template (getReportTemplateById)
+ReportTemplateInfo getReportTemplateInfoById(@Nonnull String reportTemplateId) // Get Report Template Info (getReportTemplateInfoById)
+List<ReportTemplateInfo> getReportTemplatesByIds(@Nonnull List<String> reportTemplateIds) // Get report templates by Report Template Ids (getReportTemplatesByIds)
+ReportTemplate saveReportTemplate(@Nonnull ReportTemplate reportTemplate) // Save Report Template (saveReportTemplate)
+```
+
+
+## deleteReportTemplate
+
+```
+void deleteReportTemplate(@Nonnull String reportTemplateId)
+```
+
+**DELETE** `/api/reportTemplate/{reportTemplateId}`
+
+Delete Report Template (deleteReportTemplate)
+
+Deletes the report template. Referencing non-existing Report Template Id will cause 'Not Found' error.   Security check is performed to verify that the user has 'DELETE' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportTemplateId** | **String** | A string value representing the report template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+null (empty response body)
+
+
+## getAllReportTemplateInfos
+
+```
+PageDataReportTemplateInfo getAllReportTemplateInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> typeList, @Nullable List<String> formatList, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/reportTemplateInfos/all`
+
+Get All Report Templates for current user (getAllReportTemplateInfos)
+
+Returns a page of report template info objects owned by the tenant or the customer of a current user. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the 'Model' tab of the Response Class for more details.  You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **typeList** | **List<String>** | A list of string values separated by comma ',' representing one of the ReportTemplateType enumeration value. | [optional] [enum: REPORT, SUB_REPORT] |
+| **formatList** | **List<String>** | A list of string values separated by comma ',' representing one of the TbReportFormat enumeration value. | [optional] [enum: PDF, CSV] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the report template name or customer title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, ownerName] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataReportTemplateInfo**
+
+
+## getReportTemplateById
+
+```
+ReportTemplate getReportTemplateById(@Nonnull String reportTemplateId)
+```
+
+**GET** `/api/reportTemplate/{reportTemplateId}`
+
+Get Report Template (getReportTemplateById)
+
+Fetch the ReportTemplate object based on the provided report template Id. Report Template extends Report Template Info object and adds 'configuration' - a JSON structure of report template configuration. See the 'Model' tab of the Response Class for more details. Referencing non-existing Report Template Id will cause 'Not Found' error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportTemplateId** | **String** | A string value representing the report template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**ReportTemplate**
+
+
+## getReportTemplateInfoById
+
+```
+ReportTemplateInfo getReportTemplateInfoById(@Nonnull String reportTemplateId)
+```
+
+**GET** `/api/reportTemplate/info/{reportTemplateId}`
+
+Get Report Template Info (getReportTemplateInfoById)
+
+Fetch the ReportTemplateInfo object based on the provided report template Id. Report Templates allows you to create reports according to the report template configuration. Report service uses report template configuration to generate report. See the 'Model' tab of the Response Class for more details. Referencing non-existing Report Template Id will cause 'Not Found' error.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportTemplateId** | **String** | A string value representing the report template id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+
+### Return type
+
+**ReportTemplateInfo**
+
+
+## getReportTemplatesByIds
+
+```
+List<ReportTemplateInfo> getReportTemplatesByIds(@Nonnull List<String> reportTemplateIds)
+```
+
+**GET** `/api/reportTemplates`
+
+Get report templates by Report Template Ids (getReportTemplatesByIds)
+
+Returns a list of ReportTemplateInfo objects based on the provided ids. Filters the list based on the user permissions.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportTemplateIds** | **List<String>** | A list of report template ids, separated by comma ',' | |
+
+### Return type
+
+**List<ReportTemplateInfo>**
+
+
+## saveReportTemplate
+
+```
+ReportTemplate saveReportTemplate(@Nonnull ReportTemplate reportTemplate)
+```
+
+**POST** `/api/reportTemplate`
+
+Save Report Template (saveReportTemplate)
+
+Creates or Updates report template. Report Template extends Report Template Info object and adds 'configuration' - a JSON structure of report template configuration. See the 'Model' tab of the Response Class for more details. When creating report template, platform generates report template Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created report template id will be present in the response. Specify existing report template id to update the report template. Referencing non-existing report template Id will cause 'Not Found' error. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Report Template entity.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.   Security check is performed to verify that the user has 'WRITE' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **reportTemplate** | **ReportTemplate** |  | |
+
+### Return type
+
+**ReportTemplate**
+

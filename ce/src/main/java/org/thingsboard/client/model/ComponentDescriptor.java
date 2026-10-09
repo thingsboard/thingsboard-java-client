@@ -51,7 +51,8 @@ import org.thingsboard.client.ApiClient;
   ComponentDescriptor.JSON_PROPERTY_CONFIGURATION_DESCRIPTOR,
   ComponentDescriptor.JSON_PROPERTY_CONFIGURATION_VERSION,
   ComponentDescriptor.JSON_PROPERTY_ACTIONS,
-  ComponentDescriptor.JSON_PROPERTY_HAS_QUEUE_NAME
+  ComponentDescriptor.JSON_PROPERTY_HAS_QUEUE_NAME,
+  ComponentDescriptor.JSON_PROPERTY_HAS_SECRETS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ComponentDescriptor {
@@ -99,6 +100,10 @@ public class ComponentDescriptor {
   @Nullable
   private Boolean hasQueueName;
 
+  public static final String JSON_PROPERTY_HAS_SECRETS = "hasSecrets";
+  @Nullable
+  private Boolean hasSecrets;
+
   public ComponentDescriptor() { 
   }
 
@@ -112,7 +117,8 @@ public class ComponentDescriptor {
     @JsonProperty(JSON_PROPERTY_CLAZZ) String clazz, 
     @JsonProperty(JSON_PROPERTY_CONFIGURATION_VERSION) Integer configurationVersion, 
     @JsonProperty(JSON_PROPERTY_ACTIONS) String actions, 
-    @JsonProperty(JSON_PROPERTY_HAS_QUEUE_NAME) Boolean hasQueueName
+    @JsonProperty(JSON_PROPERTY_HAS_QUEUE_NAME) Boolean hasQueueName, 
+    @JsonProperty(JSON_PROPERTY_HAS_SECRETS) Boolean hasSecrets
   ) {
   this();
     this.createdTime = createdTime;
@@ -124,6 +130,7 @@ public class ComponentDescriptor {
     this.configurationVersion = configurationVersion;
     this.actions = actions;
     this.hasQueueName = hasQueueName;
+    this.hasSecrets = hasSecrets;
   }
 
   public ComponentDescriptor id(@Nullable ComponentDescriptorId id) {
@@ -301,6 +308,20 @@ public class ComponentDescriptor {
 
 
   /**
+   * Indicates that the RuleNode configuration uses secrets placeholders.
+   * @return hasSecrets
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_HAS_SECRETS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getHasSecrets() {
+    return hasSecrets;
+  }
+
+
+
+
+  /**
    * Return true if this ComponentDescriptor object is equal to o.
    */
   @Override
@@ -322,12 +343,13 @@ public class ComponentDescriptor {
         Objects.equals(this.configurationDescriptor, componentDescriptor.configurationDescriptor) &&
         Objects.equals(this.configurationVersion, componentDescriptor.configurationVersion) &&
         Objects.equals(this.actions, componentDescriptor.actions) &&
-        Objects.equals(this.hasQueueName, componentDescriptor.hasQueueName);
+        Objects.equals(this.hasQueueName, componentDescriptor.hasQueueName) &&
+        Objects.equals(this.hasSecrets, componentDescriptor.hasSecrets);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, type, scope, clusteringMode, name, clazz, configurationDescriptor, configurationVersion, actions, hasQueueName);
+    return Objects.hash(id, createdTime, type, scope, clusteringMode, name, clazz, configurationDescriptor, configurationVersion, actions, hasQueueName, hasSecrets);
   }
 
   @Override
@@ -345,6 +367,7 @@ public class ComponentDescriptor {
     sb.append("    configurationVersion: ").append(toIndentedString(configurationVersion)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    hasQueueName: ").append(toIndentedString(hasQueueName)).append("\n");
+    sb.append("    hasSecrets: ").append(toIndentedString(hasSecrets)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -445,6 +468,11 @@ public class ComponentDescriptor {
     // add `hasQueueName` to the URL query string
     if (getHasQueueName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%shasQueueName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasQueueName()))));
+    }
+
+    // add `hasSecrets` to the URL query string
+    if (getHasSecrets() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%shasSecrets%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getHasSecrets()))));
     }
 
     return joiner.toString();

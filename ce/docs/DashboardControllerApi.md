@@ -9,16 +9,15 @@
 > below, but only adds a builder field to `*Args`.
 
 ```
-Dashboard addDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody) // Adds the Dashboard Customers (addDashboardCustomers)
-Dashboard assignDashboardToCustomer(@Nonnull String customerId, @Nonnull String dashboardId) // Assign the Dashboard (assignDashboardToCustomer)
-Dashboard assignDashboardToEdge(@Nonnull String edgeId, @Nonnull String dashboardId) // Assign dashboard to edge (assignDashboardToEdge)
-Dashboard assignDashboardToPublicCustomer(@Nonnull String dashboardId) // Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer)
 void deleteDashboard(@Nonnull String dashboardId) // Delete the Dashboard (deleteDashboard)
-PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Dashboards (getCustomerDashboards)
+List<Dashboard> exportGroupDashboards(@Nonnull String entityGroupId, @Nonnull Integer limit, @Nullable String acceptEncoding) // Export Dashboards (exportGroupDashboards)
+PageDataDashboardInfo getAllDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Dashboards for current user (getAllDashboards)
+PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Dashboards (getCustomerDashboards)
+HomeDashboardInfo getCustomerHomeDashboardInfo() // Get Customer Home Dashboard Info (getCustomerHomeDashboardInfo)
 Dashboard getDashboardById(@Nonnull String dashboardId, @Nullable Boolean includeResources, @Nullable String acceptEncoding) // Get Dashboard (getDashboardById)
 DashboardInfo getDashboardInfoById(@Nonnull String dashboardId) // Get Dashboard Info (getDashboardInfoById)
+PageDataDashboardInfo getDashboardsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get dashboards by Entity Group Id (getDashboardsByEntityGroupId)
 List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds) // Get dashboards by Dashboard Ids (getDashboardsByIds)
-PageDataDashboardInfo getEdgeDashboards(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Dashboards (getEdgeDashboards)
 HomeDashboard getHomeDashboard(@Nullable String acceptEncoding) // Get Home Dashboard (getHomeDashboard)
 HomeDashboardInfo getHomeDashboardInfo() // Get Home Dashboard Info (getHomeDashboardInfo)
 Long getMaxDatapointsLimit() // Get max data points limit (getMaxDatapointsLimit)
@@ -26,113 +25,12 @@ Long getServerTime() // Get server time (getServerTime)
 PageDataDashboardInfo getTenantDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Dashboards (getTenantDashboards)
 PageDataDashboardInfo getTenantDashboardsByTenantId(@Nonnull String tenantId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Dashboards by System Administrator (getTenantDashboardsByTenantId)
 HomeDashboardInfo getTenantHomeDashboardInfo() // Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
-Dashboard removeDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody) // Remove the Dashboard Customers (removeDashboardCustomers)
-Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String acceptEncoding) // Create Or Update Dashboard (saveDashboard)
+PageDataDashboardInfo getUserDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String operation, @Nullable String userId) // Get Dashboards (getUserDashboards)
+void importGroupDashboards(@Nonnull String entityGroupId, @Nonnull List<Dashboard> dashboard, @Nullable Boolean overwrite) // Import Dashboards (importGroupDashboards)
+Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable String acceptEncoding) // Create Or Update Dashboard (saveDashboard)
+void setCustomerHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo) // Update Customer Home Dashboard Info (setCustomerHomeDashboardInfo)
 void setTenantHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo) // Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
-Dashboard unassignDashboardFromCustomer(@Nonnull String customerId, @Nonnull String dashboardId) // Unassign the Dashboard (unassignDashboardFromCustomer)
-Dashboard unassignDashboardFromEdge(@Nonnull String edgeId, @Nonnull String dashboardId) // Unassign dashboard from edge (unassignDashboardFromEdge)
-Dashboard unassignDashboardFromPublicCustomer(@Nonnull String dashboardId) // Unassign the Dashboard from Public Customer (unassignDashboardFromPublicCustomer)
-Dashboard updateDashboardCustomers(@Nonnull String dashboardId, @Nullable List<String> requestBody) // Update the Dashboard Customers (updateDashboardCustomers)
 ```
-
-
-## addDashboardCustomers
-
-```
-Dashboard addDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody)
-```
-
-**POST** `/api/dashboard/{dashboardId}/customers/add`
-
-Adds the Dashboard Customers (addDashboardCustomers)
-
-Adds the list of Customers to the existing list of assignments for the Dashboard. Keeps previous assignments to customers that are not in the provided list. Returns the Dashboard object.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String** | A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **requestBody** | **List<String>** |  | |
-
-### Return type
-
-**Dashboard**
-
-
-## assignDashboardToCustomer
-
-```
-Dashboard assignDashboardToCustomer(@Nonnull String customerId, @Nonnull String dashboardId)
-```
-
-**POST** `/api/customer/{customerId}/dashboard/{dashboardId}`
-
-Assign the Dashboard (assignDashboardToCustomer)
-
-Assign the Dashboard to specified Customer or do nothing if the Dashboard is already assigned to that Customer. Returns the Dashboard object.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **dashboardId** | **String** | A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Dashboard**
-
-
-## assignDashboardToEdge
-
-```
-Dashboard assignDashboardToEdge(@Nonnull String edgeId, @Nonnull String dashboardId)
-```
-
-**POST** `/api/edge/{edgeId}/dashboard/{dashboardId}`
-
-Assign dashboard to edge (assignDashboardToEdge)
-
-Creates assignment of an existing dashboard to an instance of The Edge. Assignment works in async way - first, notification event pushed to edge service queue on platform. Second, remote edge service will receive a copy of assignment dashboard (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once dashboard will be delivered to edge service, it's going to be available for usage on remote edge instance.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** |  | |
-| **dashboardId** | **String** |  | |
-
-### Return type
-
-**Dashboard**
-
-
-## assignDashboardToPublicCustomer
-
-```
-Dashboard assignDashboardToPublicCustomer(@Nonnull String dashboardId)
-```
-
-**POST** `/api/customer/public/dashboard/{dashboardId}`
-
-Assign the Dashboard to Public Customer (assignDashboardToPublicCustomer)
-
-Assigns the dashboard to a special, auto-generated 'Public' Customer. Once assigned, unauthenticated users may browse the dashboard. This method is useful if you like to embed the dashboard on public web pages to be available for users that are not logged in. Be aware that making the dashboard public does not mean that it automatically makes all devices and assets you use in the dashboard to be public.Use [assign Asset to Public Customer](#!/asset-controller/assignAssetToPublicCustomerUsingPOST) and [assign Device to Public Customer](#!/device-controller/assignDeviceToPublicCustomerUsingPOST) for this purpose. Returns the Dashboard object.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String** | A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Dashboard**
 
 
 ## deleteDashboard
@@ -145,7 +43,7 @@ void deleteDashboard(@Nonnull String dashboardId)
 
 Delete the Dashboard (deleteDashboard)
 
-Delete the Dashboard.  Available for users with 'TENANT_ADMIN' authority.
+Delete the Dashboard. Only users with 'TENANT_ADMIN') authority may delete the dashboards.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -159,17 +57,72 @@ Delete the Dashboard.  Available for users with 'TENANT_ADMIN' authority.
 null (empty response body)
 
 
+## exportGroupDashboards
+
+```
+List<Dashboard> exportGroupDashboards(@Nonnull String entityGroupId, @Nonnull Integer limit, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/dashboards/export`
+
+Export Dashboards (exportGroupDashboards)
+
+Export the dashboards that belong to specified group id.The Dashboard object is a heavyweight object that contains information about the dashboard (e.g. title, image, assigned customers) and also configuration JSON (e.g. layouts, widgets, entity aliases).  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **limit** | **Integer** | Limit of the entities to export | |
+| **acceptEncoding** | **String** |  | [optional] |
+
+### Return type
+
+**List<Dashboard>**
+
+
+## getAllDashboards
+
+```
+PageDataDashboardInfo getAllDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/dashboards/all`
+
+Get All Dashboards for current user (getAllDashboards)
+
+Returns a page of dashboard info objects owned by the tenant or the customer of a current user. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataDashboardInfo**
+
+
 ## getCustomerDashboards
 
 ```
-PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataDashboardInfo getCustomerDashboards(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/customer/{customerId}/dashboards`
 
 Get Customer Dashboards (getCustomerDashboards)
 
-Returns a page of dashboard info objects owned by the specified customer. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Returns a page of dashboard info objects owned by the specified customer. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -179,7 +132,7 @@ Returns a page of dashboard info objects owned by the specified customer. The Da
 | **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **mobile** | **Boolean** | Exclude dashboards that are hidden for mobile | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -187,6 +140,23 @@ Returns a page of dashboard info objects owned by the specified customer. The Da
 ### Return type
 
 **PageDataDashboardInfo**
+
+
+## getCustomerHomeDashboardInfo
+
+```
+HomeDashboardInfo getCustomerHomeDashboardInfo()
+```
+
+**GET** `/api/customer/dashboard/home/info`
+
+Get Customer Home Dashboard Info (getCustomerHomeDashboardInfo)
+
+Returns the home dashboard info object that is configured as 'homeDashboardId' parameter in the 'additionalInfo' of the corresponding customer.   Available for users with 'CUSTOMER_USER' authority.  Security check is performed to verify that the user has 'READ' permission for the white labeling resource.
+
+### Return type
+
+**HomeDashboardInfo**
 
 
 ## getDashboardById
@@ -239,17 +209,46 @@ Get the information about the dashboard based on 'dashboardId' parameter. The Da
 **DashboardInfo**
 
 
+## getDashboardsByEntityGroupId
+
+```
+PageDataDashboardInfo getDashboardsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/dashboards`
+
+Get dashboards by Entity Group Id (getDashboardsByEntityGroupId)
+
+Returns a page of Dashboard objects that belongs to specified Entity Group Id. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataDashboardInfo**
+
+
 ## getDashboardsByIds
 
 ```
 List<DashboardInfo> getDashboardsByIds(@Nonnull List<String> dashboardIds)
 ```
 
-**GET** `/api/dashboards/list`
+**GET** `/api/dashboards`
 
 Get dashboards by Dashboard Ids (getDashboardsByIds)
 
-Returns a list of DashboardInfo objects based on the provided ids.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Returns a list of DashboardInfo objects based on the provided ids. Filters the list based on the user permissions.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -261,35 +260,6 @@ Returns a list of DashboardInfo objects based on the provided ids.   Available f
 ### Return type
 
 **List<DashboardInfo>**
-
-
-## getEdgeDashboards
-
-```
-PageDataDashboardInfo getEdgeDashboards(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
-```
-
-**GET** `/api/edge/{edgeId}/dashboards`
-
-Get Edge Dashboards (getEdgeDashboards)
-
-Returns a page of dashboard info objects assigned to the specified edge. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
-| **page** | **Integer** | Sequence number of page starting from 0 | |
-| **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
-| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
-| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-**PageDataDashboardInfo**
 
 
 ## getHomeDashboard
@@ -435,49 +405,81 @@ HomeDashboardInfo getTenantHomeDashboardInfo()
 
 Get Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
 
-Returns the home dashboard info object that is configured as 'homeDashboardId' parameter in the 'additionalInfo' of the corresponding tenant.   Available for users with 'TENANT_ADMIN' authority.
+Returns the home dashboard info object that is configured as 'homeDashboardId' parameter in the 'additionalInfo' of the corresponding tenant.   Available for users with 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the white labeling resource.
 
 ### Return type
 
 **HomeDashboardInfo**
 
 
-## removeDashboardCustomers
+## getUserDashboards
 
 ```
-Dashboard removeDashboardCustomers(@Nonnull String dashboardId, @Nonnull List<String> requestBody)
+PageDataDashboardInfo getUserDashboards(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean mobile, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String operation, @Nullable String userId)
 ```
 
-**POST** `/api/dashboard/{dashboardId}/customers/remove`
+**GET** `/api/user/dashboards`
 
-Remove the Dashboard Customers (removeDashboardCustomers)
+Get Dashboards (getUserDashboards)
 
-Removes the list of Customers from the existing list of assignments for the Dashboard. Keeps other assignments to customers that are not in the provided list. Returns the Dashboard object.  Available for users with 'TENANT_ADMIN' authority.
+Returns a page of Dashboard Info objects available for specified or current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. The Dashboard Info object contains lightweight information about the dashboard (e.g. title, image, assigned customers) but does not contain the heavyweight configuration JSON.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String** | A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **requestBody** | **List<String>** |  | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **mobile** | **Boolean** | Exclude dashboards that are hidden for mobile | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the dashboard title. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+| **operation** | **String** | Filter by allowed operations for the current user | [optional] |
+| **userId** | **String** | A string value representing the user id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | [optional] |
 
 ### Return type
 
-**Dashboard**
+**PageDataDashboardInfo**
+
+
+## importGroupDashboards
+
+```
+void importGroupDashboards(@Nonnull String entityGroupId, @Nonnull List<Dashboard> dashboard, @Nullable Boolean overwrite)
+```
+
+**POST** `/api/entityGroup/{entityGroupId}/dashboards/import`
+
+Import Dashboards (importGroupDashboards)
+
+Import the dashboards to specified group.The Dashboard object is a heavyweight object that contains information about the dashboard (e.g. title, image, assigned customers) and also configuration JSON (e.g. layouts, widgets, entity aliases).  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **dashboard** | **List<Dashboard>** |  | |
+| **overwrite** | **Boolean** | Overwrite dashboards with the same name | [optional] [default to false] |
+
+### Return type
+
+null (empty response body)
 
 
 ## saveDashboard
 
 ```
-Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String acceptEncoding)
+Dashboard saveDashboard(@Nonnull Dashboard dashboard, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable String acceptEncoding)
 ```
 
 **POST** `/api/dashboard`
 
 Create Or Update Dashboard (saveDashboard)
 
-Create or update the Dashboard. When creating dashboard, platform generates Dashboard Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Dashboard id will be present in the response. Specify existing Dashboard id to update the dashboard. Referencing non-existing dashboard Id will cause 'Not Found' error. Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Dashboard entity.   Available for users with 'TENANT_ADMIN' authority.
+Create or update the Dashboard. When creating dashboard, platform generates Dashboard Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created Dashboard id will be present in the response. Specify existing Dashboard id to update the dashboard. Referencing non-existing dashboard Id will cause 'Not Found' error. Only users with 'TENANT_ADMIN') authority may create the dashboards.Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Dashboard entity.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -485,6 +487,8 @@ Create or update the Dashboard. When creating dashboard, platform generates Dash
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **dashboard** | **Dashboard** | A JSON value representing the dashboard. | |
+| **entityGroupId** | **String** |  | [optional] |
+| **entityGroupIds** | **List<String>** | A list of entity group ids, separated by comma ',' | [optional] |
 | **acceptEncoding** | **String** |  | [optional] |
 
 ### Return type
@@ -492,17 +496,17 @@ Create or update the Dashboard. When creating dashboard, platform generates Dash
 **Dashboard**
 
 
-## setTenantHomeDashboardInfo
+## setCustomerHomeDashboardInfo
 
 ```
-void setTenantHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo)
+void setCustomerHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo)
 ```
 
-**POST** `/api/tenant/dashboard/home/info`
+**POST** `/api/customer/dashboard/home/info`
 
-Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
+Update Customer Home Dashboard Info (setCustomerHomeDashboardInfo)
 
-Update the home dashboard assignment for the current tenant.   Available for users with 'TENANT_ADMIN' authority.
+Update the home dashboard assignment for the current customer.   Available for users with 'CUSTOMER_USER' authority.  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
 
 
 ### Parameters
@@ -516,101 +520,26 @@ Update the home dashboard assignment for the current tenant.   Available for use
 null (empty response body)
 
 
-## unassignDashboardFromCustomer
+## setTenantHomeDashboardInfo
 
 ```
-Dashboard unassignDashboardFromCustomer(@Nonnull String customerId, @Nonnull String dashboardId)
+void setTenantHomeDashboardInfo(@Nonnull HomeDashboardInfo homeDashboardInfo)
 ```
 
-**DELETE** `/api/customer/{customerId}/dashboard/{dashboardId}`
+**POST** `/api/tenant/dashboard/home/info`
 
-Unassign the Dashboard (unassignDashboardFromCustomer)
+Update Tenant Home Dashboard Info (getTenantHomeDashboardInfo)
 
-Unassign the Dashboard from specified Customer or do nothing if the Dashboard is already assigned to that Customer. Returns the Dashboard object.  Available for users with 'TENANT_ADMIN' authority.
+Update the home dashboard assignment for the current tenant.   Available for users with 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'WRITE' permission for the white labeling resource.
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **dashboardId** | **String** | A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **homeDashboardInfo** | **HomeDashboardInfo** |  | |
 
 ### Return type
 
-**Dashboard**
-
-
-## unassignDashboardFromEdge
-
-```
-Dashboard unassignDashboardFromEdge(@Nonnull String edgeId, @Nonnull String dashboardId)
-```
-
-**DELETE** `/api/edge/{edgeId}/dashboard/{dashboardId}`
-
-Unassign dashboard from edge (unassignDashboardFromEdge)
-
-Clears assignment of the dashboard to the edge. Unassignment works in async way - first, 'unassign' notification event pushed to edge queue on platform. Second, remote edge service will receive an 'unassign' command to remove dashboard (Edge will receive this instantly, if it's currently connected, or once it's going to be connected to platform). Third, once 'unassign' command will be delivered to edge service, it's going to remove dashboard locally.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** |  | |
-| **dashboardId** | **String** |  | |
-
-### Return type
-
-**Dashboard**
-
-
-## unassignDashboardFromPublicCustomer
-
-```
-Dashboard unassignDashboardFromPublicCustomer(@Nonnull String dashboardId)
-```
-
-**DELETE** `/api/customer/public/dashboard/{dashboardId}`
-
-Unassign the Dashboard from Public Customer (unassignDashboardFromPublicCustomer)
-
-Unassigns the dashboard from a special, auto-generated 'Public' Customer. Once unassigned, unauthenticated users may no longer browse the dashboard. Returns the Dashboard object.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String** | A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Dashboard**
-
-
-## updateDashboardCustomers
-
-```
-Dashboard updateDashboardCustomers(@Nonnull String dashboardId, @Nullable List<String> requestBody)
-```
-
-**POST** `/api/dashboard/{dashboardId}/customers`
-
-Update the Dashboard Customers (updateDashboardCustomers)
-
-Updates the list of Customers that this Dashboard is assigned to. Removes previous assignments to customers that are not in the provided list. Returns the Dashboard object.   Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **dashboardId** | **String** | A string value representing the dashboard id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **requestBody** | **List<String>** |  | [optional] |
-
-### Return type
-
-**Dashboard**
+null (empty response body)
 

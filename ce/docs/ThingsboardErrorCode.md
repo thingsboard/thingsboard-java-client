@@ -38,6 +38,8 @@ Platform error code
 
 * `NUMBER_46` (value: `new BigDecimal("46")`)
 
+* `NUMBER_47` (value: `new BigDecimal("47")`)
+
 
 
 ---

@@ -1,0 +1,100 @@
+
+# EntityGroup
+
+`org.thingsboard.client.model.EntityGroup`
+
+A JSON value representing the entity group.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **id** | **EntityGroupId** | JSON object with the EntityGroupId Id. Specify this field to update the Entity Group. Referencing non-existing Entity Group Id will cause error. Omit this field to create new Entity Group. | [optional] |
+| **createdTime** | **Long** | Timestamp of the entity group creation, in milliseconds | [optional] [readonly] |
+| **type** | **TypeEnum** |  | |
+| **name** | **String** | Name of the entity group | |
+| **ownerId** | **EntityId** | JSON object with the owner of the group - Tenant or Customer Id. When omitted or null on creation, defaults to the current user's owner (Tenant for tenant admins, Customer for customer users). | [optional] |
+| **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional parameters of the entity group. May include: 'description' (string), 'isPublic' (boolean, whether this group is shared publicly), 'publicCustomerId' (string, UUID of the public customer associated with this group). | [optional] |
+| **_configuration** | **com.fasterxml.jackson.databind.JsonNode** | JSON with the configuration for UI components: list of columns, settings, actions, etc  | [optional] |
+| **version** | **Long** |  | [optional] |
+| **edgeGroupAll** | **Boolean** | Indicates special edge group 'All' that contains all entities and can't be deleted. | [optional] [readonly] |
+| **groupAll** | **Boolean** | Indicates special group 'All' that contains all entities and can't be deleted. | [optional] |
+| **tenantId** | **TenantId** |  | [optional] |
+
+
+### Enum: TypeEnum
+
+| Name | Value |
+|---- | -----|
+| TENANT | "TENANT" |
+| CUSTOMER | "CUSTOMER" |
+| USER | "USER" |
+| DASHBOARD | "DASHBOARD" |
+| ASSET | "ASSET" |
+| DEVICE | "DEVICE" |
+| ALARM | "ALARM" |
+| ENTITY_GROUP | "ENTITY_GROUP" |
+| CONVERTER | "CONVERTER" |
+| INTEGRATION | "INTEGRATION" |
+| RULE_CHAIN | "RULE_CHAIN" |
+| RULE_NODE | "RULE_NODE" |
+| SCHEDULER_EVENT | "SCHEDULER_EVENT" |
+| BLOB_ENTITY | "BLOB_ENTITY" |
+| REPORT_TEMPLATE | "REPORT_TEMPLATE" |
+| REPORT | "REPORT" |
+| ENTITY_VIEW | "ENTITY_VIEW" |
+| WIDGETS_BUNDLE | "WIDGETS_BUNDLE" |
+| WIDGET_TYPE | "WIDGET_TYPE" |
+| ROLE | "ROLE" |
+| GROUP_PERMISSION | "GROUP_PERMISSION" |
+| TENANT_PROFILE | "TENANT_PROFILE" |
+| DEVICE_PROFILE | "DEVICE_PROFILE" |
+| ASSET_PROFILE | "ASSET_PROFILE" |
+| API_USAGE_STATE | "API_USAGE_STATE" |
+| TB_RESOURCE | "TB_RESOURCE" |
+| OTA_PACKAGE | "OTA_PACKAGE" |
+| EDGE | "EDGE" |
+| RPC | "RPC" |
+| QUEUE | "QUEUE" |
+| NOTIFICATION_TARGET | "NOTIFICATION_TARGET" |
+| NOTIFICATION_TEMPLATE | "NOTIFICATION_TEMPLATE" |
+| NOTIFICATION_REQUEST | "NOTIFICATION_REQUEST" |
+| NOTIFICATION | "NOTIFICATION" |
+| NOTIFICATION_RULE | "NOTIFICATION_RULE" |
+| QUEUE_STATS | "QUEUE_STATS" |
+| OAUTH2_CLIENT | "OAUTH2_CLIENT" |
+| DOMAIN | "DOMAIN" |
+| MOBILE_APP | "MOBILE_APP" |
+| MOBILE_APP_BUNDLE | "MOBILE_APP_BUNDLE" |
+| CALCULATED_FIELD | "CALCULATED_FIELD" |
+| JOB | "JOB" |
+| SECRET | "SECRET" |
+| ADMIN_SETTINGS | "ADMIN_SETTINGS" |
+| AI_MODEL | "AI_MODEL" |
+| API_KEY | "API_KEY" |
+| AGENT | "AGENT" |
+| AGENT_APPLICATION | "AGENT_APPLICATION" |
+| AGENT_APP_EVENT | "AGENT_APP_EVENT" |
+| AGENT_APP_UNIT | "AGENT_APP_UNIT" |
+| AGENT_APP_PROFILE | "AGENT_APP_PROFILE" |
+| AGENT_PROFILE | "AGENT_PROFILE" |
+| AGENT_BULK_ACTION | "AGENT_BULK_ACTION" |
+
+
+
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
+
+---
+
+### Conventions
+
+- **Package:** `org.thingsboard.client.model`
+- **Getter pattern:** `get<PropertyName>()` — e.g., `getId()`, `getName()`
+- **Setter pattern:** `set<PropertyName>(value)` — e.g., `setId(value)`, `setName(value)`
+- **Null fields:** Getters return `null` for unset optional fields; they do not throw exceptions
+

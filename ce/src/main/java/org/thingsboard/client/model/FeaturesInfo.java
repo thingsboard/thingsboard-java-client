@@ -37,6 +37,7 @@ import org.thingsboard.client.ApiClient;
  * FeaturesInfo
  */
 @JsonPropertyOrder({
+  FeaturesInfo.JSON_PROPERTY_WHITE_LABELING_ENABLED,
   FeaturesInfo.JSON_PROPERTY_EMAIL_ENABLED,
   FeaturesInfo.JSON_PROPERTY_SMS_ENABLED,
   FeaturesInfo.JSON_PROPERTY_NOTIFICATION_ENABLED,
@@ -45,6 +46,10 @@ import org.thingsboard.client.ApiClient;
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class FeaturesInfo {
+  public static final String JSON_PROPERTY_WHITE_LABELING_ENABLED = "whiteLabelingEnabled";
+  @Nullable
+  private Boolean whiteLabelingEnabled;
+
   public static final String JSON_PROPERTY_EMAIL_ENABLED = "emailEnabled";
   @Nullable
   private Boolean emailEnabled;
@@ -67,6 +72,30 @@ public class FeaturesInfo {
 
   public FeaturesInfo() { 
   }
+
+  public FeaturesInfo whiteLabelingEnabled(@Nullable Boolean whiteLabelingEnabled) {
+    this.whiteLabelingEnabled = whiteLabelingEnabled;
+    return this;
+  }
+
+  /**
+   * Get whiteLabelingEnabled
+   * @return whiteLabelingEnabled
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getWhiteLabelingEnabled() {
+    return whiteLabelingEnabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_WHITE_LABELING_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setWhiteLabelingEnabled(@Nullable Boolean whiteLabelingEnabled) {
+    this.whiteLabelingEnabled = whiteLabelingEnabled;
+  }
+
 
   public FeaturesInfo emailEnabled(@Nullable Boolean emailEnabled) {
     this.emailEnabled = emailEnabled;
@@ -200,7 +229,8 @@ public class FeaturesInfo {
       return false;
     }
     FeaturesInfo featuresInfo = (FeaturesInfo) o;
-    return Objects.equals(this.emailEnabled, featuresInfo.emailEnabled) &&
+    return Objects.equals(this.whiteLabelingEnabled, featuresInfo.whiteLabelingEnabled) &&
+        Objects.equals(this.emailEnabled, featuresInfo.emailEnabled) &&
         Objects.equals(this.smsEnabled, featuresInfo.smsEnabled) &&
         Objects.equals(this.notificationEnabled, featuresInfo.notificationEnabled) &&
         Objects.equals(this.oauthEnabled, featuresInfo.oauthEnabled) &&
@@ -209,13 +239,14 @@ public class FeaturesInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(emailEnabled, smsEnabled, notificationEnabled, oauthEnabled, twoFaEnabled);
+    return Objects.hash(whiteLabelingEnabled, emailEnabled, smsEnabled, notificationEnabled, oauthEnabled, twoFaEnabled);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FeaturesInfo {\n");
+    sb.append("    whiteLabelingEnabled: ").append(toIndentedString(whiteLabelingEnabled)).append("\n");
     sb.append("    emailEnabled: ").append(toIndentedString(emailEnabled)).append("\n");
     sb.append("    smsEnabled: ").append(toIndentedString(smsEnabled)).append("\n");
     sb.append("    notificationEnabled: ").append(toIndentedString(notificationEnabled)).append("\n");
@@ -267,6 +298,11 @@ public class FeaturesInfo {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `whiteLabelingEnabled` to the URL query string
+    if (getWhiteLabelingEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%swhiteLabelingEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getWhiteLabelingEnabled()))));
+    }
 
     // add `emailEnabled` to the URL query string
     if (getEmailEnabled() != null) {

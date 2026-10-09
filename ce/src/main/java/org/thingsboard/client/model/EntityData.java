@@ -44,6 +44,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   EntityData.JSON_PROPERTY_ENTITY_ID,
+  EntityData.JSON_PROPERTY_READ_ATTRS,
+  EntityData.JSON_PROPERTY_READ_TS,
   EntityData.JSON_PROPERTY_LATEST,
   EntityData.JSON_PROPERTY_TIMESERIES,
   EntityData.JSON_PROPERTY_AGG_LATEST
@@ -53,6 +55,14 @@ public class EntityData {
   public static final String JSON_PROPERTY_ENTITY_ID = "entityId";
   @Nullable
   private EntityId entityId;
+
+  public static final String JSON_PROPERTY_READ_ATTRS = "readAttrs";
+  @Nullable
+  private Boolean readAttrs;
+
+  public static final String JSON_PROPERTY_READ_TS = "readTs";
+  @Nullable
+  private Boolean readTs;
 
   public static final String JSON_PROPERTY_LATEST = "latest";
   @Nullable
@@ -90,6 +100,54 @@ public class EntityData {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEntityId(@Nullable EntityId entityId) {
     this.entityId = entityId;
+  }
+
+
+  public EntityData readAttrs(@Nullable Boolean readAttrs) {
+    this.readAttrs = readAttrs;
+    return this;
+  }
+
+  /**
+   * Get readAttrs
+   * @return readAttrs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_READ_ATTRS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getReadAttrs() {
+    return readAttrs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_READ_ATTRS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReadAttrs(@Nullable Boolean readAttrs) {
+    this.readAttrs = readAttrs;
+  }
+
+
+  public EntityData readTs(@Nullable Boolean readTs) {
+    this.readTs = readTs;
+    return this;
+  }
+
+  /**
+   * Get readTs
+   * @return readTs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_READ_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getReadTs() {
+    return readTs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_READ_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReadTs(@Nullable Boolean readTs) {
+    this.readTs = readTs;
   }
 
 
@@ -202,6 +260,8 @@ public class EntityData {
     }
     EntityData entityData = (EntityData) o;
     return Objects.equals(this.entityId, entityData.entityId) &&
+        Objects.equals(this.readAttrs, entityData.readAttrs) &&
+        Objects.equals(this.readTs, entityData.readTs) &&
         Objects.equals(this.latest, entityData.latest) &&
         Objects.equals(this.timeseries, entityData.timeseries) &&
         Objects.equals(this.aggLatest, entityData.aggLatest);
@@ -209,7 +269,7 @@ public class EntityData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityId, latest, timeseries, aggLatest);
+    return Objects.hash(entityId, readAttrs, readTs, latest, timeseries, aggLatest);
   }
 
   @Override
@@ -217,6 +277,8 @@ public class EntityData {
     StringBuilder sb = new StringBuilder();
     sb.append("class EntityData {\n");
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
+    sb.append("    readAttrs: ").append(toIndentedString(readAttrs)).append("\n");
+    sb.append("    readTs: ").append(toIndentedString(readTs)).append("\n");
     sb.append("    latest: ").append(toIndentedString(latest)).append("\n");
     sb.append("    timeseries: ").append(toIndentedString(timeseries)).append("\n");
     sb.append("    aggLatest: ").append(toIndentedString(aggLatest)).append("\n");
@@ -270,6 +332,16 @@ public class EntityData {
     // add `entityId` to the URL query string
     if (getEntityId() != null) {
       joiner.add(getEntityId().toUrlQueryString(prefix + "entityId" + suffix));
+    }
+
+    // add `readAttrs` to the URL query string
+    if (getReadAttrs() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sreadAttrs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getReadAttrs()))));
+    }
+
+    // add `readTs` to the URL query string
+    if (getReadTs() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sreadTs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getReadTs()))));
     }
 
     // add `latest` to the URL query string

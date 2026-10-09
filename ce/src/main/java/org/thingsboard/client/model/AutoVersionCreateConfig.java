@@ -41,6 +41,8 @@ import org.thingsboard.client.ApiClient;
   AutoVersionCreateConfig.JSON_PROPERTY_SAVE_ATTRIBUTES,
   AutoVersionCreateConfig.JSON_PROPERTY_SAVE_CREDENTIALS,
   AutoVersionCreateConfig.JSON_PROPERTY_SAVE_CALCULATED_FIELDS,
+  AutoVersionCreateConfig.JSON_PROPERTY_SAVE_PERMISSIONS,
+  AutoVersionCreateConfig.JSON_PROPERTY_SAVE_GROUP_ENTITIES,
   AutoVersionCreateConfig.JSON_PROPERTY_BRANCH
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -60,6 +62,14 @@ public class AutoVersionCreateConfig {
   public static final String JSON_PROPERTY_SAVE_CALCULATED_FIELDS = "saveCalculatedFields";
   @Nullable
   private Boolean saveCalculatedFields;
+
+  public static final String JSON_PROPERTY_SAVE_PERMISSIONS = "savePermissions";
+  @Nullable
+  private Boolean savePermissions;
+
+  public static final String JSON_PROPERTY_SAVE_GROUP_ENTITIES = "saveGroupEntities";
+  @Nullable
+  private Boolean saveGroupEntities;
 
   public static final String JSON_PROPERTY_BRANCH = "branch";
   @Nullable
@@ -164,6 +174,54 @@ public class AutoVersionCreateConfig {
   }
 
 
+  public AutoVersionCreateConfig savePermissions(@Nullable Boolean savePermissions) {
+    this.savePermissions = savePermissions;
+    return this;
+  }
+
+  /**
+   * Get savePermissions
+   * @return savePermissions
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SAVE_PERMISSIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getSavePermissions() {
+    return savePermissions;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SAVE_PERMISSIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSavePermissions(@Nullable Boolean savePermissions) {
+    this.savePermissions = savePermissions;
+  }
+
+
+  public AutoVersionCreateConfig saveGroupEntities(@Nullable Boolean saveGroupEntities) {
+    this.saveGroupEntities = saveGroupEntities;
+    return this;
+  }
+
+  /**
+   * Get saveGroupEntities
+   * @return saveGroupEntities
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SAVE_GROUP_ENTITIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getSaveGroupEntities() {
+    return saveGroupEntities;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SAVE_GROUP_ENTITIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSaveGroupEntities(@Nullable Boolean saveGroupEntities) {
+    this.saveGroupEntities = saveGroupEntities;
+  }
+
+
   public AutoVersionCreateConfig branch(@Nullable String branch) {
     this.branch = branch;
     return this;
@@ -204,12 +262,14 @@ public class AutoVersionCreateConfig {
         Objects.equals(this.saveAttributes, autoVersionCreateConfig.saveAttributes) &&
         Objects.equals(this.saveCredentials, autoVersionCreateConfig.saveCredentials) &&
         Objects.equals(this.saveCalculatedFields, autoVersionCreateConfig.saveCalculatedFields) &&
+        Objects.equals(this.savePermissions, autoVersionCreateConfig.savePermissions) &&
+        Objects.equals(this.saveGroupEntities, autoVersionCreateConfig.saveGroupEntities) &&
         Objects.equals(this.branch, autoVersionCreateConfig.branch);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(saveRelations, saveAttributes, saveCredentials, saveCalculatedFields, branch);
+    return Objects.hash(saveRelations, saveAttributes, saveCredentials, saveCalculatedFields, savePermissions, saveGroupEntities, branch);
   }
 
   @Override
@@ -220,6 +280,8 @@ public class AutoVersionCreateConfig {
     sb.append("    saveAttributes: ").append(toIndentedString(saveAttributes)).append("\n");
     sb.append("    saveCredentials: ").append(toIndentedString(saveCredentials)).append("\n");
     sb.append("    saveCalculatedFields: ").append(toIndentedString(saveCalculatedFields)).append("\n");
+    sb.append("    savePermissions: ").append(toIndentedString(savePermissions)).append("\n");
+    sb.append("    saveGroupEntities: ").append(toIndentedString(saveGroupEntities)).append("\n");
     sb.append("    branch: ").append(toIndentedString(branch)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -286,6 +348,16 @@ public class AutoVersionCreateConfig {
     // add `saveCalculatedFields` to the URL query string
     if (getSaveCalculatedFields() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssaveCalculatedFields%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSaveCalculatedFields()))));
+    }
+
+    // add `savePermissions` to the URL query string
+    if (getSavePermissions() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssavePermissions%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSavePermissions()))));
+    }
+
+    // add `saveGroupEntities` to the URL query string
+    if (getSaveGroupEntities() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssaveGroupEntities%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSaveGroupEntities()))));
     }
 
     // add `branch` to the URL query string

@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import org.thingsboard.client.ApiClient;
 /**
- * A JSON value representing the Api Key token.
+ * A JSON value representing the API key.
  */
 @JsonPropertyOrder({
   ApiKeyInfo.JSON_PROPERTY_ID,

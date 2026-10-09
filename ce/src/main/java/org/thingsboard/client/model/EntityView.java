@@ -54,7 +54,8 @@ import org.thingsboard.client.ApiClient;
   EntityView.JSON_PROPERTY_KEYS,
   EntityView.JSON_PROPERTY_START_TIME_MS,
   EntityView.JSON_PROPERTY_END_TIME_MS,
-  EntityView.JSON_PROPERTY_VERSION
+  EntityView.JSON_PROPERTY_VERSION,
+  EntityView.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityView {
@@ -106,6 +107,10 @@ public class EntityView {
   @Nullable
   private Long version;
 
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public EntityView() { 
   }
 
@@ -113,12 +118,12 @@ public class EntityView {
   public EntityView(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
+    this.ownerId = ownerId;
   }
 
   public EntityView id(@Nullable EntityViewId id) {
@@ -221,8 +226,13 @@ public class EntityView {
 
 
 
+  public EntityView customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignEntityViewToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Entity View.
    * @return customerId
    */
   @Nullable
@@ -233,6 +243,11 @@ public class EntityView {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   public EntityView name(@Nonnull String name) {
@@ -380,6 +395,20 @@ public class EntityView {
 
 
   /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  /**
    * Return true if this EntityView object is equal to o.
    */
   @Override
@@ -402,12 +431,13 @@ public class EntityView {
         Objects.equals(this.keys, entityView.keys) &&
         Objects.equals(this.startTimeMs, entityView.startTimeMs) &&
         Objects.equals(this.endTimeMs, entityView.endTimeMs) &&
-        Objects.equals(this.version, entityView.version);
+        Objects.equals(this.version, entityView.version) &&
+        Objects.equals(this.ownerId, entityView.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version);
+    return Objects.hash(id, createdTime, additionalInfo, entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version, ownerId);
   }
 
   @Override
@@ -426,6 +456,7 @@ public class EntityView {
     sb.append("    startTimeMs: ").append(toIndentedString(startTimeMs)).append("\n");
     sb.append("    endTimeMs: ").append(toIndentedString(endTimeMs)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -531,6 +562,11 @@ public class EntityView {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

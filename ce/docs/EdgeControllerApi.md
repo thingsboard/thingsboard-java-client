@@ -9,12 +9,13 @@
 > below, but only adds a builder field to `*Args`.
 
 ```
-Edge assignEdgeToCustomer(@Nonnull String customerId, @Nonnull String edgeId) // Assign edge to customer (assignEdgeToCustomer)
-Edge assignEdgeToPublicCustomer(@Nonnull String edgeId) // Make edge publicly available (assignEdgeToPublicCustomer)
+com.fasterxml.jackson.databind.JsonNode activateInstance(@Nonnull String licenseSecret, @Nonnull String releaseDate) // Activate edge instance (activateInstance)
+com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body) // Check edge license (checkInstance)
 void deleteEdge(@Nonnull String edgeId) // Delete edge (deleteEdge)
 List<Edge> findEdgesByQuery(@Nonnull EdgeSearchQuery edgeSearchQuery) // Find related edges (findEdgesByQuery)
 String findMissingToRelatedRuleChains(@Nonnull String edgeId) // Find missing rule chains (findMissingToRelatedRuleChains)
-PageDataEdgeInfo getCustomerEdgeInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Edge Infos (getCustomerEdgeInfos)
+PageDataEdgeInfo getAllEdgeInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get All Edge Infos for current user (getAllEdgeInfos)
+PageDataEdgeInfo getCustomerEdgeInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Edge Infos (getCustomerEdgeInfos)
 PageDataEdge getCustomerEdges(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customer Edges (getCustomerEdges)
 Edge getEdgeById(@Nonnull String edgeId) // Get Edge (getEdgeById)
 EdgeInfo getEdgeInfoById(@Nonnull String edgeId) // Get Edge Info (getEdgeInfoById)
@@ -23,66 +24,66 @@ List<Edge> getEdgeList(@Nonnull List<String> edgeIds) // Get Edges By Ids (getEd
 List<EntitySubtype> getEdgeTypes() // Get Edge Types (getEdgeTypes)
 EdgeInstructions getEdgeUpgradeInstructions(@Nonnull String edgeVersion, @Nonnull String method) // Get Edge Upgrade Instructions (getEdgeUpgradeInstructions)
 PageDataEdge getEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Edges (getEdges)
+PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get edges by Entity Group Id (getEdgesByEntityGroupId)
 Edge getTenantEdgeByName(@Nonnull String edgeName) // Get Tenant Edge by name (getTenantEdgeByName)
-PageDataEdgeInfo getTenantEdgeInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Edge Infos (getTenantEdgeInfos)
 PageDataEdge getTenantEdges(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Edges (getTenantEdges)
+PageDataEdge getUserEdges(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edges (getUserEdges)
 Boolean isEdgeUpgradeAvailable(@Nonnull String edgeId) // Is edge upgrade enabled (isEdgeUpgradeAvailable)
 Boolean isEdgesSupportEnabled() // Is edges support enabled (isEdgesSupportEnabled)
 BulkImportResultEdge processEdgesBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of edges (processEdgesBulkImport)
-Edge saveEdge(@Nonnull Edge edge) // Create Or Update Edge (saveEdge)
+Edge saveEdge(@Nonnull Edge edge, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds) // Create Or Update Edge (saveEdge)
 Edge setEdgeRootRuleChain(@Nonnull String edgeId, @Nonnull String ruleChainId) // Set root rule chain for provided edge (setEdgeRootRuleChain)
 String syncEdge(@Nonnull String edgeId) // Sync edge (syncEdge)
-Edge unassignEdgeFromCustomer(@Nonnull String edgeId) // Unassign edge from customer (unassignEdgeFromCustomer)
 ```
 
 
-## assignEdgeToCustomer
+## activateInstance
 
 ```
-Edge assignEdgeToCustomer(@Nonnull String customerId, @Nonnull String edgeId)
+com.fasterxml.jackson.databind.JsonNode activateInstance(@Nonnull String licenseSecret, @Nonnull String releaseDate)
 ```
 
-**POST** `/api/customer/{customerId}/edge/{edgeId}`
+**POST** `/api/license/activateInstance`
 
-Assign edge to customer (assignEdgeToCustomer)
+Activate edge instance (activateInstance)
 
-Creates assignment of the edge to customer. Customer will be able to query edge afterwards.  Available for users with 'TENANT_ADMIN' authority.
+Activates edge license on license portal.
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **licenseSecret** | **String** |  | |
+| **releaseDate** | **String** |  | |
 
 ### Return type
 
-**Edge**
+**com.fasterxml.jackson.databind.JsonNode**
 
 
-## assignEdgeToPublicCustomer
+## checkInstance
 
 ```
-Edge assignEdgeToPublicCustomer(@Nonnull String edgeId)
+com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body)
 ```
 
-**POST** `/api/customer/public/edge/{edgeId}`
+**POST** `/api/license/checkInstance`
 
-Make edge publicly available (assignEdgeToPublicCustomer)
+Check edge license (checkInstance)
 
-Edge will be available for non-authorized (not logged-in) users. This is useful to create dashboards that you plan to share/embed on a publicly available website. However, users that are logged-in and belong to different tenant will not be able to access the edge.  Available for users with 'TENANT_ADMIN' authority.
+Checks license request from edge service by forwarding request to license portal.
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **body** | **Object** |  | |
 
 ### Return type
 
-**Edge**
+**com.fasterxml.jackson.databind.JsonNode**
 
 
 ## deleteEdge
@@ -157,17 +158,47 @@ Returns list of rule chains ids that are not assigned to particular edge, but th
 **String**
 
 
+## getAllEdgeInfos
+
+```
+PageDataEdgeInfo getAllEdgeInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/edgeInfos/all`
+
+Get All Edge Infos for current user (getAllEdgeInfos)
+
+Returns a page of edge info objects owned by the tenant or the customer of a current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
+| **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEdgeInfo**
+
+
 ## getCustomerEdgeInfos
 
 ```
-PageDataEdgeInfo getCustomerEdgeInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEdgeInfo getCustomerEdgeInfos(@Nonnull String customerId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeCustomers, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/customer/{customerId}/edgeInfos`
 
 Get Customer Edge Infos (getCustomerEdgeInfos)
 
-Returns a page of edges info objects assigned to customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Edge Info is an extension of the default Edge object that contains information about the assigned customer name.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Returns a page of edge info objects owned by the specified customer. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters
@@ -177,6 +208,7 @@ Returns a page of edges info objects assigned to customer. You can specify param
 | **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 | **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
@@ -251,7 +283,7 @@ EdgeInfo getEdgeInfoById(@Nonnull String edgeId)
 
 Get Edge Info (getEdgeInfoById)
 
-Get the Edge Info object based on the provided Edge Id. If the user has the authority of 'Tenant Administrator', the server checks that the edge is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the edge is assigned to the same customer.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+Get the Edge info object based on the provided Edge Id. If the user has the authority of 'Tenant Administrator', the server checks that the edge is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the edge is assigned to the same customer.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -275,7 +307,7 @@ EdgeInstructions getEdgeInstallInstructions(@Nonnull String edgeId, @Nonnull Str
 
 Get Edge Install Instructions (getEdgeInstallInstructions)
 
-Get an install instructions for provided edge id.  Available for users with 'TENANT_ADMIN' authority.
+Get an install instructions for provided edge id.If the user has the authority of 'Tenant Administrator', the server checks that the edge is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the edge is assigned to the same customer.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -341,7 +373,7 @@ EdgeInstructions getEdgeUpgradeInstructions(@Nonnull String edgeVersion, @Nonnul
 
 Get Edge Upgrade Instructions (getEdgeUpgradeInstructions)
 
-Get an upgrade instructions for provided edge version.  Available for users with 'TENANT_ADMIN' authority.
+Get an upgrade instructions for provided edge version.If the user has the authority of 'Tenant Administrator', the server checks that the edge is owned by the same tenant. If the user has the authority of 'Customer User', the server checks that the edge is assigned to the same customer.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -384,6 +416,35 @@ Returns a page of edges owned by tenant. You can specify parameters to filter th
 **PageDataEdge**
 
 
+## getEdgesByEntityGroupId
+
+```
+PageDataEdge getEdgesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/entityGroup/{entityGroupId}/edges`
+
+Get edges by Entity Group Id (getEdgesByEntityGroupId)
+
+Returns a page of Edge objects that belongs to specified Entity Group Id. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEdge**
+
+
 ## getTenantEdgeByName
 
 ```
@@ -408,35 +469,6 @@ Requested edge must be owned by tenant or customer that the user belongs to. Edg
 **Edge**
 
 
-## getTenantEdgeInfos
-
-```
-PageDataEdgeInfo getTenantEdgeInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
-```
-
-**GET** `/api/tenant/edgeInfos`
-
-Get Tenant Edge Infos (getTenantEdgeInfos)
-
-Returns a page of edges info objects owned by tenant. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Edge Info is an extension of the default Edge object that contains information about the assigned customer name.   Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
-| **page** | **Integer** | Sequence number of page starting from 0 | |
-| **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
-| **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
-| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
-| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
-
-### Return type
-
-**PageDataEdgeInfo**
-
-
 ## getTenantEdges
 
 ```
@@ -456,6 +488,35 @@ Returns a page of edges owned by tenant. You can specify parameters to filter th
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
+| **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataEdge**
+
+
+## getUserEdges
+
+```
+PageDataEdge getUserEdges(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/user/edges`
+
+Get Edges (getUserEdges)
+
+Returns a page of edges available for current user. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'READ' permission for the entity (entities).
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **String** | Maximum amount of entities in a one page | |
+| **page** | **String** | Sequence number of page starting from 0 | |
 | **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
@@ -534,14 +595,14 @@ There's an ability to import the bulk of edges using the only .csv file.  Availa
 ## saveEdge
 
 ```
-Edge saveEdge(@Nonnull Edge edge)
+Edge saveEdge(@Nonnull Edge edge, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds)
 ```
 
 **POST** `/api/edge`
 
 Create Or Update Edge (saveEdge)
 
-Create or update the Edge. When creating edge, platform generates Edge Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created edge id will be present in the response. Specify existing Edge id to update the edge. Referencing non-existing Edge Id will cause 'Not Found' error.  Edge name is unique in the scope of tenant. Use unique identifiers like MAC or IMEI for the edge names and non-unique 'label' field for user-friendly visualization purposes.Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Edge entity.   Available for users with 'TENANT_ADMIN' authority.
+Create or update the Edge. When creating edge, platform generates Edge Id as [time-based UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_1_(date-time_and_MAC_address)). The newly created edge id will be present in the response. Specify existing Edge id to update the edge. Referencing non-existing Edge Id will cause 'Not Found' error.  Edge name is unique in the scope of tenant. Use unique identifiers like MAC or IMEI for the edge names and non-unique 'label' field for user-friendly visualization purposes.Remove 'id', 'tenantId' and optionally 'customerId' from the request body example (below) to create new Edge entity. 
 
 
 ### Parameters
@@ -549,6 +610,8 @@ Create or update the Edge. When creating edge, platform generates Edge Id as [ti
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **edge** | **Edge** |  | |
+| **entityGroupId** | **String** |  | [optional] |
+| **entityGroupIds** | **List<String>** | A list of entity group ids, separated by comma ',' | [optional] |
 
 ### Return type
 
@@ -602,28 +665,4 @@ Starts synchronization process between edge and cloud.  All entities that are as
 ### Return type
 
 **String**
-
-
-## unassignEdgeFromCustomer
-
-```
-Edge unassignEdgeFromCustomer(@Nonnull String edgeId)
-```
-
-**DELETE** `/api/customer/edge/{edgeId}`
-
-Unassign edge from customer (unassignEdgeFromCustomer)
-
-Clears assignment of the edge to customer. Customer will not be able to query edge afterwards.  Available for users with 'TENANT_ADMIN' authority.
-
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-
-### Return type
-
-**Edge**
 

@@ -20,15 +20,33 @@
 
 * `ALARM` (value: `"ALARM"`)
 
+* `ENTITY_GROUP` (value: `"ENTITY_GROUP"`)
+
+* `CONVERTER` (value: `"CONVERTER"`)
+
+* `INTEGRATION` (value: `"INTEGRATION"`)
+
 * `RULE_CHAIN` (value: `"RULE_CHAIN"`)
 
 * `RULE_NODE` (value: `"RULE_NODE"`)
+
+* `SCHEDULER_EVENT` (value: `"SCHEDULER_EVENT"`)
+
+* `BLOB_ENTITY` (value: `"BLOB_ENTITY"`)
+
+* `REPORT_TEMPLATE` (value: `"REPORT_TEMPLATE"`)
+
+* `REPORT` (value: `"REPORT"`)
 
 * `ENTITY_VIEW` (value: `"ENTITY_VIEW"`)
 
 * `WIDGETS_BUNDLE` (value: `"WIDGETS_BUNDLE"`)
 
 * `WIDGET_TYPE` (value: `"WIDGET_TYPE"`)
+
+* `ROLE` (value: `"ROLE"`)
+
+* `GROUP_PERMISSION` (value: `"GROUP_PERMISSION"`)
 
 * `TENANT_PROFILE` (value: `"TENANT_PROFILE"`)
 
@@ -72,11 +90,27 @@
 
 * `JOB` (value: `"JOB"`)
 
+* `SECRET` (value: `"SECRET"`)
+
 * `ADMIN_SETTINGS` (value: `"ADMIN_SETTINGS"`)
 
 * `AI_MODEL` (value: `"AI_MODEL"`)
 
 * `API_KEY` (value: `"API_KEY"`)
+
+* `AGENT` (value: `"AGENT"`)
+
+* `AGENT_APPLICATION` (value: `"AGENT_APPLICATION"`)
+
+* `AGENT_APP_EVENT` (value: `"AGENT_APP_EVENT"`)
+
+* `AGENT_APP_UNIT` (value: `"AGENT_APP_UNIT"`)
+
+* `AGENT_APP_PROFILE` (value: `"AGENT_APP_PROFILE"`)
+
+* `AGENT_PROFILE` (value: `"AGENT_PROFILE"`)
+
+* `AGENT_BULK_ACTION` (value: `"AGENT_BULK_ACTION"`)
 
 
 

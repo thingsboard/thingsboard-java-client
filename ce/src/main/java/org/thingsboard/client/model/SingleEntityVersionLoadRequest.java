@@ -45,6 +45,7 @@ import org.thingsboard.client.ApiClient;
  * SingleEntityVersionLoadRequest
  */
 @JsonPropertyOrder({
+  SingleEntityVersionLoadRequest.JSON_PROPERTY_INTERNAL_ENTITY_ID,
   SingleEntityVersionLoadRequest.JSON_PROPERTY_EXTERNAL_ENTITY_ID,
   SingleEntityVersionLoadRequest.JSON_PROPERTY_CONFIG
 })
@@ -56,6 +57,10 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
+  public static final String JSON_PROPERTY_INTERNAL_ENTITY_ID = "internalEntityId";
+  @Nullable
+  private EntityId internalEntityId;
+
   public static final String JSON_PROPERTY_EXTERNAL_ENTITY_ID = "externalEntityId";
   @Nullable
   private EntityId externalEntityId;
@@ -66,6 +71,30 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
 
   public SingleEntityVersionLoadRequest() { 
   }
+
+  public SingleEntityVersionLoadRequest internalEntityId(@Nullable EntityId internalEntityId) {
+    this.internalEntityId = internalEntityId;
+    return this;
+  }
+
+  /**
+   * Get internalEntityId
+   * @return internalEntityId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_INTERNAL_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getInternalEntityId() {
+    return internalEntityId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_INTERNAL_ENTITY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setInternalEntityId(@Nullable EntityId internalEntityId) {
+    this.internalEntityId = internalEntityId;
+  }
+
 
   public SingleEntityVersionLoadRequest externalEntityId(@Nullable EntityId externalEntityId) {
     this.externalEntityId = externalEntityId;
@@ -133,14 +162,15 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
       return false;
     }
     SingleEntityVersionLoadRequest singleEntityVersionLoadRequest = (SingleEntityVersionLoadRequest) o;
-    return Objects.equals(this.externalEntityId, singleEntityVersionLoadRequest.externalEntityId) &&
+    return Objects.equals(this.internalEntityId, singleEntityVersionLoadRequest.internalEntityId) &&
+        Objects.equals(this.externalEntityId, singleEntityVersionLoadRequest.externalEntityId) &&
         Objects.equals(this.config, singleEntityVersionLoadRequest.config) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(externalEntityId, config, super.hashCode());
+    return Objects.hash(internalEntityId, externalEntityId, config, super.hashCode());
   }
 
   @Override
@@ -148,6 +178,7 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class SingleEntityVersionLoadRequest {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    internalEntityId: ").append(toIndentedString(internalEntityId)).append("\n");
     sb.append("    externalEntityId: ").append(toIndentedString(externalEntityId)).append("\n");
     sb.append("    config: ").append(toIndentedString(config)).append("\n");
     sb.append("}");
@@ -205,6 +236,11 @@ public class SingleEntityVersionLoadRequest extends VersionLoadRequest {
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
+    }
+
+    // add `internalEntityId` to the URL query string
+    if (getInternalEntityId() != null) {
+      joiner.add(getInternalEntityId().toUrlQueryString(prefix + "internalEntityId" + suffix));
     }
 
     // add `externalEntityId` to the URL query string

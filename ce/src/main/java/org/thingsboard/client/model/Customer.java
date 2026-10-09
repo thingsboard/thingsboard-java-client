@@ -30,7 +30,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.CustomMenuId;
 import org.thingsboard.client.model.CustomerId;
+import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -53,8 +55,12 @@ import org.thingsboard.client.ApiClient;
   Customer.JSON_PROPERTY_EMAIL,
   Customer.JSON_PROPERTY_TITLE,
   Customer.JSON_PROPERTY_TENANT_ID,
+  Customer.JSON_PROPERTY_PARENT_CUSTOMER_ID,
   Customer.JSON_PROPERTY_VERSION,
-  Customer.JSON_PROPERTY_NAME
+  Customer.JSON_PROPERTY_CUSTOM_MENU_ID,
+  Customer.JSON_PROPERTY_CUSTOMER_ID,
+  Customer.JSON_PROPERTY_NAME,
+  Customer.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Customer {
@@ -110,13 +116,29 @@ public class Customer {
   @Nullable
   private TenantId tenantId;
 
+  public static final String JSON_PROPERTY_PARENT_CUSTOMER_ID = "parentCustomerId";
+  @Nullable
+  private CustomerId parentCustomerId;
+
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
 
+  public static final String JSON_PROPERTY_CUSTOM_MENU_ID = "customMenuId";
+  @Nullable
+  private CustomMenuId customMenuId;
+
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
+
   public static final String JSON_PROPERTY_NAME = "name";
   @Nullable
   private String name;
+
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
 
   public Customer() { 
   }
@@ -124,11 +146,15 @@ public class Customer {
   @JsonCreator
   public Customer(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
+    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
+    this.customerId = customerId;
     this.name = name;
+    this.ownerId = ownerId;
   }
 
   public Customer id(@Nullable CustomerId id) {
@@ -433,6 +459,30 @@ public class Customer {
   }
 
 
+  public Customer parentCustomerId(@Nullable CustomerId parentCustomerId) {
+    this.parentCustomerId = parentCustomerId;
+    return this;
+  }
+
+  /**
+   * JSON object with parent Customer Id
+   * @return parentCustomerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getParentCustomerId() {
+    return parentCustomerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setParentCustomerId(@Nullable CustomerId parentCustomerId) {
+    this.parentCustomerId = parentCustomerId;
+  }
+
+
   public Customer version(@Nullable Long version) {
     this.version = version;
     return this;
@@ -457,6 +507,44 @@ public class Customer {
   }
 
 
+  public Customer customMenuId(@Nullable CustomMenuId customMenuId) {
+    this.customMenuId = customMenuId;
+    return this;
+  }
+
+  /**
+   * Get customMenuId
+   * @return customMenuId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomMenuId getCustomMenuId() {
+    return customMenuId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOM_MENU_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomMenuId(@Nullable CustomMenuId customMenuId) {
+    this.customMenuId = customMenuId;
+  }
+
+
+  /**
+   * JSON object with parent Customer Id
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
+  }
+
+
+
+
   /**
    * Name of the customer. Read-only, duplicated from title for backward compatibility
    * @return name
@@ -466,6 +554,20 @@ public class Customer {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
     return name;
+  }
+
+
+
+
+  /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
   }
 
 
@@ -496,13 +598,17 @@ public class Customer {
         Objects.equals(this.email, customer.email) &&
         Objects.equals(this.title, customer.title) &&
         Objects.equals(this.tenantId, customer.tenantId) &&
+        Objects.equals(this.parentCustomerId, customer.parentCustomerId) &&
         Objects.equals(this.version, customer.version) &&
-        Objects.equals(this.name, customer.name);
+        Objects.equals(this.customMenuId, customer.customMenuId) &&
+        Objects.equals(this.customerId, customer.customerId) &&
+        Objects.equals(this.name, customer.name) &&
+        Objects.equals(this.ownerId, customer.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, country, state, city, address, address2, zip, phone, email, title, tenantId, version, name);
+    return Objects.hash(id, createdTime, additionalInfo, country, state, city, address, address2, zip, phone, email, title, tenantId, parentCustomerId, version, customMenuId, customerId, name, ownerId);
   }
 
   @Override
@@ -522,8 +628,12 @@ public class Customer {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    parentCustomerId: ").append(toIndentedString(parentCustomerId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    customMenuId: ").append(toIndentedString(customMenuId)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -636,14 +746,34 @@ public class Customer {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
+    // add `parentCustomerId` to the URL query string
+    if (getParentCustomerId() != null) {
+      joiner.add(getParentCustomerId().toUrlQueryString(prefix + "parentCustomerId" + suffix));
+    }
+
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
+    // add `customMenuId` to the URL query string
+    if (getCustomMenuId() != null) {
+      joiner.add(getCustomMenuId().toUrlQueryString(prefix + "customMenuId" + suffix));
+    }
+
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
+    }
+
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();
