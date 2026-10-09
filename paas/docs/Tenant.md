@@ -58,6 +58,7 @@ A JSON value representing the tenant.
 | maxAiCredits | Long |  | [optional] |
 | edgeEnabled | Boolean |  | [optional] |
 | maxEdges | Long |  | [optional] |
+| maxAgents | Long |  | [optional] |
 | trendzEnabled | Boolean |  | [optional] |
 | whiteLabelingEnabled | Boolean |  | [optional] |
 | _default | Boolean |  | [optional] |
