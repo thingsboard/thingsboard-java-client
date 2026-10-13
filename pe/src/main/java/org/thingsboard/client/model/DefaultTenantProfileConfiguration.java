@@ -56,6 +56,8 @@ import org.thingsboard.client.ApiClient;
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_INTEGRATIONS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_CONVERTERS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_SCHEDULER_EVENTS,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_AGENTS,
+  DefaultTenantProfileConfiguration.JSON_PROPERTY_MAX_AGENT_APPLICATIONS,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_TRANSPORT_TENANT_MSG_RATE_LIMIT,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_TRANSPORT_TENANT_TELEMETRY_MSG_RATE_LIMIT,
   DefaultTenantProfileConfiguration.JSON_PROPERTY_TRANSPORT_TENANT_TELEMETRY_DATA_POINTS_RATE_LIMIT,
@@ -199,6 +201,14 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   public static final String JSON_PROPERTY_MAX_SCHEDULER_EVENTS = "maxSchedulerEvents";
   @Nullable
   private Long maxSchedulerEvents;
+
+  public static final String JSON_PROPERTY_MAX_AGENTS = "maxAgents";
+  @Nullable
+  private Long maxAgents;
+
+  public static final String JSON_PROPERTY_MAX_AGENT_APPLICATIONS = "maxAgentApplications";
+  @Nullable
+  private Long maxAgentApplications;
 
   public static final String JSON_PROPERTY_TRANSPORT_TENANT_MSG_RATE_LIMIT = "transportTenantMsgRateLimit";
   @Nullable
@@ -852,6 +862,54 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMaxSchedulerEvents(@Nullable Long maxSchedulerEvents) {
     this.maxSchedulerEvents = maxSchedulerEvents;
+  }
+
+
+  public DefaultTenantProfileConfiguration maxAgents(@Nullable Long maxAgents) {
+    this.maxAgents = maxAgents;
+    return this;
+  }
+
+  /**
+   * Get maxAgents
+   * @return maxAgents
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAX_AGENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMaxAgents() {
+    return maxAgents;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_AGENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxAgents(@Nullable Long maxAgents) {
+    this.maxAgents = maxAgents;
+  }
+
+
+  public DefaultTenantProfileConfiguration maxAgentApplications(@Nullable Long maxAgentApplications) {
+    this.maxAgentApplications = maxAgentApplications;
+    return this;
+  }
+
+  /**
+   * Get maxAgentApplications
+   * @return maxAgentApplications
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAX_AGENT_APPLICATIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMaxAgentApplications() {
+    return maxAgentApplications;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_AGENT_APPLICATIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxAgentApplications(@Nullable Long maxAgentApplications) {
+    this.maxAgentApplications = maxAgentApplications;
   }
 
 
@@ -2777,6 +2835,8 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
         Objects.equals(this.maxIntegrations, defaultTenantProfileConfiguration.maxIntegrations) &&
         Objects.equals(this.maxConverters, defaultTenantProfileConfiguration.maxConverters) &&
         Objects.equals(this.maxSchedulerEvents, defaultTenantProfileConfiguration.maxSchedulerEvents) &&
+        Objects.equals(this.maxAgents, defaultTenantProfileConfiguration.maxAgents) &&
+        Objects.equals(this.maxAgentApplications, defaultTenantProfileConfiguration.maxAgentApplications) &&
         Objects.equals(this.transportTenantMsgRateLimit, defaultTenantProfileConfiguration.transportTenantMsgRateLimit) &&
         Objects.equals(this.transportTenantTelemetryMsgRateLimit, defaultTenantProfileConfiguration.transportTenantTelemetryMsgRateLimit) &&
         Objects.equals(this.transportTenantTelemetryDataPointsRateLimit, defaultTenantProfileConfiguration.transportTenantTelemetryDataPointsRateLimit) &&
@@ -2861,7 +2921,7 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxDashboards, maxRuleChains, maxEdges, maxResourcesInBytes, maxOtaPackagesInBytes, maxResourceSize, maxReportSizeInBytes, maxIntegrations, maxConverters, maxSchedulerEvents, transportTenantMsgRateLimit, transportTenantTelemetryMsgRateLimit, transportTenantTelemetryDataPointsRateLimit, transportDeviceMsgRateLimit, transportDeviceTelemetryMsgRateLimit, transportDeviceTelemetryDataPointsRateLimit, transportGatewayMsgRateLimit, transportGatewayTelemetryMsgRateLimit, transportGatewayTelemetryDataPointsRateLimit, transportGatewayDeviceMsgRateLimit, transportGatewayDeviceTelemetryMsgRateLimit, transportGatewayDeviceTelemetryDataPointsRateLimit, integrationMsgsPerTenantRateLimit, integrationMsgsPerDeviceRateLimit, integrationMsgsPerAssetRateLimit, tenantEntityExportRateLimit, tenantEntityImportRateLimit, tenantNotificationRequestsRateLimit, tenantNotificationRequestsPerRuleRateLimit, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxTbelExecutions, maxDPStorageDays, maxRuleNodeExecutionsPerMessage, maxDebugModeDurationMinutes, maxEmails, smsEnabled, maxSms, maxCreatedAlarms, maxGeneratedReports, maxAiCredits, tenantServerRestLimitsConfiguration, customerServerRestLimitsConfiguration, maxWsSessionsPerTenant, maxWsSessionsPerCustomer, maxWsSessionsPerRegularUser, maxWsSessionsPerPublicUser, wsMsgQueueLimitPerSession, maxWsSubscriptionsPerTenant, maxWsSubscriptionsPerCustomer, maxWsSubscriptionsPerRegularUser, maxWsSubscriptionsPerPublicUser, wsUpdatesPerSessionRateLimit, cassandraReadQueryTenantCoreRateLimits, cassandraWriteQueryTenantCoreRateLimits, cassandraReadQueryTenantRuleEngineRateLimits, cassandraWriteQueryTenantRuleEngineRateLimits, edgeEventRateLimits, edgeEventRateLimitsPerEdge, edgeUplinkMessagesRateLimits, edgeUplinkMessagesRateLimitsPerEdge, agentEventRateLimits, agentEventRateLimitsPerAgent, agentLogChunkRateLimits, agentLogChunkRateLimitsPerAgent, defaultStorageTtlDays, alarmsTtlDays, rpcTtlDays, queueStatsTtlDays, ruleEngineExceptionsTtlDays, blobEntityTtlDays, reportTtlDays, warnThreshold, maxCalculatedFieldsPerEntity, maxArgumentsPerCF, minAllowedScheduledUpdateIntervalInSecForCF, maxRelationLevelPerCfArgument, maxRelatedEntitiesToReturnPerCfArgument, maxDataPointsPerRollingArg, maxStateSizeInKBytes, maxSingleValueArgumentSizeInKBytes, minAllowedDeduplicationIntervalInSecForCF, minAllowedAggregationIntervalInSecForCF, intermediateAggregationIntervalInSecForCF, cfReevaluationCheckInterval, alarmsReevaluationInterval, aiChatRequestsPerTenantRateLimit, super.hashCode());
+    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxDashboards, maxRuleChains, maxEdges, maxResourcesInBytes, maxOtaPackagesInBytes, maxResourceSize, maxReportSizeInBytes, maxIntegrations, maxConverters, maxSchedulerEvents, maxAgents, maxAgentApplications, transportTenantMsgRateLimit, transportTenantTelemetryMsgRateLimit, transportTenantTelemetryDataPointsRateLimit, transportDeviceMsgRateLimit, transportDeviceTelemetryMsgRateLimit, transportDeviceTelemetryDataPointsRateLimit, transportGatewayMsgRateLimit, transportGatewayTelemetryMsgRateLimit, transportGatewayTelemetryDataPointsRateLimit, transportGatewayDeviceMsgRateLimit, transportGatewayDeviceTelemetryMsgRateLimit, transportGatewayDeviceTelemetryDataPointsRateLimit, integrationMsgsPerTenantRateLimit, integrationMsgsPerDeviceRateLimit, integrationMsgsPerAssetRateLimit, tenantEntityExportRateLimit, tenantEntityImportRateLimit, tenantNotificationRequestsRateLimit, tenantNotificationRequestsPerRuleRateLimit, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxTbelExecutions, maxDPStorageDays, maxRuleNodeExecutionsPerMessage, maxDebugModeDurationMinutes, maxEmails, smsEnabled, maxSms, maxCreatedAlarms, maxGeneratedReports, maxAiCredits, tenantServerRestLimitsConfiguration, customerServerRestLimitsConfiguration, maxWsSessionsPerTenant, maxWsSessionsPerCustomer, maxWsSessionsPerRegularUser, maxWsSessionsPerPublicUser, wsMsgQueueLimitPerSession, maxWsSubscriptionsPerTenant, maxWsSubscriptionsPerCustomer, maxWsSubscriptionsPerRegularUser, maxWsSubscriptionsPerPublicUser, wsUpdatesPerSessionRateLimit, cassandraReadQueryTenantCoreRateLimits, cassandraWriteQueryTenantCoreRateLimits, cassandraReadQueryTenantRuleEngineRateLimits, cassandraWriteQueryTenantRuleEngineRateLimits, edgeEventRateLimits, edgeEventRateLimitsPerEdge, edgeUplinkMessagesRateLimits, edgeUplinkMessagesRateLimitsPerEdge, agentEventRateLimits, agentEventRateLimitsPerAgent, agentLogChunkRateLimits, agentLogChunkRateLimitsPerAgent, defaultStorageTtlDays, alarmsTtlDays, rpcTtlDays, queueStatsTtlDays, ruleEngineExceptionsTtlDays, blobEntityTtlDays, reportTtlDays, warnThreshold, maxCalculatedFieldsPerEntity, maxArgumentsPerCF, minAllowedScheduledUpdateIntervalInSecForCF, maxRelationLevelPerCfArgument, maxRelatedEntitiesToReturnPerCfArgument, maxDataPointsPerRollingArg, maxStateSizeInKBytes, maxSingleValueArgumentSizeInKBytes, minAllowedDeduplicationIntervalInSecForCF, minAllowedAggregationIntervalInSecForCF, intermediateAggregationIntervalInSecForCF, cfReevaluationCheckInterval, alarmsReevaluationInterval, aiChatRequestsPerTenantRateLimit, super.hashCode());
   }
 
   @Override
@@ -2883,6 +2943,8 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
     sb.append("    maxIntegrations: ").append(toIndentedString(maxIntegrations)).append("\n");
     sb.append("    maxConverters: ").append(toIndentedString(maxConverters)).append("\n");
     sb.append("    maxSchedulerEvents: ").append(toIndentedString(maxSchedulerEvents)).append("\n");
+    sb.append("    maxAgents: ").append(toIndentedString(maxAgents)).append("\n");
+    sb.append("    maxAgentApplications: ").append(toIndentedString(maxAgentApplications)).append("\n");
     sb.append("    transportTenantMsgRateLimit: ").append(toIndentedString(transportTenantMsgRateLimit)).append("\n");
     sb.append("    transportTenantTelemetryMsgRateLimit: ").append(toIndentedString(transportTenantTelemetryMsgRateLimit)).append("\n");
     sb.append("    transportTenantTelemetryDataPointsRateLimit: ").append(toIndentedString(transportTenantTelemetryDataPointsRateLimit)).append("\n");
@@ -3082,6 +3144,16 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
     // add `maxSchedulerEvents` to the URL query string
     if (getMaxSchedulerEvents() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smaxSchedulerEvents%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxSchedulerEvents()))));
+    }
+
+    // add `maxAgents` to the URL query string
+    if (getMaxAgents() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaxAgents%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxAgents()))));
+    }
+
+    // add `maxAgentApplications` to the URL query string
+    if (getMaxAgentApplications() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaxAgentApplications%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxAgentApplications()))));
     }
 
     // add `transportTenantMsgRateLimit` to the URL query string
