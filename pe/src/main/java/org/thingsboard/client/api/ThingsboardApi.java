@@ -59,7 +59,6 @@ import org.thingsboard.client.model.CalculatedField;
 import org.thingsboard.client.model.CalculatedFieldType;
 import org.thingsboard.client.model.CfReprocessingValidationResult;
 import org.thingsboard.client.model.ChangePasswordRequest;
-import org.thingsboard.client.model.ChatType;
 import org.thingsboard.client.model.ClaimRequest;
 import org.thingsboard.client.model.ComponentDescriptor;
 import org.thingsboard.client.model.Converter;
@@ -99837,66 +99836,23 @@ public class ThingsboardApi {
   /**
    * listChats
    * 
-   * @param apiRequest {@link ListChatsArgs}
    * @return com.fasterxml.jackson.databind.JsonNode
    * @throws ApiException if fails to make API call
    */
-  @SuppressWarnings({"deprecation", "removal"})
-  public com.fasterxml.jackson.databind.JsonNode listChats(ListChatsArgs apiRequest) throws ApiException {
-    @Nonnull
-    ChatType chatType = apiRequest.chatType();
-    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = listChatsWithHttpInfo(chatType, null);
+  public com.fasterxml.jackson.databind.JsonNode listChats() throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = listChatsWithHttpInfo(null);
     return localVarResponse.getData();
   }
 
   /**
    * listChats
    * 
-   * @param apiRequest {@link ListChatsArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
    * @throws ApiException if fails to make API call
    */
-  @SuppressWarnings({"deprecation", "removal"})
-  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> listChatsWithHttpInfo(ListChatsArgs apiRequest, Map<String, String> headers) throws ApiException {
-    ChatType chatType = apiRequest.chatType();
-    return listChatsWithHttpInfo(chatType, headers);
-  }
-
-  /**
-   * listChats
-   * 
-   * @param chatType  (required)
-   * @return com.fasterxml.jackson.databind.JsonNode
-   * @throws ApiException if fails to make API call
-   * @deprecated Use {@link #listChats(ListChatsArgs)} instead.
-   *     This overload passes each parameter positionally, so its signature changes whenever a
-   *     parameter is added to this endpoint — breaking source and binary compatibility for
-   *     existing callers on version upgrades. The request-object overload stays compatible because
-   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
-   */
-  @Deprecated(forRemoval = true)
-  public com.fasterxml.jackson.databind.JsonNode listChats(@Nonnull ChatType chatType) throws ApiException {
-    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = listChatsWithHttpInfo(chatType, null);
-    return localVarResponse.getData();
-  }
-
-  /**
-   * listChats
-   * 
-   * @param chatType  (required)
-   * @param headers Optional headers to include in the request
-   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
-   * @throws ApiException if fails to make API call
-   * @deprecated Use {@link #listChats(ListChatsArgs)} instead.
-   *     This overload passes each parameter positionally, so its signature changes whenever a
-   *     parameter is added to this endpoint — breaking source and binary compatibility for
-   *     existing callers on version upgrades. The request-object overload stays compatible because
-   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
-   */
-  @Deprecated(forRemoval = true)
-  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> listChatsWithHttpInfo(@Nonnull ChatType chatType, Map<String, String> headers) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = listChatsRequestBuilder(chatType, headers);
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> listChatsWithHttpInfo(Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = listChatsRequestBuilder(headers);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -99930,14 +99886,9 @@ public class ThingsboardApi {
     }
   }
 
-  private HttpRequest.Builder listChatsRequestBuilder(@Nonnull ChatType chatType, Map<String, String> headers) throws ApiException {
-    // verify the required parameter 'chatType' is set
-    if (chatType == null) {
-      throw new ApiException(400, "Missing the required parameter 'chatType' when calling listChats");
-    }
+  private HttpRequest.Builder listChatsRequestBuilder(Map<String, String> headers) throws ApiException {
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
-    String localVarPath = "/api/ai/chats/{chatType}"
-        .replace("{chatType}", ApiClient.urlEncode(chatType.toString()));
+    String localVarPath = "/api/ai/chats";
     localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
     localVarRequestBuilder.header("Accept", "application/json");
     localVarRequestBuilder.method("GET", HttpRequest.BodyPublishers.noBody());
@@ -99950,34 +99901,6 @@ public class ThingsboardApi {
       memberVarInterceptor.accept(localVarRequestBuilder);
     }
     return localVarRequestBuilder;
-  }
-
-  public static final class ListChatsArgs {
-    @Nonnull
-    private ChatType chatType; //  (required)
-    private ListChatsArgs(Builder builder) {
-      this.chatType = builder.chatType;
-    }
-    @Nonnull
-    public ChatType chatType() {
-      return chatType;
-    }
-    public static Builder builder() {
-      return new Builder();
-    }
-    public static class Builder {
-      private ChatType chatType;
-      public Builder chatType(@Nonnull ChatType chatType) {
-        this.chatType = chatType;
-        return this;
-      }
-      public ListChatsArgs build() {
-        if (this.chatType == null) {
-          throw new IllegalArgumentException("Required parameter 'chatType' is not set for listChats");
-        }
-        return new ListChatsArgs(this);
-      }
-    }
   }
 
   /**
@@ -103255,7 +103178,7 @@ public class ThingsboardApi {
 
   /**
    * Import the bulk of edges (processEdgesBulkImport)
-   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param apiRequest {@link ProcessEdgesBulkImportArgs}
    * @return BulkImportResultEdge
    * @throws ApiException if fails to make API call
@@ -103270,7 +103193,7 @@ public class ThingsboardApi {
 
   /**
    * Import the bulk of edges (processEdgesBulkImport)
-   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param apiRequest {@link ProcessEdgesBulkImportArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;BulkImportResultEdge&gt;
@@ -103284,7 +103207,7 @@ public class ThingsboardApi {
 
   /**
    * Import the bulk of edges (processEdgesBulkImport)
-   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param bulkImportRequest  (required)
    * @return BulkImportResultEdge
    * @throws ApiException if fails to make API call
@@ -103302,7 +103225,7 @@ public class ThingsboardApi {
 
   /**
    * Import the bulk of edges (processEdgesBulkImport)
-   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority.
+   * There&#39;s an ability to import the bulk of edges using the only .csv file.  Available for users with &#39;TENANT_ADMIN&#39; authority.
    * @param bulkImportRequest  (required)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;BulkImportResultEdge&gt;
