@@ -55,6 +55,7 @@ import org.thingsboard.client.ApiClient;
   TenantAddonData.JSON_PROPERTY_MAX_AI_CREDITS,
   TenantAddonData.JSON_PROPERTY_EDGE_ENABLED,
   TenantAddonData.JSON_PROPERTY_MAX_EDGES,
+  TenantAddonData.JSON_PROPERTY_MAX_AGENTS,
   TenantAddonData.JSON_PROPERTY_TRENDZ_ENABLED,
   TenantAddonData.JSON_PROPERTY_WHITE_LABELING_ENABLED,
   TenantAddonData.JSON_PROPERTY_DEFAULT
@@ -132,6 +133,10 @@ public class TenantAddonData {
   public static final String JSON_PROPERTY_MAX_EDGES = "maxEdges";
   @Nullable
   private Long maxEdges;
+
+  public static final String JSON_PROPERTY_MAX_AGENTS = "maxAgents";
+  @Nullable
+  private Long maxAgents;
 
   public static final String JSON_PROPERTY_TRENDZ_ENABLED = "trendzEnabled";
   @Nullable
@@ -580,6 +585,30 @@ public class TenantAddonData {
   }
 
 
+  public TenantAddonData maxAgents(@Nullable Long maxAgents) {
+    this.maxAgents = maxAgents;
+    return this;
+  }
+
+  /**
+   * Get maxAgents
+   * @return maxAgents
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAX_AGENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMaxAgents() {
+    return maxAgents;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_AGENTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxAgents(@Nullable Long maxAgents) {
+    this.maxAgents = maxAgents;
+  }
+
+
   public TenantAddonData trendzEnabled(@Nullable Boolean trendzEnabled) {
     this.trendzEnabled = trendzEnabled;
     return this;
@@ -682,6 +711,7 @@ public class TenantAddonData {
         Objects.equals(this.maxAiCredits, tenantAddonData.maxAiCredits) &&
         Objects.equals(this.edgeEnabled, tenantAddonData.edgeEnabled) &&
         Objects.equals(this.maxEdges, tenantAddonData.maxEdges) &&
+        Objects.equals(this.maxAgents, tenantAddonData.maxAgents) &&
         Objects.equals(this.trendzEnabled, tenantAddonData.trendzEnabled) &&
         Objects.equals(this.whiteLabelingEnabled, tenantAddonData.whiteLabelingEnabled) &&
         Objects.equals(this._default, tenantAddonData._default);
@@ -689,7 +719,7 @@ public class TenantAddonData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxIntegrations, maxConverters, maxCalculatedFieldsPerEntity, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxDPStorageDays, maxCreatedAlarms, maxEmails, maxSms, maxAiCredits, edgeEnabled, maxEdges, trendzEnabled, whiteLabelingEnabled, _default);
+    return Objects.hash(maxDevices, maxAssets, maxCustomers, maxUsers, maxIntegrations, maxConverters, maxCalculatedFieldsPerEntity, maxTransportMessages, maxTransportDataPoints, maxREExecutions, maxJSExecutions, maxDPStorageDays, maxCreatedAlarms, maxEmails, maxSms, maxAiCredits, edgeEnabled, maxEdges, maxAgents, trendzEnabled, whiteLabelingEnabled, _default);
   }
 
   @Override
@@ -714,6 +744,7 @@ public class TenantAddonData {
     sb.append("    maxAiCredits: ").append(toIndentedString(maxAiCredits)).append("\n");
     sb.append("    edgeEnabled: ").append(toIndentedString(edgeEnabled)).append("\n");
     sb.append("    maxEdges: ").append(toIndentedString(maxEdges)).append("\n");
+    sb.append("    maxAgents: ").append(toIndentedString(maxAgents)).append("\n");
     sb.append("    trendzEnabled: ").append(toIndentedString(trendzEnabled)).append("\n");
     sb.append("    whiteLabelingEnabled: ").append(toIndentedString(whiteLabelingEnabled)).append("\n");
     sb.append("    _default: ").append(toIndentedString(_default)).append("\n");
@@ -852,6 +883,11 @@ public class TenantAddonData {
     // add `maxEdges` to the URL query string
     if (getMaxEdges() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smaxEdges%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxEdges()))));
+    }
+
+    // add `maxAgents` to the URL query string
+    if (getMaxAgents() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaxAgents%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxAgents()))));
     }
 
     // add `trendzEnabled` to the URL query string
