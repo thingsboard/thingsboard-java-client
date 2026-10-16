@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **output** | **Output** |  | [optional] |
 | **type** | **String** |  | |
+| **output** | **Output** |  | [optional] |
 
 
 
@@ -18,49 +18,49 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | arguments | Map<String, Argument> |  |  |
-| createRules | Map<String, AlarmRule> |  |  |
 | clearRule | AlarmRule |  | [optional] |
+| createRules | Map<String, AlarmRule> |  |  |
 | propagate | Boolean |  | [optional] |
+| propagateRelationTypes | List<String> |  | [optional] |
 | propagateToOwner | Boolean |  | [optional] |
 | propagateToOwnerHierarchy | Boolean |  | [optional] |
 | propagateToTenant | Boolean |  | [optional] |
-| propagateRelationTypes | List<String> |  | [optional] |
 
 #### EntityAggregationCalculatedFieldConfiguration  *(type=`ENTITY_AGGREGATION`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | arguments | Map<String, Argument> |  |  |
-| metrics | Map<String, AggMetric> |  |  |
 | interval | AggInterval |  |  |
-| watermark | Watermark |  | [optional] |
+| metrics | Map<String, AggMetric> |  |  |
 | produceIntermediateResult | Boolean |  | [optional] |
+| watermark | Watermark |  | [optional] |
 
 #### GeofencingCalculatedFieldConfiguration  *(type=`GEOFENCING`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | entityCoordinates | EntityCoordinates |  |  |
-| zoneGroups | Map<String, ZoneGroupConfiguration> |  |  |
 | scheduledUpdateEnabled | Boolean |  | [optional] |
 | scheduledUpdateInterval | Integer |  | [optional] |
+| zoneGroups | Map<String, ZoneGroupConfiguration> |  |  |
 
 #### PropagationCalculatedFieldConfiguration  *(type=`PROPAGATION`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
+| applyExpressionToResolvedArguments | Boolean |  | [optional] |
 | arguments | Map<String, Argument> |  |  |
 | expression | String |  | [optional] |
 | relation | RelationPathLevel |  |  |
-| applyExpressionToResolvedArguments | Boolean |  | [optional] |
 
 #### RelatedEntitiesAggregationCalculatedFieldConfiguration  *(type=`RELATED_ENTITIES_AGGREGATION`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| relation | RelationPathLevel |  |  |
 | arguments | Map<String, Argument> |  |  |
 | deduplicationIntervalInSec | Long |  | [optional] |
 | metrics | Map<String, AggMetric> |  |  |
-| useLatestTs | Boolean |  | [optional] |
-| scheduledUpdateInterval | Integer |  | [optional] |
+| relation | RelationPathLevel |  |  |
 | scheduledUpdateEnabled | Boolean |  | [optional] |
+| scheduledUpdateInterval | Integer |  | [optional] |
+| useLatestTs | Boolean |  | [optional] |
 
 #### ScriptCalculatedFieldConfiguration  *(type=`SCRIPT`)*
 | Name | Type | Description | Notes |
@@ -77,7 +77,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### Output
 | Name | Type | Description | Notes |
@@ -114,14 +114,6 @@
 | condition | AlarmCondition |  |  |
 | alarmDetails | String |  | [optional] |
 | dashboardId | DashboardId |  | [optional] |
-
-#### AggMetric
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| function | AggFunction |  | [optional] |
-| filter | String |  | [optional] |
-| input | AggInput |  | [optional] |
-| defaultValue | Double |  | [optional] |
 
 #### AggInterval
 | Name | Type | Description | Notes |
@@ -176,6 +168,14 @@
 |------|------|-------------|-------|
 | tz | String |  |  |
 | offsetSec | Long |  | [optional] |
+
+#### AggMetric
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| function | AggFunction |  | [optional] |
+| filter | String |  | [optional] |
+| input | AggInput |  | [optional] |
+| defaultValue | Double |  | [optional] |
 
 #### Watermark
 | Name | Type | Description | Notes |
@@ -308,7 +308,7 @@
 *See AttributesOutputStrategy for properties.*
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 #### ArgumentType (enum)
 `TS_LATEST` | `ATTRIBUTE` | `TS_ROLLING`

@@ -10,7 +10,9 @@
 
 ```
 com.fasterxml.jackson.databind.JsonNode activateInstance(@Nonnull String licenseSecret, @Nonnull String releaseDate) // Activate edge instance (activateInstance)
+com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion) // Activate edge instance (activateInstance)
 com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body) // Check edge license (checkInstance)
+com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nonnull Object body) // Check edge license (checkInstance)
 void deleteEdge(@Nonnull String edgeId) // Delete edge (deleteEdge)
 List<Edge> findEdgesByQuery(@Nonnull EdgeSearchQuery edgeSearchQuery) // Find related edges (findEdgesByQuery)
 String findMissingToRelatedRuleChains(@Nonnull String edgeId) // Find missing rule chains (findMissingToRelatedRuleChains)
@@ -62,6 +64,33 @@ Activates edge license on license portal.
 **com.fasterxml.jackson.databind.JsonNode**
 
 
+## activateInstanceV2
+
+```
+com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion)
+```
+
+**POST** `/api/v2/license/activateInstance`
+
+Activate edge instance (activateInstance)
+
+Activates edge license (V1/V2) on license portal.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **licenseSecret** | **String** |  | |
+| **releaseDate** | **String** |  | |
+| **clusterId** | **String** |  | |
+| **protocolVersion** | **String** |  | [optional] |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
 ## checkInstance
 
 ```
@@ -73,6 +102,30 @@ com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body)
 Check edge license (checkInstance)
 
 Checks license request from edge service by forwarding request to license portal.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
+## checkInstanceV2
+
+```
+com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nonnull Object body)
+```
+
+**POST** `/api/v2/license/checkInstance`
+
+Check edge license (checkInstance)
+
+Checks license request (V1/V2) from edge service by forwarding request to license portal.
 
 
 ### Parameters
@@ -177,7 +230,7 @@ Returns a page of edge info objects owned by the tenant or the customer of a cur
 |------------- | ------------- | ------------- | -------------|
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 | **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
@@ -208,7 +261,7 @@ Returns a page of edge info objects owned by the specified customer. You can spe
 | **customerId** | **String** | A string value representing the customer id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **pageSize** | **Integer** | Maximum amount of entities in a one page | |
 | **page** | **Integer** | Sequence number of page starting from 0 | |
-| **includeCustomers** | **Boolean** | Include customer or sub-customer entities | [optional] |
+| **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |
 | **type** | **String** | A string value representing the edge type. For example, 'default' | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the edge name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, label, customerTitle] |
@@ -578,7 +631,7 @@ BulkImportResultEdge processEdgesBulkImport(@Nonnull BulkImportRequest bulkImpor
 
 Import the bulk of edges (processEdgesBulkImport)
 
-There's an ability to import the bulk of edges using the only .csv file.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+There's an ability to import the bulk of edges using the only .csv file.  Available for users with 'TENANT_ADMIN' authority.
 
 
 ### Parameters

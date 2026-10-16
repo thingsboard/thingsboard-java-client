@@ -160,6 +160,20 @@ public class EntityGroup {
     
     API_KEY(EntityType.valueOf("API_KEY")),
     
+    AGENT(EntityType.valueOf("AGENT")),
+    
+    AGENT_APPLICATION(EntityType.valueOf("AGENT_APPLICATION")),
+    
+    AGENT_APP_EVENT(EntityType.valueOf("AGENT_APP_EVENT")),
+    
+    AGENT_APP_UNIT(EntityType.valueOf("AGENT_APP_UNIT")),
+    
+    AGENT_APP_PROFILE(EntityType.valueOf("AGENT_APP_PROFILE")),
+    
+    AGENT_PROFILE(EntityType.valueOf("AGENT_PROFILE")),
+    
+    AGENT_BULK_ACTION(EntityType.valueOf("AGENT_BULK_ACTION")),
+    
     BILLING_CUSTOMER(EntityType.valueOf("BILLING_CUSTOMER")),
     
     SUBSCRIPTION_PLAN(EntityType.valueOf("SUBSCRIPTION_PLAN")),

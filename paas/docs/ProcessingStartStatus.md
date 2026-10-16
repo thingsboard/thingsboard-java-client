@@ -1,14 +1,16 @@
 
-# ComplexOperation
+# ProcessingStartStatus
 
-`org.thingsboard.client.model.ComplexOperation`
+`org.thingsboard.client.model.ProcessingStartStatus`
 
 ## Enum Values
 
 
-* `AND` (value: `"AND"`)
+* `DELIVERY_FAIL` (value: `"DELIVERY_FAIL"`)
 
-* `OR` (value: `"OR"`)
+* `PENDING` (value: `"PENDING"`)
+
+* `DELIVERED` (value: `"DELIVERED"`)
 
 
 

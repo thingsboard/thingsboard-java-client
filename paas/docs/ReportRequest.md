@@ -11,6 +11,7 @@
 | **reportTemplateConfig** | **ReportTemplateConfig** | Json object representing the report template config. | [optional] |
 | **timezone** | **String** | Timezone used for report generation. | [optional] |
 | **userId** | **String** | A string value representing the user id. | [optional] |
+| **makePublic** | **Boolean** | A boolean value indicating whether the generated report should be made public. | [optional] |
 | **originator** | **EntityId** | Json object representing the originator id. | [optional] |
 | **targets** | **List\<UUID\>** |  | [optional] |
 | **notificationTemplateId** | **NotificationTemplateId** |  | [optional] |
@@ -19,7 +20,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### ReportTemplateConfig
 | Name | Type | Description | Notes |
@@ -255,7 +256,7 @@
 | timestampColumnSettings | ColumnSettings |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 #### EntityFilter
 | Name | Type | Description | Notes |
@@ -486,7 +487,7 @@
 #### ComplexFilterPredicate  *(extends KeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<KeyFilterPredicate> |  | [optional] |
 
 #### NumericFilterPredicate  *(extends KeyFilterPredicate, type=`NUMERIC`)*
@@ -782,8 +783,8 @@
 | decimals | Integer |  | [optional] |
 | interval | Double |  | [optional] |
 | splitNumber | Integer |  | [optional] |
-| min | Double |  | [optional] |
-| max | Double |  | [optional] |
+| min | SimpleValueSourceConfig |  | [optional] |
+| max | SimpleValueSourceConfig |  | [optional] |
 
 #### TimeSeriesChartXAxisSettings
 | Name | Type | Description | Notes |
@@ -860,8 +861,8 @@
 | methodName | String |  | [optional] |
 | fileName | String |  | [optional] |
 | lineNumber | Integer |  | [optional] |
-| nativeMethod | Boolean |  | [optional] |
 | className | String |  | [optional] |
+| nativeMethod | Boolean |  | [optional] |
 
 #### AliasEntityType (enum)
 `CURRENT_CUSTOMER` | `CURRENT_TENANT` | `CURRENT_USER` | `CURRENT_USER_OWNER`
@@ -896,7 +897,7 @@
 | userValue | Boolean |  | [optional] |
 | dynamicValue | DynamicValueBoolean |  | [optional] |
 
-#### ComplexOperation (enum)
+#### AlarmRuleComplexOperation (enum)
 `AND` | `OR`
 
 #### Aggregation (enum)
@@ -964,6 +965,17 @@
 
 #### AxisPosition (enum)
 `LEFT` | `RIGHT` | `TOP` | `BOTTOM`
+
+#### SimpleValueSourceConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ValueSourceType |  | [optional] |
+| value | Double |  | [optional] |
+| latestKeyType | String |  | [optional] |
+| latestKey | String |  | [optional] |
+| entityKeyType | String |  | [optional] |
+| entityAlias | String |  | [optional] |
+| entityKey | String |  | [optional] |
 
 #### TimeSeriesChartNoAggregationBarWidthStrategy (enum)
 `GROUP` | `SEPARATE`

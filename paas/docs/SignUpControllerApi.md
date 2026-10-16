@@ -40,7 +40,7 @@ JwtPair acceptPrivacyPolicy()
 
 Accept privacy policy (acceptPrivacyPolicy)
 
-Accept privacy policy by the current user.
+Accept privacy policy by the current user. Stores the acceptance flag 'privacyPolicyAccepted' and the acceptance time 'privacyPolicyAcceptedTs' (epoch milliseconds) in the user's additional info. Repeated acceptance overwrites the stored time.
 
 ### Return type
 
@@ -72,7 +72,7 @@ JwtPair acceptTermsOfUse()
 
 Accept Terms of Use (acceptTermsOfUse)
 
-Accept Terms of Use by the current user.
+Accept Terms of Use by the current user. Stores the acceptance flag 'termsOfUseAccepted' and the acceptance time 'termsOfUseAcceptedTs' (epoch milliseconds) in the user's additional info. Repeated acceptance overwrites the stored time.
 
 ### Return type
 

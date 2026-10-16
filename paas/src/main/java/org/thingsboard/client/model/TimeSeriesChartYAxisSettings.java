@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AxisPosition;
 import org.thingsboard.client.model.Font;
+import org.thingsboard.client.model.SimpleValueSourceConfig;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -146,11 +147,11 @@ public class TimeSeriesChartYAxisSettings {
 
   public static final String JSON_PROPERTY_MIN = "min";
   @Nullable
-  private Double min;
+  private SimpleValueSourceConfig min;
 
   public static final String JSON_PROPERTY_MAX = "max";
   @Nullable
-  private Double max;
+  private SimpleValueSourceConfig max;
 
   public TimeSeriesChartYAxisSettings() { 
   }
@@ -635,7 +636,7 @@ public class TimeSeriesChartYAxisSettings {
   }
 
 
-  public TimeSeriesChartYAxisSettings min(@Nullable Double min) {
+  public TimeSeriesChartYAxisSettings min(@Nullable SimpleValueSourceConfig min) {
     this.min = min;
     return this;
   }
@@ -647,19 +648,19 @@ public class TimeSeriesChartYAxisSettings {
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_MIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getMin() {
+  public SimpleValueSourceConfig getMin() {
     return min;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMin(@Nullable Double min) {
+  public void setMin(@Nullable SimpleValueSourceConfig min) {
     this.min = min;
   }
 
 
-  public TimeSeriesChartYAxisSettings max(@Nullable Double max) {
+  public TimeSeriesChartYAxisSettings max(@Nullable SimpleValueSourceConfig max) {
     this.max = max;
     return this;
   }
@@ -671,14 +672,14 @@ public class TimeSeriesChartYAxisSettings {
   @Nullable
   @JsonProperty(value = JSON_PROPERTY_MAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Double getMax() {
+  public SimpleValueSourceConfig getMax() {
     return max;
   }
 
 
   @JsonProperty(value = JSON_PROPERTY_MAX, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMax(@Nullable Double max) {
+  public void setMax(@Nullable SimpleValueSourceConfig max) {
     this.max = max;
   }
 
@@ -899,12 +900,12 @@ public class TimeSeriesChartYAxisSettings {
 
     // add `min` to the URL query string
     if (getMin() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smin%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMin()))));
+      joiner.add(getMin().toUrlQueryString(prefix + "min" + suffix));
     }
 
     // add `max` to the URL query string
     if (getMax() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smax%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMax()))));
+      joiner.add(getMax().toUrlQueryString(prefix + "max" + suffix));
     }
 
     return joiner.toString();

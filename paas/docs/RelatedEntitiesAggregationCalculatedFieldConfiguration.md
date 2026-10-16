@@ -9,31 +9,25 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **relation** | **RelationPathLevel** |  | |
 | **arguments** | **Map\<String, Argument\>** |  | |
 | **deduplicationIntervalInSec** | **Long** |  | [optional] |
 | **metrics** | **Map\<String, AggMetric\>** |  | |
-| **useLatestTs** | **Boolean** |  | [optional] |
-| **scheduledUpdateInterval** | **Integer** |  | [optional] |
+| **relation** | **RelationPathLevel** |  | |
 | **scheduledUpdateEnabled** | **Boolean** |  | [optional] |
+| **scheduledUpdateInterval** | **Integer** |  | [optional] |
+| **useLatestTs** | **Boolean** |  | [optional] |
 
 
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### CalculatedFieldConfiguration
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| output | Output |  | [optional] |
 | type | String |  |  |
-
-#### RelationPathLevel
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| direction | EntitySearchDirection |  |  |
-| relationType | String |  |  |
+| output | Output |  | [optional] |
 
 #### Argument
 | Name | Type | Description | Notes |
@@ -53,6 +47,12 @@
 | input | AggInput |  | [optional] |
 | defaultValue | Double |  | [optional] |
 
+#### RelationPathLevel
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| direction | EntitySearchDirection |  |  |
+| relationType | String |  |  |
+
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -71,9 +71,6 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | strategy | TimeSeriesOutputStrategy |  | [optional] |
-
-#### EntitySearchDirection (enum)
-`FROM` | `TO`
 
 #### CfArgumentDynamicSourceConfiguration
 | Name | Type | Description | Notes |
@@ -113,11 +110,14 @@
 |------|------|-------------|-------|
 | key | String |  | [optional] |
 
+#### EntitySearchDirection (enum)
+`FROM` | `TO`
+
 #### AttributeScope (enum)
 `CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 #### ArgumentType (enum)
 `TS_LATEST` | `ATTRIBUTE` | `TS_ROLLING`

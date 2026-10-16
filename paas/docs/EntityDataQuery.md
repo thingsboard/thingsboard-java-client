@@ -11,15 +11,17 @@ Entity data query to find entities. Page size is capped at 100.
 |------------ | ------------- | ------------- | -------------|
 | **entityFilter** | **EntityFilter** |  | [optional] |
 | **keyFilters** | **List\<KeyFilter\>** |  | [optional] |
+| **keyFiltersOperation** | **AlarmRuleComplexOperation** |  | [optional] |
 | **pageLink** | **EntityDataPageLink** |  | [optional] |
 | **entityFields** | **List\<EntityKey\>** |  | [optional] |
 | **latestValues** | **List\<EntityKey\>** |  | [optional] |
+| **keyFiltersOperationOrDefault** | **AlarmRuleComplexOperation** |  | [optional] |
 
 
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### EntityFilter
 | Name | Type | Description | Notes |
@@ -200,6 +202,9 @@ Entity data query to find entities. Page size is capped at 100.
 | valueType | EntityKeyValueType |  | [optional] |
 | predicate | KeyFilterPredicate |  | [optional] |
 
+#### AlarmRuleComplexOperation (enum)
+`AND` | `OR`
+
 #### EntityDataPageLink
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -232,7 +237,7 @@ Entity data query to find entities. Page size is capped at 100.
 #### ComplexFilterPredicate  *(extends KeyFilterPredicate, type=`COMPLEX`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| operation | ComplexOperation |  | [optional] |
+| operation | AlarmRuleComplexOperation |  | [optional] |
 | predicates | List<KeyFilterPredicate> |  | [optional] |
 
 #### NumericFilterPredicate  *(extends KeyFilterPredicate, type=`NUMERIC`)*
@@ -265,7 +270,7 @@ Entity data query to find entities. Page size is capped at 100.
 | id | UUID | ID of the entity, time-based UUID v1 |  |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 #### EntitySearchDirection (enum)
 `FROM` | `TO`
@@ -312,9 +317,6 @@ Entity data query to find entities. Page size is capped at 100.
 | defaultValue | Boolean |  | [optional] |
 | userValue | Boolean |  | [optional] |
 | dynamicValue | DynamicValueBoolean |  | [optional] |
-
-#### ComplexOperation (enum)
-`AND` | `OR`
 
 #### DynamicValueString
 | Name | Type | Description | Notes |

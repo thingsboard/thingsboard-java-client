@@ -16,7 +16,7 @@ A JSON value representing the rule chains.
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BillingCustomerId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CouponId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `ProductId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `SubscriptionAddonId`, `SubscriptionId`, `SubscriptionPlanId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### RuleChain
 | Name | Type | Description | Notes |
@@ -42,6 +42,7 @@ A JSON value representing the rule chains.
 | nodes | List<RuleNode> | List of rule node JSON objects |  |
 | connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes |  |
 | ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. |  |
+| notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
 
 #### RuleChainType (enum)
 `CORE` | `EDGE`
@@ -78,6 +79,21 @@ A JSON value representing the rule chains.
 | additionalInfo | com.fasterxml.jackson.databind.JsonNode | JSON object with the additional information about the connection. |  |
 | type | String | Type of the relation. Typically indicated the result of processing by the 'from' rule node. For example, 'Success' or 'Failure' |  |
 
+#### RuleChainNote
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | String | Unique identifier of the note on the canvas | [optional] |
+| x | Integer | Horizontal position of the note on the canvas, in pixels | [optional] |
+| y | Integer | Vertical position of the note on the canvas, in pixels | [optional] |
+| width | Integer | Width of the note, in pixels | [optional] |
+| height | Integer | Height of the note, in pixels | [optional] |
+| content | String | Markdown or HTML content of the note | [optional] |
+| backgroundColor | String | Background color of the note in CSS hex format, e.g. '#FFF9C4' | [optional] |
+| borderColor | String | Border color of the note in CSS hex format, e.g. '#E6C800' | [optional] |
+| borderWidth | Integer | Border width of the note in pixels | [optional] |
+| applyDefaultMarkdownStyle | Boolean | Whether to apply the default markdown stylesheet to the note content | [optional] |
+| markdownCss | String | Custom CSS styles applied to the note content | [optional] |
+
 #### DebugSettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -86,7 +102,7 @@ A JSON value representing the rule chains.
 | allEnabledUntil | Long | Timestamp of the end time for the processing debug events. | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (52 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 ---
 

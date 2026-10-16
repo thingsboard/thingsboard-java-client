@@ -100,6 +100,8 @@ public enum Resource {
   
   DASHBOARD_GROUP("DASHBOARD_GROUP"),
   
+  AGENT_GROUP("AGENT_GROUP"),
+  
   ROLE("ROLE"),
   
   GROUP_PERMISSION("GROUP_PERMISSION"),
@@ -137,6 +139,12 @@ public enum Resource {
   REPORT("REPORT"),
   
   AI_MODEL("AI_MODEL"),
+  
+  AGENT("AGENT"),
+  
+  AGENT_APP_PROFILE("AGENT_APP_PROFILE"),
+  
+  AGENT_PROFILE("AGENT_PROFILE"),
   
   AI("AI"),
   

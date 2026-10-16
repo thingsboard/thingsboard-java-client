@@ -28,17 +28,29 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets ComplexOperation
+ * Gets or Sets AgentAppArgumentSource
  */
-public enum ComplexOperation {
+public enum AgentAppArgumentSource {
   
-  AND("AND"),
+  AGENT("AGENT"),
   
-  OR("OR");
+  OWNER("OWNER"),
+  
+  RELATED_ENTITY("RELATED_ENTITY"),
+  
+  TENANT("TENANT"),
+  
+  DEVICE("DEVICE"),
+  
+  ASSET("ASSET"),
+  
+  CUSTOMER("CUSTOMER"),
+  
+  EDGE("EDGE");
 
   private String value;
 
-  ComplexOperation(String value) {
+  AgentAppArgumentSource(String value) {
     this.value = value;
   }
 
@@ -53,8 +65,8 @@ public enum ComplexOperation {
   }
 
   @JsonCreator
-  public static ComplexOperation fromValue(String value) {
-    for (ComplexOperation b : ComplexOperation.values()) {
+  public static AgentAppArgumentSource fromValue(String value) {
+    for (AgentAppArgumentSource b : AgentAppArgumentSource.values()) {
       if (b.value.equals(value)) {
         return b;
       }
