@@ -14,17 +14,20 @@ void checkRepositoryAccess(@Nonnull RepositorySettings repositorySettings) // Ch
 UpdateMessage checkUpdates() // Check for new Platform Releases (checkUpdates)
 void deleteAutoCommitSettings() // Delete auto commit settings (deleteAutoCommitSettings)
 void deleteRepositorySettings() // Delete repository settings (deleteRepositorySettings)
-AdminSettings getAdminSettings(@Nonnull String key) // Get the Administration Settings object using key (getAdminSettings)
+AdminSettings getAdminSettings(@Nonnull String key, @Nullable Boolean systemByDefault) // Get the Administration Settings object using key (getAdminSettings)
 Map<String, AutoVersionCreateConfig> getAutoCommitSettings() // Get auto commit settings (getAutoCommitSettings)
 FeaturesInfo getFeaturesInfo() // Get features info (getFeaturesInfo)
 JwtSettings getJwtSettings() // Get the JWT Settings object (getJwtSettings)
+LicenseUsageInfo getLicenseUsageInfo() // Get license usage info (getLicenseUsageInfo)
 String getMailOAuth2AuthorizationUrl() // Redirect user to mail provider login page. 
 String getMailProcessingUrl() // Get OAuth2 log in processing URL (getMailProcessingUrl)
 RepositorySettings getRepositorySettings() // Get repository settings (getRepositorySettings)
 RepositorySettingsInfo getRepositorySettingsInfo() // getRepositorySettingsInfo
 SecuritySettings getSecuritySettings() // Get the Security Settings object (getSecuritySettings)
+SubscriptionInfo getSubscriptionInfo() // Get subscription info (getSubscriptionInfo)
 SystemInfo getSystemInfo() // Get system info (getSystemInfo)
 void handleMailOAuth2Callback(@Nonnull String code, @Nonnull String state) // handleMailOAuth2Callback
+SubscriptionInfo refreshLicense() // Refresh license (refreshLicense)
 Boolean repositorySettingsExists() // Check repository settings exists (repositorySettingsExists)
 AdminSettings saveAdminSettings(@Nonnull AdminSettings adminSettings) // Creates or Updates the Administration Settings (saveAdminSettings)
 Map<String, AutoVersionCreateConfig> saveAutoCommitSettings(@Nonnull Map<String, AutoVersionCreateConfig> requestBody) // Creates or Updates the auto commit settings (saveAutoCommitSettings)
@@ -131,14 +134,14 @@ null (empty response body)
 ## getAdminSettings
 
 ```
-AdminSettings getAdminSettings(@Nonnull String key)
+AdminSettings getAdminSettings(@Nonnull String key, @Nullable Boolean systemByDefault)
 ```
 
 **GET** `/api/admin/settings/{key}`
 
 Get the Administration Settings object using key (getAdminSettings)
 
-Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with 'SYS_ADMIN' authority.
+Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
 
 
 ### Parameters
@@ -146,6 +149,7 @@ Get the Administration Settings object using specified string key. Referencing n
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **key** | **String** | A string value of the key (e.g. 'general' or 'mail'). | |
+| **systemByDefault** | **Boolean** | Use system settings if settings are not defined on tenant level. | [optional] [default to false] |
 
 ### Return type
 
@@ -201,6 +205,23 @@ Get the JWT Settings object that contains JWT token policy, etc.   Available for
 ### Return type
 
 **JwtSettings**
+
+
+## getLicenseUsageInfo
+
+```
+LicenseUsageInfo getLicenseUsageInfo()
+```
+
+**GET** `/api/admin/licenseUsageInfo`
+
+Get license usage info (getLicenseUsageInfo)
+
+Get license usage info.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**LicenseUsageInfo**
 
 
 ## getMailOAuth2AuthorizationUrl
@@ -279,11 +300,28 @@ SecuritySettings getSecuritySettings()
 
 Get the Security Settings object (getSecuritySettings)
 
-Get the Security Settings object that contains password policy, etc.  Available for users with 'SYS_ADMIN' authority.
+Get the Security Settings object that contains password policy, etc.  Available for users with 'SYS_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
 
 ### Return type
 
 **SecuritySettings**
+
+
+## getSubscriptionInfo
+
+```
+SubscriptionInfo getSubscriptionInfo()
+```
+
+**GET** `/api/admin/subscriptionInfo`
+
+Get subscription info (getSubscriptionInfo)
+
+Get subscription info.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**SubscriptionInfo**
 
 
 ## getSystemInfo
@@ -326,6 +364,23 @@ handleMailOAuth2Callback
 null (empty response body)
 
 
+## refreshLicense
+
+```
+SubscriptionInfo refreshLicense()
+```
+
+**POST** `/api/admin/refreshLicense`
+
+Refresh license (refreshLicense)
+
+Refresh license info.   Available for users with 'SYS_ADMIN' authority.
+
+### Return type
+
+**SubscriptionInfo**
+
+
 ## repositorySettingsExists
 
 ```
@@ -353,14 +408,14 @@ AdminSettings saveAdminSettings(@Nonnull AdminSettings adminSettings)
 
 Creates or Updates the Administration Settings (saveAdminSettings)
 
-Creates or Updates the Administration Settings. Platform generates random Administration Settings Id during settings creation. The Administration Settings Id will be present in the response. Specify the Administration Settings Id when you would like to update the Administration Settings. Referencing non-existing Administration Settings Id will cause an error.  Available for users with 'SYS_ADMIN' authority.
+Creates or Updates the Administration Settings. Platform generates random Administration Settings Id during settings creation. The Administration Settings Id will be present in the response. Specify the Administration Settings Id when you would like to update the Administration Settings. Referencing non-existing Administration Settings Id will cause an error.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'WRITE' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **adminSettings** | **AdminSettings** |  | |
+| **adminSettings** | **AdminSettings** | A JSON value representing the Administration Settings. | |
 
 ### Return type
 
@@ -449,7 +504,7 @@ SecuritySettings saveSecuritySettings(@Nonnull SecuritySettings securitySettings
 
 Update Security Settings (saveSecuritySettings)
 
-Updates the Security Settings object that contains password policy, etc.  Available for users with 'SYS_ADMIN' authority.
+Updates the Security Settings object that contains password policy, etc.  Available for users with 'SYS_ADMIN' authority.  Security check is performed to verify that the user has 'WRITE' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
 
 
 ### Parameters
@@ -473,7 +528,7 @@ void sendTestMail(@Nonnull AdminSettings adminSettings)
 
 Send test email (sendTestMail)
 
-Attempts to send test email to the System Administrator User using Mail Settings provided as a parameter. You may change the 'To' email in the user profile of the System Administrator.   Available for users with 'SYS_ADMIN' authority.
+Attempts to send test email using Mail Settings provided as a parameter. Email is sent to the address specified in the profile of user who is performing the requestYou may change the 'To' email in the user profile of the System/Tenant Administrator.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
 
 
 ### Parameters
@@ -497,7 +552,7 @@ void sendTestSms(@Nonnull TestSmsRequest testSmsRequest)
 
 Send test sms (sendTestSms)
 
-Attempts to send test sms to the System Administrator User using SMS Settings and phone number provided as a parameters of the request.   Available for users with 'SYS_ADMIN' authority.
+Attempts to send test sms to the System Administrator User using SMS Settings and phone number provided as a parameters of the request.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.  Security check is performed to verify that the user has 'READ' permission for the 'ADMIN_SETTINGS' (for 'SYS_ADMIN' authority) or 'WHITE_LABELING' (for 'TENANT_ADMIN' authority) resource.
 
 
 ### Parameters

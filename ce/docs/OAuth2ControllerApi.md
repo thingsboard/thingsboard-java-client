@@ -29,7 +29,7 @@ void deleteOauth2Client(@Nonnull UUID id)
 
 Delete oauth2 client (deleteOauth2Client)
 
-Deletes the oauth2 client. Referencing non-existing oauth2 client Id will cause an error.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Deletes the oauth2 client. Referencing non-existing oauth2 client Id will cause an error.  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -53,7 +53,7 @@ PageDataOAuth2ClientInfo findOAuth2ClientInfos(@Nonnull Integer pageSize, @Nonnu
 
 Get OAuth2 Client infos (findOAuth2ClientInfos)
 
-  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -81,7 +81,7 @@ List<OAuth2ClientInfo> findTenantOAuth2ClientInfosByIds(@Nonnull List<String> cl
 
 Get OAuth2 Client infos By Ids (findTenantOAuth2ClientInfosByIds)
 
-Fetch OAuth2 Client info objects based on the provided ids.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Fetch OAuth2 Client info objects based on the provided ids.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -105,7 +105,7 @@ String getLoginProcessingUrl()
 
 Get OAuth2 log in processing URL (getLoginProcessingUrl)
 
-Returns the URL enclosed in double quotes. After successful authentication with OAuth2 provider, it makes a redirect to this path so that the platform can do further log in processing. This URL may be configured as 'security.oauth2.loginProcessingUrl' property in yml configuration file, or as 'SECURITY_OAUTH2_LOGIN_PROCESSING_URL' env variable. By default it is '/login/oauth2/code/'  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Returns the URL enclosed in double quotes. After successful authentication with OAuth2 provider, it makes a redirect to this path so that the platform can do further log in processing. This URL may be configured as 'security.oauth2.loginProcessingUrl' property in yml configuration file, or as 'SECURITY_OAUTH2_LOGIN_PROCESSING_URL' env variable. By default it is '/login/oauth2/code/'  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 ### Return type
 
@@ -122,7 +122,7 @@ OAuth2Client getOAuth2ClientById(@Nonnull UUID id)
 
 Get OAuth2 Client by id (getOAuth2ClientById)
 
-  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
@@ -171,7 +171,7 @@ OAuth2Client saveOAuth2Client(@Nonnull OAuth2Client oauth2Client)
 
 Save OAuth2 Client (saveOAuth2Client)
 
-  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+  Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters

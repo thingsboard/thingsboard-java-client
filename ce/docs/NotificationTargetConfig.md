@@ -70,10 +70,20 @@
 | tenantsIds | Set<UUID> |  | [optional] |
 | tenantProfilesIds | Set<UUID> |  | [optional] |
 
+#### UserGroupListFilter  *(extends UsersFilter, type=`USER_GROUP_LIST`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| groupsIds | List<UUID> |  |  |
+
 #### UserListFilter  *(extends UsersFilter, type=`USER_LIST`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | usersIds | List<UUID> |  |  |
+
+#### UserRoleFilter  *(extends UsersFilter, type=`USER_ROLE`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| rolesIds | List<UUID> |  |  |
 
 #### SlackConversationType (enum)
 `DIRECT` | `PUBLIC_CHANNEL` | `PRIVATE_CHANNEL`

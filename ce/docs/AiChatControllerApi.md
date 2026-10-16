@@ -1,0 +1,148 @@
+# AiChatControllerApi
+
+`ThingsboardClient` methods:
+
+> Every method that takes input also has a request-object overload — `<method>(<Method>Args args)`,
+> built via `<Method>Args.builder()...build()`. The `*Args` classes are nested in `ThingsboardApi`,
+> e.g. `import org.thingsboard.client.api.ThingsboardApi.SaveDeviceArgs;`. Prefer that overload in
+> new code: adding an optional parameter to an endpoint changes the flat signatures documented
+> below, but only adds a builder field to `*Args`.
+
+```
+com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body) // createChat
+void deleteChat(@Nonnull UUID chatId) // deleteChat
+com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId) // getChatMessages
+com.fasterxml.jackson.databind.JsonNode listChats() // listChats
+List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull Object body, @Nullable String acceptLanguage) // sendChatMessage
+void updateChat(@Nonnull UUID chatId, @Nonnull Object body) // updateChat
+```
+
+
+## createChat
+
+```
+com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body)
+```
+
+**POST** `/api/ai/chats`
+
+createChat
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
+## deleteChat
+
+```
+void deleteChat(@Nonnull UUID chatId)
+```
+
+**DELETE** `/api/ai/chats/{chatId}`
+
+deleteChat
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **chatId** | **UUID** |  | |
+
+### Return type
+
+null (empty response body)
+
+
+## getChatMessages
+
+```
+com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId)
+```
+
+**GET** `/api/ai/chats/{chatId}/messages`
+
+getChatMessages
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **chatId** | **UUID** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
+## listChats
+
+```
+com.fasterxml.jackson.databind.JsonNode listChats()
+```
+
+**GET** `/api/ai/chats`
+
+listChats
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
+## sendChatMessage
+
+```
+List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull Object body, @Nullable String acceptLanguage)
+```
+
+**POST** `/api/ai/chats/{chatId}/messages`
+
+sendChatMessage
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **chatId** | **UUID** |  | |
+| **xAuthorization** | **String** |  | |
+| **body** | **Object** |  | |
+| **acceptLanguage** | **String** |  | [optional] |
+
+### Return type
+
+**List<Object>**
+
+
+## updateChat
+
+```
+void updateChat(@Nonnull UUID chatId, @Nonnull Object body)
+```
+
+**PATCH** `/api/ai/chats/{chatId}`
+
+updateChat
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **chatId** | **UUID** |  | |
+| **body** | **Object** |  | |
+
+### Return type
+
+null (empty response body)
+

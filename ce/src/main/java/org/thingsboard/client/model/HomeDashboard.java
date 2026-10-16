@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -35,7 +34,9 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.DashboardId;
+import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.ResourceExportData;
 import org.thingsboard.client.model.ShortCustomerInfo;
 import org.thingsboard.client.model.TenantId;
@@ -50,12 +51,14 @@ import org.thingsboard.client.ApiClient;
   HomeDashboard.JSON_PROPERTY_ID,
   HomeDashboard.JSON_PROPERTY_CREATED_TIME,
   HomeDashboard.JSON_PROPERTY_TENANT_ID,
+  HomeDashboard.JSON_PROPERTY_CUSTOMER_ID,
+  HomeDashboard.JSON_PROPERTY_OWNER_ID,
   HomeDashboard.JSON_PROPERTY_TITLE,
   HomeDashboard.JSON_PROPERTY_NAME,
   HomeDashboard.JSON_PROPERTY_IMAGE,
+  HomeDashboard.JSON_PROPERTY_ASSIGNED_CUSTOMERS,
   HomeDashboard.JSON_PROPERTY_MOBILE_HIDE,
   HomeDashboard.JSON_PROPERTY_MOBILE_ORDER,
-  HomeDashboard.JSON_PROPERTY_ASSIGNED_CUSTOMERS,
   HomeDashboard.JSON_PROPERTY_CONFIGURATION,
   HomeDashboard.JSON_PROPERTY_RESOURCES,
   HomeDashboard.JSON_PROPERTY_VERSION,
@@ -75,8 +78,16 @@ public class HomeDashboard {
   @Nullable
   private TenantId tenantId;
 
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
+
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public static final String JSON_PROPERTY_TITLE = "title";
-  @Nonnull
+  @Nullable
   private String title;
 
   public static final String JSON_PROPERTY_NAME = "name";
@@ -87,6 +98,10 @@ public class HomeDashboard {
   @Nullable
   private String image;
 
+  public static final String JSON_PROPERTY_ASSIGNED_CUSTOMERS = "assignedCustomers";
+  @Nullable
+  private Set<ShortCustomerInfo> assignedCustomers = new LinkedHashSet<>();
+
   public static final String JSON_PROPERTY_MOBILE_HIDE = "mobileHide";
   @Nullable
   private Boolean mobileHide;
@@ -94,10 +109,6 @@ public class HomeDashboard {
   public static final String JSON_PROPERTY_MOBILE_ORDER = "mobileOrder";
   @Nullable
   private Integer mobileOrder;
-
-  public static final String JSON_PROPERTY_ASSIGNED_CUSTOMERS = "assignedCustomers";
-  @Nullable
-  private Set<ShortCustomerInfo> assignedCustomers = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
   @Nullable
@@ -122,6 +133,7 @@ public class HomeDashboard {
   public HomeDashboard(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId, 
     @JsonProperty(JSON_PROPERTY_NAME) String name, 
     @JsonProperty(JSON_PROPERTY_IMAGE) String image, 
     @JsonProperty(JSON_PROPERTY_MOBILE_HIDE) Boolean mobileHide, 
@@ -130,6 +142,7 @@ public class HomeDashboard {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
+    this.ownerId = ownerId;
     this.name = name;
     this.image = image;
     this.mobileHide = mobileHide;
@@ -188,7 +201,45 @@ public class HomeDashboard {
 
 
 
-  public HomeDashboard title(@Nonnull String title) {
+  public HomeDashboard customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * JSON object with Customer Id. 
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
+
+
+  /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  public HomeDashboard title(@Nullable String title) {
     this.title = title;
     return this;
   }
@@ -197,17 +248,17 @@ public class HomeDashboard {
    * Title of the dashboard.
    * @return title
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTitle() {
     return title;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TITLE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTitle(@Nonnull String title) {
+  @JsonProperty(value = JSON_PROPERTY_TITLE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTitle(@Nullable String title) {
     this.title = title;
   }
 
@@ -235,34 +286,6 @@ public class HomeDashboard {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getImage() {
     return image;
-  }
-
-
-
-
-  /**
-   * Hide dashboard from mobile devices. Useful if the dashboard is not designed for small screens.
-   * @return mobileHide
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_MOBILE_HIDE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getMobileHide() {
-    return mobileHide;
-  }
-
-
-
-
-  /**
-   * Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications
-   * @return mobileOrder
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_MOBILE_ORDER, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getMobileOrder() {
-    return mobileOrder;
   }
 
 
@@ -299,6 +322,34 @@ public class HomeDashboard {
   public void setAssignedCustomers(@Nullable Set<ShortCustomerInfo> assignedCustomers) {
     this.assignedCustomers = assignedCustomers;
   }
+
+
+  /**
+   * Hide dashboard from mobile devices. Useful if the dashboard is not designed for small screens.
+   * @return mobileHide
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_HIDE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getMobileHide() {
+    return mobileHide;
+  }
+
+
+
+
+  /**
+   * Order on mobile devices. Useful to adjust sorting of the dashboards for mobile applications
+   * @return mobileOrder
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MOBILE_ORDER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getMobileOrder() {
+    return mobileOrder;
+  }
+
+
 
 
   public HomeDashboard _configuration(@Nullable com.fasterxml.jackson.databind.JsonNode _configuration) {
@@ -420,12 +471,14 @@ public class HomeDashboard {
     return Objects.equals(this.id, homeDashboard.id) &&
         Objects.equals(this.createdTime, homeDashboard.createdTime) &&
         Objects.equals(this.tenantId, homeDashboard.tenantId) &&
+        Objects.equals(this.customerId, homeDashboard.customerId) &&
+        Objects.equals(this.ownerId, homeDashboard.ownerId) &&
         Objects.equals(this.title, homeDashboard.title) &&
         Objects.equals(this.name, homeDashboard.name) &&
         Objects.equals(this.image, homeDashboard.image) &&
+        Objects.equals(this.assignedCustomers, homeDashboard.assignedCustomers) &&
         Objects.equals(this.mobileHide, homeDashboard.mobileHide) &&
         Objects.equals(this.mobileOrder, homeDashboard.mobileOrder) &&
-        Objects.equals(this.assignedCustomers, homeDashboard.assignedCustomers) &&
         Objects.equals(this._configuration, homeDashboard._configuration) &&
         Objects.equals(this.resources, homeDashboard.resources) &&
         Objects.equals(this.version, homeDashboard.version) &&
@@ -434,7 +487,7 @@ public class HomeDashboard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, title, name, image, mobileHide, mobileOrder, assignedCustomers, _configuration, resources, version, hideDashboardToolbar);
+    return Objects.hash(id, createdTime, tenantId, customerId, ownerId, title, name, image, assignedCustomers, mobileHide, mobileOrder, _configuration, resources, version, hideDashboardToolbar);
   }
 
   @Override
@@ -444,12 +497,14 @@ public class HomeDashboard {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
+    sb.append("    assignedCustomers: ").append(toIndentedString(assignedCustomers)).append("\n");
     sb.append("    mobileHide: ").append(toIndentedString(mobileHide)).append("\n");
     sb.append("    mobileOrder: ").append(toIndentedString(mobileOrder)).append("\n");
-    sb.append("    assignedCustomers: ").append(toIndentedString(assignedCustomers)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -516,6 +571,16 @@ public class HomeDashboard {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
+    }
+
     // add `title` to the URL query string
     if (getTitle() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTitle()))));
@@ -531,16 +596,6 @@ public class HomeDashboard {
       joiner.add(String.format(java.util.Locale.ROOT, "%simage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getImage()))));
     }
 
-    // add `mobileHide` to the URL query string
-    if (getMobileHide() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smobileHide%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileHide()))));
-    }
-
-    // add `mobileOrder` to the URL query string
-    if (getMobileOrder() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smobileOrder%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileOrder()))));
-    }
-
     // add `assignedCustomers` to the URL query string
     if (getAssignedCustomers() != null) {
       int i = 0;
@@ -551,6 +606,16 @@ public class HomeDashboard {
         }
       }
       i++;
+    }
+
+    // add `mobileHide` to the URL query string
+    if (getMobileHide() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smobileHide%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileHide()))));
+    }
+
+    // add `mobileOrder` to the URL query string
+    if (getMobileOrder() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smobileOrder%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMobileOrder()))));
     }
 
     // add `configuration` to the URL query string

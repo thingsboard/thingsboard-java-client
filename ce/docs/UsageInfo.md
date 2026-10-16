@@ -32,6 +32,10 @@
 | **smsEnabled** | **Boolean** |  | [optional] |
 | **alarms** | **Long** |  | [optional] |
 | **maxAlarms** | **Long** |  | [optional] |
+| **reports** | **Long** |  | [optional] |
+| **maxReports** | **Long** |  | [optional] |
+| **aiCredits** | **Long** |  | [optional] |
+| **maxAiCredits** | **Long** |  | [optional] |
 
 
 

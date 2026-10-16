@@ -14,7 +14,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### EntityExportData
 | Name | Type | Description | Notes |
@@ -34,6 +34,9 @@
 #### AssetProfileExportData  *(extends EntityExportData, entityType=`ASSET_PROFILE`)*
 *See EntityExportData for properties.*
 
+#### ConverterExportData  *(extends EntityExportData, entityType=`CONVERTER`)*
+*See EntityExportData for properties.*
+
 #### CustomerExportData  *(extends EntityExportData, entityType=`CUSTOMER`)*
 *See EntityExportData for properties.*
 
@@ -48,7 +51,18 @@
 #### DeviceProfileExportData  *(extends EntityExportData, entityType=`DEVICE_PROFILE`)*
 *See EntityExportData for properties.*
 
+#### EntityGroupExportData  *(extends EntityExportData, entityType=`ENTITY_GROUP`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| permissions | List<GroupPermission> | Group permissions to apply to this group on import. Meaningful only for USER groups; ignored for groups of any other type. Each entry's userGroupId, roleId, and entityGroupId may use the external IDs of other entities in this payload or the IDs of entities that already exist on the target tenant; the importer resolves them against the target tenant. System-tenant roles are not allowed and will be rejected. Leave null to skip permission management for this group. | [optional] |
+| groupOtaPackages | List<DeviceGroupOtaPackage> | OTA package assignments to apply to this group on import. Meaningful only for DEVICE groups; ignored for groups of any other type. Each entry's otaPackageId and groupId may reference external IDs of entities in this payload or IDs of entities that already exist on the target tenant. Leave null to skip OTA assignment management for this group. | [optional] |
+| groupEntities | Boolean | Marker indicating that the group's member entities are intended to be transported alongside this payload. Used by flows that convey members through a side channel (notably the version control flow, which stores members in a separate git index). The solution import API does not consume this flag and does not require it to be set. Safe to leave false (default). | [optional] |
+| memberIds | List<UUID> | External IDs of the entities that should be members of this group after import. Each ID is resolved against the target tenant — by other entity in this payload, by external ID, or by existing internal ID — and the matching entities are added to the group. The import fails if any listed member cannot be resolved. Must be null for the special 'All' group (whose membership is implicit and managed by the platform). Leave null to skip membership wiring; existing membership on the target tenant is left untouched. | [optional] |
+
 #### EntityViewExportData  *(extends EntityExportData, entityType=`ENTITY_VIEW`)*
+*See EntityExportData for properties.*
+
+#### IntegrationExportData  *(extends EntityExportData, entityType=`INTEGRATION`)*
 *See EntityExportData for properties.*
 
 #### NotificationRuleExportData  *(extends EntityExportData, entityType=`NOTIFICATION_RULE`)*
@@ -63,12 +77,24 @@
 #### OtaPackageExportData  *(extends EntityExportData, entityType=`OTA_PACKAGE`)*
 *See EntityExportData for properties.*
 
+#### ReportTemplateExportData  *(extends EntityExportData, entityType=`REPORT_TEMPLATE`)*
+*See EntityExportData for properties.*
+
+#### RoleExportData  *(extends EntityExportData, entityType=`ROLE`)*
+*See EntityExportData for properties.*
+
 #### RuleChainExportData  *(extends EntityExportData, entityType=`RULE_CHAIN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | metaData | RuleChainMetaData |  | [optional] |
 
+#### SchedulerEventExportData  *(extends EntityExportData, entityType=`SCHEDULER_EVENT`)*
+*See EntityExportData for properties.*
+
 #### TbResourceExportData  *(extends EntityExportData, entityType=`TB_RESOURCE`)*
+*See EntityExportData for properties.*
+
+#### UserExportData  *(extends EntityExportData, entityType=`USER`)*
 *See EntityExportData for properties.*
 
 #### WidgetsBundleExportData  *(extends EntityExportData, entityType=`WIDGETS_BUNDLE`)*
@@ -126,10 +152,10 @@
 | debugMode | Boolean |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### RelationTypeGroup (enum)
-`COMMON` | `DASHBOARD` | `RULE_CHAIN` | `RULE_NODE` | `EDGE` | `EDGE_AUTO_ASSIGN_RULE_CHAIN`
+`COMMON` | `DASHBOARD` | `FROM_ENTITY_GROUP` | `RULE_CHAIN` | `RULE_NODE` | `EDGE` | `EDGE_AUTO_ASSIGN_RULE_CHAIN` | `AGENT`
 
 #### CalculatedFieldType (enum)
 `SIMPLE` | `SCRIPT` | `GEOFENCING` | `ALARM` | `PROPAGATION` | `RELATED_ENTITIES_AGGREGATION` | `ENTITY_AGGREGATION`
@@ -155,6 +181,7 @@
 | clearRule | AlarmRule |  | [optional] |
 | propagate | Boolean |  | [optional] |
 | propagateToOwner | Boolean |  | [optional] |
+| propagateToOwnerHierarchy | Boolean |  | [optional] |
 | propagateToTenant | Boolean |  | [optional] |
 | propagateRelationTypes | List<String> |  | [optional] |
 
@@ -229,6 +256,29 @@
 | ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. |  |
 | notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
 
+#### GroupPermission
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | GroupPermissionId | JSON object with the Group Permission Id. Specify this field to update the Group Permission. Referencing non-existing Group Permission Id will cause error. Omit this field to create new Group Permission. | [optional] |
+| createdTime | Long | Timestamp of the group permission creation, in milliseconds | [optional] [readonly] |
+| tenantId | TenantId | JSON object with the Tenant Id. | [optional] [readonly] |
+| userGroupId | EntityGroupId | JSON object with the User Group Id. Represents the user group that will have permissions to perform operations against the corresponding entity group. |  |
+| roleId | RoleId | JSON object with the Role Id. Represents the set of permissions. The role type (GENERIC or GROUP) determines whether 'entityGroupId' is required. |  |
+| entityGroupId | EntityGroupId | JSON object with the Entity Group Id. Required when using a GROUP role — specifies the entity group to which the permissions apply. Must be null or omitted when using a GENERIC role. | [optional] |
+| entityGroupType | EntityType | Type of the entities in the group: DEVICE, ASSET, CUSTOMER, etc. Auto-populated from the referenced entity group. Null for generic permissions. | [optional] [readonly] |
+| isPublic | Boolean |  | [optional] |
+| name | String | Name of the Group Permissions. Auto-generated | [optional] [readonly] |
+| _public | Boolean |  | [optional] |
+
+#### DeviceGroupOtaPackage
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| id | UUID |  | [optional] |
+| groupId | EntityGroupId |  | [optional] |
+| otaPackageType | OtaPackageType |  | [optional] |
+| otaPackageId | OtaPackageId |  | [optional] |
+| otaPackageUpdateTime | Long |  | [optional] |
+
 #### Output
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -302,6 +352,9 @@
 | borderWidth | Integer | Border width of the note in pixels | [optional] |
 | applyDefaultMarkdownStyle | Boolean | Whether to apply the default markdown stylesheet to the note content | [optional] |
 | markdownCss | String | Custom CSS styles applied to the note content | [optional] |
+
+#### OtaPackageType (enum)
+`FIRMWARE` | `SOFTWARE`
 
 #### AttributeScope (enum)
 `CLIENT_SCOPE` | `SERVER_SCOPE` | `SHARED_SCOPE`
