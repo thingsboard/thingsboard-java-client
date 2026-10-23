@@ -1,14 +1,13 @@
 
-# ChatType
+# AgentInstructions
 
-`org.thingsboard.client.model.ChatType`
+`org.thingsboard.client.model.AgentInstructions`
 
-## Enum Values
+## Properties
 
-
-* `GENERIC` (value: `"GENERIC"`)
-
-* `SOLUTION_BUILDER` (value: `"SOLUTION_BUILDER"`)
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **instructions** | **String** | Resolved install/provision instructions for the selected method | [optional] |
 
 
 

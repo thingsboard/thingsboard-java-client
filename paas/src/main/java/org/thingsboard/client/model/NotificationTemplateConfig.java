@@ -47,7 +47,8 @@ import org.thingsboard.client.ApiClient;
   NotificationTemplateConfig.JSON_PROPERTY_ATTACH_REPORT,
   NotificationTemplateConfig.JSON_PROPERTY_REPORT_TEMPLATE_ID,
   NotificationTemplateConfig.JSON_PROPERTY_USER_ID,
-  NotificationTemplateConfig.JSON_PROPERTY_TIMEZONE
+  NotificationTemplateConfig.JSON_PROPERTY_TIMEZONE,
+  NotificationTemplateConfig.JSON_PROPERTY_MAKE_PUBLIC
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationTemplateConfig {
@@ -70,6 +71,10 @@ public class NotificationTemplateConfig {
   public static final String JSON_PROPERTY_TIMEZONE = "timezone";
   @Nullable
   private String timezone;
+
+  public static final String JSON_PROPERTY_MAKE_PUBLIC = "makePublic";
+  @Nullable
+  private Boolean makePublic;
 
   public NotificationTemplateConfig() { 
   }
@@ -202,6 +207,30 @@ public class NotificationTemplateConfig {
   }
 
 
+  public NotificationTemplateConfig makePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
+    return this;
+  }
+
+  /**
+   * Get makePublic
+   * @return makePublic
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getMakePublic() {
+    return makePublic;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMakePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
+  }
+
+
   /**
    * Return true if this NotificationTemplateConfig object is equal to o.
    */
@@ -218,12 +247,13 @@ public class NotificationTemplateConfig {
         Objects.equals(this.attachReport, notificationTemplateConfig.attachReport) &&
         Objects.equals(this.reportTemplateId, notificationTemplateConfig.reportTemplateId) &&
         Objects.equals(this.userId, notificationTemplateConfig.userId) &&
-        Objects.equals(this.timezone, notificationTemplateConfig.timezone);
+        Objects.equals(this.timezone, notificationTemplateConfig.timezone) &&
+        Objects.equals(this.makePublic, notificationTemplateConfig.makePublic);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deliveryMethodsTemplates, attachReport, reportTemplateId, userId, timezone);
+    return Objects.hash(deliveryMethodsTemplates, attachReport, reportTemplateId, userId, timezone, makePublic);
   }
 
   @Override
@@ -235,6 +265,7 @@ public class NotificationTemplateConfig {
     sb.append("    reportTemplateId: ").append(toIndentedString(reportTemplateId)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    makePublic: ").append(toIndentedString(makePublic)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -310,6 +341,11 @@ public class NotificationTemplateConfig {
     // add `timezone` to the URL query string
     if (getTimezone() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
+    }
+
+    // add `makePublic` to the URL query string
+    if (getMakePublic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smakePublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMakePublic()))));
     }
 
     return joiner.toString();

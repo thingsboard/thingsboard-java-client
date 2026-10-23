@@ -43,6 +43,7 @@ void removeEntitiesFromEntityGroup(@Nonnull String entityGroupId, @Nonnull List<
 EntityGroupInfo saveEntityGroup(@Nonnull EntityGroup entityGroup) // Create Or Update Entity Group (saveEntityGroup)
 void shareEntityGroup(@Nonnull String entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest) // Share the Entity Group (shareEntityGroup)
 void shareEntityGroupToChildOwnerUserGroup(@Nonnull String entityGroupId, @Nonnull String userGroupId, @Nonnull String roleId) // Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroup)
+void shareEntityGroupToChildOwnerUserGroupV2(@Nonnull UUID entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest) // Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroupV2)
 EntityGroup unassignEntityGroupFromEdge(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String entityGroupId) // Unassign entity group from edge (unassignEntityGroupFromEdge)
 ```
 
@@ -945,6 +946,31 @@ Share the entity group with the specified user group using the specified role. U
 | **entityGroupId** | **String** | ID of the entity group to share | |
 | **userGroupId** | **String** | ID of the user group to share the entity group with. The user group must belong to the current user's owner or to one of its sub-customers | |
 | **roleId** | **String** | ID of the group role that defines the set of operations to grant to the target user group | |
+
+### Return type
+
+null (empty response body)
+
+
+## shareEntityGroupToChildOwnerUserGroupV2
+
+```
+void shareEntityGroupToChildOwnerUserGroupV2(@Nonnull UUID entityGroupId, @Nonnull ShareGroupRequest shareGroupRequest)
+```
+
+**POST** `/api/v2/entityGroup/{entityGroupId}/share`
+
+Share the Entity Group with User group (shareEntityGroupToChildOwnerUserGroupV2)
+
+Share the entity group with specified user group using specified role.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityGroupId** | **UUID** | A uuid value representing the Entity Group Id that you would like to share. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **shareGroupRequest** | **ShareGroupRequest** |  | |
 
 ### Return type
 

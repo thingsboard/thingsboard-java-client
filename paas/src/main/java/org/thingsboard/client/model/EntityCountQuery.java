@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.thingsboard.client.model.AlarmRuleComplexOperation;
 import org.thingsboard.client.model.EntityFilter;
 import org.thingsboard.client.model.KeyFilter;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -42,7 +43,9 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   EntityCountQuery.JSON_PROPERTY_ENTITY_FILTER,
-  EntityCountQuery.JSON_PROPERTY_KEY_FILTERS
+  EntityCountQuery.JSON_PROPERTY_KEY_FILTERS,
+  EntityCountQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION,
+  EntityCountQuery.JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityCountQuery {
@@ -53,6 +56,14 @@ public class EntityCountQuery {
   public static final String JSON_PROPERTY_KEY_FILTERS = "keyFilters";
   @Nullable
   private List<KeyFilter> keyFilters = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION = "keyFiltersOperation";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperation;
+
+  public static final String JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT = "keyFiltersOperationOrDefault";
+  @Nullable
+  private AlarmRuleComplexOperation keyFiltersOperationOrDefault;
 
   public EntityCountQuery() { 
   }
@@ -113,6 +124,54 @@ public class EntityCountQuery {
   }
 
 
+  public EntityCountQuery keyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperation
+   * @return keyFiltersOperation
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperation() {
+    return keyFiltersOperation;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperation(@Nullable AlarmRuleComplexOperation keyFiltersOperation) {
+    this.keyFiltersOperation = keyFiltersOperation;
+  }
+
+
+  public EntityCountQuery keyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+    return this;
+  }
+
+  /**
+   * Get keyFiltersOperationOrDefault
+   * @return keyFiltersOperationOrDefault
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmRuleComplexOperation getKeyFiltersOperationOrDefault() {
+    return keyFiltersOperationOrDefault;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_KEY_FILTERS_OPERATION_OR_DEFAULT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyFiltersOperationOrDefault(@Nullable AlarmRuleComplexOperation keyFiltersOperationOrDefault) {
+    this.keyFiltersOperationOrDefault = keyFiltersOperationOrDefault;
+  }
+
+
   /**
    * Return true if this EntityCountQuery object is equal to o.
    */
@@ -126,12 +185,14 @@ public class EntityCountQuery {
     }
     EntityCountQuery entityCountQuery = (EntityCountQuery) o;
     return Objects.equals(this.entityFilter, entityCountQuery.entityFilter) &&
-        Objects.equals(this.keyFilters, entityCountQuery.keyFilters);
+        Objects.equals(this.keyFilters, entityCountQuery.keyFilters) &&
+        Objects.equals(this.keyFiltersOperation, entityCountQuery.keyFiltersOperation) &&
+        Objects.equals(this.keyFiltersOperationOrDefault, entityCountQuery.keyFiltersOperationOrDefault);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityFilter, keyFilters);
+    return Objects.hash(entityFilter, keyFilters, keyFiltersOperation, keyFiltersOperationOrDefault);
   }
 
   @Override
@@ -140,6 +201,8 @@ public class EntityCountQuery {
     sb.append("class EntityCountQuery {\n");
     sb.append("    entityFilter: ").append(toIndentedString(entityFilter)).append("\n");
     sb.append("    keyFilters: ").append(toIndentedString(keyFilters)).append("\n");
+    sb.append("    keyFiltersOperation: ").append(toIndentedString(keyFiltersOperation)).append("\n");
+    sb.append("    keyFiltersOperationOrDefault: ").append(toIndentedString(keyFiltersOperationOrDefault)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,6 +263,16 @@ public class EntityCountQuery {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `keyFiltersOperation` to the URL query string
+    if (getKeyFiltersOperation() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperation%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperation()))));
+    }
+
+    // add `keyFiltersOperationOrDefault` to the URL query string
+    if (getKeyFiltersOperationOrDefault() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%skeyFiltersOperationOrDefault%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getKeyFiltersOperationOrDefault()))));
     }
 
     return joiner.toString();

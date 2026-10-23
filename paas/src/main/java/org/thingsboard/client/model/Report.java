@@ -53,7 +53,9 @@ import org.thingsboard.client.ApiClient;
   Report.JSON_PROPERTY_FORMAT,
   Report.JSON_PROPERTY_NAME,
   Report.JSON_PROPERTY_USER_ID,
-  Report.JSON_PROPERTY_OWNER_ID
+  Report.JSON_PROPERTY_PUBLIC_KEY,
+  Report.JSON_PROPERTY_OWNER_ID,
+  Report.JSON_PROPERTY_PUBLIC
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Report {
@@ -89,9 +91,17 @@ public class Report {
   @Nonnull
   private UserId userId;
 
+  public static final String JSON_PROPERTY_PUBLIC_KEY = "publicKey";
+  @Nullable
+  private String publicKey;
+
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @Nullable
   private EntityId ownerId;
+
+  public static final String JSON_PROPERTY_PUBLIC = "public";
+  @Nullable
+  private Boolean _public;
 
   public Report() { 
   }
@@ -288,6 +298,30 @@ public class Report {
   }
 
 
+  public Report publicKey(@Nullable String publicKey) {
+    this.publicKey = publicKey;
+    return this;
+  }
+
+  /**
+   * Get publicKey
+   * @return publicKey
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getPublicKey() {
+    return publicKey;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPublicKey(@Nullable String publicKey) {
+    this.publicKey = publicKey;
+  }
+
+
   /**
    * JSON object with Customer or Tenant Id
    * @return ownerId
@@ -300,6 +334,30 @@ public class Report {
   }
 
 
+
+
+  public Report _public(@Nullable Boolean _public) {
+    this._public = _public;
+    return this;
+  }
+
+  /**
+   * Get _public
+   * @return _public
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPublic() {
+    return _public;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPublic(@Nullable Boolean _public) {
+    this._public = _public;
+  }
 
 
   /**
@@ -322,12 +380,14 @@ public class Report {
         Objects.equals(this.format, report.format) &&
         Objects.equals(this.name, report.name) &&
         Objects.equals(this.userId, report.userId) &&
-        Objects.equals(this.ownerId, report.ownerId);
+        Objects.equals(this.publicKey, report.publicKey) &&
+        Objects.equals(this.ownerId, report.ownerId) &&
+        Objects.equals(this._public, report._public);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, templateId, format, name, userId, ownerId);
+    return Objects.hash(id, createdTime, tenantId, customerId, templateId, format, name, userId, publicKey, ownerId, _public);
   }
 
   @Override
@@ -342,7 +402,9 @@ public class Report {
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    publicKey: ").append(toIndentedString(publicKey)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
+    sb.append("    _public: ").append(toIndentedString(_public)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -430,9 +492,19 @@ public class Report {
       joiner.add(getUserId().toUrlQueryString(prefix + "userId" + suffix));
     }
 
+    // add `publicKey` to the URL query string
+    if (getPublicKey() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spublicKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublicKey()))));
+    }
+
     // add `ownerId` to the URL query string
     if (getOwnerId() != null) {
       joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
+    }
+
+    // add `public` to the URL query string
+    if (getPublic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPublic()))));
     }
 
     return joiner.toString();

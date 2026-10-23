@@ -41,6 +41,7 @@ import org.thingsboard.client.ApiClient;
   SubscriptionItems.JSON_PROPERTY_EXTRA_CUSTOMER_PACK_COUNT,
   SubscriptionItems.JSON_PROPERTY_EXTRA_INTEGRATION_PACK_COUNT,
   SubscriptionItems.JSON_PROPERTY_EXTRA_CALCULATED_FIELD_COUNT,
+  SubscriptionItems.JSON_PROPERTY_EXTRA_AGENT_PACK_COUNT,
   SubscriptionItems.JSON_PROPERTY_TRAFFIC_PACK_COUNT,
   SubscriptionItems.JSON_PROPERTY_COMPUTE_PACK_COUNT,
   SubscriptionItems.JSON_PROPERTY_STORAGE_PACK_COUNT,
@@ -70,6 +71,10 @@ public class SubscriptionItems {
   public static final String JSON_PROPERTY_EXTRA_CALCULATED_FIELD_COUNT = "extraCalculatedFieldCount";
   @Nullable
   private Long extraCalculatedFieldCount;
+
+  public static final String JSON_PROPERTY_EXTRA_AGENT_PACK_COUNT = "extraAgentPackCount";
+  @Nullable
+  private Long extraAgentPackCount;
 
   public static final String JSON_PROPERTY_TRAFFIC_PACK_COUNT = "trafficPackCount";
   @Nullable
@@ -211,6 +216,30 @@ public class SubscriptionItems {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExtraCalculatedFieldCount(@Nullable Long extraCalculatedFieldCount) {
     this.extraCalculatedFieldCount = extraCalculatedFieldCount;
+  }
+
+
+  public SubscriptionItems extraAgentPackCount(@Nullable Long extraAgentPackCount) {
+    this.extraAgentPackCount = extraAgentPackCount;
+    return this;
+  }
+
+  /**
+   * Get extraAgentPackCount
+   * @return extraAgentPackCount
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_EXTRA_AGENT_PACK_COUNT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getExtraAgentPackCount() {
+    return extraAgentPackCount;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EXTRA_AGENT_PACK_COUNT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExtraAgentPackCount(@Nullable Long extraAgentPackCount) {
+    this.extraAgentPackCount = extraAgentPackCount;
   }
 
 
@@ -494,6 +523,7 @@ public class SubscriptionItems {
         Objects.equals(this.extraCustomerPackCount, subscriptionItems.extraCustomerPackCount) &&
         Objects.equals(this.extraIntegrationPackCount, subscriptionItems.extraIntegrationPackCount) &&
         Objects.equals(this.extraCalculatedFieldCount, subscriptionItems.extraCalculatedFieldCount) &&
+        Objects.equals(this.extraAgentPackCount, subscriptionItems.extraAgentPackCount) &&
         Objects.equals(this.trafficPackCount, subscriptionItems.trafficPackCount) &&
         Objects.equals(this.computePackCount, subscriptionItems.computePackCount) &&
         Objects.equals(this.storagePackCount, subscriptionItems.storagePackCount) &&
@@ -509,7 +539,7 @@ public class SubscriptionItems {
 
   @Override
   public int hashCode() {
-    return Objects.hash(extraDevicePackCount, extraCustomerPackCount, extraIntegrationPackCount, extraCalculatedFieldCount, trafficPackCount, computePackCount, storagePackCount, alarmPackCount, emailPackCount, smsPackCount, aiCreditsPackCount, edgeEnabled, extraEdgeCount, trendzEnabled, whiteLabelingAddonEnabled);
+    return Objects.hash(extraDevicePackCount, extraCustomerPackCount, extraIntegrationPackCount, extraCalculatedFieldCount, extraAgentPackCount, trafficPackCount, computePackCount, storagePackCount, alarmPackCount, emailPackCount, smsPackCount, aiCreditsPackCount, edgeEnabled, extraEdgeCount, trendzEnabled, whiteLabelingAddonEnabled);
   }
 
   @Override
@@ -520,6 +550,7 @@ public class SubscriptionItems {
     sb.append("    extraCustomerPackCount: ").append(toIndentedString(extraCustomerPackCount)).append("\n");
     sb.append("    extraIntegrationPackCount: ").append(toIndentedString(extraIntegrationPackCount)).append("\n");
     sb.append("    extraCalculatedFieldCount: ").append(toIndentedString(extraCalculatedFieldCount)).append("\n");
+    sb.append("    extraAgentPackCount: ").append(toIndentedString(extraAgentPackCount)).append("\n");
     sb.append("    trafficPackCount: ").append(toIndentedString(trafficPackCount)).append("\n");
     sb.append("    computePackCount: ").append(toIndentedString(computePackCount)).append("\n");
     sb.append("    storagePackCount: ").append(toIndentedString(storagePackCount)).append("\n");
@@ -596,6 +627,11 @@ public class SubscriptionItems {
     // add `extraCalculatedFieldCount` to the URL query string
     if (getExtraCalculatedFieldCount() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sextraCalculatedFieldCount%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getExtraCalculatedFieldCount()))));
+    }
+
+    // add `extraAgentPackCount` to the URL query string
+    if (getExtraAgentPackCount() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sextraAgentPackCount%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getExtraAgentPackCount()))));
     }
 
     // add `trafficPackCount` to the URL query string

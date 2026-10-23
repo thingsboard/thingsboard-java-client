@@ -17,6 +17,7 @@
 | **converters** | **Long** |  | [optional] |
 | **schedulerEvents** | **Long** |  | [optional] |
 | **edges** | **Long** |  | [optional] |
+| **agents** | **Long** |  | [optional] |
 | **transportMessages** | **Long** |  | [optional] |
 | **transportDataPoints** | **Long** |  | [optional] |
 | **reExecutions** | **Long** |  | [optional] |

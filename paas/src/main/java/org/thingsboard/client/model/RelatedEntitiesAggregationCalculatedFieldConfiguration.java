@@ -49,13 +49,13 @@ import org.thingsboard.client.ApiClient;
  * RelatedEntitiesAggregationCalculatedFieldConfiguration
  */
 @JsonPropertyOrder({
-  RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_RELATION,
   RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_ARGUMENTS,
   RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_DEDUPLICATION_INTERVAL_IN_SEC,
   RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_METRICS,
-  RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_USE_LATEST_TS,
+  RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_RELATION,
+  RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_ENABLED,
   RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL,
-  RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_SCHEDULED_UPDATE_ENABLED
+  RelatedEntitiesAggregationCalculatedFieldConfiguration.JSON_PROPERTY_USE_LATEST_TS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -65,10 +65,6 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
 public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends CalculatedFieldConfiguration {
-  public static final String JSON_PROPERTY_RELATION = "relation";
-  @Nonnull
-  private RelationPathLevel relation;
-
   public static final String JSON_PROPERTY_ARGUMENTS = "arguments";
   @Nonnull
   private Map<String, Argument> arguments = new HashMap<>();
@@ -81,44 +77,24 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
   @Nonnull
   private Map<String, AggMetric> metrics = new HashMap<>();
 
-  public static final String JSON_PROPERTY_USE_LATEST_TS = "useLatestTs";
-  @Nullable
-  private Boolean useLatestTs;
-
-  public static final String JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL = "scheduledUpdateInterval";
-  @Nullable
-  private Integer scheduledUpdateInterval;
+  public static final String JSON_PROPERTY_RELATION = "relation";
+  @Nonnull
+  private RelationPathLevel relation;
 
   public static final String JSON_PROPERTY_SCHEDULED_UPDATE_ENABLED = "scheduledUpdateEnabled";
   @Nullable
   private Boolean scheduledUpdateEnabled;
 
+  public static final String JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL = "scheduledUpdateInterval";
+  @Nullable
+  private Integer scheduledUpdateInterval;
+
+  public static final String JSON_PROPERTY_USE_LATEST_TS = "useLatestTs";
+  @Nullable
+  private Boolean useLatestTs;
+
   public RelatedEntitiesAggregationCalculatedFieldConfiguration() { 
   }
-
-  public RelatedEntitiesAggregationCalculatedFieldConfiguration relation(@Nonnull RelationPathLevel relation) {
-    this.relation = relation;
-    return this;
-  }
-
-  /**
-   * Get relation
-   * @return relation
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_RELATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public RelationPathLevel getRelation() {
-    return relation;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_RELATION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRelation(@Nonnull RelationPathLevel relation) {
-    this.relation = relation;
-  }
-
 
   public RelatedEntitiesAggregationCalculatedFieldConfiguration arguments(@Nonnull Map<String, Argument> arguments) {
     this.arguments = arguments;
@@ -208,51 +184,27 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
   }
 
 
-  public RelatedEntitiesAggregationCalculatedFieldConfiguration useLatestTs(@Nullable Boolean useLatestTs) {
-    this.useLatestTs = useLatestTs;
+  public RelatedEntitiesAggregationCalculatedFieldConfiguration relation(@Nonnull RelationPathLevel relation) {
+    this.relation = relation;
     return this;
   }
 
   /**
-   * Get useLatestTs
-   * @return useLatestTs
+   * Get relation
+   * @return relation
    */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_USE_LATEST_TS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getUseLatestTs() {
-    return useLatestTs;
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_RELATION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public RelationPathLevel getRelation() {
+    return relation;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_USE_LATEST_TS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUseLatestTs(@Nullable Boolean useLatestTs) {
-    this.useLatestTs = useLatestTs;
-  }
-
-
-  public RelatedEntitiesAggregationCalculatedFieldConfiguration scheduledUpdateInterval(@Nullable Integer scheduledUpdateInterval) {
-    this.scheduledUpdateInterval = scheduledUpdateInterval;
-    return this;
-  }
-
-  /**
-   * Get scheduledUpdateInterval
-   * @return scheduledUpdateInterval
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getScheduledUpdateInterval() {
-    return scheduledUpdateInterval;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScheduledUpdateInterval(@Nullable Integer scheduledUpdateInterval) {
-    this.scheduledUpdateInterval = scheduledUpdateInterval;
+  @JsonProperty(value = JSON_PROPERTY_RELATION, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setRelation(@Nonnull RelationPathLevel relation) {
+    this.relation = relation;
   }
 
 
@@ -280,6 +232,54 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
   }
 
 
+  public RelatedEntitiesAggregationCalculatedFieldConfiguration scheduledUpdateInterval(@Nullable Integer scheduledUpdateInterval) {
+    this.scheduledUpdateInterval = scheduledUpdateInterval;
+    return this;
+  }
+
+  /**
+   * Get scheduledUpdateInterval
+   * @return scheduledUpdateInterval
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getScheduledUpdateInterval() {
+    return scheduledUpdateInterval;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SCHEDULED_UPDATE_INTERVAL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScheduledUpdateInterval(@Nullable Integer scheduledUpdateInterval) {
+    this.scheduledUpdateInterval = scheduledUpdateInterval;
+  }
+
+
+  public RelatedEntitiesAggregationCalculatedFieldConfiguration useLatestTs(@Nullable Boolean useLatestTs) {
+    this.useLatestTs = useLatestTs;
+    return this;
+  }
+
+  /**
+   * Get useLatestTs
+   * @return useLatestTs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_USE_LATEST_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getUseLatestTs() {
+    return useLatestTs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USE_LATEST_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUseLatestTs(@Nullable Boolean useLatestTs) {
+    this.useLatestTs = useLatestTs;
+  }
+
+
   @Override
   public RelatedEntitiesAggregationCalculatedFieldConfiguration output(@Nonnull Output output) {
     this.setOutput(output);
@@ -298,19 +298,19 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
       return false;
     }
     RelatedEntitiesAggregationCalculatedFieldConfiguration relatedEntitiesAggregationCalculatedFieldConfiguration = (RelatedEntitiesAggregationCalculatedFieldConfiguration) o;
-    return Objects.equals(this.relation, relatedEntitiesAggregationCalculatedFieldConfiguration.relation) &&
-        Objects.equals(this.arguments, relatedEntitiesAggregationCalculatedFieldConfiguration.arguments) &&
+    return Objects.equals(this.arguments, relatedEntitiesAggregationCalculatedFieldConfiguration.arguments) &&
         Objects.equals(this.deduplicationIntervalInSec, relatedEntitiesAggregationCalculatedFieldConfiguration.deduplicationIntervalInSec) &&
         Objects.equals(this.metrics, relatedEntitiesAggregationCalculatedFieldConfiguration.metrics) &&
-        Objects.equals(this.useLatestTs, relatedEntitiesAggregationCalculatedFieldConfiguration.useLatestTs) &&
-        Objects.equals(this.scheduledUpdateInterval, relatedEntitiesAggregationCalculatedFieldConfiguration.scheduledUpdateInterval) &&
+        Objects.equals(this.relation, relatedEntitiesAggregationCalculatedFieldConfiguration.relation) &&
         Objects.equals(this.scheduledUpdateEnabled, relatedEntitiesAggregationCalculatedFieldConfiguration.scheduledUpdateEnabled) &&
+        Objects.equals(this.scheduledUpdateInterval, relatedEntitiesAggregationCalculatedFieldConfiguration.scheduledUpdateInterval) &&
+        Objects.equals(this.useLatestTs, relatedEntitiesAggregationCalculatedFieldConfiguration.useLatestTs) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(relation, arguments, deduplicationIntervalInSec, metrics, useLatestTs, scheduledUpdateInterval, scheduledUpdateEnabled, super.hashCode());
+    return Objects.hash(arguments, deduplicationIntervalInSec, metrics, relation, scheduledUpdateEnabled, scheduledUpdateInterval, useLatestTs, super.hashCode());
   }
 
   @Override
@@ -318,13 +318,13 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
     StringBuilder sb = new StringBuilder();
     sb.append("class RelatedEntitiesAggregationCalculatedFieldConfiguration {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    relation: ").append(toIndentedString(relation)).append("\n");
     sb.append("    arguments: ").append(toIndentedString(arguments)).append("\n");
     sb.append("    deduplicationIntervalInSec: ").append(toIndentedString(deduplicationIntervalInSec)).append("\n");
     sb.append("    metrics: ").append(toIndentedString(metrics)).append("\n");
-    sb.append("    useLatestTs: ").append(toIndentedString(useLatestTs)).append("\n");
-    sb.append("    scheduledUpdateInterval: ").append(toIndentedString(scheduledUpdateInterval)).append("\n");
+    sb.append("    relation: ").append(toIndentedString(relation)).append("\n");
     sb.append("    scheduledUpdateEnabled: ").append(toIndentedString(scheduledUpdateEnabled)).append("\n");
+    sb.append("    scheduledUpdateInterval: ").append(toIndentedString(scheduledUpdateInterval)).append("\n");
+    sb.append("    useLatestTs: ").append(toIndentedString(useLatestTs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -372,19 +372,14 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `output` to the URL query string
-    if (getOutput() != null) {
-      joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
-    }
-
     // add `type` to the URL query string
     if (getType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getType()))));
     }
 
-    // add `relation` to the URL query string
-    if (getRelation() != null) {
-      joiner.add(getRelation().toUrlQueryString(prefix + "relation" + suffix));
+    // add `output` to the URL query string
+    if (getOutput() != null) {
+      joiner.add(getOutput().toUrlQueryString(prefix + "output" + suffix));
     }
 
     // add `arguments` to the URL query string
@@ -412,9 +407,14 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
       }
     }
 
-    // add `useLatestTs` to the URL query string
-    if (getUseLatestTs() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%suseLatestTs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUseLatestTs()))));
+    // add `relation` to the URL query string
+    if (getRelation() != null) {
+      joiner.add(getRelation().toUrlQueryString(prefix + "relation" + suffix));
+    }
+
+    // add `scheduledUpdateEnabled` to the URL query string
+    if (getScheduledUpdateEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateEnabled()))));
     }
 
     // add `scheduledUpdateInterval` to the URL query string
@@ -422,9 +422,9 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
       joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateInterval%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateInterval()))));
     }
 
-    // add `scheduledUpdateEnabled` to the URL query string
-    if (getScheduledUpdateEnabled() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sscheduledUpdateEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScheduledUpdateEnabled()))));
+    // add `useLatestTs` to the URL query string
+    if (getUseLatestTs() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%suseLatestTs%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUseLatestTs()))));
     }
 
     return joiner.toString();

@@ -41,9 +41,11 @@ import org.thingsboard.client.ApiClient;
 @JsonPropertyOrder({
   WhiteLabelingParams.JSON_PROPERTY_LOGO_IMAGE_URL,
   WhiteLabelingParams.JSON_PROPERTY_LOGO_IMAGE_HEIGHT,
+  WhiteLabelingParams.JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL,
   WhiteLabelingParams.JSON_PROPERTY_APP_TITLE,
   WhiteLabelingParams.JSON_PROPERTY_FAVICON,
   WhiteLabelingParams.JSON_PROPERTY_PALETTE_SETTINGS,
+  WhiteLabelingParams.JSON_PROPERTY_PRIMARY_COLOR_PANELS,
   WhiteLabelingParams.JSON_PROPERTY_HELP_LINK_BASE_URL,
   WhiteLabelingParams.JSON_PROPERTY_UI_HELP_BASE_URL,
   WhiteLabelingParams.JSON_PROPERTY_ENABLE_HELP_LINKS,
@@ -66,6 +68,10 @@ public class WhiteLabelingParams {
   @Nullable
   private Integer logoImageHeight;
 
+  public static final String JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL = "collapsedLogoImageUrl";
+  @Nullable
+  private String collapsedLogoImageUrl;
+
   public static final String JSON_PROPERTY_APP_TITLE = "appTitle";
   @Nullable
   private String appTitle;
@@ -77,6 +83,10 @@ public class WhiteLabelingParams {
   public static final String JSON_PROPERTY_PALETTE_SETTINGS = "paletteSettings";
   @Nullable
   private PaletteSettings paletteSettings;
+
+  public static final String JSON_PROPERTY_PRIMARY_COLOR_PANELS = "primaryColorPanels";
+  @Nullable
+  private Boolean primaryColorPanels;
 
   public static final String JSON_PROPERTY_HELP_LINK_BASE_URL = "helpLinkBaseUrl";
   @Nullable
@@ -181,6 +191,30 @@ public class WhiteLabelingParams {
   }
 
 
+  public WhiteLabelingParams collapsedLogoImageUrl(@Nullable String collapsedLogoImageUrl) {
+    this.collapsedLogoImageUrl = collapsedLogoImageUrl;
+    return this;
+  }
+
+  /**
+   * Logo shown when side menu is collapsed
+   * @return collapsedLogoImageUrl
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getCollapsedLogoImageUrl() {
+    return collapsedLogoImageUrl;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_COLLAPSED_LOGO_IMAGE_URL, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCollapsedLogoImageUrl(@Nullable String collapsedLogoImageUrl) {
+    this.collapsedLogoImageUrl = collapsedLogoImageUrl;
+  }
+
+
   public WhiteLabelingParams appTitle(@Nullable String appTitle) {
     this.appTitle = appTitle;
     return this;
@@ -250,6 +284,30 @@ public class WhiteLabelingParams {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPaletteSettings(@Nullable PaletteSettings paletteSettings) {
     this.paletteSettings = paletteSettings;
+  }
+
+
+  public WhiteLabelingParams primaryColorPanels(@Nullable Boolean primaryColorPanels) {
+    this.primaryColorPanels = primaryColorPanels;
+    return this;
+  }
+
+  /**
+   * Whether primary-color panels (top toolbar, side navigation, dialog and entity-details headers) use the primary palette color as background. When false, they render on a white background
+   * @return primaryColorPanels
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PRIMARY_COLOR_PANELS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPrimaryColorPanels() {
+    return primaryColorPanels;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PRIMARY_COLOR_PANELS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPrimaryColorPanels(@Nullable Boolean primaryColorPanels) {
+    this.primaryColorPanels = primaryColorPanels;
   }
 
 
@@ -521,9 +579,11 @@ public class WhiteLabelingParams {
     WhiteLabelingParams whiteLabelingParams = (WhiteLabelingParams) o;
     return Objects.equals(this.logoImageUrl, whiteLabelingParams.logoImageUrl) &&
         Objects.equals(this.logoImageHeight, whiteLabelingParams.logoImageHeight) &&
+        Objects.equals(this.collapsedLogoImageUrl, whiteLabelingParams.collapsedLogoImageUrl) &&
         Objects.equals(this.appTitle, whiteLabelingParams.appTitle) &&
         Objects.equals(this.favicon, whiteLabelingParams.favicon) &&
         Objects.equals(this.paletteSettings, whiteLabelingParams.paletteSettings) &&
+        Objects.equals(this.primaryColorPanels, whiteLabelingParams.primaryColorPanels) &&
         Objects.equals(this.helpLinkBaseUrl, whiteLabelingParams.helpLinkBaseUrl) &&
         Objects.equals(this.uiHelpBaseUrl, whiteLabelingParams.uiHelpBaseUrl) &&
         Objects.equals(this.enableHelpLinks, whiteLabelingParams.enableHelpLinks) &&
@@ -539,7 +599,7 @@ public class WhiteLabelingParams {
 
   @Override
   public int hashCode() {
-    return Objects.hash(logoImageUrl, logoImageHeight, appTitle, favicon, paletteSettings, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot);
+    return Objects.hash(logoImageUrl, logoImageHeight, collapsedLogoImageUrl, appTitle, favicon, paletteSettings, primaryColorPanels, helpLinkBaseUrl, uiHelpBaseUrl, enableHelpLinks, whiteLabelingEnabled, showNameVersion, platformName, platformVersion, customCss, hideConnectivityDialog, overrideTrendzName, hideChatBot);
   }
 
   @Override
@@ -548,9 +608,11 @@ public class WhiteLabelingParams {
     sb.append("class WhiteLabelingParams {\n");
     sb.append("    logoImageUrl: ").append(toIndentedString(logoImageUrl)).append("\n");
     sb.append("    logoImageHeight: ").append(toIndentedString(logoImageHeight)).append("\n");
+    sb.append("    collapsedLogoImageUrl: ").append(toIndentedString(collapsedLogoImageUrl)).append("\n");
     sb.append("    appTitle: ").append(toIndentedString(appTitle)).append("\n");
     sb.append("    favicon: ").append(toIndentedString(favicon)).append("\n");
     sb.append("    paletteSettings: ").append(toIndentedString(paletteSettings)).append("\n");
+    sb.append("    primaryColorPanels: ").append(toIndentedString(primaryColorPanels)).append("\n");
     sb.append("    helpLinkBaseUrl: ").append(toIndentedString(helpLinkBaseUrl)).append("\n");
     sb.append("    uiHelpBaseUrl: ").append(toIndentedString(uiHelpBaseUrl)).append("\n");
     sb.append("    enableHelpLinks: ").append(toIndentedString(enableHelpLinks)).append("\n");
@@ -619,6 +681,11 @@ public class WhiteLabelingParams {
       joiner.add(String.format(java.util.Locale.ROOT, "%slogoImageHeight%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLogoImageHeight()))));
     }
 
+    // add `collapsedLogoImageUrl` to the URL query string
+    if (getCollapsedLogoImageUrl() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scollapsedLogoImageUrl%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCollapsedLogoImageUrl()))));
+    }
+
     // add `appTitle` to the URL query string
     if (getAppTitle() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sappTitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAppTitle()))));
@@ -632,6 +699,11 @@ public class WhiteLabelingParams {
     // add `paletteSettings` to the URL query string
     if (getPaletteSettings() != null) {
       joiner.add(getPaletteSettings().toUrlQueryString(prefix + "paletteSettings" + suffix));
+    }
+
+    // add `primaryColorPanels` to the URL query string
+    if (getPrimaryColorPanels() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sprimaryColorPanels%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPrimaryColorPanels()))));
     }
 
     // add `helpLinkBaseUrl` to the URL query string
