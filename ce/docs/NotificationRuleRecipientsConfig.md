@@ -58,6 +58,11 @@
 |------|------|-------------|-------|
 | targets | List<UUID> |  |  |
 
+#### IntegrationLifecycleEventRecipientsConfig  *(triggerType=`INTEGRATION_LIFECYCLE_EVENT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| targets | List<UUID> |  |  |
+
 #### NewPlatformVersionRecipientsConfig  *(triggerType=`NEW_PLATFORM_VERSION`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -86,7 +91,7 @@
 ## Referenced Types
 
 #### NotificationRuleTriggerType (enum)
-`ENTITY_ACTION` | `ALARM` | `ALARM_COMMENT` | `ALARM_ASSIGNMENT` | `DEVICE_ACTIVITY` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `EDGE_CONNECTION` | `EDGE_COMMUNICATION_FAILURE` | `NEW_PLATFORM_VERSION` | `ENTITIES_LIMIT` | … (14 values total)
+`ENTITY_ACTION` | `ALARM` | `ALARM_COMMENT` | `ALARM_ASSIGNMENT` | `DEVICE_ACTIVITY` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `INTEGRATION_LIFECYCLE_EVENT` | `EDGE_CONNECTION` | `EDGE_COMMUNICATION_FAILURE` | `NEW_PLATFORM_VERSION` | … (15 values total)
 
 ---
 

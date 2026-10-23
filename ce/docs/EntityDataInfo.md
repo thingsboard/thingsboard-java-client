@@ -11,6 +11,8 @@
 | **hasAttributes** | **Boolean** |  | [optional] |
 | **hasCredentials** | **Boolean** |  | [optional] |
 | **hasCalculatedFields** | **Boolean** |  | [optional] |
+| **hasPermissions** | **Boolean** |  | [optional] |
+| **hasGroupEntities** | **Boolean** |  | [optional] |
 
 
 

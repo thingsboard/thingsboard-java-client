@@ -54,10 +54,13 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "eventType", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CalculatedFieldDebugEventFilter.class, name = "DEBUG_CALCULATED_FIELD"),
+  @JsonSubTypes.Type(value = DebugConverterEventFilter.class, name = "DEBUG_CONVERTER"),
+  @JsonSubTypes.Type(value = DebugIntegrationEventFilter.class, name = "DEBUG_INTEGRATION"),
   @JsonSubTypes.Type(value = RuleChainDebugEventFilter.class, name = "DEBUG_RULE_CHAIN"),
   @JsonSubTypes.Type(value = RuleNodeDebugEventFilter.class, name = "DEBUG_RULE_NODE"),
   @JsonSubTypes.Type(value = ErrorEventFilter.class, name = "ERROR"),
   @JsonSubTypes.Type(value = LifeCycleEventFilter.class, name = "LC_EVENT"),
+  @JsonSubTypes.Type(value = RawDataEventFilter.class, name = "RAW_DATA"),
   @JsonSubTypes.Type(value = StatisticsEventFilter.class, name = "STATS"),
 })
 
@@ -211,10 +214,13 @@ static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
   mappings.put("DEBUG_CALCULATED_FIELD", CalculatedFieldDebugEventFilter.class);
+  mappings.put("DEBUG_CONVERTER", DebugConverterEventFilter.class);
+  mappings.put("DEBUG_INTEGRATION", DebugIntegrationEventFilter.class);
   mappings.put("DEBUG_RULE_CHAIN", RuleChainDebugEventFilter.class);
   mappings.put("DEBUG_RULE_NODE", RuleNodeDebugEventFilter.class);
   mappings.put("ERROR", ErrorEventFilter.class);
   mappings.put("LC_EVENT", LifeCycleEventFilter.class);
+  mappings.put("RAW_DATA", RawDataEventFilter.class);
   mappings.put("STATS", StatisticsEventFilter.class);
   mappings.put("EventFilter", EventFilter.class);
   JSON.registerDiscriminator(EventFilter.class, "eventType", mappings);

@@ -1,0 +1,46 @@
+
+# BaseReadTsKvQuery
+
+`org.thingsboard.client.model.BaseReadTsKvQuery`
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **id** | **Integer** |  | [optional] |
+| **key** | **String** |  | [optional] |
+| **startTs** | **Long** |  | [optional] |
+| **endTs** | **Long** |  | [optional] |
+| **aggParameters** | **AggregationParams** |  | [optional] |
+| **limit** | **Integer** |  | [optional] |
+| **order** | **String** |  | [optional] |
+| **aggregation** | **Aggregation** |  | [optional] |
+| **interval** | **Long** |  | [optional] |
+
+
+
+## Referenced Types
+
+#### AggregationParams
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| aggregation | Aggregation |  | [optional] |
+| intervalType | IntervalType |  | [optional] |
+| tzId | String |  | [optional] |
+| interval | Long |  | [optional] |
+
+#### Aggregation (enum)
+`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
+
+#### IntervalType (enum)
+`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
+
+---
+
+### Conventions
+
+- **Package:** `org.thingsboard.client.model`
+- **Getter pattern:** `get<PropertyName>()` — e.g., `getId()`, `getName()`
+- **Setter pattern:** `set<PropertyName>(value)` — e.g., `setId(value)`, `setName(value)`
+- **Null fields:** Getters return `null` for unset optional fields; they do not throw exceptions
+

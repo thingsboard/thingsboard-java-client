@@ -54,20 +54,32 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "entityType", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = AdminSettingsId.class, name = "ADMIN_SETTINGS"),
+  @JsonSubTypes.Type(value = AgentId.class, name = "AGENT"),
+  @JsonSubTypes.Type(value = AgentApplicationId.class, name = "AGENT_APPLICATION"),
+  @JsonSubTypes.Type(value = AgentAppEventId.class, name = "AGENT_APP_EVENT"),
+  @JsonSubTypes.Type(value = AgentAppProfileId.class, name = "AGENT_APP_PROFILE"),
+  @JsonSubTypes.Type(value = AgentAppUnitId.class, name = "AGENT_APP_UNIT"),
+  @JsonSubTypes.Type(value = AgentBulkActionId.class, name = "AGENT_BULK_ACTION"),
+  @JsonSubTypes.Type(value = AgentProfileId.class, name = "AGENT_PROFILE"),
   @JsonSubTypes.Type(value = AiModelId.class, name = "AI_MODEL"),
   @JsonSubTypes.Type(value = AlarmId.class, name = "ALARM"),
   @JsonSubTypes.Type(value = ApiKeyId.class, name = "API_KEY"),
   @JsonSubTypes.Type(value = ApiUsageStateId.class, name = "API_USAGE_STATE"),
   @JsonSubTypes.Type(value = AssetId.class, name = "ASSET"),
   @JsonSubTypes.Type(value = AssetProfileId.class, name = "ASSET_PROFILE"),
+  @JsonSubTypes.Type(value = BlobEntityId.class, name = "BLOB_ENTITY"),
   @JsonSubTypes.Type(value = CalculatedFieldId.class, name = "CALCULATED_FIELD"),
+  @JsonSubTypes.Type(value = ConverterId.class, name = "CONVERTER"),
   @JsonSubTypes.Type(value = CustomerId.class, name = "CUSTOMER"),
   @JsonSubTypes.Type(value = DashboardId.class, name = "DASHBOARD"),
   @JsonSubTypes.Type(value = DeviceId.class, name = "DEVICE"),
   @JsonSubTypes.Type(value = DeviceProfileId.class, name = "DEVICE_PROFILE"),
   @JsonSubTypes.Type(value = DomainId.class, name = "DOMAIN"),
   @JsonSubTypes.Type(value = EdgeId.class, name = "EDGE"),
+  @JsonSubTypes.Type(value = EntityGroupId.class, name = "ENTITY_GROUP"),
   @JsonSubTypes.Type(value = EntityViewId.class, name = "ENTITY_VIEW"),
+  @JsonSubTypes.Type(value = GroupPermissionId.class, name = "GROUP_PERMISSION"),
+  @JsonSubTypes.Type(value = IntegrationId.class, name = "INTEGRATION"),
   @JsonSubTypes.Type(value = JobId.class, name = "JOB"),
   @JsonSubTypes.Type(value = MobileAppId.class, name = "MOBILE_APP"),
   @JsonSubTypes.Type(value = MobileAppBundleId.class, name = "MOBILE_APP_BUNDLE"),
@@ -80,9 +92,14 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = OtaPackageId.class, name = "OTA_PACKAGE"),
   @JsonSubTypes.Type(value = QueueId.class, name = "QUEUE"),
   @JsonSubTypes.Type(value = QueueStatsId.class, name = "QUEUE_STATS"),
+  @JsonSubTypes.Type(value = ReportId.class, name = "REPORT"),
+  @JsonSubTypes.Type(value = ReportTemplateId.class, name = "REPORT_TEMPLATE"),
+  @JsonSubTypes.Type(value = RoleId.class, name = "ROLE"),
   @JsonSubTypes.Type(value = RpcId.class, name = "RPC"),
   @JsonSubTypes.Type(value = RuleChainId.class, name = "RULE_CHAIN"),
   @JsonSubTypes.Type(value = RuleNodeId.class, name = "RULE_NODE"),
+  @JsonSubTypes.Type(value = SchedulerEventId.class, name = "SCHEDULER_EVENT"),
+  @JsonSubTypes.Type(value = SecretId.class, name = "SECRET"),
   @JsonSubTypes.Type(value = TbResourceId.class, name = "TB_RESOURCE"),
   @JsonSubTypes.Type(value = TenantId.class, name = "TENANT"),
   @JsonSubTypes.Type(value = TenantProfileId.class, name = "TENANT_PROFILE"),
@@ -241,20 +258,32 @@ static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
   mappings.put("ADMIN_SETTINGS", AdminSettingsId.class);
+  mappings.put("AGENT", AgentId.class);
+  mappings.put("AGENT_APPLICATION", AgentApplicationId.class);
+  mappings.put("AGENT_APP_EVENT", AgentAppEventId.class);
+  mappings.put("AGENT_APP_PROFILE", AgentAppProfileId.class);
+  mappings.put("AGENT_APP_UNIT", AgentAppUnitId.class);
+  mappings.put("AGENT_BULK_ACTION", AgentBulkActionId.class);
+  mappings.put("AGENT_PROFILE", AgentProfileId.class);
   mappings.put("AI_MODEL", AiModelId.class);
   mappings.put("ALARM", AlarmId.class);
   mappings.put("API_KEY", ApiKeyId.class);
   mappings.put("API_USAGE_STATE", ApiUsageStateId.class);
   mappings.put("ASSET", AssetId.class);
   mappings.put("ASSET_PROFILE", AssetProfileId.class);
+  mappings.put("BLOB_ENTITY", BlobEntityId.class);
   mappings.put("CALCULATED_FIELD", CalculatedFieldId.class);
+  mappings.put("CONVERTER", ConverterId.class);
   mappings.put("CUSTOMER", CustomerId.class);
   mappings.put("DASHBOARD", DashboardId.class);
   mappings.put("DEVICE", DeviceId.class);
   mappings.put("DEVICE_PROFILE", DeviceProfileId.class);
   mappings.put("DOMAIN", DomainId.class);
   mappings.put("EDGE", EdgeId.class);
+  mappings.put("ENTITY_GROUP", EntityGroupId.class);
   mappings.put("ENTITY_VIEW", EntityViewId.class);
+  mappings.put("GROUP_PERMISSION", GroupPermissionId.class);
+  mappings.put("INTEGRATION", IntegrationId.class);
   mappings.put("JOB", JobId.class);
   mappings.put("MOBILE_APP", MobileAppId.class);
   mappings.put("MOBILE_APP_BUNDLE", MobileAppBundleId.class);
@@ -267,9 +296,14 @@ static {
   mappings.put("OTA_PACKAGE", OtaPackageId.class);
   mappings.put("QUEUE", QueueId.class);
   mappings.put("QUEUE_STATS", QueueStatsId.class);
+  mappings.put("REPORT", ReportId.class);
+  mappings.put("REPORT_TEMPLATE", ReportTemplateId.class);
+  mappings.put("ROLE", RoleId.class);
   mappings.put("RPC", RpcId.class);
   mappings.put("RULE_CHAIN", RuleChainId.class);
   mappings.put("RULE_NODE", RuleNodeId.class);
+  mappings.put("SCHEDULER_EVENT", SchedulerEventId.class);
+  mappings.put("SECRET", SecretId.class);
   mappings.put("TB_RESOURCE", TbResourceId.class);
   mappings.put("TENANT", TenantId.class);
   mappings.put("TENANT_PROFILE", TenantProfileId.class);

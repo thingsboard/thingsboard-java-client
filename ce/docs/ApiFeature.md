@@ -22,6 +22,10 @@
 
 * `ALARM` (value: `"ALARM"`)
 
+* `REPORT` (value: `"REPORT"`)
+
+* `AI` (value: `"AI"`)
+
 
 
 ---
