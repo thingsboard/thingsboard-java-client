@@ -12,11 +12,11 @@
       "name": "Apache License Version 2.0",
       "url": "https://github.com/thingsboard/thingsboard/blob/master/LICENSE"
     },
-    "version": "4.4.0PAAS"
+    "version": "4.4.1PAAS"
   },
   "servers": [
     {
-      "url": "http://localhost:36471",
+      "url": "http://localhost:33449",
       "description": "Generated server url"
     }
   ],
@@ -3763,7 +3763,7 @@
           {
             "name": "systemByDefault",
             "in": "query",
-            "description": "Use system settings if settings are not defined on tenant level.",
+            "description": "Deprecated, not used.",
             "required": false,
             "schema": {
               "type": "boolean",
@@ -17133,6 +17133,185 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ServerSentEventString"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "message": "Invalid request body",
+                      "errorCode": 31,
+                      "status": 400,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "status": 401,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "status": 403,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "status": 404,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "status": 429,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/ai/chats/{chatId}/resume": {
+      "post": {
+        "tags": [
+          "ai-chat-controller"
+        ],
+        "summary": "resumeChat",
+        "operationId": "resumeChat",
+        "parameters": [
+          {
+            "name": "chatId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "X-Authorization",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -63846,6 +64025,350 @@
                     "summary": "Bad Request",
                     "value": {
                       "message": "Invalid UUID string: 123",
+                      "errorCode": 31,
+                      "status": 400,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "status": 401,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "status": 403,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "status": 404,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "status": 429,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/v2/license/activateInstance": {
+      "post": {
+        "tags": [
+          "edge-controller"
+        ],
+        "summary": "Activate edge instance (activateInstance)",
+        "description": "Activates edge license (V1/V2) on license portal.",
+        "operationId": "activateInstanceV2",
+        "parameters": [
+          {
+            "name": "licenseSecret",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "releaseDate",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "clusterId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "protocolVersion",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonNode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "message": "Invalid request body",
+                      "errorCode": 31,
+                      "status": 400,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-401": {
+                    "summary": "Unauthorized",
+                    "value": {
+                      "message": "Authentication failed",
+                      "errorCode": 10,
+                      "status": 401,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-403": {
+                    "summary": "Forbidden",
+                    "value": {
+                      "message": "You don't have permission to perform this operation!",
+                      "errorCode": 20,
+                      "status": 403,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-404": {
+                    "summary": "Not Found",
+                    "value": {
+                      "message": "Requested item wasn't found!",
+                      "errorCode": 32,
+                      "status": 404,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-429": {
+                    "summary": "Too Many Requests",
+                    "value": {
+                      "message": "Too many requests for current tenant!",
+                      "errorCode": 33,
+                      "status": 429,
+                      "subscriptionErrorCode": null,
+                      "subscriptionEntry": null,
+                      "subscriptionValue": null,
+                      "timestamp": 1609459200000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HttpLoginForm": []
+          },
+          {
+            "ApiKeyForm": []
+          }
+        ]
+      }
+    },
+    "/api/v2/license/checkInstance": {
+      "post": {
+        "tags": [
+          "edge-controller"
+        ],
+        "summary": "Check edge license (checkInstance)",
+        "description": "Checks license request (V1/V2) from edge service by forwarding request to license portal.",
+        "operationId": "checkInstanceV2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JsonNode"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JsonNode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ThingsboardErrorResponse"
+                },
+                "examples": {
+                  "error-code-400": {
+                    "summary": "Bad Request",
+                    "value": {
+                      "message": "Invalid request body",
                       "errorCode": 31,
                       "status": 400,
                       "subscriptionErrorCode": null,
@@ -120615,7 +121138,7 @@
           "tb-resource-controller"
         ],
         "summary": "Get Resource Infos (getResources)",
-        "description": "Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data. \n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
+        "description": "Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only 'JS_MODULE' resources, so the 'resourceType' parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data. \n\nAvailable for any authorized user. ",
         "operationId": "getResources",
         "parameters": [
           {
@@ -123855,7 +124378,7 @@
           "tb-resource-controller"
         ],
         "summary": "Get resource info (getResourceInfo)",
-        "description": "Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data. \n\nAvailable for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.",
+        "description": "Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data. \n\nAvailable for any authorized user. ",
         "operationId": "getResourceInfo",
         "parameters": [
           {
@@ -155440,7 +155963,9 @@
               "maxEmails": {
                 "type": "integer",
                 "format": "int64",
-                "example": 0
+                "description": "Maximum number of emails per billing period sent via the system mail server. 0 means unlimited, -1 disables email sending.",
+                "example": 0,
+                "minimum": -1
               },
               "smsEnabled": {
                 "type": "boolean",
@@ -168426,10 +168951,7 @@
             },
             "description": "Mapping of hue identifier number to the rgb(a) color code"
           }
-        },
-        "required": [
-          "type"
-        ]
+        }
       },
       "PaletteSettings": {
         "type": "object",
@@ -168442,11 +168964,7 @@
             "$ref": "#/components/schemas/Palette",
             "description": "Accent palette JSON"
           }
-        },
-        "required": [
-          "accentPalette",
-          "primaryPalette"
-        ]
+        }
       },
       "PdfReportTemplateConfig": {
         "allOf": [

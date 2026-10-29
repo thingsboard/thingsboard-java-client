@@ -1635,6 +1635,236 @@ public class ThingsboardApi {
   }
 
   /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param apiRequest {@link ActivateInstanceV2Args}
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public com.fasterxml.jackson.databind.JsonNode activateInstanceV2(ActivateInstanceV2Args apiRequest) throws ApiException {
+    @Nonnull
+    String licenseSecret = apiRequest.licenseSecret();
+    @Nonnull
+    String releaseDate = apiRequest.releaseDate();
+    @Nonnull
+    String clusterId = apiRequest.clusterId();
+    @Nullable
+    String protocolVersion = apiRequest.protocolVersion();
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = activateInstanceV2WithHttpInfo(licenseSecret, releaseDate, clusterId, protocolVersion, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param apiRequest {@link ActivateInstanceV2Args}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> activateInstanceV2WithHttpInfo(ActivateInstanceV2Args apiRequest, Map<String, String> headers) throws ApiException {
+    String licenseSecret = apiRequest.licenseSecret();
+    String releaseDate = apiRequest.releaseDate();
+    String clusterId = apiRequest.clusterId();
+    String protocolVersion = apiRequest.protocolVersion();
+    return activateInstanceV2WithHttpInfo(licenseSecret, releaseDate, clusterId, protocolVersion, headers);
+  }
+
+  /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param licenseSecret  (required)
+   * @param releaseDate  (required)
+   * @param clusterId  (required)
+   * @param protocolVersion  (optional)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #activateInstanceV2(ActivateInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = activateInstanceV2WithHttpInfo(licenseSecret, releaseDate, clusterId, protocolVersion, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Activate edge instance (activateInstance)
+   * Activates edge license (V1/V2) on license portal.
+   * @param licenseSecret  (required)
+   * @param releaseDate  (required)
+   * @param clusterId  (required)
+   * @param protocolVersion  (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #activateInstanceV2(ActivateInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> activateInstanceV2WithHttpInfo(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = activateInstanceV2RequestBuilder(licenseSecret, releaseDate, clusterId, protocolVersion, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("activateInstanceV2", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder activateInstanceV2RequestBuilder(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'licenseSecret' is set
+    if (licenseSecret == null) {
+      throw new ApiException(400, "Missing the required parameter 'licenseSecret' when calling activateInstanceV2");
+    }
+    // verify the required parameter 'releaseDate' is set
+    if (releaseDate == null) {
+      throw new ApiException(400, "Missing the required parameter 'releaseDate' when calling activateInstanceV2");
+    }
+    // verify the required parameter 'clusterId' is set
+    if (clusterId == null) {
+      throw new ApiException(400, "Missing the required parameter 'clusterId' when calling activateInstanceV2");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/v2/license/activateInstance";
+    List<Pair> localVarQueryParams = new ArrayList<>();
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    localVarQueryParameterBaseName = "licenseSecret";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("licenseSecret", licenseSecret));
+    localVarQueryParameterBaseName = "releaseDate";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("releaseDate", releaseDate));
+    localVarQueryParameterBaseName = "clusterId";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("clusterId", clusterId));
+    localVarQueryParameterBaseName = "protocolVersion";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("protocolVersion", protocolVersion));
+    if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
+      StringJoiner queryJoiner = new StringJoiner("&");
+      localVarQueryParams.forEach(p -> queryJoiner.add(p.getName() + '=' + p.getValue()));
+      if (localVarQueryStringJoiner.length() != 0) {
+        queryJoiner.add(localVarQueryStringJoiner.toString());
+      }
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath + '?' + queryJoiner.toString()));
+    } else {
+      localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    }
+    localVarRequestBuilder.header("Accept", "application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class ActivateInstanceV2Args {
+    @Nonnull
+    private String licenseSecret; //  (required)
+    @Nonnull
+    private String releaseDate; //  (required)
+    @Nonnull
+    private String clusterId; //  (required)
+    @Nullable
+    private String protocolVersion; //  (optional)
+    private ActivateInstanceV2Args(Builder builder) {
+      this.licenseSecret = builder.licenseSecret;
+      this.releaseDate = builder.releaseDate;
+      this.clusterId = builder.clusterId;
+      this.protocolVersion = builder.protocolVersion;
+    }
+    @Nonnull
+    public String licenseSecret() {
+      return licenseSecret;
+    }
+    @Nonnull
+    public String releaseDate() {
+      return releaseDate;
+    }
+    @Nonnull
+    public String clusterId() {
+      return clusterId;
+    }
+    @Nullable
+    public String protocolVersion() {
+      return protocolVersion;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private String licenseSecret;
+      private String releaseDate;
+      private String clusterId;
+      private String protocolVersion;
+      public Builder licenseSecret(@Nonnull String licenseSecret) {
+        this.licenseSecret = licenseSecret;
+        return this;
+      }
+      public Builder releaseDate(@Nonnull String releaseDate) {
+        this.releaseDate = releaseDate;
+        return this;
+      }
+      public Builder clusterId(@Nonnull String clusterId) {
+        this.clusterId = clusterId;
+        return this;
+      }
+      public Builder protocolVersion(@Nullable String protocolVersion) {
+        this.protocolVersion = protocolVersion;
+        return this;
+      }
+      public ActivateInstanceV2Args build() {
+        if (this.licenseSecret == null) {
+          throw new IllegalArgumentException("Required parameter 'licenseSecret' is not set for activateInstanceV2");
+        }
+        if (this.releaseDate == null) {
+          throw new IllegalArgumentException("Required parameter 'releaseDate' is not set for activateInstanceV2");
+        }
+        if (this.clusterId == null) {
+          throw new IllegalArgumentException("Required parameter 'clusterId' is not set for activateInstanceV2");
+        }
+        return new ActivateInstanceV2Args(this);
+      }
+    }
+  }
+
+  /**
    * Activate User
    * Checks the activation token and updates corresponding user password in the database. Now the user may start using his password to login. The response already contains the [JWT](https://jwt.io) activation and refresh tokens, to simplify the user activation flow and avoid asking user to input password again after activation. If token is valid, returns the object that contains [JWT](https://jwt.io/) access and refresh tokens. If token is not valid, returns &#39;400 Bad Request&#39;.
    * @param apiRequest {@link ActivateUserArgs}
@@ -5662,6 +5892,157 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'body' is not set for checkInstance");
         }
         return new CheckInstanceArgs(this);
+      }
+    }
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param apiRequest {@link CheckInstanceV2Args}
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public com.fasterxml.jackson.databind.JsonNode checkInstanceV2(CheckInstanceV2Args apiRequest) throws ApiException {
+    @Nullable
+    Object body = apiRequest.body();
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = checkInstanceV2WithHttpInfo(body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param apiRequest {@link CheckInstanceV2Args}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> checkInstanceV2WithHttpInfo(CheckInstanceV2Args apiRequest, Map<String, String> headers) throws ApiException {
+    Object body = apiRequest.body();
+    return checkInstanceV2WithHttpInfo(body, headers);
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param body  (required)
+   * @return com.fasterxml.jackson.databind.JsonNode
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #checkInstanceV2(CheckInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nullable Object body) throws ApiException {
+    ApiResponse<com.fasterxml.jackson.databind.JsonNode> localVarResponse = checkInstanceV2WithHttpInfo(body, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * Check edge license (checkInstance)
+   * Checks license request (V1/V2) from edge service by forwarding request to license portal.
+   * @param body  (required)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;com.fasterxml.jackson.databind.JsonNode&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #checkInstanceV2(CheckInstanceV2Args)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<com.fasterxml.jackson.databind.JsonNode> checkInstanceV2WithHttpInfo(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = checkInstanceV2RequestBuilder(body, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("checkInstanceV2", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        com.fasterxml.jackson.databind.JsonNode responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<com.fasterxml.jackson.databind.JsonNode>() {});
+        return new ApiResponse<com.fasterxml.jackson.databind.JsonNode>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder checkInstanceV2RequestBuilder(@Nullable Object body, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'body' is set
+    if (body == null) {
+      throw new ApiException(400, "Missing the required parameter 'body' when calling checkInstanceV2");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/v2/license/checkInstance";
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    localVarRequestBuilder.header("Content-Type", "application/json");
+    localVarRequestBuilder.header("Accept", "application/json");
+    try {
+      byte[] localVarPostBody = memberVarObjectMapper.writeValueAsBytes(body);
+      localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.ofByteArray(localVarPostBody));
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class CheckInstanceV2Args {
+    @Nullable
+    private Object body; //  (required)
+    private CheckInstanceV2Args(Builder builder) {
+      this.body = builder.body;
+    }
+    @Nullable
+    public Object body() {
+      return body;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private Object body;
+      public Builder body(@Nullable Object body) {
+        this.body = body;
+        return this;
+      }
+      public CheckInstanceV2Args build() {
+        if (this.body == null) {
+          throw new IllegalArgumentException("Required parameter 'body' is not set for checkInstanceV2");
+        }
+        return new CheckInstanceV2Args(this);
       }
     }
   }
@@ -29240,7 +29621,7 @@ public class ThingsboardApi {
    * Get the Administration Settings object using key (getAdminSettings)
    * Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
    * @param key A string value of the key (e.g. &#39;general&#39; or &#39;mail&#39;). (required)
-   * @param systemByDefault Use system settings if settings are not defined on tenant level. (optional, default to false)
+   * @param systemByDefault Deprecated, not used. (optional, default to false)
    * @return AdminSettings
    * @throws ApiException if fails to make API call
    * @deprecated Use {@link #getAdminSettings(GetAdminSettingsArgs)} instead.
@@ -29259,7 +29640,7 @@ public class ThingsboardApi {
    * Get the Administration Settings object using key (getAdminSettings)
    * Get the Administration Settings object using specified string key. Referencing non-existing key will cause an error.  Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.  Security check is performed to verify that the user has &#39;READ&#39; permission for the &#39;ADMIN_SETTINGS&#39; (for &#39;SYS_ADMIN&#39; authority) or &#39;WHITE_LABELING&#39; (for &#39;TENANT_ADMIN&#39; authority) resource.
    * @param key A string value of the key (e.g. &#39;general&#39; or &#39;mail&#39;). (required)
-   * @param systemByDefault Use system settings if settings are not defined on tenant level. (optional, default to false)
+   * @param systemByDefault Deprecated, not used. (optional, default to false)
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;AdminSettings&gt;
    * @throws ApiException if fails to make API call
@@ -29345,7 +29726,7 @@ public class ThingsboardApi {
     @Nonnull
     private String key; // A string value of the key (e.g. &#39;general&#39; or &#39;mail&#39;). (required)
     @Nullable
-    private Boolean systemByDefault; // Use system settings if settings are not defined on tenant level. (optional, default to false)
+    private Boolean systemByDefault; // Deprecated, not used. (optional, default to false)
     private GetAdminSettingsArgs(Builder builder) {
       this.key = builder.key;
       this.systemByDefault = builder.systemByDefault;
@@ -85908,7 +86289,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourceInfoArgs}
    * @return TbResourceInfo
    * @throws ApiException if fails to make API call
@@ -85927,7 +86308,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourceInfoArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;TbResourceInfo&gt;
@@ -85943,7 +86324,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param resourceType Type of the resource (required)
    * @param scope Scope of the resource (required)
    * @param key Key of the resource, e.g. &#39;extension.js&#39; (required)
@@ -85963,7 +86344,7 @@ public class ThingsboardApi {
 
   /**
    * Get resource info (getResourceInfo)
-   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param resourceType Type of the resource (required)
    * @param scope Scope of the resource (required)
    * @param key Key of the resource, e.g. &#39;extension.js&#39; (required)
@@ -86250,7 +86631,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourcesArgs}
    * @return PageDataTbResourceInfo
    * @throws ApiException if fails to make API call
@@ -86277,7 +86658,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param apiRequest {@link GetResourcesArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;PageDataTbResourceInfo&gt;
@@ -86297,7 +86678,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param resourceType A list of resource types, separated by comma &#39;,&#39;. (optional)
@@ -86321,7 +86702,7 @@ public class ThingsboardApi {
 
   /**
    * Get Resource Infos (getResources)
-   * Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with &#39;SYS_ADMIN&#39; or &#39;TENANT_ADMIN&#39; authority.
+   * Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only &#39;JS_MODULE&#39; resources, so the &#39;resourceType&#39; parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
    * @param pageSize Maximum amount of entities in a one page (required)
    * @param page Sequence number of page starting from 0 (required)
    * @param resourceType A list of resource types, separated by comma &#39;,&#39;. (optional)
@@ -119729,6 +120110,199 @@ public class ThingsboardApi {
           throw new IllegalArgumentException("Required parameter 'body' is not set for resolveToolApproval");
         }
         return new ResolveToolApprovalArgs(this);
+      }
+    }
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param apiRequest {@link ResumeChatArgs}
+   * @return List&lt;Object&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public List<Object> resumeChat(ResumeChatArgs apiRequest) throws ApiException {
+    @Nonnull
+    UUID chatId = apiRequest.chatId();
+    @Nonnull
+    String xAuthorization = apiRequest.xAuthorization();
+    @Nullable
+    String acceptLanguage = apiRequest.acceptLanguage();
+    ApiResponse<List<Object>> localVarResponse = resumeChatWithHttpInfo(chatId, xAuthorization, acceptLanguage, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param apiRequest {@link ResumeChatArgs}
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;Object&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  @SuppressWarnings({"deprecation", "removal"})
+  public ApiResponse<List<Object>> resumeChatWithHttpInfo(ResumeChatArgs apiRequest, Map<String, String> headers) throws ApiException {
+    UUID chatId = apiRequest.chatId();
+    String xAuthorization = apiRequest.xAuthorization();
+    String acceptLanguage = apiRequest.acceptLanguage();
+    return resumeChatWithHttpInfo(chatId, xAuthorization, acceptLanguage, headers);
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param chatId  (required)
+   * @param xAuthorization  (required)
+   * @param acceptLanguage  (optional)
+   * @return List&lt;Object&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #resumeChat(ResumeChatArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public List<Object> resumeChat(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage) throws ApiException {
+    ApiResponse<List<Object>> localVarResponse = resumeChatWithHttpInfo(chatId, xAuthorization, acceptLanguage, null);
+    return localVarResponse.getData();
+  }
+
+  /**
+   * resumeChat
+   * 
+   * @param chatId  (required)
+   * @param xAuthorization  (required)
+   * @param acceptLanguage  (optional)
+   * @param headers Optional headers to include in the request
+   * @return ApiResponse&lt;List&lt;Object&gt;&gt;
+   * @throws ApiException if fails to make API call
+   * @deprecated Use {@link #resumeChat(ResumeChatArgs)} instead.
+   *     This overload passes each parameter positionally, so its signature changes whenever a
+   *     parameter is added to this endpoint — breaking source and binary compatibility for
+   *     existing callers on version upgrades. The request-object overload stays compatible because
+   *     new parameters are added as optional builder fields. Scheduled for removal in a future release.
+   */
+  @Deprecated(forRemoval = true)
+  public ApiResponse<List<Object>> resumeChatWithHttpInfo(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = resumeChatRequestBuilder(chatId, xAuthorization, acceptLanguage, headers);
+    try {
+      HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
+          localVarRequestBuilder.build(),
+          HttpResponse.BodyHandlers.ofInputStream());
+      if (memberVarResponseInterceptor != null) {
+        memberVarResponseInterceptor.accept(localVarResponse);
+      }
+      InputStream localVarResponseBody = null;
+      try {
+        if (localVarResponse.statusCode()/ 100 != 2) {
+          throw getApiException("resumeChat", localVarResponse);
+        }
+        localVarResponseBody = ApiClient.getResponseBody(localVarResponse);
+        if (localVarResponseBody == null) {
+          return new ApiResponse<List<Object>>(localVarResponse.statusCode(), localVarResponse.headers().map(), null);
+        }
+        String responseBody = new String(localVarResponseBody.readAllBytes());
+        List<Object> responseValue = responseBody.isBlank()? null: memberVarObjectMapper.readValue(responseBody, new TypeReference<List<Object>>() {});
+        return new ApiResponse<List<Object>>(localVarResponse.statusCode(), localVarResponse.headers().map(), responseValue);
+      } finally {
+        if (localVarResponseBody != null) {
+          localVarResponseBody.close();
+        }
+      }
+    } catch (IOException e) {
+      throw new ApiException(e);
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ApiException(e);
+    }
+  }
+
+  private HttpRequest.Builder resumeChatRequestBuilder(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage, Map<String, String> headers) throws ApiException {
+    // verify the required parameter 'chatId' is set
+    if (chatId == null) {
+      throw new ApiException(400, "Missing the required parameter 'chatId' when calling resumeChat");
+    }
+    // verify the required parameter 'xAuthorization' is set
+    if (xAuthorization == null) {
+      throw new ApiException(400, "Missing the required parameter 'xAuthorization' when calling resumeChat");
+    }
+    HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
+    String localVarPath = "/api/ai/chats/{chatId}/resume"
+        .replace("{chatId}", ApiClient.urlEncode(chatId.toString()));
+    localVarRequestBuilder.uri(URI.create(memberVarBaseUri + localVarPath));
+    if (xAuthorization != null) {
+      localVarRequestBuilder.header("X-Authorization", xAuthorization.toString());
+    }
+    if (acceptLanguage != null) {
+      localVarRequestBuilder.header("Accept-Language", acceptLanguage.toString());
+    }
+    localVarRequestBuilder.header("Accept", "text/event-stream, application/json");
+    localVarRequestBuilder.method("POST", HttpRequest.BodyPublishers.noBody());
+    if (memberVarReadTimeout != null) {
+      localVarRequestBuilder.timeout(memberVarReadTimeout);
+    }
+    // Add custom headers if provided
+    localVarRequestBuilder = HttpRequestBuilderExtensions.withAdditionalHeaders(localVarRequestBuilder, headers);
+    if (memberVarInterceptor != null) {
+      memberVarInterceptor.accept(localVarRequestBuilder);
+    }
+    return localVarRequestBuilder;
+  }
+
+  public static final class ResumeChatArgs {
+    @Nonnull
+    private UUID chatId; //  (required)
+    @Nonnull
+    private String xAuthorization; //  (required)
+    @Nullable
+    private String acceptLanguage; //  (optional)
+    private ResumeChatArgs(Builder builder) {
+      this.chatId = builder.chatId;
+      this.xAuthorization = builder.xAuthorization;
+      this.acceptLanguage = builder.acceptLanguage;
+    }
+    @Nonnull
+    public UUID chatId() {
+      return chatId;
+    }
+    @Nonnull
+    public String xAuthorization() {
+      return xAuthorization;
+    }
+    @Nullable
+    public String acceptLanguage() {
+      return acceptLanguage;
+    }
+    public static Builder builder() {
+      return new Builder();
+    }
+    public static class Builder {
+      private UUID chatId;
+      private String xAuthorization;
+      private String acceptLanguage;
+      public Builder chatId(@Nonnull UUID chatId) {
+        this.chatId = chatId;
+        return this;
+      }
+      public Builder xAuthorization(@Nonnull String xAuthorization) {
+        this.xAuthorization = xAuthorization;
+        return this;
+      }
+      public Builder acceptLanguage(@Nullable String acceptLanguage) {
+        this.acceptLanguage = acceptLanguage;
+        return this;
+      }
+      public ResumeChatArgs build() {
+        if (this.chatId == null) {
+          throw new IllegalArgumentException("Required parameter 'chatId' is not set for resumeChat");
+        }
+        if (this.xAuthorization == null) {
+          throw new IllegalArgumentException("Required parameter 'xAuthorization' is not set for resumeChat");
+        }
+        return new ResumeChatArgs(this);
       }
     }
   }

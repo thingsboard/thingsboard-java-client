@@ -1654,7 +1654,8 @@ public class DefaultTenantProfileConfiguration extends TenantProfileConfiguratio
   }
 
   /**
-   * Get maxEmails
+   * Maximum number of emails per billing period sent via the system mail server. 0 means unlimited, -1 disables email sending.
+   * minimum: -1
    * @return maxEmails
    */
   @Nullable
