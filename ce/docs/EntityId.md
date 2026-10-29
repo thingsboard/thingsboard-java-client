@@ -17,6 +17,27 @@
 #### AdminSettingsId  *(entityType=`ADMIN_SETTINGS`)*
 *(no additional properties)*
 
+#### AgentId  *(entityType=`AGENT`)*
+*(no additional properties)*
+
+#### AgentApplicationId  *(entityType=`AGENT_APPLICATION`)*
+*(no additional properties)*
+
+#### AgentAppEventId  *(entityType=`AGENT_APP_EVENT`)*
+*(no additional properties)*
+
+#### AgentAppProfileId  *(entityType=`AGENT_APP_PROFILE`)*
+*(no additional properties)*
+
+#### AgentAppUnitId  *(entityType=`AGENT_APP_UNIT`)*
+*(no additional properties)*
+
+#### AgentBulkActionId  *(entityType=`AGENT_BULK_ACTION`)*
+*(no additional properties)*
+
+#### AgentProfileId  *(entityType=`AGENT_PROFILE`)*
+*(no additional properties)*
+
 #### AiModelId  *(entityType=`AI_MODEL`)*
 *(no additional properties)*
 
@@ -35,7 +56,13 @@
 #### AssetProfileId  *(entityType=`ASSET_PROFILE`)*
 *(no additional properties)*
 
+#### BlobEntityId  *(entityType=`BLOB_ENTITY`)*
+*(no additional properties)*
+
 #### CalculatedFieldId  *(entityType=`CALCULATED_FIELD`)*
+*(no additional properties)*
+
+#### ConverterId  *(entityType=`CONVERTER`)*
 *(no additional properties)*
 
 #### CustomerId  *(entityType=`CUSTOMER`)*
@@ -56,7 +83,16 @@
 #### EdgeId  *(entityType=`EDGE`)*
 *(no additional properties)*
 
+#### EntityGroupId  *(entityType=`ENTITY_GROUP`)*
+*(no additional properties)*
+
 #### EntityViewId  *(entityType=`ENTITY_VIEW`)*
+*(no additional properties)*
+
+#### GroupPermissionId  *(entityType=`GROUP_PERMISSION`)*
+*(no additional properties)*
+
+#### IntegrationId  *(entityType=`INTEGRATION`)*
 *(no additional properties)*
 
 #### JobId  *(entityType=`JOB`)*
@@ -95,6 +131,15 @@
 #### QueueStatsId  *(entityType=`QUEUE_STATS`)*
 *(no additional properties)*
 
+#### ReportId  *(entityType=`REPORT`)*
+*(no additional properties)*
+
+#### ReportTemplateId  *(entityType=`REPORT_TEMPLATE`)*
+*(no additional properties)*
+
+#### RoleId  *(entityType=`ROLE`)*
+*(no additional properties)*
+
 #### RpcId  *(entityType=`RPC`)*
 *(no additional properties)*
 
@@ -102,6 +147,12 @@
 *(no additional properties)*
 
 #### RuleNodeId  *(entityType=`RULE_NODE`)*
+*(no additional properties)*
+
+#### SchedulerEventId  *(entityType=`SCHEDULER_EVENT`)*
+*(no additional properties)*
+
+#### SecretId  *(entityType=`SECRET`)*
 *(no additional properties)*
 
 #### TbResourceId  *(entityType=`TB_RESOURCE`)*
@@ -125,7 +176,7 @@
 ## Referenced Types
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 ---
 

@@ -60,6 +60,7 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = EdgeConnectionRecipientsConfig.class, name = "EDGE_CONNECTION"),
   @JsonSubTypes.Type(value = EntitiesLimitRecipientsConfig.class, name = "ENTITIES_LIMIT"),
   @JsonSubTypes.Type(value = EntityActionRecipientsConfig.class, name = "ENTITY_ACTION"),
+  @JsonSubTypes.Type(value = IntegrationLifecycleEventRecipientsConfig.class, name = "INTEGRATION_LIFECYCLE_EVENT"),
   @JsonSubTypes.Type(value = NewPlatformVersionRecipientsConfig.class, name = "NEW_PLATFORM_VERSION"),
   @JsonSubTypes.Type(value = RateLimitsRecipientsConfig.class, name = "RATE_LIMITS"),
   @JsonSubTypes.Type(value = ResourceShortageRecipientsConfig.class, name = "RESOURCES_SHORTAGE"),
@@ -190,6 +191,7 @@ static {
   mappings.put("EDGE_CONNECTION", EdgeConnectionRecipientsConfig.class);
   mappings.put("ENTITIES_LIMIT", EntitiesLimitRecipientsConfig.class);
   mappings.put("ENTITY_ACTION", EntityActionRecipientsConfig.class);
+  mappings.put("INTEGRATION_LIFECYCLE_EVENT", IntegrationLifecycleEventRecipientsConfig.class);
   mappings.put("NEW_PLATFORM_VERSION", NewPlatformVersionRecipientsConfig.class);
   mappings.put("RATE_LIMITS", RateLimitsRecipientsConfig.class);
   mappings.put("RESOURCES_SHORTAGE", ResourceShortageRecipientsConfig.class);

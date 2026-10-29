@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -34,6 +33,7 @@ import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.DeviceData;
 import org.thingsboard.client.model.DeviceId;
 import org.thingsboard.client.model.DeviceProfileId;
+import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.OtaPackageId;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -56,7 +56,8 @@ import org.thingsboard.client.ApiClient;
   Device.JSON_PROPERTY_DEVICE_DATA,
   Device.JSON_PROPERTY_FIRMWARE_ID,
   Device.JSON_PROPERTY_SOFTWARE_ID,
-  Device.JSON_PROPERTY_VERSION
+  Device.JSON_PROPERTY_VERSION,
+  Device.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Device {
@@ -81,7 +82,7 @@ public class Device {
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @Nonnull
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -112,6 +113,10 @@ public class Device {
   @Nullable
   private Long version;
 
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public Device() { 
   }
 
@@ -119,12 +124,12 @@ public class Device {
   public Device(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
+    this.ownerId = ownerId;
   }
 
   public Device id(@Nullable DeviceId id) {
@@ -203,8 +208,13 @@ public class Device {
 
 
 
+  public Device customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignDeviceToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Device.
    * @return customerId
    */
   @Nullable
@@ -215,9 +225,14 @@ public class Device {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
-  public Device name(@Nonnull String name) {
+  public Device name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -226,17 +241,17 @@ public class Device {
    * Unique Device Name in scope of Tenant
    * @return name
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
     return name;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@Nonnull String name) {
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -410,6 +425,20 @@ public class Device {
 
 
   /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  /**
    * Return true if this Device object is equal to o.
    */
   @Override
@@ -433,12 +462,13 @@ public class Device {
         Objects.equals(this.deviceData, device.deviceData) &&
         Objects.equals(this.firmwareId, device.firmwareId) &&
         Objects.equals(this.softwareId, device.softwareId) &&
-        Objects.equals(this.version, device.version);
+        Objects.equals(this.version, device.version) &&
+        Objects.equals(this.ownerId, device.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, deviceProfileId, deviceData, firmwareId, softwareId, version);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, deviceProfileId, deviceData, firmwareId, softwareId, version, ownerId);
   }
 
   @Override
@@ -458,6 +488,7 @@ public class Device {
     sb.append("    firmwareId: ").append(toIndentedString(firmwareId)).append("\n");
     sb.append("    softwareId: ").append(toIndentedString(softwareId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -568,6 +599,11 @@ public class Device {
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

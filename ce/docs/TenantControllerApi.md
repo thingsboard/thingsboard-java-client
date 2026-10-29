@@ -14,7 +14,7 @@ Tenant getTenantById(@Nonnull String tenantId) // Get Tenant (getTenantById)
 TenantInfo getTenantInfoById(@Nonnull String tenantId) // Get Tenant Info (getTenantInfoById)
 PageDataTenantInfo getTenantInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenants Info (getTenants)
 PageDataTenant getTenants(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenants (getTenants)
-List<Tenant> getTenantsByIds(@Nonnull List<String> tenantIds) // Get Tenants list (getTenantsByIds)
+List<Tenant> getTenantsByIds(@Nonnull List<String> tenantIds) // Get Tenants By Ids (getTenantsByIds)
 Tenant saveTenant(@Nonnull Tenant tenant) // Create Or update Tenant (saveTenant)
 ```
 
@@ -155,7 +155,9 @@ List<Tenant> getTenantsByIds(@Nonnull List<String> tenantIds)
 
 **GET** `/api/tenants/list`
 
-Get Tenants list (getTenantsByIds)
+Get Tenants By Ids (getTenantsByIds)
+
+Fetch Tenant objects based on the provided ids.   Available for users with 'SYS_ADMIN' authority.
 
 
 ### Parameters

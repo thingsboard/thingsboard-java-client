@@ -55,6 +55,7 @@ import org.thingsboard.client.ApiClient;
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_CLEAR_RULE,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_TO_OWNER,
+  AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_TO_TENANT,
   AlarmCalculatedFieldConfiguration.JSON_PROPERTY_PROPAGATE_RELATION_TYPES
 })
@@ -85,6 +86,10 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER = "propagateToOwner";
   @Nullable
   private Boolean propagateToOwner;
+
+  public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY = "propagateToOwnerHierarchy";
+  @Nullable
+  private Boolean propagateToOwnerHierarchy;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_TENANT = "propagateToTenant";
   @Nullable
@@ -233,6 +238,30 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
   }
 
 
+  public AlarmCalculatedFieldConfiguration propagateToOwnerHierarchy(@Nullable Boolean propagateToOwnerHierarchy) {
+    this.propagateToOwnerHierarchy = propagateToOwnerHierarchy;
+    return this;
+  }
+
+  /**
+   * Get propagateToOwnerHierarchy
+   * @return propagateToOwnerHierarchy
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPropagateToOwnerHierarchy() {
+    return propagateToOwnerHierarchy;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagateToOwnerHierarchy(@Nullable Boolean propagateToOwnerHierarchy) {
+    this.propagateToOwnerHierarchy = propagateToOwnerHierarchy;
+  }
+
+
   public AlarmCalculatedFieldConfiguration propagateToTenant(@Nullable Boolean propagateToTenant) {
     this.propagateToTenant = propagateToTenant;
     return this;
@@ -312,6 +341,7 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
         Objects.equals(this.clearRule, alarmCalculatedFieldConfiguration.clearRule) &&
         Objects.equals(this.propagate, alarmCalculatedFieldConfiguration.propagate) &&
         Objects.equals(this.propagateToOwner, alarmCalculatedFieldConfiguration.propagateToOwner) &&
+        Objects.equals(this.propagateToOwnerHierarchy, alarmCalculatedFieldConfiguration.propagateToOwnerHierarchy) &&
         Objects.equals(this.propagateToTenant, alarmCalculatedFieldConfiguration.propagateToTenant) &&
         Objects.equals(this.propagateRelationTypes, alarmCalculatedFieldConfiguration.propagateRelationTypes) &&
         super.equals(o);
@@ -319,7 +349,7 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
 
   @Override
   public int hashCode() {
-    return Objects.hash(arguments, createRules, clearRule, propagate, propagateToOwner, propagateToTenant, propagateRelationTypes, super.hashCode());
+    return Objects.hash(arguments, createRules, clearRule, propagate, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, propagateRelationTypes, super.hashCode());
   }
 
   @Override
@@ -332,6 +362,7 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
     sb.append("    clearRule: ").append(toIndentedString(clearRule)).append("\n");
     sb.append("    propagate: ").append(toIndentedString(propagate)).append("\n");
     sb.append("    propagateToOwner: ").append(toIndentedString(propagateToOwner)).append("\n");
+    sb.append("    propagateToOwnerHierarchy: ").append(toIndentedString(propagateToOwnerHierarchy)).append("\n");
     sb.append("    propagateToTenant: ").append(toIndentedString(propagateToTenant)).append("\n");
     sb.append("    propagateRelationTypes: ").append(toIndentedString(propagateRelationTypes)).append("\n");
     sb.append("}");
@@ -424,6 +455,11 @@ public class AlarmCalculatedFieldConfiguration extends CalculatedFieldConfigurat
     // add `propagateToOwner` to the URL query string
     if (getPropagateToOwner() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spropagateToOwner%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagateToOwner()))));
+    }
+
+    // add `propagateToOwnerHierarchy` to the URL query string
+    if (getPropagateToOwnerHierarchy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spropagateToOwnerHierarchy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagateToOwnerHierarchy()))));
     }
 
     // add `propagateToTenant` to the URL query string

@@ -32,7 +32,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.DomainId;
+import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.OAuth2ClientInfo;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -46,10 +48,12 @@ import org.thingsboard.client.ApiClient;
   DomainInfo.JSON_PROPERTY_ID,
   DomainInfo.JSON_PROPERTY_CREATED_TIME,
   DomainInfo.JSON_PROPERTY_TENANT_ID,
+  DomainInfo.JSON_PROPERTY_CUSTOMER_ID,
   DomainInfo.JSON_PROPERTY_NAME,
   DomainInfo.JSON_PROPERTY_OAUTH2_ENABLED,
   DomainInfo.JSON_PROPERTY_PROPAGATE_TO_EDGE,
-  DomainInfo.JSON_PROPERTY_OAUTH2_CLIENT_INFOS
+  DomainInfo.JSON_PROPERTY_OAUTH2_CLIENT_INFOS,
+  DomainInfo.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DomainInfo {
@@ -64,6 +68,10 @@ public class DomainInfo {
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
   private TenantId tenantId;
+
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @Nonnull
@@ -81,15 +89,21 @@ public class DomainInfo {
   @Nullable
   private List<OAuth2ClientInfo> oauth2ClientInfos = new ArrayList<>();
 
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public DomainInfo() { 
   }
 
   @JsonCreator
   public DomainInfo(
-    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime
+    @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
+    this.ownerId = ownerId;
   }
 
   public DomainInfo id(@Nullable DomainId id) {
@@ -151,6 +165,30 @@ public class DomainInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
+  }
+
+
+  public DomainInfo customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * JSON object with Customer Id
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
   }
 
 
@@ -259,6 +297,20 @@ public class DomainInfo {
 
 
   /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  /**
    * Return true if this DomainInfo object is equal to o.
    */
   @Override
@@ -273,15 +325,17 @@ public class DomainInfo {
     return Objects.equals(this.id, domainInfo.id) &&
         Objects.equals(this.createdTime, domainInfo.createdTime) &&
         Objects.equals(this.tenantId, domainInfo.tenantId) &&
+        Objects.equals(this.customerId, domainInfo.customerId) &&
         Objects.equals(this.name, domainInfo.name) &&
         Objects.equals(this.oauth2Enabled, domainInfo.oauth2Enabled) &&
         Objects.equals(this.propagateToEdge, domainInfo.propagateToEdge) &&
-        Objects.equals(this.oauth2ClientInfos, domainInfo.oauth2ClientInfos);
+        Objects.equals(this.oauth2ClientInfos, domainInfo.oauth2ClientInfos) &&
+        Objects.equals(this.ownerId, domainInfo.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, name, oauth2Enabled, propagateToEdge, oauth2ClientInfos);
+    return Objects.hash(id, createdTime, tenantId, customerId, name, oauth2Enabled, propagateToEdge, oauth2ClientInfos, ownerId);
   }
 
   @Override
@@ -291,10 +345,12 @@ public class DomainInfo {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    oauth2Enabled: ").append(toIndentedString(oauth2Enabled)).append("\n");
     sb.append("    propagateToEdge: ").append(toIndentedString(propagateToEdge)).append("\n");
     sb.append("    oauth2ClientInfos: ").append(toIndentedString(oauth2ClientInfos)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -357,6 +413,11 @@ public class DomainInfo {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
     }
 
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
+    }
+
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
@@ -380,6 +441,11 @@ public class DomainInfo {
           "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

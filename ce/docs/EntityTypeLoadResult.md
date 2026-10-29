@@ -11,13 +11,16 @@
 | **created** | **Integer** |  | [optional] |
 | **updated** | **Integer** |  | [optional] |
 | **deleted** | **Integer** |  | [optional] |
+| **groupsCreated** | **Integer** |  | [optional] |
+| **groupsUpdated** | **Integer** |  | [optional] |
+| **groupsDeleted** | **Integer** |  | [optional] |
 
 
 
 ## Referenced Types
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 ---
 

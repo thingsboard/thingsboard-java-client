@@ -29,6 +29,27 @@ Filter for various event types
 | arguments | String | String value representing the arguments that were used in the calculation performed | [optional] |
 | result | String | String value representing the result of a calculation | [optional] |
 
+#### DebugConverterEventFilter  *(eventType=`DEBUG_CONVERTER`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| server | String | String value representing the server name, identifier or ip address where the platform is running | [optional] |
+| isError | IsErrorEnum | Boolean value to filter the errors | [optional] |
+| errorStr | String | The case insensitive 'contains' filter based on error message | [optional] |
+| type | String |  | [optional] |
+| in | String |  | [optional] |
+| out | String |  | [optional] |
+| metadata | String |  | [optional] |
+
+#### DebugIntegrationEventFilter  *(eventType=`DEBUG_INTEGRATION`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| server | String | String value representing the server name, identifier or ip address where the platform is running | [optional] |
+| isError | IsErrorEnum | Boolean value to filter the errors | [optional] |
+| errorStr | String | The case insensitive 'contains' filter based on error message | [optional] |
+| type | String |  | [optional] |
+| message | String |  | [optional] |
+| statusIntegration | String |  | [optional] |
+
 #### RuleChainDebugEventFilter  *(eventType=`DEBUG_RULE_CHAIN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -67,6 +88,14 @@ Filter for various event types
 | status | StatusEnum | String value representing status of the lifecycle event | [optional] |
 | errorStr | String | The case insensitive 'contains' filter based on error message | [optional] |
 
+#### RawDataEventFilter  *(eventType=`RAW_DATA`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| server | String | String value representing the server name, identifier or ip address where the platform is running | [optional] |
+| uuid | String | String value representing the uuid | [optional] |
+| messageType | String | String value representing the message type | [optional] |
+| message | String | String value representing the message | [optional] |
+
 #### StatisticsEventFilter  *(eventType=`STATS`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -79,7 +108,7 @@ Filter for various event types
 ## Referenced Types
 
 #### EventType (enum)
-`ERROR` | `LC_EVENT` | `STATS` | `DEBUG_RULE_NODE` | `DEBUG_RULE_CHAIN` | `DEBUG_CALCULATED_FIELD`
+`ERROR` | `LC_EVENT` | `STATS` | `RAW_DATA` | `DEBUG_RULE_NODE` | `DEBUG_RULE_CHAIN` | `DEBUG_CONVERTER` | `DEBUG_INTEGRATION` | `DEBUG_CALCULATED_FIELD`
 
 ---
 
