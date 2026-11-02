@@ -24,7 +24,10 @@ void markAllNotificationsAsRead(@Nullable String deliveryMethod) // Mark all not
 void markNotificationAsRead(@Nonnull UUID id) // Mark notification as read (markNotificationAsRead)
 NotificationSettings saveNotificationSettings(@Nonnull NotificationSettings notificationSettings) // Save notification settings (saveNotificationSettings)
 UserNotificationSettings saveUserNotificationSettings(@Nonnull UserNotificationSettings userNotificationSettings) // saveUserNotificationSettings
-void sendEntitiesLimitIncreaseRequest(@Nonnull String entityType) // Send entity limit increase request notification to System administrators (sendEntitiesLimitIncreaseRequest)
+void sendAddonAccessError(@Nonnull String addonType) // Send add-on access error notification to System/Tenant administrators (sendAddonAccessError)
+void sendAddonAccessRequest(@Nonnull String addonType) // Send add-on access request notification to System/Tenant administrators (sendAddonAccessRequest)
+void sendEntitiesLimitIncreaseRequest(@Nonnull String entityType, @Nullable Boolean subscriptionViolation) // Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest)
+void sendPlanUpgradeRequest(@Nonnull String planName) // Send plan upgrade request notification to System administrators (sendPlanUpgradeRequest)
 ```
 
 
@@ -374,24 +377,97 @@ saveUserNotificationSettings
 **UserNotificationSettings**
 
 
-## sendEntitiesLimitIncreaseRequest
+## sendAddonAccessError
 
 ```
-void sendEntitiesLimitIncreaseRequest(@Nonnull String entityType)
+void sendAddonAccessError(@Nonnull String addonType)
 ```
 
-**POST** `/api/notification/entitiesLimitIncreaseRequest/{entityType}`
+**POST** `/api/notification/sendAddonAccessError/{addonType}`
 
-Send entity limit increase request notification to System administrators (sendEntitiesLimitIncreaseRequest)
+Send add-on access error notification to System/Tenant administrators (sendAddonAccessError)
 
-Send entity limit increase request notification by Tenant Administrator to System administrators.  Available for users with 'TENANT_ADMIN' authority.
+Send add-on access error notification by Tenant Administrator or Customer User to System/Tenant administrators.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
 
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | Entity type | [enum: DEVICE, ASSET, CUSTOMER, USER, DASHBOARD, RULE_CHAIN, EDGE] |
+| **addonType** | **String** | Addon type | [enum: EDGE, TRENDZ, WHITE_LABELING] |
+
+### Return type
+
+null (empty response body)
+
+
+## sendAddonAccessRequest
+
+```
+void sendAddonAccessRequest(@Nonnull String addonType)
+```
+
+**POST** `/api/notification/sendAddonAccessRequest/{addonType}`
+
+Send add-on access request notification to System/Tenant administrators (sendAddonAccessRequest)
+
+Send add-on access request notification by Tenant Administrator or Customer User to System/Tenant administrators.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **addonType** | **String** | Addon type | [enum: EDGE, TRENDZ, WHITE_LABELING, PROFESSIONAL_UPGRADE] |
+
+### Return type
+
+null (empty response body)
+
+
+## sendEntitiesLimitIncreaseRequest
+
+```
+void sendEntitiesLimitIncreaseRequest(@Nonnull String entityType, @Nullable Boolean subscriptionViolation)
+```
+
+**POST** `/api/notification/entitiesLimitIncreaseRequest/{entityType}`
+
+Send entity limit increase request notification to System/Tenant administrators (sendEntitiesLimitIncreaseRequest)
+
+Send entity limit increase request notification by Tenant Administrator or Customer User to System/Tenant administrators.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String** | Entity type | [enum: DEVICE, ASSET, CUSTOMER, USER, DASHBOARD, RULE_CHAIN, EDGE, INTEGRATION, CONVERTER, SCHEDULER_EVENT] |
+| **subscriptionViolation** | **Boolean** |  | [optional] [default to false] |
+
+### Return type
+
+null (empty response body)
+
+
+## sendPlanUpgradeRequest
+
+```
+void sendPlanUpgradeRequest(@Nonnull String planName)
+```
+
+**POST** `/api/notification/sendPlanUpgradeRequest/{planName}`
+
+Send plan upgrade request notification to System administrators (sendPlanUpgradeRequest)
+
+Send plan upgrade access request notification by Tenant Administrator to System administrators.  Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **planName** | **String** | Plan name | |
 
 ### Return type
 

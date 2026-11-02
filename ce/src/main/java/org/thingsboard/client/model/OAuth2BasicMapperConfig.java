@@ -29,7 +29,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.thingsboard.client.model.TenantNameStrategyType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -46,7 +48,9 @@ import org.thingsboard.client.ApiClient;
   OAuth2BasicMapperConfig.JSON_PROPERTY_TENANT_NAME_PATTERN,
   OAuth2BasicMapperConfig.JSON_PROPERTY_CUSTOMER_NAME_PATTERN,
   OAuth2BasicMapperConfig.JSON_PROPERTY_DEFAULT_DASHBOARD_NAME,
-  OAuth2BasicMapperConfig.JSON_PROPERTY_ALWAYS_FULL_SCREEN
+  OAuth2BasicMapperConfig.JSON_PROPERTY_ALWAYS_FULL_SCREEN,
+  OAuth2BasicMapperConfig.JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN,
+  OAuth2BasicMapperConfig.JSON_PROPERTY_USER_GROUPS_NAME_PATTERN
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2BasicMapperConfig {
@@ -81,6 +85,14 @@ public class OAuth2BasicMapperConfig {
   public static final String JSON_PROPERTY_ALWAYS_FULL_SCREEN = "alwaysFullScreen";
   @Nullable
   private Boolean alwaysFullScreen;
+
+  public static final String JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN = "parentCustomerNamePattern";
+  @Nullable
+  private String parentCustomerNamePattern;
+
+  public static final String JSON_PROPERTY_USER_GROUPS_NAME_PATTERN = "userGroupsNamePattern";
+  @Nullable
+  private List<String> userGroupsNamePattern = new ArrayList<>();
 
   public OAuth2BasicMapperConfig() { 
   }
@@ -277,6 +289,62 @@ public class OAuth2BasicMapperConfig {
   }
 
 
+  public OAuth2BasicMapperConfig parentCustomerNamePattern(@Nullable String parentCustomerNamePattern) {
+    this.parentCustomerNamePattern = parentCustomerNamePattern;
+    return this;
+  }
+
+  /**
+   * Get parentCustomerNamePattern
+   * @return parentCustomerNamePattern
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getParentCustomerNamePattern() {
+    return parentCustomerNamePattern;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PARENT_CUSTOMER_NAME_PATTERN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setParentCustomerNamePattern(@Nullable String parentCustomerNamePattern) {
+    this.parentCustomerNamePattern = parentCustomerNamePattern;
+  }
+
+
+  public OAuth2BasicMapperConfig userGroupsNamePattern(@Nullable List<String> userGroupsNamePattern) {
+    this.userGroupsNamePattern = userGroupsNamePattern;
+    return this;
+  }
+
+  public OAuth2BasicMapperConfig addUserGroupsNamePatternItem(String userGroupsNamePatternItem) {
+    if (this.userGroupsNamePattern == null) {
+      this.userGroupsNamePattern = new ArrayList<>();
+    }
+    this.userGroupsNamePattern.add(userGroupsNamePatternItem);
+    return this;
+  }
+
+  /**
+   * Get userGroupsNamePattern
+   * @return userGroupsNamePattern
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_USER_GROUPS_NAME_PATTERN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<String> getUserGroupsNamePattern() {
+    return userGroupsNamePattern;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USER_GROUPS_NAME_PATTERN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserGroupsNamePattern(@Nullable List<String> userGroupsNamePattern) {
+    this.userGroupsNamePattern = userGroupsNamePattern;
+  }
+
+
   /**
    * Return true if this OAuth2BasicMapperConfig object is equal to o.
    */
@@ -296,12 +364,14 @@ public class OAuth2BasicMapperConfig {
         Objects.equals(this.tenantNamePattern, oauth2BasicMapperConfig.tenantNamePattern) &&
         Objects.equals(this.customerNamePattern, oauth2BasicMapperConfig.customerNamePattern) &&
         Objects.equals(this.defaultDashboardName, oauth2BasicMapperConfig.defaultDashboardName) &&
-        Objects.equals(this.alwaysFullScreen, oauth2BasicMapperConfig.alwaysFullScreen);
+        Objects.equals(this.alwaysFullScreen, oauth2BasicMapperConfig.alwaysFullScreen) &&
+        Objects.equals(this.parentCustomerNamePattern, oauth2BasicMapperConfig.parentCustomerNamePattern) &&
+        Objects.equals(this.userGroupsNamePattern, oauth2BasicMapperConfig.userGroupsNamePattern);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(emailAttributeKey, firstNameAttributeKey, lastNameAttributeKey, tenantNameStrategy, tenantNamePattern, customerNamePattern, defaultDashboardName, alwaysFullScreen);
+    return Objects.hash(emailAttributeKey, firstNameAttributeKey, lastNameAttributeKey, tenantNameStrategy, tenantNamePattern, customerNamePattern, defaultDashboardName, alwaysFullScreen, parentCustomerNamePattern, userGroupsNamePattern);
   }
 
   @Override
@@ -316,6 +386,8 @@ public class OAuth2BasicMapperConfig {
     sb.append("    customerNamePattern: ").append(toIndentedString(customerNamePattern)).append("\n");
     sb.append("    defaultDashboardName: ").append(toIndentedString(defaultDashboardName)).append("\n");
     sb.append("    alwaysFullScreen: ").append(toIndentedString(alwaysFullScreen)).append("\n");
+    sb.append("    parentCustomerNamePattern: ").append(toIndentedString(parentCustomerNamePattern)).append("\n");
+    sb.append("    userGroupsNamePattern: ").append(toIndentedString(userGroupsNamePattern)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -401,6 +473,20 @@ public class OAuth2BasicMapperConfig {
     // add `alwaysFullScreen` to the URL query string
     if (getAlwaysFullScreen() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%salwaysFullScreen%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAlwaysFullScreen()))));
+    }
+
+    // add `parentCustomerNamePattern` to the URL query string
+    if (getParentCustomerNamePattern() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sparentCustomerNamePattern%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getParentCustomerNamePattern()))));
+    }
+
+    // add `userGroupsNamePattern` to the URL query string
+    if (getUserGroupsNamePattern() != null) {
+      for (int i = 0; i < getUserGroupsNamePattern().size(); i++) {
+        joiner.add(String.format(java.util.Locale.ROOT, "%suserGroupsNamePattern%s%s=%s", prefix, suffix,
+            "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
+            ApiClient.urlEncode(ApiClient.valueToString(getUserGroupsNamePattern().get(i)))));
+      }
     }
 
     return joiner.toString();

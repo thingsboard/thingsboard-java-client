@@ -11,6 +11,7 @@
 | **createdTime** | **Long** | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 | **additionalInfo** | **com.fasterxml.jackson.databind.JsonNode** | Additional info of OAuth2 client. Must include: 'providerName' (string, name of the OAuth2 provider). | |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] |
+| **customerId** | **CustomerId** | JSON object with Customer Id | [optional] |
 | **title** | **String** | Oauth2 client title | |
 | **mapperConfig** | **OAuth2MapperConfig** | Config for mapping OAuth2 log in response to platform entities | |
 | **clientId** | **String** | OAuth2 client ID. Cannot be empty | |
@@ -26,12 +27,13 @@
 | **loginButtonIcon** | **String** | Log in button icon for OAuth2 provider | [optional] |
 | **platforms** | **List\<PlatformType\>** | List of platforms for which usage of the OAuth2 client is allowed (empty for all allowed) | [optional] |
 | **name** | **String** |  | [optional] [readonly] |
+| **ownerId** | **EntityId** |  | [optional] [readonly] |
 
 
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### OAuth2MapperConfig
 | Name | Type | Description | Notes |
@@ -59,6 +61,8 @@
 | customerNamePattern | String | Customer name pattern. When creating a user on the first OAuth2 log in, if specified, customer name will be used to create or find existing customer in the platform and assign customerId to the user | [optional] |
 | defaultDashboardName | String | Name of the tenant's dashboard to set as default dashboard for newly created user | [optional] |
 | alwaysFullScreen | Boolean | Whether default dashboard should be open in full screen | [optional] |
+| parentCustomerNamePattern | String |  | [optional] |
+| userGroupsNamePattern | List<String> |  | [optional] |
 
 #### OAuth2CustomMapperConfig
 | Name | Type | Description | Notes |
@@ -69,7 +73,7 @@
 | sendToken | Boolean |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### TenantNameStrategyType (enum)
 `DOMAIN` | `EMAIL` | `CUSTOM`

@@ -127,7 +127,7 @@ List<WidgetsBundle> getWidgetsBundlesList(@Nonnull List<String> widgetsBundleIds
 
 Get Widgets Bundles By Ids (getWidgetsBundlesList)
 
-Requested widgets bundles must be system level or owned by tenant of the user which is performing the request.   
+Requested widgets bundles must be system level or owned by tenant of the user which is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters

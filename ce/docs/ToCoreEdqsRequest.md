@@ -20,7 +20,7 @@
 | objectTypes | Set<ObjectType> |  | [optional] |
 
 #### ObjectType (enum)
-`TENANT` | `TENANT_PROFILE` | `CUSTOMER` | `QUEUE` | `RPC` | `RULE_CHAIN` | `OTA_PACKAGE` | `RESOURCE` | `EVENT` | `RULE_NODE` | … (37 values total)
+`TENANT` | `TENANT_PROFILE` | `CUSTOMER` | `QUEUE` | `RPC` | `RULE_CHAIN` | `OTA_PACKAGE` | `RESOURCE` | `ROLE` | `ENTITY_GROUP` | … (49 values total)
 
 ---
 

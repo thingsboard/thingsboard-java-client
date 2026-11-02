@@ -29,9 +29,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.EdgeId;
+import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.EntityInfo;
 import org.thingsboard.client.model.RuleChainId;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -53,9 +57,12 @@ import org.thingsboard.client.ApiClient;
   EdgeInfo.JSON_PROPERTY_LABEL,
   EdgeInfo.JSON_PROPERTY_ROUTING_KEY,
   EdgeInfo.JSON_PROPERTY_SECRET,
+  EdgeInfo.JSON_PROPERTY_EDGE_LICENSE_KEY,
+  EdgeInfo.JSON_PROPERTY_CLOUD_ENDPOINT,
   EdgeInfo.JSON_PROPERTY_VERSION,
-  EdgeInfo.JSON_PROPERTY_CUSTOMER_TITLE,
-  EdgeInfo.JSON_PROPERTY_CUSTOMER_IS_PUBLIC
+  EdgeInfo.JSON_PROPERTY_OWNER_NAME,
+  EdgeInfo.JSON_PROPERTY_GROUPS,
+  EdgeInfo.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EdgeInfo {
@@ -103,17 +110,29 @@ public class EdgeInfo {
   @Nonnull
   private String secret;
 
+  public static final String JSON_PROPERTY_EDGE_LICENSE_KEY = "edgeLicenseKey";
+  @Nonnull
+  private String edgeLicenseKey;
+
+  public static final String JSON_PROPERTY_CLOUD_ENDPOINT = "cloudEndpoint";
+  @Nonnull
+  private String cloudEndpoint;
+
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_CUSTOMER_TITLE = "customerTitle";
+  public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
   @Nullable
-  private String customerTitle;
+  private String ownerName;
 
-  public static final String JSON_PROPERTY_CUSTOMER_IS_PUBLIC = "customerIsPublic";
+  public static final String JSON_PROPERTY_GROUPS = "groups";
   @Nullable
-  private Boolean customerIsPublic;
+  private List<EntityInfo> groups = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
 
   public EdgeInfo() { 
   }
@@ -122,14 +141,16 @@ public class EdgeInfo {
   public EdgeInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_ROOT_RULE_CHAIN_ID) RuleChainId rootRuleChainId
+    @JsonProperty(JSON_PROPERTY_ROOT_RULE_CHAIN_ID) RuleChainId rootRuleChainId, 
+    @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
     this.rootRuleChainId = rootRuleChainId;
+    this.ownerName = ownerName;
+    this.ownerId = ownerId;
   }
 
   public EdgeInfo id(@Nullable EdgeId id) {
@@ -195,7 +216,7 @@ public class EdgeInfo {
 
 
   /**
-   * JSON object with Tenant Id. Use &#39;assignDeviceToTenant&#39; to change the Tenant Id.
+   * JSON object with Tenant Id. Always set to the tenant of the current user on save; cannot be changed after creation.
    * @return tenantId
    */
   @Nullable
@@ -208,8 +229,13 @@ public class EdgeInfo {
 
 
 
+  public EdgeInfo customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignEdgeToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id.
    * @return customerId
    */
   @Nullable
@@ -220,6 +246,11 @@ public class EdgeInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   /**
@@ -356,6 +387,54 @@ public class EdgeInfo {
   }
 
 
+  public EdgeInfo edgeLicenseKey(@Nonnull String edgeLicenseKey) {
+    this.edgeLicenseKey = edgeLicenseKey;
+    return this;
+  }
+
+  /**
+   * Edge license key obtained from license portal
+   * @return edgeLicenseKey
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getEdgeLicenseKey() {
+    return edgeLicenseKey;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEdgeLicenseKey(@Nonnull String edgeLicenseKey) {
+    this.edgeLicenseKey = edgeLicenseKey;
+  }
+
+
+  public EdgeInfo cloudEndpoint(@Nonnull String cloudEndpoint) {
+    this.cloudEndpoint = cloudEndpoint;
+    return this;
+  }
+
+  /**
+   * Edge uses this cloud URL to activate and periodically check it&#39;s license
+   * @return cloudEndpoint
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CLOUD_ENDPOINT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getCloudEndpoint() {
+    return cloudEndpoint;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CLOUD_ENDPOINT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCloudEndpoint(@Nonnull String cloudEndpoint) {
+    this.cloudEndpoint = cloudEndpoint;
+  }
+
+
   public EdgeInfo version(@Nullable Long version) {
     this.version = version;
     return this;
@@ -380,52 +459,64 @@ public class EdgeInfo {
   }
 
 
-  public EdgeInfo customerTitle(@Nullable String customerTitle) {
-    this.customerTitle = customerTitle;
+  /**
+   * Owner name
+   * @return ownerName
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getOwnerName() {
+    return ownerName;
+  }
+
+
+
+
+  public EdgeInfo groups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+    return this;
+  }
+
+  public EdgeInfo addGroupsItem(EntityInfo groupsItem) {
+    if (this.groups == null) {
+      this.groups = new ArrayList<>();
+    }
+    this.groups.add(groupsItem);
     return this;
   }
 
   /**
-   * Get customerTitle
-   * @return customerTitle
+   * Groups
+   * @return groups
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCustomerTitle() {
-    return customerTitle;
+  public List<EntityInfo> getGroups() {
+    return groups;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerTitle(@Nullable String customerTitle) {
-    this.customerTitle = customerTitle;
+  public void setGroups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
   }
 
-
-  public EdgeInfo customerIsPublic(@Nullable Boolean customerIsPublic) {
-    this.customerIsPublic = customerIsPublic;
-    return this;
-  }
 
   /**
-   * Get customerIsPublic
-   * @return customerIsPublic
+   * Get ownerId
+   * @return ownerId
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_IS_PUBLIC, required = false)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getCustomerIsPublic() {
-    return customerIsPublic;
+  public EntityId getOwnerId() {
+    return ownerId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_IS_PUBLIC, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCustomerIsPublic(@Nullable Boolean customerIsPublic) {
-    this.customerIsPublic = customerIsPublic;
-  }
 
 
   /**
@@ -451,14 +542,17 @@ public class EdgeInfo {
         Objects.equals(this.label, edgeInfo.label) &&
         Objects.equals(this.routingKey, edgeInfo.routingKey) &&
         Objects.equals(this.secret, edgeInfo.secret) &&
+        Objects.equals(this.edgeLicenseKey, edgeInfo.edgeLicenseKey) &&
+        Objects.equals(this.cloudEndpoint, edgeInfo.cloudEndpoint) &&
         Objects.equals(this.version, edgeInfo.version) &&
-        Objects.equals(this.customerTitle, edgeInfo.customerTitle) &&
-        Objects.equals(this.customerIsPublic, edgeInfo.customerIsPublic);
+        Objects.equals(this.ownerName, edgeInfo.ownerName) &&
+        Objects.equals(this.groups, edgeInfo.groups) &&
+        Objects.equals(this.ownerId, edgeInfo.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, rootRuleChainId, name, type, label, routingKey, secret, version, customerTitle, customerIsPublic);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, rootRuleChainId, name, type, label, routingKey, secret, edgeLicenseKey, cloudEndpoint, version, ownerName, groups, ownerId);
   }
 
   @Override
@@ -476,9 +570,12 @@ public class EdgeInfo {
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    routingKey: ").append(toIndentedString(routingKey)).append("\n");
     sb.append("    secret: ").append(toIndentedString(secret)).append("\n");
+    sb.append("    edgeLicenseKey: ").append(toIndentedString(edgeLicenseKey)).append("\n");
+    sb.append("    cloudEndpoint: ").append(toIndentedString(cloudEndpoint)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    customerTitle: ").append(toIndentedString(customerTitle)).append("\n");
-    sb.append("    customerIsPublic: ").append(toIndentedString(customerIsPublic)).append("\n");
+    sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -581,19 +678,39 @@ public class EdgeInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssecret%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSecret()))));
     }
 
+    // add `edgeLicenseKey` to the URL query string
+    if (getEdgeLicenseKey() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeLicenseKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeLicenseKey()))));
+    }
+
+    // add `cloudEndpoint` to the URL query string
+    if (getCloudEndpoint() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scloudEndpoint%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCloudEndpoint()))));
+    }
+
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `customerTitle` to the URL query string
-    if (getCustomerTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitle()))));
+    // add `ownerName` to the URL query string
+    if (getOwnerName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sownerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOwnerName()))));
     }
 
-    // add `customerIsPublic` to the URL query string
-    if (getCustomerIsPublic() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerIsPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerIsPublic()))));
+    // add `groups` to the URL query string
+    if (getGroups() != null) {
+      for (int i = 0; i < getGroups().size(); i++) {
+        if (getGroups().get(i) != null) {
+          joiner.add(getGroups().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sgroups%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

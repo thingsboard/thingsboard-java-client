@@ -61,7 +61,11 @@ import org.thingsboard.client.ApiClient;
   UsageInfo.JSON_PROPERTY_MAX_SMS,
   UsageInfo.JSON_PROPERTY_SMS_ENABLED,
   UsageInfo.JSON_PROPERTY_ALARMS,
-  UsageInfo.JSON_PROPERTY_MAX_ALARMS
+  UsageInfo.JSON_PROPERTY_MAX_ALARMS,
+  UsageInfo.JSON_PROPERTY_REPORTS,
+  UsageInfo.JSON_PROPERTY_MAX_REPORTS,
+  UsageInfo.JSON_PROPERTY_AI_CREDITS,
+  UsageInfo.JSON_PROPERTY_MAX_AI_CREDITS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class UsageInfo {
@@ -164,6 +168,22 @@ public class UsageInfo {
   public static final String JSON_PROPERTY_MAX_ALARMS = "maxAlarms";
   @Nullable
   private Long maxAlarms;
+
+  public static final String JSON_PROPERTY_REPORTS = "reports";
+  @Nullable
+  private Long reports;
+
+  public static final String JSON_PROPERTY_MAX_REPORTS = "maxReports";
+  @Nullable
+  private Long maxReports;
+
+  public static final String JSON_PROPERTY_AI_CREDITS = "aiCredits";
+  @Nullable
+  private Long aiCredits;
+
+  public static final String JSON_PROPERTY_MAX_AI_CREDITS = "maxAiCredits";
+  @Nullable
+  private Long maxAiCredits;
 
   public UsageInfo() { 
   }
@@ -768,6 +788,102 @@ public class UsageInfo {
   }
 
 
+  public UsageInfo reports(@Nullable Long reports) {
+    this.reports = reports;
+    return this;
+  }
+
+  /**
+   * Get reports
+   * @return reports
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getReports() {
+    return reports;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REPORTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReports(@Nullable Long reports) {
+    this.reports = reports;
+  }
+
+
+  public UsageInfo maxReports(@Nullable Long maxReports) {
+    this.maxReports = maxReports;
+    return this;
+  }
+
+  /**
+   * Get maxReports
+   * @return maxReports
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAX_REPORTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMaxReports() {
+    return maxReports;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_REPORTS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxReports(@Nullable Long maxReports) {
+    this.maxReports = maxReports;
+  }
+
+
+  public UsageInfo aiCredits(@Nullable Long aiCredits) {
+    this.aiCredits = aiCredits;
+    return this;
+  }
+
+  /**
+   * Get aiCredits
+   * @return aiCredits
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AI_CREDITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getAiCredits() {
+    return aiCredits;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AI_CREDITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAiCredits(@Nullable Long aiCredits) {
+    this.aiCredits = aiCredits;
+  }
+
+
+  public UsageInfo maxAiCredits(@Nullable Long maxAiCredits) {
+    this.maxAiCredits = maxAiCredits;
+    return this;
+  }
+
+  /**
+   * Get maxAiCredits
+   * @return maxAiCredits
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getMaxAiCredits() {
+    return maxAiCredits;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAX_AI_CREDITS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMaxAiCredits(@Nullable Long maxAiCredits) {
+    this.maxAiCredits = maxAiCredits;
+  }
+
+
   /**
    * Return true if this UsageInfo object is equal to o.
    */
@@ -804,12 +920,16 @@ public class UsageInfo {
         Objects.equals(this.maxSms, usageInfo.maxSms) &&
         Objects.equals(this.smsEnabled, usageInfo.smsEnabled) &&
         Objects.equals(this.alarms, usageInfo.alarms) &&
-        Objects.equals(this.maxAlarms, usageInfo.maxAlarms);
+        Objects.equals(this.maxAlarms, usageInfo.maxAlarms) &&
+        Objects.equals(this.reports, usageInfo.reports) &&
+        Objects.equals(this.maxReports, usageInfo.maxReports) &&
+        Objects.equals(this.aiCredits, usageInfo.aiCredits) &&
+        Objects.equals(this.maxAiCredits, usageInfo.maxAiCredits);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(devices, maxDevices, assets, maxAssets, customers, maxCustomers, users, maxUsers, dashboards, maxDashboards, edges, maxEdges, transportMessages, maxTransportMessages, jsExecutions, tbelExecutions, maxJsExecutions, maxTbelExecutions, emails, maxEmails, sms, maxSms, smsEnabled, alarms, maxAlarms);
+    return Objects.hash(devices, maxDevices, assets, maxAssets, customers, maxCustomers, users, maxUsers, dashboards, maxDashboards, edges, maxEdges, transportMessages, maxTransportMessages, jsExecutions, tbelExecutions, maxJsExecutions, maxTbelExecutions, emails, maxEmails, sms, maxSms, smsEnabled, alarms, maxAlarms, reports, maxReports, aiCredits, maxAiCredits);
   }
 
   @Override
@@ -841,6 +961,10 @@ public class UsageInfo {
     sb.append("    smsEnabled: ").append(toIndentedString(smsEnabled)).append("\n");
     sb.append("    alarms: ").append(toIndentedString(alarms)).append("\n");
     sb.append("    maxAlarms: ").append(toIndentedString(maxAlarms)).append("\n");
+    sb.append("    reports: ").append(toIndentedString(reports)).append("\n");
+    sb.append("    maxReports: ").append(toIndentedString(maxReports)).append("\n");
+    sb.append("    aiCredits: ").append(toIndentedString(aiCredits)).append("\n");
+    sb.append("    maxAiCredits: ").append(toIndentedString(maxAiCredits)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1011,6 +1135,26 @@ public class UsageInfo {
     // add `maxAlarms` to the URL query string
     if (getMaxAlarms() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smaxAlarms%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxAlarms()))));
+    }
+
+    // add `reports` to the URL query string
+    if (getReports() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sreports%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getReports()))));
+    }
+
+    // add `maxReports` to the URL query string
+    if (getMaxReports() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaxReports%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxReports()))));
+    }
+
+    // add `aiCredits` to the URL query string
+    if (getAiCredits() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%saiCredits%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAiCredits()))));
+    }
+
+    // add `maxAiCredits` to the URL query string
+    if (getMaxAiCredits() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smaxAiCredits%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxAiCredits()))));
     }
 
     return joiner.toString();

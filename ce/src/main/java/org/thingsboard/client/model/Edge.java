@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.EdgeId;
+import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.RuleChainId;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -53,7 +54,10 @@ import org.thingsboard.client.ApiClient;
   Edge.JSON_PROPERTY_LABEL,
   Edge.JSON_PROPERTY_ROUTING_KEY,
   Edge.JSON_PROPERTY_SECRET,
-  Edge.JSON_PROPERTY_VERSION
+  Edge.JSON_PROPERTY_EDGE_LICENSE_KEY,
+  Edge.JSON_PROPERTY_CLOUD_ENDPOINT,
+  Edge.JSON_PROPERTY_VERSION,
+  Edge.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class Edge {
@@ -101,9 +105,21 @@ public class Edge {
   @Nonnull
   private String secret;
 
+  public static final String JSON_PROPERTY_EDGE_LICENSE_KEY = "edgeLicenseKey";
+  @Nonnull
+  private String edgeLicenseKey;
+
+  public static final String JSON_PROPERTY_CLOUD_ENDPOINT = "cloudEndpoint";
+  @Nonnull
+  private String cloudEndpoint;
+
   public static final String JSON_PROPERTY_VERSION = "version";
   @Nullable
   private Long version;
+
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
 
   public Edge() { 
   }
@@ -112,14 +128,14 @@ public class Edge {
   public Edge(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_ROOT_RULE_CHAIN_ID) RuleChainId rootRuleChainId
+    @JsonProperty(JSON_PROPERTY_ROOT_RULE_CHAIN_ID) RuleChainId rootRuleChainId, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
     this.rootRuleChainId = rootRuleChainId;
+    this.ownerId = ownerId;
   }
 
   public Edge id(@Nullable EdgeId id) {
@@ -185,7 +201,7 @@ public class Edge {
 
 
   /**
-   * JSON object with Tenant Id. Use &#39;assignDeviceToTenant&#39; to change the Tenant Id.
+   * JSON object with Tenant Id. Always set to the tenant of the current user on save; cannot be changed after creation.
    * @return tenantId
    */
   @Nullable
@@ -198,8 +214,13 @@ public class Edge {
 
 
 
+  public Edge customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignEdgeToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id.
    * @return customerId
    */
   @Nullable
@@ -210,6 +231,11 @@ public class Edge {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   /**
@@ -346,6 +372,54 @@ public class Edge {
   }
 
 
+  public Edge edgeLicenseKey(@Nonnull String edgeLicenseKey) {
+    this.edgeLicenseKey = edgeLicenseKey;
+    return this;
+  }
+
+  /**
+   * Edge license key obtained from license portal
+   * @return edgeLicenseKey
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getEdgeLicenseKey() {
+    return edgeLicenseKey;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setEdgeLicenseKey(@Nonnull String edgeLicenseKey) {
+    this.edgeLicenseKey = edgeLicenseKey;
+  }
+
+
+  public Edge cloudEndpoint(@Nonnull String cloudEndpoint) {
+    this.cloudEndpoint = cloudEndpoint;
+    return this;
+  }
+
+  /**
+   * Edge uses this cloud URL to activate and periodically check it&#39;s license
+   * @return cloudEndpoint
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CLOUD_ENDPOINT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getCloudEndpoint() {
+    return cloudEndpoint;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CLOUD_ENDPOINT, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCloudEndpoint(@Nonnull String cloudEndpoint) {
+    this.cloudEndpoint = cloudEndpoint;
+  }
+
+
   public Edge version(@Nullable Long version) {
     this.version = version;
     return this;
@@ -371,6 +445,20 @@ public class Edge {
 
 
   /**
+   * Get ownerId
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  /**
    * Return true if this Edge object is equal to o.
    */
   @Override
@@ -393,12 +481,15 @@ public class Edge {
         Objects.equals(this.label, edge.label) &&
         Objects.equals(this.routingKey, edge.routingKey) &&
         Objects.equals(this.secret, edge.secret) &&
-        Objects.equals(this.version, edge.version);
+        Objects.equals(this.edgeLicenseKey, edge.edgeLicenseKey) &&
+        Objects.equals(this.cloudEndpoint, edge.cloudEndpoint) &&
+        Objects.equals(this.version, edge.version) &&
+        Objects.equals(this.ownerId, edge.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, rootRuleChainId, name, type, label, routingKey, secret, version);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, rootRuleChainId, name, type, label, routingKey, secret, edgeLicenseKey, cloudEndpoint, version, ownerId);
   }
 
   @Override
@@ -416,7 +507,10 @@ public class Edge {
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    routingKey: ").append(toIndentedString(routingKey)).append("\n");
     sb.append("    secret: ").append(toIndentedString(secret)).append("\n");
+    sb.append("    edgeLicenseKey: ").append(toIndentedString(edgeLicenseKey)).append("\n");
+    sb.append("    cloudEndpoint: ").append(toIndentedString(cloudEndpoint)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -519,9 +613,24 @@ public class Edge {
       joiner.add(String.format(java.util.Locale.ROOT, "%ssecret%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSecret()))));
     }
 
+    // add `edgeLicenseKey` to the URL query string
+    if (getEdgeLicenseKey() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sedgeLicenseKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEdgeLicenseKey()))));
+    }
+
+    // add `cloudEndpoint` to the URL query string
+    if (getCloudEndpoint() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scloudEndpoint%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCloudEndpoint()))));
+    }
+
     // add `version` to the URL query string
     if (getVersion() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

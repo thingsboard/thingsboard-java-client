@@ -39,10 +39,20 @@
 | tenantsIds | Set<UUID> |  | [optional] |
 | tenantProfilesIds | Set<UUID> |  | [optional] |
 
+#### UserGroupListFilter  *(type=`USER_GROUP_LIST`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| groupsIds | List<UUID> |  |  |
+
 #### UserListFilter  *(type=`USER_LIST`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | usersIds | List<UUID> |  |  |
+
+#### UserRoleFilter  *(type=`USER_ROLE`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| rolesIds | List<UUID> |  |  |
 
 ---
 

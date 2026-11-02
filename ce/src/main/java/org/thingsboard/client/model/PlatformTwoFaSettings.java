@@ -45,6 +45,7 @@ import org.thingsboard.client.ApiClient;
  * Settings value
  */
 @JsonPropertyOrder({
+  PlatformTwoFaSettings.JSON_PROPERTY_USE_SYSTEM_TWO_FACTOR_AUTH_SETTINGS,
   PlatformTwoFaSettings.JSON_PROPERTY_PROVIDERS,
   PlatformTwoFaSettings.JSON_PROPERTY_MIN_VERIFICATION_CODE_SEND_PERIOD,
   PlatformTwoFaSettings.JSON_PROPERTY_VERIFICATION_CODE_CHECK_RATE_LIMIT,
@@ -55,6 +56,10 @@ import org.thingsboard.client.ApiClient;
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PlatformTwoFaSettings {
+  public static final String JSON_PROPERTY_USE_SYSTEM_TWO_FACTOR_AUTH_SETTINGS = "useSystemTwoFactorAuthSettings";
+  @Nullable
+  private Boolean useSystemTwoFactorAuthSettings;
+
   public static final String JSON_PROPERTY_PROVIDERS = "providers";
   @Nonnull
   private List<TwoFaProviderConfig> providers = new ArrayList<>();
@@ -84,6 +89,30 @@ public class PlatformTwoFaSettings {
 
   public PlatformTwoFaSettings() { 
   }
+
+  public PlatformTwoFaSettings useSystemTwoFactorAuthSettings(@Nullable Boolean useSystemTwoFactorAuthSettings) {
+    this.useSystemTwoFactorAuthSettings = useSystemTwoFactorAuthSettings;
+    return this;
+  }
+
+  /**
+   * Get useSystemTwoFactorAuthSettings
+   * @return useSystemTwoFactorAuthSettings
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_USE_SYSTEM_TWO_FACTOR_AUTH_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getUseSystemTwoFactorAuthSettings() {
+    return useSystemTwoFactorAuthSettings;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USE_SYSTEM_TWO_FACTOR_AUTH_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUseSystemTwoFactorAuthSettings(@Nullable Boolean useSystemTwoFactorAuthSettings) {
+    this.useSystemTwoFactorAuthSettings = useSystemTwoFactorAuthSettings;
+  }
+
 
   public PlatformTwoFaSettings providers(@Nonnull List<TwoFaProviderConfig> providers) {
     this.providers = providers;
@@ -284,7 +313,8 @@ public class PlatformTwoFaSettings {
       return false;
     }
     PlatformTwoFaSettings platformTwoFaSettings = (PlatformTwoFaSettings) o;
-    return Objects.equals(this.providers, platformTwoFaSettings.providers) &&
+    return Objects.equals(this.useSystemTwoFactorAuthSettings, platformTwoFaSettings.useSystemTwoFactorAuthSettings) &&
+        Objects.equals(this.providers, platformTwoFaSettings.providers) &&
         Objects.equals(this.minVerificationCodeSendPeriod, platformTwoFaSettings.minVerificationCodeSendPeriod) &&
         Objects.equals(this.verificationCodeCheckRateLimit, platformTwoFaSettings.verificationCodeCheckRateLimit) &&
         Objects.equals(this.maxVerificationFailuresBeforeUserLockout, platformTwoFaSettings.maxVerificationFailuresBeforeUserLockout) &&
@@ -299,7 +329,7 @@ public class PlatformTwoFaSettings {
 
   @Override
   public int hashCode() {
-    return Objects.hash(providers, minVerificationCodeSendPeriod, verificationCodeCheckRateLimit, maxVerificationFailuresBeforeUserLockout, totalAllowedTimeForVerification, enforceTwoFa, hashCodeNullable(enforcedUsersFilter));
+    return Objects.hash(useSystemTwoFactorAuthSettings, providers, minVerificationCodeSendPeriod, verificationCodeCheckRateLimit, maxVerificationFailuresBeforeUserLockout, totalAllowedTimeForVerification, enforceTwoFa, hashCodeNullable(enforcedUsersFilter));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -313,6 +343,7 @@ public class PlatformTwoFaSettings {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PlatformTwoFaSettings {\n");
+    sb.append("    useSystemTwoFactorAuthSettings: ").append(toIndentedString(useSystemTwoFactorAuthSettings)).append("\n");
     sb.append("    providers: ").append(toIndentedString(providers)).append("\n");
     sb.append("    minVerificationCodeSendPeriod: ").append(toIndentedString(minVerificationCodeSendPeriod)).append("\n");
     sb.append("    verificationCodeCheckRateLimit: ").append(toIndentedString(verificationCodeCheckRateLimit)).append("\n");
@@ -366,6 +397,11 @@ public class PlatformTwoFaSettings {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `useSystemTwoFactorAuthSettings` to the URL query string
+    if (getUseSystemTwoFactorAuthSettings() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%suseSystemTwoFactorAuthSettings%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUseSystemTwoFactorAuthSettings()))));
+    }
 
     // add `providers` to the URL query string
     if (getProviders() != null) {

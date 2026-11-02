@@ -1,0 +1,303 @@
+
+# TimeseriesTableComponent
+
+`org.thingsboard.client.model.TimeseriesTableComponent`
+
+**Extends:** **ReportComponent**
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+| **dataSources** | **List\<DataSource\>** |  | [optional] |
+| **margins** | **Insets** |  | [optional] |
+| **paddings** | **Insets** |  | [optional] |
+| **background** | **String** |  | [optional] |
+| **borderWidth** | **Integer** |  | [optional] |
+| **borderRadius** | **Integer** |  | [optional] |
+| **borderColor** | **String** |  | [optional] |
+| **showTableHeading** | **Boolean** |  | [optional] |
+| **tableHeading** | **Heading** |  | [optional] |
+| **tableSortOrder** | **TableSortOrder** |  | [optional] |
+| **timewindow** | **TimeWindowConfiguration** |  | [optional] |
+| **showTimestamp** | **Boolean** |  | [optional] |
+| **timestampLabel** | **String** |  | [optional] |
+| **timestampPattern** | **String** |  | [optional] |
+| **timestampColumnSettings** | **ColumnSettings** |  | [optional] |
+
+
+
+## Referenced Types
+
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+
+#### ReportComponent
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| subType | ReportComponentSubType |  |  |
+| type | ReportComponentType |  |  |
+
+#### DataSource
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | DataSourceType |  | [optional] |
+| deviceId | String |  | [optional] |
+| entityAliasId | String |  | [optional] |
+| filterId | String |  | [optional] |
+| dataKeys | List<DataKey> |  | [optional] |
+| latestDataKeys | List<DataKey> |  | [optional] |
+| alarmFilterConfig | AlarmFilterConfig |  | [optional] |
+
+#### Insets
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| left | Integer |  | [optional] |
+| right | Integer |  | [optional] |
+| top | Integer |  | [optional] |
+| bottom | Integer |  | [optional] |
+
+#### Heading
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| text | String |  | [optional] |
+| font | Font |  | [optional] |
+| color | String |  | [optional] |
+| textAlignment | TextAlignment |  | [optional] |
+| verticalAlignment | VerticalAlignment |  | [optional] |
+| height | Integer |  | [optional] |
+
+#### TableSortOrder
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| column | String |  | [optional] |
+| direction | TableSortDirection |  | [optional] |
+
+#### TimeWindowConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| history | History |  | [optional] |
+| aggregation | AggregationConfiguration |  | [optional] |
+| timezone | String |  | [optional] |
+
+#### ReportComponentSubType (enum)
+`DOUGHNUT_CHART` | `HORIZONTAL_DOUGHNUT_CHART` | `POINT_CHART` | `BAR_CHART` | `PIE_CHART` | `LINE_CHART` | `LATEST_BAR_CHART` | `RANGE_CHART` | `BAR_CHART_WITH_LABELS` | `STATE_CHART` | … (11 values total)
+
+#### ReportComponentType (enum)
+`HEADING` | `RICH_TEXT` | `ENTITY_TABLE` | `TIME_SERIES_TABLE` | `ALARM_TABLE` | `TIME_SERIES_CHART` | `LATEST_CHART` | `DASHBOARD` | `IMAGE` | `SUB_REPORT` | … (14 values total)
+
+#### DataSourceType (enum)
+`DEVICE` | `ENTITY` | `ENTITY_COUNT` | `ALARM_COUNT`
+
+#### DataKey
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| name | String |  | [optional] |
+| type | String |  | [optional] |
+| label | String |  | [optional] |
+| color | String |  | [optional] |
+| decimals | Integer |  | [optional] |
+| units | String |  | [optional] |
+| aggregationType | Aggregation |  | [optional] |
+| timewindow | TimeWindowConfiguration |  | [optional] |
+| usePostProcessing | Boolean |  | [optional] |
+| postFuncBody | String |  | [optional] |
+| settings | DataKeySettings |  | [optional] |
+
+#### AlarmFilterConfig
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| typeList | List<String> |  | [optional] |
+| statusList | List<AlarmSearchStatus> |  | [optional] |
+| severityList | List<AlarmSeverity> |  | [optional] |
+| assigneeId | UserId |  | [optional] |
+| searchPropagatedAlarms | Boolean |  | [optional] |
+
+#### Font
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| size | Float |  | [optional] |
+| weight | FontWeight |  | [optional] |
+| style | FontStyle |  | [optional] |
+| family | String |  | [optional] |
+
+#### TextAlignment (enum)
+`CENTER` | `RIGHT` | `LEFT` | `JUSTIFY`
+
+#### VerticalAlignment (enum)
+`BOTTOM` | `TOP` | `MIDDLE`
+
+#### TableSortDirection (enum)
+`ASC` | `DESC`
+
+#### History
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| historyType | Integer |  | [optional] |
+| interval | Interval |  | [optional] |
+| timewindowMs | Long |  | [optional] |
+| fixedTimewindow | FixedTimeWindow |  | [optional] |
+| quickInterval | QuickTimeInterval |  | [optional] |
+
+#### AggregationConfiguration
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | Aggregation |  | [optional] |
+| limit | Integer |  | [optional] |
+
+#### CellSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| font | Font |  | [optional] |
+| color | String |  | [optional] |
+| backgroundColor | String |  | [optional] |
+| textAlignment | TextAlignment |  | [optional] |
+| verticalAlignment | VerticalAlignment |  | [optional] |
+
+#### DataKeySettingsType (enum)
+`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
+
+#### Aggregation (enum)
+`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
+
+#### DataKeySettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | DataKeySettingsType | Data key settings type |  |
+
+#### ColumnSettings  *(type=`COLUMN`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| columnWidth | String |  | [optional] |
+| header | CellSettings |  | [optional] |
+| cell | CellSettings |  | [optional] |
+| type | DataKeySettingsType | Data key settings type |  |
+
+#### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
+*See DataKeySettings for properties.*
+
+#### TimeSeriesChartKeySettings  *(extends DataKeySettings, type=`TIME_SERIES_CHART`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| yAxisId | String |  | [optional] |
+| showInLegend | Boolean |  | [optional] |
+| seriesType | TimeSeriesChartSeriesType |  | [optional] |
+| lineSettings | LineSeriesSettings |  | [optional] |
+| barSettings | BarSeriesSettings |  | [optional] |
+| comparisonSettings | DataKeyComparisonSettings |  | [optional] |
+| yaxisId | String |  | [optional] |
+
+#### AlarmSearchStatus (enum)
+`ANY` | `ACTIVE` | `CLEARED` | `ACK` | `UNACK`
+
+#### AlarmSeverity (enum)
+`CRITICAL` | `MAJOR` | `MINOR` | `WARNING` | `INDETERMINATE`
+
+#### FontWeight (enum)
+`NORMAL` | `BOLD` | `_500`
+
+#### FontStyle (enum)
+`NORMAL` | `ITALIC`
+
+#### Interval
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| interval | Long |  | [optional] |
+| intervalType | IntervalType |  | [optional] |
+
+#### FixedTimeWindow
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| startTimeMs | Long |  | [optional] |
+| endTimeMs | Long |  | [optional] |
+
+#### QuickTimeInterval (enum)
+`YESTERDAY` | `DAY_BEFORE_YESTERDAY` | `THIS_DAY_LAST_WEEK` | `PREVIOUS_WEEK` | `PREVIOUS_WEEK_ISO` | `PREVIOUS_MONTH` | `PREVIOUS_QUARTER` | `PREVIOUS_HALF_YEAR` | `PREVIOUS_YEAR` | `CURRENT_HOUR` | … (24 values total)
+
+#### IntervalType (enum)
+`MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
+
+#### TimeSeriesChartSeriesType (enum)
+`LINE` | `BAR`
+
+#### LineSeriesSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showLine | Boolean |  | [optional] |
+| step | Boolean |  | [optional] |
+| stepType | LineSeriesStepType |  | [optional] |
+| smooth | Boolean |  | [optional] |
+| lineType | ChartLineType |  | [optional] |
+| lineWidth | Float |  | [optional] |
+| showPoints | Boolean |  | [optional] |
+| showPointLabel | Boolean |  | [optional] |
+| pointLabelPosition | ChartLabelPosition |  | [optional] |
+| pointLabelFont | Font |  | [optional] |
+| pointLabelColor | String |  | [optional] |
+| enablePointLabelBackground | Boolean |  | [optional] |
+| pointLabelBackground | String |  | [optional] |
+| pointShape | ChartShape |  | [optional] |
+| pointSize | Float |  | [optional] |
+| fillAreaSettings | ChartFillSettings |  | [optional] |
+
+#### BarSeriesSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showBorder | Boolean |  | [optional] |
+| borderWidth | Float |  | [optional] |
+| borderRadius | Float |  | [optional] |
+| barWidth | Double |  | [optional] |
+| showLabel | Boolean |  | [optional] |
+| labelPosition | ChartLabelPosition |  | [optional] |
+| labelFont | Font |  | [optional] |
+| labelColor | String |  | [optional] |
+| enableLabelBackground | Boolean |  | [optional] |
+| labelBackground | String |  | [optional] |
+| backgroundSettings | ChartFillSettings |  | [optional] |
+
+#### DataKeyComparisonSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| showValuesForComparison | Boolean |  | [optional] |
+| comparisonValuesLabel | String |  | [optional] |
+| color | String |  | [optional] |
+
+#### EntityType (enum)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
+
+#### LineSeriesStepType (enum)
+`START` | `MIDDLE` | `END`
+
+#### ChartLineType (enum)
+`SOLID` | `DASHED` | `DOTTED`
+
+#### ChartLabelPosition (enum)
+`TOP` | `BOTTOM`
+
+#### ChartShape (enum)
+`EMPTY_CIRCLE` | `CIRCLE` | `RECT` | `ROUND_RECT` | `TRIANGLE` | `DIAMOND` | `PIN` | `ARROW` | `NONE`
+
+#### ChartFillSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | ChartFillType |  | [optional] |
+| opacity | Float |  | [optional] |
+| gradient | ChartFillSettingsGradient |  | [optional] |
+
+#### ChartFillType (enum)
+`NONE` | `OPACITY` | `GRADIENT`
+
+#### ChartFillSettingsGradient
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| start | Float |  | [optional] |
+| end | Float |  | [optional] |
+
+---
+
+### Conventions
+
+- **Package:** `org.thingsboard.client.model`
+- **Getter pattern:** `get<PropertyName>()` — e.g., `getId()`, `getName()`
+- **Setter pattern:** `set<PropertyName>(value)` — e.g., `setId(value)`, `setName(value)`
+- **Null fields:** Getters return `null` for unset optional fields; they do not throw exceptions
+
