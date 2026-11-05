@@ -10,7 +10,9 @@
 
 ```
 com.fasterxml.jackson.databind.JsonNode activateInstance(@Nonnull String licenseSecret, @Nonnull String releaseDate) // Activate edge instance (activateInstance)
+com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion) // Activate edge instance (activateInstance)
 com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body) // Check edge license (checkInstance)
+com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nonnull Object body) // Check edge license (checkInstance)
 void deleteEdge(@Nonnull String edgeId) // Delete edge (deleteEdge)
 List<Edge> findEdgesByQuery(@Nonnull EdgeSearchQuery edgeSearchQuery) // Find related edges (findEdgesByQuery)
 String findMissingToRelatedRuleChains(@Nonnull String edgeId) // Find missing rule chains (findMissingToRelatedRuleChains)
@@ -62,6 +64,33 @@ Activates edge license on license portal.
 **com.fasterxml.jackson.databind.JsonNode**
 
 
+## activateInstanceV2
+
+```
+com.fasterxml.jackson.databind.JsonNode activateInstanceV2(@Nonnull String licenseSecret, @Nonnull String releaseDate, @Nonnull String clusterId, @Nullable String protocolVersion)
+```
+
+**POST** `/api/v2/license/activateInstance`
+
+Activate edge instance (activateInstance)
+
+Activates edge license (V1/V2) on license portal.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **licenseSecret** | **String** |  | |
+| **releaseDate** | **String** |  | |
+| **clusterId** | **String** |  | |
+| **protocolVersion** | **String** |  | [optional] |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
 ## checkInstance
 
 ```
@@ -73,6 +102,30 @@ com.fasterxml.jackson.databind.JsonNode checkInstance(@Nonnull Object body)
 Check edge license (checkInstance)
 
 Checks license request from edge service by forwarding request to license portal.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **body** | **Object** |  | |
+
+### Return type
+
+**com.fasterxml.jackson.databind.JsonNode**
+
+
+## checkInstanceV2
+
+```
+com.fasterxml.jackson.databind.JsonNode checkInstanceV2(@Nonnull Object body)
+```
+
+**POST** `/api/v2/license/checkInstance`
+
+Check edge license (checkInstance)
+
+Checks license request (V1/V2) from edge service by forwarding request to license portal.
 
 
 ### Parameters

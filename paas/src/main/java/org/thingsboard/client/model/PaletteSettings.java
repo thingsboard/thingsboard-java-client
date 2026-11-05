@@ -16,7 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -44,17 +44,17 @@ import org.thingsboard.client.ApiClient;
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class PaletteSettings {
   public static final String JSON_PROPERTY_PRIMARY_PALETTE = "primaryPalette";
-  @Nonnull
+  @Nullable
   private Palette primaryPalette;
 
   public static final String JSON_PROPERTY_ACCENT_PALETTE = "accentPalette";
-  @Nonnull
+  @Nullable
   private Palette accentPalette;
 
   public PaletteSettings() { 
   }
 
-  public PaletteSettings primaryPalette(@Nonnull Palette primaryPalette) {
+  public PaletteSettings primaryPalette(@Nullable Palette primaryPalette) {
     this.primaryPalette = primaryPalette;
     return this;
   }
@@ -63,22 +63,22 @@ public class PaletteSettings {
    * Primary palette JSON
    * @return primaryPalette
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PRIMARY_PALETTE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PRIMARY_PALETTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Palette getPrimaryPalette() {
     return primaryPalette;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PRIMARY_PALETTE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrimaryPalette(@Nonnull Palette primaryPalette) {
+  @JsonProperty(value = JSON_PROPERTY_PRIMARY_PALETTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPrimaryPalette(@Nullable Palette primaryPalette) {
     this.primaryPalette = primaryPalette;
   }
 
 
-  public PaletteSettings accentPalette(@Nonnull Palette accentPalette) {
+  public PaletteSettings accentPalette(@Nullable Palette accentPalette) {
     this.accentPalette = accentPalette;
     return this;
   }
@@ -87,17 +87,17 @@ public class PaletteSettings {
    * Accent palette JSON
    * @return accentPalette
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ACCENT_PALETTE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ACCENT_PALETTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Palette getAccentPalette() {
     return accentPalette;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ACCENT_PALETTE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccentPalette(@Nonnull Palette accentPalette) {
+  @JsonProperty(value = JSON_PROPERTY_ACCENT_PALETTE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAccentPalette(@Nullable Palette accentPalette) {
     this.accentPalette = accentPalette;
   }
 

@@ -295,7 +295,7 @@ TbResourceInfo getResourceInfo(@Nonnull String resourceType, @Nonnull String sco
 
 Get resource info (getResourceInfo)
 
-Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Get info for the resource with the given type, scope and key. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
 
 
 ### Parameters
@@ -345,7 +345,7 @@ PageDataTbResourceInfo getResources(@Nonnull Integer pageSize, @Nonnull Integer 
 
 Get Resource Infos (getResources)
 
-Returns a page of Resource Info objects owned by tenant or sysadmin. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for users with 'SYS_ADMIN' or 'TENANT_ADMIN' authority.
+Returns a page of Resource Info objects owned by tenant or sysadmin. Customer users may request only 'JS_MODULE' resources, so the 'resourceType' parameter is mandatory for them. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details. Resource Info is a lightweight object that includes main information about the Resource excluding the heavyweight data.   Available for any authorized user. 
 
 
 ### Parameters
