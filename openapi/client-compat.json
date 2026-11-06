@@ -1,0 +1,119 @@
+{
+  "parentSchemas": [
+    "Alarm"
+  ],
+  "legacyStringParams": {
+    "getAssetsByEntityGroupId": [
+      "pageSize",
+      "page"
+    ],
+    "getConverters": [
+      "pageSize",
+      "page"
+    ],
+    "getCustomersByEntityGroupId": [
+      "pageSize",
+      "page"
+    ],
+    "getDevicesByEntityGroupId": [
+      "pageSize",
+      "page"
+    ],
+    "getEdgeEntityGroups": [
+      "pageSize",
+      "page"
+    ],
+    "getEdgeSchedulerEvents": [
+      "pageSize",
+      "page"
+    ],
+    "getEdgesByEntityGroupId": [
+      "pageSize",
+      "page"
+    ],
+    "getEntities": [
+      "pageSize",
+      "page"
+    ],
+    "getEntityGroupEntityInfosByOwnerAndTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getEntityGroupEntityInfosByTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getEntityGroupsByOwnerAndTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getEntityGroupsByTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getEntityGroupsHierarchyByOwnerAndTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getEntityViewsByEntityGroupId": [
+      "pageSize",
+      "page"
+    ],
+    "getIntegrationInfos": [
+      "pageSize",
+      "page"
+    ],
+    "getIntegrations": [
+      "pageSize",
+      "page"
+    ],
+    "getOwnerInfos": [
+      "pageSize",
+      "page"
+    ],
+    "getOwners": [
+      "pageSize",
+      "page"
+    ],
+    "getRoles": [
+      "pageSize",
+      "page"
+    ],
+    "getScheduledReportEvents": [
+      "pageSize",
+      "page"
+    ],
+    "getSharedEntityGroupEntityInfosByTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getSharedEntityGroupsByTypeAndPageLink": [
+      "pageSize",
+      "page"
+    ],
+    "getUserAssets": [
+      "pageSize",
+      "page"
+    ],
+    "getUserCustomers": [
+      "pageSize",
+      "page"
+    ],
+    "getUserDevices": [
+      "pageSize",
+      "page"
+    ],
+    "getUserEdges": [
+      "pageSize",
+      "page"
+    ],
+    "getUserEntityViews": [
+      "pageSize",
+      "page"
+    ]
+  }
+}

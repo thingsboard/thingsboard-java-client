@@ -15,128 +15,137 @@
  */
 package org.thingsboard.client.model;
 
-import javax.annotation.Generated;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.StringJoiner;
-import java.util.Objects;
-import java.util.Map;
-import java.util.HashMap;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Arrays;
-import java.util.UUID;
-import org.thingsboard.client.model.AliasEntityType;
-import org.thingsboard.client.model.EntityType;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-
 import org.thingsboard.client.ApiClient;
+
+import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.StringJoiner;
+import java.util.UUID;
+
 /**
- * AliasEntityId
+ * Entity ID used by entity filters: either an entity of a given {@link EntityType}, or an alias
+ * ({@link AliasEntityType}) that the server resolves for the current user.
+ * <p>
+ * Hand-written: it replaces the generated model (see generate-client.sh). The server writes both
+ * kinds in one {@code entityType} field, e.g. {@code {"entityType": "DEVICE", "id": "..."}} or
+ * {@code {"entityType": "CURRENT_USER"}}, so the spec documents {@code entityType} as a string.
+ * This class keeps the typed accessors of earlier client versions on top of that field.
  */
 @JsonPropertyOrder({
-  AliasEntityId.JSON_PROPERTY_ALIAS_ENTITY_TYPE,
   AliasEntityId.JSON_PROPERTY_ENTITY_TYPE,
   AliasEntityId.JSON_PROPERTY_ID
 })
-@Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE)
 public class AliasEntityId {
-  public static final String JSON_PROPERTY_ALIAS_ENTITY_TYPE = "aliasEntityType";
-  @Nullable
-  private AliasEntityType aliasEntityType;
-
   public static final String JSON_PROPERTY_ENTITY_TYPE = "entityType";
-  @Nonnull
-  private EntityType entityType;
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  private String entityType;
 
   public static final String JSON_PROPERTY_ID = "id";
-  @Nonnull
+  // Omitted when null: the server rejects "id": null for an alias.
+  @JsonProperty(value = JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.NON_NULL)
   private UUID id;
 
-  public AliasEntityId() { 
+  public AliasEntityId() {
   }
 
-  public AliasEntityId aliasEntityType(@Nullable AliasEntityType aliasEntityType) {
-    this.aliasEntityType = aliasEntityType;
+  /**
+   * Sets the entity type of an entity ID; {@link #id(UUID)} is required with it.
+   */
+  public AliasEntityId entityType(@Nullable EntityType entityType) {
+    setEntityType(entityType);
     return this;
   }
 
   /**
-   * Get aliasEntityType
-   * @return aliasEntityType
+   * @return the entity type, or {@code null} if this is an alias
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ALIAS_ENTITY_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityType getEntityType() {
+    if (entityType != null) {
+      for (EntityType type : EntityType.values()) {
+        if (type.getValue().equals(entityType)) {
+          return type;
+        }
+      }
+    }
+    return null;
+  }
+
+  public void setEntityType(@Nullable EntityType entityType) {
+    this.entityType = entityType != null ? entityType.getValue() : null;
+  }
+
+  /**
+   * Sets an alias that the server resolves for the current user; the ID is optional.
+   */
+  public AliasEntityId aliasEntityType(@Nullable AliasEntityType aliasEntityType) {
+    setAliasEntityType(aliasEntityType);
+    return this;
+  }
+
+  /**
+   * @return the alias, or {@code null} if this is an entity ID
+   */
+  @Nullable
   public AliasEntityType getAliasEntityType() {
-    return aliasEntityType;
+    if (entityType != null) {
+      for (AliasEntityType type : AliasEntityType.values()) {
+        if (type.getValue().equals(entityType)) {
+          return type;
+        }
+      }
+    }
+    return null;
   }
 
-
-  @JsonProperty(value = JSON_PROPERTY_ALIAS_ENTITY_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAliasEntityType(@Nullable AliasEntityType aliasEntityType) {
-    this.aliasEntityType = aliasEntityType;
+    this.entityType = aliasEntityType != null ? aliasEntityType.getValue() : null;
   }
 
-
-  public AliasEntityId entityType(@Nonnull EntityType entityType) {
+  /**
+   * Sets the raw {@code entityType} value: an {@link EntityType} or {@link AliasEntityType} name.
+   */
+  public AliasEntityId entityTypeValue(@Nullable String entityType) {
     this.entityType = entityType;
     return this;
   }
 
   /**
-   * Get entityType
-   * @return entityType
+   * @return the raw {@code entityType} value as the server sent it
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public EntityType getEntityType() {
+  @Nullable
+  public String getEntityTypeValue() {
     return entityType;
   }
 
-
-  @JsonProperty(value = JSON_PROPERTY_ENTITY_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEntityType(@Nonnull EntityType entityType) {
-    this.entityType = entityType;
-  }
-
-
-  public AliasEntityId id(@Nonnull UUID id) {
+  public AliasEntityId id(@Nullable UUID id) {
     this.id = id;
     return this;
   }
 
   /**
-   * ID of the entity, time-based UUID v1
+   * ID of the entity, time-based UUID v1; required for an entity ID, optional for an alias.
    * @return id
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
   public UUID getId() {
     return id;
   }
 
-
-  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(@Nonnull UUID id) {
+  public void setId(@Nullable UUID id) {
     this.id = id;
   }
 
-
-  /**
-   * Return true if this AliasEntityId object is equal to o.
-   */
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -146,36 +155,21 @@ public class AliasEntityId {
       return false;
     }
     AliasEntityId aliasEntityId = (AliasEntityId) o;
-    return Objects.equals(this.aliasEntityType, aliasEntityId.aliasEntityType) &&
-        Objects.equals(this.entityType, aliasEntityId.entityType) &&
+    return Objects.equals(this.entityType, aliasEntityId.entityType) &&
         Objects.equals(this.id, aliasEntityId.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aliasEntityType, entityType, id);
+    return Objects.hash(entityType, id);
   }
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class AliasEntityId {\n");
-    sb.append("    aliasEntityType: ").append(toIndentedString(aliasEntityType)).append("\n");
-    sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return "class AliasEntityId {\n" +
+        "    entityType: " + entityType + "\n" +
+        "    id: " + id + "\n" +
+        "}";
   }
 
   /**
@@ -195,37 +189,19 @@ public class AliasEntityId {
    */
   public String toUrlQueryString(String prefix) {
     String suffix = "";
-    String containerSuffix = "";
-    String containerPrefix = "";
     if (prefix == null) {
-      // style=form, explode=true, e.g. /pet?name=cat&type=manx
       prefix = "";
     } else {
-      // deepObject style e.g. /pet?id[name]=cat&id[type]=manx
       prefix = prefix + "[";
       suffix = "]";
-      containerSuffix = "]";
-      containerPrefix = "[";
     }
-
     StringJoiner joiner = new StringJoiner("&");
-
-    // add `aliasEntityType` to the URL query string
-    if (getAliasEntityType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%saliasEntityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAliasEntityType()))));
+    if (entityType != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(entityType)));
     }
-
-    // add `entityType` to the URL query string
-    if (getEntityType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sentityType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityType()))));
+    if (id != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(id))));
     }
-
-    // add `id` to the URL query string
-    if (getId() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getId()))));
-    }
-
     return joiner.toString();
   }
 }
-
