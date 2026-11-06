@@ -76,14 +76,32 @@ public class NotificationTargetExportData extends EntityExportData {
   }
 
   @Override
+  public NotificationTargetExportData addRelationsItem(EntityRelation relationsItem) {
+    super.addRelationsItem(relationsItem);
+    return this;
+  }
+
+  @Override
   public NotificationTargetExportData attributes(@Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
+  public NotificationTargetExportData putAttributesItem(String key, List<AttributeExportData> attributesItem) {
+    super.putAttributesItem(key, attributesItem);
+    return this;
+  }
+
+  @Override
   public NotificationTargetExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
+    return this;
+  }
+
+  @Override
+  public NotificationTargetExportData addCalculatedFieldsItem(CalculatedField calculatedFieldsItem) {
+    super.addCalculatedFieldsItem(calculatedFieldsItem);
     return this;
   }
 

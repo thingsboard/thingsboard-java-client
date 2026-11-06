@@ -173,6 +173,12 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
+  public MobileSelfRegistrationParams addPermissionsItem(GroupPermission permissionsItem) {
+    super.addPermissionsItem(permissionsItem);
+    return this;
+  }
+
+  @Override
   public MobileSelfRegistrationParams notificationRecipient(@Nullable NotificationTargetId notificationRecipient) {
     this.setNotificationRecipient(notificationRecipient);
     return this;
@@ -181,6 +187,12 @@ public class MobileSelfRegistrationParams extends SelfRegistrationParams {
   @Override
   public MobileSelfRegistrationParams signUpFields(@Nullable List<SignUpField> signUpFields) {
     this.setSignUpFields(signUpFields);
+    return this;
+  }
+
+  @Override
+  public MobileSelfRegistrationParams addSignUpFieldsItem(SignUpField signUpFieldsItem) {
+    super.addSignUpFieldsItem(signUpFieldsItem);
     return this;
   }
 

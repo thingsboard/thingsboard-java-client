@@ -288,6 +288,24 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
     return this;
   }
 
+  {{^vendorExtensions.x-is-jackson-optional-nullable}}
+  {{#isArray}}
+  @Override
+  public {{classname}} add{{nameInPascalCase}}Item({{{items.datatypeWithEnum}}} {{name}}Item) {
+    super.add{{nameInPascalCase}}Item({{name}}Item);
+    return this;
+  }
+
+  {{/isArray}}
+  {{#isMap}}
+  @Override
+  public {{classname}} put{{nameInPascalCase}}Item(String key, {{{items.datatypeWithEnum}}} {{name}}Item) {
+    super.put{{nameInPascalCase}}Item(key, {{name}}Item);
+    return this;
+  }
+
+  {{/isMap}}
+  {{/vendorExtensions.x-is-jackson-optional-nullable}}
   {{/isDiscriminator}}
   {{/isOverridden}}
   {{/allVars}}

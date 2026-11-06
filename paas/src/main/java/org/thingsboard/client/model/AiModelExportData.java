@@ -76,14 +76,32 @@ public class AiModelExportData extends EntityExportData {
   }
 
   @Override
+  public AiModelExportData addRelationsItem(EntityRelation relationsItem) {
+    super.addRelationsItem(relationsItem);
+    return this;
+  }
+
+  @Override
   public AiModelExportData attributes(@Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
+  public AiModelExportData putAttributesItem(String key, List<AttributeExportData> attributesItem) {
+    super.putAttributesItem(key, attributesItem);
+    return this;
+  }
+
+  @Override
   public AiModelExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
+    return this;
+  }
+
+  @Override
+  public AiModelExportData addCalculatedFieldsItem(CalculatedField calculatedFieldsItem) {
+    super.addCalculatedFieldsItem(calculatedFieldsItem);
     return this;
   }
 

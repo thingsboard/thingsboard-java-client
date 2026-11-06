@@ -49,6 +49,12 @@ public class AliasEntityId {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   private String entityType;
 
+  /**
+   * @deprecated The server never writes {@code aliasEntityType}; an alias is sent in {@code entityType}.
+   */
+  @Deprecated
+  public static final String JSON_PROPERTY_ALIAS_ENTITY_TYPE = "aliasEntityType";
+
   public static final String JSON_PROPERTY_ID = "id";
   // Omitted when null: the server rejects "id": null for an alias.
   @JsonProperty(value = JSON_PROPERTY_ID)

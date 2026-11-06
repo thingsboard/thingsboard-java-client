@@ -118,6 +118,12 @@ public class ReportJobResult extends JobResult {
   }
 
   @Override
+  public ReportJobResult addResultsItem(TaskResult resultsItem) {
+    super.addResultsItem(resultsItem);
+    return this;
+  }
+
+  @Override
   public ReportJobResult generalError(@Nullable String generalError) {
     this.setGeneralError(generalError);
     return this;

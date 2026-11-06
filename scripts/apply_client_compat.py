@@ -21,12 +21,15 @@ When ThingsBoard corrects a type in its spec, the regenerated client can stop
 compiling for code written against an earlier client version. The config file
 (openapi/client-compat.json) lists such cases:
 
-  parentSchemas
-      Schemas that other schemas extend through allOf without a discriminator.
-      openapi-generator flattens such an allOf unless the parent has x-parent,
-      so e.g. AlarmInfo would not extend Alarm, and a method that now returns
-      AlarmInfo could no longer be assigned to Alarm. Properties that a child
-      repeats from its parent are removed from the child.
+  subtypes
+      {child: parent} for classes that extend another class on the server
+      while the spec describes them as two unrelated schemas, e.g. AlarmInfo
+      and Alarm. The child becomes allOf [parent, its own properties] and the
+      parent gets x-parent, so the generated child extends the parent, and a
+      method that now returns AlarmInfo stays assignable to Alarm. The spec
+      itself stays flat because other generators (e.g. dart-dio) turn an
+      allOf parent into an abstract interface. A child is rewritten only if
+      it has every parent property with the same definition.
 
   legacyStringParams
       {operationId: [parameter names]} that earlier spec versions documented
@@ -42,43 +45,32 @@ import json
 import sys
 
 
-def mark_parents(spec, names):
+def make_subtypes(spec, subtypes):
     schemas = spec.get("components", {}).get("schemas", {})
-    marked = 0
-    for name in names:
-        if name in schemas:
-            schemas[name]["x-parent"] = True
-            marked += 1
-            dedupe_children(schemas, name)
-    return marked
-
-
-def dedupe_children(schemas, parent_name):
-    """Drop properties that a child's inline allOf part repeats from the parent.
-
-    swagger-core writes every property of the class into the inline part, so
-    without this the generated child would redeclare all parent fields.
-    """
-    parent = schemas[parent_name]
-    parent_props = parent.get("properties", {})
-    parent_ref = "#/components/schemas/" + parent_name
-    for schema in schemas.values():
-        all_of = schema.get("allOf") or []
-        if not any(part.get("$ref") == parent_ref for part in all_of):
+    made = 0
+    for child_name, parent_name in subtypes.items():
+        child = schemas.get(child_name)
+        parent = schemas.get(parent_name)
+        if child is None or parent is None or "allOf" in child:
             continue
-        for part in all_of:
-            props = part.get("properties")
-            if not props:
-                continue
-            # readOnly properties stay: openapi-generator 7.20 cannot inherit them
-            # (the child would assign the parent's private fields)
-            for prop in [p for p, s in props.items()
-                         if parent_props.get(p) == s and not s.get("readOnly")]:
-                del props[prop]
-            if "required" in part:
-                part["required"] = [r for r in part["required"] if r in props]
-                if not part["required"]:
-                    del part["required"]
+        child_props = child.get("properties", {})
+        parent_props = parent.get("properties", {})
+        if any(child_props.get(p) != s for p, s in parent_props.items()):
+            continue
+        # readOnly properties stay in the child: openapi-generator 7.20 cannot
+        # inherit them (the child would assign the parent's private fields)
+        own = {p: s for p, s in child_props.items() if p not in parent_props or s.get("readOnly")}
+        part = {"type": "object", "properties": own}
+        required = [r for r in child.get("required", []) if r in own]
+        if required:
+            part["required"] = required
+        rewritten = {"allOf": [{"$ref": "#/components/schemas/" + parent_name}, part]}
+        if "description" in child:
+            rewritten["description"] = child["description"]
+        schemas[child_name] = rewritten
+        parent["x-parent"] = True
+        made += 1
+    return made
 
 
 def mark_legacy_string_params(spec, legacy):
@@ -111,12 +103,12 @@ def main():
     with open(spec_in, encoding="utf-8") as f:
         spec = json.load(f)
 
-    parents = mark_parents(spec, config.get("parentSchemas", []))
+    subtypes = make_subtypes(spec, config.get("subtypes", {}))
     params = mark_legacy_string_params(spec, config.get("legacyStringParams", {}))
 
     with open(spec_out, "w", encoding="utf-8") as f:
         json.dump(spec, f, indent=2, ensure_ascii=False)
-    print(f"Client compat: {parents} parent schema(s), {params} legacy String parameter(s) -> {spec_out}")
+    print(f"Client compat: {subtypes} subtype(s), {params} legacy String parameter(s) -> {spec_out}")
 
 
 if __name__ == "__main__":

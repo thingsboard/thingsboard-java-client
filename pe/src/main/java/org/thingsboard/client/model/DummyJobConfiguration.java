@@ -339,6 +339,12 @@ public class DummyJobConfiguration extends JobConfiguration {
     return this;
   }
 
+  @Override
+  public DummyJobConfiguration addToReprocessItem(TaskResult toReprocessItem) {
+    super.addToReprocessItem(toReprocessItem);
+    return this;
+  }
+
   /**
    * Return true if this DummyJobConfiguration object is equal to o.
    */
