@@ -187,6 +187,12 @@ public class CfReprocessingJobConfiguration extends JobConfiguration {
     return this;
   }
 
+  @Override
+  public CfReprocessingJobConfiguration addToReprocessItem(TaskResult toReprocessItem) {
+    super.addToReprocessItem(toReprocessItem);
+    return this;
+  }
+
   /**
    * Return true if this CfReprocessingJobConfiguration object is equal to o.
    */

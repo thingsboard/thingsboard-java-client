@@ -354,6 +354,18 @@ public class {{classname}} {
     {{/asyncNative}}
   }
 
+  {{#vendorExtensions.x-legacy-string-params}}
+  /**
+   * {{summary}}
+   * @deprecated Earlier client versions took {{#allParams}}{{#vendorExtensions.x-legacy-string}}{@code {{paramName}}} {{/vendorExtensions.x-legacy-string}}{{/allParams}}as {@code String};
+   *     they are integers. Use {@link #{{operationId}}({{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public {{#returnType}}{{#asyncNative}}CompletableFuture<{{{returnType}}}>{{/asyncNative}}{{^asyncNative}}{{{returnType}}}{{/asyncNative}}{{/returnType}}{{^returnType}}{{#asyncNative}}CompletableFuture<Void>{{/asyncNative}}{{^asyncNative}}void{{/asyncNative}}{{/returnType}} {{operationId}}({{#allParams}}{{#vendorExtensions.x-legacy-string}}String{{/vendorExtensions.x-legacy-string}}{{^vendorExtensions.x-legacy-string}}{{{dataType}}}{{/vendorExtensions.x-legacy-string}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}) throws ApiException {
+    {{#returnType}}return {{/returnType}}{{^returnType}}{{#asyncNative}}return {{/asyncNative}}{{/returnType}}{{operationId}}({{#allParams}}{{#vendorExtensions.x-legacy-string}}{{paramName}} == null ? null : Integer.valueOf({{paramName}}){{/vendorExtensions.x-legacy-string}}{{^vendorExtensions.x-legacy-string}}{{paramName}}{{/vendorExtensions.x-legacy-string}}{{^-last}}, {{/-last}}{{/allParams}});
+  }
+
+  {{/vendorExtensions.x-legacy-string-params}}
   /**
    * {{summary}}
    * {{notes}}
@@ -863,6 +875,16 @@ public class {{classname}} {
         this.{{paramName}} = {{paramName}};
         return this;
       }
+      {{#vendorExtensions.x-legacy-string}}
+      /**
+       * @deprecated Earlier client versions took {@code {{paramName}}} as {@code String}; it is an integer.
+       *     Use {@link #{{paramName}}(Integer)}.
+       */
+      @Deprecated(forRemoval = true)
+      public Builder {{paramName}}(String {{paramName}}) {
+        return {{paramName}}({{paramName}} == null ? null : Integer.valueOf({{paramName}}));
+      }
+      {{/vendorExtensions.x-legacy-string}}
       {{/allParams}}
       public {{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args build() {
         {{#requiredParams}}

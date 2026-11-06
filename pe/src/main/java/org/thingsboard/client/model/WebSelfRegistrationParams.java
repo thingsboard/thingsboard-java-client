@@ -173,6 +173,12 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   }
 
   @Override
+  public WebSelfRegistrationParams addPermissionsItem(GroupPermission permissionsItem) {
+    super.addPermissionsItem(permissionsItem);
+    return this;
+  }
+
+  @Override
   public WebSelfRegistrationParams notificationRecipient(@Nullable NotificationTargetId notificationRecipient) {
     this.setNotificationRecipient(notificationRecipient);
     return this;
@@ -181,6 +187,12 @@ public class WebSelfRegistrationParams extends SelfRegistrationParams {
   @Override
   public WebSelfRegistrationParams signUpFields(@Nullable List<SignUpField> signUpFields) {
     this.setSignUpFields(signUpFields);
+    return this;
+  }
+
+  @Override
+  public WebSelfRegistrationParams addSignUpFieldsItem(SignUpField signUpFieldsItem) {
+    super.addSignUpFieldsItem(signUpFieldsItem);
     return this;
   }
 
