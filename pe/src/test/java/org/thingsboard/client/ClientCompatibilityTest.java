@@ -17,6 +17,7 @@ package org.thingsboard.client;
 
 import org.junit.jupiter.api.Test;
 import org.thingsboard.client.api.ThingsboardApi;
+import org.thingsboard.client.api.ThingsboardApi.GetTimeseriesHistoryArgs;
 import org.thingsboard.client.api.ThingsboardApi.GetUserAssetsArgs;
 import org.thingsboard.client.model.Alarm;
 import org.thingsboard.client.model.AlarmInfo;
@@ -24,8 +25,10 @@ import org.thingsboard.client.model.AliasEntityId;
 import org.thingsboard.client.model.AliasEntityType;
 import org.thingsboard.client.model.EntityType;
 import org.thingsboard.client.model.PageDataAsset;
+import org.thingsboard.client.model.TsData;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -59,6 +62,24 @@ class ClientCompatibilityTest {
         });
         assertThrows(ApiException.class, () -> {
             ApiResponse<PageDataAsset> response = api.getUserAssetsWithHttpInfo("10", "0", null, null, null, null, null, headers);
+        });
+    }
+
+    @Test
+    void timeseriesLimitAcceptsString() {
+        Map<String, String> headers = Map.of();
+        String id = UUID.randomUUID().toString();
+        GetTimeseriesHistoryArgs args = GetTimeseriesHistoryArgs.builder()
+                .entityType("DEVICE").entityId(id).startTs(0L).endTs(1L).keys("temperature").limit("100").build();
+
+        assertThrows(ApiException.class, () -> {
+            Map<String, List<TsData>> data = api.getTimeseriesHistory(args);
+        });
+        assertThrows(ApiException.class, () -> {
+            Map<String, List<TsData>> data = api.getTimeseriesHistory("DEVICE", id, 0L, 1L, "temperature", null, null, null, "100", null, null, null, null);
+        });
+        assertThrows(ApiException.class, () -> {
+            ApiResponse<Map<String, List<TsData>>> response = api.getTimeseriesHistoryWithHttpInfo("DEVICE", id, 0L, 1L, "temperature", null, null, null, "100", null, null, null, null, headers);
         });
     }
 
