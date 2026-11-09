@@ -95,6 +95,9 @@
       "pageSize",
       "page"
     ],
+    "getTimeseriesHistory": [
+      "limit"
+    ],
     "getUserAssets": [
       "pageSize",
       "page"
