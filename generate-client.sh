@@ -42,7 +42,8 @@
 # What it does:
 #   1. Optionally fetches OpenAPI spec from a running ThingsBoard instance
 #   2. Adds vendor extensions that keep the client compatible with earlier versions
-#      (openapi/client-compat.json): parent schemas, deprecated String overloads
+#      (openapi/client-compat.json): parent schemas, deprecated String overloads.
+#      PE and PaaS only; fails if the spec no longer matches the config
 #   3. Runs openapi-generator-cli (Java native HTTP client)
 #   4. Strips auto-generated OpenAPI comment blocks from Java files
 #   5. Copies generated src/main/java/ and docs/ into the module (replaces previous)
@@ -150,11 +151,17 @@ generate() {
   fi
 
   # Add the vendor extensions that keep the client compatible with code written
-  # against earlier versions (see openapi/client-compat.json)
-  local client_spec_file="$SCRIPT_DIR/$edition/target/openapi-client.json"
-  mkdir -p "$(dirname "$client_spec_file")"
-  python3 "$SCRIPT_DIR/scripts/apply_client_compat.py" \
-    "$SCRIPT_DIR/openapi/client-compat.json" "$spec_file" "$client_spec_file"
+  # against earlier versions (see openapi/client-compat.json). The script fails
+  # if the spec no longer matches the config. CE is deprecated: its spec is frozen
+  # at the last open-source snapshot and has none of the listed operations, so it
+  # is generated from the spec unchanged.
+  local client_spec_file="$spec_file"
+  if [ "$edition" != "ce" ]; then
+    client_spec_file="$SCRIPT_DIR/$edition/target/openapi-client.json"
+    mkdir -p "$(dirname "$client_spec_file")"
+    python3 "$SCRIPT_DIR/scripts/apply_client_compat.py" --edition "$edition" \
+      "$SCRIPT_DIR/openapi/client-compat.json" "$spec_file" "$client_spec_file"
+  fi
 
   # Run 1 — Java client (single class, no docs)
   echo "Generating client for edition: $edition from $spec_file"

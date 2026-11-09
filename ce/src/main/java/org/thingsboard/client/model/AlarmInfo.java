@@ -32,7 +32,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.thingsboard.client.model.Alarm;
 import org.thingsboard.client.model.AlarmAssignee;
 import org.thingsboard.client.model.AlarmId;
 import org.thingsboard.client.model.AlarmSeverity;
@@ -49,9 +48,26 @@ import org.thingsboard.client.ApiClient;
  * AlarmInfo
  */
 @JsonPropertyOrder({
+  AlarmInfo.JSON_PROPERTY_ID,
   AlarmInfo.JSON_PROPERTY_CREATED_TIME,
   AlarmInfo.JSON_PROPERTY_TENANT_ID,
   AlarmInfo.JSON_PROPERTY_CUSTOMER_ID,
+  AlarmInfo.JSON_PROPERTY_TYPE,
+  AlarmInfo.JSON_PROPERTY_ORIGINATOR,
+  AlarmInfo.JSON_PROPERTY_SEVERITY,
+  AlarmInfo.JSON_PROPERTY_ACKNOWLEDGED,
+  AlarmInfo.JSON_PROPERTY_CLEARED,
+  AlarmInfo.JSON_PROPERTY_ASSIGNEE_ID,
+  AlarmInfo.JSON_PROPERTY_START_TS,
+  AlarmInfo.JSON_PROPERTY_END_TS,
+  AlarmInfo.JSON_PROPERTY_ACK_TS,
+  AlarmInfo.JSON_PROPERTY_CLEAR_TS,
+  AlarmInfo.JSON_PROPERTY_ASSIGN_TS,
+  AlarmInfo.JSON_PROPERTY_DETAILS,
+  AlarmInfo.JSON_PROPERTY_PROPAGATE,
+  AlarmInfo.JSON_PROPERTY_PROPAGATE_TO_OWNER,
+  AlarmInfo.JSON_PROPERTY_PROPAGATE_TO_TENANT,
+  AlarmInfo.JSON_PROPERTY_PROPAGATE_RELATION_TYPES,
   AlarmInfo.JSON_PROPERTY_ORIGINATOR_NAME,
   AlarmInfo.JSON_PROPERTY_ORIGINATOR_LABEL,
   AlarmInfo.JSON_PROPERTY_ORIGINATOR_DISPLAY_NAME,
@@ -60,7 +76,11 @@ import org.thingsboard.client.ApiClient;
   AlarmInfo.JSON_PROPERTY_STATUS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
-public class AlarmInfo extends Alarm {
+public class AlarmInfo {
+  public static final String JSON_PROPERTY_ID = "id";
+  @Nullable
+  private AlarmId id;
+
   public static final String JSON_PROPERTY_CREATED_TIME = "createdTime";
   @Nullable
   private Long createdTime;
@@ -72,6 +92,70 @@ public class AlarmInfo extends Alarm {
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
   @Nullable
   private CustomerId customerId;
+
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @Nonnull
+  private String type;
+
+  public static final String JSON_PROPERTY_ORIGINATOR = "originator";
+  @Nonnull
+  private EntityId originator;
+
+  public static final String JSON_PROPERTY_SEVERITY = "severity";
+  @Nonnull
+  private AlarmSeverity severity;
+
+  public static final String JSON_PROPERTY_ACKNOWLEDGED = "acknowledged";
+  @Nonnull
+  private Boolean acknowledged;
+
+  public static final String JSON_PROPERTY_CLEARED = "cleared";
+  @Nonnull
+  private Boolean cleared;
+
+  public static final String JSON_PROPERTY_ASSIGNEE_ID = "assigneeId";
+  @Nullable
+  private UserId assigneeId;
+
+  public static final String JSON_PROPERTY_START_TS = "startTs";
+  @Nullable
+  private Long startTs;
+
+  public static final String JSON_PROPERTY_END_TS = "endTs";
+  @Nullable
+  private Long endTs;
+
+  public static final String JSON_PROPERTY_ACK_TS = "ackTs";
+  @Nullable
+  private Long ackTs;
+
+  public static final String JSON_PROPERTY_CLEAR_TS = "clearTs";
+  @Nullable
+  private Long clearTs;
+
+  public static final String JSON_PROPERTY_ASSIGN_TS = "assignTs";
+  @Nullable
+  private Long assignTs;
+
+  public static final String JSON_PROPERTY_DETAILS = "details";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode details;
+
+  public static final String JSON_PROPERTY_PROPAGATE = "propagate";
+  @Nullable
+  private Boolean propagate;
+
+  public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER = "propagateToOwner";
+  @Nullable
+  private Boolean propagateToOwner;
+
+  public static final String JSON_PROPERTY_PROPAGATE_TO_TENANT = "propagateToTenant";
+  @Nullable
+  private Boolean propagateToTenant;
+
+  public static final String JSON_PROPERTY_PROPAGATE_RELATION_TYPES = "propagateRelationTypes";
+  @Nullable
+  private List<String> propagateRelationTypes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ORIGINATOR_NAME = "originatorName";
   @Nullable
@@ -116,6 +200,30 @@ public class AlarmInfo extends Alarm {
     this.status = status;
   }
 
+  public AlarmInfo id(@Nullable AlarmId id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm.
+   * @return id
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public AlarmId getId() {
+    return id;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@Nullable AlarmId id) {
+    this.id = id;
+  }
+
+
   /**
    * Timestamp of the alarm creation, in milliseconds
    * @return createdTime
@@ -156,6 +264,398 @@ public class AlarmInfo extends Alarm {
   }
 
 
+
+
+  public AlarmInfo type(@Nonnull String type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * representing type of the Alarm
+   * @return type
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getType() {
+    return type;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setType(@Nonnull String type) {
+    this.type = type;
+  }
+
+
+  public AlarmInfo originator(@Nonnull EntityId originator) {
+    this.originator = originator;
+    return this;
+  }
+
+  /**
+   * JSON object with alarm originator id
+   * @return originator
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ORIGINATOR, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public EntityId getOriginator() {
+    return originator;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ORIGINATOR, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setOriginator(@Nonnull EntityId originator) {
+    this.originator = originator;
+  }
+
+
+  public AlarmInfo severity(@Nonnull AlarmSeverity severity) {
+    this.severity = severity;
+    return this;
+  }
+
+  /**
+   * Alarm severity
+   * @return severity
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_SEVERITY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public AlarmSeverity getSeverity() {
+    return severity;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SEVERITY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSeverity(@Nonnull AlarmSeverity severity) {
+    this.severity = severity;
+  }
+
+
+  public AlarmInfo acknowledged(@Nonnull Boolean acknowledged) {
+    this.acknowledged = acknowledged;
+    return this;
+  }
+
+  /**
+   * Acknowledged
+   * @return acknowledged
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_ACKNOWLEDGED, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Boolean getAcknowledged() {
+    return acknowledged;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ACKNOWLEDGED, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setAcknowledged(@Nonnull Boolean acknowledged) {
+    this.acknowledged = acknowledged;
+  }
+
+
+  public AlarmInfo cleared(@Nonnull Boolean cleared) {
+    this.cleared = cleared;
+    return this;
+  }
+
+  /**
+   * Cleared
+   * @return cleared
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_CLEARED, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Boolean getCleared() {
+    return cleared;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CLEARED, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCleared(@Nonnull Boolean cleared) {
+    this.cleared = cleared;
+  }
+
+
+  public AlarmInfo assigneeId(@Nullable UserId assigneeId) {
+    this.assigneeId = assigneeId;
+    return this;
+  }
+
+  /**
+   * Alarm assignee user id
+   * @return assigneeId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public UserId getAssigneeId() {
+    return assigneeId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ASSIGNEE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssigneeId(@Nullable UserId assigneeId) {
+    this.assigneeId = assigneeId;
+  }
+
+
+  public AlarmInfo startTs(@Nullable Long startTs) {
+    this.startTs = startTs;
+    return this;
+  }
+
+  /**
+   * Timestamp of the alarm start time, in milliseconds
+   * @return startTs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getStartTs() {
+    return startTs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_START_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setStartTs(@Nullable Long startTs) {
+    this.startTs = startTs;
+  }
+
+
+  public AlarmInfo endTs(@Nullable Long endTs) {
+    this.endTs = endTs;
+    return this;
+  }
+
+  /**
+   * Timestamp of the alarm end time(last time update), in milliseconds
+   * @return endTs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getEndTs() {
+    return endTs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_END_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEndTs(@Nullable Long endTs) {
+    this.endTs = endTs;
+  }
+
+
+  public AlarmInfo ackTs(@Nullable Long ackTs) {
+    this.ackTs = ackTs;
+    return this;
+  }
+
+  /**
+   * Timestamp of the alarm acknowledgement, in milliseconds
+   * @return ackTs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ACK_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getAckTs() {
+    return ackTs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ACK_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAckTs(@Nullable Long ackTs) {
+    this.ackTs = ackTs;
+  }
+
+
+  public AlarmInfo clearTs(@Nullable Long clearTs) {
+    this.clearTs = clearTs;
+    return this;
+  }
+
+  /**
+   * Timestamp of the alarm clearing, in milliseconds
+   * @return clearTs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CLEAR_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getClearTs() {
+    return clearTs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CLEAR_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setClearTs(@Nullable Long clearTs) {
+    this.clearTs = clearTs;
+  }
+
+
+  public AlarmInfo assignTs(@Nullable Long assignTs) {
+    this.assignTs = assignTs;
+    return this;
+  }
+
+  /**
+   * Timestamp of the alarm assignment, in milliseconds
+   * @return assignTs
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ASSIGN_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Long getAssignTs() {
+    return assignTs;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ASSIGN_TS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAssignTs(@Nullable Long assignTs) {
+    this.assignTs = assignTs;
+  }
+
+
+  public AlarmInfo details(@Nullable com.fasterxml.jackson.databind.JsonNode details) {
+    this.details = details;
+    return this;
+  }
+
+  /**
+   * JSON object with alarm details
+   * @return details
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getDetails() {
+    return details;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDetails(@Nullable com.fasterxml.jackson.databind.JsonNode details) {
+    this.details = details;
+  }
+
+
+  public AlarmInfo propagate(@Nullable Boolean propagate) {
+    this.propagate = propagate;
+    return this;
+  }
+
+  /**
+   * Propagation flag to specify if alarm should be propagated to parent entities of alarm originator
+   * @return propagate
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPropagate() {
+    return propagate;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagate(@Nullable Boolean propagate) {
+    this.propagate = propagate;
+  }
+
+
+  public AlarmInfo propagateToOwner(@Nullable Boolean propagateToOwner) {
+    this.propagateToOwner = propagateToOwner;
+    return this;
+  }
+
+  /**
+   * Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) of alarm originator
+   * @return propagateToOwner
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPropagateToOwner() {
+    return propagateToOwner;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagateToOwner(@Nullable Boolean propagateToOwner) {
+    this.propagateToOwner = propagateToOwner;
+  }
+
+
+  public AlarmInfo propagateToTenant(@Nullable Boolean propagateToTenant) {
+    this.propagateToTenant = propagateToTenant;
+    return this;
+  }
+
+  /**
+   * Propagation flag to specify if alarm should be propagated to the tenant entity
+   * @return propagateToTenant
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_TENANT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPropagateToTenant() {
+    return propagateToTenant;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_TENANT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagateToTenant(@Nullable Boolean propagateToTenant) {
+    this.propagateToTenant = propagateToTenant;
+  }
+
+
+  public AlarmInfo propagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
+    this.propagateRelationTypes = propagateRelationTypes;
+    return this;
+  }
+
+  public AlarmInfo addPropagateRelationTypesItem(String propagateRelationTypesItem) {
+    if (this.propagateRelationTypes == null) {
+      this.propagateRelationTypes = new ArrayList<>();
+    }
+    this.propagateRelationTypes.add(propagateRelationTypesItem);
+    return this;
+  }
+
+  /**
+   * JSON array of relation types that should be used for propagation. By default, &#39;propagateRelationTypes&#39; array is empty which means that the alarm will be propagated based on any relation type to parent entities. This parameter should be used only in case when &#39;propagate&#39; parameter is set to true, otherwise, &#39;propagateRelationTypes&#39; array will be ignored.
+   * @return propagateRelationTypes
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public List<String> getPropagateRelationTypes() {
+    return propagateRelationTypes;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_RELATION_TYPES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
+    this.propagateRelationTypes = propagateRelationTypes;
+  }
 
 
   public AlarmInfo originatorName(@Nullable String originatorName) {
@@ -282,114 +782,6 @@ public class AlarmInfo extends Alarm {
 
 
 
-  @Override
-  public AlarmInfo id(@Nullable AlarmId id) {
-    this.setId(id);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo type(@Nonnull String type) {
-    this.setType(type);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo originator(@Nonnull EntityId originator) {
-    this.setOriginator(originator);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo severity(@Nonnull AlarmSeverity severity) {
-    this.setSeverity(severity);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo acknowledged(@Nonnull Boolean acknowledged) {
-    this.setAcknowledged(acknowledged);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo cleared(@Nonnull Boolean cleared) {
-    this.setCleared(cleared);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo assigneeId(@Nullable UserId assigneeId) {
-    this.setAssigneeId(assigneeId);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo startTs(@Nullable Long startTs) {
-    this.setStartTs(startTs);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo endTs(@Nullable Long endTs) {
-    this.setEndTs(endTs);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo ackTs(@Nullable Long ackTs) {
-    this.setAckTs(ackTs);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo clearTs(@Nullable Long clearTs) {
-    this.setClearTs(clearTs);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo assignTs(@Nullable Long assignTs) {
-    this.setAssignTs(assignTs);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo details(@Nullable com.fasterxml.jackson.databind.JsonNode details) {
-    this.setDetails(details);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo propagate(@Nullable Boolean propagate) {
-    this.setPropagate(propagate);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo propagateToOwner(@Nullable Boolean propagateToOwner) {
-    this.setPropagateToOwner(propagateToOwner);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo propagateToTenant(@Nullable Boolean propagateToTenant) {
-    this.setPropagateToTenant(propagateToTenant);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo propagateRelationTypes(@Nullable List<String> propagateRelationTypes) {
-    this.setPropagateRelationTypes(propagateRelationTypes);
-    return this;
-  }
-
-  @Override
-  public AlarmInfo addPropagateRelationTypesItem(String propagateRelationTypesItem) {
-    super.addPropagateRelationTypesItem(propagateRelationTypesItem);
-    return this;
-  }
-
   /**
    * Return true if this AlarmInfo object is equal to o.
    */
@@ -402,31 +794,63 @@ public class AlarmInfo extends Alarm {
       return false;
     }
     AlarmInfo alarmInfo = (AlarmInfo) o;
-    return Objects.equals(this.createdTime, alarmInfo.createdTime) &&
+    return Objects.equals(this.id, alarmInfo.id) &&
+        Objects.equals(this.createdTime, alarmInfo.createdTime) &&
         Objects.equals(this.tenantId, alarmInfo.tenantId) &&
         Objects.equals(this.customerId, alarmInfo.customerId) &&
+        Objects.equals(this.type, alarmInfo.type) &&
+        Objects.equals(this.originator, alarmInfo.originator) &&
+        Objects.equals(this.severity, alarmInfo.severity) &&
+        Objects.equals(this.acknowledged, alarmInfo.acknowledged) &&
+        Objects.equals(this.cleared, alarmInfo.cleared) &&
+        Objects.equals(this.assigneeId, alarmInfo.assigneeId) &&
+        Objects.equals(this.startTs, alarmInfo.startTs) &&
+        Objects.equals(this.endTs, alarmInfo.endTs) &&
+        Objects.equals(this.ackTs, alarmInfo.ackTs) &&
+        Objects.equals(this.clearTs, alarmInfo.clearTs) &&
+        Objects.equals(this.assignTs, alarmInfo.assignTs) &&
+        Objects.equals(this.details, alarmInfo.details) &&
+        Objects.equals(this.propagate, alarmInfo.propagate) &&
+        Objects.equals(this.propagateToOwner, alarmInfo.propagateToOwner) &&
+        Objects.equals(this.propagateToTenant, alarmInfo.propagateToTenant) &&
+        Objects.equals(this.propagateRelationTypes, alarmInfo.propagateRelationTypes) &&
         Objects.equals(this.originatorName, alarmInfo.originatorName) &&
         Objects.equals(this.originatorLabel, alarmInfo.originatorLabel) &&
         Objects.equals(this.originatorDisplayName, alarmInfo.originatorDisplayName) &&
         Objects.equals(this.assignee, alarmInfo.assignee) &&
         Objects.equals(this.name, alarmInfo.name) &&
-        Objects.equals(this.status, alarmInfo.status) &&
-        super.equals(o);
+        Objects.equals(this.status, alarmInfo.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdTime, tenantId, customerId, originatorName, originatorLabel, originatorDisplayName, assignee, name, status, super.hashCode());
+    return Objects.hash(id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToTenant, propagateRelationTypes, originatorName, originatorLabel, originatorDisplayName, assignee, name, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlarmInfo {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    originator: ").append(toIndentedString(originator)).append("\n");
+    sb.append("    severity: ").append(toIndentedString(severity)).append("\n");
+    sb.append("    acknowledged: ").append(toIndentedString(acknowledged)).append("\n");
+    sb.append("    cleared: ").append(toIndentedString(cleared)).append("\n");
+    sb.append("    assigneeId: ").append(toIndentedString(assigneeId)).append("\n");
+    sb.append("    startTs: ").append(toIndentedString(startTs)).append("\n");
+    sb.append("    endTs: ").append(toIndentedString(endTs)).append("\n");
+    sb.append("    ackTs: ").append(toIndentedString(ackTs)).append("\n");
+    sb.append("    clearTs: ").append(toIndentedString(clearTs)).append("\n");
+    sb.append("    assignTs: ").append(toIndentedString(assignTs)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    propagate: ").append(toIndentedString(propagate)).append("\n");
+    sb.append("    propagateToOwner: ").append(toIndentedString(propagateToOwner)).append("\n");
+    sb.append("    propagateToTenant: ").append(toIndentedString(propagateToTenant)).append("\n");
+    sb.append("    propagateRelationTypes: ").append(toIndentedString(propagateRelationTypes)).append("\n");
     sb.append("    originatorName: ").append(toIndentedString(originatorName)).append("\n");
     sb.append("    originatorLabel: ").append(toIndentedString(originatorLabel)).append("\n");
     sb.append("    originatorDisplayName: ").append(toIndentedString(originatorDisplayName)).append("\n");
@@ -584,16 +1008,6 @@ public class AlarmInfo extends Alarm {
       }
     }
 
-    // add `name` to the URL query string
-    if (getName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
-    }
-
-    // add `status` to the URL query string
-    if (getStatus() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
-    }
-
     // add `originatorName` to the URL query string
     if (getOriginatorName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%soriginatorName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOriginatorName()))));
@@ -612,6 +1026,16 @@ public class AlarmInfo extends Alarm {
     // add `assignee` to the URL query string
     if (getAssignee() != null) {
       joiner.add(getAssignee().toUrlQueryString(prefix + "assignee" + suffix));
+    }
+
+    // add `name` to the URL query string
+    if (getName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    }
+
+    // add `status` to the URL query string
+    if (getStatus() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
     }
 
     return joiner.toString();
