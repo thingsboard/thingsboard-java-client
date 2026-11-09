@@ -365,6 +365,16 @@ public class {{classname}} {
     {{#returnType}}return {{/returnType}}{{^returnType}}{{#asyncNative}}return {{/asyncNative}}{{/returnType}}{{operationId}}({{#allParams}}{{#vendorExtensions.x-legacy-string}}{{paramName}} == null ? null : Integer.valueOf({{paramName}}){{/vendorExtensions.x-legacy-string}}{{^vendorExtensions.x-legacy-string}}{{paramName}}{{/vendorExtensions.x-legacy-string}}{{^-last}}, {{/-last}}{{/allParams}});
   }
 
+  /**
+   * {{summary}}
+   * @deprecated Earlier client versions took {{#allParams}}{{#vendorExtensions.x-legacy-string}}{@code {{paramName}}} {{/vendorExtensions.x-legacy-string}}{{/allParams}}as {@code String};
+   *     they are integers. Use {@link #{{operationId}}WithHttpInfo({{#lambda.titlecase}}{{operationId}}{{/lambda.titlecase}}Args, Map)} with integer values.
+   */
+  @Deprecated(forRemoval = true)
+  public {{#asyncNative}}CompletableFuture<{{/asyncNative}}ApiResponse<{{{returnType}}}{{^returnType}}Void{{/returnType}}>{{#asyncNative}}>{{/asyncNative}} {{operationId}}WithHttpInfo({{#allParams}}{{#vendorExtensions.x-legacy-string}}String{{/vendorExtensions.x-legacy-string}}{{^vendorExtensions.x-legacy-string}}{{{dataType}}}{{/vendorExtensions.x-legacy-string}} {{paramName}}, {{/allParams}}Map<String, String> headers) throws ApiException {
+    return {{operationId}}WithHttpInfo({{#allParams}}{{#vendorExtensions.x-legacy-string}}{{paramName}} == null ? null : Integer.valueOf({{paramName}}){{/vendorExtensions.x-legacy-string}}{{^vendorExtensions.x-legacy-string}}{{paramName}}{{/vendorExtensions.x-legacy-string}}, {{/allParams}}headers);
+  }
+
   {{/vendorExtensions.x-legacy-string-params}}
   /**
    * {{summary}}
