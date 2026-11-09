@@ -64,4 +64,38 @@ class AliasEntityIdTest {
                 "{\"type\":\"singleEntity\",\"singleEntity\":{\"entityType\":\"CURRENT_TENANT\"}}", SingleEntityFilter.class);
         assertEquals(AliasEntityType.CURRENT_TENANT, filter.getSingleEntity().getAliasEntityType());
     }
+
+    @Test
+    void settingNullEntityTypeKeepsAlias() {
+        // e.g. BeanUtils.copyProperties copies aliasEntityType, then entityType (null for an alias)
+        AliasEntityId alias = new AliasEntityId();
+        alias.setAliasEntityType(AliasEntityType.CURRENT_USER);
+        alias.setEntityType(null);
+
+        assertEquals(AliasEntityType.CURRENT_USER, alias.getAliasEntityType());
+        assertEquals("CURRENT_USER", alias.getEntityTypeValue());
+    }
+
+    @Test
+    void settingNullAliasKeepsEntityType() {
+        UUID id = UUID.randomUUID();
+        AliasEntityId entityId = new AliasEntityId();
+        entityId.setEntityType(EntityType.DEVICE);
+        entityId.setId(id);
+        entityId.setAliasEntityType(null);
+
+        assertEquals(EntityType.DEVICE, entityId.getEntityType());
+        assertEquals(id, entityId.getId());
+    }
+
+    @Test
+    void settingNullClearsValueOfTheSameKind() {
+        AliasEntityId entityId = new AliasEntityId().entityType(EntityType.DEVICE);
+        entityId.setEntityType(null);
+        assertNull(entityId.getEntityTypeValue());
+
+        AliasEntityId alias = new AliasEntityId().aliasEntityType(AliasEntityType.CURRENT_USER);
+        alias.aliasEntityType(null);
+        assertNull(alias.getEntityTypeValue());
+    }
 }

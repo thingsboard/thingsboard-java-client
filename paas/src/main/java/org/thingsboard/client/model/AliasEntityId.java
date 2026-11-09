@@ -87,8 +87,16 @@ public class AliasEntityId {
     return null;
   }
 
+  /**
+   * Sets the entity type of an entity ID. {@code null} clears the value only if it is an entity type,
+   * so it does not clear an alias (e.g. when properties are copied one by one).
+   */
   public void setEntityType(@Nullable EntityType entityType) {
-    this.entityType = entityType != null ? entityType.getValue() : null;
+    if (entityType != null) {
+      this.entityType = entityType.getValue();
+    } else if (getEntityType() != null) {
+      this.entityType = null;
+    }
   }
 
   /**
@@ -114,8 +122,16 @@ public class AliasEntityId {
     return null;
   }
 
+  /**
+   * Sets an alias. {@code null} clears the value only if it is an alias, so it does not clear
+   * an entity type (e.g. when properties are copied one by one).
+   */
   public void setAliasEntityType(@Nullable AliasEntityType aliasEntityType) {
-    this.entityType = aliasEntityType != null ? aliasEntityType.getValue() : null;
+    if (aliasEntityType != null) {
+      this.entityType = aliasEntityType.getValue();
+    } else if (getAliasEntityType() != null) {
+      this.entityType = null;
+    }
   }
 
   /**
