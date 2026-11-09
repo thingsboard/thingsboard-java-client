@@ -76,14 +76,32 @@ public class DashboardExportData extends EntityExportData {
   }
 
   @Override
+  public DashboardExportData addRelationsItem(EntityRelation relationsItem) {
+    super.addRelationsItem(relationsItem);
+    return this;
+  }
+
+  @Override
   public DashboardExportData attributes(@Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
+  public DashboardExportData putAttributesItem(String key, List<AttributeExportData> attributesItem) {
+    super.putAttributesItem(key, attributesItem);
+    return this;
+  }
+
+  @Override
   public DashboardExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
+    return this;
+  }
+
+  @Override
+  public DashboardExportData addCalculatedFieldsItem(CalculatedField calculatedFieldsItem) {
+    super.addCalculatedFieldsItem(calculatedFieldsItem);
     return this;
   }
 

@@ -150,14 +150,32 @@ public class WidgetsBundleExportData extends EntityExportData {
   }
 
   @Override
+  public WidgetsBundleExportData addRelationsItem(EntityRelation relationsItem) {
+    super.addRelationsItem(relationsItem);
+    return this;
+  }
+
+  @Override
   public WidgetsBundleExportData attributes(@Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
+  public WidgetsBundleExportData putAttributesItem(String key, List<AttributeExportData> attributesItem) {
+    super.putAttributesItem(key, attributesItem);
+    return this;
+  }
+
+  @Override
   public WidgetsBundleExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
+    return this;
+  }
+
+  @Override
+  public WidgetsBundleExportData addCalculatedFieldsItem(CalculatedField calculatedFieldsItem) {
+    super.addCalculatedFieldsItem(calculatedFieldsItem);
     return this;
   }
 

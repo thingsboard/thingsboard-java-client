@@ -76,14 +76,32 @@ public class AssetProfileExportData extends EntityExportData {
   }
 
   @Override
+  public AssetProfileExportData addRelationsItem(EntityRelation relationsItem) {
+    super.addRelationsItem(relationsItem);
+    return this;
+  }
+
+  @Override
   public AssetProfileExportData attributes(@Nullable Map<String, List<AttributeExportData>> attributes) {
     this.setAttributes(attributes);
     return this;
   }
 
   @Override
+  public AssetProfileExportData putAttributesItem(String key, List<AttributeExportData> attributesItem) {
+    super.putAttributesItem(key, attributesItem);
+    return this;
+  }
+
+  @Override
   public AssetProfileExportData calculatedFields(@Nullable List<CalculatedField> calculatedFields) {
     this.setCalculatedFields(calculatedFields);
+    return this;
+  }
+
+  @Override
+  public AssetProfileExportData addCalculatedFieldsItem(CalculatedField calculatedFieldsItem) {
+    super.addCalculatedFieldsItem(calculatedFieldsItem);
     return this;
   }
 

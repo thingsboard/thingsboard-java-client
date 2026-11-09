@@ -257,14 +257,32 @@ public class PdfReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
+  public PdfReportTemplateConfig addEntityAliasesItem(EntityAlias entityAliasesItem) {
+    super.addEntityAliasesItem(entityAliasesItem);
+    return this;
+  }
+
+  @Override
   public PdfReportTemplateConfig filters(@Nullable List<Filter> filters) {
     this.setFilters(filters);
     return this;
   }
 
   @Override
+  public PdfReportTemplateConfig addFiltersItem(Filter filtersItem) {
+    super.addFiltersItem(filtersItem);
+    return this;
+  }
+
+  @Override
   public PdfReportTemplateConfig components(@Nullable List<ReportComponent> components) {
     this.setComponents(components);
+    return this;
+  }
+
+  @Override
+  public PdfReportTemplateConfig addComponentsItem(ReportComponent componentsItem) {
+    super.addComponentsItem(componentsItem);
     return this;
   }
 

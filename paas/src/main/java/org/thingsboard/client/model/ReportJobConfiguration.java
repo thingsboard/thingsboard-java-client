@@ -442,6 +442,12 @@ public class ReportJobConfiguration extends JobConfiguration {
     return this;
   }
 
+  @Override
+  public ReportJobConfiguration addToReprocessItem(TaskResult toReprocessItem) {
+    super.addToReprocessItem(toReprocessItem);
+    return this;
+  }
+
   /**
    * Return true if this ReportJobConfiguration object is equal to o.
    */

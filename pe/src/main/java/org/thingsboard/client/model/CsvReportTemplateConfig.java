@@ -79,14 +79,32 @@ public class CsvReportTemplateConfig extends ReportTemplateConfig {
   }
 
   @Override
+  public CsvReportTemplateConfig addEntityAliasesItem(EntityAlias entityAliasesItem) {
+    super.addEntityAliasesItem(entityAliasesItem);
+    return this;
+  }
+
+  @Override
   public CsvReportTemplateConfig filters(@Nullable List<Filter> filters) {
     this.setFilters(filters);
     return this;
   }
 
   @Override
+  public CsvReportTemplateConfig addFiltersItem(Filter filtersItem) {
+    super.addFiltersItem(filtersItem);
+    return this;
+  }
+
+  @Override
   public CsvReportTemplateConfig components(@Nullable List<ReportComponent> components) {
     this.setComponents(components);
+    return this;
+  }
+
+  @Override
+  public CsvReportTemplateConfig addComponentsItem(ReportComponent componentsItem) {
+    super.addComponentsItem(componentsItem);
     return this;
   }
 

@@ -88,6 +88,12 @@ public class CfReprocessingJobResult extends JobResult {
   }
 
   @Override
+  public CfReprocessingJobResult addResultsItem(TaskResult resultsItem) {
+    super.addResultsItem(resultsItem);
+    return this;
+  }
+
+  @Override
   public CfReprocessingJobResult generalError(@Nullable String generalError) {
     this.setGeneralError(generalError);
     return this;

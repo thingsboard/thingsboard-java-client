@@ -123,6 +123,12 @@ public class DockerComposeConfig extends AgentAppConfig {
   }
 
   @Override
+  public DockerComposeConfig addArgumentsItem(AgentAppArgument argumentsItem) {
+    super.addArgumentsItem(argumentsItem);
+    return this;
+  }
+
+  @Override
   public DockerComposeConfig edgeRoutingKey(@Nullable String edgeRoutingKey) {
     this.setEdgeRoutingKey(edgeRoutingKey);
     return this;

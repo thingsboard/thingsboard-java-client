@@ -88,6 +88,12 @@ public class DummyJobResult extends JobResult {
   }
 
   @Override
+  public DummyJobResult addResultsItem(TaskResult resultsItem) {
+    super.addResultsItem(resultsItem);
+    return this;
+  }
+
+  @Override
   public DummyJobResult generalError(@Nullable String generalError) {
     this.setGeneralError(generalError);
     return this;
