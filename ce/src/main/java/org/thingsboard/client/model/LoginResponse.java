@@ -17,6 +17,7 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -29,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.Authority;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -37,45 +39,26 @@ import org.thingsboard.client.ApiClient;
  * LoginResponse
  */
 @JsonPropertyOrder({
+  LoginResponse.JSON_PROPERTY_TOKEN,
   LoginResponse.JSON_PROPERTY_REFRESH_TOKEN,
-  LoginResponse.JSON_PROPERTY_TOKEN
+  LoginResponse.JSON_PROPERTY_SCOPE
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LoginResponse {
-  public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
-  @Nonnull
-  private String refreshToken;
-
   public static final String JSON_PROPERTY_TOKEN = "token";
   @Nonnull
   private String token;
 
+  public static final String JSON_PROPERTY_REFRESH_TOKEN = "refreshToken";
+  @Nullable
+  private String refreshToken;
+
+  public static final String JSON_PROPERTY_SCOPE = "scope";
+  @Nullable
+  private Authority scope;
+
   public LoginResponse() { 
   }
-
-  public LoginResponse refreshToken(@Nonnull String refreshToken) {
-    this.refreshToken = refreshToken;
-    return this;
-  }
-
-  /**
-   * Refresh token
-   * @return refreshToken
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getRefreshToken() {
-    return refreshToken;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRefreshToken(@Nonnull String refreshToken) {
-    this.refreshToken = refreshToken;
-  }
-
 
   public LoginResponse token(@Nonnull String token) {
     this.token = token;
@@ -101,6 +84,54 @@ public class LoginResponse {
   }
 
 
+  public LoginResponse refreshToken(@Nullable String refreshToken) {
+    this.refreshToken = refreshToken;
+    return this;
+  }
+
+  /**
+   * Refresh token. Absent when the token is a two-factor authentication token (see scope)
+   * @return refreshToken
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getRefreshToken() {
+    return refreshToken;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setRefreshToken(@Nullable String refreshToken) {
+    this.refreshToken = refreshToken;
+  }
+
+
+  public LoginResponse scope(@Nullable Authority scope) {
+    this.scope = scope;
+    return this;
+  }
+
+  /**
+   * Set only when two-factor authentication is required: PRE_VERIFICATION_TOKEN when the user must verify a code, MFA_CONFIGURATION_TOKEN when the user must configure two-factor authentication first. The token then grants access only to the two-factor authentication API
+   * @return scope
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Authority getScope() {
+    return scope;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setScope(@Nullable Authority scope) {
+    this.scope = scope;
+  }
+
+
   /**
    * Return true if this LoginResponse object is equal to o.
    */
@@ -113,21 +144,23 @@ public class LoginResponse {
       return false;
     }
     LoginResponse loginResponse = (LoginResponse) o;
-    return Objects.equals(this.refreshToken, loginResponse.refreshToken) &&
-        Objects.equals(this.token, loginResponse.token);
+    return Objects.equals(this.token, loginResponse.token) &&
+        Objects.equals(this.refreshToken, loginResponse.refreshToken) &&
+        Objects.equals(this.scope, loginResponse.scope);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refreshToken, token);
+    return Objects.hash(token, refreshToken, scope);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginResponse {\n");
-    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
+    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -175,14 +208,19 @@ public class LoginResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
+    // add `token` to the URL query string
+    if (getToken() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stoken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getToken()))));
+    }
+
     // add `refreshToken` to the URL query string
     if (getRefreshToken() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%srefreshToken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getRefreshToken()))));
     }
 
-    // add `token` to the URL query string
-    if (getToken() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stoken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getToken()))));
+    // add `scope` to the URL query string
+    if (getScope() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getScope()))));
     }
 
     return joiner.toString();

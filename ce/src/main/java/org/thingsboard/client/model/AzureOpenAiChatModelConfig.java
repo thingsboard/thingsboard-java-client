@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AiModelConfig;
 import org.thingsboard.client.model.AiModelType;
+import org.thingsboard.client.model.AiProvider;
 import org.thingsboard.client.model.AzureOpenAiProviderConfig;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

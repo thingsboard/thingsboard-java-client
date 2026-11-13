@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -54,13 +53,13 @@ import org.thingsboard.client.ApiClient;
 
 public class SmsTwoFaAccountConfig extends TwoFaAccountConfig {
   public static final String JSON_PROPERTY_PHONE_NUMBER = "phoneNumber";
-  @Nonnull
+  @Nullable
   private String phoneNumber;
 
   public SmsTwoFaAccountConfig() { 
   }
 
-  public SmsTwoFaAccountConfig phoneNumber(@Nonnull String phoneNumber) {
+  public SmsTwoFaAccountConfig phoneNumber(@Nullable String phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -69,17 +68,17 @@ public class SmsTwoFaAccountConfig extends TwoFaAccountConfig {
    * Get phoneNumber
    * @return phoneNumber
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getPhoneNumber() {
     return phoneNumber;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPhoneNumber(@Nonnull String phoneNumber) {
+  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPhoneNumber(@Nullable String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 

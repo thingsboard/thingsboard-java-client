@@ -18,6 +18,7 @@
 | **configurationVersion** | **Integer** | Rule node configuration version. By default, this value is 0. If the rule node is a versioned node, this value might be greater than 0. | [optional] [readonly] |
 | **actions** | **String** | Rule Node Actions. Deprecated. Always null. | [optional] [readonly] |
 | **hasQueueName** | **Boolean** | Indicates that the RuleNode supports queue name configuration. | [optional] [readonly] |
+| **hasSecrets** | **Boolean** | Indicates that the RuleNode configuration uses secrets placeholders. | [optional] [readonly] |
 
 
 
@@ -29,7 +30,7 @@
 | id | UUID | string |  |
 
 #### ComponentType (enum)
-`ENRICHMENT` | `FILTER` | `TRANSFORMATION` | `ACTION` | `EXTERNAL` | `FLOW`
+`ENRICHMENT` | `FILTER` | `TRANSFORMATION` | `ACTION` | `ANALYTICS` | `EXTERNAL` | `FLOW`
 
 #### ComponentScope (enum)
 `SYSTEM` | `TENANT`

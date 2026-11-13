@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -44,7 +43,8 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   MobileAppNotificationDeliveryMethodConfig.JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS_FILE_NAME,
-  MobileAppNotificationDeliveryMethodConfig.JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS
+  MobileAppNotificationDeliveryMethodConfig.JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS,
+  MobileAppNotificationDeliveryMethodConfig.JSON_PROPERTY_USE_SYSTEM_SETTINGS
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -59,8 +59,12 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
   private String firebaseServiceAccountCredentialsFileName;
 
   public static final String JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS = "firebaseServiceAccountCredentials";
-  @Nonnull
+  @Nullable
   private String firebaseServiceAccountCredentials;
+
+  public static final String JSON_PROPERTY_USE_SYSTEM_SETTINGS = "useSystemSettings";
+  @Nullable
+  private Boolean useSystemSettings;
 
   public MobileAppNotificationDeliveryMethodConfig() { 
   }
@@ -89,7 +93,7 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
   }
 
 
-  public MobileAppNotificationDeliveryMethodConfig firebaseServiceAccountCredentials(@Nonnull String firebaseServiceAccountCredentials) {
+  public MobileAppNotificationDeliveryMethodConfig firebaseServiceAccountCredentials(@Nullable String firebaseServiceAccountCredentials) {
     this.firebaseServiceAccountCredentials = firebaseServiceAccountCredentials;
     return this;
   }
@@ -98,18 +102,42 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
    * Get firebaseServiceAccountCredentials
    * @return firebaseServiceAccountCredentials
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getFirebaseServiceAccountCredentials() {
     return firebaseServiceAccountCredentials;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFirebaseServiceAccountCredentials(@Nonnull String firebaseServiceAccountCredentials) {
+  @JsonProperty(value = JSON_PROPERTY_FIREBASE_SERVICE_ACCOUNT_CREDENTIALS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setFirebaseServiceAccountCredentials(@Nullable String firebaseServiceAccountCredentials) {
     this.firebaseServiceAccountCredentials = firebaseServiceAccountCredentials;
+  }
+
+
+  public MobileAppNotificationDeliveryMethodConfig useSystemSettings(@Nullable Boolean useSystemSettings) {
+    this.useSystemSettings = useSystemSettings;
+    return this;
+  }
+
+  /**
+   * Get useSystemSettings
+   * @return useSystemSettings
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_USE_SYSTEM_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getUseSystemSettings() {
+    return useSystemSettings;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USE_SYSTEM_SETTINGS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUseSystemSettings(@Nullable Boolean useSystemSettings) {
+    this.useSystemSettings = useSystemSettings;
   }
 
 
@@ -127,12 +155,13 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
     MobileAppNotificationDeliveryMethodConfig mobileAppNotificationDeliveryMethodConfig = (MobileAppNotificationDeliveryMethodConfig) o;
     return Objects.equals(this.firebaseServiceAccountCredentialsFileName, mobileAppNotificationDeliveryMethodConfig.firebaseServiceAccountCredentialsFileName) &&
         Objects.equals(this.firebaseServiceAccountCredentials, mobileAppNotificationDeliveryMethodConfig.firebaseServiceAccountCredentials) &&
+        Objects.equals(this.useSystemSettings, mobileAppNotificationDeliveryMethodConfig.useSystemSettings) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firebaseServiceAccountCredentialsFileName, firebaseServiceAccountCredentials, super.hashCode());
+    return Objects.hash(firebaseServiceAccountCredentialsFileName, firebaseServiceAccountCredentials, useSystemSettings, super.hashCode());
   }
 
   @Override
@@ -142,6 +171,7 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    firebaseServiceAccountCredentialsFileName: ").append(toIndentedString(firebaseServiceAccountCredentialsFileName)).append("\n");
     sb.append("    firebaseServiceAccountCredentials: ").append(toIndentedString(firebaseServiceAccountCredentials)).append("\n");
+    sb.append("    useSystemSettings: ").append(toIndentedString(useSystemSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -202,6 +232,11 @@ public class MobileAppNotificationDeliveryMethodConfig extends NotificationDeliv
     // add `firebaseServiceAccountCredentials` to the URL query string
     if (getFirebaseServiceAccountCredentials() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sfirebaseServiceAccountCredentials%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getFirebaseServiceAccountCredentials()))));
+    }
+
+    // add `useSystemSettings` to the URL query string
+    if (getUseSystemSettings() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%suseSystemSettings%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUseSystemSettings()))));
     }
 
     return joiner.toString();

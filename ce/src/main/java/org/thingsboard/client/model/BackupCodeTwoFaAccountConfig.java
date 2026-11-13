@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -58,7 +57,7 @@ import org.thingsboard.client.ApiClient;
 
 public class BackupCodeTwoFaAccountConfig extends TwoFaAccountConfig {
   public static final String JSON_PROPERTY_CODES = "codes";
-  @Nonnull
+  @Nullable
   private Set<String> codes = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_CODES_LEFT = "codesLeft";
@@ -68,7 +67,7 @@ public class BackupCodeTwoFaAccountConfig extends TwoFaAccountConfig {
   public BackupCodeTwoFaAccountConfig() { 
   }
 
-  public BackupCodeTwoFaAccountConfig codes(@Nonnull Set<String> codes) {
+  public BackupCodeTwoFaAccountConfig codes(@Nullable Set<String> codes) {
     this.codes = codes;
     return this;
   }
@@ -85,18 +84,18 @@ public class BackupCodeTwoFaAccountConfig extends TwoFaAccountConfig {
    * Get codes
    * @return codes
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CODES, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CODES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Set<String> getCodes() {
     return codes;
   }
 
 
   @JsonDeserialize(as = LinkedHashSet.class)
-  @JsonProperty(value = JSON_PROPERTY_CODES, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCodes(@Nonnull Set<String> codes) {
+  @JsonProperty(value = JSON_PROPERTY_CODES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCodes(@Nullable Set<String> codes) {
     this.codes = codes;
   }
 

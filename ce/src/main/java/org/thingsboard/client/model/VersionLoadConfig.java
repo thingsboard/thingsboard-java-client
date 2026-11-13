@@ -40,7 +40,10 @@ import org.thingsboard.client.ApiClient;
   VersionLoadConfig.JSON_PROPERTY_LOAD_RELATIONS,
   VersionLoadConfig.JSON_PROPERTY_LOAD_ATTRIBUTES,
   VersionLoadConfig.JSON_PROPERTY_LOAD_CREDENTIALS,
-  VersionLoadConfig.JSON_PROPERTY_LOAD_CALCULATED_FIELDS
+  VersionLoadConfig.JSON_PROPERTY_LOAD_CALCULATED_FIELDS,
+  VersionLoadConfig.JSON_PROPERTY_LOAD_PERMISSIONS,
+  VersionLoadConfig.JSON_PROPERTY_LOAD_GROUP_ENTITIES,
+  VersionLoadConfig.JSON_PROPERTY_AUTO_GENERATE_INTEGRATION_KEY
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionLoadConfig {
@@ -59,6 +62,18 @@ public class VersionLoadConfig {
   public static final String JSON_PROPERTY_LOAD_CALCULATED_FIELDS = "loadCalculatedFields";
   @Nullable
   private Boolean loadCalculatedFields;
+
+  public static final String JSON_PROPERTY_LOAD_PERMISSIONS = "loadPermissions";
+  @Nullable
+  private Boolean loadPermissions;
+
+  public static final String JSON_PROPERTY_LOAD_GROUP_ENTITIES = "loadGroupEntities";
+  @Nullable
+  private Boolean loadGroupEntities;
+
+  public static final String JSON_PROPERTY_AUTO_GENERATE_INTEGRATION_KEY = "autoGenerateIntegrationKey";
+  @Nullable
+  private Boolean autoGenerateIntegrationKey;
 
   public VersionLoadConfig() { 
   }
@@ -159,6 +174,78 @@ public class VersionLoadConfig {
   }
 
 
+  public VersionLoadConfig loadPermissions(@Nullable Boolean loadPermissions) {
+    this.loadPermissions = loadPermissions;
+    return this;
+  }
+
+  /**
+   * Get loadPermissions
+   * @return loadPermissions
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_LOAD_PERMISSIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getLoadPermissions() {
+    return loadPermissions;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LOAD_PERMISSIONS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLoadPermissions(@Nullable Boolean loadPermissions) {
+    this.loadPermissions = loadPermissions;
+  }
+
+
+  public VersionLoadConfig loadGroupEntities(@Nullable Boolean loadGroupEntities) {
+    this.loadGroupEntities = loadGroupEntities;
+    return this;
+  }
+
+  /**
+   * Get loadGroupEntities
+   * @return loadGroupEntities
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_LOAD_GROUP_ENTITIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getLoadGroupEntities() {
+    return loadGroupEntities;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_LOAD_GROUP_ENTITIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLoadGroupEntities(@Nullable Boolean loadGroupEntities) {
+    this.loadGroupEntities = loadGroupEntities;
+  }
+
+
+  public VersionLoadConfig autoGenerateIntegrationKey(@Nullable Boolean autoGenerateIntegrationKey) {
+    this.autoGenerateIntegrationKey = autoGenerateIntegrationKey;
+    return this;
+  }
+
+  /**
+   * Get autoGenerateIntegrationKey
+   * @return autoGenerateIntegrationKey
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_AUTO_GENERATE_INTEGRATION_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getAutoGenerateIntegrationKey() {
+    return autoGenerateIntegrationKey;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_AUTO_GENERATE_INTEGRATION_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAutoGenerateIntegrationKey(@Nullable Boolean autoGenerateIntegrationKey) {
+    this.autoGenerateIntegrationKey = autoGenerateIntegrationKey;
+  }
+
+
   /**
    * Return true if this VersionLoadConfig object is equal to o.
    */
@@ -174,12 +261,15 @@ public class VersionLoadConfig {
     return Objects.equals(this.loadRelations, versionLoadConfig.loadRelations) &&
         Objects.equals(this.loadAttributes, versionLoadConfig.loadAttributes) &&
         Objects.equals(this.loadCredentials, versionLoadConfig.loadCredentials) &&
-        Objects.equals(this.loadCalculatedFields, versionLoadConfig.loadCalculatedFields);
+        Objects.equals(this.loadCalculatedFields, versionLoadConfig.loadCalculatedFields) &&
+        Objects.equals(this.loadPermissions, versionLoadConfig.loadPermissions) &&
+        Objects.equals(this.loadGroupEntities, versionLoadConfig.loadGroupEntities) &&
+        Objects.equals(this.autoGenerateIntegrationKey, versionLoadConfig.autoGenerateIntegrationKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loadRelations, loadAttributes, loadCredentials, loadCalculatedFields);
+    return Objects.hash(loadRelations, loadAttributes, loadCredentials, loadCalculatedFields, loadPermissions, loadGroupEntities, autoGenerateIntegrationKey);
   }
 
   @Override
@@ -190,6 +280,9 @@ public class VersionLoadConfig {
     sb.append("    loadAttributes: ").append(toIndentedString(loadAttributes)).append("\n");
     sb.append("    loadCredentials: ").append(toIndentedString(loadCredentials)).append("\n");
     sb.append("    loadCalculatedFields: ").append(toIndentedString(loadCalculatedFields)).append("\n");
+    sb.append("    loadPermissions: ").append(toIndentedString(loadPermissions)).append("\n");
+    sb.append("    loadGroupEntities: ").append(toIndentedString(loadGroupEntities)).append("\n");
+    sb.append("    autoGenerateIntegrationKey: ").append(toIndentedString(autoGenerateIntegrationKey)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -255,6 +348,21 @@ public class VersionLoadConfig {
     // add `loadCalculatedFields` to the URL query string
     if (getLoadCalculatedFields() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sloadCalculatedFields%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLoadCalculatedFields()))));
+    }
+
+    // add `loadPermissions` to the URL query string
+    if (getLoadPermissions() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sloadPermissions%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLoadPermissions()))));
+    }
+
+    // add `loadGroupEntities` to the URL query string
+    if (getLoadGroupEntities() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sloadGroupEntities%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getLoadGroupEntities()))));
+    }
+
+    // add `autoGenerateIntegrationKey` to the URL query string
+    if (getAutoGenerateIntegrationKey() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sautoGenerateIntegrationKey%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAutoGenerateIntegrationKey()))));
     }
 
     return joiner.toString();

@@ -15,7 +15,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### EntityExportData
 | Name | Type | Description | Notes |
@@ -31,10 +31,10 @@
 |------|------|-------------|-------|
 | ruleChainId | RuleChainId | JSON object with Rule Chain Id. | [readonly] |
 | version | Long | Version of the Rule Chain | [optional] |
-| firstNodeIndex | Integer | Index of the first rule node in the 'nodes' list |  |
+| firstNodeIndex | Integer | Index of the first rule node in the 'nodes' list | [optional] |
 | nodes | List<RuleNode> | List of rule node JSON objects |  |
-| connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes |  |
-| ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. |  |
+| connections | List<NodeConnectionInfo> | List of JSON objects that represent connections between rule nodes | [optional] |
+| ruleChainConnections | List<RuleChainConnectionInfo> | List of JSON objects that represent connections between rule nodes and other rule chains. | [optional] |
 | notes | List<RuleChainNote> | List of sticky notes placed on the rule chain canvas | [optional] |
 
 #### ExportableEntity
@@ -83,7 +83,7 @@
 | debugMode | Boolean |  | [optional] |
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### RuleNode
 | Name | Type | Description | Notes |
@@ -133,7 +133,7 @@
 | markdownCss | String | Custom CSS styles applied to the note content | [optional] |
 
 #### RelationTypeGroup (enum)
-`COMMON` | `DASHBOARD` | `RULE_CHAIN` | `RULE_NODE` | `EDGE` | `EDGE_AUTO_ASSIGN_RULE_CHAIN`
+`COMMON` | `DASHBOARD` | `FROM_ENTITY_GROUP` | `RULE_CHAIN` | `RULE_NODE` | `EDGE` | `EDGE_AUTO_ASSIGN_RULE_CHAIN` | `AGENT`
 
 #### CalculatedFieldType (enum)
 `SIMPLE` | `SCRIPT` | `GEOFENCING` | `ALARM` | `PROPAGATION` | `RELATED_ENTITIES_AGGREGATION` | `ENTITY_AGGREGATION`
@@ -159,6 +159,7 @@
 | clearRule | AlarmRule |  | [optional] |
 | propagate | Boolean |  | [optional] |
 | propagateToOwner | Boolean |  | [optional] |
+| propagateToOwnerHierarchy | Boolean |  | [optional] |
 | propagateToTenant | Boolean |  | [optional] |
 | propagateRelationTypes | List<String> |  | [optional] |
 

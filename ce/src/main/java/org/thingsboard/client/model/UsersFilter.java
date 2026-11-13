@@ -57,7 +57,9 @@ import org.thingsboard.client.ApiClient;
   @JsonSubTypes.Type(value = OriginatorEntityOwnerUsersFilter.class, name = "ORIGINATOR_ENTITY_OWNER_USERS"),
   @JsonSubTypes.Type(value = SystemAdministratorsFilter.class, name = "SYSTEM_ADMINISTRATORS"),
   @JsonSubTypes.Type(value = TenantAdministratorsFilter.class, name = "TENANT_ADMINISTRATORS"),
+  @JsonSubTypes.Type(value = UserGroupListFilter.class, name = "USER_GROUP_LIST"),
   @JsonSubTypes.Type(value = UserListFilter.class, name = "USER_LIST"),
+  @JsonSubTypes.Type(value = UserRoleFilter.class, name = "USER_ROLE"),
 })
 
 public class UsersFilter {
@@ -181,7 +183,9 @@ static {
   mappings.put("ORIGINATOR_ENTITY_OWNER_USERS", OriginatorEntityOwnerUsersFilter.class);
   mappings.put("SYSTEM_ADMINISTRATORS", SystemAdministratorsFilter.class);
   mappings.put("TENANT_ADMINISTRATORS", TenantAdministratorsFilter.class);
+  mappings.put("USER_GROUP_LIST", UserGroupListFilter.class);
   mappings.put("USER_LIST", UserListFilter.class);
+  mappings.put("USER_ROLE", UserRoleFilter.class);
   mappings.put("UsersFilter", UsersFilter.class);
   JSON.registerDiscriminator(UsersFilter.class, "type", mappings);
 }

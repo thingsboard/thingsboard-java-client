@@ -29,10 +29,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.thingsboard.client.model.AssetId;
 import org.thingsboard.client.model.AssetProfileId;
 import org.thingsboard.client.model.CustomerId;
+import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.EntityInfo;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -52,9 +56,9 @@ import org.thingsboard.client.ApiClient;
   AssetInfo.JSON_PROPERTY_LABEL,
   AssetInfo.JSON_PROPERTY_ASSET_PROFILE_ID,
   AssetInfo.JSON_PROPERTY_VERSION,
-  AssetInfo.JSON_PROPERTY_CUSTOMER_TITLE,
-  AssetInfo.JSON_PROPERTY_CUSTOMER_IS_PUBLIC,
-  AssetInfo.JSON_PROPERTY_ASSET_PROFILE_NAME
+  AssetInfo.JSON_PROPERTY_OWNER_NAME,
+  AssetInfo.JSON_PROPERTY_GROUPS,
+  AssetInfo.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AssetInfo {
@@ -98,17 +102,17 @@ public class AssetInfo {
   @Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_CUSTOMER_TITLE = "customerTitle";
+  public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
   @Nullable
-  private String customerTitle;
+  private String ownerName;
 
-  public static final String JSON_PROPERTY_CUSTOMER_IS_PUBLIC = "customerIsPublic";
+  public static final String JSON_PROPERTY_GROUPS = "groups";
   @Nullable
-  private Boolean customerIsPublic;
+  private List<EntityInfo> groups = new ArrayList<>();
 
-  public static final String JSON_PROPERTY_ASSET_PROFILE_NAME = "assetProfileName";
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
   @Nullable
-  private String assetProfileName;
+  private EntityId ownerId;
 
   public AssetInfo() { 
   }
@@ -117,18 +121,14 @@ public class AssetInfo {
   public AssetInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_TITLE) String customerTitle, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_IS_PUBLIC) Boolean customerIsPublic, 
-    @JsonProperty(JSON_PROPERTY_ASSET_PROFILE_NAME) String assetProfileName
+    @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
-    this.customerTitle = customerTitle;
-    this.customerIsPublic = customerIsPublic;
-    this.assetProfileName = assetProfileName;
+    this.ownerName = ownerName;
+    this.ownerId = ownerId;
   }
 
   public AssetInfo id(@Nullable AssetId id) {
@@ -207,8 +207,13 @@ public class AssetInfo {
 
 
 
+  public AssetInfo customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignAssetToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Asset.
    * @return customerId
    */
   @Nullable
@@ -219,6 +224,11 @@ public class AssetInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   public AssetInfo name(@Nonnull String name) {
@@ -342,42 +352,60 @@ public class AssetInfo {
 
 
   /**
-   * Title of the Customer that owns the asset.
-   * @return customerTitle
+   * Owner name
+   * @return ownerName
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCustomerTitle() {
-    return customerTitle;
+  public String getOwnerName() {
+    return ownerName;
   }
 
 
 
 
+  public AssetInfo groups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+    return this;
+  }
+
+  public AssetInfo addGroupsItem(EntityInfo groupsItem) {
+    if (this.groups == null) {
+      this.groups = new ArrayList<>();
+    }
+    this.groups.add(groupsItem);
+    return this;
+  }
+
   /**
-   * Indicates special &#39;Public&#39; Customer that is auto-generated to use the assets on public dashboards.
-   * @return customerIsPublic
+   * Groups
+   * @return groups
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_IS_PUBLIC, required = false)
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getCustomerIsPublic() {
-    return customerIsPublic;
+  public List<EntityInfo> getGroups() {
+    return groups;
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+  }
 
 
   /**
-   * Name of the corresponding Asset Profile.
-   * @return assetProfileName
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ASSET_PROFILE_NAME, required = false)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getAssetProfileName() {
-    return assetProfileName;
+  public EntityId getOwnerId() {
+    return ownerId;
   }
 
 
@@ -405,14 +433,14 @@ public class AssetInfo {
         Objects.equals(this.label, assetInfo.label) &&
         Objects.equals(this.assetProfileId, assetInfo.assetProfileId) &&
         Objects.equals(this.version, assetInfo.version) &&
-        Objects.equals(this.customerTitle, assetInfo.customerTitle) &&
-        Objects.equals(this.customerIsPublic, assetInfo.customerIsPublic) &&
-        Objects.equals(this.assetProfileName, assetInfo.assetProfileName);
+        Objects.equals(this.ownerName, assetInfo.ownerName) &&
+        Objects.equals(this.groups, assetInfo.groups) &&
+        Objects.equals(this.ownerId, assetInfo.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, assetProfileId, version, customerTitle, customerIsPublic, assetProfileName);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, assetProfileId, version, ownerName, groups, ownerId);
   }
 
   @Override
@@ -429,9 +457,9 @@ public class AssetInfo {
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    assetProfileId: ").append(toIndentedString(assetProfileId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    customerTitle: ").append(toIndentedString(customerTitle)).append("\n");
-    sb.append("    customerIsPublic: ").append(toIndentedString(customerIsPublic)).append("\n");
-    sb.append("    assetProfileName: ").append(toIndentedString(assetProfileName)).append("\n");
+    sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -529,19 +557,24 @@ public class AssetInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `customerTitle` to the URL query string
-    if (getCustomerTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitle()))));
+    // add `ownerName` to the URL query string
+    if (getOwnerName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sownerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOwnerName()))));
     }
 
-    // add `customerIsPublic` to the URL query string
-    if (getCustomerIsPublic() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerIsPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerIsPublic()))));
+    // add `groups` to the URL query string
+    if (getGroups() != null) {
+      for (int i = 0; i < getGroups().size(); i++) {
+        if (getGroups().get(i) != null) {
+          joiner.add(getGroups().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sgroups%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
-    // add `assetProfileName` to the URL query string
-    if (getAssetProfileName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sassetProfileName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAssetProfileName()))));
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

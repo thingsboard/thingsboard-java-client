@@ -10,7 +10,7 @@
 | **id** | **AlarmId** | JSON object with the alarm Id. Specify this field to update the alarm. Referencing non-existing alarm Id will cause error. Omit this field to create new alarm. | [optional] |
 | **createdTime** | **Long** | Timestamp of the alarm creation, in milliseconds | [optional] [readonly] |
 | **tenantId** | **TenantId** | JSON object with Tenant Id | [optional] [readonly] |
-| **customerId** | **CustomerId** | JSON object with Customer Id | [optional] [readonly] |
+| **customerId** | **CustomerId** | JSON object with Customer Id. Derived from the originator entity owner and cannot be set independently; any value supplied in the request body must match the originator's customer or the request is rejected. | [optional] [readonly] |
 | **type** | **String** | representing type of the Alarm | |
 | **originator** | **EntityId** | JSON object with alarm originator id | |
 | **severity** | **AlarmSeverity** | Alarm severity | |
@@ -25,6 +25,7 @@
 | **details** | **com.fasterxml.jackson.databind.JsonNode** | JSON object with alarm details | [optional] |
 | **propagate** | **Boolean** | Propagation flag to specify if alarm should be propagated to parent entities of alarm originator | [optional] |
 | **propagateToOwner** | **Boolean** | Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) of alarm originator | [optional] |
+| **propagateToOwnerHierarchy** | **Boolean** | Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) and all parent owners in the customer hierarchy | [optional] |
 | **propagateToTenant** | **Boolean** | Propagation flag to specify if alarm should be propagated to the tenant entity | [optional] |
 | **propagateRelationTypes** | **List\<String\>** | JSON array of relation types that should be used for propagation. By default, 'propagateRelationTypes' array is empty which means that the alarm will be propagated based on any relation type to parent entities. This parameter should be used only in case when 'propagate' parameter is set to true, otherwise, 'propagateRelationTypes' array will be ignored. | [optional] |
 | **originatorName** | **String** | Alarm originator name | [optional] |
@@ -40,7 +41,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### AlarmSeverity (enum)
 `CRITICAL` | `MAJOR` | `MINOR` | `WARNING` | `INDETERMINATE`
@@ -64,7 +65,7 @@
 `ACTIVE_UNACK` | `ACTIVE_ACK` | `CLEARED_UNACK` | `CLEARED_ACK`
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 ---
 

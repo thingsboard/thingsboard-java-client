@@ -29,6 +29,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.SubscriptionEntry;
+import org.thingsboard.client.model.SubscriptionErrorCode;
 import org.thingsboard.client.model.ThingsboardErrorCode;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -38,73 +40,80 @@ import org.thingsboard.client.ApiClient;
  * ThingsboardCredentialsExpiredResponse
  */
 @JsonPropertyOrder({
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_ERROR_CODE,
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_MESSAGE,
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_RESET_TOKEN,
   ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_STATUS,
-  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_TIMESTAMP
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_MESSAGE,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_ERROR_CODE,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_TIMESTAMP,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_SUBSCRIPTION_ENTRY,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_SUBSCRIPTION_VALUE,
+  ThingsboardCredentialsExpiredResponse.JSON_PROPERTY_RESET_TOKEN
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class ThingsboardCredentialsExpiredResponse {
-  public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
+  public static final String JSON_PROPERTY_STATUS = "status";
   @Nullable
-  private ThingsboardErrorCode errorCode;
+  private Integer status;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
   @Nullable
   private String message;
 
-  public static final String JSON_PROPERTY_RESET_TOKEN = "resetToken";
+  public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
   @Nullable
-  private String resetToken;
-
-  public static final String JSON_PROPERTY_STATUS = "status";
-  @Nullable
-  private Integer status;
+  private ThingsboardErrorCode errorCode;
 
   public static final String JSON_PROPERTY_TIMESTAMP = "timestamp";
   @Nullable
   private Long timestamp;
+
+  public static final String JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE = "subscriptionErrorCode";
+  @Nullable
+  private SubscriptionErrorCode subscriptionErrorCode;
+
+  public static final String JSON_PROPERTY_SUBSCRIPTION_ENTRY = "subscriptionEntry";
+  @Nullable
+  private SubscriptionEntry subscriptionEntry;
+
+  public static final String JSON_PROPERTY_SUBSCRIPTION_VALUE = "subscriptionValue";
+  @Nullable
+  private com.fasterxml.jackson.databind.JsonNode subscriptionValue = null;
+
+  public static final String JSON_PROPERTY_RESET_TOKEN = "resetToken";
+  @Nullable
+  private String resetToken;
 
   public ThingsboardCredentialsExpiredResponse() { 
   }
 
   @JsonCreator
   public ThingsboardCredentialsExpiredResponse(
-    @JsonProperty(JSON_PROPERTY_MESSAGE) String message, 
-    @JsonProperty(JSON_PROPERTY_RESET_TOKEN) String resetToken, 
     @JsonProperty(JSON_PROPERTY_STATUS) Integer status, 
-    @JsonProperty(JSON_PROPERTY_TIMESTAMP) Long timestamp
+    @JsonProperty(JSON_PROPERTY_MESSAGE) String message, 
+    @JsonProperty(JSON_PROPERTY_ERROR_CODE) ThingsboardErrorCode errorCode, 
+    @JsonProperty(JSON_PROPERTY_TIMESTAMP) Long timestamp, 
+    @JsonProperty(JSON_PROPERTY_RESET_TOKEN) String resetToken
   ) {
   this();
-    this.message = message;
-    this.resetToken = resetToken;
     this.status = status;
-    this.timestamp = timestamp;
-  }
-
-  public ThingsboardCredentialsExpiredResponse errorCode(@Nullable ThingsboardErrorCode errorCode) {
+    this.message = message;
     this.errorCode = errorCode;
-    return this;
+    this.timestamp = timestamp;
+    this.resetToken = resetToken;
   }
 
   /**
-   * Get errorCode
-   * @return errorCode
+   * HTTP Response Status Code
+   * @return status
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_ERROR_CODE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public ThingsboardErrorCode getErrorCode() {
-    return errorCode;
+  public Integer getStatus() {
+    return status;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_ERROR_CODE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorCode(@Nullable ThingsboardErrorCode errorCode) {
-    this.errorCode = errorCode;
-  }
 
 
   /**
@@ -122,28 +131,14 @@ public class ThingsboardCredentialsExpiredResponse {
 
 
   /**
-   * Password reset token
-   * @return resetToken
+   * Platform error code: * &#x60;2&#x60; - General error (HTTP: 500 - Internal Server Error)  * &#x60;10&#x60; - Authentication failed (HTTP: 401 - Unauthorized)  * &#x60;11&#x60; - JWT token expired (HTTP: 401 - Unauthorized)  * &#x60;15&#x60; - Credentials expired (HTTP: 401 - Unauthorized)  * &#x60;20&#x60; - Permission denied (HTTP: 403 - Forbidden)  * &#x60;30&#x60; - Invalid arguments (HTTP: 400 - Bad Request)  * &#x60;31&#x60; - Bad request params (HTTP: 400 - Bad Request)  * &#x60;32&#x60; - Item not found (HTTP: 404 - Not Found)  * &#x60;33&#x60; - Too many requests (HTTP: 429 - Too Many Requests)  * &#x60;34&#x60; - Too many updates (Too many updates over Websocket session)  * &#x60;35&#x60; - Version conflict (HTTP: 409 - Conflict)  * &#x60;40&#x60; - Subscription violation (HTTP: 403 - Forbidden)  * &#x60;41&#x60; - Entities limit exceeded (HTTP: 403 - Forbidden)  * &#x60;47&#x60; - Setup incomplete (HTTP: 423 - Locked)
+   * @return errorCode
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_RESET_TOKEN, required = false)
+  @JsonProperty(value = JSON_PROPERTY_ERROR_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getResetToken() {
-    return resetToken;
-  }
-
-
-
-
-  /**
-   * HTTP Response Status Code
-   * @return status
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_STATUS, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Integer getStatus() {
-    return status;
+  public ThingsboardErrorCode getErrorCode() {
+    return errorCode;
   }
 
 
@@ -163,6 +158,92 @@ public class ThingsboardCredentialsExpiredResponse {
 
 
 
+  public ThingsboardCredentialsExpiredResponse subscriptionErrorCode(@Nullable SubscriptionErrorCode subscriptionErrorCode) {
+    this.subscriptionErrorCode = subscriptionErrorCode;
+    return this;
+  }
+
+  /**
+   * Get subscriptionErrorCode
+   * @return subscriptionErrorCode
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public SubscriptionErrorCode getSubscriptionErrorCode() {
+    return subscriptionErrorCode;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ERROR_CODE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSubscriptionErrorCode(@Nullable SubscriptionErrorCode subscriptionErrorCode) {
+    this.subscriptionErrorCode = subscriptionErrorCode;
+  }
+
+
+  public ThingsboardCredentialsExpiredResponse subscriptionEntry(@Nullable SubscriptionEntry subscriptionEntry) {
+    this.subscriptionEntry = subscriptionEntry;
+    return this;
+  }
+
+  /**
+   * Get subscriptionEntry
+   * @return subscriptionEntry
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ENTRY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public SubscriptionEntry getSubscriptionEntry() {
+    return subscriptionEntry;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_ENTRY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSubscriptionEntry(@Nullable SubscriptionEntry subscriptionEntry) {
+    this.subscriptionEntry = subscriptionEntry;
+  }
+
+
+  public ThingsboardCredentialsExpiredResponse subscriptionValue(@Nullable com.fasterxml.jackson.databind.JsonNode subscriptionValue) {
+    this.subscriptionValue = subscriptionValue;
+    return this;
+  }
+
+  /**
+   * Get subscriptionValue
+   * @return subscriptionValue
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public com.fasterxml.jackson.databind.JsonNode getSubscriptionValue() {
+    return subscriptionValue;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SUBSCRIPTION_VALUE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSubscriptionValue(@Nullable com.fasterxml.jackson.databind.JsonNode subscriptionValue) {
+    this.subscriptionValue = subscriptionValue;
+  }
+
+
+  /**
+   * Password reset token
+   * @return resetToken
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_RESET_TOKEN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getResetToken() {
+    return resetToken;
+  }
+
+
+
+
   /**
    * Return true if this ThingsboardCredentialsExpiredResponse object is equal to o.
    */
@@ -175,27 +256,33 @@ public class ThingsboardCredentialsExpiredResponse {
       return false;
     }
     ThingsboardCredentialsExpiredResponse thingsboardCredentialsExpiredResponse = (ThingsboardCredentialsExpiredResponse) o;
-    return Objects.equals(this.errorCode, thingsboardCredentialsExpiredResponse.errorCode) &&
+    return Objects.equals(this.status, thingsboardCredentialsExpiredResponse.status) &&
         Objects.equals(this.message, thingsboardCredentialsExpiredResponse.message) &&
-        Objects.equals(this.resetToken, thingsboardCredentialsExpiredResponse.resetToken) &&
-        Objects.equals(this.status, thingsboardCredentialsExpiredResponse.status) &&
-        Objects.equals(this.timestamp, thingsboardCredentialsExpiredResponse.timestamp);
+        Objects.equals(this.errorCode, thingsboardCredentialsExpiredResponse.errorCode) &&
+        Objects.equals(this.timestamp, thingsboardCredentialsExpiredResponse.timestamp) &&
+        Objects.equals(this.subscriptionErrorCode, thingsboardCredentialsExpiredResponse.subscriptionErrorCode) &&
+        Objects.equals(this.subscriptionEntry, thingsboardCredentialsExpiredResponse.subscriptionEntry) &&
+        Objects.equals(this.subscriptionValue, thingsboardCredentialsExpiredResponse.subscriptionValue) &&
+        Objects.equals(this.resetToken, thingsboardCredentialsExpiredResponse.resetToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errorCode, message, resetToken, status, timestamp);
+    return Objects.hash(status, message, errorCode, timestamp, subscriptionErrorCode, subscriptionEntry, subscriptionValue, resetToken);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ThingsboardCredentialsExpiredResponse {\n");
-    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    resetToken: ").append(toIndentedString(resetToken)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+    sb.append("    subscriptionErrorCode: ").append(toIndentedString(subscriptionErrorCode)).append("\n");
+    sb.append("    subscriptionEntry: ").append(toIndentedString(subscriptionEntry)).append("\n");
+    sb.append("    subscriptionValue: ").append(toIndentedString(subscriptionValue)).append("\n");
+    sb.append("    resetToken: ").append(toIndentedString(resetToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -243,9 +330,9 @@ public class ThingsboardCredentialsExpiredResponse {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `errorCode` to the URL query string
-    if (getErrorCode() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%serrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorCode()))));
+    // add `status` to the URL query string
+    if (getStatus() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
     }
 
     // add `message` to the URL query string
@@ -253,19 +340,34 @@ public class ThingsboardCredentialsExpiredResponse {
       joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMessage()))));
     }
 
-    // add `resetToken` to the URL query string
-    if (getResetToken() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sresetToken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResetToken()))));
-    }
-
-    // add `status` to the URL query string
-    if (getStatus() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getStatus()))));
+    // add `errorCode` to the URL query string
+    if (getErrorCode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%serrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getErrorCode()))));
     }
 
     // add `timestamp` to the URL query string
     if (getTimestamp() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%stimestamp%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimestamp()))));
+    }
+
+    // add `subscriptionErrorCode` to the URL query string
+    if (getSubscriptionErrorCode() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssubscriptionErrorCode%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubscriptionErrorCode()))));
+    }
+
+    // add `subscriptionEntry` to the URL query string
+    if (getSubscriptionEntry() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssubscriptionEntry%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubscriptionEntry()))));
+    }
+
+    // add `subscriptionValue` to the URL query string
+    if (getSubscriptionValue() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%ssubscriptionValue%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getSubscriptionValue()))));
+    }
+
+    // add `resetToken` to the URL query string
+    if (getResetToken() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sresetToken%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getResetToken()))));
     }
 
     return joiner.toString();

@@ -78,6 +78,14 @@ Configuration for notification rule trigger
 | updated | Boolean |  | [optional] |
 | deleted | Boolean |  | [optional] |
 
+#### IntegrationLifecycleEventNotificationRuleTriggerConfig  *(triggerType=`INTEGRATION_LIFECYCLE_EVENT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| integrationTypes | Set<IntegrationType> |  | [optional] |
+| integrations | Set<UUID> |  | [optional] |
+| notifyOn | Set<ComponentLifecycleEvent> |  | [optional] |
+| onlyOnError | Boolean |  | [optional] |
+
 #### NewPlatformVersionNotificationRuleTriggerConfig  *(triggerType=`NEW_PLATFORM_VERSION`)*
 *(no additional properties)*
 
@@ -109,7 +117,7 @@ Configuration for notification rule trigger
 ## Referenced Types
 
 #### NotificationRuleTriggerType (enum)
-`ENTITY_ACTION` | `ALARM` | `ALARM_COMMENT` | `ALARM_ASSIGNMENT` | `DEVICE_ACTIVITY` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `EDGE_CONNECTION` | `EDGE_COMMUNICATION_FAILURE` | `NEW_PLATFORM_VERSION` | `ENTITIES_LIMIT` | … (14 values total)
+`ENTITY_ACTION` | `ALARM` | `ALARM_COMMENT` | `ALARM_ASSIGNMENT` | `DEVICE_ACTIVITY` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `INTEGRATION_LIFECYCLE_EVENT` | `EDGE_CONNECTION` | `EDGE_COMMUNICATION_FAILURE` | `NEW_PLATFORM_VERSION` | … (15 values total)
 
 #### AlarmSeverity (enum)
 `CRITICAL` | `MAJOR` | `MINOR` | `WARNING` | `INDETERMINATE`
@@ -129,7 +137,7 @@ Configuration for notification rule trigger
 `ASSIGNED` | `UNASSIGNED`
 
 #### ApiFeature (enum)
-`TRANSPORT` | `DB` | `RE` | `JS` | `TBEL` | `EMAIL` | `SMS` | `ALARM`
+`TRANSPORT` | `DB` | `RE` | `JS` | `TBEL` | `EMAIL` | `SMS` | `ALARM` | `REPORT` | `AI`
 
 #### ApiUsageStateValue (enum)
 `ENABLED` | `WARNING` | `DISABLED`
@@ -141,13 +149,16 @@ Configuration for notification rule trigger
 `CONNECTED` | `DISCONNECTED`
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
-#### LimitedApi (enum)
-`ENTITY_EXPORT` | `ENTITY_IMPORT` | `NOTIFICATION_REQUESTS` | `NOTIFICATION_REQUESTS_PER_RULE` | `REST_REQUESTS_PER_TENANT` | `REST_REQUESTS_PER_CUSTOMER` | `WS_UPDATES_PER_SESSION` | `CASSANDRA_WRITE_QUERIES_CORE` | `CASSANDRA_READ_QUERIES_CORE` | `CASSANDRA_WRITE_QUERIES_RULE_ENGINE` | … (28 values total)
+#### IntegrationType (enum)
+`OCEANCONNECT` | `SIGFOX` | `THINGPARK` | `TPE` | `CHIRPSTACK` | `PARTICLE` | `TMOBILE_IOT_CDP` | `HTTP` | `MQTT` | `PUB_SUB` | … (29 values total)
 
 #### ComponentLifecycleEvent (enum)
 `CREATED` | `STARTED` | `ACTIVATED` | `SUSPENDED` | `UPDATED` | `STOPPED` | `DELETED` | `FAILED` | `DEACTIVATED` | `RELATION_UPDATED` | … (11 values total)
+
+#### LimitedApi (enum)
+`ENTITY_EXPORT` | `ENTITY_IMPORT` | `NOTIFICATION_REQUESTS` | `NOTIFICATION_REQUESTS_PER_RULE` | `REST_REQUESTS_PER_TENANT` | `REST_REQUESTS_PER_CUSTOMER` | `WS_UPDATES_PER_SESSION` | `CASSANDRA_WRITE_QUERIES_CORE` | `CASSANDRA_READ_QUERIES_CORE` | `CASSANDRA_WRITE_QUERIES_RULE_ENGINE` | … (40 values total)
 
 ---
 

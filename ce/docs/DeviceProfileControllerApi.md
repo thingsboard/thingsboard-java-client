@@ -177,7 +177,7 @@ List<DeviceProfileInfo> getDeviceProfileInfosByIds(@Nonnull List<String> deviceP
 
 Get Device Profile Infos By Ids (getDeviceProfileInfosByIds)
 
-Requested device profiles must be owned by tenant which is performing the request.   
+Requested device profiles must be owned by tenant which is performing the request.    Security check is performed to verify that the user has 'READ' permission for the entity (entities).
 
 
 ### Parameters

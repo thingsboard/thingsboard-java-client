@@ -28,18 +28,21 @@
 #### AiModelConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| provider | String |  |  |
+| provider | AiProvider | AI Provider |  |
 
 #### GoogleVertexAiGeminiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| fileName | String |  |  |
+| fileName | String |  | [optional] |
 | projectId | String |  |  |
 | location | String |  |  |
 | serviceAccountKey | String |  |  |
 
 #### AiModelType (enum)
 `CHAT`
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 ---
 

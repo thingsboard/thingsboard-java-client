@@ -23,7 +23,7 @@
 #### AiModelConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| provider | String |  |  |
+| provider | AiProvider | AI Provider |  |
 
 #### AmazonBedrockChatModelConfig  *(extends AiModelConfig, provider=`AMAZON_BEDROCK`)*
 | Name | Type | Description | Notes |
@@ -160,6 +160,9 @@
 |------|------|-------------|-------|
 | text | String | The text content |  |
 
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
+
 #### OpenAiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -184,7 +187,7 @@
 #### GoogleVertexAiGeminiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| fileName | String |  |  |
+| fileName | String |  | [optional] |
 | projectId | String |  |  |
 | location | String |  |  |
 | serviceAccountKey | String |  |  |
