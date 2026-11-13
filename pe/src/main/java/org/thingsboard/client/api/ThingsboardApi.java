@@ -105701,7 +105701,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param apiRequest {@link ResendEmailActivationArgs}
    * @throws ApiException if fails to make API call
    */
@@ -105718,7 +105718,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param apiRequest {@link ResendEmailActivationArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Void&gt;
@@ -105734,7 +105734,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param email Email of the user. (required)
    * @param pkgName Optional package name of the mobile application. (optional)
    * @param platform Platform type (optional)
@@ -105752,7 +105752,7 @@ public class ThingsboardApi {
 
   /**
    * Resend Activation Email (resendEmailActivation)
-   * Request to resend the activation email for the user. Checks that user was not activated yet.
+   * Request to resend the activation email for a user who signed up through this domain or mobile application and has not verified the email yet.
    * @param email Email of the user. (required)
    * @param pkgName Optional package name of the mobile application. (optional)
    * @param platform Platform type (optional)
@@ -120739,7 +120739,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param apiRequest {@link ShareEntityGroupArgs}
    * @throws ApiException if fails to make API call
    */
@@ -120754,7 +120754,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param apiRequest {@link ShareEntityGroupArgs}
    * @param headers Optional headers to include in the request
    * @return ApiResponse&lt;Void&gt;
@@ -120769,7 +120769,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param entityGroupId A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param shareGroupRequest  (required)
    * @throws ApiException if fails to make API call
@@ -120786,7 +120786,7 @@ public class ThingsboardApi {
 
   /**
    * Share the Entity Group (shareEntityGroup)
-   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
+   * Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in &#39;roleIds&#39; must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with &#39;TENANT_ADMIN&#39; or &#39;CUSTOMER_USER&#39; authority. Security check is performed to verify that the user has &#39;WRITE&#39; permission for specified group.
    * @param entityGroupId A string value representing the Entity Group Id. For example, &#39;784f394c-42b6-435a-983c-b7beff2784f9&#39; (required)
    * @param shareGroupRequest  (required)
    * @param headers Optional headers to include in the request
