@@ -12,11 +12,11 @@
       "name": "Apache License Version 2.0",
       "url": "https://github.com/thingsboard/thingsboard/blob/master/LICENSE"
     },
-    "version": "4.3.1.8"
+    "version": "4.3.1.9"
   },
   "servers": [
     {
-      "url": "http://localhost:45763",
+      "url": "http://localhost:37911",
       "description": "Generated server url"
     }
   ],
