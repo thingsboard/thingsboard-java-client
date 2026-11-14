@@ -73,7 +73,7 @@
 #### ReportComponent
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| subType | ReportComponentSubType |  |  |
+| subType | ReportComponentSubType |  | [optional] |
 | type | ReportComponentType |  |  |
 
 #### AlarmTableComponent  *(extends ReportComponent, type=`ALARM_TABLE`)*
@@ -602,10 +602,10 @@
 | timezone | String | Timezone in which target dashboard will be presented in dashboard report. |  |
 | useDashboardTimewindow | Boolean | If set, timewindow configured in the target dashboard will be used during dashboard report generation. | [optional] |
 | timewindow | com.fasterxml.jackson.databind.JsonNode | Specific dashboard timewindow that will be used during dashboard report generation. | [optional] |
-| namePattern | String | If set, timewindow configured in the target dashboard will be used during dashboard report generation. |  |
+| namePattern | String | Pattern of the generated report file name. '%d{<date format>}' is replaced with the report generation time formatted in the report timezone. If not set, 'report-%d{yyyy-MM-dd_HH:mm:ss}' is used. | [optional] |
 | type | String | Dashboard report file type, can be PDF | PNG |
 | useCurrentUserCredentials | Boolean | If set, credentials of user created this dashboard report configuration will be used to open dashboard UI during dashboard report generation. | [optional] |
-| userId | String | A string value representing the user id. |  |
+| userId | String | A string value representing the user id. | [optional] |
 
 #### ImageSourceType (enum)
 `IMAGE` | `ENTITY_KEY`
@@ -623,14 +623,13 @@
 `LONG` | `SHORT`
 
 #### BorderType (enum)
-`SOLID` | `DASHED` | `DOTTED`
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### AliasEntityId
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| aliasEntityType | AliasEntityType |  | [optional] |
-| entityType | EntityType |  |  |
-| id | UUID | ID of the entity, time-based UUID v1 |  |
+| entityType | String | Entity type: an EntityType value, or an AliasEntityType value resolved for the current user |  |
+| id | UUID | ID of the entity, time-based UUID v1. Required for an entity type; for CURRENT_CUSTOMER, the customer used when the current user does not belong to one | [optional] |
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
@@ -699,6 +698,32 @@
 | type | Aggregation |  | [optional] |
 | limit | Integer |  | [optional] |
 
+#### DataKeySettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | DataKeySettingsType | Data key settings type |  |
+
+#### ColumnSettings  *(extends DataKeySettings, type=`COLUMN`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| columnWidth | String |  | [optional] |
+| header | CellSettings |  | [optional] |
+| cell | CellSettings |  | [optional] |
+
+#### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
+*See DataKeySettings for properties.*
+
+#### TimeSeriesChartKeySettings  *(extends DataKeySettings, type=`TIME_SERIES_CHART`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| yAxisId | String |  | [optional] |
+| showInLegend | Boolean |  | [optional] |
+| seriesType | TimeSeriesChartSeriesType |  | [optional] |
+| lineSettings | LineSeriesSettings |  | [optional] |
+| barSettings | BarSeriesSettings |  | [optional] |
+| comparisonSettings | DataKeyComparisonSettings |  | [optional] |
+| yaxisId | String |  | [optional] |
+
 #### CellSettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -707,9 +732,9 @@
 | backgroundColor | String |  | [optional] |
 | textAlignment | TextAlignment |  | [optional] |
 | verticalAlignment | VerticalAlignment |  | [optional] |
-
-#### DataKeySettingsType (enum)
-`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
+| borderType | BorderType |  | [optional] |
+| borderWidth | Integer |  | [optional] |
+| borderColor | String |  | [optional] |
 
 #### TimeSeriesChartThreshold
 | Name | Type | Description | Notes |
@@ -851,9 +876,6 @@
 | className | String |  | [optional] |
 | nativeMethod | Boolean |  | [optional] |
 
-#### AliasEntityType (enum)
-`CURRENT_CUSTOMER` | `CURRENT_TENANT` | `CURRENT_USER` | `CURRENT_USER_OWNER`
-
 #### StringOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `STARTS_WITH` | `ENDS_WITH` | `CONTAINS` | `NOT_CONTAINS` | `IN` | `NOT_IN`
 
@@ -890,33 +912,6 @@
 #### Aggregation (enum)
 `MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
 
-#### DataKeySettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| type | DataKeySettingsType | Data key settings type |  |
-
-#### ColumnSettings  *(type=`COLUMN`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| columnWidth | String |  | [optional] |
-| header | CellSettings |  | [optional] |
-| cell | CellSettings |  | [optional] |
-| type | DataKeySettingsType | Data key settings type |  |
-
-#### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
-*See DataKeySettings for properties.*
-
-#### TimeSeriesChartKeySettings  *(extends DataKeySettings, type=`TIME_SERIES_CHART`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| yAxisId | String |  | [optional] |
-| showInLegend | Boolean |  | [optional] |
-| seriesType | TimeSeriesChartSeriesType |  | [optional] |
-| lineSettings | LineSeriesSettings |  | [optional] |
-| barSettings | BarSeriesSettings |  | [optional] |
-| comparisonSettings | DataKeyComparisonSettings |  | [optional] |
-| yaxisId | String |  | [optional] |
-
 #### AlarmSearchStatus (enum)
 `ANY` | `ACTIVE` | `CLEARED` | `ACK` | `UNACK`
 
@@ -937,6 +932,9 @@
 
 #### QuickTimeInterval (enum)
 `YESTERDAY` | `DAY_BEFORE_YESTERDAY` | `THIS_DAY_LAST_WEEK` | `PREVIOUS_WEEK` | `PREVIOUS_WEEK_ISO` | `PREVIOUS_MONTH` | `PREVIOUS_QUARTER` | `PREVIOUS_HALF_YEAR` | `PREVIOUS_YEAR` | `CURRENT_HOUR` | … (24 values total)
+
+#### DataKeySettingsType (enum)
+`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
 
 #### ValueSourceType (enum)
 `CONSTANT` | `LATEST_KEY` | `ENTITY`
@@ -1004,9 +1002,6 @@
 #### IntervalType (enum)
 `MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`
 
-#### DynamicValueSourceType (enum)
-`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
-
 #### TimeSeriesChartSeriesType (enum)
 `LINE` | `BAR`
 
@@ -1051,6 +1046,9 @@
 | showValuesForComparison | Boolean |  | [optional] |
 | comparisonValuesLabel | String |  | [optional] |
 | color | String |  | [optional] |
+
+#### DynamicValueSourceType (enum)
+`CURRENT_TENANT` | `CURRENT_CUSTOMER` | `CURRENT_USER` | `CURRENT_DEVICE`
 
 #### LineSeriesStepType (enum)
 `START` | `MIDDLE` | `END`

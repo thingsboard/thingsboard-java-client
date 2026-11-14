@@ -34,7 +34,7 @@
 #### ReportComponent
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| subType | ReportComponentSubType |  |  |
+| subType | ReportComponentSubType |  | [optional] |
 | type | ReportComponentType |  |  |
 
 #### DataSource
@@ -144,33 +144,17 @@
 | type | Aggregation |  | [optional] |
 | limit | Integer |  | [optional] |
 
-#### CellSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| font | Font |  | [optional] |
-| color | String |  | [optional] |
-| backgroundColor | String |  | [optional] |
-| textAlignment | TextAlignment |  | [optional] |
-| verticalAlignment | VerticalAlignment |  | [optional] |
-
-#### DataKeySettingsType (enum)
-`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
-
-#### Aggregation (enum)
-`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
-
 #### DataKeySettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | type | DataKeySettingsType | Data key settings type |  |
 
-#### ColumnSettings  *(type=`COLUMN`)*
+#### ColumnSettings  *(extends DataKeySettings, type=`COLUMN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | columnWidth | String |  | [optional] |
 | header | CellSettings |  | [optional] |
 | cell | CellSettings |  | [optional] |
-| type | DataKeySettingsType | Data key settings type |  |
 
 #### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
 *See DataKeySettings for properties.*
@@ -185,6 +169,21 @@
 | barSettings | BarSeriesSettings |  | [optional] |
 | comparisonSettings | DataKeyComparisonSettings |  | [optional] |
 | yaxisId | String |  | [optional] |
+
+#### CellSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| font | Font |  | [optional] |
+| color | String |  | [optional] |
+| backgroundColor | String |  | [optional] |
+| textAlignment | TextAlignment |  | [optional] |
+| verticalAlignment | VerticalAlignment |  | [optional] |
+| borderType | BorderType |  | [optional] |
+| borderWidth | Integer |  | [optional] |
+| borderColor | String |  | [optional] |
+
+#### Aggregation (enum)
+`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
 
 #### AlarmSearchStatus (enum)
 `ANY` | `ACTIVE` | `CLEARED` | `ACK` | `UNACK`
@@ -212,6 +211,12 @@
 
 #### QuickTimeInterval (enum)
 `YESTERDAY` | `DAY_BEFORE_YESTERDAY` | `THIS_DAY_LAST_WEEK` | `PREVIOUS_WEEK` | `PREVIOUS_WEEK_ISO` | `PREVIOUS_MONTH` | `PREVIOUS_QUARTER` | `PREVIOUS_HALF_YEAR` | `PREVIOUS_YEAR` | `CURRENT_HOUR` | … (24 values total)
+
+#### DataKeySettingsType (enum)
+`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
+
+#### BorderType (enum)
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### IntervalType (enum)
 `MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`

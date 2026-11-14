@@ -49,13 +49,13 @@ A JSON value representing the login white labeling configuration
 #### PaletteSettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| primaryPalette | Palette | Primary palette JSON |  |
-| accentPalette | Palette | Accent palette JSON |  |
+| primaryPalette | Palette | Primary palette JSON | [optional] |
+| accentPalette | Palette | Accent palette JSON | [optional] |
 
 #### Palette
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| type | String | Name of the pre-defined palette, or 'custom' |  |
+| type | String | Name of the pre-defined palette, or 'custom' | [optional] |
 | _extends | String | Pre-defined palette name that the custom palette extends | [optional] |
 | colors | Map<String, String> | Mapping of hue identifier number to the rgb(a) color code | [optional] |
 

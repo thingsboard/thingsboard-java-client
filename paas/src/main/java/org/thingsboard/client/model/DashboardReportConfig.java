@@ -76,7 +76,7 @@ public class DashboardReportConfig {
   private com.fasterxml.jackson.databind.JsonNode timewindow;
 
   public static final String JSON_PROPERTY_NAME_PATTERN = "namePattern";
-  @Nonnull
+  @Nullable
   private String namePattern;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -88,7 +88,7 @@ public class DashboardReportConfig {
   private Boolean useCurrentUserCredentials;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
-  @Nonnull
+  @Nullable
   private String userId;
 
   public DashboardReportConfig() { 
@@ -238,26 +238,26 @@ public class DashboardReportConfig {
   }
 
 
-  public DashboardReportConfig namePattern(@Nonnull String namePattern) {
+  public DashboardReportConfig namePattern(@Nullable String namePattern) {
     this.namePattern = namePattern;
     return this;
   }
 
   /**
-   * If set, timewindow configured in the target dashboard will be used during dashboard report generation.
+   * Pattern of the generated report file name. &#39;%d{&lt;date format&gt;}&#39; is replaced with the report generation time formatted in the report timezone. If not set, &#39;report-%d{yyyy-MM-dd_HH:mm:ss}&#39; is used.
    * @return namePattern
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_NAME_PATTERN, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME_PATTERN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getNamePattern() {
     return namePattern;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_NAME_PATTERN, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNamePattern(@Nonnull String namePattern) {
+  @JsonProperty(value = JSON_PROPERTY_NAME_PATTERN, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setNamePattern(@Nullable String namePattern) {
     this.namePattern = namePattern;
   }
 
@@ -310,7 +310,7 @@ public class DashboardReportConfig {
   }
 
 
-  public DashboardReportConfig userId(@Nonnull String userId) {
+  public DashboardReportConfig userId(@Nullable String userId) {
     this.userId = userId;
     return this;
   }
@@ -319,17 +319,17 @@ public class DashboardReportConfig {
    * A string value representing the user id.
    * @return userId
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getUserId() {
     return userId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(@Nonnull String userId) {
+  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@Nullable String userId) {
     this.userId = userId;
   }
 

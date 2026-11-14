@@ -11,7 +11,7 @@
 ```
 void deleteConverter(@Nonnull String converterId) // Delete converter (deleteConverter)
 Converter getConverterById(@Nonnull String converterId) // Get Converter (getConverterById)
-PageDataConverter getConverters(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType) // Get Converters (getConverters)
+PageDataConverter getConverters(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType) // Get Converters (getConverters)
 List<Converter> getConvertersByIds(@Nonnull List<String> converterIds) // Get Converters By Ids (getConvertersByIds)
 com.fasterxml.jackson.databind.JsonNode getLatestConverterDebugInput(@Nonnull String converterId, @Nullable String converterType, @Nullable String integrationType, @Nullable String integrationName, @Nullable Integer converterVersion) // Get latest debug input event (getLatestConverterDebugInput)
 Converter saveConverter(@Nonnull Converter converter) // Create Or Update Converter (saveConverter)
@@ -72,7 +72,7 @@ Fetch the Converter object based on the provided Converter Id. The server checks
 ## getConverters
 
 ```
-PageDataConverter getConverters(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType)
+PageDataConverter getConverters(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable IntegrationType integrationType)
 ```
 
 **GET** `/api/converters`
@@ -86,8 +86,8 @@ Returns a page of converters owned by tenant. You can specify parameters to filt
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **isEdgeTemplate** | **Boolean** | Fetch edge template converters | [optional] [default to false] |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the converter name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode] |

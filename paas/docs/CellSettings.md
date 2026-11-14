@@ -12,6 +12,9 @@
 | **backgroundColor** | **String** |  | [optional] |
 | **textAlignment** | **TextAlignment** |  | [optional] |
 | **verticalAlignment** | **VerticalAlignment** |  | [optional] |
+| **borderType** | **BorderType** |  | [optional] |
+| **borderWidth** | **Integer** |  | [optional] |
+| **borderColor** | **String** |  | [optional] |
 
 
 
@@ -30,6 +33,9 @@
 
 #### VerticalAlignment (enum)
 `BOTTOM` | `TOP` | `MIDDLE`
+
+#### BorderType (enum)
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`

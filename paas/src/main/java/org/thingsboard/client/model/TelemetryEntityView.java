@@ -17,6 +17,7 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,7 +47,7 @@ import org.thingsboard.client.ApiClient;
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class TelemetryEntityView {
   public static final String JSON_PROPERTY_TIMESERIES = "timeseries";
-  @Nonnull
+  @Nullable
   private List<String> timeseries = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ATTRIBUTES = "attributes";
@@ -56,7 +57,7 @@ public class TelemetryEntityView {
   public TelemetryEntityView() { 
   }
 
-  public TelemetryEntityView timeseries(@Nonnull List<String> timeseries) {
+  public TelemetryEntityView timeseries(@Nullable List<String> timeseries) {
     this.timeseries = timeseries;
     return this;
   }
@@ -73,17 +74,17 @@ public class TelemetryEntityView {
    * List of time-series data keys to expose
    * @return timeseries
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getTimeseries() {
     return timeseries;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTimeseries(@Nonnull List<String> timeseries) {
+  @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTimeseries(@Nullable List<String> timeseries) {
     this.timeseries = timeseries;
   }
 

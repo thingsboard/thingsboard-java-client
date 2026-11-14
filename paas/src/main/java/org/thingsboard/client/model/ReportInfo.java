@@ -80,7 +80,7 @@ public class ReportInfo {
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TEMPLATE_ID = "templateId";
-  @Nonnull
+  @Nullable
   private ReportTemplateId templateId;
 
   public static final String JSON_PROPERTY_FORMAT = "format";
@@ -218,7 +218,7 @@ public class ReportInfo {
   }
 
 
-  public ReportInfo templateId(@Nonnull ReportTemplateId templateId) {
+  public ReportInfo templateId(@Nullable ReportTemplateId templateId) {
     this.templateId = templateId;
     return this;
   }
@@ -227,17 +227,17 @@ public class ReportInfo {
    * Get templateId
    * @return templateId
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ReportTemplateId getTemplateId() {
     return templateId;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_ID, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTemplateId(@Nonnull ReportTemplateId templateId) {
+  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTemplateId(@Nullable ReportTemplateId templateId) {
     this.templateId = templateId;
   }
 

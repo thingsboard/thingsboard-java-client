@@ -17,6 +17,7 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -48,7 +49,7 @@ public class ShortEntityView {
   private EntityId id;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @Nonnull
+  @Nullable
   private String name;
 
   public ShortEntityView() { 
@@ -82,9 +83,9 @@ public class ShortEntityView {
    * Name of the entity
    * @return name
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
     return name;
   }

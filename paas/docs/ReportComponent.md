@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **subType** | **ReportComponentSubType** |  | |
+| **subType** | **ReportComponentSubType** |  | [optional] |
 | **type** | **ReportComponentType** |  | |
 
 
@@ -268,16 +268,16 @@
 | timezone | String | Timezone in which target dashboard will be presented in dashboard report. |  |
 | useDashboardTimewindow | Boolean | If set, timewindow configured in the target dashboard will be used during dashboard report generation. | [optional] |
 | timewindow | com.fasterxml.jackson.databind.JsonNode | Specific dashboard timewindow that will be used during dashboard report generation. | [optional] |
-| namePattern | String | If set, timewindow configured in the target dashboard will be used during dashboard report generation. |  |
+| namePattern | String | Pattern of the generated report file name. '%d{<date format>}' is replaced with the report generation time formatted in the report timezone. If not set, 'report-%d{yyyy-MM-dd_HH:mm:ss}' is used. | [optional] |
 | type | String | Dashboard report file type, can be PDF | PNG |
 | useCurrentUserCredentials | Boolean | If set, credentials of user created this dashboard report configuration will be used to open dashboard UI during dashboard report generation. | [optional] |
-| userId | String | A string value representing the user id. |  |
+| userId | String | A string value representing the user id. | [optional] |
 
 #### BorderLength (enum)
 `LONG` | `SHORT`
 
 #### BorderType (enum)
-`SOLID` | `DASHED` | `DOTTED`
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### ErrorComponentAllOfException
 | Name | Type | Description | Notes |
@@ -548,33 +548,17 @@
 | showTotal | Boolean |  | [optional] |
 | showLatest | Boolean |  | [optional] |
 
-#### CellSettings
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| font | Font |  | [optional] |
-| color | String |  | [optional] |
-| backgroundColor | String |  | [optional] |
-| textAlignment | TextAlignment |  | [optional] |
-| verticalAlignment | VerticalAlignment |  | [optional] |
-
-#### DataKeySettingsType (enum)
-`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
-
-#### Aggregation (enum)
-`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
-
 #### DataKeySettings
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | type | DataKeySettingsType | Data key settings type |  |
 
-#### ColumnSettings  *(type=`COLUMN`)*
+#### ColumnSettings  *(extends DataKeySettings, type=`COLUMN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | columnWidth | String |  | [optional] |
 | header | CellSettings |  | [optional] |
 | cell | CellSettings |  | [optional] |
-| type | DataKeySettingsType | Data key settings type |  |
 
 #### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
 *See DataKeySettings for properties.*
@@ -589,6 +573,21 @@
 | barSettings | BarSeriesSettings |  | [optional] |
 | comparisonSettings | DataKeyComparisonSettings |  | [optional] |
 | yaxisId | String |  | [optional] |
+
+#### CellSettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| font | Font |  | [optional] |
+| color | String |  | [optional] |
+| backgroundColor | String |  | [optional] |
+| textAlignment | TextAlignment |  | [optional] |
+| verticalAlignment | VerticalAlignment |  | [optional] |
+| borderType | BorderType |  | [optional] |
+| borderWidth | Integer |  | [optional] |
+| borderColor | String |  | [optional] |
+
+#### Aggregation (enum)
+`MIN` | `MAX` | `AVG` | `SUM` | `COUNT` | `NONE`
 
 #### AlarmSearchStatus (enum)
 `ANY` | `ACTIVE` | `CLEARED` | `ACK` | `UNACK`
@@ -652,6 +651,9 @@
 
 #### TimeSeriesChartStateSourceType (enum)
 `CONSTANT` | `RANGE`
+
+#### DataKeySettingsType (enum)
+`COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
 
 #### IntervalType (enum)
 `MILLISECONDS` | `WEEK` | `WEEK_ISO` | `MONTH` | `QUARTER`

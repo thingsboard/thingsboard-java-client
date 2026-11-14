@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -408,7 +407,7 @@ public class SplitViewComponent extends ReportComponent {
 
 
   @Override
-  public SplitViewComponent subType(@Nonnull ReportComponentSubType subType) {
+  public SplitViewComponent subType(@Nullable ReportComponentSubType subType) {
     this.setSubType(subType);
     return this;
   }

@@ -26,7 +26,7 @@ Response payload for the install-agent-application endpoint. Carries both the cr
 | tenantId | TenantId | JSON object with Tenant Id. | [optional] [readonly] |
 | agentId | AgentId | Agent this application belongs to |  |
 | name | String | Application name (not unique across tenant) | [optional] |
-| templateVersion | String | Template version this application is based on |  |
+| templateVersion | String | Template version this application is based on | [optional] |
 | desiredTemplateVersion | String |  | [optional] |
 | appType | AgentApplicationType | Application type |  |
 | config | DockerComposeConfig |  | [optional] |

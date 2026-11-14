@@ -13,10 +13,10 @@
 | **timezone** | **String** | Timezone in which target dashboard will be presented in dashboard report. | |
 | **useDashboardTimewindow** | **Boolean** | If set, timewindow configured in the target dashboard will be used during dashboard report generation. | [optional] |
 | **timewindow** | **com.fasterxml.jackson.databind.JsonNode** | Specific dashboard timewindow that will be used during dashboard report generation. | [optional] |
-| **namePattern** | **String** | If set, timewindow configured in the target dashboard will be used during dashboard report generation. | |
+| **namePattern** | **String** | Pattern of the generated report file name. '%d{<date format>}' is replaced with the report generation time formatted in the report timezone. If not set, 'report-%d{yyyy-MM-dd_HH:mm:ss}' is used. | [optional] |
 | **type** | **String** | Dashboard report file type, can be PDF | PNG | JPEG. | [optional] |
 | **useCurrentUserCredentials** | **Boolean** | If set, credentials of user created this dashboard report configuration will be used to open dashboard UI during dashboard report generation. | [optional] |
-| **userId** | **String** | A string value representing the user id. | |
+| **userId** | **String** | A string value representing the user id. | [optional] |
 
 
 

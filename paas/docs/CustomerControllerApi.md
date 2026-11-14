@@ -16,11 +16,11 @@ PageDataCustomerInfo getCustomerCustomerInfos(@Nonnull String customerId, @Nonnu
 CustomerInfo getCustomerInfoById(@Nonnull String customerId) // Get Customer info (getCustomerInfoById)
 String getCustomerTitleById(@Nonnull String customerId) // Get Customer Title (getCustomerTitleById)
 PageDataCustomer getCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Customers (getCustomers)
-PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get customers by Entity Group Id (getCustomersByEntityGroupId)
+PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get customers by Entity Group Id (getCustomersByEntityGroupId)
 List<Customer> getCustomersByIds(@Nonnull List<String> customerIds) // Get customers by Customer Ids (getCustomersByIds)
 com.fasterxml.jackson.databind.JsonNode getShortCustomerInfoById(@Nonnull String customerId) // Get short Customer info (getShortCustomerInfoById)
 Customer getTenantCustomer(@Nonnull String customerTitle) // Get Tenant Customer by Customer title (getTenantCustomer)
-PageDataCustomer getUserCustomers(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customers (getUserCustomers)
+PageDataCustomer getUserCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Customers (getUserCustomers)
 Customer saveCustomer(@Nonnull Customer customer, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create or update Customer (saveCustomer)
 ```
 
@@ -211,7 +211,7 @@ Returns a page of customers owned by tenant. You can specify parameters to filte
 ## getCustomersByEntityGroupId
 
 ```
-PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataCustomer getCustomersByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroup/{entityGroupId}/customers`
@@ -226,8 +226,8 @@ Returns a page of Customer objects that belongs to specified Entity Group Id. Yo
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the customer title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -312,7 +312,7 @@ Get the Customer using Customer Title.   Available for users with 'TENANT_ADMIN'
 ## getUserCustomers
 
 ```
-PageDataCustomer getUserCustomers(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataCustomer getUserCustomers(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/user/customers`
@@ -326,8 +326,8 @@ Returns a page of customers available for the user. You can specify parameters t
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the customer title. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, title, email, country, city] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |

@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -382,7 +381,7 @@ public class AlarmTableComponent extends ReportComponent {
 
 
   @Override
-  public AlarmTableComponent subType(@Nonnull ReportComponentSubType subType) {
+  public AlarmTableComponent subType(@Nullable ReportComponentSubType subType) {
     this.setSubType(subType);
     return this;
   }

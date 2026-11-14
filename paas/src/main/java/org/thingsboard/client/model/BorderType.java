@@ -36,7 +36,9 @@ public enum BorderType {
   
   DASHED("dashed"),
   
-  DOTTED("dotted");
+  DOTTED("dotted"),
+  
+  DOUBLE("double");
 
   private String value;
 

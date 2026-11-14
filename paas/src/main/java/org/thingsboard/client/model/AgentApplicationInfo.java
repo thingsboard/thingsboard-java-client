@@ -92,7 +92,7 @@ public class AgentApplicationInfo {
   private String name;
 
   public static final String JSON_PROPERTY_TEMPLATE_VERSION = "templateVersion";
-  @Nonnull
+  @Nullable
   private String templateVersion;
 
   public static final String JSON_PROPERTY_DESIRED_TEMPLATE_VERSION = "desiredTemplateVersion";
@@ -286,7 +286,7 @@ public class AgentApplicationInfo {
   }
 
 
-  public AgentApplicationInfo templateVersion(@Nonnull String templateVersion) {
+  public AgentApplicationInfo templateVersion(@Nullable String templateVersion) {
     this.templateVersion = templateVersion;
     return this;
   }
@@ -295,17 +295,17 @@ public class AgentApplicationInfo {
    * Template version this application is based on
    * @return templateVersion
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_VERSION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_VERSION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getTemplateVersion() {
     return templateVersion;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_VERSION, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTemplateVersion(@Nonnull String templateVersion) {
+  @JsonProperty(value = JSON_PROPERTY_TEMPLATE_VERSION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTemplateVersion(@Nullable String templateVersion) {
     this.templateVersion = templateVersion;
   }
 

@@ -14,8 +14,8 @@ void deleteSchedulerEvent(@Nonnull String schedulerEventId) // Delete Scheduler 
 SchedulerEvent enableSchedulerEvent(@Nonnull String schedulerEventId, @Nonnull Boolean enabledValue) // Enable or disable Scheduler Event (enableSchedulerEvent)
 List<SchedulerEventInfo> getAllEdgeSchedulerEvents(@Nonnull String edgeId) // Get All Edge Scheduler Events (getAllEdgeSchedulerEvents)
 List<SchedulerEventWithCustomerInfo> getAllSchedulerEvents(@Nullable String type) // Get all scheduler events (getAllSchedulerEvents)
-PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Scheduler Events (getEdgeSchedulerEvents)
-PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull String pageSize, @Nonnull String page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Scheduled Report Events (getScheduledReportEvents)
+PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Scheduler Events (getEdgeSchedulerEvents)
+PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Scheduled Report Events (getScheduledReportEvents)
 SchedulerEvent getSchedulerEventById(@Nonnull String schedulerEventId) // Get Scheduler Event (getSchedulerEventById)
 SchedulerEventWithCustomerInfo getSchedulerEventInfoById(@Nonnull String schedulerEventId) // Get Scheduler Event With Customer Info (getSchedulerEventInfoById)
 PageDataSchedulerEventWithCustomerInfo getSchedulerEvents(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable String type, @Nullable UUID edgeId) // Get scheduler events (getSchedulerEvents)
@@ -151,7 +151,7 @@ Requested scheduler events must be owned by tenant or assigned to customer which
 ## getEdgeSchedulerEvents
 
 ```
-PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataSchedulerEventInfo getEdgeSchedulerEvents(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/edge/{edgeId}/schedulerEvents`
@@ -166,8 +166,8 @@ Returns a page of  Scheduler Events Info objects based on the provided Edge enti
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the scheduler event name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -180,7 +180,7 @@ Returns a page of  Scheduler Events Info objects based on the provided Edge enti
 ## getScheduledReportEvents
 
 ```
-PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull String pageSize, @Nonnull String page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataScheduledReportInfo getScheduledReportEvents(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable UUID reportTemplateId, @Nullable UUID userId, @Nullable Boolean includeCustomers, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/scheduledReports`
@@ -194,8 +194,8 @@ Get Scheduled Report Events (getScheduledReportEvents)
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **reportTemplateId** | **UUID** | Report template id | [optional] |
 | **userId** | **UUID** | The user used for report generation. | [optional] |
 | **includeCustomers** | **Boolean** | Include customer or sub-customer entities. For tenant administrator: when true, includes entities for all customers; when false (default), only own entities are returned. For customer user: when true, includes entities for all sub-customers. | [optional] |

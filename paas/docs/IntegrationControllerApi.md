@@ -12,15 +12,15 @@
 Integration assignIntegrationToEdge(@Nonnull String edgeId, @Nonnull String integrationId) // Assign integration to edge (assignIntegrationToEdge)
 void checkIntegrationConnection(@Nonnull Integration integration) // Check integration connectivity (checkIntegrationConnection)
 void deleteIntegration(@Nonnull String integrationId) // Delete integration (deleteIntegration)
-byte[] exportIntegrationPackage(@Nonnull String integrationId) // Export integration as IoT Hub package
+File exportIntegrationPackage(@Nonnull String integrationId) // Export integration as IoT Hub package
 String findAllRelatedEdgesMissingAttributes(@Nonnull String integrationId) // Find missing attributes for all related edges (findAllRelatedEdgesMissingAttributes)
 String findEdgeMissingAttributes(@Nonnull String edgeId, @Nonnull List<String> integrationIds) // Find edge missing attributes for assigned integrations (findEdgeMissingAttributes)
 PageDataIntegrationInfo getEdgeIntegrationInfos(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Integrations (getEdgeIntegrationInfos)
 PageDataIntegration getEdgeIntegrations(@Nonnull String edgeId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Integrations (getEdgeIntegrations)
 Integration getIntegrationById(@Nonnull String integrationId) // Get Integration (getIntegrationById)
 Integration getIntegrationByRoutingKey(@Nonnull String routingKey) // Get Integration by Routing Key (getIntegrationByRoutingKey)
-PageDataIntegrationInfo getIntegrationInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Integration Infos (getIntegrationInfos)
-PageDataIntegration getIntegrations(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Integrations (getIntegrations)
+PageDataIntegrationInfo getIntegrationInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Integration Infos (getIntegrationInfos)
+PageDataIntegration getIntegrations(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Integrations (getIntegrations)
 List<Integration> getIntegrationsByIds(@Nonnull List<String> integrationIds) // Get Integrations By Ids (getIntegrationsByIds)
 Map<String, IntegrationConvertersInfo> getIntegrationsConvertersInfo() // Get Integrations Converters info (getIntegrationsConvertersInfo)
 Integration saveIntegration(@Nonnull Integration integration) // Create Or Update Integration (saveIntegration)
@@ -104,7 +104,7 @@ null (empty response body)
 ## exportIntegrationPackage
 
 ```
-byte[] exportIntegrationPackage(@Nonnull String integrationId)
+File exportIntegrationPackage(@Nonnull String integrationId)
 ```
 
 **GET** `/api/integration/{integrationId}/export-package`
@@ -122,7 +122,7 @@ Returns a ZIP containing integration.json, uplink.json, optional downlink.json, 
 
 ### Return type
 
-**byte[]**
+**File**
 
 
 ## findAllRelatedEdgesMissingAttributes
@@ -283,7 +283,7 @@ Fetch the Integration object based on the provided routing key. The server check
 ## getIntegrationInfos
 
 ```
-PageDataIntegrationInfo getIntegrationInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataIntegrationInfo getIntegrationInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/integrationInfos`
@@ -297,8 +297,8 @@ Returns a page of integration infos owned by tenant. You can specify parameters 
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **isEdgeTemplate** | **Boolean** | Fetch edge template integrations | [optional] [default to false] |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the integration name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |
@@ -312,7 +312,7 @@ Returns a page of integration infos owned by tenant. You can specify parameters 
 ## getIntegrations
 
 ```
-PageDataIntegration getIntegrations(@Nonnull String pageSize, @Nonnull String page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataIntegration getIntegrations(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean isEdgeTemplate, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/integrations`
@@ -326,8 +326,8 @@ Returns a page of integrations owned by tenant. You can specify parameters to fi
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **isEdgeTemplate** | **Boolean** | Fetch edge template integrations | [optional] [default to false] |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the integration name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, debugMode, allowCreateDevicesOrAssets, enabled, remote, routingKey, secret] |

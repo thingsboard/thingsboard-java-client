@@ -108,7 +108,7 @@ public class Edge {
   private String secret;
 
   public static final String JSON_PROPERTY_EDGE_LICENSE_KEY = "edgeLicenseKey";
-  @Nonnull
+  @Nullable
   private String edgeLicenseKey;
 
   public static final String JSON_PROPERTY_CLOUD_ENDPOINT = "cloudEndpoint";
@@ -378,7 +378,7 @@ public class Edge {
   }
 
 
-  public Edge edgeLicenseKey(@Nonnull String edgeLicenseKey) {
+  public Edge edgeLicenseKey(@Nullable String edgeLicenseKey) {
     this.edgeLicenseKey = edgeLicenseKey;
     return this;
   }
@@ -387,17 +387,17 @@ public class Edge {
    * Edge license key obtained from license portal
    * @return edgeLicenseKey
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getEdgeLicenseKey() {
     return edgeLicenseKey;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEdgeLicenseKey(@Nonnull String edgeLicenseKey) {
+  @JsonProperty(value = JSON_PROPERTY_EDGE_LICENSE_KEY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEdgeLicenseKey(@Nullable String edgeLicenseKey) {
     this.edgeLicenseKey = edgeLicenseKey;
   }
 

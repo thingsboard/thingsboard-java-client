@@ -11,7 +11,7 @@
 ```
 void deleteRole(@Nonnull String roleId) // Delete role (deleteRole)
 Role getRoleById(@Nonnull String roleId) // Get Role by Id (getRoleById)
-PageDataRole getRoles(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Roles (getRoles)
+PageDataRole getRoles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Roles (getRoles)
 List<Role> getRolesByIds(@Nonnull List<String> roleIds) // Get Roles By Ids (getRolesByIds)
 Role saveRole(@Nonnull Role role) // Create Or Update Role (saveRole)
 ```
@@ -68,7 +68,7 @@ Fetch the Role object based on the provided Role Id. Role Contains a set of perm
 ## getRoles
 
 ```
-PageDataRole getRoles(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataRole getRoles(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/roles`
@@ -82,8 +82,8 @@ Returns a page of roles that are available for the current user. Role Contains a
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **type** | **String** | Type of the role | [optional] [enum: GENERIC, GROUP] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the role name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type, description] |

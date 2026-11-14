@@ -17,11 +17,11 @@ PageDataEntityView getCustomerEntityViews(@Nonnull String customerId, @Nonnull I
 EntityView getEntityViewById(@Nonnull String entityViewId) // Get entity view (getEntityViewById)
 EntityViewInfo getEntityViewInfoById(@Nonnull String entityViewId) // Get entity view info (getEntityViewInfoById)
 List<EntitySubtype> getEntityViewTypes() // Get Entity View Types (getEntityViewTypes)
-PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get entity views by Entity Group Id (getEntityViewsByEntityGroupId)
+PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get entity views by Entity Group Id (getEntityViewsByEntityGroupId)
 List<EntityView> getEntityViewsByIds(@Nonnull List<String> entityViewIds) // Get Entity Views By Ids (getEntityViewsByIds)
 EntityView getTenantEntityViewByName(@Nonnull String entityViewName) // Get Entity View by name (getTenantEntityViewByName)
 PageDataEntityView getTenantEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Entity Views (getTenantEntityViews)
-PageDataEntityView getUserEntityViews(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Views (getUserEntityViews)
+PageDataEntityView getUserEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Views (getUserEntityViews)
 EntityView saveEntityView(@Nonnull EntityView entityView, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Save or update entity view (saveEntityView)
 ```
 
@@ -233,7 +233,7 @@ Returns a set of unique entity view types based on entity views that are either 
 ## getEntityViewsByEntityGroupId
 
 ```
-PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityView getEntityViewsByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroup/{entityGroupId}/entityViews`
@@ -248,8 +248,8 @@ Returns a page of Entity View objects that belongs to specified Entity View Id. 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the entity view name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -339,7 +339,7 @@ Returns a page of entity views owned by tenant. Entity Views limit the degree of
 ## getUserEntityViews
 
 ```
-PageDataEntityView getUserEntityViews(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityView getUserEntityViews(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/user/entityViews`
@@ -353,8 +353,8 @@ Returns a page of entity views that are available for the current user. You can 
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **type** | **String** |   ## Entity View Filter  Allows to filter entity views based on their type and the **'starts with'** expression over their name. For example, this entity filter selects all 'Concrete Mixer' entity views which name starts with 'CAT':  ```json {   \"type\": \"entityViewType\",   \"entityViewType\": \"Concrete Mixer\",   \"entityViewNameFilter\": \"CAT\" } ``` | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the entity view name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, type] |

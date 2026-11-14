@@ -37,45 +37,21 @@ import org.thingsboard.client.ApiClient;
  * LoginRequest
  */
 @JsonPropertyOrder({
-  LoginRequest.JSON_PROPERTY_PASSWORD,
-  LoginRequest.JSON_PROPERTY_USERNAME
+  LoginRequest.JSON_PROPERTY_USERNAME,
+  LoginRequest.JSON_PROPERTY_PASSWORD
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class LoginRequest {
-  public static final String JSON_PROPERTY_PASSWORD = "password";
-  @Nonnull
-  private String password;
-
   public static final String JSON_PROPERTY_USERNAME = "username";
   @Nonnull
   private String username;
 
+  public static final String JSON_PROPERTY_PASSWORD = "password";
+  @Nonnull
+  private String password;
+
   public LoginRequest() { 
   }
-
-  public LoginRequest password(@Nonnull String password) {
-    this.password = password;
-    return this;
-  }
-
-  /**
-   * User password
-   * @return password
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getPassword() {
-    return password;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPassword(@Nonnull String password) {
-    this.password = password;
-  }
-
 
   public LoginRequest username(@Nonnull String username) {
     this.username = username;
@@ -101,6 +77,30 @@ public class LoginRequest {
   }
 
 
+  public LoginRequest password(@Nonnull String password) {
+    this.password = password;
+    return this;
+  }
+
+  /**
+   * User password
+   * @return password
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public String getPassword() {
+    return password;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PASSWORD, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setPassword(@Nonnull String password) {
+    this.password = password;
+  }
+
+
   /**
    * Return true if this LoginRequest object is equal to o.
    */
@@ -113,21 +113,21 @@ public class LoginRequest {
       return false;
     }
     LoginRequest loginRequest = (LoginRequest) o;
-    return Objects.equals(this.password, loginRequest.password) &&
-        Objects.equals(this.username, loginRequest.username);
+    return Objects.equals(this.username, loginRequest.username) &&
+        Objects.equals(this.password, loginRequest.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, username);
+    return Objects.hash(username, password);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginRequest {\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -175,14 +175,14 @@ public class LoginRequest {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `password` to the URL query string
-    if (getPassword() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%spassword%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPassword()))));
-    }
-
     // add `username` to the URL query string
     if (getUsername() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%susername%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getUsername()))));
+    }
+
+    // add `password` to the URL query string
+    if (getPassword() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spassword%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPassword()))));
     }
 
     return joiner.toString();

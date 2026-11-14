@@ -22,7 +22,7 @@
 #### ReportComponent
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| subType | ReportComponentSubType |  |  |
+| subType | ReportComponentSubType |  | [optional] |
 | type | ReportComponentType |  |  |
 
 #### DataSource
@@ -84,13 +84,12 @@
 |------|------|-------------|-------|
 | type | DataKeySettingsType | Data key settings type |  |
 
-#### ColumnSettings  *(type=`COLUMN`)*
+#### ColumnSettings  *(extends DataKeySettings, type=`COLUMN`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | columnWidth | String |  | [optional] |
 | header | CellSettings |  | [optional] |
 | cell | CellSettings |  | [optional] |
-| type | DataKeySettingsType | Data key settings type |  |
 
 #### DefaultDataKeySettings  *(extends DataKeySettings, type=`DEFAULT`)*
 *See DataKeySettings for properties.*
@@ -156,6 +155,9 @@
 | backgroundColor | String |  | [optional] |
 | textAlignment | TextAlignment |  | [optional] |
 | verticalAlignment | VerticalAlignment |  | [optional] |
+| borderType | BorderType |  | [optional] |
+| borderWidth | Integer |  | [optional] |
+| borderColor | String |  | [optional] |
 
 #### TimeSeriesChartSeriesType (enum)
 `LINE` | `BAR`
@@ -218,6 +220,9 @@
 
 #### VerticalAlignment (enum)
 `BOTTOM` | `TOP` | `MIDDLE`
+
+#### BorderType (enum)
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### LineSeriesStepType (enum)
 `START` | `MIDDLE` | `END`

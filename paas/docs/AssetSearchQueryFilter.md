@@ -30,18 +30,11 @@
 #### AliasEntityId
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| aliasEntityType | AliasEntityType |  | [optional] |
-| entityType | EntityType |  |  |
-| id | UUID | ID of the entity, time-based UUID v1 |  |
+| entityType | String | Entity type: an EntityType value, or an AliasEntityType value resolved for the current user |  |
+| id | UUID | ID of the entity, time-based UUID v1. Required for an entity type; for CURRENT_CUSTOMER, the customer used when the current user does not belong to one | [optional] |
 
 #### EntitySearchDirection (enum)
 `FROM` | `TO`
-
-#### AliasEntityType (enum)
-`CURRENT_CUSTOMER` | `CURRENT_TENANT` | `CURRENT_USER` | `CURRENT_USER_OWNER`
-
-#### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
 
 ---
 

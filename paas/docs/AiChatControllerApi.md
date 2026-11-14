@@ -13,6 +13,7 @@ com.fasterxml.jackson.databind.JsonNode createChat(@Nonnull Object body) // crea
 void deleteChat(@Nonnull UUID chatId) // deleteChat
 com.fasterxml.jackson.databind.JsonNode getChatMessages(@Nonnull UUID chatId) // getChatMessages
 com.fasterxml.jackson.databind.JsonNode listChats() // listChats
+List<Object> resumeChat(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage) // resumeChat
 List<Object> sendChatMessage(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nonnull Object body, @Nullable String acceptLanguage) // sendChatMessage
 void updateChat(@Nonnull UUID chatId, @Nonnull Object body) // updateChat
 ```
@@ -97,6 +98,30 @@ listChats
 ### Return type
 
 **com.fasterxml.jackson.databind.JsonNode**
+
+
+## resumeChat
+
+```
+List<Object> resumeChat(@Nonnull UUID chatId, @Nonnull String xAuthorization, @Nullable String acceptLanguage)
+```
+
+**POST** `/api/ai/chats/{chatId}/resume`
+
+resumeChat
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **chatId** | **UUID** |  | |
+| **xAuthorization** | **String** |  | |
+| **acceptLanguage** | **String** |  | [optional] |
+
+### Return type
+
+**List<Object>**
 
 
 ## sendChatMessage

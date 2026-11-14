@@ -16,27 +16,27 @@ List<EntityGroupInfo> getAllEdgeEntityGroups(@Nonnull String edgeId, @Nonnull St
 List<EntityGroupInfo> getAllEntityGroupsByOwnerAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType) // Get Entity Groups by owner and entity type (getAllEntityGroupsByOwnerAndType)
 List<EntityGroupInfo> getAllEntityGroupsByType(@Nonnull String groupType, @Nullable Boolean includeShared) // Get Entity Groups by entity type (getAllEntityGroupsByType)
 List<EntityGroupInfo> getAllSharedEntityGroups(@Nonnull String groupType) // Get Shared Entity Groups by entity type (getAllSharedEntityGroups)
-PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Entity Groups by entity type (getEdgeEntityGroups)
-PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Group Entities (getEntities)
+PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Edge Entity Groups by entity type (getEdgeEntityGroups)
+PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Group Entities (getEntities)
 EntityGroupInfo getEntityGroupAllByOwnerAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType) // Get special group All by owner and entity type (getEntityGroupsByOwnerAndType)
 EntityGroupInfo getEntityGroupById(@Nonnull String entityGroupId) // Get Entity Group Info (getEntityGroupById)
 EntityGroupInfo getEntityGroupByOwnerAndNameAndType(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String groupName) // Get Entity Group by owner, type and name (getEntityGroupByOwnerAndNameAndType)
 EntityInfo getEntityGroupEntityInfoById(@Nonnull String entityGroupId) // Get Entity Group Entity Info (getEntityGroupEntityInfoById)
 List<EntityInfo> getEntityGroupEntityInfosByIds(@Nonnull List<String> entityGroupIds) // Get Entity Group Entity Infos by Ids (getEntityGroupEntityInfosByIds)
-PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink)
-PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink)
-PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink)
+PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos by owner and entity type and page link (getEntityGroupEntityInfosByOwnerAndTypeAndPageLink)
+PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos by entity type and page link (getEntityGroupEntityInfosByTypeAndPageLink)
+PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Group Entity Infos for all owners starting from specified than ending with owner of current user (getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink)
 List<EntityGroupInfo> getEntityGroupsByIds(@Nonnull List<String> entityGroupIds) // Get Entity Groups by Ids (getEntityGroupsByIds)
-PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink)
-PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink)
+PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups by owner and entity type and page link (getEntityGroupsByOwnerAndTypeAndPageLink)
+PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups by entity type and page link (getEntityGroupsByTypeAndPageLink)
 List<EntityGroupId> getEntityGroupsForEntity(@Nonnull String entityType, @Nonnull String entityId) // Get Entity Groups by Entity Id (getEntityGroupsForEntity)
-PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink)
+PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Entity Groups for all owners starting from specified than ending with owner of current user (getEntityGroupsHierarchyByOwnerAndTypeAndPageLink)
 ShortEntityView getGroupEntity(@Nonnull String entityGroupId, @Nonnull String entityId) // Get Group Entity (getGroupEntity)
 EntityInfo getOwnerInfo(@Nonnull String ownerType, @Nonnull String ownerId) // Get Owner Info (getOwnerInfo)
-PageDataEntityInfo getOwnerInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Owner Infos (getOwnerInfos)
-PageDataContactBasedObject getOwners(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Owners (getOwners)
-PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink)
-PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink)
+PageDataEntityInfo getOwnerInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Owner Infos (getOwnerInfos)
+PageDataContactBasedObject getOwners(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Owners (getOwners)
+PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Shared Entity Group Entity Infos by entity type and page link (getSharedEntityGroupEntityInfosByTypeAndPageLink)
+PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Shared Entity Groups by entity type and page link (getSharedEntityGroupsByTypeAndPageLink)
 void makeEntityGroupPrivate(@Nonnull String entityGroupId) // Make Entity Group Private (makeEntityGroupPrivate)
 void makeEntityGroupPublic(@Nonnull String entityGroupId) // Make Entity Group Publicly available (makeEntityGroupPublic)
 void removeEntitiesFromEntityGroup(@Nonnull String entityGroupId, @Nonnull List<String> requestBody) // Remove entities from the group (removeEntitiesFromEntityGroup)
@@ -226,7 +226,7 @@ Fetch the list of Shared Entity Group Info objects based on the provided Entity 
 ## getEdgeEntityGroups
 
 ```
-PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityGroupInfo getEdgeEntityGroups(@Nonnull String edgeId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroups/edge/{edgeId}/{groupType}`
@@ -242,8 +242,8 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 |------------- | ------------- | ------------- | -------------|
 | **edgeId** | **String** | A string value representing the edge id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **groupType** | **String** | EntityGroup type | [enum: ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -256,7 +256,7 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 ## getEntities
 
 ```
-PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataShortEntityView getEntities(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroup/{entityGroupId}/entities`
@@ -271,8 +271,8 @@ Returns a page of Short Entity View objects that belongs to specified Entity Gro
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -410,7 +410,7 @@ Fetch the list of Entity Group Entity Info objects based on the provided entity 
 ## getEntityGroupEntityInfosByOwnerAndTypeAndPageLink
 
 ```
-PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityInfo getEntityGroupEntityInfosByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroupInfos/{ownerType}/{ownerId}/{groupType}`
@@ -427,8 +427,8 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 | **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
 | **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -441,7 +441,7 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 ## getEntityGroupEntityInfosByTypeAndPageLink
 
 ```
-PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityInfo getEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroupInfos/{groupType}`
@@ -456,8 +456,8 @@ Returns a page of Entity Group Entity Info objects based on the provided Entity 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
@@ -471,7 +471,7 @@ Returns a page of Entity Group Entity Info objects based on the provided Entity 
 ## getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink
 
 ```
-PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityInfo getEntityGroupEntityInfosHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroupInfosHierarchy/{ownerType}/{ownerId}/{groupType}`
@@ -488,8 +488,8 @@ Returns a page of Entity Group Entity Info objects based on the provided Owner I
 | **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
 | **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -526,7 +526,7 @@ Fetch the list of Entity Group Info objects based on the provided entity group i
 ## getEntityGroupsByOwnerAndTypeAndPageLink
 
 ```
-PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityGroupInfo getEntityGroupsByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroups/{ownerType}/{ownerId}/{groupType}`
@@ -543,8 +543,8 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 | **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
 | **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -557,7 +557,7 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 ## getEntityGroupsByTypeAndPageLink
 
 ```
-PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityGroupInfo getEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable Boolean includeShared, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroups/{groupType}`
@@ -572,8 +572,8 @@ Returns a page of Entity Group Info objects based on the provided Entity Type an
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **includeShared** | **Boolean** | Whether to include shared entity groups. | [optional] |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
@@ -612,7 +612,7 @@ Returns a list of groups that contain the specified Entity Id. For example, all 
 ## getEntityGroupsHierarchyByOwnerAndTypeAndPageLink
 
 ```
-PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityGroupInfo getEntityGroupsHierarchyByOwnerAndTypeAndPageLink(@Nonnull String ownerType, @Nonnull String ownerId, @Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroupsHierarchy/{ownerType}/{ownerId}/{groupType}`
@@ -629,8 +629,8 @@ Returns a page of Entity Group objects based on the provided Owner Id and Entity
 | **ownerType** | **String** | Tenant or Customer | [enum: TENANT, CUSTOMER] |
 | **ownerId** | **String** | A string value representing the Tenant or Customer id | |
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -693,7 +693,7 @@ Fetch the owner info (tenant or customer) presented as Entity Info object based 
 ## getOwnerInfos
 
 ```
-PageDataEntityInfo getOwnerInfos(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityInfo getOwnerInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/ownerInfos`
@@ -707,8 +707,8 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -721,7 +721,7 @@ Provides a rage view of Customers that the current user has READ access to. If t
 ## getOwners
 
 ```
-PageDataContactBasedObject getOwners(@Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataContactBasedObject getOwners(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/owners`
@@ -735,8 +735,8 @@ Provides a rage view of Customers that the current user has READ access to. If t
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -749,7 +749,7 @@ Provides a rage view of Customers that the current user has READ access to. If t
 ## getSharedEntityGroupEntityInfosByTypeAndPageLink
 
 ```
-PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityInfo getSharedEntityGroupEntityInfosByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroupInfos/{groupType}/shared`
@@ -764,8 +764,8 @@ Returns a page of Shared Entity Group Entity Info objects based on the provided 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -778,7 +778,7 @@ Returns a page of Shared Entity Group Entity Info objects based on the provided 
 ## getSharedEntityGroupsByTypeAndPageLink
 
 ```
-PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataEntityGroupInfo getSharedEntityGroupsByTypeAndPageLink(@Nonnull String groupType, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroups/{groupType}/shared`
@@ -793,8 +793,8 @@ Returns a page of Shared Entity Group Info objects based on the provided Entity 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **groupType** | **String** | Entity Group type | [enum: CUSTOMER, ASSET, DEVICE, USER, ENTITY_VIEW, DASHBOARD, EDGE] |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'startsWith' filter based on the entity group name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -911,7 +911,7 @@ void shareEntityGroup(@Nonnull String entityGroupId, @Nonnull ShareGroupRequest 
 
 Share the Entity Group (shareEntityGroup)
 
-Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
+Share the entity group with certain user group based on the provided Share Group Request. The request is quite flexible and processing of the request involves multiple security checks using platform RBAC feature. Each role in 'roleIds' must be a group role readable by the current user, and each of its operations must be granted to the current user for the entity group or its entities.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority. Security check is performed to verify that the user has 'WRITE' permission for specified group.
 
 
 ### Parameters

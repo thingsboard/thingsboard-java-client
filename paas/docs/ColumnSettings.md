@@ -3,6 +3,8 @@
 
 `org.thingsboard.client.model.ColumnSettings`
 
+**Extends:** **DataKeySettings**
+
 ## Properties
 
 | Name | Type | Description | Notes |
@@ -10,11 +12,15 @@
 | **columnWidth** | **String** |  | [optional] |
 | **header** | **CellSettings** |  | [optional] |
 | **cell** | **CellSettings** |  | [optional] |
-| **type** | **DataKeySettingsType** | Data key settings type | |
 
 
 
 ## Referenced Types
+
+#### DataKeySettings
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| type | DataKeySettingsType | Data key settings type |  |
 
 #### CellSettings
 | Name | Type | Description | Notes |
@@ -24,6 +30,9 @@
 | backgroundColor | String |  | [optional] |
 | textAlignment | TextAlignment |  | [optional] |
 | verticalAlignment | VerticalAlignment |  | [optional] |
+| borderType | BorderType |  | [optional] |
+| borderWidth | Integer |  | [optional] |
+| borderColor | String |  | [optional] |
 
 #### DataKeySettingsType (enum)
 `COLUMN` | `TIME_SERIES_CHART` | `DEFAULT`
@@ -41,6 +50,9 @@
 
 #### VerticalAlignment (enum)
 `BOTTOM` | `TOP` | `MIDDLE`
+
+#### BorderType (enum)
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### FontWeight (enum)
 `NORMAL` | `BOLD` | `_500`

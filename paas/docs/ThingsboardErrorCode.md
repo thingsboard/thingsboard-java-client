@@ -8,37 +8,37 @@ Platform error code
 ## Enum Values
 
 
-* `NUMBER_2` (value: `new BigDecimal("2")`)
+* `NUMBER_2` (value: `2`)
 
-* `NUMBER_10` (value: `new BigDecimal("10")`)
+* `NUMBER_10` (value: `10`)
 
-* `NUMBER_11` (value: `new BigDecimal("11")`)
+* `NUMBER_11` (value: `11`)
 
-* `NUMBER_15` (value: `new BigDecimal("15")`)
+* `NUMBER_15` (value: `15`)
 
-* `NUMBER_20` (value: `new BigDecimal("20")`)
+* `NUMBER_20` (value: `20`)
 
-* `NUMBER_30` (value: `new BigDecimal("30")`)
+* `NUMBER_30` (value: `30`)
 
-* `NUMBER_31` (value: `new BigDecimal("31")`)
+* `NUMBER_31` (value: `31`)
 
-* `NUMBER_32` (value: `new BigDecimal("32")`)
+* `NUMBER_32` (value: `32`)
 
-* `NUMBER_33` (value: `new BigDecimal("33")`)
+* `NUMBER_33` (value: `33`)
 
-* `NUMBER_34` (value: `new BigDecimal("34")`)
+* `NUMBER_34` (value: `34`)
 
-* `NUMBER_35` (value: `new BigDecimal("35")`)
+* `NUMBER_35` (value: `35`)
 
-* `NUMBER_40` (value: `new BigDecimal("40")`)
+* `NUMBER_40` (value: `40`)
 
-* `NUMBER_41` (value: `new BigDecimal("41")`)
+* `NUMBER_41` (value: `41`)
 
-* `NUMBER_45` (value: `new BigDecimal("45")`)
+* `NUMBER_45` (value: `45`)
 
-* `NUMBER_46` (value: `new BigDecimal("46")`)
+* `NUMBER_46` (value: `46`)
 
-* `NUMBER_50` (value: `new BigDecimal("50")`)
+* `NUMBER_50` (value: `50`)
 
 
 

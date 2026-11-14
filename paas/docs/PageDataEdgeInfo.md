@@ -32,7 +32,7 @@
 | label | String | Label that may be used in widgets | [optional] |
 | routingKey | String | Edge routing key ('username') to authorize on cloud |  |
 | secret | String | Edge secret ('password') to authorize on cloud |  |
-| edgeLicenseKey | String | Edge license key obtained from license portal |  |
+| edgeLicenseKey | String | Edge license key obtained from license portal | [optional] |
 | cloudEndpoint | String | Edge uses this cloud URL to activate and periodically check it's license |  |
 | edgeLicenseType | EdgeLicenseType |  | [optional] |
 | version | Long |  | [optional] |

@@ -50,7 +50,7 @@ Returns true if the user has permission to perform the operation, and false othe
 |------------- | ------------- | ------------- | -------------|
 | **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **operation** | **String** | A string value representing permission operation. For example, 'READ', 'WRITE', 'DELETE', 'CREATE', 'ALL' | [enum: ALL, CREATE, READ, WRITE, DELETE, RPC_CALL, READ_CREDENTIALS, WRITE_CREDENTIALS, READ_ATTRIBUTES, WRITE_ATTRIBUTES, READ_TELEMETRY, WRITE_TELEMETRY, ADD_TO_GROUP, REMOVE_FROM_GROUP, CHANGE_OWNER, IMPERSONATE, CLAIM_DEVICES, SHARE_GROUP, ASSIGN_TO_TENANT, READ_CALCULATED_FIELD, WRITE_CALCULATED_FIELD] |
+| **operation** | **String** | A string value representing permission operation. For example, 'READ', 'WRITE', 'DELETE', 'CREATE', 'ALL' | [enum: ALL, CREATE, READ, WRITE, DELETE, RPC_CALL, READ_CREDENTIALS, WRITE_CREDENTIALS, READ_ATTRIBUTES, WRITE_ATTRIBUTES, READ_TELEMETRY, WRITE_TELEMETRY, ADD_TO_GROUP, REMOVE_FROM_GROUP, CHANGE_OWNER, IMPERSONATE, CLAIM_DEVICES, SHARE_GROUP, ASSIGN_TO_TENANT, READ_CALCULATED_FIELD, WRITE_CALCULATED_FIELD, INVOKE] |
 
 ### Return type
 

@@ -72,7 +72,7 @@ Dummy job configuration
 | createdTime | Long | Entity creation timestamp in milliseconds since Unix epoch | [optional] [readonly] |
 | tenantId | TenantId |  |  |
 | customerId | CustomerId |  | [optional] |
-| templateId | ReportTemplateId |  |  |
+| templateId | ReportTemplateId |  | [optional] |
 | format | TbReportFormat |  |  |
 | name | String |  |  |
 | userId | UserId |  |  |

@@ -26,12 +26,13 @@
 | tenantId | TenantId | JSON object representing the ID of the tenant associated with this AI model | [optional] [readonly] |
 | version | Long | Version of the AI model record; increments automatically whenever the record is changed | [optional] [readonly] |
 | name | String | Display name for this AI model configuration; not the technical model identifier |  |
+| customerAccessEnabled | Boolean | Whether customer users with the 'INVOKE' permission for AI models can send chat requests to the model, such as users with the default 'Customer Administrator' role, which grants all operations. Tenant administrators with the 'INVOKE' permission can use the model regardless of this flag | [optional] |
 | _configuration | AiModelConfig | Configuration of the AI model | [optional] |
 
 #### AiModelConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| provider | String |  |  |
+| provider | AiProvider | AI Provider |  |
 
 #### AmazonBedrockChatModelConfig  *(extends AiModelConfig, provider=`AMAZON_BEDROCK`)*
 | Name | Type | Description | Notes |
@@ -157,6 +158,9 @@
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
 | modelType | AiModelType |  | [optional] [readonly] |
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)

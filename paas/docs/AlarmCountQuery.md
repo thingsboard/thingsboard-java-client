@@ -258,9 +258,8 @@ A JSON value representing the alarm count query.
 #### AliasEntityId
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| aliasEntityType | AliasEntityType |  | [optional] |
-| entityType | EntityType |  |  |
-| id | UUID | ID of the entity, time-based UUID v1 |  |
+| entityType | String | Entity type: an EntityType value, or an AliasEntityType value resolved for the current user |  |
+| id | UUID | ID of the entity, time-based UUID v1. Required for an entity type; for CURRENT_CUSTOMER, the customer used when the current user does not belong to one | [optional] |
 
 #### EntityType (enum)
 `TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (59 values total)
@@ -277,9 +276,6 @@ A JSON value representing the alarm count query.
 
 #### EntityKeyType (enum)
 `ATTRIBUTE` | `CLIENT_ATTRIBUTE` | `SHARED_ATTRIBUTE` | `SERVER_ATTRIBUTE` | `TIME_SERIES` | `ENTITY_FIELD` | `ALARM_FIELD`
-
-#### AliasEntityType (enum)
-`CURRENT_CUSTOMER` | `CURRENT_TENANT` | `CURRENT_USER` | `CURRENT_USER_OWNER`
 
 #### StringOperation (enum)
 `EQUAL` | `NOT_EQUAL` | `STARTS_WITH` | `ENDS_WITH` | `CONTAINS` | `NOT_CONTAINS` | `IN` | `NOT_IN`
