@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **refreshToken** | **Object** |  | [optional] |
+| **refreshToken** | **String** |  | [optional] |
 
 
 

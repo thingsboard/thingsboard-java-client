@@ -9,7 +9,7 @@ Root configuration for AI models
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **provider** | **String** |  | |
+| **provider** | **AiProvider** | AI Provider | |
 
 
 
@@ -25,7 +25,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AnthropicChatModelConfig  *(provider=`ANTHROPIC`)*
 | Name | Type | Description | Notes |
@@ -38,7 +37,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AzureOpenAiChatModelConfig  *(provider=`AZURE_OPENAI`)*
 | Name | Type | Description | Notes |
@@ -52,7 +50,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GitHubModelsChatModelConfig  *(provider=`GITHUB_MODELS`)*
 | Name | Type | Description | Notes |
@@ -66,7 +63,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleAiGeminiChatModelConfig  *(provider=`GOOGLE_AI_GEMINI`)*
 | Name | Type | Description | Notes |
@@ -81,7 +77,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleVertexAiGeminiChatModelConfig  *(provider=`GOOGLE_VERTEX_AI_GEMINI`)*
 | Name | Type | Description | Notes |
@@ -96,7 +91,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### MistralAiChatModelConfig  *(provider=`MISTRAL_AI`)*
 | Name | Type | Description | Notes |
@@ -110,7 +104,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OllamaChatModelConfig  *(provider=`OLLAMA`)*
 | Name | Type | Description | Notes |
@@ -124,7 +117,6 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OpenAiChatModelConfig  *(provider=`OPENAI`)*
 | Name | Type | Description | Notes |
@@ -138,9 +130,11 @@ Root configuration for AI models
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 ## Referenced Types
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 #### AmazonBedrockProviderConfig
 | Name | Type | Description | Notes |
@@ -148,9 +142,6 @@ Root configuration for AI models
 | region | String |  |  |
 | accessKeyId | String |  |  |
 | secretAccessKey | String |  |  |
-
-#### AiModelType (enum)
-`CHAT`
 
 #### AnthropicProviderConfig
 | Name | Type | Description | Notes |
@@ -177,7 +168,7 @@ Root configuration for AI models
 #### GoogleVertexAiGeminiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| fileName | String |  |  |
+| fileName | String |  | [optional] |
 | projectId | String |  |  |
 | location | String |  |  |
 | serviceAccountKey | String |  |  |

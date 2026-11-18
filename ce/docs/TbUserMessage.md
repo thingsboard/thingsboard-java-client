@@ -19,9 +19,7 @@
 | contentType | String |  |  |
 
 #### TbTextContent  *(extends TbContent, contentType=`TEXT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| text | String | The text content |  |
+*See TbContent for properties.*
 
 ---
 

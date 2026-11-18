@@ -12,13 +12,14 @@
 String deleteDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Delete device attributes (deleteDeviceAttributes)
 String deleteEntityAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Delete entity attributes (deleteEntityAttributes)
 String deleteEntityTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean deleteAllDataForKeys, @Nullable Long startTs, @Nullable Long endTs, @Nullable Boolean deleteLatest, @Nullable Boolean rewriteLatestIfDeleted, @Nullable List<String> key) // Delete entity time series data (deleteEntityTimeseries)
-List<String> getAttributeKeys(@Nonnull String entityType, @Nonnull String entityId) // Get all attribute keys (getAttributeKeys)
-List<String> getAttributeKeysByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope) // Get all attribute keys by scope (getAttributeKeysByScope)
-List<AttributeData> getAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable List<String> key) // Get attributes (getAttributes)
-List<AttributeData> getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Get attributes by scope (getAttributesByScope)
-Map<String, List<TsData>> getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get latest time series value (getLatestTimeseries)
-Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get time series data (getTimeseriesHistory)
-List<String> getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId) // Get time series keys (getTimeseriesKeys)
+String getAttributeKeys(@Nonnull String entityType, @Nonnull String entityId) // Get all attribute keys (getAttributeKeys)
+String getAttributeKeysByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope) // Get all attribute keys by scope (getAttributeKeysByScope)
+String getAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable List<String> key) // Get attributes (getAttributes)
+String getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Get attributes by scope (getAttributesByScope)
+String getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get latest time series value (getLatestTimeseries)
+String getTimeseriesByReadTsKvQueries(@Nonnull String entityType, @Nonnull String entityId, @Nonnull List<BaseReadTsKvQuery> baseReadTsKvQuery) // Get time series data by read queries (getTimeseriesByReadTsKvQueries)
+String getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable Integer limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get time series data (getTimeseriesHistory)
+String getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId) // Get time series keys (getTimeseriesKeys)
 String saveDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nonnull String body) // Save device attributes (saveDeviceAttributes)
 String saveEntityAttributesV1(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body) // Save entity attributes (saveEntityAttributesV1)
 String saveEntityAttributesV2(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body) // Save entity attributes (saveEntityAttributesV2)
@@ -71,7 +72,7 @@ Delete entity attributes using provided Entity Id, scope and a list of keys. Thi
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **scope** | **String** | A string value representing the attributes scope. For example, 'SERVER_SCOPE'. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
 | **keys** | **String** | A string value representing the comma-separated list of attributes keys. For example, 'active,inactivityAlarmTime'. If attribute keys contain comma, duplicate 'key' parameter for each key, for example '?key=my,key&key=my,second,key | [optional] |
@@ -99,7 +100,7 @@ Delete time series for selected entity based on entity id, entity type and keys.
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **keys** | **String** | A string value representing the comma-separated list of telemetry keys. If keys are not selected, the result will return all latest time series. For example, 'temperature,humidity'. If telemetry keys contain comma, duplicate 'key' parameter for each key, for example '?key=my,key&key=my,second,key | [optional] |
 | **deleteAllDataForKeys** | **Boolean** | A boolean value to specify if should be deleted all data for selected keys or only data that are in the selected time range. | [optional] [default to false] |
@@ -117,7 +118,7 @@ Delete time series for selected entity based on entity id, entity type and keys.
 ## getAttributeKeys
 
 ```
-List<String> getAttributeKeys(@Nonnull String entityType, @Nonnull String entityId)
+String getAttributeKeys(@Nonnull String entityType, @Nonnull String entityId)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/keys/attributes`
@@ -131,18 +132,18 @@ Returns a set of unique attribute key names for the selected entity. The respons
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 
 ### Return type
 
-**List<String>**
+**String**
 
 
 ## getAttributeKeysByScope
 
 ```
-List<String> getAttributeKeysByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope)
+String getAttributeKeysByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/keys/attributes/{scope}`
@@ -156,19 +157,19 @@ Returns a set of unique attribute key names for the selected entity and attribut
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **scope** | **String** | A string value representing the attributes scope. For example, 'SERVER_SCOPE'. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
 
 ### Return type
 
-**List<String>**
+**String**
 
 
 ## getAttributes
 
 ```
-List<AttributeData> getAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable List<String> key)
+String getAttributes(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable List<String> key)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/attributes`
@@ -182,20 +183,20 @@ Returns all attributes that belong to specified entity. Use optional 'keys' para
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **keys** | **String** | A string value representing the comma-separated list of attributes keys. For example, 'active,inactivityAlarmTime'. If attribute keys contain comma, duplicate 'key' parameter for each key, for example '?key=my,key&key=my,second,key | [optional] |
 | **key** | **List<String>** | Repeatable key query parameter (alternative to comma-separated 'keys') | [optional] |
 
 ### Return type
 
-**List<AttributeData>**
+**String**
 
 
 ## getAttributesByScope
 
 ```
-List<AttributeData> getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key)
+String getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/attributes/{scope}`
@@ -209,7 +210,7 @@ Returns all attributes of a specified scope that belong to specified entity. Lis
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **scope** | **String** | A string value representing the attributes scope. For example, 'SERVER_SCOPE'. | [enum: SERVER_SCOPE, SHARED_SCOPE, CLIENT_SCOPE] |
 | **keys** | **String** | A string value representing the comma-separated list of attributes keys. For example, 'active,inactivityAlarmTime'. If attribute keys contain comma, duplicate 'key' parameter for each key, for example '?key=my,key&key=my,second,key | [optional] |
@@ -217,13 +218,13 @@ Returns all attributes of a specified scope that belong to specified entity. Lis
 
 ### Return type
 
-**List<AttributeData>**
+**String**
 
 
 ## getLatestTimeseries
 
 ```
-Map<String, List<TsData>> getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
+String getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/timeseries`
@@ -237,7 +238,7 @@ Returns all time series that belong to specified entity. Use optional 'keys' par
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **keys** | **String** | A string value representing the comma-separated list of telemetry keys. If keys are not selected, the result will return all latest time series. For example, 'temperature,humidity'. If telemetry keys contain comma, duplicate 'key' parameter for each key, for example '?key=my,key&key=my,second,key | [optional] |
 | **useStrictDataTypes** | **Boolean** | Enables/disables conversion of telemetry values to strings. Conversion is enabled by default. Set parameter to 'true' in order to disable the conversion. | [optional] [default to false] |
@@ -245,13 +246,39 @@ Returns all time series that belong to specified entity. Use optional 'keys' par
 
 ### Return type
 
-**Map<String, List<TsData>>**
+**String**
+
+
+## getTimeseriesByReadTsKvQueries
+
+```
+String getTimeseriesByReadTsKvQueries(@Nonnull String entityType, @Nonnull String entityId, @Nonnull List<BaseReadTsKvQuery> baseReadTsKvQuery)
+```
+
+**POST** `/api/plugins/telemetry/{entityType}/{entityId}/values/timeseries`
+
+Get time series data by read queries (getTimeseriesByReadTsKvQueries)
+
+Returns aggregated time series values according to queries for specified entity. ```json [   {     \"queryId\": 49,     \"data\": [       {         \"ts\": 1751450399999,         \"kv\": {           \"key\": \"temperature\",           \"value\": 26,           \"doubleValue\": 26,           \"valueAsString\": \"26.0\",           \"dataType\": \"DOUBLE\",           \"longValue\": null,           \"booleanValue\": null,           \"jsonValue\": null,           \"strValue\": null         },         \"version\": null       }     ],     \"lastEntryTs\": 1750264592675   },   {     \"queryId\": 50,     \"data\": [],     \"lastEntryTs\": 1751317200000   } ] ```  Referencing a non-existing entity Id or invalid entity type will cause an error.   Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
+| **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
+| **baseReadTsKvQuery** | **List<BaseReadTsKvQuery>** | A JSON array of time series read queries. | |
+
+### Return type
+
+**String**
 
 
 ## getTimeseriesHistory
 
 ```
-Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
+String getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable Integer limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history`
@@ -265,7 +292,7 @@ Returns a range of time series values for specified entity. Returns not aggregat
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **startTs** | **Long** | A long value representing the start timestamp of the time range in milliseconds, UTC. | |
 | **endTs** | **Long** | A long value representing the end timestamp of the time range in milliseconds, UTC. | |
@@ -273,7 +300,7 @@ Returns a range of time series values for specified entity. Returns not aggregat
 | **intervalType** | **String** | A string value representing the type fo the interval. | [optional] [enum: MILLISECONDS, WEEK, WEEK_ISO, MONTH, QUARTER] |
 | **interval** | **Long** | A long value representing the aggregation interval range in milliseconds. | [optional] [default to 0] |
 | **timeZone** | **String** | A string value representing the timezone that will be used to calculate exact timestamps for 'WEEK', 'WEEK_ISO', 'MONTH' and 'QUARTER' interval types. | [optional] |
-| **limit** | **String** | An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if 'agg' parameter is set to 'NONE'. | [optional] |
+| **limit** | **Integer** | An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if 'agg' parameter is set to 'NONE'. | [optional] [default to 100] |
 | **agg** | **String** | A string value representing the aggregation function. If the interval is not specified, 'agg' parameter will use 'NONE' value. | [optional] [enum: MIN, MAX, AVG, SUM, COUNT, NONE] |
 | **orderBy** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 | **useStrictDataTypes** | **Boolean** | Enables/disables conversion of telemetry values to strings. Conversion is enabled by default. Set parameter to 'true' in order to disable the conversion. | [optional] [default to false] |
@@ -281,13 +308,13 @@ Returns a range of time series values for specified entity. Returns not aggregat
 
 ### Return type
 
-**Map<String, List<TsData>>**
+**String**
 
 
 ## getTimeseriesKeys
 
 ```
-List<String> getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId)
+String getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/keys/timeseries`
@@ -301,12 +328,12 @@ Returns a set of unique time series key names for the selected entity.   Referen
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 
 ### Return type
 
-**List<String>**
+**String**
 
 
 ## saveDeviceAttributes
@@ -352,7 +379,7 @@ Creates or updates the entity attributes based on Entity Id and the specified at
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **scope** | **String** | A string value representing the attributes scope. For example, 'SERVER_SCOPE'. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
 | **body** | **String** | A string value representing the json object. For example, '{\"key\":\"value\"}'. See API call description for more details. | |
@@ -379,7 +406,7 @@ Creates or updates the entity attributes based on Entity Id and the specified at
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **scope** | **String** | A string value representing the attributes scope. For example, 'SERVER_SCOPE'. | [enum: SERVER_SCOPE, SHARED_SCOPE] |
 | **body** | **String** | A string value representing the json object. For example, '{\"key\":\"value\"}'. See API call description for more details. | |
@@ -406,7 +433,7 @@ Creates or updates the entity time series data based on the Entity Id and reques
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **scope** | **String** | Value is deprecated, reserved for backward compatibility and not used in the API call implementation. Specify any scope for compatibility | [enum: ANY] |
 | **body** | **String** | A JSON with the telemetry values. See API call description for more details. | |
@@ -433,7 +460,7 @@ Creates or updates the entity time series data based on the Entity Id and reques
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | |
+| **entityType** | **String** | A string value representing the entity type. For example, 'DEVICE' | [default to DEVICE] |
 | **entityId** | **String** | A string value representing the entity id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
 | **scope** | **String** | Value is deprecated, reserved for backward compatibility and not used in the API call implementation. Specify any scope for compatibility | [enum: ANY] |
 | **ttl** | **Long** | A long value representing TTL (Time to Live) parameter. | |

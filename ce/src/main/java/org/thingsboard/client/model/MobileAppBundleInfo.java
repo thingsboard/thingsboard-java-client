@@ -35,6 +35,7 @@ import java.util.List;
 import org.thingsboard.client.model.MobileAppBundleId;
 import org.thingsboard.client.model.MobileAppId;
 import org.thingsboard.client.model.MobileLayoutConfig;
+import org.thingsboard.client.model.MobileSelfRegistrationParams;
 import org.thingsboard.client.model.OAuth2ClientInfo;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -53,6 +54,7 @@ import org.thingsboard.client.ApiClient;
   MobileAppBundleInfo.JSON_PROPERTY_ANDROID_APP_ID,
   MobileAppBundleInfo.JSON_PROPERTY_IOS_APP_ID,
   MobileAppBundleInfo.JSON_PROPERTY_LAYOUT_CONFIG,
+  MobileAppBundleInfo.JSON_PROPERTY_SELF_REGISTRATION_PARAMS,
   MobileAppBundleInfo.JSON_PROPERTY_OAUTH2_ENABLED,
   MobileAppBundleInfo.JSON_PROPERTY_ANDROID_PKG_NAME,
   MobileAppBundleInfo.JSON_PROPERTY_IOS_PKG_NAME,
@@ -93,6 +95,10 @@ public class MobileAppBundleInfo {
   public static final String JSON_PROPERTY_LAYOUT_CONFIG = "layoutConfig";
   @Nullable
   private MobileLayoutConfig layoutConfig;
+
+  public static final String JSON_PROPERTY_SELF_REGISTRATION_PARAMS = "selfRegistrationParams";
+  @Nullable
+  private MobileSelfRegistrationParams selfRegistrationParams;
 
   public static final String JSON_PROPERTY_OAUTH2_ENABLED = "oauth2Enabled";
   @Nullable
@@ -313,6 +319,30 @@ public class MobileAppBundleInfo {
   }
 
 
+  public MobileAppBundleInfo selfRegistrationParams(@Nullable MobileSelfRegistrationParams selfRegistrationParams) {
+    this.selfRegistrationParams = selfRegistrationParams;
+    return this;
+  }
+
+  /**
+   * Application self registration configuration
+   * @return selfRegistrationParams
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SELF_REGISTRATION_PARAMS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public MobileSelfRegistrationParams getSelfRegistrationParams() {
+    return selfRegistrationParams;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_SELF_REGISTRATION_PARAMS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSelfRegistrationParams(@Nullable MobileSelfRegistrationParams selfRegistrationParams) {
+    this.selfRegistrationParams = selfRegistrationParams;
+  }
+
+
   public MobileAppBundleInfo oauth2Enabled(@Nullable Boolean oauth2Enabled) {
     this.oauth2Enabled = oauth2Enabled;
     return this;
@@ -475,6 +505,7 @@ public class MobileAppBundleInfo {
         Objects.equals(this.androidAppId, mobileAppBundleInfo.androidAppId) &&
         Objects.equals(this.iosAppId, mobileAppBundleInfo.iosAppId) &&
         Objects.equals(this.layoutConfig, mobileAppBundleInfo.layoutConfig) &&
+        Objects.equals(this.selfRegistrationParams, mobileAppBundleInfo.selfRegistrationParams) &&
         Objects.equals(this.oauth2Enabled, mobileAppBundleInfo.oauth2Enabled) &&
         Objects.equals(this.androidPkgName, mobileAppBundleInfo.androidPkgName) &&
         Objects.equals(this.iosPkgName, mobileAppBundleInfo.iosPkgName) &&
@@ -485,7 +516,7 @@ public class MobileAppBundleInfo {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, title, description, androidAppId, iosAppId, layoutConfig, oauth2Enabled, androidPkgName, iosPkgName, oauth2ClientInfos, qrCodeEnabled, name);
+    return Objects.hash(id, createdTime, tenantId, title, description, androidAppId, iosAppId, layoutConfig, selfRegistrationParams, oauth2Enabled, androidPkgName, iosPkgName, oauth2ClientInfos, qrCodeEnabled, name);
   }
 
   @Override
@@ -500,6 +531,7 @@ public class MobileAppBundleInfo {
     sb.append("    androidAppId: ").append(toIndentedString(androidAppId)).append("\n");
     sb.append("    iosAppId: ").append(toIndentedString(iosAppId)).append("\n");
     sb.append("    layoutConfig: ").append(toIndentedString(layoutConfig)).append("\n");
+    sb.append("    selfRegistrationParams: ").append(toIndentedString(selfRegistrationParams)).append("\n");
     sb.append("    oauth2Enabled: ").append(toIndentedString(oauth2Enabled)).append("\n");
     sb.append("    androidPkgName: ").append(toIndentedString(androidPkgName)).append("\n");
     sb.append("    iosPkgName: ").append(toIndentedString(iosPkgName)).append("\n");
@@ -591,6 +623,11 @@ public class MobileAppBundleInfo {
     // add `layoutConfig` to the URL query string
     if (getLayoutConfig() != null) {
       joiner.add(getLayoutConfig().toUrlQueryString(prefix + "layoutConfig" + suffix));
+    }
+
+    // add `selfRegistrationParams` to the URL query string
+    if (getSelfRegistrationParams() != null) {
+      joiner.add(getSelfRegistrationParams().toUrlQueryString(prefix + "selfRegistrationParams" + suffix));
     }
 
     // add `oauth2Enabled` to the URL query string

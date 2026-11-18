@@ -22,9 +22,25 @@
 
 * `RESOURCE` (value: `"RESOURCE"`)
 
+* `ROLE` (value: `"ROLE"`)
+
+* `ENTITY_GROUP` (value: `"ENTITY_GROUP"`)
+
+* `DEVICE_GROUP_OTA_PACKAGE` (value: `"DEVICE_GROUP_OTA_PACKAGE"`)
+
+* `GROUP_PERMISSION` (value: `"GROUP_PERMISSION"`)
+
+* `BLOB_ENTITY` (value: `"BLOB_ENTITY"`)
+
+* `SCHEDULER_EVENT` (value: `"SCHEDULER_EVENT"`)
+
 * `EVENT` (value: `"EVENT"`)
 
 * `RULE_NODE` (value: `"RULE_NODE"`)
+
+* `CONVERTER` (value: `"CONVERTER"`)
+
+* `INTEGRATION` (value: `"INTEGRATION"`)
 
 * `USER` (value: `"USER"`)
 
@@ -35,6 +51,10 @@
 * `WIDGET_TYPE` (value: `"WIDGET_TYPE"`)
 
 * `DASHBOARD` (value: `"DASHBOARD"`)
+
+* `REPORT_TEMPLATE` (value: `"REPORT_TEMPLATE"`)
+
+* `REPORT` (value: `"REPORT"`)
 
 * `DEVICE_PROFILE` (value: `"DEVICE_PROFILE"`)
 
@@ -65,6 +85,10 @@
 * `NOTIFICATION_TEMPLATE` (value: `"NOTIFICATION_TEMPLATE"`)
 
 * `NOTIFICATION_RULE` (value: `"NOTIFICATION_RULE"`)
+
+* `WHITE_LABELING` (value: `"WHITE_LABELING"`)
+
+* `CUSTOM_TRANSLATION` (value: `"CUSTOM_TRANSLATION"`)
 
 * `ALARM_COMMENT` (value: `"ALARM_COMMENT"`)
 

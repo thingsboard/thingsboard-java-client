@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -42,7 +41,6 @@ import org.thingsboard.client.ApiClient;
  * Text-based content part of a user&#39;s prompt
  */
 @JsonPropertyOrder({
-  TbTextContent.JSON_PROPERTY_TEXT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -52,36 +50,8 @@ import org.thingsboard.client.ApiClient;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "contentType", visible = true)
 
 public class TbTextContent extends TbContent {
-  public static final String JSON_PROPERTY_TEXT = "text";
-  @Nonnull
-  private String text;
-
   public TbTextContent() { 
   }
-
-  public TbTextContent text(@Nonnull String text) {
-    this.text = text;
-    return this;
-  }
-
-  /**
-   * The text content
-   * @return text
-   */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_TEXT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public String getText() {
-    return text;
-  }
-
-
-  @JsonProperty(value = JSON_PROPERTY_TEXT, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setText(@Nonnull String text) {
-    this.text = text;
-  }
-
 
   /**
    * Return true if this TbTextContent object is equal to o.
@@ -94,14 +64,12 @@ public class TbTextContent extends TbContent {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TbTextContent tbTextContent = (TbTextContent) o;
-    return Objects.equals(this.text, tbTextContent.text) &&
-        super.equals(o);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, super.hashCode());
+    return Objects.hash(super.hashCode());
   }
 
   @Override
@@ -109,7 +77,6 @@ public class TbTextContent extends TbContent {
     StringBuilder sb = new StringBuilder();
     sb.append("class TbTextContent {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -160,11 +127,6 @@ public class TbTextContent extends TbContent {
     // add `contentType` to the URL query string
     if (getContentType() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%scontentType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getContentType()))));
-    }
-
-    // add `text` to the URL query string
-    if (getText() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%stext%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getText()))));
     }
 
     return joiner.toString();

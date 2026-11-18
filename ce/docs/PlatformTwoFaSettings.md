@@ -9,6 +9,7 @@ Settings value
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **useSystemTwoFactorAuthSettings** | **Boolean** |  | [optional] |
 | **providers** | **List\<TwoFaProviderConfig\>** |  | |
 | **minVerificationCodeSendPeriod** | **Integer** |  | |
 | **verificationCodeCheckRateLimit** | **String** |  | [optional] |

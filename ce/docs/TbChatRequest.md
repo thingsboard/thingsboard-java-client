@@ -23,7 +23,7 @@
 #### AiModelConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| provider | String |  |  |
+| provider | AiProvider | AI Provider |  |
 
 #### AmazonBedrockChatModelConfig  *(extends AiModelConfig, provider=`AMAZON_BEDROCK`)*
 | Name | Type | Description | Notes |
@@ -35,7 +35,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AnthropicChatModelConfig  *(extends AiModelConfig, provider=`ANTHROPIC`)*
 | Name | Type | Description | Notes |
@@ -48,7 +47,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AzureOpenAiChatModelConfig  *(extends AiModelConfig, provider=`AZURE_OPENAI`)*
 | Name | Type | Description | Notes |
@@ -62,7 +60,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GitHubModelsChatModelConfig  *(extends AiModelConfig, provider=`GITHUB_MODELS`)*
 | Name | Type | Description | Notes |
@@ -76,7 +73,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleAiGeminiChatModelConfig  *(extends AiModelConfig, provider=`GOOGLE_AI_GEMINI`)*
 | Name | Type | Description | Notes |
@@ -91,7 +87,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleVertexAiGeminiChatModelConfig  *(extends AiModelConfig, provider=`GOOGLE_VERTEX_AI_GEMINI`)*
 | Name | Type | Description | Notes |
@@ -106,7 +101,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### MistralAiChatModelConfig  *(extends AiModelConfig, provider=`MISTRAL_AI`)*
 | Name | Type | Description | Notes |
@@ -120,7 +114,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OllamaChatModelConfig  *(extends AiModelConfig, provider=`OLLAMA`)*
 | Name | Type | Description | Notes |
@@ -134,7 +127,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OpenAiChatModelConfig  *(extends AiModelConfig, provider=`OPENAI`)*
 | Name | Type | Description | Notes |
@@ -148,7 +140,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### TbContent
 | Name | Type | Description | Notes |
@@ -156,18 +147,16 @@
 | contentType | String |  |  |
 
 #### TbTextContent  *(extends TbContent, contentType=`TEXT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| text | String | The text content |  |
+*See TbContent for properties.*
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 #### OpenAiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | baseUrl | String |  | [optional] |
 | apiKey | String |  | [optional] |
-
-#### AiModelType (enum)
-`CHAT`
 
 #### AzureOpenAiProviderConfig
 | Name | Type | Description | Notes |
@@ -184,7 +173,7 @@
 #### GoogleVertexAiGeminiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| fileName | String |  |  |
+| fileName | String |  | [optional] |
 | projectId | String |  |  |
 | location | String |  |  |
 | serviceAccountKey | String |  |  |

@@ -12,6 +12,8 @@
 TbImageDeleteResult deleteImage(@Nonnull String type, @Nonnull String key, @Nullable Boolean force) // deleteImage
 File downloadImage(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadImage
 File downloadImagePreview(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadImagePreview
+File downloadLoginFavicon(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadLoginFavicon
+File downloadLoginLogo(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadLoginLogo
 File downloadPublicImage(@Nonnull String publicResourceKey, @Nullable String ifNoneMatch, @Nullable String acceptEncoding) // downloadPublicImage
 ResourceExportData exportImage(@Nonnull String type, @Nonnull String key) // exportImage
 TbResourceInfo getImageInfo(@Nonnull String type, @Nonnull String key) // getImageInfo
@@ -82,6 +84,56 @@ File downloadImagePreview(@Nonnull String type, @Nonnull String key, @Nullable S
 **GET** `/api/images/{type}/{key}/preview`
 
 downloadImagePreview
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **type** | **String** | Type of the image: tenant or system | [enum: tenant, system] |
+| **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
+| **ifNoneMatch** | **String** |  | [optional] |
+| **acceptEncoding** | **String** |  | [optional] |
+
+### Return type
+
+**File**
+
+
+## downloadLoginFavicon
+
+```
+File downloadLoginFavicon(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/noauth/whiteLabel/loginFavicon/{type}/{key}`
+
+downloadLoginFavicon
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **type** | **String** | Type of the image: tenant or system | [enum: tenant, system] |
+| **key** | **String** | Image resource key, for example thermostats_dashboard_background.jpeg | |
+| **ifNoneMatch** | **String** |  | [optional] |
+| **acceptEncoding** | **String** |  | [optional] |
+
+### Return type
+
+**File**
+
+
+## downloadLoginLogo
+
+```
+File downloadLoginLogo(@Nonnull String type, @Nonnull String key, @Nullable String ifNoneMatch, @Nullable String acceptEncoding)
+```
+
+**GET** `/api/noauth/whiteLabel/loginLogo/{type}/{key}`
+
+downloadLoginLogo
 
 
 ### Parameters

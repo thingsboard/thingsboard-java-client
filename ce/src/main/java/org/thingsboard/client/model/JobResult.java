@@ -35,7 +35,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.thingsboard.client.model.TaskResult;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -63,7 +67,9 @@ import org.thingsboard.client.ApiClient;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "jobType", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = CfReprocessingJobResult.class, name = "CF_REPROCESSING"),
   @JsonSubTypes.Type(value = DummyJobResult.class, name = "DUMMY"),
+  @JsonSubTypes.Type(value = ReportJobResult.class, name = "REPORT"),
 })
 
 public class JobResult {
@@ -80,8 +86,7 @@ public class JobResult {
   private Integer discardedCount;
 
   public static final String JSON_PROPERTY_TOTAL_COUNT = "totalCount";
-  @Nullable
-  private Integer totalCount;
+  private JsonNullable<Integer> totalCount = JsonNullable.<Integer>undefined();
 
   public static final String JSON_PROPERTY_RESULTS = "results";
   @Nullable
@@ -183,7 +188,7 @@ public class JobResult {
 
 
   public JobResult totalCount(@Nullable Integer totalCount) {
-    this.totalCount = totalCount;
+    this.totalCount = JsonNullable.<Integer>of(totalCount);
     return this;
   }
 
@@ -192,17 +197,25 @@ public class JobResult {
    * @return totalCount
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_TOTAL_COUNT, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
   public Integer getTotalCount() {
-    return totalCount;
+        return totalCount.orElse(null);
   }
 
-
   @JsonProperty(value = JSON_PROPERTY_TOTAL_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalCount(@Nullable Integer totalCount) {
+
+  public JsonNullable<Integer> getTotalCount_JsonNullable() {
+    return totalCount;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_TOTAL_COUNT)
+  public void setTotalCount_JsonNullable(JsonNullable<Integer> totalCount) {
     this.totalCount = totalCount;
+  }
+
+  public void setTotalCount(@Nullable Integer totalCount) {
+    this.totalCount = JsonNullable.<Integer>of(totalCount);
   }
 
 
@@ -373,7 +386,7 @@ public class JobResult {
     return Objects.equals(this.successfulCount, jobResult.successfulCount) &&
         Objects.equals(this.failedCount, jobResult.failedCount) &&
         Objects.equals(this.discardedCount, jobResult.discardedCount) &&
-        Objects.equals(this.totalCount, jobResult.totalCount) &&
+        equalsNullable(this.totalCount, jobResult.totalCount) &&
         Objects.equals(this.results, jobResult.results) &&
         Objects.equals(this.generalError, jobResult.generalError) &&
         Objects.equals(this.startTs, jobResult.startTs) &&
@@ -382,9 +395,20 @@ public class JobResult {
         Objects.equals(this.jobType, jobResult.jobType);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(successfulCount, failedCount, discardedCount, totalCount, results, generalError, startTs, finishTs, cancellationTs, jobType);
+    return Objects.hash(successfulCount, failedCount, discardedCount, hashCodeNullable(totalCount), results, generalError, startTs, finishTs, cancellationTs, jobType);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -508,7 +532,9 @@ public class JobResult {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
+  mappings.put("CF_REPROCESSING", CfReprocessingJobResult.class);
   mappings.put("DUMMY", DummyJobResult.class);
+  mappings.put("REPORT", ReportJobResult.class);
   mappings.put("JobResult", JobResult.class);
   JSON.registerDiscriminator(JobResult.class, "jobType", mappings);
 }

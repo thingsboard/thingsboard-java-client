@@ -46,6 +46,7 @@ import org.thingsboard.client.ApiClient;
   AiModel.JSON_PROPERTY_TENANT_ID,
   AiModel.JSON_PROPERTY_VERSION,
   AiModel.JSON_PROPERTY_NAME,
+  AiModel.JSON_PROPERTY_CUSTOMER_ACCESS_ENABLED,
   AiModel.JSON_PROPERTY_CONFIGURATION
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
@@ -69,6 +70,10 @@ public class AiModel {
   public static final String JSON_PROPERTY_NAME = "name";
   @Nonnull
   private String name;
+
+  public static final String JSON_PROPERTY_CUSTOMER_ACCESS_ENABLED = "customerAccessEnabled";
+  @Nullable
+  private Boolean customerAccessEnabled = false;
 
   public static final String JSON_PROPERTY_CONFIGURATION = "configuration";
   @Nullable
@@ -179,6 +184,30 @@ public class AiModel {
   }
 
 
+  public AiModel customerAccessEnabled(@Nullable Boolean customerAccessEnabled) {
+    this.customerAccessEnabled = customerAccessEnabled;
+    return this;
+  }
+
+  /**
+   * Whether customer users with the &#39;INVOKE&#39; permission for AI models can send chat requests to the model, such as users with the default &#39;Customer Administrator&#39; role, which grants all operations. Tenant administrators with the &#39;INVOKE&#39; permission can use the model regardless of this flag
+   * @return customerAccessEnabled
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ACCESS_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getCustomerAccessEnabled() {
+    return customerAccessEnabled;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ACCESS_ENABLED, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerAccessEnabled(@Nullable Boolean customerAccessEnabled) {
+    this.customerAccessEnabled = customerAccessEnabled;
+  }
+
+
   public AiModel _configuration(@Nullable AiModelConfig _configuration) {
     this._configuration = _configuration;
     return this;
@@ -220,12 +249,13 @@ public class AiModel {
         Objects.equals(this.tenantId, aiModel.tenantId) &&
         Objects.equals(this.version, aiModel.version) &&
         Objects.equals(this.name, aiModel.name) &&
+        Objects.equals(this.customerAccessEnabled, aiModel.customerAccessEnabled) &&
         Objects.equals(this._configuration, aiModel._configuration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, version, name, _configuration);
+    return Objects.hash(id, createdTime, tenantId, version, name, customerAccessEnabled, _configuration);
   }
 
   @Override
@@ -237,6 +267,7 @@ public class AiModel {
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    customerAccessEnabled: ").append(toIndentedString(customerAccessEnabled)).append("\n");
     sb.append("    _configuration: ").append(toIndentedString(_configuration)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -308,6 +339,11 @@ public class AiModel {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    }
+
+    // add `customerAccessEnabled` to the URL query string
+    if (getCustomerAccessEnabled() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerAccessEnabled%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerAccessEnabled()))));
     }
 
     // add `configuration` to the URL query string

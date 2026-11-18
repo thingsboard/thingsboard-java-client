@@ -29,9 +29,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.EntityInfo;
 import org.thingsboard.client.model.EntityViewId;
 import org.thingsboard.client.model.TelemetryEntityView;
 import org.thingsboard.client.model.TenantId;
@@ -55,8 +58,9 @@ import org.thingsboard.client.ApiClient;
   EntityViewInfo.JSON_PROPERTY_START_TIME_MS,
   EntityViewInfo.JSON_PROPERTY_END_TIME_MS,
   EntityViewInfo.JSON_PROPERTY_VERSION,
-  EntityViewInfo.JSON_PROPERTY_CUSTOMER_TITLE,
-  EntityViewInfo.JSON_PROPERTY_CUSTOMER_IS_PUBLIC
+  EntityViewInfo.JSON_PROPERTY_OWNER_NAME,
+  EntityViewInfo.JSON_PROPERTY_GROUPS,
+  EntityViewInfo.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class EntityViewInfo {
@@ -108,13 +112,17 @@ public class EntityViewInfo {
   @Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_CUSTOMER_TITLE = "customerTitle";
+  public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
   @Nullable
-  private String customerTitle;
+  private String ownerName;
 
-  public static final String JSON_PROPERTY_CUSTOMER_IS_PUBLIC = "customerIsPublic";
+  public static final String JSON_PROPERTY_GROUPS = "groups";
   @Nullable
-  private Boolean customerIsPublic;
+  private List<EntityInfo> groups = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
 
   public EntityViewInfo() { 
   }
@@ -123,16 +131,14 @@ public class EntityViewInfo {
   public EntityViewInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_TITLE) String customerTitle, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_IS_PUBLIC) Boolean customerIsPublic
+    @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
-    this.customerTitle = customerTitle;
-    this.customerIsPublic = customerIsPublic;
+    this.ownerName = ownerName;
+    this.ownerId = ownerId;
   }
 
   public EntityViewInfo id(@Nullable EntityViewId id) {
@@ -235,8 +241,13 @@ public class EntityViewInfo {
 
 
 
+  public EntityViewInfo customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignEntityViewToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Entity View.
    * @return customerId
    */
   @Nullable
@@ -247,6 +258,11 @@ public class EntityViewInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
   public EntityViewInfo name(@Nonnull String name) {
@@ -394,28 +410,60 @@ public class EntityViewInfo {
 
 
   /**
-   * Title of the Customer that owns the entity view.
-   * @return customerTitle
+   * Owner name
+   * @return ownerName
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCustomerTitle() {
-    return customerTitle;
+  public String getOwnerName() {
+    return ownerName;
   }
 
 
 
 
+  public EntityViewInfo groups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+    return this;
+  }
+
+  public EntityViewInfo addGroupsItem(EntityInfo groupsItem) {
+    if (this.groups == null) {
+      this.groups = new ArrayList<>();
+    }
+    this.groups.add(groupsItem);
+    return this;
+  }
+
   /**
-   * Indicates special &#39;Public&#39; Customer that is auto-generated to use the entity view on public dashboards.
-   * @return customerIsPublic
+   * Groups
+   * @return groups
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_IS_PUBLIC, required = false)
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getCustomerIsPublic() {
-    return customerIsPublic;
+  public List<EntityInfo> getGroups() {
+    return groups;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setGroups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+  }
+
+
+  /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
   }
 
 
@@ -445,13 +493,14 @@ public class EntityViewInfo {
         Objects.equals(this.startTimeMs, entityViewInfo.startTimeMs) &&
         Objects.equals(this.endTimeMs, entityViewInfo.endTimeMs) &&
         Objects.equals(this.version, entityViewInfo.version) &&
-        Objects.equals(this.customerTitle, entityViewInfo.customerTitle) &&
-        Objects.equals(this.customerIsPublic, entityViewInfo.customerIsPublic);
+        Objects.equals(this.ownerName, entityViewInfo.ownerName) &&
+        Objects.equals(this.groups, entityViewInfo.groups) &&
+        Objects.equals(this.ownerId, entityViewInfo.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version, customerTitle, customerIsPublic);
+    return Objects.hash(id, createdTime, additionalInfo, entityId, tenantId, customerId, name, type, keys, startTimeMs, endTimeMs, version, ownerName, groups, ownerId);
   }
 
   @Override
@@ -470,8 +519,9 @@ public class EntityViewInfo {
     sb.append("    startTimeMs: ").append(toIndentedString(startTimeMs)).append("\n");
     sb.append("    endTimeMs: ").append(toIndentedString(endTimeMs)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    customerTitle: ").append(toIndentedString(customerTitle)).append("\n");
-    sb.append("    customerIsPublic: ").append(toIndentedString(customerIsPublic)).append("\n");
+    sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -579,14 +629,24 @@ public class EntityViewInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `customerTitle` to the URL query string
-    if (getCustomerTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitle()))));
+    // add `ownerName` to the URL query string
+    if (getOwnerName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sownerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOwnerName()))));
     }
 
-    // add `customerIsPublic` to the URL query string
-    if (getCustomerIsPublic() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerIsPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerIsPublic()))));
+    // add `groups` to the URL query string
+    if (getGroups() != null) {
+      for (int i = 0; i < getGroups().size(); i++) {
+        if (getGroups().get(i) != null) {
+          joiner.add(getGroups().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sgroups%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

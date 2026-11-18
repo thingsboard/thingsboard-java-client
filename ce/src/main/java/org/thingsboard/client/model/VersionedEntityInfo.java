@@ -38,13 +38,18 @@ import org.thingsboard.client.ApiClient;
  * VersionedEntityInfo
  */
 @JsonPropertyOrder({
-  VersionedEntityInfo.JSON_PROPERTY_EXTERNAL_ID
+  VersionedEntityInfo.JSON_PROPERTY_EXTERNAL_ID,
+  VersionedEntityInfo.JSON_PROPERTY_PATH
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class VersionedEntityInfo {
   public static final String JSON_PROPERTY_EXTERNAL_ID = "externalId";
   @Nullable
   private EntityId externalId;
+
+  public static final String JSON_PROPERTY_PATH = "path";
+  @Nullable
+  private String path;
 
   public VersionedEntityInfo() { 
   }
@@ -73,6 +78,30 @@ public class VersionedEntityInfo {
   }
 
 
+  public VersionedEntityInfo path(@Nullable String path) {
+    this.path = path;
+    return this;
+  }
+
+  /**
+   * Get path
+   * @return path
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PATH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getPath() {
+    return path;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PATH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPath(@Nullable String path) {
+    this.path = path;
+  }
+
+
   /**
    * Return true if this VersionedEntityInfo object is equal to o.
    */
@@ -85,12 +114,13 @@ public class VersionedEntityInfo {
       return false;
     }
     VersionedEntityInfo versionedEntityInfo = (VersionedEntityInfo) o;
-    return Objects.equals(this.externalId, versionedEntityInfo.externalId);
+    return Objects.equals(this.externalId, versionedEntityInfo.externalId) &&
+        Objects.equals(this.path, versionedEntityInfo.path);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(externalId);
+    return Objects.hash(externalId, path);
   }
 
   @Override
@@ -98,6 +128,7 @@ public class VersionedEntityInfo {
     StringBuilder sb = new StringBuilder();
     sb.append("class VersionedEntityInfo {\n");
     sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
+    sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,6 +179,11 @@ public class VersionedEntityInfo {
     // add `externalId` to the URL query string
     if (getExternalId() != null) {
       joiner.add(getExternalId().toUrlQueryString(prefix + "externalId" + suffix));
+    }
+
+    // add `path` to the URL query string
+    if (getPath() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spath%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPath()))));
     }
 
     return joiner.toString();

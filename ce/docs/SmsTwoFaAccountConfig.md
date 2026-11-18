@@ -9,7 +9,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **phoneNumber** | **String** |  | |
+| **phoneNumber** | **String** |  | [optional] |
 
 
 

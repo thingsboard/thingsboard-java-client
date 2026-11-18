@@ -167,6 +167,7 @@ public class GeofencingCalculatedFieldConfiguration extends CalculatedFieldConfi
 
   /**
    * Get scheduledUpdateInterval
+   * minimum: 0
    * @return scheduledUpdateInterval
    */
   @Nullable

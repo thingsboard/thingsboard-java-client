@@ -32,6 +32,10 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum JobType {
   
+  CF_REPROCESSING("CF_REPROCESSING"),
+  
+  REPORT("REPORT"),
+  
   DUMMY("DUMMY");
 
   private String value;

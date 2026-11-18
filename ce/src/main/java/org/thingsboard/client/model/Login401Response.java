@@ -28,8 +28,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.SubscriptionEntry;
+import org.thingsboard.client.model.SubscriptionErrorCode;
 import org.thingsboard.client.model.ThingsboardCredentialsExpiredResponse;
-import org.thingsboard.client.model.ThingsboardErrorCode;
 import org.thingsboard.client.model.ThingsboardErrorResponse;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 

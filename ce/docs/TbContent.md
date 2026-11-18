@@ -14,9 +14,7 @@
 ## Subtypes
 
 #### TbTextContent  *(contentType=`TEXT`)*
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| text | String | The text content |  |
+*(no additional properties)*
 
 ---
 

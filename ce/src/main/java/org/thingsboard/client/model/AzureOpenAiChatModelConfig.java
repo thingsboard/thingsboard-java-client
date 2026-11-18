@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AiModelConfig;
-import org.thingsboard.client.model.AiModelType;
+import org.thingsboard.client.model.AiProvider;
 import org.thingsboard.client.model.AzureOpenAiProviderConfig;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -53,8 +53,7 @@ import org.thingsboard.client.ApiClient;
   AzureOpenAiChatModelConfig.JSON_PROPERTY_PRESENCE_PENALTY,
   AzureOpenAiChatModelConfig.JSON_PROPERTY_MAX_OUTPUT_TOKENS,
   AzureOpenAiChatModelConfig.JSON_PROPERTY_TIMEOUT_SECONDS,
-  AzureOpenAiChatModelConfig.JSON_PROPERTY_MAX_RETRIES,
-  AzureOpenAiChatModelConfig.JSON_PROPERTY_MODEL_TYPE
+  AzureOpenAiChatModelConfig.JSON_PROPERTY_MAX_RETRIES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -100,19 +99,7 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
   @Nullable
   private Integer maxRetries;
 
-  public static final String JSON_PROPERTY_MODEL_TYPE = "modelType";
-  @Nullable
-  private AiModelType modelType;
-
   public AzureOpenAiChatModelConfig() { 
-  }
-
-  @JsonCreator
-  public AzureOpenAiChatModelConfig(
-    @JsonProperty(JSON_PROPERTY_MODEL_TYPE) AiModelType modelType
-  ) {
-  this();
-    this.modelType = modelType;
   }
 
   public AzureOpenAiChatModelConfig providerConfig(@Nonnull AzureOpenAiProviderConfig providerConfig) {
@@ -170,6 +157,7 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
 
   /**
    * Get temperature
+   * minimum: 0
    * @return temperature
    */
   @Nullable
@@ -194,6 +182,7 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
 
   /**
    * Get topP
+   * minimum: 0
    * maximum: 1
    * @return topP
    */
@@ -291,6 +280,7 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
 
   /**
    * Get timeoutSeconds
+   * minimum: 0
    * @return timeoutSeconds
    */
   @Nullable
@@ -315,6 +305,7 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
 
   /**
    * Get maxRetries
+   * minimum: 0
    * @return maxRetries
    */
   @Nullable
@@ -330,20 +321,6 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
   public void setMaxRetries(@Nullable Integer maxRetries) {
     this.maxRetries = maxRetries;
   }
-
-
-  /**
-   * Get modelType
-   * @return modelType
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_MODEL_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AiModelType getModelType() {
-    return modelType;
-  }
-
-
 
 
   /**
@@ -367,13 +344,12 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
         Objects.equals(this.maxOutputTokens, azureOpenAiChatModelConfig.maxOutputTokens) &&
         Objects.equals(this.timeoutSeconds, azureOpenAiChatModelConfig.timeoutSeconds) &&
         Objects.equals(this.maxRetries, azureOpenAiChatModelConfig.maxRetries) &&
-        Objects.equals(this.modelType, azureOpenAiChatModelConfig.modelType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(providerConfig, modelId, temperature, topP, frequencyPenalty, presencePenalty, maxOutputTokens, timeoutSeconds, maxRetries, modelType, super.hashCode());
+    return Objects.hash(providerConfig, modelId, temperature, topP, frequencyPenalty, presencePenalty, maxOutputTokens, timeoutSeconds, maxRetries, super.hashCode());
   }
 
   @Override
@@ -390,7 +366,6 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
     sb.append("    maxOutputTokens: ").append(toIndentedString(maxOutputTokens)).append("\n");
     sb.append("    timeoutSeconds: ").append(toIndentedString(timeoutSeconds)).append("\n");
     sb.append("    maxRetries: ").append(toIndentedString(maxRetries)).append("\n");
-    sb.append("    modelType: ").append(toIndentedString(modelType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -486,11 +461,6 @@ public class AzureOpenAiChatModelConfig extends AiModelConfig {
     // add `maxRetries` to the URL query string
     if (getMaxRetries() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smaxRetries%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxRetries()))));
-    }
-
-    // add `modelType` to the URL query string
-    if (getModelType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smodelType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getModelType()))));
     }
 
     return joiner.toString();

@@ -32,6 +32,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.thingsboard.client.model.CustomerId;
+import org.thingsboard.client.model.EntityId;
 import org.thingsboard.client.model.OAuth2ClientId;
 import org.thingsboard.client.model.OAuth2MapperConfig;
 import org.thingsboard.client.model.PlatformType;
@@ -48,6 +50,7 @@ import org.thingsboard.client.ApiClient;
   OAuth2Client.JSON_PROPERTY_CREATED_TIME,
   OAuth2Client.JSON_PROPERTY_ADDITIONAL_INFO,
   OAuth2Client.JSON_PROPERTY_TENANT_ID,
+  OAuth2Client.JSON_PROPERTY_CUSTOMER_ID,
   OAuth2Client.JSON_PROPERTY_TITLE,
   OAuth2Client.JSON_PROPERTY_MAPPER_CONFIG,
   OAuth2Client.JSON_PROPERTY_CLIENT_ID,
@@ -62,7 +65,8 @@ import org.thingsboard.client.ApiClient;
   OAuth2Client.JSON_PROPERTY_LOGIN_BUTTON_LABEL,
   OAuth2Client.JSON_PROPERTY_LOGIN_BUTTON_ICON,
   OAuth2Client.JSON_PROPERTY_PLATFORMS,
-  OAuth2Client.JSON_PROPERTY_NAME
+  OAuth2Client.JSON_PROPERTY_NAME,
+  OAuth2Client.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class OAuth2Client {
@@ -81,6 +85,10 @@ public class OAuth2Client {
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
   private TenantId tenantId;
+
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
   @Nonnull
@@ -142,17 +150,23 @@ public class OAuth2Client {
   @Nullable
   private String name;
 
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
+
   public OAuth2Client() { 
   }
 
   @JsonCreator
   public OAuth2Client(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
-    @JsonProperty(JSON_PROPERTY_NAME) String name
+    @JsonProperty(JSON_PROPERTY_NAME) String name, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.name = name;
+    this.ownerId = ownerId;
   }
 
   public OAuth2Client id(@Nullable OAuth2ClientId id) {
@@ -238,6 +252,30 @@ public class OAuth2Client {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTenantId(@Nullable TenantId tenantId) {
     this.tenantId = tenantId;
+  }
+
+
+  public OAuth2Client customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * JSON object with Customer Id
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
   }
 
 
@@ -608,6 +646,20 @@ public class OAuth2Client {
 
 
   /**
+   * Get ownerId
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
+  }
+
+
+
+
+  /**
    * Return true if this OAuth2Client object is equal to o.
    */
   @Override
@@ -623,6 +675,7 @@ public class OAuth2Client {
         Objects.equals(this.createdTime, oauth2Client.createdTime) &&
         Objects.equals(this.additionalInfo, oauth2Client.additionalInfo) &&
         Objects.equals(this.tenantId, oauth2Client.tenantId) &&
+        Objects.equals(this.customerId, oauth2Client.customerId) &&
         Objects.equals(this.title, oauth2Client.title) &&
         Objects.equals(this.mapperConfig, oauth2Client.mapperConfig) &&
         Objects.equals(this.clientId, oauth2Client.clientId) &&
@@ -637,12 +690,13 @@ public class OAuth2Client {
         Objects.equals(this.loginButtonLabel, oauth2Client.loginButtonLabel) &&
         Objects.equals(this.loginButtonIcon, oauth2Client.loginButtonIcon) &&
         Objects.equals(this.platforms, oauth2Client.platforms) &&
-        Objects.equals(this.name, oauth2Client.name);
+        Objects.equals(this.name, oauth2Client.name) &&
+        Objects.equals(this.ownerId, oauth2Client.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, title, mapperConfig, clientId, clientSecret, authorizationUri, accessTokenUri, scope, userInfoUri, userNameAttributeName, jwkSetUri, clientAuthenticationMethod, loginButtonLabel, loginButtonIcon, platforms, name);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, title, mapperConfig, clientId, clientSecret, authorizationUri, accessTokenUri, scope, userInfoUri, userNameAttributeName, jwkSetUri, clientAuthenticationMethod, loginButtonLabel, loginButtonIcon, platforms, name, ownerId);
   }
 
   @Override
@@ -653,6 +707,7 @@ public class OAuth2Client {
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    additionalInfo: ").append(toIndentedString(additionalInfo)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    mapperConfig: ").append(toIndentedString(mapperConfig)).append("\n");
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
@@ -668,6 +723,7 @@ public class OAuth2Client {
     sb.append("    loginButtonIcon: ").append(toIndentedString(loginButtonIcon)).append("\n");
     sb.append("    platforms: ").append(toIndentedString(platforms)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -733,6 +789,11 @@ public class OAuth2Client {
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
+    }
+
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
     }
 
     // add `title` to the URL query string
@@ -818,6 +879,11 @@ public class OAuth2Client {
     // add `name` to the URL query string
     if (getName() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getName()))));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

@@ -40,6 +40,8 @@ public enum ComponentType {
   
   ACTION("ACTION"),
   
+  ANALYTICS("ANALYTICS"),
+  
   EXTERNAL("EXTERNAL"),
   
   FLOW("FLOW");

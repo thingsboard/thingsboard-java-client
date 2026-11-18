@@ -11,9 +11,11 @@
 ```
 Boolean deleteAiModelById(@Nonnull UUID modelUuid) // Delete AI model by ID (deleteAiModelById)
 AiModel getAiModelById(@Nonnull UUID modelUuid) // Get AI model by ID (getAiModelById)
+PageDataAiModelInfo getAiModelInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get AI model infos (getAiModelInfos)
 PageDataAiModel getAiModels(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get AI models (getAiModels)
 AiModel saveAiModel(@Nonnull AiModel aiModel) // Create or update AI model (saveAiModel)
 TbChatResponse sendChatRequest(@Nonnull TbChatRequest tbChatRequest) // Send request to AI chat model (sendChatRequest)
+TbChatResponse sendChatRequestToAiModel(@Nonnull UUID modelUuid, @Nonnull TbChatPrompt tbChatPrompt) // Send request to a saved AI chat model (sendChatRequestToAiModel)
 ```
 
 
@@ -63,6 +65,34 @@ Fetches an AI model record by its `id`.  Available for users with 'TENANT_ADMIN'
 ### Return type
 
 **AiModel**
+
+
+## getAiModelInfos
+
+```
+PageDataAiModelInfo getAiModelInfos(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+```
+
+**GET** `/api/ai/model/infos`
+
+Get AI model infos (getAiModelInfos)
+
+Returns a page of AI model infos: AI models with the provider credentials removed, so 'configuration.providerConfig' is always null. You can specify parameters to filter the results. The result is wrapped with PageData object that allows you to iterate over result set using pagination. See response schema for more details.   Available for users with 'TENANT_ADMIN' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
+| **textSearch** | **String** | The case insensitive 'substring' filter based on the AI model name, provider and model ID. | [optional] |
+| **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, provider, modelId] |
+| **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
+
+### Return type
+
+**PageDataAiModelInfo**
 
 
 ## getAiModels
@@ -135,6 +165,31 @@ Submits a single prompt - made up of an optional system message and a required u
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **tbChatRequest** | **TbChatRequest** |  | |
+
+### Return type
+
+**TbChatResponse**
+
+
+## sendChatRequestToAiModel
+
+```
+TbChatResponse sendChatRequestToAiModel(@Nonnull UUID modelUuid, @Nonnull TbChatPrompt tbChatPrompt)
+```
+
+**POST** `/api/ai/model/{modelUuid}/chat`
+
+Send request to a saved AI chat model (sendChatRequestToAiModel)
+
+Submits a single prompt - made up of an optional system message and a required user message - to the AI chat model with the specified `id`, using its saved configuration, and returns either the generated answer or an error envelope. The user must have the 'INVOKE' permission for AI models, and customer users additionally require the model to have customer access enabled. Roles that grant all operations, such as the default 'Customer Administrator' role, include 'INVOKE', so enabling customer access makes the model callable by every customer user with such a role.  Available for users with 'TENANT_ADMIN' or 'CUSTOMER_USER' authority.
+
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **modelUuid** | **UUID** | ID of the AI model record | |
+| **tbChatPrompt** | **TbChatPrompt** |  | |
 
 ### Return type
 

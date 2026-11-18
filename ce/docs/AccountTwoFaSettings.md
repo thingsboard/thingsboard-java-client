@@ -24,7 +24,7 @@ Account Two-Factor Authentication Settings
 #### BackupCodeTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`BACKUP_CODE`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| codes | Set<String> |  |  |
+| codes | Set<String> |  | [optional] |
 | codesLeft | Integer |  | [optional] |
 
 #### EmailTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`EMAIL`)*
@@ -35,7 +35,7 @@ Account Two-Factor Authentication Settings
 #### SmsTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`SMS`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| phoneNumber | String |  |  |
+| phoneNumber | String |  | [optional] |
 
 #### TotpTwoFaAccountConfig  *(extends TwoFaAccountConfig, providerType=`TOTP`)*
 | Name | Type | Description | Notes |
