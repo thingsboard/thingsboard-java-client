@@ -27,7 +27,7 @@
 #### ReportComponent
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| subType | ReportComponentSubType |  |  |
+| subType | ReportComponentSubType |  | [optional] |
 | type | ReportComponentType |  |  |
 
 #### Insets
@@ -42,7 +42,7 @@
 `LONG` | `SHORT`
 
 #### BorderType (enum)
-`SOLID` | `DASHED` | `DOTTED`
+`SOLID` | `DASHED` | `DOTTED` | `DOUBLE`
 
 #### ReportComponentSubType (enum)
 `DOUGHNUT_CHART` | `HORIZONTAL_DOUGHNUT_CHART` | `POINT_CHART` | `BAR_CHART` | `PIE_CHART` | `LINE_CHART` | `LATEST_BAR_CHART` | `RANGE_CHART` | `BAR_CHART_WITH_LABELS` | `STATE_CHART` | … (11 values total)

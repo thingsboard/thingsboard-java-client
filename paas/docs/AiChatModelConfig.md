@@ -7,7 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-| **modelType** | **AiModelType** |  | [optional] |
+| **modelType** | **AiModelType** |  | [optional] [readonly] |
+| **provider** | **AiProvider** | AI Provider | |
 
 
 
@@ -15,6 +16,9 @@
 
 #### AiModelType (enum)
 `CHAT`
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 ---
 

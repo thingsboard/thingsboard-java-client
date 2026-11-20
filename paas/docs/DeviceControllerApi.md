@@ -10,7 +10,7 @@
 
 ```
 Device assignDeviceToTenant(@Nonnull String tenantId, @Nonnull String deviceId) // Assign device to tenant (assignDeviceToTenant)
-String claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest) // Claim device (claimDevice)
+ClaimResult claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest) // Claim device (claimDevice)
 Long countByDeviceGroupAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String otaPackageId, @Nonnull String entityGroupId) // Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
 Long countByDeviceProfileAndEmptyOtaPackage(@Nonnull String otaPackageType, @Nonnull String deviceProfileId) // Count devices by device profile  (countByDeviceProfileAndEmptyOtaPackage)
 void deleteDevice(@Nonnull String deviceId) // Delete device (deleteDevice)
@@ -22,11 +22,11 @@ Device getDeviceById(@Nonnull String deviceId) // Get Device (getDeviceById)
 DeviceCredentials getDeviceCredentialsByDeviceId(@Nonnull String deviceId) // Get Device Credentials (getDeviceCredentialsByDeviceId)
 DeviceInfo getDeviceInfoById(@Nonnull String deviceId) // Get Device (getDeviceInfoById)
 List<EntitySubtype> getDeviceTypes() // Get Device Types (getDeviceTypes)
-PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get devices by Entity Group Id (getDevicesByEntityGroupId)
+PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get devices by Entity Group Id (getDevicesByEntityGroupId)
 List<Device> getDevicesByIds(@Nonnull List<String> deviceIds) // Get Devices By Ids (getDevicesByIds)
 Device getTenantDeviceByName(@Nonnull String deviceName) // Get Tenant Device (getTenantDevice)
 PageDataDevice getTenantDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Tenant Devices (getTenantDevices)
-PageDataDevice getUserDevices(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Devices (getUserDevices)
+PageDataDevice getUserDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder) // Get Devices (getUserDevices)
 BulkImportResultDevice processDevicesBulkImport(@Nonnull BulkImportRequest bulkImportRequest) // Import the bulk of devices (processDevicesBulkImport)
 String reClaimDevice(@Nonnull String deviceName) // Reclaim device (reClaimDevice)
 Device saveDevice(@Nonnull Device device, @Nullable String accessToken, @Nullable String entityGroupId, @Nullable List<String> entityGroupIds, @Nullable NameConflictPolicy nameConflictPolicy, @Nullable String uniquifySeparator, @Nullable UniquifyStrategy uniquifyStrategy) // Create Or Update Device (saveDevice)
@@ -63,7 +63,7 @@ Creates assignment of the device to tenant. Thereafter tenant will be able to re
 ## claimDevice
 
 ```
-String claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest)
+ClaimResult claimDevice(@Nonnull String deviceName, @Nullable String subCustomerId, @Nullable ClaimRequest claimRequest)
 ```
 
 **POST** `/api/customer/device/{deviceName}/claim`
@@ -83,7 +83,7 @@ Claiming makes it possible to assign a device to the specific customer using dev
 
 ### Return type
 
-**String**
+**ClaimResult**
 
 
 ## countByDeviceGroupAndEmptyOtaPackage
@@ -370,7 +370,7 @@ Deprecated. See 'getDeviceProfileNames' API from Device Profile Controller inste
 ## getDevicesByEntityGroupId
 
 ```
-PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull String pageSize, @Nonnull String page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataDevice getDevicesByEntityGroupId(@Nonnull String entityGroupId, @Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/entityGroup/{entityGroupId}/devices`
@@ -385,8 +385,8 @@ Returns a page of Device objects that belongs to specified Entity Group Id. You 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **entityGroupId** | **String** | A string value representing the Entity Group Id. For example, '784f394c-42b6-435a-983c-b7beff2784f9' | |
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the device name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |
 | **sortOrder** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
@@ -476,7 +476,7 @@ Returns a page of devices owned by tenant. You can specify parameters to filter 
 ## getUserDevices
 
 ```
-PageDataDevice getUserDevices(@Nonnull String pageSize, @Nonnull String page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
+PageDataDevice getUserDevices(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable String type, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder)
 ```
 
 **GET** `/api/user/devices`
@@ -490,8 +490,8 @@ Returns a page of devices that are available for the current user. You can speci
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pageSize** | **String** | Maximum amount of entities in a one page | |
-| **page** | **String** | Sequence number of page starting from 0 | |
+| **pageSize** | **Integer** | Maximum amount of entities in a one page | |
+| **page** | **Integer** | Sequence number of page starting from 0 | |
 | **type** | **String** | Device type as the name of the device profile | [optional] |
 | **textSearch** | **String** | The case insensitive 'substring' filter based on the device name. | [optional] |
 | **sortProperty** | **String** | Property of entity to sort by | [optional] [enum: createdTime, name, deviceProfileName, label, customerTitle] |

@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -117,7 +116,7 @@ public class ErrorComponent extends ReportComponent {
 
 
   @Override
-  public ErrorComponent subType(@Nonnull ReportComponentSubType subType) {
+  public ErrorComponent subType(@Nullable ReportComponentSubType subType) {
     this.setSubType(subType);
     return this;
   }

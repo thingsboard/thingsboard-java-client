@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -450,7 +449,7 @@ public class HeadingComponent extends ReportComponent {
 
 
   @Override
-  public HeadingComponent subType(@Nonnull ReportComponentSubType subType) {
+  public HeadingComponent subType(@Nullable ReportComponentSubType subType) {
     this.setSubType(subType);
     return this;
   }

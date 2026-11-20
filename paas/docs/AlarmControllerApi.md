@@ -10,7 +10,7 @@
 
 ```
 AlarmInfo ackAlarm(@Nonnull String alarmId) // Acknowledge Alarm (ackAlarm)
-Alarm assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId) // Assign/Reassign Alarm (assignAlarm)
+AlarmInfo assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId) // Assign/Reassign Alarm (assignAlarm)
 AlarmInfo clearAlarm(@Nonnull String alarmId) // Clear Alarm (clearAlarm)
 Boolean deleteAlarm(@Nonnull String alarmId) // Delete Alarm (deleteAlarm)
 Alarm getAlarmById(@Nonnull String alarmId) // Get Alarm (getAlarmById)
@@ -22,7 +22,7 @@ PageDataAlarmInfo getAllAlarms(@Nonnull Integer pageSize, @Nonnull Integer page,
 PageDataAlarmInfo getAllAlarmsV2(@Nonnull Integer pageSize, @Nonnull Integer page, @Nullable List<String> statusList, @Nullable List<String> severityList, @Nullable List<String> typeList, @Nullable String assigneeId, @Nullable String textSearch, @Nullable String sortProperty, @Nullable String sortOrder, @Nullable Long startTime, @Nullable Long endTime) // Get All Alarms (getAllAlarmsV2)
 AlarmSeverity getHighestAlarmSeverity(@Nonnull String entityType, @Nonnull String entityId, @Nullable String searchStatus, @Nullable String status, @Nullable String assigneeId) // Get Highest Alarm Severity (getHighestAlarmSeverity)
 Alarm saveAlarm(@Nonnull Alarm alarm) // Create or Update Alarm (saveAlarm)
-Alarm unassignAlarm(@Nonnull String alarmId) // Unassign Alarm (unassignAlarm)
+AlarmInfo unassignAlarm(@Nonnull String alarmId) // Unassign Alarm (unassignAlarm)
 ```
 
 
@@ -53,7 +53,7 @@ Acknowledge the Alarm. Once acknowledged, the 'ack_ts' field will be set to curr
 ## assignAlarm
 
 ```
-Alarm assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId)
+AlarmInfo assignAlarm(@Nonnull String alarmId, @Nonnull String assigneeId)
 ```
 
 **POST** `/api/alarm/{alarmId}/assign/{assigneeId}`
@@ -72,7 +72,7 @@ Assign the Alarm. Once assigned, the 'assign_ts' field will be set to current ti
 
 ### Return type
 
-**Alarm**
+**AlarmInfo**
 
 
 ## clearAlarm
@@ -393,7 +393,7 @@ Creates or Updates the Alarm. When creating alarm, platform generates Alarm Id a
 ## unassignAlarm
 
 ```
-Alarm unassignAlarm(@Nonnull String alarmId)
+AlarmInfo unassignAlarm(@Nonnull String alarmId)
 ```
 
 **DELETE** `/api/alarm/{alarmId}/assign`
@@ -411,5 +411,5 @@ Unassign the Alarm. Once unassigned, the 'assign_ts' field will be set to curren
 
 ### Return type
 
-**Alarm**
+**AlarmInfo**
 

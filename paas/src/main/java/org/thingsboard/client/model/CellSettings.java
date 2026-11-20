@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.BorderType;
 import org.thingsboard.client.model.Font;
 import org.thingsboard.client.model.TextAlignment;
 import org.thingsboard.client.model.VerticalAlignment;
@@ -44,7 +45,10 @@ import org.thingsboard.client.ApiClient;
   CellSettings.JSON_PROPERTY_COLOR,
   CellSettings.JSON_PROPERTY_BACKGROUND_COLOR,
   CellSettings.JSON_PROPERTY_TEXT_ALIGNMENT,
-  CellSettings.JSON_PROPERTY_VERTICAL_ALIGNMENT
+  CellSettings.JSON_PROPERTY_VERTICAL_ALIGNMENT,
+  CellSettings.JSON_PROPERTY_BORDER_TYPE,
+  CellSettings.JSON_PROPERTY_BORDER_WIDTH,
+  CellSettings.JSON_PROPERTY_BORDER_COLOR
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class CellSettings {
@@ -67,6 +71,18 @@ public class CellSettings {
   public static final String JSON_PROPERTY_VERTICAL_ALIGNMENT = "verticalAlignment";
   @Nullable
   private VerticalAlignment verticalAlignment;
+
+  public static final String JSON_PROPERTY_BORDER_TYPE = "borderType";
+  @Nullable
+  private BorderType borderType;
+
+  public static final String JSON_PROPERTY_BORDER_WIDTH = "borderWidth";
+  @Nullable
+  private Integer borderWidth;
+
+  public static final String JSON_PROPERTY_BORDER_COLOR = "borderColor";
+  @Nullable
+  private String borderColor;
 
   public CellSettings() { 
   }
@@ -191,6 +207,78 @@ public class CellSettings {
   }
 
 
+  public CellSettings borderType(@Nullable BorderType borderType) {
+    this.borderType = borderType;
+    return this;
+  }
+
+  /**
+   * Get borderType
+   * @return borderType
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_BORDER_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public BorderType getBorderType() {
+    return borderType;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BORDER_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBorderType(@Nullable BorderType borderType) {
+    this.borderType = borderType;
+  }
+
+
+  public CellSettings borderWidth(@Nullable Integer borderWidth) {
+    this.borderWidth = borderWidth;
+    return this;
+  }
+
+  /**
+   * Get borderWidth
+   * @return borderWidth
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_BORDER_WIDTH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getBorderWidth() {
+    return borderWidth;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BORDER_WIDTH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBorderWidth(@Nullable Integer borderWidth) {
+    this.borderWidth = borderWidth;
+  }
+
+
+  public CellSettings borderColor(@Nullable String borderColor) {
+    this.borderColor = borderColor;
+    return this;
+  }
+
+  /**
+   * Get borderColor
+   * @return borderColor
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_BORDER_COLOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getBorderColor() {
+    return borderColor;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_BORDER_COLOR, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBorderColor(@Nullable String borderColor) {
+    this.borderColor = borderColor;
+  }
+
+
   /**
    * Return true if this CellSettings object is equal to o.
    */
@@ -207,12 +295,15 @@ public class CellSettings {
         Objects.equals(this.color, cellSettings.color) &&
         Objects.equals(this.backgroundColor, cellSettings.backgroundColor) &&
         Objects.equals(this.textAlignment, cellSettings.textAlignment) &&
-        Objects.equals(this.verticalAlignment, cellSettings.verticalAlignment);
+        Objects.equals(this.verticalAlignment, cellSettings.verticalAlignment) &&
+        Objects.equals(this.borderType, cellSettings.borderType) &&
+        Objects.equals(this.borderWidth, cellSettings.borderWidth) &&
+        Objects.equals(this.borderColor, cellSettings.borderColor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(font, color, backgroundColor, textAlignment, verticalAlignment);
+    return Objects.hash(font, color, backgroundColor, textAlignment, verticalAlignment, borderType, borderWidth, borderColor);
   }
 
   @Override
@@ -224,6 +315,9 @@ public class CellSettings {
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("    textAlignment: ").append(toIndentedString(textAlignment)).append("\n");
     sb.append("    verticalAlignment: ").append(toIndentedString(verticalAlignment)).append("\n");
+    sb.append("    borderType: ").append(toIndentedString(borderType)).append("\n");
+    sb.append("    borderWidth: ").append(toIndentedString(borderWidth)).append("\n");
+    sb.append("    borderColor: ").append(toIndentedString(borderColor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -294,6 +388,21 @@ public class CellSettings {
     // add `verticalAlignment` to the URL query string
     if (getVerticalAlignment() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sverticalAlignment%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVerticalAlignment()))));
+    }
+
+    // add `borderType` to the URL query string
+    if (getBorderType() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sborderType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getBorderType()))));
+    }
+
+    // add `borderWidth` to the URL query string
+    if (getBorderWidth() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sborderWidth%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getBorderWidth()))));
+    }
+
+    // add `borderColor` to the URL query string
+    if (getBorderColor() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sborderColor%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getBorderColor()))));
     }
 
     return joiner.toString();

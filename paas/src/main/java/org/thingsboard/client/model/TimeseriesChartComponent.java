@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -451,7 +450,7 @@ public class TimeseriesChartComponent extends ReportComponent {
 
 
   @Override
-  public TimeseriesChartComponent subType(@Nonnull ReportComponentSubType subType) {
+  public TimeseriesChartComponent subType(@Nullable ReportComponentSubType subType) {
     this.setSubType(subType);
     return this;
   }

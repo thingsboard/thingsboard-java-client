@@ -17,6 +17,7 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -71,7 +72,7 @@ import org.thingsboard.client.ApiClient;
 
 public class ReportComponent {
   public static final String JSON_PROPERTY_SUB_TYPE = "subType";
-  @Nonnull
+  @Nullable
   private ReportComponentSubType subType;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -81,7 +82,7 @@ public class ReportComponent {
   public ReportComponent() { 
   }
 
-  public ReportComponent subType(@Nonnull ReportComponentSubType subType) {
+  public ReportComponent subType(@Nullable ReportComponentSubType subType) {
     this.subType = subType;
     return this;
   }
@@ -90,17 +91,17 @@ public class ReportComponent {
    * Get subType
    * @return subType
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_SUB_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SUB_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public ReportComponentSubType getSubType() {
     return subType;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_SUB_TYPE, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSubType(@Nonnull ReportComponentSubType subType) {
+  @JsonProperty(value = JSON_PROPERTY_SUB_TYPE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSubType(@Nullable ReportComponentSubType subType) {
     this.subType = subType;
   }
 

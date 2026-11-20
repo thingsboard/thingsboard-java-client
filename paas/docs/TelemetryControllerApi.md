@@ -18,7 +18,7 @@ List<AttributeData> getAttributes(@Nonnull String entityType, @Nonnull String en
 List<AttributeData> getAttributesByScope(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nullable String keys, @Nullable List<String> key) // Get attributes by scope (getAttributesByScope)
 Map<String, List<TsData>> getLatestTimeseries(@Nonnull String entityType, @Nonnull String entityId, @Nullable String keys, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get latest time series value (getLatestTimeseries)
 List<ReadTsKvQueryResult> getTimeseriesByReadTsKvQueries(@Nonnull String entityType, @Nonnull String entityId, @Nonnull List<BaseReadTsKvQuery> baseReadTsKvQuery) // Get time series data by read queries (getTimeseriesByReadTsKvQueries)
-Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get time series data (getTimeseriesHistory)
+Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable Integer limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key) // Get time series data (getTimeseriesHistory)
 List<String> getTimeseriesKeys(@Nonnull String entityType, @Nonnull String entityId) // Get time series keys (getTimeseriesKeys)
 String saveDeviceAttributes(@Nonnull String deviceId, @Nonnull String scope, @Nonnull String body) // Save device attributes (saveDeviceAttributes)
 String saveEntityAttributesV1(@Nonnull String entityType, @Nonnull String entityId, @Nonnull String scope, @Nonnull String body) // Save entity attributes (saveEntityAttributesV1)
@@ -278,7 +278,7 @@ Returns aggregated time series values according to queries for specified entity.
 ## getTimeseriesHistory
 
 ```
-Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable String limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
+Map<String, List<TsData>> getTimeseriesHistory(@Nonnull String entityType, @Nonnull String entityId, @Nonnull Long startTs, @Nonnull Long endTs, @Nullable String keys, @Nullable String intervalType, @Nullable Long interval, @Nullable String timeZone, @Nullable Integer limit, @Nullable String agg, @Nullable String orderBy, @Nullable Boolean useStrictDataTypes, @Nullable List<String> key)
 ```
 
 **GET** `/api/plugins/telemetry/{entityType}/{entityId}/values/timeseries/history`
@@ -300,7 +300,7 @@ Returns a range of time series values for specified entity. Returns not aggregat
 | **intervalType** | **String** | A string value representing the type fo the interval. | [optional] [enum: MILLISECONDS, WEEK, WEEK_ISO, MONTH, QUARTER] |
 | **interval** | **Long** | A long value representing the aggregation interval range in milliseconds. | [optional] [default to 0] |
 | **timeZone** | **String** | A string value representing the timezone that will be used to calculate exact timestamps for 'WEEK', 'WEEK_ISO', 'MONTH' and 'QUARTER' interval types. | [optional] |
-| **limit** | **String** | An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if 'agg' parameter is set to 'NONE'. | [optional] |
+| **limit** | **Integer** | An integer value that represents a max number of time series data points to fetch. This parameter is used only in the case if 'agg' parameter is set to 'NONE'. | [optional] |
 | **agg** | **String** | A string value representing the aggregation function. If the interval is not specified, 'agg' parameter will use 'NONE' value. | [optional] [enum: MIN, MAX, AVG, SUM, COUNT, NONE] |
 | **orderBy** | **String** | Sort order. ASC (ASCENDING) or DESC (DESCENDING) | [optional] [enum: ASC, DESC] |
 | **useStrictDataTypes** | **Boolean** | Enables/disables conversion of telemetry values to strings. Conversion is enabled by default. Set parameter to 'true' in order to disable the conversion. | [optional] [default to false] |

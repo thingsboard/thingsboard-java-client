@@ -27,7 +27,7 @@
 #### AiModelConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| provider | String |  |  |
+| provider | AiProvider | AI Provider |  |
 
 #### OpenAiProviderConfig
 | Name | Type | Description | Notes |
@@ -37,6 +37,9 @@
 
 #### AiModelType (enum)
 `CHAT`
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 ---
 

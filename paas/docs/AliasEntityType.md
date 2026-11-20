@@ -3,6 +3,8 @@
 
 `org.thingsboard.client.model.AliasEntityType`
 
+Alias for an entity of the current user, used as AliasEntityId.entityType
+
 ## Enum Values
 
 

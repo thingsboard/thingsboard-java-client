@@ -392,7 +392,7 @@ public class DashboardComponent extends ReportComponent {
 
 
   @Override
-  public DashboardComponent subType(@Nonnull ReportComponentSubType subType) {
+  public DashboardComponent subType(@Nullable ReportComponentSubType subType) {
     this.setSubType(subType);
     return this;
   }
