@@ -19,7 +19,7 @@ Base configuration for two-factor authentication accounts
 #### BackupCodeTwoFaAccountConfig  *(providerType=`BACKUP_CODE`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| codes | Set<String> |  |  |
+| codes | Set<String> |  | [optional] |
 | codesLeft | Integer |  | [optional] |
 
 #### EmailTwoFaAccountConfig  *(providerType=`EMAIL`)*
@@ -30,7 +30,7 @@ Base configuration for two-factor authentication accounts
 #### SmsTwoFaAccountConfig  *(providerType=`SMS`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| phoneNumber | String |  |  |
+| phoneNumber | String |  | [optional] |
 
 #### TotpTwoFaAccountConfig  *(providerType=`TOTP`)*
 | Name | Type | Description | Notes |

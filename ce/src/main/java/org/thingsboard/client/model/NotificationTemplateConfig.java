@@ -17,6 +17,7 @@ package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -32,6 +33,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import org.thingsboard.client.model.DeliveryMethodNotificationTemplate;
+import org.thingsboard.client.model.ReportTemplateId;
+import org.thingsboard.client.model.UserId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -40,13 +43,38 @@ import org.thingsboard.client.ApiClient;
  * NotificationTemplateConfig
  */
 @JsonPropertyOrder({
-  NotificationTemplateConfig.JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES
+  NotificationTemplateConfig.JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES,
+  NotificationTemplateConfig.JSON_PROPERTY_ATTACH_REPORT,
+  NotificationTemplateConfig.JSON_PROPERTY_REPORT_TEMPLATE_ID,
+  NotificationTemplateConfig.JSON_PROPERTY_USER_ID,
+  NotificationTemplateConfig.JSON_PROPERTY_TIMEZONE,
+  NotificationTemplateConfig.JSON_PROPERTY_MAKE_PUBLIC
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationTemplateConfig {
   public static final String JSON_PROPERTY_DELIVERY_METHODS_TEMPLATES = "deliveryMethodsTemplates";
   @Nonnull
   private Map<String, DeliveryMethodNotificationTemplate> deliveryMethodsTemplates = new HashMap<>();
+
+  public static final String JSON_PROPERTY_ATTACH_REPORT = "attachReport";
+  @Nullable
+  private Boolean attachReport;
+
+  public static final String JSON_PROPERTY_REPORT_TEMPLATE_ID = "reportTemplateId";
+  @Nullable
+  private ReportTemplateId reportTemplateId;
+
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  @Nullable
+  private UserId userId;
+
+  public static final String JSON_PROPERTY_TIMEZONE = "timezone";
+  @Nullable
+  private String timezone;
+
+  public static final String JSON_PROPERTY_MAKE_PUBLIC = "makePublic";
+  @Nullable
+  private Boolean makePublic;
 
   public NotificationTemplateConfig() { 
   }
@@ -83,6 +111,126 @@ public class NotificationTemplateConfig {
   }
 
 
+  public NotificationTemplateConfig attachReport(@Nullable Boolean attachReport) {
+    this.attachReport = attachReport;
+    return this;
+  }
+
+  /**
+   * Get attachReport
+   * @return attachReport
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ATTACH_REPORT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getAttachReport() {
+    return attachReport;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ATTACH_REPORT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAttachReport(@Nullable Boolean attachReport) {
+    this.attachReport = attachReport;
+  }
+
+
+  public NotificationTemplateConfig reportTemplateId(@Nullable ReportTemplateId reportTemplateId) {
+    this.reportTemplateId = reportTemplateId;
+    return this;
+  }
+
+  /**
+   * Get reportTemplateId
+   * @return reportTemplateId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public ReportTemplateId getReportTemplateId() {
+    return reportTemplateId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_REPORT_TEMPLATE_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setReportTemplateId(@Nullable ReportTemplateId reportTemplateId) {
+    this.reportTemplateId = reportTemplateId;
+  }
+
+
+  public NotificationTemplateConfig userId(@Nullable UserId userId) {
+    this.userId = userId;
+    return this;
+  }
+
+  /**
+   * Get userId
+   * @return userId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public UserId getUserId() {
+    return userId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserId(@Nullable UserId userId) {
+    this.userId = userId;
+  }
+
+
+  public NotificationTemplateConfig timezone(@Nullable String timezone) {
+    this.timezone = timezone;
+    return this;
+  }
+
+  /**
+   * Get timezone
+   * @return timezone
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getTimezone() {
+    return timezone;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TIMEZONE, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTimezone(@Nullable String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public NotificationTemplateConfig makePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
+    return this;
+  }
+
+  /**
+   * Get makePublic
+   * @return makePublic
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getMakePublic() {
+    return makePublic;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_MAKE_PUBLIC, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMakePublic(@Nullable Boolean makePublic) {
+    this.makePublic = makePublic;
+  }
+
+
   /**
    * Return true if this NotificationTemplateConfig object is equal to o.
    */
@@ -95,12 +243,17 @@ public class NotificationTemplateConfig {
       return false;
     }
     NotificationTemplateConfig notificationTemplateConfig = (NotificationTemplateConfig) o;
-    return Objects.equals(this.deliveryMethodsTemplates, notificationTemplateConfig.deliveryMethodsTemplates);
+    return Objects.equals(this.deliveryMethodsTemplates, notificationTemplateConfig.deliveryMethodsTemplates) &&
+        Objects.equals(this.attachReport, notificationTemplateConfig.attachReport) &&
+        Objects.equals(this.reportTemplateId, notificationTemplateConfig.reportTemplateId) &&
+        Objects.equals(this.userId, notificationTemplateConfig.userId) &&
+        Objects.equals(this.timezone, notificationTemplateConfig.timezone) &&
+        Objects.equals(this.makePublic, notificationTemplateConfig.makePublic);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deliveryMethodsTemplates);
+    return Objects.hash(deliveryMethodsTemplates, attachReport, reportTemplateId, userId, timezone, makePublic);
   }
 
   @Override
@@ -108,6 +261,11 @@ public class NotificationTemplateConfig {
     StringBuilder sb = new StringBuilder();
     sb.append("class NotificationTemplateConfig {\n");
     sb.append("    deliveryMethodsTemplates: ").append(toIndentedString(deliveryMethodsTemplates)).append("\n");
+    sb.append("    attachReport: ").append(toIndentedString(attachReport)).append("\n");
+    sb.append("    reportTemplateId: ").append(toIndentedString(reportTemplateId)).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    makePublic: ").append(toIndentedString(makePublic)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,6 +321,31 @@ public class NotificationTemplateConfig {
               "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix))));
         }
       }
+    }
+
+    // add `attachReport` to the URL query string
+    if (getAttachReport() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sattachReport%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getAttachReport()))));
+    }
+
+    // add `reportTemplateId` to the URL query string
+    if (getReportTemplateId() != null) {
+      joiner.add(getReportTemplateId().toUrlQueryString(prefix + "reportTemplateId" + suffix));
+    }
+
+    // add `userId` to the URL query string
+    if (getUserId() != null) {
+      joiner.add(getUserId().toUrlQueryString(prefix + "userId" + suffix));
+    }
+
+    // add `timezone` to the URL query string
+    if (getTimezone() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stimezone%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTimezone()))));
+    }
+
+    // add `makePublic` to the URL query string
+    if (getMakePublic() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%smakePublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMakePublic()))));
     }
 
     return joiner.toString();

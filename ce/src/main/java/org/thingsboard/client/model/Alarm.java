@@ -65,6 +65,7 @@ import org.thingsboard.client.ApiClient;
   Alarm.JSON_PROPERTY_DETAILS,
   Alarm.JSON_PROPERTY_PROPAGATE,
   Alarm.JSON_PROPERTY_PROPAGATE_TO_OWNER,
+  Alarm.JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY,
   Alarm.JSON_PROPERTY_PROPAGATE_TO_TENANT,
   Alarm.JSON_PROPERTY_PROPAGATE_RELATION_TYPES,
   Alarm.JSON_PROPERTY_NAME,
@@ -143,6 +144,10 @@ public class Alarm {
   public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER = "propagateToOwner";
   @Nullable
   private Boolean propagateToOwner;
+
+  public static final String JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY = "propagateToOwnerHierarchy";
+  @Nullable
+  private Boolean propagateToOwnerHierarchy;
 
   public static final String JSON_PROPERTY_PROPAGATE_TO_TENANT = "propagateToTenant";
   @Nullable
@@ -232,7 +237,7 @@ public class Alarm {
 
 
   /**
-   * JSON object with Customer Id
+   * JSON object with Customer Id. Derived from the originator entity owner and cannot be set independently; any value supplied in the request body must match the originator&#39;s customer or the request is rejected.
    * @return customerId
    */
   @Nullable
@@ -581,6 +586,30 @@ public class Alarm {
   }
 
 
+  public Alarm propagateToOwnerHierarchy(@Nullable Boolean propagateToOwnerHierarchy) {
+    this.propagateToOwnerHierarchy = propagateToOwnerHierarchy;
+    return this;
+  }
+
+  /**
+   * Propagation flag to specify if alarm should be propagated to the owner (tenant or customer) and all parent owners in the customer hierarchy
+   * @return propagateToOwnerHierarchy
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Boolean getPropagateToOwnerHierarchy() {
+    return propagateToOwnerHierarchy;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_PROPAGATE_TO_OWNER_HIERARCHY, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPropagateToOwnerHierarchy(@Nullable Boolean propagateToOwnerHierarchy) {
+    this.propagateToOwnerHierarchy = propagateToOwnerHierarchy;
+  }
+
+
   public Alarm propagateToTenant(@Nullable Boolean propagateToTenant) {
     this.propagateToTenant = propagateToTenant;
     return this;
@@ -695,6 +724,7 @@ public class Alarm {
         Objects.equals(this.details, alarm.details) &&
         Objects.equals(this.propagate, alarm.propagate) &&
         Objects.equals(this.propagateToOwner, alarm.propagateToOwner) &&
+        Objects.equals(this.propagateToOwnerHierarchy, alarm.propagateToOwnerHierarchy) &&
         Objects.equals(this.propagateToTenant, alarm.propagateToTenant) &&
         Objects.equals(this.propagateRelationTypes, alarm.propagateRelationTypes) &&
         Objects.equals(this.name, alarm.name) &&
@@ -703,7 +733,7 @@ public class Alarm {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToTenant, propagateRelationTypes, name, status);
+    return Objects.hash(id, createdTime, tenantId, customerId, type, originator, severity, acknowledged, cleared, assigneeId, startTs, endTs, ackTs, clearTs, assignTs, details, propagate, propagateToOwner, propagateToOwnerHierarchy, propagateToTenant, propagateRelationTypes, name, status);
   }
 
   @Override
@@ -728,6 +758,7 @@ public class Alarm {
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    propagate: ").append(toIndentedString(propagate)).append("\n");
     sb.append("    propagateToOwner: ").append(toIndentedString(propagateToOwner)).append("\n");
+    sb.append("    propagateToOwnerHierarchy: ").append(toIndentedString(propagateToOwnerHierarchy)).append("\n");
     sb.append("    propagateToTenant: ").append(toIndentedString(propagateToTenant)).append("\n");
     sb.append("    propagateRelationTypes: ").append(toIndentedString(propagateRelationTypes)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -867,6 +898,11 @@ public class Alarm {
     // add `propagateToOwner` to the URL query string
     if (getPropagateToOwner() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%spropagateToOwner%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagateToOwner()))));
+    }
+
+    // add `propagateToOwnerHierarchy` to the URL query string
+    if (getPropagateToOwnerHierarchy() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%spropagateToOwnerHierarchy%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getPropagateToOwnerHierarchy()))));
     }
 
     // add `propagateToTenant` to the URL query string

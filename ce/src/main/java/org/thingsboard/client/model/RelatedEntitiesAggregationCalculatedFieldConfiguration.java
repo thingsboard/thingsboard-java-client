@@ -239,6 +239,7 @@ public class RelatedEntitiesAggregationCalculatedFieldConfiguration extends Calc
 
   /**
    * Get scheduledUpdateInterval
+   * minimum: 0
    * @return scheduledUpdateInterval
    */
   @Nullable

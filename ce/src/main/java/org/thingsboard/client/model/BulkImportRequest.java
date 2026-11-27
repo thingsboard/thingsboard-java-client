@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.Mapping;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -39,7 +40,9 @@ import org.thingsboard.client.ApiClient;
  */
 @JsonPropertyOrder({
   BulkImportRequest.JSON_PROPERTY_FILE,
-  BulkImportRequest.JSON_PROPERTY_MAPPING
+  BulkImportRequest.JSON_PROPERTY_MAPPING,
+  BulkImportRequest.JSON_PROPERTY_CUSTOMER_ID,
+  BulkImportRequest.JSON_PROPERTY_ENTITY_GROUP_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class BulkImportRequest {
@@ -50,6 +53,14 @@ public class BulkImportRequest {
   public static final String JSON_PROPERTY_MAPPING = "mapping";
   @Nullable
   private Mapping mapping;
+
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
+
+  public static final String JSON_PROPERTY_ENTITY_GROUP_ID = "entityGroupId";
+  @Nullable
+  private String entityGroupId;
 
   public BulkImportRequest() { 
   }
@@ -102,6 +113,54 @@ public class BulkImportRequest {
   }
 
 
+  public BulkImportRequest customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
+  /**
+   * Get customerId
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
+
+
+  public BulkImportRequest entityGroupId(@Nullable String entityGroupId) {
+    this.entityGroupId = entityGroupId;
+    return this;
+  }
+
+  /**
+   * Get entityGroupId
+   * @return entityGroupId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public String getEntityGroupId() {
+    return entityGroupId;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ENTITY_GROUP_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setEntityGroupId(@Nullable String entityGroupId) {
+    this.entityGroupId = entityGroupId;
+  }
+
+
   /**
    * Return true if this BulkImportRequest object is equal to o.
    */
@@ -115,12 +174,14 @@ public class BulkImportRequest {
     }
     BulkImportRequest bulkImportRequest = (BulkImportRequest) o;
     return Objects.equals(this._file, bulkImportRequest._file) &&
-        Objects.equals(this.mapping, bulkImportRequest.mapping);
+        Objects.equals(this.mapping, bulkImportRequest.mapping) &&
+        Objects.equals(this.customerId, bulkImportRequest.customerId) &&
+        Objects.equals(this.entityGroupId, bulkImportRequest.entityGroupId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_file, mapping);
+    return Objects.hash(_file, mapping, customerId, entityGroupId);
   }
 
   @Override
@@ -129,6 +190,8 @@ public class BulkImportRequest {
     sb.append("class BulkImportRequest {\n");
     sb.append("    _file: ").append(toIndentedString(_file)).append("\n");
     sb.append("    mapping: ").append(toIndentedString(mapping)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb.append("    entityGroupId: ").append(toIndentedString(entityGroupId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -184,6 +247,16 @@ public class BulkImportRequest {
     // add `mapping` to the URL query string
     if (getMapping() != null) {
       joiner.add(getMapping().toUrlQueryString(prefix + "mapping" + suffix));
+    }
+
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
+    }
+
+    // add `entityGroupId` to the URL query string
+    if (getEntityGroupId() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sentityGroupId%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getEntityGroupId()))));
     }
 
     return joiner.toString();

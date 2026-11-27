@@ -16,7 +16,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### NotificationRuleInfo
 | Name | Type | Description | Notes |
@@ -35,7 +35,7 @@
 | deliveryMethods | List<NotificationDeliveryMethod> |  | [optional] |
 
 #### NotificationRuleTriggerType (enum)
-`ENTITY_ACTION` | `ALARM` | `ALARM_COMMENT` | `ALARM_ASSIGNMENT` | `DEVICE_ACTIVITY` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `EDGE_CONNECTION` | `EDGE_COMMUNICATION_FAILURE` | `NEW_PLATFORM_VERSION` | `ENTITIES_LIMIT` | … (14 values total)
+`ENTITY_ACTION` | `ALARM` | `ALARM_COMMENT` | `ALARM_ASSIGNMENT` | `DEVICE_ACTIVITY` | `RULE_ENGINE_COMPONENT_LIFECYCLE_EVENT` | `INTEGRATION_LIFECYCLE_EVENT` | `EDGE_CONNECTION` | `EDGE_COMMUNICATION_FAILURE` | `NEW_PLATFORM_VERSION` | … (15 values total)
 
 #### NotificationRuleTriggerConfig
 | Name | Type | Description | Notes |
@@ -104,6 +104,14 @@
 | created | Boolean |  | [optional] |
 | updated | Boolean |  | [optional] |
 | deleted | Boolean |  | [optional] |
+
+#### IntegrationLifecycleEventNotificationRuleTriggerConfig  *(extends NotificationRuleTriggerConfig, triggerType=`INTEGRATION_LIFECYCLE_EVENT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| integrationTypes | Set<IntegrationType> |  | [optional] |
+| integrations | Set<UUID> |  | [optional] |
+| notifyOn | Set<ComponentLifecycleEvent> |  | [optional] |
+| onlyOnError | Boolean |  | [optional] |
 
 #### NewPlatformVersionNotificationRuleTriggerConfig  *(extends NotificationRuleTriggerConfig, triggerType=`NEW_PLATFORM_VERSION`)*
 *See NotificationRuleTriggerConfig for properties.*
@@ -183,6 +191,11 @@
 |------|------|-------------|-------|
 | targets | List<UUID> |  |  |
 
+#### IntegrationLifecycleEventRecipientsConfig  *(extends NotificationRuleRecipientsConfig, triggerType=`INTEGRATION_LIFECYCLE_EVENT`)*
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| targets | List<UUID> |  |  |
+
 #### NewPlatformVersionRecipientsConfig  *(extends NotificationRuleRecipientsConfig, triggerType=`NEW_PLATFORM_VERSION`)*
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
@@ -217,7 +230,7 @@
 `WEB` | `EMAIL` | `SMS` | `SLACK` | `MICROSOFT_TEAMS` | `MOBILE_APP`
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### AlarmSeverity (enum)
 `CRITICAL` | `MAJOR` | `MINOR` | `WARNING` | `INDETERMINATE`
@@ -243,16 +256,19 @@
 `ASSIGNED` | `UNASSIGNED`
 
 #### ApiFeature (enum)
-`TRANSPORT` | `DB` | `RE` | `JS` | `TBEL` | `EMAIL` | `SMS` | `ALARM`
+`TRANSPORT` | `DB` | `RE` | `JS` | `TBEL` | `EMAIL` | `SMS` | `ALARM` | `REPORT` | `AI`
 
 #### ApiUsageStateValue (enum)
 `ENABLED` | `WARNING` | `DISABLED`
 
 #### LimitedApi (enum)
-`ENTITY_EXPORT` | `ENTITY_IMPORT` | `NOTIFICATION_REQUESTS` | `NOTIFICATION_REQUESTS_PER_RULE` | `REST_REQUESTS_PER_TENANT` | `REST_REQUESTS_PER_CUSTOMER` | `WS_UPDATES_PER_SESSION` | `CASSANDRA_WRITE_QUERIES_CORE` | `CASSANDRA_READ_QUERIES_CORE` | `CASSANDRA_WRITE_QUERIES_RULE_ENGINE` | … (28 values total)
+`ENTITY_EXPORT` | `ENTITY_IMPORT` | `NOTIFICATION_REQUESTS` | `NOTIFICATION_REQUESTS_PER_RULE` | `REST_REQUESTS_PER_TENANT` | `REST_REQUESTS_PER_CUSTOMER` | `WS_UPDATES_PER_SESSION` | `CASSANDRA_WRITE_QUERIES_CORE` | `CASSANDRA_READ_QUERIES_CORE` | `CASSANDRA_WRITE_QUERIES_RULE_ENGINE` | … (40 values total)
 
 #### EdgeConnectivityEvent (enum)
 `CONNECTED` | `DISCONNECTED`
+
+#### IntegrationType (enum)
+`OCEANCONNECT` | `SIGFOX` | `THINGPARK` | `TPE` | `CHIRPSTACK` | `PARTICLE` | `TMOBILE_IOT_CDP` | `HTTP` | `MQTT` | `PUB_SUB` | … (29 values total)
 
 ---
 

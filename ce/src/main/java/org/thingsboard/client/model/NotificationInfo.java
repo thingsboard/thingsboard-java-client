@@ -54,6 +54,32 @@ import org.thingsboard.client.ApiClient;
   allowSetters = true // allows the type to be set during deserialization
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = AddonAccessErrorNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.AddonAccessErrorNotificationInfo"),
+  @JsonSubTypes.Type(value = AddonAccessRequestNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.AddonAccessRequestNotificationInfo"),
+  @JsonSubTypes.Type(value = AlarmAssignmentNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.AlarmAssignmentNotificationInfo"),
+  @JsonSubTypes.Type(value = AlarmCommentNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.AlarmCommentNotificationInfo"),
+  @JsonSubTypes.Type(value = AlarmNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.AlarmNotificationInfo"),
+  @JsonSubTypes.Type(value = ApiUsageLimitNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.ApiUsageLimitNotificationInfo"),
+  @JsonSubTypes.Type(value = DeviceActivityNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.DeviceActivityNotificationInfo"),
+  @JsonSubTypes.Type(value = EdgeCommunicationFailureNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.EdgeCommunicationFailureNotificationInfo"),
+  @JsonSubTypes.Type(value = EdgeConnectionNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.EdgeConnectionNotificationInfo"),
+  @JsonSubTypes.Type(value = EntitiesLimitIncreaseRequestNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.EntitiesLimitIncreaseRequestNotificationInfo"),
+  @JsonSubTypes.Type(value = EntitiesLimitNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.EntitiesLimitNotificationInfo"),
+  @JsonSubTypes.Type(value = EntityActionNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.EntityActionNotificationInfo"),
+  @JsonSubTypes.Type(value = GeneralNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.GeneralNotificationInfo"),
+  @JsonSubTypes.Type(value = IntegrationLifecycleEventNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.IntegrationLifecycleEventNotificationInfo"),
+  @JsonSubTypes.Type(value = NewPlatformVersionNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.NewPlatformVersionNotificationInfo"),
+  @JsonSubTypes.Type(value = PlanUpgradeRequestNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.PlanUpgradeRequestNotificationInfo"),
+  @JsonSubTypes.Type(value = RateLimitsNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.RateLimitsNotificationInfo"),
+  @JsonSubTypes.Type(value = ReportGeneratedNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.ReportGeneratedNotificationInfo"),
+  @JsonSubTypes.Type(value = ResourcesShortageNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.ResourcesShortageNotificationInfo"),
+  @JsonSubTypes.Type(value = RuleEngineComponentLifecycleEventNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.RuleEngineComponentLifecycleEventNotificationInfo"),
+  @JsonSubTypes.Type(value = RuleEngineOriginatedNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.RuleEngineOriginatedNotificationInfo"),
+  @JsonSubTypes.Type(value = TaskProcessingFailureNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.TaskProcessingFailureNotificationInfo"),
+  @JsonSubTypes.Type(value = UserActivatedNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.UserActivatedNotificationInfo"),
+  @JsonSubTypes.Type(value = UserRegisteredNotificationInfo.class, name = "org.thingsboard.server.common.data.notification.info.UserRegisteredNotificationInfo"),
+})
 
 public class NotificationInfo {
   public static final String JSON_PROPERTY_DASHBOARD_ID = "dashboardId";
@@ -239,6 +265,30 @@ public class NotificationInfo {
 static {
   // Initialize and register the discriminator mappings.
   Map<String, Class<?>> mappings = new HashMap<String, Class<?>>();
+  mappings.put("org.thingsboard.server.common.data.notification.info.AddonAccessErrorNotificationInfo", AddonAccessErrorNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.AddonAccessRequestNotificationInfo", AddonAccessRequestNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.AlarmAssignmentNotificationInfo", AlarmAssignmentNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.AlarmCommentNotificationInfo", AlarmCommentNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.AlarmNotificationInfo", AlarmNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.ApiUsageLimitNotificationInfo", ApiUsageLimitNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.DeviceActivityNotificationInfo", DeviceActivityNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.EdgeCommunicationFailureNotificationInfo", EdgeCommunicationFailureNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.EdgeConnectionNotificationInfo", EdgeConnectionNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.EntitiesLimitIncreaseRequestNotificationInfo", EntitiesLimitIncreaseRequestNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.EntitiesLimitNotificationInfo", EntitiesLimitNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.EntityActionNotificationInfo", EntityActionNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.GeneralNotificationInfo", GeneralNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.IntegrationLifecycleEventNotificationInfo", IntegrationLifecycleEventNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.NewPlatformVersionNotificationInfo", NewPlatformVersionNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.PlanUpgradeRequestNotificationInfo", PlanUpgradeRequestNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.RateLimitsNotificationInfo", RateLimitsNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.ReportGeneratedNotificationInfo", ReportGeneratedNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.ResourcesShortageNotificationInfo", ResourcesShortageNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.RuleEngineComponentLifecycleEventNotificationInfo", RuleEngineComponentLifecycleEventNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.RuleEngineOriginatedNotificationInfo", RuleEngineOriginatedNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.TaskProcessingFailureNotificationInfo", TaskProcessingFailureNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.UserActivatedNotificationInfo", UserActivatedNotificationInfo.class);
+  mappings.put("org.thingsboard.server.common.data.notification.info.UserRegisteredNotificationInfo", UserRegisteredNotificationInfo.class);
   mappings.put("NotificationInfo", NotificationInfo.class);
   JSON.registerDiscriminator(NotificationInfo.class, "type", mappings);
 }

@@ -42,7 +42,8 @@ import org.thingsboard.client.ApiClient;
   NotificationRequestStats.JSON_PROPERTY_SENT,
   NotificationRequestStats.JSON_PROPERTY_ERRORS,
   NotificationRequestStats.JSON_PROPERTY_TOTAL_ERRORS,
-  NotificationRequestStats.JSON_PROPERTY_ERROR
+  NotificationRequestStats.JSON_PROPERTY_ERROR,
+  NotificationRequestStats.JSON_PROPERTY_TOTAL_SENT
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class NotificationRequestStats {
@@ -62,6 +63,10 @@ public class NotificationRequestStats {
   @Nullable
   private String error;
 
+  public static final String JSON_PROPERTY_TOTAL_SENT = "totalSent";
+  @Nullable
+  private Integer totalSent;
+
   public NotificationRequestStats() { 
   }
 
@@ -79,7 +84,7 @@ public class NotificationRequestStats {
   }
 
   /**
-   * Number of successfully sent notifications per delivery method
+   * Get sent
    * @return sent
    */
   @Nullable
@@ -111,7 +116,7 @@ public class NotificationRequestStats {
   }
 
   /**
-   * Errors per delivery method. Each entry maps recipient name to error message
+   * Get errors
    * @return errors
    */
   @Nullable
@@ -135,7 +140,7 @@ public class NotificationRequestStats {
   }
 
   /**
-   * Total number of errors across all delivery methods
+   * Get totalErrors
    * @return totalErrors
    */
   @Nullable
@@ -159,7 +164,7 @@ public class NotificationRequestStats {
   }
 
   /**
-   * General error message if the entire request failed
+   * Get error
    * @return error
    */
   @Nullable
@@ -174,6 +179,30 @@ public class NotificationRequestStats {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setError(@Nullable String error) {
     this.error = error;
+  }
+
+
+  public NotificationRequestStats totalSent(@Nullable Integer totalSent) {
+    this.totalSent = totalSent;
+    return this;
+  }
+
+  /**
+   * Get totalSent
+   * @return totalSent
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_SENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public Integer getTotalSent() {
+    return totalSent;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_SENT, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setTotalSent(@Nullable Integer totalSent) {
+    this.totalSent = totalSent;
   }
 
 
@@ -192,12 +221,13 @@ public class NotificationRequestStats {
     return Objects.equals(this.sent, notificationRequestStats.sent) &&
         Objects.equals(this.errors, notificationRequestStats.errors) &&
         Objects.equals(this.totalErrors, notificationRequestStats.totalErrors) &&
-        Objects.equals(this.error, notificationRequestStats.error);
+        Objects.equals(this.error, notificationRequestStats.error) &&
+        Objects.equals(this.totalSent, notificationRequestStats.totalSent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sent, errors, totalErrors, error);
+    return Objects.hash(sent, errors, totalErrors, error, totalSent);
   }
 
   @Override
@@ -208,6 +238,7 @@ public class NotificationRequestStats {
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
     sb.append("    totalErrors: ").append(toIndentedString(totalErrors)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("    totalSent: ").append(toIndentedString(totalSent)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -281,6 +312,11 @@ public class NotificationRequestStats {
     // add `error` to the URL query string
     if (getError() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getError()))));
+    }
+
+    // add `totalSent` to the URL query string
+    if (getTotalSent() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stotalSent%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalSent()))));
     }
 
     return joiner.toString();

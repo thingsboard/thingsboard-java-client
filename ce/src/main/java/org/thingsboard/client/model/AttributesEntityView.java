@@ -16,7 +16,7 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.StringJoiner;
@@ -46,21 +46,21 @@ import org.thingsboard.client.ApiClient;
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AttributesEntityView {
   public static final String JSON_PROPERTY_CS = "cs";
-  @Nonnull
+  @Nullable
   private List<String> cs = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SS = "ss";
-  @Nonnull
+  @Nullable
   private List<String> ss = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SH = "sh";
-  @Nonnull
+  @Nullable
   private List<String> sh = new ArrayList<>();
 
   public AttributesEntityView() { 
   }
 
-  public AttributesEntityView cs(@Nonnull List<String> cs) {
+  public AttributesEntityView cs(@Nullable List<String> cs) {
     this.cs = cs;
     return this;
   }
@@ -77,22 +77,22 @@ public class AttributesEntityView {
    * List of client-side attribute keys to expose
    * @return cs
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_CS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getCs() {
     return cs;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_CS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCs(@Nonnull List<String> cs) {
+  @JsonProperty(value = JSON_PROPERTY_CS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCs(@Nullable List<String> cs) {
     this.cs = cs;
   }
 
 
-  public AttributesEntityView ss(@Nonnull List<String> ss) {
+  public AttributesEntityView ss(@Nullable List<String> ss) {
     this.ss = ss;
     return this;
   }
@@ -109,22 +109,22 @@ public class AttributesEntityView {
    * List of server-side attribute keys to expose
    * @return ss
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_SS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getSs() {
     return ss;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_SS, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSs(@Nonnull List<String> ss) {
+  @JsonProperty(value = JSON_PROPERTY_SS, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSs(@Nullable List<String> ss) {
     this.ss = ss;
   }
 
 
-  public AttributesEntityView sh(@Nonnull List<String> sh) {
+  public AttributesEntityView sh(@Nullable List<String> sh) {
     this.sh = sh;
     return this;
   }
@@ -141,17 +141,17 @@ public class AttributesEntityView {
    * List of shared attribute keys to expose
    * @return sh
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_SH, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_SH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public List<String> getSh() {
     return sh;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_SH, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSh(@Nonnull List<String> sh) {
+  @JsonProperty(value = JSON_PROPERTY_SH, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSh(@Nullable List<String> sh) {
     this.sh = sh;
   }
 

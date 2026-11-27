@@ -16,7 +16,7 @@
 
 ## Referenced Types
 
-> **EntityId types** (`AdminSettingsId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `CalculatedFieldId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityViewId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
+> **EntityId types** (`AdminSettingsId`, `AgentAppEventId`, `AgentAppProfileId`, `AgentAppUnitId`, `AgentApplicationId`, `AgentBulkActionId`, `AgentId`, `AgentProfileId`, `AiModelId`, `AlarmId`, `ApiKeyId`, `ApiUsageStateId`, `AssetId`, `AssetProfileId`, `BlobEntityId`, `CalculatedFieldId`, `ConverterId`, `CustomerId`, `DashboardId`, `DeviceId`, `DeviceProfileId`, `DomainId`, `EdgeId`, `EntityGroupId`, `EntityViewId`, `GroupPermissionId`, `IntegrationId`, `JobId`, `MobileAppBundleId`, `MobileAppId`, `NotificationId`, `NotificationRequestId`, `NotificationRuleId`, `NotificationTargetId`, `NotificationTemplateId`, `OAuth2ClientId`, `OtaPackageId`, `QueueId`, `QueueStatsId`, `ReportId`, `ReportTemplateId`, `RoleId`, `RpcId`, `RuleChainId`, `RuleNodeId`, `SchedulerEventId`, `SecretId`, `TbResourceId`, `TenantId`, `TenantProfileId`, `UserId`, `WidgetTypeId`, `WidgetsBundleId`, etc.): `{entityType: EntityType, id: UUID}` — all EntityId subtypes share this structure.
 
 #### AiModel
 | Name | Type | Description | Notes |
@@ -26,12 +26,13 @@
 | tenantId | TenantId | JSON object representing the ID of the tenant associated with this AI model | [optional] [readonly] |
 | version | Long | Version of the AI model record; increments automatically whenever the record is changed | [optional] [readonly] |
 | name | String | Display name for this AI model configuration; not the technical model identifier |  |
+| customerAccessEnabled | Boolean | Whether customer users with the 'INVOKE' permission for AI models can send chat requests to the model, such as users with the default 'Customer Administrator' role, which grants all operations. Tenant administrators with the 'INVOKE' permission can use the model regardless of this flag | [optional] |
 | _configuration | AiModelConfig | Configuration of the AI model | [optional] |
 
 #### AiModelConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| provider | String |  |  |
+| provider | AiProvider | AI Provider |  |
 
 #### AmazonBedrockChatModelConfig  *(extends AiModelConfig, provider=`AMAZON_BEDROCK`)*
 | Name | Type | Description | Notes |
@@ -43,7 +44,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AnthropicChatModelConfig  *(extends AiModelConfig, provider=`ANTHROPIC`)*
 | Name | Type | Description | Notes |
@@ -56,7 +56,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### AzureOpenAiChatModelConfig  *(extends AiModelConfig, provider=`AZURE_OPENAI`)*
 | Name | Type | Description | Notes |
@@ -70,7 +69,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GitHubModelsChatModelConfig  *(extends AiModelConfig, provider=`GITHUB_MODELS`)*
 | Name | Type | Description | Notes |
@@ -84,7 +82,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleAiGeminiChatModelConfig  *(extends AiModelConfig, provider=`GOOGLE_AI_GEMINI`)*
 | Name | Type | Description | Notes |
@@ -99,7 +96,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### GoogleVertexAiGeminiChatModelConfig  *(extends AiModelConfig, provider=`GOOGLE_VERTEX_AI_GEMINI`)*
 | Name | Type | Description | Notes |
@@ -114,7 +110,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### MistralAiChatModelConfig  *(extends AiModelConfig, provider=`MISTRAL_AI`)*
 | Name | Type | Description | Notes |
@@ -128,7 +123,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OllamaChatModelConfig  *(extends AiModelConfig, provider=`OLLAMA`)*
 | Name | Type | Description | Notes |
@@ -142,7 +136,6 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
 
 #### OpenAiChatModelConfig  *(extends AiModelConfig, provider=`OPENAI`)*
 | Name | Type | Description | Notes |
@@ -156,19 +149,18 @@
 | maxOutputTokens | Integer |  | [optional] |
 | timeoutSeconds | Integer |  | [optional] |
 | maxRetries | Integer |  | [optional] |
-| modelType | AiModelType |  | [optional] [readonly] |
+
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 #### EntityType (enum)
-`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `RULE_CHAIN` | `RULE_NODE` | `ENTITY_VIEW` | … (36 values total)
+`TENANT` | `CUSTOMER` | `USER` | `DASHBOARD` | `ASSET` | `DEVICE` | `ALARM` | `ENTITY_GROUP` | `CONVERTER` | `INTEGRATION` | … (53 values total)
 
 #### OpenAiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | baseUrl | String |  | [optional] |
 | apiKey | String |  | [optional] |
-
-#### AiModelType (enum)
-`CHAT`
 
 #### AzureOpenAiProviderConfig
 | Name | Type | Description | Notes |
@@ -185,7 +177,7 @@
 #### GoogleVertexAiGeminiProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| fileName | String |  |  |
+| fileName | String |  | [optional] |
 | projectId | String |  |  |
 | location | String |  |  |
 | serviceAccountKey | String |  |  |

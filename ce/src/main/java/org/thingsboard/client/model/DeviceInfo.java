@@ -16,7 +16,6 @@
 package org.thingsboard.client.model;
 
 import javax.annotation.Generated;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -29,11 +28,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.DeviceData;
 import org.thingsboard.client.model.DeviceId;
 import org.thingsboard.client.model.DeviceProfileId;
+import org.thingsboard.client.model.EntityId;
+import org.thingsboard.client.model.EntityInfo;
 import org.thingsboard.client.model.OtaPackageId;
 import org.thingsboard.client.model.TenantId;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -57,10 +60,10 @@ import org.thingsboard.client.ApiClient;
   DeviceInfo.JSON_PROPERTY_FIRMWARE_ID,
   DeviceInfo.JSON_PROPERTY_SOFTWARE_ID,
   DeviceInfo.JSON_PROPERTY_VERSION,
-  DeviceInfo.JSON_PROPERTY_CUSTOMER_TITLE,
-  DeviceInfo.JSON_PROPERTY_CUSTOMER_IS_PUBLIC,
-  DeviceInfo.JSON_PROPERTY_DEVICE_PROFILE_NAME,
-  DeviceInfo.JSON_PROPERTY_ACTIVE
+  DeviceInfo.JSON_PROPERTY_OWNER_NAME,
+  DeviceInfo.JSON_PROPERTY_GROUPS,
+  DeviceInfo.JSON_PROPERTY_ACTIVE,
+  DeviceInfo.JSON_PROPERTY_OWNER_ID
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class DeviceInfo {
@@ -85,7 +88,7 @@ public class DeviceInfo {
   private CustomerId customerId;
 
   public static final String JSON_PROPERTY_NAME = "name";
-  @Nonnull
+  @Nullable
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
@@ -116,21 +119,21 @@ public class DeviceInfo {
   @Nullable
   private Long version;
 
-  public static final String JSON_PROPERTY_CUSTOMER_TITLE = "customerTitle";
+  public static final String JSON_PROPERTY_OWNER_NAME = "ownerName";
   @Nullable
-  private String customerTitle;
+  private String ownerName;
 
-  public static final String JSON_PROPERTY_CUSTOMER_IS_PUBLIC = "customerIsPublic";
+  public static final String JSON_PROPERTY_GROUPS = "groups";
   @Nullable
-  private Boolean customerIsPublic;
-
-  public static final String JSON_PROPERTY_DEVICE_PROFILE_NAME = "deviceProfileName";
-  @Nullable
-  private String deviceProfileName;
+  private List<EntityInfo> groups = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ACTIVE = "active";
   @Nullable
   private Boolean active;
+
+  public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @Nullable
+  private EntityId ownerId;
 
   public DeviceInfo() { 
   }
@@ -139,20 +142,16 @@ public class DeviceInfo {
   public DeviceInfo(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_TITLE) String customerTitle, 
-    @JsonProperty(JSON_PROPERTY_CUSTOMER_IS_PUBLIC) Boolean customerIsPublic, 
-    @JsonProperty(JSON_PROPERTY_DEVICE_PROFILE_NAME) String deviceProfileName, 
-    @JsonProperty(JSON_PROPERTY_ACTIVE) Boolean active
+    @JsonProperty(JSON_PROPERTY_OWNER_NAME) String ownerName, 
+    @JsonProperty(JSON_PROPERTY_ACTIVE) Boolean active, 
+    @JsonProperty(JSON_PROPERTY_OWNER_ID) EntityId ownerId
   ) {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
-    this.customerId = customerId;
-    this.customerTitle = customerTitle;
-    this.customerIsPublic = customerIsPublic;
-    this.deviceProfileName = deviceProfileName;
+    this.ownerName = ownerName;
     this.active = active;
+    this.ownerId = ownerId;
   }
 
   public DeviceInfo id(@Nullable DeviceId id) {
@@ -231,8 +230,13 @@ public class DeviceInfo {
 
 
 
+  public DeviceInfo customerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   /**
-   * JSON object with Customer Id. Use &#39;assignDeviceToCustomer&#39; to change the Customer Id.
+   * JSON object with Customer Id. Optional on create: when omitted, defaults to the owner of the target Entity Group or to the current Customer user. Cannot be changed on update via this endpoint; use the Owner API (changeOwnerToCustomer) to re-assign an existing Device.
    * @return customerId
    */
   @Nullable
@@ -243,9 +247,14 @@ public class DeviceInfo {
   }
 
 
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCustomerId(@Nullable CustomerId customerId) {
+    this.customerId = customerId;
+  }
 
 
-  public DeviceInfo name(@Nonnull String name) {
+  public DeviceInfo name(@Nullable String name) {
     this.name = name;
     return this;
   }
@@ -254,17 +263,17 @@ public class DeviceInfo {
    * Unique Device Name in scope of Tenant
    * @return name
    */
-  @Nonnull
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public String getName() {
     return name;
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@Nonnull String name) {
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@Nullable String name) {
     this.name = name;
   }
 
@@ -438,45 +447,49 @@ public class DeviceInfo {
 
 
   /**
-   * Title of the Customer that owns the device.
-   * @return customerTitle
+   * Owner name
+   * @return ownerName
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_TITLE, required = false)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getCustomerTitle() {
-    return customerTitle;
+  public String getOwnerName() {
+    return ownerName;
   }
 
 
 
+
+  public DeviceInfo groups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
+    return this;
+  }
+
+  public DeviceInfo addGroupsItem(EntityInfo groupsItem) {
+    if (this.groups == null) {
+      this.groups = new ArrayList<>();
+    }
+    this.groups.add(groupsItem);
+    return this;
+  }
 
   /**
-   * Indicates special &#39;Public&#39; Customer that is auto-generated to use the devices on public dashboards.
-   * @return customerIsPublic
+   * Groups
+   * @return groups
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_IS_PUBLIC, required = false)
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public Boolean getCustomerIsPublic() {
-    return customerIsPublic;
+  public List<EntityInfo> getGroups() {
+    return groups;
   }
 
 
-
-
-  /**
-   * Name of the corresponding Device Profile.
-   * @return deviceProfileName
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_DEVICE_PROFILE_NAME, required = false)
+  @JsonProperty(value = JSON_PROPERTY_GROUPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public String getDeviceProfileName() {
-    return deviceProfileName;
+  public void setGroups(@Nullable List<EntityInfo> groups) {
+    this.groups = groups;
   }
-
-
 
 
   /**
@@ -488,6 +501,20 @@ public class DeviceInfo {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public Boolean getActive() {
     return active;
+  }
+
+
+
+
+  /**
+   * JSON object with Customer or Tenant Id
+   * @return ownerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public EntityId getOwnerId() {
+    return ownerId;
   }
 
 
@@ -518,15 +545,15 @@ public class DeviceInfo {
         Objects.equals(this.firmwareId, deviceInfo.firmwareId) &&
         Objects.equals(this.softwareId, deviceInfo.softwareId) &&
         Objects.equals(this.version, deviceInfo.version) &&
-        Objects.equals(this.customerTitle, deviceInfo.customerTitle) &&
-        Objects.equals(this.customerIsPublic, deviceInfo.customerIsPublic) &&
-        Objects.equals(this.deviceProfileName, deviceInfo.deviceProfileName) &&
-        Objects.equals(this.active, deviceInfo.active);
+        Objects.equals(this.ownerName, deviceInfo.ownerName) &&
+        Objects.equals(this.groups, deviceInfo.groups) &&
+        Objects.equals(this.active, deviceInfo.active) &&
+        Objects.equals(this.ownerId, deviceInfo.ownerId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, deviceProfileId, deviceData, firmwareId, softwareId, version, customerTitle, customerIsPublic, deviceProfileName, active);
+    return Objects.hash(id, createdTime, additionalInfo, tenantId, customerId, name, type, label, deviceProfileId, deviceData, firmwareId, softwareId, version, ownerName, groups, active, ownerId);
   }
 
   @Override
@@ -546,10 +573,10 @@ public class DeviceInfo {
     sb.append("    firmwareId: ").append(toIndentedString(firmwareId)).append("\n");
     sb.append("    softwareId: ").append(toIndentedString(softwareId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    customerTitle: ").append(toIndentedString(customerTitle)).append("\n");
-    sb.append("    customerIsPublic: ").append(toIndentedString(customerIsPublic)).append("\n");
-    sb.append("    deviceProfileName: ").append(toIndentedString(deviceProfileName)).append("\n");
+    sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
+    sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -662,24 +689,29 @@ public class DeviceInfo {
       joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getVersion()))));
     }
 
-    // add `customerTitle` to the URL query string
-    if (getCustomerTitle() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerTitle%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerTitle()))));
+    // add `ownerName` to the URL query string
+    if (getOwnerName() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%sownerName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getOwnerName()))));
     }
 
-    // add `customerIsPublic` to the URL query string
-    if (getCustomerIsPublic() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%scustomerIsPublic%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getCustomerIsPublic()))));
-    }
-
-    // add `deviceProfileName` to the URL query string
-    if (getDeviceProfileName() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%sdeviceProfileName%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getDeviceProfileName()))));
+    // add `groups` to the URL query string
+    if (getGroups() != null) {
+      for (int i = 0; i < getGroups().size(); i++) {
+        if (getGroups().get(i) != null) {
+          joiner.add(getGroups().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sgroups%s%s", prefix, suffix,
+          "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
     }
 
     // add `active` to the URL query string
     if (getActive() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%sactive%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getActive()))));
+    }
+
+    // add `ownerId` to the URL query string
+    if (getOwnerId() != null) {
+      joiner.add(getOwnerId().toUrlQueryString(prefix + "ownerId" + suffix));
     }
 
     return joiner.toString();

@@ -32,6 +32,12 @@
 | maxResourcesInBytes | Long |  | [optional] |
 | maxOtaPackagesInBytes | Long |  | [optional] |
 | maxResourceSize | Long |  | [optional] |
+| maxReportSizeInBytes | Long |  | [optional] |
+| maxIntegrations | Long |  | [optional] |
+| maxConverters | Long |  | [optional] |
+| maxSchedulerEvents | Long |  | [optional] |
+| maxAgents | Long |  | [optional] |
+| maxAgentApplications | Long |  | [optional] |
 | transportTenantMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryMsgRateLimit | String |  | [optional] |
 | transportTenantTelemetryDataPointsRateLimit | String |  | [optional] |
@@ -44,6 +50,9 @@
 | transportGatewayDeviceMsgRateLimit | String |  | [optional] |
 | transportGatewayDeviceTelemetryMsgRateLimit | String |  | [optional] |
 | transportGatewayDeviceTelemetryDataPointsRateLimit | String |  | [optional] |
+| integrationMsgsPerTenantRateLimit | String |  | [optional] |
+| integrationMsgsPerDeviceRateLimit | String |  | [optional] |
+| integrationMsgsPerAssetRateLimit | String |  | [optional] |
 | tenantEntityExportRateLimit | String |  | [optional] |
 | tenantEntityImportRateLimit | String |  | [optional] |
 | tenantNotificationRequestsRateLimit | String |  | [optional] |
@@ -60,6 +69,8 @@
 | smsEnabled | Boolean |  | [optional] |
 | maxSms | Long |  | [optional] |
 | maxCreatedAlarms | Long |  | [optional] |
+| maxGeneratedReports | Long |  | [optional] |
+| maxAiCredits | Long |  | [optional] |
 | tenantServerRestLimitsConfiguration | String |  | [optional] |
 | customerServerRestLimitsConfiguration | String |  | [optional] |
 | maxWsSessionsPerTenant | Integer |  | [optional] |
@@ -80,11 +91,17 @@
 | edgeEventRateLimitsPerEdge | String |  | [optional] |
 | edgeUplinkMessagesRateLimits | String |  | [optional] |
 | edgeUplinkMessagesRateLimitsPerEdge | String |  | [optional] |
+| agentEventRateLimits | String |  | [optional] |
+| agentEventRateLimitsPerAgent | String |  | [optional] |
+| agentLogChunkRateLimits | String |  | [optional] |
+| agentLogChunkRateLimitsPerAgent | String |  | [optional] |
 | defaultStorageTtlDays | Integer |  | [optional] |
 | alarmsTtlDays | Integer |  | [optional] |
 | rpcTtlDays | Integer |  | [optional] |
 | queueStatsTtlDays | Integer |  | [optional] |
 | ruleEngineExceptionsTtlDays | Integer |  | [optional] |
+| blobEntityTtlDays | Integer |  | [optional] |
+| reportTtlDays | Integer |  | [optional] |
 | warnThreshold | Double |  | [optional] |
 | maxCalculatedFieldsPerEntity | Long |  | [optional] |
 | maxArgumentsPerCF | Long |  | [optional] |
@@ -99,6 +116,7 @@
 | intermediateAggregationIntervalInSecForCF | Long |  | [optional] |
 | cfReevaluationCheckInterval | Long |  | [optional] |
 | alarmsReevaluationInterval | Long |  | [optional] |
+| aiChatRequestsPerTenantRateLimit | String |  | [optional] |
 
 #### TenantProfileQueueConfiguration
 | Name | Type | Description | Notes |

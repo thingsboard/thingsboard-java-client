@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
+import org.thingsboard.client.model.CustomerId;
 import org.thingsboard.client.model.ResourceSubType;
 import org.thingsboard.client.model.ResourceType;
 import org.thingsboard.client.model.TbResourceId;
@@ -44,6 +45,7 @@ import org.thingsboard.client.ApiClient;
   TbResource.JSON_PROPERTY_ID,
   TbResource.JSON_PROPERTY_CREATED_TIME,
   TbResource.JSON_PROPERTY_TENANT_ID,
+  TbResource.JSON_PROPERTY_CUSTOMER_ID,
   TbResource.JSON_PROPERTY_TITLE,
   TbResource.JSON_PROPERTY_RESOURCE_TYPE,
   TbResource.JSON_PROPERTY_RESOURCE_SUB_TYPE,
@@ -72,6 +74,10 @@ public class TbResource {
   public static final String JSON_PROPERTY_TENANT_ID = "tenantId";
   @Nullable
   private TenantId tenantId;
+
+  public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
+  @Nullable
+  private CustomerId customerId;
 
   public static final String JSON_PROPERTY_TITLE = "title";
   @Nullable
@@ -136,6 +142,7 @@ public class TbResource {
   public TbResource(
     @JsonProperty(JSON_PROPERTY_CREATED_TIME) Long createdTime, 
     @JsonProperty(JSON_PROPERTY_TENANT_ID) TenantId tenantId, 
+    @JsonProperty(JSON_PROPERTY_CUSTOMER_ID) CustomerId customerId, 
     @JsonProperty(JSON_PROPERTY_ETAG) String etag, 
     @JsonProperty(JSON_PROPERTY_LINK) String link, 
     @JsonProperty(JSON_PROPERTY_NAME) String name, 
@@ -144,6 +151,7 @@ public class TbResource {
   this();
     this.createdTime = createdTime;
     this.tenantId = tenantId;
+    this.customerId = customerId;
     this.etag = etag;
     this.link = link;
     this.name = name;
@@ -197,6 +205,20 @@ public class TbResource {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public TenantId getTenantId() {
     return tenantId;
+  }
+
+
+
+
+  /**
+   * JSON object with Customer Id. Customer Id of the resource can&#39;t be changed.
+   * @return customerId
+   */
+  @Nullable
+  @JsonProperty(value = JSON_PROPERTY_CUSTOMER_ID, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public CustomerId getCustomerId() {
+    return customerId;
   }
 
 
@@ -513,6 +535,7 @@ public class TbResource {
     return Objects.equals(this.id, tbResource.id) &&
         Objects.equals(this.createdTime, tbResource.createdTime) &&
         Objects.equals(this.tenantId, tbResource.tenantId) &&
+        Objects.equals(this.customerId, tbResource.customerId) &&
         Objects.equals(this.title, tbResource.title) &&
         Objects.equals(this.resourceType, tbResource.resourceType) &&
         Objects.equals(this.resourceSubType, tbResource.resourceSubType) &&
@@ -531,7 +554,7 @@ public class TbResource {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdTime, tenantId, title, resourceType, resourceSubType, resourceKey, publicResourceKey, etag, fileName, descriptor, data, preview, link, name, _public, publicLink);
+    return Objects.hash(id, createdTime, tenantId, customerId, title, resourceType, resourceSubType, resourceKey, publicResourceKey, etag, fileName, descriptor, data, preview, link, name, _public, publicLink);
   }
 
   @Override
@@ -541,6 +564,7 @@ public class TbResource {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdTime: ").append(toIndentedString(createdTime)).append("\n");
     sb.append("    tenantId: ").append(toIndentedString(tenantId)).append("\n");
+    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    resourceType: ").append(toIndentedString(resourceType)).append("\n");
     sb.append("    resourceSubType: ").append(toIndentedString(resourceSubType)).append("\n");
@@ -615,6 +639,11 @@ public class TbResource {
     // add `tenantId` to the URL query string
     if (getTenantId() != null) {
       joiner.add(getTenantId().toUrlQueryString(prefix + "tenantId" + suffix));
+    }
+
+    // add `customerId` to the URL query string
+    if (getCustomerId() != null) {
+      joiner.add(getCustomerId().toUrlQueryString(prefix + "customerId" + suffix));
     }
 
     // add `title` to the URL query string

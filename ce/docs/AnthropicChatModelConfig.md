@@ -17,7 +17,6 @@
 | **maxOutputTokens** | **Integer** |  | [optional] |
 | **timeoutSeconds** | **Integer** |  | [optional] |
 | **maxRetries** | **Integer** |  | [optional] |
-| **modelType** | **AiModelType** |  | [optional] [readonly] |
 
 
 
@@ -26,15 +25,15 @@
 #### AiModelConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
-| provider | String |  |  |
+| provider | AiProvider | AI Provider |  |
 
 #### AnthropicProviderConfig
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | apiKey | String |  |  |
 
-#### AiModelType (enum)
-`CHAT`
+#### AiProvider (enum)
+`OPENAI` | `AZURE_OPENAI` | `GOOGLE_AI_GEMINI` | `GOOGLE_VERTEX_AI_GEMINI` | `MISTRAL_AI` | `ANTHROPIC` | `AMAZON_BEDROCK` | `GITHUB_MODELS` | `OLLAMA`
 
 ---
 

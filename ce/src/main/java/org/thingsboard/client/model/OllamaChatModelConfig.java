@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import org.thingsboard.client.model.AiModelConfig;
-import org.thingsboard.client.model.AiModelType;
+import org.thingsboard.client.model.AiProvider;
 import org.thingsboard.client.model.OllamaProviderConfig;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -53,8 +53,7 @@ import org.thingsboard.client.ApiClient;
   OllamaChatModelConfig.JSON_PROPERTY_CONTEXT_LENGTH,
   OllamaChatModelConfig.JSON_PROPERTY_MAX_OUTPUT_TOKENS,
   OllamaChatModelConfig.JSON_PROPERTY_TIMEOUT_SECONDS,
-  OllamaChatModelConfig.JSON_PROPERTY_MAX_RETRIES,
-  OllamaChatModelConfig.JSON_PROPERTY_MODEL_TYPE
+  OllamaChatModelConfig.JSON_PROPERTY_MAX_RETRIES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 @JsonIgnoreProperties(
@@ -100,19 +99,7 @@ public class OllamaChatModelConfig extends AiModelConfig {
   @Nullable
   private Integer maxRetries;
 
-  public static final String JSON_PROPERTY_MODEL_TYPE = "modelType";
-  @Nullable
-  private AiModelType modelType;
-
   public OllamaChatModelConfig() { 
-  }
-
-  @JsonCreator
-  public OllamaChatModelConfig(
-    @JsonProperty(JSON_PROPERTY_MODEL_TYPE) AiModelType modelType
-  ) {
-  this();
-    this.modelType = modelType;
   }
 
   public OllamaChatModelConfig providerConfig(@Nonnull OllamaProviderConfig providerConfig) {
@@ -170,6 +157,7 @@ public class OllamaChatModelConfig extends AiModelConfig {
 
   /**
    * Get temperature
+   * minimum: 0
    * @return temperature
    */
   @Nullable
@@ -194,6 +182,7 @@ public class OllamaChatModelConfig extends AiModelConfig {
 
   /**
    * Get topP
+   * minimum: 0
    * maximum: 1
    * @return topP
    */
@@ -219,6 +208,7 @@ public class OllamaChatModelConfig extends AiModelConfig {
 
   /**
    * Get topK
+   * minimum: 0
    * @return topK
    */
   @Nullable
@@ -291,6 +281,7 @@ public class OllamaChatModelConfig extends AiModelConfig {
 
   /**
    * Get timeoutSeconds
+   * minimum: 0
    * @return timeoutSeconds
    */
   @Nullable
@@ -315,6 +306,7 @@ public class OllamaChatModelConfig extends AiModelConfig {
 
   /**
    * Get maxRetries
+   * minimum: 0
    * @return maxRetries
    */
   @Nullable
@@ -330,20 +322,6 @@ public class OllamaChatModelConfig extends AiModelConfig {
   public void setMaxRetries(@Nullable Integer maxRetries) {
     this.maxRetries = maxRetries;
   }
-
-
-  /**
-   * Get modelType
-   * @return modelType
-   */
-  @Nullable
-  @JsonProperty(value = JSON_PROPERTY_MODEL_TYPE, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public AiModelType getModelType() {
-    return modelType;
-  }
-
-
 
 
   /**
@@ -367,13 +345,12 @@ public class OllamaChatModelConfig extends AiModelConfig {
         Objects.equals(this.maxOutputTokens, ollamaChatModelConfig.maxOutputTokens) &&
         Objects.equals(this.timeoutSeconds, ollamaChatModelConfig.timeoutSeconds) &&
         Objects.equals(this.maxRetries, ollamaChatModelConfig.maxRetries) &&
-        Objects.equals(this.modelType, ollamaChatModelConfig.modelType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(providerConfig, modelId, temperature, topP, topK, contextLength, maxOutputTokens, timeoutSeconds, maxRetries, modelType, super.hashCode());
+    return Objects.hash(providerConfig, modelId, temperature, topP, topK, contextLength, maxOutputTokens, timeoutSeconds, maxRetries, super.hashCode());
   }
 
   @Override
@@ -390,7 +367,6 @@ public class OllamaChatModelConfig extends AiModelConfig {
     sb.append("    maxOutputTokens: ").append(toIndentedString(maxOutputTokens)).append("\n");
     sb.append("    timeoutSeconds: ").append(toIndentedString(timeoutSeconds)).append("\n");
     sb.append("    maxRetries: ").append(toIndentedString(maxRetries)).append("\n");
-    sb.append("    modelType: ").append(toIndentedString(modelType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -486,11 +462,6 @@ public class OllamaChatModelConfig extends AiModelConfig {
     // add `maxRetries` to the URL query string
     if (getMaxRetries() != null) {
       joiner.add(String.format(java.util.Locale.ROOT, "%smaxRetries%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getMaxRetries()))));
-    }
-
-    // add `modelType` to the URL query string
-    if (getModelType() != null) {
-      joiner.add(String.format(java.util.Locale.ROOT, "%smodelType%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getModelType()))));
     }
 
     return joiner.toString();

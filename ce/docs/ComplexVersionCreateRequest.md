@@ -33,6 +33,8 @@
 | saveAttributes | Boolean |  | [optional] |
 | saveCredentials | Boolean |  | [optional] |
 | saveCalculatedFields | Boolean |  | [optional] |
+| savePermissions | Boolean |  | [optional] |
+| saveGroupEntities | Boolean |  | [optional] |
 | syncStrategy | SyncStrategy |  | [optional] |
 | entityIds | List<UUID> |  | [optional] |
 | allEntities | Boolean |  | [optional] |

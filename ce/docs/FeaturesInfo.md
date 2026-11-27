@@ -7,6 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+| **whiteLabelingEnabled** | **Boolean** |  | [optional] |
 | **emailEnabled** | **Boolean** |  | [optional] |
 | **smsEnabled** | **Boolean** |  | [optional] |
 | **notificationEnabled** | **Boolean** |  | [optional] |

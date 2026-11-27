@@ -37,8 +37,12 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.openapitools.jackson.nullable.JsonNullable;
 import org.thingsboard.client.model.EntityType;
 import org.thingsboard.client.model.KeyInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -47,19 +51,23 @@ import org.thingsboard.client.ApiClient;
  * Contains unique time series and attribute key names discovered from entities matching a query, optionally including a sample value for each key.
  */
 @JsonPropertyOrder({
+  AvailableEntityKeysV2.JSON_PROPERTY_TOTAL_ENTITIES,
   AvailableEntityKeysV2.JSON_PROPERTY_ENTITY_TYPES,
   AvailableEntityKeysV2.JSON_PROPERTY_TIMESERIES,
   AvailableEntityKeysV2.JSON_PROPERTY_ATTRIBUTES
 })
 @Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.20.0")
 public class AvailableEntityKeysV2 {
+  public static final String JSON_PROPERTY_TOTAL_ENTITIES = "totalEntities";
+  @Nonnull
+  private Integer totalEntities;
+
   public static final String JSON_PROPERTY_ENTITY_TYPES = "entityTypes";
   @Nonnull
   private Set<EntityType> entityTypes = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_TIMESERIES = "timeseries";
-  @Nullable
-  private List<KeyInfo> timeseries = new ArrayList<>();
+  private JsonNullable<List<KeyInfo>> timeseries = JsonNullable.<List<KeyInfo>>undefined();
 
   public static final String JSON_PROPERTY_ATTRIBUTES = "attributes";
   @Nullable
@@ -67,6 +75,30 @@ public class AvailableEntityKeysV2 {
 
   public AvailableEntityKeysV2() { 
   }
+
+  public AvailableEntityKeysV2 totalEntities(@Nonnull Integer totalEntities) {
+    this.totalEntities = totalEntities;
+    return this;
+  }
+
+  /**
+   * Total number of entities that matched the query filter.
+   * @return totalEntities
+   */
+  @Nonnull
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_ENTITIES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public Integer getTotalEntities() {
+    return totalEntities;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_ENTITIES, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setTotalEntities(@Nonnull Integer totalEntities) {
+    this.totalEntities = totalEntities;
+  }
+
 
   public AvailableEntityKeysV2 entityTypes(@Nonnull Set<EntityType> entityTypes) {
     this.entityTypes = entityTypes;
@@ -102,15 +134,19 @@ public class AvailableEntityKeysV2 {
 
 
   public AvailableEntityKeysV2 timeseries(@Nullable List<KeyInfo> timeseries) {
-    this.timeseries = timeseries;
+    this.timeseries = JsonNullable.<List<KeyInfo>>of(timeseries);
     return this;
   }
 
   public AvailableEntityKeysV2 addTimeseriesItem(KeyInfo timeseriesItem) {
-    if (this.timeseries == null) {
-      this.timeseries = new ArrayList<>();
+    if (this.timeseries == null || !this.timeseries.isPresent()) {
+      this.timeseries = JsonNullable.<List<KeyInfo>>of(new ArrayList<>());
     }
-    this.timeseries.add(timeseriesItem);
+    try {
+      this.timeseries.get().add(timeseriesItem);
+    } catch (java.util.NoSuchElementException e) {
+      // this can never happen, as we make sure above that the value is present
+    }
     return this;
   }
 
@@ -119,17 +155,25 @@ public class AvailableEntityKeysV2 {
    * @return timeseries
    */
   @Nullable
-  @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonIgnore
   public List<KeyInfo> getTimeseries() {
-    return timeseries;
+        return timeseries.orElse(null);
   }
 
-
   @JsonProperty(value = JSON_PROPERTY_TIMESERIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTimeseries(@Nullable List<KeyInfo> timeseries) {
+
+  public JsonNullable<List<KeyInfo>> getTimeseries_JsonNullable() {
+    return timeseries;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_TIMESERIES)
+  public void setTimeseries_JsonNullable(JsonNullable<List<KeyInfo>> timeseries) {
     this.timeseries = timeseries;
+  }
+
+  public void setTimeseries(@Nullable List<KeyInfo> timeseries) {
+    this.timeseries = JsonNullable.<List<KeyInfo>>of(timeseries);
   }
 
 
@@ -177,20 +221,33 @@ public class AvailableEntityKeysV2 {
       return false;
     }
     AvailableEntityKeysV2 availableEntityKeysV2 = (AvailableEntityKeysV2) o;
-    return Objects.equals(this.entityTypes, availableEntityKeysV2.entityTypes) &&
-        Objects.equals(this.timeseries, availableEntityKeysV2.timeseries) &&
+    return Objects.equals(this.totalEntities, availableEntityKeysV2.totalEntities) &&
+        Objects.equals(this.entityTypes, availableEntityKeysV2.entityTypes) &&
+        equalsNullable(this.timeseries, availableEntityKeysV2.timeseries) &&
         Objects.equals(this.attributes, availableEntityKeysV2.attributes);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entityTypes, timeseries, attributes);
+    return Objects.hash(totalEntities, entityTypes, hashCodeNullable(timeseries), attributes);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AvailableEntityKeysV2 {\n");
+    sb.append("    totalEntities: ").append(toIndentedString(totalEntities)).append("\n");
     sb.append("    entityTypes: ").append(toIndentedString(entityTypes)).append("\n");
     sb.append("    timeseries: ").append(toIndentedString(timeseries)).append("\n");
     sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
@@ -240,6 +297,11 @@ public class AvailableEntityKeysV2 {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `totalEntities` to the URL query string
+    if (getTotalEntities() != null) {
+      joiner.add(String.format(java.util.Locale.ROOT, "%stotalEntities%s=%s", prefix, suffix, ApiClient.urlEncode(ApiClient.valueToString(getTotalEntities()))));
+    }
 
     // add `entityTypes` to the URL query string
     if (getEntityTypes() != null) {

@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Gets or Sets AliasEntityType
+ * Alias for an entity of the current user, used as AliasEntityId.entityType
  */
 public enum AliasEntityType {
   

@@ -21,7 +21,6 @@ import java.util.StringJoiner;
 import java.util.Objects;
 import java.util.Map;
 import java.util.HashMap;
-import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
@@ -33,44 +32,46 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum ThingsboardErrorCode {
   
-  NUMBER_2(new BigDecimal("2")),
+  NUMBER_2(2),
   
-  NUMBER_10(new BigDecimal("10")),
+  NUMBER_10(10),
   
-  NUMBER_11(new BigDecimal("11")),
+  NUMBER_11(11),
   
-  NUMBER_15(new BigDecimal("15")),
+  NUMBER_15(15),
   
-  NUMBER_20(new BigDecimal("20")),
+  NUMBER_20(20),
   
-  NUMBER_30(new BigDecimal("30")),
+  NUMBER_30(30),
   
-  NUMBER_31(new BigDecimal("31")),
+  NUMBER_31(31),
   
-  NUMBER_32(new BigDecimal("32")),
+  NUMBER_32(32),
   
-  NUMBER_33(new BigDecimal("33")),
+  NUMBER_33(33),
   
-  NUMBER_34(new BigDecimal("34")),
+  NUMBER_34(34),
   
-  NUMBER_35(new BigDecimal("35")),
+  NUMBER_35(35),
   
-  NUMBER_40(new BigDecimal("40")),
+  NUMBER_40(40),
   
-  NUMBER_41(new BigDecimal("41")),
+  NUMBER_41(41),
   
-  NUMBER_45(new BigDecimal("45")),
+  NUMBER_45(45),
   
-  NUMBER_46(new BigDecimal("46"));
+  NUMBER_46(46),
+  
+  NUMBER_47(47);
 
-  private BigDecimal value;
+  private Integer value;
 
-  ThingsboardErrorCode(BigDecimal value) {
+  ThingsboardErrorCode(Integer value) {
     this.value = value;
   }
 
   @JsonValue
-  public BigDecimal getValue() {
+  public Integer getValue() {
     return value;
   }
 
@@ -80,7 +81,7 @@ public enum ThingsboardErrorCode {
   }
 
   @JsonCreator
-  public static ThingsboardErrorCode fromValue(BigDecimal value) {
+  public static ThingsboardErrorCode fromValue(Integer value) {
     for (ThingsboardErrorCode b : ThingsboardErrorCode.values()) {
       if (b.value.equals(value)) {
         return b;

@@ -148,7 +148,7 @@ public class LwM2MServerSecurityConfigDefault {
   }
 
   /**
-   * Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of &#39;false&#39;. The values ID:0 and ID:65535 values MUST NOT be used for identifying the LwM2M Server.
+   * Server short Id. Used as link to associate server Object Instance. This identifier uniquely identifies each LwM2M Server configured for the LwM2M Client. This Resource MUST be set when the Bootstrap-Server Resource has a value of &#39;false&#39; and MUST be null when Bootstrap-Server is &#39;true&#39;. The values 0 and 65535 MUST NOT be used for identifying the LwM2M Server.
    * @return shortServerId
    */
   @Nullable

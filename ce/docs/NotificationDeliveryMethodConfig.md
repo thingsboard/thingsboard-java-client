@@ -17,7 +17,8 @@
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | firebaseServiceAccountCredentialsFileName | String |  | [optional] |
-| firebaseServiceAccountCredentials | String |  |  |
+| firebaseServiceAccountCredentials | String |  | [optional] |
+| useSystemSettings | Boolean |  | [optional] |
 
 #### SlackNotificationDeliveryMethodConfig  *(method=`SLACK`)*
 | Name | Type | Description | Notes |
